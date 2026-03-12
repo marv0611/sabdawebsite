@@ -1,6 +1,6 @@
 # SABDA Website Build — Project Manual
 ## For AI Chat Handoff & Developer Reference
-### Last Updated: March 12, 2026 — v16 (Session 2 Final)
+### Last Updated: March 12, 2026 — v16.o / classes-v10 (Session 3 Final)
 
 ---
 
@@ -8,14 +8,19 @@
 
 Paste this at the beginning of your next chat:
 
-> I'm continuing the SABDA website build. Read the project manual first — it's at `SABDA_Website_Build_Manual.md` in the GitHub repo (https://github.com/marv0611/sabdawebsite). The current working file is `SABDA_v16.html`. Use this GitHub PAT for pushing: `YOUR_GITHUB_PAT_HERE`. Clone the repo, read the manual thoroughly before making any changes, and present the HTML file after each edit so I can review it. After every push, give me the htmlpreview link so I can check in my browser.
+> I'm continuing the SABDA website build. Read the project manual first — it's at `SABDA_Website_Build_Manual.md` in the GitHub repo (https://github.com/marv0611/sabdawebsite). The current homepage is `SABDA_v16.html`, the classes page is `classes.html`. Use this GitHub PAT for pushing: `YOUR_GITHUB_PAT_HERE`. Clone the repo, read the manual thoroughly before making any changes. After every push, give me the GitHub Pages link so I can check in my browser.
 
 **CRITICAL — PREVIEW LINK FORMAT:**
-After every push, always provide this link in the chat so Marvyn can open it directly in his browser:
+The site is hosted via **GitHub Pages**. After every push, provide these links:
 ```
-https://htmlpreview.github.io/?https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA_v16.html
+Homepage:  https://marv0611.github.io/sabdawebsite/SABDA_v16.html
+Classes:   https://marv0611.github.io/sabdawebsite/classes.html
+Corporate: https://marv0611.github.io/sabdawebsite/rent-corporate.html
 ```
-Do NOT give raw GitHub links (they download instead of rendering). Do NOT give repo links. Always give the htmlpreview.github.io link. This is non-negotiable.
+
+**⚠️ DO NOT USE htmlpreview.github.io** — it blocks third-party JavaScript (Momence widget, analytics, etc.). GitHub Pages is the only preview method that works for pages with external scripts. See Lesson 6.14 below.
+
+GitHub Pages takes 30–60 seconds to rebuild after a push. Always verify the deployed version by checking the `<!-- version comment -->` in the HTML `<head>` with curl before sending the link to Marvyn.
 
 ---
 
@@ -33,6 +38,8 @@ Do NOT give raw GitHub links (they download instead of rendering). Do NOT give r
 10. [Integration Requirements](#10-integration-requirements)
 11. [Key URLs & Credentials](#11-key-urls--credentials)
 12. [File Index](#12-file-index)
+13. [Session 3 — Classes Page & Momence Widget](#13-session-3--classes-page--momence-widget)
+14. [Session 3 — Mistakes & Lessons Learned](#14-session-3--mistakes--lessons-learned)
 
 ---
 
@@ -132,9 +139,18 @@ https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20log
 
 ### Preview Links
 ```
-WRONG (downloads file): https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA_v16.html
-WRONG (repo view):      https://github.com/marv0611/sabdawebsite/blob/main/SABDA_v16.html
-RIGHT (renders in browser): https://htmlpreview.github.io/?https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA_v16.html
+DO NOT USE: htmlpreview.github.io (blocks 3rd party scripts — Momence widget won't load)
+DO NOT USE: raw.githubusercontent.com (downloads file)
+DO NOT USE: github.com/blob/ (repo view)
+
+USE: GitHub Pages (real web server, external scripts work):
+  Homepage:  https://marv0611.github.io/sabdawebsite/SABDA_v16.html
+  Classes:   https://marv0611.github.io/sabdawebsite/classes.html
+  Corporate: https://marv0611.github.io/sabdawebsite/rent-corporate.html
+
+GitHub Pages setup: Already enabled on main branch, root path "/".
+Rebuild time: 30–60 seconds after push.
+Verify deployment: curl -s https://marv0611.github.io/sabdawebsite/classes.html | head -4 | tail -1
 ```
 
 ---
@@ -393,26 +409,35 @@ Custom Eugusto Bold .woff files exist but don't load reliably from GitHub. Use G
 
 ## 9. PENDING WORK
 
-### Next Session Priority
-- [ ] Mobile responsive pass (most traffic comes from Instagram ads on phones)
-- [ ] Review space gallery — may need better photos
-- [ ] Testimonials need real quotes (current ones are placeholders)
+### Immediate Priority
+- [ ] **classes.html day selector still invisible** — Momence uses styled-components with inline styles that override even `!important` CSS. Current approach (v10) uses JS `element.style.setProperty()` on every element via MutationObserver. This mostly works but the day selector (SUN–SAT row) still renders as dark-on-dark because the widget re-renders via React and overwrites inline styles. MAY NEED: inspecting the live DOM in Chrome DevTools to find the exact styled-component class hashes, then targeting those specifically. Or: accept the native Momence colors for the controls and only dark-theme the cards and page frame.
+- [ ] **Mobile responsive pass** on SABDA_v16.html (most traffic from Instagram ads on phones)
+- [ ] **Replace hero image** on classes.html — currently using breathwork.jpg as placeholder. Marvyn will provide a rectangular hero image.
+- [ ] **Gift card URLs** — currently all point to generic `momence.com/SABDA-54278`. Need actual gift card checkout URLs from Momence. Known URL pattern: `momence.com/gcc/54278`
+- [ ] **Pricing URLs** — some packs (5-pack, 10-pack, Residents Week, single drop-in €20) use generic Momence URL. Need direct checkout links.
+
+### Member Portal (Option 3 — approved by Marvyn)
+- [ ] **Get Momence OAuth2 API credentials** (client_id + client_secret) from Momence dashboard: Settings → API Clients
+- [ ] **Build backend proxy** (Cloudflare Worker or Vercel function) for secure token exchange
+- [ ] **Build branded "My Account" page** — login, view bookings, cancel bookings, see membership status
+- [ ] Uses Momence Member API: `DELETE /api/v2/member/sessions/{sessionBookingId}` for cancellations
+- [ ] Key UX: cancellation interception ("Can't make it? Here are 3 other classes this week")
+- [ ] Key UX: pack depletion prompts ("1 class left — upgrade to Unlimited?")
 
 ### Additional Pages to Build
 - [ ] `/welcome/` — ads landing page (exists as `welcome.html` — needs sync with v16 design)
-- [ ] `/classes/` — all class types, Momence schedule embed
-- [ ] `/pricing/` — full pricing page with all packs and memberships
+- [ ] `/pricing/` — full dedicated pricing page (basic version now at bottom of classes.html)
 - [ ] `/the-space/` — technology showcase, gallery, specs
-- [ ] `/rent-corporate/` — B2B page with inquiry form
+- [ ] `/rent-corporate/` — B2B page with inquiry form (placeholder exists with space gallery)
 - [ ] `/listening-sessions/` — paused, signup for notifications
 - [ ] `/about/` — origin story, mission, values, team
 - [ ] `/contact/` — address, map, form
 
 ### Technical Integration
 - [ ] Meta Pixel (ID: `567636669734630`)
-- [ ] Momence schedule widget (`host_id: 54278`)
 - [ ] EN/ES language toggle
 - [ ] GA4 + GTM configuration
+- [ ] Real testimonials (current ones are placeholders)
 
 ---
 
@@ -421,13 +446,34 @@ Custom Eugusto Bold .woff files exist but don't load reliably from GitHub. Use G
 ### Momence
 - **Host ID:** 54278
 - **API Token:** a0314a80ca
-- **Schedule Widget:**
+- **Readonly API Base:** `https://readonly-api.momence.com` (NOT `https://api.momence.com`)
+- **Write API Base:** `https://api.momence.com`
+
+**Schedule Widget (current embed method):**
 ```html
-<div id="ribbon-schedule"></div>
-<script async type="module" host_id="54278" locale="en"
-  src="https://momence.com/plugin/host-schedule/host-schedule.js">
+<div id="momence-plugin-host-schedule"></div>
+<script src="https://momence.com/plugin/host-schedule/host-schedule.js"
+  host_id="54278"
+  locale="en"
+  i18n='{"TEACHER_SELECT_PLACEHOLDER":"Teachers","TEACHER":"Teacher","SUBSTITUTES_FOR_SHORT":"Sub for"}'>
 </script>
 ```
+
+**Readonly API Endpoints (discovered from widget source):**
+```
+GET /host-plugins/host/{hostId}/host-schedule/sessions?fromDate=&toDate=&pageSize=&page=&dayOfWeek=
+GET /host-plugins/host/{hostId}/host-schedule/dates
+GET /host-plugins/host/{hostId}/host-schedule (returns filters: locations, teachers, tags, sessionTypes)
+```
+
+**Member API (for customer portal — requires OAuth2):**
+```
+DELETE /api/v2/member/sessions/{sessionBookingId}   — Cancel booking
+GET    /api/v2/member/sessions                      — List customer bookings
+```
+
+**Session data structure (from widget code):**
+`startsAt, endsAt, sessionName, teacher, teacherPicture, type, inPerson, location, link, durationMinutes, price, currency, isCancelled, capacity, ticketsSold, allowWaitlist, image, level (description), semester, course`
 
 ### Meta Pixel
 - **Pixel ID:** 567636669734630
@@ -441,7 +487,10 @@ Custom Eugusto Bold .woff files exist but don't load reliably from GitHub. Use G
 |------|-------|
 | GitHub repo | https://github.com/marv0611/sabdawebsite |
 | GitHub PAT | `YOUR_GITHUB_PAT_HERE` |
-| HTML Preview | https://htmlpreview.github.io/?https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA_v16.html |
+| **GitHub Pages (PRIMARY)** | **https://marv0611.github.io/sabdawebsite/** |
+| Homepage preview | https://marv0611.github.io/sabdawebsite/SABDA_v16.html |
+| Classes preview | https://marv0611.github.io/sabdawebsite/classes.html |
+| Corporate preview | https://marv0611.github.io/sabdawebsite/rent-corporate.html |
 | Current website | https://sabda.es |
 | New domain | sabdastudio.com (migration pending) |
 | Framer project | https://individual-perspective-340178.framer.app/ |
@@ -463,7 +512,9 @@ Custom Eugusto Bold .woff files exist but don't load reliably from GitHub. Use G
 
 | File | Description |
 |------|-------------|
-| `SABDA_v16.html` | **Current working homepage** |
+| `SABDA_v16.html` | **Current working homepage** (v16.o) |
+| `classes.html` | **Classes & schedule page** (v10) — Momence widget, pricing, gift cards |
+| `rent-corporate.html` | Corporate/events page — placeholder with space gallery |
 | `welcome.html` | Ads landing page — needs sync with v16 |
 | `SABDA_Website_Build_Manual.md` | This document |
 | `SABDA_Brand_Foundations.pdf` | Brand strategy deck |
@@ -476,8 +527,155 @@ Custom Eugusto Bold .woff files exist but don't load reliably from GitHub. Use G
 | v12 | Images from GitHub, brand navy, photo cards | Superseded |
 | v13 | Animated symbol, card animations | Superseded |
 | v15 | Full rebuild with particles, gallery, booking | Superseded |
-| v16 | Streamlined flow, global particles, animated counters, dual-row gallery, 3-card pricing, premium partners marquee | **Current** |
+| v16 | Streamlined flow, global particles, animated counters, dual-row gallery, 3-card pricing, premium partners marquee | **Current (v16.o)** |
+| classes-v1 | Initial Momence widget embed with CSS overrides | Superseded |
+| classes-v10 | JS-based dark theme, pricing grid, gift cards, particles | **Current** |
 
 ---
 
-*End of manual. Last updated March 12, 2026 — end of Session 2.*
+## 13. SESSION 3 — CLASSES PAGE & MOMENCE WIDGET
+
+### What Was Built
+`classes.html` — a branded schedule page embedding the live Momence widget, with a pricing section and gift card section below it.
+
+### Page Structure (classes.html v10)
+```
+NAV (same as homepage, "Classes" active)
+↓
+HERO BANNER (rectangular image with gradient overlay, "Our Schedule" heading)
+↓
+MOMENCE WIDGET (live schedule — day selector, class cards, book buttons)
+↓
+PRICING GRID (4 columns: Intro Offers | Drop In | Packs | Membership)
+↓
+GIFT CARDS (€20, €40, €60, €80, €100, Custom)
+↓
+FOOTER (30% shorter than original — GLOBAL RULE for all pages)
+```
+
+### Momence Widget — What's Shown vs Hidden
+
+**SHOWN (dark themed):**
+- "Classes" label with underline
+- Week/Month toggle
+- Day selector: < SUN 8 | MON 9 | TUE 10 | ... | SAT 14 >
+- SHOW ALL / TODAY buttons
+- Teachers dropdown (renamed from "Practitioners")
+- Session cards (class image, title, teacher, time, Book Now button)
+
+**HIDDEN via CSS/JS:**
+- Location filter dropdown (single venue — redundant)
+- "Location: SABDA" on each card (redundant)
+- Price on each card (pricing is in dedicated section below)
+- Pagination (1 ... 99)
+- System row (timezone/auth)
+- "Powered by Momence" footer
+
+### Pricing Grid (matches current website)
+| Intro Offers | Drop In | Packs | Membership |
+|---|---|---|---|
+| 3 Pack €48 | Drop In €20 | 5 Pack €80 | Monthly Unlimited €130 |
+| Trial Drop In €16 | | 10 Pack €140 | 3 Month Unlimited |
+| Residents: 1 Week €50 | | | |
+
+### Global Footer Rule
+**All footers must be 30% shorter than original.** Applied to SABDA_v16.html and classes.html:
+- Desktop: `padding: 52px 80px 30px` (was `80px 80px 44px`)
+- Grid gap: `40px` (was `52px`), margin-bottom: `44px` (was `72px`)
+- Mobile: `padding: 36px 24px 22px` (was `48px 24px 32px`)
+
+---
+
+## 14. SESSION 3 — MISTAKES & LESSONS LEARNED
+
+### ⚠️ 14.1 — htmlpreview.github.io BLOCKS THIRD-PARTY SCRIPTS
+
+**The mistake:** Used htmlpreview.github.io for previewing classes.html. The Momence schedule widget was completely invisible — just blank space between the hero and pricing. Spent multiple iterations trying to fix CSS when the real problem was the preview tool.
+
+**What happened:** htmlpreview.github.io is a client-side HTML renderer that strips/blocks external `<script>` tags for security. The Momence widget script (`momence.com/plugin/host-schedule/host-schedule.js`) simply never executed.
+
+**The fix:** Enabled GitHub Pages on the repo. GitHub Pages is a real web server that allows all external scripts.
+
+**Rule for future sessions:** NEVER use htmlpreview.github.io for any page that loads external JavaScript. Always use `https://marv0611.github.io/sabdawebsite/`. This includes ANY page with Momence, Meta Pixel, GA4, or any other third-party integration.
+
+### ⚠️ 14.2 — NEVER MOVE DOM NODES INSIDE A REACT WIDGET
+
+**The mistake:** Wrote a `moveDaySelector()` function that used `appendChild()` to physically move the Momence day selector from Momence's "second row" into the "first row" (to put the days between "Classes" and "Week/Month").
+
+**What happened:** Momence's widget is a React application. React maintains a virtual DOM and expects its rendered nodes to stay where it put them. When JS moves a React-managed DOM node, React's reconciliation breaks — on the next re-render, React can't find the moved node in its expected parent, so it either removes it or stops updating it. Result: the left/right arrows showed up (they lived in the first row already) but all 7 day buttons (SUN–SAT) vanished.
+
+**The fix:** Removed all DOM manipulation. Only use `element.style.setProperty()` to change visual styles, never `appendChild()`, `insertBefore()`, or `removeChild()` on widget-managed nodes.
+
+**Rule for future sessions:** When working with any third-party widget (Momence, Stripe, Google Maps, etc.), ONLY change CSS/styles. NEVER restructure the DOM. The widget's framework controls the DOM tree.
+
+### ⚠️ 14.3 — MOMENCE STYLED-COMPONENTS OVERRIDE CSS !important
+
+**The mistake:** Wrote extensive CSS overrides targeting Momence class names like `.momence-day_selection-item`, `.momence-arrow-button`, etc. with `!important`. The widget controls (day selector, buttons, filters) remained invisible — dark text on dark background.
+
+**What happened:** Momence uses styled-components (CSS-in-JS). These generate unique class hashes at runtime and inject `<style>` tags with inline styles that have HIGHER specificity than external CSS, even with `!important`. The class names in the HTML don't match the predictable `.momence-*` pattern — they're hashed (e.g., `.zh2ey8`, `.g6tqw9`, `.sc-12tukza`).
+
+**The current approach (v10):** JavaScript that runs on a MutationObserver and timers, calling `element.style.setProperty('color', '#f0efe9', 'important')` on EVERY element inside the widget. This is a "nuclear" approach — force white text and transparent backgrounds on everything, then selectively re-color specific elements (cards get glass bg, book buttons get cyan, h3 gets salmon, etc.).
+
+**What still doesn't fully work:** The day selector row. The widget's React re-renders overwrite inline styles set by our JS. The MutationObserver fires and re-applies, but there's a race condition — sometimes the widget wins.
+
+**Possible solutions for next session:**
+1. **Inspect live DOM in Chrome DevTools** → find the exact styled-component hash classes on the day selector buttons → target those directly in CSS
+2. **Use `!important` on the widget's own `<style>` tag** → inject a `<style>` tag AFTER the widget loads, with selectors that match the hashed classes
+3. **Accept Momence's native light theme for the controls** → only dark-theme the page frame (nav, hero, pricing, footer) and let the widget render in its default white theme inside a contained card
+
+### ⚠️ 14.4 — CACHE BUSTING ON GITHUB PAGES
+
+**The mistake:** Pushed changes but Marvyn saw the old version. Tried `?t=` query params on the URL, which don't actually bust the GitHub Pages CDN cache.
+
+**What works:**
+- Use a version comment in the HTML: `<!-- classes-v10 -->` in the `<meta charset>` tag
+- After pushing, wait 30–60 seconds for rebuild
+- Verify with curl: `curl -s https://marv0611.github.io/sabdawebsite/classes.html | head -4`
+- If stuck, push an empty commit: `git commit --allow-empty -m "trigger rebuild" && git push`
+- Tell Marvyn to open in incognito window if browser is caching
+
+### ⚠️ 14.5 — MOMENCE i18n ATTRIBUTE MAY NOT WORK
+
+**The mistake:** Used the `i18n` attribute on the Momence script tag to rename "Practitioners" to "Teachers":
+```html
+i18n='{"TEACHER_SELECT_PLACEHOLDER":"Teachers","TEACHER":"Teacher"}'
+```
+
+**What happened:** The i18n attribute works for some strings but not all. The "Practitioners" label in the dropdown filter was not reliably renamed.
+
+**The fix:** Added JS `MutationObserver` that watches the widget DOM and replaces text nodes containing "Practitioners" with "Teachers" and "Practitioner" with "Teacher". This fires on every DOM mutation + fallback timers.
+
+### ⚠️ 14.6 — DON'T HIDE THINGS MARVYN DIDN'T ASK TO HIDE
+
+**The mistake:** In v6, hid the entire "Classes" header row, Week/Month toggle, SHOW ALL/TODAY buttons, Teachers filter, and tags row — everything except the day selector and class cards.
+
+**What Marvyn actually asked:** "Remove the '1 to 99' pagination, remove the price, and add the day selector." He wanted EVERYTHING ELSE to stay.
+
+**Rule:** Read the request literally. Only hide what is explicitly asked to be hidden. When in doubt, ask.
+
+### ⚠️ 14.7 — VERIFY BEFORE SENDING
+
+**The pattern that wasted time:** Pushing code, giving Marvyn the link, then him finding issues that should have been caught by checking the deployed version first.
+
+**Rule for future sessions:**
+1. Push code
+2. Wait for GitHub Pages rebuild (30–60s)
+3. Verify deployed version with curl (check version comment)
+4. Verify key CSS/JS rules are present with grep
+5. ONLY THEN send the link to Marvyn
+
+### 14.8 — Momence Readonly API vs Write API
+
+**Discovery:** The standard Momence API endpoints (`/v1/host/54278/sessions`, `/v1/sessions`, etc.) all return 404. The widget uses a DIFFERENT base URL:
+- **Readonly (for schedule data):** `https://readonly-api.momence.com`
+- **Write (for auth/booking):** `https://api.momence.com`
+
+The readonly API doesn't require authentication for public schedule data. The write API requires OAuth2.
+
+### 14.9 — Footer Sizing Is a Global Rule
+
+Marvyn asked for 30% shorter footer and said "apply this to all footers." This is now a permanent design rule — every page must use the compact footer padding. See Section 13 for exact values.
+
+---
+
+*End of manual. Last updated March 12, 2026 — end of Session 3.*
