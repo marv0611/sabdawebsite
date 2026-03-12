@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- classes-v7 -->
+<meta charset="UTF-8"><!-- classes-v8 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Classes & Schedule — SABDA Studio Barcelona</title>
 <meta name="description" content="Explore our weekly schedule of immersive yoga, pilates, sound healing, breathwork, ecstatic dance and meditation classes. Book your spot now.">
@@ -93,15 +93,35 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
    MOMENCE WIDGET — SABDA DARK THEME OVERRIDES
    ══════════════════════════════════════════════════ */
 
-/* ── FORCE ALL BACKGROUNDS NAVY ── */
+/* ── BLANKET: force ALL widget text/borders light on dark ── */
+#momence-plugin-host-schedule,
+#momence-plugin-host-schedule *{
+  color:#f0efe9 !important;
+  border-color:rgba(240,239,233,.1) !important;
+}
+#momence-plugin-host-schedule svg{
+  color:#f0efe9 !important;
+  stroke:#f0efe9 !important;
+}
+/* All backgrounds transparent (navy shows through) */
 #momence-plugin-host-schedule,
 #momence-plugin-host-schedule > div,
-#momence-plugin-host-schedule .momence-host-schedule-layout,
-#momence-plugin-host-schedule [class*="host_schedule"]{
+#momence-plugin-host-schedule div[class]{
   background:transparent !important;
+  background-color:transparent !important;
+}
+/* All buttons transparent with light borders */
+#momence-plugin-host-schedule button{
+  background:transparent !important;
+  background-color:transparent !important;
+  color:#f0efe9 !important;
+  border-color:rgba(240,239,233,.12) !important;
+}
+#momence-plugin-host-schedule button:hover{
+  background:rgba(240,239,233,.06) !important;
 }
 
-/* ── HIDE ONLY: things that don't belong ── */
+/* ── HIDE ONLY what's truly unwanted ── */
 #momence-plugin-host-schedule .momence-host_schedule-sys_row{display:none !important}
 #momence-plugin-host-schedule .momence-host_schedule-powered_by_momence{display:none !important}
 #momence-plugin-host-schedule .momence-session-in_person{display:none !important}
@@ -112,71 +132,73 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 #momence-plugin-host-schedule .momence-pagination{display:none !important}
 #momence-plugin-host-schedule [class*="1rbd2nr"]{display:none !important}
 
-/* ── Day selector row — dark themed ── */
-#momence-plugin-host-schedule .momence-day_selection{background:transparent !important}
-#momence-plugin-host-schedule .momence-day_selection-item{background:transparent !important}
-#momence-plugin-host-schedule .momence-day_selection-item:hover{background:rgba(240,239,233,.05) !important}
-#momence-plugin-host-schedule .momence-day_selection-item_day{color:rgba(240,239,233,.4) !important}
-#momence-plugin-host-schedule .momence-day_selection-item_highlight{color:var(--white) !important}
-#momence-plugin-host-schedule .momence-day_selection-item[data-is-today="true"] .momence-day_selection-item_day{color:var(--cyan) !important}
-#momence-plugin-host-schedule .momence-day_selection-item[data-is-today="true"] .momence-day_selection-item_highlight{color:var(--cyan) !important}
-#momence-plugin-host-schedule .momence-day_selection-item_selected{background:var(--cyan) !important}
-#momence-plugin-host-schedule .momence-day_selection-item_num-days{color:rgba(240,239,233,.3) !important}
-
-/* ── Quick filters (SHOW ALL, TODAY) ── */
-#momence-plugin-host-schedule button[class*="quick_filters"]{background:transparent !important;border-color:rgba(240,239,233,.12) !important;color:var(--white) !important}
-#momence-plugin-host-schedule button[class*="quick_filters"]:hover{background:rgba(240,239,233,.05) !important}
-
-/* ── View toggle (Week/Month) ── */
-#momence-plugin-host-schedule button[class*="view-toggle"]{background:transparent !important;border-color:rgba(240,239,233,.12) !important;color:var(--white) !important;stroke:var(--white) !important}
-
-/* ── Event type tabs ── */
-#momence-plugin-host-schedule .momence-event_type_select-button{background:transparent !important;color:rgba(240,239,233,.5) !important}
-
-/* ── Select dropdowns (Teachers) ── */
-#momence-plugin-host-schedule button.momence-select-button{background:rgba(19,24,66,.6) !important;border-color:rgba(240,239,233,.12) !important;color:var(--white) !important}
-#momence-plugin-host-schedule .momence-select-popup{background:#131842 !important;border-color:rgba(240,239,233,.1) !important}
-#momence-plugin-host-schedule .momence-select-option{background:#131842 !important;color:var(--white) !important}
-#momence-plugin-host-schedule .momence-select-option:hover{background:rgba(240,239,233,.06) !important}
-
-/* ── Arrow buttons (< >) ── */
-#momence-plugin-host-schedule .momence-arrow-button{background:transparent !important;border-color:rgba(240,239,233,.1) !important;color:var(--white) !important}
-#momence-plugin-host-schedule .momence-arrow-button:hover:not(:disabled){background:rgba(240,239,233,.06) !important}
-#momence-plugin-host-schedule .momence-arrow-button:disabled{color:rgba(240,239,233,.15) !important}
-
-/* ── Month view ── */
-#momence-plugin-host-schedule .momence-month-switch *{color:var(--white) !important}
-#momence-plugin-host-schedule .momence-month-calendar-day{background:transparent !important}
-#momence-plugin-host-schedule .momence-month-calendar-day:hover:not(:disabled){background:rgba(240,239,233,.05) !important}
-
-/* ── Tags ── */
-#momence-plugin-host-schedule .momence-host_dashboard-tag_button{background:transparent !important;border-color:rgba(240,239,233,.12) !important;color:var(--white) !important}
-
-/* ── Session cards — dark glass ── */
+/* ── Session cards — dark glass (override blanket transparent) ── */
 #momence-plugin-host-schedule article{
-  background:rgba(19,24,66,.65) !important;border-color:rgba(240,239,233,.06) !important;
+  background:rgba(19,24,66,.65) !important;
+  border-color:rgba(240,239,233,.06) !important;
   backdrop-filter:blur(8px);border-radius:16px !important;
 }
 #momence-plugin-host-schedule article img{border-radius:10px !important}
-#momence-plugin-host-schedule h3{color:var(--salmon) !important;letter-spacing:.15em !important}
-#momence-plugin-host-schedule h4{font-family:'PT Serif',serif !important;font-weight:400 !important;color:var(--white) !important}
 
-/* ── Book Now button → cyan ── */
+/* Session type label → salmon */
+#momence-plugin-host-schedule h3{color:var(--salmon) !important;letter-spacing:.15em !important}
+/* Session title → PT Serif */
+#momence-plugin-host-schedule h4{font-family:'PT Serif',serif !important;font-weight:400 !important}
+
+/* ── Today highlight → cyan ── */
+#momence-plugin-host-schedule [data-is-today="true"]{color:var(--cyan) !important}
+#momence-plugin-host-schedule [data-is-today="true"] *{color:var(--cyan) !important}
+
+/* ── Active day selector underline ── */
+#momence-plugin-host-schedule .momence-day_selection-item_selected{background:var(--cyan) !important}
+
+/* ── Book Now button → cyan solid ── */
 #momence-plugin-host-schedule .momence-button[class*="primary"],
 #momence-plugin-host-schedule a[class*="sc-12tukza"]{
   background:#02F3C5 !important;color:#0e1235 !important;font-weight:700 !important;
-  letter-spacing:.04em !important;border-radius:4px !important;transition:background .2s,transform .15s !important;
+  letter-spacing:.04em !important;border-radius:4px !important;border-color:#02F3C5 !important;
 }
 #momence-plugin-host-schedule .momence-button[class*="primary"]:hover,
-#momence-plugin-host-schedule a[class*="sc-12tukza"]:hover{background:#18ffda !important;transform:translateY(-1px) !important}
+#momence-plugin-host-schedule a[class*="sc-12tukza"]:hover{
+  background:#18ffda !important;color:#0e1235 !important;border-color:#18ffda !important;
+}
 #momence-plugin-host-schedule .momence-button:disabled,
-#momence-plugin-host-schedule .momence-button[class*="booked"]{background:rgba(240,239,233,.08) !important;color:rgba(240,239,233,.35) !important}
+#momence-plugin-host-schedule .momence-button[class*="booked"]{
+  background:rgba(240,239,233,.08) !important;color:rgba(240,239,233,.35) !important;
+}
 
-/* ── Misc ── */
+/* ── "Show more" / bio links → cyan ── */
+#momence-plugin-host-schedule [class*="expand-button"],
+#momence-plugin-host-schedule button[class*="vbm3tv"]{
+  color:var(--cyan) !important;
+}
+
+/* ── Select dropdown popups — dark solid bg ── */
+#momence-plugin-host-schedule ul[class*="select-popup"],
+#momence-plugin-host-schedule .momence-select-popup{
+  background:#131842 !important;
+}
+#momence-plugin-host-schedule li[class*="select-option"],
+#momence-plugin-host-schedule .momence-select-option{
+  background:#131842 !important;
+}
+#momence-plugin-host-schedule li[class*="select-option"]:hover,
+#momence-plugin-host-schedule .momence-select-option:hover{
+  background:rgba(240,239,233,.08) !important;
+}
+
+/* ── Subdued text (secondary/tertiary) ── */
+#momence-plugin-host-schedule .momence-day_selection-item_day{color:rgba(240,239,233,.4) !important}
+#momence-plugin-host-schedule .momence-day_selection-item_num-days{color:rgba(240,239,233,.3) !important}
 #momence-plugin-host-schedule .momence-host_schedule-session_list-no_results-text{color:rgba(240,239,233,.5) !important}
 #momence-plugin-host-schedule .momence-host_schedule-session_list-date_label{color:rgba(240,239,233,.5) !important}
+#momence-plugin-host-schedule time{color:rgba(240,239,233,.5) !important}
+
+/* ── Loader ── */
 #momence-plugin-host-schedule .momence-host_schedule-loader div::after,
 #momence-plugin-host-schedule [class*="sc-1oszok8"] div{background:var(--cyan) !important}
+
+/* ── One-click booking banner ── */
 #momence-plugin-host-schedule [class*="fS"]{background:rgba(2,243,197,.06) !important}
 
 /* ── PRICING ── */
