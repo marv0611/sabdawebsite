@@ -152,9 +152,9 @@ section{position:relative;padding:130px 80px}
 .schedule-btn{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--white);padding:14px 28px;border-radius:3px;font-size:.84rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(240,239,233,.25);transition:border-color .25s,color .25s,background .25s,transform .2s,gap .25s}
 .schedule-btn:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(2,243,197,.06);transform:translateY(-1px);gap:14px}
 
-/* ── SECTION TRANSITION ── */
-.section-fade{height:160px;background:linear-gradient(to bottom,var(--navy),rgba(14,18,53,.0));position:relative;pointer-events:none}
-.section-fade::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 100%,rgba(2,243,197,.025) 0%,transparent 70%)}
+/* ── SECTION TRANSITION — PARTICLE STREAM ── */
+.section-fade{position:relative;height:120px;pointer-events:none;overflow:hidden}
+.section-fade canvas{position:absolute;inset:0;width:100%;height:100%}
 
 /* ── SPACE GALLERY ── */
 .sg{position:relative;height:100vh;min-height:700px;overflow:hidden}
@@ -380,6 +380,8 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
   </div>
 </section>
 
+<div class="section-fade"><canvas class="particle-stream"></canvas></div>
+
 <!-- CLASSES -->
 <section class="classes" id="classes">
   <div class="classes-hdr">
@@ -477,7 +479,7 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
 </section>
 
 <!-- SECTION TRANSITION -->
-<div class="section-fade"></div>
+<div class="section-fade"><canvas class="particle-stream"></canvas></div>
 
 <!-- SPACE GALLERY -->
 <section class="sg" id="space">
@@ -508,6 +510,8 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
     </div>
   </div>
 </section>
+
+<div class="section-fade"><canvas class="particle-stream"></canvas></div>
 
 <!-- TESTIMONIALS -->
 <section class="testimonials">
@@ -719,6 +723,108 @@ cards.forEach(card=>{
     const h=card.dataset.href;
     if(h&&!e.target.closest('a'))window.open(h,'_blank');
   });
+});
+
+/* ═══════════════════════════════════════════════════════
+   SECTION DIVIDER — FLOWING LIGHT PARTICLES
+═══════════════════════════════════════════════════════ */
+document.querySelectorAll('.particle-stream').forEach(canvas=>{
+  const ctx=canvas.getContext('2d');
+  let W,H,particles=[],active=false;
+
+  function resize(){
+    const r=canvas.parentElement.getBoundingClientRect();
+    W=r.width;H=r.height;
+    canvas.width=W*devicePixelRatio;
+    canvas.height=H*devicePixelRatio;
+    ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+  }
+  resize();
+  window.addEventListener('resize',resize);
+
+  /* Generate particles */
+  const COUNT=65;
+  for(let i=0;i<COUNT;i++){
+    particles.push({
+      x:Math.random()*2000-400,
+      y:Math.random()*H,
+      vx:0.15+Math.random()*0.45,
+      vy:(Math.random()-0.5)*0.12,
+      size:1+Math.random()*2.5,
+      glow:8+Math.random()*18,
+      color:Math.random()<0.5?[248,166,163]:[2,243,197],
+      opacity:0.15+Math.random()*0.45,
+      phase:Math.random()*Math.PI*2,
+      waveAmp:3+Math.random()*8,
+      waveFreq:0.003+Math.random()*0.008,
+    });
+  }
+
+  function draw(t){
+    if(!active){requestAnimationFrame(draw);return}
+    ctx.clearRect(0,0,W,H);
+
+    /* subtle horizontal line at center */
+    const lg=ctx.createLinearGradient(0,0,W,0);
+    lg.addColorStop(0,'rgba(2,243,197,0)');
+    lg.addColorStop(0.2,'rgba(2,243,197,0.03)');
+    lg.addColorStop(0.5,'rgba(248,166,163,0.04)');
+    lg.addColorStop(0.8,'rgba(2,243,197,0.03)');
+    lg.addColorStop(1,'rgba(2,243,197,0)');
+    ctx.fillStyle=lg;
+    ctx.fillRect(0,H*0.48,W,H*0.04);
+
+    particles.forEach(p=>{
+      p.x+=p.vx;
+      /* gentle sine wave drift */
+      const waveY=p.waveAmp*Math.sin(p.phase+t*p.waveFreq);
+      const drawY=p.y+waveY;
+
+      /* wrap around */
+      if(p.x>W+50){p.x=-40;p.y=Math.random()*H}
+
+      /* pulsing opacity */
+      const pulse=0.6+0.4*Math.sin(p.phase+t*0.002);
+      const op=p.opacity*pulse;
+
+      /* outer glow */
+      const g=ctx.createRadialGradient(p.x,drawY,0,p.x,drawY,p.glow);
+      g.addColorStop(0,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.5})`);
+      g.addColorStop(0.4,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.15})`);
+      g.addColorStop(1,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},0)`);
+      ctx.fillStyle=g;
+      ctx.beginPath();
+      ctx.arc(p.x,drawY,p.glow,0,Math.PI*2);
+      ctx.fill();
+
+      /* bright core */
+      ctx.beginPath();
+      ctx.arc(p.x,drawY,p.size*0.7,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${Math.min(1,op*1.8)})`;
+      ctx.fill();
+
+      /* motion trail */
+      const trailLen=p.vx*28;
+      const tg=ctx.createLinearGradient(p.x-trailLen,drawY,p.x,drawY);
+      tg.addColorStop(0,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},0)`);
+      tg.addColorStop(1,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.3})`);
+      ctx.strokeStyle=tg;
+      ctx.lineWidth=p.size*0.5;
+      ctx.beginPath();
+      ctx.moveTo(p.x-trailLen,drawY);
+      ctx.lineTo(p.x,drawY);
+      ctx.stroke();
+    });
+
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+
+  /* Only animate when visible */
+  const obs=new IntersectionObserver(es=>{
+    active=es[0].isIntersecting;
+  },{threshold:0});
+  obs.observe(canvas.parentElement);
 });
 
 /* ═══════════════════════════════════════════════════════
