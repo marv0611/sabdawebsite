@@ -201,9 +201,11 @@ section{position:relative;padding:120px 80px;z-index:2}
 .booking{padding:120px 80px;border-bottom:1px solid rgba(240,239,233,.06)}
 .booking-in{max-width:1140px;margin:0 auto;text-align:center}
 .booking-sub{color:var(--white38);font-size:1rem;line-height:1.72;max-width:540px;margin:18px auto 68px}
-.b-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+.b-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:center}
 .b-card{border-radius:6px;padding:42px 34px;border:1px solid rgba(240,239,233,.1);transition:border-color .3s,transform .3s;position:relative;overflow:hidden;text-align:left;display:flex;flex-direction:column}
+.b-card:not(.pri){padding:32px 30px;transform:scale(.92);transform-origin:center top}
 .b-card:hover{border-color:rgba(240,239,233,.2);transform:translateY(-5px)}
+.b-card:not(.pri):hover{transform:scale(.92) translateY(-5px)}
 .b-card.pri{border-color:rgba(2,243,197,.24);background:linear-gradient(140deg,rgba(2,243,197,.045) 0%,transparent 55%)}
 .b-card.pri:hover{border-color:rgba(2,243,197,.48)}
 .b-badge{display:inline-block;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--navy);background:var(--cyan);padding:4px 10px;border-radius:2px;font-weight:700;margin-bottom:22px}
@@ -219,12 +221,13 @@ section{position:relative;padding:120px 80px;z-index:2}
 .b-features{list-style:none;margin-top:26px;padding-top:22px;border-top:1px solid rgba(240,239,233,.06);display:flex;flex-direction:column;gap:12px}
 .b-features li{font-size:.82rem;color:var(--white38);padding-left:20px;position:relative}
 .b-features li::before{content:'';position:absolute;left:0;top:6px;width:6px;height:6px;border-radius:50%;background:var(--cyan);opacity:.5}
-.b-foot{margin-top:34px;font-size:.82rem;color:var(--white38)}
-.b-foot a{color:var(--cyan);transition:color .2s}
+.b-foot{margin-top:42px;font-size:1rem;color:var(--white38)}
+.b-foot a{color:var(--cyan);font-weight:500;transition:color .2s}
 .b-foot a:hover{color:var(--white)}
-.b-event{margin-top:12px;font-size:.82rem;color:var(--white38)}
-.b-event a{color:var(--salmon);transition:color .2s}
-.b-event a:hover{color:var(--white)}
+.b-divider{width:120px;height:1px;background:rgba(240,239,233,.06);margin:28px auto}
+.b-event{font-size:1.1rem;color:var(--white60);font-family:'PT Serif',serif;margin-bottom:20px}
+.b-event-btn{display:inline-flex;align-items:center;gap:10px;background:var(--salmon);color:var(--navy);padding:14px 30px;border-radius:3px;font-size:.88rem;font-weight:700;letter-spacing:.05em;transition:background .2s,transform .2s}
+.b-event-btn:hover{background:#fab3b0;transform:translateY(-2px)}
 .b-all{margin-top:20px}
 .b-all-link{display:inline-flex;align-items:center;gap:10px;font-size:.88rem;color:var(--salmon);font-weight:500;letter-spacing:.02em;transition:gap .3s,color .2s}
 .b-all-link:hover{gap:16px;color:var(--white)}
@@ -547,7 +550,11 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
 
     </div>
     <p class="b-foot rv" style="transition-delay:.3s"><a href="https://momence.com/SABDA-54278" target="_blank">See all our offers →</a></p>
-    <p class="b-event rv" style="transition-delay:.36s">Looking to host an event? <a href="rent-corporate.html">Explore our space →</a></p>
+    <div class="b-divider rv" style="transition-delay:.34s"></div>
+    <p class="b-event rv" style="transition-delay:.38s">Looking to host an event?</p>
+    <div class="rv" style="transition-delay:.42s"><a href="rent-corporate.html" class="b-event-btn">Explore Our Space
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a></div>
   </div>
 </section>
 
