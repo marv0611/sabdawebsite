@@ -12,6 +12,7 @@
 :root{
   --navy:#0e1235;--salmon:#F8A6A3;--cyan:#02F3C5;
   --white:#f0efe9;--white60:rgba(240,239,233,.6);--white38:rgba(240,239,233,.38);
+  --ease-circ:cubic-bezier(.85,0,.15,1);
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -34,6 +35,32 @@ a{text-decoration:none;color:inherit}
 .rc-back{margin-top:36px;font-size:.82rem;color:var(--white38)}
 .rc-back a{color:var(--salmon);transition:color .2s}
 .rc-back a:hover{color:var(--white)}
+
+/* ── SPACE GALLERY ── */
+.sg{position:relative;height:100vh;min-height:700px;overflow:hidden}
+.sg-slides{position:absolute;inset:0}
+.sg-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease}
+.sg-slide.on{opacity:1}
+.sg-img{position:absolute;inset:-6%;background-size:cover;background-position:center;transform:scale(1.08);transition:transform 7s linear}
+.sg-slide.on .sg-img{transform:scale(1.0)}
+.sg-ov{position:absolute;inset:0;
+  background:
+    linear-gradient(105deg,rgba(14,18,53,.97) 0%,rgba(14,18,53,.88) 30%,rgba(14,18,53,.55) 56%,rgba(14,18,53,.18) 78%,rgba(14,18,53,.05) 100%),
+    linear-gradient(to top,rgba(14,18,53,.7) 0%,transparent 50%)}
+.sg-content{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding:0 80px 64px}
+.sg-info{max-width:580px;margin-bottom:52px;transition:opacity .5s var(--ease-circ),transform .5s var(--ease-circ)}
+.sg-num{font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--cyan);margin-bottom:18px;display:block}
+.sg-name{font-family:'PT Serif',serif;font-size:clamp(2.6rem,4.8vw,4.4rem);font-weight:700;letter-spacing:-.028em;line-height:1.08;margin-bottom:18px}
+.sg-name em{font-style:italic;color:var(--salmon)}
+.sg-desc{font-size:.97rem;color:var(--white60);line-height:1.72;max-width:440px}
+.sg-bottom{display:flex;align-items:center;gap:24px}
+.sg-prog-track{flex:1;height:1px;background:rgba(240,239,233,.14);position:relative}
+.sg-prog-fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(to right,var(--cyan),var(--salmon));width:0%}
+.sg-counter{font-size:.68rem;letter-spacing:.2em;color:var(--white38);white-space:nowrap}
+.sg-arrows{display:flex;gap:8px}
+.sg-arr{width:42px;height:42px;border-radius:50%;border:1px solid rgba(240,239,233,.16);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--white38);transition:border-color .25s,color .25s,background .25s}
+.sg-arr:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(2,243,197,.07)}
+.sg-arr svg{width:14px;height:14px}
 </style>
 </head>
 <body>
@@ -53,5 +80,87 @@ a{text-decoration:none;color:inherit}
   <p class="rc-back"><a href="SABDA_v16.html">← Back to SABDA</a></p>
 </div>
 
+<!-- SPACE GALLERY -->
+<section class="sg" id="space">
+  <div class="sg-slides" id="sgSlides"></div>
+  <div class="sg-content">
+    <div class="sg-info" id="sgInfo">
+      <span class="sg-num" id="sgNum">01 / 05 — THE SPACE</span>
+      <h2 class="sg-name" id="sgName">The <em>Immersive</em> Room</h2>
+      <p class="sg-desc" id="sgDesc">360° LCD laser projectors paint every surface with custom visuals. Invisible in-wall speakers deliver cinema-grade Dolby Atmos audio that wraps around you from every direction.</p>
+    </div>
+    <div class="sg-bottom">
+      <div class="sg-prog-track"><div class="sg-prog-fill" id="sgProg"></div></div>
+      <span class="sg-counter" id="sgCounter">01 / 05</span>
+      <div class="sg-arrows">
+        <button class="sg-arr" id="sgPrev"><svg viewBox="0 0 14 14" fill="none"><path d="M9 3L5 7l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        <button class="sg-arr" id="sgNext"><svg viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+const BASE='https://raw.githubusercontent.com/marv0611/sabdawebsite/main/';
+const slides=[
+  {img:BASE+'Sabda_20240118_016.jpg',num:'01 / 05',name:'The <em>Immersive</em> Room',desc:'360° LCD laser projectors paint every surface with custom visuals per class. Invisible in-wall speakers deliver cinema-grade Dolby Atmos audio.'},
+  {img:BASE+'Sabda_20240118_010.jpg',num:'02 / 05',name:'Sound <em>Healing</em> Studio',desc:'Lie down. Let frequencies wash over you. Singing bowls, gongs, and tuning forks fill the space through invisible speakers.'},
+  {img:BASE+'IMG-5%20(1).jpg',num:'03 / 05',name:'The <em>Lounge</em>',desc:"A space to arrive, decompress, and connect before or after class. Calm, curated, and unhurried."},
+  {img:BASE+'IMG-26.jpg',num:'04 / 05',name:'<em>Aurora</em> Meditation',desc:'Aurora-like projections drift across walls and ceiling. Custom visual worlds built around each session.'},
+  {img:BASE+'Sabda_20240118_009.jpg',num:'05 / 05',name:'Breathwork & <em>Movement</em>',desc:'Each class has a completely unique visual world designed around the energy of the practice.'},
+];
+
+const container=document.getElementById('sgSlides');
+slides.forEach((s,i)=>{
+  const div=document.createElement('div');
+  div.className='sg-slide'+(i===0?' on':'');
+  div.innerHTML=`<div class="sg-img" style="background-image:url('${s.img}')"></div><div class="sg-ov"></div>`;
+  container.appendChild(div);
+});
+
+let idx=0;
+const DUR=5800;
+const sgName=document.getElementById('sgName');
+const sgDesc=document.getElementById('sgDesc');
+const sgNum=document.getElementById('sgNum');
+const sgProg=document.getElementById('sgProg');
+const sgCounter=document.getElementById('sgCounter');
+const sgInfo=document.getElementById('sgInfo');
+const allSlides=container.querySelectorAll('.sg-slide');
+
+function startProg(){
+  sgProg.style.transition='none';
+  sgProg.style.width='0%';
+  requestAnimationFrame(()=>{
+    requestAnimationFrame(()=>{
+      sgProg.style.transition=`width ${DUR}ms linear`;
+      sgProg.style.width='100%';
+    });
+  });
+}
+
+function goSlide(n){
+  allSlides[idx].classList.remove('on');
+  idx=(n+slides.length)%slides.length;
+  allSlides[idx].classList.add('on');
+  sgInfo.style.opacity='0';
+  sgInfo.style.transform='translateY(18px)';
+  setTimeout(()=>{
+    sgName.innerHTML=slides[idx].name;
+    sgDesc.textContent=slides[idx].desc;
+    sgNum.textContent=slides[idx].num+' — THE SPACE';
+    sgCounter.textContent=slides[idx].num;
+    sgInfo.style.opacity='1';
+    sgInfo.style.transform='none';
+  },300);
+  startProg();
+}
+
+document.getElementById('sgNext').addEventListener('click',()=>{clearInterval(autoT);goSlide(idx+1);autoT=setInterval(()=>goSlide(idx+1),DUR)});
+document.getElementById('sgPrev').addEventListener('click',()=>{clearInterval(autoT);goSlide(idx-1);autoT=setInterval(()=>goSlide(idx+1),DUR)});
+
+startProg();
+let autoT=setInterval(()=>goSlide(idx+1),DUR);
+</script>
 </body>
 </html>
