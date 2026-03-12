@@ -713,7 +713,7 @@ function animateCount(el){
   const start=performance.now();
   function step(now){
     const t=Math.min((now-start)/duration,1);
-    const ease=1-Math.pow(1-t,4); /* ease-out quart */
+    const ease=1-Math.pow(1-t,4);
     const val=(target*ease).toFixed(decimals);
     el.textContent=val+suffix;
     if(t<1)requestAnimationFrame(step);
@@ -721,48 +721,65 @@ function animateCount(el){
   requestAnimationFrame(step);
 }
 
-/* Trust section */
-const trustEl=document.getElementById('trustSection');
-if(trustEl){
-  const tObs=new IntersectionObserver(es=>{
-    if(es[0].isIntersecting){
-      /* Stagger the two ti2 groups */
-      trustEl.querySelectorAll('.ti2').forEach((g,i)=>{
-        setTimeout(()=>g.classList.add('anim'),i*200);
-      });
-      trustEl.querySelectorAll('.tdiv').forEach((d,i)=>{
-        setTimeout(()=>d.classList.add('anim'),100);
-      });
-      /* Count the scores */
-      trustEl.querySelectorAll('[data-count]').forEach((el,i)=>{
-        setTimeout(()=>animateCount(el),i*200+350);
-      });
-      tObs.unobserve(trustEl);
-    }
-  },{threshold:.3});
-  tObs.observe(trustEl);
+function triggerTrust(){
+  const trustEl=document.getElementById('trustSection');
+  if(!trustEl)return;
+  trustEl.querySelectorAll('.ti2').forEach((g,i)=>{
+    setTimeout(()=>g.classList.add('anim'),i*250);
+  });
+  trustEl.querySelectorAll('.tdiv').forEach(d=>{
+    setTimeout(()=>d.classList.add('anim'),120);
+  });
+  trustEl.querySelectorAll('[data-count]').forEach((el,i)=>{
+    setTimeout(()=>animateCount(el),i*250+400);
+  });
 }
 
-/* Stats section */
-const statsEl=document.getElementById('statsSection');
-if(statsEl){
-  const sObs=new IntersectionObserver(es=>{
-    if(es[0].isIntersecting){
-      statsEl.querySelectorAll('.ss-item').forEach((item,i)=>{
-        setTimeout(()=>item.classList.add('anim'),i*150);
-      });
-      statsEl.querySelectorAll('.ss-div').forEach((d,i)=>{
-        setTimeout(()=>d.classList.add('anim'),i*150+80);
-      });
-      /* Count numbers */
-      statsEl.querySelectorAll('[data-count]').forEach((el,i)=>{
-        setTimeout(()=>animateCount(el),i*180+200);
-      });
-      sObs.unobserve(statsEl);
-    }
-  },{threshold:.3});
-  sObs.observe(statsEl);
+function triggerStats(){
+  const statsEl=document.getElementById('statsSection');
+  if(!statsEl)return;
+  statsEl.querySelectorAll('.ss-item').forEach((item,i)=>{
+    setTimeout(()=>item.classList.add('anim'),i*180);
+  });
+  statsEl.querySelectorAll('.ss-div').forEach((d,i)=>{
+    setTimeout(()=>d.classList.add('anim'),i*180+90);
+  });
+  statsEl.querySelectorAll('[data-count]').forEach((el,i)=>{
+    setTimeout(()=>animateCount(el),i*200+250);
+  });
 }
+
+/* Wait for loader to dismiss (2.5s) then check if sections are visible */
+setTimeout(()=>{
+  const trustEl=document.getElementById('trustSection');
+  const statsEl=document.getElementById('statsSection');
+
+  /* Trust — if already in view, fire immediately; otherwise observe */
+  if(trustEl){
+    const r=trustEl.getBoundingClientRect();
+    if(r.top<window.innerHeight&&r.bottom>0){
+      triggerTrust();
+    }else{
+      const tObs=new IntersectionObserver(es=>{
+        if(es[0].isIntersecting){triggerTrust();tObs.unobserve(trustEl)}
+      },{threshold:.15});
+      tObs.observe(trustEl);
+    }
+  }
+
+  /* Stats — stagger 600ms after trust starts */
+  if(statsEl){
+    const r=statsEl.getBoundingClientRect();
+    if(r.top<window.innerHeight&&r.bottom>0){
+      setTimeout(triggerStats,700);
+    }else{
+      const sObs=new IntersectionObserver(es=>{
+        if(es[0].isIntersecting){triggerStats();sObs.unobserve(statsEl)}
+      },{threshold:.15});
+      sObs.observe(statsEl);
+    }
+  }
+},2700); /* 2500ms loader + 200ms buffer */
 
 /* ═══════════════════════════════════════════════════════
    GLOBAL PARTICLE FIELD — entire page lives inside a nebula
