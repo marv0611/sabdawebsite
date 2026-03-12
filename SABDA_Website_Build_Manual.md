@@ -1,6 +1,6 @@
 # SABDA Website Build — Project Manual
 ## For AI Chat Handoff & Developer Reference
-### Last Updated: March 12, 2026 — v16.o / classes-v10 (Session 3 Final)
+### Last Updated: March 13, 2026 — v16.q / classes-v16 (Session 3 Final)
 
 ---
 
@@ -40,6 +40,8 @@ GitHub Pages takes 30–60 seconds to rebuild after a push. Always verify the de
 12. [File Index](#12-file-index)
 13. [Session 3 — Classes Page & Momence Widget](#13-session-3--classes-page--momence-widget)
 14. [Session 3 — Mistakes & Lessons Learned](#14-session-3--mistakes--lessons-learned)
+15. [Current Nav Structure](#15-current-nav-structure-global--applies-to-all-pages)
+16. [Current File Versions](#16-current-file-versions)
 
 ---
 
@@ -527,9 +529,9 @@ GET    /api/v2/member/sessions                      — List customer bookings
 | v12 | Images from GitHub, brand navy, photo cards | Superseded |
 | v13 | Animated symbol, card animations | Superseded |
 | v15 | Full rebuild with particles, gallery, booking | Superseded |
-| v16 | Streamlined flow, global particles, animated counters, dual-row gallery, 3-card pricing, premium partners marquee | **Current (v16.o)** |
+| v16 | Streamlined flow, global particles, animated counters, dual-row gallery, 3-card pricing, premium partners marquee | **Current (v16.q)** |
 | classes-v1 | Initial Momence widget embed with CSS overrides | Superseded |
-| classes-v10 | JS-based dark theme, pricing grid, gift cards, particles | **Current** |
+| classes-v16 | Dark theme via JS, day selector fixed, dropdown z-index, pricing/gift cards, scroll-to-hash | **Current** |
 
 ---
 
@@ -676,6 +678,90 @@ The readonly API doesn't require authentication for public schedule data. The wr
 
 Marvyn asked for 30% shorter footer and said "apply this to all footers." This is now a permanent design rule — every page must use the compact footer padding. See Section 13 for exact values.
 
+### ⚠️ 14.10 — CSS VARIABLES MUST BE SET ON THE WIDGET ELEMENT, NOT :root
+
+**The mistake:** Set `--momence-black-100` and other Momence CSS variables on `:root`. Day selector text was invisible (dark gray on dark navy).
+
+**What happened:** Momence's JS sets CSS variables directly on the `#momence-plugin-host-schedule` element. Element-level CSS variables always beat `:root` in the cascade. So `--momence-black-100: #807D82` (dark gray, set on the element) won over `--momence-black-100: rgba(240,239,233,.35)` (light, set on :root).
+
+**The fix (v11):** Set all 27 CSS variables on the widget element itself + its first 3 nested child divs via JS: `el.style.setProperty(k, v, 'important')`. Also set on `:root` as fallback.
+
+### ⚠️ 14.11 — position:fixed CHILDREN ESCAPE THEIR PARENT CONTAINER
+
+**The mistake:** Momence renders a full-screen modal overlay (`sc-iemygx-1`) with `position:fixed; top:0; left:0; right:0; bottom:0`. My blanket "transparent backgrounds" made the backdrop invisible, but the day selector inside it was rendering at the top of the viewport, covering the nav bar.
+
+**The fix (v14):** Added `transform: translateZ(0)` on `#momence-plugin-host-schedule`. Per CSS spec, when any ancestor has a `transform`, `position:fixed` children become positioned relative to that ancestor instead of the viewport. This traps all Momence's fixed-position elements inside the widget container.
+
+**Rule:** Always set `transform: translateZ(0)` on third-party widget containers to prevent their `position:fixed` elements from escaping.
+
+### ⚠️ 14.12 — TEACHERS DROPDOWN RENDERS BEHIND CLASS CARDS
+
+**The problem:** The Teachers dropdown popup appeared behind/underneath the class cards when scrolling.
+
+**The fix (v16):** Set `z-index:999` and `position:absolute` on the dropdown popup elements, plus `z-index:10` on the filter row (third_row) — both in CSS and via JS on every mutation.
+
+### 14.13 — LOGO FILE NAME
+
+The correct logo file is `SABDA white logo.png` (with spaces). URL-encoded: `SABDA%20white%20logo.png`. The file `SABDA_white.png` does NOT exist — using it shows a broken image icon. Always use:
+```
+https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png
+```
+Logo height: **34px** (increased from 27px per Marvyn's request).
+
+### 14.14 — ANCHOR LINKS NEED DEFERRED SCROLL
+
+**The problem:** Clicking "Pricing" from the homepage navigated to `classes.html#pricing` but landed at the top of the page, not at the pricing section.
+
+**What happened:** The Momence widget's heavy JS loading causes layout shifts that break the browser's native scroll-to-hash behavior.
+
+**The fix:** Added a deferred `scrollIntoView` script on classes.html that fires 800ms after load:
+```js
+if(window.location.hash){
+  setTimeout(()=>{
+    const target=document.querySelector(window.location.hash);
+    if(target)target.scrollIntoView({behavior:'smooth',block:'start'});
+  },800);
+}
+```
+
 ---
 
-*End of manual. Last updated March 12, 2026 — end of Session 3.*
+## 15. CURRENT NAV STRUCTURE (Global — applies to ALL pages)
+
+### Nav Links
+| Label | Destination |
+|-------|------------|
+| SABDA logo (34px) | `SABDA_v16.html` (homepage) |
+| Classes | `classes.html` |
+| Pricing | `classes.html#pricing` |
+| Rent & Corporate | `rent-corporate.html` |
+| Listening Sessions | `#` (TBD) |
+| About | `#` (TBD) |
+| **Instagram** (salmon pink button, cyan icon) | `https://instagram.com/sabdastudio` |
+
+### Homepage CTAs → Destinations
+| CTA | Destination | Notes |
+|-----|-------------|-------|
+| Hero: "3 Classes for €48" | `classes.html` | Links to schedule, NOT directly to Momence |
+| "View Full Schedule" | `classes.html` | In classes gallery section |
+| "See all our offers →" | `classes.html#pricing` | Below pricing cards |
+| "Book Now" (sticky bar) | `classes.html` | Bottom of page |
+| "Get Started" | `momence.com/m/443935` | Intro 3-pack card — DO NOT CHANGE |
+| "Join Now" | `momence.com/m/431216` | Unlimited Monthly card — DO NOT CHANGE |
+| "Start Unlimited" | `momence.com/m/445600` | 3-Month card — DO NOT CHANGE |
+| "Explore Our Space →" | `rent-corporate.html` | Below pricing — DO NOT CHANGE |
+
+---
+
+## 16. CURRENT FILE VERSIONS
+
+| File | Version Tag | Last Commit |
+|------|------------|-------------|
+| `SABDA_v16.html` | `v16.q` | Nav: IG button, Pricing link, hero→classes.html |
+| `classes.html` | `classes-v16` | Day selector fix, dropdown z-index, scroll-to-hash, pricing anchor |
+| `rent-corporate.html` | `rc.b` | Placeholder — needs full build |
+| `SABDA_Website_Build_Manual.md` | — | This update |
+
+---
+
+*End of manual. Last updated March 13, 2026 — end of Session 3 (final).*
