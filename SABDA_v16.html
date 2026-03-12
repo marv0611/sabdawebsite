@@ -115,9 +115,9 @@ section{position:relative;padding:120px 80px}
 
 /* SYMBOL */
 .manifesto-symbol{position:relative;display:flex;align-items:center;justify-content:center;min-height:400px;pointer-events:none}
-.sym-wrap{position:relative;width:min(480px,40vw);min-width:280px;aspect-ratio:1;overflow:visible}
-#orbContainer{position:absolute;inset:-25%;width:150%;height:150%}
-#orbContainer canvas{display:block;width:100%!important;height:100%!important}
+.sym-wrap{position:relative;width:min(480px,40vw);min-width:280px;aspect-ratio:1}
+#orbContainer{position:absolute;inset:0;width:100%;height:100%}
+#orbContainer canvas{display:block;width:100%!important;height:100%!important;pointer-events:none}
 
 /* ── CLASSES ── */
 .classes{padding:120px 80px;position:relative;background:var(--navy)}
@@ -354,8 +354,8 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
     <div class="hero-label rv">
       <span class="c">Art</span><div class="d"></div><span>Tech</span><div class="d"></div><span class="s">Wellness</span>
     </div>
-    <h1 class="rv" style="transition-delay:.1s">Yoga in <em>360°.</em><br>Barcelona.</h1>
-    <p class="hero-sub rv" style="transition-delay:.2s">Immersive projections. Dolby Atmos spatial audio.<br>Yoga, sound healing, breathwork & more — inside a world designed for every class.</p>
+    <h1 class="rv" style="transition-delay:.1s">The Future<br>of <em>Wellness</em></h1>
+    <p class="hero-sub rv" style="transition-delay:.2s">360° immersive projections. Dolby Atmos spatial audio.<br>Yoga, sound healing, breathwork & more in Barcelona.</p>
     <div class="hero-ctas rv" style="transition-delay:.3s">
       <a href="https://momence.com/m/443935" class="btn-p" target="_blank">3 Classes for €48
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -856,8 +856,8 @@ document.querySelectorAll('.particle-stream').forEach(canvas=>{
 
 /* ═══════════════════════════════════════════════════════
    MANIFESTO — 3D CYMATIC SYMBOL (Three.js)
-   SABDA logo — hairline concentric rings rotating in harmony
-   No mouse interaction — pure autonomous beauty
+   SABDA logo — hairline rings, each tilted and rotating
+   No mouse interaction — pure harmonious motion
 ═══════════════════════════════════════════════════════ */
 function initOrb(){
   const container=document.getElementById('orbContainer');
@@ -867,8 +867,8 @@ function initOrb(){
   if(W<10){setTimeout(initOrb,100);return}
 
   const scene=new THREE.Scene();
-  const camera=new THREE.PerspectiveCamera(28,1,.1,100);
-  camera.position.z=5.2;
+  const camera=new THREE.PerspectiveCamera(50,1,.1,100);
+  camera.position.z=3.6;
 
   const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});
   renderer.setSize(W,W);
@@ -876,45 +876,38 @@ function initOrb(){
   container.appendChild(renderer.domElement);
   renderer.domElement.style.cssText='width:100%;height:100%;pointer-events:none';
 
-  const masterGroup=new THREE.Group();
-  /* Slight constant tilt so you see the 3D nature */
-  masterGroup.rotation.x=0.25;
-  masterGroup.rotation.y=0.15;
-  scene.add(masterGroup);
+  const group=new THREE.Group();
+  scene.add(group);
 
   const rings=[];
-  /* 11 rings matching the uploaded symbol:
-     - Hairline thin (tube 0.002)
-     - Alternating cyan/salmon/blended
-     - Each on its own pivot, rotating at its own speed */
+  /* Each ring starts TILTED on X so rotation around Y is visible.
+     The tilt amount increases for inner rings — like the real symbol
+     where inner circles appear more offset/overlapping. */
   const data=[
-    {r:1.55, ox: 0.00, oy: 0.03, color:'#02F3C5', op:.75, spd:.045 },
-    {r:1.38, ox: 0.04, oy:-0.02, color:'#F8A6A3', op:.58, spd:-.035},
-    {r:1.22, ox:-0.03, oy: 0.04, color:'#7fcdb5', op:.48, spd:.04  },
-    {r:1.06, ox: 0.02, oy:-0.01, color:'#02F3C5', op:.62, spd:-.03 },
-    {r:0.92, ox:-0.04, oy: 0.02, color:'#F8A6A3', op:.58, spd:.038 },
-    {r:0.78, ox: 0.01, oy:-0.03, color:'#7fcdb5', op:.45, spd:-.042},
-    {r:0.64, ox:-0.02, oy: 0.01, color:'#02F3C5', op:.62, spd:.032 },
-    {r:0.50, ox: 0.03, oy:-0.01, color:'#F8A6A3', op:.55, spd:-.037},
-    {r:0.38, ox:-0.01, oy: 0.02, color:'#02F3C5', op:.68, spd:.044 },
-    {r:0.26, ox: 0.01, oy:-0.01, color:'#F8A6A3', op:.52, spd:-.033},
-    {r:0.16, ox:-0.01, oy: 0.01, color:'#02F3C5', op:.65, spd:.048 },
+    {r:1.28, color:'#02F3C5', op:.70, tilt:.05,  spd: .12 },
+    {r:1.14, color:'#F8A6A3', op:.55, tilt:.10,  spd:-.10 },
+    {r:1.02, color:'#7fcdb5', op:.45, tilt:.16,  spd: .09 },
+    {r:0.90, color:'#02F3C5', op:.60, tilt:.22,  spd:-.11 },
+    {r:0.78, color:'#F8A6A3', op:.55, tilt:.30,  spd: .10 },
+    {r:0.67, color:'#7fcdb5', op:.42, tilt:.38,  spd:-.09 },
+    {r:0.56, color:'#02F3C5', op:.60, tilt:.47,  spd: .11 },
+    {r:0.45, color:'#F8A6A3', op:.52, tilt:.58,  spd:-.10 },
+    {r:0.35, color:'#02F3C5', op:.65, tilt:.70,  spd: .12 },
+    {r:0.25, color:'#F8A6A3', op:.50, tilt:.85,  spd:-.11 },
+    {r:0.16, color:'#02F3C5', op:.60, tilt:1.0,  spd: .13 },
   ];
 
   data.forEach((d,i)=>{
-    const pivot=new THREE.Group();
-    /* 0.002 tube = true hairline, matching the original logo stroke weight */
-    const geo=new THREE.TorusGeometry(d.r, 0.002, 4, 256);
+    const geo=new THREE.TorusGeometry(d.r, 0.003, 4, 200);
     const mat=new THREE.MeshBasicMaterial({
       color:d.color, transparent:true, opacity:d.op,
       side:THREE.DoubleSide, depthWrite:false
     });
     const mesh=new THREE.Mesh(geo,mat);
-    mesh.position.x=d.ox;
-    mesh.position.y=d.oy;
-    pivot.add(mesh);
-    masterGroup.add(pivot);
-    rings.push({pivot,mesh,d,baseOp:d.op,idx:i});
+    /* KEY: tilt each ring on X so it's not flat — rotation on Y then shows movement */
+    mesh.rotation.x=d.tilt;
+    group.add(mesh);
+    rings.push({mesh,d,baseOp:d.op,idx:i});
   });
 
   const clock=new THREE.Clock();
@@ -925,23 +918,19 @@ function initOrb(){
     if(!visible)return;
     const t=clock.getElapsedTime();
 
-    /* Very slow master rotation — reveals the 3D depth gracefully */
-    masterGroup.rotation.x=0.25+Math.sin(t*0.08)*0.12;
-    masterGroup.rotation.y=0.15+Math.cos(t*0.06)*0.1;
+    /* Slow overall group rotation so the whole symbol gently turns */
+    group.rotation.y=t*0.05;
+    group.rotation.x=0.2+Math.sin(t*0.07)*0.08;
 
-    rings.forEach(({pivot,mesh,d,baseOp,idx})=>{
-      /* Each ring rotates on Z at its own speed — the harmony */
-      pivot.rotation.z=t*d.spd;
-      /* Tiny tilt oscillation per ring — creates the cymatic interference */
-      pivot.rotation.x=Math.sin(t*0.1+idx*0.6)*0.04;
-      pivot.rotation.y=Math.cos(t*0.08+idx*0.5)*0.03;
-
-      /* Gentle breathing */
-      const breath=1+0.015*Math.sin(t*0.3+idx*0.5);
-      mesh.scale.setScalar(breath);
-
-      /* Opacity pulse — very subtle */
-      mesh.material.opacity=baseOp*(0.85+0.15*Math.sin(t*0.2+idx*0.4));
+    rings.forEach(({mesh,d,baseOp,idx})=>{
+      /* Each ring rotates around Y at its own speed — visible because of X tilt */
+      mesh.rotation.y=t*d.spd;
+      /* Keep the base X tilt + tiny breathing oscillation */
+      mesh.rotation.x=d.tilt+Math.sin(t*0.2+idx*0.5)*0.03;
+      /* Gentle scale breathing */
+      mesh.scale.setScalar(1+0.012*Math.sin(t*0.3+idx*0.4));
+      /* Opacity pulse */
+      mesh.material.opacity=baseOp*(0.85+0.15*Math.sin(t*0.2+idx*0.35));
     });
 
     renderer.render(scene,camera);
