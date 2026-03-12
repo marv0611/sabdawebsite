@@ -101,23 +101,13 @@ section{position:relative;padding:120px 80px}
 .sh2{font-family:'PT Serif',serif;font-size:clamp(2rem,4.5vw,4rem);font-weight:700;line-height:1.08;letter-spacing:-.025em}
 .sh2 em{font-style:italic;color:var(--salmon)}
 
-/* ── MANIFESTO ── */
-.manifesto{min-height:100vh;display:flex;align-items:center;padding:120px 80px;position:relative;
-  background:radial-gradient(ellipse 90% 70% at 15% 55%,rgba(248,166,163,.02) 0%,transparent 65%)}
-.manifesto-inner{display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:center;max-width:1340px;width:100%;margin:0 auto}
-.manifesto-heading{font-family:'PT Serif',serif;font-size:clamp(2.4rem,4.2vw,3.8rem);line-height:1.1;font-weight:700;letter-spacing:-.028em;margin-bottom:38px}
-.manifesto-heading em{font-style:italic;color:var(--salmon)}
-.manifesto-body{color:var(--white60);font-size:1.05rem;line-height:1.78;max-width:480px;margin-bottom:20px}
-.manifesto-pillars{display:flex;gap:34px;flex-wrap:wrap;margin-top:44px}
-.pill{display:flex;align-items:center;gap:10px;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500}
-.pill-dot{width:6px;height:6px;border-radius:50%}
-.pill-dot.a{background:var(--salmon)}.pill-dot.t{background:var(--cyan)}.pill-dot.w{background:var(--white38)}
-
-/* SYMBOL */
-.manifesto-symbol{position:relative;display:flex;align-items:center;justify-content:center;min-height:400px;pointer-events:none}
-.sym-wrap{position:relative;width:min(480px,40vw);min-width:280px;aspect-ratio:1}
-#orbContainer{position:absolute;inset:0;width:100%;height:100%}
-#orbContainer canvas{display:block;width:100%!important;height:100%!important;pointer-events:none}
+/* ── STATS STRIP ── */
+.stats-strip{padding:48px 80px;background:var(--navy)}
+.stats-in{display:flex;align-items:center;justify-content:center;gap:36px;flex-wrap:wrap;max-width:900px;margin:0 auto}
+.ss-item{display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center}
+.ss-val{font-family:'PT Serif',serif;font-size:1.4rem;font-weight:700;letter-spacing:-.02em;color:var(--white)}
+.ss-lbl{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--white38)}
+.ss-div{width:1px;height:36px;background:rgba(240,239,233,.08)}
 
 /* ── CLASSES ── */
 .classes{padding:120px 80px;position:relative;background:var(--navy)}
@@ -295,11 +285,9 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
 @media(max-width:860px){
   nav{padding:0 24px}
   .nav-links{display:none}
-  section,.manifesto,.classes,.booking,.location,.trust,footer{padding-left:24px;padding-right:24px}
+  section,.classes,.booking,.location,.trust,.stats-strip,footer{padding-left:24px;padding-right:24px}
   section{padding-top:80px;padding-bottom:80px}
   .hero-content{padding:0 24px 80px}
-  .manifesto-inner{grid-template-columns:1fr;gap:60px}
-  .sym-wrap{width:min(280px,65vw);min-width:220px}
   .cls-grid{grid-template-columns:1fr}
   .cls-card{height:440px}
   .loc-in{grid-template-columns:1fr;gap:44px}
@@ -311,7 +299,6 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
 }
 @media(max-width:520px){.ft-in{grid-template-columns:1fr}.trust-in{gap:36px}.classes-hdr{flex-direction:column;align-items:flex-start;gap:16px}}
 </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
 
@@ -381,29 +368,18 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
   </div>
 </div>
 
-<div class="section-fade"><canvas class="particle-stream"></canvas></div>
-
-<!-- MANIFESTO -->
-<section class="manifesto" id="manifesto">
-  <div class="manifesto-inner">
-    <div class="manifesto-text">
-      <span class="sl rv">This is SABDA</span>
-      <h2 class="manifesto-heading rv" style="transition-delay:.08s">Walk in from the street.<br>The room <em>transforms</em><br>around you.</h2>
-      <p class="manifesto-body rv" style="transition-delay:.15s">SABDA is Barcelona's first immersive audio-visual wellness studio. 360° laser projections paint every surface. Cinema-grade Dolby Atmos audio surrounds you from invisible speakers. Every class runs inside its own custom-designed world.</p>
-      <p class="manifesto-body rv" style="transition-delay:.2s">Vinyasa through abstract landscapes. Sound healing inside living geometry. Breathwork under infinite starfields. Same room — new universe — every time.</p>
-      <div class="manifesto-pillars rv" style="transition-delay:.28s">
-        <div class="pill"><div class="pill-dot a"></div><span>Art</span></div>
-        <div class="pill"><div class="pill-dot t"></div><span>Tech</span></div>
-        <div class="pill"><div class="pill-dot w"></div><span>Wellness</span></div>
-      </div>
-    </div>
-    <div class="manifesto-symbol rv" style="transition-delay:.12s">
-      <div class="sym-wrap">
-        <div id="orbContainer"></div>
-      </div>
-    </div>
+<!-- STATS — compact, one-line, instant credibility -->
+<div class="stats-strip">
+  <div class="stats-in rv">
+    <div class="ss-item"><span class="ss-val">360°</span><span class="ss-lbl">Immersive Projections</span></div>
+    <div class="ss-div"></div>
+    <div class="ss-item"><span class="ss-val">Dolby Atmos</span><span class="ss-lbl">Spatial Audio</span></div>
+    <div class="ss-div"></div>
+    <div class="ss-item"><span class="ss-val">7</span><span class="ss-lbl">Class Types</span></div>
+    <div class="ss-div"></div>
+    <div class="ss-item"><span class="ss-val">100+</span><span class="ss-lbl">Capacity</span></div>
   </div>
-</section>
+</div>
 
 <div class="section-fade"><canvas class="particle-stream"></canvas></div>
 
@@ -853,100 +829,6 @@ document.querySelectorAll('.particle-stream').forEach(canvas=>{
   const obs=new IntersectionObserver(es=>{active=es[0].isIntersecting},{threshold:0});
   obs.observe(canvas.parentElement);
 });
-
-/* ═══════════════════════════════════════════════════════
-   MANIFESTO — 3D CYMATIC SYMBOL (Three.js)
-   SABDA logo — hairline rings, each tilted and rotating
-   No mouse interaction — pure harmonious motion
-═══════════════════════════════════════════════════════ */
-function initOrb(){
-  const container=document.getElementById('orbContainer');
-  if(!container)return;
-  if(typeof THREE==='undefined'){setTimeout(initOrb,100);return}
-  const W=container.offsetWidth;
-  if(W<10){setTimeout(initOrb,100);return}
-
-  const scene=new THREE.Scene();
-  const camera=new THREE.PerspectiveCamera(50,1,.1,100);
-  camera.position.z=3.6;
-
-  const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});
-  renderer.setSize(W,W);
-  renderer.setPixelRatio(Math.min(devicePixelRatio,2));
-  container.appendChild(renderer.domElement);
-  renderer.domElement.style.cssText='width:100%;height:100%;pointer-events:none';
-
-  const group=new THREE.Group();
-  scene.add(group);
-
-  const rings=[];
-  /* Each ring starts TILTED on X so rotation around Y is visible.
-     The tilt amount increases for inner rings — like the real symbol
-     where inner circles appear more offset/overlapping. */
-  const data=[
-    {r:1.28, color:'#02F3C5', op:.70, tilt:.05,  spd: .12 },
-    {r:1.14, color:'#F8A6A3', op:.55, tilt:.10,  spd:-.10 },
-    {r:1.02, color:'#7fcdb5', op:.45, tilt:.16,  spd: .09 },
-    {r:0.90, color:'#02F3C5', op:.60, tilt:.22,  spd:-.11 },
-    {r:0.78, color:'#F8A6A3', op:.55, tilt:.30,  spd: .10 },
-    {r:0.67, color:'#7fcdb5', op:.42, tilt:.38,  spd:-.09 },
-    {r:0.56, color:'#02F3C5', op:.60, tilt:.47,  spd: .11 },
-    {r:0.45, color:'#F8A6A3', op:.52, tilt:.58,  spd:-.10 },
-    {r:0.35, color:'#02F3C5', op:.65, tilt:.70,  spd: .12 },
-    {r:0.25, color:'#F8A6A3', op:.50, tilt:.85,  spd:-.11 },
-    {r:0.16, color:'#02F3C5', op:.60, tilt:1.0,  spd: .13 },
-  ];
-
-  data.forEach((d,i)=>{
-    const geo=new THREE.TorusGeometry(d.r, 0.003, 4, 200);
-    const mat=new THREE.MeshBasicMaterial({
-      color:d.color, transparent:true, opacity:d.op,
-      side:THREE.DoubleSide, depthWrite:false
-    });
-    const mesh=new THREE.Mesh(geo,mat);
-    /* KEY: tilt each ring on X so it's not flat — rotation on Y then shows movement */
-    mesh.rotation.x=d.tilt;
-    group.add(mesh);
-    rings.push({mesh,d,baseOp:d.op,idx:i});
-  });
-
-  const clock=new THREE.Clock();
-  let visible=true;
-
-  function animate(){
-    requestAnimationFrame(animate);
-    if(!visible)return;
-    const t=clock.getElapsedTime();
-
-    /* Slow overall group rotation so the whole symbol gently turns */
-    group.rotation.y=t*0.05;
-    group.rotation.x=0.2+Math.sin(t*0.07)*0.08;
-
-    rings.forEach(({mesh,d,baseOp,idx})=>{
-      /* Each ring rotates around Y at its own speed — visible because of X tilt */
-      mesh.rotation.y=t*d.spd;
-      /* Keep the base X tilt + tiny breathing oscillation */
-      mesh.rotation.x=d.tilt+Math.sin(t*0.2+idx*0.5)*0.03;
-      /* Gentle scale breathing */
-      mesh.scale.setScalar(1+0.012*Math.sin(t*0.3+idx*0.4));
-      /* Opacity pulse */
-      mesh.material.opacity=baseOp*(0.85+0.15*Math.sin(t*0.2+idx*0.35));
-    });
-
-    renderer.render(scene,camera);
-  }
-  animate();
-
-  const obs=new IntersectionObserver(es=>{visible=es[0].isIntersecting},{threshold:0});
-  obs.observe(container);
-
-  new ResizeObserver(()=>{
-    const w=container.offsetWidth;
-    if(w>0){renderer.setSize(w,w);renderer.setPixelRatio(Math.min(devicePixelRatio,2))}
-  }).observe(container);
-}
-if(document.readyState==='complete')initOrb();
-else window.addEventListener('load',initOrb);
 
 /* ═══════════════════════════════════════════════════════
    SPACE GALLERY
