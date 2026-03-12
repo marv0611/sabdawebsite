@@ -223,12 +223,15 @@ section{position:relative;padding:120px 80px;z-index:2}
 .tdiv.anim{height:52px}
 
 /* ── PARTNERS ── */
-.partners{padding:52px 0;overflow:hidden;position:relative;z-index:2;background:transparent;border-bottom:1px solid rgba(240,239,233,.06)}
-.p-label{text-align:center;margin-bottom:42px;font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--white38)}
-.mq{display:flex;align-items:center;width:max-content;animation:mq 28s linear infinite}
-.mq:hover{animation-play-state:paused}
-.mq-item{padding:0 18px;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;white-space:nowrap}
-.mq-dot{width:3px;height:3px;border-radius:50%;background:rgba(240,239,233,.2);flex-shrink:0}
+.partners{padding:72px 0;overflow:hidden;position:relative;z-index:2;background:transparent;border-bottom:1px solid rgba(240,239,233,.06)}
+.partners::before,.partners::after{content:'';position:absolute;top:0;bottom:0;width:180px;z-index:3;pointer-events:none}
+.partners::before{left:0;background:linear-gradient(to right,var(--navy),transparent)}
+.partners::after{right:0;background:linear-gradient(to left,var(--navy),transparent)}
+.p-label{text-align:center;margin-bottom:52px;font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--white38)}
+.mq{display:flex;align-items:center;width:max-content;animation:mq 55s linear infinite}
+.mq-item{padding:0 38px;font-family:'PT Serif',serif;font-size:1.3rem;font-weight:400;letter-spacing:.06em;white-space:nowrap;opacity:.7;transition:opacity .4s}
+.mq-item:hover{opacity:1}
+.mq-sep{padding:0 8px;font-size:.7rem;color:rgba(240,239,233,.12);flex-shrink:0}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-33.333%)}}
 
 /* ── BOOKING ── */
@@ -979,9 +982,8 @@ document.querySelector('.tc').addEventListener('mouseleave',()=>{tTimer=setInter
 const pData=['Honest Green','Aire','Danone','FC Barcelona','Condé Nast Traveler','El Periódico','Time Out','CNN'];
 const mq=document.getElementById('mq');
 const colors=['#02F3C5','#F8A6A3'];
-/* Triple the set for a seamless continuous loop with no gaps */
 [...pData,...pData,...pData].forEach((name,i)=>{
-  const dot=document.createElement('span');dot.className='mq-dot';mq.appendChild(dot);
+  const sep=document.createElement('span');sep.className='mq-sep';sep.textContent='—';mq.appendChild(sep);
   const s=document.createElement('span');
   s.className='mq-item';s.textContent=name;s.style.color=colors[i%2];
   mq.appendChild(s);
