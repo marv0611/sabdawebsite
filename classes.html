@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- classes-v4 -->
+<meta charset="UTF-8"><!-- classes-v5 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Classes & Schedule — SABDA Studio Barcelona</title>
 <meta name="description" content="Explore our weekly schedule of immersive yoga, pilates, sound healing, breathwork, ecstatic dance and meditation classes. Book your spot now.">
@@ -135,6 +135,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 #momence-plugin-host-schedule .momence-session_filters > *:last-child{display:none !important}
 /* Hide system row (timezone/auth) */
 #momence-plugin-host-schedule .momence-host_schedule-sys_row{display:none !important}
+/* ★ Hide price from class cards — pricing is in dedicated section below */
+#momence-plugin-host-schedule .momence-host_schedule-session_list-item-price{display:none !important}
+#momence-plugin-host-schedule [class*="session-price"]{display:none !important}
+#momence-plugin-host-schedule [class*="183txmy"]{display:none !important}
+/* ★ Hide pagination (1 ... 99) — show all via Show All button */
+#momence-plugin-host-schedule .momence-pagination{display:none !important}
+#momence-plugin-host-schedule [class*="1rbd2nr"]{display:none !important}
+/* ★ Ensure day selector row is visible */
+#momence-plugin-host-schedule .momence-day_selection{display:flex !important}
+#momence-plugin-host-schedule .momence-host_schedule-second_row{display:flex !important}
 /* One-click booking banner */
 #momence-plugin-host-schedule [class*="fS"]{background:rgba(2,243,197,.06) !important}
 
