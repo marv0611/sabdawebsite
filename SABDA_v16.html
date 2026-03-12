@@ -94,8 +94,9 @@ section{position:relative;padding:130px 80px}
 .sh2 em{font-style:italic;color:var(--salmon)}
 
 /* ── MANIFESTO ── */
-.manifesto{min-height:100vh;display:flex;align-items:center;padding:160px 80px;
+.manifesto{min-height:100vh;display:flex;align-items:center;padding:160px 80px;position:relative;
   background:radial-gradient(ellipse 90% 70% at 15% 55%,rgba(248,166,163,.02) 0%,transparent 65%)}
+.manifesto::after{content:'';position:absolute;bottom:0;left:0;right:0;height:180px;background:linear-gradient(to bottom,transparent,var(--navy));pointer-events:none}
 .manifesto-inner{display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:center;max-width:1340px;width:100%;margin:0 auto}
 .manifesto-heading{font-family:'PT Serif',serif;font-size:clamp(2.4rem,4.2vw,3.8rem);line-height:1.1;font-weight:700;letter-spacing:-.028em;margin-bottom:38px}
 .manifesto-heading em{font-style:italic;color:var(--salmon)}
@@ -109,11 +110,11 @@ section{position:relative;padding:130px 80px}
 .manifesto-symbol{position:relative;display:flex;align-items:center;justify-content:center}
 .sym-wrap{position:relative;width:min(500px,44vw);aspect-ratio:1}
 #orbContainer{position:absolute;inset:0;width:100%;height:100%;border-radius:50%}
-.sym-img{position:absolute;top:50%;left:50%;width:30%;height:30%;transform:translate(-50%,-50%);object-fit:contain;animation:sympulse 4.5s ease-in-out infinite;filter:drop-shadow(0 0 22px rgba(248,166,163,.45))}
-@keyframes sympulse{0%,100%{opacity:.65;transform:translate(-50%,-50%) scale(.93)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.07)}}
 
 /* ── CLASSES ── */
-.classes{padding:130px 80px}
+.classes{padding:130px 80px;position:relative}
+.classes::before{content:'';position:absolute;top:0;left:0;right:0;height:140px;background:linear-gradient(to bottom,var(--navy),transparent);pointer-events:none;z-index:1}
+.classes::after{content:'';position:absolute;bottom:0;left:0;right:0;height:180px;background:linear-gradient(to bottom,transparent,var(--navy));pointer-events:none;z-index:1}
 .classes-hdr{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:68px}
 .cls-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1440px;width:100%;margin:0 auto}
 .cls-card{position:relative;height:530px;border-radius:4px;overflow:hidden;cursor:none;background:var(--navy)}
@@ -152,8 +153,8 @@ section{position:relative;padding:130px 80px}
 .schedule-btn{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--white);padding:14px 28px;border-radius:3px;font-size:.84rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(240,239,233,.25);transition:border-color .25s,color .25s,background .25s,transform .2s,gap .25s}
 .schedule-btn:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(2,243,197,.06);transform:translateY(-1px);gap:14px}
 
-/* ── SECTION TRANSITION — PARTICLE STREAM ── */
-.section-fade{position:relative;height:120px;pointer-events:none;overflow:hidden}
+/* ── SECTION TRANSITION — ORGANIC PARTICLE FLOW ── */
+.section-fade{position:relative;height:200px;pointer-events:none;overflow:visible;margin:-100px 0;z-index:3}
 .section-fade canvas{position:absolute;inset:0;width:100%;height:100%}
 
 /* ── SPACE GALLERY ── */
@@ -374,7 +375,6 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
     <div class="manifesto-symbol rv" style="transition-delay:.12s">
       <div class="sym-wrap">
         <div id="orbContainer"></div>
-        <img class="sym-img" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20symbol%20pink.png" alt="SABDA symbol">
       </div>
     </div>
   </div>
@@ -726,11 +726,11 @@ cards.forEach(card=>{
 });
 
 /* ═══════════════════════════════════════════════════════
-   SECTION DIVIDER — FLOWING LIGHT PARTICLES
+   SECTION DIVIDER — ORGANIC FLOATING LIGHT
 ═══════════════════════════════════════════════════════ */
 document.querySelectorAll('.particle-stream').forEach(canvas=>{
   const ctx=canvas.getContext('2d');
-  let W,H,particles=[],active=false;
+  let W,H,active=false;
 
   function resize(){
     const r=canvas.parentElement.getBoundingClientRect();
@@ -742,93 +742,79 @@ document.querySelectorAll('.particle-stream').forEach(canvas=>{
   resize();
   window.addEventListener('resize',resize);
 
-  /* Generate particles */
-  const COUNT=65;
-  for(let i=0;i<COUNT;i++){
-    particles.push({
-      x:Math.random()*2000-400,
-      y:Math.random()*H,
-      vx:0.15+Math.random()*0.45,
-      vy:(Math.random()-0.5)*0.12,
-      size:1+Math.random()*2.5,
-      glow:8+Math.random()*18,
-      color:Math.random()<0.5?[248,166,163]:[2,243,197],
-      opacity:0.15+Math.random()*0.45,
-      phase:Math.random()*Math.PI*2,
-      waveAmp:3+Math.random()*8,
-      waveFreq:0.003+Math.random()*0.008,
-    });
-  }
+  /* Particles — fewer, softer, more organic */
+  const COUNT=35;
+  const particles=Array.from({length:COUNT},()=>({
+    x:Math.random()*2000,
+    y:Math.random(),/* 0-1 normalized, remapped each frame */
+    vx:0.08+Math.random()*0.25,
+    size:1.2+Math.random()*1.8,
+    glow:15+Math.random()*30,
+    color:Math.random()<0.5?[248,166,163]:[2,243,197],
+    opacity:0.08+Math.random()*0.28,
+    phase:Math.random()*Math.PI*2,
+    waveAmp:0.08+Math.random()*0.22,/* normalized amplitude */
+    waveFreq:0.0008+Math.random()*0.003,
+    drift:Math.random()*0.02-0.01,/* slow vertical drift */
+  }));
 
-  function draw(t){
+  let t=0;
+  function draw(){
     if(!active){requestAnimationFrame(draw);return}
+    t++;
     ctx.clearRect(0,0,W,H);
-
-    /* subtle horizontal line at center */
-    const lg=ctx.createLinearGradient(0,0,W,0);
-    lg.addColorStop(0,'rgba(2,243,197,0)');
-    lg.addColorStop(0.2,'rgba(2,243,197,0.03)');
-    lg.addColorStop(0.5,'rgba(248,166,163,0.04)');
-    lg.addColorStop(0.8,'rgba(2,243,197,0.03)');
-    lg.addColorStop(1,'rgba(2,243,197,0)');
-    ctx.fillStyle=lg;
-    ctx.fillRect(0,H*0.48,W,H*0.04);
 
     particles.forEach(p=>{
       p.x+=p.vx;
-      /* gentle sine wave drift */
-      const waveY=p.waveAmp*Math.sin(p.phase+t*p.waveFreq);
-      const drawY=p.y+waveY;
+      p.y+=p.drift*0.001;
 
-      /* wrap around */
-      if(p.x>W+50){p.x=-40;p.y=Math.random()*H}
+      /* gentle organic wave path */
+      const waveY=p.waveAmp*Math.sin(p.phase+t*p.waveFreq);
+      const drawX=p.x;
+      const drawY=(p.y+waveY)*H;
+
+      /* wrap seamlessly */
+      if(p.x>W+80){p.x=-60;p.y=0.2+Math.random()*0.6}
+      if(p.y<-0.1||p.y>1.1){p.y=0.3+Math.random()*0.4}
+
+      /* fade edges — particles near top/bottom of divider become invisible */
+      const edgeFade=1-Math.pow(Math.abs((drawY/H)-0.5)*2,1.5);
+      const clampedEdge=Math.max(0,Math.min(1,edgeFade));
 
       /* pulsing opacity */
-      const pulse=0.6+0.4*Math.sin(p.phase+t*0.002);
-      const op=p.opacity*pulse;
+      const pulse=0.5+0.5*Math.sin(p.phase+t*0.0015);
+      const op=p.opacity*pulse*clampedEdge;
+      if(op<0.005)return;
 
-      /* outer glow */
-      const g=ctx.createRadialGradient(p.x,drawY,0,p.x,drawY,p.glow);
-      g.addColorStop(0,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.5})`);
-      g.addColorStop(0.4,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.15})`);
+      /* soft glow — no hard edges */
+      const g=ctx.createRadialGradient(drawX,drawY,0,drawX,drawY,p.glow);
+      g.addColorStop(0,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.45})`);
+      g.addColorStop(0.3,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.18})`);
+      g.addColorStop(0.7,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.04})`);
       g.addColorStop(1,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},0)`);
       ctx.fillStyle=g;
       ctx.beginPath();
-      ctx.arc(p.x,drawY,p.glow,0,Math.PI*2);
+      ctx.arc(drawX,drawY,p.glow,0,Math.PI*2);
       ctx.fill();
 
-      /* bright core */
+      /* tiny bright core */
       ctx.beginPath();
-      ctx.arc(p.x,drawY,p.size*0.7,0,Math.PI*2);
-      ctx.fillStyle=`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${Math.min(1,op*1.8)})`;
+      ctx.arc(drawX,drawY,p.size*0.5,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${Math.min(0.7,op*2)})`;
       ctx.fill();
-
-      /* motion trail */
-      const trailLen=p.vx*28;
-      const tg=ctx.createLinearGradient(p.x-trailLen,drawY,p.x,drawY);
-      tg.addColorStop(0,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},0)`);
-      tg.addColorStop(1,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.3})`);
-      ctx.strokeStyle=tg;
-      ctx.lineWidth=p.size*0.5;
-      ctx.beginPath();
-      ctx.moveTo(p.x-trailLen,drawY);
-      ctx.lineTo(p.x,drawY);
-      ctx.stroke();
     });
 
     requestAnimationFrame(draw);
   }
   requestAnimationFrame(draw);
 
-  /* Only animate when visible */
-  const obs=new IntersectionObserver(es=>{
-    active=es[0].isIntersecting;
-  },{threshold:0});
+  const obs=new IntersectionObserver(es=>{active=es[0].isIntersecting},{threshold:0});
   obs.observe(canvas.parentElement);
 });
 
 /* ═══════════════════════════════════════════════════════
-   MANIFESTO — 3D PARTICLE ORB (Three.js)
+   MANIFESTO — 3D CYMATIC SYMBOL (Three.js)
+   Recreates the SABDA concentric circle symbol in 3D
 ═══════════════════════════════════════════════════════ */
 (function initOrb(){
   const container=document.getElementById('orbContainer');
@@ -836,8 +822,8 @@ document.querySelectorAll('.particle-stream').forEach(canvas=>{
 
   const W=container.offsetWidth||400;
   const scene=new THREE.Scene();
-  const camera=new THREE.PerspectiveCamera(45,1,.1,100);
-  camera.position.z=3.8;
+  const camera=new THREE.PerspectiveCamera(40,1,.1,100);
+  camera.position.z=5;
 
   const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});
   renderer.setSize(W,W);
@@ -845,134 +831,82 @@ document.querySelectorAll('.particle-stream').forEach(canvas=>{
   container.appendChild(renderer.domElement);
   renderer.domElement.style.cssText='width:100%;height:100%';
 
-  /* ── Particle sphere ── */
-  const count=2200;
-  const positions=new Float32Array(count*3);
-  const colors=new Float32Array(count*3);
-  const sizes=new Float32Array(count);
-  const phases=new Float32Array(count); /* for animation */
+  /* ── Build the cymatic symbol from torus rings ── */
+  /* Each ring = one circle of the SABDA symbol */
+  const rings=[];
 
-  const salmon=new THREE.Color('#F8A6A3');
-  const cyan=new THREE.Color('#02F3C5');
+  /* Ring configs: radius, tube thickness, color, initial tilt, rotation speed */
+  const ringData=[
+    /* outer rings — larger, more spaced */
+    {r:1.55,tube:.012,color:'#F8A6A3',op:.35,tiltX:0,    tiltY:0,    tiltZ:0,     sX:.04, sY:.03, sZ:.02 },
+    {r:1.40,tube:.010,color:'#02F3C5',op:.28,tiltX:.15,   tiltY:.1,   tiltZ:0,     sX:-.03,sY:.04, sZ:.015},
+    {r:1.20,tube:.014,color:'#F8A6A3',op:.40,tiltX:.35,   tiltY:-.15, tiltZ:.1,    sX:.05, sY:-.03,sZ:.025},
+    /* mid rings — the core of the symbol */
+    {r:1.00,tube:.016,color:'#02F3C5',op:.45,tiltX:.55,   tiltY:.2,   tiltZ:-.1,   sX:-.04,sY:.05, sZ:-.02},
+    {r:.82, tube:.014,color:'#F8A6A3',op:.50,tiltX:.8,    tiltY:-.25, tiltZ:.2,    sX:.035,sY:-.04,sZ:.03 },
+    {r:.65, tube:.018,color:'#02F3C5',op:.55,tiltX:1.1,   tiltY:.35,  tiltZ:-.15,  sX:-.05,sY:.035,sZ:-.025},
+    /* inner rings — tight, bright */
+    {r:.48, tube:.016,color:'#F8A6A3',op:.55,tiltX:1.4,   tiltY:-.4,  tiltZ:.3,    sX:.045,sY:-.05,sZ:.02 },
+    {r:.32, tube:.020,color:'#02F3C5',op:.60,tiltX:1.7,   tiltY:.5,   tiltZ:-.25,  sX:-.035,sY:.045,sZ:-.03},
+    {r:.18, tube:.018,color:'#F8A6A3',op:.50,tiltX:2.0,   tiltY:-.55, tiltZ:.4,    sX:.05, sY:-.035,sZ:.025},
+  ];
 
-  for(let i=0;i<count;i++){
-    /* distribute on nested spheres with noise */
-    const shell=0.6+Math.random()*0.8;
-    const theta=Math.random()*Math.PI*2;
-    const phi=Math.acos(2*Math.random()-1);
-    positions[i*3]=shell*Math.sin(phi)*Math.cos(theta);
-    positions[i*3+1]=shell*Math.sin(phi)*Math.sin(theta);
-    positions[i*3+2]=shell*Math.cos(phi);
-
-    const c=Math.random()<0.55?salmon:cyan;
-    colors[i*3]=c.r;colors[i*3+1]=c.g;colors[i*3+2]=c.b;
-    sizes[i]=0.6+Math.random()*2.8;
-    phases[i]=Math.random()*Math.PI*2;
-  }
-
-  const geo=new THREE.BufferGeometry();
-  geo.setAttribute('position',new THREE.BufferAttribute(positions,3));
-  geo.setAttribute('color',new THREE.BufferAttribute(colors,3));
-  geo.setAttribute('size',new THREE.BufferAttribute(sizes,1));
-
-  /* Custom shader for soft glowing particles */
-  const mat=new THREE.ShaderMaterial({
-    uniforms:{
-      uTime:{value:0},
-      uPixelRatio:{value:renderer.getPixelRatio()}
-    },
-    vertexShader:`
-      attribute float size;
-      varying vec3 vColor;
-      uniform float uTime;
-      uniform float uPixelRatio;
-      void main(){
-        vColor=color;
-        vec3 p=position;
-        float d=length(p);
-        /* breathing pulse */
-        p*=1.0+0.06*sin(uTime*0.5+d*3.0);
-        /* gentle swirl */
-        float angle=uTime*0.15+d*2.0;
-        float s=sin(angle)*0.08;float c2=cos(angle)*0.08;
-        p.xz=mat2(cos(angle*0.3),sin(angle*0.3),-sin(angle*0.3),cos(angle*0.3))*p.xz;
-        vec4 mv=modelViewMatrix*vec4(p,1.0);
-        gl_PointSize=size*uPixelRatio*(38.0/(-mv.z));
-        gl_Position=projectionMatrix*mv;
-      }
-    `,
-    fragmentShader:`
-      varying vec3 vColor;
-      void main(){
-        float dist=length(gl_PointCoord-0.5)*2.0;
-        float alpha=1.0-smoothstep(0.0,1.0,dist);
-        alpha*=0.55;
-        /* soft glow falloff */
-        alpha+=0.25*(1.0-dist*dist);
-        alpha=clamp(alpha,0.0,0.7);
-        gl_FragColor=vec4(vColor,alpha);
-      }
-    `,
-    transparent:true,
-    depthWrite:false,
-    vertexColors:true,
-    blending:THREE.AdditiveBlending
+  ringData.forEach(d=>{
+    const geo=new THREE.TorusGeometry(d.r,d.tube,16,120);
+    const mat=new THREE.MeshBasicMaterial({
+      color:d.color,transparent:true,opacity:d.op,
+      side:THREE.DoubleSide,depthWrite:false
+    });
+    const mesh=new THREE.Mesh(geo,mat);
+    mesh.rotation.x=d.tiltX;
+    mesh.rotation.y=d.tiltY;
+    mesh.rotation.z=d.tiltZ;
+    scene.add(mesh);
+    rings.push({mesh,data:d,baseOp:d.op});
   });
 
-  const particles=new THREE.Points(geo,mat);
-  scene.add(particles);
-
-  /* ── Wireframe rings ── */
-  function addRing(radius,color,opacity){
-    const rGeo=new THREE.RingGeometry(radius-0.005,radius+0.005,80);
-    const rMat=new THREE.MeshBasicMaterial({color,transparent:true,opacity,side:THREE.DoubleSide});
-    const ring=new THREE.Mesh(rGeo,rMat);
-    scene.add(ring);
-    return ring;
-  }
-  const ring1=addRing(1.0,'#F8A6A3',0.12);
-  const ring2=addRing(0.75,'#02F3C5',0.15);
-  const ring3=addRing(1.25,'#F8A6A3',0.08);
-  const ring4=addRing(0.5,'#02F3C5',0.10);
-  ring1.rotation.x=Math.PI*0.5;
-  ring2.rotation.x=Math.PI*0.35;ring2.rotation.y=Math.PI*0.3;
-  ring3.rotation.x=Math.PI*0.65;ring3.rotation.z=Math.PI*0.2;
-  ring4.rotation.x=Math.PI*0.25;ring4.rotation.z=Math.PI*0.5;
-
-  /* ── Center glow ── */
-  const glowGeo=new THREE.SphereGeometry(0.25,24,24);
-  const glowMat=new THREE.MeshBasicMaterial({color:'#02F3C5',transparent:true,opacity:0.08});
+  /* ── Center glow — very subtle ── */
+  const glowGeo=new THREE.SphereGeometry(0.12,24,24);
+  const glowMat=new THREE.MeshBasicMaterial({color:'#F8A6A3',transparent:true,opacity:0.06});
   const glow=new THREE.Mesh(glowGeo,glowMat);
   scene.add(glow);
 
   /* ── Mouse interaction ── */
-  let mouseX=0,mouseY=0;
+  let mouseX=0,mouseY=0,targetMX=0,targetMY=0;
   container.addEventListener('mousemove',e=>{
     const r=container.getBoundingClientRect();
-    mouseX=((e.clientX-r.left)/r.width-0.5)*2;
-    mouseY=((e.clientY-r.top)/r.height-0.5)*2;
+    targetMX=((e.clientX-r.left)/r.width-0.5)*2;
+    targetMY=((e.clientY-r.top)/r.height-0.5)*2;
   });
+  container.addEventListener('mouseleave',()=>{targetMX=0;targetMY=0});
 
   /* ── Animate ── */
   const clock=new THREE.Clock();
   function animate(){
     requestAnimationFrame(animate);
     const t=clock.getElapsedTime();
-    mat.uniforms.uTime.value=t;
 
-    /* slow auto-rotation + mouse influence */
-    particles.rotation.y=t*0.08+mouseX*0.3;
-    particles.rotation.x=t*0.05+mouseY*0.2;
+    /* smooth mouse follow */
+    mouseX+=(targetMX-mouseX)*0.04;
+    mouseY+=(targetMY-mouseY)*0.04;
 
-    /* rings rotate independently */
-    ring1.rotation.z=t*0.12;
-    ring2.rotation.z=-t*0.09;ring2.rotation.x=Math.PI*0.35+Math.sin(t*0.3)*0.1;
-    ring3.rotation.z=t*0.07;ring3.rotation.y=Math.sin(t*0.2)*0.15;
-    ring4.rotation.z=-t*0.14;ring4.rotation.x=Math.PI*0.25+Math.cos(t*0.25)*0.08;
+    rings.forEach(({mesh,data,baseOp})=>{
+      /* each ring rotates on its own axes at its own speed */
+      mesh.rotation.x=data.tiltX+t*data.sX+mouseY*0.2;
+      mesh.rotation.y=data.tiltY+t*data.sY+mouseX*0.25;
+      mesh.rotation.z=data.tiltZ+t*data.sZ;
+
+      /* subtle breathing — ring radius pulses gently */
+      const breathe=1+0.015*Math.sin(t*0.6+data.r*3);
+      mesh.scale.setScalar(breathe);
+
+      /* opacity pulse */
+      mesh.material.opacity=baseOp*(0.75+0.25*Math.sin(t*0.4+data.r*5));
+    });
 
     /* center glow pulse */
-    glow.scale.setScalar(1+Math.sin(t*1.2)*0.2);
-    glow.material.opacity=0.06+Math.sin(t*0.8)*0.03;
+    glow.scale.setScalar(1+Math.sin(t*0.8)*0.3);
+    glow.material.opacity=0.04+Math.sin(t*0.5)*0.025;
 
     renderer.render(scene,camera);
   }
