@@ -71,7 +71,7 @@ nav.on{background:rgba(14,18,53,.88);backdrop-filter:blur(22px);border-bottom-co
 .nav-cta:hover{background:#18ffda;transform:translateY(-1px)}
 
 /* ── HERO ── */
-.hero{position:relative;height:100vh;min-height:700px;overflow:hidden;display:flex;align-items:flex-end}
+.hero{position:relative;height:100vh;min-height:700px;overflow:hidden;display:flex;align-items:flex-end;z-index:2}
 .hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .hero-grad{position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 70% 55%,rgba(2,243,197,.04) 0%,transparent 65%),radial-gradient(ellipse 50% 55% at 25% 40%,rgba(248,166,163,.035) 0%,transparent 60%),linear-gradient(to bottom,rgba(14,18,53,.12) 0%,rgba(14,18,53,.08) 30%,rgba(14,18,53,.35) 58%,rgba(14,18,53,.82) 76%,rgba(14,18,53,.97) 91%,var(--navy) 100%)}
 .hero-content{position:relative;z-index:2;padding:0 80px 90px;max-width:860px}
@@ -96,13 +96,13 @@ nav.on{background:rgba(14,18,53,.88);backdrop-filter:blur(22px);border-bottom-co
 .rv.vis{opacity:1;transform:none}
 
 /* ── SECTION BASE ── */
-section{position:relative;padding:120px 80px}
+section{position:relative;padding:120px 80px;z-index:2}
 .sl{font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--cyan);font-weight:500;margin-bottom:18px;display:block}
 .sh2{font-family:'PT Serif',serif;font-size:clamp(2rem,4.5vw,4rem);font-weight:700;line-height:1.08;letter-spacing:-.025em}
 .sh2 em{font-style:italic;color:var(--salmon)}
 
 /* ── STATS STRIP ── */
-.stats-strip{padding:48px 80px;background:var(--navy)}
+.stats-strip{padding:48px 80px;background:var(--navy);position:relative;z-index:2}
 .stats-in{display:flex;align-items:center;justify-content:center;gap:36px;flex-wrap:wrap;max-width:900px;margin:0 auto}
 .ss-item{display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center}
 .ss-val{font-family:'PT Serif',serif;font-size:1.4rem;font-weight:700;letter-spacing:-.02em;color:var(--white)}
@@ -149,9 +149,8 @@ section{position:relative;padding:120px 80px}
 .schedule-btn{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--white);padding:14px 28px;border-radius:3px;font-size:.84rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(240,239,233,.25);transition:border-color .25s,color .25s,background .25s,transform .2s,gap .25s}
 .schedule-btn:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(2,243,197,.06);transform:translateY(-1px);gap:14px}
 
-/* ── SECTION TRANSITION — ORGANIC PARTICLE FLOW ── */
-.section-fade{position:relative;height:200px;pointer-events:auto;overflow:hidden;background:var(--navy);flex-shrink:0}
-.section-fade canvas{position:absolute;inset:0;width:100%;height:100%}
+/* ── GLOBAL PARTICLES ── */
+#globalParticles{position:fixed;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
 
 /* ── SPACE GALLERY ── */
 .sg{position:relative;height:100vh;min-height:700px;overflow:hidden}
@@ -208,7 +207,7 @@ section{position:relative;padding:120px 80px}
 .tdot.on{width:26px;background:linear-gradient(to right,var(--cyan),var(--salmon))}
 
 /* ── TRUST ── */
-.trust{padding:64px 80px;border-top:1px solid rgba(240,239,233,.06);border-bottom:1px solid rgba(240,239,233,.06)}
+.trust{padding:64px 80px;border-top:1px solid rgba(240,239,233,.06);border-bottom:1px solid rgba(240,239,233,.06);position:relative;z-index:2}
 .trust-in{display:flex;align-items:center;justify-content:center;gap:72px;flex-wrap:wrap;max-width:720px;margin:0 auto}
 .ti2{display:flex;flex-direction:column;align-items:center;gap:9px;text-align:center}
 .tstars{display:flex;gap:3px}
@@ -218,7 +217,7 @@ section{position:relative;padding:120px 80px}
 .tdiv{width:1px;height:52px;background:rgba(240,239,233,.09)}
 
 /* ── PARTNERS ── */
-.partners{padding:72px 0;overflow:hidden;border-bottom:1px solid rgba(240,239,233,.06)}
+.partners{padding:72px 0;overflow:hidden;border-bottom:1px solid rgba(240,239,233,.06);position:relative;z-index:2}
 .p-label{text-align:center;margin-bottom:42px;font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--white38)}
 .mq{display:flex;width:max-content;animation:mq 30s linear infinite}
 .mq:hover{animation-play-state:paused}
@@ -260,7 +259,7 @@ section{position:relative;padding:120px 80px}
 .loc-map iframe{width:100%;height:100%;border:0;filter:invert(90%) hue-rotate(180deg) brightness(.78) contrast(1.15)}
 
 /* ── FOOTER ── */
-footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);background:linear-gradient(to bottom,var(--navy),rgba(9,12,38,1))}
+footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);background:linear-gradient(to bottom,var(--navy),rgba(9,12,38,1));position:relative;z-index:2}
 .ft-in{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:52px;margin-bottom:72px}
 .ft-brand img{height:25px;width:auto;margin-bottom:22px}
 .ft-brand p{font-size:.84rem;color:var(--white38);line-height:1.72;max-width:230px}
@@ -303,6 +302,7 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
 <body>
 
 <div class="grain"></div>
+<canvas id="globalParticles"></canvas>
 <div class="cursor" id="C"></div>
 <div class="cursor-ring" id="CR"></div>
 
@@ -381,7 +381,6 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
   </div>
 </div>
 
-<div class="section-fade"><canvas class="particle-stream"></canvas></div>
 
 <!-- CLASSES -->
 <section class="classes" id="classes">
@@ -480,7 +479,6 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
 </section>
 
 <!-- SECTION TRANSITION -->
-<div class="section-fade"><canvas class="particle-stream"></canvas></div>
 
 <!-- SPACE GALLERY -->
 <section class="sg" id="space">
@@ -512,7 +510,6 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
   </div>
 </section>
 
-<div class="section-fade"><canvas class="particle-stream"></canvas></div>
 
 <!-- TESTIMONIALS -->
 <section class="testimonials">
@@ -550,7 +547,6 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
   </div>
 </section>
 
-<div class="section-fade"><canvas class="particle-stream"></canvas></div>
 
 <!-- PARTNERS -->
 <div class="partners">
@@ -714,17 +710,18 @@ cards.forEach(card=>{
 });
 
 /* ═══════════════════════════════════════════════════════
-   SECTION DIVIDER — ORGANIC FLOATING LIGHT
-   With mouse repulsion physics
+   GLOBAL PARTICLE FIELD — entire page lives inside a nebula
+   Fixed canvas behind all content, mouse repulsion
 ═══════════════════════════════════════════════════════ */
-document.querySelectorAll('.particle-stream').forEach(canvas=>{
+(function initGlobalParticles(){
+  const canvas=document.getElementById('globalParticles');
+  if(!canvas)return;
   const ctx=canvas.getContext('2d');
-  let W,H,active=false;
+  let W,H;
   let mouseX=-9999,mouseY=-9999;
 
   function resize(){
-    const r=canvas.parentElement.getBoundingClientRect();
-    W=r.width;H=r.height;
+    W=window.innerWidth;H=window.innerHeight;
     canvas.width=W*devicePixelRatio;
     canvas.height=H*devicePixelRatio;
     ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
@@ -732,44 +729,33 @@ document.querySelectorAll('.particle-stream').forEach(canvas=>{
   resize();
   window.addEventListener('resize',resize);
 
-  /* Mouse tracking */
-  canvas.parentElement.addEventListener('mousemove',e=>{
-    const r=canvas.parentElement.getBoundingClientRect();
-    mouseX=e.clientX-r.left;
-    mouseY=e.clientY-r.top;
-  });
-  canvas.parentElement.addEventListener('mouseleave',()=>{mouseX=-9999;mouseY=-9999});
+  document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY});
 
-  /* 3000-particle nebula — dense luminous cloud */
-  const COUNT=3000;
-  const particles=Array.from({length:COUNT},()=>{
-    const baseY=0.03+Math.random()*0.94;
-    return{
-      x:Math.random()*5000,
-      y:baseY,
-      baseY:baseY,
-      vx:0.015+Math.random()*0.1,
-      vy:0,
-      fx:0,fy:0,/* force from mouse */
-      size:0.2+Math.random()*1.3,
-      glow:3+Math.random()*14,
-      color:Math.random()<0.5?[248,166,163]:[2,243,197],
-      opacity:0.02+Math.random()*0.16,
-      phase:Math.random()*Math.PI*2,
-      waveAmp:0.015+Math.random()*0.05,
-      waveFreq:0.0002+Math.random()*0.0007,
-    };
-  });
+  /* Particle field — spread across the entire viewport */
+  const COUNT=800;
+  const particles=Array.from({length:COUNT},()=>({
+    x:Math.random()*3000,
+    y:Math.random(),
+    vx:0.008+Math.random()*0.06,
+    vy:(Math.random()-0.5)*0.003,
+    fx:0,fy:0,
+    size:0.3+Math.random()*1.5,
+    glow:4+Math.random()*16,
+    color:Math.random()<0.5?[248,166,163]:[2,243,197],
+    opacity:0.015+Math.random()*0.08,
+    phase:Math.random()*Math.PI*2,
+    waveAmp:0.01+Math.random()*0.04,
+    waveFreq:0.0001+Math.random()*0.0005,
+  }));
 
   let t=0;
   function draw(){
-    if(!active){requestAnimationFrame(draw);return}
     t++;
     ctx.clearRect(0,0,W,H);
 
     particles.forEach(p=>{
-      /* base movement */
       p.x+=p.vx;
+      p.y+=p.vy;
       const waveY=p.waveAmp*Math.sin(p.phase+t*p.waveFreq);
       let drawX=p.x+p.fx;
       let drawY=(p.y+waveY)*H+p.fy;
@@ -778,57 +764,49 @@ document.querySelectorAll('.particle-stream').forEach(canvas=>{
       const dx=drawX-mouseX;
       const dy=drawY-mouseY;
       const dist=Math.sqrt(dx*dx+dy*dy);
-      const repelRadius=140;
-      if(dist<repelRadius&&dist>0){
-        const force=(1-dist/repelRadius)*3.5;
+      if(dist<120&&dist>0){
+        const force=(1-dist/120)*2.5;
         p.fx+=(dx/dist)*force;
         p.fy+=(dy/dist)*force;
       }
-      /* spring back to origin */
-      p.fx*=0.92;
-      p.fy*=0.92;
+      p.fx*=0.94;
+      p.fy*=0.94;
 
       drawX=p.x+p.fx;
       drawY=(p.y+waveY)*H+p.fy;
 
-      /* wrap seamlessly */
-      if(p.x>W+100){p.x=-80;p.y=0.15+Math.random()*0.7;p.baseY=p.y;p.fx=0;p.fy=0}
-
-      /* edge fade — organic vignette */
-      const yNorm=drawY/H;
-      const edgeFade=Math.pow(Math.sin(Math.max(0,Math.min(1,yNorm))*Math.PI),1.2);
-      const xFade=Math.min(1,p.x/150)*Math.min(1,(W-p.x)/150);
+      /* wrap */
+      if(p.x>W+60){p.x=-50;p.y=Math.random();p.fx=0;p.fy=0}
+      if(p.y<-0.05)p.y=1.05;
+      if(p.y>1.05)p.y=-0.05;
 
       /* pulsing */
-      const pulse=0.45+0.55*Math.sin(p.phase+t*0.0012);
-      const op=p.opacity*pulse*edgeFade*xFade;
-      if(op<0.003)return;
+      const pulse=0.4+0.6*Math.sin(p.phase+t*0.001);
+      const op=p.opacity*pulse;
+      if(op<0.002)return;
 
-      /* soft outer glow */
+      /* soft glow */
       const g=ctx.createRadialGradient(drawX,drawY,0,drawX,drawY,p.glow);
       g.addColorStop(0,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.5})`);
-      g.addColorStop(0.25,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.2})`);
-      g.addColorStop(0.6,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.05})`);
+      g.addColorStop(0.3,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.18})`);
+      g.addColorStop(0.7,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.04})`);
       g.addColorStop(1,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},0)`);
       ctx.fillStyle=g;
       ctx.beginPath();
       ctx.arc(drawX,drawY,p.glow,0,Math.PI*2);
       ctx.fill();
 
-      /* bright core */
+      /* core */
       ctx.beginPath();
-      ctx.arc(drawX,drawY,p.size*0.6,0,Math.PI*2);
-      ctx.fillStyle=`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${Math.min(0.8,op*2.5)})`;
+      ctx.arc(drawX,drawY,p.size*0.5,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${Math.min(0.6,op*2)})`;
       ctx.fill();
     });
 
     requestAnimationFrame(draw);
   }
   requestAnimationFrame(draw);
-
-  const obs=new IntersectionObserver(es=>{active=es[0].isIntersecting},{threshold:0});
-  obs.observe(canvas.parentElement);
-});
+})();
 
 /* ═══════════════════════════════════════════════════════
    SPACE GALLERY
