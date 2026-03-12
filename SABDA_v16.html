@@ -116,6 +116,7 @@ section{position:relative;padding:120px 80px;z-index:2}
 .ss-item{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
 .ss-val{font-family:'PT Serif',serif;font-size:2.2rem;font-weight:700;letter-spacing:-.02em;color:var(--white)}
 .ss-val .accent{color:var(--cyan)}
+.ss-val .salmon{color:var(--salmon)}
 .ss-lbl{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--white38)}
 .ss-div{width:1px;height:48px;background:rgba(240,239,233,.1)}
 
@@ -254,7 +255,11 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
 .ft-brand img{height:25px;width:auto;margin-bottom:22px}
 .ft-brand p{font-size:.84rem;color:var(--white38);line-height:1.72;max-width:230px}
 .ft-pillars{display:flex;gap:12px;margin-top:20px;font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;color:var(--white38)}
-.ft-col h4{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--white38);font-weight:500;margin-bottom:20px}
+.ft-pillars .fp-art{color:var(--cyan)}.ft-pillars .fp-well{color:var(--salmon)}
+.ft-col h4{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;margin-bottom:20px}
+.ft-col:nth-child(2) h4{color:var(--cyan)}
+.ft-col:nth-child(3) h4{color:var(--salmon)}
+.ft-col:nth-child(4) h4{color:var(--white60)}
 .ft-col ul{list-style:none;display:flex;flex-direction:column;gap:11px}
 .ft-col a{font-size:.87rem;color:var(--white38);transition:color .2s}
 .ft-col a:hover{color:var(--white)}
@@ -366,7 +371,7 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
     <div class="ss-div"></div>
     <div class="ss-item"><span class="ss-val"><span class="accent">42</span></span><span class="ss-lbl">Classes per Week</span></div>
     <div class="ss-div"></div>
-    <div class="ss-item"><span class="ss-val">Eixample</span><span class="ss-lbl">In the Heart of Barcelona</span></div>
+    <div class="ss-item"><span class="ss-val"><span class="salmon">Eixample</span></span><span class="ss-lbl">In the Heart of Barcelona</span></div>
   </div>
 </div>
 
@@ -579,7 +584,7 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
     <div class="ft-brand">
       <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA">
       <p>Immersive audio-visual wellness studio. Where art, technology, and movement converge.</p>
-      <div class="ft-pillars"><span>Art</span><span>·</span><span>Tech</span><span>·</span><span>Wellness</span></div>
+      <div class="ft-pillars"><span class="fp-art">Art</span><span>·</span><span>Tech</span><span>·</span><span class="fp-well">Wellness</span></div>
     </div>
     <div class="ft-col"><h4>Explore</h4><ul>
       <li><a href="#">Classes</a></li><li><a href="#">Listening Sessions</a></li>
