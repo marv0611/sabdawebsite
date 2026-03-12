@@ -110,41 +110,27 @@ section{position:relative;padding:120px 80px;z-index:2}
 .ss-lbl{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--white38)}
 .ss-div{width:1px;height:48px;background:rgba(240,239,233,.1)}
 
-/* ── CLASSES ── */
-.classes{padding:120px 80px;position:relative;z-index:2}
-.classes-hdr{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:68px}
-.cls-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1440px;width:100%;margin:0 auto}
-.cls-card{position:relative;height:530px;border-radius:4px;overflow:hidden;cursor:none;background:var(--navy)}
-/* Animated gradient border */
-.cls-card::before{content:'';position:absolute;inset:0;border-radius:4px;padding:1px;
-  background:linear-gradient(calc(var(--ba,0)*1turn),var(--cyan),var(--salmon),var(--cyan));
-  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
-  -webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .5s}
-.cls-card:hover::before{opacity:1;animation:bspin 2.8s linear infinite}
-@keyframes bspin{to{--ba:1}}
-@property --ba{syntax:'<number>';initial-value:0;inherits:false}
-.cls-img{position:absolute;inset:0;transition:transform .95s var(--ease-expo),filter .65s;transform:scale(1.06);will-change:transform}
-.cls-card:hover .cls-img{transform:scale(1.14);filter:brightness(1.06) saturate(1.25)}
-.cls-base-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(14,18,53,.98) 0%,rgba(14,18,53,.55) 40%,rgba(14,18,53,.12) 68%,transparent 100%);transition:opacity .5s}
-.cls-card:hover .cls-base-ov{opacity:.55}
-.cls-hov-ov{position:absolute;inset:0;opacity:0;transition:opacity .65s;mix-blend-mode:overlay}
-.cls-card:hover .cls-hov-ov{opacity:1}
-.cls-spot{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .4s}
-.cls-card:hover .cls-spot{opacity:1}
-.cls-body{position:absolute;inset:0;padding:26px;display:flex;flex-direction:column;justify-content:flex-end}
-.cls-tag{position:absolute;top:22px;left:22px;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);font-weight:600;opacity:0;transform:translateY(-8px);transition:opacity .4s .1s,transform .4s .1s var(--ease-expo)}
-.cls-meta{position:absolute;top:22px;right:22px;font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--white38);opacity:0;transform:translateY(-8px);transition:opacity .4s .18s,transform .4s .18s var(--ease-expo)}
-.cls-card:hover .cls-tag,.cls-card:hover .cls-meta{opacity:1;transform:none}
-.cls-title{font-family:'PT Serif',serif;font-size:1.55rem;font-weight:700;letter-spacing:-.02em;line-height:1.15;transition:transform .5s var(--ease-expo)}
-.cls-card:hover .cls-title{transform:translateY(-8px)}
-.cls-desc{font-size:.87rem;color:var(--white60);line-height:1.62;margin-top:10px;clip-path:inset(0 0 100% 0);transform:translateY(10px);transition:clip-path .55s .08s var(--ease-expo),transform .55s .08s var(--ease-expo)}
-.cls-card:hover .cls-desc{clip-path:inset(0 0 0% 0);transform:none}
-.cls-cta{display:inline-flex;align-items:center;gap:7px;font-size:.75rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--cyan);margin-top:14px;clip-path:inset(0 0 100% 0);transform:translateY(8px);transition:clip-path .5s .18s var(--ease-expo),transform .5s .18s var(--ease-expo),gap .25s}
-.cls-card:hover .cls-cta{clip-path:inset(0 0 0% 0);transform:none}
-.cls-cta:hover{gap:12px}
-/* card reveal state */
-.cls-card{opacity:0;transform:translateY(56px) scale(.95)}
-.cls-card.in{opacity:1;transform:none;transition:opacity .85s var(--ease-expo),transform .85s var(--ease-expo)}
+/* ── CLASSES — DUAL-ROW MARQUEE GALLERY ── */
+.classes{padding:100px 0 80px;position:relative;z-index:2;overflow:hidden}
+.classes-hdr{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;padding:0 80px}
+.cls-row-wrap{overflow:hidden;margin-bottom:16px}
+.cls-row{display:flex;gap:16px;width:max-content;will-change:transform}
+.cls-row.scroll-left{animation:clsScrollL 45s linear infinite}
+.cls-row.scroll-right{animation:clsScrollR 45s linear infinite}
+@keyframes clsScrollL{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@keyframes clsScrollR{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
+.cls-row:hover{animation-play-state:paused}
+.cls-item{position:relative;flex-shrink:0;border-radius:14px;overflow:hidden;cursor:pointer;transition:transform .4s var(--ease-expo)}
+.cls-item:hover{transform:scale(1.02)}
+.cls-item.wide{width:520px;height:340px}
+.cls-item.narrow{width:380px;height:340px}
+.cls-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease-expo)}
+.cls-item:hover img{transform:scale(1.06)}
+.cls-item-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(14,18,53,.72) 0%,rgba(14,18,53,.08) 45%,transparent 70%);pointer-events:none;transition:opacity .4s}
+.cls-item:hover .cls-item-ov{opacity:.6}
+.cls-item-label{position:absolute;bottom:20px;left:24px;right:24px;pointer-events:none}
+.cls-item-name{font-family:'PT Serif',serif;font-size:1.25rem;font-weight:700;color:var(--white);letter-spacing:-.01em}
+.cls-item-tag{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--white60);margin-top:5px}
 
 /* schedule button */
 .schedule-btn{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--white);padding:14px 28px;border-radius:3px;font-size:.84rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(240,239,233,.25);transition:border-color .25s,color .25s,background .25s,transform .2s,gap .25s}
@@ -226,7 +212,7 @@ section{position:relative;padding:120px 80px;z-index:2}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ── BOOKING ── */
-.booking{padding:120px 80px}
+.booking{padding:120px 80px;border-bottom:1px solid rgba(240,239,233,.06)}
 .booking-in{max-width:1020px;margin:0 auto;text-align:center}
 .booking-sub{color:var(--white38);font-size:1rem;line-height:1.72;max-width:500px;margin:18px auto 68px}
 .b-cards{display:flex;gap:22px;justify-content:center;align-items:stretch;flex-wrap:wrap}
@@ -281,15 +267,15 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
 .sbk-btn{background:var(--cyan);color:var(--navy);padding:10px 20px;border-radius:3px;font-size:.82rem;font-weight:700;letter-spacing:.05em;white-space:nowrap}
 
 /* ── RESPONSIVE ── */
-@media(max-width:1100px){.cls-grid{grid-template-columns:repeat(2,1fr)}.ft-in{grid-template-columns:1fr 1fr}}
+@media(max-width:1100px){.ft-in{grid-template-columns:1fr 1fr}}
 @media(max-width:860px){
   nav{padding:0 24px}
   .nav-links{display:none}
-  section,.classes,.booking,.location,.trust,.stats-strip,footer{padding-left:24px;padding-right:24px}
+  section,.booking,.location,.trust,.stats-strip,footer{padding-left:24px;padding-right:24px}
+  .classes-hdr{padding:0 24px}
   section{padding-top:80px;padding-bottom:80px}
   .hero-content{padding:0 24px 80px}
-  .cls-grid{grid-template-columns:1fr}
-  .cls-card{height:440px}
+  .cls-item.wide,.cls-item.narrow{width:300px;height:240px}
   .loc-in{grid-template-columns:1fr;gap:44px}
   .ft-in{grid-template-columns:1fr 1fr}
   .b-cards{flex-direction:column;align-items:center}
@@ -400,86 +386,77 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
       </a>
     </div>
   </div>
-  <div class="cls-grid" id="clsGrid">
-
-    <div class="cls-card" data-href="https://momence.com/SABDA-54278">
-      <div class="cls-img"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_016.jpg" alt="Vinyasa Yoga" loading="lazy"></div>
-      <div class="cls-base-ov"></div>
-      <div class="cls-hov-ov" style="background:radial-gradient(ellipse at 30% 70%,rgba(248,166,163,.28),transparent 60%)"></div>
-      <div class="cls-spot"></div>
-      <div class="cls-body">
-        <div class="cls-tag">60 min · All levels</div><div class="cls-meta">Mat provided</div>
-        <h3 class="cls-title">Vinyasa Yoga</h3>
-        <p class="cls-desc">Dynamic flow linking breath to movement, surrounded by 360° visuals that shift with every breath.</p>
-        <a href="https://momence.com/SABDA-54278" class="cls-cta" target="_blank">Explore <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7.5 3l3 3.5-3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      </div>
+  <!-- ROW 1 — scrolls left -->
+  <div class="cls-row-wrap">
+    <div class="cls-row scroll-left">
+      <a href="https://momence.com/SABDA-54278" target="_blank" class="cls-item wide">
+        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_016.jpg" alt="Vinyasa Yoga" loading="lazy">
+        <div class="cls-item-ov"></div>
+        <div class="cls-item-label"><div class="cls-item-name">Vinyasa Yoga</div><div class="cls-item-tag">60 min · All levels</div></div>
+      </a>
+      <a href="https://momence.com/SABDA-54278" target="_blank" class="cls-item narrow">
+        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_010.jpg" alt="Sound Healing" loading="lazy">
+        <div class="cls-item-ov"></div>
+        <div class="cls-item-label"><div class="cls-item-name">Sound Healing</div><div class="cls-item-tag">60 min · No experience needed</div></div>
+      </a>
+      <a href="https://momence.com/SABDA-54278" target="_blank" class="cls-item wide">
+        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_009.jpg" alt="Breathwork" loading="lazy">
+        <div class="cls-item-ov"></div>
+        <div class="cls-item-label"><div class="cls-item-name">Breathwork</div><div class="cls-item-tag">45–60 min · All levels</div></div>
+      </a>
+      <!-- duplicate set for seamless loop -->
+      <a href="https://momence.com/SABDA-54278" target="_blank" class="cls-item wide">
+        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_016.jpg" alt="Vinyasa Yoga" loading="lazy">
+        <div class="cls-item-ov"></div>
+        <div class="cls-item-label"><div class="cls-item-name">Vinyasa Yoga</div><div class="cls-item-tag">60 min · All levels</div></div>
+      </a>
+      <a href="https://momence.com/SABDA-54278" target="_blank" class="cls-item narrow">
+        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_010.jpg" alt="Sound Healing" loading="lazy">
+        <div class="cls-item-ov"></div>
+        <div class="cls-item-label"><div class="cls-item-name">Sound Healing</div><div class="cls-item-tag">60 min · No experience needed</div></div>
+      </a>
+      <a href="https://momence.com/SABDA-54278" target="_blank" class="cls-item wide">
+        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_009.jpg" alt="Breathwork" loading="lazy">
+        <div class="cls-item-ov"></div>
+        <div class="cls-item-label"><div class="cls-item-name">Breathwork</div><div class="cls-item-tag">45–60 min · All levels</div></div>
+      </a>
     </div>
-
-    <div class="cls-card" data-href="https://momence.com/SABDA-54278">
-      <div class="cls-img"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_010.jpg" alt="Sound Healing" loading="lazy"></div>
-      <div class="cls-base-ov"></div>
-      <div class="cls-hov-ov" style="background:radial-gradient(ellipse at 65% 40%,rgba(2,243,197,.22),transparent 60%)"></div>
-      <div class="cls-spot"></div>
-      <div class="cls-body">
-        <div class="cls-tag">60 min · No experience</div><div class="cls-meta">Blankets provided</div>
-        <h3 class="cls-title">Sound Healing</h3>
-        <p class="cls-desc">Lie down. Let frequencies do the work inside 360° immersive sound and vision.</p>
-        <a href="https://momence.com/SABDA-54278" class="cls-cta" target="_blank">Explore <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7.5 3l3 3.5-3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      </div>
+  </div>
+  <!-- ROW 2 — scrolls right -->
+  <div class="cls-row-wrap">
+    <div class="cls-row scroll-right">
+      <a href="https://momence.com/SABDA-54278" target="_blank" class="cls-item narrow">
+        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_005.jpg" alt="Pilates" loading="lazy">
+        <div class="cls-item-ov"></div>
+        <div class="cls-item-label"><div class="cls-item-name">Pilates</div><div class="cls-item-tag">50 min · All levels</div></div>
+      </a>
+      <a href="https://momence.com/SABDA-54278" target="_blank" class="cls-item wide">
+        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Copy%20of%201.jpg" alt="Ecstatic Dance" loading="lazy">
+        <div class="cls-item-ov"></div>
+        <div class="cls-item-label"><div class="cls-item-name">Ecstatic Dance</div><div class="cls-item-tag">60–90 min · No choreography</div></div>
+      </a>
+      <a href="https://momence.com/SABDA-54278" target="_blank" class="cls-item narrow">
+        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/IMG-26.jpg" alt="Meditation Journeys" loading="lazy">
+        <div class="cls-item-ov"></div>
+        <div class="cls-item-label"><div class="cls-item-name">Meditation Journeys</div><div class="cls-item-tag">45 min · All levels</div></div>
+      </a>
+      <!-- duplicate set for seamless loop -->
+      <a href="https://momence.com/SABDA-54278" target="_blank" class="cls-item narrow">
+        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_005.jpg" alt="Pilates" loading="lazy">
+        <div class="cls-item-ov"></div>
+        <div class="cls-item-label"><div class="cls-item-name">Pilates</div><div class="cls-item-tag">50 min · All levels</div></div>
+      </a>
+      <a href="https://momence.com/SABDA-54278" target="_blank" class="cls-item wide">
+        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Copy%20of%201.jpg" alt="Ecstatic Dance" loading="lazy">
+        <div class="cls-item-ov"></div>
+        <div class="cls-item-label"><div class="cls-item-name">Ecstatic Dance</div><div class="cls-item-tag">60–90 min · No choreography</div></div>
+      </a>
+      <a href="https://momence.com/SABDA-54278" target="_blank" class="cls-item narrow">
+        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/IMG-26.jpg" alt="Meditation Journeys" loading="lazy">
+        <div class="cls-item-ov"></div>
+        <div class="cls-item-label"><div class="cls-item-name">Meditation Journeys</div><div class="cls-item-tag">45 min · All levels</div></div>
+      </a>
     </div>
-
-    <div class="cls-card" data-href="https://momence.com/SABDA-54278">
-      <div class="cls-img"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_009.jpg" alt="Breathwork" loading="lazy"></div>
-      <div class="cls-base-ov"></div>
-      <div class="cls-hov-ov" style="background:radial-gradient(ellipse at 50% 75%,rgba(248,166,163,.22),transparent 60%)"></div>
-      <div class="cls-spot"></div>
-      <div class="cls-body">
-        <div class="cls-tag">45–60 min · All levels</div><div class="cls-meta">Comfortable clothing</div>
-        <h3 class="cls-title">Breathwork</h3>
-        <p class="cls-desc">Guided breathing techniques that shift your state. Energising or calming. Immersive audio responds to your breath.</p>
-        <a href="https://momence.com/SABDA-54278" class="cls-cta" target="_blank">Explore <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7.5 3l3 3.5-3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      </div>
-    </div>
-
-    <div class="cls-card" data-href="https://momence.com/SABDA-54278">
-      <div class="cls-img"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_005.jpg" alt="Pilates" loading="lazy"></div>
-      <div class="cls-base-ov"></div>
-      <div class="cls-hov-ov" style="background:radial-gradient(ellipse at 35% 55%,rgba(2,243,197,.2),transparent 60%)"></div>
-      <div class="cls-spot"></div>
-      <div class="cls-body">
-        <div class="cls-tag">50 min · All levels</div><div class="cls-meta">Grip socks recommended</div>
-        <h3 class="cls-title">Pilates</h3>
-        <p class="cls-desc">Controlled, precise movement amplified by geometric projections that pulse with every rep.</p>
-        <a href="https://momence.com/SABDA-54278" class="cls-cta" target="_blank">Explore <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7.5 3l3 3.5-3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      </div>
-    </div>
-
-    <div class="cls-card" data-href="https://momence.com/SABDA-54278">
-      <div class="cls-img"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Copy%20of%201.jpg" alt="Ecstatic Dance" loading="lazy"></div>
-      <div class="cls-base-ov"></div>
-      <div class="cls-hov-ov" style="background:radial-gradient(ellipse at 70% 35%,rgba(248,166,163,.25),transparent 60%)"></div>
-      <div class="cls-spot"></div>
-      <div class="cls-body">
-        <div class="cls-tag">60–90 min · No steps</div><div class="cls-meta">Barefoot · Water provided</div>
-        <h3 class="cls-title">Ecstatic Dance</h3>
-        <p class="cls-desc">No choreography. No judgement. Just you, the music, and a room that moves with you.</p>
-        <a href="https://momence.com/SABDA-54278" class="cls-cta" target="_blank">Explore <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7.5 3l3 3.5-3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      </div>
-    </div>
-
-    <div class="cls-card" data-href="https://momence.com/SABDA-54278">
-      <div class="cls-img"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/IMG-26.jpg" alt="Meditation Journeys" loading="lazy"></div>
-      <div class="cls-base-ov"></div>
-      <div class="cls-hov-ov" style="background:radial-gradient(ellipse at 50% 50%,rgba(2,243,197,.15),rgba(248,166,163,.1),transparent 65%)"></div>
-      <div class="cls-spot"></div>
-      <div class="cls-body">
-        <div class="cls-tag">45 min · All levels</div><div class="cls-meta">Cushions & blankets</div>
-        <h3 class="cls-title">Meditation Journeys</h3>
-        <p class="cls-desc">Custom visual worlds surround you while spatial audio guides you deeper. Feel it in your whole body.</p>
-        <a href="https://momence.com/SABDA-54278" class="cls-cta" target="_blank">Explore <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7.5 3l3 3.5-3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-      </div>
-    </div>
-
   </div>
 </section>
 
@@ -651,7 +628,7 @@ document.addEventListener('mousemove',e=>{
   CUR.style.transform=`translate(${cx}px,${cy}px) translate(-50%,-50%)`;
 });
 (function rl(){rx+=(cx-rx)*.1;ry+=(cy-ry)*.1;RING.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;requestAnimationFrame(rl)})();
-document.querySelectorAll('a,button,.cls-card,.sg-arr,.tbtn,.tdot').forEach(el=>{
+document.querySelectorAll('a,button,.cls-item,.sg-arr,.tbtn,.tdot').forEach(el=>{
   el.addEventListener('mouseenter',()=>{CUR.classList.add('hov');RING.classList.add('hov')});
   el.addEventListener('mouseleave',()=>{CUR.classList.remove('hov');RING.classList.remove('hov')});
 });
@@ -669,44 +646,6 @@ const rvObs=new IntersectionObserver(es=>es.forEach(e=>{
   if(e.isIntersecting){e.target.classList.add('vis');rvObs.unobserve(e.target)}
 }),{threshold:.07});
 document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
-
-/* ═══════════════════════════════════════════════════════
-   CLASS CARDS
-═══════════════════════════════════════════════════════ */
-const cards=document.querySelectorAll('.cls-card');
-const cObs=new IntersectionObserver(es=>es.forEach(e=>{
-  if(e.isIntersecting){
-    const i=[...cards].indexOf(e.target);
-    setTimeout(()=>{e.target.classList.add('in');e.target.dataset.rev='1'},i*115);
-    cObs.unobserve(e.target);
-  }
-}),{threshold:.04});
-cards.forEach(c=>cObs.observe(c));
-
-cards.forEach(card=>{
-  const img=card.querySelector('.cls-img');
-  const spot=card.querySelector('.cls-spot');
-  card.addEventListener('mousemove',e=>{
-    if(!card.dataset.rev)return;
-    const r=card.getBoundingClientRect();
-    const x=(e.clientX-r.left)/r.width;
-    const y=(e.clientY-r.top)/r.height;
-    card.style.transition='box-shadow .3s,opacity .85s,transform .85s';
-    card.style.transform=`perspective(950px) rotateX(${(y-.5)*16}deg) rotateY(${(.5-x)*16}deg) scale(1.028)`;
-    img.style.transform=`scale(1.14) translate(${(x-.5)*-14}px,${(y-.5)*-14}px)`;
-    spot.style.background=`radial-gradient(circle 220px at ${x*100}% ${y*100}%,rgba(2,243,197,.12) 0%,transparent 65%)`;
-  });
-  card.addEventListener('mouseleave',()=>{
-    card.style.transition='transform .75s cubic-bezier(.16,1,.3,1),box-shadow .75s,opacity .85s';
-    card.style.transform='';
-    img.style.transform='scale(1.06)';
-    spot.style.background='';
-  });
-  card.addEventListener('click',e=>{
-    const h=card.dataset.href;
-    if(h&&!e.target.closest('a'))window.open(h,'_blank');
-  });
-});
 
 /* ═══════════════════════════════════════════════════════
    GLOBAL PARTICLE FIELD — entire page lives inside a nebula
