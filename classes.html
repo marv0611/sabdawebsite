@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- classes-v10 -->
+<meta charset="UTF-8"><!-- classes-v11 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Classes & Schedule — SABDA Studio Barcelona</title>
 <meta name="description" content="Explore our weekly schedule of immersive yoga, pilates, sound healing, breathwork, ecstatic dance and meditation classes. Book your spot now.">
@@ -446,20 +446,56 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     el.querySelectorAll('[class*="sys_row"]').forEach(e=>e.style.setProperty('display','none','important'));
   }
 
-  /* ── Apply CSS variables too (belt AND suspenders) ── */
+  /* ── Apply CSS variables ON THE WIDGET ELEMENT ITSELF ── */
+  /* THIS IS THE KEY FIX: Momence sets variables on the widget container,
+     which overrides :root. We must set ours on the same element to win. */
   function applyVars(){
-    const root=document.documentElement;
-    const vars={
-      '--momence-background':'#0e1235','--momence-white':'#131842',
+    /* Set on widget container AND on every div inside it (Momence may
+       set vars on a nested wrapper div too) */
+    const allVars={
+      '--momence-background':'#0e1235',
+      '--momence-white':'#131842',
       '--momence-primary-color':'#f0efe9',
       '--momence-secondary-color':'rgba(240,239,233,.6)',
+      '--momence-tertiary-color':'rgba(240,239,233,.38)',
       '--momence-primary-500':'#02F3C5',
-      '--momence-black-500':'#f0efe9','--momence-black-400':'rgba(240,239,233,.8)',
+      '--momence-primary-400':'rgba(2,243,197,.55)',
+      '--momence-primary-300':'rgba(2,243,197,.3)',
+      '--momence-primary-200':'rgba(2,243,197,.16)',
+      '--momence-primary-100':'rgba(2,243,197,.08)',
+      '--momence-primary-050':'rgba(2,243,197,.04)',
+      '--momence-primary-600':'#00d4ac',
+      '--momence-black-500':'#f0efe9',
+      '--momence-black-400':'rgba(240,239,233,.8)',
       '--momence-black-300':'rgba(240,239,233,.65)',
+      '--momence-black-200':'rgba(240,239,233,.5)',
+      '--momence-black-100':'rgba(240,239,233,.35)',
+      '--momence-grey-050':'rgba(240,239,233,.03)',
+      '--momence-grey-100':'rgba(240,239,233,.05)',
       '--momence-grey-200':'rgba(240,239,233,.08)',
+      '--momence-grey-300':'rgba(240,239,233,.1)',
+      '--momence-grey-400':'rgba(240,239,233,.15)',
+      '--momence-grey-500':'rgba(240,239,233,.2)',
+      '--momence-grey-600':'rgba(240,239,233,.28)',
+      '--momence-grey-700':'rgba(240,239,233,.38)',
+      '--momence-grey-800':'rgba(240,239,233,.48)',
+      '--momence-grey-900':'rgba(240,239,233,.6)',
       '--momence-session-separator-color':'rgba(240,239,233,.06)',
     };
-    for(const[k,v]of Object.entries(vars))root.style.setProperty(k,v,'important');
+    /* Apply to widget root */
+    for(const[k,v]of Object.entries(allVars)){
+      el.style.setProperty(k,v,'important');
+    }
+    /* Apply to first 3 child divs (Momence nests the variable container) */
+    el.querySelectorAll(':scope > div, :scope > div > div, :scope > div > div > div').forEach(d=>{
+      for(const[k,v]of Object.entries(allVars)){
+        d.style.setProperty(k,v,'important');
+      }
+    });
+    /* Also set on :root as fallback */
+    for(const[k,v]of Object.entries(allVars)){
+      document.documentElement.style.setProperty(k,v);
+    }
   }
 
   /* ── Run everything ── */
@@ -475,8 +511,15 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   obs.observe(el,{childList:true,subtree:true});
   obs.observe(document.head,{childList:true,subtree:true});
 
-  /* Run on timers to catch initial render + re-renders */
+  /* Run on timers for initial load */
   [300,600,1000,1500,2000,3000,4000,6000,8000].forEach(ms=>setTimeout(runAll,ms));
+
+  /* PERSISTENT: keep enforcing every 500ms for 30 seconds to beat React re-renders */
+  let tick=0;
+  const persist=setInterval(()=>{
+    applyVars(); /* Variables are the critical fix — always re-apply */
+    if(++tick>60)clearInterval(persist); /* Stop after 30s */
+  },500);
 })();
 </script>
 
