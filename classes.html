@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- classes-v1 -->
+<meta charset="UTF-8"><!-- classes-v2 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Classes & Schedule — SABDA Studio Barcelona</title>
 <meta name="description" content="Explore our weekly schedule of immersive yoga, pilates, sound healing, breathwork, ecstatic dance and meditation classes. Book your spot now.">
@@ -16,311 +16,148 @@
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
-  background:var(--navy);color:var(--white);
-  font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.6;
-  overflow-x:hidden;-webkit-font-smoothing:antialiased;
-}
+body{background:var(--navy);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
 ::selection{background:rgba(248,166,163,.18)}
 
 /* ── GRAIN ── */
 .grain{position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.038;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:200px}
 
+/* ── PARTICLES ── */
+#globalParticles{position:fixed;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+
 /* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;display:flex;align-items:center;justify-content:space-between;transition:background .5s,backdrop-filter .5s,border-color .5s;border-bottom:1px solid rgba(240,239,233,.04);background:rgba(14,18,53,.88);backdrop-filter:blur(22px)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;display:flex;align-items:center;justify-content:space-between;background:rgba(14,18,53,.88);backdrop-filter:blur(22px);border-bottom:1px solid rgba(240,239,233,.07)}
 .nav-logo img{height:27px;width:auto;display:block}
 .nav-links{display:flex;gap:36px;list-style:none;font-size:.8rem;letter-spacing:.09em;text-transform:uppercase;font-weight:500}
 .nav-links a{color:var(--white);opacity:.75;transition:opacity .25s;position:relative}
 .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;right:100%;height:1px;background:var(--cyan);transition:right .3s var(--ease-expo)}
-.nav-links a:hover{opacity:1}
-.nav-links a:hover::after{right:0}
-.nav-links a.active{opacity:1}
-.nav-links a.active::after{right:0}
+.nav-links a:hover{opacity:1}.nav-links a:hover::after{right:0}
+.nav-links a.active{opacity:1}.nav-links a.active::after{right:0}
 .nav-cta{background:var(--cyan);color:var(--navy);padding:10px 22px;border-radius:3px;font-size:.8rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;transition:background .2s,transform .2s}
 .nav-cta:hover{background:#18ffda;transform:translateY(-1px)}
 
-/* ── PAGE HEADER ── */
-.page-header{
-  padding:140px 80px 48px;
-  text-align:center;
-  position:relative;
-}
-.page-header h1{
-  font-family:'PT Serif',serif;
-  font-size:2.8rem;
-  font-weight:400;
-  letter-spacing:-.01em;
-  margin-bottom:12px;
-}
-.page-header h1 span.cyan{color:var(--cyan)}
-.page-header p{
-  font-size:.95rem;
-  color:var(--white60);
-  max-width:480px;
-  margin:0 auto;
-}
+/* ── HERO BANNER ── */
+.hero-banner{position:relative;width:100%;height:320px;overflow:hidden}
+.hero-banner img{width:100%;height:100%;object-fit:cover;object-position:center 40%;filter:brightness(.55) contrast(1.1) saturate(1.15)}
+.hero-banner::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(14,18,53,.3) 0%,rgba(14,18,53,.12) 40%,rgba(14,18,53,.7) 80%,var(--navy) 100%)}
+.hero-overlay{position:absolute;bottom:44px;left:0;right:0;z-index:3;text-align:center}
+.hero-overlay h1{font-family:'PT Serif',serif;font-size:2.8rem;font-weight:400;letter-spacing:-.01em;margin-bottom:10px}
+.hero-overlay h1 .cyan{color:var(--cyan)}
+.hero-overlay p{font-size:.95rem;color:var(--white60);max-width:480px;margin:0 auto}
 
-/* ── MOMENCE WIDGET OVERRIDE ── */
-/* Base container */
-#momence-plugin-host-schedule{
-  max-width:920px;
-  margin:0 auto;
-  padding:0 40px 60px;
-}
+/* ── MOMENCE WIDGET ── */
+#momence-plugin-host-schedule{max-width:920px;margin:0 auto;padding:40px 40px 60px;position:relative;z-index:2}
+#momence-plugin-host-schedule,#momence-plugin-host-schedule *{font-family:'DM Sans',sans-serif !important}
 
-/* Override ALL Momence CSS variables for SABDA dark theme */
-#momence-plugin-host-schedule,
-#momence-plugin-host-schedule *{
-  font-family:'DM Sans',sans-serif !important;
-}
-
-/* Root-level overrides via the :root the widget reads */
+/* Momence CSS variable overrides → dark theme */
 :root{
-  /* Primary = cyan accent */
-  --momence-primary-050:rgba(2,243,197,.04);
-  --momence-primary-100:rgba(2,243,197,.08);
-  --momence-primary-200:rgba(2,243,197,.16);
-  --momence-primary-300:rgba(2,243,197,.3);
-  --momence-primary-400:rgba(2,243,197,.55);
-  --momence-primary-500:#02F3C5;
-  --momence-primary-600:#00d4ac;
-  --momence-primary-700:#00b594;
-  --momence-primary-800:#00967b;
-  --momence-primary-900:#007862;
-
-  /* Background = navy */
-  --momence-background:#0e1235;
-  --momence-white:#131842;
-
-  /* Text colors */
+  --momence-primary-050:rgba(2,243,197,.04);--momence-primary-100:rgba(2,243,197,.08);
+  --momence-primary-200:rgba(2,243,197,.16);--momence-primary-300:rgba(2,243,197,.3);
+  --momence-primary-400:rgba(2,243,197,.55);--momence-primary-500:#02F3C5;
+  --momence-primary-600:#00d4ac;--momence-primary-700:#00b594;
+  --momence-primary-800:#00967b;--momence-primary-900:#007862;
+  --momence-background:#0e1235;--momence-white:#131842;
   --momence-primary-color:#f0efe9;
   --momence-secondary-color:rgba(240,239,233,.6);
   --momence-tertiary-color:rgba(240,239,233,.38);
-
-  /* Black scale → light text on dark */
-  --momence-black-100:rgba(240,239,233,.35);
-  --momence-black-200:rgba(240,239,233,.5);
-  --momence-black-300:rgba(240,239,233,.65);
-  --momence-black-400:rgba(240,239,233,.8);
+  --momence-black-100:rgba(240,239,233,.35);--momence-black-200:rgba(240,239,233,.5);
+  --momence-black-300:rgba(240,239,233,.65);--momence-black-400:rgba(240,239,233,.8);
   --momence-black-500:#f0efe9;
-
-  /* Grey scale → dark theme borders */
-  --momence-grey-050:rgba(240,239,233,.03);
-  --momence-grey-100:rgba(240,239,233,.05);
-  --momence-grey-200:rgba(240,239,233,.08);
-  --momence-grey-300:rgba(240,239,233,.1);
-  --momence-grey-400:rgba(240,239,233,.15);
-  --momence-grey-500:rgba(240,239,233,.2);
-  --momence-grey-600:rgba(240,239,233,.28);
-  --momence-grey-700:rgba(240,239,233,.38);
-  --momence-grey-800:rgba(240,239,233,.48);
-  --momence-grey-900:rgba(240,239,233,.6);
-
-  /* Session card separator */
+  --momence-grey-050:rgba(240,239,233,.03);--momence-grey-100:rgba(240,239,233,.05);
+  --momence-grey-200:rgba(240,239,233,.08);--momence-grey-300:rgba(240,239,233,.1);
+  --momence-grey-400:rgba(240,239,233,.15);--momence-grey-500:rgba(240,239,233,.2);
+  --momence-grey-600:rgba(240,239,233,.28);--momence-grey-700:rgba(240,239,233,.38);
+  --momence-grey-800:rgba(240,239,233,.48);--momence-grey-900:rgba(240,239,233,.6);
   --momence-session-separator-color:rgba(240,239,233,.06);
-
-  /* Dark fills → inverted for dark theme */
-  --momence-dark-alpha-fill-100:rgba(240,239,233,.04);
-  --momence-dark-alpha-fill-200:rgba(240,239,233,.06);
-  --momence-dark-alpha-fill-300:rgba(240,239,233,.08);
-  --momence-dark-alpha-fill-400:rgba(240,239,233,.12);
-  --momence-dark-alpha-fill-500:rgba(240,239,233,.15);
-  --momence-dark-alpha-fill-600:rgba(240,239,233,.25);
-  --momence-dark-alpha-fill-700:rgba(240,239,233,.38);
-  --momence-dark-alpha-fill-800:rgba(240,239,233,.55);
+  --momence-dark-alpha-fill-100:rgba(240,239,233,.04);--momence-dark-alpha-fill-200:rgba(240,239,233,.06);
+  --momence-dark-alpha-fill-300:rgba(240,239,233,.08);--momence-dark-alpha-fill-400:rgba(240,239,233,.12);
+  --momence-dark-alpha-fill-500:rgba(240,239,233,.15);--momence-dark-alpha-fill-600:rgba(240,239,233,.25);
+  --momence-dark-alpha-fill-700:rgba(240,239,233,.38);--momence-dark-alpha-fill-800:rgba(240,239,233,.55);
   --momence-dark-alpha-fill-900:rgba(240,239,233,.85);
-
-  /* Light fills */
-  --momence-light-alpha-fill-900:rgba(14,18,53,.9);
-  --momence-light-alpha-fill-700:rgba(14,18,53,.6);
-  --momence-light-alpha-fill-600:rgba(14,18,53,.3);
-  --momence-light-alpha-fill-500:rgba(14,18,53,.18);
-
-  /* Dark background fills */
-  --momence-dark-background-200:rgba(240,239,233,.05);
-  --momence-dark-background-300:rgba(240,239,233,.08);
-  --momence-dark-background-400:rgba(240,239,233,.12);
-  --momence-dark-background-500:rgba(240,239,233,.16);
-  --momence-dark-background-800:rgba(240,239,233,.4);
-  --momence-dark-background-900:rgba(14,18,53,.85);
+  --momence-light-alpha-fill-900:rgba(14,18,53,.9);--momence-light-alpha-fill-700:rgba(14,18,53,.6);
+  --momence-light-alpha-fill-600:rgba(14,18,53,.3);--momence-light-alpha-fill-500:rgba(14,18,53,.18);
+  --momence-dark-background-200:rgba(240,239,233,.05);--momence-dark-background-300:rgba(240,239,233,.08);
+  --momence-dark-background-400:rgba(240,239,233,.12);--momence-dark-background-500:rgba(240,239,233,.16);
+  --momence-dark-background-800:rgba(240,239,233,.4);--momence-dark-background-900:rgba(14,18,53,.85);
   --momence-light-background-900:rgba(14,18,53,.9);
 }
 
-/* ── Widget-specific cosmetic overrides ── */
+/* Widget cosmetic overrides */
+#momence-plugin-host-schedule .momence-host-schedule-layout{background:transparent !important}
+#momence-plugin-host-schedule article{background:rgba(19,24,66,.65) !important;border-color:rgba(240,239,233,.06) !important;backdrop-filter:blur(8px);border-radius:16px !important}
+#momence-plugin-host-schedule article img{border-radius:10px !important}
+#momence-plugin-host-schedule h3{color:var(--salmon) !important;letter-spacing:.15em !important}
+#momence-plugin-host-schedule h4{font-family:'PT Serif',serif !important;font-weight:400 !important;color:var(--white) !important}
 
-/* Main layout container */
-#momence-plugin-host-schedule .momence-host-schedule-layout{
-  background:transparent !important;
-}
-
-/* Session cards → dark glass */
-#momence-plugin-host-schedule article{
-  background:rgba(19,24,66,.65) !important;
-  border-color:rgba(240,239,233,.06) !important;
-  backdrop-filter:blur(8px);
-  border-radius:16px !important;
-}
-
-/* Card images */
-#momence-plugin-host-schedule article img{
-  border-radius:10px !important;
-}
-
-/* Session type label */
-#momence-plugin-host-schedule h3{
-  color:var(--salmon) !important;
-  font-family:'DM Sans',sans-serif !important;
-  letter-spacing:.15em !important;
-}
-
-/* Session title */
-#momence-plugin-host-schedule h4{
-  font-family:'PT Serif',serif !important;
-  font-weight:400 !important;
-  color:var(--white) !important;
-}
-
-/* Book Now button → cyan */
+/* Book button → cyan */
 #momence-plugin-host-schedule .momence-button[class*="primary"],
-#momence-plugin-host-schedule a[class*="sc-12tukza"]{
-  background:#02F3C5 !important;
-  color:#0e1235 !important;
-  font-weight:700 !important;
-  letter-spacing:.04em !important;
-  border-radius:4px !important;
-  transition:background .2s,transform .15s !important;
-}
+#momence-plugin-host-schedule a[class*="sc-12tukza"]{background:#02F3C5 !important;color:#0e1235 !important;font-weight:700 !important;letter-spacing:.04em !important;border-radius:4px !important;transition:background .2s,transform .15s !important}
 #momence-plugin-host-schedule .momence-button[class*="primary"]:hover,
-#momence-plugin-host-schedule a[class*="sc-12tukza"]:hover{
-  background:#18ffda !important;
-  transform:translateY(-1px) !important;
-}
-
-/* Disabled/finished buttons */
+#momence-plugin-host-schedule a[class*="sc-12tukza"]:hover{background:#18ffda !important;transform:translateY(-1px) !important}
 #momence-plugin-host-schedule .momence-button:disabled,
-#momence-plugin-host-schedule .momence-button[class*="booked"]{
-  background:rgba(240,239,233,.08) !important;
-  color:rgba(240,239,233,.35) !important;
-}
+#momence-plugin-host-schedule .momence-button[class*="booked"]{background:rgba(240,239,233,.08) !important;color:rgba(240,239,233,.35) !important}
 
-/* Day selector pills */
-#momence-plugin-host-schedule button[class*="day_selection"]{
-  background:transparent !important;
-}
-#momence-plugin-host-schedule button[class*="day_selection"]:hover{
-  background:rgba(240,239,233,.05) !important;
-}
-
-/* Quick filter buttons (SHOW ALL, TODAY) */
-#momence-plugin-host-schedule button[class*="quick_filters"]{
-  background:transparent !important;
-  border-color:rgba(240,239,233,.12) !important;
-  color:var(--white) !important;
-}
-#momence-plugin-host-schedule button[class*="quick_filters"]:hover{
-  background:rgba(240,239,233,.05) !important;
-}
-
-/* View toggle (Week/Month) */
-#momence-plugin-host-schedule button[class*="view-toggle"]{
-  background:transparent !important;
-  border-color:rgba(240,239,233,.12) !important;
-  color:var(--white) !important;
-  stroke:var(--white) !important;
-}
-
-/* Select dropdowns */
-#momence-plugin-host-schedule button.momence-select-button{
-  background:rgba(19,24,66,.6) !important;
-  border-color:rgba(240,239,233,.12) !important;
-  color:var(--white) !important;
-}
-
-/* Dropdown popup */
-#momence-plugin-host-schedule .momence-select-popup{
-  background:#131842 !important;
-  border-color:rgba(240,239,233,.1) !important;
-}
-#momence-plugin-host-schedule .momence-select-option{
-  background:#131842 !important;
-  color:var(--white) !important;
-}
-#momence-plugin-host-schedule .momence-select-option:hover{
-  background:rgba(240,239,233,.06) !important;
-}
-
-/* Arrow buttons */
-#momence-plugin-host-schedule .momence-arrow-button{
-  background:transparent !important;
-  border-color:rgba(240,239,233,.1) !important;
-  color:var(--white) !important;
-}
-#momence-plugin-host-schedule .momence-arrow-button:hover:not(:disabled){
-  background:rgba(240,239,233,.06) !important;
-}
-#momence-plugin-host-schedule .momence-arrow-button:disabled{
-  color:rgba(240,239,233,.15) !important;
-}
-
-/* Event type tabs */
-#momence-plugin-host-schedule .momence-event_type_select-button{
-  background:transparent !important;
-  color:rgba(240,239,233,.5) !important;
-}
-
-/* Month switch */
-#momence-plugin-host-schedule .momence-month-switch *{
-  color:var(--white) !important;
-}
-
-/* Month calendar cells */
-#momence-plugin-host-schedule .momence-month-calendar-day{
-  background:transparent !important;
-}
-#momence-plugin-host-schedule .momence-month-calendar-day:hover:not(:disabled){
-  background:rgba(240,239,233,.05) !important;
-}
-
-/* Pagination */
-#momence-plugin-host-schedule .momence-pagination button{
-  background:transparent !important;
-  color:var(--white) !important;
-}
-
-/* No results illustration */
-#momence-plugin-host-schedule .momence-host_schedule-session_list-no_results-text{
-  color:rgba(240,239,233,.5) !important;
-}
-
-/* Tag buttons */
-#momence-plugin-host-schedule .momence-host_dashboard-tag_button{
-  background:transparent !important;
-  border-color:rgba(240,239,233,.12) !important;
-  color:var(--white) !important;
-}
-
-/* Loader dots */
+/* Interactive elements */
+#momence-plugin-host-schedule button[class*="day_selection"]{background:transparent !important}
+#momence-plugin-host-schedule button[class*="day_selection"]:hover{background:rgba(240,239,233,.05) !important}
+#momence-plugin-host-schedule button[class*="quick_filters"]{background:transparent !important;border-color:rgba(240,239,233,.12) !important;color:var(--white) !important}
+#momence-plugin-host-schedule button[class*="quick_filters"]:hover{background:rgba(240,239,233,.05) !important}
+#momence-plugin-host-schedule button[class*="view-toggle"]{background:transparent !important;border-color:rgba(240,239,233,.12) !important;color:var(--white) !important;stroke:var(--white) !important}
+#momence-plugin-host-schedule button.momence-select-button{background:rgba(19,24,66,.6) !important;border-color:rgba(240,239,233,.12) !important;color:var(--white) !important}
+#momence-plugin-host-schedule .momence-select-popup{background:#131842 !important;border-color:rgba(240,239,233,.1) !important}
+#momence-plugin-host-schedule .momence-select-option{background:#131842 !important;color:var(--white) !important}
+#momence-plugin-host-schedule .momence-select-option:hover{background:rgba(240,239,233,.06) !important}
+#momence-plugin-host-schedule .momence-arrow-button{background:transparent !important;border-color:rgba(240,239,233,.1) !important;color:var(--white) !important}
+#momence-plugin-host-schedule .momence-arrow-button:hover:not(:disabled){background:rgba(240,239,233,.06) !important}
+#momence-plugin-host-schedule .momence-arrow-button:disabled{color:rgba(240,239,233,.15) !important}
+#momence-plugin-host-schedule .momence-event_type_select-button{background:transparent !important;color:rgba(240,239,233,.5) !important}
+#momence-plugin-host-schedule .momence-month-switch *{color:var(--white) !important}
+#momence-plugin-host-schedule .momence-month-calendar-day{background:transparent !important}
+#momence-plugin-host-schedule .momence-month-calendar-day:hover:not(:disabled){background:rgba(240,239,233,.05) !important}
+#momence-plugin-host-schedule .momence-pagination button{background:transparent !important;color:var(--white) !important}
+#momence-plugin-host-schedule .momence-host_schedule-session_list-no_results-text{color:rgba(240,239,233,.5) !important}
+#momence-plugin-host-schedule .momence-host_dashboard-tag_button{background:transparent !important;border-color:rgba(240,239,233,.12) !important;color:var(--white) !important}
 #momence-plugin-host-schedule .momence-host_schedule-loader div::after,
-#momence-plugin-host-schedule [class*="sc-1oszok8"] div{
-  background:var(--cyan) !important;
-}
+#momence-plugin-host-schedule [class*="sc-1oszok8"] div{background:var(--cyan) !important}
 
-/* Hide "Powered by Momence" */
-#momence-plugin-host-schedule .momence-host_schedule-powered_by_momence{
-  display:none !important;
-}
-
+/* Hide Powered by Momence */
+#momence-plugin-host-schedule .momence-host_schedule-powered_by_momence{display:none !important}
+/* Hide "Location: SABDA" — single venue */
+#momence-plugin-host-schedule .momence-session-in_person{display:none !important}
+/* Hide system row (timezone/auth) */
+#momence-plugin-host-schedule .momence-host_schedule-sys_row{display:none !important}
 /* One-click booking banner */
-#momence-plugin-host-schedule [class*="fS"]{
-  background:rgba(2,243,197,.06) !important;
-}
+#momence-plugin-host-schedule [class*="fS"]{background:rgba(2,243,197,.06) !important}
+
+/* ── PRICING ── */
+.pricing{padding:80px 80px 0;position:relative;z-index:2;border-top:1px solid rgba(240,239,233,.06)}
+.pricing-hdr{text-align:center;margin-bottom:52px}
+.pricing-hdr h2{font-family:'PT Serif',serif;font-size:2.2rem;font-weight:400;margin-bottom:10px}
+.pricing-hdr p{color:var(--white38);font-size:.92rem;max-width:420px;margin:0 auto}
+.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:960px;margin:0 auto}
+.pricing-col{text-align:center}
+.pricing-col h3{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--white60);margin-bottom:20px;font-weight:500;font-family:'DM Sans',sans-serif}
+.pricing-col a{display:block;padding:18px 12px;border-radius:40px;background:var(--cyan);color:var(--navy);font-weight:700;font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;margin-bottom:14px;transition:background .2s,transform .15s;text-align:center}
+.pricing-col a:hover{background:#18ffda;transform:translateY(-2px)}
+.pricing-col a.outline{background:transparent;border:1px solid rgba(240,239,233,.12);color:var(--white)}
+.pricing-col a.outline:hover{background:rgba(240,239,233,.05);transform:translateY(-2px)}
+
+/* ── GIFT CARDS ── */
+.giftcards{padding:80px 80px;position:relative;z-index:2;border-top:1px solid rgba(240,239,233,.06);margin-top:80px}
+.giftcards-hdr{text-align:center;margin-bottom:44px}
+.giftcards-hdr h2{font-family:'PT Serif',serif;font-size:2.2rem;font-weight:400;margin-bottom:10px}
+.giftcards-hdr p{color:var(--white38);font-size:.92rem;max-width:400px;margin:0 auto}
+.gc-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;max-width:720px;margin:0 auto}
+.gc-grid a{padding:16px 32px;border-radius:40px;background:rgba(240,239,233,.05);border:1px solid rgba(240,239,233,.1);color:var(--white);font-weight:600;font-size:1rem;transition:background .2s,transform .15s,border-color .2s;min-width:140px;text-align:center}
+.gc-grid a:hover{background:rgba(2,243,197,.08);border-color:var(--cyan);transform:translateY(-2px)}
+.gc-grid a.custom{color:var(--cyan)}
 
 /* ── FOOTER ── */
 footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);background:rgba(9,12,38,.6);position:relative;z-index:2}
 .ft-in{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:52px;margin-bottom:72px}
 .ft-brand img{height:25px;width:auto;margin-bottom:22px;display:block}
-.ft-brand p{font-size:.84rem;color:var(--white38);line-height:1.72;max-width:230px}
 .ft-pillars{display:flex;gap:12px;margin-top:20px;font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;color:var(--white38)}
 .ft-pillars .fp-art{color:var(--cyan)}.ft-pillars .fp-tech{color:var(--white)}.ft-pillars .fp-well{color:var(--salmon)}
 .ft-col h4{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;margin-bottom:20px;font-family:'DM Sans',sans-serif}
@@ -336,22 +173,22 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
 
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
-  nav{padding:0 24px}
-  .nav-links{display:none}
-  .page-header{padding:120px 24px 36px}
-  .page-header h1{font-size:2rem}
-  #momence-plugin-host-schedule{padding:0 16px 40px}
-  footer{padding:48px 24px 32px}
-  .ft-in{grid-template-columns:1fr 1fr}
+  nav{padding:0 24px}.nav-links{display:none}
+  .hero-banner{height:240px}.hero-overlay h1{font-size:2rem}.hero-overlay{bottom:32px}
+  #momence-plugin-host-schedule{padding:24px 16px 40px}
+  .pricing{padding:60px 24px 0}.pricing-grid{grid-template-columns:1fr 1fr;gap:16px}
+  .giftcards{padding:60px 24px}
+  footer{padding:48px 24px 32px}.ft-in{grid-template-columns:1fr 1fr}
 }
 @media(max-width:520px){
-  .ft-in{grid-template-columns:1fr}
-  .page-header h1{font-size:1.7rem}
+  .ft-in{grid-template-columns:1fr}.hero-overlay h1{font-size:1.7rem}
+  .hero-banner{height:200px}.pricing-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
 <div class="grain"></div>
+<canvas id="globalParticles"></canvas>
 
 <!-- NAV -->
 <nav>
@@ -365,18 +202,68 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
   <a href="https://momence.com/m/443935" class="nav-cta" target="_blank">3 Classes — €48</a>
 </nav>
 
-<!-- PAGE HEADER -->
-<section class="page-header">
-  <h1>Our <span class="cyan">Schedule</span></h1>
-  <p>Browse classes, filter by type or teacher, and book your spot — all in real time.</p>
-</section>
+<!-- HERO BANNER — swap src with your rectangular hero image -->
+<div class="hero-banner">
+  <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/breathwork.jpg" alt="SABDA immersive studio">
+  <div class="hero-overlay">
+    <h1>Our <span class="cyan">Schedule</span></h1>
+    <p>Browse classes, filter by type or teacher, and book your spot — all in real time.</p>
+  </div>
+</div>
 
-<!-- MOMENCE LIVE WIDGET (reskinned) -->
+<!-- MOMENCE LIVE WIDGET (reskinned) — "Teachers" wording via i18n -->
 <div id="momence-plugin-host-schedule"></div>
 <script src="https://momence.com/plugin/host-schedule/host-schedule.js"
   host_id="54278"
-  locale="en">
+  locale="en"
+  i18n='{"TEACHER_SELECT_PLACEHOLDER":"Teachers","TEACHER":"Teacher","SUBSTITUTES_FOR_SHORT":"Sub for"}'>
 </script>
+
+<!-- PRICING -->
+<section class="pricing">
+  <div class="pricing-hdr">
+    <h2>Pricing</h2>
+    <p>First time? Start with an intro offer. Ready to commit? Choose a pack or go unlimited.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="pricing-col">
+      <h3>Intro Offers</h3>
+      <a href="https://momence.com/m/443935" target="_blank">3 Pack €48</a>
+      <a href="https://momence.com/m/443934" target="_blank">Trial Drop In €16</a>
+      <a href="https://momence.com/SABDA-54278" target="_blank" class="outline">Residents: 1 Week €50</a>
+    </div>
+    <div class="pricing-col">
+      <h3>Drop In</h3>
+      <a href="https://momence.com/SABDA-54278" target="_blank">Drop In €20</a>
+    </div>
+    <div class="pricing-col">
+      <h3>Packs</h3>
+      <a href="https://momence.com/SABDA-54278" target="_blank">5 Pack €80</a>
+      <a href="https://momence.com/SABDA-54278" target="_blank">10 Pack €140</a>
+    </div>
+    <div class="pricing-col">
+      <h3>Membership</h3>
+      <a href="https://momence.com/m/431216" target="_blank">Monthly Unlimited €130</a>
+      <a href="https://momence.com/m/445600" target="_blank">3 Month Unlimited</a>
+    </div>
+  </div>
+</section>
+
+<!-- GIFT CARDS -->
+<section class="giftcards">
+  <div class="giftcards-hdr">
+    <h2>Gift Cards</h2>
+    <p>Give the gift of immersion. Choose an amount or set your own.</p>
+  </div>
+  <div class="gc-grid">
+    <a href="https://momence.com/SABDA-54278" target="_blank">€20</a>
+    <a href="https://momence.com/SABDA-54278" target="_blank">€40</a>
+    <a href="https://momence.com/SABDA-54278" target="_blank">€60</a>
+    <a href="https://momence.com/SABDA-54278" target="_blank">€80</a>
+    <a href="https://momence.com/SABDA-54278" target="_blank">€100</a>
+    <a href="https://momence.com/SABDA-54278" target="_blank" class="custom">Custom</a>
+  </div>
+</section>
 
 <!-- FOOTER -->
 <footer>
@@ -408,5 +295,54 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
   </div>
 </footer>
 
+<script>
+/* ═══════════════════════════════════════════════════════
+   GLOBAL PARTICLE FIELD
+═══════════════════════════════════════════════════════ */
+(function(){
+  const canvas=document.getElementById('globalParticles');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  let W,H,mouseX=-9999,mouseY=-9999;
+  function resize(){W=window.innerWidth;H=window.innerHeight;canvas.width=W*devicePixelRatio;canvas.height=H*devicePixelRatio;ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0)}
+  resize();window.addEventListener('resize',resize);
+  document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY});
+  const COUNT=960;
+  const particles=Array.from({length:COUNT},()=>({
+    x:Math.random()*3000,y:Math.random(),vx:0.008+Math.random()*0.06,vy:(Math.random()-0.5)*0.003,
+    fx:0,fy:0,size:0.3+Math.random()*1.5,glow:4+Math.random()*16,
+    color:(()=>{const c=Math.random();return c<0.38?[2,243,197]:c<0.72?[248,166,163]:[32,57,153]})(),
+    opacity:0.015+Math.random()*0.08,phase:Math.random()*Math.PI*2,
+    waveAmp:0.01+Math.random()*0.04,waveFreq:0.0001+Math.random()*0.0005
+  }));
+  let t=0;
+  function draw(){
+    t++;ctx.clearRect(0,0,W,H);
+    particles.forEach(p=>{
+      p.x+=p.vx;p.y+=p.vy;
+      const waveY=p.waveAmp*Math.sin(p.phase+t*p.waveFreq);
+      let drawX=p.x+p.fx,drawY=(p.y+waveY)*H+p.fy;
+      const dx=drawX-mouseX,dy=drawY-mouseY,dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<120&&dist>0){const force=(1-dist/120)*2.5;p.fx+=(dx/dist)*force;p.fy+=(dy/dist)*force}
+      p.fx*=0.94;p.fy*=0.94;
+      drawX=p.x+p.fx;drawY=(p.y+waveY)*H+p.fy;
+      if(p.x>W+60){p.x=-50;p.y=Math.random();p.fx=0;p.fy=0}
+      if(p.y<-0.05)p.y=1.05;if(p.y>1.05)p.y=-0.05;
+      const pulse=0.4+0.6*Math.sin(p.phase+t*0.001),op=p.opacity*pulse;
+      if(op<0.002)return;
+      const g=ctx.createRadialGradient(drawX,drawY,0,drawX,drawY,p.glow);
+      g.addColorStop(0,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.5})`);
+      g.addColorStop(0.3,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.18})`);
+      g.addColorStop(0.7,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.04})`);
+      g.addColorStop(1,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},0)`);
+      ctx.fillStyle=g;ctx.beginPath();ctx.arc(drawX,drawY,p.glow,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.arc(drawX,drawY,p.size*0.5,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${Math.min(0.6,op*2)})`;ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+})();
+</script>
 </body>
 </html>
