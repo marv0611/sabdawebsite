@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- classes-v13 -->
+<meta charset="UTF-8"><!-- classes-v14 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Classes & Schedule — SABDA Studio Barcelona</title>
 <meta name="description" content="Explore our weekly schedule of immersive yoga, pilates, sound healing, breathwork, ecstatic dance and meditation classes. Book your spot now.">
@@ -114,10 +114,12 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
   background:transparent !important;
 }
 /* ── CRITICAL: Prevent widget children from escaping the container ── */
-/* Momence renders modals/overlays with position:fixed that cover the viewport */
+/* Adding transform creates a new containing block — position:fixed children
+   become positioned relative to THIS container instead of the viewport */
 #momence-plugin-host-schedule{
   position:relative !important;
   z-index:2 !important;
+  transform:translateZ(0) !important;
 }
 #momence-plugin-host-schedule [style*="position: fixed"],
 #momence-plugin-host-schedule [style*="position:fixed"]{
