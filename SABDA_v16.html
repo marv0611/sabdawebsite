@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- v16.o -->
+<meta charset="UTF-8"><!-- v16.p -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SABDA — Immersive Audio-Visual Wellness Studio Barcelona</title>
 <meta name="description" content="360° immersive projections. Dolby Atmos. Yoga, sound healing, breathwork, pilates & more in Barcelona's most immersive studio. 3 classes for €48.">
@@ -70,14 +70,14 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;display:flex;align-items:center;justify-content:space-between;transition:background .5s,backdrop-filter .5s,border-color .5s;border-bottom:1px solid rgba(240,239,233,.04);background:rgba(14,18,53,.45);backdrop-filter:blur(14px)}
 nav.on{background:rgba(14,18,53,.88);backdrop-filter:blur(22px);border-bottom-color:rgba(240,239,233,.07)}
-.nav-logo img{height:27px;width:auto;display:block}
+.nav-logo img{height:34px;width:auto;display:block}
 .nav-links{display:flex;gap:36px;list-style:none;font-size:.8rem;letter-spacing:.09em;text-transform:uppercase;font-weight:500}
 .nav-links a{color:var(--white);opacity:.75;transition:opacity .25s;position:relative}
 .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;right:100%;height:1px;background:var(--cyan);transition:right .3s var(--ease-expo)}
 .nav-links a:hover{opacity:1}
 .nav-links a:hover::after{right:0}
-.nav-cta{background:var(--cyan);color:var(--navy);padding:10px 22px;border-radius:3px;font-size:.8rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;transition:background .2s,transform .2s}
-.nav-cta:hover{background:#18ffda;transform:translateY(-1px)}
+.nav-ig{display:inline-flex;align-items:center;gap:8px;background:var(--salmon);color:var(--navy);padding:10px 22px;border-radius:3px;font-size:.8rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;transition:background .2s,transform .2s}
+.nav-ig:hover{background:#fab3b0;transform:translateY(-1px)}
 
 /* ── HERO ── */
 .hero{position:relative;height:100vh;min-height:700px;overflow:hidden;display:flex;align-items:flex-end;z-index:2}
@@ -310,12 +310,13 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA">
   </a>
   <ul class="nav-links">
-    <li><a href="#classes">Classes</a></li>
+    <li><a href="classes.html">Classes</a></li>
+    <li><a href="classes.html#pricing">Pricing</a></li>
     <li><a href="rent-corporate.html">Rent & Corporate</a></li>
     <li><a href="#">Listening Sessions</a></li>
     <li><a href="#">About</a></li>
   </ul>
-  <a href="https://momence.com/m/443935" class="nav-cta" target="_blank">Book a Class</a>
+  <a href="https://instagram.com/sabdastudio" class="nav-ig" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg> Instagram</a>
 </nav>
 
 <!-- HERO -->
@@ -330,7 +331,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     </div>
     <h1 class="rv" style="transition-delay:.1s">The Future<br>of <em>Wellness</em></h1>
     <div class="hero-ctas rv" style="transition-delay:.3s">
-      <a href="https://momence.com/m/443935" class="btn-p" target="_blank">3 Classes for €48
+      <a href="classes.html" class="btn-p">3 Classes for €48
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
       <span class="hero-note">€16/class · New students · No commitment</span>
@@ -549,7 +550,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       </div>
 
     </div>
-    <p class="b-foot rv" style="transition-delay:.3s"><a href="https://momence.com/SABDA-54278" target="_blank">See all our offers →</a></p>
+    <p class="b-foot rv" style="transition-delay:.3s"><a href="classes.html#pricing">See all our offers →</a></p>
     <div class="b-divider rv" style="transition-delay:.34s"></div>
     <p class="b-event rv" style="transition-delay:.38s">Looking to host an event?</p>
     <div class="rv" style="transition-delay:.42s"><a href="rent-corporate.html" class="b-event-btn">Explore Our Space
@@ -607,7 +608,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 <!-- MOBILE STICKY -->
 <div class="sbk" id="sbk">
   <div class="sbk-txt">3 Classes · <span>€48</span> · €16 each</div>
-  <a href="https://momence.com/m/443935" class="sbk-btn" target="_blank">Book Now</a>
+  <a href="classes.html" class="sbk-btn">Book Now</a>
 </div>
 
 <script>

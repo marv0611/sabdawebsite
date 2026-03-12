@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- classes-v14 -->
+<meta charset="UTF-8"><!-- classes-v15 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Classes & Schedule — SABDA Studio Barcelona</title>
 <meta name="description" content="Explore our weekly schedule of immersive yoga, pilates, sound healing, breathwork, ecstatic dance and meditation classes. Book your spot now.">
@@ -34,14 +34,14 @@ img{display:block;max-width:100%}
 
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;display:flex;align-items:center;justify-content:space-between;background:rgba(14,18,53,.88);backdrop-filter:blur(22px);border-bottom:1px solid rgba(240,239,233,.07)}
-.nav-logo img{height:27px;width:auto;display:block}
+.nav-logo img{height:34px;width:auto;display:block}
 .nav-links{display:flex;gap:36px;list-style:none;font-size:.8rem;letter-spacing:.09em;text-transform:uppercase;font-weight:500}
 .nav-links a{color:var(--white);opacity:.75;transition:opacity .25s;position:relative}
 .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;right:100%;height:1px;background:var(--cyan);transition:right .3s var(--ease-expo)}
 .nav-links a:hover{opacity:1}.nav-links a:hover::after{right:0}
 .nav-links a.active{opacity:1}.nav-links a.active::after{right:0}
-.nav-cta{background:var(--cyan);color:var(--navy);padding:10px 22px;border-radius:3px;font-size:.8rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;transition:background .2s,transform .2s}
-.nav-cta:hover{background:#18ffda;transform:translateY(-1px)}
+.nav-ig{display:inline-flex;align-items:center;gap:8px;background:var(--salmon);color:var(--navy);padding:10px 22px;border-radius:3px;font-size:.8rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;transition:background .2s,transform .2s}
+.nav-ig:hover{background:#fab3b0;transform:translateY(-1px)}
 
 /* ── HERO BANNER ── */
 .hero-banner{position:relative;width:100%;height:320px;overflow:hidden}
@@ -346,14 +346,15 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 
 <!-- NAV -->
 <nav>
-  <a href="SABDA_v16.html" class="nav-logo"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA_white.png" alt="SABDA"></a>
+  <a href="SABDA_v16.html" class="nav-logo"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA"></a>
   <ul class="nav-links">
     <li><a href="classes.html" class="active">Classes</a></li>
+    <li><a href="classes.html#pricing">Pricing</a></li>
     <li><a href="rent-corporate.html">Rent & Corporate</a></li>
     <li><a href="#">Listening Sessions</a></li>
     <li><a href="#">About</a></li>
   </ul>
-  <a href="https://momence.com/m/443935" class="nav-cta" target="_blank">3 Classes — €48</a>
+  <a href="https://instagram.com/sabdastudio" class="nav-ig" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg> Instagram</a>
 </nav>
 
 <!-- HERO BANNER — swap src with your rectangular hero image -->
@@ -611,7 +612,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
      3-Pack is hero offer: 1.4x higher repeat conversion, 2.4x expected value vs trial.
      Anchoring: single class prices first make €16/class look like a steal.
      Center-stage: hero column gets visual emphasis (border + badge). -->
-<section class="pricing">
+<section class="pricing" id="pricing">
   <div class="pricing-hdr">
     <h2>Pricing</h2>
     <p>First time? Start with an intro offer.<br>Ready to commit? Choose a pack or go unlimited.</p>
@@ -661,7 +662,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 <footer>
   <div class="ft-in">
     <div class="ft-brand">
-      <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA_white.png" alt="SABDA">
+      <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA">
       <div class="ft-pillars"><span class="fp-art">Art</span><span>·</span><span class="fp-tech">Tech</span><span>·</span><span class="fp-well">Wellness</span></div>
     </div>
     <div class="ft-col"><h4>Explore</h4><ul>
