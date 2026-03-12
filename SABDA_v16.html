@@ -970,15 +970,12 @@ document.querySelector('.tc').addEventListener('mouseleave',()=>{tTimer=setInter
 /* ═══════════════════════════════════════════════════════
    PARTNERS MARQUEE
 ═══════════════════════════════════════════════════════ */
-const pData=[
-  {n:'Honest Green',c:'#02F3C5'},{n:'Aire',c:'#F8A6A3'},{n:'Danone',c:'#02F3C5'},
-  {n:'FC Barcelona',c:'#F8A6A3'},{n:'Condé Nast Traveler',c:'#02F3C5'},
-  {n:'El Periódico',c:'#F8A6A3'},{n:'Time Out',c:'#02F3C5'},
-];
+const pData=['Honest Green','Aire','Danone','FC Barcelona','Condé Nast Traveler','El Periódico','Time Out'];
 const mq=document.getElementById('mq');
-[...pData,...pData].forEach(p=>{
+const colors=['#02F3C5','#F8A6A3'];
+[...pData,...pData].forEach((name,i)=>{
   const s=document.createElement('span');
-  s.className='mq-item';s.textContent=p.n;s.style.color=p.c;
+  s.className='mq-item';s.textContent=name;s.style.color=colors[i%2];
   mq.appendChild(s);
 });
 
