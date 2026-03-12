@@ -225,9 +225,10 @@ section{position:relative;padding:120px 80px;z-index:2}
 /* ── PARTNERS ── */
 .partners{padding:52px 0;overflow:hidden;position:relative;z-index:2;background:transparent;border-bottom:1px solid rgba(240,239,233,.06)}
 .p-label{text-align:center;margin-bottom:42px;font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--white38)}
-.mq{display:flex;width:max-content;animation:mq 30s linear infinite}
+.mq{display:flex;align-items:center;width:max-content;animation:mq 28s linear infinite}
 .mq:hover{animation-play-state:paused}
-.mq-item{padding:0 48px;font-size:.76rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;white-space:nowrap}
+.mq-item{padding:0 18px;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;white-space:nowrap}
+.mq-dot{width:3px;height:3px;border-radius:50%;background:rgba(240,239,233,.2);flex-shrink:0}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ── BOOKING ── */
@@ -974,6 +975,7 @@ const pData=['Honest Green','Aire','Danone','FC Barcelona','Condé Nast Traveler
 const mq=document.getElementById('mq');
 const colors=['#02F3C5','#F8A6A3'];
 [...pData,...pData].forEach((name,i)=>{
+  if(i>0){const dot=document.createElement('span');dot.className='mq-dot';mq.appendChild(dot)}
   const s=document.createElement('span');
   s.className='mq-item';s.textContent=name;s.style.color=colors[i%2];
   mq.appendChild(s);
