@@ -235,8 +235,8 @@ section{position:relative;padding:120px 80px;z-index:2}
 .booking{padding:120px 80px;border-bottom:1px solid rgba(240,239,233,.06)}
 .booking-in{max-width:1140px;margin:0 auto;text-align:center}
 .booking-sub{color:var(--white38);font-size:1rem;line-height:1.72;max-width:540px;margin:18px auto 68px}
-.b-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
-.b-card{border-radius:6px;padding:42px 34px;border:1px solid rgba(240,239,233,.1);transition:border-color .3s,transform .3s;position:relative;overflow:hidden;text-align:left}
+.b-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+.b-card{border-radius:6px;padding:42px 34px;border:1px solid rgba(240,239,233,.1);transition:border-color .3s,transform .3s;position:relative;overflow:hidden;text-align:left;display:flex;flex-direction:column}
 .b-card:hover{border-color:rgba(240,239,233,.2);transform:translateY(-5px)}
 .b-card.pri{border-color:rgba(2,243,197,.24);background:linear-gradient(140deg,rgba(2,243,197,.045) 0%,transparent 55%)}
 .b-card.pri:hover{border-color:rgba(2,243,197,.48)}
@@ -245,7 +245,7 @@ section{position:relative;padding:120px 80px;z-index:2}
 .b-price{font-family:'PT Serif',serif;font-size:3.2rem;font-weight:700;letter-spacing:-.03em;line-height:1;margin-bottom:6px}
 .b-mo{font-size:1rem;font-weight:400;color:var(--white38);letter-spacing:0}
 .b-price-sub{font-size:.8rem;color:var(--white38);margin-bottom:22px}
-.b-desc{font-size:.85rem;color:var(--white60);line-height:1.66;margin-bottom:28px}
+.b-desc{font-size:.85rem;color:var(--white60);line-height:1.66;margin-bottom:28px;flex:1}
 .b-btn-p{display:block;text-align:center;background:var(--cyan);color:var(--navy);padding:14px 24px;border-radius:3px;font-size:.82rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;transition:background .2s,transform .15s}
 .b-btn-p:hover{background:#18ffda;transform:translateY(-1px)}
 .b-btn-g{display:block;text-align:center;border:1px solid rgba(240,239,233,.2);padding:13px 24px;border-radius:3px;font-size:.82rem;font-weight:500;letter-spacing:.05em;color:var(--white60);transition:border-color .25s,color .25s}
@@ -576,6 +576,7 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
           <li>3 classes, any type</li>
           <li>Valid 30 days</li>
           <li>No commitment</li>
+          <li>Mat & towel provided</li>
         </ul>
       </div>
 
