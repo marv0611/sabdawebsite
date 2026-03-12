@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- classes-v15 -->
+<meta charset="UTF-8"><!-- classes-v16 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Classes & Schedule — SABDA Studio Barcelona</title>
 <meta name="description" content="Explore our weekly schedule of immersive yoga, pilates, sound healing, breathwork, ecstatic dance and meditation classes. Book your spot now.">
@@ -42,6 +42,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 .nav-links a.active{opacity:1}.nav-links a.active::after{right:0}
 .nav-ig{display:inline-flex;align-items:center;gap:8px;background:var(--salmon);color:var(--navy);padding:10px 22px;border-radius:3px;font-size:.8rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;transition:background .2s,transform .2s}
 .nav-ig:hover{background:#fab3b0;transform:translateY(-1px)}
+.nav-ig svg{color:var(--cyan);stroke:var(--cyan)}
 
 /* ── HERO BANNER ── */
 .hero-banner{position:relative;width:100%;height:320px;overflow:hidden}
@@ -264,13 +265,26 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 #momence-plugin-host-schedule [class*="expand-button"],
 #momence-plugin-host-schedule button[class*="vbm3tv"]{color:var(--cyan) !important}
 
-/* ── Select dropdown popups ── */
+/* ── Select dropdown popups — must sit above class cards ── */
 #momence-plugin-host-schedule ul[class*="cmpnl9-2"],
-#momence-plugin-host-schedule .momence-select-popup{background:#131842 !important}
+#momence-plugin-host-schedule .momence-select-popup,
+#momence-plugin-host-schedule [class*="select-popup"],
+#momence-plugin-host-schedule [role="listbox"]{
+  background:#131842 !important;
+  border-color:rgba(240,239,233,.1) !important;
+  z-index:999 !important;
+  position:absolute !important;
+}
 #momence-plugin-host-schedule li[class*="cmpnl9-3"],
 #momence-plugin-host-schedule .momence-select-option{background:#131842 !important}
 #momence-plugin-host-schedule li[class*="cmpnl9-3"]:hover,
 #momence-plugin-host-schedule .momence-select-option:hover{background:rgba(240,239,233,.08) !important}
+/* The filter row itself needs z-index above session list */
+#momence-plugin-host-schedule .momence-host_schedule-third_row,
+#momence-plugin-host-schedule [class*="third_row"]{
+  position:relative !important;
+  z-index:10 !important;
+}
 
 /* ── Subdued text ── */
 #momence-plugin-host-schedule time{color:rgba(240,239,233,.5) !important}
@@ -520,13 +534,23 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     /* Momence renders modal overlays with position:fixed that escape the widget */
     el.querySelectorAll('*').forEach(node=>{
       const pos=getComputedStyle(node).position;
-      if(pos==='fixed'||pos==='sticky'){
+      if(pos==='fixed'){
         node.style.setProperty('position','relative','important');
         node.style.setProperty('top','auto','important');
         node.style.setProperty('left','auto','important');
         node.style.setProperty('right','auto','important');
         node.style.setProperty('bottom','auto','important');
       }
+    });
+    /* Fix Teachers dropdown z-index — must sit above class cards */
+    el.querySelectorAll('[role="listbox"], [class*="select-popup"], [class*="cmpnl9-2"]').forEach(popup=>{
+      popup.style.setProperty('z-index','999','important');
+      popup.style.setProperty('position','absolute','important');
+      popup.style.setProperty('background','#131842','important');
+    });
+    el.querySelectorAll('[class*="third_row"], [class*="session_filters"]').forEach(row=>{
+      row.style.setProperty('position','relative','important');
+      row.style.setProperty('z-index','10','important');
     });
   }
 
@@ -605,6 +629,15 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     if(++tick>60)clearInterval(persist); /* Stop after 30s */
   },500);
 })();
+</script>
+<script>
+/* Scroll to #pricing if hash is present (deferred to beat Momence layout shifts) */
+if(window.location.hash){
+  setTimeout(()=>{
+    const target=document.querySelector(window.location.hash);
+    if(target)target.scrollIntoView({behavior:'smooth',block:'start'});
+  },800);
+}
 </script>
 
 <!-- PRICING — optimized for new customer conversion -->
