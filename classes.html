@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- classes-v9 -->
+<meta charset="UTF-8"><!-- classes-v10 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Classes & Schedule — SABDA Studio Barcelona</title>
 <meta name="description" content="Explore our weekly schedule of immersive yoga, pilates, sound healing, breathwork, ecstatic dance and meditation classes. Book your spot now.">
@@ -338,73 +338,81 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 </script>
 <script>
 /* ═══════════════════════════════════════════════════════
-   MOMENCE WIDGET CUSTOMIZATION
-   1. Force dark theme CSS variables
-   2. Move day selector into first row (between "Classes" and "Week/Month")
-   3. Rename "Practitioners" → "Teachers"
-   4. Hide price, pagination, location
+   MOMENCE WIDGET — SABDA DARK THEME
+   Uses JS to force styles because styled-components
+   override CSS even with !important.
+   CRITICAL: Never move DOM nodes — breaks React reconciliation.
 ═══════════════════════════════════════════════════════ */
 (function(){
   const el=document.getElementById('momence-plugin-host-schedule');
   if(!el)return;
 
-  /* ── Dark theme variables ── */
-  const vars={
-    '--momence-background':'#0e1235','--momence-white':'#131842',
-    '--momence-primary-color':'#f0efe9',
-    '--momence-secondary-color':'rgba(240,239,233,.6)',
-    '--momence-tertiary-color':'rgba(240,239,233,.38)',
-    '--momence-primary-500':'#02F3C5','--momence-primary-400':'rgba(2,243,197,.55)',
-    '--momence-primary-600':'#00d4ac','--momence-primary-050':'rgba(2,243,197,.04)',
-    '--momence-primary-100':'rgba(2,243,197,.08)',
-    '--momence-black-500':'#f0efe9','--momence-black-400':'rgba(240,239,233,.8)',
-    '--momence-black-300':'rgba(240,239,233,.65)',
-    '--momence-black-200':'rgba(240,239,233,.5)',
-    '--momence-black-100':'rgba(240,239,233,.35)',
-    '--momence-grey-200':'rgba(240,239,233,.08)',
-    '--momence-grey-100':'rgba(240,239,233,.05)',
-    '--momence-grey-050':'rgba(240,239,233,.03)',
-    '--momence-session-separator-color':'rgba(240,239,233,.06)',
-  };
-  function applyVars(){
-    const root=document.documentElement;
-    for(const[k,v]of Object.entries(vars))root.style.setProperty(k,v,'important');
-  }
-  applyVars();
-  const obs=new MutationObserver(()=>applyVars());
-  obs.observe(document.head,{childList:true,subtree:true});
-  let vc=0;const vi=setInterval(()=>{applyVars();if(++vc>25)clearInterval(vi)},200);
+  /* ── Force dark theme on ALL widget elements ── */
+  function forceStyles(){
+    /* Every element inside widget: white text, transparent bg */
+    el.querySelectorAll('*').forEach(node=>{
+      const s=node.style;
+      const tag=node.tagName;
+      const cls=node.className||'';
 
-  /* ── Move day selector between "Classes" and "Week/Month" ── */
-  let moved=false;
-  function moveDaySelector(){
-    if(moved)return;
-    const firstRow=el.querySelector('.momence-host_schedule-first_row');
-    const daySelection=el.querySelector('.momence-day_selection');
-    if(!firstRow||!daySelection)return;
+      /* Skip images */
+      if(tag==='IMG')return;
 
-    /* Insert day selector as the second child of first row */
-    const viewToggle=firstRow.querySelector('.momence-view-toggle');
-    if(viewToggle&&viewToggle.parentElement){
-      firstRow.insertBefore(daySelection,viewToggle.parentElement);
-    }else{
-      firstRow.appendChild(daySelection);
-    }
+      /* Force text color to white */
+      s.setProperty('color','#f0efe9','important');
 
-    /* Make first row wrap properly */
-    firstRow.style.cssText='display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-bottom:16px';
-    daySelection.style.cssText='flex:1;min-width:200px;order:1';
+      /* Force backgrounds transparent (except cards and book buttons) */
+      if(tag==='ARTICLE'){
+        s.setProperty('background','rgba(19,24,66,.65)','important');
+        s.setProperty('border-color','rgba(240,239,233,.06)','important');
+        s.setProperty('border-radius','16px','important');
+      }else if(
+        (tag==='A'||tag==='BUTTON')&&
+        (cls.includes('primary')||cls.includes('sc-12tukza'))
+      ){
+        /* Book Now buttons — cyan */
+        s.setProperty('background','#02F3C5','important');
+        s.setProperty('color','#0e1235','important');
+        s.setProperty('border-color','#02F3C5','important');
+      }else{
+        s.setProperty('background-color','transparent','important');
+        s.setProperty('background','transparent','important');
+      }
 
-    /* Event type (Classes label) */
-    const eventType=firstRow.querySelector('.momence-event_type_select');
-    if(eventType)eventType.style.cssText='order:0;flex-shrink:0';
+      /* SVGs */
+      if(tag==='SVG'||tag==='PATH'||tag==='CIRCLE'||tag==='LINE'||tag==='POLYLINE'){
+        s.setProperty('stroke','#f0efe9','important');
+        s.setProperty('color','#f0efe9','important');
+      }
 
-    /* View toggle container */
-    if(viewToggle&&viewToggle.parentElement){
-      viewToggle.parentElement.style.cssText='order:2;flex-shrink:0;margin-left:auto';
-    }
+      /* Borders on buttons */
+      if(tag==='BUTTON'){
+        s.setProperty('border-color','rgba(240,239,233,.12)','important');
+      }
+    });
 
-    moved=true;
+    /* Specific overrides */
+    /* h3 (CLASS label) → salmon */
+    el.querySelectorAll('h3').forEach(h=>{
+      h.style.setProperty('color','#F8A6A3','important');
+    });
+
+    /* h4 (class title) → PT Serif */
+    el.querySelectorAll('h4').forEach(h=>{
+      h.style.setProperty('font-family','PT Serif,serif','important');
+      h.style.setProperty('font-weight','400','important');
+    });
+
+    /* Today's day → cyan */
+    el.querySelectorAll('[data-is-today="true"]').forEach(d=>{
+      d.style.setProperty('color','#02F3C5','important');
+      d.querySelectorAll('*').forEach(c=>c.style.setProperty('color','#02F3C5','important'));
+    });
+
+    /* Date labels (TOMORROW, etc) → subdued */
+    el.querySelectorAll('time').forEach(t=>{
+      t.style.setProperty('color','rgba(240,239,233,.5)','important');
+    });
   }
 
   /* ── Rename Practitioners → Teachers ── */
@@ -419,15 +427,56 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     });
   }
 
-  /* ── Watch for widget render, apply all patches ── */
-  const widgetObs=new MutationObserver(()=>{
-    moveDaySelector();
-    patchText();
-  });
-  widgetObs.observe(el,{childList:true,subtree:true,characterData:true});
+  /* ── Hide unwanted elements ── */
+  function hideElements(){
+    /* Powered by Momence */
+    el.querySelectorAll('[class*="powered_by"]').forEach(e=>e.style.setProperty('display','none','important'));
+    /* Location on cards */
+    el.querySelectorAll('[class*="in_person"]').forEach(e=>e.style.setProperty('display','none','important'));
+    /* Locations dropdown (last filter) */
+    const filters=el.querySelector('[class*="session_filters"]');
+    if(filters&&filters.lastElementChild)filters.lastElementChild.style.setProperty('display','none','important');
+    /* Price on cards */
+    el.querySelectorAll('[class*="price"]').forEach(e=>{
+      if(!e.closest('[class*="pricing"]'))e.style.setProperty('display','none','important');
+    });
+    /* Pagination */
+    el.querySelectorAll('[class*="pagination"]').forEach(e=>e.style.setProperty('display','none','important'));
+    /* System row */
+    el.querySelectorAll('[class*="sys_row"]').forEach(e=>e.style.setProperty('display','none','important'));
+  }
 
-  /* Fallback timers */
-  [500,1000,1500,2500,4000].forEach(ms=>setTimeout(()=>{moveDaySelector();patchText()},ms));
+  /* ── Apply CSS variables too (belt AND suspenders) ── */
+  function applyVars(){
+    const root=document.documentElement;
+    const vars={
+      '--momence-background':'#0e1235','--momence-white':'#131842',
+      '--momence-primary-color':'#f0efe9',
+      '--momence-secondary-color':'rgba(240,239,233,.6)',
+      '--momence-primary-500':'#02F3C5',
+      '--momence-black-500':'#f0efe9','--momence-black-400':'rgba(240,239,233,.8)',
+      '--momence-black-300':'rgba(240,239,233,.65)',
+      '--momence-grey-200':'rgba(240,239,233,.08)',
+      '--momence-session-separator-color':'rgba(240,239,233,.06)',
+    };
+    for(const[k,v]of Object.entries(vars))root.style.setProperty(k,v,'important');
+  }
+
+  /* ── Run everything ── */
+  function runAll(){
+    applyVars();
+    forceStyles();
+    patchText();
+    hideElements();
+  }
+
+  /* Watch for widget mutations */
+  const obs=new MutationObserver(runAll);
+  obs.observe(el,{childList:true,subtree:true});
+  obs.observe(document.head,{childList:true,subtree:true});
+
+  /* Run on timers to catch initial render + re-renders */
+  [300,600,1000,1500,2000,3000,4000,6000,8000].forEach(ms=>setTimeout(runAll,ms));
 })();
 </script>
 
