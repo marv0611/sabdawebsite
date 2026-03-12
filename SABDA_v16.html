@@ -96,7 +96,6 @@ section{position:relative;padding:130px 80px}
 /* ── MANIFESTO ── */
 .manifesto{min-height:100vh;display:flex;align-items:center;padding:160px 80px;position:relative;
   background:radial-gradient(ellipse 90% 70% at 15% 55%,rgba(248,166,163,.02) 0%,transparent 65%)}
-.manifesto::after{content:'';position:absolute;bottom:0;left:0;right:0;height:180px;background:linear-gradient(to bottom,transparent,var(--navy));pointer-events:none}
 .manifesto-inner{display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:center;max-width:1340px;width:100%;margin:0 auto}
 .manifesto-heading{font-family:'PT Serif',serif;font-size:clamp(2.4rem,4.2vw,3.8rem);line-height:1.1;font-weight:700;letter-spacing:-.028em;margin-bottom:38px}
 .manifesto-heading em{font-style:italic;color:var(--salmon)}
@@ -107,14 +106,13 @@ section{position:relative;padding:130px 80px}
 .pill-dot.a{background:var(--salmon)}.pill-dot.t{background:var(--cyan)}.pill-dot.w{background:var(--white38)}
 
 /* SYMBOL */
-.manifesto-symbol{position:relative;display:flex;align-items:center;justify-content:center}
-.sym-wrap{position:relative;width:min(500px,44vw);aspect-ratio:1}
+.manifesto-symbol{position:relative;display:flex;align-items:center;justify-content:center;min-height:400px}
+.sym-wrap{position:relative;width:min(520px,44vw);min-width:300px;aspect-ratio:1}
 #orbContainer{position:absolute;inset:0;width:100%;height:100%}
+#orbContainer canvas{display:block;width:100%!important;height:100%!important}
 
 /* ── CLASSES ── */
-.classes{padding:130px 80px;position:relative}
-.classes::before{content:'';position:absolute;top:0;left:0;right:0;height:140px;background:linear-gradient(to bottom,var(--navy),transparent);pointer-events:none;z-index:1}
-.classes::after{content:'';position:absolute;bottom:0;left:0;right:0;height:180px;background:linear-gradient(to bottom,transparent,var(--navy));pointer-events:none;z-index:1}
+.classes{padding:130px 80px;position:relative;background:var(--navy)}
 .classes-hdr{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:68px}
 .cls-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1440px;width:100%;margin:0 auto}
 .cls-card{position:relative;height:530px;border-radius:4px;overflow:hidden;cursor:none;background:var(--navy)}
@@ -154,7 +152,7 @@ section{position:relative;padding:130px 80px}
 .schedule-btn:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(2,243,197,.06);transform:translateY(-1px);gap:14px}
 
 /* ── SECTION TRANSITION — ORGANIC PARTICLE FLOW ── */
-.section-fade{position:relative;height:200px;pointer-events:auto;overflow:visible;margin:-100px 0;z-index:3}
+.section-fade{position:relative;height:180px;pointer-events:auto;overflow:hidden;background:var(--navy)}
 .section-fade canvas{position:absolute;inset:0;width:100%;height:100%}
 
 /* ── SPACE GALLERY ── */
@@ -304,7 +302,7 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
 }
 @media(max-width:520px){.ft-in{grid-template-columns:1fr}.trust-in{gap:36px}.classes-hdr{flex-direction:column;align-items:flex-start;gap:16px}}
 </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
 
@@ -753,23 +751,23 @@ document.querySelectorAll('.particle-stream').forEach(canvas=>{
   canvas.parentElement.addEventListener('mouseleave',()=>{mouseX=-9999;mouseY=-9999});
 
   /* Many particles, organic */
-  const COUNT=120;
+  const COUNT=300;
   const particles=Array.from({length:COUNT},()=>{
-    const baseY=0.15+Math.random()*0.7;
+    const baseY=0.1+Math.random()*0.8;
     return{
       x:Math.random()*3000,
       y:baseY,
       baseY:baseY,
-      vx:0.06+Math.random()*0.22,
+      vx:0.04+Math.random()*0.18,
       vy:0,
       fx:0,fy:0,/* force from mouse */
-      size:0.6+Math.random()*2.2,
-      glow:10+Math.random()*28,
+      size:0.5+Math.random()*2.0,
+      glow:8+Math.random()*22,
       color:Math.random()<0.5?[248,166,163]:[2,243,197],
-      opacity:0.06+Math.random()*0.35,
+      opacity:0.05+Math.random()*0.3,
       phase:Math.random()*Math.PI*2,
-      waveAmp:0.04+Math.random()*0.15,
-      waveFreq:0.0006+Math.random()*0.002,
+      waveAmp:0.03+Math.random()*0.12,
+      waveFreq:0.0004+Math.random()*0.0015,
     };
   });
 
@@ -846,11 +844,14 @@ document.querySelectorAll('.particle-stream').forEach(canvas=>{
    MANIFESTO — 3D CYMATIC SYMBOL (Three.js)
    SABDA concentric circle symbol alive in 3D
 ═══════════════════════════════════════════════════════ */
-(function initOrb(){
+function initOrb(){
   const container=document.getElementById('orbContainer');
-  if(!container||typeof THREE==='undefined')return;
+  if(!container)return;
+  if(typeof THREE==='undefined'){setTimeout(initOrb,100);return}
 
-  const W=container.offsetWidth||500;
+  const W=container.offsetWidth;
+  if(W<10){setTimeout(initOrb,100);return}/* wait for layout */
+
   const scene=new THREE.Scene();
   const camera=new THREE.PerspectiveCamera(35,1,.1,100);
   camera.position.z=4.2;
@@ -967,7 +968,10 @@ document.querySelectorAll('.particle-stream').forEach(canvas=>{
     const w=container.offsetWidth;
     if(w>0){renderer.setSize(w,w);renderer.setPixelRatio(Math.min(devicePixelRatio,2))}
   }).observe(container);
-})();
+}
+/* Init after layout ready */
+if(document.readyState==='complete')initOrb();
+else window.addEventListener('load',initOrb);
 
 /* ═══════════════════════════════════════════════════════
    SPACE GALLERY
