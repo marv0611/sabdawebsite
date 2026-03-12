@@ -610,8 +610,7 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
       </div>
 
     </div>
-    <p class="b-foot rv" style="transition-delay:.3s">Just want to try one class? <a href="https://momence.com/m/443934" target="_blank">Single drop-in — €16 →</a></p>
-    <div class="b-all rv" style="transition-delay:.36s"><a href="https://momence.com/SABDA-54278" target="_blank" class="b-all-link">Explore all our class packs & offers <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+    <p class="b-foot rv" style="transition-delay:.3s"><a href="https://momence.com/SABDA-54278" target="_blank">See all our offers →</a></p>
   </div>
 </section>
 
@@ -715,11 +714,12 @@ function animateCount(el){
   const target=parseFloat(el.dataset.count);
   const decimals=parseInt(el.dataset.decimals||'0');
   const suffix=el.dataset.suffix||'';
-  const duration=1400;
+  const duration=2200;
   const start=performance.now();
   function step(now){
     const t=Math.min((now-start)/duration,1);
-    const ease=1-Math.pow(1-t,4);
+    /* Dramatic deceleration — spins fast then crawls to final number */
+    const ease=1-Math.pow(1-t,6); /* ease-out sextic — much heavier braking */
     const val=(target*ease).toFixed(decimals);
     el.textContent=val+suffix;
     if(t<1)requestAnimationFrame(step);
