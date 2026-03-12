@@ -121,7 +121,8 @@ section{position:relative;padding:120px 80px;z-index:2}
 .ss-div{width:1px;height:48px;background:rgba(240,239,233,.1)}
 
 /* ── CLASSES — DUAL-ROW MARQUEE GALLERY ── */
-.classes{padding:100px 0 80px;position:relative;z-index:2;overflow:hidden}
+.classes{padding:100px 0 0;position:relative;z-index:2;overflow:hidden}
+.classes::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to top,var(--navy) 0%,transparent 100%);pointer-events:none;z-index:3}
 .classes-hdr{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:56px;padding:0 80px}
 .cls-row-wrap{overflow:hidden;margin-bottom:14px}
 .cls-row{display:flex;gap:14px;width:max-content;will-change:transform}
@@ -181,7 +182,7 @@ section{position:relative;padding:120px 80px;z-index:2}
 .sg-explore:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(2,243,197,.06)}
 
 /* ── TESTIMONIALS ── */
-.testimonials{padding:80px 80px;border-bottom:1px solid rgba(240,239,233,.06)}
+.testimonials{padding:80px 80px;border-top:1px solid rgba(240,239,233,.06);border-bottom:1px solid rgba(240,239,233,.06)}
 .testi-hdr{text-align:center;margin-bottom:44px}
 .tc{position:relative;max-width:820px;margin:0 auto;text-align:center}
 .ti{position:absolute;inset:0;opacity:0;transform:translateY(14px);transition:opacity .75s var(--ease-expo),transform .75s var(--ease-expo);display:flex;flex-direction:column;align-items:center}
@@ -217,22 +218,26 @@ section{position:relative;padding:120px 80px;z-index:2}
 
 /* ── BOOKING ── */
 .booking{padding:120px 80px;border-bottom:1px solid rgba(240,239,233,.06)}
-.booking-in{max-width:1020px;margin:0 auto;text-align:center}
-.booking-sub{color:var(--white38);font-size:1rem;line-height:1.72;max-width:500px;margin:18px auto 68px}
-.b-cards{display:flex;gap:22px;justify-content:center;align-items:stretch;flex-wrap:wrap}
-.b-card{flex:1;min-width:290px;max-width:390px;border-radius:6px;padding:46px 38px;border:1px solid rgba(240,239,233,.1);transition:border-color .3s,transform .3s;position:relative;overflow:hidden}
+.booking-in{max-width:1140px;margin:0 auto;text-align:center}
+.booking-sub{color:var(--white38);font-size:1rem;line-height:1.72;max-width:540px;margin:18px auto 68px}
+.b-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start}
+.b-card{border-radius:6px;padding:42px 34px;border:1px solid rgba(240,239,233,.1);transition:border-color .3s,transform .3s;position:relative;overflow:hidden;text-align:left}
 .b-card:hover{border-color:rgba(240,239,233,.2);transform:translateY(-5px)}
 .b-card.pri{border-color:rgba(2,243,197,.24);background:linear-gradient(140deg,rgba(2,243,197,.045) 0%,transparent 55%)}
 .b-card.pri:hover{border-color:rgba(2,243,197,.48)}
-.b-badge{display:inline-block;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--navy);background:var(--cyan);padding:4px 10px;border-radius:2px;font-weight:700;margin-bottom:22px}
+.b-badge{display:inline-block;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--navy);background:var(--cyan);padding:4px 10px;border-radius:2px;font-weight:700;margin-bottom:22px}
 .b-lbl{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--white38);margin-bottom:14px;display:block}
-.b-price{font-family:'PT Serif',serif;font-size:3.6rem;font-weight:700;letter-spacing:-.03em;line-height:1;margin-bottom:6px}
-.b-price-sub{font-size:.82rem;color:var(--white38);margin-bottom:26px}
-.b-desc{font-size:.88rem;color:var(--white60);line-height:1.66;margin-bottom:34px}
-.b-btn-p{display:block;text-align:center;background:var(--cyan);color:var(--navy);padding:14px 24px;border-radius:3px;font-size:.84rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;transition:background .2s,transform .15s}
+.b-price{font-family:'PT Serif',serif;font-size:3.2rem;font-weight:700;letter-spacing:-.03em;line-height:1;margin-bottom:6px}
+.b-mo{font-size:1rem;font-weight:400;color:var(--white38);letter-spacing:0}
+.b-price-sub{font-size:.8rem;color:var(--white38);margin-bottom:22px}
+.b-desc{font-size:.85rem;color:var(--white60);line-height:1.66;margin-bottom:28px}
+.b-btn-p{display:block;text-align:center;background:var(--cyan);color:var(--navy);padding:14px 24px;border-radius:3px;font-size:.82rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;transition:background .2s,transform .15s}
 .b-btn-p:hover{background:#18ffda;transform:translateY(-1px)}
-.b-btn-g{display:block;text-align:center;border:1px solid rgba(240,239,233,.2);padding:13px 24px;border-radius:3px;font-size:.84rem;font-weight:500;letter-spacing:.05em;color:var(--white60);transition:border-color .25s,color .25s}
+.b-btn-g{display:block;text-align:center;border:1px solid rgba(240,239,233,.2);padding:13px 24px;border-radius:3px;font-size:.82rem;font-weight:500;letter-spacing:.05em;color:var(--white60);transition:border-color .25s,color .25s}
 .b-btn-g:hover{border-color:var(--white60);color:var(--white)}
+.b-features{list-style:none;margin-top:26px;padding-top:22px;border-top:1px solid rgba(240,239,233,.06);display:flex;flex-direction:column;gap:12px}
+.b-features li{font-size:.82rem;color:var(--white38);padding-left:20px;position:relative}
+.b-features li::before{content:'';position:absolute;left:0;top:6px;width:6px;height:6px;border-radius:50%;background:var(--cyan);opacity:.5}
 .b-foot{margin-top:34px;font-size:.82rem;color:var(--white38)}
 .b-foot a{color:var(--cyan);transition:color .2s}
 .b-foot a:hover{color:var(--white)}
@@ -286,7 +291,7 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
   .cls-item{width:280px;height:200px}
   .loc-in{grid-template-columns:1fr;gap:44px}
   .ft-in{grid-template-columns:1fr 1fr}
-  .b-cards{flex-direction:column;align-items:center}
+  .b-cards{grid-template-columns:1fr;max-width:400px;margin:0 auto}
   .sbk{display:flex}
   .sg-content{padding:0 24px 48px}
   .sg-stats-row{gap:28px}
@@ -539,26 +544,54 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
 <section class="booking">
   <div class="booking-in">
     <span class="sl rv">Get started</span>
-    <h2 class="sh2 rv" style="transition-delay:.06s">Experience it.<br><em>Start here.</em></h2>
-    <p class="booking-sub rv" style="transition-delay:.12s">Your first 3 immersive classes. Any class type. Mix and match. Within 30 days.</p>
+    <h2 class="sh2 rv" style="transition-delay:.06s">Find the right rhythm<br><em>for your practice.</em></h2>
+    <p class="booking-sub rv" style="transition-delay:.12s">Choose from flexible plans designed for every lifestyle, whether you're just starting or flowing daily.</p>
     <div class="b-cards">
-      <div class="b-card pri rv" style="transition-delay:.15s">
-        <div class="b-badge">Recommended</div>
-        <span class="b-lbl">Your first 3 classes</span>
+
+      <div class="b-card rv" style="transition-delay:.15s">
+        <span class="b-lbl">Intro 3-Pack</span>
         <div class="b-price">€48</div>
-        <div class="b-price-sub">€16 per class · New students only</div>
-        <p class="b-desc">Try any 3 classes within 30 days. Yoga, sound healing, breathwork, pilates — all in 360° immersion. No commitment.</p>
-        <a href="https://momence.com/m/443935" class="b-btn-p" target="_blank">Book 3 Classes</a>
+        <div class="b-price-sub">€16 per class · New students</div>
+        <p class="b-desc">Try any 3 classes within 30 days. Yoga, sound healing, breathwork, pilates — all in 360° immersion.</p>
+        <a href="https://momence.com/m/443935" class="b-btn-g" target="_blank">Get Started</a>
+        <ul class="b-features">
+          <li>3 classes, any type</li>
+          <li>Valid 30 days</li>
+          <li>No commitment</li>
+        </ul>
       </div>
-      <div class="b-card rv" style="transition-delay:.22s">
-        <span class="b-lbl">Just one class</span>
-        <div class="b-price">€16</div>
-        <div class="b-price-sub">Single drop-in · Any class type</div>
-        <p class="b-desc">Want to try one session before committing? Come in, feel the space, and take it from there.</p>
-        <a href="https://momence.com/m/443934" class="b-btn-g" target="_blank">Book One Class</a>
+
+      <div class="b-card pri rv" style="transition-delay:.2s">
+        <div class="b-badge">Popular</div>
+        <span class="b-lbl">Unlimited Monthly</span>
+        <div class="b-price">€130<span class="b-mo">/month</span></div>
+        <div class="b-price-sub">Unlimited classes · All types</div>
+        <p class="b-desc">Ideal balance of flexibility and commitment. Flow as much as you want, every week.</p>
+        <a href="https://momence.com/m/431216" class="b-btn-p" target="_blank">Join Now</a>
+        <ul class="b-features">
+          <li>Everything in Intro</li>
+          <li>Unlimited weekly classes</li>
+          <li>Priority booking</li>
+          <li>1 guest pass / month</li>
+        </ul>
       </div>
+
+      <div class="b-card rv" style="transition-delay:.25s">
+        <span class="b-lbl">3-Month Unlimited</span>
+        <div class="b-price">€300<span class="b-mo">/3 months</span></div>
+        <div class="b-price-sub">€100/month · Save €90</div>
+        <p class="b-desc">For dedicated practitioners. Lock in the best rate and make SABDA part of your daily rhythm.</p>
+        <a href="https://momence.com/m/445600" class="b-btn-g" target="_blank">Start Unlimited</a>
+        <ul class="b-features">
+          <li>Everything in Monthly</li>
+          <li>Unlimited weekly classes</li>
+          <li>Free workshops &amp; events</li>
+          <li>One-on-one intro session</li>
+        </ul>
+      </div>
+
     </div>
-    <p class="b-foot rv" style="transition-delay:.3s">Becoming a regular? <a href="https://momence.com/m/431216" target="_blank">Memberships from €130/mo →</a></p>
+    <p class="b-foot rv" style="transition-delay:.3s">Just want to try one class? <a href="https://momence.com/m/443934" target="_blank">Single drop-in — €16 →</a></p>
   </div>
 </section>
 
