@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- classes-v5 -->
+<meta charset="UTF-8"><!-- classes-v6 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Classes & Schedule — SABDA Studio Barcelona</title>
 <meta name="description" content="Explore our weekly schedule of immersive yoga, pilates, sound healing, breathwork, ecstatic dance and meditation classes. Book your spot now.">
@@ -144,7 +144,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 #momence-plugin-host-schedule [class*="1rbd2nr"]{display:none !important}
 /* ★ Ensure day selector row is visible */
 #momence-plugin-host-schedule .momence-day_selection{display:flex !important}
-#momence-plugin-host-schedule .momence-host_schedule-second_row{display:flex !important}
+#momence-plugin-host-schedule .momence-host_schedule-second_row{display:flex !important;margin-bottom:0 !important}
+/* When day selector is moved into first row, make the second row container invisible */
+#momence-plugin-host-schedule .momence-host_schedule-second_row:empty{display:none !important}
+/* First row layout when day selector is inside it */
+#momence-plugin-host-schedule .momence-host_schedule-first_row{
+  display:flex !important;flex-wrap:wrap !important;align-items:center !important;gap:12px !important;
+}
 /* One-click booking banner */
 #momence-plugin-host-schedule [class*="fS"]{background:rgba(2,243,197,.06) !important}
 
@@ -159,14 +165,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 .pricing{padding:80px 80px 0;position:relative;z-index:2;border-top:1px solid rgba(240,239,233,.06)}
 .pricing-hdr{text-align:center;margin-bottom:52px}
 .pricing-hdr h2{font-family:'PT Serif',serif;font-size:2.2rem;font-weight:400;margin-bottom:10px}
-.pricing-hdr p{color:var(--white38);font-size:.92rem;max-width:420px;margin:0 auto}
+.pricing-hdr p{color:var(--white38);font-size:.92rem;max-width:420px;margin:0 auto;line-height:1.7}
 .pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:960px;margin:0 auto}
-.pricing-col{text-align:center}
+.pricing-col{text-align:center;position:relative;padding:24px 8px 8px;border-radius:16px}
 .pricing-col h3{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--white60);margin-bottom:20px;font-weight:500;font-family:'DM Sans',sans-serif}
-.pricing-col a{display:block;padding:18px 12px;border-radius:40px;background:var(--cyan);color:var(--navy);font-weight:700;font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;margin-bottom:14px;transition:background .2s,transform .15s;text-align:center}
+.pricing-col a{display:block;padding:18px 12px;border-radius:40px;background:var(--cyan);color:var(--navy);font-weight:700;font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;margin-bottom:14px;transition:background .2s,transform .15s;text-align:center;position:relative}
 .pricing-col a:hover{background:#18ffda;transform:translateY(-2px)}
-.pricing-col a.outline{background:transparent;border:1px solid rgba(240,239,233,.12);color:var(--white)}
-.pricing-col a.outline:hover{background:rgba(240,239,233,.05);transform:translateY(-2px)}
+/* Per-class price label */
+.per-class{display:block;font-size:.68rem;font-weight:500;letter-spacing:.04em;margin-top:3px;opacity:.7;text-transform:none}
+/* Hero column — "Best Value" */
+.hero-col{border:1px solid rgba(2,243,197,.25);background:rgba(2,243,197,.03);border-radius:16px}
+.pricing-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--salmon);color:var(--navy);font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:5px 14px;border-radius:20px;white-space:nowrap}
 
 /* ── GIFT CARDS ── */
 .giftcards{padding:80px 80px;position:relative;z-index:2;border-top:1px solid rgba(240,239,233,.06);margin-top:80px}
@@ -243,10 +252,18 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
   i18n='{"TEACHER_SELECT_PLACEHOLDER":"Teachers","TEACHER":"Teacher","SUBSTITUTES_FOR_SHORT":"Sub for"}'>
 </script>
 <script>
-/* Force SABDA dark theme on Momence widget after it loads */
-(function forceTheme(){
+/* ═══════════════════════════════════════════════════════
+   MOMENCE WIDGET CUSTOMIZATION
+   1. Force dark theme CSS variables
+   2. Move day selector into first row (between "Classes" and "Week/Month")
+   3. Rename "Practitioners" → "Teachers"
+   4. Hide price, pagination, location
+═══════════════════════════════════════════════════════ */
+(function(){
   const el=document.getElementById('momence-plugin-host-schedule');
   if(!el)return;
+
+  /* ── Dark theme variables ── */
   const vars={
     '--momence-background':'#0e1235','--momence-white':'#131842',
     '--momence-primary-color':'#f0efe9',
@@ -264,61 +281,101 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
     '--momence-grey-050':'rgba(240,239,233,.03)',
     '--momence-session-separator-color':'rgba(240,239,233,.06)',
   };
-  function apply(){
+  function applyVars(){
     const root=document.documentElement;
     for(const[k,v]of Object.entries(vars))root.style.setProperty(k,v,'important');
   }
-  /* Apply immediately + watch for widget style injections */
-  apply();
-  const obs=new MutationObserver(()=>apply());
+  applyVars();
+  const obs=new MutationObserver(()=>applyVars());
   obs.observe(document.head,{childList:true,subtree:true});
-  /* Also apply on interval for first 5 seconds */
-  let count=0;
-  const iv=setInterval(()=>{apply();if(++count>25)clearInterval(iv)},200);
+  let vc=0;const vi=setInterval(()=>{applyVars();if(++vc>25)clearInterval(vi)},200);
 
-  /* Rename "Practitioners" → "Teachers" and hide "Locations" dropdown */
+  /* ── Move day selector between "Classes" and "Week/Month" ── */
+  let moved=false;
+  function moveDaySelector(){
+    if(moved)return;
+    const firstRow=el.querySelector('.momence-host_schedule-first_row');
+    const daySelection=el.querySelector('.momence-day_selection');
+    if(!firstRow||!daySelection)return;
+
+    /* Insert day selector as the second child of first row */
+    const viewToggle=firstRow.querySelector('.momence-view-toggle');
+    if(viewToggle&&viewToggle.parentElement){
+      firstRow.insertBefore(daySelection,viewToggle.parentElement);
+    }else{
+      firstRow.appendChild(daySelection);
+    }
+
+    /* Make first row wrap properly */
+    firstRow.style.cssText='display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-bottom:16px';
+    daySelection.style.cssText='flex:1;min-width:200px;order:1';
+
+    /* Event type (Classes label) */
+    const eventType=firstRow.querySelector('.momence-event_type_select');
+    if(eventType)eventType.style.cssText='order:0;flex-shrink:0';
+
+    /* View toggle container */
+    if(viewToggle&&viewToggle.parentElement){
+      viewToggle.parentElement.style.cssText='order:2;flex-shrink:0;margin-left:auto';
+    }
+
+    moved=true;
+  }
+
+  /* ── Rename Practitioners → Teachers ── */
   function patchText(){
     el.querySelectorAll('button,span').forEach(b=>{
-      if(b.textContent.trim()==='Practitioners'){
-        b.childNodes.forEach(n=>{if(n.nodeType===3&&n.textContent.includes('Practitioners'))n.textContent=n.textContent.replace('Practitioners','Teachers')});
-      }
-      if(b.textContent.trim()==='Practitioner'){
-        b.childNodes.forEach(n=>{if(n.nodeType===3&&n.textContent.includes('Practitioner'))n.textContent=n.textContent.replace('Practitioner','Teacher')});
-      }
+      b.childNodes.forEach(n=>{
+        if(n.nodeType===3){
+          if(n.textContent.includes('Practitioners'))n.textContent=n.textContent.replace(/Practitioners/g,'Teachers');
+          if(n.textContent.includes('Practitioner'))n.textContent=n.textContent.replace(/Practitioner/g,'Teacher');
+        }
+      });
     });
   }
-  const obs2=new MutationObserver(()=>patchText());
-  obs2.observe(el,{childList:true,subtree:true,characterData:true});
-  setTimeout(patchText,1500);
-  setTimeout(patchText,3000);
+
+  /* ── Watch for widget render, apply all patches ── */
+  const widgetObs=new MutationObserver(()=>{
+    moveDaySelector();
+    patchText();
+  });
+  widgetObs.observe(el,{childList:true,subtree:true,characterData:true});
+
+  /* Fallback timers */
+  [500,1000,1500,2500,4000].forEach(ms=>setTimeout(()=>{moveDaySelector();patchText()},ms));
 })();
 </script>
 
-<!-- PRICING -->
+<!-- PRICING — optimized for new customer conversion -->
+<!-- Psychology: Left-to-right buyer journey (Try → Best Value → Commit → Unlimited)
+     3-Pack is hero offer: 1.4x higher repeat conversion, 2.4x expected value vs trial.
+     Anchoring: single class prices first make €16/class look like a steal.
+     Center-stage: hero column gets visual emphasis (border + badge). -->
 <section class="pricing">
   <div class="pricing-hdr">
     <h2>Pricing</h2>
-    <p>First time? Start with an intro offer. Ready to commit? Choose a pack or go unlimited.</p>
+    <p>First time? Start with an intro offer.<br>Ready to commit? Choose a pack or go unlimited.</p>
   </div>
   <div class="pricing-grid">
     <div class="pricing-col">
-      <h3>Intro Offers</h3>
-      <a href="https://momence.com/m/443935" target="_blank">3 Pack €48</a>
-      <a href="https://momence.com/m/443934" target="_blank">Trial Drop In €16</a>
-      <a href="https://momence.com/SABDA-54278" target="_blank" class="outline">Residents: 1 Week €50</a>
+      <h3>First Visit</h3>
+      <a href="https://momence.com/m/443934" target="_blank">Trial Class €16</a>
+      <a href="https://momence.com/SABDA-54278" target="_blank">Single Class €20</a>
+    </div>
+    <div class="pricing-col hero-col">
+      <div class="pricing-badge">Most Popular</div>
+      <h3>Best Value</h3>
+      <a href="https://momence.com/m/443935" target="_blank">3 Pack €48<span class="per-class">€16 / class</span></a>
+      <a href="https://momence.com/SABDA-54278" target="_blank">1 Week Unlimited €50</a>
     </div>
     <div class="pricing-col">
-      <h3>Drop In</h3>
-      <a href="https://momence.com/SABDA-54278" target="_blank">Drop In €20</a>
+      <h3>Class Packs</h3>
+      <a href="https://momence.com/SABDA-54278" target="_blank">5 Pack €80<span class="per-class">€16 / class</span></a>
+      <a href="https://momence.com/SABDA-54278" target="_blank">10 Pack €140<span class="per-class">€14 / class</span></a>
     </div>
     <div class="pricing-col">
-      <h3>Packs</h3>
-      <a href="https://momence.com/SABDA-54278" target="_blank">5 Pack €80</a>
-      <a href="https://momence.com/SABDA-54278" target="_blank">10 Pack €140</a>
-    </div>
-    <div class="pricing-col">
-      <h3>Membership</h3>
-      <a href="https://momence.com/m/431216" target="_blank">Monthly Unlimited €130</a>
+      <h3>Unlimited</h3>
+      <a href="https://momence.com/m/431216" target="_blank">Monthly €130/mo</a>
       <a href="https://momence.com/m/445600" target="_blank">3 Month Unlimited</a>
     </div>
   </div>
@@ -328,7 +385,7 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
 <section class="giftcards">
   <div class="giftcards-hdr">
     <h2>Gift Cards</h2>
-    <p>Give the gift of immersion. Choose an amount or set your own.</p>
+    <p>Give the gift of immersion.<br>Choose an amount or set your own.</p>
   </div>
   <div class="gc-grid">
     <a href="https://momence.com/SABDA-54278" target="_blank">€20</a>
