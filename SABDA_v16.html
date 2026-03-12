@@ -33,23 +33,30 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 }
 
 /* ── CURSOR ── */
-.cursor{position:fixed;width:9px;height:9px;border-radius:50%;background:var(--cyan);pointer-events:none;z-index:9999;mix-blend-mode:difference;transform:translate(-50%,-50%);transition:opacity .2s,width .25s var(--ease-expo),height .25s var(--ease-expo);will-change:transform}
-.cursor-ring{position:fixed;width:36px;height:36px;border-radius:50%;border:1px solid rgba(2,243,197,.4);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:opacity .2s,width .4s var(--ease-expo),height .4s var(--ease-expo),border-color .3s;will-change:transform}
-.cursor.hov{width:5px;height:5px}.cursor-ring.hov{width:52px;height:52px;border-color:rgba(248,166,163,.45)}
+.cursor{position:fixed;width:28px;height:28px;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:opacity .2s,width .25s var(--ease-expo),height .25s var(--ease-expo);will-change:transform;
+  background:url('https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20symbol%20pink.png') center/contain no-repeat;
+  opacity:.7;filter:drop-shadow(0 0 6px rgba(248,166,163,.4))}
+.cursor-ring{position:fixed;width:48px;height:48px;border-radius:50%;border:1px solid rgba(248,166,163,.25);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:opacity .2s,width .4s var(--ease-expo),height .4s var(--ease-expo),border-color .3s;will-change:transform}
+.cursor.hov{width:18px;height:18px;opacity:1}.cursor-ring.hov{width:60px;height:60px;border-color:rgba(2,243,197,.35)}
 
 /* ── LOADER ── */
-#loader{position:fixed;inset:0;background:var(--navy);z-index:10000;display:flex;align-items:center;justify-content:center;transition:opacity .9s var(--ease-expo),visibility .9s}
+#loader{position:fixed;inset:0;background:var(--navy);z-index:10000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;transition:opacity 1.2s var(--ease-expo),visibility 1.2s}
 #loader.out{opacity:0;visibility:hidden}
-.ld{position:relative;width:96px;height:96px}
-.ld-r{position:absolute;inset:0;border-radius:50%;border:1px solid transparent;animation:lspin linear infinite}
-.ld-r:nth-child(1){border-color:rgba(248,166,163,.7);animation-duration:3s}
-.ld-r:nth-child(2){inset:9px;border-color:rgba(2,243,197,.5);animation-duration:4.2s;animation-direction:reverse}
-.ld-r:nth-child(3){inset:19px;border-color:rgba(248,166,163,.38);animation-duration:5.5s}
-.ld-r:nth-child(4){inset:29px;border-color:rgba(2,243,197,.28);animation-duration:3.8s;animation-direction:reverse}
-.ld-r:nth-child(5){inset:39px;border-color:rgba(248,166,163,.22);animation-duration:6.5s}
-.ld-c{position:absolute;inset:45px;border-radius:50%;background:radial-gradient(circle,rgba(2,243,197,.5),transparent);animation:lpulse 2s ease-in-out infinite}
-@keyframes lspin{to{transform:rotate(360deg)}}
-@keyframes lpulse{0%,100%{opacity:.3;transform:scale(.7)}50%{opacity:1;transform:scale(1.3)}}
+.ld-symbol{width:120px;height:120px;position:relative;animation:ldspin 12s linear infinite}
+.ld-ring{position:absolute;border-radius:50%;border:1px solid transparent}
+.ld-ring:nth-child(1){inset:0;border-color:rgba(2,243,197,.7);animation:ldpulse 3s ease-in-out infinite}
+.ld-ring:nth-child(2){inset:8px;border-color:rgba(248,166,163,.5);animation:ldpulse 3.4s ease-in-out infinite .2s}
+.ld-ring:nth-child(3){inset:17px;border-color:rgba(2,243,197,.45);animation:ldpulse 2.8s ease-in-out infinite .4s}
+.ld-ring:nth-child(4){inset:25px;border-color:rgba(248,166,163,.4);animation:ldpulse 3.2s ease-in-out infinite .6s}
+.ld-ring:nth-child(5){inset:32px;border-color:rgba(2,243,197,.5);animation:ldpulse 3s ease-in-out infinite .8s}
+.ld-ring:nth-child(6){inset:38px;border-color:rgba(248,166,163,.45);animation:ldpulse 3.6s ease-in-out infinite 1s}
+.ld-ring:nth-child(7){inset:44px;border-color:rgba(2,243,197,.55);animation:ldpulse 2.6s ease-in-out infinite .3s}
+.ld-ring:nth-child(8){inset:49px;border-color:rgba(248,166,163,.5);animation:ldpulse 3.1s ease-in-out infinite .7s}
+.ld-ring:nth-child(9){inset:53px;border-color:rgba(2,243,197,.6);animation:ldpulse 2.9s ease-in-out infinite .5s}
+@keyframes ldspin{to{transform:rotate(360deg)}}
+@keyframes ldpulse{0%,100%{opacity:.4;transform:scale(.96)}50%{opacity:1;transform:scale(1.04)}}
+.ld-text{font-family:'PT Serif',serif;font-size:.82rem;letter-spacing:.3em;text-transform:uppercase;color:var(--white38);animation:ldfade 2.5s ease-in-out infinite}
+@keyframes ldfade{0%,100%{opacity:.3}50%{opacity:.8}}
 
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;display:flex;align-items:center;justify-content:space-between;transition:background .5s,backdrop-filter .5s,border-color .5s;border-bottom:1px solid rgba(240,239,233,.04);background:rgba(14,18,53,.45);backdrop-filter:blur(14px)}
@@ -107,8 +114,8 @@ section{position:relative;padding:130px 80px}
 
 /* SYMBOL */
 .manifesto-symbol{position:relative;display:flex;align-items:center;justify-content:center;min-height:400px}
-.sym-wrap{position:relative;width:min(520px,44vw);min-width:300px;aspect-ratio:1}
-#orbContainer{position:absolute;inset:0;width:100%;height:100%}
+.sym-wrap{position:relative;width:min(520px,42vw);min-width:300px;aspect-ratio:1;overflow:visible}
+#orbContainer{position:absolute;inset:-15%;width:130%;height:130%}
 #orbContainer canvas{display:block;width:100%!important;height:100%!important}
 
 /* ── CLASSES ── */
@@ -152,7 +159,7 @@ section{position:relative;padding:130px 80px}
 .schedule-btn:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(2,243,197,.06);transform:translateY(-1px);gap:14px}
 
 /* ── SECTION TRANSITION — ORGANIC PARTICLE FLOW ── */
-.section-fade{position:relative;height:180px;pointer-events:auto;overflow:hidden;background:var(--navy)}
+.section-fade{position:relative;height:260px;pointer-events:auto;overflow:hidden;background:var(--navy)}
 .section-fade canvas{position:absolute;inset:0;width:100%;height:100%}
 
 /* ── SPACE GALLERY ── */
@@ -312,11 +319,12 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
 
 <!-- LOADER -->
 <div id="loader">
-  <div class="ld">
-    <div class="ld-r"></div><div class="ld-r"></div><div class="ld-r"></div>
-    <div class="ld-r"></div><div class="ld-r"></div>
-    <div class="ld-c"></div>
+  <div class="ld-symbol">
+    <div class="ld-ring"></div><div class="ld-ring"></div><div class="ld-ring"></div>
+    <div class="ld-ring"></div><div class="ld-ring"></div><div class="ld-ring"></div>
+    <div class="ld-ring"></div><div class="ld-ring"></div><div class="ld-ring"></div>
   </div>
+  <span class="ld-text">Enter the Void</span>
 </div>
 
 <!-- NAV -->
@@ -750,24 +758,24 @@ document.querySelectorAll('.particle-stream').forEach(canvas=>{
   });
   canvas.parentElement.addEventListener('mouseleave',()=>{mouseX=-9999;mouseY=-9999});
 
-  /* Many particles, organic */
-  const COUNT=300;
+  /* Dense particle cloud — universe portal feel */
+  const COUNT=900;
   const particles=Array.from({length:COUNT},()=>{
-    const baseY=0.1+Math.random()*0.8;
+    const baseY=0.05+Math.random()*0.9;
     return{
-      x:Math.random()*3000,
+      x:Math.random()*4000,
       y:baseY,
       baseY:baseY,
-      vx:0.04+Math.random()*0.18,
+      vx:0.02+Math.random()*0.14,
       vy:0,
       fx:0,fy:0,/* force from mouse */
-      size:0.5+Math.random()*2.0,
-      glow:8+Math.random()*22,
+      size:0.3+Math.random()*1.6,
+      glow:5+Math.random()*18,
       color:Math.random()<0.5?[248,166,163]:[2,243,197],
-      opacity:0.05+Math.random()*0.3,
+      opacity:0.03+Math.random()*0.22,
       phase:Math.random()*Math.PI*2,
-      waveAmp:0.03+Math.random()*0.12,
-      waveFreq:0.0004+Math.random()*0.0015,
+      waveAmp:0.02+Math.random()*0.08,
+      waveFreq:0.0003+Math.random()*0.001,
     };
   });
 
@@ -842,19 +850,19 @@ document.querySelectorAll('.particle-stream').forEach(canvas=>{
 
 /* ═══════════════════════════════════════════════════════
    MANIFESTO — 3D CYMATIC SYMBOL (Three.js)
-   SABDA concentric circle symbol alive in 3D
+   Thin concentric circles matching the SABDA logo exactly
+   Face-on by default, reveals 3D depth on mouse
 ═══════════════════════════════════════════════════════ */
 function initOrb(){
   const container=document.getElementById('orbContainer');
   if(!container)return;
   if(typeof THREE==='undefined'){setTimeout(initOrb,100);return}
-
   const W=container.offsetWidth;
-  if(W<10){setTimeout(initOrb,100);return}/* wait for layout */
+  if(W<10){setTimeout(initOrb,100);return}
 
   const scene=new THREE.Scene();
-  const camera=new THREE.PerspectiveCamera(35,1,.1,100);
-  camera.position.z=4.2;
+  const camera=new THREE.PerspectiveCamera(32,1,.1,100);
+  camera.position.z=5.5;
 
   const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});
   renderer.setSize(W,W);
@@ -862,51 +870,43 @@ function initOrb(){
   container.appendChild(renderer.domElement);
   renderer.domElement.style.cssText='width:100%;height:100%';
 
-  /* ── The symbol: 9 concentric torus rings ── */
-  const rings=[];
-  const ringData=[
-    /* {radius, tube, color, opacity, initial tilts, rotation speeds per axis} */
-    /* Outer — wide, subtle */
-    {r:1.50,tube:.028,color:'#F8A6A3',op:.30, tx:0,   ty:0,   tz:0,    sx:.025,sy:.018,sz:.012},
-    {r:1.32,tube:.024,color:'#02F3C5',op:.28, tx:.12,  ty:.08, tz:0,    sx:-.02,sy:.025,sz:.01 },
-    {r:1.14,tube:.030,color:'#F8A6A3',op:.35, tx:.28,  ty:-.12,tz:.08,  sx:.03, sy:-.02,sz:.018},
-    /* Mid — the heart */
-    {r:.96, tube:.035,color:'#02F3C5',op:.42, tx:.48,  ty:.18, tz:-.08, sx:-.025,sy:.03,sz:-.015},
-    {r:.78, tube:.032,color:'#F8A6A3',op:.48, tx:.72,  ty:-.22,tz:.14,  sx:.022,sy:-.025,sz:.02},
-    {r:.62, tube:.038,color:'#02F3C5',op:.52, tx:.95,  ty:.30, tz:-.12, sx:-.03,sy:.022,sz:-.018},
-    /* Inner — tight, bright */
-    {r:.46, tube:.035,color:'#F8A6A3',op:.55, tx:1.2,  ty:-.35,tz:.22,  sx:.028,sy:-.03,sz:.015},
-    {r:.30, tube:.042,color:'#02F3C5',op:.62, tx:1.5,  ty:.42, tz:-.20, sx:-.022,sy:.028,sz:-.02},
-    {r:.16, tube:.038,color:'#F8A6A3',op:.55, tx:1.8,  ty:-.48,tz:.30,  sx:.03, sy:-.022,sz:.018},
-  ];
-
-  /* Group for unified rotation */
   const symbolGroup=new THREE.Group();
   scene.add(symbolGroup);
 
-  ringData.forEach(d=>{
-    const geo=new THREE.TorusGeometry(d.r,d.tube,24,160);
+  /* ── Thin concentric rings matching the actual logo ── */
+  /* Each ring: thin torus, slightly offset center, face-on */
+  const rings=[];
+  const data=[
+    /* r=radius, ox/oy=center offset, color, opacity */
+    {r:1.65, ox: 0.00,oy: 0.04, color:'#02F3C5',op:.65},
+    {r:1.45, ox: 0.06,oy:-0.03, color:'#F8A6A3',op:.50},
+    {r:1.28, ox:-0.04,oy: 0.05, color:'#8ec5b5',op:.40},/* blended tone */
+    {r:1.12, ox: 0.03,oy:-0.02, color:'#02F3C5',op:.55},
+    {r:0.96, ox:-0.05,oy: 0.03, color:'#F8A6A3',op:.50},
+    {r:0.82, ox: 0.02,oy:-0.04, color:'#8ec5b5',op:.38},
+    {r:0.68, ox:-0.03,oy: 0.02, color:'#02F3C5',op:.55},
+    {r:0.55, ox: 0.04,oy:-0.01, color:'#F8A6A3',op:.48},
+    {r:0.42, ox:-0.02,oy: 0.03, color:'#02F3C5',op:.60},
+    {r:0.30, ox: 0.01,oy:-0.02, color:'#F8A6A3',op:.45},
+    {r:0.20, ox:-0.01,oy: 0.01, color:'#02F3C5',op:.55},
+  ];
+
+  data.forEach((d,i)=>{
+    /* Very thin tube = line-like ring */
+    const geo=new THREE.TorusGeometry(d.r,0.006,8,200);
     const mat=new THREE.MeshBasicMaterial({
       color:d.color,transparent:true,opacity:d.op,
-      side:THREE.DoubleSide,depthWrite:false,
+      side:THREE.DoubleSide,depthWrite:false
     });
     const mesh=new THREE.Mesh(geo,mat);
-    mesh.rotation.x=d.tx;mesh.rotation.y=d.ty;mesh.rotation.z=d.tz;
+    /* Offset center slightly like the real symbol */
+    mesh.position.x=d.ox;
+    mesh.position.y=d.oy;
+    /* Face camera by default — ring lies in XY plane */
+    /* (torus default is in XY, so no rotation needed for face-on) */
     symbolGroup.add(mesh);
-    rings.push({mesh,d,baseOp:d.op});
+    rings.push({mesh,d,baseOp:d.op,idx:i});
   });
-
-  /* ── Center core glow ── */
-  const coreGeo=new THREE.SphereGeometry(0.08,20,20);
-  const coreMat=new THREE.MeshBasicMaterial({color:'#02F3C5',transparent:true,opacity:0.15});
-  const core=new THREE.Mesh(coreGeo,coreMat);
-  symbolGroup.add(core);
-
-  /* Second larger glow */
-  const auraGeo=new THREE.SphereGeometry(0.22,20,20);
-  const auraMat=new THREE.MeshBasicMaterial({color:'#F8A6A3',transparent:true,opacity:0.04});
-  const aura=new THREE.Mesh(auraGeo,auraMat);
-  symbolGroup.add(aura);
 
   /* ── Mouse ── */
   let mX=0,mY=0,tX=0,tY=0;
@@ -917,7 +917,6 @@ function initOrb(){
   });
   container.addEventListener('mouseleave',()=>{tX=0;tY=0});
 
-  /* ── Render loop ── */
   const clock=new THREE.Clock();
   let visible=true;
 
@@ -926,50 +925,40 @@ function initOrb(){
     if(!visible)return;
     const t=clock.getElapsedTime();
 
-    /* smooth mouse easing */
-    mX+=(tX-mX)*0.035;
-    mY+=(tY-mY)*0.035;
+    mX+=(tX-mX)*0.03;
+    mY+=(tY-mY)*0.03;
 
-    /* overall group tilt from mouse — gives that 3D feel */
-    symbolGroup.rotation.x=mY*0.35;
-    symbolGroup.rotation.y=mX*0.4;
+    /* Group tilts with mouse — reveals 3D depth */
+    symbolGroup.rotation.x=mY*0.4+Math.sin(t*0.15)*0.06;
+    symbolGroup.rotation.y=mX*0.5+Math.cos(t*0.12)*0.06;
+    /* Very slow auto-rotation */
+    symbolGroup.rotation.z=t*0.02;
 
-    /* individual ring animation */
-    rings.forEach(({mesh,d,baseOp})=>{
-      mesh.rotation.x=d.tx+t*d.sx;
-      mesh.rotation.y=d.ty+t*d.sy;
-      mesh.rotation.z=d.tz+t*d.sz;
-
-      /* gentle breathing */
-      const breath=1+0.02*Math.sin(t*0.5+d.r*4);
+    rings.forEach(({mesh,d,baseOp,idx})=>{
+      /* Each ring breathes slightly at different rates */
+      const breath=1+0.03*Math.sin(t*0.4+idx*0.7);
       mesh.scale.setScalar(breath);
 
-      /* opacity wave */
-      mesh.material.opacity=baseOp*(0.7+0.3*Math.sin(t*0.35+d.r*6));
-    });
+      /* Gentle center drift — the rings float slightly */
+      mesh.position.x=d.ox+Math.sin(t*0.2+idx*1.1)*0.015;
+      mesh.position.y=d.oy+Math.cos(t*0.18+idx*0.9)*0.015;
 
-    /* center glow */
-    const p=0.6+0.4*Math.sin(t*0.7);
-    core.scale.setScalar(1+0.35*Math.sin(t*1.0));
-    core.material.opacity=0.10*p;
-    aura.scale.setScalar(1+0.2*Math.sin(t*0.5));
-    aura.material.opacity=0.03*p;
+      /* Opacity pulse */
+      mesh.material.opacity=baseOp*(0.7+0.3*Math.sin(t*0.3+idx*0.8));
+    });
 
     renderer.render(scene,camera);
   }
   animate();
 
-  /* Visibility observer */
   const obs=new IntersectionObserver(es=>{visible=es[0].isIntersecting},{threshold:0});
   obs.observe(container);
 
-  /* Resize */
   new ResizeObserver(()=>{
     const w=container.offsetWidth;
     if(w>0){renderer.setSize(w,w);renderer.setPixelRatio(Math.min(devicePixelRatio,2))}
   }).observe(container);
 }
-/* Init after layout ready */
 if(document.readyState==='complete')initOrb();
 else window.addEventListener('load',initOrb);
 
