@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- classes-v3 -->
+<meta charset="UTF-8"><!-- classes-v4 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Classes & Schedule — SABDA Studio Barcelona</title>
 <meta name="description" content="Explore our weekly schedule of immersive yoga, pilates, sound healing, breathwork, ecstatic dance and meditation classes. Book your spot now.">
@@ -16,7 +16,12 @@
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{background:var(--navy);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+body{background:var(--navy);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;
+  /* Old Momence prop names — widget reads these FIRST */
+  --momenceColorPrimary:#02F3C5;
+  --momenceColorBlack:#f0efe9;
+  --momenceColorBackground:#0e1235;
+}
 a{color:inherit;text-decoration:none}
 img{display:block;max-width:100%}
 ::selection{background:rgba(248,166,163,.18)}
@@ -126,10 +131,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 #momence-plugin-host-schedule .momence-host_schedule-powered_by_momence{display:none !important}
 /* Hide "Location: SABDA" — single venue */
 #momence-plugin-host-schedule .momence-session-in_person{display:none !important}
+/* Hide Locations filter dropdown — single venue */
+#momence-plugin-host-schedule .momence-session_filters > *:last-child{display:none !important}
 /* Hide system row (timezone/auth) */
 #momence-plugin-host-schedule .momence-host_schedule-sys_row{display:none !important}
 /* One-click booking banner */
 #momence-plugin-host-schedule [class*="fS"]{background:rgba(2,243,197,.06) !important}
+
+/* ── FORCE DARK BACKGROUNDS (fallback if vars don't take) ── */
+#momence-plugin-host-schedule > div{background:transparent !important}
+#momence-plugin-host-schedule [class*="host-schedule-layout"]{background:var(--navy) !important}
+#momence-plugin-host-schedule [class*="host_schedule"]{background:transparent !important}
+#momence-plugin-host-schedule nav,
+#momence-plugin-host-schedule [role="tablist"]{background:transparent !important}
 
 /* ── PRICING ── */
 .pricing{padding:80px 80px 0;position:relative;z-index:2;border-top:1px solid rgba(240,239,233,.06)}
@@ -217,6 +231,57 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
   host_id="54278"
   locale="en"
   i18n='{"TEACHER_SELECT_PLACEHOLDER":"Teachers","TEACHER":"Teacher","SUBSTITUTES_FOR_SHORT":"Sub for"}'>
+</script>
+<script>
+/* Force SABDA dark theme on Momence widget after it loads */
+(function forceTheme(){
+  const el=document.getElementById('momence-plugin-host-schedule');
+  if(!el)return;
+  const vars={
+    '--momence-background':'#0e1235','--momence-white':'#131842',
+    '--momence-primary-color':'#f0efe9',
+    '--momence-secondary-color':'rgba(240,239,233,.6)',
+    '--momence-tertiary-color':'rgba(240,239,233,.38)',
+    '--momence-primary-500':'#02F3C5','--momence-primary-400':'rgba(2,243,197,.55)',
+    '--momence-primary-600':'#00d4ac','--momence-primary-050':'rgba(2,243,197,.04)',
+    '--momence-primary-100':'rgba(2,243,197,.08)',
+    '--momence-black-500':'#f0efe9','--momence-black-400':'rgba(240,239,233,.8)',
+    '--momence-black-300':'rgba(240,239,233,.65)',
+    '--momence-black-200':'rgba(240,239,233,.5)',
+    '--momence-black-100':'rgba(240,239,233,.35)',
+    '--momence-grey-200':'rgba(240,239,233,.08)',
+    '--momence-grey-100':'rgba(240,239,233,.05)',
+    '--momence-grey-050':'rgba(240,239,233,.03)',
+    '--momence-session-separator-color':'rgba(240,239,233,.06)',
+  };
+  function apply(){
+    const root=document.documentElement;
+    for(const[k,v]of Object.entries(vars))root.style.setProperty(k,v,'important');
+  }
+  /* Apply immediately + watch for widget style injections */
+  apply();
+  const obs=new MutationObserver(()=>apply());
+  obs.observe(document.head,{childList:true,subtree:true});
+  /* Also apply on interval for first 5 seconds */
+  let count=0;
+  const iv=setInterval(()=>{apply();if(++count>25)clearInterval(iv)},200);
+
+  /* Rename "Practitioners" → "Teachers" and hide "Locations" dropdown */
+  function patchText(){
+    el.querySelectorAll('button,span').forEach(b=>{
+      if(b.textContent.trim()==='Practitioners'){
+        b.childNodes.forEach(n=>{if(n.nodeType===3&&n.textContent.includes('Practitioners'))n.textContent=n.textContent.replace('Practitioners','Teachers')});
+      }
+      if(b.textContent.trim()==='Practitioner'){
+        b.childNodes.forEach(n=>{if(n.nodeType===3&&n.textContent.includes('Practitioner'))n.textContent=n.textContent.replace('Practitioner','Teacher')});
+      }
+    });
+  }
+  const obs2=new MutationObserver(()=>patchText());
+  obs2.observe(el,{childList:true,subtree:true,characterData:true});
+  setTimeout(patchText,1500);
+  setTimeout(patchText,3000);
+})();
 </script>
 
 <!-- PRICING -->
