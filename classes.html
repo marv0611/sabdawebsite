@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- classes-v12 -->
+<meta charset="UTF-8"><!-- classes-v13 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Classes & Schedule — SABDA Studio Barcelona</title>
 <meta name="description" content="Explore our weekly schedule of immersive yoga, pilates, sound healing, breathwork, ecstatic dance and meditation classes. Book your spot now.">
@@ -112,6 +112,25 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 /* Target the layout wrapper specifically */
 #momence-plugin-host-schedule .momence-host-schedule-layout{
   background:transparent !important;
+}
+/* ── CRITICAL: Prevent widget children from escaping the container ── */
+/* Momence renders modals/overlays with position:fixed that cover the viewport */
+#momence-plugin-host-schedule{
+  position:relative !important;
+  z-index:2 !important;
+}
+#momence-plugin-host-schedule [style*="position: fixed"],
+#momence-plugin-host-schedule [style*="position:fixed"]{
+  position:relative !important;
+}
+/* Target the known modal overlay by styled-component ID */
+#momence-plugin-host-schedule .sc-iemygx-1,
+#momence-plugin-host-schedule [class*="iemygx-1"]{
+  position:relative !important;
+  top:auto !important;
+  left:auto !important;
+  right:auto !important;
+  bottom:auto !important;
 }
 
 /* ── ALL buttons: transparent bg, light border ── */
@@ -493,6 +512,19 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     el.querySelectorAll('[class*="pagination"]').forEach(e=>e.style.setProperty('display','none','important'));
     /* System row */
     el.querySelectorAll('[class*="sys_row"]').forEach(e=>e.style.setProperty('display','none','important'));
+    
+    /* ── CRITICAL: Neutralize any position:fixed children ── */
+    /* Momence renders modal overlays with position:fixed that escape the widget */
+    el.querySelectorAll('*').forEach(node=>{
+      const pos=getComputedStyle(node).position;
+      if(pos==='fixed'||pos==='sticky'){
+        node.style.setProperty('position','relative','important');
+        node.style.setProperty('top','auto','important');
+        node.style.setProperty('left','auto','important');
+        node.style.setProperty('right','auto','important');
+        node.style.setProperty('bottom','auto','important');
+      }
+    });
   }
 
   /* ── Apply CSS variables ON THE WIDGET ELEMENT ITSELF ── */
