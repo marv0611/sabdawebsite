@@ -102,16 +102,18 @@ section{position:relative;padding:120px 80px;z-index:2}
 .sh2 em{font-style:italic;color:var(--salmon)}
 
 /* ── STATS STRIP ── */
-.stats-strip{padding:48px 80px;position:relative;z-index:2}
-.stats-in{display:flex;align-items:center;justify-content:center;gap:36px;flex-wrap:wrap;max-width:900px;margin:0 auto}
-.ss-item{display:flex;flex-direction:column;align-items:center;gap:5px;text-align:center}
-.ss-val{font-family:'PT Serif',serif;font-size:1.4rem;font-weight:700;letter-spacing:-.02em;color:var(--white)}
-.ss-lbl{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--white38)}
-.ss-div{width:1px;height:36px;background:rgba(240,239,233,.08)}
+.stats-strip{padding:72px 80px;position:relative;z-index:2}
+.stats-in{display:flex;align-items:center;justify-content:center;gap:56px;flex-wrap:wrap;max-width:1000px;margin:0 auto}
+.ss-item{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center}
+.ss-val{font-family:'PT Serif',serif;font-size:2.2rem;font-weight:700;letter-spacing:-.02em;color:var(--white)}
+.ss-val .accent{color:var(--cyan)}
+.ss-lbl{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--white38)}
+.ss-div{width:1px;height:48px;background:rgba(240,239,233,.1)}
 
 /* ── CLASSES ── */
 .classes{padding:120px 80px;position:relative;z-index:2}
 .classes-hdr{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:68px}
+.classes-tech{font-size:.92rem;color:var(--white38);margin-top:16px;max-width:420px;line-height:1.6}
 .cls-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1440px;width:100%;margin:0 auto}
 .cls-card{position:relative;height:530px;border-radius:4px;overflow:hidden;cursor:none;background:var(--navy)}
 /* Animated gradient border */
@@ -368,16 +370,14 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
   </div>
 </div>
 
-<!-- STATS — compact, one-line, instant credibility -->
+<!-- STATS — compact, bold, instant credibility -->
 <div class="stats-strip">
   <div class="stats-in rv">
-    <div class="ss-item"><span class="ss-val">360°</span><span class="ss-lbl">Immersive Projections</span></div>
+    <div class="ss-item"><span class="ss-val"><span class="accent">42</span></span><span class="ss-lbl">Classes per Week</span></div>
     <div class="ss-div"></div>
-    <div class="ss-item"><span class="ss-val">Dolby Atmos</span><span class="ss-lbl">Spatial Audio</span></div>
+    <div class="ss-item"><span class="ss-val">80+</span><span class="ss-lbl">Active Members</span></div>
     <div class="ss-div"></div>
-    <div class="ss-item"><span class="ss-val">7</span><span class="ss-lbl">Class Types</span></div>
-    <div class="ss-div"></div>
-    <div class="ss-item"><span class="ss-val">100+</span><span class="ss-lbl">Capacity</span></div>
+    <div class="ss-item"><span class="ss-val">Eixample</span><span class="ss-lbl">In the Heart of Barcelona</span></div>
   </div>
 </div>
 
@@ -393,6 +393,7 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
     <div>
       <span class="sl rv">Classes</span>
       <h2 class="sh2 rv" style="transition-delay:.07s">Move. Breathe.<br><em>Tune In.</em></h2>
+      <p class="classes-tech rv" style="transition-delay:.14s">Every class runs inside 360° immersive projections with Dolby Atmos spatial audio.</p>
     </div>
     <div class="rv" style="transition-delay:.12s">
       <a href="https://momence.com/SABDA-54278" target="_blank" class="schedule-btn">View Full Schedule
