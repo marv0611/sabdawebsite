@@ -1,6 +1,6 @@
 # SABDA Website Build — Project Manual
 ## For AI Chat Handoff & Developer Reference
-### Last Updated: March 12, 2026 — v16
+### Last Updated: March 12, 2026 — v16 (Session 2 Final)
 
 ---
 
@@ -8,7 +8,14 @@
 
 Paste this at the beginning of your next chat:
 
-> I'm continuing the SABDA website build. Read the project manual first — it's at `SABDA_Website_Build_Manual.md` in the GitHub repo (https://github.com/marv0611/sabdawebsite). The current working file is `SABDA_v16.html`. Use this GitHub PAT for pushing: `YOUR_GITHUB_PAT_HERE`. Clone the repo, read the manual thoroughly before making any changes, and present the HTML file after each edit so I can review it.
+> I'm continuing the SABDA website build. Read the project manual first — it's at `SABDA_Website_Build_Manual.md` in the GitHub repo (https://github.com/marv0611/sabdawebsite). The current working file is `SABDA_v16.html`. Use this GitHub PAT for pushing: `YOUR_GITHUB_PAT_HERE`. Clone the repo, read the manual thoroughly before making any changes, and present the HTML file after each edit so I can review it. After every push, give me the htmlpreview link so I can check in my browser.
+
+**CRITICAL — PREVIEW LINK FORMAT:**
+After every push, always provide this link in the chat so Marvyn can open it directly in his browser:
+```
+https://htmlpreview.github.io/?https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA_v16.html
+```
+Do NOT give raw GitHub links (they download instead of rendering). Do NOT give repo links. Always give the htmlpreview.github.io link. This is non-negotiable.
 
 ---
 
@@ -58,9 +65,9 @@ Paste this at the beginning of your next chat:
 |------|-----|-------|
 | Brand Navy (background) | `#0e1235` | Primary background, all sections |
 | Brand Navy (logo) | `#203999` | Logo color from Brand Foundations PDF |
-| Salmon | `#F8A6A3` | Accent, italic text, secondary highlights |
-| Cyan | `#02F3C5` | CTAs, labels, interactive elements, accent numbers |
-| Blended Mid-tone | `#7fcdb5` | Used in some particle/gradient elements |
+| Salmon | `#F8A6A3` | Accent, italic text, 4.8 scores, Eixample, footer "Connect" heading, "Wellness" pillar |
+| Cyan | `#02F3C5` | CTAs, labels, 360° and 42 numbers, footer "Explore" heading, "Art" pillar |
+| Blended Mid-tone | `#7fcdb5` | Some particle elements |
 | Warm White | `#f0efe9` | Body text, headings |
 | Muted White 60% | `rgba(240,239,233,.6)` | Body copy |
 | Muted White 38% | `rgba(240,239,233,.38)` | Secondary text, descriptions |
@@ -68,35 +75,23 @@ Paste this at the beginning of your next chat:
 ### Typography
 | Role | Font | Weight | Notes |
 |------|------|--------|-------|
-| Headings | PT Serif | 400, 700, italic | Google Fonts. Eugusto Bold is the brand font but doesn't load reliably from GitHub |
+| Headings | PT Serif | 400, 700, italic | Google Fonts. Also used for partner brand names in marquee |
 | Body | DM Sans | 300, 400, 500, 600 | Clean modern sans-serif |
 | Logo | Eugusto Bold | — | Use the white logo PNG, never render as text |
 
-### Design Principles (from Marvyn, confirmed through multiple iterations)
+### Design Principles
 - **Dark, immersive feel** — like stepping from a noisy Barcelona street into the 360° projection room
-- **NO section boundaries** — single continuous `#0e1235` background
-- **Global particle field** — the entire page lives inside a floating particle nebula (salmon + cyan particles, mouse-repulsive)
+- **NO section boundaries** — single continuous `#0e1235` background with fine 1px lines (`rgba(240,239,233,.06)`) between sections
+- **Global particle field** — the entire page lives inside a floating particle nebula (cyan + salmon + brand blue particles, mouse-repulsive)
 - **NOT:** woo-woo, esoteric, hippie, basic yoga studio aesthetic, generic template look
 - **Think:** teamLab meets Soho House meets a really good Berlin club that also does yoga
-- **Brand pillars:** Art · Tech · Wellness
-
-### Brand Equities (from Brand Foundations PDF)
-- Primary symbol: Cymatic-inspired concentric circle patterns
-- Logo font: Eugusto Bold (salmon on navy, or white on navy)
-- Sonic identity: Jon Hopkins, Max Cooper, Ben Böhmer, Brian Eno, Bicep
-- Needscope positioning: Brown/Blue quadrant — Thoughtful, Composed, Intelligent, Discerning
-- Personality: Clever, witty, thought-provoking, down-to-earth
+- **Brand pillars:** Art (cyan) · Tech (white) · Wellness (salmon)
 
 ---
 
 ## 3. TECH STACK & WORKFLOW
 
 ### Decision: Single HTML file → paste into Framer for hosting
-
-**What we tried and rejected:**
-1. Framer with Asana yoga template — looked "basic" and "templated"
-2. Framer code components via MCP — slow workflow, MCP disconnects
-3. Framer template + custom code hybrid — Marvyn: "If you're writing custom code anyway, why use a template?"
 
 **Final stack:** One self-contained HTML file with all CSS and JS inline. No frameworks, no build tools, no dependencies except Google Fonts. When approved, paste into Framer as a code component.
 
@@ -116,21 +111,30 @@ git config user.name "Claude" && git config user.email "claude@anthropic.com"
 cp SABDA_v16.html /mnt/user-data/outputs/SABDA_v16.html
 git add SABDA_v16.html && git commit -m "description" && git push origin main
 
-# IMPORTANT: Always present_files after edits so Marvyn can preview
+# ALWAYS present_files after edits so Marvyn can preview locally
+# ALWAYS provide the htmlpreview link in chat:
+# https://htmlpreview.github.io/?https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA_v16.html
 ```
+
+**IMPORTANT — GitHub push protection:** The PAT token cannot be committed to the repo. GitHub will reject the push. Use `YOUR_GITHUB_PAT_HERE` as placeholder in this file. Marvyn provides the real token in the chat message.
 
 ### Video Files — LFS
 Video files in the repo use Git LFS. The `raw.githubusercontent.com` URL returns a LFS pointer, NOT the video.
-Use the **media URL** instead:
 ```
 WRONG: https://raw.githubusercontent.com/marv0611/sabdawebsite/main/0312.mp4
 RIGHT: https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/0312.mp4
 ```
 
 ### Image Files — Direct
-Image files (PNG, JPG) load fine from raw GitHub:
 ```
 https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png
+```
+
+### Preview Links
+```
+WRONG (downloads file): https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA_v16.html
+WRONG (repo view):      https://github.com/marv0611/sabdawebsite/blob/main/SABDA_v16.html
+RIGHT (renders in browser): https://htmlpreview.github.io/?https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA_v16.html
 ```
 
 ---
@@ -139,135 +143,130 @@ https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20log
 
 ### File: `SABDA_v16.html`
 
-This is the active homepage. ~920 lines. Fully self-contained.
+Active homepage. ~1000 lines. Fully self-contained.
 
 ### What's in v16 — confirmed working:
 
-**Loader**
-- 9 animated concentric rings (cymatic pattern, SABDA colors)
-- "Enter the Void" text fades in/out
-- Dismisses after 850ms on page load
+**Loader (2.5 seconds)**
+- 9 concentric rings that spiral in one by one (staggered 80ms, each from scale 0.5 + rotated -90° to full size)
+- Gentle floating animation on whole symbol (±3° rotation + scale breathing)
+- "Enter the Void" text fades in with letter-spacing reveal at 0.9s
+- Uses `DOMContentLoaded` (NOT `window.load`) — critical: `window.load` waits for the 49MB video and the loader gets stuck
+- Dismisses at 2.5s, fade-out transition 1.4s
 
 **Custom Cursor**
 - SABDA pink symbol PNG as cursor (28px)
 - Salmon-tinted ring follower with spring physics
-- Scales up on hover over interactive elements
+- Scales up on hover over interactive elements (a, button, etc.)
 
 **Global Particle Field**
 - Fixed canvas behind entire page (z-index:1)
-- 800 particles, salmon + cyan, soft glow
+- ~960 particles in 3 brand colors: ~38% cyan `[2,243,197]`, ~34% salmon `[248,166,163]`, ~28% brand blue `[32,57,153]`
 - Mouse repulsion physics (120px radius)
-- Runs continuously — all content sits above at z-index:2
+- All content sits above at z-index:2
 
 **Nav**
 - Semi-transparent: `rgba(14,18,53,.45)` + `backdrop-filter:blur(14px)`
 - Darkens on scroll: `rgba(14,18,53,.88)`
-- Logo left, links center (Classes, Space, Pricing, Contact), CTA right ("Book a Class" → momence.com/m/443935)
-- Links: white at 75% opacity, full on hover
+- Logo left, links center, "Book a Class" CTA right (cyan → momence.com/m/443935)
 
 **Hero**
 - Full-viewport video background (`0312.mp4` via LFS media URL)
-- Video: `playbackRate=0.55` (cinematic slow), CSS filter: `contrast(1.12) saturate(1.15) brightness(1.03)`
-- Gradient overlay (navy from bottom)
-- Top label: "Art · Tech · Wellness"
+- Video: `playbackRate=0.55`, CSS filter: `contrast(1.12) saturate(1.15) brightness(1.03)`
+- Top label: "Art · Tech · Wellness" — 1.4rem, Art in cyan, Wellness in salmon
 - H1: "The Future of Wellness"
 - Single CTA: "3 Classes for €48" (cyan button)
-- Note below CTA: "€16/class · New students · No commitment"
-- Scroll indicator at bottom
+- Note: "€16/class · New students · No commitment"
 
-**Trust Row**
-- Immediately after hero
-- Stars 4.8 ClassPass · 15,000+ reviews | Stars 4.8 Google · 120+ reviews
+**Trust Row (ANIMATED)**
+- Stars pop in one by one (staggered 70ms, spin from -45° to 0°)
+- 4.8 counts up from 0 with ease-out sextic curve (2.2s, dramatic slowdown at end) — scores in SALMON
+- Labels fade up after numbers settle
+- Divider line grows from 0 to 52px height
+- Second group (Google 350+ reviews) starts 250ms after first (ClassPass 15,000+ reviews)
+- Animation waits until 2.7s after page load (after loader dismisses) then checks if section is in viewport
 
-**Stats Strip**
-- 4 items, centered, with vertical divider lines between:
-  - **360°** Immersive Projections (360° in cyan accent)
-  - **Dolby Atmos** Spatial Audio
-  - **42** Classes per Week
-  - **Eixample** In the Heart of Barcelona
-- Font size: 2.2rem values, 0.68rem labels
-- Padding: 72px top/bottom
+**Stats Strip (ANIMATED)**
+- 4 items staggered 180ms each, fade up from 24px below
+- 360° (cyan, counts from 0) · Dolby Atmos (text) · 42 (cyan, counts from 0) · Eixample (salmon, text)
+- Colored numbers get subtle text-shadow glow when animated
+- Divider lines grow from 0 height
+- Fires 700ms after trust animation starts
+- Same viewport-check logic as trust
 
 **Partners Marquee**
-- "Trusted by leading brands"
-- Auto-scrolling horizontal marquee: Apple · Nike · Alpro · Offline Club · ClassPass · Urban Sports Club · Wellhub · Luma · Resident Advisor
-- CSS animation, duplicated track for seamless loop
+- "Trusted by leading brands" label
+- 8 brands: Honest Greens · Aire · Danone · FC Barcelona · Condé Nast Traveler · El Periódico · Time Out · CNN
+- PT Serif 1.3rem (not sans-serif caps — these are prestigious names)
+- Em-dash separators at 12% opacity
+- 55s cycle (slow, dignified pace — people can read every name)
+- Edge fade masks (180px gradient on left and right)
+- Data tripled for seamless infinite loop (scrolls -33.333%)
+- Colors forced by render index (`i%2`): green, pink, green, pink...
 
-**Classes**
-- Header: "Move. Breathe. Tune In." + "View Full Schedule" button
-- 6 cards in 3-column grid, each with:
-  - Background image from GitHub
-  - Magnetic 3D tilt on hover (±10deg)
-  - Hover parallax effect
-  - Class name + one-line description
-  - "Explore →" link
-- Classes: Vinyasa Yoga, Sound Healing, Breathwork, Pilates, Ecstatic Dance, Meditation Journeys
+**Classes — Dual-Row Auto-Scrolling Gallery**
+- Two rows of images, scrolling in opposite directions (like the Asana Framer template)
+- All images uniform size: 460×320px, 12px border radius
+- Row 1 (scrolls left, 50s): Vinyasa Yoga, Sound Healing, Breathwork (× 2 for loop)
+- Row 2 (scrolls right, 50s): Pilates, Ecstatic Dance, Meditation Journeys (× 2 for loop)
+- Pure CSS animation, always running (no hover pause, no click interaction)
+- Navy gradient fade (120px `::after`) at bottom to blend into next section
+- Class name + duration tag overlaid at bottom of each image
 
 **Space Gallery**
-- Full-bleed 5-slide carousel
-- Image slides with photographer-style captions
-- Prev/next navigation dots
-- Each slide: `object-fit:cover`, full viewport width
+- Full-bleed 5-slide carousel with prev/next arrows and dots
+- Photographer-style captions
+- Each slide: `object-fit:cover`, full viewport
 
 **Testimonials**
-- 4 rotating quotes with auto-advance (6s interval)
-- Dot navigation
-- Names + class type attribution
+- "What people say" label only (heading "They came once / keep coming back" was REMOVED — Marvyn didn't want it)
+- 4 rotating quotes, auto-advance 6s, dot navigation
+- Border-top AND border-bottom fine lines
 
-**Booking Section**
-- Two cards side by side:
-  - Primary (large): €48 3-Pack — "Recommended" badge, cyan CTA
-  - Secondary (small): €16 Single Class
-- Both link to Momence
+**Pricing Section — 3 Cards**
+- Left: Intro 3-Pack €48 (outline button "Get Started")
+- Middle (highlighted): Unlimited Monthly €130/mo ("Popular" badge, cyan button "Join Now")
+- Right: 3-Month Unlimited €300 (outline button "Start Unlimited")
+- Each card has feature list with cyan dot bullets
+- Cards use flexbox column with flex:1 on description for equal heights
+- Footer: "See all our offers →" (cyan link to Momence)
 
 **Location**
-- Address: C/ Muntaner 83B, Local 2, 08011 Barcelona
-- Directions: 10 min Universitat metro, 5 min Passeig de Gràcia
-- Google Maps iframe embed
+- Address, directions, Google Maps embed
 
 **Footer**
-- 4-column: Brand info, Explore links, Connect links, Contact details
-- © 2026 SABDA STUDIO S.L.
+- 4-column: Brand info, Explore (cyan heading), Connect (salmon heading), Contact (white heading)
+- "Art · Tech · Wellness" pillars: Art in cyan, Wellness in salmon
+- Fine lines (1px `rgba(240,239,233,.06)`) between ALL sections throughout the page
 
 **Mobile Sticky Bar**
-- Hidden on desktop, visible on mobile after scrolling past hero
-- "3 Classes — €48 · €16/class" + "Book Now" button
+- Shows after scrolling past hero
 
 ---
 
 ## 5. PAGE ARCHITECTURE & FLOW
 
-The homepage flow was designed using findings from Jongmans et al. (2022) — "The Role of Visual Design in Website Conversion":
-
 ```
-Visual Design → Usability → Pleasure → Conversion
-```
-
-Each section builds on the previous:
-
-```
-HERO (wow + clarity — 3 seconds to understand)
-  ↓
-TRUST (credibility priming — ratings immediately)
-  ↓
-STATS (what makes this different — 360°, Dolby, 42 classes, Barcelona)
-  ↓
-PARTNERS (brand association — "if Apple trusts them...")
-  ↓
-CLASSES (the product — show me what I'm buying)
-  ↓
-SPACE GALLERY (the "wow" moment — full-bleed immersive photos)
-  ↓
-TESTIMONIALS (confirmation — other people loved it)
-  ↓
-BOOKING (action — clear pricing, single primary CTA)
-  ↓
-LOCATION (logistics — where is this place)
-  ↓
+HERO (video + "The Future of Wellness" + single CTA)
+  ↓ fine line
+TRUST (animated 4.8 stars + counters)
+  ↓ fine line
+STATS (animated 360° / Dolby / 42 / Eixample)
+  ↓ fine line
+PARTNERS (slow marquee — Honest Greens, Aire, Danone, FC Barcelona, CNN...)
+  ↓ fine line
+CLASSES (dual-row auto-scrolling image gallery)
+  ↓ navy gradient fade (no line — smooth blend)
+SPACE GALLERY (full-bleed carousel)
+  ↓ fine line
+TESTIMONIALS (rotating quotes)
+  ↓ fine line
+PRICING (3 cards: €48 / €130/mo / €300/3mo)
+  ↓ fine line
+LOCATION (map + directions)
+  ↓ fine line
 FOOTER
 ```
-
-**Key principle:** Minimize friction between "I'm interested" and "show me what you offer." Previous versions had a manifesto section with paragraphs of text + a 3D animated symbol between hero and classes. This was removed because it was a speed bump that broke the conversion chain.
 
 ---
 
@@ -275,56 +274,71 @@ FOOTER
 
 ### 6.1 ONLY Change What Is Asked
 
-This is the most important lesson. If Marvyn says "update the number of classes to 42," update ONLY that number. Do not rearrange sections, move content between sections, add or remove elements, or "improve" things that weren't mentioned. This was a specific mistake in this session — moving 360°/Dolby Atmos from the stats strip to the classes header when only the class count was supposed to change. It had to be reverted.
+**THE MOST IMPORTANT RULE.** If Marvyn says "update the number of classes to 42," update ONLY that number. Do not rearrange sections, move content between sections, add or remove elements, or "improve" things that weren't mentioned. This mistake was made twice and had to be reverted both times.
 
-### 6.2 Rendering Quality
+### 6.2 Always Provide the HTMLPreview Link
 
-**The Claude preview is not a real browser.** The HTML file must be opened in a real browser to evaluate visual quality. Always push to GitHub AND present the file so Marvyn can open it locally.
-
-**CSS filters are the limit of client-side video sharpening.** The hero video uses `contrast(1.12) saturate(1.15) brightness(1.03)` and `playbackRate=0.55`. True sharpening (unsharp mask, higher bitrate) requires re-encoding the source video in editing software — CSS/JS cannot do this.
-
-**Git LFS videos don't serve from raw.githubusercontent.com.** Always use:
+After every push, always give Marvyn this link:
 ```
-https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/FILENAME.mp4
+https://htmlpreview.github.io/?https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA_v16.html
 ```
+Never give raw GitHub links (they download). Never give repo links. Never give Google links that require downloading. He reviews in Chrome, not in Claude's preview.
 
-### 6.3 3D Animations — Concentric Rings Symbol (REMOVED)
+### 6.3 Loader Must Use DOMContentLoaded, NOT window.load
 
-We spent significant time building the SABDA cymatic symbol as an animated 3D element using Three.js. **It was ultimately removed.** Lessons if it's ever revisited:
+The hero video is 49MB via Git LFS. `window.addEventListener('load',...)` waits for the full video download. On slow connections or through htmlpreview.github.io, this means the loader gets stuck on "Enter the Void" forever. Always use `document.addEventListener('DOMContentLoaded',...)`.
 
-- **A flat circle rotating around its center Z-axis is visually identical at every angle.** You must TILT each ring on a different axis first, then rotate on a perpendicular axis so the rotation is visible.
-- **Container overflow/positioning is tricky.** Using `inset:-25%; width:150%` caused the symbol to render offset to the bottom-right corner. Simple `inset:0; width:100%; height:100%` with appropriate camera FOV works better.
-- **Tube thickness:** Brand symbol has hairline strokes. `tube=0.002` is barely visible; `tube=0.005` is too thick; `tube=0.003` was the sweet spot.
-- **Three.js adds ~150KB.** Only worth it if the animation is central to the design.
-- **Final decision:** Removed entirely. The manifesto section it lived in was killed because it didn't serve the conversion flow.
+### 6.4 Animations That Fire Behind the Loader
 
-### 6.4 Particle Systems
+If you have scroll-triggered animations (IntersectionObserver) on sections that are already in the viewport on page load, they will fire immediately — BEHIND the loader overlay. The user never sees them. Solution: delay all animation observers until AFTER the loader dismisses. Current code waits 2700ms (2500ms loader + 200ms buffer), then checks if sections are already in viewport. If yes, fires directly. If not, attaches IntersectionObserver as fallback.
 
-- **Global field > section dividers.** Individual particle canvases per section gap required 3000+ particles each and having 4 was heavy. A single global fixed canvas with 800 particles behind the entire page looks better and performs better.
-- **Mouse repulsion needs `pointer-events:none`** on the canvas so it doesn't block clicks on content above.
-- **Particle visibility on dark backgrounds:** Use radial gradients with multiple color stops (core → glow → fade). Opacity range: 0.015–0.08 base with 0.4–0.6 pulse modulation.
+### 6.5 CSS Video Sharpening Limits
 
-### 6.5 Layout & Spacing
+`filter: contrast(1.12) saturate(1.15) brightness(1.03)` and `playbackRate=0.55` is the maximum client-side enhancement. True sharpening requires re-encoding the source video.
 
-- **All sections: 120px top/bottom padding on desktop, 80px on mobile.** Don't change without being asked.
-- **Section backgrounds should be transparent** so the global particle field shows through. Only the hero (video) and space gallery (images) have opaque backgrounds.
-- **z-index hierarchy:** particles (1) → content sections (2) → grain texture (9000) → nav (100) → cursor (9999)
+### 6.6 Git LFS Videos
 
-### 6.6 Design Strategy
+`raw.githubusercontent.com` returns LFS pointers, not video data. Always use:
+`https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/FILENAME.mp4`
 
-- **Kill sections that don't serve conversion.** The manifesto was impressive design but added scroll distance between "interested" and "buy."
-- **Trust indicators go immediately after the hero.** Don't bury them.
-- **Single CTA in the hero.** One button + supporting note underneath. Not two buttons.
-- **The €48 3-pack is always the primary offer.** Every CTA defaults to this. €17 single class is always secondary/smaller.
-- **Don't add text that explains what the video already shows.** The hero subline about 360° projections was removed because the video communicates this visually.
+### 6.7 3D Three.js Symbol (REMOVED — Don't Rebuild)
 
-### 6.7 Working Style with Marvyn
+We spent hours on this. It was ultimately killed because it didn't serve conversion. If ever revisited: flat circles rotating on their center axis are invisible — you must tilt first, then rotate perpendicular.
+
+### 6.8 Particle Systems
+
+- Global fixed canvas > per-section canvases. One canvas with 960 particles outperforms four canvases with 3000 each.
+- Use 3 brand colors (cyan 38%, salmon 34%, blue 28%) not just two.
+- `pointer-events:none` on the canvas is mandatory.
+
+### 6.9 Marquee / Auto-Scroll Patterns
+
+- For infinite seamless loops, data must be duplicated (or tripled) and `translateX(-50%)` (or `-33.333%`) used in the keyframe.
+- Color alternation must be forced by RENDER INDEX (`i%2`), not by data. With odd item counts, data-based colors break at the loop seam.
+- Partner brands are prestigious names — use PT Serif (heading font), not small-caps sans-serif. Slow speed (55s). Edge fade masks. Em-dash separators.
+- Gallery auto-scroll must run automatically without requiring mouse hover. Use pure CSS `animation` not JS-triggered.
+
+### 6.10 Equal Height Cards
+
+When using a grid of cards that should be equal height: `display:flex; flex-direction:column` on each card, `flex:1` on the description paragraph, and `align-items:stretch` on the grid. This pushes buttons and feature lists to the same vertical position.
+
+### 6.11 Fine Lines Between Sections
+
+The site uses `1px solid rgba(240,239,233,.06)` as subtle separators between most sections. These are applied as `border-top` or `border-bottom` on the sections themselves. Exception: the transition from classes gallery to space gallery uses a navy gradient fade (`::after` pseudo-element, 120px tall) instead of a line.
+
+### 6.12 Counter Animation Easing
+
+Numbers that count up (4.8, 360, 42) use `ease-out sextic` (`1 - Math.pow(1-t, 6)`) over 2.2 seconds. This creates a "spinning wheel" effect — fast start, dramatic deceleration at the end. Previous version used ease-out quart (power 4) over 1.4s which was too smooth/boring.
+
+### 6.13 Working Style with Marvyn
 
 - He gives precise, specific feedback. Execute exactly what's asked — nothing more, nothing less.
-- He reviews in a real browser, not the Claude preview. Always push to GitHub.
-- He sends screenshots of issues. Read them carefully before coding.
+- He reviews in Chrome via htmlpreview.github.io, not in Claude's preview.
+- He sends screenshots of issues — read them carefully before coding.
 - He thinks strategically — he'll question whether a section should exist at all.
 - When he says "improve it," he means a meaningful quality jump, not a small tweak.
+- He cares about brand cohesion — colors should always alternate green/pink consistently.
+- He values readability and pacing — the partners marquee was slowed down specifically because "these are major brands and people can't process them at speed."
 
 ---
 
@@ -333,29 +347,20 @@ We spent significant time building the SABDA cymatic symbol as an animated 3D el
 ### Psychology Foundation (Jongmans et al. 2022)
 Visual Design → Perceived Usability → Pleasure → Purchase Intention
 
-Applied to SABDA:
-- **Visual Design:** Dark immersive theme, particles, video hero, high-quality photography = "this is premium"
-- **Usability:** Single CTA, clear pricing, trust indicators, clean nav = "this is easy"
-- **Pleasure:** The scroll journey feels like entering the space physically = "this feels good"
-- **Action:** €48 3-pack is always the obvious choice = "I'll try it"
+### Pricing (shown on homepage)
+| Offer | Price | Momence URL | Position |
+|-------|-------|-------------|----------|
+| **Intro 3-Pack** | €48 (€16/class) | momence.com/m/443935 | Left card |
+| **Unlimited Monthly** (Popular) | €130/mo | momence.com/m/431216 | Center card (highlighted) |
+| **3-Month Unlimited** | €300 (€100/mo) | momence.com/m/445600 | Right card |
+| Single Drop-In | €16 | momence.com/m/443934 | Footer text link |
 
-### Key Conversion Data (from Meta Ads analysis)
-- Current blended CAC: €9.19
-- Intro-to-membership conversion: ~5.6%
-- 2nd visit return rate: 12.3% within 14 days
-- 68% of trial users never return after 1 class
-- ~82 active memberships (target: 150+ in 90 days)
-
-### Pricing Structure
+### Full Pricing (not all shown on homepage)
 | Offer | Price | Momence URL |
 |-------|-------|-------------|
-| **Intro 3-Pack** (PRIMARY) | €48 (€16/class) | momence.com/m/443935 |
-| Single Drop-In | €17 | momence.com/m/443934 |
 | BCN Resident Week | €50 | momence.com/m/443641 |
 | 5-Pack | €80 | momence.com/m/443937 |
 | 10-Pack | €140 | momence.com/m/443939 |
-| Monthly Membership | €130/mo | momence.com/m/431216 |
-| 3-Month Membership | €300 (€100/mo) | momence.com/m/445600 |
 | Listening Session | €16 | momence.com/m/556050 |
 | Gift Card | Variable | momence.com/gcc/54278 |
 
@@ -368,29 +373,21 @@ Applied to SABDA:
 |------|---------|---------|
 | `SABDA%20white%20logo.png` | White SABDA wordmark | Nav |
 | `SABDA%20symbol%20pink.png` | Pink cymatic symbol | Custom cursor |
-| `SABDA%20symbol%20multi-colored%20(1).png` | Multi-colored cymatic symbol | Reference only |
-| `Sabda_20240118_016.jpg` | Yoga class in immersive room | Vinyasa card |
-| `Sabda_20240118_010.jpg` | Sound healing / dark room | Sound Healing card |
-| `Sabda_20240118_009.jpg` | Breathwork / aurora scene | Breathwork card |
-| `Sabda_20240118_005.jpg` | Pilates / underwater scene | Pilates card |
-| `IMG-26.jpg` | Aurora room / meditation | Meditation card |
-| `IMG-19.jpg` | Concert/event scene | Ecstatic Dance card |
-| `IMG-27.jpg` | Space gallery slide |
-| `IMG-5%20(1).jpg` | Lounge area | Space gallery |
-| `IMG-7%20(1).jpg` | Space photo | Space gallery |
-| `KR233837.jpg` | Space photo | Space gallery |
-| `cover%20insta.jpg` | Space photo | Space gallery |
+| `Sabda_20240118_016.jpg` | Yoga class in immersive room | Gallery row 1 |
+| `Sabda_20240118_010.jpg` | Sound healing / dark room | Gallery row 1 |
+| `Sabda_20240118_009.jpg` | Breathwork / aurora scene | Gallery row 1 |
+| `Sabda_20240118_005.jpg` | Pilates / underwater scene | Gallery row 2 |
+| `Copy%20of%201.jpg` | Ecstatic Dance / dancer | Gallery row 2 |
+| `IMG-26.jpg` | Meditation / aurora room | Gallery row 2 |
+| `IMG-27.jpg`, `IMG-5%20(1).jpg`, `IMG-7%20(1).jpg`, `KR233837.jpg`, `cover%20insta.jpg` | Space photos | Space gallery slides |
 
 ### Videos (load from LFS media URL)
 | File | Content | Used In |
 |------|---------|---------|
 | `0312.mp4` | Hero video (49MB) | Hero section |
-| `45 classes.mp4` | Class footage | Available, not used |
-| `classes 2 4.5.mp4` | Class footage | Available, not used |
-| `new awareness 4.5.mp4` | Awareness video | Available, not used |
 
 ### Fonts
-Custom Eugusto Bold .woff files exist in repo but **don't load reliably** from GitHub (CORS/MIME issues). Use Google Fonts PT Serif + DM Sans. Use the logo PNG for the SABDA wordmark.
+Custom Eugusto Bold .woff files exist but don't load reliably from GitHub. Use Google Fonts PT Serif + DM Sans.
 
 ---
 
@@ -399,32 +396,23 @@ Custom Eugusto Bold .woff files exist in repo but **don't load reliably** from G
 ### Next Session Priority
 - [ ] Mobile responsive pass (most traffic comes from Instagram ads on phones)
 - [ ] Review space gallery — may need better photos
-- [ ] Verify hero video quality in real browser
+- [ ] Testimonials need real quotes (current ones are placeholders)
 
 ### Additional Pages to Build
 - [ ] `/welcome/` — ads landing page (exists as `welcome.html` — needs sync with v16 design)
 - [ ] `/classes/` — all class types, Momence schedule embed
-- [ ] `/pricing/` — intro offers, packs, memberships
+- [ ] `/pricing/` — full pricing page with all packs and memberships
 - [ ] `/the-space/` — technology showcase, gallery, specs
-- [ ] `/rent-corporate/` — B2B page with inquiry form → connect@sabdastudio.com
+- [ ] `/rent-corporate/` — B2B page with inquiry form
 - [ ] `/listening-sessions/` — paused, signup for notifications
 - [ ] `/about/` — origin story, mission, values, team
 - [ ] `/contact/` — address, map, form
 
 ### Technical Integration
 - [ ] Meta Pixel (ID: `567636669734630`)
-- [ ] Fix checkout pixel (CAPI server-side)
 - [ ] Momence schedule widget (`host_id: 54278`)
-- [ ] Corporate inquiry form
 - [ ] EN/ES language toggle
 - [ ] GA4 + GTM configuration
-
-### Content Still Needed
-- [ ] Case studies from Juliet
-- [ ] Confirmed partner/press logos
-- [ ] Teacher profiles and photos
-- [ ] Real testimonials with permission
-- [ ] High-res gallery photos
 
 ---
 
@@ -444,7 +432,6 @@ Custom Eugusto Bold .woff files exist in repo but **don't load reliably** from G
 ### Meta Pixel
 - **Pixel ID:** 567636669734630
 - **Events needed:** PageView, ViewContent, InitiateCheckout, AddToCart, Purchase (CAPI), Lead
-- **Status:** Checkout pixel broken. Gloria is supposed to fix.
 
 ---
 
@@ -454,6 +441,7 @@ Custom Eugusto Bold .woff files exist in repo but **don't load reliably** from G
 |------|-------|
 | GitHub repo | https://github.com/marv0611/sabdawebsite |
 | GitHub PAT | `YOUR_GITHUB_PAT_HERE` |
+| HTML Preview | https://htmlpreview.github.io/?https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA_v16.html |
 | Current website | https://sabda.es |
 | New domain | sabdastudio.com (migration pending) |
 | Framer project | https://individual-perspective-340178.framer.app/ |
@@ -468,8 +456,6 @@ Custom Eugusto Bold .woff files exist in repo but **don't load reliably** from G
 ### Company Details
 - **Legal name:** SABDA STUDIO S.L.
 - **C.I.F:** B44704401
-- **IBAN:** ES20 2100 0801 1402 0120 3441
-- **BIC:** CAIXESBBXXXCAIXA
 
 ---
 
@@ -482,9 +468,6 @@ Custom Eugusto Bold .woff files exist in repo but **don't load reliably** from G
 | `SABDA_Website_Build_Manual.md` | This document |
 | `SABDA_Brand_Foundations.pdf` | Brand strategy deck |
 | `SABDA_Website_Copy_v1.md` | Page-by-page website copy |
-| `SABDA_SEO_Competitive_Analysis_Prompt.md` | SEO prompt (not yet run) |
-| `SABDA_Notion_Full_Workspace_Extraction_March2026.md` | Notion data |
-| `SABDA_Notion_Marketing_Extraction_March2026.md` | Marketing Notion data |
 | `Meta_Ads_Chat_Summary_March_2026.md` | Meta Ads analysis |
 
 ### Version History
@@ -493,8 +476,8 @@ Custom Eugusto Bold .woff files exist in repo but **don't load reliably** from G
 | v12 | Images from GitHub, brand navy, photo cards | Superseded |
 | v13 | Animated symbol, card animations | Superseded |
 | v15 | Full rebuild with particles, gallery, booking | Superseded |
-| v16 | Streamlined flow, global particles, video swap, stats strip | **Current** |
+| v16 | Streamlined flow, global particles, animated counters, dual-row gallery, 3-card pricing, premium partners marquee | **Current** |
 
 ---
 
-*End of manual. Last updated March 12, 2026 after v16 session.*
+*End of manual. Last updated March 12, 2026 — end of Session 2.*
