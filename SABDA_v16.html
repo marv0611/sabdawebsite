@@ -86,6 +86,7 @@ nav.on{background:rgba(14,18,53,.88);backdrop-filter:blur(22px);border-bottom-co
 .btn-p:hover{background:#18ffda;transform:translateY(-2px);box-shadow:0 14px 36px rgba(2,243,197,.22)}
 .btn-s{display:inline-flex;align-items:center;gap:8px;color:var(--white60);font-size:.9rem;border-bottom:1px solid rgba(240,239,233,.18);padding-bottom:2px;transition:color .25s,border-color .25s}
 .btn-s:hover{color:var(--white);border-color:var(--white)}
+.hero-note{font-size:.82rem;color:var(--white38);letter-spacing:.03em}
 .hero-scroll{position:absolute;bottom:38px;right:58px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:10px;font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--white38)}
 .hero-scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,var(--white38),transparent);animation:sbob 2.2s ease-in-out infinite}
 @keyframes sbob{0%,100%{transform:scaleY(1);opacity:.35}50%{transform:scaleY(.55);opacity:.85}}
@@ -95,13 +96,13 @@ nav.on{background:rgba(14,18,53,.88);backdrop-filter:blur(22px);border-bottom-co
 .rv.vis{opacity:1;transform:none}
 
 /* ── SECTION BASE ── */
-section{position:relative;padding:130px 80px}
+section{position:relative;padding:120px 80px}
 .sl{font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--cyan);font-weight:500;margin-bottom:18px;display:block}
 .sh2{font-family:'PT Serif',serif;font-size:clamp(2rem,4.5vw,4rem);font-weight:700;line-height:1.08;letter-spacing:-.025em}
 .sh2 em{font-style:italic;color:var(--salmon)}
 
 /* ── MANIFESTO ── */
-.manifesto{min-height:100vh;display:flex;align-items:center;padding:130px 80px;position:relative;
+.manifesto{min-height:100vh;display:flex;align-items:center;padding:120px 80px;position:relative;
   background:radial-gradient(ellipse 90% 70% at 15% 55%,rgba(248,166,163,.02) 0%,transparent 65%)}
 .manifesto-inner{display:grid;grid-template-columns:1fr 1fr;gap:96px;align-items:center;max-width:1340px;width:100%;margin:0 auto}
 .manifesto-heading{font-family:'PT Serif',serif;font-size:clamp(2.4rem,4.2vw,3.8rem);line-height:1.1;font-weight:700;letter-spacing:-.028em;margin-bottom:38px}
@@ -113,13 +114,13 @@ section{position:relative;padding:130px 80px}
 .pill-dot.a{background:var(--salmon)}.pill-dot.t{background:var(--cyan)}.pill-dot.w{background:var(--white38)}
 
 /* SYMBOL */
-.manifesto-symbol{position:relative;display:flex;align-items:center;justify-content:center;min-height:400px}
-.sym-wrap{position:relative;width:min(520px,42vw);min-width:300px;aspect-ratio:1;overflow:visible}
-#orbContainer{position:absolute;inset:-15%;width:130%;height:130%}
+.manifesto-symbol{position:relative;display:flex;align-items:center;justify-content:center;min-height:400px;pointer-events:none}
+.sym-wrap{position:relative;width:min(480px,40vw);min-width:280px;aspect-ratio:1;overflow:visible}
+#orbContainer{position:absolute;inset:-25%;width:150%;height:150%}
 #orbContainer canvas{display:block;width:100%!important;height:100%!important}
 
 /* ── CLASSES ── */
-.classes{padding:130px 80px;position:relative;background:var(--navy)}
+.classes{padding:120px 80px;position:relative;background:var(--navy)}
 .classes-hdr{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:68px}
 .cls-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1440px;width:100%;margin:0 auto}
 .cls-card{position:relative;height:530px;border-radius:4px;overflow:hidden;cursor:none;background:var(--navy)}
@@ -159,7 +160,7 @@ section{position:relative;padding:130px 80px}
 .schedule-btn:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(2,243,197,.06);transform:translateY(-1px);gap:14px}
 
 /* ── SECTION TRANSITION — ORGANIC PARTICLE FLOW ── */
-.section-fade{position:relative;height:220px;pointer-events:auto;overflow:hidden;background:var(--navy);flex-shrink:0}
+.section-fade{position:relative;height:200px;pointer-events:auto;overflow:hidden;background:var(--navy);flex-shrink:0}
 .section-fade canvas{position:absolute;inset:0;width:100%;height:100%}
 
 /* ── SPACE GALLERY ── */
@@ -200,7 +201,7 @@ section{position:relative;padding:130px 80px}
 .sg-explore:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(2,243,197,.06)}
 
 /* ── TESTIMONIALS ── */
-.testimonials{padding:130px 80px;background:radial-gradient(ellipse 75% 65% at 50% 55%,rgba(248,166,163,.022) 0%,transparent 70%)}
+.testimonials{padding:120px 80px;background:radial-gradient(ellipse 75% 65% at 50% 55%,rgba(248,166,163,.022) 0%,transparent 70%)}
 .testi-hdr{text-align:center;margin-bottom:76px}
 .tc{position:relative;max-width:820px;margin:0 auto;text-align:center}
 .ti{position:absolute;inset:0;opacity:0;transform:translateY(14px);transition:opacity .75s var(--ease-expo),transform .75s var(--ease-expo);display:flex;flex-direction:column;align-items:center}
@@ -235,7 +236,7 @@ section{position:relative;padding:130px 80px}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 /* ── BOOKING ── */
-.booking{padding:130px 80px;background:radial-gradient(ellipse 55% 75% at 50% 65%,rgba(2,243,197,.028) 0%,transparent 70%)}
+.booking{padding:120px 80px;background:radial-gradient(ellipse 55% 75% at 50% 65%,rgba(2,243,197,.028) 0%,transparent 70%)}
 .booking-in{max-width:1020px;margin:0 auto;text-align:center}
 .booking-sub{color:var(--white38);font-size:1rem;line-height:1.72;max-width:500px;margin:18px auto 68px}
 .b-cards{display:flex;gap:22px;justify-content:center;align-items:stretch;flex-wrap:wrap}
@@ -257,7 +258,7 @@ section{position:relative;padding:130px 80px}
 .b-foot a:hover{color:var(--white)}
 
 /* ── LOCATION ── */
-.location{padding:130px 80px}
+.location{padding:120px 80px}
 .loc-in{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;max-width:1240px;margin:0 auto}
 .loc-addr{font-size:1.05rem;line-height:1.82;color:var(--white60);margin-bottom:34px}
 .loc-addr strong{color:var(--white);font-weight:500}
@@ -295,9 +296,10 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
   nav{padding:0 24px}
   .nav-links{display:none}
   section,.manifesto,.classes,.booking,.location,.trust,footer{padding-left:24px;padding-right:24px}
+  section{padding-top:80px;padding-bottom:80px}
   .hero-content{padding:0 24px 80px}
   .manifesto-inner{grid-template-columns:1fr;gap:60px}
-  .sym-wrap{width:min(300px,72vw)}
+  .sym-wrap{width:min(280px,65vw);min-width:220px}
   .cls-grid{grid-template-columns:1fr}
   .cls-card{height:440px}
   .loc-in{grid-template-columns:1fr;gap:44px}
@@ -352,17 +354,34 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
     <div class="hero-label rv">
       <span class="c">Art</span><div class="d"></div><span>Tech</span><div class="d"></div><span class="s">Wellness</span>
     </div>
-    <h1 class="rv" style="transition-delay:.1s">The Future<br>of <em>Wellness</em></h1>
-    <p class="hero-sub rv" style="transition-delay:.2s">360° immersive projections. Dolby Atmos spatial audio.<br>Yoga, sound healing, breathwork & more in Barcelona.</p>
+    <h1 class="rv" style="transition-delay:.1s">Yoga in <em>360°.</em><br>Barcelona.</h1>
+    <p class="hero-sub rv" style="transition-delay:.2s">Immersive projections. Dolby Atmos spatial audio.<br>Yoga, sound healing, breathwork & more — inside a world designed for every class.</p>
     <div class="hero-ctas rv" style="transition-delay:.3s">
-      <a href="https://momence.com/m/443935" class="btn-p" target="_blank">3 Classes — €48
+      <a href="https://momence.com/m/443935" class="btn-p" target="_blank">3 Classes for €48
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
-      <a href="https://momence.com/m/443934" class="btn-s" target="_blank">Try One Class — €16</a>
+      <span class="hero-note">€16/class · New students · No commitment</span>
     </div>
   </div>
   <div class="hero-scroll"><div class="hero-scroll-line"></div><span>Scroll</span></div>
 </section>
+
+<!-- TRUST — immediately after hero for credibility priming -->
+<div class="trust">
+  <div class="trust-in">
+    <div class="ti2 rv">
+      <div class="tstars"><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg></div>
+      <span class="tscore">4.8</span><span class="tlbl">ClassPass · 15,000+ reviews</span>
+    </div>
+    <div class="tdiv rv" style="transition-delay:.1s"></div>
+    <div class="ti2 rv" style="transition-delay:.15s">
+      <div class="tstars"><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg></div>
+      <span class="tscore">4.8</span><span class="tlbl">Google · 120+ reviews</span>
+    </div>
+  </div>
+</div>
+
+<div class="section-fade"><canvas class="particle-stream"></canvas></div>
 
 <!-- MANIFESTO -->
 <section class="manifesto" id="manifesto">
@@ -555,20 +574,7 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
   </div>
 </section>
 
-<!-- TRUST -->
-<div class="trust">
-  <div class="trust-in">
-    <div class="ti2 rv">
-      <div class="tstars"><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg></div>
-      <span class="tscore">4.8</span><span class="tlbl">ClassPass · 15,000+ reviews</span>
-    </div>
-    <div class="tdiv rv" style="transition-delay:.1s"></div>
-    <div class="ti2 rv" style="transition-delay:.15s">
-      <div class="tstars"><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg></div>
-      <span class="tscore">4.8</span><span class="tlbl">Google · 120+ reviews</span>
-    </div>
-  </div>
-</div>
+<div class="section-fade"><canvas class="particle-stream"></canvas></div>
 
 <!-- PARTNERS -->
 <div class="partners">
@@ -758,8 +764,8 @@ document.querySelectorAll('.particle-stream').forEach(canvas=>{
   });
   canvas.parentElement.addEventListener('mouseleave',()=>{mouseX=-9999;mouseY=-9999});
 
-  /* Ultra-dense particle nebula */
-  const COUNT=1500;
+  /* 3000-particle nebula — dense luminous cloud */
+  const COUNT=3000;
   const particles=Array.from({length:COUNT},()=>{
     const baseY=0.03+Math.random()*0.94;
     return{
@@ -850,8 +856,8 @@ document.querySelectorAll('.particle-stream').forEach(canvas=>{
 
 /* ═══════════════════════════════════════════════════════
    MANIFESTO — 3D CYMATIC SYMBOL (Three.js)
-   Exact replica of SABDA logo — thin concentric rings
-   Each ring rotates on its own axis in harmony
+   SABDA logo — hairline concentric rings rotating in harmony
+   No mouse interaction — pure autonomous beauty
 ═══════════════════════════════════════════════════════ */
 function initOrb(){
   const container=document.getElementById('orbContainer');
@@ -861,67 +867,55 @@ function initOrb(){
   if(W<10){setTimeout(initOrb,100);return}
 
   const scene=new THREE.Scene();
-  const camera=new THREE.PerspectiveCamera(30,1,.1,100);
-  camera.position.z=5.8;
+  const camera=new THREE.PerspectiveCamera(28,1,.1,100);
+  camera.position.z=5.2;
 
   const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});
   renderer.setSize(W,W);
   renderer.setPixelRatio(Math.min(devicePixelRatio,2));
   container.appendChild(renderer.domElement);
-  renderer.domElement.style.cssText='width:100%;height:100%';
+  renderer.domElement.style.cssText='width:100%;height:100%;pointer-events:none';
 
-  /* ── Each ring is its own group so it can rotate on its own axis ── */
   const masterGroup=new THREE.Group();
+  /* Slight constant tilt so you see the 3D nature */
+  masterGroup.rotation.x=0.25;
+  masterGroup.rotation.y=0.15;
   scene.add(masterGroup);
 
   const rings=[];
-
-  /* Matching the uploaded symbol exactly:
-     - ~11 concentric circles
-     - Thin strokes (tube 0.005)
-     - Alternating cyan (#02F3C5) and salmon (#F8A6A3) with blended middle tones
-     - Slightly offset centers creating cymatic interference pattern
-     - Each ring rotates at its own speed on a slightly tilted axis */
+  /* 11 rings matching the uploaded symbol:
+     - Hairline thin (tube 0.002)
+     - Alternating cyan/salmon/blended
+     - Each on its own pivot, rotating at its own speed */
   const data=[
-    {r:1.60, ox: 0.00, oy: 0.03, color:'#02F3C5', op:.70, rotSpeed:.08, tiltX:.00, tiltY:.00 },
-    {r:1.42, ox: 0.05, oy:-0.02, color:'#F8A6A3', op:.55, rotSpeed:-.06, tiltX:.04, tiltY:.03 },
-    {r:1.26, ox:-0.03, oy: 0.04, color:'#7fcdb5', op:.45, rotSpeed:.07, tiltX:-.03, tiltY:.05 },
-    {r:1.10, ox: 0.02, oy:-0.01, color:'#02F3C5', op:.60, rotSpeed:-.05, tiltX:.05, tiltY:-.04},
-    {r:0.95, ox:-0.04, oy: 0.02, color:'#F8A6A3', op:.55, rotSpeed:.06, tiltX:-.04, tiltY:.06 },
-    {r:0.80, ox: 0.01, oy:-0.03, color:'#7fcdb5', op:.42, rotSpeed:-.07, tiltX:.06, tiltY:-.03},
-    {r:0.66, ox:-0.02, oy: 0.01, color:'#02F3C5', op:.60, rotSpeed:.05, tiltX:-.05, tiltY:.04 },
-    {r:0.52, ox: 0.03, oy:-0.01, color:'#F8A6A3', op:.52, rotSpeed:-.06, tiltX:.04, tiltY:-.05},
-    {r:0.40, ox:-0.01, oy: 0.02, color:'#02F3C5', op:.65, rotSpeed:.07, tiltX:-.03, tiltY:.03 },
-    {r:0.28, ox: 0.01, oy:-0.01, color:'#F8A6A3', op:.50, rotSpeed:-.05, tiltX:.05, tiltY:-.02},
-    {r:0.18, ox:-0.01, oy: 0.01, color:'#02F3C5', op:.60, rotSpeed:.08, tiltX:-.02, tiltY:.04 },
+    {r:1.55, ox: 0.00, oy: 0.03, color:'#02F3C5', op:.75, spd:.045 },
+    {r:1.38, ox: 0.04, oy:-0.02, color:'#F8A6A3', op:.58, spd:-.035},
+    {r:1.22, ox:-0.03, oy: 0.04, color:'#7fcdb5', op:.48, spd:.04  },
+    {r:1.06, ox: 0.02, oy:-0.01, color:'#02F3C5', op:.62, spd:-.03 },
+    {r:0.92, ox:-0.04, oy: 0.02, color:'#F8A6A3', op:.58, spd:.038 },
+    {r:0.78, ox: 0.01, oy:-0.03, color:'#7fcdb5', op:.45, spd:-.042},
+    {r:0.64, ox:-0.02, oy: 0.01, color:'#02F3C5', op:.62, spd:.032 },
+    {r:0.50, ox: 0.03, oy:-0.01, color:'#F8A6A3', op:.55, spd:-.037},
+    {r:0.38, ox:-0.01, oy: 0.02, color:'#02F3C5', op:.68, spd:.044 },
+    {r:0.26, ox: 0.01, oy:-0.01, color:'#F8A6A3', op:.52, spd:-.033},
+    {r:0.16, ox:-0.01, oy: 0.01, color:'#02F3C5', op:.65, spd:.048 },
   ];
 
   data.forEach((d,i)=>{
-    /* Each ring gets its own pivot group for independent rotation */
     const pivot=new THREE.Group();
-    /* Thin tube — matches the hairline stroke weight of the logo */
-    const geo=new THREE.TorusGeometry(d.r, 0.005, 6, 220);
+    /* 0.002 tube = true hairline, matching the original logo stroke weight */
+    const geo=new THREE.TorusGeometry(d.r, 0.002, 4, 256);
     const mat=new THREE.MeshBasicMaterial({
       color:d.color, transparent:true, opacity:d.op,
       side:THREE.DoubleSide, depthWrite:false
     });
     const mesh=new THREE.Mesh(geo,mat);
-    /* Offset center like the real symbol */
     mesh.position.x=d.ox;
     mesh.position.y=d.oy;
     pivot.add(mesh);
     masterGroup.add(pivot);
     rings.push({pivot,mesh,d,baseOp:d.op,idx:i});
   });
-
-  /* ── Mouse ── */
-  let mX=0,mY=0,tX=0,tY=0;
-  container.addEventListener('mousemove',e=>{
-    const r=container.getBoundingClientRect();
-    tX=((e.clientX-r.left)/r.width-0.5)*2;
-    tY=((e.clientY-r.top)/r.height-0.5)*2;
-  });
-  container.addEventListener('mouseleave',()=>{tX=0;tY=0});
 
   const clock=new THREE.Clock();
   let visible=true;
@@ -931,30 +925,23 @@ function initOrb(){
     if(!visible)return;
     const t=clock.getElapsedTime();
 
-    mX+=(tX-mX)*0.025;
-    mY+=(tY-mY)*0.025;
-
-    /* Master group follows mouse gently */
-    masterGroup.rotation.x=mY*0.3;
-    masterGroup.rotation.y=mX*0.35;
+    /* Very slow master rotation — reveals the 3D depth gracefully */
+    masterGroup.rotation.x=0.25+Math.sin(t*0.08)*0.12;
+    masterGroup.rotation.y=0.15+Math.cos(t*0.06)*0.1;
 
     rings.forEach(({pivot,mesh,d,baseOp,idx})=>{
-      /* Each ring's pivot rotates on its own tilted axis — this is the harmony */
-      /* The tilt creates the 3D separation while rotation creates the motion */
-      pivot.rotation.x=d.tiltX*Math.sin(t*d.rotSpeed*0.5);
-      pivot.rotation.y=d.tiltY*Math.cos(t*d.rotSpeed*0.4);
-      pivot.rotation.z=t*d.rotSpeed;
+      /* Each ring rotates on Z at its own speed — the harmony */
+      pivot.rotation.z=t*d.spd;
+      /* Tiny tilt oscillation per ring — creates the cymatic interference */
+      pivot.rotation.x=Math.sin(t*0.1+idx*0.6)*0.04;
+      pivot.rotation.y=Math.cos(t*0.08+idx*0.5)*0.03;
 
       /* Gentle breathing */
-      const breath=1+0.02*Math.sin(t*0.35+idx*0.6);
+      const breath=1+0.015*Math.sin(t*0.3+idx*0.5);
       mesh.scale.setScalar(breath);
 
-      /* Subtle center drift */
-      mesh.position.x=d.ox+Math.sin(t*0.15+idx*0.9)*0.01;
-      mesh.position.y=d.oy+Math.cos(t*0.13+idx*0.7)*0.01;
-
       /* Opacity pulse — very subtle */
-      mesh.material.opacity=baseOp*(0.8+0.2*Math.sin(t*0.25+idx*0.5));
+      mesh.material.opacity=baseOp*(0.85+0.15*Math.sin(t*0.2+idx*0.4));
     });
 
     renderer.render(scene,camera);
