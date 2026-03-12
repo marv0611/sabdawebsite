@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><!-- classes-v1 -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Classes & Schedule — SABDA Studio Barcelona</title>
+<meta name="description" content="Explore our weekly schedule of immersive yoga, pilates, sound healing, breathwork, ecstatic dance and meditation classes. Book your spot now.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0e1235;--salmon:#F8A6A3;--cyan:#02F3C5;
+  --white:#f0efe9;--white60:rgba(240,239,233,.6);--white38:rgba(240,239,233,.38);
+  --ease-expo:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--navy);color:var(--white);
+  font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.6;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+::selection{background:rgba(248,166,163,.18)}
+
+/* ── GRAIN ── */
+.grain{position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.038;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:200px}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;display:flex;align-items:center;justify-content:space-between;transition:background .5s,backdrop-filter .5s,border-color .5s;border-bottom:1px solid rgba(240,239,233,.04);background:rgba(14,18,53,.88);backdrop-filter:blur(22px)}
+.nav-logo img{height:27px;width:auto;display:block}
+.nav-links{display:flex;gap:36px;list-style:none;font-size:.8rem;letter-spacing:.09em;text-transform:uppercase;font-weight:500}
+.nav-links a{color:var(--white);opacity:.75;transition:opacity .25s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;right:100%;height:1px;background:var(--cyan);transition:right .3s var(--ease-expo)}
+.nav-links a:hover{opacity:1}
+.nav-links a:hover::after{right:0}
+.nav-links a.active{opacity:1}
+.nav-links a.active::after{right:0}
+.nav-cta{background:var(--cyan);color:var(--navy);padding:10px 22px;border-radius:3px;font-size:.8rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;transition:background .2s,transform .2s}
+.nav-cta:hover{background:#18ffda;transform:translateY(-1px)}
+
+/* ── PAGE HEADER ── */
+.page-header{
+  padding:140px 80px 48px;
+  text-align:center;
+  position:relative;
+}
+.page-header h1{
+  font-family:'PT Serif',serif;
+  font-size:2.8rem;
+  font-weight:400;
+  letter-spacing:-.01em;
+  margin-bottom:12px;
+}
+.page-header h1 span.cyan{color:var(--cyan)}
+.page-header p{
+  font-size:.95rem;
+  color:var(--white60);
+  max-width:480px;
+  margin:0 auto;
+}
+
+/* ── MOMENCE WIDGET OVERRIDE ── */
+/* Base container */
+#momence-plugin-host-schedule{
+  max-width:920px;
+  margin:0 auto;
+  padding:0 40px 60px;
+}
+
+/* Override ALL Momence CSS variables for SABDA dark theme */
+#momence-plugin-host-schedule,
+#momence-plugin-host-schedule *{
+  font-family:'DM Sans',sans-serif !important;
+}
+
+/* Root-level overrides via the :root the widget reads */
+:root{
+  /* Primary = cyan accent */
+  --momence-primary-050:rgba(2,243,197,.04);
+  --momence-primary-100:rgba(2,243,197,.08);
+  --momence-primary-200:rgba(2,243,197,.16);
+  --momence-primary-300:rgba(2,243,197,.3);
+  --momence-primary-400:rgba(2,243,197,.55);
+  --momence-primary-500:#02F3C5;
+  --momence-primary-600:#00d4ac;
+  --momence-primary-700:#00b594;
+  --momence-primary-800:#00967b;
+  --momence-primary-900:#007862;
+
+  /* Background = navy */
+  --momence-background:#0e1235;
+  --momence-white:#131842;
+
+  /* Text colors */
+  --momence-primary-color:#f0efe9;
+  --momence-secondary-color:rgba(240,239,233,.6);
+  --momence-tertiary-color:rgba(240,239,233,.38);
+
+  /* Black scale → light text on dark */
+  --momence-black-100:rgba(240,239,233,.35);
+  --momence-black-200:rgba(240,239,233,.5);
+  --momence-black-300:rgba(240,239,233,.65);
+  --momence-black-400:rgba(240,239,233,.8);
+  --momence-black-500:#f0efe9;
+
+  /* Grey scale → dark theme borders */
+  --momence-grey-050:rgba(240,239,233,.03);
+  --momence-grey-100:rgba(240,239,233,.05);
+  --momence-grey-200:rgba(240,239,233,.08);
+  --momence-grey-300:rgba(240,239,233,.1);
+  --momence-grey-400:rgba(240,239,233,.15);
+  --momence-grey-500:rgba(240,239,233,.2);
+  --momence-grey-600:rgba(240,239,233,.28);
+  --momence-grey-700:rgba(240,239,233,.38);
+  --momence-grey-800:rgba(240,239,233,.48);
+  --momence-grey-900:rgba(240,239,233,.6);
+
+  /* Session card separator */
+  --momence-session-separator-color:rgba(240,239,233,.06);
+
+  /* Dark fills → inverted for dark theme */
+  --momence-dark-alpha-fill-100:rgba(240,239,233,.04);
+  --momence-dark-alpha-fill-200:rgba(240,239,233,.06);
+  --momence-dark-alpha-fill-300:rgba(240,239,233,.08);
+  --momence-dark-alpha-fill-400:rgba(240,239,233,.12);
+  --momence-dark-alpha-fill-500:rgba(240,239,233,.15);
+  --momence-dark-alpha-fill-600:rgba(240,239,233,.25);
+  --momence-dark-alpha-fill-700:rgba(240,239,233,.38);
+  --momence-dark-alpha-fill-800:rgba(240,239,233,.55);
+  --momence-dark-alpha-fill-900:rgba(240,239,233,.85);
+
+  /* Light fills */
+  --momence-light-alpha-fill-900:rgba(14,18,53,.9);
+  --momence-light-alpha-fill-700:rgba(14,18,53,.6);
+  --momence-light-alpha-fill-600:rgba(14,18,53,.3);
+  --momence-light-alpha-fill-500:rgba(14,18,53,.18);
+
+  /* Dark background fills */
+  --momence-dark-background-200:rgba(240,239,233,.05);
+  --momence-dark-background-300:rgba(240,239,233,.08);
+  --momence-dark-background-400:rgba(240,239,233,.12);
+  --momence-dark-background-500:rgba(240,239,233,.16);
+  --momence-dark-background-800:rgba(240,239,233,.4);
+  --momence-dark-background-900:rgba(14,18,53,.85);
+  --momence-light-background-900:rgba(14,18,53,.9);
+}
+
+/* ── Widget-specific cosmetic overrides ── */
+
+/* Main layout container */
+#momence-plugin-host-schedule .momence-host-schedule-layout{
+  background:transparent !important;
+}
+
+/* Session cards → dark glass */
+#momence-plugin-host-schedule article{
+  background:rgba(19,24,66,.65) !important;
+  border-color:rgba(240,239,233,.06) !important;
+  backdrop-filter:blur(8px);
+  border-radius:16px !important;
+}
+
+/* Card images */
+#momence-plugin-host-schedule article img{
+  border-radius:10px !important;
+}
+
+/* Session type label */
+#momence-plugin-host-schedule h3{
+  color:var(--salmon) !important;
+  font-family:'DM Sans',sans-serif !important;
+  letter-spacing:.15em !important;
+}
+
+/* Session title */
+#momence-plugin-host-schedule h4{
+  font-family:'PT Serif',serif !important;
+  font-weight:400 !important;
+  color:var(--white) !important;
+}
+
+/* Book Now button → cyan */
+#momence-plugin-host-schedule .momence-button[class*="primary"],
+#momence-plugin-host-schedule a[class*="sc-12tukza"]{
+  background:#02F3C5 !important;
+  color:#0e1235 !important;
+  font-weight:700 !important;
+  letter-spacing:.04em !important;
+  border-radius:4px !important;
+  transition:background .2s,transform .15s !important;
+}
+#momence-plugin-host-schedule .momence-button[class*="primary"]:hover,
+#momence-plugin-host-schedule a[class*="sc-12tukza"]:hover{
+  background:#18ffda !important;
+  transform:translateY(-1px) !important;
+}
+
+/* Disabled/finished buttons */
+#momence-plugin-host-schedule .momence-button:disabled,
+#momence-plugin-host-schedule .momence-button[class*="booked"]{
+  background:rgba(240,239,233,.08) !important;
+  color:rgba(240,239,233,.35) !important;
+}
+
+/* Day selector pills */
+#momence-plugin-host-schedule button[class*="day_selection"]{
+  background:transparent !important;
+}
+#momence-plugin-host-schedule button[class*="day_selection"]:hover{
+  background:rgba(240,239,233,.05) !important;
+}
+
+/* Quick filter buttons (SHOW ALL, TODAY) */
+#momence-plugin-host-schedule button[class*="quick_filters"]{
+  background:transparent !important;
+  border-color:rgba(240,239,233,.12) !important;
+  color:var(--white) !important;
+}
+#momence-plugin-host-schedule button[class*="quick_filters"]:hover{
+  background:rgba(240,239,233,.05) !important;
+}
+
+/* View toggle (Week/Month) */
+#momence-plugin-host-schedule button[class*="view-toggle"]{
+  background:transparent !important;
+  border-color:rgba(240,239,233,.12) !important;
+  color:var(--white) !important;
+  stroke:var(--white) !important;
+}
+
+/* Select dropdowns */
+#momence-plugin-host-schedule button.momence-select-button{
+  background:rgba(19,24,66,.6) !important;
+  border-color:rgba(240,239,233,.12) !important;
+  color:var(--white) !important;
+}
+
+/* Dropdown popup */
+#momence-plugin-host-schedule .momence-select-popup{
+  background:#131842 !important;
+  border-color:rgba(240,239,233,.1) !important;
+}
+#momence-plugin-host-schedule .momence-select-option{
+  background:#131842 !important;
+  color:var(--white) !important;
+}
+#momence-plugin-host-schedule .momence-select-option:hover{
+  background:rgba(240,239,233,.06) !important;
+}
+
+/* Arrow buttons */
+#momence-plugin-host-schedule .momence-arrow-button{
+  background:transparent !important;
+  border-color:rgba(240,239,233,.1) !important;
+  color:var(--white) !important;
+}
+#momence-plugin-host-schedule .momence-arrow-button:hover:not(:disabled){
+  background:rgba(240,239,233,.06) !important;
+}
+#momence-plugin-host-schedule .momence-arrow-button:disabled{
+  color:rgba(240,239,233,.15) !important;
+}
+
+/* Event type tabs */
+#momence-plugin-host-schedule .momence-event_type_select-button{
+  background:transparent !important;
+  color:rgba(240,239,233,.5) !important;
+}
+
+/* Month switch */
+#momence-plugin-host-schedule .momence-month-switch *{
+  color:var(--white) !important;
+}
+
+/* Month calendar cells */
+#momence-plugin-host-schedule .momence-month-calendar-day{
+  background:transparent !important;
+}
+#momence-plugin-host-schedule .momence-month-calendar-day:hover:not(:disabled){
+  background:rgba(240,239,233,.05) !important;
+}
+
+/* Pagination */
+#momence-plugin-host-schedule .momence-pagination button{
+  background:transparent !important;
+  color:var(--white) !important;
+}
+
+/* No results illustration */
+#momence-plugin-host-schedule .momence-host_schedule-session_list-no_results-text{
+  color:rgba(240,239,233,.5) !important;
+}
+
+/* Tag buttons */
+#momence-plugin-host-schedule .momence-host_dashboard-tag_button{
+  background:transparent !important;
+  border-color:rgba(240,239,233,.12) !important;
+  color:var(--white) !important;
+}
+
+/* Loader dots */
+#momence-plugin-host-schedule .momence-host_schedule-loader div::after,
+#momence-plugin-host-schedule [class*="sc-1oszok8"] div{
+  background:var(--cyan) !important;
+}
+
+/* Hide "Powered by Momence" */
+#momence-plugin-host-schedule .momence-host_schedule-powered_by_momence{
+  display:none !important;
+}
+
+/* One-click booking banner */
+#momence-plugin-host-schedule [class*="fS"]{
+  background:rgba(2,243,197,.06) !important;
+}
+
+/* ── FOOTER ── */
+footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);background:rgba(9,12,38,.6);position:relative;z-index:2}
+.ft-in{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:52px;margin-bottom:72px}
+.ft-brand img{height:25px;width:auto;margin-bottom:22px;display:block}
+.ft-brand p{font-size:.84rem;color:var(--white38);line-height:1.72;max-width:230px}
+.ft-pillars{display:flex;gap:12px;margin-top:20px;font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;color:var(--white38)}
+.ft-pillars .fp-art{color:var(--cyan)}.ft-pillars .fp-tech{color:var(--white)}.ft-pillars .fp-well{color:var(--salmon)}
+.ft-col h4{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;margin-bottom:20px;font-family:'DM Sans',sans-serif}
+.ft-col:nth-child(2) h4{color:var(--cyan)}
+.ft-col:nth-child(3) h4{color:var(--salmon)}
+.ft-col:nth-child(4) h4{color:var(--white60)}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.ft-col a{font-size:.87rem;color:var(--white38);transition:color .2s}
+.ft-col a:hover{color:var(--white)}
+.ft-bot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding-top:30px;border-top:1px solid rgba(240,239,233,.06);font-size:.74rem;color:rgba(240,239,233,.2)}
+.ft-legal{display:flex;gap:24px}
+.ft-legal a:hover{color:var(--white38)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav{padding:0 24px}
+  .nav-links{display:none}
+  .page-header{padding:120px 24px 36px}
+  .page-header h1{font-size:2rem}
+  #momence-plugin-host-schedule{padding:0 16px 40px}
+  footer{padding:48px 24px 32px}
+  .ft-in{grid-template-columns:1fr 1fr}
+}
+@media(max-width:520px){
+  .ft-in{grid-template-columns:1fr}
+  .page-header h1{font-size:1.7rem}
+}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<!-- NAV -->
+<nav>
+  <a href="SABDA_v16.html" class="nav-logo"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA_white.png" alt="SABDA"></a>
+  <ul class="nav-links">
+    <li><a href="classes.html" class="active">Classes</a></li>
+    <li><a href="rent-corporate.html">Rent & Corporate</a></li>
+    <li><a href="#">Listening Sessions</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+  <a href="https://momence.com/m/443935" class="nav-cta" target="_blank">3 Classes — €48</a>
+</nav>
+
+<!-- PAGE HEADER -->
+<section class="page-header">
+  <h1>Our <span class="cyan">Schedule</span></h1>
+  <p>Browse classes, filter by type or teacher, and book your spot — all in real time.</p>
+</section>
+
+<!-- MOMENCE LIVE WIDGET (reskinned) -->
+<div id="momence-plugin-host-schedule"></div>
+<script src="https://momence.com/plugin/host-schedule/host-schedule.js"
+  host_id="54278"
+  locale="en">
+</script>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-in">
+    <div class="ft-brand">
+      <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA_white.png" alt="SABDA">
+      <div class="ft-pillars"><span class="fp-art">Art</span><span>·</span><span class="fp-tech">Tech</span><span>·</span><span class="fp-well">Wellness</span></div>
+    </div>
+    <div class="ft-col"><h4>Explore</h4><ul>
+      <li><a href="classes.html">Classes</a></li>
+      <li><a href="rent-corporate.html">Rent & Corporate</a></li>
+      <li><a href="#">Listening Sessions</a></li>
+      <li><a href="#">About</a></li>
+    </ul></div>
+    <div class="ft-col"><h4>Connect</h4><ul>
+      <li><a href="https://instagram.com/sabdastudio" target="_blank">Instagram</a></li>
+      <li><a href="https://tiktok.com/@sabdastudio" target="_blank">TikTok</a></li>
+      <li><a href="#">Newsletter</a></li>
+    </ul></div>
+    <div class="ft-col"><h4>Contact</h4><ul>
+      <li><a href="mailto:info@sabdastudio.com">info@sabdastudio.com</a></li>
+      <li>C/Muntaner 83B</li>
+      <li>08011 Barcelona</li>
+    </ul></div>
+  </div>
+  <div class="ft-bot">
+    <span>© 2026 SABDA STUDIO S.L.</span>
+    <div class="ft-legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
