@@ -666,7 +666,7 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
 /* ═══════════════════════════════════════════════════════
    LOADER
 ═══════════════════════════════════════════════════════ */
-window.addEventListener('load',()=>{
+document.addEventListener('DOMContentLoaded',()=>{
   setTimeout(()=>document.getElementById('loader').classList.add('out'),2500);
   /* Slow hero video to 0.55x for cinematic feel */
   const heroVid=document.querySelector('.hero video');
