@@ -143,8 +143,8 @@ section{position:relative;padding:120px 80px;z-index:2}
 .cls-item-tag{font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:var(--white60);margin-top:5px}
 
 /* schedule button */
-.schedule-btn{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--white);padding:14px 28px;border-radius:3px;font-size:.84rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(240,239,233,.25);transition:border-color .25s,color .25s,background .25s,transform .2s,gap .25s}
-.schedule-btn:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(2,243,197,.06);transform:translateY(-1px);gap:14px}
+.schedule-btn{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--cyan);padding:14px 28px;border-radius:3px;font-size:.84rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;border:1px solid rgba(2,243,197,.35);transition:border-color .25s,color .25s,background .25s,transform .2s,gap .25s}
+.schedule-btn:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(2,243,197,.1);transform:translateY(-1px);gap:14px}
 
 /* ── GLOBAL PARTICLES ── */
 #globalParticles{position:fixed;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
@@ -231,7 +231,7 @@ section{position:relative;padding:120px 80px;z-index:2}
 .mq{display:flex;align-items:center;width:max-content;animation:mq 55s linear infinite}
 .mq-item{padding:0 38px;font-size:.82rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;white-space:nowrap;opacity:.7;transition:opacity .4s}
 .mq-item:hover{opacity:1}
-.mq-sep{padding:0 8px;font-size:.7rem;color:rgba(240,239,233,.12);flex-shrink:0}
+.mq-sep{padding:0 8px;font-size:.5rem;color:rgba(240,239,233,.2);flex-shrink:0}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-33.333%)}}
 
 /* ── BOOKING ── */
@@ -983,7 +983,7 @@ const pData=['Honest Greens','Aire','Danone','FC Barcelona','Condé Nast Travele
 const mq=document.getElementById('mq');
 const colors=['#02F3C5','#F8A6A3'];
 [...pData,...pData,...pData].forEach((name,i)=>{
-  const sep=document.createElement('span');sep.className='mq-sep';sep.textContent='—';mq.appendChild(sep);
+  const sep=document.createElement('span');sep.className='mq-sep';sep.textContent='·';mq.appendChild(sep);
   const s=document.createElement('span');
   s.className='mq-item';s.textContent=name;s.style.color=colors[i%2];
   mq.appendChild(s);
