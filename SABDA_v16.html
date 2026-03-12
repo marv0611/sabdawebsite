@@ -109,7 +109,7 @@ section{position:relative;padding:130px 80px}
 /* SYMBOL */
 .manifesto-symbol{position:relative;display:flex;align-items:center;justify-content:center}
 .sym-wrap{position:relative;width:min(500px,44vw);aspect-ratio:1}
-#orbContainer{position:absolute;inset:0;width:100%;height:100%;border-radius:50%}
+#orbContainer{position:absolute;inset:0;width:100%;height:100%}
 
 /* ── CLASSES ── */
 .classes{padding:130px 80px;position:relative}
@@ -154,7 +154,7 @@ section{position:relative;padding:130px 80px}
 .schedule-btn:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(2,243,197,.06);transform:translateY(-1px);gap:14px}
 
 /* ── SECTION TRANSITION — ORGANIC PARTICLE FLOW ── */
-.section-fade{position:relative;height:200px;pointer-events:none;overflow:visible;margin:-100px 0;z-index:3}
+.section-fade{position:relative;height:200px;pointer-events:auto;overflow:visible;margin:-100px 0;z-index:3}
 .section-fade canvas{position:absolute;inset:0;width:100%;height:100%}
 
 /* ── SPACE GALLERY ── */
@@ -727,10 +727,12 @@ cards.forEach(card=>{
 
 /* ═══════════════════════════════════════════════════════
    SECTION DIVIDER — ORGANIC FLOATING LIGHT
+   With mouse repulsion physics
 ═══════════════════════════════════════════════════════ */
 document.querySelectorAll('.particle-stream').forEach(canvas=>{
   const ctx=canvas.getContext('2d');
   let W,H,active=false;
+  let mouseX=-9999,mouseY=-9999;
 
   function resize(){
     const r=canvas.parentElement.getBoundingClientRect();
@@ -742,21 +744,34 @@ document.querySelectorAll('.particle-stream').forEach(canvas=>{
   resize();
   window.addEventListener('resize',resize);
 
-  /* Particles — fewer, softer, more organic */
-  const COUNT=35;
-  const particles=Array.from({length:COUNT},()=>({
-    x:Math.random()*2000,
-    y:Math.random(),/* 0-1 normalized, remapped each frame */
-    vx:0.08+Math.random()*0.25,
-    size:1.2+Math.random()*1.8,
-    glow:15+Math.random()*30,
-    color:Math.random()<0.5?[248,166,163]:[2,243,197],
-    opacity:0.08+Math.random()*0.28,
-    phase:Math.random()*Math.PI*2,
-    waveAmp:0.08+Math.random()*0.22,/* normalized amplitude */
-    waveFreq:0.0008+Math.random()*0.003,
-    drift:Math.random()*0.02-0.01,/* slow vertical drift */
-  }));
+  /* Mouse tracking */
+  canvas.parentElement.addEventListener('mousemove',e=>{
+    const r=canvas.parentElement.getBoundingClientRect();
+    mouseX=e.clientX-r.left;
+    mouseY=e.clientY-r.top;
+  });
+  canvas.parentElement.addEventListener('mouseleave',()=>{mouseX=-9999;mouseY=-9999});
+
+  /* Many particles, organic */
+  const COUNT=120;
+  const particles=Array.from({length:COUNT},()=>{
+    const baseY=0.15+Math.random()*0.7;
+    return{
+      x:Math.random()*3000,
+      y:baseY,
+      baseY:baseY,
+      vx:0.06+Math.random()*0.22,
+      vy:0,
+      fx:0,fy:0,/* force from mouse */
+      size:0.6+Math.random()*2.2,
+      glow:10+Math.random()*28,
+      color:Math.random()<0.5?[248,166,163]:[2,243,197],
+      opacity:0.06+Math.random()*0.35,
+      phase:Math.random()*Math.PI*2,
+      waveAmp:0.04+Math.random()*0.15,
+      waveFreq:0.0006+Math.random()*0.002,
+    };
+  });
 
   let t=0;
   function draw(){
@@ -765,42 +780,57 @@ document.querySelectorAll('.particle-stream').forEach(canvas=>{
     ctx.clearRect(0,0,W,H);
 
     particles.forEach(p=>{
+      /* base movement */
       p.x+=p.vx;
-      p.y+=p.drift*0.001;
-
-      /* gentle organic wave path */
       const waveY=p.waveAmp*Math.sin(p.phase+t*p.waveFreq);
-      const drawX=p.x;
-      const drawY=(p.y+waveY)*H;
+      let drawX=p.x+p.fx;
+      let drawY=(p.y+waveY)*H+p.fy;
+
+      /* mouse repulsion */
+      const dx=drawX-mouseX;
+      const dy=drawY-mouseY;
+      const dist=Math.sqrt(dx*dx+dy*dy);
+      const repelRadius=140;
+      if(dist<repelRadius&&dist>0){
+        const force=(1-dist/repelRadius)*3.5;
+        p.fx+=(dx/dist)*force;
+        p.fy+=(dy/dist)*force;
+      }
+      /* spring back to origin */
+      p.fx*=0.92;
+      p.fy*=0.92;
+
+      drawX=p.x+p.fx;
+      drawY=(p.y+waveY)*H+p.fy;
 
       /* wrap seamlessly */
-      if(p.x>W+80){p.x=-60;p.y=0.2+Math.random()*0.6}
-      if(p.y<-0.1||p.y>1.1){p.y=0.3+Math.random()*0.4}
+      if(p.x>W+100){p.x=-80;p.y=0.15+Math.random()*0.7;p.baseY=p.y;p.fx=0;p.fy=0}
 
-      /* fade edges — particles near top/bottom of divider become invisible */
-      const edgeFade=1-Math.pow(Math.abs((drawY/H)-0.5)*2,1.5);
-      const clampedEdge=Math.max(0,Math.min(1,edgeFade));
+      /* edge fade — organic vignette */
+      const yNorm=drawY/H;
+      const edgeFade=Math.pow(Math.sin(Math.max(0,Math.min(1,yNorm))*Math.PI),1.2);
+      const xFade=Math.min(1,p.x/150)*Math.min(1,(W-p.x)/150);
 
-      /* pulsing opacity */
-      const pulse=0.5+0.5*Math.sin(p.phase+t*0.0015);
-      const op=p.opacity*pulse*clampedEdge;
-      if(op<0.005)return;
+      /* pulsing */
+      const pulse=0.45+0.55*Math.sin(p.phase+t*0.0012);
+      const op=p.opacity*pulse*edgeFade*xFade;
+      if(op<0.003)return;
 
-      /* soft glow — no hard edges */
+      /* soft outer glow */
       const g=ctx.createRadialGradient(drawX,drawY,0,drawX,drawY,p.glow);
-      g.addColorStop(0,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.45})`);
-      g.addColorStop(0.3,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.18})`);
-      g.addColorStop(0.7,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.04})`);
+      g.addColorStop(0,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.5})`);
+      g.addColorStop(0.25,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.2})`);
+      g.addColorStop(0.6,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.05})`);
       g.addColorStop(1,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},0)`);
       ctx.fillStyle=g;
       ctx.beginPath();
       ctx.arc(drawX,drawY,p.glow,0,Math.PI*2);
       ctx.fill();
 
-      /* tiny bright core */
+      /* bright core */
       ctx.beginPath();
-      ctx.arc(drawX,drawY,p.size*0.5,0,Math.PI*2);
-      ctx.fillStyle=`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${Math.min(0.7,op*2)})`;
+      ctx.arc(drawX,drawY,p.size*0.6,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${Math.min(0.8,op*2.5)})`;
       ctx.fill();
     });
 
@@ -814,16 +844,16 @@ document.querySelectorAll('.particle-stream').forEach(canvas=>{
 
 /* ═══════════════════════════════════════════════════════
    MANIFESTO — 3D CYMATIC SYMBOL (Three.js)
-   Recreates the SABDA concentric circle symbol in 3D
+   SABDA concentric circle symbol alive in 3D
 ═══════════════════════════════════════════════════════ */
 (function initOrb(){
   const container=document.getElementById('orbContainer');
   if(!container||typeof THREE==='undefined')return;
 
-  const W=container.offsetWidth||400;
+  const W=container.offsetWidth||500;
   const scene=new THREE.Scene();
-  const camera=new THREE.PerspectiveCamera(40,1,.1,100);
-  camera.position.z=5;
+  const camera=new THREE.PerspectiveCamera(35,1,.1,100);
+  camera.position.z=4.2;
 
   const renderer=new THREE.WebGLRenderer({alpha:true,antialias:true});
   renderer.setSize(W,W);
@@ -831,92 +861,111 @@ document.querySelectorAll('.particle-stream').forEach(canvas=>{
   container.appendChild(renderer.domElement);
   renderer.domElement.style.cssText='width:100%;height:100%';
 
-  /* ── Build the cymatic symbol from torus rings ── */
-  /* Each ring = one circle of the SABDA symbol */
+  /* ── The symbol: 9 concentric torus rings ── */
   const rings=[];
-
-  /* Ring configs: radius, tube thickness, color, initial tilt, rotation speed */
   const ringData=[
-    /* outer rings — larger, more spaced */
-    {r:1.55,tube:.012,color:'#F8A6A3',op:.35,tiltX:0,    tiltY:0,    tiltZ:0,     sX:.04, sY:.03, sZ:.02 },
-    {r:1.40,tube:.010,color:'#02F3C5',op:.28,tiltX:.15,   tiltY:.1,   tiltZ:0,     sX:-.03,sY:.04, sZ:.015},
-    {r:1.20,tube:.014,color:'#F8A6A3',op:.40,tiltX:.35,   tiltY:-.15, tiltZ:.1,    sX:.05, sY:-.03,sZ:.025},
-    /* mid rings — the core of the symbol */
-    {r:1.00,tube:.016,color:'#02F3C5',op:.45,tiltX:.55,   tiltY:.2,   tiltZ:-.1,   sX:-.04,sY:.05, sZ:-.02},
-    {r:.82, tube:.014,color:'#F8A6A3',op:.50,tiltX:.8,    tiltY:-.25, tiltZ:.2,    sX:.035,sY:-.04,sZ:.03 },
-    {r:.65, tube:.018,color:'#02F3C5',op:.55,tiltX:1.1,   tiltY:.35,  tiltZ:-.15,  sX:-.05,sY:.035,sZ:-.025},
-    /* inner rings — tight, bright */
-    {r:.48, tube:.016,color:'#F8A6A3',op:.55,tiltX:1.4,   tiltY:-.4,  tiltZ:.3,    sX:.045,sY:-.05,sZ:.02 },
-    {r:.32, tube:.020,color:'#02F3C5',op:.60,tiltX:1.7,   tiltY:.5,   tiltZ:-.25,  sX:-.035,sY:.045,sZ:-.03},
-    {r:.18, tube:.018,color:'#F8A6A3',op:.50,tiltX:2.0,   tiltY:-.55, tiltZ:.4,    sX:.05, sY:-.035,sZ:.025},
+    /* {radius, tube, color, opacity, initial tilts, rotation speeds per axis} */
+    /* Outer — wide, subtle */
+    {r:1.50,tube:.028,color:'#F8A6A3',op:.30, tx:0,   ty:0,   tz:0,    sx:.025,sy:.018,sz:.012},
+    {r:1.32,tube:.024,color:'#02F3C5',op:.28, tx:.12,  ty:.08, tz:0,    sx:-.02,sy:.025,sz:.01 },
+    {r:1.14,tube:.030,color:'#F8A6A3',op:.35, tx:.28,  ty:-.12,tz:.08,  sx:.03, sy:-.02,sz:.018},
+    /* Mid — the heart */
+    {r:.96, tube:.035,color:'#02F3C5',op:.42, tx:.48,  ty:.18, tz:-.08, sx:-.025,sy:.03,sz:-.015},
+    {r:.78, tube:.032,color:'#F8A6A3',op:.48, tx:.72,  ty:-.22,tz:.14,  sx:.022,sy:-.025,sz:.02},
+    {r:.62, tube:.038,color:'#02F3C5',op:.52, tx:.95,  ty:.30, tz:-.12, sx:-.03,sy:.022,sz:-.018},
+    /* Inner — tight, bright */
+    {r:.46, tube:.035,color:'#F8A6A3',op:.55, tx:1.2,  ty:-.35,tz:.22,  sx:.028,sy:-.03,sz:.015},
+    {r:.30, tube:.042,color:'#02F3C5',op:.62, tx:1.5,  ty:.42, tz:-.20, sx:-.022,sy:.028,sz:-.02},
+    {r:.16, tube:.038,color:'#F8A6A3',op:.55, tx:1.8,  ty:-.48,tz:.30,  sx:.03, sy:-.022,sz:.018},
   ];
 
+  /* Group for unified rotation */
+  const symbolGroup=new THREE.Group();
+  scene.add(symbolGroup);
+
   ringData.forEach(d=>{
-    const geo=new THREE.TorusGeometry(d.r,d.tube,16,120);
+    const geo=new THREE.TorusGeometry(d.r,d.tube,24,160);
     const mat=new THREE.MeshBasicMaterial({
       color:d.color,transparent:true,opacity:d.op,
-      side:THREE.DoubleSide,depthWrite:false
+      side:THREE.DoubleSide,depthWrite:false,
     });
     const mesh=new THREE.Mesh(geo,mat);
-    mesh.rotation.x=d.tiltX;
-    mesh.rotation.y=d.tiltY;
-    mesh.rotation.z=d.tiltZ;
-    scene.add(mesh);
-    rings.push({mesh,data:d,baseOp:d.op});
+    mesh.rotation.x=d.tx;mesh.rotation.y=d.ty;mesh.rotation.z=d.tz;
+    symbolGroup.add(mesh);
+    rings.push({mesh,d,baseOp:d.op});
   });
 
-  /* ── Center glow — very subtle ── */
-  const glowGeo=new THREE.SphereGeometry(0.12,24,24);
-  const glowMat=new THREE.MeshBasicMaterial({color:'#F8A6A3',transparent:true,opacity:0.06});
-  const glow=new THREE.Mesh(glowGeo,glowMat);
-  scene.add(glow);
+  /* ── Center core glow ── */
+  const coreGeo=new THREE.SphereGeometry(0.08,20,20);
+  const coreMat=new THREE.MeshBasicMaterial({color:'#02F3C5',transparent:true,opacity:0.15});
+  const core=new THREE.Mesh(coreGeo,coreMat);
+  symbolGroup.add(core);
 
-  /* ── Mouse interaction ── */
-  let mouseX=0,mouseY=0,targetMX=0,targetMY=0;
+  /* Second larger glow */
+  const auraGeo=new THREE.SphereGeometry(0.22,20,20);
+  const auraMat=new THREE.MeshBasicMaterial({color:'#F8A6A3',transparent:true,opacity:0.04});
+  const aura=new THREE.Mesh(auraGeo,auraMat);
+  symbolGroup.add(aura);
+
+  /* ── Mouse ── */
+  let mX=0,mY=0,tX=0,tY=0;
   container.addEventListener('mousemove',e=>{
     const r=container.getBoundingClientRect();
-    targetMX=((e.clientX-r.left)/r.width-0.5)*2;
-    targetMY=((e.clientY-r.top)/r.height-0.5)*2;
+    tX=((e.clientX-r.left)/r.width-0.5)*2;
+    tY=((e.clientY-r.top)/r.height-0.5)*2;
   });
-  container.addEventListener('mouseleave',()=>{targetMX=0;targetMY=0});
+  container.addEventListener('mouseleave',()=>{tX=0;tY=0});
 
-  /* ── Animate ── */
+  /* ── Render loop ── */
   const clock=new THREE.Clock();
+  let visible=true;
+
   function animate(){
     requestAnimationFrame(animate);
+    if(!visible)return;
     const t=clock.getElapsedTime();
 
-    /* smooth mouse follow */
-    mouseX+=(targetMX-mouseX)*0.04;
-    mouseY+=(targetMY-mouseY)*0.04;
+    /* smooth mouse easing */
+    mX+=(tX-mX)*0.035;
+    mY+=(tY-mY)*0.035;
 
-    rings.forEach(({mesh,data,baseOp})=>{
-      /* each ring rotates on its own axes at its own speed */
-      mesh.rotation.x=data.tiltX+t*data.sX+mouseY*0.2;
-      mesh.rotation.y=data.tiltY+t*data.sY+mouseX*0.25;
-      mesh.rotation.z=data.tiltZ+t*data.sZ;
+    /* overall group tilt from mouse — gives that 3D feel */
+    symbolGroup.rotation.x=mY*0.35;
+    symbolGroup.rotation.y=mX*0.4;
 
-      /* subtle breathing — ring radius pulses gently */
-      const breathe=1+0.015*Math.sin(t*0.6+data.r*3);
-      mesh.scale.setScalar(breathe);
+    /* individual ring animation */
+    rings.forEach(({mesh,d,baseOp})=>{
+      mesh.rotation.x=d.tx+t*d.sx;
+      mesh.rotation.y=d.ty+t*d.sy;
+      mesh.rotation.z=d.tz+t*d.sz;
 
-      /* opacity pulse */
-      mesh.material.opacity=baseOp*(0.75+0.25*Math.sin(t*0.4+data.r*5));
+      /* gentle breathing */
+      const breath=1+0.02*Math.sin(t*0.5+d.r*4);
+      mesh.scale.setScalar(breath);
+
+      /* opacity wave */
+      mesh.material.opacity=baseOp*(0.7+0.3*Math.sin(t*0.35+d.r*6));
     });
 
-    /* center glow pulse */
-    glow.scale.setScalar(1+Math.sin(t*0.8)*0.3);
-    glow.material.opacity=0.04+Math.sin(t*0.5)*0.025;
+    /* center glow */
+    const p=0.6+0.4*Math.sin(t*0.7);
+    core.scale.setScalar(1+0.35*Math.sin(t*1.0));
+    core.material.opacity=0.10*p;
+    aura.scale.setScalar(1+0.2*Math.sin(t*0.5));
+    aura.material.opacity=0.03*p;
 
     renderer.render(scene,camera);
   }
   animate();
 
-  /* ── Resize ── */
+  /* Visibility observer */
+  const obs=new IntersectionObserver(es=>{visible=es[0].isIntersecting},{threshold:0});
+  obs.observe(container);
+
+  /* Resize */
   new ResizeObserver(()=>{
     const w=container.offsetWidth;
-    renderer.setSize(w,w);
-    renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+    if(w>0){renderer.setSize(w,w);renderer.setPixelRatio(Math.min(devicePixelRatio,2))}
   }).observe(container);
 })();
 
