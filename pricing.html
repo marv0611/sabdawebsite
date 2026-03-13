@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- pricing-v1 -->
+<meta charset="UTF-8"><!-- pricing-v2 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pricing — SABDA Studio Barcelona</title>
-<meta name="description" content="Intro packs, class packs and unlimited memberships for SABDA's immersive wellness classes. First-timers start at €16/class with the 3-pack intro offer.">
+<title>Pricing & Memberships — SABDA Studio Barcelona</title>
+<meta name="description" content="SABDA pricing: intro offers from €16, class packs, and unlimited memberships. Barcelona's immersive wellness studio — yoga, sound healing, breathwork, pilates.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -36,29 +36,44 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 .nav-links a:hover{opacity:1}.nav-links a:hover::after{right:0}
 .nav-links a.active{opacity:1}.nav-links a.active::after{right:0}
 .nav-right{display:flex;align-items:center;gap:0}
-.nav-social{display:flex;align-items:center;gap:12px;padding-left:18px;margin-left:18px;border-left:1px solid rgba(240,239,233,.12)}
-.nav-social a{display:flex;align-items:center;opacity:.45;transition:opacity .25s}
-.nav-social a:hover{opacity:.9}
-.nav-social svg{width:16px;height:16px;fill:var(--white);flex-shrink:0}
-.lang-sel{display:flex;align-items:center;gap:0;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;font-weight:500}
-.lang-sel a{color:var(--white);opacity:.4;padding:5px 7px;transition:opacity .25s,color .25s}
-.lang-sel a:hover{opacity:.75}
-.lang-sel a.active{opacity:1;color:var(--cyan)}
+.lang-sel{display:flex;align-items:center;gap:0;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;font-weight:500}
+.lang-sel a{color:var(--white);opacity:.35;padding:5px 7px;transition:opacity .25s,color .25s}
+.lang-sel a:hover{opacity:.7}
+.lang-sel a.active{opacity:.9;color:var(--cyan)}
+.nav-social{display:flex;align-items:center;gap:14px;padding-left:20px;margin-left:16px;border-left:1px solid rgba(240,239,233,.1)}
+.nav-social a{display:flex;align-items:center;opacity:.35;transition:opacity .25s}
+.nav-social a:hover{opacity:.85}
+.nav-social svg{width:15px;height:15px;fill:var(--white);flex-shrink:0}
 
 /* ── HERO BANNER ── */
-.hero-banner{position:relative;width:100%;height:280px;overflow:hidden;margin-top:72px;z-index:2}
-.hero-banner img{width:100%;height:100%;object-fit:cover;filter:brightness(.45) saturate(1.1)}
-.hero-overlay{position:absolute;bottom:48px;left:80px;z-index:2}
-.hero-overlay h1{font-family:'PT Serif',serif;font-size:2.8rem;font-weight:400;line-height:1.15}
+.hero-banner{position:relative;width:100%;height:360px;overflow:hidden}
+.hero-banner img{width:100%;height:100%;object-fit:cover;object-position:center 45%;filter:brightness(.5) contrast(1.1) saturate(1.15)}
+.hero-banner::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(14,18,53,.3) 0%,rgba(14,18,53,.08) 35%,rgba(14,18,53,.65) 78%,var(--navy) 100%)}
+.hero-overlay{position:absolute;bottom:48px;left:0;right:0;z-index:3;text-align:center}
+.hero-overlay h1{font-family:'PT Serif',serif;font-size:2.8rem;font-weight:400;letter-spacing:-.01em;margin-bottom:10px}
 .hero-overlay h1 .cyan{color:var(--cyan)}
-.hero-overlay p{color:var(--white60);font-size:.95rem;margin-top:8px;max-width:420px}
+.hero-overlay p{font-size:.95rem;color:var(--white60);max-width:480px;margin:0 auto}
 
-/* ── PRICING ── */
-.pricing{padding:80px 80px 0;position:relative;z-index:2}
-.pricing-hdr{text-align:center;margin-bottom:52px}
-.pricing-hdr h2{font-family:'PT Serif',serif;font-size:2.2rem;font-weight:400;margin-bottom:10px}
-.pricing-hdr p{color:var(--white38);font-size:.92rem;max-width:420px;margin:0 auto;line-height:1.7}
-.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:960px;margin:0 auto}
+/* ── MEMBERSHIPS ── */
+.memberships{padding:80px 80px 0;position:relative;z-index:2}
+.section-hdr{text-align:center;margin-bottom:52px}
+.section-hdr h2{font-family:'PT Serif',serif;font-size:2.2rem;font-weight:400;margin-bottom:10px}
+.section-hdr p{color:var(--white38);font-size:.92rem;max-width:460px;margin:0 auto;line-height:1.7}
+.membership-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:640px;margin:0 auto}
+.membership-card{text-align:center;padding:40px 28px;border-radius:16px;border:1px solid rgba(240,239,233,.08);background:rgba(240,239,233,.02);position:relative;transition:border-color .3s,background .3s}
+.membership-card:hover{border-color:rgba(2,243,197,.2);background:rgba(2,243,197,.02)}
+.membership-card h3{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--white60);margin-bottom:10px;font-weight:500;font-family:'DM Sans',sans-serif}
+.membership-card .m-price{font-family:'PT Serif',serif;font-size:2.2rem;font-weight:400;color:var(--white);margin-bottom:4px}
+.membership-card .m-price span{font-size:.9rem;color:var(--white60);font-family:'DM Sans',sans-serif}
+.membership-card .m-sub{font-size:.78rem;color:var(--white38);margin-bottom:24px}
+.membership-card a{display:block;padding:16px 12px;border-radius:40px;background:var(--cyan);color:var(--navy);font-weight:700;font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;transition:background .2s,transform .15s;text-align:center}
+.membership-card a:hover{background:#18ffda;transform:translateY(-2px)}
+.membership-card.hero-card{border-color:rgba(2,243,197,.25);background:rgba(2,243,197,.03)}
+.membership-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--salmon);color:var(--navy);font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:5px 14px;border-radius:20px;white-space:nowrap}
+
+/* ── INTRO OFFERS & CLASS PACKS ── */
+.intro-offers{padding:80px 80px 0;position:relative;z-index:2;border-top:1px solid rgba(240,239,233,.06)}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:780px;margin:0 auto}
 .pricing-col{text-align:center;position:relative;padding:24px 8px 8px;border-radius:16px}
 .pricing-col h3{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--white60);margin-bottom:20px;font-weight:500;font-family:'DM Sans',sans-serif}
 .pricing-col a{display:block;padding:18px 12px;border-radius:40px;background:var(--cyan);color:var(--navy);font-weight:700;font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;margin-bottom:14px;transition:background .2s,transform .15s;text-align:center;position:relative}
@@ -67,30 +82,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 .hero-col{border:1px solid rgba(2,243,197,.25);background:rgba(2,243,197,.03);border-radius:16px}
 .pricing-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--salmon);color:var(--navy);font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:5px 14px;border-radius:20px;white-space:nowrap}
 
-/* ── MEMBERSHIPS ── */
-.memberships{padding:80px 80px;position:relative;z-index:2;border-top:1px solid rgba(240,239,233,.06);margin-top:80px}
-.memberships-hdr{text-align:center;margin-bottom:52px}
-.memberships-hdr h2{font-family:'PT Serif',serif;font-size:2.2rem;font-weight:400;margin-bottom:10px}
-.memberships-hdr p{color:var(--white38);font-size:.92rem;max-width:460px;margin:0 auto;line-height:1.7}
-.mem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:860px;margin:0 auto}
-.mem-card{border:1px solid rgba(240,239,233,.08);border-radius:16px;padding:36px 28px;text-align:center;transition:border-color .3s,background .3s}
-.mem-card:hover{border-color:rgba(240,239,233,.15);background:rgba(240,239,233,.02)}
-.mem-card.featured{border-color:rgba(2,243,197,.3);background:rgba(2,243,197,.03)}
-.mem-card h3{font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--white60);margin-bottom:20px;font-weight:500;font-family:'DM Sans',sans-serif}
-.mem-price{font-family:'PT Serif',serif;font-size:2.4rem;font-weight:400;margin-bottom:6px}
-.mem-price .per{font-size:.9rem;color:var(--white60);font-family:'DM Sans',sans-serif}
-.mem-detail{color:var(--white38);font-size:.82rem;margin-bottom:24px;line-height:1.6}
-.mem-features{list-style:none;text-align:left;margin-bottom:28px;display:flex;flex-direction:column;gap:10px}
-.mem-features li{font-size:.84rem;color:var(--white60);padding-left:20px;position:relative}
-.mem-features li::before{content:'';position:absolute;left:0;top:7px;width:8px;height:8px;border-radius:50%;background:var(--cyan);opacity:.5}
-.mem-card a{display:block;padding:14px;border-radius:40px;font-weight:700;font-size:.8rem;letter-spacing:.07em;text-transform:uppercase;transition:background .2s,transform .15s,border-color .2s;text-align:center}
-.mem-card a{background:transparent;border:1px solid rgba(240,239,233,.15);color:var(--white)}
-.mem-card a:hover{border-color:var(--cyan);background:rgba(2,243,197,.06);transform:translateY(-2px)}
-.mem-card.featured a{background:var(--cyan);color:var(--navy);border-color:var(--cyan)}
-.mem-card.featured a:hover{background:#18ffda;transform:translateY(-2px)}
-
 /* ── GIFT CARDS ── */
-.giftcards{padding:80px 80px;position:relative;z-index:2;border-top:1px solid rgba(240,239,233,.06)}
+.giftcards{padding:80px 80px;position:relative;z-index:2;border-top:1px solid rgba(240,239,233,.06);margin-top:80px}
 .giftcards-hdr{text-align:center;margin-bottom:44px}
 .giftcards-hdr h2{font-family:'PT Serif',serif;font-size:2.2rem;font-weight:400;margin-bottom:10px}
 .giftcards-hdr p{color:var(--white38);font-size:.92rem;max-width:400px;margin:0 auto}
@@ -99,32 +92,22 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 .gc-grid a:hover{background:rgba(2,243,197,.08);border-color:var(--cyan);transform:translateY(-2px)}
 .gc-grid a.custom{color:var(--cyan)}
 
-/* ── FAQ ── */
-.faq{padding:80px 80px;position:relative;z-index:2;border-top:1px solid rgba(240,239,233,.06)}
-.faq-hdr{text-align:center;margin-bottom:52px}
-.faq-hdr h2{font-family:'PT Serif',serif;font-size:2.2rem;font-weight:400;margin-bottom:10px}
-.faq-hdr p{color:var(--white38);font-size:.92rem}
-.faq-list{max-width:680px;margin:0 auto}
-.faq-item{border-bottom:1px solid rgba(240,239,233,.06)}
-.faq-q{width:100%;background:none;border:none;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.92rem;font-weight:500;padding:22px 0;text-align:left;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;transition:color .2s}
-.faq-q:hover{color:var(--cyan)}
-.faq-q svg{flex-shrink:0;transition:transform .3s var(--ease-expo);opacity:.4}
-.faq-item.open .faq-q svg{transform:rotate(45deg);opacity:.7}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .4s var(--ease-expo),padding .3s}
-.faq-a p{color:var(--white38);font-size:.88rem;line-height:1.7;padding-bottom:22px}
+/* ── SCHEDULE CTA ── */
+.schedule-cta{padding:60px 80px 80px;position:relative;z-index:2;text-align:center}
+.schedule-cta p{color:var(--white38);font-size:.95rem;margin-bottom:20px}
+.schedule-cta a{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:40px;border:1px solid rgba(240,239,233,.15);color:var(--white);font-weight:600;font-size:.85rem;letter-spacing:.05em;text-transform:uppercase;transition:border-color .25s,background .25s,transform .15s}
+.schedule-cta a:hover{border-color:var(--cyan);background:rgba(2,243,197,.06);transform:translateY(-2px)}
 
 /* ── FOOTER ── */
-footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);background:rgba(9,12,38,.6);position:relative;z-index:2}
-.ft-in{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:44px}
-.ft-brand img{height:25px;width:auto;margin-bottom:22px;display:block}
-.ft-pillars{display:flex;gap:12px;margin-top:20px;font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;color:var(--white38)}
-.ft-pillars .fp-art{color:var(--cyan)}.ft-pillars .fp-tech{color:var(--white)}.ft-pillars .fp-well{color:var(--salmon)}
-.ft-col h4{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;margin-bottom:20px;font-family:'DM Sans',sans-serif}
-.ft-col:nth-child(2) h4{color:var(--cyan)}
-.ft-col:nth-child(3) h4{color:var(--salmon)}
-.ft-col:nth-child(4) h4{color:var(--white60)}
-.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:11px}
-.ft-col a{font-size:.87rem;color:var(--white38);transition:color .2s}
+footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.06);position:relative;z-index:2}
+.ft-in{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:52px;margin-bottom:40px}
+.ft-brand img{height:28px;margin-bottom:16px}
+.ft-pillars{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--white38)}
+.ft-pillars .fp-art{color:var(--salmon)}.ft-pillars .fp-tech{color:var(--cyan)}.ft-pillars .fp-well{color:var(--white60)}
+.ft-col h4{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--white60);margin-bottom:18px;font-weight:500}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:12px}
+.ft-col a{color:var(--white38);font-size:.85rem;transition:color .2s}
 .ft-col a:hover{color:var(--white)}
 .ft-bot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding-top:30px;border-top:1px solid rgba(240,239,233,.06);font-size:.74rem;color:rgba(240,239,233,.2)}
 .ft-legal{display:flex;gap:24px}
@@ -134,21 +117,24 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 @media(max-width:900px){
   nav{padding:0 24px}.nav-links{display:none}
   .nav-social svg{width:15px;height:15px}.nav-social{gap:10px;padding-left:14px;margin-left:14px}.lang-sel a{padding:4px 5px;font-size:.65rem}
-  .hero-banner{height:200px}.hero-overlay{left:24px;bottom:32px}.hero-overlay h1{font-size:2rem}
-  .pricing{padding:60px 24px 0}.pricing-grid{grid-template-columns:1fr 1fr;gap:16px}
-  .memberships{padding:60px 24px}.mem-grid{grid-template-columns:1fr}
+  .hero-banner{height:260px}.hero-overlay h1{font-size:2rem}.hero-overlay{bottom:32px}
+  .memberships{padding:60px 24px 0}
+  .intro-offers{padding:60px 24px 0}
+  .membership-grid{gap:16px;max-width:100%}
+  .pricing-grid{grid-template-columns:1fr 1fr;gap:16px}
   .giftcards{padding:60px 24px}
-  .faq{padding:60px 24px}
+  .schedule-cta{padding:40px 24px 60px}
   footer{padding:36px 24px 22px}.ft-in{grid-template-columns:1fr 1fr}
 }
 @media(max-width:520px){
   .ft-in{grid-template-columns:1fr}.hero-overlay h1{font-size:1.7rem}
-  .hero-banner{height:180px}.pricing-grid{grid-template-columns:1fr}
+  .hero-banner{height:200px}
+  .membership-grid{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
-
 <div class="grain"></div>
 <canvas id="globalParticles"></canvas>
 
@@ -173,20 +159,43 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   </div>
 </nav>
 
-<!-- HERO BANNER -->
+<!-- HERO BANNER — Moon visual -->
 <div class="hero-banner">
-  <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_010.jpg" alt="SABDA immersive studio">
+  <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_010.jpg" alt="SABDA immersive studio — moon projection">
   <div class="hero-overlay">
     <h1>Choose Your <span class="cyan">Path</span></h1>
-    <p>Intro packs for first-timers. Class packs for regulars. Unlimited for the committed.</p>
+    <p>Memberships for the committed. Intro packs for the curious. Every path leads to immersion.</p>
   </div>
 </div>
 
-<!-- INTRO OFFERS — Psychology: Left-to-right buyer journey. 3-Pack is hero offer. -->
-<section class="pricing" id="intro">
-  <div class="pricing-hdr">
+<!-- MEMBERSHIPS — shown first for price anchoring -->
+<section class="memberships">
+  <div class="section-hdr">
+    <h2>Memberships</h2>
+    <p>Commit to your practice. Unlimited classes, priority booking, the best value per class.</p>
+  </div>
+  <div class="membership-grid">
+    <div class="membership-card">
+      <h3>Monthly</h3>
+      <div class="m-price">€130<span>/mo</span></div>
+      <div class="m-sub">Unlimited classes · Cancel anytime</div>
+      <a href="https://momence.com/m/431216" target="_blank">Get Monthly</a>
+    </div>
+    <div class="membership-card hero-card">
+      <div class="membership-badge">Best Value</div>
+      <h3>3 Month</h3>
+      <div class="m-price">€100<span>/mo</span></div>
+      <div class="m-sub">€300 total · Save €90 vs monthly</div>
+      <a href="https://momence.com/m/445600" target="_blank">Get 3 Month</a>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO OFFERS & CLASS PACKS -->
+<section class="intro-offers">
+  <div class="section-hdr">
     <h2>Intro Offers & Class Packs</h2>
-    <p>First time? Start with an intro offer.<br>Ready to commit? Choose a pack or go unlimited.</p>
+    <p>First time? Start with an intro offer.<br>Ready to go deeper? Grab a pack.</p>
   </div>
   <div class="pricing-grid">
     <div class="pricing-col">
@@ -205,57 +214,6 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       <a href="https://momence.com/SABDA-54278" target="_blank">5 Pack €80<span class="per-class">€16 / class</span></a>
       <a href="https://momence.com/SABDA-54278" target="_blank">10 Pack €140<span class="per-class">€14 / class</span></a>
     </div>
-    <div class="pricing-col">
-      <h3>Unlimited</h3>
-      <a href="https://momence.com/m/431216" target="_blank">Monthly €130/mo</a>
-      <a href="https://momence.com/m/445600" target="_blank">3 Month Unlimited</a>
-    </div>
-  </div>
-</section>
-
-<!-- MEMBERSHIPS — Detailed comparison for higher-intent visitors -->
-<section class="memberships" id="memberships">
-  <div class="memberships-hdr">
-    <h2>Memberships</h2>
-    <p>The more you come, the less you pay. All memberships auto-renew and can be cancelled anytime.</p>
-  </div>
-  <div class="mem-grid">
-    <div class="mem-card">
-      <h3>Off-Peak</h3>
-      <div class="mem-price">€79 <span class="per">/mo</span></div>
-      <div class="mem-detail">Weekday classes before 5pm</div>
-      <ul class="mem-features">
-        <li>Unlimited off-peak classes</li>
-        <li>Access Mon–Fri before 17:00</li>
-        <li>Cancel anytime</li>
-      </ul>
-      <a href="https://momence.com/SABDA-54278" target="_blank">Join Off-Peak</a>
-    </div>
-    <div class="mem-card featured">
-      <h3>Essential</h3>
-      <div class="mem-price">€99 <span class="per">/mo</span></div>
-      <div class="mem-detail">Full access, any time</div>
-      <ul class="mem-features">
-        <li>Unlimited classes, all times</li>
-        <li>Priority booking</li>
-        <li>10% off events & workshops</li>
-        <li>Cancel anytime</li>
-      </ul>
-      <a href="https://momence.com/SABDA-54278" target="_blank">Join Essential</a>
-    </div>
-    <div class="mem-card">
-      <h3>Unlimited</h3>
-      <div class="mem-price">€130 <span class="per">/mo</span></div>
-      <div class="mem-detail">Everything, plus perks</div>
-      <ul class="mem-features">
-        <li>Unlimited classes, all times</li>
-        <li>Priority booking</li>
-        <li>Guest passes (1/month)</li>
-        <li>15% off events & workshops</li>
-        <li>Cancel anytime</li>
-      </ul>
-      <a href="https://momence.com/m/431216" target="_blank">Join Unlimited</a>
-    </div>
   </div>
 </section>
 
@@ -266,56 +224,20 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     <p>Give the gift of immersion.<br>Choose an amount or set your own.</p>
   </div>
   <div class="gc-grid">
-    <a href="https://momence.com/gcc/54278" target="_blank">€20</a>
-    <a href="https://momence.com/gcc/54278" target="_blank">€40</a>
-    <a href="https://momence.com/gcc/54278" target="_blank">€60</a>
-    <a href="https://momence.com/gcc/54278" target="_blank">€80</a>
-    <a href="https://momence.com/gcc/54278" target="_blank">€100</a>
-    <a href="https://momence.com/gcc/54278" target="_blank" class="custom">Custom</a>
+    <a href="https://momence.com/SABDA-54278" target="_blank">€20</a>
+    <a href="https://momence.com/SABDA-54278" target="_blank">€40</a>
+    <a href="https://momence.com/SABDA-54278" target="_blank">€60</a>
+    <a href="https://momence.com/SABDA-54278" target="_blank">€80</a>
+    <a href="https://momence.com/SABDA-54278" target="_blank">€100</a>
+    <a href="https://momence.com/SABDA-54278" target="_blank" class="custom">Custom</a>
   </div>
 </section>
 
-<!-- FAQ -->
-<section class="faq" id="faq">
-  <div class="faq-hdr">
-    <h2>Questions</h2>
-    <p>Everything you need to know before your first class.</p>
-  </div>
-  <div class="faq-list">
-    <div class="faq-item">
-      <button class="faq-q">What should I bring?<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
-      <div class="faq-a"><p>Just yourself and comfortable clothes. We provide mats, props and towels. Arrive 10 minutes early for your first visit so we can show you around.</p></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q">Do I need experience?<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
-      <div class="faq-a"><p>Not at all. Every class is designed to welcome beginners alongside experienced practitioners. Our teachers guide you through everything.</p></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q">What language are classes in?<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
-      <div class="faq-a"><p>Most classes are taught in English. Some teachers offer bilingual (English/Spanish) instruction. Check the schedule for details on each class.</p></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q">Can I book through ClassPass or Urban Sports?<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
-      <div class="faq-a"><p>Yes — we're available on ClassPass, Urban Sports Club and Wellhub (Gympass). But booking directly through our site gives you the best rates and priority access.</p></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q">What's the cancellation policy?<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
-      <div class="faq-a"><p>Cancel up to 6 hours before class for a full credit. Late cancellations and no-shows will be charged. Memberships can be cancelled anytime with no penalty — no lock-in contracts.</p></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q">Do packs and credits expire?<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
-      <div class="faq-a"><p>Class packs are valid for 3 months from the date of purchase. The intro 3-pack is valid for 30 days.</p></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q">Can I bring a friend?<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
-      <div class="faq-a"><p>Absolutely. Each person needs their own booking. Unlimited members get one guest pass per month. Gift cards are also a great way to bring someone along.</p></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q">Where are you located?<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M3 8h10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
-      <div class="faq-a"><p>C/Muntaner 83B, Local 2, in Barcelona's Eixample district. 10 minutes from Universitat metro, 5 minutes from Passeig de Gràcia.</p></div>
-    </div>
-  </div>
-</section>
+<!-- SCHEDULE CTA -->
+<div class="schedule-cta">
+  <p>Ready to find your class?</p>
+  <a href="classes.html">View Schedule & Book <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+</div>
 
 <!-- FOOTER -->
 <footer>
@@ -326,6 +248,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     </div>
     <div class="ft-col"><h4>Explore</h4><ul>
       <li><a href="classes.html">Classes</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
       <li><a href="rent-corporate.html">Rent & Corporate</a></li>
       <li><a href="#">Listening Sessions</a></li>
       <li><a href="#">About</a></li>
@@ -348,9 +271,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 </footer>
 
 <script>
-/* ═══════════════════════════════════════════════════════
-   GLOBAL PARTICLE FIELD
-═══════════════════════════════════════════════════════ */
+/* GLOBAL PARTICLE FIELD */
 (function(){
   const canvas=document.getElementById('globalParticles');
   if(!canvas)return;
@@ -359,7 +280,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   function resize(){W=window.innerWidth;H=window.innerHeight;canvas.width=W*devicePixelRatio;canvas.height=H*devicePixelRatio;ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0)}
   resize();window.addEventListener('resize',resize);
   document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY});
-  const COUNT=800;
+  const COUNT=960;
   const particles=Array.from({length:COUNT},()=>({
     x:Math.random()*3000,y:Math.random(),vx:0.008+Math.random()*0.06,vy:(Math.random()-0.5)*0.003,
     fx:0,fy:0,size:0.3+Math.random()*1.5,glow:4+Math.random()*16,
@@ -395,25 +316,6 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   }
   requestAnimationFrame(draw);
 })();
-
-/* FAQ accordion */
-document.querySelectorAll('.faq-q').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    const item=btn.parentElement;
-    const ans=item.querySelector('.faq-a');
-    const isOpen=item.classList.contains('open');
-    /* Close all */
-    document.querySelectorAll('.faq-item.open').forEach(i=>{
-      i.classList.remove('open');
-      i.querySelector('.faq-a').style.maxHeight='0';
-    });
-    /* Toggle clicked */
-    if(!isOpen){
-      item.classList.add('open');
-      ans.style.maxHeight=ans.scrollHeight+'px';
-    }
-  });
-});
 </script>
 </body>
 </html>

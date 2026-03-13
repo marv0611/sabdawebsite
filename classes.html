@@ -302,45 +302,26 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 /* ── One-click booking banner ── */
 #momence-plugin-host-schedule [class*="fS"]{background:rgba(2,243,197,.06) !important}
 
-/* ── PRICING ── */
-.pricing{padding:80px 80px 0;position:relative;z-index:2;border-top:1px solid rgba(240,239,233,.06);scroll-margin-top:80px}
-.pricing-hdr{text-align:center;margin-bottom:52px}
-.pricing-hdr h2{font-family:'PT Serif',serif;font-size:2.2rem;font-weight:400;margin-bottom:10px}
-.pricing-hdr p{color:var(--white38);font-size:.92rem;max-width:460px;margin:0 auto;line-height:1.7}
-/* Membership cards — 2-column, larger, premium feel */
-.membership-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:640px;margin:0 auto}
-.membership-card{text-align:center;padding:36px 24px;border-radius:16px;border:1px solid rgba(240,239,233,.08);background:rgba(240,239,233,.02);position:relative;transition:border-color .3s,background .3s}
-.membership-card:hover{border-color:rgba(2,243,197,.2);background:rgba(2,243,197,.02)}
-.membership-card h3{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--white60);margin-bottom:8px;font-weight:500;font-family:'DM Sans',sans-serif}
-.membership-card .m-price{font-family:'PT Serif',serif;font-size:2rem;font-weight:400;color:var(--white);margin-bottom:4px}
-.membership-card .m-price span{font-size:.9rem;color:var(--white60);font-family:'DM Sans',sans-serif}
-.membership-card .m-sub{font-size:.78rem;color:var(--white38);margin-bottom:22px}
-.membership-card a{display:block;padding:16px 12px;border-radius:40px;background:var(--cyan);color:var(--navy);font-weight:700;font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;transition:background .2s,transform .15s;text-align:center}
-.membership-card a:hover{background:#18ffda;transform:translateY(-2px)}
-.membership-card.hero-card{border-color:rgba(2,243,197,.25);background:rgba(2,243,197,.03)}
-.membership-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--salmon);color:var(--navy);font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:5px 14px;border-radius:20px;white-space:nowrap}
-/* Intro offers section */
-.intro-sep{margin-top:80px}
-.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:780px;margin:0 auto}
-.pricing-col{text-align:center;position:relative;padding:24px 8px 8px;border-radius:16px}
-.pricing-col h3{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--white60);margin-bottom:20px;font-weight:500;font-family:'DM Sans',sans-serif}
-.pricing-col a{display:block;padding:18px 12px;border-radius:40px;background:var(--cyan);color:var(--navy);font-weight:700;font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;margin-bottom:14px;transition:background .2s,transform .15s;text-align:center;position:relative}
-.pricing-col a:hover{background:#18ffda;transform:translateY(-2px)}
-/* Per-class price label */
-.per-class{display:block;font-size:.68rem;font-weight:500;letter-spacing:.04em;margin-top:3px;opacity:.7;text-transform:none}
-/* Hero column — "Best Value" */
-.hero-col{border:1px solid rgba(2,243,197,.25);background:rgba(2,243,197,.03);border-radius:16px}
-.pricing-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--salmon);color:var(--navy);font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:5px 14px;border-radius:20px;white-space:nowrap}
+/* ── COMPACT PRICING SUMMARY ── */
+.pricing-summary{padding:80px 80px 0;position:relative;z-index:2;border-top:1px solid rgba(240,239,233,.06)}
+.ps-hdr{text-align:center;margin-bottom:44px}
+.ps-hdr h2{font-family:'PT Serif',serif;font-size:2.2rem;font-weight:400;margin-bottom:10px}
+.ps-hdr p{color:var(--white38);font-size:.92rem;max-width:460px;margin:0 auto;line-height:1.7}
+.ps-link{color:var(--cyan);text-decoration:underline;text-underline-offset:3px}
+.ps-link:hover{color:#18ffda}
+.ps-grid{display:flex;justify-content:center;gap:20px;max-width:640px;margin:0 auto}
+.ps-card{display:flex;flex-direction:column;align-items:center;padding:28px 32px;border-radius:16px;border:1px solid rgba(240,239,233,.08);background:rgba(240,239,233,.02);transition:border-color .3s,background .3s,transform .15s;position:relative;flex:1;max-width:200px}
+.ps-card:hover{border-color:rgba(2,243,197,.2);background:rgba(2,243,197,.02);transform:translateY(-2px)}
+.ps-card.ps-hero{border-color:rgba(2,243,197,.25);background:rgba(2,243,197,.03)}
+.ps-badge{position:absolute;top:-10px;background:var(--salmon);color:var(--navy);font-size:.55rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:4px 12px;border-radius:20px;white-space:nowrap}
+.ps-label{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--white60);font-weight:500;margin-bottom:8px}
+.ps-price{font-family:'PT Serif',serif;font-size:1.8rem;font-weight:400;color:var(--white)}
+.ps-price span{font-size:.8rem;color:var(--white60);font-family:'DM Sans',sans-serif}
+.ps-sub{font-size:.72rem;color:var(--cyan);margin-top:4px;font-weight:500}
+.ps-cta{text-align:center;margin-top:36px;padding-bottom:20px}
+.ps-cta a{display:inline-flex;align-items:center;gap:8px;color:var(--cyan);font-size:.85rem;font-weight:600;letter-spacing:.04em;transition:opacity .25s}
+.ps-cta a:hover{opacity:.75}
 
-/* ── GIFT CARDS ── */
-.giftcards{padding:80px 80px;position:relative;z-index:2;border-top:1px solid rgba(240,239,233,.06);margin-top:80px}
-.giftcards-hdr{text-align:center;margin-bottom:44px}
-.giftcards-hdr h2{font-family:'PT Serif',serif;font-size:2.2rem;font-weight:400;margin-bottom:10px}
-.giftcards-hdr p{color:var(--white38);font-size:.92rem;max-width:400px;margin:0 auto}
-.gc-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;max-width:720px;margin:0 auto}
-.gc-grid a{padding:16px 32px;border-radius:40px;background:rgba(240,239,233,.05);border:1px solid rgba(240,239,233,.1);color:var(--white);font-weight:600;font-size:1rem;transition:background .2s,transform .15s,border-color .2s;min-width:140px;text-align:center}
-.gc-grid a:hover{background:rgba(2,243,197,.08);border-color:var(--cyan);transform:translateY(-2px)}
-.gc-grid a.custom{color:var(--cyan)}
 
 /* ── FOOTER ── */
 footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);background:rgba(9,12,38,.6);position:relative;z-index:2}
@@ -365,16 +346,14 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .nav-social svg{width:15px;height:15px}.nav-social{gap:10px;padding-left:14px;margin-left:14px}.lang-sel a{padding:4px 5px;font-size:.65rem}
   .hero-banner{height:240px}.hero-overlay h1{font-size:2rem}.hero-overlay{bottom:32px}
   #momence-plugin-host-schedule{padding:24px 16px 40px}
-  .pricing{padding:60px 24px 0}.pricing-grid{grid-template-columns:1fr 1fr;gap:16px}
-  .membership-grid{grid-template-columns:1fr 1fr;gap:16px;max-width:100%}
-  .intro-sep{margin-top:60px}
-  .giftcards{padding:60px 24px}
+  .pricing-summary{padding:60px 24px 0}
+  .ps-grid{flex-wrap:wrap;gap:14px}.ps-card{max-width:none;min-width:120px}
   footer{padding:36px 24px 22px}.ft-in{grid-template-columns:1fr 1fr}
 }
 @media(max-width:520px){
   .ft-in{grid-template-columns:1fr}.hero-overlay h1{font-size:1.7rem}
-  .hero-banner{height:200px}.pricing-grid{grid-template-columns:1fr}
-  .membership-grid{grid-template-columns:1fr}
+  .hero-banner{height:200px}
+  .ps-grid{flex-direction:column;align-items:center}.ps-card{width:100%;max-width:220px}
 }
 </style>
 </head>
@@ -387,7 +366,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   <a href="SABDA_v16.html" class="nav-logo"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA"></a>
   <ul class="nav-links">
     <li><a href="classes.html" class="active">Classes</a></li>
-    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
     <li><a href="rent-corporate.html">Rent & Corporate</a></li>
     <li><a href="#">Listening Sessions</a></li>
     <li><a href="#">About</a></li>
@@ -662,105 +641,32 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   },500);
 })();
 </script>
-<script>
-/* Scroll to hash — uses ResizeObserver to react to Momence layout shifts */
-(function(){
-  const hash=window.location.hash;
-  if(!hash)return;
-  const doScroll=function(behavior){
-    const t=document.querySelector(hash);
-    if(!t)return;
-    const y=t.getBoundingClientRect().top+window.scrollY-80;
-    window.scrollTo({top:Math.max(0,y),behavior:behavior});
-  };
-  /* Instant jump ASAP — don't show top of page */
-  doScroll('instant');
-  document.addEventListener('DOMContentLoaded',()=>doScroll('instant'));
-  /* Watch Momence widget for size changes — re-scroll when it shifts layout */
-  const widget=document.getElementById('momence-plugin-host-schedule');
-  if(widget&&typeof ResizeObserver!=='undefined'){
-    let scrollCount=0;
-    const ro=new ResizeObserver(()=>{
-      doScroll(scrollCount<2?'instant':'smooth');
-      scrollCount++;
-      if(scrollCount>15)ro.disconnect(); /* Stop after enough corrections */
-    });
-    ro.observe(widget);
-    /* Safety disconnect after 12s */
-    setTimeout(()=>ro.disconnect(),12000);
-  }
-  /* Also handle in-page Pricing nav clicks (smooth scroll) */
-  document.addEventListener('click',function(e){
-    const a=e.target.closest('a[href="#pricing"]');
-    if(!a)return;
-    e.preventDefault();
-    doScroll('smooth');
-    history.pushState(null,null,'#pricing');
-  });
-})();
 </script>
 
-<!-- PRICING — Memberships first (anchoring), Intro Offers below
-     Psychology: High-value commitment shown first signals "this is a place people commit to."
-     When visitors scroll to the 3-pack at €48, it feels like an even better deal. -->
-<section class="pricing" id="pricing">
-  <div class="pricing-hdr">
-    <h2>Memberships</h2>
-    <p>Commit to your practice. Unlimited classes, priority booking, the best value per class.</p>
+<!-- COMPACT PRICING SUMMARY — quick reference, links to full pricing page -->
+<section class="pricing-summary">
+  <div class="ps-hdr">
+    <h2>Pricing</h2>
+    <p>Quick overview — see full pricing, memberships and gift cards on our <a href="pricing.html" class="ps-link">pricing page</a>.</p>
   </div>
-  <div class="membership-grid">
-    <div class="membership-card">
-      <h3>Monthly</h3>
-      <div class="m-price">€130<span>/mo</span></div>
-      <div class="m-sub">Unlimited classes · Cancel anytime</div>
-      <a href="https://momence.com/m/431216" target="_blank">Get Monthly</a>
-    </div>
-    <div class="membership-card hero-card">
-      <div class="membership-badge">Best Value</div>
-      <h3>3 Month</h3>
-      <div class="m-price">€100<span>/mo</span></div>
-      <div class="m-sub">€300 total · Save €90 vs monthly</div>
-      <a href="https://momence.com/m/445600" target="_blank">Get 3 Month</a>
-    </div>
+  <div class="ps-grid">
+    <a href="https://momence.com/m/443934" target="_blank" class="ps-card">
+      <span class="ps-label">Trial Class</span>
+      <span class="ps-price">€16</span>
+    </a>
+    <a href="https://momence.com/m/443935" target="_blank" class="ps-card ps-hero">
+      <span class="ps-badge">Most Popular</span>
+      <span class="ps-label">3 Pack</span>
+      <span class="ps-price">€48</span>
+      <span class="ps-sub">€16/class</span>
+    </a>
+    <a href="https://momence.com/m/431216" target="_blank" class="ps-card">
+      <span class="ps-label">Unlimited</span>
+      <span class="ps-price">€130<span>/mo</span></span>
+    </a>
   </div>
-
-  <div class="pricing-hdr intro-sep">
-    <h2>Intro Offers & Class Packs</h2>
-    <p>First time? Start with an intro offer.<br>Ready to go deeper? Grab a pack.</p>
-  </div>
-  <div class="pricing-grid">
-    <div class="pricing-col">
-      <h3>First Visit</h3>
-      <a href="https://momence.com/m/443934" target="_blank">Trial Class €16</a>
-      <a href="https://momence.com/SABDA-54278" target="_blank">Single Class €20</a>
-    </div>
-    <div class="pricing-col hero-col">
-      <div class="pricing-badge">Most Popular</div>
-      <h3>Best Value</h3>
-      <a href="https://momence.com/m/443935" target="_blank">3 Pack €48<span class="per-class">€16 / class</span></a>
-      <a href="https://momence.com/SABDA-54278" target="_blank">1 Week Unlimited €50</a>
-    </div>
-    <div class="pricing-col">
-      <h3>Class Packs</h3>
-      <a href="https://momence.com/SABDA-54278" target="_blank">5 Pack €80<span class="per-class">€16 / class</span></a>
-      <a href="https://momence.com/SABDA-54278" target="_blank">10 Pack €140<span class="per-class">€14 / class</span></a>
-    </div>
-  </div>
-</section>
-
-<!-- GIFT CARDS -->
-<section class="giftcards">
-  <div class="giftcards-hdr">
-    <h2>Gift Cards</h2>
-    <p>Give the gift of immersion.<br>Choose an amount or set your own.</p>
-  </div>
-  <div class="gc-grid">
-    <a href="https://momence.com/SABDA-54278" target="_blank">€20</a>
-    <a href="https://momence.com/SABDA-54278" target="_blank">€40</a>
-    <a href="https://momence.com/SABDA-54278" target="_blank">€60</a>
-    <a href="https://momence.com/SABDA-54278" target="_blank">€80</a>
-    <a href="https://momence.com/SABDA-54278" target="_blank">€100</a>
-    <a href="https://momence.com/SABDA-54278" target="_blank" class="custom">Custom</a>
+  <div class="ps-cta">
+    <a href="pricing.html">View All Options & Memberships <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
   </div>
 </section>
 
@@ -773,6 +679,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     </div>
     <div class="ft-col"><h4>Explore</h4><ul>
       <li><a href="classes.html">Classes</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
       <li><a href="rent-corporate.html">Rent & Corporate</a></li>
       <li><a href="#">Listening Sessions</a></li>
       <li><a href="#">About</a></li>
