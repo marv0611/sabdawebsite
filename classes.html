@@ -41,14 +41,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 .nav-links a:hover{opacity:1}.nav-links a:hover::after{right:0}
 .nav-links a.active{opacity:1}.nav-links a.active::after{right:0}
 .nav-right{display:flex;align-items:center;gap:0}
-.nav-social{display:flex;align-items:center;gap:12px;padding-left:18px;margin-left:18px;border-left:1px solid rgba(240,239,233,.12)}
-.nav-social a{display:flex;align-items:center;opacity:.45;transition:opacity .25s}
-.nav-social a:hover{opacity:.9}
-.nav-social svg{width:16px;height:16px;fill:var(--white);flex-shrink:0}
-.lang-sel{display:flex;align-items:center;gap:0;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;font-weight:500}
-.lang-sel a{color:var(--white);opacity:.4;padding:5px 7px;transition:opacity .25s,color .25s}
-.lang-sel a:hover{opacity:.75}
-.lang-sel a.active{opacity:1;color:var(--cyan)}
+.lang-sel{display:flex;align-items:center;gap:0;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;font-weight:500}
+.lang-sel a{color:var(--white);opacity:.35;padding:5px 7px;transition:opacity .25s,color .25s}
+.lang-sel a:hover{opacity:.7}
+.lang-sel a.active{opacity:.9;color:var(--cyan)}
+.nav-social{display:flex;align-items:center;gap:14px;padding-left:20px;margin-left:16px;border-left:1px solid rgba(240,239,233,.1)}
+.nav-social a{display:flex;align-items:center;opacity:.35;transition:opacity .25s}
+.nav-social a:hover{opacity:.85}
+.nav-social svg{width:15px;height:15px;fill:var(--white);flex-shrink:0}
 
 /* ── HERO BANNER ── */
 .hero-banner{position:relative;width:100%;height:320px;overflow:hidden}
@@ -303,7 +303,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 #momence-plugin-host-schedule [class*="fS"]{background:rgba(2,243,197,.06) !important}
 
 /* ── PRICING ── */
-.pricing{padding:80px 80px 0;position:relative;z-index:2;border-top:1px solid rgba(240,239,233,.06)}
+.pricing{padding:80px 80px 0;position:relative;z-index:2;border-top:1px solid rgba(240,239,233,.06);scroll-margin-top:80px}
 .pricing-hdr{text-align:center;margin-bottom:52px}
 .pricing-hdr h2{font-family:'PT Serif',serif;font-size:2.2rem;font-weight:400;margin-bottom:10px}
 .pricing-hdr p{color:var(--white38);font-size:.92rem;max-width:420px;margin:0 auto;line-height:1.7}
@@ -370,7 +370,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   <a href="SABDA_v16.html" class="nav-logo"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA"></a>
   <ul class="nav-links">
     <li><a href="classes.html" class="active">Classes</a></li>
-    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="#pricing">Pricing</a></li>
     <li><a href="rent-corporate.html">Rent & Corporate</a></li>
     <li><a href="#">Listening Sessions</a></li>
     <li><a href="#">About</a></li>
@@ -646,24 +646,41 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 })();
 </script>
 <script>
-/* Scroll to #pricing if hash is present — instant first jump, smooth corrections */
-if(window.location.hash){
-  (function(){
-    const hash=window.location.hash;
-    let lastY=-1,stableCount=0,first=true;
-    const times=[100,400,800,1500,2500,4000,6000,8000,10000];
-    times.forEach(ms=>setTimeout(()=>{
-      const target=document.querySelector(hash);
-      if(!target)return;
-      const y=target.getBoundingClientRect().top+window.scrollY;
-      if(Math.abs(y-lastY)<2){stableCount++;if(stableCount>=2)return;}
-      else{stableCount=0;}
-      lastY=y;
-      window.scrollTo({top:Math.max(0,y-80),behavior:first?'instant':'smooth'});
-      first=false;
-    },ms));
-  })();
-}
+/* Scroll to hash — uses ResizeObserver to react to Momence layout shifts */
+(function(){
+  const hash=window.location.hash;
+  if(!hash)return;
+  const doScroll=function(behavior){
+    const t=document.querySelector(hash);
+    if(!t)return;
+    const y=t.getBoundingClientRect().top+window.scrollY-80;
+    window.scrollTo({top:Math.max(0,y),behavior:behavior});
+  };
+  /* Instant jump ASAP — don't show top of page */
+  doScroll('instant');
+  document.addEventListener('DOMContentLoaded',()=>doScroll('instant'));
+  /* Watch Momence widget for size changes — re-scroll when it shifts layout */
+  const widget=document.getElementById('momence-plugin-host-schedule');
+  if(widget&&typeof ResizeObserver!=='undefined'){
+    let scrollCount=0;
+    const ro=new ResizeObserver(()=>{
+      doScroll(scrollCount<2?'instant':'smooth');
+      scrollCount++;
+      if(scrollCount>15)ro.disconnect(); /* Stop after enough corrections */
+    });
+    ro.observe(widget);
+    /* Safety disconnect after 12s */
+    setTimeout(()=>ro.disconnect(),12000);
+  }
+  /* Also handle in-page Pricing nav clicks (smooth scroll) */
+  document.addEventListener('click',function(e){
+    const a=e.target.closest('a[href="#pricing"]');
+    if(!a)return;
+    e.preventDefault();
+    doScroll('smooth');
+    history.pushState(null,null,'#pricing');
+  });
+})();
 </script>
 
 <!-- PRICING — optimized for new customer conversion -->
