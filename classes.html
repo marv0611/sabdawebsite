@@ -306,8 +306,22 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 .pricing{padding:80px 80px 0;position:relative;z-index:2;border-top:1px solid rgba(240,239,233,.06);scroll-margin-top:80px}
 .pricing-hdr{text-align:center;margin-bottom:52px}
 .pricing-hdr h2{font-family:'PT Serif',serif;font-size:2.2rem;font-weight:400;margin-bottom:10px}
-.pricing-hdr p{color:var(--white38);font-size:.92rem;max-width:420px;margin:0 auto;line-height:1.7}
-.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:960px;margin:0 auto}
+.pricing-hdr p{color:var(--white38);font-size:.92rem;max-width:460px;margin:0 auto;line-height:1.7}
+/* Membership cards — 2-column, larger, premium feel */
+.membership-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:640px;margin:0 auto}
+.membership-card{text-align:center;padding:36px 24px;border-radius:16px;border:1px solid rgba(240,239,233,.08);background:rgba(240,239,233,.02);position:relative;transition:border-color .3s,background .3s}
+.membership-card:hover{border-color:rgba(2,243,197,.2);background:rgba(2,243,197,.02)}
+.membership-card h3{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--white60);margin-bottom:8px;font-weight:500;font-family:'DM Sans',sans-serif}
+.membership-card .m-price{font-family:'PT Serif',serif;font-size:2rem;font-weight:400;color:var(--white);margin-bottom:4px}
+.membership-card .m-price span{font-size:.9rem;color:var(--white60);font-family:'DM Sans',sans-serif}
+.membership-card .m-sub{font-size:.78rem;color:var(--white38);margin-bottom:22px}
+.membership-card a{display:block;padding:16px 12px;border-radius:40px;background:var(--cyan);color:var(--navy);font-weight:700;font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;transition:background .2s,transform .15s;text-align:center}
+.membership-card a:hover{background:#18ffda;transform:translateY(-2px)}
+.membership-card.hero-card{border-color:rgba(2,243,197,.25);background:rgba(2,243,197,.03)}
+.membership-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--salmon);color:var(--navy);font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:5px 14px;border-radius:20px;white-space:nowrap}
+/* Intro offers section */
+.intro-sep{margin-top:80px}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:780px;margin:0 auto}
 .pricing-col{text-align:center;position:relative;padding:24px 8px 8px;border-radius:16px}
 .pricing-col h3{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--white60);margin-bottom:20px;font-weight:500;font-family:'DM Sans',sans-serif}
 .pricing-col a{display:block;padding:18px 12px;border-radius:40px;background:var(--cyan);color:var(--navy);font-weight:700;font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;margin-bottom:14px;transition:background .2s,transform .15s;text-align:center;position:relative}
@@ -352,12 +366,15 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .hero-banner{height:240px}.hero-overlay h1{font-size:2rem}.hero-overlay{bottom:32px}
   #momence-plugin-host-schedule{padding:24px 16px 40px}
   .pricing{padding:60px 24px 0}.pricing-grid{grid-template-columns:1fr 1fr;gap:16px}
+  .membership-grid{grid-template-columns:1fr 1fr;gap:16px;max-width:100%}
+  .intro-sep{margin-top:60px}
   .giftcards{padding:60px 24px}
   footer{padding:36px 24px 22px}.ft-in{grid-template-columns:1fr 1fr}
 }
 @media(max-width:520px){
   .ft-in{grid-template-columns:1fr}.hero-overlay h1{font-size:1.7rem}
   .hero-banner{height:200px}.pricing-grid{grid-template-columns:1fr}
+  .membership-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -388,7 +405,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 
 <!-- HERO BANNER — swap src with your rectangular hero image -->
 <div class="hero-banner">
-  <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/breathwork.jpg" alt="SABDA immersive studio">
+  <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_005.jpg" alt="SABDA immersive studio">
   <div class="hero-overlay">
     <h1>Our <span class="cyan">Schedule</span></h1>
     <p>Browse classes, filter by type or teacher, and book your spot — all in real time.</p>
@@ -683,15 +700,33 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 })();
 </script>
 
-<!-- PRICING — optimized for new customer conversion -->
-<!-- Psychology: Left-to-right buyer journey (Try → Best Value → Commit → Unlimited)
-     3-Pack is hero offer: 1.4x higher repeat conversion, 2.4x expected value vs trial.
-     Anchoring: single class prices first make €16/class look like a steal.
-     Center-stage: hero column gets visual emphasis (border + badge). -->
+<!-- PRICING — Memberships first (anchoring), Intro Offers below
+     Psychology: High-value commitment shown first signals "this is a place people commit to."
+     When visitors scroll to the 3-pack at €48, it feels like an even better deal. -->
 <section class="pricing" id="pricing">
   <div class="pricing-hdr">
-    <h2>Pricing</h2>
-    <p>First time? Start with an intro offer.<br>Ready to commit? Choose a pack or go unlimited.</p>
+    <h2>Memberships</h2>
+    <p>Commit to your practice. Unlimited classes, priority booking, the best value per class.</p>
+  </div>
+  <div class="membership-grid">
+    <div class="membership-card">
+      <h3>Monthly</h3>
+      <div class="m-price">€130<span>/mo</span></div>
+      <div class="m-sub">Unlimited classes · Cancel anytime</div>
+      <a href="https://momence.com/m/431216" target="_blank">Get Monthly</a>
+    </div>
+    <div class="membership-card hero-card">
+      <div class="membership-badge">Best Value</div>
+      <h3>3 Month</h3>
+      <div class="m-price">€100<span>/mo</span></div>
+      <div class="m-sub">€300 total · Save €90 vs monthly</div>
+      <a href="https://momence.com/m/445600" target="_blank">Get 3 Month</a>
+    </div>
+  </div>
+
+  <div class="pricing-hdr intro-sep">
+    <h2>Intro Offers & Class Packs</h2>
+    <p>First time? Start with an intro offer.<br>Ready to go deeper? Grab a pack.</p>
   </div>
   <div class="pricing-grid">
     <div class="pricing-col">
@@ -709,11 +744,6 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       <h3>Class Packs</h3>
       <a href="https://momence.com/SABDA-54278" target="_blank">5 Pack €80<span class="per-class">€16 / class</span></a>
       <a href="https://momence.com/SABDA-54278" target="_blank">10 Pack €140<span class="per-class">€14 / class</span></a>
-    </div>
-    <div class="pricing-col">
-      <h3>Unlimited</h3>
-      <a href="https://momence.com/m/431216" target="_blank">Monthly €130/mo</a>
-      <a href="https://momence.com/m/445600" target="_blank">3 Month Unlimited</a>
     </div>
   </div>
 </section>
