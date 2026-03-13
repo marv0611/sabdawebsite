@@ -40,10 +40,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 .nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;right:100%;height:1px;background:var(--cyan);transition:right .3s var(--ease-expo)}
 .nav-links a:hover{opacity:1}.nav-links a:hover::after{right:0}
 .nav-links a.active{opacity:1}.nav-links a.active::after{right:0}
-.nav-ig{display:inline-flex;align-items:center;gap:7px;background:var(--salmon);color:var(--navy);padding:10px 20px;border-radius:3px;font-size:.78rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;transition:background .2s,transform .2s}
-.nav-ig:hover{background:#fab3b0;transform:translateY(-1px)}
-.nav-ig svg{color:var(--cyan);stroke:var(--cyan);flex-shrink:0}
-.nav-ig .sabda-sym{opacity:.85}
+.nav-right{display:flex;align-items:center;gap:20px}
+.nav-social{display:flex;align-items:center;gap:14px}
+.nav-social a{display:flex;align-items:center;opacity:.65;transition:opacity .25s}
+.nav-social a:hover{opacity:1}
+.nav-social svg{width:18px;height:18px;fill:var(--white);flex-shrink:0}
+.lang-sel{display:flex;align-items:center;gap:2px;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+.lang-sel a{color:var(--white);opacity:.45;padding:4px 6px;transition:opacity .25s,color .25s;border-radius:2px}
+.lang-sel a:hover{opacity:.8}
+.lang-sel a.active{opacity:1;color:var(--cyan)}
+.lang-div{width:1px;height:12px;background:var(--white38)}
 
 /* ── HERO BANNER ── */
 .hero-banner{position:relative;width:100%;height:320px;overflow:hidden}
@@ -343,6 +349,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 /* ── RESPONSIVE ── */
 @media(max-width:900px){
   nav{padding:0 24px}.nav-links{display:none}
+  .nav-social svg{width:16px;height:16px}.nav-social{gap:12px}.lang-sel{font-size:.65rem}.nav-right{gap:14px}
   .hero-banner{height:240px}.hero-overlay h1{font-size:2rem}.hero-overlay{bottom:32px}
   #momence-plugin-host-schedule{padding:24px 16px 40px}
   .pricing{padding:60px 24px 0}.pricing-grid{grid-template-columns:1fr 1fr;gap:16px}
@@ -369,7 +376,16 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     <li><a href="#">Listening Sessions</a></li>
     <li><a href="#">About</a></li>
   </ul>
-  <a href="https://instagram.com/sabdastudio" class="nav-ig" target="_blank"><svg class="sabda-sym" width="16" height="16" viewBox="0 0 100 100" fill="none" stroke="#02F3C5" stroke-width="1.5"><circle cx="50" cy="50" r="46"/><circle cx="48" cy="49" r="38"/><circle cx="51" cy="48" r="30"/><circle cx="49" cy="51" r="23"/><circle cx="50" cy="49" r="17"/><circle cx="50" cy="50" r="11"/><circle cx="49" cy="50" r="6"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg> Instagram</a>
+  <div class="nav-right">
+    <div class="lang-sel">
+      <a href="#" class="active">EN</a><div class="lang-div"></div><a href="#">ES</a><div class="lang-div"></div><a href="#">CA</a>
+    </div>
+    <div class="nav-social">
+      <a href="https://instagram.com/sabdastudio" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 1.5A4 4 0 0 0 3.5 7.5v9a4 4 0 0 0 4 4h9a4 4 0 0 0 4-4v-9a4 4 0 0 0-4-4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.25-2.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg></a>
+      <a href="https://tiktok.com/@sabdastudio" target="_blank" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0 1 13.8 3h-3v12.4a2.6 2.6 0 0 1-2.6 2.6 2.6 2.6 0 0 1-2.6-2.6A2.6 2.6 0 0 1 8.2 12.8c.28 0 .56.04.82.12V9.84A5.6 5.6 0 0 0 2.6 15.4a5.6 5.6 0 0 0 5.6 5.6 5.6 5.6 0 0 0 5.6-5.6V9.72a7.3 7.3 0 0 0 4.2 1.32V8.02a4.28 4.28 0 0 1-1.4-2.2z"/></svg></a>
+      <a href="https://linkedin.com/company/sabdastudio" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S.02 4.88.02 3.5 1.13 1 2.5 1s2.48 1.12 2.48 2.5zM.28 8.5h4.44V24H.28V8.5zm7.12 0h4.26v2.12h.06c.59-1.12 2.04-2.3 4.2-2.3 4.5 0 5.32 2.96 5.32 6.8V24h-4.44v-8.1c0-1.93-.04-4.42-2.7-4.42-2.7 0-3.1 2.1-3.1 4.28V24H7.4V8.5z" transform="translate(1.5 -0.5)"/></svg></a>
+    </div>
+  </div>
 </nav>
 
 <!-- HERO BANNER — swap src with your rectangular hero image -->
@@ -632,12 +648,12 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 })();
 </script>
 <script>
-/* Scroll to #pricing if hash is present — retries to beat Momence layout shifts */
+/* Scroll to #pricing if hash is present — instant first jump, smooth corrections */
 if(window.location.hash){
   (function(){
     const hash=window.location.hash;
-    let lastY=-1,stableCount=0;
-    const times=[600,1200,2000,3000,4500,6000,8000,10000];
+    let lastY=-1,stableCount=0,first=true;
+    const times=[100,400,800,1500,2500,4000,6000,8000,10000];
     times.forEach(ms=>setTimeout(()=>{
       const target=document.querySelector(hash);
       if(!target)return;
@@ -645,7 +661,8 @@ if(window.location.hash){
       if(Math.abs(y-lastY)<2){stableCount++;if(stableCount>=2)return;}
       else{stableCount=0;}
       lastY=y;
-      window.scrollTo({top:Math.max(0,y-80),behavior:'smooth'});
+      window.scrollTo({top:Math.max(0,y-80),behavior:first?'instant':'smooth'});
+      first=false;
     },ms));
   })();
 }
