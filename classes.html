@@ -153,11 +153,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
   background-color:rgba(240,239,233,.06) !important;
 }
 
-/* ── DAY SELECTOR: hide past days (they have disabled attr) ── */
-#momence-plugin-host-schedule .momence-day_selection-item[disabled]{
-  display:none !important;
-}
-
 /* ── DAY SELECTOR: force visible with proper layout ── */
 #momence-plugin-host-schedule .momence-day_selection{
   background:transparent !important;
@@ -548,8 +543,52 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     el.querySelectorAll('[class*="pagination"],[class*="Pagination"],[class*="pager"]').forEach(e=>e.style.setProperty('display','none','important'));
     /* System row */
     el.querySelectorAll('[class*="sys_row"]').forEach(e=>e.style.setProperty('display','none','important'));
-    /* Past days in day selector (disabled = past) */
-    el.querySelectorAll('.momence-day_selection-item[disabled]').forEach(e=>e.style.setProperty('display','none','important'));
+
+    /* ── REORDER QUICK FILTERS: TODAY, TOMORROW, SHOW ALL ── */
+    const qf=el.querySelector('.momence-quick_filters');
+    if(qf&&!qf._reordered){
+      const todayBtn=qf.querySelector('.momence-quick_filters-today');
+      const allBtn=qf.querySelector('.momence-quick_filters-all');
+      if(todayBtn&&allBtn){
+        /* Create TOMORROW button cloned from TODAY for matching style */
+        const tmrBtn=todayBtn.cloneNode(true);
+        tmrBtn.textContent='TOMORROW';
+        tmrBtn.className=todayBtn.className;
+        tmrBtn.classList.remove('momence-quick_filters-today');
+        /* Click handler: click the > arrow then click first day of next week */
+        tmrBtn.addEventListener('click',function(){
+          /* Find tomorrow's day button by checking data-is-today on siblings */
+          const todayDay=el.querySelector('[data-is-today="true"]');
+          if(!todayDay||!todayDay.parentElement)return;
+          const siblings=Array.from(todayDay.parentElement.children).filter(c=>c.tagName==='BUTTON'&&c.classList.contains('momence-day_selection-item'));
+          const todayIdx=siblings.indexOf(todayDay);
+          if(todayIdx<siblings.length-1){
+            /* Tomorrow is in the same week */
+            siblings[todayIdx+1].click();
+          } else {
+            /* Tomorrow is first day of next week — click > arrow */
+            const rightArrow=el.querySelector('.momence-day_selection-arrow_right');
+            if(rightArrow){
+              rightArrow.click();
+              /* Wait for next week to load, then click first day */
+              let attempts=0;
+              const tryClick=setInterval(()=>{
+                attempts++;
+                const newDays=el.querySelectorAll('.momence-day_selection-item:not([disabled])');
+                if(newDays.length>0){newDays[0].click();clearInterval(tryClick);}
+                if(attempts>10)clearInterval(tryClick);
+              },300);
+            }
+          }
+        });
+        /* Reorder: TODAY first, then TOMORROW, then SHOW ALL */
+        qf.insertBefore(todayBtn,qf.firstChild);
+        qf.insertBefore(tmrBtn,todayBtn.nextSibling);
+        /* SHOW ALL goes last (it's already there, but ensure order) */
+        qf.appendChild(allBtn);
+        qf._reordered=true;
+      }
+    }
     
     /* ── CRITICAL: Neutralize any position:fixed children ── */
     /* Momence renders modal overlays with position:fixed that escape the widget */
@@ -643,6 +682,14 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 
   /* Run on timers for initial load */
   [300,600,1000,1500,2000,3000,4000,6000,8000].forEach(ms=>setTimeout(runAll,ms));
+
+  /* Auto-click TODAY button once on load */
+  let todayClicked=false;
+  [800,1500,2500].forEach(ms=>setTimeout(()=>{
+    if(todayClicked)return;
+    const tb=el.querySelector('.momence-quick_filters-today');
+    if(tb){tb.click();todayClicked=true;}
+  },ms));
 
   /* PERSISTENT: keep enforcing every 500ms for 30 seconds to beat React re-renders */
   let tick=0;
