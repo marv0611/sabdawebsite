@@ -508,23 +508,6 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       c.style.setProperty('opacity','1','important');
     });
 
-    /* ── HIDE PAST DAYS — only show today onwards ── */
-    const todayDayBtn=el.querySelector('[data-is-today="true"]');
-    if(todayDayBtn&&todayDayBtn.parentElement){
-      const parent=todayDayBtn.parentElement;
-      const dayBtns=Array.from(parent.children).filter(c=>{
-        if(c.tagName!=='BUTTON')return false;
-        return c.textContent.trim().length>0&&!c.querySelector('svg');
-      });
-      const todayIdx=dayBtns.indexOf(todayDayBtn);
-      /* Hide every day button BEFORE today */
-      dayBtns.forEach((btn,i)=>{
-        if(i<todayIdx){
-          btn.style.setProperty('display','none','important');
-        }
-      });
-    }
-
     /* Date labels (TOMORROW, etc) → subdued */
     el.querySelectorAll('time').forEach(t=>{
       t.style.setProperty('color','rgba(240,239,233,.5)','important');
@@ -545,13 +528,8 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 
   /* ── Hide unwanted elements ── */
   function hideElements(){
-    /* Powered by Momence — broad selectors */
-    el.querySelectorAll('[class*="powered_by"],[class*="powered-by"],[class*="poweredBy"],[class*="PoweredBy"]').forEach(e=>e.style.setProperty('display','none','important'));
-    /* Also hide by text content */
-    el.querySelectorAll('a,div,span,p').forEach(n=>{
-      if(n.textContent.trim().toLowerCase()==='powered by momence'||n.textContent.trim().toLowerCase().startsWith('powered by'))
-        n.style.setProperty('display','none','important');
-    });
+    /* Powered by Momence */
+    el.querySelectorAll('[class*="powered_by"],[class*="powered-by"],[class*="poweredBy"]').forEach(e=>e.style.setProperty('display','none','important'));
     /* Location on cards */
     el.querySelectorAll('[class*="in_person"]').forEach(e=>e.style.setProperty('display','none','important'));
     /* Locations dropdown (last filter) */
@@ -563,108 +541,8 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     });
     /* Pagination — hide all page number navigation */
     el.querySelectorAll('[class*="pagination"],[class*="Pagination"],[class*="pager"]').forEach(e=>e.style.setProperty('display','none','important'));
-    /* Also catch standalone page nav containers at the bottom of the widget */
-    el.querySelectorAll('nav').forEach(n=>n.style.setProperty('display','none','important'));
     /* System row */
     el.querySelectorAll('[class*="sys_row"]').forEach(e=>e.style.setProperty('display','none','important'));
-
-    /* ── AUTO-CLICK "TODAY" to filter schedule ── */
-    if(!el._todayClicked){
-      const allBtns=el.querySelectorAll('button');
-      allBtns.forEach(b=>{
-        if(b.textContent.trim()==='TODAY'){
-          b.click();
-          el._todayClicked=true;
-        }
-      });
-    }
-
-    /* ── INJECT "TOMORROW" BUTTON next to SHOW ALL / TODAY ── */
-    if(!el._tomorrowAdded){
-      const allBtns=el.querySelectorAll('button');
-      let todayBtnEl=null;
-      allBtns.forEach(b=>{if(b.textContent.trim()==='TODAY')todayBtnEl=b;});
-      if(todayBtnEl&&todayBtnEl.parentElement){
-        /* Clone the TODAY button for pixel-perfect style match */
-        const tmrBtn=todayBtnEl.cloneNode(true);
-        tmrBtn.textContent='TOMORROW';
-        /* Remove any Momence event listeners by replacing inner content */
-        tmrBtn.removeAttribute('class');
-        /* Copy all computed styles from TODAY */
-        const cs=window.getComputedStyle(todayBtnEl);
-        const keep=['padding','paddingTop','paddingRight','paddingBottom','paddingLeft',
-          'fontSize','fontWeight','fontFamily','letterSpacing','textTransform',
-          'borderRadius','border','borderColor','borderWidth','borderStyle',
-          'lineHeight','height','minHeight','display','alignItems','justifyContent'];
-        keep.forEach(p=>{tmrBtn.style[p]=cs[p];});
-        tmrBtn.style.setProperty('color','#f0efe9','important');
-        tmrBtn.style.setProperty('background','transparent','important');
-        tmrBtn.style.setProperty('cursor','pointer','important');
-        tmrBtn.style.setProperty('white-space','nowrap','important');
-        tmrBtn.addEventListener('click',function(){
-          const todayEl=el.querySelector('[data-is-today="true"]');
-          if(!todayEl)return;
-          const dayBtnsNow=todayEl.parentElement?Array.from(todayEl.parentElement.children).filter(c=>c.tagName==='BUTTON'&&c.textContent.trim().length>0&&!c.querySelector('svg')):[];
-          const todayI=dayBtnsNow.indexOf(todayEl);
-          if(todayI<dayBtnsNow.length-1){
-            /* Tomorrow is in the same week */
-            dayBtnsNow[todayI+1].click();
-          } else {
-            /* Tomorrow is in the next week — find the > arrow button */
-            const arrowBtns=todayEl.parentElement?Array.from(todayEl.parentElement.children).filter(c=>c.tagName==='BUTTON'&&c.querySelector('svg')):[];
-            /* The > arrow is the last arrow button */
-            const nextArrow=arrowBtns[arrowBtns.length-1];
-            if(nextArrow){
-              nextArrow.click();
-              /* After week change, click the first visible day button */
-              const tryClick=function(attempts){
-                if(attempts<=0)return;
-                setTimeout(()=>{
-                  const newDayBtns=el.querySelectorAll('button');
-                  let firstDay=null;
-                  newDayBtns.forEach(b=>{
-                    if(!firstDay&&b.textContent.trim().length>0&&!b.querySelector('svg')&&b.textContent.trim()!=='SHOW All'&&b.textContent.trim()!=='TODAY'&&b.textContent.trim()!=='TOMORROW'&&b.textContent.trim()!=='Week'&&b.textContent.trim()!=='Month'&&b.textContent.trim()!=='Classes'){
-                      /* Check if this looks like a day button (has a number) */
-                      const num=parseInt(b.textContent.trim());
-                      if(!isNaN(num)||/^(SUN|MON|TUE|WED|THU|FRI|SAT)/i.test(b.textContent.trim())){
-                        firstDay=b;
-                      }
-                    }
-                  });
-                  if(firstDay){
-                    firstDay.click();
-                  } else {
-                    tryClick(attempts-1);
-                  }
-                },500);
-              };
-              tryClick(5);
-            }
-          }
-        });
-        todayBtnEl.parentElement.insertBefore(tmrBtn,todayBtnEl.nextSibling);
-        el._tomorrowAdded=true;
-      }
-    }
-
-    /* ── GREY OUT PAST DAYS in month view ── */
-    const today=new Date();
-    today.setHours(0,0,0,0);
-    el.querySelectorAll('[class*="calendar"] button, [class*="month"] button').forEach(btn=>{
-      /* Try to parse date from button content */
-      const num=parseInt(btn.textContent.trim());
-      if(isNaN(num))return;
-      /* Check if button has a date attribute or aria-label */
-      const label=btn.getAttribute('aria-label')||'';
-      const dateMatch=label.match(/(\d{4})-(\d{2})-(\d{2})/);
-      if(dateMatch){
-        const btnDate=new Date(dateMatch[1],dateMatch[2]-1,dateMatch[3]);
-        if(btnDate<today){
-          btn.style.setProperty('opacity','0.25','important');
-          btn.style.setProperty('pointer-events','none','important');
-        }
-      }
-    });
     
     /* ── CRITICAL: Neutralize any position:fixed children ── */
     /* Momence renders modal overlays with position:fixed that escape the widget */
