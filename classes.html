@@ -293,6 +293,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
   position:relative !important;
   z-index:10 !important;
 }
+/* Teachers dropdown — compact width */
+#momence-plugin-host-schedule .momence-select{
+  max-width:200px !important;
+}
+#momence-plugin-host-schedule .momence-select-button{
+  padding:8px 14px !important;
+  font-size:.82rem !important;
+}
 
 /* ── Subdued text ── */
 #momence-plugin-host-schedule time{color:rgba(240,239,233,.5) !important}
@@ -300,6 +308,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 
 /* ── Loader ── */
 #momence-plugin-host-schedule [class*="sc-1oszok8"] div{background:var(--cyan) !important}
+
+/* ── Show More Classes button ── */
+.sabda-show-more{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  width:100%;padding:16px;margin-top:20px;
+  background:rgba(240,239,233,.04);border:1px solid rgba(240,239,233,.1);
+  border-radius:12px;color:var(--cyan);font-family:'DM Sans',sans-serif;
+  font-size:.85rem;font-weight:600;letter-spacing:.04em;cursor:pointer;
+  transition:background .25s,border-color .25s;
+}
+.sabda-show-more:hover{background:rgba(2,243,197,.06);border-color:rgba(2,243,197,.2)}
+.sabda-show-more svg{transition:transform .25s}
+.sabda-show-more:hover svg{transform:translateY(2px)}
 
 /* ── One-click booking banner ── */
 #momence-plugin-host-schedule [class*="fS"]{background:rgba(2,243,197,.06) !important}
@@ -612,6 +633,14 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       row.style.setProperty('position','relative','important');
       row.style.setProperty('z-index','10','important');
     });
+    /* Teachers dropdown — compact width */
+    el.querySelectorAll('.momence-select').forEach(s=>{
+      s.style.setProperty('max-width','200px','important');
+    });
+    el.querySelectorAll('.momence-select-button').forEach(b=>{
+      b.style.setProperty('padding','8px 14px','important');
+      b.style.setProperty('font-size','.82rem','important');
+    });
   }
 
   /* ── Apply CSS variables ON THE WIDGET ELEMENT ITSELF ── */
@@ -666,12 +695,72 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     }
   }
 
+  /* ── Limit visible sessions to 3 date groups, add Show More ── */
+  let sessionsExpanded=false;
+  function limitSessions(){
+    if(sessionsExpanded)return;
+    const list=el.querySelector('.momence-host_schedule-session_list');
+    if(!list)return;
+    /* Only run once per DOM state — skip if already processed and button exists */
+    const existingBtn=list.parentElement.querySelector('.sabda-show-more');
+    
+    /* Get all direct children that are time labels or articles */
+    const children=Array.from(list.children);
+    let dateCount=0;
+    let cutoffIndex=-1;
+    const MAX_DATES=3; /* TODAY, TOMORROW, NEXT Monday */
+    
+    for(let i=0;i<children.length;i++){
+      const c=children[i];
+      if(c.tagName==='TIME'&&c.classList.contains('momence-host_schedule-session_list-date_label')){
+        dateCount++;
+        if(dateCount>MAX_DATES&&cutoffIndex===-1){
+          cutoffIndex=i;
+        }
+      }
+    }
+    
+    if(cutoffIndex===-1)return; /* fewer than 4 date groups, nothing to hide */
+    
+    /* Hide everything from cutoffIndex onwards */
+    let hasHidden=false;
+    for(let i=cutoffIndex;i<children.length;i++){
+      const c=children[i];
+      if(c.tagName==='TIME'||c.tagName==='ARTICLE'){
+        c.style.setProperty('display','none','important');
+        c.setAttribute('data-sabda-hidden','true');
+        hasHidden=true;
+      }
+    }
+    
+    if(!hasHidden)return;
+    
+    /* Add Show More button if not already present */
+    if(!existingBtn){
+      const btn=document.createElement('button');
+      btn.className='sabda-show-more';
+      btn.innerHTML='Show More Classes <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M8 13l-3-3M8 13l3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      btn.addEventListener('click',function(){
+        sessionsExpanded=true;
+        /* Reveal all hidden items */
+        list.querySelectorAll('[data-sabda-hidden]').forEach(h=>{
+          h.style.removeProperty('display');
+          h.removeAttribute('data-sabda-hidden');
+        });
+        btn.remove();
+      });
+      /* Insert after the session list container */
+      list.parentElement.insertBefore(btn,list.nextSibling);
+    }
+  }
+
   /* ── Run everything ── */
   function runAll(){
     applyVars();
     forceStyles();
     patchText();
     hideElements();
+    limitSessions();
     el.classList.add('themed');
   }
 
