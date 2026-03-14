@@ -60,7 +60,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 .hero-overlay p{font-size:.95rem;color:var(--white60);max-width:480px;margin:0 auto}
 
 /* ── MOMENCE WIDGET ── */
-#momence-plugin-host-schedule{max-width:920px;margin:0 auto;padding:40px 40px 60px;position:relative;z-index:2;background:var(--navy)}
+#momence-plugin-host-schedule{max-width:920px;margin:0 auto;padding:40px 40px 20px;position:relative;z-index:2;background:var(--navy)}
 #momence-plugin-host-schedule::before{content:'';position:absolute;inset:0;background:var(--navy);z-index:9999;pointer-events:none;transition:opacity .5s ease .1s}
 #momence-plugin-host-schedule.themed::before{opacity:0}
 #momence-plugin-host-schedule,#momence-plugin-host-schedule *{font-family:'DM Sans',sans-serif !important}
@@ -345,7 +345,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 #momence-plugin-host-schedule [class*="sc-1oszok8"] div{background:var(--cyan) !important}
 
 /* ── Show More button (lives outside widget, never touched by forceStyles) ── */
-#sabda-show-more-btn{max-width:920px;margin:0 auto;padding:0 40px}
+#sabda-show-more-btn{
+  max-width:920px;margin:0 auto;
+  padding:28px 40px 12px;
+  text-align:center;
+}
 .sabda-show-more{
   display:inline-flex;align-items:center;justify-content:center;gap:8px;
   padding:13px 36px;
@@ -358,7 +362,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 .sabda-show-more svg{transition:transform .25s}
 .sabda-show-more:hover svg{transform:translateY(2px)}
 @media(max-width:900px){
-  #sabda-show-more-btn{padding:0 16px}
+  #sabda-show-more-btn{padding:20px 16px 8px}
 }
 
 /* ── One-click booking banner ── */
@@ -408,7 +412,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   nav{padding:0 24px}.nav-links{display:none}
   .nav-social svg{width:15px;height:15px}.nav-social{gap:10px;padding-left:14px;margin-left:14px}.lang-sel a{padding:4px 5px;font-size:.65rem}
   .hero-banner{height:240px}.hero-overlay h1{font-size:2rem}.hero-overlay{bottom:32px}
-  #momence-plugin-host-schedule{padding:24px 16px 40px}
+  #momence-plugin-host-schedule{padding:24px 16px 12px}
   .pricing-summary{padding:60px 24px 0}
   .ps-grid{flex-wrap:wrap;gap:14px}.ps-card{max-width:none;min-width:120px}
   footer{padding:36px 24px 22px}.ft-in{grid-template-columns:1fr 1fr}
@@ -471,6 +475,9 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 (function(){
   const el=document.getElementById('momence-plugin-host-schedule');
   if(!el)return;
+
+  /* Track which filter is active — survives React re-renders */
+  let activeFilter='today'; /* 'today' | 'tomorrow' | 'all' */
 
   /* ── Force dark theme on ALL widget elements ── */
   function forceStyles(){
@@ -626,22 +633,22 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
         tmrBtn.textContent='TOMORROW';
         tmrBtn.className=todayBtn.className;
         tmrBtn.classList.remove('momence-quick_filters-today');
+        tmrBtn.setAttribute('data-sabda-filter','tomorrow');
+        todayBtn.setAttribute('data-sabda-filter','today');
+        allBtn.setAttribute('data-sabda-filter','all');
         /* Click handler: click the > arrow then click first day of next week */
         tmrBtn.addEventListener('click',function(){
-          /* Find tomorrow's day button by checking data-is-today on siblings */
+          activeFilter='tomorrow';
           const todayDay=el.querySelector('[data-is-today="true"]');
           if(!todayDay||!todayDay.parentElement)return;
           const siblings=Array.from(todayDay.parentElement.children).filter(c=>c.tagName==='BUTTON'&&c.classList.contains('momence-day_selection-item'));
           const todayIdx=siblings.indexOf(todayDay);
           if(todayIdx<siblings.length-1){
-            /* Tomorrow is in the same week */
             siblings[todayIdx+1].click();
           } else {
-            /* Tomorrow is first day of next week — click > arrow */
             const rightArrow=el.querySelector('.momence-day_selection-arrow_right');
             if(rightArrow){
               rightArrow.click();
-              /* Wait for next week to load, then click first day */
               let attempts=0;
               const tryClick=setInterval(()=>{
                 attempts++;
@@ -655,24 +662,13 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
         /* Reorder: TODAY first, then TOMORROW, then SHOW ALL */
         qf.insertBefore(todayBtn,qf.firstChild);
         qf.insertBefore(tmrBtn,todayBtn.nextSibling);
-        /* SHOW ALL goes last (it's already there, but ensure order) */
         qf.appendChild(allBtn);
         qf._reordered=true;
 
-        /* Active state management — highlight the selected filter */
-        function setActive(activeBtn){
-          qf.querySelectorAll('button').forEach(b=>b.classList.remove('sabda-active'));
-          activeBtn.classList.add('sabda-active');
-        }
-        /* Reset session limit + set active when any filter is clicked */
-        [todayBtn,tmrBtn,allBtn].forEach(b=>{
-          b.addEventListener('click',function(){
-            maxVisibleDates=3;
-            setActive(b);
-          });
-        });
-        /* Highlight TODAY by default */
-        setActive(todayBtn);
+        /* Track active + reset session limit on click */
+        todayBtn.addEventListener('click',function(){activeFilter='today';maxVisibleDates=1;});
+        tmrBtn.addEventListener('click',function(){activeFilter='tomorrow';maxVisibleDates=1;});
+        allBtn.addEventListener('click',function(){activeFilter='all';maxVisibleDates=3;});
       }
     }
     
@@ -784,65 +780,88 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   }
 
   /* ── Limit visible sessions to N date groups, add Show More ── */
-  let maxVisibleDates=3;
+  let maxVisibleDates=1; /* Start with 1 (TODAY only) */
   let limitTimer=null;
   function limitSessions(){
-    /* Debounce — Momence re-renders cause multiple rapid calls */
     clearTimeout(limitTimer);
-    limitTimer=setTimeout(_doLimit,200);
+    limitTimer=setTimeout(_doLimit,250);
   }
   function _doLimit(){
     const list=el.querySelector('.momence-host_schedule-session_list');
     if(!list)return;
 
-    /* Collect all time labels (date group headers) */
     const children=Array.from(list.children);
     const dateLabels=children.filter(c=>c.tagName==='TIME'&&c.classList.contains('momence-host_schedule-session_list-date_label'));
 
-    /* If total date groups <= max, show everything, remove button */
-    if(dateLabels.length<=maxVisibleDates){
-      children.forEach(c=>{
-        if(c.hasAttribute('data-sabda-hidden')){
+    /* In SHOW ALL mode: hide sessions beyond maxVisibleDates */
+    if(activeFilter==='all'){
+      if(dateLabels.length<=maxVisibleDates){
+        /* All visible — unhide everything, hide button */
+        children.forEach(c=>{
+          if(c.hasAttribute('data-sabda-hidden')){
+            c.style.removeProperty('display');
+            c.removeAttribute('data-sabda-hidden');
+          }
+        });
+        const oldBtn=document.getElementById('sabda-show-more-btn');
+        if(oldBtn)oldBtn.style.display='none';
+        return;
+      }
+      /* Hide from cutoff onwards */
+      const cutoffLabel=dateLabels[maxVisibleDates];
+      let hiding=false;
+      for(const c of children){
+        if(c===cutoffLabel)hiding=true;
+        if(hiding&&(c.tagName==='TIME'||c.tagName==='ARTICLE')){
+          c.style.setProperty('display','none','important');
+          c.setAttribute('data-sabda-hidden','true');
+        } else if(!hiding&&c.hasAttribute('data-sabda-hidden')){
           c.style.removeProperty('display');
           c.removeAttribute('data-sabda-hidden');
         }
-      });
-      const oldBtn=document.getElementById('sabda-show-more-btn');
-      if(oldBtn)oldBtn.style.display='none';
-      return;
-    }
-
-    /* Find cutoff point */
-    const cutoffLabel=dateLabels[maxVisibleDates];
-    let hiding=false;
-    for(const c of children){
-      if(c===cutoffLabel)hiding=true;
-      if(c.classList&&c.classList.contains('sabda-show-more'))continue;
-      if(hiding&&(c.tagName==='TIME'||c.tagName==='ARTICLE')){
-        c.style.setProperty('display','none','important');
-        c.setAttribute('data-sabda-hidden','true');
-      } else if(!hiding&&c.hasAttribute('data-sabda-hidden')){
-        c.style.removeProperty('display');
-        c.removeAttribute('data-sabda-hidden');
       }
     }
 
-    /* Show the button (it lives OUTSIDE the widget) */
+    /* Always show the Show More button (in today/tomorrow mode it switches to show all) */
     let btn=document.getElementById('sabda-show-more-btn');
     if(!btn){
       btn=document.createElement('div');
       btn.id='sabda-show-more-btn';
-      btn.style.cssText='text-align:center;padding:8px 0 0;';
       btn.innerHTML='<button class="sabda-show-more" type="button">Show More <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>';
       btn.querySelector('button').addEventListener('click',function(e){
         e.preventDefault();e.stopPropagation();
-        maxVisibleDates+=2;
+        if(activeFilter!=='all'){
+          /* Switch to SHOW ALL mode */
+          const allBtn=el.querySelector('[data-sabda-filter="all"]');
+          if(allBtn){
+            activeFilter='all';
+            maxVisibleDates+=1;
+            allBtn.click();
+            setTimeout(()=>{_doLimit();applyActiveState();},400);
+            return;
+          }
+        }
+        maxVisibleDates+=1;
         _doLimit();
       });
-      /* Insert AFTER the widget div, BEFORE pricing summary */
       el.parentElement.insertBefore(btn,el.nextSibling);
     }
     btn.style.display='block';
+  }
+
+  /* ── Re-apply active filter highlight (survives React re-renders) ── */
+  function applyActiveState(){
+    const qf=el.querySelector('.momence-quick_filters');
+    if(!qf)return;
+    qf.querySelectorAll('button').forEach(b=>{
+      const filter=b.getAttribute('data-sabda-filter');
+      if(filter===activeFilter){
+        b.style.setProperty('background','rgba(2,243,197,.12)','important');
+        b.style.setProperty('border-color','rgba(2,243,197,.35)','important');
+        b.style.setProperty('color','#02F3C5','important');
+      }
+      /* Non-active buttons already handled by forceStyles */
+    });
   }
 
   /* ── Run everything ── */
@@ -851,6 +870,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     forceStyles();
     patchText();
     hideElements();
+    applyActiveState(); /* AFTER forceStyles so it wins */
     limitSessions();
     el.classList.add('themed');
   }
