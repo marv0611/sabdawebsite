@@ -439,7 +439,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 <section class="case-study">
   <div class="cs-inner rv">
     <div class="cs-media">
-      <video autoplay muted loop playsinline preload="auto" poster="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_016.jpg">
+      <video autoplay muted loop playsinline preload="auto">
         <source src="https://marv0611.github.io/sabdawebsite/alpro_launch.mp4" type="video/mp4">
       </video>
       <div class="cs-media-glow" style="background:linear-gradient(135deg,rgba(2,243,197,.12),transparent 40%,rgba(248,166,163,.08))"></div>
@@ -463,7 +463,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 <section class="case-study">
   <div class="cs-inner flip rv">
     <div class="cs-media">
-      <video autoplay muted loop playsinline preload="auto" poster="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/IMG-19.jpg">
+      <video autoplay muted loop playsinline preload="auto">
         <source src="https://marv0611.github.io/sabdawebsite/fcb_sergi_roberto.mp4" type="video/mp4">
       </video>
       <div class="cs-media-glow" style="background:linear-gradient(135deg,rgba(248,166,163,.14),transparent 40%,rgba(2,243,197,.1))"></div>
@@ -487,7 +487,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 <section class="case-study">
   <div class="cs-inner rv">
     <div class="cs-media">
-      <video autoplay muted loop playsinline preload="auto" poster="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_010.jpg">
+      <video autoplay muted loop playsinline preload="auto">
         <source src="https://marv0611.github.io/sabdawebsite/perdon_activation.mp4" type="video/mp4">
       </video>
       <div class="cs-media-glow" style="background:linear-gradient(135deg,rgba(2,243,197,.1),transparent 40%,rgba(248,166,163,.08))"></div>
@@ -791,16 +791,13 @@ const glowObs=new IntersectionObserver(es=>es.forEach(e=>{
 document.querySelectorAll('.cs-media').forEach(el=>glowObs.observe(el));
 
 /* ═══════════════════════════════════════════════════════
-   CASE STUDY VIDEOS — play when visible, pause when not
+   CASE STUDY VIDEOS — pause when out of view to save resources
 ═══════════════════════════════════════════════════════ */
 const vidObs=new IntersectionObserver(es=>es.forEach(e=>{
   const vid=e.target;
   if(e.isIntersecting){vid.play().catch(()=>{})}else{vid.pause()}
-}),{threshold:.25});
-document.querySelectorAll('.cs-media video').forEach(v=>{
-  v.pause();
-  vidObs.observe(v);
-});
+}),{threshold:.1});
+document.querySelectorAll('.cs-media video').forEach(v=>vidObs.observe(v));
 
 /* ═══════════════════════════════════════════════════════
    SPACE CARD — ANIMATED COUNTER ON SCROLL
