@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- classes-v19 -->
+<meta charset="UTF-8"><!-- classes-v20 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Classes & Schedule — SABDA Studio Barcelona</title>
 <meta name="description" content="Explore our weekly schedule of immersive yoga, pilates, sound healing, breathwork, ecstatic dance and meditation classes. Book your spot now.">
@@ -716,12 +716,18 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 
     /* ── INJECT MEMBER LOGIN PROMPT into third row ── */
     const thirdRow=el.querySelector('.momence-host_schedule-third_row,[class*="third_row"]');
-    if(thirdRow&&!thirdRow._loginAdded){
+    if(thirdRow&&!thirdRow.querySelector('.sabda-member-login')){
       const loginEl=document.createElement('div');
       loginEl.className='sabda-member-login';
       loginEl.innerHTML='<a href="https://momence.com/sign-in" target="_blank"><svg viewBox="0 0 24 24" width="13" height="13" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Already a member? Log in</a>';
       thirdRow.appendChild(loginEl);
-      thirdRow._loginAdded=true;
+    }
+    /* Re-apply styles on existing member login (survives forceStyles) */
+    const existingLogin=thirdRow?thirdRow.querySelector('.sabda-member-login a'):null;
+    if(existingLogin){
+      existingLogin.style.setProperty('color','rgba(240,239,233,.4)','important');
+      existingLogin.style.setProperty('background','transparent','important');
+      existingLogin.style.setProperty('border','none','important');
     }
     
     /* ── CRITICAL: Neutralize any position:fixed children ── */
