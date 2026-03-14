@@ -331,7 +331,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 .ft-brand img{height:36px;width:auto;margin-bottom:16px;display:block}
 .ft-pillars{display:flex;gap:12px;margin-top:14px;font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--white38)}
 .ft-pillars .fp-art{color:var(--cyan)}.ft-pillars .fp-tech{color:var(--white)}.ft-pillars .fp-well{color:var(--salmon)}
-.ft-symbol{width:180px;height:auto;margin-top:28px;opacity:.4}
+.ft-symbol{width:280px;height:auto;margin-top:32px;opacity:.35}
 .ft-col h4{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;margin-bottom:20px;font-family:'DM Sans',sans-serif}
 .ft-col:nth-child(2) h4{color:var(--cyan)}
 .ft-col:nth-child(3) h4{color:var(--salmon)}
@@ -508,6 +508,18 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       c.style.setProperty('opacity','1','important');
     });
 
+    /* ── HIDE PAST DAYS in week selector so today is on the left ── */
+    const todayDayBtn=el.querySelector('[data-is-today="true"]');
+    if(todayDayBtn&&todayDayBtn.parentElement){
+      const siblings=Array.from(todayDayBtn.parentElement.children);
+      const todayPos=siblings.indexOf(todayDayBtn);
+      siblings.forEach((sib,i)=>{
+        if(i<todayPos&&sib.tagName==='BUTTON'){
+          sib.style.setProperty('display','none','important');
+        }
+      });
+    }
+
     /* Date labels (TOMORROW, etc) → subdued */
     el.querySelectorAll('time').forEach(t=>{
       t.style.setProperty('color','rgba(240,239,233,.5)','important');
@@ -561,23 +573,22 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       let todayBtnEl=null;
       allBtns.forEach(b=>{if(b.textContent.trim()==='TODAY')todayBtnEl=b;});
       if(todayBtnEl&&todayBtnEl.parentElement){
-        const tmrBtn=document.createElement('button');
+        /* Clone the TODAY button for pixel-perfect style match */
+        const tmrBtn=todayBtnEl.cloneNode(true);
         tmrBtn.textContent='TOMORROW';
-        tmrBtn.style.cssText=window.getComputedStyle(todayBtnEl).cssText;
-        /* Copy key styles from TODAY button */
-        const ts=window.getComputedStyle(todayBtnEl);
+        /* Remove any Momence event listeners by replacing inner content */
+        tmrBtn.removeAttribute('class');
+        /* Copy all computed styles from TODAY */
+        const cs=window.getComputedStyle(todayBtnEl);
+        const keep=['padding','paddingTop','paddingRight','paddingBottom','paddingLeft',
+          'fontSize','fontWeight','fontFamily','letterSpacing','textTransform',
+          'borderRadius','border','borderColor','borderWidth','borderStyle',
+          'lineHeight','height','minHeight','display','alignItems','justifyContent'];
+        keep.forEach(p=>{tmrBtn.style[p]=cs[p];});
         tmrBtn.style.setProperty('color','#f0efe9','important');
         tmrBtn.style.setProperty('background','transparent','important');
-        tmrBtn.style.setProperty('border','1px solid rgba(240,239,233,.12)','important');
-        tmrBtn.style.setProperty('border-radius','20px','important');
-        tmrBtn.style.setProperty('padding','8px 16px','important');
-        tmrBtn.style.setProperty('font-family','DM Sans,sans-serif','important');
-        tmrBtn.style.setProperty('font-size',ts.fontSize,'important');
-        tmrBtn.style.setProperty('font-weight',ts.fontWeight,'important');
-        tmrBtn.style.setProperty('letter-spacing',ts.letterSpacing,'important');
-        tmrBtn.style.setProperty('text-transform','uppercase','important');
         tmrBtn.style.setProperty('cursor','pointer','important');
-        tmrBtn.style.setProperty('margin-left','8px','important');
+        tmrBtn.style.setProperty('white-space','nowrap','important');
         tmrBtn.addEventListener('click',function(){
           /* Find the > (next week) arrow and day buttons */
           const arrows=el.querySelectorAll('button');
