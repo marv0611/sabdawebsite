@@ -292,14 +292,33 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 #momence-plugin-host-schedule [class*="third_row"]{
   position:relative !important;
   z-index:10 !important;
+  display:flex !important;
+  align-items:center !important;
+  gap:12px !important;
+  margin-bottom:20px !important;
 }
-/* Teachers dropdown — compact width */
+/* Quick filters group — no extra right margin */
+#momence-plugin-host-schedule .momence-quick_filters{
+  display:flex !important;
+  gap:8px !important;
+  flex-shrink:0 !important;
+}
+/* Spacer between quick filters and Teachers */
+#momence-plugin-host-schedule .momence-host_schedule-third_row > [class*="fqxJDI"]{
+  flex:0 0 8px !important;
+}
+/* Teachers dropdown — compact width, matches button height */
+#momence-plugin-host-schedule .momence-session_filters{
+  flex-shrink:0 !important;
+}
 #momence-plugin-host-schedule .momence-select{
-  max-width:200px !important;
+  max-width:180px !important;
+  width:180px !important;
 }
 #momence-plugin-host-schedule .momence-select-button{
   padding:8px 14px !important;
   font-size:.82rem !important;
+  height:100% !important;
 }
 
 /* ── Subdued text ── */
@@ -309,16 +328,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 /* ── Loader ── */
 #momence-plugin-host-schedule [class*="sc-1oszok8"] div{background:var(--cyan) !important}
 
-/* ── Show More Classes button ── */
+/* ── Show More button ── */
 .sabda-show-more{
-  display:flex;align-items:center;justify-content:center;gap:8px;
-  width:100%;padding:16px;margin-top:20px;
-  background:rgba(240,239,233,.04);border:1px solid rgba(240,239,233,.1);
-  border-radius:12px;color:var(--cyan);font-family:'DM Sans',sans-serif;
-  font-size:.85rem;font-weight:600;letter-spacing:.04em;cursor:pointer;
+  display:flex !important;align-items:center;justify-content:center;gap:8px;
+  max-width:280px;margin:28px auto 8px;padding:14px 32px;
+  background:rgba(240,239,233,.04) !important;border:1px solid rgba(240,239,233,.1);
+  border-radius:10px;color:#02F3C5 !important;font-family:'DM Sans',sans-serif;
+  font-size:.84rem;font-weight:600;letter-spacing:.03em;cursor:pointer;
   transition:background .25s,border-color .25s;
 }
-.sabda-show-more:hover{background:rgba(2,243,197,.06);border-color:rgba(2,243,197,.2)}
+.sabda-show-more:hover{background:rgba(2,243,197,.06) !important;border-color:rgba(2,243,197,.25)}
 .sabda-show-more svg{transition:transform .25s}
 .sabda-show-more:hover svg{transform:translateY(2px)}
 
@@ -443,6 +462,9 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 
       /* Skip images */
       if(tag==='IMG')return;
+
+      /* Skip our custom Show More button */
+      if(cls.includes&&cls.includes('sabda-show-more'))return;
 
       /* Force text color to white */
       s.setProperty('color','#f0efe9','important');
@@ -608,6 +630,11 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
         /* SHOW ALL goes last (it's already there, but ensure order) */
         qf.appendChild(allBtn);
         qf._reordered=true;
+
+        /* Reset session limit when any filter is clicked */
+        [todayBtn,tmrBtn,allBtn].forEach(b=>{
+          b.addEventListener('click',function(){maxVisibleDates=3;});
+        });
       }
     }
     
@@ -635,11 +662,18 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     });
     /* Teachers dropdown — compact width */
     el.querySelectorAll('.momence-select').forEach(s=>{
-      s.style.setProperty('max-width','200px','important');
+      s.style.setProperty('max-width','180px','important');
+      s.style.setProperty('width','180px','important');
     });
     el.querySelectorAll('.momence-select-button').forEach(b=>{
       b.style.setProperty('padding','8px 14px','important');
       b.style.setProperty('font-size','.82rem','important');
+    });
+    /* Third row — proper flex layout */
+    el.querySelectorAll('.momence-host_schedule-third_row,[class*="third_row"]').forEach(row=>{
+      row.style.setProperty('display','flex','important');
+      row.style.setProperty('align-items','center','important');
+      row.style.setProperty('gap','12px','important');
     });
   }
 
@@ -695,62 +729,65 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     }
   }
 
-  /* ── Limit visible sessions to 3 date groups, add Show More ── */
-  let sessionsExpanded=false;
+  /* ── Limit visible sessions to N date groups, add Show More ── */
+  let maxVisibleDates=3; /* Start with 3: TODAY, TOMORROW, day after */
   function limitSessions(){
-    if(sessionsExpanded)return;
     const list=el.querySelector('.momence-host_schedule-session_list');
     if(!list)return;
-    /* Only run once per DOM state — skip if already processed and button exists */
-    const existingBtn=list.parentElement.querySelector('.sabda-show-more');
-    
-    /* Get all direct children that are time labels or articles */
+
+    /* Collect all time labels (date group headers) */
     const children=Array.from(list.children);
-    let dateCount=0;
-    let cutoffIndex=-1;
-    const MAX_DATES=3; /* TODAY, TOMORROW, NEXT Monday */
-    
-    for(let i=0;i<children.length;i++){
-      const c=children[i];
+    const dateLabels=[];
+    for(const c of children){
       if(c.tagName==='TIME'&&c.classList.contains('momence-host_schedule-session_list-date_label')){
-        dateCount++;
-        if(dateCount>MAX_DATES&&cutoffIndex===-1){
-          cutoffIndex=i;
-        }
+        dateLabels.push(c);
       }
     }
-    
-    if(cutoffIndex===-1)return; /* fewer than 4 date groups, nothing to hide */
-    
-    /* Hide everything from cutoffIndex onwards */
-    let hasHidden=false;
-    for(let i=cutoffIndex;i<children.length;i++){
-      const c=children[i];
-      if(c.tagName==='TIME'||c.tagName==='ARTICLE'){
+
+    /* If total date groups <= maxVisibleDates, show everything, remove button */
+    if(dateLabels.length<=maxVisibleDates){
+      list.querySelectorAll('[data-sabda-hidden]').forEach(h=>{
+        h.style.removeProperty('display');
+        h.removeAttribute('data-sabda-hidden');
+      });
+      const oldBtn=list.querySelector('.sabda-show-more');
+      if(oldBtn)oldBtn.remove();
+      return;
+    }
+
+    /* Find the cutoff: the Nth+1 time label */
+    const cutoffLabel=dateLabels[maxVisibleDates];
+    let hiding=false;
+    for(const c of children){
+      if(c===cutoffLabel)hiding=true;
+      if(c.classList&&c.classList.contains('sabda-show-more'))continue; /* skip our button */
+      if(hiding&&(c.tagName==='TIME'||c.tagName==='ARTICLE')){
         c.style.setProperty('display','none','important');
         c.setAttribute('data-sabda-hidden','true');
-        hasHidden=true;
+      } else if(!hiding&&c.hasAttribute('data-sabda-hidden')){
+        /* Reveal items that should now be visible (after clicking Show More) */
+        c.style.removeProperty('display');
+        c.removeAttribute('data-sabda-hidden');
       }
     }
-    
-    if(!hasHidden)return;
-    
-    /* Add Show More button if not already present */
-    if(!existingBtn){
-      const btn=document.createElement('button');
+
+    /* Add or update Show More button */
+    let btn=list.querySelector('.sabda-show-more');
+    if(!btn){
+      btn=document.createElement('button');
       btn.className='sabda-show-more';
-      btn.innerHTML='Show More Classes <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M8 3v10M8 13l-3-3M8 13l3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-      btn.addEventListener('click',function(){
-        sessionsExpanded=true;
-        /* Reveal all hidden items */
-        list.querySelectorAll('[data-sabda-hidden]').forEach(h=>{
-          h.style.removeProperty('display');
-          h.removeAttribute('data-sabda-hidden');
-        });
-        btn.remove();
+      btn.type='button';
+      btn.innerHTML='Show More <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+      btn.addEventListener('click',function(e){
+        e.stopPropagation();
+        maxVisibleDates+=2;
+        limitSessions();
       });
-      /* Insert after the session list container */
-      list.parentElement.insertBefore(btn,list.nextSibling);
+      list.appendChild(btn);
+    }
+    /* Make sure button is last child */
+    if(btn.nextElementSibling){
+      list.appendChild(btn);
     }
   }
 
