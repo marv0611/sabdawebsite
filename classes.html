@@ -48,7 +48,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 .nav-social{display:flex;align-items:center;gap:14px;padding-left:20px;margin-left:16px;border-left:1px solid rgba(240,239,233,.1)}
 .nav-social a{display:flex;align-items:center;opacity:.35;transition:opacity .25s}
 .nav-social a:hover{opacity:.85}
-.nav-social svg{width:15px;height:15px;fill:var(--white);flex-shrink:0}
+.nav-social svg{width:15px;height:15px;fill:var(--salmon);flex-shrink:0}
 
 /* ── HERO BANNER ── */
 .hero-banner{position:relative;width:100%;height:320px;overflow:hidden}
@@ -328,9 +328,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 /* ── FOOTER ── */
 footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);background:rgba(9,12,38,.6);position:relative;z-index:2}
 .ft-in{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:44px}
-.ft-brand img{height:25px;width:auto;margin-bottom:22px;display:block}
-.ft-pillars{display:flex;gap:12px;margin-top:20px;font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;color:var(--white38)}
+.ft-brand img{height:36px;width:auto;margin-bottom:16px;display:block}
+.ft-pillars{display:flex;gap:12px;margin-top:14px;font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--white38)}
 .ft-pillars .fp-art{color:var(--cyan)}.ft-pillars .fp-tech{color:var(--white)}.ft-pillars .fp-well{color:var(--salmon)}
+.ft-symbol{width:64px;height:auto;margin-top:20px;opacity:.55}
 .ft-col h4{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;margin-bottom:20px;font-family:'DM Sans',sans-serif}
 .ft-col:nth-child(2) h4{color:var(--cyan)}
 .ft-col:nth-child(3) h4{color:var(--salmon)}
@@ -506,6 +507,28 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       c.style.setProperty('visibility','visible','important');
       c.style.setProperty('opacity','1','important');
     });
+
+    /* ── REORDER DAY SELECTOR: today first ── */
+    /* Find today's button via data-is-today, get its index among siblings,
+       then assign CSS order so today=0, tomorrow=1, etc. wrapping around.
+       NEVER move DOM nodes — only CSS order. */
+    const todayBtn=el.querySelector('[data-is-today="true"]');
+    if(todayBtn){
+      const parent=todayBtn.parentElement;
+      if(parent){
+        const btns=Array.from(parent.children).filter(c=>c.tagName==='BUTTON'||c.matches('[class*="day_selection-item"]'));
+        if(btns.length>0){
+          const todayIdx=btns.indexOf(todayBtn);
+          if(todayIdx>=0){
+            parent.style.setProperty('display','flex','important');
+            btns.forEach((btn,i)=>{
+              const offset=(i-todayIdx+btns.length)%btns.length;
+              btn.style.setProperty('order',String(offset),'important');
+            });
+          }
+        }
+      }
+    }
 
     /* Date labels (TOMORROW, etc) → subdued */
     el.querySelectorAll('time').forEach(t=>{
@@ -712,6 +735,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     <div class="ft-brand">
       <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA">
       <div class="ft-pillars"><span class="fp-art">Art</span><span>·</span><span class="fp-tech">Tech</span><span>·</span><span class="fp-well">Wellness</span></div>
+      <img class="ft-symbol" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20symbol%20multi-colored%20(1).png" alt="SABDA symbol">
     </div>
     <div class="ft-col"><h4>Explore</h4><ul>
       <li><a href="classes.html">Classes</a></li>
