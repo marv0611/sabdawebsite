@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- classes-v29 -->
+<meta charset="UTF-8"><!-- classes-v30 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Classes & Schedule — SABDA Studio Barcelona</title>
 <meta name="description" content="Explore our weekly schedule of immersive yoga, pilates, sound healing, breathwork, ecstatic dance and meditation classes. Book your spot now.">
@@ -345,15 +345,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 #momence-plugin-host-schedule time{color:rgba(240,239,233,.5) !important}
 #momence-plugin-host-schedule .momence-host_schedule-session_list-no_results-text{color:rgba(240,239,233,.5) !important}
 
-/* ── No-results: hide Momence illustration, show SABDA symbol ── */
+/* ── No-results: hide Momence illustration, show text only ── */
 #momence-plugin-host-schedule [class*="no_results"] svg,
-#momence-plugin-host-schedule [class*="no_results"] img:not(.sabda-no-results-symbol),
+#momence-plugin-host-schedule [class*="no_results"] img,
 #momence-plugin-host-schedule [class*="no_results"] [class*="illustration"],
-#momence-plugin-host-schedule [class*="no_results"] > div:first-child{
+#momence-plugin-host-schedule [class*="no_results"] > div:not([class*="no_results-text"]){
   display:none !important;
 }
-.sabda-no-results-symbol{
-  display:block !important;width:140px;height:auto;margin:40px auto 24px;opacity:.2;
+#momence-plugin-host-schedule [class*="no_results-text"]{
+  color:rgba(240,239,233,.5) !important;
+  padding:60px 0 !important;
 }
 
 /* ── Loader ── */
@@ -694,23 +695,6 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     el.querySelectorAll('[class*="pagination"],[class*="Pagination"],[class*="pager"]').forEach(e=>e.style.setProperty('display','none','important'));
     /* System row */
     el.querySelectorAll('[class*="sys_row"]').forEach(e=>e.style.setProperty('display','none','important'));
-
-    /* ── Replace Momence no-results illustration with SABDA symbol ── */
-    el.querySelectorAll('[class*="no_results"]').forEach(container=>{
-      if(container.querySelector('.sabda-no-results-symbol'))return;
-      /* Hide all children except the text message */
-      Array.from(container.children).forEach(child=>{
-        if(child.tagName==='DIV'&&!child.className.includes('no_results-text')){
-          child.style.setProperty('display','none','important');
-        }
-      });
-      /* Inject SABDA symbol at the top */
-      const img=document.createElement('img');
-      img.className='sabda-no-results-symbol';
-      img.src='https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20symbol%20pink.png';
-      img.alt='SABDA';
-      container.insertBefore(img,container.firstChild);
-    });
 
     /* ── REORDER QUICK FILTERS: TODAY, TOMORROW, SHOW ALL ── */
     const qf=el.querySelector('.momence-quick_filters');
