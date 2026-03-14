@@ -945,3 +945,108 @@ Captured from Chrome DevTools, March 14, 2026. These are the REAL selectors — 
 ---
 
 *End of manual. Last updated March 14, 2026 — end of Session 4.*
+
+---
+
+## 21. SESSION 5 — CLASSES PAGE POLISH + EVENTS PAGE PREP (March 14, 2026)
+
+### What Was Built / Changed
+
+**classes.html (v31):**
+- Fixed Show More button spacing (36px top / 48px bottom desktop, 28px/40px mobile)
+- Fixed filter switching flash: forceStyles now checks `data-sabda-filter` to skip active button, new `setActiveImmediate()` for instant click feedback, MutationObserver debounced with requestAnimationFrame
+- Added nav "Log In" link (person icon + text, after social icons, links to momence.com/sign-in)
+- Added "Already a member? Log in" button between hero and widget (static HTML, absolutely positioned via JS to align with third row, styled as pill button matching filter buttons)
+- Hid Momence no-results illustration via JS (keeps text only)
+- Fixed footer logo alignment to left across all pages
+- Removed duplicate `</script>` tag
+
+**All pages (classes.html, SABDA_v16.html, pricing.html):**
+- Footer logo explicitly left-aligned with `text-align:left` and `margin-right:auto`
+
+### Lessons Learned
+
+**Lesson 1: Never inject elements into Momence widget DOM.**
+Same lesson as the Show More button. React re-renders destroy injected elements. The `_loginAdded` flag approach failed because the flag lives on a DOM node that React replaces. Even checking with `querySelector` on every cycle didn't work reliably. The ONLY reliable approach is static HTML outside `#momence-plugin-host-schedule`.
+
+**Lesson 2: JS-driven positioning for elements that need to align with widget content.**
+The member login button uses `getBoundingClientRect()` to read the actual position of the Momence third row at runtime, then sets `top` on the absolutely-positioned button. This works because the button lives outside the widget (immune to forceStyles) but visually aligns with widget content.
+
+**Lesson 3: CSS `img:not(.class)` for selective hiding.**
+When hiding Momence illustrations inside no-results, initially used `[class*="no_results"] img` which also hid our own injected image. Fixed with `:not(.sabda-no-results-symbol)`. Later simplified to JS-only approach (hiding child divs individually).
+
+### Pricing Section — Research Done, Changes Deferred
+Extensive pricing psychology research was conducted (CXL eye-tracking studies, fitness studio conversion data, anchoring effects). Key findings:
+- 3-tier structure works, but order should be high→low (€130 → €48 → €16)
+- "Most Popular" badge + expensive-first ordering increases target tier selection
+- The section undermines itself by saying "see the real pricing page"
+- Decision: **defer all pricing changes** until full pricing strategy is finalized
+
+---
+
+## 22. EVENTS PAGE — READY TO BUILD (next session)
+
+### Page Structure
+```
+events.html (nav label: "Events & Hire")
+├── Hero: silhouette shot (Copy_of_Sabda2-167__1_.jpg), headline + inquiry CTA
+├── Client logo bar: FC Barcelona, Decathlon, Liga Endesa, Alpro/Danone, Elisava
+├── 4 use-case cards (visual nav, anchor to sections below):
+│   1. Product Launches → Alpro case study
+│   2. Brand Activations → PERDÓN case study
+│   3. Workshops & Presentations → The Astral Method case study
+│   4. Production → FC Barcelona case study
+├── Each section: copy + case study (client, one-liner, image/video, logo)
+├── The Space (3 areas):
+│   ├── Immersive Room: 86m², 8 projectors, Dolby Atmos, 20-80 capacity
+│   ├── Café: 65m², SONOS, modular, equipped bar
+│   └── Patio: 20m², ice bath, outdoor shower
+├── Add-ons: custom visuals, catering, merch, technician, staff
+├── Inquiry form → connect@sabdastudio.com (Katrina)
+│   Fields: name, company, email, event type dropdown, guests (10-200), date, message
+│   NO pricing shown. NO downloadable brochure.
+└── Footer (same as all pages)
+```
+
+### Assets in Repo (clean filenames)
+| File | Content | Usage |
+|------|---------|-------|
+| `Copy_of_Sabda2-167__1_.jpg` | Silhouettes in immersive room (high-res) | Hero |
+| `IMG-9__1_.jpg` | Café lounge with lit arch mirror | Space: Café |
+| `IMG-10__1_.jpg` | Café corner with beanbags + patio view | Space: Café |
+| `IMG-8__1_.jpg` | Café bar with coffee machine | Space: Café |
+| `DSC06911__1_.jpg` | Patio: ice bath, seating, plants | Space: Patio |
+| `astral_method_workshop.jpg` | Packed workshop, 360° visuals | Case study: Workshops |
+| `alpro_launch.mp4` | Alpro party clip (15s, 360x640) | Case study: Product Launch |
+| `perdon_activation.mp4` | PERDÓN brand setup (45s, 720x1280) | Case study: Brand Activation |
+| `fcb_bts.mp4` | FC Barcelona BTS projection mapping (31s) | Case study: Production |
+| `fcb_sergi_roberto.mp4` | Sergi Roberto farewell (2min, 1080x1350) | Case study: Production |
+
+### Case Study Details
+| Client | Category | One-liner | Key stat |
+|--------|----------|-----------|----------|
+| Alpro (Danone) | Product Launch | Press/influencer launch for new cherry flavour with custom branded 360° visuals | Danone subsidiary |
+| PERDÓN | Brand Activation | Wellness class platform (yoga, pilates, barre) hosted brand launch at SABDA | perdonpass.com |
+| The Astral Method | Workshops | "2026: A Journey Through Time and Space" immersive astrology workshop | Packed room, 360° presentation | 
+| FC Barcelona | Production | Sergi Roberto farewell video filmed in SABDA's immersive room | 22M+ views |
+
+### Client Logos for Logo Bar
+FC Barcelona, Decathlon, Liga Endesa, Alpro/Danone, Elisava
+(Logos visible in brochure slide 9 — extract or source SVGs)
+
+### Brochure Specs (from SABDA_RENTAL_BROCHURE_ES.pdf)
+**Immersive Room (86m²):** 8 LED laser projectors, 360° surround sound, Dolby Atmos certified, own visual library, projectable presentations on request, Bluetooth audio, 24 yoga mats + props, 30 cube poufs, AC/heating, soundproofed
+
+**Café (65m²):** SONOS Bluetooth sound, modular furniture, equipped bar (fridges, freezer, dishwasher, ice machine, pro coffee machine), AC/heating
+
+**Patio (20m²):** Ice bath, outdoor shower, natural light, outdoor furniture set
+
+**Entrance:** Welcome desk, customizable smart art screen
+
+### Design Rules
+- Same dark theme as all other pages (navy background, white text, salmon/cyan accents)
+- Same nav, footer, grain, particle field as classes.html
+- Inquiry form sends to connect@sabdastudio.com
+- NO pricing shown — inquiry-only to protect competitive info + capture leads
+- Videos should be portrait → crop/letterbox for web, or use as background with overlay
+
