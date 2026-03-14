@@ -331,7 +331,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 .ft-brand img:first-child{height:36px;width:auto;margin-bottom:16px;display:block}
 .ft-pillars{display:flex;gap:12px;margin-top:14px;font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--white38)}
 .ft-pillars .fp-art{color:var(--cyan)}.ft-pillars .fp-tech{color:var(--white)}.ft-pillars .fp-well{color:var(--salmon)}
-.ft-symbol{width:280px;height:auto;margin-top:32px;opacity:.35}
+.ft-symbol{width:200px;height:auto;margin-top:28px;opacity:.35;display:block}
 .ft-col h4{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;margin-bottom:20px;font-family:'DM Sans',sans-serif}
 .ft-col:nth-child(2) h4{color:var(--cyan)}
 .ft-col:nth-child(3) h4{color:var(--salmon)}
@@ -508,41 +508,21 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       c.style.setProperty('opacity','1','important');
     });
 
-    /* ── REORDER: today on the left, rest follow ── */
+    /* ── HIDE PAST DAYS — only show today onwards ── */
     const todayDayBtn=el.querySelector('[data-is-today="true"]');
     if(todayDayBtn&&todayDayBtn.parentElement){
       const parent=todayDayBtn.parentElement;
-      /* Only select day buttons, not arrow buttons (arrows have SVG, no text) */
       const dayBtns=Array.from(parent.children).filter(c=>{
         if(c.tagName!=='BUTTON')return false;
-        const txt=c.textContent.trim();
-        return txt.length>0&&!c.querySelector('svg');
+        return c.textContent.trim().length>0&&!c.querySelector('svg');
       });
       const todayIdx=dayBtns.indexOf(todayDayBtn);
-      if(todayIdx>=0&&dayBtns.length>1){
-        parent.style.setProperty('display','flex','important');
-        dayBtns.forEach((btn,i)=>{
-          /* Shift so today=0, tomorrow=1, etc wrapping around */
-          const shifted=(i-todayIdx+dayBtns.length)%dayBtns.length;
-          btn.style.setProperty('order',String(shifted+1),'important'); /* +1 to leave room for < arrow at 0 */
-          /* Grey out past days (those that were before today in original order) */
-          if(i<todayIdx){
-            btn.style.setProperty('opacity','0.3','important');
-          }
-        });
-        /* Keep arrows in place: < at start, > at end */
-        Array.from(parent.children).forEach(c=>{
-          if(c.tagName==='BUTTON'&&c.querySelector('svg')){
-            const rect=c.getBoundingClientRect();
-            const parentRect=parent.getBoundingClientRect();
-            if(rect.left<parentRect.left+parentRect.width/2){
-              c.style.setProperty('order','0','important'); /* < arrow */
-            } else {
-              c.style.setProperty('order',String(dayBtns.length+2),'important'); /* > arrow */
-            }
-          }
-        });
-      }
+      /* Hide every day button BEFORE today */
+      dayBtns.forEach((btn,i)=>{
+        if(i<todayIdx){
+          btn.style.setProperty('display','none','important');
+        }
+      });
     }
 
     /* Date labels (TOMORROW, etc) → subdued */
@@ -565,8 +545,13 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 
   /* ── Hide unwanted elements ── */
   function hideElements(){
-    /* Powered by Momence */
-    el.querySelectorAll('[class*="powered_by"]').forEach(e=>e.style.setProperty('display','none','important'));
+    /* Powered by Momence — broad selectors */
+    el.querySelectorAll('[class*="powered_by"],[class*="powered-by"],[class*="poweredBy"],[class*="PoweredBy"]').forEach(e=>e.style.setProperty('display','none','important'));
+    /* Also hide by text content */
+    el.querySelectorAll('a,div,span,p').forEach(n=>{
+      if(n.textContent.trim().toLowerCase()==='powered by momence'||n.textContent.trim().toLowerCase().startsWith('powered by'))
+        n.style.setProperty('display','none','important');
+    });
     /* Location on cards */
     el.querySelectorAll('[class*="in_person"]').forEach(e=>e.style.setProperty('display','none','important'));
     /* Locations dropdown (last filter) */
@@ -576,8 +561,10 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     el.querySelectorAll('[class*="price"]').forEach(e=>{
       if(!e.closest('[class*="pricing"]'))e.style.setProperty('display','none','important');
     });
-    /* Pagination */
-    el.querySelectorAll('[class*="pagination"]').forEach(e=>e.style.setProperty('display','none','important'));
+    /* Pagination — hide all page number navigation */
+    el.querySelectorAll('[class*="pagination"],[class*="Pagination"],[class*="pager"]').forEach(e=>e.style.setProperty('display','none','important'));
+    /* Also catch standalone page nav containers at the bottom of the widget */
+    el.querySelectorAll('nav').forEach(n=>n.style.setProperty('display','none','important'));
     /* System row */
     el.querySelectorAll('[class*="sys_row"]').forEach(e=>e.style.setProperty('display','none','important'));
 
@@ -615,35 +602,43 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
         tmrBtn.style.setProperty('cursor','pointer','important');
         tmrBtn.style.setProperty('white-space','nowrap','important');
         tmrBtn.addEventListener('click',function(){
-          /* Find the > (next week) arrow and day buttons */
-          const arrows=el.querySelectorAll('button');
-          let nextArrow=null;
-          arrows.forEach(a=>{
-            const svg=a.querySelector('svg');
-            if(svg&&!a.textContent.trim()&&a.getBoundingClientRect().right>el.getBoundingClientRect().right-100){
-              nextArrow=a;
-            }
-          });
-          /* Find today's button to know which day of week we're on */
           const todayEl=el.querySelector('[data-is-today="true"]');
-          if(todayEl){
-            /* Get all day buttons in the selector row */
-            const dayBtns=todayEl.parentElement?Array.from(todayEl.parentElement.children).filter(c=>c.tagName==='BUTTON'):[];
-            const todayIdx=dayBtns.indexOf(todayEl);
-            if(todayIdx<dayBtns.length-1){
-              /* Tomorrow is in the same week — click next day button */
-              dayBtns[todayIdx+1].click();
-            } else if(nextArrow){
-              /* Tomorrow is in the next week — click > arrow, then first day after short delay */
+          if(!todayEl)return;
+          const dayBtnsNow=todayEl.parentElement?Array.from(todayEl.parentElement.children).filter(c=>c.tagName==='BUTTON'&&c.textContent.trim().length>0&&!c.querySelector('svg')):[];
+          const todayI=dayBtnsNow.indexOf(todayEl);
+          if(todayI<dayBtnsNow.length-1){
+            /* Tomorrow is in the same week */
+            dayBtnsNow[todayI+1].click();
+          } else {
+            /* Tomorrow is in the next week — find the > arrow button */
+            const arrowBtns=todayEl.parentElement?Array.from(todayEl.parentElement.children).filter(c=>c.tagName==='BUTTON'&&c.querySelector('svg')):[];
+            /* The > arrow is the last arrow button */
+            const nextArrow=arrowBtns[arrowBtns.length-1];
+            if(nextArrow){
               nextArrow.click();
-              setTimeout(()=>{
-                const newDayBtns=el.querySelectorAll('[data-is-today]');
-                /* After navigation, find first day button */
-                const dayContainer=el.querySelector('.momence-day_selection-list-days,[class*="g6tqw9"]');
-                if(dayContainer&&dayContainer.firstElementChild){
-                  dayContainer.firstElementChild.click();
-                }
-              },600);
+              /* After week change, click the first visible day button */
+              const tryClick=function(attempts){
+                if(attempts<=0)return;
+                setTimeout(()=>{
+                  const newDayBtns=el.querySelectorAll('button');
+                  let firstDay=null;
+                  newDayBtns.forEach(b=>{
+                    if(!firstDay&&b.textContent.trim().length>0&&!b.querySelector('svg')&&b.textContent.trim()!=='SHOW All'&&b.textContent.trim()!=='TODAY'&&b.textContent.trim()!=='TOMORROW'&&b.textContent.trim()!=='Week'&&b.textContent.trim()!=='Month'&&b.textContent.trim()!=='Classes'){
+                      /* Check if this looks like a day button (has a number) */
+                      const num=parseInt(b.textContent.trim());
+                      if(!isNaN(num)||/^(SUN|MON|TUE|WED|THU|FRI|SAT)/i.test(b.textContent.trim())){
+                        firstDay=b;
+                      }
+                    }
+                  });
+                  if(firstDay){
+                    firstDay.click();
+                  } else {
+                    tryClick(attempts-1);
+                  }
+                },500);
+              };
+              tryClick(5);
             }
           }
         });
