@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- classes-v17 -->
+<meta charset="UTF-8"><!-- classes-v18 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Classes & Schedule — SABDA Studio Barcelona</title>
 <meta name="description" content="Explore our weekly schedule of immersive yoga, pilates, sound healing, breathwork, ecstatic dance and meditation classes. Book your spot now.">
@@ -49,6 +49,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 .nav-social a{display:flex;align-items:center;opacity:.35;transition:opacity .25s}
 .nav-social a:hover{opacity:.85}
 .nav-social svg{width:15px;height:15px;fill:var(--salmon);flex-shrink:0}
+.nav-login{display:flex;align-items:center;gap:6px;padding-left:20px;margin-left:16px;border-left:1px solid rgba(240,239,233,.1)}
+.nav-login a{display:flex;align-items:center;gap:6px;font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;font-weight:500;color:var(--white);opacity:.55;transition:opacity .25s}
+.nav-login a:hover{opacity:1}
+.nav-login svg{width:14px;height:14px;stroke:currentColor;fill:none;flex-shrink:0}
 
 /* ── HERO BANNER ── */
 .hero-banner{position:relative;width:100%;height:320px;overflow:hidden}
@@ -361,6 +365,31 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 .sabda-show-more:hover{background:rgba(2,243,197,.06);border-color:rgba(2,243,197,.25)}
 .sabda-show-more svg{transition:transform .25s}
 .sabda-show-more:hover svg{transform:translateY(2px)}
+
+/* ── Member login prompt (injected into third row, right of Teachers) ── */
+.sabda-member-login{
+  margin-left:auto;
+  flex-shrink:0;
+}
+.sabda-member-login a{
+  display:flex;align-items:center;gap:5px;
+  font-size:.72rem;letter-spacing:.02em;
+  color:rgba(240,239,233,.4) !important;
+  background:transparent !important;
+  border:none !important;
+  white-space:nowrap;
+  transition:color .25s;
+  text-decoration:none;
+}
+.sabda-member-login a:hover{
+  color:var(--cyan) !important;
+}
+.sabda-member-login svg{
+  width:13px;height:13px;
+  stroke:currentColor !important;
+  fill:none !important;
+  flex-shrink:0;
+}
 @media(max-width:900px){
   #sabda-show-more-btn{padding:28px 16px 40px}
 }
@@ -412,8 +441,10 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 @media(max-width:900px){
   nav{padding:0 24px}.nav-links{display:none}
   .nav-social svg{width:15px;height:15px}.nav-social{gap:10px;padding-left:14px;margin-left:14px}.lang-sel a{padding:4px 5px;font-size:.65rem}
+  .nav-login{padding-left:14px;margin-left:14px}.nav-login a{font-size:.65rem;gap:5px}
   .hero-banner{height:240px}.hero-overlay h1{font-size:2rem}.hero-overlay{bottom:32px}
   #momence-plugin-host-schedule{padding:24px 16px 12px}
+  .sabda-member-login{display:none}
   .pricing-summary{padding:60px 24px 0}
   .ps-grid{flex-wrap:wrap;gap:14px}.ps-card{max-width:none;min-width:120px}
   footer{padding:36px 24px 22px}.ft-in{grid-template-columns:1fr 1fr}
@@ -446,6 +477,9 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     <div class="nav-social">
       <a href="https://instagram.com/sabdastudio" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 1.5A4 4 0 0 0 3.5 7.5v9a4 4 0 0 0 4 4h9a4 4 0 0 0 4-4v-9a4 4 0 0 0-4-4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.25-2.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg></a>
       <a href="https://tiktok.com/@sabdastudio" target="_blank" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0 1 13.8 3h-3v12.4a2.6 2.6 0 0 1-2.6 2.6 2.6 2.6 0 0 1-2.6-2.6A2.6 2.6 0 0 1 8.2 12.8c.28 0 .56.04.82.12V9.84A5.6 5.6 0 0 0 2.6 15.4a5.6 5.6 0 0 0 5.6 5.6 5.6 5.6 0 0 0 5.6-5.6V9.72a7.3 7.3 0 0 0 4.2 1.32V8.02a4.28 4.28 0 0 1-1.4-2.2z"/></svg></a>
+    </div>
+    <div class="nav-login">
+      <a href="https://momence.com/sign-in" target="_blank"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Log In</a>
     </div>
   </div>
 </nav>
@@ -494,6 +528,9 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       /* Skip our custom Show More button and its children */
       if(node.classList&&node.classList.contains('sabda-show-more'))return;
       if(node.closest&&node.closest('.sabda-show-more'))return;
+
+      /* Skip member login prompt and its children */
+      if(node.closest&&node.closest('.sabda-member-login'))return;
 
       /* Check if this is the active filter button (by data attribute — survives React re-renders) */
       const isActiveFilter=node.getAttribute&&node.getAttribute('data-sabda-filter')===activeFilter;
@@ -675,6 +712,16 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
         tmrBtn.addEventListener('click',function(){activeFilter='tomorrow';maxVisibleDates=1;setActiveImmediate(this);});
         allBtn.addEventListener('click',function(){activeFilter='all';maxVisibleDates=3;setActiveImmediate(this);});
       }
+    }
+
+    /* ── INJECT MEMBER LOGIN PROMPT into third row ── */
+    const thirdRow=el.querySelector('.momence-host_schedule-third_row,[class*="third_row"]');
+    if(thirdRow&&!thirdRow._loginAdded){
+      const loginEl=document.createElement('div');
+      loginEl.className='sabda-member-login';
+      loginEl.innerHTML='<a href="https://momence.com/sign-in" target="_blank"><svg viewBox="0 0 24 24" width="13" height="13" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Already a member? Log in</a>';
+      thirdRow.appendChild(loginEl);
+      thirdRow._loginAdded=true;
     }
     
     /* ── CRITICAL: Neutralize any position:fixed children ── */
