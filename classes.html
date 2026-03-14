@@ -153,6 +153,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
   background-color:rgba(240,239,233,.06) !important;
 }
 
+/* ── DAY SELECTOR: hide past days (they have disabled attr) ── */
+#momence-plugin-host-schedule .momence-day_selection-item[disabled]{
+  display:none !important;
+}
+
 /* ── DAY SELECTOR: force visible with proper layout ── */
 #momence-plugin-host-schedule .momence-day_selection{
   background:transparent !important;
@@ -543,6 +548,8 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     el.querySelectorAll('[class*="pagination"],[class*="Pagination"],[class*="pager"]').forEach(e=>e.style.setProperty('display','none','important'));
     /* System row */
     el.querySelectorAll('[class*="sys_row"]').forEach(e=>e.style.setProperty('display','none','important'));
+    /* Past days in day selector (disabled = past) */
+    el.querySelectorAll('.momence-day_selection-item[disabled]').forEach(e=>e.style.setProperty('display','none','important'));
     
     /* ── CRITICAL: Neutralize any position:fixed children ── */
     /* Momence renders modal overlays with position:fixed that escape the widget */
