@@ -1,6 +1,6 @@
 # SABDA Website Build — Project Manual
 ## For AI Chat Handoff & Developer Reference
-### Last Updated: March 13, 2026 — v16.q / classes-v16 (Session 3 Final)
+### Last Updated: March 14, 2026 — Session 4 Final
 
 ---
 
@@ -758,10 +758,190 @@ if(window.location.hash){
 | File | Version Tag | Last Commit |
 |------|------------|-------------|
 | `SABDA_v16.html` | `v16.q` | Nav: IG button, Pricing link, hero→classes.html |
-| `classes.html` | `classes-v16` | Day selector fix, dropdown z-index, scroll-to-hash, pricing anchor |
+| `classes.html` | `classes-v17` | TODAY/TOMORROW/SHOW ALL buttons, Show More, Teachers compact, active highlight |
+| `pricing.html` | `pricing-v1` | Standalone pricing page with memberships + intro packs |
 | `rent-corporate.html` | `rc.b` | Placeholder — needs full build |
-| `SABDA_Website_Build_Manual.md` | — | This update |
+| `SABDA_Website_Build_Manual.md` | — | Session 4 update |
 
 ---
 
-*End of manual. Last updated March 13, 2026 — end of Session 3 (final).*
+## 17. SESSION 4 — CLASSES PAGE REFINEMENTS (March 14, 2026)
+
+### What Was Built / Changed
+
+**classes.html changes:**
+- Removed all broken day selector manipulation (auto-click, TOMORROW button, past day hiding via index)
+- Added TOMORROW button via cloneNode from TODAY (inside `hideElements → qf._reordered`)
+- Reordered quick filters: TODAY | TOMORROW | SHOW ALL
+- Auto-click TODAY on page load (timers at 800/1500/2500ms)
+- Active filter highlight using `data-sabda-filter` attribute + `applyActiveState()` function
+- Show More button (lives OUTSIDE widget div, immune to forceStyles)
+- Teachers dropdown compacted (140px, flex:0 0 140px)
+- Spacer div between SHOW ALL and Teachers killed (`display:none`)
+- Widget bottom padding reduced (60px → 20px desktop, 40px → 12px mobile)
+
+**pricing.html created:**
+- Standalone pricing page with moon visual hero (`Sabda_20240118_010.jpg`)
+- Memberships first (Monthly €130, 3-Month €100/mo with "Best Value" badge)
+- Intro offers below (Trial €16, 3-Pack €48 "Most Popular", 5-Pack €80, 10-Pack €140)
+- Gift cards section
+- "View Schedule & Book" CTA → classes.html
+- Same nav/footer as all pages
+
+### Current Widget Architecture (classes.html)
+
+**Rows visible:**
+- `first_row`: "Classes" button + Week/Month toggle
+- `second_row`: Day selector (Sun–Sat with < > arrows)
+- `third_row`: TODAY | TOMORROW | SHOW ALL | Teachers dropdown
+
+**Rows hidden:**
+- `sys_row` (system/admin row)
+- Locations dropdown (last child of session_filters)
+- Price on cards (`183txmy`)
+- Pagination (`1rbd2nr`)
+- Powered by Momence (`1u5l2dx`)
+- In-person location on cards (`in_person`)
+
+**Show More button:**
+- `#sabda-show-more-btn` div lives OUTSIDE `#momence-plugin-host-schedule`
+- This is CRITICAL — it must stay outside so `forceStyles()` doesn't touch it
+- Button class: `.sabda-show-more`
+- Click behavior: +1 day in SHOW ALL mode; switches to SHOW ALL if in TODAY/TOMORROW mode
+
+**Active filter highlight:**
+- Tracked by `activeFilter` variable ('today' | 'tomorrow' | 'all')
+- Applied via `applyActiveState()` which runs AFTER `forceStyles()` in `runAll()`
+- Uses inline styles (not CSS classes) because Momence React re-renders wipe out CSS classes
+- Each filter button has `data-sabda-filter` attribute for identification
+
+---
+
+## 18. SESSION 4 — CRITICAL LESSONS LEARNED
+
+### ⚠️ 18.1 — ALWAYS CACHE-BUST LINKS FOR MARVYN
+GitHub Pages caches aggressively. After EVERY push, append `?v=N` or `?nocache=X` to the URL. Marvyn checks on Safari/Chrome which both cache hard. If he says "nothing changed" — it's always the cache, not the code. Tell him to do Cmd+Shift+R (Mac hard refresh).
+
+**Rule:** After every `git push`, wait 60 seconds, then provide the link with a new cache-buster param. Never reuse the same `?v=` value.
+
+### ⚠️ 18.2 — PIXEL-PERFECT DETAILS MATTER
+Marvyn notices every pixel. Spacing between buttons, width of dropdowns, alignment of elements — these are not "nice to haves." If he says "fix the spacing" and you push a change that's 90% there, he WILL send it back. Get it right the first time:
+- Always check ALL padding, margin, gap values
+- If adjusting flex layouts, set `flex`, `margin`, `padding` AND `gap` — don't assume one property is enough
+- Momence styled-components inject their own margin/padding — you must override ALL of them with `!important`
+- When targeting a container, also target its children (`> div`) because Momence nests wrappers
+
+### ⚠️ 18.3 — forceStyles() BLANKET OVERRIDES DESTROY CUSTOM ELEMENTS
+The `forceStyles()` function loops over `el.querySelectorAll('*')` and sets `background:transparent` and `color:white` on everything. This DESTROYS any custom styling on buttons, highlights, or injected elements.
+
+**Solution pattern:**
+1. Check for custom classes EARLY in the loop and `return` to skip
+2. For active states: use inline styles applied AFTER forceStyles (not CSS classes — React wipes them)
+3. For injected buttons: place them OUTSIDE the `#momence-plugin-host-schedule` div entirely
+
+**Exclusion checklist in forceStyles:**
+```javascript
+if(tag==='IMG')return;
+if(node.classList&&node.classList.contains('sabda-show-more'))return;
+if(node.closest&&node.closest('.sabda-show-more'))return;
+// For active buttons — handle in the background override chain:
+}else if(node.classList&&node.classList.contains('sabda-active')){
+  // cyan highlight styles
+}else{
+  // transparent background
+}
+```
+
+### ⚠️ 18.4 — MOMENCE DAY SELECTOR IS A FIXED SUN–SAT WEEK
+Cannot merge two weeks into one view. The widget renders one Sun–Sat week at a time. Future days from the next week don't exist in the DOM until `>` is clicked. Don't try to build a "rolling 7 days" view — it's architecturally impossible without breaking React.
+
+**What works:** Hiding past days via `disabled` attribute. But this means on Saturday (last day), only 1 day shows. The solution was to just leave the day bar as-is (all 7 days visible) and let the quick filter buttons (TODAY/TOMORROW/SHOW ALL) handle the UX.
+
+### ⚠️ 18.5 — DOM INSPECTION IS REQUIRED FOR MOMENCE FIXES
+Do NOT guess Momence's DOM structure. Every failed fix in Session 3 was caused by guessing class names, element hierarchy, or data attributes. The DOM dump from Marvyn (Session 4) finally resolved all targeting issues.
+
+**Key selectors confirmed from real DOM:**
+- Day buttons: `button.momence-day_selection-item` with `data-is-today`, `data-is-selected`, `disabled`
+- Day name: `.momence-day_selection-item_day` (div inside button)
+- Day number: `.momence-day_selection-item_highlight` (div inside button)
+- Date labels: `time.momence-host_schedule-session_list-date_label` (TODAY, TOMORROW, NEXT Monday...)
+- Session cards: `article[data-session_id]`
+- Quick filters: `.momence-quick_filters-today`, `.momence-quick_filters-all`
+- Arrow buttons: `.momence-day_selection-arrow_left`, `.momence-day_selection-arrow_right`
+- Teachers dropdown: `.momence-select` → `.momence-select-button`
+- Spacer div (between filters and Teachers): `[class*="fqxJDI"]` — KILL IT with display:none
+
+### 18.6 — Show More Button Placement
+The Show More button MUST live outside `#momence-plugin-host-schedule`. If placed inside:
+- `forceStyles()` sets its background to transparent
+- `forceStyles()` sets its text color to white
+- Even with exclusion checks, timing issues cause flashes
+
+Current placement: `el.parentElement.insertBefore(btn, el.nextSibling)` — this puts it between the widget and the pricing summary section.
+
+---
+
+## 19. PENDING WORK (as of Session 4 end)
+
+### Immediate Priority (next session)
+- [ ] **Show More spacing** — button still overlaps the horizontal line below the last class card. Needs proper margin/padding between last article and the button.
+- [ ] **Active filter button bug** — clicking between TODAY/TOMORROW/SHOW ALL feels slow/buggy. The highlight sometimes doesn't switch instantly. Root cause: `allBtn.click()` triggers Momence's internal handler which re-renders, then `applyActiveState()` runs on MutationObserver but the timing creates a flash. Investigate debouncing or using `requestAnimationFrame`.
+- [ ] **Member login portal** — needs Momence API credentials (client_id + client_secret from Marvyn). Plan: add login button to nav, Momence member portal integration.
+
+### Blocked
+- [ ] Momence API credentials (client_id + client_secret) — Marvyn needs to provide
+- [ ] Language selector (ES/CA pages don't exist yet)
+
+### Future
+- [ ] Mobile responsive pass (all pages)
+- [ ] Meta Pixel integration (ID: 567636669734630)
+- [ ] Homepage mobile sticky CTA bar
+- [ ] Rent & Corporate page (full build)
+- [ ] About page
+- [ ] Listening Sessions page
+
+---
+
+## 20. MOMENCE WIDGET — DEFINITIVE DOM REFERENCE
+
+Captured from Chrome DevTools, March 14, 2026. These are the REAL selectors — never guess.
+
+```
+#momence-plugin-host-schedule
+  └── .momence-host-schedule-layout (sc-14are4x-0)
+      └── .momence-host_schedule (sc-z0wwj1-0)
+          ├── .momence-host_schedule-sys_row [HIDDEN]
+          ├── .momence-host_schedule-first_row
+          │   ├── .momence-event_type_select (Classes button)
+          │   └── .momence-view-toggle (Week/Month)
+          ├── .momence-host_schedule-list_view
+          │   ├── .momence-host_schedule-second_row
+          │   │   └── .momence-day_selection
+          │   │       ├── button.momence-day_selection-arrow_left
+          │   │       ├── nav.momence-day_selection-list
+          │   │       │   └── button.momence-day_selection-item (×7)
+          │   │       │       ├── div.momence-day_selection-item_day ("Sun")
+          │   │       │       ├── div.momence-day_selection-item_highlight ("8")
+          │   │       │       └── div.momence-day_selection-item_num-days ("• •")
+          │   │       └── button.momence-day_selection-arrow_right
+          │   ├── .momence-host_schedule-third_row
+          │   │   ├── .momence-quick_filters
+          │   │   │   ├── button.momence-quick_filters-all ("SHOW All")
+          │   │   │   └── button.momence-quick_filters-today ("TODAY")
+          │   │   ├── div[class*="fqxJDI"] (spacer — HIDDEN)
+          │   │   └── .momence-session_filters
+          │   │       ├── .momence-select (Teachers) [VISIBLE]
+          │   │       └── .momence-select (Locations) [HIDDEN]
+          │   └── .momence-host_schedule-session_list
+          │       ├── time.date_label ("TODAY")
+          │       ├── article[data-session_id] (class card)
+          │       ├── time.date_label ("TOMORROW")
+          │       ├── article[data-session_id]
+          │       └── ...
+          ├── nav.momence-pagination [HIDDEN]
+          └── a.momence-host_schedule-powered_by_momence [HIDDEN]
+```
+
+---
+
+*End of manual. Last updated March 14, 2026 — end of Session 4.*
