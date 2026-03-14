@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- classes-v25 -->
+<meta charset="UTF-8"><!-- classes-v26 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Classes & Schedule — SABDA Studio Barcelona</title>
 <meta name="description" content="Explore our weekly schedule of immersive yoga, pilates, sound healing, breathwork, ecstatic dance and meditation classes. Book your spot now.">
@@ -1004,13 +1004,13 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     const rowH=rowRect.height;
     const centeredTop=topOffset+((rowH-loginH)/2);
     loginBtn.style.top=Math.round(centeredTop)+'px';
-    /* Horizontal: align right edge with session list / class cards right edge */
-    const sessionList=el.querySelector('.momence-host_schedule-session_list');
+    /* Horizontal: align right edge with class card right edge */
     const firstCard=el.querySelector('article[data-session_id]');
-    const refEl=firstCard||sessionList||thirdRow;
-    const refRect=refEl.getBoundingClientRect();
-    const rightOffset=wrapperRect.right-refRect.right;
-    loginBtn.style.right=Math.max(0,Math.round(rightOffset))+'px';
+    if(firstCard){
+      const cardRect=firstCard.getBoundingClientRect();
+      const rightOffset=wrapperRect.right-cardRect.right;
+      loginBtn.style.right=Math.max(0,Math.round(rightOffset))+'px';
+    }
     loginBtn.classList.add('visible');
   }
   [800,1200,2000,3000,5000,8000].forEach(ms=>setTimeout(positionLogin,ms));
