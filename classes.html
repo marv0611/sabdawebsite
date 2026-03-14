@@ -328,7 +328,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 /* ── FOOTER ── */
 footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);background:rgba(9,12,38,.6);position:relative;z-index:2}
 .ft-in{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:44px}
-.ft-brand img{height:36px;width:auto;margin-bottom:16px;display:block}
+.ft-brand img:first-child{height:36px;width:auto;margin-bottom:16px;display:block}
 .ft-pillars{display:flex;gap:12px;margin-top:14px;font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--white38)}
 .ft-pillars .fp-art{color:var(--cyan)}.ft-pillars .fp-tech{color:var(--white)}.ft-pillars .fp-well{color:var(--salmon)}
 .ft-symbol{width:280px;height:auto;margin-top:32px;opacity:.35}
@@ -508,16 +508,41 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       c.style.setProperty('opacity','1','important');
     });
 
-    /* ── HIDE PAST DAYS in week selector so today is on the left ── */
+    /* ── REORDER: today on the left, rest follow ── */
     const todayDayBtn=el.querySelector('[data-is-today="true"]');
     if(todayDayBtn&&todayDayBtn.parentElement){
-      const siblings=Array.from(todayDayBtn.parentElement.children);
-      const todayPos=siblings.indexOf(todayDayBtn);
-      siblings.forEach((sib,i)=>{
-        if(i<todayPos&&sib.tagName==='BUTTON'){
-          sib.style.setProperty('display','none','important');
-        }
+      const parent=todayDayBtn.parentElement;
+      /* Only select day buttons, not arrow buttons (arrows have SVG, no text) */
+      const dayBtns=Array.from(parent.children).filter(c=>{
+        if(c.tagName!=='BUTTON')return false;
+        const txt=c.textContent.trim();
+        return txt.length>0&&!c.querySelector('svg');
       });
+      const todayIdx=dayBtns.indexOf(todayDayBtn);
+      if(todayIdx>=0&&dayBtns.length>1){
+        parent.style.setProperty('display','flex','important');
+        dayBtns.forEach((btn,i)=>{
+          /* Shift so today=0, tomorrow=1, etc wrapping around */
+          const shifted=(i-todayIdx+dayBtns.length)%dayBtns.length;
+          btn.style.setProperty('order',String(shifted+1),'important'); /* +1 to leave room for < arrow at 0 */
+          /* Grey out past days (those that were before today in original order) */
+          if(i<todayIdx){
+            btn.style.setProperty('opacity','0.3','important');
+          }
+        });
+        /* Keep arrows in place: < at start, > at end */
+        Array.from(parent.children).forEach(c=>{
+          if(c.tagName==='BUTTON'&&c.querySelector('svg')){
+            const rect=c.getBoundingClientRect();
+            const parentRect=parent.getBoundingClientRect();
+            if(rect.left<parentRect.left+parentRect.width/2){
+              c.style.setProperty('order','0','important'); /* < arrow */
+            } else {
+              c.style.setProperty('order',String(dayBtns.length+2),'important'); /* > arrow */
+            }
+          }
+        });
+      }
     }
 
     /* Date labels (TOMORROW, etc) → subdued */
