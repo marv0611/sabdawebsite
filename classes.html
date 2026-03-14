@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- classes-v24 -->
+<meta charset="UTF-8"><!-- classes-v25 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Classes & Schedule — SABDA Studio Barcelona</title>
 <meta name="description" content="Explore our weekly schedule of immersive yoga, pilates, sound healing, breathwork, ecstatic dance and meditation classes. Book your spot now.">
@@ -378,8 +378,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
   z-index:12;
   opacity:0;
   transition:opacity .3s;
+  pointer-events:none;
 }
-.sabda-member-login.visible{opacity:1}
+.sabda-member-login.visible{opacity:1;pointer-events:auto}
 .sabda-member-login a{
   display:inline-flex;align-items:center;gap:5px;
   padding:8px 16px;
@@ -997,12 +998,19 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     if(!thirdRow)return;
     const wrapperRect=wrapper.getBoundingClientRect();
     const rowRect=thirdRow.getBoundingClientRect();
+    /* Vertical: center with filter row */
     const topOffset=rowRect.top-wrapperRect.top;
-    /* Vertically center login button with the third row */
     const loginH=loginBtn.offsetHeight;
     const rowH=rowRect.height;
     const centeredTop=topOffset+((rowH-loginH)/2);
     loginBtn.style.top=Math.round(centeredTop)+'px';
+    /* Horizontal: align right edge with session list / class cards right edge */
+    const sessionList=el.querySelector('.momence-host_schedule-session_list');
+    const firstCard=el.querySelector('article[data-session_id]');
+    const refEl=firstCard||sessionList||thirdRow;
+    const refRect=refEl.getBoundingClientRect();
+    const rightOffset=wrapperRect.right-refRect.right;
+    loginBtn.style.right=Math.max(0,Math.round(rightOffset))+'px';
     loginBtn.classList.add('visible');
   }
   [800,1200,2000,3000,5000,8000].forEach(ms=>setTimeout(positionLogin,ms));
