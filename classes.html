@@ -543,6 +543,97 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     el.querySelectorAll('[class*="pagination"]').forEach(e=>e.style.setProperty('display','none','important'));
     /* System row */
     el.querySelectorAll('[class*="sys_row"]').forEach(e=>e.style.setProperty('display','none','important'));
+
+    /* ── AUTO-CLICK "TODAY" to filter schedule ── */
+    if(!el._todayClicked){
+      const allBtns=el.querySelectorAll('button');
+      allBtns.forEach(b=>{
+        if(b.textContent.trim()==='TODAY'){
+          b.click();
+          el._todayClicked=true;
+        }
+      });
+    }
+
+    /* ── INJECT "TOMORROW" BUTTON next to SHOW ALL / TODAY ── */
+    if(!el._tomorrowAdded){
+      const allBtns=el.querySelectorAll('button');
+      let todayBtnEl=null;
+      allBtns.forEach(b=>{if(b.textContent.trim()==='TODAY')todayBtnEl=b;});
+      if(todayBtnEl&&todayBtnEl.parentElement){
+        const tmrBtn=document.createElement('button');
+        tmrBtn.textContent='TOMORROW';
+        tmrBtn.style.cssText=window.getComputedStyle(todayBtnEl).cssText;
+        /* Copy key styles from TODAY button */
+        const ts=window.getComputedStyle(todayBtnEl);
+        tmrBtn.style.setProperty('color','#f0efe9','important');
+        tmrBtn.style.setProperty('background','transparent','important');
+        tmrBtn.style.setProperty('border','1px solid rgba(240,239,233,.12)','important');
+        tmrBtn.style.setProperty('border-radius','20px','important');
+        tmrBtn.style.setProperty('padding','8px 16px','important');
+        tmrBtn.style.setProperty('font-family','DM Sans,sans-serif','important');
+        tmrBtn.style.setProperty('font-size',ts.fontSize,'important');
+        tmrBtn.style.setProperty('font-weight',ts.fontWeight,'important');
+        tmrBtn.style.setProperty('letter-spacing',ts.letterSpacing,'important');
+        tmrBtn.style.setProperty('text-transform','uppercase','important');
+        tmrBtn.style.setProperty('cursor','pointer','important');
+        tmrBtn.style.setProperty('margin-left','8px','important');
+        tmrBtn.addEventListener('click',function(){
+          /* Find the > (next week) arrow and day buttons */
+          const arrows=el.querySelectorAll('button');
+          let nextArrow=null;
+          arrows.forEach(a=>{
+            const svg=a.querySelector('svg');
+            if(svg&&!a.textContent.trim()&&a.getBoundingClientRect().right>el.getBoundingClientRect().right-100){
+              nextArrow=a;
+            }
+          });
+          /* Find today's button to know which day of week we're on */
+          const todayEl=el.querySelector('[data-is-today="true"]');
+          if(todayEl){
+            /* Get all day buttons in the selector row */
+            const dayBtns=todayEl.parentElement?Array.from(todayEl.parentElement.children).filter(c=>c.tagName==='BUTTON'):[];
+            const todayIdx=dayBtns.indexOf(todayEl);
+            if(todayIdx<dayBtns.length-1){
+              /* Tomorrow is in the same week — click next day button */
+              dayBtns[todayIdx+1].click();
+            } else if(nextArrow){
+              /* Tomorrow is in the next week — click > arrow, then first day after short delay */
+              nextArrow.click();
+              setTimeout(()=>{
+                const newDayBtns=el.querySelectorAll('[data-is-today]');
+                /* After navigation, find first day button */
+                const dayContainer=el.querySelector('.momence-day_selection-list-days,[class*="g6tqw9"]');
+                if(dayContainer&&dayContainer.firstElementChild){
+                  dayContainer.firstElementChild.click();
+                }
+              },600);
+            }
+          }
+        });
+        todayBtnEl.parentElement.insertBefore(tmrBtn,todayBtnEl.nextSibling);
+        el._tomorrowAdded=true;
+      }
+    }
+
+    /* ── GREY OUT PAST DAYS in month view ── */
+    const today=new Date();
+    today.setHours(0,0,0,0);
+    el.querySelectorAll('[class*="calendar"] button, [class*="month"] button').forEach(btn=>{
+      /* Try to parse date from button content */
+      const num=parseInt(btn.textContent.trim());
+      if(isNaN(num))return;
+      /* Check if button has a date attribute or aria-label */
+      const label=btn.getAttribute('aria-label')||'';
+      const dateMatch=label.match(/(\d{4})-(\d{2})-(\d{2})/);
+      if(dateMatch){
+        const btnDate=new Date(dateMatch[1],dateMatch[2]-1,dateMatch[3]);
+        if(btnDate<today){
+          btn.style.setProperty('opacity','0.25','important');
+          btn.style.setProperty('pointer-events','none','important');
+        }
+      }
+    });
     
     /* ── CRITICAL: Neutralize any position:fixed children ── */
     /* Momence renders modal overlays with position:fixed that escape the widget */
