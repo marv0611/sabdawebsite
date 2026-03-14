@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- classes-v16 -->
+<meta charset="UTF-8"><!-- classes-v17 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Classes & Schedule — SABDA Studio Barcelona</title>
 <meta name="description" content="Explore our weekly schedule of immersive yoga, pilates, sound healing, breathwork, ecstatic dance and meditation classes. Book your spot now.">
@@ -347,7 +347,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 /* ── Show More button (lives outside widget, never touched by forceStyles) ── */
 #sabda-show-more-btn{
   max-width:920px;margin:0 auto;
-  padding:28px 40px 12px;
+  padding:36px 40px 48px;
   text-align:center;
 }
 .sabda-show-more{
@@ -362,7 +362,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 .sabda-show-more svg{transition:transform .25s}
 .sabda-show-more:hover svg{transform:translateY(2px)}
 @media(max-width:900px){
-  #sabda-show-more-btn{padding:20px 16px 8px}
+  #sabda-show-more-btn{padding:28px 16px 40px}
 }
 
 /* ── One-click booking banner ── */
@@ -494,8 +494,11 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       if(node.classList&&node.classList.contains('sabda-show-more'))return;
       if(node.closest&&node.closest('.sabda-show-more'))return;
 
+      /* Check if this is the active filter button (by data attribute — survives React re-renders) */
+      const isActiveFilter=node.getAttribute&&node.getAttribute('data-sabda-filter')===activeFilter;
+
       /* Force text color to white (skip active filter buttons) */
-      if(!(node.classList&&node.classList.contains('sabda-active'))){
+      if(!isActiveFilter&&!(node.classList&&node.classList.contains('sabda-active'))){
         s.setProperty('color','#f0efe9','important');
       }
 
@@ -512,7 +515,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
         s.setProperty('background','#02F3C5','important');
         s.setProperty('color','#0e1235','important');
         s.setProperty('border-color','#02F3C5','important');
-      }else if(node.classList&&node.classList.contains('sabda-active')){
+      }else if(isActiveFilter||(node.classList&&node.classList.contains('sabda-active'))){
         /* Active filter button — cyan highlight */
         s.setProperty('background','rgba(2,243,197,.12)','important');
         s.setProperty('border-color','rgba(2,243,197,.35)','important');
@@ -639,6 +642,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
         /* Click handler: click the > arrow then click first day of next week */
         tmrBtn.addEventListener('click',function(){
           activeFilter='tomorrow';
+          setActiveImmediate(this);
           const todayDay=el.querySelector('[data-is-today="true"]');
           if(!todayDay||!todayDay.parentElement)return;
           const siblings=Array.from(todayDay.parentElement.children).filter(c=>c.tagName==='BUTTON'&&c.classList.contains('momence-day_selection-item'));
@@ -666,9 +670,9 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
         qf._reordered=true;
 
         /* Track active + reset session limit on click */
-        todayBtn.addEventListener('click',function(){activeFilter='today';maxVisibleDates=1;});
-        tmrBtn.addEventListener('click',function(){activeFilter='tomorrow';maxVisibleDates=1;});
-        allBtn.addEventListener('click',function(){activeFilter='all';maxVisibleDates=3;});
+        todayBtn.addEventListener('click',function(){activeFilter='today';maxVisibleDates=1;setActiveImmediate(this);});
+        tmrBtn.addEventListener('click',function(){activeFilter='tomorrow';maxVisibleDates=1;setActiveImmediate(this);});
+        allBtn.addEventListener('click',function(){activeFilter='all';maxVisibleDates=3;setActiveImmediate(this);});
       }
     }
     
@@ -849,18 +853,35 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     btn.style.display='block';
   }
 
+  /* ── Immediately apply active styles on click (before React re-renders) ── */
+  function setActiveImmediate(clickedBtn){
+    const qf=el.querySelector('.momence-quick_filters');
+    if(!qf)return;
+    qf.querySelectorAll('button[data-sabda-filter]').forEach(b=>{
+      b.style.setProperty('background','transparent','important');
+      b.style.setProperty('border-color','rgba(240,239,233,.12)','important');
+      b.style.setProperty('color','#f0efe9','important');
+    });
+    clickedBtn.style.setProperty('background','rgba(2,243,197,.12)','important');
+    clickedBtn.style.setProperty('border-color','rgba(2,243,197,.35)','important');
+    clickedBtn.style.setProperty('color','#02F3C5','important');
+  }
+
   /* ── Re-apply active filter highlight (survives React re-renders) ── */
   function applyActiveState(){
     const qf=el.querySelector('.momence-quick_filters');
     if(!qf)return;
-    qf.querySelectorAll('button').forEach(b=>{
+    qf.querySelectorAll('button[data-sabda-filter]').forEach(b=>{
       const filter=b.getAttribute('data-sabda-filter');
       if(filter===activeFilter){
         b.style.setProperty('background','rgba(2,243,197,.12)','important');
         b.style.setProperty('border-color','rgba(2,243,197,.35)','important');
         b.style.setProperty('color','#02F3C5','important');
+      }else{
+        b.style.setProperty('background','transparent','important');
+        b.style.setProperty('border-color','rgba(240,239,233,.12)','important');
+        b.style.setProperty('color','#f0efe9','important');
       }
-      /* Non-active buttons already handled by forceStyles */
     });
   }
 
@@ -875,8 +896,12 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     el.classList.add('themed');
   }
 
-  /* Watch for widget mutations */
-  const obs=new MutationObserver(runAll);
+  /* Watch for widget mutations — debounced to prevent rapid-fire runAll */
+  let rafId=null;
+  const obs=new MutationObserver(()=>{
+    if(rafId)cancelAnimationFrame(rafId);
+    rafId=requestAnimationFrame(()=>{rafId=null;runAll();});
+  });
   obs.observe(el,{childList:true,subtree:true});
   obs.observe(document.head,{childList:true,subtree:true});
 
@@ -898,7 +923,6 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     if(++tick>60)clearInterval(persist); /* Stop after 30s */
   },500);
 })();
-</script>
 </script>
 
 <!-- COMPACT PRICING SUMMARY — quick reference, links to full pricing page -->
