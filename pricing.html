@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><!-- pricing-v2 -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pricing & Memberships — SABDA Studio Barcelona</title>
+<meta name="description" content="SABDA pricing: intro offers from €16, class packs, and unlimited memberships. Barcelona's immersive wellness studio — yoga, sound healing, breathwork, pilates.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0e1235;--salmon:#F8A6A3;--cyan:#02F3C5;
+  --white:#f0efe9;--white60:rgba(240,239,233,.6);--white38:rgba(240,239,233,.38);
+  --ease-expo:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+::selection{background:rgba(248,166,163,.18)}
+
+/* ── GRAIN ── */
+.grain{position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.038;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:200px}
+
+/* ── PARTICLES ── */
+#globalParticles{position:fixed;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;display:flex;align-items:center;justify-content:space-between;background:rgba(14,18,53,.88);backdrop-filter:blur(22px);border-bottom:1px solid rgba(240,239,233,.07)}
+.nav-logo img{height:34px;width:auto;display:block}
+.nav-links{display:flex;gap:36px;list-style:none;font-size:.8rem;letter-spacing:.09em;text-transform:uppercase;font-weight:500}
+.nav-links a{color:var(--white);opacity:.75;transition:opacity .25s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;right:100%;height:1px;background:var(--cyan);transition:right .3s var(--ease-expo)}
+.nav-links a:hover{opacity:1}.nav-links a:hover::after{right:0}
+.nav-links a.active{opacity:1}.nav-links a.active::after{right:0}
+.nav-right{display:flex;align-items:center;gap:0}
+.lang-sel{display:flex;align-items:center;gap:0;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;font-weight:500}
+.lang-sel a{color:var(--white);opacity:.35;padding:5px 7px;transition:opacity .25s,color .25s}
+.lang-sel a:hover{opacity:.7}
+.lang-sel a.active{opacity:.9;color:var(--cyan)}
+.nav-social{display:flex;align-items:center;gap:14px;padding-left:20px;margin-left:16px;border-left:1px solid rgba(240,239,233,.1)}
+.nav-social a{display:flex;align-items:center;opacity:.35;transition:opacity .25s}
+.nav-social a:hover{opacity:.85}
+.nav-social svg{width:15px;height:15px;fill:var(--salmon);flex-shrink:0}
+
+/* ── HERO BANNER ── */
+.hero-banner{position:relative;width:100%;height:320px;overflow:hidden}
+.hero-banner img{width:100%;height:100%;object-fit:cover;object-position:center 45%;filter:brightness(.5) contrast(1.1) saturate(1.15)}
+.hero-banner::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(14,18,53,.3) 0%,rgba(14,18,53,.08) 35%,rgba(14,18,53,.65) 78%,var(--navy) 100%)}
+.hero-overlay{position:absolute;bottom:44px;left:0;right:0;z-index:3;text-align:center}
+.hero-overlay h1{font-family:'PT Serif',serif;font-size:2.8rem;font-weight:400;letter-spacing:-.01em;margin-bottom:10px}
+.hero-overlay h1 .cyan{color:var(--cyan)}
+.hero-overlay p{font-size:.95rem;color:var(--white60);max-width:480px;margin:0 auto}
+
+/* ── MEMBERSHIPS ── */
+.memberships{padding:80px 80px 60px;position:relative;z-index:2}
+.section-hdr{text-align:center;margin-bottom:52px}
+.section-hdr h2{font-family:'PT Serif',serif;font-size:2.2rem;font-weight:400;margin-bottom:10px}
+.section-hdr p{color:var(--white38);font-size:.92rem;max-width:460px;margin:0 auto;line-height:1.7}
+.membership-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:640px;margin:0 auto}
+.membership-card{text-align:center;padding:44px 32px;border-radius:16px;border:1px solid rgba(240,239,233,.08);background:rgba(240,239,233,.02);position:relative;transition:border-color .3s,background .3s}
+.membership-card:hover{border-color:rgba(2,243,197,.2);background:rgba(2,243,197,.02)}
+.membership-card h3{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--white60);margin-bottom:12px;font-weight:500;font-family:'DM Sans',sans-serif}
+.membership-card .m-price{font-family:'PT Serif',serif;font-size:2.2rem;font-weight:400;color:var(--white);margin-bottom:6px}
+.membership-card .m-price span{font-size:.9rem;color:var(--white60);font-family:'DM Sans',sans-serif}
+.membership-card .m-sub{font-size:.78rem;color:var(--white38);margin-bottom:28px}
+.membership-card a{display:block;padding:16px 12px;border-radius:40px;background:var(--cyan);color:var(--navy);font-weight:700;font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;transition:background .2s,transform .15s;text-align:center}
+.membership-card a:hover{background:#18ffda;transform:translateY(-2px)}
+.membership-card.hero-card{border-color:rgba(2,243,197,.25);background:rgba(2,243,197,.03)}
+.membership-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--salmon);color:var(--navy);font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:5px 14px;border-radius:20px;white-space:nowrap}
+
+/* ── INTRO OFFERS & CLASS PACKS ── */
+.intro-offers{padding:80px 80px 0;position:relative;z-index:2;border-top:1px solid rgba(240,239,233,.06)}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:780px;margin:0 auto}
+.pricing-col{text-align:center;position:relative;padding:24px 8px 8px;border-radius:16px}
+.pricing-col h3{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--white60);margin-bottom:20px;font-weight:500;font-family:'DM Sans',sans-serif}
+.pricing-col a{display:block;padding:18px 12px;border-radius:40px;background:var(--cyan);color:var(--navy);font-weight:700;font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;margin-bottom:14px;transition:background .2s,transform .15s;text-align:center;position:relative}
+.pricing-col a:hover{background:#18ffda;transform:translateY(-2px)}
+.per-class{display:block;font-size:.68rem;font-weight:500;letter-spacing:.04em;margin-top:3px;opacity:.7;text-transform:none}
+.hero-col{border:1px solid rgba(2,243,197,.25);background:rgba(2,243,197,.03);border-radius:16px}
+.pricing-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--salmon);color:var(--navy);font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:5px 14px;border-radius:20px;white-space:nowrap}
+
+/* ── GIFT CARDS ── */
+.giftcards{padding:80px 80px;position:relative;z-index:2;border-top:1px solid rgba(240,239,233,.06);margin-top:80px}
+.giftcards-hdr{text-align:center;margin-bottom:44px}
+.giftcards-hdr h2{font-family:'PT Serif',serif;font-size:2.2rem;font-weight:400;margin-bottom:10px}
+.giftcards-hdr p{color:var(--white38);font-size:.92rem;max-width:400px;margin:0 auto}
+.gc-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;max-width:720px;margin:0 auto}
+.gc-grid a{padding:16px 32px;border-radius:40px;background:rgba(240,239,233,.05);border:1px solid rgba(240,239,233,.1);color:var(--white);font-weight:600;font-size:1rem;transition:background .2s,transform .15s,border-color .2s;min-width:140px;text-align:center}
+.gc-grid a:hover{background:rgba(2,243,197,.08);border-color:var(--cyan);transform:translateY(-2px)}
+.gc-grid a.custom{color:var(--cyan)}
+
+/* ── SCHEDULE CTA ── */
+.schedule-cta{padding:60px 80px 80px;position:relative;z-index:2;text-align:center}
+.schedule-cta p{color:var(--white38);font-size:.95rem;margin-bottom:20px}
+.schedule-cta a{display:inline-flex;align-items:center;gap:8px;padding:16px 36px;border-radius:40px;border:1.5px solid var(--salmon);color:var(--white);font-weight:600;font-size:.88rem;letter-spacing:.05em;text-transform:uppercase;transition:border-color .25s,background .25s,transform .15s,color .25s}
+.schedule-cta a:hover{border-color:var(--cyan);background:rgba(2,243,197,.06);color:var(--cyan);transform:translateY(-2px)}
+
+/* ── FOOTER ── */
+footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.06);position:relative;z-index:2}
+.ft-in{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:52px;margin-bottom:40px}
+.ft-brand{text-align:left}
+.ft-brand img:first-child{height:36px;margin-bottom:16px;display:block;margin-right:auto}
+.ft-pillars{font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--white38)}
+.ft-pillars .fp-art{color:var(--salmon)}.ft-pillars .fp-tech{color:var(--cyan)}.ft-pillars .fp-well{color:var(--white60)}
+.ft-symbol{width:200px;height:auto;margin-top:28px;opacity:.35;display:block}
+.ft-col h4{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--white60);margin-bottom:18px;font-weight:500}
+.ft-col ul{list-style:none}
+.ft-col li{margin-bottom:12px}
+.ft-col a{color:var(--white38);font-size:.85rem;transition:color .2s}
+.ft-col a:hover{color:var(--white)}
+.ft-bot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding-top:30px;border-top:1px solid rgba(240,239,233,.06);font-size:.74rem;color:rgba(240,239,233,.2)}
+.ft-legal{display:flex;gap:24px}
+.ft-legal a:hover{color:var(--white38)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav{padding:0 24px}.nav-links{display:none}
+  .nav-social svg{width:15px;height:15px}.nav-social{gap:10px;padding-left:14px;margin-left:14px}.lang-sel a{padding:4px 5px;font-size:.65rem}
+  .hero-banner{height:240px}.hero-overlay h1{font-size:2rem}.hero-overlay{bottom:32px}
+  .memberships{padding:60px 24px 0}
+  .intro-offers{padding:60px 24px 0}
+  .membership-grid{gap:16px;max-width:100%}
+  .pricing-grid{grid-template-columns:1fr 1fr;gap:16px}
+  .giftcards{padding:60px 24px}
+  .schedule-cta{padding:40px 24px 60px}
+  footer{padding:36px 24px 22px}.ft-in{grid-template-columns:1fr 1fr}
+}
+@media(max-width:520px){
+  .ft-in{grid-template-columns:1fr}.hero-overlay h1{font-size:1.7rem}
+  .hero-banner{height:200px}
+  .membership-grid{grid-template-columns:1fr}
+  .pricing-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<canvas id="globalParticles"></canvas>
+
+<!-- NAV -->
+<nav>
+  <a href="SABDA_v16.html" class="nav-logo"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA"></a>
+  <ul class="nav-links">
+    <li><a href="classes.html">Classes</a></li>
+    <li><a href="pricing.html" class="active">Pricing</a></li>
+    <li><a href="rent-corporate.html">Rent & Corporate</a></li>
+    <li><a href="#">Listening Sessions</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-sel">
+      <a href="#" class="active">EN</a><a href="#">ES</a><a href="#">CA</a>
+    </div>
+    <div class="nav-social">
+      <a href="https://instagram.com/sabdastudio" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 1.5A4 4 0 0 0 3.5 7.5v9a4 4 0 0 0 4 4h9a4 4 0 0 0 4-4v-9a4 4 0 0 0-4-4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.25-2.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg></a>
+      <a href="https://tiktok.com/@sabdastudio" target="_blank" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0 1 13.8 3h-3v12.4a2.6 2.6 0 0 1-2.6 2.6 2.6 2.6 0 0 1-2.6-2.6A2.6 2.6 0 0 1 8.2 12.8c.28 0 .56.04.82.12V9.84A5.6 5.6 0 0 0 2.6 15.4a5.6 5.6 0 0 0 5.6 5.6 5.6 5.6 0 0 0 5.6-5.6V9.72a7.3 7.3 0 0 0 4.2 1.32V8.02a4.28 4.28 0 0 1-1.4-2.2z"/></svg></a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO BANNER — Moon visual -->
+<div class="hero-banner">
+  <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_010.jpg" alt="SABDA immersive studio — moon projection">
+  <div class="hero-overlay">
+    <h1>Choose Your <span class="cyan">Path</span></h1>
+    <p>Memberships for the committed. Intro packs for the curious. Every path leads to immersion.</p>
+  </div>
+</div>
+
+<!-- MEMBERSHIPS — shown first for price anchoring -->
+<section class="memberships">
+  <div class="section-hdr">
+    <h2>Memberships</h2>
+    <p>Commit to your practice. Unlimited classes, priority booking, the best value per class.</p>
+  </div>
+  <div class="membership-grid">
+    <div class="membership-card">
+      <h3>Monthly</h3>
+      <div class="m-price">€130<span>/mo</span></div>
+      <div class="m-sub">Unlimited classes · Cancel anytime</div>
+      <a href="https://momence.com/m/431216" target="_blank">Get Monthly</a>
+    </div>
+    <div class="membership-card hero-card">
+      <div class="membership-badge">Best Value</div>
+      <h3>3 Month</h3>
+      <div class="m-price">€100<span>/mo</span></div>
+      <div class="m-sub">€300 total · Save €90 vs monthly</div>
+      <a href="https://momence.com/m/445600" target="_blank">Get 3 Month</a>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO OFFERS & CLASS PACKS -->
+<section class="intro-offers">
+  <div class="section-hdr">
+    <h2>Intro Offers & Class Packs</h2>
+    <p>First time? Start with an intro offer.<br>Ready to go deeper? Grab a pack.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="pricing-col">
+      <h3>First Visit</h3>
+      <a href="https://momence.com/m/443934" target="_blank">Trial Class €16</a>
+      <a href="https://momence.com/SABDA-54278" target="_blank">Single Class €20</a>
+    </div>
+    <div class="pricing-col hero-col">
+      <div class="pricing-badge">Most Popular</div>
+      <h3>Best Value</h3>
+      <a href="https://momence.com/m/443935" target="_blank">3 Pack €48<span class="per-class">€16 / class</span></a>
+      <a href="https://momence.com/SABDA-54278" target="_blank">1 Week Unlimited €50</a>
+    </div>
+    <div class="pricing-col">
+      <h3>Class Packs</h3>
+      <a href="https://momence.com/SABDA-54278" target="_blank">5 Pack €80<span class="per-class">€16 / class</span></a>
+      <a href="https://momence.com/SABDA-54278" target="_blank">10 Pack €140<span class="per-class">€14 / class</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- GIFT CARDS -->
+<section class="giftcards">
+  <div class="giftcards-hdr">
+    <h2>Gift Cards</h2>
+    <p>Give the gift of immersion.<br>Choose an amount or set your own.</p>
+  </div>
+  <div class="gc-grid">
+    <a href="https://momence.com/SABDA-54278" target="_blank">€20</a>
+    <a href="https://momence.com/SABDA-54278" target="_blank">€40</a>
+    <a href="https://momence.com/SABDA-54278" target="_blank">€60</a>
+    <a href="https://momence.com/SABDA-54278" target="_blank">€80</a>
+    <a href="https://momence.com/SABDA-54278" target="_blank">€100</a>
+    <a href="https://momence.com/SABDA-54278" target="_blank" class="custom">Custom</a>
+  </div>
+</section>
+
+<!-- SCHEDULE CTA -->
+<div class="schedule-cta">
+  <p>Ready to find your class?</p>
+  <a href="classes.html">View Schedule & Book <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-in">
+    <div class="ft-brand">
+      <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA">
+      <div class="ft-pillars"><span class="fp-art">Art</span><span>·</span><span class="fp-tech">Tech</span><span>·</span><span class="fp-well">Wellness</span></div>
+      <img class="ft-symbol" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20symbol%20multi-colored%20(1).png" alt="SABDA symbol">
+    </div>
+    <div class="ft-col"><h4>Explore</h4><ul>
+      <li><a href="classes.html">Classes</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="rent-corporate.html">Rent & Corporate</a></li>
+      <li><a href="#">Listening Sessions</a></li>
+      <li><a href="#">About</a></li>
+    </ul></div>
+    <div class="ft-col"><h4>Connect</h4><ul>
+      <li><a href="https://instagram.com/sabdastudio" target="_blank">Instagram</a></li>
+      <li><a href="https://tiktok.com/@sabdastudio" target="_blank">TikTok</a></li>
+      <li><a href="#">Newsletter</a></li>
+    </ul></div>
+    <div class="ft-col"><h4>Contact</h4><ul>
+      <li><a href="mailto:info@sabdastudio.com">info@sabdastudio.com</a></li>
+      <li>C/Muntaner 83B</li>
+      <li>08011 Barcelona</li>
+    </ul></div>
+  </div>
+  <div class="ft-bot">
+    <span>© 2026 SABDA STUDIO S.L.</span>
+    <div class="ft-legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a></div>
+  </div>
+</footer>
+
+<script>
+/* GLOBAL PARTICLE FIELD */
+(function(){
+  const canvas=document.getElementById('globalParticles');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  let W,H,mouseX=-9999,mouseY=-9999;
+  function resize(){W=window.innerWidth;H=window.innerHeight;canvas.width=W*devicePixelRatio;canvas.height=H*devicePixelRatio;ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0)}
+  resize();window.addEventListener('resize',resize);
+  document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY});
+  const COUNT=960;
+  const particles=Array.from({length:COUNT},()=>({
+    x:Math.random()*3000,y:Math.random(),vx:0.008+Math.random()*0.06,vy:(Math.random()-0.5)*0.003,
+    fx:0,fy:0,size:0.3+Math.random()*1.5,glow:4+Math.random()*16,
+    color:(()=>{const c=Math.random();return c<0.38?[2,243,197]:c<0.72?[248,166,163]:[32,57,153]})(),
+    opacity:0.015+Math.random()*0.08,phase:Math.random()*Math.PI*2,
+    waveAmp:0.01+Math.random()*0.04,waveFreq:0.0001+Math.random()*0.0005
+  }));
+  let t=0;
+  function draw(){
+    t++;ctx.clearRect(0,0,W,H);
+    particles.forEach(p=>{
+      p.x+=p.vx;p.y+=p.vy;
+      const waveY=p.waveAmp*Math.sin(p.phase+t*p.waveFreq);
+      let drawX=p.x+p.fx,drawY=(p.y+waveY)*H+p.fy;
+      const dx=drawX-mouseX,dy=drawY-mouseY,dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<120&&dist>0){const force=(1-dist/120)*2.5;p.fx+=(dx/dist)*force;p.fy+=(dy/dist)*force}
+      p.fx*=0.94;p.fy*=0.94;
+      drawX=p.x+p.fx;drawY=(p.y+waveY)*H+p.fy;
+      if(p.x>W+60){p.x=-50;p.y=Math.random();p.fx=0;p.fy=0}
+      if(p.y<-0.05)p.y=1.05;if(p.y>1.05)p.y=-0.05;
+      const pulse=0.4+0.6*Math.sin(p.phase+t*0.001),op=p.opacity*pulse;
+      if(op<0.002)return;
+      const g=ctx.createRadialGradient(drawX,drawY,0,drawX,drawY,p.glow);
+      g.addColorStop(0,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.5})`);
+      g.addColorStop(0.3,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.18})`);
+      g.addColorStop(0.7,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.04})`);
+      g.addColorStop(1,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},0)`);
+      ctx.fillStyle=g;ctx.beginPath();ctx.arc(drawX,drawY,p.glow,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.arc(drawX,drawY,p.size*0.5,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${Math.min(0.6,op*2)})`;ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+})();
+</script>
+</body>
+</html>

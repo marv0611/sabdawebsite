@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><!-- classes-v31 -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Classes & Schedule — SABDA Studio Barcelona</title>
+<meta name="description" content="Explore our weekly schedule of immersive yoga, pilates, sound healing, breathwork, ecstatic dance and meditation classes. Book your spot now.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0e1235;--salmon:#F8A6A3;--cyan:#02F3C5;
+  --white:#f0efe9;--white60:rgba(240,239,233,.6);--white38:rgba(240,239,233,.38);
+  --ease-expo:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;
+  /* Old Momence prop names — widget reads these FIRST */
+  --momenceColorPrimary:#02F3C5;
+  --momenceColorBlack:#f0efe9;
+  --momenceColorBackground:#0e1235;
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+::selection{background:rgba(248,166,163,.18)}
+
+/* ── GRAIN ── */
+.grain{position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.038;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:200px}
+
+/* ── PARTICLES ── */
+#globalParticles{position:fixed;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;display:flex;align-items:center;justify-content:space-between;background:rgba(14,18,53,.88);backdrop-filter:blur(22px);border-bottom:1px solid rgba(240,239,233,.07)}
+.nav-logo img{height:34px;width:auto;display:block}
+.nav-links{display:flex;gap:36px;list-style:none;font-size:.8rem;letter-spacing:.09em;text-transform:uppercase;font-weight:500}
+.nav-links a{color:var(--white);opacity:.75;transition:opacity .25s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;right:100%;height:1px;background:var(--cyan);transition:right .3s var(--ease-expo)}
+.nav-links a:hover{opacity:1}.nav-links a:hover::after{right:0}
+.nav-links a.active{opacity:1}.nav-links a.active::after{right:0}
+.nav-right{display:flex;align-items:center;gap:0}
+.lang-sel{display:flex;align-items:center;gap:0;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;font-weight:500}
+.lang-sel a{color:var(--white);opacity:.35;padding:5px 7px;transition:opacity .25s,color .25s}
+.lang-sel a:hover{opacity:.7}
+.lang-sel a.active{opacity:.9;color:var(--cyan)}
+.nav-social{display:flex;align-items:center;gap:14px;padding-left:20px;margin-left:16px;border-left:1px solid rgba(240,239,233,.1)}
+.nav-social a{display:flex;align-items:center;opacity:.35;transition:opacity .25s}
+.nav-social a:hover{opacity:.85}
+.nav-social svg{width:15px;height:15px;fill:var(--salmon);flex-shrink:0}
+.nav-login{display:flex;align-items:center;gap:6px;padding-left:20px;margin-left:16px;border-left:1px solid rgba(240,239,233,.1)}
+.nav-login a{display:flex;align-items:center;gap:6px;font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;font-weight:500;color:var(--white);opacity:.55;transition:opacity .25s}
+.nav-login a:hover{opacity:1}
+.nav-login svg{width:14px;height:14px;stroke:currentColor;fill:none;flex-shrink:0}
+
+/* ── HERO BANNER ── */
+.hero-banner{position:relative;width:100%;height:320px;overflow:hidden}
+.hero-banner img{width:100%;height:100%;object-fit:cover;object-position:center 40%;filter:brightness(.55) contrast(1.1) saturate(1.15)}
+.hero-banner::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(14,18,53,.3) 0%,rgba(14,18,53,.12) 40%,rgba(14,18,53,.7) 80%,var(--navy) 100%)}
+.hero-overlay{position:absolute;bottom:44px;left:0;right:0;z-index:3;text-align:center}
+.hero-overlay h1{font-family:'PT Serif',serif;font-size:2.8rem;font-weight:400;letter-spacing:-.01em;margin-bottom:10px}
+.hero-overlay h1 .cyan{color:var(--cyan)}
+.hero-overlay p{font-size:.95rem;color:var(--white60);max-width:480px;margin:0 auto}
+
+/* ── MOMENCE WIDGET ── */
+#momence-plugin-host-schedule{max-width:920px;margin:0 auto;padding:40px 40px 20px;position:relative;z-index:2;background:var(--navy)}
+#momence-plugin-host-schedule::before{content:'';position:absolute;inset:0;background:var(--navy);z-index:9999;pointer-events:none;transition:opacity .5s ease .1s}
+#momence-plugin-host-schedule.themed::before{opacity:0}
+#momence-plugin-host-schedule,#momence-plugin-host-schedule *{font-family:'DM Sans',sans-serif !important}
+
+/* Momence CSS variable overrides → dark theme */
+:root{
+  --momence-primary-050:rgba(2,243,197,.04);--momence-primary-100:rgba(2,243,197,.08);
+  --momence-primary-200:rgba(2,243,197,.16);--momence-primary-300:rgba(2,243,197,.3);
+  --momence-primary-400:rgba(2,243,197,.55);--momence-primary-500:#02F3C5;
+  --momence-primary-600:#00d4ac;--momence-primary-700:#00b594;
+  --momence-primary-800:#00967b;--momence-primary-900:#007862;
+  --momence-background:#0e1235;--momence-white:#131842;
+  --momence-primary-color:#f0efe9;
+  --momence-secondary-color:rgba(240,239,233,.6);
+  --momence-tertiary-color:rgba(240,239,233,.38);
+  --momence-black-100:rgba(240,239,233,.35);--momence-black-200:rgba(240,239,233,.5);
+  --momence-black-300:rgba(240,239,233,.65);--momence-black-400:rgba(240,239,233,.8);
+  --momence-black-500:#f0efe9;
+  --momence-grey-050:rgba(240,239,233,.03);--momence-grey-100:rgba(240,239,233,.05);
+  --momence-grey-200:rgba(240,239,233,.08);--momence-grey-300:rgba(240,239,233,.1);
+  --momence-grey-400:rgba(240,239,233,.15);--momence-grey-500:rgba(240,239,233,.2);
+  --momence-grey-600:rgba(240,239,233,.28);--momence-grey-700:rgba(240,239,233,.38);
+  --momence-grey-800:rgba(240,239,233,.48);--momence-grey-900:rgba(240,239,233,.6);
+  --momence-session-separator-color:rgba(240,239,233,.06);
+  --momence-dark-alpha-fill-100:rgba(240,239,233,.04);--momence-dark-alpha-fill-200:rgba(240,239,233,.06);
+  --momence-dark-alpha-fill-300:rgba(240,239,233,.08);--momence-dark-alpha-fill-400:rgba(240,239,233,.12);
+  --momence-dark-alpha-fill-500:rgba(240,239,233,.15);--momence-dark-alpha-fill-600:rgba(240,239,233,.25);
+  --momence-dark-alpha-fill-700:rgba(240,239,233,.38);--momence-dark-alpha-fill-800:rgba(240,239,233,.55);
+  --momence-dark-alpha-fill-900:rgba(240,239,233,.85);
+  --momence-light-alpha-fill-900:rgba(14,18,53,.9);--momence-light-alpha-fill-700:rgba(14,18,53,.6);
+  --momence-light-alpha-fill-600:rgba(14,18,53,.3);--momence-light-alpha-fill-500:rgba(14,18,53,.18);
+  --momence-dark-background-200:rgba(240,239,233,.05);--momence-dark-background-300:rgba(240,239,233,.08);
+  --momence-dark-background-400:rgba(240,239,233,.12);--momence-dark-background-500:rgba(240,239,233,.16);
+  --momence-dark-background-800:rgba(240,239,233,.4);--momence-dark-background-900:rgba(14,18,53,.85);
+  --momence-light-background-900:rgba(14,18,53,.9);
+}
+
+/* ══════════════════════════════════════════════════
+   MOMENCE WIDGET — SABDA DARK THEME OVERRIDES
+   ══════════════════════════════════════════════════ */
+
+/* ── BLANKET: force ALL widget text light ── */
+#momence-plugin-host-schedule,
+#momence-plugin-host-schedule *:not(a[class*="sc-12tukza"]):not(.momence-button[class*="primary"]){
+  color:#f0efe9 !important;
+}
+#momence-plugin-host-schedule svg{
+  color:#f0efe9 !important;
+  stroke:#f0efe9 !important;
+}
+
+/* ── BLANKET: widget container backgrounds → transparent ── */
+#momence-plugin-host-schedule,
+#momence-plugin-host-schedule > div{
+  background:transparent !important;
+  background-color:transparent !important;
+}
+/* Target the layout wrapper specifically */
+#momence-plugin-host-schedule .momence-host-schedule-layout{
+  background:transparent !important;
+}
+/* ── CRITICAL: Prevent widget children from escaping the container ── */
+/* Adding transform creates a new containing block — position:fixed children
+   become positioned relative to THIS container instead of the viewport */
+#momence-plugin-host-schedule{
+  position:relative !important;
+  z-index:2 !important;
+  transform:translateZ(0) !important;
+}
+#momence-plugin-host-schedule [style*="position: fixed"],
+#momence-plugin-host-schedule [style*="position:fixed"]{
+  position:relative !important;
+}
+/* Target the known modal overlay by styled-component ID */
+#momence-plugin-host-schedule .sc-iemygx-1,
+#momence-plugin-host-schedule [class*="iemygx-1"]{
+  position:relative !important;
+  top:auto !important;
+  left:auto !important;
+  right:auto !important;
+  bottom:auto !important;
+}
+
+/* ── ALL buttons: transparent bg, light border ── */
+#momence-plugin-host-schedule button{
+  background-color:transparent !important;
+  border-color:rgba(240,239,233,.12) !important;
+}
+#momence-plugin-host-schedule button:hover{
+  background-color:rgba(240,239,233,.06) !important;
+}
+
+/* ── DAY SELECTOR: force visible with proper layout ── */
+#momence-plugin-host-schedule .momence-day_selection{
+  background:transparent !important;
+  display:flex !important;
+  width:100% !important;
+  overflow:visible !important;
+}
+#momence-plugin-host-schedule .momence-day_selection-list,
+#momence-plugin-host-schedule .momence-day_selection-list-days,
+#momence-plugin-host-schedule nav[class*="g6tqw9"]{
+  display:flex !important;
+  flex:1 !important;
+  justify-content:space-between !important;
+  background:transparent !important;
+  overflow:visible !important;
+  height:auto !important;
+  min-height:44px !important;
+}
+#momence-plugin-host-schedule .momence-day_selection-item,
+#momence-plugin-host-schedule button[class*="zh2ey8-4"]{
+  background:transparent !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  flex:1 1 auto !important;
+  min-width:50px !important;
+  height:auto !important;
+  min-height:44px !important;
+  padding:4px 2px !important;
+  overflow:visible !important;
+  opacity:1 !important;
+  visibility:visible !important;
+}
+#momence-plugin-host-schedule .momence-day_selection-item *,
+#momence-plugin-host-schedule button[class*="zh2ey8"] *{
+  color:#f0efe9 !important;
+  display:block !important;
+  visibility:visible !important;
+  opacity:1 !important;
+  height:auto !important;
+  overflow:visible !important;
+}
+#momence-plugin-host-schedule .momence-day_selection-item_day,
+#momence-plugin-host-schedule [class*="zh2ey8-0"]{
+  color:rgba(240,239,233,.5) !important;
+  font-size:10px !important;
+  line-height:14px !important;
+}
+#momence-plugin-host-schedule .momence-day_selection-item_highlight,
+#momence-plugin-host-schedule [class*="zh2ey8-1"]{
+  color:#f0efe9 !important;
+  font-size:16px !important;
+  line-height:22px !important;
+}
+/* Today → cyan */
+#momence-plugin-host-schedule [data-is-today="true"],
+#momence-plugin-host-schedule [data-is-today="true"] *{
+  color:#02F3C5 !important;
+}
+/* Selected day underline */
+#momence-plugin-host-schedule .momence-day_selection-item_selected,
+#momence-plugin-host-schedule [class*="zh2ey8-3"]{
+  background:#02F3C5 !important;
+  display:block !important;
+}
+/* Day dots */
+#momence-plugin-host-schedule .momence-day_selection-item_num-days,
+#momence-plugin-host-schedule [class*="zh2ey8-2"]{
+  color:rgba(240,239,233,.3) !important;
+  display:block !important;
+}
+
+/* ── Second row (contains day selector) — ensure visible ── */
+#momence-plugin-host-schedule .momence-host_schedule-second_row{
+  display:flex !important;
+  margin-bottom:16px !important;
+  background:transparent !important;
+}
+
+/* ── HIDE ONLY what's truly unwanted ── */
+#momence-plugin-host-schedule .momence-host_schedule-sys_row{display:none !important}
+#momence-plugin-host-schedule .momence-host_schedule-powered_by_momence{display:none !important}
+#momence-plugin-host-schedule .momence-session-in_person{display:none !important}
+#momence-plugin-host-schedule .momence-session_filters > *:last-child{display:none !important}
+#momence-plugin-host-schedule .momence-host_schedule-session_list-item-price{display:none !important}
+#momence-plugin-host-schedule [class*="session-price"]{display:none !important}
+#momence-plugin-host-schedule [class*="183txmy"]{display:none !important}
+#momence-plugin-host-schedule .momence-pagination{display:none !important}
+#momence-plugin-host-schedule [class*="1rbd2nr"]{display:none !important}
+
+/* ── Session cards — dark glass ── */
+#momence-plugin-host-schedule article{
+  background:rgba(19,24,66,.65) !important;
+  border-color:rgba(240,239,233,.06) !important;
+  backdrop-filter:blur(8px);border-radius:16px !important;
+}
+#momence-plugin-host-schedule article img{border-radius:10px !important}
+#momence-plugin-host-schedule h3{color:var(--salmon) !important;letter-spacing:.15em !important}
+#momence-plugin-host-schedule h4{font-family:'PT Serif',serif !important;font-weight:400 !important}
+
+/* ── Book Now button → cyan ── */
+#momence-plugin-host-schedule .momence-button[class*="primary"],
+#momence-plugin-host-schedule a[class*="sc-12tukza"]{
+  background:#02F3C5 !important;color:#0e1235 !important;font-weight:700 !important;
+  letter-spacing:.04em !important;border-radius:4px !important;border-color:#02F3C5 !important;
+}
+#momence-plugin-host-schedule .momence-button[class*="primary"]:hover,
+#momence-plugin-host-schedule a[class*="sc-12tukza"]:hover{
+  background:#18ffda !important;color:#0e1235 !important;
+}
+#momence-plugin-host-schedule .momence-button:disabled,
+#momence-plugin-host-schedule .momence-button[class*="booked"]{
+  background:rgba(240,239,233,.08) !important;color:rgba(240,239,233,.35) !important;
+}
+
+/* ── Show more / bio links → cyan ── */
+#momence-plugin-host-schedule [class*="expand-button"],
+#momence-plugin-host-schedule button[class*="vbm3tv"]{color:var(--cyan) !important}
+
+/* ── Select dropdown popups — must sit above class cards ── */
+#momence-plugin-host-schedule ul[class*="cmpnl9-2"],
+#momence-plugin-host-schedule .momence-select-popup,
+#momence-plugin-host-schedule [class*="select-popup"],
+#momence-plugin-host-schedule [role="listbox"]{
+  background:#131842 !important;
+  border-color:rgba(240,239,233,.1) !important;
+  z-index:999 !important;
+  position:absolute !important;
+}
+#momence-plugin-host-schedule li[class*="cmpnl9-3"],
+#momence-plugin-host-schedule .momence-select-option{background:#131842 !important}
+#momence-plugin-host-schedule li[class*="cmpnl9-3"]:hover,
+#momence-plugin-host-schedule .momence-select-option:hover{background:rgba(240,239,233,.08) !important}
+/* The filter row — uniform spacing between ALL items */
+#momence-plugin-host-schedule .momence-host_schedule-third_row,
+#momence-plugin-host-schedule [class*="third_row"]{
+  position:relative !important;
+  z-index:10 !important;
+  display:flex !important;
+  align-items:center !important;
+  gap:8px !important;
+  margin-bottom:20px !important;
+}
+/* Quick filters group */
+#momence-plugin-host-schedule .momence-quick_filters{
+  display:flex !important;
+  gap:8px !important;
+  flex-shrink:0 !important;
+}
+/* Active/highlighted quick filter button */
+#momence-plugin-host-schedule .momence-quick_filters button.sabda-active{
+  background:rgba(2,243,197,.12) !important;
+  border-color:rgba(2,243,197,.35) !important;
+  color:#02F3C5 !important;
+}
+/* Kill the empty spacer div between filters and Teachers */
+#momence-plugin-host-schedule .momence-host_schedule-third_row > [class*="fqxJDI"]{
+  display:none !important;
+}
+/* Session filters container — remove any extra margin/padding */
+#momence-plugin-host-schedule .momence-session_filters{
+  flex:0 0 auto !important;
+  margin:0 !important;
+  padding:0 !important;
+}
+#momence-plugin-host-schedule .momence-session_filters > div{
+  margin:0 !important;
+  padding:0 !important;
+}
+/* Teachers dropdown — narrower */
+#momence-plugin-host-schedule .momence-select{
+  max-width:140px !important;
+  width:140px !important;
+  flex:0 0 140px !important;
+  margin:0 !important;
+}
+#momence-plugin-host-schedule .momence-select-button{
+  padding:8px 12px !important;
+  font-size:.8rem !important;
+  width:100% !important;
+  margin:0 !important;
+}
+
+/* ── Subdued text ── */
+#momence-plugin-host-schedule time{color:rgba(240,239,233,.5) !important}
+#momence-plugin-host-schedule .momence-host_schedule-session_list-no_results-text{color:rgba(240,239,233,.5) !important}
+
+/* ── No-results: hide Momence illustration, show text only ── */
+#momence-plugin-host-schedule [class*="no_results"] svg,
+#momence-plugin-host-schedule [class*="no_results"] img,
+#momence-plugin-host-schedule [class*="no_results"] [class*="illustration"],
+#momence-plugin-host-schedule [class*="no_results"] > div:not([class*="no_results-text"]){
+  display:none !important;
+}
+#momence-plugin-host-schedule [class*="no_results-text"]{
+  color:rgba(240,239,233,.5) !important;
+  padding:60px 0 !important;
+}
+
+/* ── Loader ── */
+#momence-plugin-host-schedule [class*="sc-1oszok8"] div{background:var(--cyan) !important}
+
+/* ── Show More button (lives outside widget, never touched by forceStyles) ── */
+#sabda-show-more-btn{
+  max-width:920px;margin:0 auto;
+  padding:36px 40px 48px;
+  text-align:center;
+}
+.sabda-show-more{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:13px 36px;
+  background:rgba(240,239,233,.04);border:1px solid rgba(240,239,233,.12);
+  border-radius:10px;color:#02F3C5;font-family:'DM Sans',sans-serif;
+  font-size:.84rem;font-weight:600;letter-spacing:.03em;cursor:pointer;
+  transition:background .25s,border-color .25s;
+}
+.sabda-show-more:hover{background:rgba(2,243,197,.06);border-color:rgba(2,243,197,.25)}
+.sabda-show-more svg{transition:transform .25s}
+.sabda-show-more:hover svg{transform:translateY(2px)}
+
+/* ── Member login prompt (lives outside widget — immune to forceStyles/React) ── */
+.schedule-wrapper{
+  position:relative;
+  max-width:920px;margin:0 auto;
+}
+.sabda-member-login{
+  position:absolute;
+  right:40px;
+  top:0;
+  z-index:12;
+  opacity:0;
+  transition:opacity .3s;
+  pointer-events:none;
+}
+.sabda-member-login.visible{opacity:1;pointer-events:auto}
+.sabda-member-login a{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:8px 16px;
+  font-size:.72rem;letter-spacing:.02em;font-family:'DM Sans',sans-serif;font-weight:500;
+  color:rgba(240,239,233,.45);
+  background:transparent;
+  border:1px solid rgba(240,239,233,.12);
+  border-radius:99px;
+  white-space:nowrap;
+  transition:color .25s,border-color .25s,background .25s;
+  text-decoration:none;
+  cursor:pointer;
+}
+.sabda-member-login a:hover{
+  color:#02F3C5;
+  border-color:rgba(2,243,197,.25);
+  background:rgba(2,243,197,.04);
+}
+.sabda-member-login svg{
+  width:13px;height:13px;
+  stroke:currentColor;
+  fill:none;
+  flex-shrink:0;
+}
+@media(max-width:900px){
+  #sabda-show-more-btn{padding:28px 16px 40px}
+}
+
+/* ── One-click booking banner ── */
+#momence-plugin-host-schedule [class*="fS"]{background:rgba(2,243,197,.06) !important}
+
+/* ── COMPACT PRICING SUMMARY ── */
+.pricing-summary{padding:80px 80px 0;position:relative;z-index:2;border-top:1px solid rgba(240,239,233,.06)}
+.ps-hdr{text-align:center;margin-bottom:44px}
+.ps-hdr h2{font-family:'PT Serif',serif;font-size:2.2rem;font-weight:400;margin-bottom:10px}
+.ps-hdr p{color:var(--white38);font-size:.92rem;max-width:460px;margin:0 auto;line-height:1.7}
+.ps-link{color:var(--cyan);text-decoration:underline;text-underline-offset:3px}
+.ps-link:hover{color:#18ffda}
+.ps-grid{display:flex;justify-content:center;gap:20px;max-width:640px;margin:0 auto}
+.ps-card{display:flex;flex-direction:column;align-items:center;padding:28px 32px;border-radius:16px;border:1px solid rgba(240,239,233,.08);background:rgba(240,239,233,.02);transition:border-color .3s,background .3s,transform .15s;position:relative;flex:1;max-width:200px}
+.ps-card:hover{border-color:rgba(2,243,197,.2);background:rgba(2,243,197,.02);transform:translateY(-2px)}
+.ps-card.ps-hero{border-color:rgba(2,243,197,.25);background:rgba(2,243,197,.03)}
+.ps-badge{position:absolute;top:-10px;background:var(--salmon);color:var(--navy);font-size:.55rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:4px 12px;border-radius:20px;white-space:nowrap}
+.ps-label{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--white60);font-weight:500;margin-bottom:8px}
+.ps-price{font-family:'PT Serif',serif;font-size:1.8rem;font-weight:400;color:var(--white)}
+.ps-price span{font-size:.8rem;color:var(--white60);font-family:'DM Sans',sans-serif}
+.ps-sub{font-size:.72rem;color:var(--cyan);margin-top:4px;font-weight:500}
+.ps-cta{text-align:center;margin-top:36px;padding-bottom:20px}
+.ps-cta a{display:inline-flex;align-items:center;gap:8px;color:var(--cyan);font-size:.85rem;font-weight:600;letter-spacing:.04em;transition:opacity .25s}
+.ps-cta a:hover{opacity:.75}
+
+
+/* ── FOOTER ── */
+footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);background:rgba(9,12,38,.6);position:relative;z-index:2}
+.ft-in{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:44px}
+.ft-brand{text-align:left}
+.ft-brand img:first-child{height:36px;width:auto;margin-bottom:16px;display:block;margin-right:auto}
+.ft-pillars{display:flex;gap:12px;margin-top:14px;font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--white38)}
+.ft-pillars .fp-art{color:var(--cyan)}.ft-pillars .fp-tech{color:var(--white)}.ft-pillars .fp-well{color:var(--salmon)}
+.ft-symbol{width:200px;height:auto;margin-top:28px;opacity:.35;display:block}
+.ft-col h4{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;margin-bottom:20px;font-family:'DM Sans',sans-serif}
+.ft-col:nth-child(2) h4{color:var(--cyan)}
+.ft-col:nth-child(3) h4{color:var(--salmon)}
+.ft-col:nth-child(4) h4{color:var(--white60)}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.ft-col a{font-size:.87rem;color:var(--white38);transition:color .2s}
+.ft-col a:hover{color:var(--white)}
+.ft-bot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding-top:30px;border-top:1px solid rgba(240,239,233,.06);font-size:.74rem;color:rgba(240,239,233,.2)}
+.ft-legal{display:flex;gap:24px}
+.ft-legal a:hover{color:var(--white38)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav{padding:0 24px}.nav-links{display:none}
+  .nav-social svg{width:15px;height:15px}.nav-social{gap:10px;padding-left:14px;margin-left:14px}.lang-sel a{padding:4px 5px;font-size:.65rem}
+  .nav-login{padding-left:14px;margin-left:14px}.nav-login a{font-size:.65rem;gap:5px}
+  .hero-banner{height:240px}.hero-overlay h1{font-size:2rem}.hero-overlay{bottom:32px}
+  #momence-plugin-host-schedule{padding:24px 16px 12px}
+  .sabda-member-login{right:16px}
+  .sabda-member-login a{font-size:.65rem;padding:6px 12px}
+  .pricing-summary{padding:60px 24px 0}
+  .ps-grid{flex-wrap:wrap;gap:14px}.ps-card{max-width:none;min-width:120px}
+  footer{padding:36px 24px 22px}.ft-in{grid-template-columns:1fr 1fr}
+}
+@media(max-width:520px){
+  .ft-in{grid-template-columns:1fr}.hero-overlay h1{font-size:1.7rem}
+  .hero-banner{height:200px}
+  .ps-grid{flex-direction:column;align-items:center}.ps-card{width:100%;max-width:220px}
+}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<canvas id="globalParticles"></canvas>
+
+<!-- NAV -->
+<nav>
+  <a href="SABDA_v16.html" class="nav-logo"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA"></a>
+  <ul class="nav-links">
+    <li><a href="classes.html" class="active">Classes</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="rent-corporate.html">Rent & Corporate</a></li>
+    <li><a href="#">Listening Sessions</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-sel">
+      <a href="#" class="active">EN</a><a href="#">ES</a><a href="#">CA</a>
+    </div>
+    <div class="nav-social">
+      <a href="https://instagram.com/sabdastudio" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 1.5A4 4 0 0 0 3.5 7.5v9a4 4 0 0 0 4 4h9a4 4 0 0 0 4-4v-9a4 4 0 0 0-4-4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.25-2.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg></a>
+      <a href="https://tiktok.com/@sabdastudio" target="_blank" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0 1 13.8 3h-3v12.4a2.6 2.6 0 0 1-2.6 2.6 2.6 2.6 0 0 1-2.6-2.6A2.6 2.6 0 0 1 8.2 12.8c.28 0 .56.04.82.12V9.84A5.6 5.6 0 0 0 2.6 15.4a5.6 5.6 0 0 0 5.6 5.6 5.6 5.6 0 0 0 5.6-5.6V9.72a7.3 7.3 0 0 0 4.2 1.32V8.02a4.28 4.28 0 0 1-1.4-2.2z"/></svg></a>
+    </div>
+    <div class="nav-login">
+      <a href="https://momence.com/sign-in" target="_blank"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Log In</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO BANNER — swap src with your rectangular hero image -->
+<div class="hero-banner">
+  <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_005.jpg" alt="SABDA immersive studio">
+  <div class="hero-overlay">
+    <h1>Our <span class="cyan">Schedule</span></h1>
+    <p>Browse classes, filter by type or teacher, and book your spot — all in real time.</p>
+  </div>
+</div>
+
+<!-- SCHEDULE WRAPPER — relative container for absolute member login positioning -->
+<div class="schedule-wrapper">
+
+<!-- MEMBER LOGIN PROMPT — lives outside widget, never touched by forceStyles -->
+<div class="sabda-member-login">
+  <a href="https://momence.com/sign-in" target="_blank"><svg viewBox="0 0 24 24" width="13" height="13" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Already a member? Log in</a>
+</div>
+
+<!-- MOMENCE LIVE WIDGET (reskinned) — "Teachers" wording via i18n -->
+<div id="momence-plugin-host-schedule"></div>
+<script src="https://momence.com/plugin/host-schedule/host-schedule.js"
+  host_id="54278"
+  locale="en"
+  i18n='{"TEACHER_SELECT_PLACEHOLDER":"Teachers","TEACHER":"Teacher","SUBSTITUTES_FOR_SHORT":"Sub for"}'>
+</script>
+<script>
+/* ═══════════════════════════════════════════════════════
+   MOMENCE WIDGET — SABDA DARK THEME
+   Uses JS to force styles because styled-components
+   override CSS even with !important.
+   CRITICAL: Never move DOM nodes — breaks React reconciliation.
+═══════════════════════════════════════════════════════ */
+(function(){
+  const el=document.getElementById('momence-plugin-host-schedule');
+  if(!el)return;
+
+  /* Track which filter is active — survives React re-renders */
+  let activeFilter='today'; /* 'today' | 'tomorrow' | 'all' */
+
+  /* ── Force dark theme on ALL widget elements ── */
+  function forceStyles(){
+    /* Every element inside widget: white text, transparent bg */
+    el.querySelectorAll('*').forEach(node=>{
+      const s=node.style;
+      const tag=node.tagName;
+      const cls=node.className||'';
+
+      /* Skip images */
+      if(tag==='IMG')return;
+
+      /* Skip our custom Show More button and its children */
+      if(node.classList&&node.classList.contains('sabda-show-more'))return;
+      if(node.closest&&node.closest('.sabda-show-more'))return;
+
+      /* Check if this is the active filter button (by data attribute — survives React re-renders) */
+      const isActiveFilter=node.getAttribute&&node.getAttribute('data-sabda-filter')===activeFilter;
+
+      /* Force text color to white (skip active filter buttons) */
+      if(!isActiveFilter&&!(node.classList&&node.classList.contains('sabda-active'))){
+        s.setProperty('color','#f0efe9','important');
+      }
+
+      /* Force backgrounds transparent (except cards and book buttons) */
+      if(tag==='ARTICLE'){
+        s.setProperty('background','rgba(19,24,66,.65)','important');
+        s.setProperty('border-color','rgba(240,239,233,.06)','important');
+        s.setProperty('border-radius','16px','important');
+      }else if(
+        (tag==='A'||tag==='BUTTON')&&
+        (cls.includes('primary')||cls.includes('sc-12tukza'))
+      ){
+        /* Book Now buttons — cyan */
+        s.setProperty('background','#02F3C5','important');
+        s.setProperty('color','#0e1235','important');
+        s.setProperty('border-color','#02F3C5','important');
+      }else if(isActiveFilter||(node.classList&&node.classList.contains('sabda-active'))){
+        /* Active filter button — cyan highlight */
+        s.setProperty('background','rgba(2,243,197,.12)','important');
+        s.setProperty('border-color','rgba(2,243,197,.35)','important');
+        s.setProperty('color','#02F3C5','important');
+      }else{
+        s.setProperty('background-color','transparent','important');
+        s.setProperty('background','transparent','important');
+      }
+
+      /* SVGs */
+      if(tag==='SVG'||tag==='PATH'||tag==='CIRCLE'||tag==='LINE'||tag==='POLYLINE'){
+        s.setProperty('stroke','#f0efe9','important');
+        s.setProperty('color','#f0efe9','important');
+      }
+
+      /* Borders on buttons (skip active — already styled above) */
+      if(tag==='BUTTON'&&!(node.classList&&node.classList.contains('sabda-active'))){
+        s.setProperty('border-color','rgba(240,239,233,.12)','important');
+      }
+    });
+
+    /* Specific overrides */
+    /* h3 (CLASS label) → salmon */
+    el.querySelectorAll('h3').forEach(h=>{
+      h.style.setProperty('color','#F8A6A3','important');
+    });
+
+    /* h4 (class title) → PT Serif */
+    el.querySelectorAll('h4').forEach(h=>{
+      h.style.setProperty('font-family','PT Serif,serif','important');
+      h.style.setProperty('font-weight','400','important');
+    });
+
+    /* Today's day → cyan */
+    el.querySelectorAll('[data-is-today="true"]').forEach(d=>{
+      d.style.setProperty('color','#02F3C5','important');
+      d.querySelectorAll('*').forEach(c=>c.style.setProperty('color','#02F3C5','important'));
+    });
+
+    /* ── FORCE DAY SELECTOR LAYOUT (the critical fix) ── */
+    el.querySelectorAll('button[class*="zh2ey8-4"], .momence-day_selection-item').forEach(btn=>{
+      btn.style.setProperty('display','flex','important');
+      btn.style.setProperty('flex-direction','column','important');
+      btn.style.setProperty('align-items','center','important');
+      btn.style.setProperty('justify-content','center','important');
+      btn.style.setProperty('flex','1 1 auto','important');
+      btn.style.setProperty('min-width','50px','important');
+      btn.style.setProperty('min-height','44px','important');
+      btn.style.setProperty('padding','4px 2px','important');
+      btn.style.setProperty('overflow','visible','important');
+      btn.style.setProperty('opacity','1','important');
+      btn.style.setProperty('visibility','visible','important');
+      btn.style.setProperty('height','auto','important');
+      btn.style.setProperty('width','auto','important');
+      /* Force all children visible too */
+      btn.querySelectorAll('*').forEach(child=>{
+        child.style.setProperty('display','block','important');
+        child.style.setProperty('visibility','visible','important');
+        child.style.setProperty('opacity','1','important');
+        child.style.setProperty('overflow','visible','important');
+        child.style.setProperty('height','auto','important');
+      });
+    });
+    /* Force day selector containers visible */
+    el.querySelectorAll('.momence-day_selection, .momence-day_selection-list, .momence-day_selection-list-days, [class*="g6tqw9"]').forEach(c=>{
+      c.style.setProperty('display','flex','important');
+      c.style.setProperty('overflow','visible','important');
+      c.style.setProperty('height','auto','important');
+      c.style.setProperty('min-height','44px','important');
+      c.style.setProperty('visibility','visible','important');
+      c.style.setProperty('opacity','1','important');
+    });
+
+    /* Date labels (TOMORROW, etc) → subdued */
+    el.querySelectorAll('time').forEach(t=>{
+      t.style.setProperty('color','rgba(240,239,233,.5)','important');
+    });
+  }
+
+  /* ── Rename Practitioners → Teachers ── */
+  function patchText(){
+    el.querySelectorAll('button,span').forEach(b=>{
+      b.childNodes.forEach(n=>{
+        if(n.nodeType===3){
+          if(n.textContent.includes('Practitioners'))n.textContent=n.textContent.replace(/Practitioners/g,'Teachers');
+          if(n.textContent.includes('Practitioner'))n.textContent=n.textContent.replace(/Practitioner/g,'Teacher');
+        }
+      });
+    });
+  }
+
+  /* ── Hide unwanted elements ── */
+  function hideElements(){
+    /* Powered by Momence */
+    el.querySelectorAll('[class*="powered_by"],[class*="powered-by"],[class*="poweredBy"]').forEach(e=>e.style.setProperty('display','none','important'));
+    /* Location on cards */
+    el.querySelectorAll('[class*="in_person"]').forEach(e=>e.style.setProperty('display','none','important'));
+    /* Locations dropdown (last filter) */
+    const filters=el.querySelector('[class*="session_filters"]');
+    if(filters&&filters.lastElementChild)filters.lastElementChild.style.setProperty('display','none','important');
+    /* Price on cards */
+    el.querySelectorAll('[class*="price"]').forEach(e=>{
+      if(!e.closest('[class*="pricing"]'))e.style.setProperty('display','none','important');
+    });
+    /* Pagination — hide all page number navigation */
+    el.querySelectorAll('[class*="pagination"],[class*="Pagination"],[class*="pager"]').forEach(e=>e.style.setProperty('display','none','important'));
+    /* System row */
+    el.querySelectorAll('[class*="sys_row"]').forEach(e=>e.style.setProperty('display','none','important'));
+
+    /* ── Hide no-results illustration, keep only the text ── */
+    el.querySelectorAll('[class*="no_results"],[class*="noResults"],[class*="no-results"]').forEach(container=>{
+      Array.from(container.children).forEach(child=>{
+        /* Keep the text element, hide everything else (illustration wrapper) */
+        const isText=child.className&&(child.className.includes('text')||child.className.includes('Text'));
+        const isTextTag=child.tagName==='P'||child.tagName==='SPAN';
+        if(!isText&&!isTextTag){
+          child.style.setProperty('display','none','important');
+        }
+      });
+    });
+
+    /* ── REORDER QUICK FILTERS: TODAY, TOMORROW, SHOW ALL ── */
+    const qf=el.querySelector('.momence-quick_filters');
+    if(qf&&!qf._reordered){
+      const todayBtn=qf.querySelector('.momence-quick_filters-today');
+      const allBtn=qf.querySelector('.momence-quick_filters-all');
+      if(todayBtn&&allBtn){
+        /* Create TOMORROW button cloned from TODAY for matching style */
+        const tmrBtn=todayBtn.cloneNode(true);
+        tmrBtn.textContent='TOMORROW';
+        tmrBtn.className=todayBtn.className;
+        tmrBtn.classList.remove('momence-quick_filters-today');
+        tmrBtn.setAttribute('data-sabda-filter','tomorrow');
+        todayBtn.setAttribute('data-sabda-filter','today');
+        allBtn.setAttribute('data-sabda-filter','all');
+        /* Click handler: click the > arrow then click first day of next week */
+        tmrBtn.addEventListener('click',function(){
+          activeFilter='tomorrow';
+          setActiveImmediate(this);
+          const todayDay=el.querySelector('[data-is-today="true"]');
+          if(!todayDay||!todayDay.parentElement)return;
+          const siblings=Array.from(todayDay.parentElement.children).filter(c=>c.tagName==='BUTTON'&&c.classList.contains('momence-day_selection-item'));
+          const todayIdx=siblings.indexOf(todayDay);
+          if(todayIdx<siblings.length-1){
+            siblings[todayIdx+1].click();
+          } else {
+            const rightArrow=el.querySelector('.momence-day_selection-arrow_right');
+            if(rightArrow){
+              rightArrow.click();
+              let attempts=0;
+              const tryClick=setInterval(()=>{
+                attempts++;
+                const newDays=el.querySelectorAll('.momence-day_selection-item:not([disabled])');
+                if(newDays.length>0){newDays[0].click();clearInterval(tryClick);}
+                if(attempts>10)clearInterval(tryClick);
+              },300);
+            }
+          }
+        });
+        /* Reorder: TODAY first, then TOMORROW, then SHOW ALL */
+        qf.insertBefore(todayBtn,qf.firstChild);
+        qf.insertBefore(tmrBtn,todayBtn.nextSibling);
+        qf.appendChild(allBtn);
+        qf._reordered=true;
+
+        /* Track active + reset session limit on click */
+        todayBtn.addEventListener('click',function(){activeFilter='today';maxVisibleDates=1;setActiveImmediate(this);});
+        tmrBtn.addEventListener('click',function(){activeFilter='tomorrow';maxVisibleDates=1;setActiveImmediate(this);});
+        allBtn.addEventListener('click',function(){activeFilter='all';maxVisibleDates=3;setActiveImmediate(this);});
+      }
+    }
+
+    /* ── CRITICAL: Neutralize any position:fixed children ── */
+    /* Momence renders modal overlays with position:fixed that escape the widget */
+    el.querySelectorAll('*').forEach(node=>{
+      const pos=getComputedStyle(node).position;
+      if(pos==='fixed'){
+        node.style.setProperty('position','relative','important');
+        node.style.setProperty('top','auto','important');
+        node.style.setProperty('left','auto','important');
+        node.style.setProperty('right','auto','important');
+        node.style.setProperty('bottom','auto','important');
+      }
+    });
+    /* Fix Teachers dropdown z-index — must sit above class cards */
+    el.querySelectorAll('[role="listbox"], [class*="select-popup"], [class*="cmpnl9-2"]').forEach(popup=>{
+      popup.style.setProperty('z-index','999','important');
+      popup.style.setProperty('position','absolute','important');
+      popup.style.setProperty('background','#131842','important');
+    });
+    el.querySelectorAll('[class*="third_row"], [class*="session_filters"]').forEach(row=>{
+      row.style.setProperty('position','relative','important');
+      row.style.setProperty('z-index','10','important');
+    });
+    /* Teachers dropdown — compact, zero extra margin */
+    el.querySelectorAll('.momence-select').forEach(s=>{
+      s.style.setProperty('max-width','140px','important');
+      s.style.setProperty('width','140px','important');
+      s.style.setProperty('margin','0','important');
+      s.style.setProperty('flex','0 0 140px','important');
+    });
+    el.querySelectorAll('.momence-select-button').forEach(b=>{
+      b.style.setProperty('padding','8px 12px','important');
+      b.style.setProperty('font-size','.8rem','important');
+      b.style.setProperty('margin','0','important');
+      b.style.setProperty('width','100%','important');
+    });
+    /* Session filters container — kill extra spacing */
+    el.querySelectorAll('.momence-session_filters,[class*="session_filters"]').forEach(f=>{
+      f.style.setProperty('margin','0','important');
+      f.style.setProperty('padding','0','important');
+      f.style.setProperty('flex','0 0 auto','important');
+    });
+    /* The inner wrapper div inside session_filters */
+    el.querySelectorAll('.momence-session_filters > div, [class*="d94g93-1"]').forEach(d=>{
+      d.style.setProperty('margin','0','important');
+      d.style.setProperty('padding','0','important');
+    });
+    /* Third row — uniform flex layout, kill spacer */
+    el.querySelectorAll('.momence-host_schedule-third_row,[class*="third_row"]').forEach(row=>{
+      row.style.setProperty('display','flex','important');
+      row.style.setProperty('align-items','center','important');
+      row.style.setProperty('gap','8px','important');
+    });
+    el.querySelectorAll('[class*="fqxJDI"]').forEach(s=>s.style.setProperty('display','none','important'));
+  }
+
+  /* ── Apply CSS variables ON THE WIDGET ELEMENT ITSELF ── */
+  /* THIS IS THE KEY FIX: Momence sets variables on the widget container,
+     which overrides :root. We must set ours on the same element to win. */
+  function applyVars(){
+    /* Set on widget container AND on every div inside it (Momence may
+       set vars on a nested wrapper div too) */
+    const allVars={
+      '--momence-background':'#0e1235',
+      '--momence-white':'#131842',
+      '--momence-primary-color':'#f0efe9',
+      '--momence-secondary-color':'rgba(240,239,233,.6)',
+      '--momence-tertiary-color':'rgba(240,239,233,.38)',
+      '--momence-primary-500':'#02F3C5',
+      '--momence-primary-400':'rgba(2,243,197,.55)',
+      '--momence-primary-300':'rgba(2,243,197,.3)',
+      '--momence-primary-200':'rgba(2,243,197,.16)',
+      '--momence-primary-100':'rgba(2,243,197,.08)',
+      '--momence-primary-050':'rgba(2,243,197,.04)',
+      '--momence-primary-600':'#00d4ac',
+      '--momence-black-500':'#f0efe9',
+      '--momence-black-400':'rgba(240,239,233,.8)',
+      '--momence-black-300':'rgba(240,239,233,.65)',
+      '--momence-black-200':'rgba(240,239,233,.5)',
+      '--momence-black-100':'rgba(240,239,233,.35)',
+      '--momence-grey-050':'rgba(240,239,233,.03)',
+      '--momence-grey-100':'rgba(240,239,233,.05)',
+      '--momence-grey-200':'rgba(240,239,233,.08)',
+      '--momence-grey-300':'rgba(240,239,233,.1)',
+      '--momence-grey-400':'rgba(240,239,233,.15)',
+      '--momence-grey-500':'rgba(240,239,233,.2)',
+      '--momence-grey-600':'rgba(240,239,233,.28)',
+      '--momence-grey-700':'rgba(240,239,233,.38)',
+      '--momence-grey-800':'rgba(240,239,233,.48)',
+      '--momence-grey-900':'rgba(240,239,233,.6)',
+      '--momence-session-separator-color':'rgba(240,239,233,.06)',
+    };
+    /* Apply to widget root */
+    for(const[k,v]of Object.entries(allVars)){
+      el.style.setProperty(k,v,'important');
+    }
+    /* Apply to first 3 child divs (Momence nests the variable container) */
+    el.querySelectorAll(':scope > div, :scope > div > div, :scope > div > div > div').forEach(d=>{
+      for(const[k,v]of Object.entries(allVars)){
+        d.style.setProperty(k,v,'important');
+      }
+    });
+    /* Also set on :root as fallback */
+    for(const[k,v]of Object.entries(allVars)){
+      document.documentElement.style.setProperty(k,v);
+    }
+  }
+
+  /* ── Limit visible sessions to N date groups, add Show More ── */
+  let maxVisibleDates=1; /* Start with 1 (TODAY only) */
+  let limitTimer=null;
+  function limitSessions(){
+    clearTimeout(limitTimer);
+    limitTimer=setTimeout(_doLimit,250);
+  }
+  function _doLimit(){
+    const list=el.querySelector('.momence-host_schedule-session_list');
+    if(!list)return;
+
+    const children=Array.from(list.children);
+    const dateLabels=children.filter(c=>c.tagName==='TIME'&&c.classList.contains('momence-host_schedule-session_list-date_label'));
+
+    /* In SHOW ALL mode: hide sessions beyond maxVisibleDates */
+    if(activeFilter==='all'){
+      if(dateLabels.length<=maxVisibleDates){
+        /* All visible — unhide everything, hide button */
+        children.forEach(c=>{
+          if(c.hasAttribute('data-sabda-hidden')){
+            c.style.removeProperty('display');
+            c.removeAttribute('data-sabda-hidden');
+          }
+        });
+        const oldBtn=document.getElementById('sabda-show-more-btn');
+        if(oldBtn)oldBtn.style.display='none';
+        return;
+      }
+      /* Hide from cutoff onwards */
+      const cutoffLabel=dateLabels[maxVisibleDates];
+      let hiding=false;
+      for(const c of children){
+        if(c===cutoffLabel)hiding=true;
+        if(hiding&&(c.tagName==='TIME'||c.tagName==='ARTICLE')){
+          c.style.setProperty('display','none','important');
+          c.setAttribute('data-sabda-hidden','true');
+        } else if(!hiding&&c.hasAttribute('data-sabda-hidden')){
+          c.style.removeProperty('display');
+          c.removeAttribute('data-sabda-hidden');
+        }
+      }
+    }
+
+    /* Always show the Show More button (in today/tomorrow mode it switches to show all) */
+    let btn=document.getElementById('sabda-show-more-btn');
+    if(!btn){
+      btn=document.createElement('div');
+      btn.id='sabda-show-more-btn';
+      btn.innerHTML='<button class="sabda-show-more" type="button">Show More <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>';
+      btn.querySelector('button').addEventListener('click',function(e){
+        e.preventDefault();e.stopPropagation();
+        if(activeFilter!=='all'){
+          /* Switch to SHOW ALL mode */
+          const allBtn=el.querySelector('[data-sabda-filter="all"]');
+          if(allBtn){
+            activeFilter='all';
+            maxVisibleDates+=1;
+            allBtn.click();
+            setTimeout(()=>{_doLimit();applyActiveState();},400);
+            return;
+          }
+        }
+        maxVisibleDates+=1;
+        _doLimit();
+      });
+      el.parentElement.insertBefore(btn,el.nextSibling);
+    }
+    btn.style.display='block';
+  }
+
+  /* ── Immediately apply active styles on click (before React re-renders) ── */
+  function setActiveImmediate(clickedBtn){
+    const qf=el.querySelector('.momence-quick_filters');
+    if(!qf)return;
+    qf.querySelectorAll('button[data-sabda-filter]').forEach(b=>{
+      b.style.setProperty('background','transparent','important');
+      b.style.setProperty('border-color','rgba(240,239,233,.12)','important');
+      b.style.setProperty('color','#f0efe9','important');
+    });
+    clickedBtn.style.setProperty('background','rgba(2,243,197,.12)','important');
+    clickedBtn.style.setProperty('border-color','rgba(2,243,197,.35)','important');
+    clickedBtn.style.setProperty('color','#02F3C5','important');
+  }
+
+  /* ── Re-apply active filter highlight (survives React re-renders) ── */
+  function applyActiveState(){
+    const qf=el.querySelector('.momence-quick_filters');
+    if(!qf)return;
+    qf.querySelectorAll('button[data-sabda-filter]').forEach(b=>{
+      const filter=b.getAttribute('data-sabda-filter');
+      if(filter===activeFilter){
+        b.style.setProperty('background','rgba(2,243,197,.12)','important');
+        b.style.setProperty('border-color','rgba(2,243,197,.35)','important');
+        b.style.setProperty('color','#02F3C5','important');
+      }else{
+        b.style.setProperty('background','transparent','important');
+        b.style.setProperty('border-color','rgba(240,239,233,.12)','important');
+        b.style.setProperty('color','#f0efe9','important');
+      }
+    });
+  }
+
+  /* ── Run everything ── */
+  function runAll(){
+    applyVars();
+    forceStyles();
+    patchText();
+    hideElements();
+    applyActiveState(); /* AFTER forceStyles so it wins */
+    limitSessions();
+    el.classList.add('themed');
+  }
+
+  /* Watch for widget mutations — debounced to prevent rapid-fire runAll */
+  let rafId=null;
+  const obs=new MutationObserver(()=>{
+    if(rafId)cancelAnimationFrame(rafId);
+    rafId=requestAnimationFrame(()=>{rafId=null;runAll();});
+  });
+  obs.observe(el,{childList:true,subtree:true});
+  obs.observe(document.head,{childList:true,subtree:true});
+
+  /* Run on timers for initial load */
+  [300,600,1000,1500,2000,3000,4000,6000,8000].forEach(ms=>setTimeout(runAll,ms));
+
+  /* Auto-click TODAY button once on load */
+  let todayClicked=false;
+  [800,1500,2500].forEach(ms=>setTimeout(()=>{
+    if(todayClicked)return;
+    const tb=el.querySelector('.momence-quick_filters-today');
+    if(tb){tb.click();todayClicked=true;}
+  },ms));
+
+  /* PERSISTENT: keep enforcing every 500ms for 30 seconds to beat React re-renders */
+  let tick=0;
+  const persist=setInterval(()=>{
+    applyVars(); /* Variables are the critical fix — always re-apply */
+    if(++tick>60)clearInterval(persist); /* Stop after 30s */
+  },500);
+})();
+</script>
+</div><!-- /schedule-wrapper -->
+
+<script>
+/* Position member login button at the same level as the third row (filter buttons) */
+(function(){
+  const loginBtn=document.querySelector('.sabda-member-login');
+  const wrapper=document.querySelector('.schedule-wrapper');
+  if(!loginBtn||!wrapper)return;
+  function positionLogin(){
+    const el=document.getElementById('momence-plugin-host-schedule');
+    if(!el)return;
+    const thirdRow=el.querySelector('.momence-host_schedule-third_row,[class*="third_row"]');
+    if(!thirdRow)return;
+    const wrapperRect=wrapper.getBoundingClientRect();
+    const rowRect=thirdRow.getBoundingClientRect();
+    /* Vertical: center with filter row */
+    const topOffset=rowRect.top-wrapperRect.top;
+    const loginH=loginBtn.offsetHeight;
+    const rowH=rowRect.height;
+    const centeredTop=topOffset+((rowH-loginH)/2);
+    loginBtn.style.top=Math.round(centeredTop)+'px';
+    /* Horizontal: align right edge with class card right edge */
+    const firstCard=el.querySelector('article[data-session_id]');
+    if(firstCard){
+      const cardRect=firstCard.getBoundingClientRect();
+      const rightOffset=wrapperRect.right-cardRect.right;
+      loginBtn.style.right=Math.max(0,Math.round(rightOffset))+'px';
+    }
+    loginBtn.classList.add('visible');
+  }
+  [800,1200,2000,3000,5000,8000].forEach(ms=>setTimeout(positionLogin,ms));
+  new MutationObserver(()=>requestAnimationFrame(positionLogin))
+    .observe(document.getElementById('momence-plugin-host-schedule')||document.body,{childList:true,subtree:true});
+})();
+</script>
+
+<!-- COMPACT PRICING SUMMARY — quick reference, links to full pricing page -->
+<section class="pricing-summary">
+  <div class="ps-hdr">
+    <h2>Pricing</h2>
+    <p>Quick overview — see full pricing, memberships and gift cards on our <a href="pricing.html" class="ps-link">pricing page</a>.</p>
+  </div>
+  <div class="ps-grid">
+    <a href="https://momence.com/m/443934" target="_blank" class="ps-card">
+      <span class="ps-label">Trial Class</span>
+      <span class="ps-price">€16</span>
+    </a>
+    <a href="https://momence.com/m/443935" target="_blank" class="ps-card ps-hero">
+      <span class="ps-badge">Most Popular</span>
+      <span class="ps-label">3 Pack</span>
+      <span class="ps-price">€48</span>
+      <span class="ps-sub">€16/class</span>
+    </a>
+    <a href="https://momence.com/m/431216" target="_blank" class="ps-card">
+      <span class="ps-label">Unlimited</span>
+      <span class="ps-price">€130<span>/mo</span></span>
+    </a>
+  </div>
+  <div class="ps-cta">
+    <a href="pricing.html">View All Options & Memberships <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-in">
+    <div class="ft-brand">
+      <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA">
+      <div class="ft-pillars"><span class="fp-art">Art</span><span>·</span><span class="fp-tech">Tech</span><span>·</span><span class="fp-well">Wellness</span></div>
+      <img class="ft-symbol" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20symbol%20multi-colored%20(1).png" alt="SABDA symbol">
+    </div>
+    <div class="ft-col"><h4>Explore</h4><ul>
+      <li><a href="classes.html">Classes</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="rent-corporate.html">Rent & Corporate</a></li>
+      <li><a href="#">Listening Sessions</a></li>
+      <li><a href="#">About</a></li>
+    </ul></div>
+    <div class="ft-col"><h4>Connect</h4><ul>
+      <li><a href="https://instagram.com/sabdastudio" target="_blank">Instagram</a></li>
+      <li><a href="https://tiktok.com/@sabdastudio" target="_blank">TikTok</a></li>
+      <li><a href="#">Newsletter</a></li>
+    </ul></div>
+    <div class="ft-col"><h4>Contact</h4><ul>
+      <li><a href="mailto:info@sabdastudio.com">info@sabdastudio.com</a></li>
+      <li>C/Muntaner 83B</li>
+      <li>08011 Barcelona</li>
+    </ul></div>
+  </div>
+  <div class="ft-bot">
+    <span>© 2026 SABDA STUDIO S.L.</span>
+    <div class="ft-legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a></div>
+  </div>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════════════════
+   GLOBAL PARTICLE FIELD
+═══════════════════════════════════════════════════════ */
+(function(){
+  const canvas=document.getElementById('globalParticles');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  let W,H,mouseX=-9999,mouseY=-9999;
+  function resize(){W=window.innerWidth;H=window.innerHeight;canvas.width=W*devicePixelRatio;canvas.height=H*devicePixelRatio;ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0)}
+  resize();window.addEventListener('resize',resize);
+  document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY});
+  const COUNT=960;
+  const particles=Array.from({length:COUNT},()=>({
+    x:Math.random()*3000,y:Math.random(),vx:0.008+Math.random()*0.06,vy:(Math.random()-0.5)*0.003,
+    fx:0,fy:0,size:0.3+Math.random()*1.5,glow:4+Math.random()*16,
+    color:(()=>{const c=Math.random();return c<0.38?[2,243,197]:c<0.72?[248,166,163]:[32,57,153]})(),
+    opacity:0.015+Math.random()*0.08,phase:Math.random()*Math.PI*2,
+    waveAmp:0.01+Math.random()*0.04,waveFreq:0.0001+Math.random()*0.0005
+  }));
+  let t=0;
+  function draw(){
+    t++;ctx.clearRect(0,0,W,H);
+    particles.forEach(p=>{
+      p.x+=p.vx;p.y+=p.vy;
+      const waveY=p.waveAmp*Math.sin(p.phase+t*p.waveFreq);
+      let drawX=p.x+p.fx,drawY=(p.y+waveY)*H+p.fy;
+      const dx=drawX-mouseX,dy=drawY-mouseY,dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<120&&dist>0){const force=(1-dist/120)*2.5;p.fx+=(dx/dist)*force;p.fy+=(dy/dist)*force}
+      p.fx*=0.94;p.fy*=0.94;
+      drawX=p.x+p.fx;drawY=(p.y+waveY)*H+p.fy;
+      if(p.x>W+60){p.x=-50;p.y=Math.random();p.fx=0;p.fy=0}
+      if(p.y<-0.05)p.y=1.05;if(p.y>1.05)p.y=-0.05;
+      const pulse=0.4+0.6*Math.sin(p.phase+t*0.001),op=p.opacity*pulse;
+      if(op<0.002)return;
+      const g=ctx.createRadialGradient(drawX,drawY,0,drawX,drawY,p.glow);
+      g.addColorStop(0,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.5})`);
+      g.addColorStop(0.3,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.18})`);
+      g.addColorStop(0.7,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.04})`);
+      g.addColorStop(1,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},0)`);
+      ctx.fillStyle=g;ctx.beginPath();ctx.arc(drawX,drawY,p.glow,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.arc(drawX,drawY,p.size*0.5,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${Math.min(0.6,op*2)})`;ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+})();
+</script>
+</body>
+</html>
