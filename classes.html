@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- classes-v22 -->
+<meta charset="UTF-8"><!-- classes-v23 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Classes & Schedule — SABDA Studio Barcelona</title>
 <meta name="description" content="Explore our weekly schedule of immersive yoga, pilates, sound healing, breathwork, ecstatic dance and meditation classes. Book your spot now.">
@@ -367,23 +367,33 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 .sabda-show-more:hover svg{transform:translateY(2px)}
 
 /* ── Member login prompt (lives outside widget — immune to forceStyles/React) ── */
-.sabda-member-login{
+.schedule-wrapper{
+  position:relative;
   max-width:920px;margin:0 auto;
-  padding:16px 40px 0;
-  display:flex;justify-content:flex-end;
-  position:relative;z-index:2;
-  box-sizing:border-box;
+}
+.sabda-member-login{
+  position:absolute;
+  right:40px;
+  top:160px;
+  z-index:12;
 }
 .sabda-member-login a{
   display:inline-flex;align-items:center;gap:5px;
-  font-size:.72rem;letter-spacing:.02em;
-  color:rgba(240,239,233,.4);
+  padding:8px 16px;
+  font-size:.72rem;letter-spacing:.02em;font-family:'DM Sans',sans-serif;font-weight:500;
+  color:rgba(240,239,233,.45);
+  background:transparent;
+  border:1px solid rgba(240,239,233,.12);
+  border-radius:99px;
   white-space:nowrap;
-  transition:color .25s;
+  transition:color .25s,border-color .25s,background .25s;
   text-decoration:none;
+  cursor:pointer;
 }
 .sabda-member-login a:hover{
-  color:var(--cyan);
+  color:#02F3C5;
+  border-color:rgba(2,243,197,.25);
+  background:rgba(2,243,197,.04);
 }
 .sabda-member-login svg{
   width:13px;height:13px;
@@ -445,7 +455,8 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .nav-login{padding-left:14px;margin-left:14px}.nav-login a{font-size:.65rem;gap:5px}
   .hero-banner{height:240px}.hero-overlay h1{font-size:2rem}.hero-overlay{bottom:32px}
   #momence-plugin-host-schedule{padding:24px 16px 12px}
-  .sabda-member-login{padding:10px 16px 0}
+  .sabda-member-login{right:16px;top:140px}
+  .sabda-member-login a{font-size:.65rem;padding:6px 12px}
   .pricing-summary{padding:60px 24px 0}
   .ps-grid{flex-wrap:wrap;gap:14px}.ps-card{max-width:none;min-width:120px}
   footer{padding:36px 24px 22px}.ft-in{grid-template-columns:1fr 1fr}
@@ -494,9 +505,12 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   </div>
 </div>
 
+<!-- SCHEDULE WRAPPER — relative container for absolute member login positioning -->
+<div class="schedule-wrapper">
+
 <!-- MEMBER LOGIN PROMPT — lives outside widget, never touched by forceStyles -->
 <div class="sabda-member-login">
-  <a href="https://momence.com/sign-in" target="_blank"><svg viewBox="0 0 24 24" width="13" height="13" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Already a member? Manage your bookings</a>
+  <a href="https://momence.com/sign-in" target="_blank"><svg viewBox="0 0 24 24" width="13" height="13" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Already a member? Log in</a>
 </div>
 
 <!-- MOMENCE LIVE WIDGET (reskinned) — "Teachers" wording via i18n -->
@@ -965,6 +979,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   },500);
 })();
 </script>
+</div><!-- /schedule-wrapper -->
 
 <!-- COMPACT PRICING SUMMARY — quick reference, links to full pricing page -->
 <section class="pricing-summary">
