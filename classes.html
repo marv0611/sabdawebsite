@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- classes-v27 -->
+<meta charset="UTF-8"><!-- classes-v28 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Classes & Schedule — SABDA Studio Barcelona</title>
 <meta name="description" content="Explore our weekly schedule of immersive yoga, pilates, sound healing, breathwork, ecstatic dance and meditation classes. Book your spot now.">
@@ -345,6 +345,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 #momence-plugin-host-schedule time{color:rgba(240,239,233,.5) !important}
 #momence-plugin-host-schedule .momence-host_schedule-session_list-no_results-text{color:rgba(240,239,233,.5) !important}
 
+/* ── No-results: hide Momence illustration, show SABDA symbol ── */
+#momence-plugin-host-schedule [class*="no_results"] svg,
+#momence-plugin-host-schedule [class*="no_results"] img,
+#momence-plugin-host-schedule [class*="no_results"] [class*="illustration"],
+#momence-plugin-host-schedule [class*="no_results"] > div:first-child{
+  display:none !important;
+}
+.sabda-no-results-symbol{
+  display:block;width:140px;height:auto;margin:40px auto 24px;opacity:.2;
+}
+
 /* ── Loader ── */
 #momence-plugin-host-schedule [class*="sc-1oszok8"] div{background:var(--cyan) !important}
 
@@ -684,6 +695,22 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     /* System row */
     el.querySelectorAll('[class*="sys_row"]').forEach(e=>e.style.setProperty('display','none','important'));
 
+    /* ── Replace Momence no-results illustration with SABDA symbol ── */
+    el.querySelectorAll('[class*="no_results"]').forEach(container=>{
+      if(container.querySelector('.sabda-no-results-symbol'))return;
+      /* Hide original illustration children (divs with SVG/img) */
+      const firstDiv=container.querySelector('div');
+      if(firstDiv&&!firstDiv.classList.contains('momence-host_schedule-session_list-no_results-text')){
+        firstDiv.style.setProperty('display','none','important');
+      }
+      /* Inject SABDA symbol */
+      const img=document.createElement('img');
+      img.className='sabda-no-results-symbol';
+      img.src='https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20symbol%20pink.png';
+      img.alt='SABDA';
+      container.insertBefore(img,container.firstChild);
+    });
+
     /* ── REORDER QUICK FILTERS: TODAY, TOMORROW, SHOW ALL ── */
     const qf=el.querySelector('.momence-quick_filters');
     if(qf&&!qf._reordered){
@@ -974,27 +1001,6 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     const tb=el.querySelector('.momence-quick_filters-today');
     if(tb){tb.click();todayClicked=true;}
   },ms));
-
-  /* Auto-switch to TOMORROW if TODAY has no classes (e.g. late evening) */
-  let tomorrowFallbackDone=false;
-  function checkNoClassesToday(){
-    if(tomorrowFallbackDone)return;
-    if(activeFilter!=='today')return;
-    /* Check for no-results state: Momence shows an illustration + text */
-    const noResults=el.querySelector('[class*="no_results"],.momence-host_schedule-session_list-no_results-text');
-    const sessionList=el.querySelector('.momence-host_schedule-session_list');
-    const hasCards=sessionList&&sessionList.querySelector('article[data-session_id]');
-    if(noResults||(!hasCards&&sessionList)){
-      tomorrowFallbackDone=true;
-      activeFilter='tomorrow';
-      const tmrBtn=el.querySelector('[data-sabda-filter="tomorrow"]');
-      if(tmrBtn){
-        tmrBtn.click();
-        setTimeout(()=>{applyActiveState();},500);
-      }
-    }
-  }
-  [3000,4500,6000,8000].forEach(ms=>setTimeout(checkNoClassesToday,ms));
 
   /* PERSISTENT: keep enforcing every 500ms for 30 seconds to beat React re-renders */
   let tick=0;
