@@ -331,7 +331,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 .ft-brand img{height:36px;width:auto;margin-bottom:16px;display:block}
 .ft-pillars{display:flex;gap:12px;margin-top:14px;font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--white38)}
 .ft-pillars .fp-art{color:var(--cyan)}.ft-pillars .fp-tech{color:var(--white)}.ft-pillars .fp-well{color:var(--salmon)}
-.ft-symbol{width:64px;height:auto;margin-top:20px;opacity:.55}
+.ft-symbol{width:180px;height:auto;margin-top:28px;opacity:.4}
 .ft-col h4{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;margin-bottom:20px;font-family:'DM Sans',sans-serif}
 .ft-col:nth-child(2) h4{color:var(--cyan)}
 .ft-col:nth-child(3) h4{color:var(--salmon)}
@@ -508,28 +508,6 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       c.style.setProperty('opacity','1','important');
     });
 
-    /* ── REORDER DAY SELECTOR: today first ── */
-    /* Find today's button via data-is-today, get its index among siblings,
-       then assign CSS order so today=0, tomorrow=1, etc. wrapping around.
-       NEVER move DOM nodes — only CSS order. */
-    const todayBtn=el.querySelector('[data-is-today="true"]');
-    if(todayBtn){
-      const parent=todayBtn.parentElement;
-      if(parent){
-        const btns=Array.from(parent.children).filter(c=>c.tagName==='BUTTON'||c.matches('[class*="day_selection-item"]'));
-        if(btns.length>0){
-          const todayIdx=btns.indexOf(todayBtn);
-          if(todayIdx>=0){
-            parent.style.setProperty('display','flex','important');
-            btns.forEach((btn,i)=>{
-              const offset=(i-todayIdx+btns.length)%btns.length;
-              btn.style.setProperty('order',String(offset),'important');
-            });
-          }
-        }
-      }
-    }
-
     /* Date labels (TOMORROW, etc) → subdued */
     el.querySelectorAll('time').forEach(t=>{
       t.style.setProperty('color','rgba(240,239,233,.5)','important');
@@ -565,39 +543,6 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     el.querySelectorAll('[class*="pagination"]').forEach(e=>e.style.setProperty('display','none','important'));
     /* System row */
     el.querySelectorAll('[class*="sys_row"]').forEach(e=>e.style.setProperty('display','none','important'));
-
-    /* ── Limit to TODAY + TOMORROW only ── */
-    const dayRx=/^(TODAY|TOMORROW|YESTERDAY|MONDAY|TUESDAY|WEDNESDAY|THURSDAY|FRIDAY|SATURDAY|SUNDAY)$/i;
-    const dateLabels=[];
-    el.querySelectorAll('*').forEach(n=>{
-      if(n.children.length>2)return;
-      if(n.closest('article'))return;
-      const t=(n.textContent||'').trim();
-      if(!dayRx.test(t))return;
-      if(dateLabels.some(p=>p.contains(n)||n.contains(p)))return;
-      dateLabels.push(n);
-    });
-    if(dateLabels.length>2){
-      /* The 3rd date label is the cutoff — everything at or after it should be hidden */
-      const cutoff=dateLabels[2];
-      /* Hide the 3rd+ date labels and their parent wrappers */
-      for(let i=2;i<dateLabels.length;i++){
-        dateLabels[i].style.setProperty('display','none','important');
-        /* Also hide parent if it doesn't contain articles (it's just a date-row wrapper) */
-        let p=dateLabels[i].parentElement;
-        while(p&&p!==el&&!p.querySelector('article')){
-          p.style.setProperty('display','none','important');
-          p=p.parentElement;
-        }
-      }
-      /* Hide all articles that come AFTER the cutoff label in DOM order */
-      el.querySelectorAll('article').forEach(art=>{
-        /* compareDocumentPosition: if art comes after cutoff, bit 4 (FOLLOWING) is set */
-        if(cutoff.compareDocumentPosition(art)&Node.DOCUMENT_POSITION_FOLLOWING){
-          art.style.setProperty('display','none','important');
-        }
-      });
-    }
     
     /* ── CRITICAL: Neutralize any position:fixed children ── */
     /* Momence renders modal overlays with position:fixed that escape the widget */
