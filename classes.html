@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- classes-v30 -->
+<meta charset="UTF-8"><!-- classes-v31 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Classes & Schedule — SABDA Studio Barcelona</title>
 <meta name="description" content="Explore our weekly schedule of immersive yoga, pilates, sound healing, breathwork, ecstatic dance and meditation classes. Book your spot now.">
@@ -695,6 +695,18 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     el.querySelectorAll('[class*="pagination"],[class*="Pagination"],[class*="pager"]').forEach(e=>e.style.setProperty('display','none','important'));
     /* System row */
     el.querySelectorAll('[class*="sys_row"]').forEach(e=>e.style.setProperty('display','none','important'));
+
+    /* ── Hide no-results illustration, keep only the text ── */
+    el.querySelectorAll('[class*="no_results"],[class*="noResults"],[class*="no-results"]').forEach(container=>{
+      Array.from(container.children).forEach(child=>{
+        /* Keep the text element, hide everything else (illustration wrapper) */
+        const isText=child.className&&(child.className.includes('text')||child.className.includes('Text'));
+        const isTextTag=child.tagName==='P'||child.tagName==='SPAN';
+        if(!isText&&!isTextTag){
+          child.style.setProperty('display','none','important');
+        }
+      });
+    });
 
     /* ── REORDER QUICK FILTERS: TODAY, TOMORROW, SHOW ALL ── */
     const qf=el.querySelector('.momence-quick_filters');
