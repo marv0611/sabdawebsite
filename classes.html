@@ -540,6 +540,41 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     el.querySelectorAll('[class*="pagination"]').forEach(e=>e.style.setProperty('display','none','important'));
     /* System row */
     el.querySelectorAll('[class*="sys_row"]').forEach(e=>e.style.setProperty('display','none','important'));
+
+    /* ── Limit to TODAY + TOMORROW only ── */
+    /* Momence groups classes under date separators (time elements or date headers).
+       Find all date group containers and hide everything from the 3rd group on. */
+    const dateHeaders=el.querySelectorAll('time, [class*="day_label"], [class*="date_separator"], [class*="dayLabel"]');
+    let dateCount=0;
+    dateHeaders.forEach(dh=>{
+      /* Walk up to the date group container (parent or grandparent) */
+      let group=dh.closest('[class*="day_group"], [class*="schedule_day"], [class*="sessions_group"]')||dh.parentElement;
+      if(!group)return;
+      dateCount++;
+      if(dateCount>2){
+        group.style.setProperty('display','none','important');
+      }
+    });
+    /* Fallback: if no structured groups found, hide by sibling order.
+       Find the sessions list and hide children after 2nd date header. */
+    if(dateCount===0){
+      const allTime=el.querySelectorAll('time');
+      let seen=0;
+      allTime.forEach(t=>{
+        seen++;
+        if(seen>2){
+          /* Hide this date label and all following article siblings until next time */
+          let sib=t.closest('div');
+          if(sib){
+            while(sib){
+              sib.style.setProperty('display','none','important');
+              sib=sib.nextElementSibling;
+              if(sib&&sib.querySelector('time'))break;
+            }
+          }
+        }
+      });
+    }
     
     /* ── CRITICAL: Neutralize any position:fixed children ── */
     /* Momence renders modal overlays with position:fixed that escape the widget */
