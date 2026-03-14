@@ -315,7 +315,11 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 }
 /* Session filters container — remove any extra margin/padding */
 #momence-plugin-host-schedule .momence-session_filters{
-  flex-shrink:0 !important;
+  flex:0 0 auto !important;
+  margin:0 !important;
+  padding:0 !important;
+}
+#momence-plugin-host-schedule .momence-session_filters > div{
   margin:0 !important;
   padding:0 !important;
 }
@@ -323,12 +327,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 #momence-plugin-host-schedule .momence-select{
   max-width:140px !important;
   width:140px !important;
+  flex:0 0 140px !important;
   margin:0 !important;
 }
 #momence-plugin-host-schedule .momence-select-button{
   padding:8px 12px !important;
   font-size:.8rem !important;
-  height:100% !important;
+  width:100% !important;
   margin:0 !important;
 }
 
@@ -482,8 +487,10 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       if(node.classList&&node.classList.contains('sabda-show-more'))return;
       if(node.closest&&node.closest('.sabda-show-more'))return;
 
-      /* Force text color to white */
-      s.setProperty('color','#f0efe9','important');
+      /* Force text color to white (skip active filter buttons) */
+      if(!(node.classList&&node.classList.contains('sabda-active'))){
+        s.setProperty('color','#f0efe9','important');
+      }
 
       /* Force backgrounds transparent (except cards and book buttons) */
       if(tag==='ARTICLE'){
@@ -498,6 +505,11 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
         s.setProperty('background','#02F3C5','important');
         s.setProperty('color','#0e1235','important');
         s.setProperty('border-color','#02F3C5','important');
+      }else if(node.classList&&node.classList.contains('sabda-active')){
+        /* Active filter button — cyan highlight */
+        s.setProperty('background','rgba(2,243,197,.12)','important');
+        s.setProperty('border-color','rgba(2,243,197,.35)','important');
+        s.setProperty('color','#02F3C5','important');
       }else{
         s.setProperty('background-color','transparent','important');
         s.setProperty('background','transparent','important');
@@ -509,8 +521,8 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
         s.setProperty('color','#f0efe9','important');
       }
 
-      /* Borders on buttons */
-      if(tag==='BUTTON'){
+      /* Borders on buttons (skip active — already styled above) */
+      if(tag==='BUTTON'&&!(node.classList&&node.classList.contains('sabda-active'))){
         s.setProperty('border-color','rgba(240,239,233,.12)','important');
       }
     });
@@ -691,16 +703,24 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       s.style.setProperty('max-width','140px','important');
       s.style.setProperty('width','140px','important');
       s.style.setProperty('margin','0','important');
+      s.style.setProperty('flex','0 0 140px','important');
     });
     el.querySelectorAll('.momence-select-button').forEach(b=>{
       b.style.setProperty('padding','8px 12px','important');
       b.style.setProperty('font-size','.8rem','important');
       b.style.setProperty('margin','0','important');
+      b.style.setProperty('width','100%','important');
     });
     /* Session filters container — kill extra spacing */
     el.querySelectorAll('.momence-session_filters,[class*="session_filters"]').forEach(f=>{
       f.style.setProperty('margin','0','important');
       f.style.setProperty('padding','0','important');
+      f.style.setProperty('flex','0 0 auto','important');
+    });
+    /* The inner wrapper div inside session_filters */
+    el.querySelectorAll('.momence-session_filters > div, [class*="d94g93-1"]').forEach(d=>{
+      d.style.setProperty('margin','0','important');
+      d.style.setProperty('padding','0','important');
     });
     /* Third row — uniform flex layout, kill spacer */
     el.querySelectorAll('.momence-host_schedule-third_row,[class*="third_row"]').forEach(row=>{
