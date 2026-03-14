@@ -60,9 +60,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 .hero-overlay p{font-size:.95rem;color:var(--white60);max-width:480px;margin:0 auto}
 
 /* ── MOMENCE WIDGET ── */
-#momence-plugin-host-schedule{max-width:920px;margin:0 auto;padding:40px 40px 60px;position:relative;z-index:2;opacity:0;transition:opacity .4s ease}
-#momence-plugin-host-schedule.themed{opacity:1}
+#momence-plugin-host-schedule{max-width:920px;margin:0 auto;padding:40px 40px 60px;position:relative;z-index:2;visibility:hidden;background:var(--navy)}
+#momence-plugin-host-schedule.themed{visibility:visible}
 #momence-plugin-host-schedule,#momence-plugin-host-schedule *{font-family:'DM Sans',sans-serif !important}
+/* Kill Momence default green before JS runs */
+#momence-plugin-host-schedule *{color:var(--white) !important;background-color:transparent !important;border-color:rgba(240,239,233,.06) !important}
+#momence-plugin-host-schedule article{background:rgba(19,24,66,.65) !important}
+#momence-plugin-host-schedule a[class*="primary"],#momence-plugin-host-schedule button[class*="primary"]{background:#02F3C5 !important;color:#0e1235 !important;border-color:#02F3C5 !important}
 
 /* Momence CSS variable overrides → dark theme */
 :root{
@@ -541,6 +545,33 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     el.querySelectorAll('[class*="pagination"]').forEach(e=>e.style.setProperty('display','none','important'));
     /* System row */
     el.querySelectorAll('[class*="sys_row"]').forEach(e=>e.style.setProperty('display','none','important'));
+
+    /* ── Limit to TODAY + TOMORROW only ── */
+    /* Date separator <time> elements are siblings of <article> class cards.
+       Class-time <time> elements are INSIDE <article>. We only target the ones NOT in articles. */
+    const dateSeparators=[];
+    el.querySelectorAll('time').forEach(t=>{
+      if(!t.closest('article'))dateSeparators.push(t);
+    });
+    /* Hide from 3rd date separator onwards, plus their following class cards */
+    if(dateSeparators.length>2){
+      for(let i=2;i<dateSeparators.length;i++){
+        const sep=dateSeparators[i];
+        /* Hide the separator's wrapper (parent div) */
+        const wrapper=sep.parentElement;
+        if(wrapper&&wrapper.id!=='momence-plugin-host-schedule'){
+          wrapper.style.setProperty('display','none','important');
+          /* Walk forward and hide siblings until we hit another date separator wrapper */
+          let sib=wrapper.nextElementSibling;
+          while(sib){
+            const t=sib.querySelector('time');
+            if(t&&!t.closest('article'))break; /* next date separator — stop */
+            sib.style.setProperty('display','none','important');
+            sib=sib.nextElementSibling;
+          }
+        }
+      }
+    }
     
     /* ── CRITICAL: Neutralize any position:fixed children ── */
     /* Momence renders modal overlays with position:fixed that escape the widget */
