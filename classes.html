@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- classes-v20 -->
+<meta charset="UTF-8"><!-- classes-v21 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Classes & Schedule — SABDA Studio Barcelona</title>
 <meta name="description" content="Explore our weekly schedule of immersive yoga, pilates, sound healing, breathwork, ecstatic dance and meditation classes. Book your spot now.">
@@ -366,28 +366,28 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 .sabda-show-more svg{transition:transform .25s}
 .sabda-show-more:hover svg{transform:translateY(2px)}
 
-/* ── Member login prompt (injected into third row, right of Teachers) ── */
+/* ── Member login prompt (lives outside widget — immune to forceStyles/React) ── */
 .sabda-member-login{
-  flex-shrink:0;
+  max-width:920px;margin:0 auto;
+  padding:16px 40px 0;
+  text-align:right;
+  position:relative;z-index:2;
 }
 .sabda-member-login a{
-  display:flex;align-items:center;gap:5px;
+  display:inline-flex;align-items:center;gap:5px;
   font-size:.72rem;letter-spacing:.02em;
-  color:rgba(240,239,233,.4) !important;
-  background:transparent !important;
-  border:none !important;
+  color:rgba(240,239,233,.4);
   white-space:nowrap;
   transition:color .25s;
   text-decoration:none;
-  padding:8px 0 8px 4px;
 }
 .sabda-member-login a:hover{
-  color:var(--cyan) !important;
+  color:var(--cyan);
 }
 .sabda-member-login svg{
   width:13px;height:13px;
-  stroke:currentColor !important;
-  fill:none !important;
+  stroke:currentColor;
+  fill:none;
   flex-shrink:0;
 }
 @media(max-width:900px){
@@ -444,7 +444,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .nav-login{padding-left:14px;margin-left:14px}.nav-login a{font-size:.65rem;gap:5px}
   .hero-banner{height:240px}.hero-overlay h1{font-size:2rem}.hero-overlay{bottom:32px}
   #momence-plugin-host-schedule{padding:24px 16px 12px}
-  .sabda-member-login{display:none}
+  .sabda-member-login{padding:10px 16px 0}
   .pricing-summary{padding:60px 24px 0}
   .ps-grid{flex-wrap:wrap;gap:14px}.ps-card{max-width:none;min-width:120px}
   footer{padding:36px 24px 22px}.ft-in{grid-template-columns:1fr 1fr}
@@ -493,6 +493,11 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   </div>
 </div>
 
+<!-- MEMBER LOGIN PROMPT — lives outside widget, never touched by forceStyles -->
+<div class="sabda-member-login">
+  <a href="https://momence.com/sign-in" target="_blank"><svg viewBox="0 0 24 24" width="13" height="13" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Already a member? Manage your bookings</a>
+</div>
+
 <!-- MOMENCE LIVE WIDGET (reskinned) — "Teachers" wording via i18n -->
 <div id="momence-plugin-host-schedule"></div>
 <script src="https://momence.com/plugin/host-schedule/host-schedule.js"
@@ -528,9 +533,6 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       /* Skip our custom Show More button and its children */
       if(node.classList&&node.classList.contains('sabda-show-more'))return;
       if(node.closest&&node.closest('.sabda-show-more'))return;
-
-      /* Skip member login prompt and its children */
-      if(node.closest&&node.closest('.sabda-member-login'))return;
 
       /* Check if this is the active filter button (by data attribute — survives React re-renders) */
       const isActiveFilter=node.getAttribute&&node.getAttribute('data-sabda-filter')===activeFilter;
@@ -714,22 +716,6 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       }
     }
 
-    /* ── INJECT MEMBER LOGIN PROMPT into third row ── */
-    const thirdRow=el.querySelector('.momence-host_schedule-third_row,[class*="third_row"]');
-    if(thirdRow&&!thirdRow.querySelector('.sabda-member-login')){
-      const loginEl=document.createElement('div');
-      loginEl.className='sabda-member-login';
-      loginEl.innerHTML='<a href="https://momence.com/sign-in" target="_blank"><svg viewBox="0 0 24 24" width="13" height="13" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Already a member? Log in</a>';
-      thirdRow.appendChild(loginEl);
-    }
-    /* Re-apply styles on existing member login (survives forceStyles) */
-    const existingLogin=thirdRow?thirdRow.querySelector('.sabda-member-login a'):null;
-    if(existingLogin){
-      existingLogin.style.setProperty('color','rgba(240,239,233,.4)','important');
-      existingLogin.style.setProperty('background','transparent','important');
-      existingLogin.style.setProperty('border','none','important');
-    }
-    
     /* ── CRITICAL: Neutralize any position:fixed children ── */
     /* Momence renders modal overlays with position:fixed that escape the widget */
     el.querySelectorAll('*').forEach(node=>{
