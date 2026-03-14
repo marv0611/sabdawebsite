@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- classes-v26 -->
+<meta charset="UTF-8"><!-- classes-v27 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Classes & Schedule — SABDA Studio Barcelona</title>
 <meta name="description" content="Explore our weekly schedule of immersive yoga, pilates, sound healing, breathwork, ecstatic dance and meditation classes. Book your spot now.">
@@ -974,6 +974,27 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     const tb=el.querySelector('.momence-quick_filters-today');
     if(tb){tb.click();todayClicked=true;}
   },ms));
+
+  /* Auto-switch to TOMORROW if TODAY has no classes (e.g. late evening) */
+  let tomorrowFallbackDone=false;
+  function checkNoClassesToday(){
+    if(tomorrowFallbackDone)return;
+    if(activeFilter!=='today')return;
+    /* Check for no-results state: Momence shows an illustration + text */
+    const noResults=el.querySelector('[class*="no_results"],.momence-host_schedule-session_list-no_results-text');
+    const sessionList=el.querySelector('.momence-host_schedule-session_list');
+    const hasCards=sessionList&&sessionList.querySelector('article[data-session_id]');
+    if(noResults||(!hasCards&&sessionList)){
+      tomorrowFallbackDone=true;
+      activeFilter='tomorrow';
+      const tmrBtn=el.querySelector('[data-sabda-filter="tomorrow"]');
+      if(tmrBtn){
+        tmrBtn.click();
+        setTimeout(()=>{applyActiveState();},500);
+      }
+    }
+  }
+  [3000,4500,6000,8000].forEach(ms=>setTimeout(checkNoClassesToday,ms));
 
   /* PERSISTENT: keep enforcing every 500ms for 30 seconds to beat React re-renders */
   let tick=0;
