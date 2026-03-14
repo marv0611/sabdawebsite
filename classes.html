@@ -328,16 +328,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 /* ── Loader ── */
 #momence-plugin-host-schedule [class*="sc-1oszok8"] div{background:var(--cyan) !important}
 
-/* ── Show More button ── */
+/* ── Show More button (lives outside widget, never touched by forceStyles) ── */
+#sabda-show-more-btn{max-width:920px;margin:0 auto}
 .sabda-show-more{
-  display:flex !important;align-items:center;justify-content:center;gap:8px;
-  max-width:280px;margin:28px auto 8px;padding:14px 32px;
-  background:rgba(240,239,233,.04) !important;border:1px solid rgba(240,239,233,.1);
-  border-radius:10px;color:#02F3C5 !important;font-family:'DM Sans',sans-serif;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:13px 36px;margin:0 auto;
+  background:rgba(240,239,233,.04);border:1px solid rgba(240,239,233,.12);
+  border-radius:10px;color:#02F3C5;font-family:'DM Sans',sans-serif;
   font-size:.84rem;font-weight:600;letter-spacing:.03em;cursor:pointer;
   transition:background .25s,border-color .25s;
 }
-.sabda-show-more:hover{background:rgba(2,243,197,.06) !important;border-color:rgba(2,243,197,.25)}
+.sabda-show-more:hover{background:rgba(2,243,197,.06);border-color:rgba(2,243,197,.25)}
 .sabda-show-more svg{transition:transform .25s}
 .sabda-show-more:hover svg{transform:translateY(2px)}
 
@@ -463,8 +464,9 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       /* Skip images */
       if(tag==='IMG')return;
 
-      /* Skip our custom Show More button */
-      if(cls.includes&&cls.includes('sabda-show-more'))return;
+      /* Skip our custom Show More button and its children */
+      if(node.classList&&node.classList.contains('sabda-show-more'))return;
+      if(node.closest&&node.closest('.sabda-show-more'))return;
 
       /* Force text color to white */
       s.setProperty('color','#f0efe9','important');
@@ -730,65 +732,65 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   }
 
   /* ── Limit visible sessions to N date groups, add Show More ── */
-  let maxVisibleDates=3; /* Start with 3: TODAY, TOMORROW, day after */
+  let maxVisibleDates=3;
+  let limitTimer=null;
   function limitSessions(){
+    /* Debounce — Momence re-renders cause multiple rapid calls */
+    clearTimeout(limitTimer);
+    limitTimer=setTimeout(_doLimit,200);
+  }
+  function _doLimit(){
     const list=el.querySelector('.momence-host_schedule-session_list');
     if(!list)return;
 
     /* Collect all time labels (date group headers) */
     const children=Array.from(list.children);
-    const dateLabels=[];
-    for(const c of children){
-      if(c.tagName==='TIME'&&c.classList.contains('momence-host_schedule-session_list-date_label')){
-        dateLabels.push(c);
-      }
-    }
+    const dateLabels=children.filter(c=>c.tagName==='TIME'&&c.classList.contains('momence-host_schedule-session_list-date_label'));
 
-    /* If total date groups <= maxVisibleDates, show everything, remove button */
+    /* If total date groups <= max, show everything, remove button */
     if(dateLabels.length<=maxVisibleDates){
-      list.querySelectorAll('[data-sabda-hidden]').forEach(h=>{
-        h.style.removeProperty('display');
-        h.removeAttribute('data-sabda-hidden');
+      children.forEach(c=>{
+        if(c.hasAttribute('data-sabda-hidden')){
+          c.style.removeProperty('display');
+          c.removeAttribute('data-sabda-hidden');
+        }
       });
-      const oldBtn=list.querySelector('.sabda-show-more');
-      if(oldBtn)oldBtn.remove();
+      const oldBtn=document.getElementById('sabda-show-more-btn');
+      if(oldBtn)oldBtn.style.display='none';
       return;
     }
 
-    /* Find the cutoff: the Nth+1 time label */
+    /* Find cutoff point */
     const cutoffLabel=dateLabels[maxVisibleDates];
     let hiding=false;
     for(const c of children){
       if(c===cutoffLabel)hiding=true;
-      if(c.classList&&c.classList.contains('sabda-show-more'))continue; /* skip our button */
+      if(c.classList&&c.classList.contains('sabda-show-more'))continue;
       if(hiding&&(c.tagName==='TIME'||c.tagName==='ARTICLE')){
         c.style.setProperty('display','none','important');
         c.setAttribute('data-sabda-hidden','true');
       } else if(!hiding&&c.hasAttribute('data-sabda-hidden')){
-        /* Reveal items that should now be visible (after clicking Show More) */
         c.style.removeProperty('display');
         c.removeAttribute('data-sabda-hidden');
       }
     }
 
-    /* Add or update Show More button */
-    let btn=list.querySelector('.sabda-show-more');
+    /* Show the button (it lives OUTSIDE the widget) */
+    let btn=document.getElementById('sabda-show-more-btn');
     if(!btn){
-      btn=document.createElement('button');
-      btn.className='sabda-show-more';
-      btn.type='button';
-      btn.innerHTML='Show More <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-      btn.addEventListener('click',function(e){
-        e.stopPropagation();
+      btn=document.createElement('div');
+      btn.id='sabda-show-more-btn';
+      btn.style.cssText='text-align:center;padding:24px 0 0;';
+      btn.innerHTML='<button class="sabda-show-more" type="button">Show More <svg width="12" height="12" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>';
+      btn.querySelector('button').addEventListener('click',function(e){
+        e.preventDefault();e.stopPropagation();
         maxVisibleDates+=2;
-        limitSessions();
+        _doLimit();
       });
-      list.appendChild(btn);
+      /* Insert AFTER the widget div, BEFORE pricing summary */
+      el.parentElement.insertBefore(btn,el.nextSibling);
     }
-    /* Make sure button is last child */
-    if(btn.nextElementSibling){
-      list.appendChild(btn);
-    }
+    btn.style.display='block';
   }
 
   /* ── Run everything ── */
