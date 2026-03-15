@@ -251,7 +251,15 @@ section{position:relative;padding:120px 80px;z-index:2}
 .rn-link{display:inline-flex;align-items:center;gap:9px;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--cyan);padding:15px 36px;border:1.5px solid rgba(2,243,197,.4);border-radius:4px;transition:border-color .25s,background .25s,transform .2s,box-shadow .3s}
 .rn-link:hover{border-color:var(--cyan);background:rgba(2,243,197,.08);transform:translateY(-2px);box-shadow:0 8px 28px rgba(2,243,197,.14)}
 .rn-link svg{width:16px;height:16px;opacity:.8}
-.rn-float{position:absolute;font-family:'PT Serif',serif;font-size:.92rem;font-style:italic;color:rgba(240,239,233,.45);max-width:210px;line-height:1.5;letter-spacing:.01em}
+.rn-float{position:absolute;font-family:'PT Serif',serif;font-size:.92rem;font-style:italic;color:rgba(240,239,233,.45);max-width:210px;line-height:1.5;letter-spacing:.01em;animation:rnFloat 8s ease-in-out infinite;text-shadow:0 0 0 transparent}
+.rn-float:nth-child(2){animation-delay:-2s}
+.rn-float:nth-child(3){animation-delay:-4s}
+.rn-float:nth-child(4){animation-delay:-6s}
+.rn-float:nth-child(5){animation-delay:-1s}
+.rn-float:nth-child(6){animation-delay:-3s}
+.rn-float:nth-child(7){animation-delay:-5s}
+.rn-float:nth-child(8){animation-delay:-7s}
+@keyframes rnFloat{0%,100%{transform:translateY(0);opacity:.35;text-shadow:0 0 0 transparent}50%{transform:translateY(-6px);opacity:.55;text-shadow:0 0 18px rgba(2,243,197,.08)}}
 .rn-float.left{text-align:right}
 .rn-float.right{text-align:left}
 @media(max-width:1200px){.rn-float{display:none}}
