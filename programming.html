@@ -122,7 +122,7 @@ section{position:relative;padding:120px 80px;z-index:2}
 .case-study{padding:120px 80px;z-index:2;position:relative;border-top:1px solid rgba(240,239,233,.04)}
 .cs-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
 .cs-inner.flip{direction:rtl}.cs-inner.flip>*{direction:ltr}
-.cs-media{position:relative;border-radius:8px;overflow:hidden;aspect-ratio:16/9}
+.cs-media{position:relative;border-radius:8px;overflow:hidden;aspect-ratio:4/5;max-height:560px}
 .cs-media video,.cs-media img{width:100%;height:100%;object-fit:cover}
 .cs-media::after{content:'';position:absolute;inset:0;border-radius:8px;border:1px solid rgba(240,239,233,.08);pointer-events:none}
 .cs-unmute{position:absolute;bottom:16px;right:16px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(240,239,233,.2);background:rgba(14,18,53,.6);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:3;transition:border-color .25s,background .25s}
@@ -230,7 +230,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .uc-desc{display:none}
   .cs-inner{grid-template-columns:1fr;gap:40px}
   .cs-inner.flip{direction:ltr}
-  .cs-media{aspect-ratio:16/9}
+  .cs-media{aspect-ratio:4/5;max-height:none}
   .case-study{padding:80px 24px}
   .signup-cta{padding:60px 24px}
   .signup-text{font-size:1.8rem}
@@ -304,7 +304,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   <h2 class="sh2 rv" style="transition-delay:.07s">Past <em>Highlights</em></h2>
   <div class="uc-grid">
     <a href="#ev-panta" class="uc-card rv" style="transition-delay:.1s">
-      <div class="uc-card-bg" style="background-image:url('https://raw.githubusercontent.com/marv0611/sabdawebsite/main/immersive_underwater.jpg')"></div>
+      <div class="uc-card-bg" style="background-image:url('https://raw.githubusercontent.com/marv0611/sabdawebsite/main/panta_rhei_poster.png')"></div>
       <div class="uc-card-ov"></div>
       <div class="uc-arrow"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4v6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       <div class="uc-card-content">
@@ -354,7 +354,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   <div class="cs-inner rv">
     <div class="cs-media">
       <video autoplay muted loop playsinline preload="auto" data-unmute>
-        <source src="https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/0312.mp4" type="video/mp4">
+        <source src="https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/3%20english%20story.mp4" type="video/mp4">
       </video>
       <button class="cs-unmute" aria-label="Toggle sound"><svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
       <div class="cs-media-glow" style="background:linear-gradient(135deg,rgba(2,243,197,.12),transparent 40%,rgba(248,166,163,.08))"></div>
@@ -402,11 +402,14 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 <div class="hr-anim" id="ev-neurocosm"></div>
 <section class="case-study">
   <div class="cs-inner rv">
-    <div class="cs-media">
-      <video autoplay muted loop playsinline preload="auto" data-unmute>
-        <source src="https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/3%20english%20story.mp4" type="video/mp4">
+    <div class="cs-media" id="neuroMedia">
+      <video autoplay muted loop playsinline preload="auto" id="neuroVid">
+        <source src="https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/Neurocosm.mov" type="video/mp4">
       </video>
-      <button class="cs-unmute" aria-label="Toggle sound"><svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+      <audio id="neuroAudio" loop preload="auto">
+        <source src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Audio.m4a" type="audio/mp4">
+      </audio>
+      <button class="cs-unmute" id="neuroUnmute" aria-label="Toggle sound"><svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
       <div class="cs-media-glow" style="background:linear-gradient(135deg,rgba(2,243,197,.1),transparent 40%,rgba(248,166,163,.08))"></div>
     </div>
     <div>
@@ -566,9 +569,9 @@ const glowObs=new IntersectionObserver(es=>es.forEach(e=>{
 document.querySelectorAll('.cs-media').forEach(el=>glowObs.observe(el));
 
 /* ═══════════════════════════════════════════════════════
-   UNMUTE TOGGLE
+   UNMUTE TOGGLE (standard videos)
 ═══════════════════════════════════════════════════════ */
-document.querySelectorAll('.cs-unmute').forEach(btn=>{
+document.querySelectorAll('.cs-unmute:not(#neuroUnmute)').forEach(btn=>{
   btn.addEventListener('click',()=>{
     const vid=btn.closest('.cs-media').querySelector('video');
     if(!vid)return;
@@ -579,13 +582,50 @@ document.querySelectorAll('.cs-unmute').forEach(btn=>{
 });
 
 /* ═══════════════════════════════════════════════════════
+   NEUROCOSM — SEPARATE AUDIO SYNC
+═══════════════════════════════════════════════════════ */
+(function(){
+  const vid=document.getElementById('neuroVid');
+  const aud=document.getElementById('neuroAudio');
+  const btn=document.getElementById('neuroUnmute');
+  if(!vid||!aud||!btn)return;
+  let audioOn=false;
+
+  btn.addEventListener('click',()=>{
+    audioOn=!audioOn;
+    if(audioOn){
+      aud.currentTime=vid.currentTime;
+      aud.play().catch(()=>{});
+    }else{
+      aud.pause();
+    }
+    btn.style.borderColor=audioOn?'rgba(2,243,197,.5)':'rgba(240,239,233,.2)';
+    btn.style.background=audioOn?'rgba(2,243,197,.12)':'rgba(14,18,53,.6)';
+  });
+
+  /* keep audio synced on loop */
+  vid.addEventListener('seeked',()=>{if(audioOn)aud.currentTime=vid.currentTime});
+  vid.addEventListener('play',()=>{if(audioOn){aud.currentTime=vid.currentTime;aud.play().catch(()=>{})}});
+  vid.addEventListener('pause',()=>aud.pause());
+})();
+
+/* ═══════════════════════════════════════════════════════
    VIDEO PAUSE WHEN OUT OF VIEW
 ═══════════════════════════════════════════════════════ */
 const vidObs=new IntersectionObserver(es=>es.forEach(e=>{
   const vid=e.target;
-  if(e.isIntersecting){vid.play().catch(()=>{})}else{vid.pause();vid.muted=true;
-    const btn=vid.closest('.cs-media')?.querySelector('.cs-unmute');
+  if(e.isIntersecting){vid.play().catch(()=>{})}else{
+    vid.pause();vid.muted=true;
+    /* mute standard unmute buttons */
+    const btn=vid.closest('.cs-media')?.querySelector('.cs-unmute:not(#neuroUnmute)');
     if(btn){btn.style.borderColor='rgba(240,239,233,.2)';btn.style.background='rgba(14,18,53,.6)'}
+    /* pause neurocosm audio */
+    const aud=document.getElementById('neuroAudio');
+    if(vid.id==='neuroVid'&&aud){
+      aud.pause();
+      const nBtn=document.getElementById('neuroUnmute');
+      if(nBtn){nBtn.style.borderColor='rgba(240,239,233,.2)';nBtn.style.background='rgba(14,18,53,.6)'}
+    }
   }
 }),{threshold:.1});
 document.querySelectorAll('.cs-media video').forEach(v=>vidObs.observe(v));
