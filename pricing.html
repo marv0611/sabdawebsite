@@ -283,12 +283,12 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.06);positio
   function resize(){W=window.innerWidth;H=window.innerHeight;canvas.width=W*devicePixelRatio;canvas.height=H*devicePixelRatio;ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0)}
   resize();window.addEventListener('resize',resize);
   document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY});
-  const COUNT=960;
+  const COUNT=1200;
   const particles=Array.from({length:COUNT},()=>({
     x:Math.random()*3000,y:Math.random(),vx:0.008+Math.random()*0.06,vy:(Math.random()-0.5)*0.003,
     fx:0,fy:0,size:0.3+Math.random()*1.5,glow:4+Math.random()*16,
     color:(()=>{const c=Math.random();return c<0.38?[2,243,197]:c<0.72?[248,166,163]:[32,57,153]})(),
-    opacity:0.015+Math.random()*0.08,phase:Math.random()*Math.PI*2,
+    opacity:0.025+Math.random()*0.12,phase:Math.random()*Math.PI*2,
     waveAmp:0.01+Math.random()*0.04,waveFreq:0.0001+Math.random()*0.0005
   }));
   let t=0;
@@ -307,8 +307,8 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.06);positio
       const pulse=0.4+0.6*Math.sin(p.phase+t*0.001),op=p.opacity*pulse;
       if(op<0.002)return;
       const g=ctx.createRadialGradient(drawX,drawY,0,drawX,drawY,p.glow);
-      g.addColorStop(0,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.5})`);
-      g.addColorStop(0.3,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.18})`);
+      g.addColorStop(0,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.7})`);
+      g.addColorStop(0.3,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.28})`);
       g.addColorStop(0.7,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.04})`);
       g.addColorStop(1,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},0)`);
       ctx.fillStyle=g;ctx.beginPath();ctx.arc(drawX,drawY,p.glow,0,Math.PI*2);ctx.fill();
