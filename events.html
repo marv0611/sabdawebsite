@@ -187,8 +187,10 @@ section{position:relative;padding:120px 80px;z-index:2}
 .sg-slides{position:absolute;inset:0}
 .sg-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease}
 .sg-slide.on{opacity:1}
-.sg-img{position:absolute;inset:-6%;background-size:cover;background-position:center;transform:scale(1.08);transition:transform 7s linear}
+.sg-img{position:absolute;inset:-6%;background-size:cover;background-position:center;transform:scale(1.08);transition:transform 9s linear}
 .sg-slide.on .sg-img{transform:scale(1.0)}
+.sg-img-b{opacity:0;transition:opacity 1.2s ease,transform 9s linear}
+.sg-img-b.swap{opacity:1}
 .sg-ov{position:absolute;inset:0;
   background:
     linear-gradient(105deg,rgba(14,18,53,.95) 0%,rgba(14,18,53,.82) 28%,rgba(14,18,53,.45) 54%,rgba(14,18,53,.12) 78%,rgba(14,18,53,.05) 100%),
@@ -529,13 +531,13 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   <div class="sg-slides" id="sgSlides"></div>
   <div class="sg-content">
     <div class="sg-info" id="sgInfo">
-      <span class="sg-num" id="sgNum">01 / 05 — THE VENUE</span>
+      <span class="sg-num" id="sgNum">01 / 03 — THE VENUE</span>
       <h2 class="sg-name" id="sgName">The <em>Immersive</em> Room</h2>
       <p class="sg-desc" id="sgDesc">86m² of 360° projection-mapped walls. 8 LED laser projectors, Dolby Atmos certified surround sound, custom visual library. 20–80 capacity, soundproofed, climate controlled.</p>
     </div>
     <div class="sg-bottom">
       <div class="sg-prog-track"><div class="sg-prog-fill" id="sgProg"></div></div>
-      <span class="sg-counter" id="sgCounter">01 / 05</span>
+      <span class="sg-counter" id="sgCounter">01 / 03</span>
       <div class="sg-arrows">
         <button class="sg-arr" id="sgPrev"><svg viewBox="0 0 14 14" fill="none"><path d="M9 3L5 7l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <button class="sg-arr" id="sgNext"><svg viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -762,16 +764,14 @@ const vidObs=new IntersectionObserver(es=>es.forEach(e=>{
 document.querySelectorAll('.cs-media video').forEach(v=>vidObs.observe(v));
 
 /* ═══════════════════════════════════════════════════════
-   SPACE GALLERY — FULL-BLEED SLIDER
+   SPACE GALLERY — 3-SECTION SLIDER WITH MID-SWAP
 ═══════════════════════════════════════════════════════ */
 (function(){
   const BASE='https://raw.githubusercontent.com/marv0611/sabdawebsite/main/';
   const slides=[
-    {img:BASE+'Copy_of_Sabda2-167__1_.jpg',num:'01 / 05',name:'The <em>Immersive</em> Room',desc:'86m² of 360° projection-mapped walls. 8 LED laser projectors, Dolby Atmos certified surround sound, custom visual library. 20–80 capacity, soundproofed, climate controlled.'},
-    {img:BASE+'fcb_room.jpg',num:'02 / 05',name:'<em>Production</em> Ready',desc:'A blank canvas for projection mapping, video shoots, and content creation. Every surface becomes your set — customizable visuals on demand.'},
-    {img:BASE+'IMG-9__1_.jpg',num:'03 / 05',name:'Café & <em>Lounge</em>',desc:'65m² of modular space with SONOS sound, equipped bar, pro coffee machine, and fully reconfigurable furniture. Perfect for networking and reception.'},
-    {img:BASE+'IMG-10__1_.jpg',num:'04 / 05',name:'The <em>Corner</em> Lounge',desc:'Intimate seating area with direct patio access. Ideal for breakout sessions, VIP areas, or a quieter space within your event.'},
-    {img:BASE+'DSC06911__1_.jpg',num:'05 / 05',name:'The <em>Patio</em>',desc:'20m² outdoor space with ice bath, outdoor shower, natural light, and seating. A fresh-air extension for any event format.'},
+    {imgA:BASE+'immersive_underwater.jpg',imgB:BASE+'immersive_aurora.jpg',num:'01 / 03',name:'The <em>Immersive</em> Room',desc:'86m² of 360° projection-mapped walls. 8 LED laser projectors, Dolby Atmos certified surround sound, custom visual library. 20–80 capacity, soundproofed, climate controlled.'},
+    {imgA:BASE+'cafe_bar.jpg',imgB:BASE+'cafe_lounge.jpg',num:'02 / 03',name:'Café & <em>Lounge</em>',desc:'65m² of modular space with SONOS sound, equipped bar, pro coffee machine, and fully reconfigurable furniture. Perfect for networking and reception.'},
+    {imgA:BASE+'DSC06911__1_.jpg',imgB:BASE+'DSC06911__1_.jpg',num:'03 / 03',name:'The <em>Patio</em>',desc:'20m² outdoor space with ice bath, outdoor shower, natural light, and seating. A fresh-air extension for any event format.'},
   ];
 
   const container=document.getElementById('sgSlides');
@@ -779,12 +779,14 @@ document.querySelectorAll('.cs-media video').forEach(v=>vidObs.observe(v));
   slides.forEach((s,i)=>{
     const div=document.createElement('div');
     div.className='sg-slide'+(i===0?' on':'');
-    div.innerHTML=`<div class="sg-img" style="background-image:url('${s.img}')"></div><div class="sg-ov"></div>`;
+    div.innerHTML=`<div class="sg-img" style="background-image:url('${s.imgA}')"></div><div class="sg-img sg-img-b" style="background-image:url('${s.imgB}')"></div><div class="sg-ov"></div>`;
     container.appendChild(div);
   });
 
   let idx=0;
-  const DUR=5800;
+  const DUR=9000;
+  const SWAP=DUR/2;
+  let swapTimer=null;
   const sgName=document.getElementById('sgName');
   const sgDesc=document.getElementById('sgDesc');
   const sgNum=document.getElementById('sgNum');
@@ -803,9 +805,16 @@ document.querySelectorAll('.cs-media video').forEach(v=>vidObs.observe(v));
   }
 
   function goSlide(n){
+    /* clear any pending mid-swap */
+    if(swapTimer)clearTimeout(swapTimer);
+    /* reset previous slide's swap */
+    allSlides[idx].querySelector('.sg-img-b').classList.remove('swap');
     allSlides[idx].classList.remove('on');
+
     idx=(n+slides.length)%slides.length;
     allSlides[idx].classList.add('on');
+    allSlides[idx].querySelector('.sg-img-b').classList.remove('swap');
+
     sgInfo.style.opacity='0';sgInfo.style.transform='translateY(18px)';
     setTimeout(()=>{
       sgName.innerHTML=slides[idx].name;
@@ -814,11 +823,23 @@ document.querySelectorAll('.cs-media video').forEach(v=>vidObs.observe(v));
       sgCounter.textContent=slides[idx].num;
       sgInfo.style.opacity='1';sgInfo.style.transform='none';
     },300);
+
+    /* mid-swap: crossfade to second image halfway through */
+    swapTimer=setTimeout(()=>{
+      allSlides[idx].querySelector('.sg-img-b').classList.add('swap');
+    },SWAP);
+
     startProg();
   }
 
   document.getElementById('sgNext').addEventListener('click',()=>{clearInterval(autoT);goSlide(idx+1);autoT=setInterval(()=>goSlide(idx+1),DUR)});
   document.getElementById('sgPrev').addEventListener('click',()=>{clearInterval(autoT);goSlide(idx-1);autoT=setInterval(()=>goSlide(idx+1),DUR)});
+
+  /* schedule first mid-swap */
+  swapTimer=setTimeout(()=>{
+    allSlides[0].querySelector('.sg-img-b').classList.add('swap');
+  },SWAP);
+
   startProg();
   let autoT=setInterval(()=>goSlide(idx+1),DUR);
 })();
