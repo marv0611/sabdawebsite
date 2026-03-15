@@ -155,22 +155,16 @@ section{position:relative;padding:120px 80px;z-index:2}
 /* ── GLOBAL PARTICLES ── */
 #globalParticles{position:fixed;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
 
-/* ── TESTIMONIALS ── */
-.testimonials{padding:80px 80px;border-top:1px solid rgba(240,239,233,.06);border-bottom:1px solid rgba(240,239,233,.06)}
-.testi-hdr{text-align:center;margin-bottom:44px}
-.tc{position:relative;max-width:820px;margin:0 auto;text-align:center}
-.ti{position:absolute;inset:0;opacity:0;transform:translateY(14px);transition:opacity .75s var(--ease-expo),transform .75s var(--ease-expo);display:flex;flex-direction:column;align-items:center}
-.ti.on{opacity:1;transform:none;position:relative}
-.tq{font-family:'PT Serif',serif;font-size:clamp(1.2rem,2.2vw,1.7rem);line-height:1.52;font-style:italic;color:var(--white);margin-bottom:30px;max-width:720px}
-.tqm{color:var(--salmon);font-size:2em;line-height:.7;display:block;margin-bottom:10px}
-.ta{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--white38)}
-.ta-c{color:var(--cyan);margin-left:6px}
-.tctrl{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:56px}
-.tbtn{width:38px;height:38px;border-radius:50%;border:1px solid rgba(240,239,233,.14);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--white38);transition:border-color .25s,color .25s,background .25s}
-.tbtn:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(2,243,197,.06)}
-.tdots{display:flex;gap:8px}
-.tdot{width:6px;height:6px;border-radius:3px;background:rgba(240,239,233,.18);transition:width .35s var(--ease-expo),background .35s;cursor:pointer}
-.tdot.on{width:26px;background:linear-gradient(to right,var(--cyan),var(--salmon))}
+/* ── PRESS / IN THE NEWS ── */
+.press{padding:100px 80px;border-top:1px solid rgba(240,239,233,.06);border-bottom:1px solid rgba(240,239,233,.06)}
+.press-hdr{text-align:center;margin-bottom:56px}
+.press-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;max-width:1140px;margin:0 auto}
+.press-card{text-align:center;padding:40px 28px;border:1px solid rgba(240,239,233,.06);border-radius:8px;background:rgba(240,239,233,.015);transition:border-color .4s,background .4s,transform .35s var(--ease-expo)}
+.press-card:hover{border-color:rgba(240,239,233,.12);background:rgba(240,239,233,.025);transform:translateY(-4px)}
+.press-logo{height:28px;margin:0 auto 32px;display:flex;align-items:center;justify-content:center;opacity:.85}
+.press-logo svg{height:100%;width:auto}
+.press-quote{font-family:'PT Serif',serif;font-size:1.15rem;line-height:1.58;font-style:italic;color:var(--white);margin-bottom:0;max-width:320px;margin-left:auto;margin-right:auto}
+.press-quote::before{content:'"';display:block;font-size:2.4rem;line-height:.7;color:var(--salmon);margin-bottom:14px;font-style:normal}
 
 /* ── TRUST ── */
 .trust{padding:72px 80px;border-top:1px solid rgba(240,239,233,.06);border-bottom:1px solid rgba(240,239,233,.06);position:relative;z-index:2;background:transparent}
@@ -285,7 +279,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .nav-social svg{width:15px;height:15px}
   .nav-social{gap:10px;padding-left:14px;margin-left:14px}
   .lang-sel a{padding:4px 5px;font-size:.65rem}
-  section,.booking,.location,.trust,.stats-strip,footer{padding-left:24px;padding-right:24px}
+  section,.booking,.location,.trust,.stats-strip,.press,footer{padding-left:24px;padding-right:24px}
   .classes-hdr{padding:0 24px}
   section{padding-top:80px;padding-bottom:80px}
   .hero-content{padding:0 24px 80px}
@@ -293,6 +287,8 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .loc-in{grid-template-columns:1fr;gap:44px}
   .ft-in{grid-template-columns:1fr 1fr}
   .b-cards{grid-template-columns:1fr;max-width:400px;margin:0 auto}
+  .press-grid{grid-template-columns:1fr;max-width:400px;margin:0 auto;gap:20px}
+  .press{padding-top:72px;padding-bottom:72px}
   .sbk{display:flex}
 }
 @media(max-width:520px){.ft-in{grid-template-columns:1fr}.trust-in{gap:36px}.classes-hdr{flex-direction:column;align-items:flex-start;gap:16px}}
@@ -480,33 +476,29 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 </section>
 
 
-<!-- IN THE NEWS -->
-<section class="testimonials">
-  <div class="testi-hdr rv">
-    <span class="sl">In the News</span>
+<!-- IN THE NEWS — static 3-column, all visible -->
+<section class="press">
+  <div class="press-hdr rv">
+    <span class="sl">As Featured In</span>
   </div>
-  <div class="tc">
-    <div style="position:relative;min-height:230px">
-      <div class="ti on" data-i="0">
-        <blockquote class="tq"><span class="tqm">"</span>A meeting point between technology, art, and consciousness.</blockquote>
-        <cite class="ta" style="font-weight:600;letter-spacing:.18em;color:var(--white60)">CNN</cite>
+  <div class="press-grid">
+    <div class="press-card rv" style="transition-delay:.08s">
+      <div class="press-logo">
+        <svg viewBox="0 0 300 60" xmlns="http://www.w3.org/2000/svg"><text x="150" y="46" text-anchor="middle" font-family="'CNN',Impact,'Arial Black',sans-serif" font-weight="900" font-size="52" fill="#CC0000" letter-spacing="4">CNN</text></svg>
       </div>
-      <div class="ti" data-i="1">
-        <blockquote class="tq"><span class="tqm">"</span>A door to another dimension. Art in its purest form.</blockquote>
-        <cite class="ta" style="font-weight:600;letter-spacing:.18em;color:var(--white60)">Condé Nast Traveler</cite>
-      </div>
-      <div class="ti" data-i="2">
-        <blockquote class="tq"><span class="tqm">"</span>Sci-fi fitness: Spain's first immersive wellness studio.</blockquote>
-        <cite class="ta" style="font-weight:600;letter-spacing:.18em;color:var(--white60)">El Periódico</cite>
-      </div>
+      <p class="press-quote">A meeting point between technology, art, and consciousness.</p>
     </div>
-    <div class="tctrl rv" style="transition-delay:.1s">
-      <button class="tbtn" id="tPrev"><svg viewBox="0 0 14 14" fill="none"><path d="M9 3L5 7l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      <div class="tdots">
-        <div class="tdot on" data-d="0"></div><div class="tdot" data-d="1"></div>
-        <div class="tdot" data-d="2"></div>
+    <div class="press-card rv" style="transition-delay:.18s">
+      <div class="press-logo" style="height:22px">
+        <svg viewBox="0 0 480 36" xmlns="http://www.w3.org/2000/svg"><text x="240" y="29" text-anchor="middle" font-family="'Georgia','Times New Roman',serif" font-weight="400" font-size="26" fill="#f0efe9" letter-spacing="2.5" font-style="italic">Condé Nast Traveler</text></svg>
       </div>
-      <button class="tbtn" id="tNext"><svg viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <p class="press-quote">A door to another dimension. Art in its purest form.</p>
+    </div>
+    <div class="press-card rv" style="transition-delay:.28s">
+      <div class="press-logo" style="height:24px">
+        <svg viewBox="0 0 380 38" xmlns="http://www.w3.org/2000/svg"><text x="190" y="30" text-anchor="middle" font-family="'Georgia','Times New Roman',serif" font-weight="700" font-size="28" fill="#f0efe9" letter-spacing="1">El Periódico</text></svg>
+      </div>
+      <p class="press-quote">Sci-fi fitness: Spain's first immersive wellness studio.</p>
     </div>
   </div>
 </section>
@@ -647,7 +639,7 @@ document.addEventListener('mousemove',e=>{
   CUR.style.transform=`translate(${cx}px,${cy}px) translate(-50%,-50%)`;
 });
 (function rl(){rx+=(cx-rx)*.1;ry+=(cy-ry)*.1;RING.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;requestAnimationFrame(rl)})();
-document.querySelectorAll('a,button,.sg-arr,.tbtn,.tdot').forEach(el=>{
+document.querySelectorAll('a,button,.sg-arr,.press-card').forEach(el=>{
   el.addEventListener('mouseenter',()=>{CUR.classList.add('hov');RING.classList.add('hov')});
   el.addEventListener('mouseleave',()=>{CUR.classList.remove('hov');RING.classList.remove('hov')});
 });
@@ -844,24 +836,6 @@ setTimeout(()=>{
   }
   requestAnimationFrame(draw);
 })();
-
-/* ═══════════════════════════════════════════════════════
-   TESTIMONIALS
-═══════════════════════════════════════════════════════ */
-let tIdx=0;
-const tItems=document.querySelectorAll('.ti');
-const tDots=document.querySelectorAll('.tdot');
-function goT(n){
-  tItems[tIdx].classList.remove('on');tDots[tIdx].classList.remove('on');
-  tIdx=(n+tItems.length)%tItems.length;
-  tItems[tIdx].classList.add('on');tDots[tIdx].classList.add('on');
-}
-document.getElementById('tNext').addEventListener('click',()=>goT(tIdx+1));
-document.getElementById('tPrev').addEventListener('click',()=>goT(tIdx-1));
-tDots.forEach(d=>d.addEventListener('click',()=>goT(+d.dataset.d)));
-let tTimer=setInterval(()=>goT(tIdx+1),6200);
-document.querySelector('.tc').addEventListener('mouseenter',()=>clearInterval(tTimer));
-document.querySelector('.tc').addEventListener('mouseleave',()=>{tTimer=setInterval(()=>goT(tIdx+1),6200)});
 
 /* ═══════════════════════════════════════════════════════
    PARTNERS MARQUEE
