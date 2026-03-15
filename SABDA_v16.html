@@ -581,7 +581,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       <h2 class="sh2 rv" style="transition-delay:.07s">Eixample,<br><em>Barcelona.</em></h2>
       <p class="loc-addr rv" style="transition-delay:.13s"><strong>C/ Muntaner 83B, Local 2</strong><br>08011 Barcelona, Spain</p>
       <p class="loc-dir rv" style="transition-delay:.18s"><span>10 min</span> walk from Universitat metro (L1, L2)<br><span>5 min</span> from Passeig de Gràcia (L2, L3, L4)</p>
-      <a href="https://maps.google.com/?q=C/+Muntaner+83B,+08011+Barcelona" target="_blank" class="loc-link rv" style="transition-delay:.24s">Get Directions <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7.5 3l3 3.5-3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="https://maps.google.com/?q=SABDA+Studio,+Barcelona" target="_blank" class="loc-link rv" style="transition-delay:.24s">Get Directions <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7.5 3l3 3.5-3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
     <div class="loc-map rv" style="transition-delay:.1s">
       <div id="sabdaMap"></div>
@@ -903,38 +903,29 @@ function initMap(){
     ]
   });
 
-  /* Custom SABDA marker */
+  /* Custom SABDA symbol marker */
   const marker=new google.maps.Marker({
     position:sabda,map:map,
     icon:{
-      path:google.maps.SymbolPath.CIRCLE,
-      scale:12,
-      fillColor:'#02F3C5',
-      fillOpacity:1,
-      strokeColor:'#0e1235',
-      strokeWeight:3,
+      url:'https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20symbol%20pink.png',
+      scaledSize:new google.maps.Size(36,36),
+      anchor:new google.maps.Point(18,18),
     },
     title:'SABDA Studio'
   });
 
-  /* Cyan glow ring */
-  new google.maps.Marker({
-    position:sabda,map:map,
-    icon:{
-      path:google.maps.SymbolPath.CIRCLE,
-      scale:22,
-      fillColor:'#02F3C5',
-      fillOpacity:.12,
-      strokeColor:'#02F3C5',
-      strokeWeight:1,
-      strokeOpacity:.3,
-    },
+  /* Cyan glow ring around marker */
+  new google.maps.Circle({
+    center:sabda,map:map,
+    radius:35,
+    fillColor:'#02F3C5',fillOpacity:.08,
+    strokeColor:'#02F3C5',strokeWeight:1,strokeOpacity:.2,
     clickable:false
   });
 
   /* Click marker opens Google Maps */
   marker.addListener('click',()=>{
-    window.open('https://maps.google.com/?q=SABDA+Studio,+C/+Muntaner+83B,+08011+Barcelona','_blank');
+    window.open('https://maps.google.com/?q=SABDA+Studio,+Barcelona','_blank');
   });
 }
 </script>
