@@ -531,13 +531,13 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   <div class="sg-slides" id="sgSlides"></div>
   <div class="sg-content">
     <div class="sg-info" id="sgInfo">
-      <span class="sg-num" id="sgNum">01 / 03 — THE VENUE</span>
+      <span class="sg-num" id="sgNum">01 / 04 — THE VENUE</span>
       <h2 class="sg-name" id="sgName">The <em>Immersive</em> Room</h2>
       <p class="sg-desc" id="sgDesc">86m² of 360° projection-mapped walls. 8 LED laser projectors, Dolby Atmos certified surround sound, custom visual library. 20–80 capacity, soundproofed, climate controlled.</p>
     </div>
     <div class="sg-bottom">
       <div class="sg-prog-track"><div class="sg-prog-fill" id="sgProg"></div></div>
-      <span class="sg-counter" id="sgCounter">01 / 03</span>
+      <span class="sg-counter" id="sgCounter">01 / 04</span>
       <div class="sg-arrows">
         <button class="sg-arr" id="sgPrev"><svg viewBox="0 0 14 14" fill="none"><path d="M9 3L5 7l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
         <button class="sg-arr" id="sgNext"><svg viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -764,14 +764,15 @@ const vidObs=new IntersectionObserver(es=>es.forEach(e=>{
 document.querySelectorAll('.cs-media video').forEach(v=>vidObs.observe(v));
 
 /* ═══════════════════════════════════════════════════════
-   SPACE GALLERY — 3-SECTION SLIDER WITH MID-SWAP
+   SPACE GALLERY — 4-SECTION SLIDER WITH MID-SWAP, STARTS ON SCROLL
 ═══════════════════════════════════════════════════════ */
 (function(){
   const BASE='https://raw.githubusercontent.com/marv0611/sabdawebsite/main/';
   const slides=[
-    {imgA:BASE+'immersive_underwater.jpg',imgB:BASE+'immersive_aurora.jpg',num:'01 / 03',name:'The <em>Immersive</em> Room',desc:'86m² of 360° projection-mapped walls. 8 LED laser projectors, Dolby Atmos certified surround sound, custom visual library. 20–80 capacity, soundproofed, climate controlled.'},
-    {imgA:BASE+'cafe_bar.jpg',imgB:BASE+'cafe_lounge.jpg',num:'02 / 03',name:'Café & <em>Lounge</em>',desc:'65m² of modular space with SONOS sound, equipped bar, pro coffee machine, and fully reconfigurable furniture. Perfect for networking and reception.'},
-    {imgA:BASE+'DSC06911__1_.jpg',imgB:BASE+'DSC06911__1_.jpg',num:'03 / 03',name:'The <em>Patio</em>',desc:'20m² outdoor space with ice bath, outdoor shower, natural light, and seating. A fresh-air extension for any event format.'},
+    {imgA:BASE+'immersive_underwater.jpg',imgB:BASE+'immersive_aurora.jpg',num:'01 / 04',name:'The <em>Immersive</em> Room',desc:'86m² of 360° projection-mapped walls. 8 LED laser projectors, Dolby Atmos certified surround sound, custom visual library. 20–80 capacity, soundproofed, climate controlled.',dur:9000},
+    {imgA:BASE+'cafe_bar.jpg',imgB:BASE+'cafe_lounge.jpg',num:'02 / 04',name:'Café & <em>Lounge</em>',desc:'65m² of modular space with SONOS sound, equipped bar, pro coffee machine, and fully reconfigurable furniture. Perfect for networking and reception.',dur:9000},
+    {imgA:BASE+'DSC06911__1_.jpg',imgB:null,num:'03 / 04',name:'The <em>Patio</em>',desc:'20m² outdoor space with ice bath, outdoor shower, natural light, and seating. A fresh-air extension for any event format.',dur:5000},
+    {imgA:BASE+'entrance_door.jpg',imgB:BASE+'entrance_reception.jpg',num:'04 / 04',name:'The <em>Entrance</em>',desc:'Welcome desk with customizable smart art screen, street-level access on C/Muntaner in the heart of Barcelona\'s Eixample district.',dur:9000},
   ];
 
   const container=document.getElementById('sgSlides');
@@ -779,14 +780,15 @@ document.querySelectorAll('.cs-media video').forEach(v=>vidObs.observe(v));
   slides.forEach((s,i)=>{
     const div=document.createElement('div');
     div.className='sg-slide'+(i===0?' on':'');
-    div.innerHTML=`<div class="sg-img" style="background-image:url('${s.imgA}')"></div><div class="sg-img sg-img-b" style="background-image:url('${s.imgB}')"></div><div class="sg-ov"></div>`;
+    const bLayer=s.imgB?`<div class="sg-img sg-img-b" style="background-image:url('${s.imgB}')"></div>`:'';
+    div.innerHTML=`<div class="sg-img" style="background-image:url('${s.imgA}')"></div>${bLayer}<div class="sg-ov"></div>`;
     container.appendChild(div);
   });
 
   let idx=0;
-  const DUR=9000;
-  const SWAP=DUR/2;
   let swapTimer=null;
+  let autoT=null;
+  let started=false;
   const sgName=document.getElementById('sgName');
   const sgDesc=document.getElementById('sgDesc');
   const sgNum=document.getElementById('sgNum');
@@ -795,25 +797,25 @@ document.querySelectorAll('.cs-media video').forEach(v=>vidObs.observe(v));
   const sgInfo=document.getElementById('sgInfo');
   const allSlides=container.querySelectorAll('.sg-slide');
 
-  function startProg(){
+  function startProg(dur){
     sgProg.style.transition='none';
     sgProg.style.width='0%';
     requestAnimationFrame(()=>{requestAnimationFrame(()=>{
-      sgProg.style.transition=`width ${DUR}ms linear`;
+      sgProg.style.transition=`width ${dur}ms linear`;
       sgProg.style.width='100%';
     })});
   }
 
   function goSlide(n){
-    /* clear any pending mid-swap */
     if(swapTimer)clearTimeout(swapTimer);
-    /* reset previous slide's swap */
-    allSlides[idx].querySelector('.sg-img-b').classList.remove('swap');
+    const prevB=allSlides[idx].querySelector('.sg-img-b');
+    if(prevB)prevB.classList.remove('swap');
     allSlides[idx].classList.remove('on');
 
     idx=(n+slides.length)%slides.length;
     allSlides[idx].classList.add('on');
-    allSlides[idx].querySelector('.sg-img-b').classList.remove('swap');
+    const curB=allSlides[idx].querySelector('.sg-img-b');
+    if(curB)curB.classList.remove('swap');
 
     sgInfo.style.opacity='0';sgInfo.style.transform='translateY(18px)';
     setTimeout(()=>{
@@ -824,24 +826,36 @@ document.querySelectorAll('.cs-media video').forEach(v=>vidObs.observe(v));
       sgInfo.style.opacity='1';sgInfo.style.transform='none';
     },300);
 
-    /* mid-swap: crossfade to second image halfway through */
-    swapTimer=setTimeout(()=>{
-      allSlides[idx].querySelector('.sg-img-b').classList.add('swap');
-    },SWAP);
+    const dur=slides[idx].dur;
+    if(curB){
+      swapTimer=setTimeout(()=>curB.classList.add('swap'),dur/2);
+    }
+    startProg(dur);
 
-    startProg();
+    clearInterval(autoT);
+    autoT=setTimeout(()=>{
+      goSlide(idx+1);
+    },dur);
   }
 
-  document.getElementById('sgNext').addEventListener('click',()=>{clearInterval(autoT);goSlide(idx+1);autoT=setInterval(()=>goSlide(idx+1),DUR)});
-  document.getElementById('sgPrev').addEventListener('click',()=>{clearInterval(autoT);goSlide(idx-1);autoT=setInterval(()=>goSlide(idx+1),DUR)});
+  function startSlider(){
+    if(started)return;
+    started=true;
+    const dur=slides[0].dur;
+    startProg(dur);
+    const firstB=allSlides[0].querySelector('.sg-img-b');
+    if(firstB)swapTimer=setTimeout(()=>firstB.classList.add('swap'),dur/2);
+    autoT=setTimeout(()=>goSlide(1),dur);
+  }
 
-  /* schedule first mid-swap */
-  swapTimer=setTimeout(()=>{
-    allSlides[0].querySelector('.sg-img-b').classList.add('swap');
-  },SWAP);
+  document.getElementById('sgNext').addEventListener('click',()=>{goSlide(idx+1)});
+  document.getElementById('sgPrev').addEventListener('click',()=>{goSlide(idx-1)});
 
-  startProg();
-  let autoT=setInterval(()=>goSlide(idx+1),DUR);
+  /* Only start when scrolled into view */
+  const sgObs=new IntersectionObserver(es=>{
+    if(es[0].isIntersecting){startSlider();sgObs.unobserve(es[0].target)}
+  },{threshold:.15});
+  sgObs.observe(document.getElementById('space'));
 })();
 
 /* ═══════════════════════════════════════════════════════
