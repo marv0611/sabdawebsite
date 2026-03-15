@@ -122,9 +122,12 @@ section{position:relative;padding:120px 80px;z-index:2}
 .case-study{padding:120px 80px;z-index:2;position:relative;border-top:1px solid rgba(240,239,233,.04)}
 .cs-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
 .cs-inner.flip{direction:rtl}.cs-inner.flip>*{direction:ltr}
-.cs-media{position:relative;border-radius:8px;overflow:hidden;aspect-ratio:3/4;max-height:560px}
+.cs-media{position:relative;border-radius:8px;overflow:hidden;aspect-ratio:16/9}
 .cs-media video,.cs-media img{width:100%;height:100%;object-fit:cover}
 .cs-media::after{content:'';position:absolute;inset:0;border-radius:8px;border:1px solid rgba(240,239,233,.08);pointer-events:none}
+.cs-unmute{position:absolute;bottom:16px;right:16px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(240,239,233,.2);background:rgba(14,18,53,.6);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:3;transition:border-color .25s,background .25s}
+.cs-unmute:hover{border-color:rgba(2,243,197,.4);background:rgba(2,243,197,.08)}
+.cs-unmute svg{width:16px;height:16px;fill:var(--white);opacity:.7}
 .cs-media-glow{position:absolute;inset:-1px;border-radius:9px;opacity:0;transition:opacity 1.2s var(--ease-expo);pointer-events:none}
 .cs-media-glow.on{opacity:1}
 .cs-client-tag{display:inline-flex;align-items:center;gap:8px;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--white38);margin-bottom:16px;padding:6px 14px;border:1px solid rgba(240,239,233,.08);border-radius:3px;background:rgba(240,239,233,.02)}
@@ -139,21 +142,6 @@ section{position:relative;padding:120px 80px;z-index:2}
 /* ── HORIZONTAL RULE ANIMATION ── */
 .hr-anim{height:1px;background:linear-gradient(to right,transparent,rgba(2,243,197,.15) 20%,rgba(248,166,163,.15) 80%,transparent);position:relative;z-index:2;transform:scaleX(0);transition:transform 1.4s var(--ease-expo)}
 .hr-anim.vis{transform:scaleX(1)}
-
-/* ── VIDEO GALLERY ── */
-.vid-gallery{padding:120px 80px;z-index:2;position:relative;border-top:1px solid rgba(240,239,233,.04)}
-.vid-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:56px}
-.vid-item{position:relative;border-radius:8px;overflow:hidden;aspect-ratio:9/16;cursor:pointer;border:1px solid rgba(240,239,233,.08);transition:border-color .4s,transform .35s var(--ease-expo)}
-.vid-item:hover{border-color:rgba(2,243,197,.2);transform:translateY(-4px)}
-.vid-item video{width:100%;height:100%;object-fit:cover}
-.vid-item-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(14,18,53,.7) 0%,transparent 50%);pointer-events:none;transition:opacity .3s}
-.vid-item:hover .vid-item-ov{opacity:.5}
-.vid-item-label{position:absolute;bottom:0;left:0;right:0;padding:20px 16px;z-index:2;pointer-events:none}
-.vid-item-name{font-family:'PT Serif',serif;font-size:1rem;font-weight:700;line-height:1.3;margin-bottom:4px}
-.vid-item-sub{font-size:.7rem;color:var(--white38);letter-spacing:.08em;text-transform:uppercase}
-.vid-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;border:1.5px solid rgba(240,239,233,.3);background:rgba(14,18,53,.5);display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s,transform .3s var(--ease-expo);backdrop-filter:blur(8px)}
-.vid-item:hover .vid-play{opacity:1;transform:translate(-50%,-50%) scale(1)}
-.vid-play svg{width:20px;height:20px;fill:var(--white);margin-left:3px}
 
 /* ── SIGNUP CTA ── */
 .signup-cta{padding:100px 80px;z-index:2;position:relative;text-align:center;border-top:1px solid rgba(240,239,233,.06)}
@@ -224,7 +212,6 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 @media(max-width:1100px){
   .uc-grid{grid-template-columns:repeat(2,1fr)}
   .uc-card{height:320px}
-  .vid-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
   .ft-in{grid-template-columns:1fr 1fr}
 }
 @media(max-width:860px){
@@ -234,7 +221,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .nav-social{gap:10px;padding-left:14px;margin-left:14px}
   .nav-login{padding-left:12px;margin-left:10px}
   .lang-sel a{padding:4px 5px;font-size:.65rem}
-  section,.vid-gallery,.signup-cta,.review-nudge,footer{padding-left:24px;padding-right:24px}
+  section,.signup-cta,.review-nudge,footer{padding-left:24px;padding-right:24px}
   section{padding-top:80px;padding-bottom:80px}
   .hero-content{padding:0 24px 72px}
   .hero h1{font-size:clamp(2.2rem,8vw,3.6rem)}
@@ -243,10 +230,8 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .uc-desc{display:none}
   .cs-inner{grid-template-columns:1fr;gap:40px}
   .cs-inner.flip{direction:ltr}
-  .cs-media{max-height:400px;aspect-ratio:4/3}
+  .cs-media{aspect-ratio:16/9}
   .case-study{padding:80px 24px}
-  .vid-gallery{padding:80px 24px}
-  .vid-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .signup-cta{padding:60px 24px}
   .signup-text{font-size:1.8rem}
   .review-nudge{padding:60px 24px}
@@ -258,7 +243,6 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 @media(max-width:520px){
   .uc-grid{grid-template-columns:1fr}
   .uc-card{height:240px}
-  .vid-grid{grid-template-columns:1fr 1fr}
   .ft-in{grid-template-columns:1fr}
 }
 </style>
@@ -369,7 +353,10 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 <section class="case-study">
   <div class="cs-inner rv">
     <div class="cs-media">
-      <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/immersive_underwater.jpg" alt="Panta Rhei immersive ocean exhibition at SABDA" loading="lazy">
+      <video autoplay muted loop playsinline preload="auto" data-unmute>
+        <source src="https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/0312.mp4" type="video/mp4">
+      </video>
+      <button class="cs-unmute" aria-label="Toggle sound"><svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
       <div class="cs-media-glow" style="background:linear-gradient(135deg,rgba(2,243,197,.12),transparent 40%,rgba(248,166,163,.08))"></div>
     </div>
     <div>
@@ -391,7 +378,10 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 <section class="case-study">
   <div class="cs-inner flip rv">
     <div class="cs-media">
-      <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/immersive_aurora.jpg" alt="360° listening session at SABDA with aurora projections" loading="lazy">
+      <video autoplay muted loop playsinline preload="auto" data-unmute>
+        <source src="https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/0314.mp4" type="video/mp4">
+      </video>
+      <button class="cs-unmute" aria-label="Toggle sound"><svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
       <div class="cs-media-glow" style="background:linear-gradient(135deg,rgba(248,166,163,.14),transparent 40%,rgba(2,243,197,.1))"></div>
     </div>
     <div>
@@ -413,7 +403,10 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 <section class="case-study">
   <div class="cs-inner rv">
     <div class="cs-media">
-      <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/ecstatic_dance.jpg" alt="Neurocosm live performance by Alma Digital at SABDA" loading="lazy">
+      <video autoplay muted loop playsinline preload="auto" data-unmute>
+        <source src="https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/3%20english%20story.mp4" type="video/mp4">
+      </video>
+      <button class="cs-unmute" aria-label="Toggle sound"><svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
       <div class="cs-media-glow" style="background:linear-gradient(135deg,rgba(2,243,197,.1),transparent 40%,rgba(248,166,163,.08))"></div>
     </div>
     <div>
@@ -435,7 +428,10 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 <section class="case-study">
   <div class="cs-inner flip rv">
     <div class="cs-media">
-      <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/meditation_moon.jpg" alt="Offline Club gathering at SABDA with meditation and ice baths" loading="lazy">
+      <video autoplay muted loop playsinline preload="auto" data-unmute>
+        <source src="https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/OFFLINEATSABDA.mp4" type="video/mp4">
+      </video>
+      <button class="cs-unmute" aria-label="Toggle sound"><svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
       <div class="cs-media-glow" style="background:linear-gradient(135deg,rgba(248,166,163,.12),transparent 40%,rgba(2,243,197,.1))"></div>
     </div>
     <div>
@@ -451,45 +447,11 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 </section>
 
 <!-- ═══════════════════════════════════════════════════════
-     VIDEO GALLERY
-═══════════════════════════════════════════════════════ -->
-<section class="vid-gallery">
-  <span class="sl rv">Gallery</span>
-  <h2 class="sh2 rv" style="transition-delay:.07s">Inside the <em>Room</em></h2>
-  <div class="vid-grid">
-    <div class="vid-item rv" style="transition-delay:.1s">
-      <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/immersive_aurora_mats.jpg" alt="Immersive aurora session" style="width:100%;height:100%;object-fit:cover" loading="lazy">
-      <div class="vid-item-ov"></div>
-      <div class="vid-item-label">
-        <div class="vid-item-name">Aurora Sessions</div>
-        <div class="vid-item-sub">Listening Session</div>
-      </div>
-    </div>
-    <div class="vid-item rv" style="transition-delay:.17s">
-      <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/IMG-19.jpg" alt="Live music at SABDA" style="width:100%;height:100%;object-fit:cover" loading="lazy">
-      <div class="vid-item-ov"></div>
-      <div class="vid-item-label">
-        <div class="vid-item-name">Neurocosm Night</div>
-        <div class="vid-item-sub">Live Performance</div>
-      </div>
-    </div>
-    <div class="vid-item rv" style="transition-delay:.24s">
-      <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/KR233837.jpg" alt="Community gathering at SABDA" style="width:100%;height:100%;object-fit:cover" loading="lazy">
-      <div class="vid-item-ov"></div>
-      <div class="vid-item-label">
-        <div class="vid-item-name">Offline Club</div>
-        <div class="vid-item-sub">Community Gathering</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════
      EMAIL SIGNUP
 ═══════════════════════════════════════════════════════ -->
 <div class="signup-cta" id="signup">
   <div class="signup-inner rv">
-    <p class="signup-text">Be the first to <em>know.</em></p>
+    <p class="signup-text">Want to keep in touch for our <em>next event?</em></p>
     <p class="signup-sub">We don&#8217;t do events often, but when we do, they sell out. Drop your email and we&#8217;ll let you know before anyone else.</p>
     <form class="signup-form" onsubmit="handleSignup(event)">
       <input type="email" placeholder="Your email" required>
@@ -564,7 +526,7 @@ document.addEventListener('mousemove',e=>{
   CUR.style.transform=`translate(${cx}px,${cy}px) translate(-50%,-50%)`;
 });
 (function rl(){rx+=(cx-rx)*.1;ry+=(cy-ry)*.1;RING.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;requestAnimationFrame(rl)})();
-document.querySelectorAll('a,button,.uc-card,.vid-item').forEach(el=>{
+document.querySelectorAll('a,button,.uc-card,.cs-unmute').forEach(el=>{
   el.addEventListener('mouseenter',()=>{CUR.classList.add('hov');RING.classList.add('hov')});
   el.addEventListener('mouseleave',()=>{CUR.classList.remove('hov');RING.classList.remove('hov')});
 });
@@ -602,6 +564,31 @@ const glowObs=new IntersectionObserver(es=>es.forEach(e=>{
   }
 }),{threshold:.2});
 document.querySelectorAll('.cs-media').forEach(el=>glowObs.observe(el));
+
+/* ═══════════════════════════════════════════════════════
+   UNMUTE TOGGLE
+═══════════════════════════════════════════════════════ */
+document.querySelectorAll('.cs-unmute').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const vid=btn.closest('.cs-media').querySelector('video');
+    if(!vid)return;
+    vid.muted=!vid.muted;
+    btn.style.borderColor=vid.muted?'rgba(240,239,233,.2)':'rgba(2,243,197,.5)';
+    btn.style.background=vid.muted?'rgba(14,18,53,.6)':'rgba(2,243,197,.12)';
+  });
+});
+
+/* ═══════════════════════════════════════════════════════
+   VIDEO PAUSE WHEN OUT OF VIEW
+═══════════════════════════════════════════════════════ */
+const vidObs=new IntersectionObserver(es=>es.forEach(e=>{
+  const vid=e.target;
+  if(e.isIntersecting){vid.play().catch(()=>{})}else{vid.pause();vid.muted=true;
+    const btn=vid.closest('.cs-media')?.querySelector('.cs-unmute');
+    if(btn){btn.style.borderColor='rgba(240,239,233,.2)';btn.style.background='rgba(14,18,53,.6)'}
+  }
+}),{threshold:.1});
+document.querySelectorAll('.cs-media video').forEach(v=>vidObs.observe(v));
 
 /* ═══════════════════════════════════════════════════════
    QUOTE TICKER
