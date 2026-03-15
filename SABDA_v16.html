@@ -235,8 +235,9 @@ section{position:relative;padding:120px 80px;z-index:2}
 .b-all-link:hover{gap:16px;color:var(--white)}
 
 /* ── REVIEW NUDGE ── */
-.review-nudge{padding:72px 80px;border-top:1px solid rgba(240,239,233,.06);position:relative;z-index:2}
-.rn-inner{max-width:540px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center}
+.review-nudge{padding:72px 80px;border-top:1px solid rgba(240,239,233,.06);position:relative;z-index:2;overflow:hidden}
+.rn-wrap{position:relative;max-width:1100px;margin:0 auto}
+.rn-inner{max-width:540px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;position:relative;z-index:2}
 .rn-stars{display:flex;gap:4px;margin-bottom:10px}
 .rn-stars svg{width:18px;height:18px;fill:var(--cyan)}
 .rn-scoreline{display:flex;align-items:baseline;gap:10px;margin-bottom:22px}
@@ -246,12 +247,14 @@ section{position:relative;padding:120px 80px;z-index:2}
 .rn-text em{font-style:italic;color:var(--salmon)}
 .rn-sub{font-size:.88rem;color:var(--white60);line-height:1.6;margin-bottom:28px}
 .rn-sub span{color:var(--salmon);font-weight:600}
-.rn-link{display:inline-flex;align-items:center;gap:9px;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--cyan);padding:15px 36px;border:1.5px solid rgba(2,243,197,.4);border-radius:4px;transition:border-color .25s,background .25s,transform .2s,box-shadow .3s;margin-bottom:28px}
+.rn-link{display:inline-flex;align-items:center;gap:9px;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--cyan);padding:15px 36px;border:1.5px solid rgba(2,243,197,.4);border-radius:4px;transition:border-color .25s,background .25s,transform .2s,box-shadow .3s}
 .rn-link:hover{border-color:var(--cyan);background:rgba(2,243,197,.08);transform:translateY(-2px);box-shadow:0 8px 28px rgba(2,243,197,.14)}
 .rn-link svg{width:16px;height:16px;opacity:.8}
-.rn-sample{font-family:'PT Serif',serif;font-size:.8rem;font-style:italic;color:var(--white30);text-align:center;line-height:1.4;transition:opacity .6s;min-height:1.2em}
-.rn-sample.vis{opacity:1}
-.rn-sample:not(.vis){opacity:0}
+.rn-float{position:absolute;top:50%;font-family:'PT Serif',serif;font-size:.82rem;font-style:italic;color:var(--white);opacity:0;transition:opacity .8s,transform .8s var(--ease-expo);max-width:180px;line-height:1.45}
+.rn-float.left{right:calc(50% + 300px);transform:translateY(-50%) translateX(-10px);text-align:right}
+.rn-float.right{left:calc(50% + 300px);transform:translateY(-50%) translateX(10px);text-align:left}
+.rn-float.vis{opacity:.35;transform:translateY(-50%) translateX(0)}
+@media(max-width:1100px){.rn-float{display:none}}
 
 /* ── LOCATION ── */
 .location{padding:120px 80px}
@@ -592,15 +595,18 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   </div>
 </section>
 
-<!-- REVIEW NUDGE — vertical persuasion funnel -->
+<!-- REVIEW NUDGE — vertical funnel with flanking quotes -->
 <div class="review-nudge rv">
-  <div class="rn-inner">
-    <div class="rn-stars"><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg></div>
-    <div class="rn-scoreline"><span class="rn-score">4.8</span><span class="rn-count">350+ reviews</span></div>
-    <p class="rn-text">Spread the <em>Love.</em></p>
-    <p class="rn-sub">Share a quick review and <span>a ginger shot is on us</span> at your next visit.</p>
-    <a href="https://g.page/r/CZeZ4gZgrjR3EAE/review" target="_blank" class="rn-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>Leave a Google Review</a>
-    <div class="rn-sample vis" id="rnSample">&ldquo;The teachers are the best in Barcelona.&rdquo;</div>
+  <div class="rn-wrap">
+    <div class="rn-float left" id="rnL"></div>
+    <div class="rn-float right" id="rnR"></div>
+    <div class="rn-inner">
+      <div class="rn-stars"><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg></div>
+      <div class="rn-scoreline"><span class="rn-score">4.8</span><span class="rn-count">350+ reviews</span></div>
+      <p class="rn-text">Spread the <em>Love.</em></p>
+      <p class="rn-sub">Share a quick review and <span>a ginger shot is on us</span> at your next visit.</p>
+      <a href="https://g.page/r/CZeZ4gZgrjR3EAE/review" target="_blank" class="rn-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>Leave a Google Review</a>
+    </div>
   </div>
 </div>
 <div style="height:1px;background:linear-gradient(to right,transparent,rgba(240,239,233,.06) 20%,rgba(240,239,233,.06) 80%,transparent);position:relative;z-index:2"></div>
@@ -887,41 +893,39 @@ const colors=['#02F3C5','#F8A6A3'];
   const sep=document.createElement('span');sep.className='mq-sep';sep.textContent='·';mq.appendChild(sep);
   const s=document.createElement('span');
   s.className='mq-item';s.textContent=name;s.style.color=colors[i%2];
-  mq.appendChild(s);
-});
-
-/* ═══════════════════════════════════════════════════════
-   REVIEW SAMPLE — rotating snippets
-═══════════════════════════════════════════════════════ */
-const rnSamples=[
+  mq.appendChild(s/* =====================================================
+   REVIEW FLOATS -- staggered left/right
+===================================================== */
+const rnLeft=[
   "“The teachers are the best in Barcelona.”",
-  "\u201CYou can feel the calm energy reset you.\u201D",
-  "\u201CThe 360\u00B0 room blew my mind.\u201D",
-  "\u201CBooked three more classes on the spot.\u201D",
-  "\u201C100% worth it. Coming back every week.\u201D",
+  "“The 360° room blew my mind.”",
+  "“100% worth it. Coming back every week.”",
 ];
-const rnEl=document.getElementById('rnSample');
-if(rnEl){
-  let rnIdx=0;
-  setInterval(()=>{
-    rnEl.classList.remove('vis');
+const rnRight=[
+  "“You can feel the calm energy reset you.”",
+  "“Booked three more classes on the spot.”",
+  "“Nothing else like this in the city.”",
+];
+const rnL=document.getElementById('rnL');
+const rnR=document.getElementById('rnR');
+if(rnL&&rnR){
+  let li=0,ri=0;
+  function showFloat(el,arr,idx){
+    el.classList.remove('vis');
     setTimeout(()=>{
-      rnIdx=(rnIdx+1)%rnSamples.length;
-      rnEl.textContent=rnSamples[rnIdx];
-      rnEl.classList.add('vis');
-    },600);
-  },4000);
+      el.textContent=arr[idx];
+      el.classList.add('vis');
+    },800);
+    setTimeout(()=>el.classList.remove('vis'),3500);
+  }
+  setTimeout(()=>showFloat(rnL,rnLeft,0),800);
+  setTimeout(()=>showFloat(rnR,rnRight,0),2500);
+  setInterval(()=>{li=(li+1)%rnLeft.length;showFloat(rnL,rnLeft,li)},5000);
+  setInterval(()=>{ri=(ri+1)%rnRight.length;showFloat(rnR,rnRight,ri)},5000);
 }
 
-/* ═══════════════════════════════════════════════════════
-   MOBILE STICKY
-═══════════════════════════════════════════════════════ */
-const sbk=document.getElementById('sbk');
-const heroEl=document.getElementById('hero');
-window.addEventListener('scroll',()=>{
-  sbk.classList.toggle('vis',scrollY>heroEl.offsetHeight*.65);
-},{passive:true});
-</script>
+.ft-legal a:hover{color:var(--white38)}
+
 <script>
 function initMap(){
   const sabda={lat:41.3891,lng:2.1563};
