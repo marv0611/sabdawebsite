@@ -893,18 +893,21 @@ const colors=['#02F3C5','#F8A6A3'];
   const sep=document.createElement('span');sep.className='mq-sep';sep.textContent='·';mq.appendChild(sep);
   const s=document.createElement('span');
   s.className='mq-item';s.textContent=name;s.style.color=colors[i%2];
-  mq.appendChild(s/* =====================================================
+  mq.appendChild(s);
+});
+
+/* =====================================================
    REVIEW FLOATS -- staggered left/right
 ===================================================== */
 const rnLeft=[
-  "“The teachers are the best in Barcelona.”",
-  "“The 360° room blew my mind.”",
-  "“100% worth it. Coming back every week.”",
+  "\u201CThe teachers are the best in Barcelona.\u201D",
+  "\u201CThe 360\u00B0 room blew my mind.\u201D",
+  "\u201C100% worth it. Coming back every week.\u201D",
 ];
 const rnRight=[
-  "“You can feel the calm energy reset you.”",
-  "“Booked three more classes on the spot.”",
-  "“Nothing else like this in the city.”",
+  "\u201CYou can feel the calm energy reset you.\u201D",
+  "\u201CBooked three more classes on the spot.\u201D",
+  "\u201CNothing else like this in the city.\u201D",
 ];
 const rnL=document.getElementById('rnL');
 const rnR=document.getElementById('rnR');
@@ -924,8 +927,15 @@ if(rnL&&rnR){
   setInterval(()=>{ri=(ri+1)%rnRight.length;showFloat(rnR,rnRight,ri)},5000);
 }
 
-.ft-legal a:hover{color:var(--white38)}
-
+/* =====================================================
+   MOBILE STICKY
+===================================================== */
+const sbk=document.getElementById('sbk');
+const heroEl=document.getElementById('hero');
+window.addEventListener('scroll',()=>{
+  sbk.classList.toggle('vis',scrollY>heroEl.offsetHeight*.65);
+},{passive:true});
+</script>
 <script>
 function initMap(){
   const sabda={lat:41.3891,lng:2.1563};
