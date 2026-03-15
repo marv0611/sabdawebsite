@@ -155,22 +155,20 @@ section{position:relative;padding:120px 80px;z-index:2}
 /* ── GLOBAL PARTICLES ── */
 #globalParticles{position:fixed;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
 
-/* ── TESTIMONIALS ── */
-.testimonials{padding:80px 80px;border-top:1px solid rgba(240,239,233,.06);border-bottom:1px solid rgba(240,239,233,.06)}
-.testi-hdr{text-align:center;margin-bottom:44px}
-.tc{position:relative;max-width:820px;margin:0 auto;text-align:center}
-.ti{position:absolute;inset:0;opacity:0;transform:translateY(14px);transition:opacity .75s var(--ease-expo),transform .75s var(--ease-expo);display:flex;flex-direction:column;align-items:center}
-.ti.on{opacity:1;transform:none;position:relative}
-.tq{font-family:'PT Serif',serif;font-size:clamp(1.2rem,2.2vw,1.7rem);line-height:1.52;font-style:italic;color:var(--white);margin-bottom:30px;max-width:720px}
-.tqm{color:var(--salmon);font-size:2em;line-height:.7;display:block;margin-bottom:10px}
-.ta{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--white38)}
-.ta-c{color:var(--cyan);margin-left:6px}
-.tctrl{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:56px}
-.tbtn{width:38px;height:38px;border-radius:50%;border:1px solid rgba(240,239,233,.14);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--white38);transition:border-color .25s,color .25s,background .25s}
-.tbtn:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(2,243,197,.06)}
-.tdots{display:flex;gap:8px}
-.tdot{width:6px;height:6px;border-radius:3px;background:rgba(240,239,233,.18);transition:width .35s var(--ease-expo),background .35s;cursor:pointer}
-.tdot.on{width:26px;background:linear-gradient(to right,var(--cyan),var(--salmon))}
+/* ── PRESS / IN THE NEWS ── */
+.press{padding:100px 80px;border-top:1px solid rgba(240,239,233,.06);border-bottom:1px solid rgba(240,239,233,.06)}
+.press-hdr{text-align:center;margin-bottom:64px}
+.press-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px;max-width:1100px;margin:0 auto}
+.press-card{text-align:center;padding:0;position:relative;overflow:hidden}
+.press-logo{margin:0 auto 36px;display:flex;align-items:center;justify-content:center;position:relative;max-width:100%}
+.press-logo svg{height:100%;max-width:100%;position:relative;z-index:1}
+.press-logo-glow{position:absolute;inset:0;border-radius:50%;filter:blur(30px);opacity:.5;transition:opacity .6s}
+.press-card:hover .press-logo-glow{opacity:.8}
+.press-line{display:none}
+.press-quote{font-family:'PT Serif',serif;font-size:1.35rem;line-height:1.55;font-style:italic;color:var(--white);margin-left:auto;margin-right:auto;opacity:.92;transition:opacity .4s;position:relative;padding-top:20px}
+.press-quote::before{content:'\201C';position:absolute;top:-8px;left:50%;transform:translateX(-50%);font-size:3.5rem;line-height:1;color:var(--salmon);opacity:.6;font-style:normal;font-family:'PT Serif',serif}
+.press-card:hover .press-quote{opacity:1}
+.press-card:hover .press-quote::before{opacity:.9}
 
 /* ── TRUST ── */
 .trust{padding:72px 80px;border-top:1px solid rgba(240,239,233,.06);border-bottom:1px solid rgba(240,239,233,.06);position:relative;z-index:2;background:transparent}
@@ -238,6 +236,30 @@ section{position:relative;padding:120px 80px;z-index:2}
 .b-all-link{display:inline-flex;align-items:center;gap:10px;font-size:.88rem;color:var(--salmon);font-weight:500;letter-spacing:.02em;transition:gap .3s,color .2s}
 .b-all-link:hover{gap:16px;color:var(--white)}
 
+/* ── REVIEW NUDGE ── */
+.review-nudge{padding:100px 80px;border-top:1px solid rgba(240,239,233,.06);position:relative;z-index:2;overflow:hidden}
+.rn-inner{max-width:540px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;position:relative;z-index:2}
+.rn-stars{display:flex;gap:3px;margin-bottom:6px}
+.rn-stars svg{width:14px;height:14px;fill:var(--cyan)}
+.rn-scoreline{display:flex;align-items:baseline;gap:8px;margin-bottom:28px}
+.rn-score{font-family:'PT Serif',serif;font-size:1.1rem;font-weight:700;color:var(--white60);line-height:1}
+.rn-count{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--white38)}
+.rn-text{font-family:'PT Serif',serif;font-size:2.8rem;font-weight:700;color:var(--white);line-height:1.15;margin-bottom:12px}
+.rn-text em{font-style:italic;color:var(--salmon)}
+.rn-sub{font-size:.88rem;color:var(--white60);line-height:1.6;margin-bottom:32px}
+.rn-sub span{color:var(--salmon);font-weight:600}
+.rn-link{display:inline-flex;align-items:center;gap:10px;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--navy);background:var(--cyan);padding:18px 44px;border-radius:4px;border:none;transition:background .25s,transform .2s,box-shadow .3s}
+.rn-link:hover{background:#33f5d1;transform:translateY(-2px);box-shadow:0 8px 28px rgba(2,243,197,.25)}
+.rn-link svg{width:18px;height:18px;opacity:.9}
+.rn-ticker{position:relative;max-width:600px;margin:0 auto 56px;text-align:center;min-height:120px;display:flex;align-items:center;justify-content:center}
+.rn-quote{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:opacity .8s ease,transform .8s ease;transform:translateY(10px)}
+.rn-quote.active{opacity:1;transform:translateY(0)}
+.rn-quote q{font-family:'PT Serif',serif;font-size:1.5rem;font-style:italic;color:var(--white);line-height:1.5;quotes:"“" "”";display:block;margin-bottom:14px}
+.rn-quote q::before{content:open-quote;color:var(--cyan);font-size:1.8rem;margin-right:2px}
+.rn-quote q::after{content:close-quote;color:var(--cyan);font-size:1.8rem;margin-left:2px}
+.rn-quote cite{font-style:normal;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--salmon);font-weight:500}
+@media(max-width:860px){.rn-quote q{font-size:1.2rem}.rn-ticker{min-height:110px;margin-bottom:40px}}
+
 /* ── LOCATION ── */
 .location{padding:120px 80px}
 .loc-in{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;max-width:1240px;margin:0 auto}
@@ -247,8 +269,8 @@ section{position:relative;padding:120px 80px;z-index:2}
 .loc-dir span{color:var(--cyan)}
 .loc-link{display:inline-flex;align-items:center;gap:8px;color:var(--cyan);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;border-bottom:1px solid rgba(2,243,197,.28);padding-bottom:3px;transition:gap .25s,border-color .25s}
 .loc-link:hover{gap:14px;border-color:var(--cyan)}
-.loc-map{border-radius:6px;overflow:hidden;height:400px;border:1px solid rgba(240,239,233,.08)}
-.loc-map iframe{width:100%;height:100%;border:0;filter:invert(90%) hue-rotate(180deg) brightness(.78) contrast(1.15)}
+.loc-map{border-radius:6px;overflow:hidden;height:400px;border:1px solid rgba(240,239,233,.08);position:relative}
+.loc-map #sabdaMap{width:100%;height:100%}
 
 /* ── FOOTER ── */
 footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);background:rgba(9,12,38,.6);position:relative;z-index:2}
@@ -285,7 +307,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .nav-social svg{width:15px;height:15px}
   .nav-social{gap:10px;padding-left:14px;margin-left:14px}
   .lang-sel a{padding:4px 5px;font-size:.65rem}
-  section,.booking,.location,.trust,.stats-strip,footer{padding-left:24px;padding-right:24px}
+  section,.booking,.location,.trust,.stats-strip,.press,.review-nudge,footer{padding-left:24px;padding-right:24px}
   .classes-hdr{padding:0 24px}
   section{padding-top:80px;padding-bottom:80px}
   .hero-content{padding:0 24px 80px}
@@ -293,6 +315,8 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .loc-in{grid-template-columns:1fr;gap:44px}
   .ft-in{grid-template-columns:1fr 1fr}
   .b-cards{grid-template-columns:1fr;max-width:400px;margin:0 auto}
+  .press-grid{grid-template-columns:1fr;max-width:400px;margin:0 auto;gap:48px}
+  .press{padding-top:72px;padding-bottom:72px}
   .sbk{display:flex}
 }
 @media(max-width:520px){.ft-in{grid-template-columns:1fr}.trust-in{gap:36px}.classes-hdr{flex-direction:column;align-items:flex-start;gap:16px}}
@@ -312,7 +336,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     <div class="ld-ring"></div><div class="ld-ring"></div><div class="ld-ring"></div>
     <div class="ld-ring"></div><div class="ld-ring"></div><div class="ld-ring"></div>
   </div>
-  <span class="ld-text">Enter the Void</span>
+  <span class="ld-text">Enter the Portal</span>
 </div>
 
 <!-- NAV -->
@@ -323,8 +347,8 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   <ul class="nav-links">
     <li><a href="classes.html">Classes</a></li>
     <li><a href="pricing.html">Pricing</a></li>
-    <li><a href="rent-corporate.html">Rent & Corporate</a></li>
-    <li><a href="#">Listening Sessions</a></li>
+    <li><a href="events.html">Hire</a></li>
+    <li><a href="#">Events</a></li>
     <li><a href="#">About</a></li>
   </ul>
   <div class="nav-right">
@@ -405,7 +429,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       </a>
     </div>
   </div>
-  <!-- ROW 1 — scrolls left -->
+  <!-- ROW 1 — scrolls left: Vinyasa (blue), Pilates (neutral), Meditation (warm) -->
   <div class="cls-row-wrap">
     <div class="cls-row scroll-left">
       <div class="cls-item">
@@ -414,14 +438,14 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
         <div class="cls-item-label"><div class="cls-item-name">Vinyasa Yoga</div><div class="cls-item-tag">60 min · All levels</div></div>
       </div>
       <div class="cls-item">
-        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_010.jpg" alt="Sound Healing" loading="lazy">
+        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/pilates_new.jpg" alt="Pilates" loading="lazy">
         <div class="cls-item-ov"></div>
-        <div class="cls-item-label"><div class="cls-item-name">Sound Healing</div><div class="cls-item-tag">60 min · No experience needed</div></div>
+        <div class="cls-item-label"><div class="cls-item-name">Pilates</div><div class="cls-item-tag">50 min · All levels</div></div>
       </div>
       <div class="cls-item">
-        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_009.jpg" alt="Breathwork" loading="lazy">
+        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/meditation_moon.jpg" alt="Meditation Journeys" loading="lazy">
         <div class="cls-item-ov"></div>
-        <div class="cls-item-label"><div class="cls-item-name">Breathwork</div><div class="cls-item-tag">45–60 min · All levels</div></div>
+        <div class="cls-item-label"><div class="cls-item-name">Meditation Journeys</div><div class="cls-item-tag">45 min · All levels</div></div>
       </div>
       <!-- duplicate set for seamless loop -->
       <div class="cls-item">
@@ -430,87 +454,85 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
         <div class="cls-item-label"><div class="cls-item-name">Vinyasa Yoga</div><div class="cls-item-tag">60 min · All levels</div></div>
       </div>
       <div class="cls-item">
-        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_010.jpg" alt="Sound Healing" loading="lazy">
+        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/pilates_new.jpg" alt="Pilates" loading="lazy">
+        <div class="cls-item-ov"></div>
+        <div class="cls-item-label"><div class="cls-item-name">Pilates</div><div class="cls-item-tag">50 min · All levels</div></div>
+      </div>
+      <div class="cls-item">
+        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/meditation_moon.jpg" alt="Meditation Journeys" loading="lazy">
+        <div class="cls-item-ov"></div>
+        <div class="cls-item-label"><div class="cls-item-name">Meditation Journeys</div><div class="cls-item-tag">45 min · All levels</div></div>
+      </div>
+    </div>
+  </div>
+  <!-- ROW 2 — scrolls right: Ecstatic Dance (purple), Sound Healing (blue), Breathwork (golden) -->
+  <div class="cls-row-wrap">
+    <div class="cls-row scroll-right">
+      <div class="cls-item">
+        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/ecstatic_dance.jpg" alt="Ecstatic Dance" loading="lazy">
+        <div class="cls-item-ov"></div>
+        <div class="cls-item-label"><div class="cls-item-name">Ecstatic Dance</div><div class="cls-item-tag">60–90 min · No choreography</div></div>
+      </div>
+      <div class="cls-item">
+        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/sound_healing.jpg" alt="Sound Healing" loading="lazy">
         <div class="cls-item-ov"></div>
         <div class="cls-item-label"><div class="cls-item-name">Sound Healing</div><div class="cls-item-tag">60 min · No experience needed</div></div>
       </div>
       <div class="cls-item">
-        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_009.jpg" alt="Breathwork" loading="lazy">
+        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/breathwork_new.jpg" alt="Breathwork" loading="lazy">
         <div class="cls-item-ov"></div>
         <div class="cls-item-label"><div class="cls-item-name">Breathwork</div><div class="cls-item-tag">45–60 min · All levels</div></div>
       </div>
-    </div>
-  </div>
-  <!-- ROW 2 — scrolls right -->
-  <div class="cls-row-wrap">
-    <div class="cls-row scroll-right">
-      <div class="cls-item">
-        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_005.jpg" alt="Pilates" loading="lazy">
-        <div class="cls-item-ov"></div>
-        <div class="cls-item-label"><div class="cls-item-name">Pilates</div><div class="cls-item-tag">50 min · All levels</div></div>
-      </div>
-      <div class="cls-item">
-        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Copy%20of%201.jpg" alt="Ecstatic Dance" loading="lazy">
-        <div class="cls-item-ov"></div>
-        <div class="cls-item-label"><div class="cls-item-name">Ecstatic Dance</div><div class="cls-item-tag">60–90 min · No choreography</div></div>
-      </div>
-      <div class="cls-item">
-        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/IMG-26.jpg" alt="Meditation Journeys" loading="lazy">
-        <div class="cls-item-ov"></div>
-        <div class="cls-item-label"><div class="cls-item-name">Meditation Journeys</div><div class="cls-item-tag">45 min · All levels</div></div>
-      </div>
       <!-- duplicate set for seamless loop -->
       <div class="cls-item">
-        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_005.jpg" alt="Pilates" loading="lazy">
-        <div class="cls-item-ov"></div>
-        <div class="cls-item-label"><div class="cls-item-name">Pilates</div><div class="cls-item-tag">50 min · All levels</div></div>
-      </div>
-      <div class="cls-item">
-        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Copy%20of%201.jpg" alt="Ecstatic Dance" loading="lazy">
+        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/ecstatic_dance.jpg" alt="Ecstatic Dance" loading="lazy">
         <div class="cls-item-ov"></div>
         <div class="cls-item-label"><div class="cls-item-name">Ecstatic Dance</div><div class="cls-item-tag">60–90 min · No choreography</div></div>
       </div>
       <div class="cls-item">
-        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/IMG-26.jpg" alt="Meditation Journeys" loading="lazy">
+        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/sound_healing.jpg" alt="Sound Healing" loading="lazy">
         <div class="cls-item-ov"></div>
-        <div class="cls-item-label"><div class="cls-item-name">Meditation Journeys</div><div class="cls-item-tag">45 min · All levels</div></div>
+        <div class="cls-item-label"><div class="cls-item-name">Sound Healing</div><div class="cls-item-tag">60 min · No experience needed</div></div>
+      </div>
+      <div class="cls-item">
+        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/breathwork_new.jpg" alt="Breathwork" loading="lazy">
+        <div class="cls-item-ov"></div>
+        <div class="cls-item-label"><div class="cls-item-name">Breathwork</div><div class="cls-item-tag">45–60 min · All levels</div></div>
       </div>
     </div>
   </div>
 </section>
 
 
-<!-- TESTIMONIALS -->
-<section class="testimonials">
-  <div class="testi-hdr rv">
-    <span class="sl">What people say</span>
+<!-- AS FEATURED IN — 3 columns, all visible, logos dominate -->
+<section class="press">
+  <div class="press-hdr rv">
+    <span class="sl" style="font-size:.94rem;letter-spacing:.32em">As Featured In</span>
   </div>
-  <div class="tc">
-    <div style="position:relative;min-height:230px">
-      <div class="ti on" data-i="0">
-        <blockquote class="tq"><span class="tqm">"</span>I've done yoga everywhere from Bali to Berlin. Nothing comes close to practicing inside SABDA's immersive room.</blockquote>
-        <cite class="ta">Marta S.<span class="ta-c">· Vinyasa Yoga</span></cite>
+  <div class="press-grid">
+    <div class="press-card rv" style="transition-delay:.08s">
+      <div class="press-logo" style="height:34px">
+        <div class="press-logo-glow" style="background:rgba(240,239,233,.06)"></div>
+        <svg viewBox="0 0 400 40" xmlns="http://www.w3.org/2000/svg"><text x="200" y="33" text-anchor="middle" font-family="'Georgia','Times New Roman',serif" font-weight="700" font-size="32" fill="#f0efe9" letter-spacing="1.5">El Periódico</text></svg>
       </div>
-      <div class="ti" data-i="1">
-        <blockquote class="tq"><span class="tqm">"</span>The sound healing session was one of the most profound experiences I've had in Barcelona. The technology is incredible.</blockquote>
-        <cite class="ta">James R.<span class="ta-c">· Sound Healing</span></cite>
-      </div>
-      <div class="ti" data-i="2">
-        <blockquote class="tq"><span class="tqm">"</span>Finally a wellness space that doesn't take itself too seriously. Great classes, amazing tech, genuinely welcoming.</blockquote>
-        <cite class="ta">Alex M.<span class="ta-c">· Breathwork</span></cite>
-      </div>
-      <div class="ti" data-i="3">
-        <blockquote class="tq"><span class="tqm">"</span>Brought my whole team for a corporate wellness day. The space blew everyone away. We're already planning the next one.</blockquote>
-        <cite class="ta">Laura K.<span class="ta-c">· Corporate Event</span></cite>
-      </div>
+      <div class="press-line"></div>
+      <p class="press-quote">"Sci-fi fitness: Spain's first immersive wellness studio."</p>
     </div>
-    <div class="tctrl rv" style="transition-delay:.1s">
-      <button class="tbtn" id="tPrev"><svg viewBox="0 0 14 14" fill="none"><path d="M9 3L5 7l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      <div class="tdots">
-        <div class="tdot on" data-d="0"></div><div class="tdot" data-d="1"></div>
-        <div class="tdot" data-d="2"></div><div class="tdot" data-d="3"></div>
+    <div class="press-card rv" style="transition-delay:.18s">
+      <div class="press-logo" style="height:32px">
+        <div class="press-logo-glow" style="background:rgba(240,239,233,.08)"></div>
+        <svg viewBox="0 0 520 36" xmlns="http://www.w3.org/2000/svg"><text x="260" y="30" text-anchor="middle" font-family="'Georgia','Times New Roman',serif" font-weight="400" font-size="28" fill="#f0efe9" letter-spacing="3" font-style="italic">Condé Nast Traveler</text></svg>
       </div>
-      <button class="tbtn" id="tNext"><svg viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+      <div class="press-line" style="background:linear-gradient(to right,transparent,var(--white38),transparent)"></div>
+      <p class="press-quote">"A door to another dimension. Art in its purest form."</p>
+    </div>
+    <div class="press-card rv" style="transition-delay:.28s">
+      <div class="press-logo" style="height:34px">
+        <div class="press-logo-glow" style="background:rgba(204,0,0,.15)"></div>
+        <svg viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg"><text x="80" y="34" text-anchor="middle" font-family="'CNN',Impact,'Arial Black',sans-serif" font-weight="900" font-size="42" fill="#E40000" letter-spacing="5">CNN</text></svg>
+      </div>
+      <div class="press-line" style="background:linear-gradient(to right,transparent,rgba(228,0,0,.3),transparent)"></div>
+      <p class="press-quote">"A meeting point between technology, art, and consciousness."</p>
     </div>
   </div>
 </section>
@@ -571,11 +593,30 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     <p class="b-foot rv" style="transition-delay:.3s"><a href="classes.html#pricing">See all our offers →</a></p>
     <div class="b-divider rv" style="transition-delay:.34s"></div>
     <p class="b-event rv" style="transition-delay:.38s">Looking to host an event?</p>
-    <div class="rv" style="transition-delay:.42s"><a href="rent-corporate.html" class="b-event-btn">Explore Our Space
+    <div class="rv" style="transition-delay:.42s"><a href="events.html" class="b-event-btn">Explore Our Space
       <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a></div>
   </div>
 </section>
+
+<!-- REVIEW NUDGE — vertical funnel with flanking quotes -->
+<div class="review-nudge rv">
+  <div class="rn-ticker">
+    <div class="rn-quote active"><q>The 360° room blew my mind.</q><cite>Sara — Sound Healing</cite></div>
+    <div class="rn-quote"><q>Finally, wellness that isn’t cringe.</q><cite>Luca — Breathwork</cite></div>
+    <div class="rn-quote"><q>Booked three more classes on the spot.</q><cite>Amara — Vinyasa Yoga</cite></div>
+    <div class="rn-quote"><q>Nothing else like this in the city.</q><cite>Tom — Ecstatic Dance</cite></div>
+    <div class="rn-quote"><q>My new favourite place in Barcelona.</q><cite>Nadia — Meditation Journey</cite></div>
+  </div>
+  <div class="rn-inner">
+    <div class="rn-stars"><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg></div>
+    <div class="rn-scoreline"><span class="rn-score">4.8</span><span class="rn-count">350+ reviews</span></div>
+    <p class="rn-text">Spread the <em>Love.</em></p>
+    <p class="rn-sub">Share a quick review and <span>a ginger shot is on us</span> at your next visit.</p>
+    <a href="https://g.page/r/CZeZ4gZgrjR3EAE/review" target="_blank" class="rn-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>Leave a Google Review</a>
+  </div>
+</div>
+<div style="height:1px;background:linear-gradient(to right,transparent,rgba(240,239,233,.06) 20%,rgba(240,239,233,.06) 80%,transparent);position:relative;z-index:2"></div>
 
 <!-- LOCATION -->
 <section class="location">
@@ -585,10 +626,10 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       <h2 class="sh2 rv" style="transition-delay:.07s">Eixample,<br><em>Barcelona.</em></h2>
       <p class="loc-addr rv" style="transition-delay:.13s"><strong>C/ Muntaner 83B, Local 2</strong><br>08011 Barcelona, Spain</p>
       <p class="loc-dir rv" style="transition-delay:.18s"><span>10 min</span> walk from Universitat metro (L1, L2)<br><span>5 min</span> from Passeig de Gràcia (L2, L3, L4)</p>
-      <a href="https://maps.google.com/?q=C/+Muntaner+83B,+08011+Barcelona" target="_blank" class="loc-link rv" style="transition-delay:.24s">Get Directions <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7.5 3l3 3.5-3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="https://maps.google.com/?q=SABDA+Studio,+Barcelona" target="_blank" class="loc-link rv" style="transition-delay:.24s">Get Directions <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7.5 3l3 3.5-3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
     <div class="loc-map rv" style="transition-delay:.1s">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.28!2d2.1537!3d41.3845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a2f2f2f2f2f2%3A0x1!2sC%2FMuntaner+83B%2C+08011+Barcelona!5e0!3m2!1sen!2ses!4v1" allowfullscreen loading="lazy"></iframe>
+      <div id="sabdaMap"></div>
     </div>
   </div>
 </section>
@@ -602,8 +643,8 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       <img class="ft-symbol" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20symbol%20multi-colored%20(1).png" alt="SABDA symbol">
     </div>
     <div class="ft-col"><h4>Explore</h4><ul>
-      <li><a href="#">Classes</a></li><li><a href="#">Listening Sessions</a></li>
-      <li><a href="#">Pricing</a></li><li><a href="rent-corporate.html">Rent & Corporate</a></li>
+      <li><a href="#">Classes</a></li><li><a href="#">Events</a></li>
+      <li><a href="#">Pricing</a></li><li><a href="events.html">Hire</a></li>
       <li><a href="#">About</a></li><li><a href="#">Events</a></li>
     </ul></div>
     <div class="ft-col"><h4>Connect</h4><ul>
@@ -615,7 +656,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     <div class="ft-col"><h4>Contact</h4><ul>
       <li><a href="mailto:info@sabdastudio.com">info@sabdastudio.com</a></li>
       <li><a href="tel:+34625449878">+34 625 44 98 78</a></li>
-      <li><a href="mailto:connect@sabdastudio.com">Rent & Corporate</a></li>
+      <li><a href="mailto:connect@sabdastudio.com">Hire</a></li>
     </ul></div>
   </div>
   <div class="ft-bot">
@@ -651,7 +692,7 @@ document.addEventListener('mousemove',e=>{
   CUR.style.transform=`translate(${cx}px,${cy}px) translate(-50%,-50%)`;
 });
 (function rl(){rx+=(cx-rx)*.1;ry+=(cy-ry)*.1;RING.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;requestAnimationFrame(rl)})();
-document.querySelectorAll('a,button,.sg-arr,.tbtn,.tdot').forEach(el=>{
+document.querySelectorAll('a,button,.sg-arr,.press-card').forEach(el=>{
   el.addEventListener('mouseenter',()=>{CUR.classList.add('hov');RING.classList.add('hov')});
   el.addEventListener('mouseleave',()=>{CUR.classList.remove('hov');RING.classList.remove('hov')});
 });
@@ -773,7 +814,7 @@ setTimeout(()=>{
   document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY});
 
   /* Particle field — spread across the entire viewport */
-  const COUNT=960;
+  const COUNT=672;
   const particles=Array.from({length:COUNT},()=>({
     x:Math.random()*3000,
     y:Math.random(),
@@ -783,7 +824,7 @@ setTimeout(()=>{
     size:0.3+Math.random()*1.5,
     glow:4+Math.random()*16,
     color:(()=>{const c=Math.random();return c<0.38?[2,243,197]:c<0.72?[248,166,163]:[32,57,153]})(),
-    opacity:0.015+Math.random()*0.08,
+    opacity:0.025+Math.random()*0.12,
     phase:Math.random()*Math.PI*2,
     waveAmp:0.01+Math.random()*0.04,
     waveFreq:0.0001+Math.random()*0.0005,
@@ -828,8 +869,8 @@ setTimeout(()=>{
 
       /* soft glow */
       const g=ctx.createRadialGradient(drawX,drawY,0,drawX,drawY,p.glow);
-      g.addColorStop(0,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.5})`);
-      g.addColorStop(0.3,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.18})`);
+      g.addColorStop(0,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.7})`);
+      g.addColorStop(0.3,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.28})`);
       g.addColorStop(0.7,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.04})`);
       g.addColorStop(1,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},0)`);
       ctx.fillStyle=g;
@@ -850,27 +891,9 @@ setTimeout(()=>{
 })();
 
 /* ═══════════════════════════════════════════════════════
-   TESTIMONIALS
-═══════════════════════════════════════════════════════ */
-let tIdx=0;
-const tItems=document.querySelectorAll('.ti');
-const tDots=document.querySelectorAll('.tdot');
-function goT(n){
-  tItems[tIdx].classList.remove('on');tDots[tIdx].classList.remove('on');
-  tIdx=(n+tItems.length)%tItems.length;
-  tItems[tIdx].classList.add('on');tDots[tIdx].classList.add('on');
-}
-document.getElementById('tNext').addEventListener('click',()=>goT(tIdx+1));
-document.getElementById('tPrev').addEventListener('click',()=>goT(tIdx-1));
-tDots.forEach(d=>d.addEventListener('click',()=>goT(+d.dataset.d)));
-let tTimer=setInterval(()=>goT(tIdx+1),6200);
-document.querySelector('.tc').addEventListener('mouseenter',()=>clearInterval(tTimer));
-document.querySelector('.tc').addEventListener('mouseleave',()=>{tTimer=setInterval(()=>goT(tIdx+1),6200)});
-
-/* ═══════════════════════════════════════════════════════
    PARTNERS MARQUEE
 ═══════════════════════════════════════════════════════ */
-const pData=['Honest Greens','Aire','Danone','FC Barcelona','Condé Nast Traveler','El Periódico','Time Out','CNN'];
+const pData=['FC Barcelona','Danone','Liga Endesa','Elisava','Honest Greens','Aire','Time Out','Ametller'];
 const mq=document.getElementById('mq');
 const colors=['#02F3C5','#F8A6A3'];
 [...pData,...pData,...pData].forEach((name,i)=>{
@@ -880,14 +903,80 @@ const colors=['#02F3C5','#F8A6A3'];
   mq.appendChild(s);
 });
 
-/* ═══════════════════════════════════════════════════════
+/* =====================================================
    MOBILE STICKY
-═══════════════════════════════════════════════════════ */
+===================================================== */
 const sbk=document.getElementById('sbk');
 const heroEl=document.getElementById('hero');
 window.addEventListener('scroll',()=>{
   sbk.classList.toggle('vis',scrollY>heroEl.offsetHeight*.65);
 },{passive:true});
+
+/* ── Quote ticker ── */
+(function(){
+  const quotes=document.querySelectorAll('.rn-quote');
+  if(!quotes.length)return;
+  let cur=0;
+  setInterval(()=>{
+    quotes[cur].classList.remove('active');
+    cur=(cur+1)%quotes.length;
+    quotes[cur].classList.add('active');
+  },4000);
+})();
 </script>
+<script>
+function initMap(){
+  const sabda={lat:41.3891,lng:2.1563};
+  const map=new google.maps.Map(document.getElementById('sabdaMap'),{
+    center:sabda,zoom:16,
+    disableDefaultUI:true,
+    zoomControl:true,
+    zoomControlOptions:{position:google.maps.ControlPosition.RIGHT_CENTER},
+    gestureHandling:'cooperative',
+    styles:[
+      {elementType:'geometry',stylers:[{color:'#0e1235'}]},
+      {elementType:'labels.text.stroke',stylers:[{color:'#0e1235'}]},
+      {elementType:'labels.text.fill',stylers:[{color:'#4a5080'}]},
+      {featureType:'administrative.locality',elementType:'labels.text.fill',stylers:[{color:'#7a82b0'}]},
+      {featureType:'road',elementType:'geometry',stylers:[{color:'#161b45'}]},
+      {featureType:'road',elementType:'geometry.stroke',stylers:[{color:'#1a2050'}]},
+      {featureType:'road.highway',elementType:'geometry',stylers:[{color:'#1c2258'}]},
+      {featureType:'road.highway',elementType:'geometry.stroke',stylers:[{color:'#203999'}]},
+      {featureType:'road',elementType:'labels.text.fill',stylers:[{color:'#5a6290'}]},
+      {featureType:'water',elementType:'geometry',stylers:[{color:'#090c26'}]},
+      {featureType:'water',elementType:'labels.text.fill',stylers:[{color:'#203999'}]},
+      {featureType:'poi',elementType:'geometry',stylers:[{color:'#121840'}]},
+      {featureType:'poi',elementType:'labels.text.fill',stylers:[{color:'#4a5080'}]},
+      {featureType:'poi.park',elementType:'geometry',stylers:[{color:'#0f1538'}]},
+      {featureType:'poi.park',elementType:'labels.text.fill',stylers:[{color:'#2a5a4a'}]},
+      {featureType:'transit',elementType:'geometry',stylers:[{color:'#141a42'}]},
+      {featureType:'transit.station',elementType:'labels.text.fill',stylers:[{color:'#5a6290'}]},
+      {featureType:'poi.business',stylers:[{visibility:'off'}]},
+      {featureType:'poi.government',stylers:[{visibility:'off'}]},
+      {featureType:'poi.school',stylers:[{visibility:'off'}]},
+      {featureType:'poi.sports_complex',stylers:[{visibility:'off'}]},
+    ]
+  });
+  const marker=new google.maps.Marker({
+    position:sabda,map:map,
+    icon:{
+      url:'https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20symbol%20pink.png',
+      scaledSize:new google.maps.Size(36,36),
+      anchor:new google.maps.Point(18,18),
+    },
+    title:'SABDA Studio'
+  });
+  new google.maps.Circle({
+    center:sabda,map:map,radius:35,
+    fillColor:'#02F3C5',fillOpacity:.08,
+    strokeColor:'#02F3C5',strokeWeight:1,strokeOpacity:.2,
+    clickable:false
+  });
+  marker.addListener('click',()=>{
+    window.open('https://maps.google.com/?q=SABDA+Studio,+Barcelona','_blank');
+  });
+}
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAc0QxK5ORtPCkZr19fik4hYChFHGA5Ys0&callback=initMap"></script>
 </body>
 </html>
