@@ -165,7 +165,7 @@ section{position:relative;padding:120px 80px;z-index:2}
 .press-logo-glow{position:absolute;inset:0;border-radius:50%;filter:blur(30px);opacity:0;transition:opacity .6s}
 .press-card:hover .press-logo-glow{opacity:1}
 .press-line{width:40px;height:1px;margin:0 auto 28px;background:linear-gradient(to right,transparent,var(--salmon),transparent);opacity:.5}
-.press-quote{font-family:'PT Serif',serif;font-size:1.28rem;line-height:1.58;font-style:italic;color:var(--white);margin-left:auto;margin-right:auto;opacity:.85;transition:opacity .4s}
+.press-quote{font-family:'PT Serif',serif;font-size:1.28rem;line-height:1.58;font-style:italic;color:var(--salmon);margin-left:auto;margin-right:auto;opacity:.85;transition:opacity .4s}
 .press-card:hover .press-quote{opacity:1}
 
 /* ── TRUST ── */
@@ -250,10 +250,9 @@ section{position:relative;padding:120px 80px;z-index:2}
 .rn-link{display:inline-flex;align-items:center;gap:9px;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--cyan);padding:15px 36px;border:1.5px solid rgba(2,243,197,.4);border-radius:4px;transition:border-color .25s,background .25s,transform .2s,box-shadow .3s}
 .rn-link:hover{border-color:var(--cyan);background:rgba(2,243,197,.08);transform:translateY(-2px);box-shadow:0 8px 28px rgba(2,243,197,.14)}
 .rn-link svg{width:16px;height:16px;opacity:.8}
-.rn-float{position:absolute;top:50%;font-family:'PT Serif',serif;font-size:.82rem;font-style:italic;color:var(--white);opacity:0;transition:opacity .8s,transform .8s var(--ease-expo);max-width:180px;line-height:1.45}
-.rn-float.left{right:calc(50% + 300px);transform:translateY(-50%) translateX(-10px);text-align:right}
-.rn-float.right{left:calc(50% + 300px);transform:translateY(-50%) translateX(10px);text-align:left}
-.rn-float.vis{opacity:.35;transform:translateY(-50%) translateX(0)}
+.rn-float{position:absolute;font-family:'PT Serif',serif;font-size:.78rem;font-style:italic;color:var(--white);opacity:.22;max-width:170px;line-height:1.45}
+.rn-float.left{text-align:right}
+.rn-float.right{text-align:left}
 @media(max-width:1100px){.rn-float{display:none}}
 
 /* ── LOCATION ── */
@@ -598,8 +597,14 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 <!-- REVIEW NUDGE — vertical funnel with flanking quotes -->
 <div class="review-nudge rv">
   <div class="rn-wrap">
-    <div class="rn-float left" id="rnL"></div>
-    <div class="rn-float right" id="rnR"></div>
+    <div class="rn-float left" style="top:8%;right:calc(50% + 290px)">“The teachers are the best in Barcelona.”</div>
+    <div class="rn-float left" style="top:38%;right:calc(50% + 310px)">“The 360° room blew my mind.”</div>
+    <div class="rn-float left" style="top:62%;right:calc(50% + 280px)">“100% worth it. Every single week.”</div>
+    <div class="rn-float left" style="top:88%;right:calc(50% + 300px)">“Finally, wellness that isn’t cringe.”</div>
+    <div class="rn-float right" style="top:14%;left:calc(50% + 290px)">“You can feel the calm energy reset you.”</div>
+    <div class="rn-float right" style="top:44%;left:calc(50% + 300px)">“Booked three more classes on the spot.”</div>
+    <div class="rn-float right" style="top:70%;left:calc(50% + 285px)">“Nothing else like this in the city.”</div>
+    <div class="rn-float right" style="top:92%;left:calc(50% + 305px)">“My new favourite place in Barcelona.”</div>
     <div class="rn-inner">
       <div class="rn-stars"><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg></div>
       <div class="rn-scoreline"><span class="rn-score">4.8</span><span class="rn-count">350+ reviews</span></div>
@@ -895,37 +900,6 @@ const colors=['#02F3C5','#F8A6A3'];
   s.className='mq-item';s.textContent=name;s.style.color=colors[i%2];
   mq.appendChild(s);
 });
-
-/* =====================================================
-   REVIEW FLOATS -- staggered left/right
-===================================================== */
-const rnLeft=[
-  "\u201CThe teachers are the best in Barcelona.\u201D",
-  "\u201CThe 360\u00B0 room blew my mind.\u201D",
-  "\u201C100% worth it. Coming back every week.\u201D",
-];
-const rnRight=[
-  "\u201CYou can feel the calm energy reset you.\u201D",
-  "\u201CBooked three more classes on the spot.\u201D",
-  "\u201CNothing else like this in the city.\u201D",
-];
-const rnL=document.getElementById('rnL');
-const rnR=document.getElementById('rnR');
-if(rnL&&rnR){
-  let li=0,ri=0;
-  function showFloat(el,arr,idx){
-    el.classList.remove('vis');
-    setTimeout(()=>{
-      el.textContent=arr[idx];
-      el.classList.add('vis');
-    },800);
-    setTimeout(()=>el.classList.remove('vis'),3500);
-  }
-  setTimeout(()=>showFloat(rnL,rnLeft,0),800);
-  setTimeout(()=>showFloat(rnR,rnRight,0),2500);
-  setInterval(()=>{li=(li+1)%rnLeft.length;showFloat(rnL,rnLeft,li)},5000);
-  setInterval(()=>{ri=(ri+1)%rnRight.length;showFloat(rnR,rnRight,ri)},5000);
-}
 
 /* =====================================================
    MOBILE STICKY
