@@ -1050,3 +1050,103 @@ FC Barcelona, Decathlon, Liga Endesa, Alpro/Danone, Elisava
 - NO pricing shown — inquiry-only to protect competitive info + capture leads
 - Videos should be portrait → crop/letterbox for web, or use as background with overlay
 
+
+---
+
+## 23. SESSION 6 — HOMEPAGE ENHANCEMENTS + EVENTS PAGE (March 15, 2026)
+
+### What Was Built / Changed
+
+**Homepage (SABDA_v16.html):**
+
+1. **Class image rows reordered multiple times.** Final order:
+   - Row 1 (scrolls left): Vinyasa Yoga → Pilates → Meditation Journeys
+   - Row 2 (scrolls right): Ecstatic Dance → Sound Healing → Breathwork
+   - Rule: no two blue-toned images adjacent, Pilates and Ecstatic Dance in separate rows
+
+2. **New breathwork image:** `breathwork_new.jpg` (golden silhouette with 360° projections, uploaded by Marvyn)
+
+3. **Press section ("As Featured In"):** Replaced testimonials carousel with static 3-column layout:
+   - Order: El Periódico (left) → Condé Nast Traveler (center) → CNN (right)
+   - SVG text logos with colored glows (CNN red #E40000, others white)
+   - Large salmon decorative quotation marks (::before pseudo-element) above each quote
+   - Real quotes from actual articles:
+     - El Periódico: "Sci-fi fitness: Spain's first immersive wellness studio."
+     - Condé Nast Traveler: "A door to another dimension. Art in its purest form."
+     - CNN: "A meeting point between technology, art, and consciousness."
+   - Grid uses `minmax(0,1fr)` to force equal columns (CRITICAL — plain `1fr` lets wide SVGs stretch columns)
+
+4. **Brand marquee updated:** FC Barcelona, Danone, Liga Endesa, Elisava, Honest Greens, Aire, Time Out, Ametller (NO press names — those stay in "As Featured In" section only)
+
+5. **Review nudge section** between booking and location:
+   - Vertical centered funnel: stars → 4.8 score → "Spread the Love." → ginger shot incentive → Google Review button
+   - 8 static review quotes flanking left/right (4 per side), positioned absolutely using viewport percentages (3-14% from edges)
+   - Quotes have gentle float + glow animation (8s cycle, staggered delays, 12px vertical movement, cyan text-shadow at peak)
+   - Google review link: `https://g.page/r/CZeZ4gZgrjR3EAE/review`
+   - Divider line below the section
+   - Quotes hidden on screens < 1200px
+
+6. **Particles boosted** across ALL 5 pages: count 960→1200, base opacity 0.025, glow core 0.7, glow mid 0.28
+
+7. **Loader text:** "Enter the Void" → "Enter the Portal"
+
+8. **Google Maps:** Attempted custom JS API map with dark navy styling. API key `AIzaSyAc0QxK5ORtPCkZr19fik4hYChFHGA5Ys0` from "My First Project" in Google Cloud Console (Maps JavaScript API enabled there). Custom SABDA pink symbol marker with cyan glow circle. Currently deployed with this key. Get Directions links to "SABDA Studio, Barcelona".
+
+9. **"As Featured In" text** set to 0.94rem with wider letter-spacing.
+
+**Events page (events.html):**
+- New aurora/mats image (`immersive_aurora_mats.jpg`) added to space slider as second Immersive Room image
+- Brand marquee synced with homepage (same 8 brands)
+- Label synced: "Trusted by leading brands" (was just "Trusted by")
+- Meta description updated (removed Decathlon)
+
+**GSC & GBP prompts created:** Two self-contained markdown files with full SABDA context for separate optimization chats. Saved to outputs.
+
+### Mistakes Made & Lessons Learned This Session
+
+**Lesson 6.15: Smart/curly quotes in JS strings BREAK EVERYTHING.**
+The apostrophe in "I've" rendered as a curly quote (U+2019) which closed a single-quoted JS string, crashing ALL JavaScript on the page — including the loader dismissal. The page gets stuck on the loading screen with no console error visible to the user.
+FIX: Always use unicode escapes in JS strings (`\u2019` for apostrophe, `\u201C`/`\u201D` for curly quotes, `\u00B0` for degree symbol). Or use double-quoted strings with escaped inner quotes. NEVER paste text containing smart quotes into JS.
+
+**Lesson 6.16: Python string replacements can corrupt HTML files.**
+Using Python to replace large blocks of HTML/JS frequently caused: duplicate code blocks (entire sections of the file repeated), orphaned closing tags, code injected mid-statement (e.g., `mq.appendChild(s/* REVIEW FLOATS...`). This happened at least 3 times this session and caused loading screen freezes.
+FIX: After ANY Python-based file modification, ALWAYS run: (1) `node --check` on the extracted JS, (2) `grep -c '</html>'` to check for duplicates, (3) verify the file structure with targeted greps. If duplicates found, find the first `</body>` and delete everything after it.
+
+**Lesson 6.17: `grid-template-columns: repeat(3, 1fr)` allows unequal columns.**
+If one column has intrinsically wider content (like a long SVG text), `1fr` allows it to grow beyond its fair share. Use `minmax(0, 1fr)` to force all columns to be exactly equal regardless of content width.
+
+**Lesson 6.18: Google Maps JavaScript API must be enabled in the SAME project that owns the API key.**
+Key `AIzaSyBXeWA-ubV4e9ngLBQg4r32KNVTAFx63_U` was created in "SABDA Website" project but Maps JS API was only enabled in "My First Project." Result: 403 error, map shows error icon. The working key is `AIzaSyAc0QxK5ORtPCkZr19fik4hYChFHGA5Ys0` from "My First Project."
+
+**Lesson 6.19: GitHub Pages CDN cache is extremely aggressive.**
+Adding `?v=N` query params does NOT bust the cache reliably — Chrome shares cache across incognito tabs if a previous incognito window loaded the same base URL. To truly test: (1) close ALL incognito windows, (2) open fresh incognito, (3) use a completely new query param. Empty commits (`git commit --allow-empty -m "trigger rebuild"`) can force a CDN rebuild.
+
+**Lesson 6.20: `position: absolute` elements position relative to their nearest positioned ancestor.**
+Review quotes inside a `max-width: 1100px` wrapper were constrained to that width, not the full viewport. Moving them to be direct children of the full-width section (which has `position: relative`) let them use the full screen.
+
+**Lesson 6.21: Marvyn's approach — only change what is asked.**
+Multiple times this session, changes were requested but the result was "no change" because browser cache. The instinct to make additional CSS tweaks "while we're at it" caused confusion about what was actually deployed vs cached. ONLY change what's asked. Verify deployment with curl before sending links.
+
+**Lesson 6.22: Press names do NOT belong in the brand marquee.**
+CNN, Condé Nast Traveler, El Periódico are editorial coverage (independent validation), not clients/partners (commercial validation). Mixing them blurs the distinction and weakens both. Keep press in "As Featured In," keep brands in "Trusted by leading brands."
+
+### Google Cloud Console State
+- **"My First Project"**: Maps JavaScript API enabled, working key `AIzaSyAc0QxK5ORtPCkZr19fik4hYChFHGA5Ys0`
+- **"SABDA Website"** project: Created but Maps JS API NOT enabled. Key `AIzaSyBXeWA-ubV4e9ngLBQg4r32KNVTAFx63_U` does NOT work for maps.
+- TODO: Move everything to SABDA business Google account (not personal)
+
+### Files Added to Repo This Session
+`breathwork_new.jpg`, `immersive_aurora_mats.jpg` (replaced old aurora image)
+
+### Current Page URLs
+```
+Homepage:  https://marv0611.github.io/sabdawebsite/SABDA_v16.html
+Classes:   https://marv0611.github.io/sabdawebsite/classes.html
+Pricing:   https://marv0611.github.io/sabdawebsite/pricing.html
+Schedule:  https://marv0611.github.io/sabdawebsite/schedule.html
+Events/Hire: https://marv0611.github.io/sabdawebsite/events.html
+```
+
+---
+
+*End of Session 6 update. Last updated March 15, 2026.*
