@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8"><!-- programming-v1 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Events — SABDA Studio Barcelona | Immersive Exhibitions, Live Music & More</title>
-<meta name="description" content="Explore SABDA's immersive events in Barcelona. Art exhibitions, 360° listening sessions, live music, and community gatherings in Dolby Atmos spatial audio.">
+<title>Events — SABDA Studio Barcelona | What Happens Inside Our 360° Space</title>
+<meta name="description" content="See what's happened inside SABDA's 360° immersive room in Barcelona. Art exhibitions, listening sessions, live performances, and community gatherings in Dolby Atmos spatial audio.">
 <meta name="keywords" content="immersive events Barcelona, art exhibition Barcelona, live music Barcelona, listening session, 360 experience Barcelona, immersive art">
 <link rel="canonical" href="https://sabdastudio.com/events">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -155,15 +155,20 @@ section{position:relative;padding:120px 80px;z-index:2}
 .vid-item:hover .vid-play{opacity:1;transform:translate(-50%,-50%) scale(1)}
 .vid-play svg{width:20px;height:20px;fill:var(--white);margin-left:3px}
 
-/* ── FOLLOW CTA ── */
-.follow-cta{padding:100px 80px;z-index:2;position:relative;text-align:center;border-top:1px solid rgba(240,239,233,.06)}
-.follow-inner{max-width:540px;margin:0 auto}
-.follow-text{font-family:'PT Serif',serif;font-size:2.4rem;font-weight:700;line-height:1.15;margin-bottom:14px}
-.follow-text em{font-style:italic;color:var(--salmon)}
-.follow-sub{font-size:.9rem;color:var(--white60);line-height:1.7;margin-bottom:36px}
-.follow-link{display:inline-flex;align-items:center;gap:10px;background:var(--salmon);color:var(--navy);padding:16px 40px;border-radius:4px;font-size:.82rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:background .25s,transform .2s,box-shadow .3s}
-.follow-link:hover{background:#f9b5b2;transform:translateY(-2px);box-shadow:0 8px 28px rgba(248,166,163,.25)}
-.follow-link svg{width:18px;height:18px}
+/* ── SIGNUP CTA ── */
+.signup-cta{padding:100px 80px;z-index:2;position:relative;text-align:center;border-top:1px solid rgba(240,239,233,.06)}
+.signup-inner{max-width:540px;margin:0 auto}
+.signup-text{font-family:'PT Serif',serif;font-size:2.4rem;font-weight:700;line-height:1.15;margin-bottom:14px}
+.signup-text em{font-style:italic;color:var(--salmon)}
+.signup-sub{font-size:.9rem;color:var(--white60);line-height:1.7;margin-bottom:36px}
+.signup-form{display:flex;gap:12px;max-width:460px;margin:0 auto}
+.signup-form input{flex:1;background:rgba(240,239,233,.04);border:1px solid rgba(240,239,233,.1);border-radius:4px;padding:14px 18px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;transition:border-color .25s,background .25s}
+.signup-form input::placeholder{color:rgba(240,239,233,.2)}
+.signup-form input:focus{border-color:rgba(2,243,197,.4);background:rgba(2,243,197,.03)}
+.signup-form button{background:var(--cyan);color:var(--navy);padding:14px 28px;border-radius:4px;border:none;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:background .25s,transform .2s,box-shadow .3s}
+.signup-form button:hover{background:#18ffda;transform:translateY(-2px);box-shadow:0 8px 28px rgba(2,243,197,.22)}
+.signup-note{font-size:.72rem;color:var(--white38);margin-top:14px}
+@media(max-width:860px){.signup-cta{padding:60px 24px}.signup-text{font-size:1.8rem}.signup-form{flex-direction:column}.signup-form button{width:100%}}
 
 /* ── REVIEW NUDGE ── */
 .review-nudge{padding:100px 80px;border-top:1px solid rgba(240,239,233,.06);position:relative;z-index:2;overflow:hidden}
@@ -229,7 +234,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .nav-social{gap:10px;padding-left:14px;margin-left:14px}
   .nav-login{padding-left:12px;margin-left:10px}
   .lang-sel a{padding:4px 5px;font-size:.65rem}
-  section,.vid-gallery,.follow-cta,.review-nudge,footer{padding-left:24px;padding-right:24px}
+  section,.vid-gallery,.signup-cta,.review-nudge,footer{padding-left:24px;padding-right:24px}
   section{padding-top:80px;padding-bottom:80px}
   .hero-content{padding:0 24px 72px}
   .hero h1{font-size:clamp(2.2rem,8vw,3.6rem)}
@@ -242,8 +247,8 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .case-study{padding:80px 24px}
   .vid-gallery{padding:80px 24px}
   .vid-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .follow-cta{padding:60px 24px}
-  .follow-text{font-size:1.8rem}
+  .signup-cta{padding:60px 24px}
+  .signup-text{font-size:1.8rem}
   .review-nudge{padding:60px 24px}
   .rn-quote q{font-size:1.2rem}
   .rn-ticker{min-height:110px;margin-bottom:40px}
@@ -297,11 +302,11 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   <img class="hero-img" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/events_hero.jpg" alt="SABDA immersive room set up for an event with blue projections and meditation mats" loading="eager">
   <div class="hero-grad"></div>
   <div class="hero-content">
-    <div class="hero-overtitle">SABDA Events</div>
-    <h1>Beyond the<br><em>Everyday.</em></h1>
-    <p class="hero-sub">Exhibitions, live music, listening sessions, and gatherings that turn our 360° room into something you won't find anywhere else in Barcelona.</p>
+    <div class="hero-overtitle">Events at SABDA</div>
+    <h1>More than a<br><em>Studio.</em></h1>
+    <p class="hero-sub">Art exhibitions. Live performances. Listening sessions. Community gatherings. Here&#8217;s a look at what&#8217;s happened inside our 360&#176; room.</p>
     <div class="hero-ctas">
-      <a href="https://instagram.com/sabda_studio" target="_blank" class="btn-p"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8 0 3.2 0 3.6-.1 4.8-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.9.1-3.2 0-3.6 0-4.8-.1-3.3-.1-4.8-1.7-4.9-4.9-.1-1.3-.1-1.6-.1-4.8 0-3.2 0-3.6.1-4.9.1-3.2 1.7-4.8 4.9-4.9 1.3 0 1.6-.1 4.8-.1zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.2-4.4-2.6-6.8-7-7C16.7 0 16.3 0 12 0zm0 5.8a6.2 6.2 0 100 12.4 6.2 6.2 0 000-12.4zM12 16a4 4 0 110-8 4 4 0 010 8zm6.4-11.8a1.4 1.4 0 100 2.9 1.4 1.4 0 000-2.9z"/></svg> Follow for Updates</a>
+      <a href="#signup" class="btn-p">Stay in the Loop</a>
       <a href="events.html" class="btn-s">Hire our space <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7.5 3l3 3.5-3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
   </div>
@@ -311,8 +316,8 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
      EVENT CATEGORIES
 ═══════════════════════════════════════════════════════ -->
 <section class="use-cases">
-  <span class="sl rv">What We Do</span>
-  <h2 class="sh2 rv" style="transition-delay:.07s">Our <em>Programming</em></h2>
+  <span class="sl rv">What We&#8217;ve Done</span>
+  <h2 class="sh2 rv" style="transition-delay:.07s">Past <em>Highlights</em></h2>
   <div class="uc-grid">
     <a href="#ev-panta" class="uc-card rv" style="transition-delay:.1s">
       <div class="uc-card-bg" style="background-image:url('https://raw.githubusercontent.com/marv0611/sabdawebsite/main/immersive_underwater.jpg')"></div>
@@ -449,8 +454,8 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
      VIDEO GALLERY
 ═══════════════════════════════════════════════════════ -->
 <section class="vid-gallery">
-  <span class="sl rv">Moments</span>
-  <h2 class="sh2 rv" style="transition-delay:.07s">From the <em>Archive</em></h2>
+  <span class="sl rv">Gallery</span>
+  <h2 class="sh2 rv" style="transition-delay:.07s">Inside the <em>Room</em></h2>
   <div class="vid-grid">
     <div class="vid-item rv" style="transition-delay:.1s">
       <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/immersive_aurora_mats.jpg" alt="Immersive aurora session" style="width:100%;height:100%;object-fit:cover" loading="lazy">
@@ -480,16 +485,17 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 </section>
 
 <!-- ═══════════════════════════════════════════════════════
-     FOLLOW CTA
+     EMAIL SIGNUP
 ═══════════════════════════════════════════════════════ -->
-<div class="follow-cta">
-  <div class="follow-inner rv">
-    <p class="follow-text">Don&#8217;t miss the <em>next one.</em></p>
-    <p class="follow-sub">We announce events on Instagram first. Follow along to be the first to know when something new is happening at SABDA.</p>
-    <a href="https://instagram.com/sabda_studio" target="_blank" class="follow-link">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8 0 3.2 0 3.6-.1 4.8-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.9.1-3.2 0-3.6 0-4.8-.1-3.3-.1-4.8-1.7-4.9-4.9-.1-1.3-.1-1.6-.1-4.8 0-3.2 0-3.6.1-4.9.1-3.2 1.7-4.8 4.9-4.9 1.3 0 1.6-.1 4.8-.1zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.2-4.4-2.6-6.8-7-7C16.7 0 16.3 0 12 0zm0 5.8a6.2 6.2 0 100 12.4 6.2 6.2 0 000-12.4zM12 16a4 4 0 110-8 4 4 0 010 8zm6.4-11.8a1.4 1.4 0 100 2.9 1.4 1.4 0 000-2.9z"/></svg>
-      Follow @sabda_studio
-    </a>
+<div class="signup-cta" id="signup">
+  <div class="signup-inner rv">
+    <p class="signup-text">Be the first to <em>know.</em></p>
+    <p class="signup-sub">We don&#8217;t do events often, but when we do, they sell out. Drop your email and we&#8217;ll let you know before anyone else.</p>
+    <form class="signup-form" onsubmit="handleSignup(event)">
+      <input type="email" placeholder="Your email" required>
+      <button type="submit">Notify Me</button>
+    </form>
+    <p class="signup-note">No spam. Just event announcements.</p>
   </div>
 </div>
 
@@ -679,6 +685,17 @@ document.querySelectorAll('.cs-media').forEach(el=>glowObs.observe(el));
   }
   requestAnimationFrame(draw);
 })();
+
+/* ═══════════════════════════════════════════════════════
+   EMAIL SIGNUP
+═══════════════════════════════════════════════════════ */
+function handleSignup(e){
+  e.preventDefault();
+  const form=e.target;
+  const email=form.querySelector('input').value;
+  window.location.href='mailto:info@sabdastudio.com?subject='+encodeURIComponent('Event Signup: '+email)+'&body='+encodeURIComponent('Please add '+email+' to the SABDA events mailing list.');
+  form.innerHTML='<p style="color:var(--cyan);font-size:.95rem;font-weight:600">You\u2019re on the list. We\u2019ll be in touch.</p>';
+}
 
 /* ═══════════════════════════════════════════════════════
    MOBILE STICKY
