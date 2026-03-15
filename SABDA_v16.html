@@ -242,8 +242,9 @@ section{position:relative;padding:120px 80px;z-index:2}
 .rn-stars svg{width:16px;height:16px;fill:var(--cyan)}
 .rn-score{font-family:'PT Serif',serif;font-size:2rem;font-weight:700;color:var(--white);letter-spacing:-.02em;line-height:1}
 .rn-count{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--white38)}
-.rn-sample{font-family:'PT Serif',serif;font-size:.78rem;font-style:italic;color:var(--white38);margin-top:10px;max-width:180px;text-align:center;line-height:1.4;opacity:0;transition:opacity .6s;height:2.2em;display:flex;align-items:center;justify-content:center}
+.rn-sample{font-family:'PT Serif',serif;font-size:.78rem;font-style:italic;color:var(--white38);margin-top:10px;width:180px;text-align:center;line-height:1.4;transition:opacity .6s;min-height:2.4em;display:flex;align-items:center;justify-content:center}
 .rn-sample.vis{opacity:1}
+.rn-sample:not(.vis){opacity:0}
 .rn-div{width:1px;height:52px;background:rgba(240,239,233,.08);flex-shrink:0}
 .rn-content{flex:1}
 .rn-text{font-family:'PT Serif',serif;font-size:1.8rem;font-weight:700;color:var(--white);line-height:1.2;margin-bottom:6px}
@@ -602,7 +603,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       <div class="rn-stars"><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg></div>
       <div class="rn-score">4.8</div>
       <div class="rn-count">350+ reviews</div>
-      <div class="rn-sample" id="rnSample">"Best wellness experience in Barcelona."</div>
+      <div class="rn-sample vis" id="rnSample">“The teachers are the best in Barcelona.”</div>
     </div>
     <div class="rn-div"></div>
     <div class="rn-content">
@@ -903,16 +904,15 @@ const colors=['#02F3C5','#F8A6A3'];
    REVIEW SAMPLE — rotating snippets
 ═══════════════════════════════════════════════════════ */
 const rnSamples=[
-  "\u201CBest wellness experience in Barcelona.\u201D",
-  "\u201CThe 360\u00B0 room is absolutely unreal.\u201D",
-  "\u201CUnlike anything I\u2019ve ever done.\u201D",
-  "\u201CWe booked three more classes immediately.\u201D",
-  "\u201CMy favourite place in the city.\u201D",
+  "“The teachers are the best in Barcelona.”",
+  "\u201CYou can feel the calm energy reset you.\u201D",
+  "\u201CThe 360\u00B0 room blew my mind.\u201D",
+  "\u201CBooked three more classes on the spot.\u201D",
+  "\u201C100% worth it. Coming back every week.\u201D",
 ];
 const rnEl=document.getElementById('rnSample');
 if(rnEl){
   let rnIdx=0;
-  setTimeout(()=>rnEl.classList.add('vis'),500);
   setInterval(()=>{
     rnEl.classList.remove('vis');
     setTimeout(()=>{
