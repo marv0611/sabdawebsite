@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><!-- about-v1 -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — SABDA Studio Barcelona | Art · Tech · Wellness</title>
+<meta name="description" content="SABDA is Barcelona’s first immersive audio-visual wellness studio. 360° projections, Dolby Atmos spatial audio. Not an escape — an alternative.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --navy:#0e1235;--salmon:#F8A6A3;--cyan:#02F3C5;
+  --white:#f0efe9;--white60:rgba(240,239,233,.6);--white38:rgba(240,239,233,.38);
+  --ease-expo:cubic-bezier(.16,1,.3,1);--ease-circ:cubic-bezier(.85,0,.15,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--navy);color:var(--white);
+  font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.6;
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+::selection{background:rgba(248,166,163,.18)}
+
+/* ══ GRAIN ══ */
+.grain{
+  position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.038;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:200px;
+}
+
+/* ══ CURSOR ══ */
+.cursor{position:fixed;width:28px;height:28px;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:opacity .2s,width .25s var(--ease-expo),height .25s var(--ease-expo);will-change:transform;
+  background:url('https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20symbol%20pink.png') center/contain no-repeat;
+  opacity:.7;filter:drop-shadow(0 0 6px rgba(248,166,163,.4))}
+.cursor-ring{position:fixed;width:48px;height:48px;border-radius:50%;border:1px solid rgba(248,166,163,.25);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:opacity .2s,width .4s var(--ease-expo),height .4s var(--ease-expo),border-color .3s;will-change:transform}
+.cursor.hov{width:18px;height:18px;opacity:1}.cursor-ring.hov{width:60px;height:60px;border-color:rgba(2,243,197,.35)}
+
+/* ══ PARTICLES ══ */
+#globalParticles{position:fixed;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+
+/* ══ NAV ══ */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;display:flex;align-items:center;justify-content:space-between;transition:background .5s,backdrop-filter .5s,border-color .5s;border-bottom:1px solid rgba(240,239,233,.04);background:rgba(14,18,53,.45);backdrop-filter:blur(14px)}
+nav.on{background:rgba(14,18,53,.88);backdrop-filter:blur(22px);border-bottom-color:rgba(240,239,233,.07)}
+.nav-logo img{height:34px;width:auto;display:block}
+.nav-links{display:flex;gap:36px;list-style:none;font-size:.8rem;letter-spacing:.09em;text-transform:uppercase;font-weight:500}
+.nav-links a{color:var(--white);opacity:.75;transition:opacity .25s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;right:100%;height:1px;background:var(--cyan);transition:right .3s var(--ease-expo)}
+.nav-links a:hover{opacity:1}.nav-links a:hover::after{right:0}
+.nav-links a.active{opacity:1}.nav-links a.active::after{right:0}
+.nav-right{display:flex;align-items:center;gap:0}
+.lang-sel{display:flex;align-items:center;gap:0;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;font-weight:500}
+.lang-sel a{color:var(--white);opacity:.35;padding:5px 7px;transition:opacity .25s,color .25s}
+.lang-sel a:hover{opacity:.7}
+.lang-sel a.active{opacity:.9;color:var(--cyan)}
+.nav-social{display:flex;align-items:center;gap:14px;padding-left:20px;margin-left:16px;border-left:1px solid rgba(240,239,233,.1)}
+.nav-social a{display:flex;align-items:center;opacity:.35;transition:opacity .25s}
+.nav-social a:hover{opacity:.85}
+.nav-social svg{width:15px;height:15px;fill:var(--salmon);flex-shrink:0}
+.nav-login{display:flex;align-items:center;gap:6px;padding-left:16px;margin-left:12px;border-left:1px solid rgba(240,239,233,.1);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;font-weight:500;color:var(--white);opacity:.35;transition:opacity .25s}
+.nav-login:hover{opacity:.85}
+.nav-login svg{width:14px;height:14px;fill:none;stroke:var(--salmon);stroke-width:1.5}
+
+/* ══ MANIFESTO SECTIONS ══ */
+
+/* Section 1: The world is noisy */
+.mn-open{height:100vh;display:flex;align-items:center;justify-content:center;position:relative;z-index:2;overflow:hidden}
+.mn-open h1{font-family:'PT Serif',serif;font-size:clamp(3rem,7vw,6.4rem);font-weight:700;text-align:center;line-height:1.05;letter-spacing:-.04em;opacity:0;transform:translateY(40px);transition:opacity 1.4s ease,transform 1.4s var(--ease-expo)}
+.mn-open.vis h1{opacity:1;transform:none}
+.mn-open h1 em{font-style:italic;color:var(--salmon);display:block;font-size:.42em;margin-top:18px;letter-spacing:.02em}
+
+/* Section 2: Antidote — sticky text over parallax image */
+.mn-antidote{position:relative;z-index:2;height:300vh}
+.mn-antidote-sticky{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.mn-antidote-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.8s ease;transform:scale(1.08);filter:brightness(.55) saturate(1.2)}
+.mn-antidote-img.vis{opacity:1}
+.mn-antidote-grad{position:absolute;inset:0;background:
+  radial-gradient(ellipse 90% 70% at 50% 50%,rgba(14,18,53,.35) 0%,rgba(14,18,53,.7) 60%,rgba(14,18,53,.92) 100%)}
+.mn-antidote-text{position:relative;z-index:2;max-width:780px;padding:0 40px;text-align:center}
+.mn-antidote-text .mn-line{font-family:'PT Serif',serif;font-size:clamp(1.3rem,2.8vw,2.2rem);font-weight:400;line-height:1.65;color:var(--white);opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform .9s var(--ease-expo)}
+.mn-antidote-text .mn-line.vis{opacity:1;transform:none}
+.mn-antidote-text .mn-line em{font-style:italic;color:var(--salmon)}
+.mn-antidote-text .mn-line strong{font-weight:700;color:var(--cyan)}
+
+/* Section 3: Three beliefs */
+.mn-belief{position:relative;z-index:2;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.mn-belief-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity 1.2s ease,transform 6s ease;filter:brightness(.4) saturate(1.15)}
+.mn-belief.vis .mn-belief-img{opacity:1;transform:scale(1)}
+.mn-belief-grad{position:absolute;inset:0;background:
+  radial-gradient(ellipse 80% 60% at 50% 50%,rgba(14,18,53,.2) 0%,rgba(14,18,53,.65) 55%,rgba(14,18,53,.88) 100%)}
+.mn-belief-content{position:relative;z-index:2;text-align:center;padding:0 40px;max-width:900px}
+.mn-belief-label{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--cyan);font-weight:500;margin-bottom:20px;opacity:0;transform:translateY(16px);transition:opacity .7s ease .1s,transform .7s var(--ease-expo) .1s}
+.mn-belief.vis .mn-belief-label{opacity:1;transform:none}
+.mn-belief-content h2{font-family:'PT Serif',serif;font-size:clamp(2.4rem,6vw,5.2rem);font-weight:700;line-height:1.06;letter-spacing:-.035em;opacity:0;transform:translateY(30px);transition:opacity 1s ease .25s,transform 1s var(--ease-expo) .25s}
+.mn-belief.vis h2{opacity:1;transform:none}
+.mn-belief-content h2 em{font-style:italic;color:var(--salmon)}
+.mn-belief-sub{font-size:clamp(1rem,1.6vw,1.2rem);color:var(--white60);line-height:1.72;margin-top:20px;max-width:560px;margin-left:auto;margin-right:auto;opacity:0;transform:translateY(20px);transition:opacity .8s ease .5s,transform .8s var(--ease-expo) .5s}
+.mn-belief.vis .mn-belief-sub{opacity:1;transform:none}
+
+/* Section 4: What we stand for */
+.mn-stance{position:relative;z-index:2;padding:160px 80px;overflow:hidden}
+.mn-stance-label{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--cyan);font-weight:500;text-align:center;margin-bottom:16px}
+.mn-stance h2{font-family:'PT Serif',serif;font-size:clamp(2rem,4.2vw,3.6rem);font-weight:700;text-align:center;letter-spacing:-.03em;margin-bottom:80px}
+.mn-stance h2 em{font-style:italic;color:var(--salmon)}
+.stance-grid{display:grid;grid-template-columns:1fr 1px 1fr;gap:60px;max-width:900px;margin:0 auto}
+.stance-divider{background:rgba(240,239,233,.06);width:1px}
+.stance-col h3{font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;font-weight:600;margin-bottom:32px}
+.stance-col.stance-for h3{color:var(--cyan)}
+.stance-col.stance-against h3{color:var(--salmon);opacity:.5}
+.stance-word{font-family:'PT Serif',serif;font-size:clamp(1.1rem,1.8vw,1.45rem);font-weight:400;line-height:1.2;margin-bottom:20px;opacity:0;transform:translateX(-20px);transition:opacity .6s ease,transform .6s var(--ease-expo)}
+.stance-word.vis{opacity:1;transform:none}
+.stance-against .stance-word{text-decoration:line-through;color:var(--white38);opacity:0;transform:translateX(20px)}
+.stance-against .stance-word.vis{opacity:.35;transform:none}
+
+/* Section 5: Mission */
+.mn-mission{position:relative;z-index:2;height:200vh}
+.mn-mission-sticky{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden}
+.mn-mission-symbol{width:220px;height:220px;opacity:.08;position:absolute;transition:opacity 2s ease,transform 4s ease;transform:scale(.7)}
+.mn-mission-symbol.vis{opacity:.12;transform:scale(1)}
+.mn-mission-text{position:relative;z-index:2;max-width:800px;text-align:center;padding:0 40px}
+.mn-mission-label{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--cyan);font-weight:500;margin-bottom:32px}
+.mn-mission-text p{font-family:'PT Serif',serif;font-size:clamp(1.4rem,2.6vw,2.1rem);font-weight:400;font-style:italic;line-height:1.7;color:var(--white)}
+.mn-mission-text p .mw{display:inline;opacity:0;transition:opacity .5s ease,filter .5s ease;filter:blur(4px)}
+.mn-mission-text p .mw.vis{opacity:1;filter:none}
+.mn-mission-text p .mw.hl{color:var(--cyan)}
+
+/* Section 6: Three pillars */
+.mn-pillars{position:relative;z-index:2;height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.mn-pillars-inner{display:flex;gap:clamp(60px,10vw,140px);align-items:center;justify-content:center}
+.mn-pillar{text-align:center;opacity:0;transform:translateY(40px);transition:opacity 1s ease,transform 1.2s var(--ease-expo)}
+.mn-pillar.vis{opacity:1;transform:none}
+.mn-pillar-word{font-family:'PT Serif',serif;font-size:clamp(2.4rem,5.5vw,5rem);font-weight:700;letter-spacing:-.03em;line-height:1}
+.mn-pillar-word.p-art{color:var(--cyan)}
+.mn-pillar-word.p-tech{color:var(--white)}
+.mn-pillar-word.p-well{color:var(--salmon)}
+.mn-pillar-line{width:40px;height:1px;margin:16px auto 0;opacity:0;transition:opacity .8s ease .4s,width .8s var(--ease-expo) .4s}
+.mn-pillar.vis .mn-pillar-line{opacity:1;width:40px}
+.mn-pillar:nth-child(1) .mn-pillar-line{background:var(--cyan)}
+.mn-pillar:nth-child(2) .mn-pillar-line{background:var(--white38)}
+.mn-pillar:nth-child(3) .mn-pillar-line{background:var(--salmon)}
+.mn-pillar-sub{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--white38);margin-top:12px;opacity:0;transition:opacity .6s ease .6s}
+.mn-pillar.vis .mn-pillar-sub{opacity:1}
+.mn-dot{font-family:'PT Serif',serif;font-size:clamp(1.4rem,3vw,2.4rem);color:var(--white38);opacity:0;transform:scale(0);transition:opacity .6s ease .3s,transform .6s var(--ease-expo) .3s}
+.mn-dot.vis{opacity:.3;transform:scale(1)}
+
+/* Section 7: Close */
+.mn-close{position:relative;z-index:2;padding:160px 80px;text-align:center}
+.mn-close h2{font-family:'PT Serif',serif;font-size:clamp(2rem,4vw,3.4rem);font-weight:700;letter-spacing:-.025em;line-height:1.12;margin-bottom:12px}
+.mn-close h2 em{font-style:italic;color:var(--salmon)}
+.mn-close-sub{font-size:1.05rem;color:var(--white60);margin-bottom:48px}
+.btn-p{display:inline-flex;align-items:center;gap:10px;background:var(--cyan);color:var(--navy);padding:18px 44px;border-radius:4px;font-size:.85rem;font-weight:700;letter-spacing:.06em;transition:background .25s,transform .2s,box-shadow .3s}
+.btn-p:hover{background:#33f5d1;transform:translateY(-2px);box-shadow:0 8px 28px rgba(2,243,197,.25)}
+.btn-p svg{flex-shrink:0}
+
+/* ══ REVIEW NUDGE ══ */
+.review-nudge{padding:100px 80px;border-top:1px solid rgba(240,239,233,.06);position:relative;z-index:2;overflow:hidden}
+.rn-inner{max-width:540px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;position:relative;z-index:2}
+.rn-stars{display:flex;gap:3px;margin-bottom:6px}
+.rn-stars svg{width:14px;height:14px;fill:var(--cyan)}
+.rn-scoreline{display:flex;align-items:baseline;gap:8px;margin-bottom:28px}
+.rn-score{font-family:'PT Serif',serif;font-size:1.1rem;font-weight:700;color:var(--white60);line-height:1}
+.rn-count{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--white38)}
+.rn-text{font-family:'PT Serif',serif;font-size:2.8rem;font-weight:700;color:var(--white);line-height:1.15;margin-bottom:12px}
+.rn-text em{font-style:italic;color:var(--salmon)}
+.rn-sub{font-size:.88rem;color:var(--white60);line-height:1.6;margin-bottom:32px}
+.rn-sub span{color:var(--salmon);font-weight:600}
+.rn-link{display:inline-flex;align-items:center;gap:10px;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--navy);background:var(--cyan);padding:18px 44px;border-radius:4px;border:none;transition:background .25s,transform .2s,box-shadow .3s}
+.rn-link:hover{background:#33f5d1;transform:translateY(-2px);box-shadow:0 8px 28px rgba(2,243,197,.25)}
+.rn-link svg{width:18px;height:18px;opacity:.9}
+.rn-ticker{position:relative;max-width:600px;margin:0 auto 56px;text-align:center;min-height:120px;display:flex;align-items:center;justify-content:center}
+.rn-quote{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:opacity .8s ease,transform .8s ease;transform:translateY(10px)}
+.rn-quote.active{opacity:1;transform:translateY(0)}
+.rn-quote q{font-family:'PT Serif',serif;font-size:1.5rem;font-style:italic;color:var(--white);line-height:1.5;quotes:"“" "”";display:block;margin-bottom:14px}
+.rn-quote q::before{content:open-quote;color:var(--cyan);font-size:1.8rem;margin-right:2px}
+.rn-quote q::after{content:close-quote;color:var(--cyan);font-size:1.8rem;margin-left:2px}
+.rn-quote cite{font-style:normal;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--salmon);font-weight:500}
+
+/* ══ FOOTER ══ */
+footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);background:rgba(9,12,38,.6);position:relative;z-index:2}
+.ft-in{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:44px}
+.ft-brand{text-align:left}
+.ft-brand img:first-child{height:36px;width:auto;margin-bottom:16px;display:block;margin-right:auto}
+.ft-brand p{font-size:.84rem;color:var(--white38);line-height:1.72;max-width:230px}
+.ft-pillars{display:flex;gap:12px;margin-top:14px;font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--white38)}
+.ft-pillars .fp-art{color:var(--cyan)}.ft-pillars .fp-tech{color:var(--white)}.ft-pillars .fp-well{color:var(--salmon)}
+.ft-symbol{width:200px;height:auto;margin-top:28px;opacity:.35;display:block}
+.ft-col h4{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;margin-bottom:20px}
+.ft-col:nth-child(2) h4{color:var(--cyan)}
+.ft-col:nth-child(3) h4{color:var(--salmon)}
+.ft-col:nth-child(4) h4{color:var(--white60)}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.ft-col a{font-size:.87rem;color:var(--white38);transition:color .2s}
+.ft-col a:hover{color:var(--white)}
+.ft-bot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding-top:30px;border-top:1px solid rgba(240,239,233,.06);font-size:.74rem;color:rgba(240,239,233,.2)}
+.ft-legal{display:flex;gap:24px}
+.ft-legal a:hover{color:var(--white38)}
+
+/* ══ MOBILE STICKY ══ */
+.sbk{position:fixed;bottom:0;left:0;right:0;z-index:99;background:rgba(14,18,53,.95);backdrop-filter:blur(18px);border-top:1px solid rgba(240,239,233,.08);padding:12px 22px;display:none;align-items:center;justify-content:space-between;transform:translateY(100%);transition:transform .4s var(--ease-expo)}
+.sbk.vis{transform:none}
+.sbk-txt{font-size:.85rem;font-weight:500}
+.sbk-txt span{color:var(--cyan);font-weight:700}
+.sbk-btn{background:var(--cyan);color:var(--navy);padding:10px 20px;border-radius:3px;font-size:.82rem;font-weight:700;letter-spacing:.05em;white-space:nowrap}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:1100px){
+  .ft-in{grid-template-columns:1fr 1fr}
+  .stance-grid{gap:40px}
+}
+@media(max-width:860px){
+  nav{padding:0 24px}
+  .nav-links{display:none}
+  .nav-social svg{width:15px;height:15px}
+  .nav-social{gap:10px;padding-left:14px;margin-left:14px}
+  .nav-login{padding-left:12px;margin-left:10px}
+  .lang-sel a{padding:4px 5px;font-size:.65rem}
+  .mn-stance,.mn-close,.review-nudge,footer{padding-left:24px;padding-right:24px}
+  .mn-stance{padding-top:100px;padding-bottom:100px}
+  .stance-grid{grid-template-columns:1fr;gap:48px}
+  .stance-divider{display:none}
+  .stance-col.stance-against{border-top:1px solid rgba(240,239,233,.06);padding-top:40px}
+  .mn-pillars-inner{flex-direction:column;gap:48px}
+  .mn-dot{display:none}
+  .mn-close{padding:100px 24px}
+  .rn-quote q{font-size:1.2rem}
+  .rn-ticker{min-height:110px;margin-bottom:40px}
+  .review-nudge{padding:60px 24px}
+  .ft-in{grid-template-columns:1fr 1fr}
+  .sbk{display:flex}
+}
+@media(max-width:520px){
+  .ft-in{grid-template-columns:1fr}
+  .mn-pillars-inner{gap:36px}
+}
+</style>
+</head>
+<body>
+
+<div class="grain"></div>
+<canvas id="globalParticles"></canvas>
+<div class="cursor" id="C"></div>
+<div class="cursor-ring" id="CR"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="SABDA_v16.html" class="nav-logo">
+    <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA">
+  </a>
+  <ul class="nav-links">
+    <li><a href="classes.html">Classes</a></li>
+    <li><a href="pricing.html">Pricing</a></li>
+    <li><a href="hire.html">Hire</a></li>
+    <li><a href="events.html">Events</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-sel">
+      <a href="#">EN</a><a href="#">ES</a><a href="#">CA</a>
+    </div>
+    <div class="nav-social">
+      <a href="https://instagram.com/sabdastudio" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 1.5A4 4 0 0 0 3.5 7.5v9a4 4 0 0 0 4 4h9a4 4 0 0 0 4-4v-9a4 4 0 0 0-4-4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.25-2.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg></a>
+      <a href="https://tiktok.com/@sabdastudio" target="_blank" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0 1 13.8 3h-3v12.4a2.6 2.6 0 0 1-2.6 2.6 2.6 2.6 0 0 1-2.6-2.6A2.6 2.6 0 0 1 8.2 12.8c.28 0 .56.04.82.12V9.84A5.6 5.6 0 0 0 2.6 15.4a5.6 5.6 0 0 0 5.6 5.6 5.6 5.6 0 0 0 5.6-5.6V9.72a7.3 7.3 0 0 0 4.2 1.32V8.02a4.28 4.28 0 0 1-1.4-2.2z"/></svg></a>
+    </div>
+    <a href="https://momence.com/sign-in" class="nav-login" target="_blank">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg>
+      Log In
+    </a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECTION 1: THE WORLD IS NOISY
+═══════════════════════════════════════════════════════ -->
+<div class="mn-open" id="mnOpen">
+  <h1>The world is <em>noisy.</em></h1>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECTION 2: WE BUILT AN ANTIDOTE
+═══════════════════════════════════════════════════════ -->
+<div class="mn-antidote" id="mnAntidote">
+  <div class="mn-antidote-sticky">
+    <img class="mn-antidote-img" id="antImg" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/immersive_aurora.jpg" alt="SABDA 360° immersive room with aurora visuals" loading="lazy">
+    <div class="mn-antidote-grad"></div>
+    <div class="mn-antidote-text" id="antText">
+      <div class="mn-line" data-delay="0">We built an <strong>antidote.</strong></div>
+      <div class="mn-line" data-delay="1">Not an escape — an <em>alternative.</em></div>
+      <div class="mn-line" data-delay="2">A space where technology doesn’t distract but <strong>deepens.</strong></div>
+      <div class="mn-line" data-delay="3">Where art isn’t something you observe</div>
+      <div class="mn-line" data-delay="4">but something you <em>move through.</em></div>
+      <div class="mn-line" data-delay="5">Where wellness isn’t a trend</div>
+      <div class="mn-line" data-delay="6">but a <em>practice.</em></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECTION 3: THREE BELIEFS
+═══════════════════════════════════════════════════════ -->
+<div class="mn-belief" id="belief1">
+  <img class="mn-belief-img" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_016.jpg" alt="Yoga class in SABDA immersive room" loading="lazy">
+  <div class="mn-belief-grad"></div>
+  <div class="mn-belief-content">
+    <div class="mn-belief-label">We believe</div>
+    <h2>Creative expression <em>heals.</em></h2>
+    <p class="mn-belief-sub">Art and music aren’t luxuries. They’re medicine. Every class at SABDA is designed to unlock something words can’t reach.</p>
+  </div>
+</div>
+
+<div class="mn-belief" id="belief2">
+  <img class="mn-belief-img" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/ecstatic_dance.jpg" alt="Ecstatic dance at SABDA" loading="lazy">
+  <div class="mn-belief-grad"></div>
+  <div class="mn-belief-content">
+    <div class="mn-belief-label">We believe</div>
+    <h2>Movement is <em>art.</em></h2>
+    <p class="mn-belief-sub">Your body is the instrument. The room is the canvas. 360° of light responds to the energy in the space — no two sessions are ever the same.</p>
+  </div>
+</div>
+
+<div class="mn-belief" id="belief3">
+  <img class="mn-belief-img" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_010.jpg" alt="Sound healing in SABDA immersive room" loading="lazy">
+  <div class="mn-belief-grad"></div>
+  <div class="mn-belief-content">
+    <div class="mn-belief-label">We believe</div>
+    <h2>Technology <em>connects.</em></h2>
+    <p class="mn-belief-sub">Dolby Atmos. LCD laser projectors. Custom visuals for every session. Not technology for technology’s sake — technology with intention, designed to bring people closer together.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECTION 4: WHAT WE STAND FOR
+═══════════════════════════════════════════════════════ -->
+<div class="mn-stance" id="mnStance">
+  <div class="mn-stance-label">Our values</div>
+  <h2>What we <em>stand for.</em></h2>
+  <div class="stance-grid">
+    <div class="stance-col stance-for">
+      <h3>For</h3>
+      <div class="stance-word">Creative expression</div>
+      <div class="stance-word">Art and music as medicine</div>
+      <div class="stance-word">Movement as art</div>
+      <div class="stance-word">Inclusivity</div>
+      <div class="stance-word">Thought-provoking technology</div>
+      <div class="stance-word">Connection</div>
+      <div class="stance-word">Tuning in</div>
+      <div class="stance-word">Grounding</div>
+      <div class="stance-word">Introspection</div>
+    </div>
+    <div class="stance-divider"></div>
+    <div class="stance-col stance-against">
+      <h3>Against</h3>
+      <div class="stance-word">Conformity</div>
+      <div class="stance-word">Noise pollution</div>
+      <div class="stance-word">“Basic” fitness culture</div>
+      <div class="stance-word">Exclusivity</div>
+      <div class="stance-word">Doom scrolling</div>
+      <div class="stance-word">Distraction</div>
+      <div class="stance-word">Avoidance</div>
+      <div class="stance-word">Groupthink</div>
+      <div class="stance-word">Esoteric gatekeeping</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECTION 5: THE MISSION
+═══════════════════════════════════════════════════════ -->
+<div class="mn-mission" id="mnMission">
+  <div class="mn-mission-sticky">
+    <img class="mn-mission-symbol" id="missionSym" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA_symbol_multi-colored.png" alt="">
+    <div class="mn-mission-text">
+      <div class="mn-mission-label">Our mission</div>
+      <p id="missionP"></p>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECTION 6: ART · TECH · WELLNESS
+═══════════════════════════════════════════════════════ -->
+<div class="mn-pillars" id="mnPillars">
+  <div class="mn-pillars-inner">
+    <div class="mn-pillar" data-d="0">
+      <div class="mn-pillar-word p-art">Art</div>
+      <div class="mn-pillar-line"></div>
+      <div class="mn-pillar-sub">Expression</div>
+    </div>
+    <div class="mn-dot">·</div>
+    <div class="mn-pillar" data-d="1">
+      <div class="mn-pillar-word p-tech">Tech</div>
+      <div class="mn-pillar-line"></div>
+      <div class="mn-pillar-sub">Intention</div>
+    </div>
+    <div class="mn-dot">·</div>
+    <div class="mn-pillar" data-d="2">
+      <div class="mn-pillar-word p-well">Wellness</div>
+      <div class="mn-pillar-line"></div>
+      <div class="mn-pillar-sub">Practice</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECTION 7: CLOSE
+═══════════════════════════════════════════════════════ -->
+<div class="mn-close" id="mnClose">
+  <h2>Words can only do so much.<br>Come <em>feel it.</em></h2>
+  <p class="mn-close-sub">Your first class is waiting.</p>
+  <a href="https://momence.com/m/443935" class="btn-p" target="_blank">3 Classes for €48
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </a>
+</div>
+
+<!-- REVIEW NUDGE -->
+<div class="review-nudge">
+  <div class="rn-ticker">
+    <div class="rn-quote active"><q>The 360&#176; room blew my mind.</q><cite>Sara &#8212; Sound Healing</cite></div>
+    <div class="rn-quote"><q>Finally, wellness that isn&#8217;t cringe.</q><cite>Luca &#8212; Breathwork</cite></div>
+    <div class="rn-quote"><q>Booked three more classes on the spot.</q><cite>Amara &#8212; Vinyasa Yoga</cite></div>
+    <div class="rn-quote"><q>Nothing else like this in the city.</q><cite>Tom &#8212; Ecstatic Dance</cite></div>
+    <div class="rn-quote"><q>My new favourite place in Barcelona.</q><cite>Nadia &#8212; Meditation Journey</cite></div>
+  </div>
+  <div class="rn-inner">
+    <div class="rn-stars"><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg></div>
+    <div class="rn-scoreline"><span class="rn-score">4.8</span><span class="rn-count">350+ reviews</span></div>
+    <p class="rn-text">Spread the <em>Love.</em></p>
+    <p class="rn-sub">Share a quick review and <span>a ginger shot is on us</span> at your next visit.</p>
+    <a href="https://g.page/r/CZeZ4gZgrjR3EAE/review" target="_blank" class="rn-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>Leave a Google Review</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-in">
+    <div class="ft-brand">
+      <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA">
+      <div class="ft-pillars"><span class="fp-art">Art</span><span>·</span><span class="fp-tech">Tech</span><span>·</span><span class="fp-well">Wellness</span></div>
+      <img class="ft-symbol" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20symbol%20multi-colored%20(1).png" alt="SABDA symbol">
+    </div>
+    <div class="ft-col"><h4>Explore</h4><ul>
+      <li><a href="classes.html">Classes</a></li><li><a href="events.html">Events</a></li>
+      <li><a href="pricing.html">Pricing</a></li><li><a href="hire.html">Hire</a></li>
+    </ul></div>
+    <div class="ft-col"><h4>Connect</h4><ul>
+      <li><a href="https://instagram.com/sabda_studio" target="_blank">Instagram</a></li>
+      <li><a href="https://tiktok.com/@sabdastudio" target="_blank">TikTok</a></li>
+      <li><a href="#">Newsletter</a></li>
+    </ul></div>
+    <div class="ft-col"><h4>Contact</h4><ul>
+      <li><a href="mailto:info@sabdastudio.com">info@sabdastudio.com</a></li>
+      <li><a href="tel:+34625449878">+34 625 44 98 78</a></li>
+      <li><a href="https://maps.google.com/?q=SABDA+Studio,+Barcelona" target="_blank" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3);padding-bottom:2px;transition:border-color .25s">Get Directions →</a></li>
+    </ul></div>
+  </div>
+  <div class="ft-bot">
+    <span>© 2026 SABDA STUDIO S.L. All rights reserved.</span>
+    <div class="ft-legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a></div>
+  </div>
+</footer>
+
+<!-- MOBILE STICKY -->
+<div class="sbk" id="sbk">
+  <div class="sbk-txt">3 Classes · <span>€48</span> · €16 each</div>
+  <a href="https://momence.com/m/443935" class="sbk-btn" target="_blank">Book Now</a>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════
+   CUSTOM CURSOR
+═══════════════════════════════════════════════════════ */
+const CUR=document.getElementById('C'),RING=document.getElementById('CR');
+let cx=0,cy=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{
+  cx=e.clientX;cy=e.clientY;
+  CUR.style.transform=`translate(${cx}px,${cy}px) translate(-50%,-50%)`;
+});
+(function rl(){rx+=(cx-rx)*.1;ry+=(cy-ry)*.1;RING.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;requestAnimationFrame(rl)})();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{CUR.classList.add('hov');RING.classList.add('hov')});
+  el.addEventListener('mouseleave',()=>{CUR.classList.remove('hov');RING.classList.remove('hov')});
+});
+
+/* ═══════════════════════════════════════════════════════
+   NAV SCROLL
+═══════════════════════════════════════════════════════ */
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('on',scrollY>60);
+},{passive:true});
+
+/* ═══════════════════════════════════════════════════════
+   SECTION 1: OPENING REVEAL
+═══════════════════════════════════════════════════════ */
+setTimeout(()=>{
+  document.getElementById('mnOpen').classList.add('vis');
+},400);
+
+/* ═══════════════════════════════════════════════════════
+   SECTION 2: SCROLL-DRIVEN TEXT REVEAL
+═══════════════════════════════════════════════════════ */
+(function(){
+  const container=document.getElementById('mnAntidote');
+  const img=document.getElementById('antImg');
+  const lines=document.querySelectorAll('#antText .mn-line');
+  const totalLines=lines.length;
+
+  function update(){
+    const rect=container.getBoundingClientRect();
+    const scrollH=container.offsetHeight-window.innerHeight;
+    const progress=Math.max(0,Math.min(1,-rect.top/scrollH));
+
+    // Image fades in at 5% scroll
+    if(progress>0.05) img.classList.add('vis');
+
+    // Scale image subtly as you scroll
+    const imgScale=1.08-progress*0.08;
+    img.style.transform=`scale(${imgScale})`;
+
+    // Reveal lines progressively
+    lines.forEach((line,i)=>{
+      const lineStart=(i/(totalLines+1))*0.85+0.08;
+      if(progress>=lineStart) line.classList.add('vis');
+    });
+  }
+
+  window.addEventListener('scroll',update,{passive:true});
+  update();
+})();
+
+/* ═══════════════════════════════════════════════════════
+   SECTION 3: BELIEFS (IntersectionObserver)
+═══════════════════════════════════════════════════════ */
+const beliefObs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add('vis');
+  });
+},{threshold:0.35});
+document.querySelectorAll('.mn-belief').forEach(b=>beliefObs.observe(b));
+
+/* ═══════════════════════════════════════════════════════
+   SECTION 4: STANCE WORDS (staggered reveal)
+═══════════════════════════════════════════════════════ */
+const stanceObs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const words=e.target.querySelectorAll('.stance-word');
+      words.forEach((w,i)=>{
+        setTimeout(()=>w.classList.add('vis'),i*100);
+      });
+      stanceObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.2});
+document.querySelectorAll('.stance-col').forEach(c=>stanceObs.observe(c));
+
+/* ═══════════════════════════════════════════════════════
+   SECTION 5: MISSION WORD-BY-WORD REVEAL
+═══════════════════════════════════════════════════════ */
+(function(){
+  const missionText="SABDA empowers humanity through technology-driven creativity, shaping a future where innovation heals, inspires, and unites. Our mission is to use technology as a force for connection, ensuring progress brings us closer together and fuels creative expression.";
+  const highlights=["heals,","inspires,","unites.","connection,","creative expression."];
+  const el=document.getElementById('missionP');
+  const words=missionText.split(' ');
+
+  el.innerHTML=words.map(w=>{
+    const isHL=highlights.some(h=>w.includes(h.replace(',','').replace('.','')));
+    return `<span class="mw${isHL?' hl':''}">${w} </span>`;
+  }).join('');
+
+  const spans=el.querySelectorAll('.mw');
+  const container=document.getElementById('mnMission');
+  const sym=document.getElementById('missionSym');
+
+  function update(){
+    const rect=container.getBoundingClientRect();
+    const scrollH=container.offsetHeight-window.innerHeight;
+    const progress=Math.max(0,Math.min(1,-rect.top/scrollH));
+
+    if(progress>0.05) sym.classList.add('vis');
+
+    // Reveal words progressively
+    const wordsToShow=Math.floor(progress*spans.length*1.3);
+    spans.forEach((s,i)=>{
+      if(i<wordsToShow) s.classList.add('vis');
+    });
+  }
+
+  window.addEventListener('scroll',update,{passive:true});
+  update();
+})();
+
+/* ═══════════════════════════════════════════════════════
+   SECTION 6: PILLARS (staggered)
+═══════════════════════════════════════════════════════ */
+const pillarObs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const pillars=e.target.querySelectorAll('.mn-pillar');
+      const dots=e.target.querySelectorAll('.mn-dot');
+      pillars.forEach((p,i)=>{
+        setTimeout(()=>p.classList.add('vis'),i*250);
+      });
+      dots.forEach((d,i)=>{
+        setTimeout(()=>d.classList.add('vis'),i*250+150);
+      });
+      pillarObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.4});
+pillarObs.observe(document.getElementById('mnPillars'));
+
+/* ═══════════════════════════════════════════════════════
+   REVIEW TICKER
+═══════════════════════════════════════════════════════ */
+(function(){
+  const quotes=document.querySelectorAll('.rn-quote');
+  let idx=0;
+  setInterval(()=>{
+    quotes[idx].classList.remove('active');
+    idx=(idx+1)%quotes.length;
+    quotes[idx].classList.add('active');
+  },4000);
+})();
+
+/* ═══════════════════════════════════════════════════════
+   GLOBAL PARTICLE FIELD
+═══════════════════════════════════════════════════════ */
+(function(){
+  const canvas=document.getElementById('globalParticles');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  let W,H;
+  let mouseX=-9999,mouseY=-9999;
+
+  function resize(){
+    W=window.innerWidth;H=window.innerHeight;
+    canvas.width=W*devicePixelRatio;
+    canvas.height=H*devicePixelRatio;
+    ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+  }
+  resize();
+  window.addEventListener('resize',resize);
+  document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY});
+
+  const COUNT=672;
+  const particles=Array.from({length:COUNT},()=>({
+    x:Math.random()*3000,
+    y:Math.random(),
+    vx:0.008+Math.random()*0.06,
+    vy:(Math.random()-0.5)*0.003,
+    fx:0,fy:0,
+    size:0.3+Math.random()*1.5,
+    glow:4+Math.random()*16,
+    color:(()=>{const c=Math.random();return c<0.38?[2,243,197]:c<0.72?[248,166,163]:[32,57,153]})(),
+    opacity:0.025+Math.random()*0.12,
+    phase:Math.random()*Math.PI*2,
+    waveAmp:0.01+Math.random()*0.04,
+    waveFreq:0.0001+Math.random()*0.0005,
+  }));
+
+  let t=0;
+  function draw(){
+    t++;
+    ctx.clearRect(0,0,W,H);
+    particles.forEach(p=>{
+      p.x+=p.vx;
+      p.y+=p.vy;
+      const waveY=p.waveAmp*Math.sin(p.phase+t*p.waveFreq);
+      let drawX=p.x+p.fx;
+      let drawY=(p.y+waveY)*H+p.fy;
+      const dx=drawX-mouseX;const dy=drawY-mouseY;
+      const dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<120&&dist>0){const force=(1-dist/120)*2.5;p.fx+=(dx/dist)*force;p.fy+=(dy/dist)*force}
+      p.fx*=0.94;p.fy*=0.94;
+      drawX=p.x+p.fx;drawY=(p.y+waveY)*H+p.fy;
+      if(p.x>W+60){p.x=-50;p.y=Math.random();p.fx=0;p.fy=0}
+      if(p.y<-0.05)p.y=1.05;if(p.y>1.05)p.y=-0.05;
+      const pulse=0.4+0.6*Math.sin(p.phase+t*0.001);const op=p.opacity*pulse;
+      if(op<0.002)return;
+      const g=ctx.createRadialGradient(drawX,drawY,0,drawX,drawY,p.glow);
+      g.addColorStop(0,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.7})`);
+      g.addColorStop(0.3,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.28})`);
+      g.addColorStop(0.7,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.04})`);
+      g.addColorStop(1,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},0)`);
+      ctx.fillStyle=g;ctx.beginPath();ctx.arc(drawX,drawY,p.glow,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.arc(drawX,drawY,p.size*0.5,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${Math.min(0.6,op*2)})`;ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+})();
+
+/* ═══════════════════════════════════════════════════════
+   MOBILE STICKY
+═══════════════════════════════════════════════════════ */
+const sbk=document.getElementById('sbk');
+const openEl=document.getElementById('mnOpen');
+const footerEl=document.querySelector('footer');
+window.addEventListener('scroll',()=>{
+  const pastOpen=scrollY>openEl.offsetHeight*.65;
+  const nearFooter=footerEl.getBoundingClientRect().top<window.innerHeight+80;
+  sbk.classList.toggle('vis',pastOpen&&!nearFooter);
+},{passive:true});
+</script>
+</body>
+</html>
