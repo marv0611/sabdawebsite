@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- about-v4 -->
+<meta charset="UTF-8"><!-- about-v5 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About — SABDA Studio Barcelona</title>
 <meta name="description" content="SABDA uses technology to connect, not distract. 360° immersive wellness in Barcelona.">
@@ -19,11 +19,9 @@ body{background:var(--navy);color:var(--white);font-family:'DM Sans',sans-serif;
 a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 ::selection{background:rgba(248,166,163,.18)}
 
-/* GRAIN */
 .grain{position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.035;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px}
 
-/* CURSOR */
 .cur{position:fixed;width:28px;height:28px;pointer-events:none;z-index:9999;will-change:transform;
   background:url('https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20symbol%20pink.png') center/contain no-repeat;
   opacity:.7;filter:drop-shadow(0 0 6px rgba(248,166,163,.4))}
@@ -31,12 +29,11 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 .cur.h{width:18px;height:18px;opacity:1}.cur-r.h{width:60px;height:60px;border-color:rgba(2,243,197,.35)}
 @media(hover:none){.cur,.cur-r{display:none}body{cursor:auto}}
 
-/* PARTICLES */
 #pCvs{position:fixed;inset:0;z-index:1;pointer-events:none}
 
-/* SYMBOL LAYERS (4 PNGs, fixed, crossfading) */
-.sym-wrap{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;pointer-events:none;width:min(65vw,65vh);height:min(65vw,65vh)}
-.sym-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;will-change:transform,opacity;transition:none}
+/* SYMBOL */
+.sym-wrap{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;pointer-events:none;width:min(60vw,60vh);height:min(60vw,60vh)}
+.sym-wrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;opacity:0;will-change:transform,opacity}
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;display:flex;align-items:center;justify-content:space-between;transition:background .5s,backdrop-filter .5s;border-bottom:1px solid rgba(240,239,233,.04);background:rgba(14,18,53,0);backdrop-filter:blur(14px)}
@@ -48,40 +45,37 @@ nav.on{background:rgba(14,18,53,.88);backdrop-filter:blur(22px)}
 .nl a:hover{opacity:1}.nl a:hover::after{right:0}
 .nr{display:flex;align-items:center}
 .ls{display:flex;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;font-weight:500}
-.ls a{color:var(--white);opacity:.35;padding:5px 7px;transition:opacity .25s}
-.ls a:hover{opacity:.7}
+.ls a{color:var(--white);opacity:.35;padding:5px 7px;transition:opacity .25s}.ls a:hover{opacity:.7}
 .ns{display:flex;align-items:center;gap:14px;padding-left:20px;margin-left:16px;border-left:1px solid rgba(240,239,233,.1)}
 .ns a{display:flex;opacity:.35;transition:opacity .25s}.ns a:hover{opacity:.85}
 .ns svg{width:15px;height:15px;fill:var(--salmon)}
-.nli{display:flex;align-items:center;gap:6px;padding-left:16px;margin-left:12px;border-left:1px solid rgba(240,239,233,.1);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;font-weight:500;color:var(--white);opacity:.35;transition:opacity .25s}
-.nli:hover{opacity:.85}
+.nli{display:flex;align-items:center;gap:6px;padding-left:16px;margin-left:12px;border-left:1px solid rgba(240,239,233,.1);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;font-weight:500;color:var(--white);opacity:.35;transition:opacity .25s}.nli:hover{opacity:.85}
 .nli svg{width:14px;height:14px;fill:none;stroke:var(--salmon);stroke-width:1.5}
 
 /* SECTIONS */
 .s{position:relative;z-index:3;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:100px clamp(24px,6vw,80px)}
-.s-inner{max-width:800px;text-align:center}
+.s-in{max-width:760px;text-align:center}
 
-/* Reveal animation */
+/* Reveal */
 .rv{opacity:0;transform:translateY(28px);transition:opacity .9s ease,transform 1s var(--ease)}
 .rv.vis{opacity:1;transform:none}
-.rv-d1{transition-delay:.12s}.rv-d2{transition-delay:.24s}.rv-d3{transition-delay:.36s}
+.rv-d1{transition-delay:.15s}.rv-d2{transition-delay:.3s}
 
-/* Typography */
-.h-xl{font-family:'PT Serif',serif;font-size:clamp(3rem,8vw,7rem);font-weight:700;line-height:1.02;letter-spacing:-.04em}
-.h-xl .sal{color:var(--salmon);font-style:italic}
-.h-lg{font-family:'PT Serif',serif;font-size:clamp(1.2rem,2.4vw,1.75rem);font-weight:400;line-height:1.7}
-.h-lg .sal{color:var(--salmon);font-style:italic}
-.h-lg .cyn{color:var(--cyan)}
-.t-sm{font-size:clamp(.85rem,1.2vw,1rem);color:var(--w38);line-height:1.7;margin-top:14px}
-.t-sm .cyn{color:var(--cyan)}
+/* Type */
+.h-hero{font-family:'PT Serif',serif;font-size:clamp(2.8rem,7vw,6rem);font-weight:700;line-height:1.05;letter-spacing:-.04em}
+.h-hero .sal{color:var(--salmon);font-style:italic}
+.h-body{font-family:'PT Serif',serif;font-size:clamp(1.15rem,2.2vw,1.65rem);font-weight:400;line-height:1.75}
+.h-body .sal{color:var(--salmon);font-style:italic}.h-body .cyn{color:var(--cyan)}
+.t-note{font-size:clamp(.82rem,1.1vw,.95rem);color:var(--w38);line-height:1.7;margin-top:16px}
+.t-note .cyn{color:var(--cyan)}.t-note .sal{color:var(--salmon)}
 
-/* BELIEF SECTIONS (with image bg) */
+/* BELIEF */
 .bel{position:relative;z-index:4;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:80px clamp(24px,6vw,60px)}
 .bel-bg{position:absolute;inset:-5%;width:110%;height:110%;object-fit:cover;filter:brightness(.3) saturate(1.15);will-change:transform}
 .bel-ov{position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 50%,rgba(14,18,53,.12),rgba(14,18,53,.65) 50%,rgba(14,18,53,.94))}
 .bel-c{position:relative;z-index:2;text-align:center;max-width:780px}
 .bel-n{font-size:.62rem;letter-spacing:.35em;text-transform:uppercase;color:var(--cyan);font-weight:500;margin-bottom:16px}
-.bel-c h2{font-family:'PT Serif',serif;font-size:clamp(2.2rem,6vw,4.8rem);font-weight:700;line-height:1.04;letter-spacing:-.035em}
+.bel-c h2{font-family:'PT Serif',serif;font-size:clamp(2.2rem,5.5vw,4.6rem);font-weight:700;line-height:1.06;letter-spacing:-.035em}
 .bel-c h2 em{font-style:italic;color:var(--salmon)}
 .bel-p{font-size:clamp(.88rem,1.3vw,1.05rem);color:var(--w60);line-height:1.75;margin-top:20px;max-width:460px;margin-left:auto;margin-right:auto}
 
@@ -96,8 +90,7 @@ nav.on{background:rgba(14,18,53,.88);backdrop-filter:blur(22px)}
 .st-col h3{font-size:.55rem;letter-spacing:.35em;text-transform:uppercase;font-weight:600;margin-bottom:clamp(20px,3vh,32px)}
 .st-for h3{color:var(--cyan)}.st-ag h3{color:var(--salmon);opacity:.45}
 .sw{font-family:'PT Serif',serif;font-size:clamp(.95rem,1.4vw,1.2rem);font-weight:400;line-height:1.25;margin-bottom:clamp(12px,1.8vh,18px);opacity:0;will-change:transform}
-.st-for .sw{transform:translateX(-20px)}
-.st-ag .sw{transform:translateX(20px);color:var(--w38)}
+.st-for .sw{transform:translateX(-20px)}.st-ag .sw{transform:translateX(20px);color:var(--w38)}
 .sw.vis{opacity:1;transform:none;transition:opacity .5s ease,transform .5s var(--ease)}
 .st-ag .sw.vis{opacity:.28}
 .sw-s{position:relative;display:inline}
@@ -115,7 +108,7 @@ nav.on{background:rgba(14,18,53,.88);backdrop-filter:blur(22px)}
 .mw.hl{color:var(--cyan);font-weight:700;font-style:normal}
 
 /* PILLARS */
-.pils{position:relative;z-index:4;height:100vh;display:flex;align-items:center;justify-content:center}
+.pils{position:relative;z-index:4;min-height:80vh;display:flex;align-items:center;justify-content:center;padding:80px 24px}
 .pils-in{display:flex;align-items:center;gap:clamp(36px,8vw,110px)}
 .pil{text-align:center;opacity:0;transform:translateY(40px);will-change:transform}
 .pil.vis{opacity:1;transform:none;transition:opacity .9s ease,transform 1.1s var(--ease)}
@@ -130,7 +123,7 @@ nav.on{background:rgba(14,18,53,.88);backdrop-filter:blur(22px)}
 .pd.vis{opacity:.15;transform:scale(1);transition:opacity .4s ease,transform .4s var(--ease)}
 
 /* CLOSE */
-.cl{position:relative;z-index:4;padding:clamp(80px,14vh,160px) 32px;text-align:center}
+.cl{position:relative;z-index:4;padding:clamp(60px,10vh,120px) 32px;text-align:center}
 .cl h2{font-family:'PT Serif',serif;font-size:clamp(1.8rem,4vw,3.2rem);font-weight:700;letter-spacing:-.025em;line-height:1.12;margin-bottom:10px}
 .cl h2 em{font-style:italic;color:var(--salmon)}
 .cl-sub{font-size:clamp(.85rem,1.2vw,1rem);color:var(--w38);margin-bottom:40px}
@@ -157,7 +150,6 @@ nav.on{background:rgba(14,18,53,.88);backdrop-filter:blur(22px)}
 .rn-q q::after{content:close-quote;color:var(--cyan);font-size:1.6rem;margin-left:2px}
 .rn-q cite{font-style:normal;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--salmon);font-weight:500}
 
-/* FOOTER */
 footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);background:rgba(9,12,38,.6);position:relative;z-index:4}
 .ft-in{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:44px}
 .ft-brand img:first-child{height:36px;margin-bottom:16px}
@@ -184,7 +176,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .st-ag{border-top:1px solid rgba(240,239,233,.06);padding-top:32px}
   .pils-in{flex-direction:column;gap:36px}.pd{display:none}
   .ft-in{grid-template-columns:1fr 1fr}.sbk{display:flex}
-  .sym-wrap{width:85vw;height:85vw}
+  .sym-wrap{width:80vw;height:80vw}
 }
 @media(max-width:520px){.ft-in{grid-template-columns:1fr}}
 </style>
@@ -193,7 +185,6 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 <div class="grain"></div>
 <canvas id="pCvs"></canvas>
 
-<!-- 4 SYMBOL LAYERS (actual PNGs, no deformation) -->
 <div class="sym-wrap" id="symW">
   <img id="sy1" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/symbol_1.png" alt="">
   <img id="sy2" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/symbol_3.png" alt="">
@@ -217,26 +208,41 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   </div>
 </nav>
 
-<!-- S1: OPENING -->
+<!-- 1: WHAT IF -->
 <div class="s" id="s1">
-  <div class="s-inner">
-    <h1 class="h-xl rv" id="openH">The world is <span class="sal">noisy.</span></h1>
+  <div class="s-in">
+    <p class="h-body rv">What if technology could make you <span class="sal">feel</span> something?</p>
   </div>
 </div>
 
-<!-- S2: TECH PROMISE -->
+<!-- 2: NOT CONTENT -->
 <div class="s" id="s2">
-  <div class="s-inner">
-    <p class="h-lg rv">Technology was supposed to bring us closer together.</p>
-    <p class="t-sm rv rv-d1">Somewhere along the way, it stopped asking why.</p>
+  <div class="s-in">
+    <p class="h-body rv">Not another screen to scroll past. Not another notification to ignore.</p>
+    <p class="t-note rv rv-d1">Something that moves through your body and stays in your memory.</p>
   </div>
 </div>
 
-<!-- S3: SABDA EXISTS -->
+<!-- 3: THAT IS SABDA -->
 <div class="s" id="s3">
-  <div class="s-inner">
-    <p class="h-lg rv">SABDA exists because we still believe technology can serve something <span class="sal">deeper.</span></p>
-    <p class="t-sm rv rv-d1">Not as a distraction. As a <span class="cyn">doorway.</span></p>
+  <div class="s-in">
+    <h1 class="h-hero rv">That is <span class="sal">SABDA.</span></h1>
+  </div>
+</div>
+
+<!-- 4: THE VISION -->
+<div class="s" id="s4">
+  <div class="s-in">
+    <p class="h-body rv">We built a room where 360° of light and Dolby Atmos spatial audio wrap around you. Where the technology disappears and the experience is all that’s left.</p>
+    <p class="t-note rv rv-d1">Yoga, breathwork, sound healing, meditation, ecstatic dance, pilates. All of it <span class="sal">immersive.</span> All of it <span class="cyn">intentional.</span></p>
+  </div>
+</div>
+
+<!-- 5: WHY -->
+<div class="s" id="s5">
+  <div class="s-in">
+    <p class="h-body rv">Technology is not the problem. It never was.</p>
+    <p class="t-note rv rv-d1">The problem is what we’ve been using it for. SABDA is proof it can be used for something <span class="cyn">better.</span></p>
   </div>
 </div>
 
@@ -245,7 +251,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   <img class="bel-bg" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_016.jpg" alt="Yoga in immersive room" loading="lazy">
   <div class="bel-ov"></div>
   <div class="bel-c">
-    <div class="bel-n rv">01</div>
+    <div class="bel-n rv">We believe</div>
     <h2 class="rv rv-d1">Creative expression <em>heals.</em></h2>
     <p class="bel-p rv rv-d2">Art and music are not luxuries. They are medicine. Every session unlocks something that words cannot reach.</p>
   </div>
@@ -256,7 +262,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   <img class="bel-bg" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/ecstatic_dance.jpg" alt="Ecstatic dance" loading="lazy">
   <div class="bel-ov"></div>
   <div class="bel-c">
-    <div class="bel-n rv">02</div>
+    <div class="bel-n rv">We believe</div>
     <h2 class="rv rv-d1">Movement is <em>art.</em></h2>
     <p class="bel-p rv rv-d2">Your body is the instrument. The room is the canvas. 360° of light responds to the energy in the space.</p>
   </div>
@@ -267,7 +273,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   <img class="bel-bg" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_010.jpg" alt="Sound healing" loading="lazy">
   <div class="bel-ov"></div>
   <div class="bel-c">
-    <div class="bel-n rv">03</div>
+    <div class="bel-n rv">We believe</div>
     <h2 class="rv rv-d1">Technology <em>connects.</em></h2>
     <p class="bel-p rv rv-d2">Not for its own sake. With intention. To bring people closer together instead of pulling them apart.</p>
   </div>
@@ -320,9 +326,9 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 
 <!-- CLOSE -->
 <div class="cl rv" id="sCl">
-  <h2>Words can only do so much.<br>Come <em>feel it.</em></h2>
-  <p class="cl-sub">Your first class is waiting.</p>
-  <a href="https://momence.com/m/443935" class="btn-p" target="_blank">3 Classes for €48 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  <h2>This is something you have to <em>experience.</em></h2>
+  <p class="cl-sub">No description does it justice. Come see for yourself.</p>
+  <a href="https://momence.com/m/443935" class="btn-p" target="_blank">Book Your First Class <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 </div>
 
 <!-- REVIEW -->
@@ -343,7 +349,6 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer>
   <div class="ft-in">
     <div class="ft-brand">
@@ -376,19 +381,19 @@ if(window.matchMedia('(hover:hover)').matches){
   document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>{C.classList.add('h');R.classList.add('h')});el.addEventListener('mouseleave',()=>{C.classList.remove('h');R.classList.remove('h')})});
 }
 
-/* REVEAL OBSERVER */
+/* REVEAL */
 const rvObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');rvObs.unobserve(e.target)}})},{threshold:0.2});
 document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
 
-/* STANCE STAGGER */
+/* STANCE */
 const stObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.sw').forEach((w,i)=>setTimeout(()=>w.classList.add('vis'),i*80));stObs.unobserve(e.target)}})},{threshold:0.15});
 document.querySelectorAll('.st-col').forEach(c=>stObs.observe(c));
 
-/* PILLARS STAGGER */
+/* PILLARS */
 const piObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.pil').forEach((p,i)=>setTimeout(()=>p.classList.add('vis'),i*180));e.target.querySelectorAll('.pd').forEach((d,i)=>setTimeout(()=>d.classList.add('vis'),i*180+100));piObs.unobserve(e.target)}})},{threshold:0.3});
 piObs.observe(document.getElementById('sPils'));
 
-/* MISSION WORDS */
+/* MISSION */
 const msSpans=[];
 (function(){
   const txt="SABDA empowers humanity through technology-driven creativity, shaping a future where innovation heals, inspires, and unites. Our mission is to use technology as a force for connection, ensuring progress brings us closer together and fuels creative expression.";
@@ -397,47 +402,42 @@ const msSpans=[];
   txt.split(' ').forEach(w=>{const s=document.createElement('span');s.className='mw'+(hl.some(h=>w===h||w===h.replace(/[,.]$/,''))?' hl':'');s.textContent=w+' ';el.appendChild(s);msSpans.push(s)});
 })();
 
-/* SYMBOL CROSSFADE + ROTATION (scroll-driven) */
+/* SYMBOLS + SCROLL LOOP */
 const syms=[document.getElementById('sy1'),document.getElementById('sy2'),document.getElementById('sy3'),document.getElementById('sy4')];
 const symW=document.getElementById('symW');
-
-/* NAV */
-const navEl=document.getElementById('nav');
-
-/* SCROLL LOOP */
 let sy=0;
+
 function tick(){
   sy+=(window.scrollY-sy)*0.12;
   const vh=window.innerHeight;
   const docH=document.documentElement.scrollHeight-vh;
-  const gp=clamp(sy/docH,0,1); // global progress 0-1
+  const gp=clamp(sy/docH,0,1);
 
-  navEl.classList.toggle('on',sy>50);
+  document.getElementById('nav').classList.toggle('on',sy>50);
 
-  /* Symbol: crossfade between 4 states based on scroll */
-  const symPhase=gp*3; // 0-3 maps across 4 images
+  /* Symbol crossfade */
+  const phase=gp*3;
   syms.forEach((img,i)=>{
     let op=0;
-    if(i===0) op=map(symPhase,0,0.8,1,0);
-    else if(i===1) op=symPhase<0.5?0:symPhase>1.8?0:map(symPhase,0.5,1,0,1)*map(symPhase,1,1.8,1,0);
-    else if(i===2) op=symPhase<1.3?0:symPhase>2.5?0:map(symPhase,1.3,1.8,0,1)*map(symPhase,2,2.5,1,0);
-    else op=map(symPhase,2,2.8,0,1);
+    if(i===0) op=map(phase,0,0.8,1,0);
+    else if(i===1) op=phase<0.4?0:phase>1.6?0:map(phase,0.4,0.9,0,1)*map(phase,0.9,1.6,1,0);
+    else if(i===2) op=phase<1.2?0:phase>2.4?0:map(phase,1.2,1.7,0,1)*map(phase,1.7,2.4,1,0);
+    else op=map(phase,2,2.7,0,1);
     img.style.opacity=clamp(op,0,1);
-    /* Slow rotation per symbol */
-    const rot=(sy*0.008)*(1+i*0.3)*(i%2===0?1:-1);
-    img.style.transform=`rotate(${rot}deg) scale(${1+gp*0.08})`;
+    const rot=(sy*0.006)*(1+i*0.25)*(i%2===0?1:-1);
+    img.style.transform=`rotate(${rot}deg)`;
   });
 
   /* Dim symbol behind image sections */
-  const b1Top=document.getElementById('b1').offsetTop;
-  const stanceTop=document.getElementById('sStance').offsetTop;
-  let symOp;
-  if(sy < b1Top-vh*0.5) symOp=0.35;
-  else if(sy < stanceTop-vh*0.3) symOp=0.04;
-  else symOp=map(sy,stanceTop-vh*0.3,stanceTop,0.04,0.18);
-  symW.style.opacity=symOp;
+  const b1=document.getElementById('b1').offsetTop;
+  const stance=document.getElementById('sStance').offsetTop;
+  let sOp;
+  if(sy<b1-vh*0.5) sOp=0.3;
+  else if(sy<stance-vh*0.3) sOp=0.03;
+  else sOp=map(sy,stance-vh*0.3,stance,0.03,0.15);
+  symW.style.opacity=sOp;
 
-  /* Belief image parallax */
+  /* Belief parallax */
   document.querySelectorAll('.bel').forEach(b=>{
     const r=b.getBoundingClientRect();
     const p=clamp(-r.top/vh,-.5,.5);
@@ -445,7 +445,7 @@ function tick(){
     if(img)img.style.transform=`translateY(${p*25}px) scale(1.06)`;
   });
 
-  /* Mission word reveal */
+  /* Mission words */
   const msEl=document.getElementById('sMs');
   const msR=msEl.getBoundingClientRect();
   const msH=msEl.offsetHeight-vh;
