@@ -958,18 +958,28 @@ function initMap(){
   const marker=new google.maps.Marker({
     position:sabda,map:map,
     icon:{
-      url:'https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20symbol%20pink.png',
-      scaledSize:new google.maps.Size(36,36),
-      anchor:new google.maps.Point(18,18),
+      url:'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6" fill="#02F3C5"/><circle cx="12" cy="12" r="11" fill="none" stroke="#02F3C5" stroke-width="1.5" opacity="0.4"/></svg>'),
+      scaledSize:new google.maps.Size(24,24),
+      anchor:new google.maps.Point(12,12),
     },
     title:'SABDA Studio'
   });
-  new google.maps.Circle({
-    center:sabda,map:map,radius:35,
-    fillColor:'#02F3C5',fillOpacity:.08,
-    strokeColor:'#02F3C5',strokeWeight:1,strokeOpacity:.2,
+  /* Pulsing glow ring */
+  let pulseRadius=30;
+  let pulseGrowing=true;
+  const pulse=new google.maps.Circle({
+    center:sabda,map:map,radius:pulseRadius,
+    fillColor:'#02F3C5',fillOpacity:.06,
+    strokeColor:'#02F3C5',strokeWeight:1.5,strokeOpacity:.25,
     clickable:false
   });
+  setInterval(()=>{
+    pulseRadius+=pulseGrowing?0.4:-0.4;
+    if(pulseRadius>45)pulseGrowing=false;
+    if(pulseRadius<30)pulseGrowing=true;
+    pulse.setRadius(pulseRadius);
+    pulse.setOptions({strokeOpacity:0.1+0.15*(1-(pulseRadius-30)/15),fillOpacity:0.03+0.04*(1-(pulseRadius-30)/15)});
+  },50);
   marker.addListener('click',()=>{
     window.open('https://maps.google.com/?q=SABDA+Studio,+Barcelona','_blank');
   });
