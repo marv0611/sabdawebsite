@@ -167,9 +167,9 @@ section{position:relative;padding:120px 80px;z-index:2}
 /* glow border on scroll reveal */
 .cs-media-glow{position:absolute;inset:-1px;border-radius:9px;opacity:0;transition:opacity 1.2s var(--ease-expo);pointer-events:none}
 .cs-media-glow.on{opacity:1}
-.cs-unmute{position:absolute;bottom:16px;right:16px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(240,239,233,.2);background:rgba(14,18,53,.6);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:3;transition:border-color .25s,background .25s}
-.cs-unmute:hover{border-color:rgba(2,243,197,.4);background:rgba(2,243,197,.08)}
-.cs-unmute svg{width:16px;height:16px;fill:var(--white);opacity:.7}
+.cs-unmute{position:absolute;bottom:16px;right:16px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(2,243,197,.5);background:rgba(2,243,197,.15);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:3;transition:border-color .25s,background .25s}
+.cs-unmute:hover{border-color:rgba(2,243,197,.7);background:rgba(2,243,197,.22)}
+.cs-unmute svg{width:16px;height:16px;fill:none;stroke:var(--cyan);stroke-width:1.5;opacity:1}
 .cs-client-tag{display:inline-flex;align-items:center;gap:8px;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--white38);margin-bottom:16px;padding:6px 14px;border:1px solid rgba(240,239,233,.08);border-radius:3px;background:rgba(240,239,233,.02)}
 .cs-client-tag .cs-dot{width:6px;height:6px;border-radius:50%}
 .cs-heading{font-family:'PT Serif',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;line-height:1.12;letter-spacing:-.02em;margin-bottom:20px}
@@ -444,7 +444,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       <audio id="alproAudio" loop preload="auto">
         <source src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/alpro_audio.m4a" type="audio/mp4">
       </audio>
-      <button class="cs-unmute" id="alproUnmute" aria-label="Toggle sound"><svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+      <button class="cs-unmute" id="alproUnmute" aria-label="Toggle sound"><svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="var(--cyan)" stroke="none"/><line x1="18" y1="9" x2="24" y2="15" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round"/><line x1="24" y1="9" x2="18" y2="15" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round"/></svg></button>
       <div class="cs-media-glow" style="background:linear-gradient(135deg,rgba(2,243,197,.12),transparent 40%,rgba(248,166,163,.08))"></div>
     </div>
     <div>
@@ -469,7 +469,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       <video autoplay muted loop playsinline preload="auto" data-unmute>
         <source src="https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/fcb_sergi_roberto.mp4" type="video/mp4">
       </video>
-      <button class="cs-unmute" aria-label="Toggle sound"><svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+      <button class="cs-unmute" aria-label="Toggle sound"><svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="var(--cyan)" stroke="none"/><line x1="18" y1="9" x2="24" y2="15" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round"/><line x1="24" y1="9" x2="18" y2="15" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round"/></svg></button>
       <div class="cs-media-glow" style="background:linear-gradient(135deg,rgba(248,166,163,.14),transparent 40%,rgba(2,243,197,.1))"></div>
     </div>
     <div>
@@ -494,7 +494,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       <video autoplay muted loop playsinline preload="auto" data-unmute>
         <source src="https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/perdon_activation.mp4" type="video/mp4">
       </video>
-      <button class="cs-unmute" aria-label="Toggle sound"><svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+      <button class="cs-unmute" aria-label="Toggle sound"><svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="var(--cyan)" stroke="none"/><line x1="18" y1="9" x2="24" y2="15" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round"/><line x1="24" y1="9" x2="18" y2="15" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round"/></svg></button>
       <div class="cs-media-glow" style="background:linear-gradient(135deg,rgba(2,243,197,.1),transparent 40%,rgba(248,166,163,.08))"></div>
     </div>
     <div>
@@ -762,14 +762,17 @@ document.querySelectorAll('.cs-media').forEach(el=>glowObs.observe(el));
 /* ═══════════════════════════════════════════════════════
    CASE STUDY VIDEOS — unmute + pause when out of view
 ═══════════════════════════════════════════════════════ */
+const mutedSVG='<svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="var(--cyan)" stroke="none"/><line x1="18" y1="9" x2="24" y2="15" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round"/><line x1="24" y1="9" x2="18" y2="15" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round"/></svg>';
+const unmutedSVG='<svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="var(--cyan)" stroke="none"/><path d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" fill="none" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round"/></svg>';
+
 /* Standard unmute */
 document.querySelectorAll('.cs-unmute:not(#alproUnmute)').forEach(btn=>{
   btn.addEventListener('click',()=>{
     const vid=btn.closest('.cs-media').querySelector('video');
     if(!vid)return;
     vid.muted=!vid.muted;
-    btn.style.borderColor=vid.muted?'rgba(240,239,233,.2)':'rgba(2,243,197,.5)';
-    btn.style.background=vid.muted?'rgba(14,18,53,.6)':'rgba(2,243,197,.12)';
+    btn.innerHTML=vid.muted?mutedSVG:unmutedSVG;
+    btn.style.background=vid.muted?'rgba(2,243,197,.15)':'rgba(2,243,197,.25)';
   });
 });
 
@@ -784,8 +787,8 @@ document.querySelectorAll('.cs-unmute:not(#alproUnmute)').forEach(btn=>{
     audioOn=!audioOn;
     if(audioOn){aud.currentTime=vid.currentTime;aud.play().catch(()=>{})}
     else{aud.pause()}
-    btn.style.borderColor=audioOn?'rgba(2,243,197,.5)':'rgba(240,239,233,.2)';
-    btn.style.background=audioOn?'rgba(2,243,197,.12)':'rgba(14,18,53,.6)';
+    btn.innerHTML=audioOn?unmutedSVG:mutedSVG;
+    btn.style.background=audioOn?'rgba(2,243,197,.25)':'rgba(2,243,197,.15)';
   });
   vid.addEventListener('seeked',()=>{if(audioOn)aud.currentTime=vid.currentTime});
   vid.addEventListener('play',()=>{if(audioOn){aud.currentTime=vid.currentTime;aud.play().catch(()=>{})}});
@@ -797,11 +800,11 @@ const vidObs=new IntersectionObserver(es=>es.forEach(e=>{
   if(e.isIntersecting){vid.play().catch(()=>{})}else{
     vid.pause();vid.muted=true;
     const btn=vid.closest('.cs-media')?.querySelector('.cs-unmute:not(#alproUnmute)');
-    if(btn){btn.style.borderColor='rgba(240,239,233,.2)';btn.style.background='rgba(14,18,53,.6)'}
+    if(btn){btn.innerHTML=mutedSVG;btn.style.background='rgba(2,243,197,.15)'}
     if(vid.id==='alproVid'){
       const aud=document.getElementById('alproAudio');if(aud)aud.pause();
       const aBtn=document.getElementById('alproUnmute');
-      if(aBtn){aBtn.style.borderColor='rgba(240,239,233,.2)';aBtn.style.background='rgba(14,18,53,.6)'}
+      if(aBtn){aBtn.innerHTML=mutedSVG;aBtn.style.background='rgba(2,243,197,.15)'}
     }
   }
 }),{threshold:.1});
