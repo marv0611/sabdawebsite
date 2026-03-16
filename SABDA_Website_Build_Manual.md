@@ -1,6 +1,6 @@
 # SABDA Website Build — Project Manual
 ## For AI Chat Handoff & Developer Reference
-### Last Updated: March 14, 2026 — Session 4 Final
+### Last Updated: March 16, 2026 — Session 7 Final
 
 ---
 
@@ -1150,3 +1150,118 @@ Events/Hire: https://marv0611.github.io/sabdawebsite/events.html
 ---
 
 *End of Session 6 update. Last updated March 15, 2026.*
+
+## 24. SESSION 7 — EVENTS SHOWCASE PAGE + REVIEW SECTION + SITE-WIDE FIXES (March 15–16, 2026)
+
+### What Was Built / Changed
+
+**Review Section ("Spread the Love") — all pages except Hire:**
+- Removed the 8 scattered floating quotes that were unreadable on dark backgrounds
+- Built a centered quote ticker: 5 quotes cycle one at a time (4s interval, fade+slide transition) with name + class type attribution
+- Below the ticker: stars, 4.8 rating, "Spread the Love" headline (2.8rem), ginger shot incentive, green "Leave a Google Review" button (solid cyan fill, navy text)
+- Added to: homepage, classes, pricing, schedule, events — NOT on hire page
+
+**Events Showcase Page (`events.html`, formerly `programming.html`):**
+- This is NOT a programming/upcoming events page. It showcases PAST events only.
+- Structure: Hero → 4 category cards → 4 event showcases (alternating layout) → email signup → review section → footer
+- Hero: "More than a Studio." — uses processed hero image (`events_hero_hq.jpg`, straightened, upscaled 2x, sharpened, contrast boosted)
+- Category cards: Exhibitions (Panta Rhei poster), 360° AV Listening (3D render), Live Music (Neurocosm live photo), Community Events (hands silhouette)
+- Event showcases with 4:5 portrait videos + unmute buttons:
+  1. Panta Rhei — `Pantarhei.mp4`, 10% CSS zoom to crop black borders
+  2. Immersive Listening — `0316.mp4`, CSS `saturate(1.2) contrast(1.05)`, audio reduced 20%
+  3. Neurocosm by Alma Digital — `ad 2 4.5.mp4`, uses video's own audio
+  4. Offline Club — `OFFLINEATSABDA.mp4`
+- Email signup: "Want to keep in touch for our next event?" + email input + "Notify Me" button (mailto fallback)
+- Goals of the page: (1) show customers what SABDA can do, (2) show potential buyers the space's potential, (3) collect emails for future events
+
+**Hire Page (`hire.html`, formerly `events.html`):**
+- Renamed from `events.html` to `hire.html`
+- Added unmute buttons to Alpro, Sergi Roberto, and Perdón videos
+- Alpro uses separate audio file (`alpro_audio.m4a`) synced to video via JS (video has no audio track)
+- Fixed Alpro video URL to LFS media path (was broken after LFS migration)
+
+**Unmute Buttons (events.html + hire.html):**
+- Green (cyan) background by default — always visible
+- Muted state: speaker icon with X cross
+- Unmuted state: speaker icon with sound waves
+- Auto-mutes when video scrolls out of view
+- Alpro on hire page uses separate audio sync pattern
+
+**Navigation — All 6 Pages Connected:**
+- Nav: Classes | Pricing | Hire | Events
+- Active states set per page
+- Logo links to `SABDA_v16.html` on all pages
+- Footer Explore: Classes, Events, Pricing, Hire
+- Footer Contact: email, phone, "Get Directions →" (cyan, underlined)
+
+**Particles:** Reduced from 1200 → 960 → 672 across all 5 pages (homepage, classes, pricing, schedule, events/hire)
+
+**Google Map (homepage):**
+- Fixed coordinates to Plus Code `95Q5+32 Barcelona` (lat: 41.3879, lng: 2.1578)
+- Replaced PNG cymatic symbol marker with pulsing cyan dot (SVG inline, no image dependency)
+- Pulsing ring animates outward/inward via setInterval on Google Maps Circle
+
+### Mistakes Made & Lessons Learned
+
+**⚠️ 24.1 — .MOV FILES DO NOT PLAY IN CHROME/FIREFOX**
+Only Safari supports `.mov` containers. Every `.mov` video appeared to "lag" or not load — it wasn't a quality issue, it was a format issue. Always convert to `.mp4` (H.264) before using on the site. This wasted significant time debugging "laggy" videos that simply couldn't play.
+
+**⚠️ 24.2 — TARGETED IMAGE SHARPENING CREATES VISIBLE BOUNDARIES**
+When using Pillow to sharpen a specific region of an image (e.g., logo area), pasting the enhanced crop back creates a hard edge visible as a square artifact. Solution: use a feathered Gaussian mask (numpy + PIL) to blend the enhanced region smoothly into the surrounding image. Always use `GaussianBlur(radius=80)` or higher on the mask before blending.
+
+**⚠️ 24.3 — CSS `quotes` PROPERTY NEEDS ACTUAL UNICODE CHARACTERS**
+Writing `quotes:"\\u201C" "\\u201D"` in CSS renders as literal text `u201C` / `u201D` on screen. The CSS `quotes` property needs the actual Unicode characters `"` `"` embedded in the file. When generating CSS via Python, use `\u201c` / `\u201d` in the Python string (which writes the real characters). When using `str_replace` in the editor, the escaped form doesn't work — use Python file writes for Unicode-sensitive CSS.
+
+**⚠️ 24.4 — LFS VIDEOS: USE media.githubusercontent.com, NOT raw.githubusercontent.com**
+Files tracked by Git LFS return a 133-byte pointer file via `raw.githubusercontent.com`. The actual video content is at `https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/FILENAME`. Non-LFS files (images, small audio) work fine via `raw.githubusercontent.com`. Always check with `file FILENAME` — if it says "ASCII text", it's an LFS pointer.
+
+**⚠️ 24.5 — DON'T FRAME THE EVENTS PAGE AS "PROGRAMMING"**
+Marvyn was clear: SABDA doesn't do regular events and has no planned programming. The events page is a showcase of PAST events only. Language like "Our Programming", "What We Do", or "Follow for Updates" is wrong. Correct framing: "What We've Done", "Past Events", "Want to keep in touch for our next event?"
+
+**⚠️ 24.6 — VIDEO AUDIO: SEPARATE AUDIO FILES NEED SYNC LOGIC**
+When a video has no audio track and needs separate audio (like Alpro), you need: (1) an `<audio>` element with the audio file, (2) JS to sync `audio.currentTime = video.currentTime` on play/seek, (3) pause audio when video scrolls out of view, (4) reset unmute button state on scroll-out.
+
+**⚠️ 24.7 — ALWAYS INSTALL git-lfs BEFORE PUSHING LARGE FILES**
+Without `git-lfs` installed, large `.mp4` files push as regular git objects, bloating the repo. Run `apt-get install git-lfs && git lfs install` before any push that includes video/audio files.
+
+**⚠️ 24.8 — PAGE RENAME REQUIRES UPDATING ALL CROSS-REFERENCES**
+When renaming `events.html` → `hire.html` and `programming.html` → `events.html`, every page's nav links, footer links, hero CTAs, and any inline references must be updated. Use Python with regex to bulk-update across all 6 files. Check with `grep -rn "old_filename.html" *.html` after.
+
+### Current Nav Structure (applies to ALL pages)
+
+```
+Nav: Classes (classes.html) | Pricing (pricing.html) | Hire (hire.html) | Events (events.html)
+Logo → SABDA_v16.html
+Footer Explore: Classes, Events, Pricing, Hire
+Footer Contact: info@sabdastudio.com, +34 625 44 98 78, Get Directions →
+```
+
+### Current Page URLs
+```
+Homepage:  https://marv0611.github.io/sabdawebsite/SABDA_v16.html
+Classes:   https://marv0611.github.io/sabdawebsite/classes.html
+Pricing:   https://marv0611.github.io/sabdawebsite/pricing.html
+Schedule:  https://marv0611.github.io/sabdawebsite/schedule.html
+Hire:      https://marv0611.github.io/sabdawebsite/hire.html
+Events:    https://marv0611.github.io/sabdawebsite/events.html
+```
+
+### Files Added/Modified This Session
+- `events.html` — new events showcase page (was `programming.html`)
+- `hire.html` — renamed from `events.html`, with unmute buttons added
+- `events_hero.jpg`, `events_hero_hq.jpg` — hero image (original + processed)
+- `panta_rhei_poster.png`, `panta_rhei_poster2.png` — exhibition card images
+- `neurocosm_live.jpg` — live music card image
+- `listening_render.png` — listening session card image
+- `cover_insta_hands.jpg` — community events card image
+- `alpro_audio.m4a` — separate audio for Alpro video on hire page
+- `listening_rosalia.mp4` — converted listening session video
+- `Pantarhei.mp4` — Panta Rhei video (mp4 conversion from .mov)
+- `0316.mp4` — listening session video with reduced audio
+
+### GitHub PAT Warning
+The GitHub personal access token has now been exposed in THREE conversations. Marvyn must regenerate it.
+
+---
+
+*End of Session 7 update. Last updated March 16, 2026.*
