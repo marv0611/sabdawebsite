@@ -1,42 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- events-v1 -->
+<meta charset="UTF-8"><!-- programming-v1 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Events & Venue Hire — SABDA Studio Barcelona | Immersive Corporate Events</title>
-<meta name="description" content="Host unforgettable events in Barcelona's most immersive venue. 360° projections, Dolby Atmos, 86m² immersive room. Brand activations, product launches, corporate wellness. FC Barcelona, Danone, Liga Endesa trusted.">
-<meta name="keywords" content="venue hire Barcelona, corporate events Barcelona, brand activation Barcelona, immersive venue, 360 projections event space, product launch venue Barcelona">
+<title>Events — SABDA Studio Barcelona | What Happens Inside Our 360° Space</title>
+<meta name="description" content="See what's happened inside SABDA's 360° immersive room in Barcelona. Art exhibitions, listening sessions, live performances, and community gatherings in Dolby Atmos spatial audio.">
+<meta name="keywords" content="immersive events Barcelona, art exhibition Barcelona, live music Barcelona, listening session, 360 experience Barcelona, immersive art">
 <link rel="canonical" href="https://sabdastudio.com/events">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-<!-- Schema.org LocalBusiness + Event Venue -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "EventVenue",
-  "name": "SABDA Studio",
-  "description": "Immersive audio-visual wellness studio and event venue in Barcelona featuring 360° projections and Dolby Atmos spatial audio.",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "C/Muntaner 83B, Local 2",
-    "addressLocality": "Barcelona",
-    "postalCode": "08011",
-    "addressCountry": "ES"
-  },
-  "telephone": "+34625449878",
-  "url": "https://sabdastudio.com/events",
-  "maximumAttendeeCapacity": 200,
-  "amenityFeature": [
-    {"@type": "LocationFeatureSpecification", "name": "360° LED Laser Projectors", "value": true},
-    {"@type": "LocationFeatureSpecification", "name": "Dolby Atmos Spatial Audio", "value": true},
-    {"@type": "LocationFeatureSpecification", "name": "Immersive Room 86m²", "value": true},
-    {"@type": "LocationFeatureSpecification", "name": "Café & Bar 65m²", "value": true},
-    {"@type": "LocationFeatureSpecification", "name": "Outdoor Patio 20m²", "value": true}
-  ]
-}
-</script>
 
 <style>
 :root{
@@ -127,19 +100,7 @@ section{position:relative;padding:120px 80px;z-index:2}
 .btn-s{display:inline-flex;align-items:center;gap:8px;color:var(--white60);font-size:.9rem;border-bottom:1px solid rgba(240,239,233,.18);padding-bottom:2px;transition:color .25s,border-color .25s}
 .btn-s:hover{color:var(--white);border-color:var(--white)}
 
-/* ── CLIENT MARQUEE ── */
-.logos{padding:64px 0;overflow:hidden;position:relative;z-index:2;border-top:1px solid rgba(240,239,233,.06);border-bottom:1px solid rgba(240,239,233,.06)}
-.logos::before,.logos::after{content:'';position:absolute;top:0;bottom:0;width:180px;z-index:3;pointer-events:none}
-.logos::before{left:0;background:linear-gradient(to right,var(--navy),transparent)}
-.logos::after{right:0;background:linear-gradient(to left,var(--navy),transparent)}
-.logos-label{text-align:center;margin-bottom:44px;font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--white38)}
-.mq{display:flex;align-items:center;width:max-content;animation:mq 50s linear infinite}
-.mq-item{padding:0 38px;font-size:.82rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;white-space:nowrap;opacity:.7;transition:opacity .4s}
-.mq-item:hover{opacity:1}
-.mq-sep{padding:0 8px;font-size:.5rem;color:rgba(240,239,233,.2);flex-shrink:0}
-@keyframes mq{from{transform:translateX(0)}to{transform:translateX(-33.333%)}}
-
-/* ── USE CASES ── */
+/* ── EVENT CATEGORIES ── */
 .use-cases{padding:120px 80px;z-index:2;position:relative}
 .uc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:56px}
 .uc-card{position:relative;border-radius:8px;overflow:hidden;height:380px;cursor:pointer;border:1px solid rgba(240,239,233,.08);transition:border-color .4s,transform .35s var(--ease-expo)}
@@ -157,14 +118,16 @@ section{position:relative;padding:120px 80px;z-index:2}
 .uc-card:hover .uc-arrow{opacity:1;transform:none;border-color:rgba(2,243,197,.3);background:rgba(2,243,197,.06)}
 .uc-arrow svg{width:14px;height:14px;stroke:var(--cyan);fill:none;stroke-width:1.5}
 
-/* ── CASE STUDIES ── */
+/* ── EVENT SHOWCASES ── */
 .case-study{padding:120px 80px;z-index:2;position:relative;border-top:1px solid rgba(240,239,233,.04)}
 .cs-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
 .cs-inner.flip{direction:rtl}.cs-inner.flip>*{direction:ltr}
-.cs-media{position:relative;border-radius:8px;overflow:hidden;aspect-ratio:3/4;max-height:560px}
+.cs-media{position:relative;border-radius:8px;overflow:hidden;aspect-ratio:4/5;max-height:560px}
 .cs-media video,.cs-media img{width:100%;height:100%;object-fit:cover}
 .cs-media::after{content:'';position:absolute;inset:0;border-radius:8px;border:1px solid rgba(240,239,233,.08);pointer-events:none}
-/* glow border on scroll reveal */
+.cs-unmute{position:absolute;bottom:16px;right:16px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(240,239,233,.2);background:rgba(14,18,53,.6);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:3;transition:border-color .25s,background .25s}
+.cs-unmute:hover{border-color:rgba(2,243,197,.4);background:rgba(2,243,197,.08)}
+.cs-unmute svg{width:16px;height:16px;fill:var(--white);opacity:.7}
 .cs-media-glow{position:absolute;inset:-1px;border-radius:9px;opacity:0;transition:opacity 1.2s var(--ease-expo);pointer-events:none}
 .cs-media-glow.on{opacity:1}
 .cs-client-tag{display:inline-flex;align-items:center;gap:8px;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--white38);margin-bottom:16px;padding:6px 14px;border:1px solid rgba(240,239,233,.08);border-radius:3px;background:rgba(240,239,233,.02)}
@@ -175,76 +138,48 @@ section{position:relative;padding:120px 80px;z-index:2}
 .cs-stat{display:inline-flex;align-items:center;gap:12px;padding:12px 20px;border:1px solid rgba(240,239,233,.08);border-radius:4px;background:rgba(2,243,197,.03);margin-bottom:24px}
 .cs-stat-val{font-family:'PT Serif',serif;font-size:1.6rem;font-weight:700;color:var(--cyan);letter-spacing:-.02em}
 .cs-stat-lbl{font-size:.72rem;letter-spacing:.08em;color:var(--white38);text-transform:uppercase}
-.cs-link{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.2);padding-bottom:3px;transition:gap .25s,border-color .25s}
-.cs-link:hover{gap:14px;border-color:var(--cyan)}
 
 /* ── HORIZONTAL RULE ANIMATION ── */
 .hr-anim{height:1px;background:linear-gradient(to right,transparent,rgba(2,243,197,.15) 20%,rgba(248,166,163,.15) 80%,transparent);position:relative;z-index:2;transform:scaleX(0);transition:transform 1.4s var(--ease-expo)}
 .hr-anim.vis{transform:scaleX(1)}
 
-/* ── SPACE GALLERY — FULL-BLEED SLIDER ── */
-.sg{position:relative;height:85vh;min-height:600px;overflow:hidden;z-index:2}
-.sg-slides{position:absolute;inset:0}
-.sg-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease}
-.sg-slide.on{opacity:1}
-.sg-img{position:absolute;inset:-6%;background-size:cover;background-position:center;transform:scale(1.08);transition:transform 9s linear}
-.sg-slide.on .sg-img{transform:scale(1.0)}
-.sg-img-b{opacity:0;transition:opacity 1.2s ease,transform 9s linear}
-.sg-img-b.swap{opacity:1}
-.sg-ov{position:absolute;inset:0;
-  background:
-    linear-gradient(105deg,rgba(14,18,53,.95) 0%,rgba(14,18,53,.82) 28%,rgba(14,18,53,.45) 54%,rgba(14,18,53,.12) 78%,rgba(14,18,53,.05) 100%),
-    linear-gradient(to top,rgba(14,18,53,.7) 0%,transparent 50%)}
-.sg-content{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding:0 80px 64px}
-.sg-info{max-width:580px;margin-bottom:52px;transition:opacity .5s var(--ease-circ),transform .5s var(--ease-circ)}
-.sg-num{font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--cyan);margin-bottom:18px;display:block}
-.sg-name{font-family:'PT Serif',serif;font-size:clamp(2.4rem,4.8vw,4rem);font-weight:700;letter-spacing:-.028em;line-height:1.08;margin-bottom:14px}
-.sg-name em{font-style:italic;color:var(--salmon)}
-.sg-desc{font-size:.95rem;color:var(--white60);line-height:1.72;max-width:440px}
-.sg-bottom{display:flex;align-items:center;gap:24px}
-.sg-prog-track{flex:1;height:1px;background:rgba(240,239,233,.14);position:relative}
-.sg-prog-fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(to right,var(--cyan),var(--salmon));width:0%}
-.sg-counter{font-size:.68rem;letter-spacing:.2em;color:var(--white38);white-space:nowrap}
-.sg-arrows{display:flex;gap:8px}
-.sg-arr{width:42px;height:42px;border-radius:50%;border:1px solid rgba(240,239,233,.16);background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--white38);transition:border-color .25s,color .25s,background .25s}
-.sg-arr:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(2,243,197,.07)}
-.sg-arr svg{width:14px;height:14px}
+/* ── SIGNUP CTA ── */
+.signup-cta{padding:100px 80px;z-index:2;position:relative;text-align:center;border-top:1px solid rgba(240,239,233,.06)}
+.signup-inner{max-width:540px;margin:0 auto}
+.signup-text{font-family:'PT Serif',serif;font-size:2.4rem;font-weight:700;line-height:1.15;margin-bottom:14px}
+.signup-text em{font-style:italic;color:var(--salmon)}
+.signup-sub{font-size:.9rem;color:var(--white60);line-height:1.7;margin-bottom:36px}
+.signup-form{display:flex;gap:12px;max-width:460px;margin:0 auto}
+.signup-form input{flex:1;background:rgba(240,239,233,.04);border:1px solid rgba(240,239,233,.1);border-radius:4px;padding:14px 18px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;transition:border-color .25s,background .25s}
+.signup-form input::placeholder{color:rgba(240,239,233,.2)}
+.signup-form input:focus{border-color:rgba(2,243,197,.4);background:rgba(2,243,197,.03)}
+.signup-form button{background:var(--cyan);color:var(--navy);padding:14px 28px;border-radius:4px;border:none;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:background .25s,transform .2s,box-shadow .3s}
+.signup-form button:hover{background:#18ffda;transform:translateY(-2px);box-shadow:0 8px 28px rgba(2,243,197,.22)}
+.signup-note{font-size:.72rem;color:var(--white38);margin-top:14px}
+@media(max-width:860px){.signup-cta{padding:60px 24px}.signup-text{font-size:1.8rem}.signup-form{flex-direction:column}.signup-form button{width:100%}}
 
-/* ── ADD-ONS ── */
-.addons{padding:80px 80px 120px;z-index:2;position:relative}
-.addons-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:44px}
-.addon{padding:28px 22px;border:1px solid rgba(240,239,233,.06);border-radius:6px;text-align:center;transition:border-color .3s,background .3s,transform .3s}
-.addon:hover{border-color:rgba(2,243,197,.15);background:rgba(2,243,197,.02);transform:translateY(-3px)}
-.addon-icon{font-size:1.6rem;margin-bottom:12px;display:block}
-.addon-name{font-size:.82rem;font-weight:600;letter-spacing:.04em;margin-bottom:4px}
-.addon-desc{font-size:.72rem;color:var(--white38);line-height:1.5}
-
-/* ── INQUIRY FORM ── */
-.inquiry{padding:120px 80px;z-index:2;position:relative;border-top:1px solid rgba(240,239,233,.06)}
-.inq-inner{max-width:680px;margin:0 auto}
-.inq-form{margin-top:48px}
-.inq-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
-.inq-row.full{grid-template-columns:1fr}
-.inq-field{display:flex;flex-direction:column;gap:6px}
-.inq-field label{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--white38);font-weight:500}
-.inq-field input,.inq-field select,.inq-field textarea{
-  background:rgba(240,239,233,.04);border:1px solid rgba(240,239,233,.1);border-radius:4px;
-  padding:13px 16px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.9rem;
-  transition:border-color .25s,background .25s;outline:none;width:100%;
-}
-.inq-field input::placeholder,.inq-field textarea::placeholder{color:rgba(240,239,233,.2)}
-.inq-field input:focus,.inq-field select:focus,.inq-field textarea:focus{border-color:rgba(2,243,197,.4);background:rgba(2,243,197,.03)}
-.inq-field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='rgba(240,239,233,0.35)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;cursor:pointer}
-.inq-field select option{background:var(--navy);color:var(--white)}
-.inq-field textarea{resize:vertical;min-height:100px}
-.inq-submit{display:inline-flex;align-items:center;gap:10px;background:var(--cyan);color:var(--navy);padding:15px 36px;border-radius:3px;font-size:.9rem;font-weight:700;letter-spacing:.05em;border:none;cursor:pointer;transition:background .2s,transform .2s,box-shadow .2s;margin-top:8px;font-family:'DM Sans',sans-serif}
-.inq-submit:hover{background:#18ffda;transform:translateY(-2px);box-shadow:0 14px 36px rgba(2,243,197,.22)}
-.inq-note{font-size:.74rem;color:var(--white38);margin-top:16px;line-height:1.6}
-.inq-success{display:none;text-align:center;padding:48px 0}
-.inq-success.show{display:block}
-.inq-success-icon{font-size:2.4rem;margin-bottom:16px}
-.inq-success h3{font-family:'PT Serif',serif;font-size:1.6rem;font-weight:700;margin-bottom:10px}
-.inq-success p{color:var(--white60);font-size:.95rem}
+/* ── REVIEW NUDGE ── */
+.review-nudge{padding:100px 80px;border-top:1px solid rgba(240,239,233,.06);position:relative;z-index:2;overflow:hidden}
+.rn-inner{max-width:540px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;position:relative;z-index:2}
+.rn-stars{display:flex;gap:3px;margin-bottom:6px}
+.rn-stars svg{width:14px;height:14px;fill:var(--cyan)}
+.rn-scoreline{display:flex;align-items:baseline;gap:8px;margin-bottom:28px}
+.rn-score{font-family:'PT Serif',serif;font-size:1.1rem;font-weight:700;color:var(--white60);line-height:1}
+.rn-count{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--white38)}
+.rn-text{font-family:'PT Serif',serif;font-size:2.8rem;font-weight:700;color:var(--white);line-height:1.15;margin-bottom:12px}
+.rn-text em{font-style:italic;color:var(--salmon)}
+.rn-sub{font-size:.88rem;color:var(--white60);line-height:1.6;margin-bottom:32px}
+.rn-sub span{color:var(--salmon);font-weight:600}
+.rn-link{display:inline-flex;align-items:center;gap:10px;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--navy);background:var(--cyan);padding:18px 44px;border-radius:4px;border:none;transition:background .25s,transform .2s,box-shadow .3s}
+.rn-link:hover{background:#33f5d1;transform:translateY(-2px);box-shadow:0 8px 28px rgba(2,243,197,.25)}
+.rn-link svg{width:18px;height:18px;opacity:.9}
+.rn-ticker{position:relative;max-width:600px;margin:0 auto 56px;text-align:center;min-height:120px;display:flex;align-items:center;justify-content:center}
+.rn-quote{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:opacity .8s ease,transform .8s ease;transform:translateY(10px)}
+.rn-quote.active{opacity:1;transform:translateY(0)}
+.rn-quote q{font-family:'PT Serif',serif;font-size:1.5rem;font-style:italic;color:var(--white);line-height:1.5;quotes:"“" "”";display:block;margin-bottom:14px}
+.rn-quote q::before{content:open-quote;color:var(--cyan);font-size:1.8rem;margin-right:2px}
+.rn-quote q::after{content:close-quote;color:var(--cyan);font-size:1.8rem;margin-left:2px}
+.rn-quote cite{font-style:normal;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--salmon);font-weight:500}
 
 /* ── FOOTER ── */
 footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);background:rgba(9,12,38,.6);position:relative;z-index:2}
@@ -277,7 +212,6 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 @media(max-width:1100px){
   .uc-grid{grid-template-columns:repeat(2,1fr)}
   .uc-card{height:320px}
-  .addons-grid{grid-template-columns:repeat(3,1fr)}
   .ft-in{grid-template-columns:1fr 1fr}
 }
 @media(max-width:860px){
@@ -287,7 +221,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .nav-social{gap:10px;padding-left:14px;margin-left:14px}
   .nav-login{padding-left:12px;margin-left:10px}
   .lang-sel a{padding:4px 5px;font-size:.65rem}
-  section,.inquiry,.use-cases,.addons,footer{padding-left:24px;padding-right:24px}
+  section,.signup-cta,.review-nudge,footer{padding-left:24px;padding-right:24px}
   section{padding-top:80px;padding-bottom:80px}
   .hero-content{padding:0 24px 72px}
   .hero h1{font-size:clamp(2.2rem,8vw,3.6rem)}
@@ -296,25 +230,20 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .uc-desc{display:none}
   .cs-inner{grid-template-columns:1fr;gap:40px}
   .cs-inner.flip{direction:ltr}
-  .cs-media{max-height:400px;aspect-ratio:4/3}
+  .cs-media{aspect-ratio:4/5;max-height:none}
   .case-study{padding:80px 24px}
-  .sg{height:70vh;min-height:500px}
-  .sg-content{padding:0 24px 48px}
-  .sg-name{font-size:clamp(1.8rem,5vw,2.6rem)}
-  .addons-grid{grid-template-columns:repeat(2,1fr)}
-  .inq-row{grid-template-columns:1fr}
-  .inquiry{padding:80px 24px}
-  .addons{padding:60px 24px 80px}
+  .signup-cta{padding:60px 24px}
+  .signup-text{font-size:1.8rem}
+  .review-nudge{padding:60px 24px}
+  .rn-quote q{font-size:1.2rem}
+  .rn-ticker{min-height:110px;margin-bottom:40px}
   .ft-in{grid-template-columns:1fr 1fr}
   .sbk{display:flex}
-  .logos-track{gap:40px}
-  .logo-item{font-size:.72rem;letter-spacing:.14em}
 }
 @media(max-width:520px){
   .uc-grid{grid-template-columns:1fr}
   .uc-card{height:240px}
   .ft-in{grid-template-columns:1fr}
-  .addons-grid{grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
@@ -330,24 +259,22 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   <a href="SABDA_v16.html" class="nav-logo">
     <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA">
   </a>
-  <ul class="nav-links">
+    <ul class="nav-links">
     <li><a href="classes.html">Classes</a></li>
     <li><a href="pricing.html">Pricing</a></li>
-    <li><a href="events.html" class="active">Hire</a></li>
-    <li><a href="#">Events</a></li>
-    <li><a href="#">About</a></li>
+    <li><a href="hire.html">Hire</a></li>
+    <li><a href="events.html" class="active">Events</a></li>
   </ul>
   <div class="nav-right">
-    <div class="lang-sel">
-      <a href="#" class="active">EN</a><a href="#">ES</a><a href="#">CA</a>
-    </div>
+    <div class="lang-sel"><a href="#">EN</a><a href="#">ES</a></div>
     <div class="nav-social">
-      <a href="https://instagram.com/sabdastudio" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 1.5A4 4 0 0 0 3.5 7.5v9a4 4 0 0 0 4 4h9a4 4 0 0 0 4-4v-9a4 4 0 0 0-4-4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.25-2.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg></a>
-      <a href="https://tiktok.com/@sabdastudio" target="_blank" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0 1 13.8 3h-3v12.4a2.6 2.6 0 0 1-2.6 2.6 2.6 2.6 0 0 1-2.6-2.6A2.6 2.6 0 0 1 8.2 12.8c.28 0 .56.04.82.12V9.84A5.6 5.6 0 0 0 2.6 15.4a5.6 5.6 0 0 0 5.6 5.6 5.6 5.6 0 0 0 5.6-5.6V9.72a7.3 7.3 0 0 0 4.2 1.32V8.02a4.28 4.28 0 0 1-1.4-2.2z"/></svg></a>
+      <a href="https://instagram.com/sabda_studio" target="_blank" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.1 3.3.1 4.8 1.7 4.9 4.9.1 1.3.1 1.6.1 4.8 0 3.2 0 3.6-.1 4.8-.1 3.2-1.7 4.8-4.9 4.9-1.3.1-1.6.1-4.9.1-3.2 0-3.6 0-4.8-.1-3.3-.1-4.8-1.7-4.9-4.9-.1-1.3-.1-1.6-.1-4.8 0-3.2 0-3.6.1-4.9.1-3.2 1.7-4.8 4.9-4.9 1.3 0 1.6-.1 4.8-.1zM12 0C8.7 0 8.3 0 7.1.1 2.7.3.3 2.7.1 7.1 0 8.3 0 8.7 0 12s0 3.7.1 4.9c.2 4.4 2.6 6.8 7 7 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c4.4-.2 6.8-2.6 7-7 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.2-4.4-2.6-6.8-7-7C16.7 0 16.3 0 12 0zm0 5.8a6.2 6.2 0 100 12.4 6.2 6.2 0 000-12.4zM12 16a4 4 0 110-8 4 4 0 010 8zm6.4-11.8a1.4 1.4 0 100 2.9 1.4 1.4 0 000-2.9z"/></svg>
+      </a>
     </div>
-    <a href="https://momence.com/sign-in" class="nav-login" target="_blank">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg>
-      Log In
+    <a href="#" class="nav-login">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 00-16 0"/></svg>
+      Login
     </a>
   </div>
 </nav>
@@ -356,317 +283,203 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
      HERO
 ═══════════════════════════════════════════════════════ -->
 <section class="hero" id="hero">
-  <img class="hero-img" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Copy_of_Sabda2-167__1_.jpg" alt="Silhouettes in SABDA's 360° immersive room during an event" loading="eager">
+  <img class="hero-img" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/events_hero_hq.jpg" alt="SABDA immersive room with blue projections and meditation mats" loading="eager">
   <div class="hero-grad"></div>
   <div class="hero-content">
-    <div class="hero-overtitle">Events & Venue Hire</div>
-    <h1>Your Vision.<br>Our <em>Universe.</em></h1>
-    <p class="hero-sub">360° projections. Dolby Atmos. 171m² of fully customizable immersive space. From brand launches to corporate wellness — we build worlds for your ideas.</p>
+    <div class="hero-overtitle">Events at SABDA</div>
+    <h1>More than a<br><em>Studio.</em></h1>
+    <p class="hero-sub">Art exhibitions. Live performances. Listening sessions. Community gatherings. Here&#8217;s a look at what&#8217;s happened inside our 360&#176; room.</p>
     <div class="hero-ctas">
-      <a href="#inquiry" class="btn-p">Get in Touch
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
-      <a href="#case-studies" class="btn-s">See Our Work ↓</a>
+      <a href="#signup" class="btn-p">Stay in the Loop</a>
+      <a href="hire.html" class="btn-s">Hire our space <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7.5 3l3 3.5-3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════
-     CLIENT LOGOS
+     EVENT CATEGORIES
 ═══════════════════════════════════════════════════════ -->
-<div class="logos">
-  <p class="logos-label">Trusted by leading brands</p>
-  <div class="mq" id="mq"></div>
-</div>
-
-<!-- ═══════════════════════════════════════════════════════
-     USE CASES — visual navigation
-═══════════════════════════════════════════════════════ -->
-<section class="use-cases" id="case-studies">
-  <span class="sl rv">Our Work</span>
-  <h2 class="sh2 rv" style="transition-delay:.07s">Case <em>Studies</em></h2>
+<section class="use-cases">
+  <span class="sl rv">What We&#8217;ve Done</span>
+  <h2 class="sh2 rv" style="transition-delay:.07s">Past <em>Events</em></h2>
   <div class="uc-grid">
-    <a href="#cs-launches" class="uc-card rv" style="transition-delay:.1s">
-      <div class="uc-card-bg" style="background-image:url('https://raw.githubusercontent.com/marv0611/sabdawebsite/main/alpro_product.jpg')"></div>
+    <a href="#ev-panta" class="uc-card rv" style="transition-delay:.1s">
+      <div class="uc-card-bg" style="background-image:url('https://raw.githubusercontent.com/marv0611/sabdawebsite/main/panta_rhei_poster2.png')"></div>
       <div class="uc-card-ov"></div>
       <div class="uc-arrow"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4v6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       <div class="uc-card-content">
         <span class="uc-num">01</span>
-        <div class="uc-name">Product Launches</div>
-        <div class="uc-desc">Custom 360° branded environments for unforgettable reveals.</div>
+        <div class="uc-name">Exhibitions</div>
+        <div class="uc-desc">Immersive art and science brought to life in 360° projection.</div>
       </div>
     </a>
-    <a href="#cs-production" class="uc-card rv" style="transition-delay:.17s">
-      <div class="uc-card-bg" style="background-image:url('https://raw.githubusercontent.com/marv0611/sabdawebsite/main/fcb_room.jpg')"></div>
+    <a href="#ev-listening" class="uc-card rv" style="transition-delay:.17s">
+      <div class="uc-card-bg" style="background-image:url('https://raw.githubusercontent.com/marv0611/sabdawebsite/main/listening_render.png')"></div>
       <div class="uc-card-ov"></div>
       <div class="uc-arrow"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4v6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       <div class="uc-card-content">
         <span class="uc-num">02</span>
-        <div class="uc-name">Film & Production</div>
-        <div class="uc-desc">Projection-mapped sets for video, photo, and content creation.</div>
+        <div class="uc-name">360° AV Listening</div>
+        <div class="uc-desc">Albums and soundscapes in Dolby Atmos spatial audio.</div>
       </div>
     </a>
-    <a href="#cs-activations" class="uc-card rv" style="transition-delay:.24s">
-      <div class="uc-card-bg" style="background-image:url('https://raw.githubusercontent.com/marv0611/sabdawebsite/main/perdon_room.jpg')"></div>
+    <a href="#ev-neurocosm" class="uc-card rv" style="transition-delay:.24s">
+      <div class="uc-card-bg" style="background-image:url('https://raw.githubusercontent.com/marv0611/sabdawebsite/main/neurocosm_live.jpg')"></div>
       <div class="uc-card-ov"></div>
       <div class="uc-arrow"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4v6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       <div class="uc-card-content">
         <span class="uc-num">03</span>
-        <div class="uc-name">Brand Activations</div>
-        <div class="uc-desc">Immersive experiences that put your brand inside the story.</div>
+        <div class="uc-name">Live Music</div>
+        <div class="uc-desc">Electronic and ambient artists performing inside the projection room.</div>
       </div>
     </a>
-    <a href="#cs-workshops" class="uc-card rv" style="transition-delay:.31s">
-      <div class="uc-card-bg" style="background-image:url('https://raw.githubusercontent.com/marv0611/sabdawebsite/main/astral_workshop.jpg')"></div>
+    <a href="#ev-offline" class="uc-card rv" style="transition-delay:.31s">
+      <div class="uc-card-bg" style="background-image:url('https://raw.githubusercontent.com/marv0611/sabdawebsite/main/cover_insta_hands.jpg')"></div>
       <div class="uc-card-ov"></div>
       <div class="uc-arrow"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4v6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
       <div class="uc-card-content">
         <span class="uc-num">04</span>
-        <div class="uc-name">Workshops & Talks</div>
-        <div class="uc-desc">Presentations wrapped in 360° visuals — no more slide decks.</div>
+        <div class="uc-name">Community Events</div>
+        <div class="uc-desc">Gatherings, workshops, and experiments in genuine connection.</div>
       </div>
     </a>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════
-     CASE STUDY 1 — ALPRO / DANONE
+     EVENT 1 — PANTA RHEI
 ═══════════════════════════════════════════════════════ -->
-<div class="hr-anim" id="cs-launches"></div>
+<div class="hr-anim" id="ev-panta"></div>
 <section class="case-study">
   <div class="cs-inner rv">
     <div class="cs-media">
-      <video autoplay muted loop playsinline preload="auto">
-        <source src="https://marv0611.github.io/sabdawebsite/alpro_hq.mp4" type="video/mp4">
+      <video autoplay muted loop playsinline preload="auto" data-unmute style="transform:scale(1.05)">
+        <source src="https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/4.5%20360%20multiple.mov" type="video/mp4">
       </video>
+      <button class="cs-unmute" aria-label="Toggle sound"><svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
       <div class="cs-media-glow" style="background:linear-gradient(135deg,rgba(2,243,197,.12),transparent 40%,rgba(248,166,163,.08))"></div>
     </div>
     <div>
-      <div class="cs-client-tag"><div class="cs-dot" style="background:var(--cyan)"></div>Alpro · Danone</div>
-      <h3 class="cs-heading">Cherry Flavour <em>Launch</em></h3>
-      <p class="cs-body">Alpro chose SABDA to unveil their new cherry flavour to press and influencers. We created custom 360° branded visuals that transformed the immersive room into a living product experience — projections synced to music, Dolby Atmos spatial audio, and a fully branded environment from entrance to bar.</p>
+      <div class="cs-client-tag"><div class="cs-dot" style="background:var(--cyan)"></div>Exhibition</div>
+      <h3 class="cs-heading">Panta <em>Rhei</em></h3>
+      <p class="cs-body">An immersive exhibition that brought the ocean&#8217;s changing seasons to life through art, science, and technology. The first of four seasonal exhibitions, Panta Rhei unfolded in two parts: an educational interactive zone exploring real ocean data and climate visualizations, and The Portal &#8212; a meditative 360&#176; audiovisual space where sound and imagery responded in real time to live ocean data.</p>
       <div class="cs-stat">
-        <span class="cs-stat-val">360°</span>
-        <span class="cs-stat-lbl">Custom branded visuals</span>
+        <span class="cs-stat-val">4 days</span>
+        <span class="cs-stat-lbl">August 2025</span>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════
-     CASE STUDY 2 — FC BARCELONA
+     EVENT 2 — LISTENING SESSIONS
 ═══════════════════════════════════════════════════════ -->
-<div class="hr-anim" id="cs-production"></div>
+<div class="hr-anim" id="ev-listening"></div>
 <section class="case-study">
   <div class="cs-inner flip rv">
     <div class="cs-media">
-      <video autoplay muted loop playsinline preload="auto">
-        <source src="https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/fcb_sergi_roberto.mp4" type="video/mp4">
+      <video autoplay muted loop playsinline preload="auto" data-unmute style="filter:saturate(1.2) contrast(1.05)">
+        <source src="https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/0316.mp4" type="video/mp4">
       </video>
+      <button class="cs-unmute" aria-label="Toggle sound"><svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
       <div class="cs-media-glow" style="background:linear-gradient(135deg,rgba(248,166,163,.14),transparent 40%,rgba(2,243,197,.1))"></div>
     </div>
     <div>
-      <div class="cs-client-tag"><div class="cs-dot" style="background:var(--salmon)"></div>FC Barcelona</div>
-      <h3 class="cs-heading">Sergi Roberto <em>Farewell</em></h3>
-      <p class="cs-body">FC Barcelona filmed Sergi Roberto's official farewell video inside SABDA's immersive room. Our projection mapping created the backdrop for one of the club's most emotional tributes — a cinematic experience that blended the player's career highlights with real-time 360° visuals.</p>
+      <div class="cs-client-tag"><div class="cs-dot" style="background:var(--salmon)"></div>360° AV Listening</div>
+      <h3 class="cs-heading">Immersive <em>Listening</em></h3>
+      <p class="cs-body">Full albums and curated soundscapes played through our Dolby Atmos spatial audio system inside the 360&#176; projection room. No phones, no distractions &#8212; just you, the music, and a room that moves with the sound. The way artists actually intended their work to be heard.</p>
       <div class="cs-stat">
-        <span class="cs-stat-val">22M+</span>
-        <span class="cs-stat-lbl">Views across platforms</span>
+        <span class="cs-stat-val">Dolby Atmos</span>
+        <span class="cs-stat-lbl">Spatial audio immersion</span>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════
-     CASE STUDY 3 — PERDÓN
+     EVENT 3 — NEUROCOSM / LIVE MUSIC
 ═══════════════════════════════════════════════════════ -->
-<div class="hr-anim" id="cs-activations"></div>
+<div class="hr-anim" id="ev-neurocosm"></div>
 <section class="case-study">
   <div class="cs-inner rv">
     <div class="cs-media">
-      <video autoplay muted loop playsinline preload="auto">
-        <source src="https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/perdon_activation.mp4" type="video/mp4">
+      <video autoplay muted loop playsinline preload="auto" data-unmute>
+        <source src="https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/ad%202%204.5.mp4" type="video/mp4">
       </video>
+      <button class="cs-unmute" aria-label="Toggle sound"><svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
       <div class="cs-media-glow" style="background:linear-gradient(135deg,rgba(2,243,197,.1),transparent 40%,rgba(248,166,163,.08))"></div>
     </div>
     <div>
-      <div class="cs-client-tag"><div class="cs-dot" style="background:var(--cyan)"></div>PERDÓN</div>
-      <h3 class="cs-heading">Brand <em>Activation</em></h3>
-      <p class="cs-body">PERDÓN — a wellness class platform offering yoga, pilates, and barre — hosted their brand launch at SABDA. The immersive room became their stage: custom projections reflecting their brand identity, spatial audio creating an enveloping atmosphere, and the café serving as a post-event networking hub.</p>
+      <div class="cs-client-tag"><div class="cs-dot" style="background:var(--cyan)"></div>Live Music</div>
+      <h3 class="cs-heading">Neurocosm by <em>Alma Digital</em></h3>
+      <p class="cs-body">An immersive live performance where electronic music met real-time generative visuals inside the 360&#176; room. Alma Digital&#8217;s Neurocosm turned the space into a living instrument &#8212; sound shaping light, light shaping movement. Headphones on, innerscapes open.</p>
       <div class="cs-stat">
-        <span class="cs-stat-val">171m²</span>
-        <span class="cs-stat-lbl">Total venue space used</span>
+        <span class="cs-stat-val">360&#176;</span>
+        <span class="cs-stat-lbl">Live AV performance</span>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════
-     CASE STUDY 4 — THE ASTRAL METHOD
+     EVENT 4 — OFFLINE CLUB
 ═══════════════════════════════════════════════════════ -->
-<div class="hr-anim" id="cs-workshops"></div>
+<div class="hr-anim" id="ev-offline"></div>
 <section class="case-study">
   <div class="cs-inner flip rv">
     <div class="cs-media">
-      <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/astral_workshop.jpg" alt="The Astral Method workshop at SABDA — packed room with 360° visuals" loading="lazy">
-      <div class="cs-media-glow" style="background:linear-gradient(135deg,rgba(248,166,163,.1),transparent 40%,rgba(2,243,197,.06))"></div>
+      <video autoplay muted loop playsinline preload="auto" data-unmute>
+        <source src="https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/OFFLINEATSABDA.mp4" type="video/mp4">
+      </video>
+      <button class="cs-unmute" aria-label="Toggle sound"><svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5zM15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+      <div class="cs-media-glow" style="background:linear-gradient(135deg,rgba(248,166,163,.12),transparent 40%,rgba(2,243,197,.1))"></div>
     </div>
     <div>
-      <div class="cs-client-tag"><div class="cs-dot" style="background:var(--salmon)"></div>The Astral Method</div>
-      <h3 class="cs-heading">2026: A Journey Through <em>Time & Space</em></h3>
-      <p class="cs-body">An immersive astrology workshop that turned the traditional presentation format on its head. Instead of slides on a screen, attendees sat inside a 360° star map that evolved throughout the session. The room became the medium — visuals responded to the narrative in real time.</p>
+      <div class="cs-client-tag"><div class="cs-dot" style="background:var(--salmon)"></div>Community Events</div>
+      <h3 class="cs-heading">Offline <em>Club</em></h3>
+      <p class="cs-body">How do we stay offline in a digital world? Phones away, presence on. Our first gathering combined ice baths, breath journeys, analog play, and shared stillness into something rare &#8212; a space for genuine connection. No screens, no content, no performance. Just people.</p>
       <div class="cs-stat">
-        <span class="cs-stat-val">80+</span>
-        <span class="cs-stat-lbl">Attendees — packed room</span>
+        <span class="cs-stat-val">Phones off</span>
+        <span class="cs-stat-lbl">Genuine connection</span>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════
-     THE SPACE — FULL-BLEED GALLERY SLIDER
+     EMAIL SIGNUP
 ═══════════════════════════════════════════════════════ -->
-<div class="hr-anim"></div>
-<section class="sg" id="space">
-  <div class="sg-slides" id="sgSlides"></div>
-  <div class="sg-content">
-    <div class="sg-info" id="sgInfo">
-      <span class="sg-num" id="sgNum">01 / 04 — THE VENUE</span>
-      <h2 class="sg-name" id="sgName">The <em>Immersive</em> Room</h2>
-      <p class="sg-desc" id="sgDesc">86m² of 360° projection-mapped walls. 8 LED laser projectors, Dolby Atmos certified surround sound, custom visual library. 20–80 capacity, soundproofed, climate controlled.</p>
-    </div>
-    <div class="sg-bottom">
-      <div class="sg-prog-track"><div class="sg-prog-fill" id="sgProg"></div></div>
-      <span class="sg-counter" id="sgCounter">01 / 04</span>
-      <div class="sg-arrows">
-        <button class="sg-arr" id="sgPrev"><svg viewBox="0 0 14 14" fill="none"><path d="M9 3L5 7l4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        <button class="sg-arr" id="sgNext"><svg viewBox="0 0 14 14" fill="none"><path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════
-     ADD-ONS
-═══════════════════════════════════════════════════════ -->
-<section class="addons">
-  <span class="sl rv">Enhance Your Event</span>
-  <h2 class="sh2 rv" style="transition-delay:.07s">Available <em>Add-Ons</em></h2>
-  <div class="addons-grid">
-    <div class="addon rv" style="transition-delay:.08s">
-      <span class="addon-icon">🎨</span>
-      <div class="addon-name">Custom Visuals</div>
-      <div class="addon-desc">Branded 360° projections designed for your event</div>
-    </div>
-    <div class="addon rv" style="transition-delay:.14s">
-      <span class="addon-icon">🍽</span>
-      <div class="addon-name">Catering</div>
-      <div class="addon-desc">Food & beverage packages via our partner network</div>
-    </div>
-    <div class="addon rv" style="transition-delay:.2s">
-      <span class="addon-icon">🎛</span>
-      <div class="addon-name">AV Technician</div>
-      <div class="addon-desc">Dedicated on-site tech support for the full event</div>
-    </div>
-    <div class="addon rv" style="transition-delay:.26s">
-      <span class="addon-icon">🧊</span>
-      <div class="addon-name">Ice Bath</div>
-      <div class="addon-desc">Cold plunge experience on the patio — guided or self-serve</div>
-    </div>
-    <div class="addon rv" style="transition-delay:.32s">
-      <span class="addon-icon">📸</span>
-      <div class="addon-name">Photo & Video</div>
-      <div class="addon-desc">Professional event coverage and content creation</div>
-    </div>
-    <div class="addon rv" style="transition-delay:.38s">
-      <span class="addon-icon">🧘</span>
-      <div class="addon-name">Wellness Facilitator</div>
-      <div class="addon-desc">Guided breathwork, yoga, or sound bath for your group</div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══════════════════════════════════════════════════════
-     INQUIRY FORM
-═══════════════════════════════════════════════════════ -->
-<section class="inquiry" id="inquiry">
-  <div class="inq-inner">
-    <span class="sl rv">Let's Talk</span>
-    <h2 class="sh2 rv" style="transition-delay:.07s">Tell Us About<br><em>Your Event</em></h2>
-    <p class="rv" style="transition-delay:.14s;color:var(--white38);font-size:.95rem;line-height:1.72;margin-top:18px">Every event at SABDA is custom. Share the basics and our team will get back to you within 24 hours with ideas, availability, and a tailored proposal.</p>
-
-    <form class="inq-form rv" style="transition-delay:.2s" id="inquiryForm" onsubmit="return handleSubmit(event)">
-      <div class="inq-row">
-        <div class="inq-field">
-          <label for="inq-name">Your Name</label>
-          <input type="text" id="inq-name" name="name" placeholder="Full name" required>
-        </div>
-        <div class="inq-field">
-          <label for="inq-company">Company</label>
-          <input type="text" id="inq-company" name="company" placeholder="Company or brand name">
-        </div>
-      </div>
-      <div class="inq-row full">
-        <div class="inq-field">
-          <label for="inq-email">Email</label>
-          <input type="email" id="inq-email" name="email" placeholder="your@email.com" required>
-        </div>
-      </div>
-      <div class="inq-row">
-        <div class="inq-field">
-          <label for="inq-type">Event Type</label>
-          <select id="inq-type" name="event_type" required>
-            <option value="" disabled selected>Select event type</option>
-            <option value="product-launch">Product Launch</option>
-            <option value="brand-activation">Brand Activation</option>
-            <option value="workshop">Workshop / Presentation</option>
-            <option value="production">Film / Photo Production</option>
-            <option value="corporate-wellness">Corporate Wellness</option>
-            <option value="private-event">Private Event / Party</option>
-            <option value="immersive-dinner">Immersive Dinner</option>
-            <option value="other">Other</option>
-          </select>
-        </div>
-        <div class="inq-field">
-          <label for="inq-guests">Expected Guests</label>
-          <select id="inq-guests" name="guests">
-            <option value="" disabled selected>Number of guests</option>
-            <option value="10-30">10–30</option>
-            <option value="30-50">30–50</option>
-            <option value="50-80">50–80</option>
-            <option value="80-120">80–120</option>
-            <option value="120-200">120–200</option>
-          </select>
-        </div>
-      </div>
-      <div class="inq-row full">
-        <div class="inq-field">
-          <label for="inq-date">Preferred Date(s)</label>
-          <input type="text" id="inq-date" name="date" placeholder="e.g. June 15, 2026 or flexible">
-        </div>
-      </div>
-      <div class="inq-row full">
-        <div class="inq-field">
-          <label for="inq-message">Tell Us More</label>
-          <textarea id="inq-message" name="message" placeholder="Brief description of your event, any specific requirements, or questions you have..."></textarea>
-        </div>
-      </div>
-      <button type="submit" class="inq-submit">Send Inquiry
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <p class="inq-note">No commitment. No pricing on the website — every event is custom-quoted. We'll respond within 24 hours.</p>
+<div class="signup-cta" id="signup">
+  <div class="signup-inner rv">
+    <p class="signup-text">Want to keep in touch for our <em>next event?</em></p>
+    <p class="signup-sub">We don&#8217;t do events often, but when we do, they sell out. Drop your email and we&#8217;ll let you know before anyone else.</p>
+    <form class="signup-form" onsubmit="handleSignup(event)">
+      <input type="email" placeholder="Your email" required>
+      <button type="submit">Notify Me</button>
     </form>
-    <div class="inq-success" id="inqSuccess">
-      <div class="inq-success-icon">✓</div>
-      <h3>Inquiry Sent</h3>
-      <p>Thanks for reaching out. Katrina from our events team will be in touch within 24 hours at the email you provided.</p>
-    </div>
+    <p class="signup-note">No spam. Just event announcements.</p>
   </div>
-</section>
+</div>
 
-<!-- ═══════════════════════════════════════════════════════
-     FOOTER
-═══════════════════════════════════════════════════════ -->
+<!-- REVIEW NUDGE -->
+<div class="review-nudge">
+  <div class="rn-ticker">
+    <div class="rn-quote active"><q>The 360&#176; room blew my mind.</q><cite>Sara &#8212; Sound Healing</cite></div>
+    <div class="rn-quote"><q>Finally, wellness that isn&#8217;t cringe.</q><cite>Luca &#8212; Breathwork</cite></div>
+    <div class="rn-quote"><q>Booked three more classes on the spot.</q><cite>Amara &#8212; Vinyasa Yoga</cite></div>
+    <div class="rn-quote"><q>Nothing else like this in the city.</q><cite>Tom &#8212; Ecstatic Dance</cite></div>
+    <div class="rn-quote"><q>My new favourite place in Barcelona.</q><cite>Nadia &#8212; Meditation Journey</cite></div>
+  </div>
+  <div class="rn-inner">
+    <div class="rn-stars"><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg></div>
+    <div class="rn-scoreline"><span class="rn-score">4.8</span><span class="rn-count">350+ reviews</span></div>
+    <p class="rn-text">Spread the <em>Love.</em></p>
+    <p class="rn-sub">Share a quick review and <span>a ginger shot is on us</span> at your next visit.</p>
+    <a href="https://g.page/r/CZeZ4gZgrjR3EAE/review" target="_blank" class="rn-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>Leave a Google Review</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
 <footer>
   <div class="ft-in">
     <div class="ft-brand">
@@ -675,33 +488,31 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       <img class="ft-symbol" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20symbol%20multi-colored%20(1).png" alt="SABDA symbol">
     </div>
     <div class="ft-col"><h4>Explore</h4><ul>
-      <li><a href="classes.html">Classes</a></li>
-      <li><a href="pricing.html">Pricing</a></li>
-      <li><a href="events.html">Hire</a></li>
-      <li><a href="#">Events</a></li>
-      <li><a href="#">About</a></li>
+      <li><a href="classes.html">Classes</a></li><li><a href="events.html">Events</a></li>
+      <li><a href="pricing.html">Pricing</a></li><li><a href="hire.html">Hire</a></li>
     </ul></div>
     <div class="ft-col"><h4>Connect</h4><ul>
-      <li><a href="https://instagram.com/sabdastudio" target="_blank">Instagram</a></li>
-      <li><a href="https://tiktok.com/@sabdastudio" target="_blank">TikTok</a></li>
-      <li><a href="#">Newsletter</a></li>
+      <li><a href="https://instagram.com/sabda_studio" target="_blank">Instagram</a></li>
+      <li><a href="#" target="_blank">TikTok</a></li>
+      <li><a href="#" target="_blank">LinkedIn</a></li>
+      <li><a href="#" target="_blank">YouTube</a></li>
     </ul></div>
     <div class="ft-col"><h4>Contact</h4><ul>
-      <li><a href="mailto:connect@sabdastudio.com">connect@sabdastudio.com</a></li>
-      <li>C/Muntaner 83B</li>
-      <li>08011 Barcelona</li>
+      <li><a href="mailto:info@sabdastudio.com">info@sabdastudio.com</a></li>
+      <li><a href="tel:+34625449878">+34 625 44 98 78</a></li>
+      <li><a href="hire.html">Hire the Space</a></li>
     </ul></div>
   </div>
   <div class="ft-bot">
-    <span>© 2026 SABDA STUDIO S.L.</span>
+    <span>&#169; 2026 SABDA STUDIO S.L. All rights reserved.</span>
     <div class="ft-legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a></div>
   </div>
 </footer>
 
 <!-- MOBILE STICKY -->
 <div class="sbk" id="sbk">
-  <div class="sbk-txt">Host your event at <span>SABDA</span></div>
-  <a href="#inquiry" class="sbk-btn">Get in Touch</a>
+  <div class="sbk-txt">3 Classes · <span>&#8364;48</span> · &#8364;16 each</div>
+  <a href="classes.html" class="sbk-btn">Book Now</a>
 </div>
 
 <script>
@@ -715,13 +526,13 @@ document.addEventListener('mousemove',e=>{
   CUR.style.transform=`translate(${cx}px,${cy}px) translate(-50%,-50%)`;
 });
 (function rl(){rx+=(cx-rx)*.1;ry+=(cy-ry)*.1;RING.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;requestAnimationFrame(rl)})();
-document.querySelectorAll('a,button,.uc-card,.addon,.sg-arr').forEach(el=>{
+document.querySelectorAll('a,button,.uc-card,.cs-unmute').forEach(el=>{
   el.addEventListener('mouseenter',()=>{CUR.classList.add('hov');RING.classList.add('hov')});
   el.addEventListener('mouseleave',()=>{CUR.classList.remove('hov');RING.classList.remove('hov')});
 });
 
 /* ═══════════════════════════════════════════════════════
-   NAV — transparent-to-solid on scroll
+   NAV
 ═══════════════════════════════════════════════════════ */
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('on',scrollY>60),{passive:true});
@@ -735,7 +546,7 @@ const rvObs=new IntersectionObserver(es=>es.forEach(e=>{
 document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
 
 /* ═══════════════════════════════════════════════════════
-   HORIZONTAL RULE ANIMATIONS — draw on scroll
+   HORIZONTAL RULE ANIMATIONS
 ═══════════════════════════════════════════════════════ */
 const hrObs=new IntersectionObserver(es=>es.forEach(e=>{
   if(e.isIntersecting){e.target.classList.add('vis');hrObs.unobserve(e.target)}
@@ -743,7 +554,7 @@ const hrObs=new IntersectionObserver(es=>es.forEach(e=>{
 document.querySelectorAll('.hr-anim').forEach(el=>hrObs.observe(el));
 
 /* ═══════════════════════════════════════════════════════
-   CASE STUDY MEDIA GLOW — activate on scroll
+   CASE STUDY MEDIA GLOW
 ═══════════════════════════════════════════════════════ */
 const glowObs=new IntersectionObserver(es=>es.forEach(e=>{
   if(e.isIntersecting){
@@ -755,146 +566,44 @@ const glowObs=new IntersectionObserver(es=>es.forEach(e=>{
 document.querySelectorAll('.cs-media').forEach(el=>glowObs.observe(el));
 
 /* ═══════════════════════════════════════════════════════
-   CASE STUDY VIDEOS — pause when out of view to save resources
+   UNMUTE TOGGLE
+═══════════════════════════════════════════════════════ */
+document.querySelectorAll('.cs-unmute').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const vid=btn.closest('.cs-media').querySelector('video');
+    if(!vid)return;
+    vid.muted=!vid.muted;
+    btn.style.borderColor=vid.muted?'rgba(240,239,233,.2)':'rgba(2,243,197,.5)';
+    btn.style.background=vid.muted?'rgba(14,18,53,.6)':'rgba(2,243,197,.12)';
+  });
+});
+
+/* ═══════════════════════════════════════════════════════
+   VIDEO PAUSE WHEN OUT OF VIEW
 ═══════════════════════════════════════════════════════ */
 const vidObs=new IntersectionObserver(es=>es.forEach(e=>{
   const vid=e.target;
-  if(e.isIntersecting){vid.play().catch(()=>{})}else{vid.pause()}
+  if(e.isIntersecting){vid.play().catch(()=>{})}else{
+    vid.pause();vid.muted=true;
+    const btn=vid.closest('.cs-media')?.querySelector('.cs-unmute');
+    if(btn){btn.style.borderColor='rgba(240,239,233,.2)';btn.style.background='rgba(14,18,53,.6)'}
+  }
 }),{threshold:.1});
 document.querySelectorAll('.cs-media video').forEach(v=>vidObs.observe(v));
 
 /* ═══════════════════════════════════════════════════════
-   SPACE GALLERY — 4-SECTION SLIDER WITH MID-SWAP, STARTS ON SCROLL
+   QUOTE TICKER
 ═══════════════════════════════════════════════════════ */
 (function(){
-  const BASE='https://raw.githubusercontent.com/marv0611/sabdawebsite/main/';
-  const slides=[
-    {imgA:BASE+'immersive_underwater.jpg',imgB:BASE+'immersive_aurora_mats.jpg',num:'01 / 04',name:'The <em>Immersive</em> Room',desc:'86m² of 360° projection-mapped walls. 8 LED laser projectors, Dolby Atmos certified surround sound, custom visual library. 20–80 capacity, soundproofed, climate controlled.',dur:9000},
-    {imgA:BASE+'cafe_bar.jpg',imgB:BASE+'cafe_lounge.jpg',num:'02 / 04',name:'Café & <em>Lounge</em>',desc:'65m² of modular space with SONOS sound, equipped bar, pro coffee machine, and fully reconfigurable furniture. Perfect for networking and reception.',dur:9000},
-    {imgA:BASE+'DSC06911__1_.jpg',imgB:null,num:'03 / 04',name:'The <em>Patio</em>',desc:'20m² outdoor space with ice bath, outdoor shower, natural light, and seating. A fresh-air extension for any event format.',dur:5000},
-    {imgA:BASE+'entrance_door.jpg',imgB:BASE+'entrance_reception.jpg',num:'04 / 04',name:'The <em>Entrance</em>',desc:'Welcome desk with customizable smart art screen, street-level access on C/Muntaner in the heart of Barcelona\'s Eixample district.',dur:9000},
-  ];
-
-  const container=document.getElementById('sgSlides');
-  if(!container)return;
-  slides.forEach((s,i)=>{
-    const div=document.createElement('div');
-    div.className='sg-slide'+(i===0?' on':'');
-    const bLayer=s.imgB?`<div class="sg-img sg-img-b" style="background-image:url('${s.imgB}')"></div>`:'';
-    div.innerHTML=`<div class="sg-img" style="background-image:url('${s.imgA}')"></div>${bLayer}<div class="sg-ov"></div>`;
-    container.appendChild(div);
-  });
-
-  let idx=0;
-  let swapTimer=null;
-  let autoT=null;
-  let started=false;
-  const sgName=document.getElementById('sgName');
-  const sgDesc=document.getElementById('sgDesc');
-  const sgNum=document.getElementById('sgNum');
-  const sgProg=document.getElementById('sgProg');
-  const sgCounter=document.getElementById('sgCounter');
-  const sgInfo=document.getElementById('sgInfo');
-  const allSlides=container.querySelectorAll('.sg-slide');
-
-  function startProg(dur){
-    sgProg.style.transition='none';
-    sgProg.style.width='0%';
-    requestAnimationFrame(()=>{requestAnimationFrame(()=>{
-      sgProg.style.transition=`width ${dur}ms linear`;
-      sgProg.style.width='100%';
-    })});
-  }
-
-  function goSlide(n){
-    if(swapTimer)clearTimeout(swapTimer);
-    const prevB=allSlides[idx].querySelector('.sg-img-b');
-    if(prevB)prevB.classList.remove('swap');
-    allSlides[idx].classList.remove('on');
-
-    idx=(n+slides.length)%slides.length;
-    allSlides[idx].classList.add('on');
-    const curB=allSlides[idx].querySelector('.sg-img-b');
-    if(curB)curB.classList.remove('swap');
-
-    sgInfo.style.opacity='0';sgInfo.style.transform='translateY(18px)';
-    setTimeout(()=>{
-      sgName.innerHTML=slides[idx].name;
-      sgDesc.textContent=slides[idx].desc;
-      sgNum.textContent=slides[idx].num+' — THE VENUE';
-      sgCounter.textContent=slides[idx].num;
-      sgInfo.style.opacity='1';sgInfo.style.transform='none';
-    },300);
-
-    const dur=slides[idx].dur;
-    if(curB){
-      swapTimer=setTimeout(()=>curB.classList.add('swap'),dur/2);
-    }
-    startProg(dur);
-
-    clearInterval(autoT);
-    autoT=setTimeout(()=>{
-      goSlide(idx+1);
-    },dur);
-  }
-
-  function startSlider(){
-    if(started)return;
-    started=true;
-    const dur=slides[0].dur;
-    startProg(dur);
-    const firstB=allSlides[0].querySelector('.sg-img-b');
-    if(firstB)swapTimer=setTimeout(()=>firstB.classList.add('swap'),dur/2);
-    autoT=setTimeout(()=>goSlide(1),dur);
-  }
-
-  document.getElementById('sgNext').addEventListener('click',()=>{goSlide(idx+1)});
-  document.getElementById('sgPrev').addEventListener('click',()=>{goSlide(idx-1)});
-
-  /* Only start when scrolled into view */
-  const sgObs=new IntersectionObserver(es=>{
-    if(es[0].isIntersecting){startSlider();sgObs.unobserve(es[0].target)}
-  },{threshold:.15});
-  sgObs.observe(document.getElementById('space'));
+  const quotes=document.querySelectorAll('.rn-quote');
+  if(!quotes.length)return;
+  let cur=0;
+  setInterval(()=>{
+    quotes[cur].classList.remove('active');
+    cur=(cur+1)%quotes.length;
+    quotes[cur].classList.add('active');
+  },4000);
 })();
-
-/* ═══════════════════════════════════════════════════════
-   CLIENT MARQUEE
-═══════════════════════════════════════════════════════ */
-const mqData=['FC Barcelona','Danone','Liga Endesa','Elisava','Honest Greens','Aire','Time Out','Ametller'];
-const mq=document.getElementById('mq');
-const mqColors=['#02F3C5','#F8A6A3'];
-[...mqData,...mqData,...mqData].forEach((name,i)=>{
-  const sep=document.createElement('span');sep.className='mq-sep';sep.textContent='·';mq.appendChild(sep);
-  const s=document.createElement('span');
-  s.className='mq-item';s.textContent=name;s.style.color=mqColors[i%2];
-  mq.appendChild(s);
-});
-
-/* ═══════════════════════════════════════════════════════
-   INQUIRY FORM — mailto fallback (no backend)
-═══════════════════════════════════════════════════════ */
-function handleSubmit(e){
-  e.preventDefault();
-  const f=document.getElementById('inquiryForm');
-  const data=new FormData(f);
-  const body=`Name: ${data.get('name')}
-Company: ${data.get('company')||'N/A'}
-Email: ${data.get('email')}
-Event Type: ${data.get('event_type')}
-Guests: ${data.get('guests')||'TBD'}
-Date: ${data.get('date')||'Flexible'}
-
-Message:
-${data.get('message')||'No additional details.'}`;
-
-  window.location.href=`mailto:connect@sabdastudio.com?subject=${encodeURIComponent('Event Inquiry — '+data.get('company'||'SABDA Website'))}&body=${encodeURIComponent(body)}`;
-
-  /* Show success state */
-  f.style.display='none';
-  document.getElementById('inqSuccess').classList.add('show');
-  return false;
-}
 
 /* ═══════════════════════════════════════════════════════
    GLOBAL PARTICLE FIELD
@@ -964,6 +673,17 @@ ${data.get('message')||'No additional details.'}`;
   }
   requestAnimationFrame(draw);
 })();
+
+/* ═══════════════════════════════════════════════════════
+   EMAIL SIGNUP
+═══════════════════════════════════════════════════════ */
+function handleSignup(e){
+  e.preventDefault();
+  const form=e.target;
+  const email=form.querySelector('input').value;
+  window.location.href='mailto:info@sabdastudio.com?subject='+encodeURIComponent('Event Signup: '+email)+'&body='+encodeURIComponent('Please add '+email+' to the SABDA events mailing list.');
+  form.innerHTML='<p style="color:var(--cyan);font-size:.95rem;font-weight:600">You\u2019re on the list. We\u2019ll be in touch.</p>';
+}
 
 /* ═══════════════════════════════════════════════════════
    MOBILE STICKY
