@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- about-v16 -->
+<meta charset="UTF-8"><!-- about-v17 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About SABDA Studio Barcelona</title>
 <meta name="description" content="SABDA is an immersive audio-visual wellness studio in Barcelona. 360° projections, Dolby Atmos, and classes that feel like nowhere else.">
@@ -21,7 +21,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 clamp(24px,4vw,56px);height:72px;display:flex;align-items:center;justify-content:space-between;transition:background .5s,backdrop-filter .5s;border-bottom:1px solid rgba(240,239,233,.04);background:rgba(14,18,53,0);backdrop-filter:blur(14px)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 clamp(24px,4vw,56px);height:72px;display:flex;align-items:center;justify-content:space-between;transition:background .5s,backdrop-filter .5s;background:rgba(14,18,53,0);backdrop-filter:blur(14px)}
 nav.on{background:rgba(14,18,53,.88);backdrop-filter:blur(22px)}
 .nav-logo img{height:34px}
 .nl{display:flex;gap:36px;list-style:none;font-size:.8rem;letter-spacing:.09em;text-transform:uppercase;font-weight:500}
@@ -61,20 +61,20 @@ nav.on{background:rgba(14,18,53,.88);backdrop-filter:blur(22px)}
 .cs{color:var(--salmon);font-style:italic}.cc{color:var(--cyan)}.cd{color:var(--w60)}
 
 /* EDITORIAL BLOCK: text left, image right (or stacked on mobile) */
-.ed{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,64px);align-items:center;max-width:1000px;margin:0 auto}
-.ed-txt{text-align:left}
+.ed{max-width:680px;margin:0 auto;text-align:center}
+.ed-txt{text-align:center}
 .ed-txt h2{font-family:'PT Serif',serif;font-size:clamp(1.4rem,2.4vw,2rem);font-weight:700;line-height:1.15;letter-spacing:-.025em;margin-bottom:16px}
 .ed-txt h2 em{font-style:italic;color:var(--salmon)}
 .ed-txt p{font-size:clamp(.86rem,1.05vw,.94rem);color:var(--w60);line-height:1.85;font-weight:300}
 .ed-txt p+p{margin-top:14px}
-.ed-img{border-radius:6px;overflow:hidden;aspect-ratio:4/5;position:relative}
-.ed-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.85) saturate(1.1)}
-.ed.flip{direction:rtl}.ed.flip>*{direction:ltr}
+.ed-img{display:none}
+
+
 
 /* BELIEFS (full-width image bg) */
-.bel{position:relative;z-index:6;min-height:90vh;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:clamp(60px,10vh,100px) clamp(20px,5vw,60px)}
-.bel-bg{position:absolute;inset:-5%;width:110%;height:110%;object-fit:cover;filter:brightness(.25) saturate(1.2);will-change:transform}
-.bel-ov{position:absolute;inset:0;background:radial-gradient(ellipse 60% 45% at 50% 50%,rgba(14,18,53,.05),rgba(14,18,53,.6) 45%,rgba(14,18,53,.96))}
+.bel{position:relative;z-index:6;min-height:auto;display:flex;align-items:center;justify-content:center;padding:clamp(60px,10vh,100px) clamp(20px,5vw,60px)}
+.bel-bg{display:none}
+.bel-ov{display:none}
 .bel-c{position:relative;z-index:2;text-align:center;max-width:680px}
 .bel-c h2{font-family:'PT Serif',serif;font-size:clamp(1.8rem,4.5vw,3.6rem);font-weight:700;line-height:1.08;letter-spacing:-.03em}
 .bel-c h2 em{font-style:italic;color:var(--salmon)}
@@ -86,7 +86,7 @@ nav.on{background:rgba(14,18,53,.88);backdrop-filter:blur(22px)}
 .stance-hd h2{font-family:'PT Serif',serif;font-size:clamp(1.5rem,2.8vw,2.2rem);font-weight:700;letter-spacing:-.02em}
 .stance-hd h2 em{font-style:italic;color:var(--salmon)}
 .st-grid{display:grid;grid-template-columns:1fr 1px 1fr;gap:clamp(28px,4vw,60px);max-width:660px;margin:0 auto}
-.st-div{background:linear-gradient(to bottom,rgba(240,239,233,.06),transparent)}
+.st-div{background:linear-gradient(to bottom,rgba(2,243,197,.06),transparent)}
 .st-col h3{font-size:.5rem;letter-spacing:.4em;text-transform:uppercase;font-weight:600;margin-bottom:clamp(16px,2.5vh,26px)}
 .st-for h3{color:var(--cyan)}.st-ag h3{color:var(--salmon);opacity:.4}
 .sw{font-family:'PT Serif',serif;font-size:clamp(.88rem,1.2vw,1.05rem);font-weight:400;line-height:1.3;margin-bottom:clamp(10px,1.4vh,14px);opacity:0;will-change:transform}
@@ -126,7 +126,7 @@ nav.on{background:rgba(14,18,53,.88);backdrop-filter:blur(22px)}
 .btn-p:hover{background:#33f5d1;transform:translateY(-2px);box-shadow:0 8px 28px rgba(2,243,197,.25)}
 
 /* REVIEW */
-.rn{padding:64px clamp(20px,5vw,80px);border-top:1px solid rgba(240,239,233,.06);position:relative;z-index:6}
+.rn{padding:64px clamp(20px,5vw,80px);position:relative;z-index:6}
 .rn-in{max-width:440px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center}
 .rn-stars{display:flex;gap:3px;margin-bottom:5px}.rn-stars svg{width:12px;height:12px;fill:var(--cyan)}
 .rn-sl{display:flex;align-items:baseline;gap:7px;margin-bottom:18px}
@@ -146,7 +146,7 @@ nav.on{background:rgba(14,18,53,.88);backdrop-filter:blur(22px)}
 .rn-q cite{font-style:normal;font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--salmon);font-weight:500}
 
 /* FOOTER */
-footer{padding:44px clamp(24px,4vw,80px) 24px;border-top:1px solid rgba(240,239,233,.07);background:rgba(9,12,38,.6);position:relative;z-index:6}
+footer{padding:44px clamp(24px,4vw,80px) 24px;background:rgba(9,12,38,.6);position:relative;z-index:6}
 .ft-in{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:32px}
 .ft-brand img:first-child{height:30px;margin-bottom:12px}
 .ft-pl{display:flex;gap:10px;margin-top:10px;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--w38)}
@@ -156,7 +156,7 @@ footer{padding:44px clamp(24px,4vw,80px) 24px;border-top:1px solid rgba(240,239,
 .ft-col:nth-child(2) h4{color:var(--cyan)}.ft-col:nth-child(3) h4{color:var(--salmon)}.ft-col:nth-child(4) h4{color:var(--w60)}
 .ft-col ul{list-style:none;display:flex;flex-direction:column;gap:8px}
 .ft-col a{font-size:.8rem;color:var(--w38);transition:color .2s}.ft-col a:hover{color:var(--white)}
-.ft-bt{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:22px;border-top:1px solid rgba(240,239,233,.05);font-size:.68rem;color:rgba(240,239,233,.15)}
+.ft-bt{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:22px;font-size:.68rem;color:rgba(240,239,233,.15)}
 .ft-lg{display:flex;gap:18px}.ft-lg a:hover{color:var(--w38)}
 
 .sbk{position:fixed;bottom:0;left:0;right:0;z-index:99;background:rgba(14,18,53,.95);backdrop-filter:blur(18px);border-top:1px solid rgba(240,239,233,.08);padding:10px 18px;display:none;align-items:center;justify-content:space-between;transform:translateY(100%);transition:transform .4s var(--ease)}
@@ -165,10 +165,8 @@ footer{padding:44px clamp(24px,4vw,80px) 24px;border-top:1px solid rgba(240,239,
 
 @media(max-width:860px){
   nav{height:64px}.nl{display:none}.ns{gap:10px;padding-left:12px;margin-left:12px}.nli{padding-left:10px;margin-left:8px}.ls a{padding:4px 5px;font-size:.64rem}
-  .ed{grid-template-columns:1fr;gap:24px}.ed.flip{direction:ltr}
-  .ed-img{aspect-ratio:16/10;max-height:280px}
   .stance,footer{padding-left:20px;padding-right:20px}
-  .st-grid{grid-template-columns:1fr;gap:28px}.st-div{display:none}.st-ag{border-top:1px solid rgba(240,239,233,.06);padding-top:24px}
+  .st-grid{grid-template-columns:1fr;gap:28px}.st-div{display:none}.st-ag{padding-top:24px}
   .pils-in{flex-direction:column;gap:24px}.pd{display:none}
   .ft-in{grid-template-columns:1fr 1fr}.sbk{display:flex}
   .sec-center{min-height:80vh}
@@ -205,21 +203,20 @@ footer{padding:44px clamp(24px,4vw,80px) 24px;border-top:1px solid rgba(240,239,
 <!-- EDITORIAL: THE IDEA (with image) -->
 <div class="sec"><div class="ed rv">
   <div class="ed-txt">
-    <span class="t-label" style="text-align:left">The idea</span>
+    <span class="t-label rv">The idea</span>
     <h2>Consciousness that rises from technology, not bends <em>to it.</em></h2>
     <p>Most technology asks for your attention. SABDA gives it back. <span class="cc">360°</span> of projections and <span class="cs">Dolby Atmos</span> spatial audio create an environment where screens disappear and the experience takes over.</p>
     <p>The result is something familiar made extraordinary. Pilates where geometry responds to your movement. Sound healing where frequencies travel through the room around you. An art exhibition you stand inside rather than look at.</p>
     <p>Technology as a tool for <span class="cc">awareness</span>, not <span class="cd">distraction.</span> That’s the whole idea.</p>
   </div>
-  <div class="ed-img"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/immersive_aurora_mats.jpg" alt="SABDA immersive room" loading="lazy"></div>
 </div></div>
 
 <!-- BELIEFS (compact: 3 full-bleed image sections) -->
-<div class="bel"><img class="bel-bg" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_016.jpg" alt="" loading="lazy"><div class="bel-ov"></div><div class="bel-c"><span class="t-label rv">We believe</span><h2 class="rv rv-d1">Creative expression <em>heals.</em></h2><p class="bel-p rv rv-d2">Art and music are medicine. Not a metaphor. Every class is designed to get you out of your head and into something that actually helps.</p></div></div>
+<div class="bel"><div class="bel-c"><span class="t-label rv">We believe</span><h2 class="rv rv-d1">Creative expression <em>heals.</em></h2><p class="bel-p rv rv-d2">Art and music are medicine. Not a metaphor. Every class is designed to get you out of your head and into something that actually helps.</p></div></div>
 
-<div class="bel"><img class="bel-bg" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/ecstatic_dance.jpg" alt="" loading="lazy"><div class="bel-ov"></div><div class="bel-c"><span class="t-label rv">We believe</span><h2 class="rv rv-d1">Movement is <em>art.</em></h2><p class="bel-p rv rv-d2">The room responds to the people inside it. 360° of light, shifting with the energy of the class. No two sessions look the same.</p></div></div>
+<div class="bel"><div class="bel-c"><span class="t-label rv">We believe</span><h2 class="rv rv-d1">Movement is <em>art.</em></h2><p class="bel-p rv rv-d2">The room responds to the people inside it. 360° of light, shifting with the energy of the class. No two sessions look the same.</p></div></div>
 
-<div class="bel"><img class="bel-bg" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_010.jpg" alt="" loading="lazy"><div class="bel-ov"></div><div class="bel-c"><span class="t-label rv">We believe</span><h2 class="rv rv-d1">Technology <em>connects.</em></h2><p class="bel-p rv rv-d2">When you use it with intention, it brings people closer instead of pulling them apart. That’s the only kind we’re interested in.</p></div></div>
+<div class="bel"><div class="bel-c"><span class="t-label rv">We believe</span><h2 class="rv rv-d1">Technology <em>connects.</em></h2><p class="bel-p rv rv-d2">When you use it with intention, it brings people closer instead of pulling them apart. That’s the only kind we’re interested in.</p></div></div>
 
 <!-- STANCE -->
 <div class="stance"><div class="stance-hd"><span class="t-label rv">Our values</span><h2 class="rv rv-d1">What we <em>stand for.</em></h2></div><div class="st-grid"><div class="st-col st-for"><h3>For</h3><div class="sw">Creative expression</div><div class="sw">Art and music as medicine</div><div class="sw">Movement as art</div><div class="sw">Inclusivity</div><div class="sw">Thought-provoking technology</div><div class="sw">Connection</div><div class="sw">Tuning in</div><div class="sw">Grounding</div><div class="sw">Introspection</div></div><div class="st-div"></div><div class="st-col st-ag"><h3>Against</h3><div class="sw"><span class="sw-s">Conformity</span></div><div class="sw"><span class="sw-s">Noise pollution</span></div><div class="sw"><span class="sw-s">“Basic” fitness culture</span></div><div class="sw"><span class="sw-s">Exclusivity</span></div><div class="sw"><span class="sw-s">Doom scrolling</span></div><div class="sw"><span class="sw-s">Distraction</span></div><div class="sw"><span class="sw-s">Avoidance</span></div><div class="sw"><span class="sw-s">Groupthink</span></div><div class="sw"><span class="sw-s">Esoteric gatekeeping</span></div></div></div></div>
@@ -470,13 +467,6 @@ addEventListener('scroll',()=>{
     msSpans.forEach((s,i)=>{ if(i<show&&!s.classList.contains('vis')) s.classList.add('vis'); });
   }
 
-  /* Belief image parallax */
-  document.querySelectorAll('.bel').forEach(b=>{
-    const r=b.getBoundingClientRect();
-    const p=clamp(-r.top/innerHeight,-0.5,0.5);
-    const img=b.querySelector('.bel-bg');
-    if(img) img.style.transform='translateY('+p*12+'px) scale(1.04)';
-  });
 },{passive:true});
 
 /* Review ticker */
