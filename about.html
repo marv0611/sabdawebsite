@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- about-v11 -->
+<meta charset="UTF-8"><!-- about-v12 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About SABDA Studio Barcelona</title>
 <meta name="description" content="SABDA is an immersive audio-visual wellness studio in Barcelona. 360° projections, Dolby Atmos, and classes that feel like nowhere else.">
@@ -252,7 +252,7 @@ footer{padding:44px clamp(24px,4vw,80px) 24px;border-top:1px solid rgba(240,239,
   R.setPixelRatio(Math.min(devicePixelRatio,2));R.setSize(innerWidth,innerHeight);R.setClearColor(0x0e1235,1);
   R.toneMapping=THREE.ACESFilmicToneMapping;R.toneMappingExposure=1.1;
   const S=new THREE.Scene();S.fog=new THREE.FogExp2(0x0e1235,0.0006);
-  const cam=new THREE.PerspectiveCamera(50,innerWidth/innerHeight,1,6000);cam.position.set(0,0,1000);
+  const cam=new THREE.PerspectiveCamera(50,innerWidth/innerHeight,1,6000);cam.position.set(0,0,800);
   const mob=innerWidth<860;const RINGS=mob?8:14;const PR=mob?100:200;const FILL=mob?300:900;const TOT=RINGS*PR+FILL;
   const geo=new THREE.BufferGeometry();const pos=new Float32Array(TOT*3);const col=new Float32Array(TOT*3);
   const cls=[[2/255,243/255,197/255],[248/255,166/255,163/255],[32/255,57/255,153/255],[2/255,243/255,197/255]];
@@ -260,19 +260,19 @@ footer{padding:44px clamp(24px,4vw,80px) 24px;border-top:1px solid rgba(240,239,
   for(let r=0;r<RINGS;r++){const rad=70+r*55;const z=-r*100;const c=cls[r%cls.length];for(let j=0;j<PR;j++){const a=(j/PR)*Math.PI*2+r*.35;const jt=16+r*6;pos[idx*3]=Math.cos(a)*rad+(Math.random()-.5)*jt;pos[idx*3+1]=Math.sin(a)*rad+(Math.random()-.5)*jt;pos[idx*3+2]=z+(Math.random()-.5)*45;col[idx*3]=c[0];col[idx*3+1]=c[1];col[idx*3+2]=c[2];idx++}}
   for(let i=idx;i<TOT;i++){pos[i*3]=(Math.random()-.5)*2600;pos[i*3+1]=(Math.random()-.5)*2600;pos[i*3+2]=(Math.random()-.5)*4000-800;const c=cls[Math.floor(Math.random()*3)];col[i*3]=c[0];col[i*3+1]=c[1];col[i*3+2]=c[2]}
   geo.setAttribute('position',new THREE.BufferAttribute(pos,3));geo.setAttribute('color',new THREE.BufferAttribute(col,3));
-  const pts=new THREE.Points(geo,new THREE.PointsMaterial({size:mob?1.8:2.2,vertexColors:true,transparent:true,opacity:0.33,blending:THREE.AdditiveBlending,depthWrite:false,sizeAttenuation:true}));
+  const pts=new THREE.Points(geo,new THREE.PointsMaterial({size:mob?1.8:2.2,vertexColors:true,transparent:true,opacity:0.24,blending:THREE.AdditiveBlending,depthWrite:false,sizeAttenuation:true}));
   S.add(pts);
   const loader=new THREE.TextureLoader();const syms=[];
-  [{url:'https://raw.githubusercontent.com/marv0611/sabdawebsite/main/symbol_1.png',p:[0,0,500],sz:mob?240:380,rs:.03},{url:'https://raw.githubusercontent.com/marv0611/sabdawebsite/main/symbol_3.png',p:[mob?-80:-150,30,-200],sz:mob?180:260,rs:-.025},{url:'https://raw.githubusercontent.com/marv0611/sabdawebsite/main/symbol_2.png',p:[mob?60:130,-20,-500],sz:mob?190:270,rs:.028},{url:'https://raw.githubusercontent.com/marv0611/sabdawebsite/main/symbol_6.png',p:[0,10,-800],sz:mob?210:320,rs:-.022}].forEach(d=>{loader.load(d.url,tex=>{tex.minFilter=THREE.LinearFilter;const m=new THREE.Mesh(new THREE.PlaneGeometry(d.sz,d.sz),new THREE.MeshBasicMaterial({map:tex,transparent:true,opacity:.22,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide}));m.position.set(d.p[0],d.p[1],d.p[2]);m.userData=d;S.add(m);syms.push(m)})});
+  [{url:'https://raw.githubusercontent.com/marv0611/sabdawebsite/main/symbol_1.png',p:[0,0,-200],sz:mob?130:200,rs:.02},{url:'https://raw.githubusercontent.com/marv0611/sabdawebsite/main/symbol_3.png',p:[mob?-60:-120,25,-600],sz:mob?110:170,rs:-.018},{url:'https://raw.githubusercontent.com/marv0611/sabdawebsite/main/symbol_2.png',p:[mob?50:100,-15,-1000],sz:mob?120:180,rs:.015},{url:'https://raw.githubusercontent.com/marv0611/sabdawebsite/main/symbol_6.png',p:[0,8,-1500],sz:mob?140:210,rs:-.012}].forEach(d=>{loader.load(d.url,tex=>{tex.minFilter=THREE.LinearFilter;const m=new THREE.Mesh(new THREE.PlaneGeometry(d.sz,d.sz),new THREE.MeshBasicMaterial({map:tex,transparent:true,opacity:.1,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide}));m.position.set(d.p[0],d.p[1],d.p[2]);m.userData=d;S.add(m);syms.push(m)})});
   let mX=0,mY=0;document.addEventListener('mousemove',e=>{mX=(e.clientX/innerWidth-.5)*2;mY=(e.clientY/innerHeight-.5)*2});
   addEventListener('resize',()=>{cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();R.setSize(innerWidth,innerHeight)});
   let sT=0,sS=0;addEventListener('scroll',()=>{sT=scrollY},{passive:true});
   let t=0;const pa=geo.attributes.position.array;
   function tick(){t+=.005;sS+=(sT-sS)*.04;const dH=document.documentElement.scrollHeight-innerHeight;const sp=dH>0?sS/dH:0;const e=sp*sp*(3-2*sp);
-    cam.position.z=1000-e*2800;cam.position.x+=(mX*40-cam.position.x)*.015;cam.position.y+=(-mY*25-cam.position.y)*.015;cam.lookAt(Math.sin(t*.12)*12,Math.sin(t*.15)*10,cam.position.z-600);
+    cam.position.z=800-e*2600;cam.position.x+=(mX*25-cam.position.x)*.012;cam.position.y+=(-mY*18-cam.position.y)*.012;cam.lookAt(Math.sin(t*.1)*5,Math.sin(t*.12)*4,cam.position.z-500);
     for(let r=0;r<RINGS;r++){const br=1+.03*Math.sin(t*.65+r*.5);const bR=70+r*55;for(let j=0;j<PR;j++){const i=r*PR+j;const a=(j/PR)*Math.PI*2+r*.35+t*(.012+r*.002);pa[i*3]=Math.cos(a)*bR*br;pa[i*3+1]=Math.sin(a)*bR*br}}
     geo.attributes.position.needsUpdate=true;pts.rotation.z=t*.005;
-    syms.forEach(m=>{m.rotation.z=t*m.userData.rs;const d=Math.abs(cam.position.z-m.position.z);m.material.opacity=Math.max(.04,d<400?.35*(1-d/700):.06)});
+    syms.forEach(m=>{m.rotation.z=t*m.userData.rs;const d=Math.abs(cam.position.z-m.position.z);m.material.opacity=Math.max(.02,d<500?.15*(1-d/800):.03)});
     document.getElementById('nav').classList.toggle('on',sS>50);R.render(S,cam);requestAnimationFrame(tick)}
   requestAnimationFrame(tick);
 })();
