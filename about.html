@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- about-v15 -->
+<meta charset="UTF-8"><!-- about-v16 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About SABDA Studio Barcelona</title>
 <meta name="description" content="SABDA is an immersive audio-visual wellness studio in Barcelona. 360° projections, Dolby Atmos, and classes that feel like nowhere else.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <style>
 :root{--navy:#0e1235;--salmon:#F8A6A3;--cyan:#02F3C5;--white:#f0efe9;--w60:rgba(240,239,233,.6);--w38:rgba(240,239,233,.38);--ease:cubic-bezier(.16,1,.3,1)}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -16,7 +15,7 @@ body{background:var(--navy);color:var(--white);font-family:'DM Sans',sans-serif;
 a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 ::selection{background:rgba(248,166,163,.22)}
 
-#world{position:fixed;inset:0;z-index:1}
+#pCvs{position:fixed;inset:0;z-index:1;pointer-events:none}
 .grain{position:fixed;inset:0;pointer-events:none;z-index:8000;opacity:.025;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px}
 
@@ -178,7 +177,7 @@ footer{padding:44px clamp(24px,4vw,80px) 24px;border-top:1px solid rgba(240,239,
 </style>
 </head>
 <body>
-<canvas id="world"></canvas>
+<canvas id="pCvs"></canvas>
 <div class="grain"></div>
 
 <nav id="nav">
@@ -245,233 +244,164 @@ footer{padding:44px clamp(24px,4vw,80px) 24px;border-top:1px solid rgba(240,239,
 
 <script>
 /* ============================================================
-   THREE.JS — CLEAN REWRITE v12
+   2D CANVAS PARTICLE NEBULA
+   ============================================================ */
+/* ============================================================
+   2D CANVAS PARTICLE NEBULA — proven system, enhanced
    ============================================================ */
 (function(){
-  const cvs=document.getElementById('world');
-  const R=new THREE.WebGLRenderer({canvas:cvs,antialias:true,alpha:false,powerPreference:'high-performance'});
-  R.setPixelRatio(Math.min(devicePixelRatio,2));
-  R.setSize(innerWidth,innerHeight);
-  R.setClearColor(0x0e1235,1);
+  const canvas=document.getElementById('pCvs');
+  if(!canvas) return;
+  const ctx=canvas.getContext('2d');
+  let W,H;
+  let mouseX=-9999, mouseY=-9999;
 
-  const scene=new THREE.Scene();
-  const cam=new THREE.PerspectiveCamera(60,innerWidth/innerHeight,1,3000);
-  cam.position.set(0,0,500);
+  function resize(){
+    W=innerWidth; H=innerHeight;
+    canvas.width=W*devicePixelRatio;
+    canvas.height=H*devicePixelRatio;
+    canvas.style.width=W+'px';
+    canvas.style.height=H+'px';
+    ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+  }
+  resize();
+  addEventListener('resize',resize);
+  document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY});
 
-  const mob=innerWidth<860;
+  const COUNT=innerWidth<860?500:900;
 
-  /* === NEBULA PARTICLE SYSTEM ===
-     Fixed in space. Always visible. Camera barely moves.
-     Particles have real glow via custom shader. */
+  /* Two systems: ring particles (center) + ambient drift */
+  const particles=[];
 
-  const COUNT=mob?2000:4500;
-  const geo=new THREE.BufferGeometry();
-  const positions=new Float32Array(COUNT*3);
-  const colors=new Float32Array(COUNT*3);
-  const randoms=new Float32Array(COUNT); /* per-particle random for shimmer */
-  const ringIndex=new Float32Array(COUNT); /* 0=fill, >0=which ring */
-
-  const cyan=[2/255,243/255,197/255];
-  const salmon=[248/255,166/255,163/255];
-  const blue=[45/255,75/255,180/255];
-  const white=[220/255,225/255,220/255];
-
-  function mix(a,b,t){return[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t]}
-
-  /* Ring particles: concentric, spread in Z to always be on screen */
-  const RINGS=mob?8:14;
-  const PER_RING=mob?100:150;
-  let idx=0;
+  /* RING PARTICLES: concentric circles, always centered on screen */
+  const RINGS=innerWidth<860?6:10;
+  const PER_RING=innerWidth<860?20:35;
+  const palette=[
+    [2,243,197],   /* cyan */
+    [248,166,163], /* salmon */
+    [32,57,153],   /* brand blue */
+    [2,243,197],
+    [80,130,210],  /* lighter blue */
+    [248,166,163],
+    [2,243,197],
+    [60,100,190],
+    [248,166,163],
+    [2,243,197]
+  ];
 
   for(let ring=0;ring<RINGS;ring++){
-    const radius=30+ring*35;
-    const zSpread=30;
-    const ringNorm=ring/RINGS;
-    /* Color: inner=cyan, mid=blue, outer=blend of salmon+cyan */
-    let baseCol;
-    if(ringNorm<0.35) baseCol=mix(cyan,blue,ringNorm/0.35);
-    else if(ringNorm<0.65) baseCol=mix(blue,cyan,(ringNorm-0.35)/0.3);
-    else baseCol=mix(cyan,salmon,(ringNorm-0.65)/0.35);
-
-    for(let j=0;j<PER_RING&&idx<COUNT;j++){
-      const angle=(j/PER_RING)*Math.PI*2+ring*0.25;
-      const jitter=6+ring*3;
-      positions[idx*3]=Math.cos(angle)*radius+(Math.random()-0.5)*jitter;
-      positions[idx*3+1]=Math.sin(angle)*radius+(Math.random()-0.5)*jitter;
-      positions[idx*3+2]=(Math.random()-0.5)*zSpread;
-      const v=0.85+Math.random()*0.3;
-      colors[idx*3]=baseCol[0]*v;
-      colors[idx*3+1]=baseCol[1]*v;
-      colors[idx*3+2]=baseCol[2]*v;
-      randoms[idx]=Math.random();
-      ringIndex[idx]=ring+1;
-      idx++;
+    const radius=35+ring*28;
+    const col=palette[ring%palette.length];
+    for(let j=0;j<PER_RING;j++){
+      const angle=(j/PER_RING)*Math.PI*2;
+      particles.push({
+        type:'ring',
+        ring:ring,
+        baseAngle:angle,
+        radius:radius,
+        jitterX:(Math.random()-0.5)*8,
+        jitterY:(Math.random()-0.5)*8,
+        size:0.4+Math.random()*1.8,
+        glow:5+Math.random()*14,
+        color:col,
+        opacity:0.04+Math.random()*0.12,
+        phase:Math.random()*Math.PI*2,
+        shimmerSpeed:0.5+Math.random()*1.5
+      });
     }
   }
 
-  /* Ambient fill: scattered everywhere for depth */
-  for(let i=idx;i<COUNT;i++){
-    const r=200+Math.random()*800;
-    const theta=Math.random()*Math.PI*2;
-    const phi=Math.acos(2*Math.random()-1);
-    positions[i*3]=r*Math.sin(phi)*Math.cos(theta);
-    positions[i*3+1]=r*Math.sin(phi)*Math.sin(theta);
-    positions[i*3+2]=r*Math.cos(phi)-200;
-    const pick=Math.random();
-    const c=pick<0.4?cyan:pick<0.65?salmon:pick<0.85?blue:white;
-    const v=0.7+Math.random()*0.5;
-    colors[i*3]=c[0]*v; colors[i*3+1]=c[1]*v; colors[i*3+2]=c[2]*v;
-    randoms[i]=Math.random();
-    ringIndex[i]=0;
+  /* AMBIENT DRIFT PARTICLES */
+  const remaining=COUNT-particles.length;
+  for(let i=0;i<remaining;i++){
+    const col=palette[Math.floor(Math.random()*palette.length)];
+    particles.push({
+      type:'drift',
+      x:Math.random()*3000,
+      y:Math.random(),
+      vx:0.006+Math.random()*0.05,
+      vy:(Math.random()-0.5)*0.002,
+      fx:0, fy:0,
+      size:0.3+Math.random()*1.5,
+      glow:4+Math.random()*14,
+      color:col,
+      opacity:0.02+Math.random()*0.1,
+      phase:Math.random()*Math.PI*2,
+      waveAmp:0.01+Math.random()*0.04,
+      waveFreq:0.0001+Math.random()*0.0005,
+      shimmerSpeed:0.3+Math.random()*1
+    });
   }
 
-  geo.setAttribute('position',new THREE.BufferAttribute(positions,3));
-  geo.setAttribute('aColor',new THREE.BufferAttribute(colors,3));
-  geo.setAttribute('aRandom',new THREE.BufferAttribute(randoms,1));
-  geo.setAttribute('aRing',new THREE.BufferAttribute(ringIndex,1));
+  let t=0;
+  function draw(){
+    t++;
+    ctx.clearRect(0,0,W,H);
 
-  /* Custom shader: soft glowing orbs, shimmer, distance fade */
-  const mat=new THREE.ShaderMaterial({
-    uniforms:{
-      uTime:{value:0},
-      uPR:{value:Math.min(devicePixelRatio,2)},
-      uScroll:{value:0}
-    },
-    vertexShader:`
-      attribute vec3 aColor;
-      attribute float aRandom;
-      attribute float aRing;
-      uniform float uTime;
-      uniform float uPR;
-      uniform float uScroll;
-      varying vec3 vColor;
-      varying float vAlpha;
-      varying float vGlow;
+    const cx=W/2, cy=H/2;
 
-      void main(){
-        vColor=aColor;
+    particles.forEach(p=>{
+      let drawX, drawY;
 
-        /* Shimmer: each particle pulses at its own rate */
-        float shimmer=0.6+0.4*sin(uTime*1.5+aRandom*6.28+aRing*0.5);
+      if(p.type==='ring'){
+        /* Ring particles orbit center of screen */
+        const rotSpeed=0.0003+p.ring*0.00008;
+        const angle=p.baseAngle+t*rotSpeed;
+        const breath=1+0.02*Math.sin(t*0.002+p.ring*0.6);
+        const r=p.radius*breath;
+        drawX=cx+Math.cos(angle)*r+p.jitterX;
+        drawY=cy+Math.sin(angle)*r+p.jitterY;
+      } else {
+        /* Drift particles: same system as other SABDA pages */
+        p.x+=p.vx;
+        p.y+=p.vy;
+        const waveY=p.waveAmp*Math.sin(p.phase+t*p.waveFreq);
+        drawX=p.x+p.fx;
+        drawY=(p.y+waveY)*H+p.fy;
 
-        vec3 pos=position;
-
-        /* Ring particles: gentle breathing */
-        if(aRing>0.5){
-          float ring=aRing-1.0;
-          float breath=1.0+0.015*sin(uTime*0.6+ring*0.7);
-          float angle=uTime*(0.04+ring*0.006);
-          float c=cos(angle);
-          float s=sin(angle);
-          vec3 rotated=vec3(pos.x*c-pos.y*s, pos.x*s+pos.y*c, pos.z);
-          pos=rotated*breath;
+        /* Mouse repulsion */
+        const dx=drawX-mouseX, dy=drawY-mouseY;
+        const dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<120&&dist>0){
+          const force=(1-dist/120)*2.5;
+          p.fx+=(dx/dist)*force;
+          p.fy+=(dy/dist)*force;
         }
+        p.fx*=0.94; p.fy*=0.94;
+        drawX=p.x+p.fx;
+        drawY=(p.y+waveY)*H+p.fy;
 
-        vec4 mvPos=modelViewMatrix*vec4(pos,1.0);
-        float dist=-mvPos.z;
-
-        /* Size: larger particles create glow effect */
-        float baseSize=mix(2.0,5.0,aRandom);
-        gl_PointSize=baseSize*uPR*(400.0/max(dist,1.0));
-        gl_PointSize=max(gl_PointSize,1.0);
-        gl_PointSize=min(gl_PointSize,40.0);
-
-        /* Alpha: distance fade + shimmer */
-        vAlpha=smoothstep(2000.0,100.0,dist)*shimmer*mix(0.4,0.8,aRandom);
-        vGlow=aRandom;
-
-        gl_Position=projectionMatrix*mvPos;
+        if(p.x>W+60){p.x=-50;p.y=Math.random();p.fx=0;p.fy=0}
+        if(p.y<-0.05) p.y=1.05;
+        if(p.y>1.05) p.y=-0.05;
       }
-    `,
-    fragmentShader:`
-      varying vec3 vColor;
-      varying float vAlpha;
-      varying float vGlow;
 
-      void main(){
-        vec2 uv=gl_PointCoord-0.5;
-        float d=length(uv)*2.0;
+      /* Shimmer */
+      const shimmer=0.5+0.5*Math.sin(p.phase+t*0.001*p.shimmerSpeed);
+      const op=p.opacity*shimmer;
+      if(op<0.002) return;
 
-        /* Soft circle with glow halo */
-        float core=1.0-smoothstep(0.0,0.4,d);
-        float glow=exp(-d*d*3.0)*0.6;
-        float outer=exp(-d*d*1.2)*0.25;
-        float alpha=(core+glow+outer)*vAlpha;
+      /* Draw with glow */
+      const g=ctx.createRadialGradient(drawX,drawY,0,drawX,drawY,p.glow);
+      g.addColorStop(0,  'rgba('+p.color[0]+','+p.color[1]+','+p.color[2]+','+(op*0.8)+')');
+      g.addColorStop(0.25,'rgba('+p.color[0]+','+p.color[1]+','+p.color[2]+','+(op*0.35)+')');
+      g.addColorStop(0.6, 'rgba('+p.color[0]+','+p.color[1]+','+p.color[2]+','+(op*0.06)+')');
+      g.addColorStop(1,   'rgba('+p.color[0]+','+p.color[1]+','+p.color[2]+',0)');
+      ctx.fillStyle=g;
+      ctx.beginPath();
+      ctx.arc(drawX,drawY,p.glow,0,Math.PI*2);
+      ctx.fill();
 
-        if(alpha<0.003) discard;
+      /* Bright core */
+      ctx.beginPath();
+      ctx.arc(drawX,drawY,p.size*0.5,0,Math.PI*2);
+      ctx.fillStyle='rgba('+p.color[0]+','+p.color[1]+','+p.color[2]+','+Math.min(0.6,op*2.5)+')';
+      ctx.fill();
+    });
 
-        /* Brighter core, softer edges */
-        vec3 color=vColor*(core*1.4+glow+outer*0.5);
-
-        gl_FragColor=vec4(color,alpha);
-      }
-    `,
-    transparent:true,
-    blending:THREE.AdditiveBlending,
-    depthWrite:false,
-    depthTest:false
-  });
-
-  const particles=new THREE.Points(geo,mat);
-  scene.add(particles);
-
-  /* --- INPUT --- */
-  let tmX=0,tmY=0,mX=0,mY=0;
-  document.addEventListener('mousemove',e=>{
-    tmX=(e.clientX/innerWidth-0.5)*2;
-    tmY=(e.clientY/innerHeight-0.5)*2;
-  });
-
-  /* --- RESIZE --- */
-  addEventListener('resize',()=>{
-    cam.aspect=innerWidth/innerHeight;
-    cam.updateProjectionMatrix();
-    R.setPixelRatio(Math.min(devicePixelRatio,2));
-    R.setSize(innerWidth,innerHeight);
-    mat.uniforms.uPR.value=Math.min(devicePixelRatio,2);
-  });
-
-  /* --- SCROLL --- */
-  let sT=0,sS=0;
-  addEventListener('scroll',()=>{sT=scrollY},{passive:true});
-
-  /* --- RENDER --- */
-  let time=0;
-
-  function render(){
-    time+=0.003;
-    mat.uniforms.uTime.value=time;
-
-    /* Smooth scroll */
-    sS+=(sT-sS)*(mob?0.06:0.04);
-
-    /* Smooth mouse */
-    mX+=(tmX-mX)*0.02;
-    mY+=(tmY-mY)*0.02;
-
-    /* Camera: mostly fixed, subtle mouse parallax + tiny scroll drift */
-    const dH=document.documentElement.scrollHeight-innerHeight;
-    const sp=dH>0?sS/dH:0;
-    cam.position.x=mX*15;
-    cam.position.y=-mY*10;
-    /* Slowly push into the rings as user scrolls */
-    cam.position.z=500-sp*300;
-    cam.lookAt(0,0,0);
-
-    /* Gentle tilt of entire system */
-    particles.rotation.x=Math.sin(time*0.08)*0.015+mY*0.03;
-    particles.rotation.y=Math.sin(time*0.06)*0.01+mX*0.03;
-
-    /* Pass scroll to shader */
-    mat.uniforms.uScroll.value=sp;
-
-    document.getElementById('nav').classList.toggle('on',sS>50);
-    R.render(scene,cam);
-    requestAnimationFrame(render);
+    requestAnimationFrame(draw);
   }
-  requestAnimationFrame(render);
-})();
-
+  requestAnimationFrame(draw);
 })();
 
 /* ============================================================
@@ -527,6 +457,9 @@ const msSpans=[];
 
 /* Single scroll handler for all UI updates */
 addEventListener('scroll',()=>{
+  /* Nav */
+  document.getElementById('nav').classList.toggle('on',scrollY>50);
+
   /* Mission */
   const msEl=document.getElementById('sMs');
   const msRect=msEl.getBoundingClientRect();
