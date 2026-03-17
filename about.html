@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- about-v14 -->
+<meta charset="UTF-8"><!-- about-v15 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About SABDA Studio Barcelona</title>
 <meta name="description" content="SABDA is an immersive audio-visual wellness studio in Barcelona. 360° projections, Dolby Atmos, and classes that feel like nowhere else.">
@@ -19,7 +19,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
 #world{position:fixed;inset:0;z-index:1}
 .grain{position:fixed;inset:0;pointer-events:none;z-index:8000;opacity:.025;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px}
-.vig{position:fixed;inset:0;z-index:2;pointer-events:none;background:radial-gradient(ellipse 60% 50% at 50% 50%,transparent 0%,rgba(14,18,53,.45) 65%,rgba(14,18,53,.88) 100%)}
+
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 clamp(24px,4vw,56px);height:72px;display:flex;align-items:center;justify-content:space-between;transition:background .5s,backdrop-filter .5s;border-bottom:1px solid rgba(240,239,233,.04);background:rgba(14,18,53,0);backdrop-filter:blur(14px)}
@@ -179,7 +179,6 @@ footer{padding:44px clamp(24px,4vw,80px) 24px;border-top:1px solid rgba(240,239,
 </head>
 <body>
 <canvas id="world"></canvas>
-<div class="vig"></div>
 <div class="grain"></div>
 
 <nav id="nav">
@@ -254,134 +253,183 @@ footer{padding:44px clamp(24px,4vw,80px) 24px;border-top:1px solid rgba(240,239,
   R.setPixelRatio(Math.min(devicePixelRatio,2));
   R.setSize(innerWidth,innerHeight);
   R.setClearColor(0x0e1235,1);
-  R.toneMapping=THREE.ACESFilmicToneMapping;
-  R.toneMappingExposure=1.1;
 
   const scene=new THREE.Scene();
-  scene.fog=new THREE.FogExp2(0x0e1235,0.00035);
-
-  const cam=new THREE.PerspectiveCamera(50,innerWidth/innerHeight,0.1,8000);
-  cam.position.set(0,0,600);
+  const cam=new THREE.PerspectiveCamera(60,innerWidth/innerHeight,1,3000);
+  cam.position.set(0,0,500);
 
   const mob=innerWidth<860;
 
-  /* --- RING PARTICLES: the main visual --- */
-  const RINGS=mob?10:18;
-  const PER=mob?100:180;
-  const FILL=mob?400:1200;
-  const TOTAL=RINGS*PER+FILL;
+  /* === NEBULA PARTICLE SYSTEM ===
+     Fixed in space. Always visible. Camera barely moves.
+     Particles have real glow via custom shader. */
 
+  const COUNT=mob?2000:4500;
   const geo=new THREE.BufferGeometry();
-  const pos=new Float32Array(TOTAL*3);
-  const origPos=new Float32Array(TOTAL*3);
-  const col=new Float32Array(TOTAL*3);
-  const sizes=new Float32Array(TOTAL);
+  const positions=new Float32Array(COUNT*3);
+  const colors=new Float32Array(COUNT*3);
+  const randoms=new Float32Array(COUNT); /* per-particle random for shimmer */
+  const ringIndex=new Float32Array(COUNT); /* 0=fill, >0=which ring */
 
-  /* Brand palette with gradient variations */
-  const cyanBase=[2/255,243/255,197/255];
-  const salmonBase=[248/255,166/255,163/255];
-  const navyBase=[60/255,90/255,200/255];
+  const cyan=[2/255,243/255,197/255];
+  const salmon=[248/255,166/255,163/255];
+  const blue=[45/255,75/255,180/255];
+  const white=[220/255,225/255,220/255];
 
-  function lerpColor(a,b,t){return [a[0]+(b[0]-a[0])*t, a[1]+(b[1]-a[1])*t, a[2]+(b[2]-a[2])*t]}
+  function mix(a,b,t){return[a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,a[2]+(b[2]-a[2])*t]}
 
+  /* Ring particles: concentric, spread in Z to always be on screen */
+  const RINGS=mob?8:14;
+  const PER_RING=mob?100:150;
   let idx=0;
-  for(let ring=0;ring<RINGS;ring++){
-    const radius=40+ring*45;
-    const z=-ring*90;
-    /* Color shifts from cyan (inner) through navy (mid) to salmon (outer) */
-    const ringT=ring/RINGS;
-    let c;
-    if(ringT<0.4) c=lerpColor(cyanBase,navyBase,ringT/0.4);
-    else if(ringT<0.7) c=lerpColor(navyBase,cyanBase,(ringT-0.4)/0.3);
-    else c=lerpColor(cyanBase,salmonBase,(ringT-0.7)/0.3);
 
-    for(let j=0;j<PER;j++){
-      const angle=(j/PER)*Math.PI*2;
-      const jitter=8+ring*4;
-      const px=Math.cos(angle)*radius+(Math.random()-0.5)*jitter;
-      const py=Math.sin(angle)*radius+(Math.random()-0.5)*jitter;
-      const pz=z+(Math.random()-0.5)*40;
-      pos[idx*3]=px; pos[idx*3+1]=py; pos[idx*3+2]=pz;
-      origPos[idx*3]=px; origPos[idx*3+1]=py; origPos[idx*3+2]=pz;
-      /* Slight color variation per particle */
-      const vary=0.92+Math.random()*0.16;
-      col[idx*3]=c[0]*vary; col[idx*3+1]=c[1]*vary; col[idx*3+2]=c[2]*vary;
-      sizes[idx]=0.5+Math.random()*2.5;
+  for(let ring=0;ring<RINGS;ring++){
+    const radius=30+ring*35;
+    const zSpread=30;
+    const ringNorm=ring/RINGS;
+    /* Color: inner=cyan, mid=blue, outer=blend of salmon+cyan */
+    let baseCol;
+    if(ringNorm<0.35) baseCol=mix(cyan,blue,ringNorm/0.35);
+    else if(ringNorm<0.65) baseCol=mix(blue,cyan,(ringNorm-0.35)/0.3);
+    else baseCol=mix(cyan,salmon,(ringNorm-0.65)/0.35);
+
+    for(let j=0;j<PER_RING&&idx<COUNT;j++){
+      const angle=(j/PER_RING)*Math.PI*2+ring*0.25;
+      const jitter=6+ring*3;
+      positions[idx*3]=Math.cos(angle)*radius+(Math.random()-0.5)*jitter;
+      positions[idx*3+1]=Math.sin(angle)*radius+(Math.random()-0.5)*jitter;
+      positions[idx*3+2]=(Math.random()-0.5)*zSpread;
+      const v=0.85+Math.random()*0.3;
+      colors[idx*3]=baseCol[0]*v;
+      colors[idx*3+1]=baseCol[1]*v;
+      colors[idx*3+2]=baseCol[2]*v;
+      randoms[idx]=Math.random();
+      ringIndex[idx]=ring+1;
       idx++;
     }
   }
 
-  /* Fill particles: ambient deep space */
-  for(let i=idx;i<TOTAL;i++){
-    const px=(Math.random()-0.5)*2500;
-    const py=(Math.random()-0.5)*2500;
-    const pz=-Math.random()*4000-200;
-    pos[i*3]=px; pos[i*3+1]=py; pos[i*3+2]=pz;
-    origPos[i*3]=px; origPos[i*3+1]=py; origPos[i*3+2]=pz;
+  /* Ambient fill: scattered everywhere for depth */
+  for(let i=idx;i<COUNT;i++){
+    const r=200+Math.random()*800;
+    const theta=Math.random()*Math.PI*2;
+    const phi=Math.acos(2*Math.random()-1);
+    positions[i*3]=r*Math.sin(phi)*Math.cos(theta);
+    positions[i*3+1]=r*Math.sin(phi)*Math.sin(theta);
+    positions[i*3+2]=r*Math.cos(phi)-200;
     const pick=Math.random();
-    const c=pick<0.45?cyanBase:pick<0.75?salmonBase:navyBase;
-    const v=0.85+Math.random()*0.3;
-    col[i*3]=c[0]*v; col[i*3+1]=c[1]*v; col[i*3+2]=c[2]*v;
-    sizes[i]=0.3+Math.random()*2;
+    const c=pick<0.4?cyan:pick<0.65?salmon:pick<0.85?blue:white;
+    const v=0.7+Math.random()*0.5;
+    colors[i*3]=c[0]*v; colors[i*3+1]=c[1]*v; colors[i*3+2]=c[2]*v;
+    randoms[i]=Math.random();
+    ringIndex[i]=0;
   }
 
-  geo.setAttribute('position',new THREE.BufferAttribute(pos,3));
-  geo.setAttribute('color',new THREE.BufferAttribute(col,3));
+  geo.setAttribute('position',new THREE.BufferAttribute(positions,3));
+  geo.setAttribute('aColor',new THREE.BufferAttribute(colors,3));
+  geo.setAttribute('aRandom',new THREE.BufferAttribute(randoms,1));
+  geo.setAttribute('aRing',new THREE.BufferAttribute(ringIndex,1));
 
-  /* Custom shader for soft round particles with glow */
-  const ptsMat=new THREE.ShaderMaterial({
+  /* Custom shader: soft glowing orbs, shimmer, distance fade */
+  const mat=new THREE.ShaderMaterial({
     uniforms:{
       uTime:{value:0},
-      uPixelRatio:{value:Math.min(devicePixelRatio,2)}
+      uPR:{value:Math.min(devicePixelRatio,2)},
+      uScroll:{value:0}
     },
     vertexShader:`
-      attribute vec3 color;
+      attribute vec3 aColor;
+      attribute float aRandom;
+      attribute float aRing;
+      uniform float uTime;
+      uniform float uPR;
+      uniform float uScroll;
       varying vec3 vColor;
-      varying float vDist;
-      uniform float uPixelRatio;
+      varying float vAlpha;
+      varying float vGlow;
+
       void main(){
-        vColor=color;
-        vec4 mvPos=modelViewMatrix*vec4(position,1.0);
-        vDist=-mvPos.z;
-        gl_PointSize=max(1.0,(3.5*uPixelRatio)*(300.0/(-mvPos.z)));
+        vColor=aColor;
+
+        /* Shimmer: each particle pulses at its own rate */
+        float shimmer=0.6+0.4*sin(uTime*1.5+aRandom*6.28+aRing*0.5);
+
+        vec3 pos=position;
+
+        /* Ring particles: gentle breathing */
+        if(aRing>0.5){
+          float ring=aRing-1.0;
+          float breath=1.0+0.015*sin(uTime*0.6+ring*0.7);
+          float angle=uTime*(0.04+ring*0.006);
+          float c=cos(angle);
+          float s=sin(angle);
+          vec3 rotated=vec3(pos.x*c-pos.y*s, pos.x*s+pos.y*c, pos.z);
+          pos=rotated*breath;
+        }
+
+        vec4 mvPos=modelViewMatrix*vec4(pos,1.0);
+        float dist=-mvPos.z;
+
+        /* Size: larger particles create glow effect */
+        float baseSize=mix(2.0,5.0,aRandom);
+        gl_PointSize=baseSize*uPR*(400.0/max(dist,1.0));
+        gl_PointSize=max(gl_PointSize,1.0);
+        gl_PointSize=min(gl_PointSize,40.0);
+
+        /* Alpha: distance fade + shimmer */
+        vAlpha=smoothstep(2000.0,100.0,dist)*shimmer*mix(0.4,0.8,aRandom);
+        vGlow=aRandom;
+
         gl_Position=projectionMatrix*mvPos;
       }
     `,
     fragmentShader:`
       varying vec3 vColor;
-      varying float vDist;
+      varying float vAlpha;
+      varying float vGlow;
+
       void main(){
-        float d=length(gl_PointCoord-0.5)*2.0;
-        if(d>1.0) discard;
-        float alpha=1.0-d*d;
-        alpha*=smoothstep(4000.0,200.0,vDist)*0.55;
-        gl_FragColor=vec4(vColor,alpha);
+        vec2 uv=gl_PointCoord-0.5;
+        float d=length(uv)*2.0;
+
+        /* Soft circle with glow halo */
+        float core=1.0-smoothstep(0.0,0.4,d);
+        float glow=exp(-d*d*3.0)*0.6;
+        float outer=exp(-d*d*1.2)*0.25;
+        float alpha=(core+glow+outer)*vAlpha;
+
+        if(alpha<0.003) discard;
+
+        /* Brighter core, softer edges */
+        vec3 color=vColor*(core*1.4+glow+outer*0.5);
+
+        gl_FragColor=vec4(color,alpha);
       }
     `,
     transparent:true,
     blending:THREE.AdditiveBlending,
-    depthWrite:false
+    depthWrite:false,
+    depthTest:false
   });
 
-  const pts=new THREE.Points(geo,ptsMat);
-  scene.add(pts);
+  const particles=new THREE.Points(geo,mat);
+  scene.add(particles);
 
   /* --- INPUT --- */
-  let mouseX=0,mouseY=0,tmX=0,tmY=0;
+  let tmX=0,tmY=0,mX=0,mY=0;
   document.addEventListener('mousemove',e=>{
     tmX=(e.clientX/innerWidth-0.5)*2;
     tmY=(e.clientY/innerHeight-0.5)*2;
   });
 
   /* --- RESIZE --- */
-  function onResize(){
+  addEventListener('resize',()=>{
     cam.aspect=innerWidth/innerHeight;
     cam.updateProjectionMatrix();
     R.setPixelRatio(Math.min(devicePixelRatio,2));
     R.setSize(innerWidth,innerHeight);
-    ptsMat.uniforms.uPixelRatio.value=Math.min(devicePixelRatio,2);
-  }
-  addEventListener('resize',onResize);
+    mat.uniforms.uPR.value=Math.min(devicePixelRatio,2);
+  });
 
   /* --- SCROLL --- */
   let sT=0,sS=0;
@@ -389,55 +437,41 @@ footer{padding:44px clamp(24px,4vw,80px) 24px;border-top:1px solid rgba(240,239,
 
   /* --- RENDER --- */
   let time=0;
-  const pa=geo.attributes.position.array;
 
   function render(){
     time+=0.003;
-    ptsMat.uniforms.uTime.value=time;
+    mat.uniforms.uTime.value=time;
 
     /* Smooth scroll */
     sS+=(sT-sS)*(mob?0.06:0.04);
 
     /* Smooth mouse */
-    mouseX+=(tmX-mouseX)*0.025;
-    mouseY+=(tmY-mouseY)*0.025;
+    mX+=(tmX-mX)*0.02;
+    mY+=(tmY-mY)*0.02;
 
-    /* Scroll progress */
+    /* Camera: mostly fixed, subtle mouse parallax + tiny scroll drift */
     const dH=document.documentElement.scrollHeight-innerHeight;
-    const raw=dH>0?sS/dH:0;
-    const sp=raw*raw*(3-2*raw);
+    const sp=dH>0?sS/dH:0;
+    cam.position.x=mX*15;
+    cam.position.y=-mY*10;
+    /* Slowly push into the rings as user scrolls */
+    cam.position.z=500-sp*300;
+    cam.lookAt(0,0,0);
 
-    /* Camera glide */
-    cam.position.z=600-sp*2200;
-    cam.position.x+=(mouseX*18-cam.position.x)*0.015;
-    cam.position.y+=(-mouseY*12-cam.position.y)*0.015;
-    cam.lookAt(0,0,cam.position.z-400);
+    /* Gentle tilt of entire system */
+    particles.rotation.x=Math.sin(time*0.08)*0.015+mY*0.03;
+    particles.rotation.y=Math.sin(time*0.06)*0.01+mX*0.03;
 
-    /* Animate rings: smooth rotation + gentle breathing */
-    for(let ring=0;ring<RINGS;ring++){
-      const breath=1+0.02*Math.sin(time*0.4+ring*0.5);
-      const rotOff=time*(0.006+ring*0.001);
-      const cosR=Math.cos(rotOff);
-      const sinR=Math.sin(rotOff);
-      for(let j=0;j<PER;j++){
-        const i=ring*PER+j;
-        const ox=origPos[i*3];
-        const oy=origPos[i*3+1];
-        pa[i*3]=(ox*cosR-oy*sinR)*breath;
-        pa[i*3+1]=(ox*sinR+oy*cosR)*breath;
-      }
-    }
-    geo.attributes.position.needsUpdate=true;
-
-    /* Whole system: ultra-slow tilt */
-    pts.rotation.z=time*0.002;
-    pts.rotation.x=Math.sin(time*0.08)*0.01;
+    /* Pass scroll to shader */
+    mat.uniforms.uScroll.value=sp;
 
     document.getElementById('nav').classList.toggle('on',sS>50);
     R.render(scene,cam);
     requestAnimationFrame(render);
   }
   requestAnimationFrame(render);
+})();
+
 })();
 
 /* ============================================================
