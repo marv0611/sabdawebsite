@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- about-v12 -->
+<meta charset="UTF-8"><!-- about-v13 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About SABDA Studio Barcelona</title>
 <meta name="description" content="SABDA is an immersive audio-visual wellness studio in Barcelona. 360° projections, Dolby Atmos, and classes that feel like nowhere else.">
@@ -245,54 +245,293 @@ footer{padding:44px clamp(24px,4vw,80px) 24px;border-top:1px solid rgba(240,239,
 <div class="sbk" id="sbk"><div class="sbk-txt">3 Classes · <span>€48</span> · €16 each</div><a href="https://momence.com/m/443935" class="sbk-btn" target="_blank">Book Now</a></div>
 
 <script>
-/* THREE.JS */
+/* ============================================================
+   THREE.JS — CLEAN REWRITE v12
+   ============================================================ */
 (function(){
   const cvs=document.getElementById('world');
   const R=new THREE.WebGLRenderer({canvas:cvs,antialias:true,alpha:false,powerPreference:'high-performance'});
-  R.setPixelRatio(Math.min(devicePixelRatio,2));R.setSize(innerWidth,innerHeight);R.setClearColor(0x0e1235,1);
-  R.toneMapping=THREE.ACESFilmicToneMapping;R.toneMappingExposure=1.1;
-  const S=new THREE.Scene();S.fog=new THREE.FogExp2(0x0e1235,0.0006);
-  const cam=new THREE.PerspectiveCamera(50,innerWidth/innerHeight,1,6000);cam.position.set(0,0,800);
-  const mob=innerWidth<860;const RINGS=mob?8:14;const PR=mob?100:200;const FILL=mob?300:900;const TOT=RINGS*PR+FILL;
-  const geo=new THREE.BufferGeometry();const pos=new Float32Array(TOT*3);const col=new Float32Array(TOT*3);
-  const cls=[[2/255,243/255,197/255],[248/255,166/255,163/255],[32/255,57/255,153/255],[2/255,243/255,197/255]];
+  R.setPixelRatio(Math.min(devicePixelRatio,2));
+  R.setSize(innerWidth,innerHeight);
+  R.setClearColor(0x0e1235,1);
+  R.toneMapping=THREE.ACESFilmicToneMapping;
+  R.toneMappingExposure=1.05;
+
+  const scene=new THREE.Scene();
+  scene.fog=new THREE.FogExp2(0x0e1235,0.00045);
+
+  const cam=new THREE.PerspectiveCamera(50,innerWidth/innerHeight,0.1,8000);
+  cam.position.set(0,0,600);
+
+  const mob=innerWidth<860;
+
+  /* --- PARTICLES: rings + ambient fill --- */
+  const RINGS=mob?6:12;
+  const PER=mob?80:160;
+  const FILL=mob?250:700;
+  const TOTAL=RINGS*PER+FILL;
+
+  const geo=new THREE.BufferGeometry();
+  const pos=new Float32Array(TOTAL*3);
+  const origPos=new Float32Array(TOTAL*3); /* store original positions */
+  const col=new Float32Array(TOTAL*3);
+  const palette=[[2/255,243/255,197/255],[248/255,166/255,163/255],[32/255,57/255,153/255]];
   let idx=0;
-  for(let r=0;r<RINGS;r++){const rad=70+r*55;const z=-r*100;const c=cls[r%cls.length];for(let j=0;j<PR;j++){const a=(j/PR)*Math.PI*2+r*.35;const jt=16+r*6;pos[idx*3]=Math.cos(a)*rad+(Math.random()-.5)*jt;pos[idx*3+1]=Math.sin(a)*rad+(Math.random()-.5)*jt;pos[idx*3+2]=z+(Math.random()-.5)*45;col[idx*3]=c[0];col[idx*3+1]=c[1];col[idx*3+2]=c[2];idx++}}
-  for(let i=idx;i<TOT;i++){pos[i*3]=(Math.random()-.5)*2600;pos[i*3+1]=(Math.random()-.5)*2600;pos[i*3+2]=(Math.random()-.5)*4000-800;const c=cls[Math.floor(Math.random()*3)];col[i*3]=c[0];col[i*3+1]=c[1];col[i*3+2]=c[2]}
-  geo.setAttribute('position',new THREE.BufferAttribute(pos,3));geo.setAttribute('color',new THREE.BufferAttribute(col,3));
-  const pts=new THREE.Points(geo,new THREE.PointsMaterial({size:mob?1.8:2.2,vertexColors:true,transparent:true,opacity:0.24,blending:THREE.AdditiveBlending,depthWrite:false,sizeAttenuation:true}));
-  S.add(pts);
-  const loader=new THREE.TextureLoader();const syms=[];
-  [{url:'https://raw.githubusercontent.com/marv0611/sabdawebsite/main/symbol_1.png',p:[0,0,-200],sz:mob?130:200,rs:.02},{url:'https://raw.githubusercontent.com/marv0611/sabdawebsite/main/symbol_3.png',p:[mob?-60:-120,25,-600],sz:mob?110:170,rs:-.018},{url:'https://raw.githubusercontent.com/marv0611/sabdawebsite/main/symbol_2.png',p:[mob?50:100,-15,-1000],sz:mob?120:180,rs:.015},{url:'https://raw.githubusercontent.com/marv0611/sabdawebsite/main/symbol_6.png',p:[0,8,-1500],sz:mob?140:210,rs:-.012}].forEach(d=>{loader.load(d.url,tex=>{tex.minFilter=THREE.LinearFilter;const m=new THREE.Mesh(new THREE.PlaneGeometry(d.sz,d.sz),new THREE.MeshBasicMaterial({map:tex,transparent:true,opacity:.1,blending:THREE.AdditiveBlending,depthWrite:false,side:THREE.DoubleSide}));m.position.set(d.p[0],d.p[1],d.p[2]);m.userData=d;S.add(m);syms.push(m)})});
-  let mX=0,mY=0;document.addEventListener('mousemove',e=>{mX=(e.clientX/innerWidth-.5)*2;mY=(e.clientY/innerHeight-.5)*2});
-  addEventListener('resize',()=>{cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();R.setSize(innerWidth,innerHeight)});
-  let sT=0,sS=0;addEventListener('scroll',()=>{sT=scrollY},{passive:true});
-  let t=0;const pa=geo.attributes.position.array;
-  function tick(){t+=.005;sS+=(sT-sS)*.04;const dH=document.documentElement.scrollHeight-innerHeight;const sp=dH>0?sS/dH:0;const e=sp*sp*(3-2*sp);
-    cam.position.z=800-e*2600;cam.position.x+=(mX*25-cam.position.x)*.012;cam.position.y+=(-mY*18-cam.position.y)*.012;cam.lookAt(Math.sin(t*.1)*5,Math.sin(t*.12)*4,cam.position.z-500);
-    for(let r=0;r<RINGS;r++){const br=1+.03*Math.sin(t*.65+r*.5);const bR=70+r*55;for(let j=0;j<PR;j++){const i=r*PR+j;const a=(j/PR)*Math.PI*2+r*.35+t*(.012+r*.002);pa[i*3]=Math.cos(a)*bR*br;pa[i*3+1]=Math.sin(a)*bR*br}}
-    geo.attributes.position.needsUpdate=true;pts.rotation.z=t*.005;
-    syms.forEach(m=>{m.rotation.z=t*m.userData.rs;const d=Math.abs(cam.position.z-m.position.z);m.material.opacity=Math.max(.02,d<500?.15*(1-d/800):.03)});
-    document.getElementById('nav').classList.toggle('on',sS>50);R.render(S,cam);requestAnimationFrame(tick)}
-  requestAnimationFrame(tick);
+
+  /* Ring particles — spread along z-axis like a tunnel */
+  for(let ring=0;ring<RINGS;ring++){
+    const radius=60+ring*50;
+    const z=-ring*130;
+    const c=palette[ring%3];
+    for(let j=0;j<PER;j++){
+      const angle=(j/PER)*Math.PI*2;
+      const jitter=12+ring*5;
+      const px=Math.cos(angle)*radius+(Math.random()-0.5)*jitter;
+      const py=Math.sin(angle)*radius+(Math.random()-0.5)*jitter;
+      const pz=z+(Math.random()-0.5)*60;
+      pos[idx*3]=px; pos[idx*3+1]=py; pos[idx*3+2]=pz;
+      origPos[idx*3]=px; origPos[idx*3+1]=py; origPos[idx*3+2]=pz;
+      col[idx*3]=c[0]; col[idx*3+1]=c[1]; col[idx*3+2]=c[2];
+      idx++;
+    }
+  }
+
+  /* Fill particles — scattered deep */
+  for(let i=idx;i<TOTAL;i++){
+    const px=(Math.random()-0.5)*2200;
+    const py=(Math.random()-0.5)*2200;
+    const pz=(Math.random()-0.5)*4000-600;
+    pos[i*3]=px; pos[i*3+1]=py; pos[i*3+2]=pz;
+    origPos[i*3]=px; origPos[i*3+1]=py; origPos[i*3+2]=pz;
+    const c=palette[Math.floor(Math.random()*3)];
+    col[i*3]=c[0]; col[i*3+1]=c[1]; col[i*3+2]=c[2];
+  }
+
+  geo.setAttribute('position',new THREE.BufferAttribute(pos,3));
+  geo.setAttribute('color',new THREE.BufferAttribute(col,3));
+
+  const ptsMat=new THREE.PointsMaterial({
+    size:mob?1.6:2,
+    vertexColors:true,
+    transparent:true,
+    opacity:0.22,
+    blending:THREE.AdditiveBlending,
+    depthWrite:false,
+    sizeAttenuation:true
+  });
+  const pts=new THREE.Points(geo,ptsMat);
+  scene.add(pts);
+
+  /* --- SYMBOLS: subtle, deep, atmospheric --- */
+  const texLoader=new THREE.TextureLoader();
+  const symbols=[];
+  const symConfigs=[
+    {url:'https://raw.githubusercontent.com/marv0611/sabdawebsite/main/symbol_1.png', pos:[0,0,-100], size:mob?100:160, rotSpeed:0.015},
+    {url:'https://raw.githubusercontent.com/marv0611/sabdawebsite/main/symbol_3.png', pos:[mob?-50:-100,20,-500], size:mob?80:130, rotSpeed:-0.012},
+    {url:'https://raw.githubusercontent.com/marv0611/sabdawebsite/main/symbol_2.png', pos:[mob?40:80,-10,-900], size:mob?90:140, rotSpeed:0.01},
+    {url:'https://raw.githubusercontent.com/marv0611/sabdawebsite/main/symbol_6.png', pos:[0,5,-1400], size:mob?100:160, rotSpeed:-0.008}
+  ];
+
+  symConfigs.forEach(cfg=>{
+    texLoader.load(cfg.url, tex=>{
+      tex.minFilter=THREE.LinearFilter;
+      const mat=new THREE.MeshBasicMaterial({
+        map:tex, transparent:true, opacity:0.08,
+        blending:THREE.AdditiveBlending, depthWrite:false, side:THREE.DoubleSide
+      });
+      const mesh=new THREE.Mesh(new THREE.PlaneGeometry(cfg.size,cfg.size), mat);
+      mesh.position.set(cfg.pos[0],cfg.pos[1],cfg.pos[2]);
+      mesh.userData=cfg;
+      scene.add(mesh);
+      symbols.push(mesh);
+    });
+  });
+
+  /* --- INPUT --- */
+  let mouseX=0, mouseY=0;
+  let targetMouseX=0, targetMouseY=0;
+  document.addEventListener('mousemove',e=>{
+    targetMouseX=(e.clientX/innerWidth-0.5)*2;
+    targetMouseY=(e.clientY/innerHeight-0.5)*2;
+  });
+
+  /* --- RESIZE --- */
+  function onResize(){
+    cam.aspect=innerWidth/innerHeight;
+    cam.updateProjectionMatrix();
+    R.setPixelRatio(Math.min(devicePixelRatio,2));
+    R.setSize(innerWidth,innerHeight);
+  }
+  addEventListener('resize',onResize);
+
+  /* --- SCROLL (single source of truth) --- */
+  let scrollTarget=0, scrollSmooth=0;
+  addEventListener('scroll',()=>{ scrollTarget=scrollY },{passive:true});
+
+  /* --- ANIMATION LOOP --- */
+  let time=0;
+  const posArr=geo.attributes.position.array;
+
+  function render(){
+    time+=0.004;
+
+    /* Smooth scroll */
+    scrollSmooth+=(scrollTarget-scrollSmooth)*(mob?0.06:0.045);
+
+    /* Smooth mouse */
+    mouseX+=(targetMouseX-mouseX)*0.03;
+    mouseY+=(targetMouseY-mouseY)*0.03;
+
+    /* Scroll progress with smoothstep easing */
+    const docH=document.documentElement.scrollHeight-innerHeight;
+    const rawP=docH>0?scrollSmooth/docH:0;
+    const sp=rawP*rawP*(3-2*rawP);
+
+    /* Camera: smooth glide through space */
+    cam.position.z=600-sp*2200;
+    cam.position.x+=(mouseX*20-cam.position.x)*0.02;
+    cam.position.y+=(-mouseY*14-cam.position.y)*0.02;
+
+    /* Camera lookAt: fixed target ahead, no wobble */
+    cam.lookAt(0, 0, cam.position.z-400);
+
+    /* Animate ring particles: gentle breathing, preserve z-positions */
+    for(let ring=0;ring<RINGS;ring++){
+      const breath=1+0.025*Math.sin(time*0.5+ring*0.6);
+      const rotOffset=time*(0.008+ring*0.0015);
+      for(let j=0;j<PER;j++){
+        const i=ring*PER+j;
+        const origX=origPos[i*3];
+        const origY=origPos[i*3+1];
+        /* Rotate around ring center */
+        const cos=Math.cos(rotOffset);
+        const sin=Math.sin(rotOffset);
+        posArr[i*3]=(origX*cos-origY*sin)*breath;
+        posArr[i*3+1]=(origX*sin+origY*cos)*breath;
+        /* z stays at original — no flattening */
+      }
+    }
+    geo.attributes.position.needsUpdate=true;
+
+    /* Whole particle field: very slow rotation for life */
+    pts.rotation.z=time*0.003;
+
+    /* Symbols: rotate + proximity fade */
+    symbols.forEach(mesh=>{
+      mesh.rotation.z=time*mesh.userData.rotSpeed;
+      const camDist=cam.position.z-mesh.position.z;
+      const absDist=Math.abs(camDist);
+      /* Fade in as camera approaches, fade out as it passes */
+      let op=0;
+      if(absDist<600){
+        op=0.12*(1-absDist/600);
+      } else {
+        op=0.02;
+      }
+      mesh.material.opacity=op;
+    });
+
+    /* Nav */
+    document.getElementById('nav').classList.toggle('on',scrollSmooth>50);
+
+    R.render(scene,cam);
+    requestAnimationFrame(render);
+  }
+  requestAnimationFrame(render);
 })();
 
-/* UI */
+/* ============================================================
+   UI LOGIC — CLEAN
+   ============================================================ */
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
-new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis')}})},{threshold:.12}).observe(document.body);
-const rvObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');rvObs.unobserve(e.target)}})},{threshold:.15});
+
+/* Reveal on scroll */
+const rvObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('vis'); rvObs.unobserve(e.target); }
+  });
+},{threshold:0.12});
 document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
-const stObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.sw').forEach((w,i)=>setTimeout(()=>w.classList.add('vis'),i*60));stObs.unobserve(e.target)}})},{threshold:.12});
+
+/* Stance stagger */
+const stObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.sw').forEach((w,i)=>setTimeout(()=>w.classList.add('vis'),i*60));
+      stObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.1});
 document.querySelectorAll('.st-col').forEach(c=>stObs.observe(c));
-const piObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.querySelectorAll('.pil').forEach((p,i)=>setTimeout(()=>p.classList.add('vis'),i*140));e.target.querySelectorAll('.pd').forEach((d,i)=>setTimeout(()=>d.classList.add('vis'),i*140+70));piObs.unobserve(e.target)}})},{threshold:.2});
+
+/* Pillars stagger */
+const piObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.pil').forEach((p,i)=>setTimeout(()=>p.classList.add('vis'),i*140));
+      e.target.querySelectorAll('.pd').forEach((d,i)=>setTimeout(()=>d.classList.add('vis'),i*140+70));
+      piObs.unobserve(e.target);
+    }
+  });
+},{threshold:0.2});
 piObs.observe(document.getElementById('sPils'));
 
-const msS=[];
-(function(){const txt="SABDA empowers humanity through technology-driven creativity, shaping a future where innovation heals, inspires, and unites. Our mission is to use technology as a force for connection, ensuring progress brings us closer together and fuels creative expression.";const hl=["heals,","inspires,","unites.","connection,","creative","expression."];const el=document.getElementById('msP');txt.split(' ').forEach(w=>{const s=document.createElement('span');s.className='mw'+(hl.some(h=>w===h||w===h.replace(/[,.]$/,''))?' hl':'');s.textContent=w+' ';el.appendChild(s);msS.push(s)})})();
-addEventListener('scroll',()=>{const ms=document.getElementById('sMs');const r=ms.getBoundingClientRect();const h=ms.offsetHeight-innerHeight;const p=clamp(-r.top/h,0,1);const show=Math.floor(p*msS.length*1.3);msS.forEach((s,i)=>{if(i<show&&!s.classList.contains('vis'))s.classList.add('vis')});
-  document.querySelectorAll('.bel').forEach(b=>{const br=b.getBoundingClientRect();const bp=clamp(-br.top/innerHeight,-.5,.5);const img=b.querySelector('.bel-bg');if(img)img.style.transform='translateY('+bp*15+'px) scale(1.04)'})},{passive:true});
-(function(){const qs=document.querySelectorAll('.rn-q');let i=0;setInterval(()=>{qs[i].classList.remove('on');i=(i+1)%qs.length;qs[i].classList.add('on')},4000)})();
-const sbk=document.getElementById('sbk'),ft=document.querySelector('footer');addEventListener('scroll',()=>{sbk.classList.toggle('vis',scrollY>innerHeight*.5&&ft.getBoundingClientRect().top>innerHeight+80)},{passive:true});
+/* Mission word-by-word reveal */
+const msSpans=[];
+(function(){
+  const txt="SABDA empowers humanity through technology-driven creativity, shaping a future where innovation heals, inspires, and unites. Our mission is to use technology as a force for connection, ensuring progress brings us closer together and fuels creative expression.";
+  const highlights=["heals,","inspires,","unites.","connection,","creative","expression."];
+  const el=document.getElementById('msP');
+  txt.split(' ').forEach(w=>{
+    const s=document.createElement('span');
+    s.className='mw'+(highlights.some(h=>w===h||w===h.replace(/[,.]$/,''))?' hl':'');
+    s.textContent=w+' ';
+    el.appendChild(s);
+    msSpans.push(s);
+  });
+})();
+
+/* Single scroll handler for all UI updates */
+addEventListener('scroll',()=>{
+  /* Mission */
+  const msEl=document.getElementById('sMs');
+  const msRect=msEl.getBoundingClientRect();
+  const msH=msEl.offsetHeight-innerHeight;
+  if(msH>0){
+    const p=clamp(-msRect.top/msH,0,1);
+    const show=Math.floor(p*msSpans.length*1.3);
+    msSpans.forEach((s,i)=>{ if(i<show&&!s.classList.contains('vis')) s.classList.add('vis'); });
+  }
+
+  /* Belief image parallax */
+  document.querySelectorAll('.bel').forEach(b=>{
+    const r=b.getBoundingClientRect();
+    const p=clamp(-r.top/innerHeight,-0.5,0.5);
+    const img=b.querySelector('.bel-bg');
+    if(img) img.style.transform='translateY('+p*12+'px) scale(1.04)';
+  });
+},{passive:true});
+
+/* Review ticker */
+(function(){
+  const quotes=document.querySelectorAll('.rn-q');
+  let idx=0;
+  setInterval(()=>{
+    quotes[idx].classList.remove('on');
+    idx=(idx+1)%quotes.length;
+    quotes[idx].classList.add('on');
+  },4000);
+})();
+
+/* Mobile sticky bar */
+const sbk=document.getElementById('sbk');
+const footerEl=document.querySelector('footer');
+addEventListener('scroll',()=>{
+  const pastTop=scrollY>innerHeight*0.5;
+  const nearFooter=footerEl.getBoundingClientRect().top<innerHeight+80;
+  sbk.classList.toggle('vis',pastTop&&!nearFooter);
+},{passive:true});
+
 </script>
 </body>
 </html>
