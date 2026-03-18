@@ -18,7 +18,7 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "HealthClub",
+  "@type": ["SportsActivityLocation", "EntertainmentBusiness", "HealthClub"],
   "name": "SABDA",
   "alternateName": "SABDA Studio",
   "description": "Immersive audio-visual wellness studio in Barcelona featuring 360° projections and Dolby Atmos spatial audio. Yoga, pilates, sound healing, breathwork, meditation, ecstatic dance and ice bath.",
@@ -258,6 +258,15 @@ section{position:relative;padding:120px 80px;z-index:2}
 .mq-sep{padding:0 8px;font-size:.5rem;color:rgba(240,239,233,.2);flex-shrink:0}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-33.333%)}}
 
+/* ── THIS IS SABDA ── */
+.intro{padding:120px 80px;border-top:1px solid rgba(240,239,233,.06);position:relative;z-index:2}
+.intro-in{max-width:1140px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.intro-txt{max-width:540px}
+.intro-txt p{font-size:1.05rem;line-height:1.75;color:var(--white60);margin-bottom:24px}
+.intro-txt p:last-child{margin-bottom:0}
+.intro-img{position:relative;border-radius:6px;overflow:hidden;aspect-ratio:4/5}
+.intro-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.85) contrast(1.05) saturate(1.1)}
+
 /* ── BOOKING ── */
 .booking{padding:120px 80px 64px;border-bottom:1px solid rgba(240,239,233,.06)}
 .booking-in{max-width:1140px;margin:0 auto;text-align:center}
@@ -374,6 +383,9 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .b-cards{grid-template-columns:1fr;max-width:400px;margin:0 auto}
   .press-grid{grid-template-columns:1fr;max-width:400px;margin:0 auto;gap:48px}
   .press{padding-top:72px;padding-bottom:72px}
+  .intro{padding:72px 24px}
+  .intro-in{grid-template-columns:1fr;gap:40px}
+  .intro-img{max-width:100%;aspect-ratio:16/10}
   .sbk{display:flex}
 }
 @media(max-width:520px){.ft-in{grid-template-columns:1fr}.trust-in{gap:36px}.classes-hdr{flex-direction:column;align-items:flex-start;gap:16px}}
@@ -471,6 +483,21 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   <p class="p-label rv">Trusted by leading brands</p>
   <div class="mq" id="mq"></div>
 </div>
+
+<!-- THIS IS SABDA — indexable body text for SEO -->
+<section class="intro">
+  <div class="intro-in">
+    <div class="intro-txt">
+      <span class="sl rv">This is SABDA</span>
+      <h2 class="sh2 rv" style="transition-delay:.06s">Not a yoga studio.<br>Not a museum.<br><em>Something new.</em></h2>
+      <p class="rv" style="transition-delay:.12s">SABDA is an immersive audio-visual wellness studio in Barcelona's Eixample district where art, technology, and wellness converge. Walk in from the streets of Muntaner and step into 360° laser projections, cinema-grade Dolby Atmos spatial audio, and classes designed to move your body and your mind. We offer yoga, pilates, sound healing, breathwork, meditation, ecstatic dance, and ice bath. Each one inside a custom-designed immersive world.</p>
+      <p class="rv" style="transition-delay:.18s">Every class is different. Vinyasa yoga through abstract landscapes. Sound healing inside living geometry with spatial audio that wraps around you from invisible in-wall speakers. Breathwork under infinite starfields. Pilates with projections that respond to the energy of the room. This isn't wellness with a screen in the corner. This is movement, sound, and art fused into something that doesn't exist anywhere else in Barcelona.</p>
+    </div>
+    <div class="intro-img rv" style="transition-delay:.15s">
+      <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Copy_of_Sabda2-167__1_.jpg" alt="Inside SABDA 360-degree immersive projection room with Dolby Atmos spatial audio Barcelona" loading="lazy">
+    </div>
+  </div>
+</section>
 
 <!-- CLASSES -->
 <section class="classes" id="classes">
