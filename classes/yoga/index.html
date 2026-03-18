@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- yoga-v1 -->
+<meta charset="UTF-8"><!-- yoga-v2 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Immersive Vinyasa Yoga in Barcelona | 360° Studio | SABDA Eixample</title>
-<meta name="description" content="Vinyasa yoga in a 360° immersive room with spatial audio. Flow through abstract landscapes and visual worlds. All levels. From €16/class.">
+<meta name="description" content="Vinyasa yoga in a 360° immersive room with Dolby Atmos spatial audio in Barcelona's Eixample district. All levels. From €16/class.">
 <link rel="canonical" href="https://sabdastudio.com/classes/yoga/">
 <!-- Open Graph -->
 <meta property="og:title" content="Immersive Vinyasa Yoga in Barcelona | SABDA">
@@ -21,9 +21,21 @@
   "@type": "Course",
   "name": "Yoga at SABDA",
   "description": "Immersive vinyasa yoga classes in a 360-degree projection room with Dolby Atmos spatial audio in Barcelona's Eixample district",
-  "provider": {"@type": "Organization", "name": "SABDA", "url": "https://sabdastudio.com"},
-  "location": {"@type": "Place", "name": "SABDA", "address": {"@type": "PostalAddress", "streetAddress": "C/Muntaner 83B, Local 2", "addressLocality": "Barcelona", "postalCode": "08011", "addressCountry": "ES"}},
-  "offers": {"@type": "Offer", "price": "16", "priceCurrency": "EUR", "availability": "https://schema.org/InStock"}
+  "provider": {
+    "@type": "Organization",
+    "name": "SABDA",
+    "url": "https://sabdastudio.com",
+    "sameAs": ["https://www.instagram.com/sabda_studio/", "https://www.tiktok.com/@sabda_studio"]
+  },
+  "hasCourseInstance": [{
+    "@type": "CourseInstance",
+    "courseMode": "Onsite",
+    "courseWorkload": "PT60M",
+    "location": {"@type": "Place", "name": "SABDA", "address": {"@type": "PostalAddress", "streetAddress": "C/Muntaner 83B, Local 2", "addressLocality": "Barcelona", "postalCode": "08011", "addressCountry": "ES"}},
+    "inLanguage": ["en", "es"],
+    "offers": {"@type": "Offer", "price": "16", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": "https://momence.com/m/443935"}
+  }],
+  "audience": {"@type": "Audience", "audienceType": "All levels"}
 }
 </script>
 <!-- FAQPage Schema -->
@@ -36,7 +48,21 @@
     {"@type": "Question", "name": "Are classes in English or Spanish?", "acceptedAnswer": {"@type": "Answer", "text": "Most yoga classes at SABDA are taught in English with Spanish cues where helpful. Some sessions are fully bilingual. Check the schedule for language details on specific classes."}},
     {"@type": "Question", "name": "I'm a complete beginner, is this for me?", "acceptedAnswer": {"@type": "Answer", "text": "Absolutely. All yoga classes at SABDA welcome every level. Teachers offer modifications throughout. If you've never done yoga before, we'd recommend starting with a Hatha or Yin class, which move at a gentler pace."}},
     {"@type": "Question", "name": "What's the difference between Vinyasa and Hatha?", "acceptedAnswer": {"@type": "Answer", "text": "Vinyasa is a flowing, breath-linked practice where you move continuously between poses. Hatha is slower, holding each pose longer with more focus on alignment and breathing. Both are excellent for beginners and experienced practitioners."}},
-    {"@type": "Question", "name": "How is immersive yoga different from regular yoga?", "acceptedAnswer": {"@type": "Answer", "text": "The yoga is the same. The environment transforms the experience. 360° laser projections surround you with abstract landscapes, living geometry, and evolving visual worlds. Dolby Atmos spatial audio wraps sound around you from invisible speakers. The result is a level of presence and focus that a regular studio simply can't replicate."}}
+    {"@type": "Question", "name": "How is immersive yoga different from regular yoga?", "acceptedAnswer": {"@type": "Answer", "text": "The yoga is the same. The environment transforms the experience. 360° laser projections surround you with abstract landscapes, living geometry, and evolving visual worlds. Dolby Atmos spatial audio wraps sound around you from invisible speakers. The result is a level of presence and focus that a regular studio simply can't replicate."}},
+    {"@type": "Question", "name": "Is yoga at SABDA suitable during pregnancy?", "acceptedAnswer": {"@type": "Answer", "text": "Many pregnant practitioners attend our classes, particularly Hatha and Yin. Always consult your doctor first and inform your teacher before class. They will offer modifications for each trimester."}}
+  ]
+}
+</script>
+
+<!-- BreadcrumbList Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://sabdastudio.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Classes", "item": "https://sabdastudio.com/classes/"},
+    {"@type": "ListItem", "position": 3, "name": "Yoga", "item": "https://sabdastudio.com/classes/yoga/"}
   ]
 }
 </script>
@@ -93,7 +119,10 @@ nav.scrolled{background:rgba(14,18,53,.92);backdrop-filter:blur(18px);-webkit-ba
 .sh2 em{font-style:italic;color:var(--salmon)}
 
 /* ── HERO ── */
-.hero{position:relative;width:100%;height:520px;overflow:hidden;margin-top:72px}
+.breadcrumbs{padding:0 80px;margin-top:84px;position:relative;z-index:3;font-size:.75rem;color:var(--white38)}
+.breadcrumbs a{color:var(--white60);transition:color .2s}
+.breadcrumbs a:hover{color:var(--cyan)}
+.hero{position:relative;width:100%;height:520px;overflow:hidden}
 .hero img{width:100%;height:100%;object-fit:cover;object-position:center 40%;filter:brightness(.5) contrast(1.1) saturate(1.15)}
 .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(14,18,53,.2) 0%,rgba(14,18,53,.1) 30%,rgba(14,18,53,.6) 70%,var(--navy) 100%)}
 .hero-content{position:absolute;bottom:56px;left:0;right:0;z-index:3;padding:0 80px}
@@ -234,6 +263,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .nav-social svg{width:15px;height:15px}
   .nav-social{gap:10px;padding-left:14px;margin-left:14px}
   .lang-sel a{padding:4px 5px;font-size:.65rem}
+  .breadcrumbs{padding:0 24px;margin-top:80px}
   .hero{height:400px}
   .hero-content{padding:0 24px 40px}
   .sect,.teachers,.pricing-teaser,.faq,.final-cta,.related,.review-nudge,footer{padding-left:24px;padding-right:24px}
@@ -281,6 +311,11 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   </div>
 </nav>
 
+<!-- BREADCRUMB -->
+<nav aria-label="Breadcrumb" class="breadcrumbs">
+  <a href="../../SABDA_v16.html">Home</a> / <a href="../../classes.html">Classes</a> / <span>Yoga</span>
+</nav>
+
 <!-- HERO -->
 <div class="hero">
   <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_016.jpg" alt="Vinyasa yoga class inside SABDA 360-degree immersive projection room Barcelona">
@@ -300,8 +335,8 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 <section class="sect">
   <div class="sect-in">
     <span class="sl rv">Immersive Yoga</span>
-    <p class="rv" style="transition-delay:.06s">Yoga at SABDA is not another studio class with candles and a Spotify playlist. The entire room transforms. 360° laser projections paint abstract landscapes, living geometry, and evolving visual worlds across every surface. Dolby Atmos spatial audio wraps sound around you from invisible in-wall speakers and ceiling subwoofers. You flow through vinyasa sequences while the room flows with you. It's the most immersive yoga experience in Barcelona, and probably anywhere else you've practiced.</p>
-    <p class="rv" style="transition-delay:.12s">We run classes every day of the week in Barcelona's Eixample district. Whether you're a complete beginner or you've been on the mat for years, SABDA has a style that fits. The projections and audio aren't decoration. They create a depth of focus and presence that transforms even a familiar practice into something entirely new.</p>
+    <p class="rv" style="transition-delay:.06s">Yoga at SABDA is not another studio class with candles and a Spotify playlist. The entire room transforms. 360° laser projections paint abstract landscapes, living geometry, and evolving visual worlds across every surface. Dolby Atmos spatial audio wraps sound around you from invisible in-wall speakers and ceiling subwoofers. You flow through vinyasa sequences while the room flows with you. It's the most immersive yoga experience in Barcelona, and probably anywhere else you've practiced. Whether you call it yoga, ioga, or just the best hour of your week.</p>
+    <p class="rv" style="transition-delay:.12s">We run classes every day of the week in Barcelona's Eixample district. Whether you're a complete beginner or you've been on the mat for years, SABDA has a style that fits. Looking for more than a gimnasio in Eixample? The projections and audio aren't decoration. They create a depth of focus and presence that transforms even a familiar practice into something entirely new.</p>
 
     <h3 class="rv" style="transition-delay:.06s">Yoga Styles We Offer</h3>
     <p class="rv" style="transition-delay:.08s"><strong>Vinyasa</strong> is our primary style and the heartbeat of our schedule. A flowing, breath-linked practice where movement and music merge. Our vinyasa classes range from gentle morning flows to challenging power sessions. The 360° projections shift and pulse with the energy of the room, creating a sense of movement that goes far beyond your mat.</p>
@@ -413,6 +448,10 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     <div class="faq-item rv" style="transition-delay:.25s">
       <button class="faq-q" aria-expanded="false">How is immersive yoga different from regular yoga?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
       <div class="faq-a"><p>The yoga is the same. The environment transforms the experience. 360° projections surround you with abstract landscapes, living geometry, and evolving worlds. Dolby Atmos spatial audio wraps sound around you from invisible speakers. The result is a level of presence and focus that a regular studio simply cannot replicate.</p></div>
+    </div>
+    <div class="faq-item rv" style="transition-delay:.3s">
+      <button class="faq-q" aria-expanded="false">Is yoga at SABDA suitable during pregnancy?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button>
+      <div class="faq-a"><p>Many pregnant practitioners attend our classes, particularly Hatha and Yin. Always consult your doctor first and inform your teacher before class. They will offer modifications for each trimester. Yoga prenatal and yoga embarazadas are among our most common adaptations at our Barcelona studio.</p></div>
     </div>
   </div>
 </section>

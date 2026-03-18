@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- pilates-v1 -->
+<meta charset="UTF-8"><!-- pilates-v2 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Immersive Pilates Classes in Barcelona | 360° Projections | SABDA Eixample</title>
-<meta name="description" content="Pilates in a 360° immersive projection room with Dolby Atmos audio. All levels welcome. Mat & equipment provided. Book your first class from €16.">
+<meta name="description" content="Pilates in a 360° immersive projection room with Dolby Atmos audio in Barcelona's Eixample district. All levels welcome. Mat pilates from €16/class.">
 <link rel="canonical" href="https://sabdastudio.com/classes/pilates/">
 <!-- Open Graph -->
 <meta property="og:title" content="Immersive Pilates Classes in Barcelona | SABDA">
@@ -21,9 +21,21 @@
   "@type": "Course",
   "name": "Pilates at SABDA",
   "description": "Immersive pilates classes in a 360-degree projection room with Dolby Atmos spatial audio in Barcelona's Eixample district",
-  "provider": {"@type": "Organization", "name": "SABDA", "url": "https://sabdastudio.com"},
-  "location": {"@type": "Place", "name": "SABDA", "address": {"@type": "PostalAddress", "streetAddress": "C/Muntaner 83B, Local 2", "addressLocality": "Barcelona", "postalCode": "08011", "addressCountry": "ES"}},
-  "offers": {"@type": "Offer", "price": "16", "priceCurrency": "EUR", "availability": "https://schema.org/InStock"}
+  "provider": {
+    "@type": "Organization",
+    "name": "SABDA",
+    "url": "https://sabdastudio.com",
+    "sameAs": ["https://www.instagram.com/sabda_studio/", "https://www.tiktok.com/@sabda_studio"]
+  },
+  "hasCourseInstance": [{
+    "@type": "CourseInstance",
+    "courseMode": "Onsite",
+    "courseWorkload": "PT50M",
+    "location": {"@type": "Place", "name": "SABDA", "address": {"@type": "PostalAddress", "streetAddress": "C/Muntaner 83B, Local 2", "addressLocality": "Barcelona", "postalCode": "08011", "addressCountry": "ES"}},
+    "inLanguage": ["en", "es"],
+    "offers": {"@type": "Offer", "price": "16", "priceCurrency": "EUR", "availability": "https://schema.org/InStock", "url": "https://momence.com/m/443935"}
+  }],
+  "audience": {"@type": "Audience", "audienceType": "All levels"}
 }
 </script>
 <!-- FAQPage Schema -->
@@ -36,7 +48,21 @@
     {"@type": "Question", "name": "Do I need pilates experience?", "acceptedAnswer": {"@type": "Answer", "text": "Not at all. All pilates classes at SABDA are open to every level. Teachers provide modifications for beginners and progressions for experienced practitioners. Just show up and move."}},
     {"@type": "Question", "name": "Is this reformer or mat pilates?", "acceptedAnswer": {"@type": "Answer", "text": "All pilates classes at SABDA are mat-based. We provide mats, blocks, and all necessary props. No reformer equipment is used."}},
     {"@type": "Question", "name": "What should I wear?", "acceptedAnswer": {"@type": "Answer", "text": "Comfortable, form-fitting clothes that let you move freely. Pilates is done barefoot or in grip socks. We have changing rooms and showers available."}},
-    {"@type": "Question", "name": "How is immersive pilates different from regular pilates?", "acceptedAnswer": {"@type": "Answer", "text": "The exercises are the same. The environment is completely different. You're surrounded by 360° laser projections and Dolby Atmos spatial audio that respond to the energy of the class. The visuals create focus, the audio creates rhythm. It's pilates the way it was meant to feel."}}
+    {"@type": "Question", "name": "How is immersive pilates different from regular pilates?", "acceptedAnswer": {"@type": "Answer", "text": "The exercises are the same. The environment is completely different. You're surrounded by 360° laser projections and Dolby Atmos spatial audio that respond to the energy of the class. The visuals create focus, the audio creates rhythm. It's pilates the way it was meant to feel."}},
+    {"@type": "Question", "name": "Can I do pilates if I'm pregnant?", "acceptedAnswer": {"@type": "Answer", "text": "We welcome prenatal participants in many of our pilates classes. Please consult your doctor first and let your teacher know before class. They will offer modifications suited to your stage of pregnancy."}}
+  ]
+}
+</script>
+
+<!-- BreadcrumbList Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://sabdastudio.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Classes", "item": "https://sabdastudio.com/classes/"},
+    {"@type": "ListItem", "position": 3, "name": "Pilates", "item": "https://sabdastudio.com/classes/pilates/"}
   ]
 }
 </script>
@@ -93,7 +119,10 @@ nav.scrolled{background:rgba(14,18,53,.92);backdrop-filter:blur(18px);-webkit-ba
 .sh2 em{font-style:italic;color:var(--salmon)}
 
 /* ── HERO ── */
-.hero{position:relative;width:100%;height:520px;overflow:hidden;margin-top:72px}
+.breadcrumbs{padding:0 80px;margin-top:84px;position:relative;z-index:3;font-size:.75rem;color:var(--white38)}
+.breadcrumbs a{color:var(--white60);transition:color .2s}
+.breadcrumbs a:hover{color:var(--cyan)}
+.hero{position:relative;width:100%;height:520px;overflow:hidden}
 .hero img{width:100%;height:100%;object-fit:cover;object-position:center 40%;filter:brightness(.5) contrast(1.1) saturate(1.15)}
 .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(14,18,53,.2) 0%,rgba(14,18,53,.1) 30%,rgba(14,18,53,.6) 70%,var(--navy) 100%)}
 .hero-content{position:absolute;bottom:56px;left:0;right:0;z-index:3;padding:0 80px}
@@ -234,6 +263,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .nav-social svg{width:15px;height:15px}
   .nav-social{gap:10px;padding-left:14px;margin-left:14px}
   .lang-sel a{padding:4px 5px;font-size:.65rem}
+  .breadcrumbs{padding:0 24px;margin-top:80px}
   .hero{height:400px}
   .hero-content{padding:0 24px 40px}
   .sect,.teachers,.pricing-teaser,.faq,.final-cta,.related,.review-nudge,footer{padding-left:24px;padding-right:24px}
@@ -281,6 +311,11 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   </div>
 </nav>
 
+<!-- BREADCRUMB -->
+<nav aria-label="Breadcrumb" class="breadcrumbs">
+  <a href="../../SABDA_v16.html">Home</a> / <a href="../../classes.html">Classes</a> / <span>Pilates</span>
+</nav>
+
 <!-- HERO -->
 <div class="hero">
   <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/pilates_new.jpg" alt="Power pilates class inside SABDA 360-degree immersive projection room Barcelona">
@@ -300,11 +335,11 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 <section class="sect">
   <div class="sect-in">
     <span class="sl rv">Immersive Pilates</span>
-    <p class="rv" style="transition-delay:.06s">Pilates at SABDA isn't what you'd expect from a studio in Barcelona's Eixample district. The room disappears. 360° laser projections surround you on every surface. Dolby Atmos spatial audio fills the space from invisible in-wall speakers and ceiling subwoofers. And then you move. Mat pilates, all levels, props provided. The projections create focus. The audio creates rhythm. You don't think about your phone, your inbox, or the noise on Muntaner outside. You just move.</p>
+    <p class="rv" style="transition-delay:.06s">Pilates at SABDA isn't what you'd expect from a studio in Barcelona's Eixample district. The room disappears. If you're looking for a centro de pilates in Barcelona that goes beyond the ordinary, this is it. 360° laser projections surround you on every surface. Dolby Atmos spatial audio fills the space from invisible in-wall speakers and ceiling subwoofers. And then you move. Mat pilates, all levels, props provided. The projections create focus. The audio creates rhythm. You don't think about your phone, your inbox, or the noise on Muntaner outside. You just move.</p>
     <p class="rv" style="transition-delay:.12s">We run both Power Pilates and Core Pilates. Power is faster, full-body, with cardio elements built into the flow. Core is slower and more precise, targeting deep abdominal engagement, spinal alignment, and controlled breathing. Both take place inside the immersive room with custom visuals designed for each class. This isn't a screen on the wall. This is the room itself becoming part of the practice.</p>
 
     <h3 class="rv" style="transition-delay:.06s">What to Expect</h3>
-    <p class="rv" style="transition-delay:.08s">Classes run 50 minutes. Arrive 10 minutes early to set up your mat and settle in. We provide mats, blocks, bands, and all props you need. Wear comfortable, form-fitting clothing. Pilates is done barefoot or in grip socks. Classes are taught in English with Spanish cues where helpful. Changing rooms and showers are available.</p>
+    <p class="rv" style="transition-delay:.08s">All sessions are mat pilates, not reformer. We don't use reformer equipment. Instead, the 360° immersive room itself becomes the tool that transforms your practice. Classes run 50 minutes. Arrive 10 minutes early to set up your mat and settle in. We provide mats, blocks, bands, and all props you need. Wear comfortable, form-fitting clothing. Pilates is done barefoot or in grip socks. Classes are taught in English with Spanish cues where helpful. Changing rooms and showers are available.</p>
     <ul class="rv" style="transition-delay:.1s">
       <li>50 minute sessions, all levels</li>
       <li>Mat, blocks, and bands provided</li>
@@ -378,7 +413,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
         <a href="https://momence.com/m/443935" class="pt-btn pt-btn-ghost" target="_blank">Book One Class</a>
       </div>
     </div>
-    <p class="pt-foot rv" style="transition-delay:.2s">Regular practice? <a href="../../pricing.html" class="inline-link">See memberships from €79/month</a></p>
+    <p class="pt-foot rv" style="transition-delay:.2s">Pilates classes from €16 per session. <a href="../../pricing.html" class="inline-link">See all pricing, memberships, and pilates barcelona precios</a></p>
   </div>
 </section>
 
@@ -423,6 +458,13 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
       </button>
       <div class="faq-a"><p>The exercises are the same. The environment is completely different. You're surrounded by 360° laser projections and Dolby Atmos spatial audio that respond to the energy of the class. The visuals create focus, the audio creates rhythm. It's pilates the way it was meant to feel.</p></div>
+    </div>
+    <div class="faq-item rv" style="transition-delay:.3s">
+      <button class="faq-q" aria-expanded="false">
+        Can I do pilates if I'm pregnant?
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-a"><p>We welcome prenatal participants in many of our classes. Please consult your doctor first and let your teacher know before class. They will offer modifications suited to your stage of pregnancy. Pilates embarazadas is one of the most requested adaptations at our Barcelona studio.</p></div>
     </div>
   </div>
 </section>

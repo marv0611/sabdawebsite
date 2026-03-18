@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- team-building-v1 -->
+<meta charset="UTF-8"><!-- team-building-v2 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Team Building Barcelona | Immersive Experiences at SABDA | Eixample</title>
 <meta name="description" content="Immersive team building in Barcelona's 360° projection room. Wellness workshops, brand experiences & creative offsites. FC Barcelona & Alpro trusted us.">
@@ -36,6 +36,18 @@
     {"@type": "Question", "name": "How far in advance should we book?", "acceptedAnswer": {"@type": "Answer", "text": "We recommend booking at least 2 to 3 weeks in advance for standard events. For events requiring custom visual content, allow 4 to 6 weeks. Popular dates fill quickly."}},
     {"@type": "Question", "name": "Do you provide catering?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. We offer catering packages through our café and bar, from light refreshments to full event catering. We can also accommodate external caterers if preferred."}},
     {"@type": "Question", "name": "Can we add ice bath or breathwork to our team experience?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Guided breathwork, sound healing, yoga, and ice bath can all be incorporated into your team building programme. These are some of our most popular add-ons for corporate wellness events."}}
+  ]
+}
+</script>
+
+<!-- BreadcrumbList Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://sabdastudio.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Team Building", "item": "https://sabdastudio.com/team-building/"}
   ]
 }
 </script>
@@ -74,7 +86,10 @@ nav.scrolled{background:rgba(14,18,53,.92);backdrop-filter:blur(18px);-webkit-ba
 .sl{font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--cyan);font-weight:500;margin-bottom:18px;display:block}
 .sh2{font-family:'PT Serif',serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:700;line-height:1.08;letter-spacing:-.025em}
 .sh2 em{font-style:italic;color:var(--salmon)}
-.hero{position:relative;width:100%;height:520px;overflow:hidden;margin-top:72px}
+.breadcrumbs{padding:0 80px;margin-top:84px;position:relative;z-index:3;font-size:.75rem;color:var(--white38)}
+.breadcrumbs a{color:var(--white60);transition:color .2s}
+.breadcrumbs a:hover{color:var(--cyan)}
+.hero{position:relative;width:100%;height:520px;overflow:hidden}
 .hero img{width:100%;height:100%;object-fit:cover;object-position:center 40%;filter:brightness(.45) contrast(1.1) saturate(1.15)}
 .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(14,18,53,.2) 0%,rgba(14,18,53,.1) 30%,rgba(14,18,53,.6) 70%,var(--navy) 100%)}
 .hero-content{position:absolute;bottom:56px;left:0;right:0;z-index:3;padding:0 80px}
@@ -212,6 +227,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   nav{padding:0 24px}.nav-links{display:none}
   .nav-social svg{width:15px;height:15px}.nav-social{gap:10px;padding-left:14px;margin-left:14px}
   .lang-sel a{padding:4px 5px;font-size:.65rem}
+  .breadcrumbs{padding:0 24px;margin-top:80px}
   .hero{height:400px}.hero-content{padding:0 24px 40px}
   .sect,.case,.faq,.inquiry,.review-nudge,footer{padding-left:24px;padding-right:24px}
   .sect{padding-top:72px;padding-bottom:72px}
@@ -249,6 +265,11 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   </div>
 </nav>
 
+<!-- BREADCRUMB -->
+<nav aria-label="Breadcrumb" class="breadcrumbs">
+  <a href="SABDA_v16.html">Home</a> / <span>Team Building</span>
+</nav>
+
 <!-- HERO -->
 <div class="hero">
   <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/alpro_product.jpg" alt="Corporate brand activation event at SABDA immersive venue Barcelona">
@@ -270,7 +291,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     <span class="sl rv">Why SABDA</span>
     <h2 class="sh2 rv" style="transition-delay:.06s">Your team deserves<br><em>better than trust falls.</em></h2>
     <p class="rv" style="transition-delay:.12s">SABDA is an immersive audio-visual venue in Barcelona's Eixample district with 360° laser projections and cinema-grade Dolby Atmos spatial audio. Companies come here to do team building that actually changes how their people connect. Not through icebreaker games. Through shared experience in an environment that's impossible to ignore.</p>
-    <p class="rv" style="transition-delay:.18s">We've hosted brand activations for Alpro and Danone, filmed a farewell video for FC Barcelona's Sergi Roberto that hit 22 million views, run immersive wellness workshops for corporate teams, and built custom branded worlds for product launches. Whether your team is 15 or 150, we design experiences around what you need. Wellness, creativity, connection, celebration. The 360° room does the rest.</p>
+    <p class="rv" style="transition-delay:.18s">We've hosted brand activations for Alpro and Danone, filmed a farewell video for FC Barcelona's Sergi Roberto that hit 22 million views, run immersive wellness workshops for corporate teams, and built custom branded worlds for product launches. Whether your team is 15 or 150, we design experiences around what you need. Actividades para empresas en Barcelona that go far beyond the usual corporate playbook. Wellness, creativity, connection, celebration. The best team building activities in Barcelona start with an environment nobody expects. The 360° room does the rest.</p>
   </div>
 </section>
 
@@ -308,7 +329,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 <section class="case" id="cases">
   <div class="case-in">
     <span class="sl rv">Our Work</span>
-    <h2 class="sh2 rv" style="transition-delay:.06s">Trusted by brands<br><em>that get it.</em></h2>
+    <h2 class="sh2 rv" style="transition-delay:.06s">Eventos corporativos<br><em>that leave a mark.</em></h2>
 
     <div class="case-card rv" style="transition-delay:.1s">
       <div class="case-media">
