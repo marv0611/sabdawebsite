@@ -175,7 +175,7 @@ section{position:relative;padding:120px 80px;z-index:2}
 .cs-heading{font-family:'PT Serif',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;line-height:1.12;letter-spacing:-.02em;margin-bottom:20px}
 .cs-heading em{font-style:italic;color:var(--salmon)}
 .cs-body{font-size:.95rem;color:var(--white60);line-height:1.78;margin-bottom:28px}
-.cs-stat{display:inline-flex;align-items:center;gap:12px;padding:12px 20px;border:1px solid rgba(240,239,233,.08);border-radius:4px;background:rgba(2,243,197,.03);margin-bottom:24px}
+.cs-stat{display:flex;align-items:center;gap:12px;padding:12px 20px;border:1px solid rgba(240,239,233,.08);border-radius:4px;background:rgba(2,243,197,.03);margin-bottom:10px;max-width:360px}
 .cs-stat-val{font-family:'PT Serif',serif;font-size:1.6rem;font-weight:700;color:var(--cyan);letter-spacing:-.02em}
 .cs-stat-lbl{font-size:.72rem;letter-spacing:.08em;color:var(--white38);text-transform:uppercase}
 .cs-link{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.2);padding-bottom:3px;transition:gap .25s,border-color .25s}
@@ -459,6 +459,10 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
         <span class="cs-stat-val">100+</span>
         <span class="cs-stat-lbl">Attendees</span>
       </div>
+      <div class="cs-stat">
+        <span class="cs-stat-val">✔</span>
+        <span class="cs-stat-lbl">Catering service</span>
+      </div>
     </div>
   </div>
 </section>
@@ -530,7 +534,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     <div>
       <div class="cs-client-tag"><div class="cs-dot" style="background:var(--salmon)"></div>The Astral Method</div>
       <h3 class="cs-heading">2026: A Journey Through <em>Time & Space</em></h3>
-      <p class="cs-body">An immersive astrology workshop that turned the traditional presentation format on its head. Instead of slides on a screen, attendees sat inside a 360° star map that evolved throughout the session. The workshop used both the immersive room and the café. The room became the medium — visuals responded to the narrative in real time.</p>
+      <p class="cs-body">An immersive astrology workshop that turned the traditional presentation format on its head. Instead of slides on a screen, attendees sat inside a 360° star map that evolved throughout the session. The workshop used both the immersive room and the café. The room became the medium. Visuals responded to the narrative in real time.</p>
       <div class="cs-stat">
         <span class="cs-stat-val">80+</span>
         <span class="cs-stat-lbl">Attendees</span>
@@ -549,7 +553,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     <div class="sg-info" id="sgInfo">
       <span class="sg-num" id="sgNum">01 / 04 | THE VENUE</span>
       <h2 class="sg-name" id="sgName">The <em>Immersive</em> Room</h2>
-      <p class="sg-desc" id="sgDesc">86m² of 360° projection-mapped walls. 8 LED laser projectors, Dolby Atmos certified surround sound, custom visual library. 20 to 120 capacity, soundproofed, climate controlled.</p>
+      <p class="sg-desc" id="sgDesc">86m² of 360° projection-mapped walls.<br>8 LED laser projectors. Dolby Atmos surround sound. Custom visual library.<br>20 to 120 capacity. Soundproofed. Climate controlled.</p>
     </div>
     <div class="sg-bottom">
       <div class="sg-prog-track"><div class="sg-prog-fill" id="sgProg"></div></div>
@@ -826,10 +830,10 @@ document.querySelectorAll('.cs-media video').forEach(v=>vidObs.observe(v));
 (function(){
   const BASE='https://raw.githubusercontent.com/marv0611/sabdawebsite/main/';
   const slides=[
-    {imgA:BASE+'immersive_underwater.jpg',imgB:BASE+'immersive_aurora_mats.jpg',num:'01 / 04',name:'The <em>Immersive</em> Room',desc:'86m² of 360° projection-mapped walls. 8 LED laser projectors, Dolby Atmos certified surround sound, custom visual library. 20 to 120 capacity, soundproofed, climate controlled.',dur:9000},
-    {imgA:BASE+'cafe_bar.jpg',imgB:BASE+'cafe_lounge.jpg',num:'02 / 04',name:'Café & <em>Lounge</em>',desc:'65m² of modular space with SONOS sound.\nEquipped bar. Pro coffee machine. Comfortable furniture.\nPerfect for networking and reception.',dur:9000},
-    {imgA:BASE+'DSC06911__1_.jpg',imgB:null,num:'03 / 04',name:'The <em>Patio</em>',desc:'20m² outdoor space.\nIce bath. Outdoor shower. Natural light. Seating.\nA fresh-air extension for any event format.',dur:5000},
-    {imgA:BASE+'entrance_door.jpg',imgB:BASE+'entrance_reception.jpg',num:'04 / 04',name:'The <em>Entrance</em>',desc:'Welcome desk with customizable smart art screen, street-level access on C/Muntaner in the heart of Barcelona\'s Eixample district.',dur:9000},
+    {imgA:BASE+'immersive_underwater.jpg',imgB:BASE+'immersive_aurora_mats.jpg',num:'01 / 04',name:'The <em>Immersive</em> Room',desc:'86m² of 360° projection-mapped walls.<br>8 LED laser projectors. Dolby Atmos surround sound. Custom visual library.<br>20 to 120 capacity. Soundproofed. Climate controlled.',dur:9000},
+    {imgA:BASE+'cafe_bar.jpg',imgB:BASE+'cafe_lounge.jpg',num:'02 / 04',name:'Café & <em>Lounge</em>',desc:'65m² modular space with SONOS sound system.<br>Equipped bar. Pro coffee machine. Comfortable seating.<br>Ideal for workshops, networking, and post-event reception.',dur:9000},
+    {imgA:BASE+'DSC06911__1_.jpg',imgB:null,num:'03 / 04',name:'The <em>Patio</em>',desc:'20m² outdoor terrace.<br>Ice bath. Outdoor shower. Natural light. Comfortable seating.<br>A fresh-air extension for any event format.',dur:5000},
+    {imgA:BASE+'entrance_door.jpg',imgB:BASE+'entrance_reception.jpg',num:'04 / 04',name:'The <em>Entrance</em>',desc:'Welcome desk with customizable smart art screen.<br>Street-level access on C/Muntaner.<br>In the heart of Barcelona\'s Eixample district.',dur:9000},
   ];
 
   const container=document.getElementById('sgSlides');
@@ -877,7 +881,7 @@ document.querySelectorAll('.cs-media video').forEach(v=>vidObs.observe(v));
     sgInfo.style.opacity='0';sgInfo.style.transform='translateY(18px)';
     setTimeout(()=>{
       sgName.innerHTML=slides[idx].name;
-      sgDesc.innerHTML=slides[idx].desc.replace(/\\n/g,'<br>');
+      sgDesc.innerHTML=slides[idx].desc;
       sgNum.textContent=slides[idx].num+' | THE VENUE';
       sgCounter.textContent=slides[idx].num;
       sgInfo.style.opacity='1';sgInfo.style.transform='none';
