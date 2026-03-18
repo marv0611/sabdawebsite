@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- about-v21 -->
+<meta charset="UTF-8"><!-- about-v22 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About SABDA Studio Barcelona</title>
 <meta name="description" content="SABDA is an immersive audio-visual wellness studio in Barcelona. 360° projections, Dolby Atmos, and classes that feel like nowhere else.">
@@ -80,20 +80,7 @@ nav.on{background:rgba(14,18,53,.88);backdrop-filter:blur(22px)}
 .bel-c h2 em{font-style:italic;color:var(--salmon)}
 .bel-p{font-size:clamp(.84rem,1.1vw,.95rem);color:var(--w60);line-height:1.95;margin-top:20px;max-width:440px;margin-left:auto;margin-right:auto;font-weight:300}
 
-/* STANCE */
-.stance{position:relative;z-index:6;padding:clamp(72px,10vh,120px) clamp(20px,5vw,80px)}
-.stance-hd{text-align:center;margin-bottom:clamp(40px,6vh,64px)}
-.stance-hd h2{font-family:'PT Serif',serif;font-size:clamp(1.5rem,2.8vw,2.2rem);font-weight:700;letter-spacing:-.02em}
-.stance-hd h2 em{font-style:italic;color:var(--salmon)}
-.st-grid{display:grid;grid-template-columns:1fr 1px 1fr;gap:clamp(28px,4vw,60px);max-width:660px;margin:0 auto}
-.st-div{background:linear-gradient(to bottom,rgba(2,243,197,.06),transparent)}
-.st-col h3{font-size:.5rem;letter-spacing:.4em;text-transform:uppercase;font-weight:600;margin-bottom:clamp(16px,2.5vh,26px)}
-.st-for h3{color:var(--cyan)}.st-ag h3{color:var(--salmon);opacity:.4}
-.sw{font-family:'PT Serif',serif;font-size:clamp(.88rem,1.2vw,1.05rem);font-weight:400;line-height:1.3;margin-bottom:clamp(10px,1.4vh,14px);opacity:0;will-change:transform}
-.st-for .sw{transform:translateX(-14px)}.st-ag .sw{transform:translateX(14px);color:var(--w38)}
-.sw.vis{opacity:1;transform:none;transition:opacity .45s ease,transform .45s var(--ease)}.st-ag .sw.vis{opacity:.22}
-.sw-s{position:relative;display:inline}.sw-s::after{content:'';position:absolute;left:0;top:52%;width:0;height:1px;background:var(--salmon);opacity:.4;transition:width .45s var(--ease) .08s}
-.sw.vis .sw-s::after{width:100%}
+
 
 /* MISSION */
 .ms{position:relative;z-index:6;height:170vh}
@@ -165,8 +152,7 @@ footer{padding:44px clamp(24px,4vw,80px) 24px;background:rgba(9,12,38,.6);positi
 
 @media(max-width:860px){
   nav{height:64px}.nl{display:none}.ns{gap:10px;padding-left:12px;margin-left:12px}.nli{padding-left:10px;margin-left:8px}.ls a{padding:4px 5px;font-size:.64rem}
-  .stance,footer{padding-left:20px;padding-right:20px}
-  .st-grid{grid-template-columns:1fr;gap:28px}.st-div{display:none}.st-ag{padding-top:24px}
+  footer{padding-left:20px;padding-right:20px}
   .pils-in{flex-direction:column;gap:24px}.pd{display:none}
   .ft-in{grid-template-columns:1fr 1fr}.sbk{display:flex}
   .sec-center{min-height:80vh}
@@ -225,8 +211,7 @@ footer{padding:44px clamp(24px,4vw,80px) 24px;background:rgba(9,12,38,.6);positi
 
 <div class="bel"><div class="bel-c"><span class="t-label rv">We believe</span><h2 class="rv rv-d1">Technology <em>connects.</em></h2><p class="bel-p rv rv-d2">When you use it with intention, it brings people closer instead of pulling them apart.<br><br>That’s the only kind we’re interested in.</p></div></div>
 
-<!-- STANCE -->
-<div class="stance"><div class="stance-hd"><span class="t-label rv">Our values</span><h2 class="rv rv-d1">What we <em>stand for.</em></h2></div><div class="st-grid"><div class="st-col st-for"><h3>For</h3><div class="sw">Creative expression</div><div class="sw">Art and music as medicine</div><div class="sw">Movement as art</div><div class="sw">Inclusivity</div><div class="sw">Thought-provoking technology</div><div class="sw">Connection</div><div class="sw">Tuning in</div><div class="sw">Grounding</div><div class="sw">Introspection</div></div><div class="st-div"></div><div class="st-col st-ag"><h3>Against</h3><div class="sw"><span class="sw-s">Conformity</span></div><div class="sw"><span class="sw-s">Noise pollution</span></div><div class="sw"><span class="sw-s">“Basic” fitness culture</span></div><div class="sw"><span class="sw-s">Exclusivity</span></div><div class="sw"><span class="sw-s">Doom scrolling</span></div><div class="sw"><span class="sw-s">Distraction</span></div><div class="sw"><span class="sw-s">Avoidance</span></div><div class="sw"><span class="sw-s">Groupthink</span></div><div class="sw"><span class="sw-s">Esoteric gatekeeping</span></div></div></div></div>
+
 
 <!-- MISSION -->
 <div class="ms" id="sMs"><div class="ms-sk"><div class="ms-txt"><span class="t-label">Our mission</span><p id="msP"></p></div></div></div>
@@ -439,16 +424,7 @@ var rvObs=new IntersectionObserver(function(entries){
 },{threshold:0.12});
 document.querySelectorAll('.rv').forEach(function(el){rvObs.observe(el)});
 
-/* Stance stagger */
-var stObs=new IntersectionObserver(function(entries){
-  entries.forEach(function(e){
-    if(e.isIntersecting){
-      e.target.querySelectorAll('.sw').forEach(function(w,i){setTimeout(function(){w.classList.add('vis')},i*60)});
-      stObs.unobserve(e.target);
-    }
-  });
-},{threshold:0.1});
-document.querySelectorAll('.st-col').forEach(function(c){stObs.observe(c)});
+
 
 /* Pillars stagger */
 var piObs=new IntersectionObserver(function(entries){
@@ -465,8 +441,8 @@ piObs.observe(document.getElementById('sPils'));
 /* Mission word-by-word reveal */
 var msSpans=[];
 (function(){
-  var txt="SABDA empowers humanity through technology-driven creativity, shaping a future where innovation heals, inspires, and unites. Our mission is to use technology as a force for connection, ensuring progress brings us closer together and fuels creative expression.";
-  var highlights=["heals,","inspires,","unites.","connection,","creative","expression."];
+  var txt="We believe technology should raise consciousness, not lower it. SABDA exists to build spaces where sound, light, and movement come together to help people feel more connected, more present, and more alive. That is what we show up for every day.";
+  var highlights=["consciousness,","connected,","present,","alive."];
   var el=document.getElementById('msP');
   txt.split(' ').forEach(function(w){
     var s=document.createElement('span');
