@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- about-v19 -->
+<meta charset="UTF-8"><!-- about-v20 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>About SABDA Studio Barcelona</title>
 <meta name="description" content="SABDA is an immersive audio-visual wellness studio in Barcelona. 360° projections, Dolby Atmos, and classes that feel like nowhere else.">
@@ -248,7 +248,8 @@ footer{padding:44px clamp(24px,4vw,80px) 24px;background:rgba(9,12,38,.6);positi
 
 <script>
 /* ============================================================
-   PARTICLE NEBULA (golden spiral + drift)
+   PARTICLE NEBULA — ALIVE
+   Spiral core + orbiting rings + drifting dust field
    ============================================================ */
 (function(){
   var canvas=document.getElementById('pCvs');
@@ -273,50 +274,84 @@ footer{padding:44px clamp(24px,4vw,80px) 24px;background:rgba(9,12,38,.6);positi
   var particles=[];
   var golden=Math.PI*(3-Math.sqrt(5));
 
-  /* SPIRAL: golden angle distribution */
-  var SP=mob?350:700;
+  /* === 1. SPIRAL CORE: golden angle, orbiting center === */
+  var SP=mob?300:600;
   for(var i=0;i<SP;i++){
     var t=i/SP;
     var angle=i*golden;
-    var r=6+Math.sqrt(i)*(mob?10:13);
-    var px=Math.cos(angle)*r;
-    var py=Math.sin(angle)*r;
+    var r=6+Math.sqrt(i)*(mob?9:12);
     var col;
     if(t<0.25) col=[2,243,197];
-    else if(t<0.45){var m=(t-0.25)/0.2;col=[2+28*m|0,243-173*m|0,197-7*m|0]}
-    else if(t<0.65) col=[30+Math.random()*20|0,70+Math.random()*30|0,150+Math.random()*50|0];
-    else{var m2=(t-0.65)/0.35;col=[30+218*m2|0,70+96*m2|0,150+13*m2|0]}
+    else if(t<0.5){var m=(t-0.25)/0.25;col=[2+28*m|0,243-173*m|0,197-7*m|0]}
+    else if(t<0.7) col=[30+Math.random()*25|0,65+Math.random()*35|0,140+Math.random()*60|0];
+    else{var m2=(t-0.7)/0.3;col=[30+218*m2|0,65+101*m2|0,140+23*m2|0]}
     particles.push({
-      t:1, bx:px, by:py,
-      sz:0.3+Math.random()*1.4+(1-t)*0.6,
-      gl:4+Math.random()*10+(1-t)*5,
+      type:1,
+      baseAngle:angle,
+      baseR:r,
+      sz:0.3+Math.random()*1.6+(1-t)*0.8,
+      gl:4+Math.random()*12+(1-t)*6,
       c:col,
-      op:0.025+Math.random()*0.08+(1-t)*0.03,
+      op:0.03+Math.random()*0.09+(1-t)*0.04,
       ph:Math.random()*Math.PI*2,
-      da:1.5+Math.random()*4,
-      ds:0.0004+Math.random()*0.0015,
-      ps:0.3+Math.random()*1
+      drift:1+Math.random()*5,
+      driftSpd:0.0003+Math.random()*0.002,
+      orbitSpd:0.00015+t*0.0001+Math.random()*0.00008,
+      pulseSpd:0.3+Math.random()*1.2
     });
   }
 
-  /* DRIFT: ambient fill */
-  var DR=mob?250:450;
-  var dp=[[2,243,197],[248,166,163],[32,57,153],[60,100,200],[2,243,197]];
-  for(var i2=0;i2<DR;i2++){
-    var col2=dp[Math.random()*dp.length|0];
+  /* === 2. ORBITING RINGS: concentric, faster rotation === */
+  var RINGS=mob?5:8;
+  var PER_RING=mob?30:50;
+  for(var ring=0;ring<RINGS;ring++){
+    var radius=mob?80+ring*45:100+ring*55;
+    var ringCol;
+    if(ring%3===0) ringCol=[2,243,197];
+    else if(ring%3===1) ringCol=[248,166,163];
+    else ringCol=[50,80,180];
+    var speed=0.0004+ring*0.00012;
+    for(var j=0;j<PER_RING;j++){
+      var a=(j/PER_RING)*Math.PI*2;
+      particles.push({
+        type:3,
+        ring:ring,
+        baseAngle:a,
+        radius:radius+(Math.random()-0.5)*15,
+        sz:0.2+Math.random()*1,
+        gl:3+Math.random()*8,
+        c:[ringCol[0]+Math.random()*20|0,ringCol[1]+Math.random()*20|0,ringCol[2]+Math.random()*20|0],
+        op:0.02+Math.random()*0.06,
+        ph:Math.random()*Math.PI*2,
+        orbitSpd:speed*(ring%2===0?1:-1),
+        pulseSpd:0.4+Math.random()*0.8
+      });
+    }
+  }
+
+  /* === 3. DUST FIELD: the drifting particles from every other page === */
+  var DUST=mob?350:672;
+  for(var d=0;d<DUST;d++){
+    var dcol;
+    var pick=Math.random();
+    if(pick<0.38) dcol=[2,243,197];
+    else if(pick<0.72) dcol=[248,166,163];
+    else dcol=[32,57,153];
     particles.push({
-      t:2, x:Math.random()*4000, y:Math.random(),
-      vx:0.004+Math.random()*0.035,
-      vy:(Math.random()-0.5)*0.0015,
+      type:2,
+      x:Math.random()*3000,
+      y:Math.random(),
+      vx:0.008+Math.random()*0.06,
+      vy:(Math.random()-0.5)*0.003,
       fx:0,fy:0,
-      sz:0.2+Math.random()*1,
-      gl:3+Math.random()*9,
-      c:col2,
-      op:0.012+Math.random()*0.05,
+      sz:0.3+Math.random()*1.5,
+      gl:4+Math.random()*16,
+      c:dcol,
+      op:0.025+Math.random()*0.12,
       ph:Math.random()*Math.PI*2,
-      wa:0.006+Math.random()*0.025,
-      wf:0.0001+Math.random()*0.0003,
-      ps:0.25+Math.random()*0.7
+      wa:0.01+Math.random()*0.04,
+      wf:0.0001+Math.random()*0.0005,
+      pulseSpd:0.3+Math.random()*1
     });
   }
 
@@ -330,45 +365,59 @@ footer{padding:44px clamp(24px,4vw,80px) 24px;background:rgba(9,12,38,.6);positi
       var p=particles[k];
       var dx,dy;
 
-      if(p.t===1){
-        var rot=0.00012;
-        var a=Math.atan2(p.by,p.bx)+frame*rot;
-        var d=Math.sqrt(p.bx*p.bx+p.by*p.by);
-        var ox=p.da*Math.sin(frame*p.ds+p.ph);
-        var oy=p.da*Math.cos(frame*p.ds*0.7+p.ph+1);
-        dx=cx+Math.cos(a)*d+ox;
-        dy=cy+Math.sin(a)*d+oy;
+      if(p.type===1){
+        /* SPIRAL: orbit around center + individual drift */
+        var a=p.baseAngle+frame*p.orbitSpd;
+        var ox=p.drift*Math.sin(frame*p.driftSpd+p.ph);
+        var oy=p.drift*Math.cos(frame*p.driftSpd*0.7+p.ph+1);
+        dx=cx+Math.cos(a)*p.baseR+ox;
+        dy=cy+Math.sin(a)*p.baseR+oy;
+
+      } else if(p.type===3){
+        /* RING: faster orbiting circles */
+        var ra=p.baseAngle+frame*p.orbitSpd;
+        dx=cx+Math.cos(ra)*p.radius;
+        dy=cy+Math.sin(ra)*p.radius;
+
       } else {
-        p.x+=p.vx;p.y+=p.vy;
+        /* DUST: exact same system as homepage particles */
+        p.x+=p.vx;
+        p.y+=p.vy;
         var wv=p.wa*Math.sin(p.ph+frame*p.wf);
-        dx=p.x+p.fx;dy=(p.y+wv)*H+p.fy;
+        dx=p.x+p.fx;
+        dy=(p.y+wv)*H+p.fy;
         var mx=dx-mouseX,my=dy-mouseY;
         var md=Math.sqrt(mx*mx+my*my);
-        if(md<120&&md>0){var f=(1-md/120)*2;p.fx+=(mx/md)*f;p.fy+=(my/md)*f}
+        if(md<120&&md>0){var f=(1-md/120)*2.5;p.fx+=(mx/md)*f;p.fy+=(my/md)*f}
         p.fx*=0.94;p.fy*=0.94;
-        dx=p.x+p.fx;dy=(p.y+wv)*H+p.fy;
-        if(p.x>W+50){p.x=-40;p.y=Math.random();p.fx=0;p.fy=0}
-        if(p.y<-0.04)p.y=1.04;if(p.y>1.04)p.y=-0.04;
+        dx=p.x+p.fx;
+        dy=(p.y+wv)*H+p.fy;
+        if(p.x>W+60){p.x=-50;p.y=Math.random();p.fx=0;p.fy=0}
+        if(p.y<-0.05)p.y=1.05;
+        if(p.y>1.05)p.y=-0.05;
       }
 
-      var pulse=0.4+0.6*Math.sin(p.ph+frame*0.001*p.ps);
+      /* Pulse */
+      var pulse=0.4+0.6*Math.sin(p.ph+frame*0.001*p.pulseSpd);
       var op=p.op*pulse;
       if(op<0.002) continue;
 
+      /* Glow */
       var g=ctx.createRadialGradient(dx,dy,0,dx,dy,p.gl);
-      g.addColorStop(0,  'rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+','+(op*0.85)+')');
-      g.addColorStop(0.2,'rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+','+(op*0.35)+')');
-      g.addColorStop(0.5,'rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+','+(op*0.06)+')');
+      g.addColorStop(0,  'rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+','+(op*0.8)+')');
+      g.addColorStop(0.2,'rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+','+(op*0.32)+')');
+      g.addColorStop(0.55,'rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+','+(op*0.05)+')');
       g.addColorStop(1,  'rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+',0)');
       ctx.fillStyle=g;
       ctx.beginPath();
       ctx.arc(dx,dy,p.gl,0,6.283);
       ctx.fill();
 
-      if(p.sz>0.35){
+      /* Bright core */
+      if(p.sz>0.3){
         ctx.beginPath();
-        ctx.arc(dx,dy,p.sz*0.4,0,6.283);
-        ctx.fillStyle='rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+','+Math.min(0.45,op*2)+')';
+        ctx.arc(dx,dy,p.sz*0.45,0,6.283);
+        ctx.fillStyle='rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+','+Math.min(0.5,op*2.2)+')';
         ctx.fill();
       }
     }
