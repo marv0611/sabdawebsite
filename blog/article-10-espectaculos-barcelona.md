@@ -124,7 +124,7 @@ Si buscas una experiencia inmersiva que va más allá de sentarte a mirar: [SABD
 
 Los mejores espectáculos en Barcelona no son siempre los más publicitados. El show de flamenco en un sótano, el concierto de jazz a las 21h en Jamboree, la sesión de ecstatic dance un viernes por la noche — son experiencias que no aparecen en las marquesinas pero que recordarás mucho más que el espectáculo con asientos numerados.
 
-**Relacionado:** [Cosas que hacer en Barcelona](/blog/cosas-que-hacer-en-barcelona/)
+**Relacionado:** [Cosas que hacer en Barcelona](/blog/cosas-que-hacer-en-barcelona/) | [Ecstatic dance en Barcelona](/blog/ecstatic-dance-que-es/)
 
 ---
 

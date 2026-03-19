@@ -123,7 +123,7 @@ El mejor centro de pilates en Barcelona es el que te hace ir dos veces por seman
 
 Si quieres pilates mat en un entorno que no se parece a ningún otro estudio: [SABDA](https://sabdastudio.com/classes/). 360° de proyecciones, audio espacial, y la concentración que viene de estar inmerso. [3 clases por €48](https://momence.com/m/443935).
 
-**Relacionado:** [Yoga en Barcelona: Guía definitiva](/blog/yoga-barcelona-guia/)
+**Relacionado:** [Yoga en Barcelona: Guía definitiva](/blog/yoga-barcelona-guia/) | [Pilates para dolor de espalda](/blog/pilates-dolor-espalda/)
 
 ---
 

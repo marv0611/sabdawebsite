@@ -79,3 +79,29 @@ Showers are available. Reception can help you book your next class or use the re
 
 *[Schema: BreadcrumbList → Home > Blog > Your First Time at SABDA]*
 *[hreflang: en → this page | es → /blog/primera-vez-sabda/]*
+
+---
+
+## Common first-timer questions
+
+**Do I need to be flexible/fit/experienced?** No. All classes are all-levels. Teachers offer modifications. Nobody cares what you look like — the room is dark.
+
+**What if I can't keep up?** Rest anytime. Child's pose in yoga, lying down in breathwork, stillness in ecstatic dance. Nobody judges. The dark room means nobody even notices.
+
+**Is it weird doing it alone?** No. Most people come alone. The classes are individual experiences in a shared space — you're not paired with anyone or expected to interact.
+
+**What's the best first class?** Sound healing if you want to relax (you literally just lie there). Vinyasa yoga if you want movement. Breathwork if you want something intense. Pilates if you want something physical and structured.
+
+**Can I shower after?** Yes. Changing rooms with showers are available.
+
+**What about the ice bath?** It's on the patio, combined with breathwork preparation in the immersive room. Intense but safe — the facilitator guides you through. Not recommended as your absolute first class unless you specifically want it.
+
+**Is it in English?** Most classes are taught in English, Spanish, or bilingual. Check the schedule for language.
+
+**How do I use my 3-pack?** Book each class individually through [Momence](https://momence.com/m/443935). The pack gives you 3 classes to use on any class type, any time.
+
+## After your first class
+
+Most people leave their first SABDA class slightly dazed, deeply relaxed, and wondering why it took them so long to try it. The second class is where you start to understand the difference the immersive environment makes — you drop into focus faster because you know what to expect. By the third class, most people have found their format and are considering a membership.
+
+That's the design of the [3-class intro pack (€48)](https://momence.com/m/443935): try enough to find what resonates.

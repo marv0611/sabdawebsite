@@ -79,3 +79,25 @@ It's midnight and the birthday is tomorrow. [SABDA gift cards](https://sabdastud
 
 *[Schema: BreadcrumbList → Home > Blog > Gift Experiences in Barcelona]*
 *[hreflang: en → this page | es → /blog/regalo-experiencia-barcelona/]*
+
+---
+
+## When to give which gift
+
+**Birthday:** Sailing (dramatic, personal) or SABDA 3-pack (they'll discover something new).
+
+**Valentine's Day / Anniversary:** Sound healing at SABDA (intimate, unusual) or sunset sailing (romantic, classic).
+
+**Christmas:** SABDA gift card (instant digital delivery saves you on Dec 24th) or Penedès wine experience (festive, shareable).
+
+**"Just because":** Vermouth crawl (thoughtful, personal) or cooking class (fun, no pressure).
+
+**Farewell gift for someone leaving Barcelona:** SABDA 3-pack. They'll experience something uniquely Barcelona before they go.
+
+**Group gift (office, friend group):** Pool money for a private SABDA session (from €350 for the group) or a sailing afternoon. Per-person cost drops fast with group gifts.
+
+## The psychology of experience gifts
+
+Research consistently shows that experience gifts produce more lasting happiness than material ones. The reasons: experiences become part of identity ("I'm the person who did sound healing in a 360° room"), they improve with retelling (the story gets better each time), and they're harder to compare with alternatives (nobody Googles "was my sailing gift better value than a different sailing gift?").
+
+The best experience gifts share three qualities: the recipient wouldn't buy it themselves, it introduces them to something new, and it creates a memory that's specifically tied to Barcelona. A SABDA 3-pack hits all three.

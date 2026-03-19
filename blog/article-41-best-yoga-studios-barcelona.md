@@ -16,7 +16,7 @@ Barcelona has more yoga studios than you can visit in a month. Some are excellen
 ---
 
 ## 1. SABDA — The immersive one
-[SABDA](https://sabdastudio.com/classes/) isn't a yoga studio in any conventional sense. It's a 360° projection room with Dolby Atmos spatial audio in the Eixample where yoga classes happen inside custom-designed visual worlds. Vinyasa Flow, Hatha Vinyasa, Power Vinyasa, Yoga Sculpt, Yin — each format has its own visual and musical design.
+[SABDA](https://sabdastudio.com/classes/yoga/) isn't a yoga studio in any conventional sense. It's a 360° projection room with Dolby Atmos spatial audio in the Eixample where yoga classes happen inside custom-designed visual worlds. Vinyasa Flow, Hatha Vinyasa, Power Vinyasa, Yoga Sculpt, Yin — each format has its own visual and musical design.
 
 **Vibe:** Dark, immersive, premium. Like stepping into another dimension and doing yoga there.
 **Styles:** Vinyasa, Hatha, Power, Sculpt, Yin
@@ -110,7 +110,7 @@ The best yoga studio in Barcelona is the one that makes you come back a second t
 
 If you want something no other city has: [SABDA](https://sabdastudio.com/classes/). 360° projections, spatial audio, yoga that feels like entering another world. [3 classes for €48](https://momence.com/m/443935).
 
-**Related:** [Yoga en Barcelona: guía completa (ES)](/blog/yoga-barcelona-guia/)
+**Related:** [Yoga en Barcelona: guía completa (ES)](/blog/yoga-barcelona-guia/) | [Best Pilates Studios](/blog/best-pilates-studios-barcelona/) | [Your First Time at SABDA](/blog/first-time-sabda/) | [How to Choose a Yoga Style](/blog/how-to-choose-yoga-style/)
 
 ---
 

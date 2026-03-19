@@ -124,10 +124,11 @@ Si solo tienes tiempo para una experiencia inmersiva en Barcelona, elige según 
 
 [3 clases inmersivas en SABDA por €48](https://momence.com/m/443935) — yoga, sound healing, breathwork, o ecstatic dance dentro de 360° de proyecciones y audio espacial.
 
-**Relacionado:** [Espectáculos en Barcelona](/blog/espectaculos-barcelona/) | [Cosas que hacer en Barcelona](/blog/cosas-que-hacer-en-barcelona/)
+**Relacionado:** [Espectáculos en Barcelona](/blog/espectaculos-barcelona/) | [Exposiciones inmersivas](/blog/exposiciones-inmersivas-barcelona/) | [Sala inmersiva Barcelona](/blog/sala-inmersiva-barcelona/) | [Cosas que hacer en Barcelona](/blog/cosas-que-hacer-en-barcelona/)
 
 ---
 
 *[Schema: BreadcrumbList → Inicio > Blog > Experiencias Inmersivas en Barcelona]*
+*[hreflang: es → this page | en → /blog/immersive-experiences-barcelona/]
 *[Images needed: hero (immersive projection space), SABDA room, IDEAL exhibition, Moco Museum teamLab room]*
 *[All images require alt text with "experiencia inmersiva barcelona," "arte inmersivo barcelona"]*

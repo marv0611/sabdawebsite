@@ -59,7 +59,7 @@ Either comes in under €150/person for a full day the bride will remember far l
 
 ---
 
-For SABDA group bookings: [connect@sabdastudio.com](mailto:connect@sabdastudio.com) | [Hire the space →](https://sabdastudio.com/hire/)
+For SABDA group bookings: [connect@sabdastudio.com](mailto:connect@sabdastudio.com) | [Hire the space →](https://sabdastudio.com/hire/) | [Team building →](https://sabdastudio.com/team-building/)
 
 **Related:** [Despedida de soltera en Barcelona (ES)](/blog/despedida-de-soltera-barcelona/)
 
@@ -67,3 +67,27 @@ For SABDA group bookings: [connect@sabdastudio.com](mailto:connect@sabdastudio.c
 
 *[Schema: BreadcrumbList → Home > Blog > Hen Party in Barcelona]*
 *[hreflang: en → this page | es → /blog/despedida-de-soltera-barcelona/]*
+
+---
+
+## Practical planning tips
+
+**When to book:** 3-4 weeks before for SABDA, sailboat, and restaurants. Vermouth crawl and Bunkers need no booking.
+
+**Budget per person:** A full day (SABDA + brunch + vermouth crawl) costs ~€100-130/person. A half day (sailboat + dinner) costs ~€80-120/person. Bunkers sunset + Sant Antoni bars costs ~€30/person.
+
+**Group size matters:** Most experiences work for 6-15 people. For groups over 15, SABDA's private hire (up to 80 in the immersive room) is one of the few options that doesn't split the group.
+
+**Don't over-plan:** The best hen parties have 2-3 structured activities and the rest is free time. Barcelona is the kind of city where the unplanned moments (a random bar, a street musician, a rooftop you weren't looking for) become the highlights.
+
+**Weather backup:** If your plan includes outdoor elements (sailboat, Bunkers), have an indoor backup. SABDA works rain or shine. Museums work rain or shine. The vermouth crawl works in any weather (most bars have indoor seating).
+
+**Airport logistics:** If you're flying in from the UK, Barcelona El Prat to city centre is 35-45 minutes by Aerobus (€7.75) or taxi (~€40). Don't plan major activities for arrival day — settle in, explore the neighbourhood, and save the big plans for day two.
+
+## What NOT to do
+
+**Don't book a boat party through a random promoter.** The cheap "party boat" offers (€25/person) are floating nightclubs with 200 strangers, bad music, and warm sangria. Private sailboats cost more but they're private — your group, your music, your pace.
+
+**Don't go to La Rambla for dinner.** Or any restaurant with photos of the food on the menu. Walk two blocks in any direction and the quality doubles while the price halves.
+
+**Don't plan every hour.** The best hen party moments happen in the gaps: the bar you stumbled into, the street musician who made everyone cry-laugh, the 2am gelato run. Leave space for those.

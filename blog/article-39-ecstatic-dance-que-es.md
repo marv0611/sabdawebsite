@@ -6,7 +6,7 @@
 
 **Slug:** `/blog/ecstatic-dance-que-es/`
 
-**Primary keyword:** ecstatic dance barcelona
+**Primary keyword:** danza extatica barcelona
 **Secondary keywords:** danza extática barcelona, ecstatic dance qué es, ecstatic dance barcelona hoy
 
 ---
@@ -89,3 +89,21 @@ Las proyecciones 360° responden a la energía de la sesión. Durante la apertur
 
 *[Schema: BreadcrumbList → Inicio > Blog > Ecstatic Dance en Barcelona]*
 *[hreflang: es → this page | en → /blog/ecstatic-dance-barcelona/]*
+
+---
+
+## Para quién es (y para quién no)
+
+**Sí:** Gente que ama la música y odia los clubs. Curiosos sobre prácticas de movimiento que encuentran el yoga demasiado lento. Hombres que se sienten incómodos en espacios de wellness (la danza extática tiene un ratio de género sorprendentemente equilibrado, especialmente en SABDA). Escépticos dispuestos a probar una vez.
+
+**No:** Gente que necesita estructura (no hay coreografía, no hay profesor al frente). Gente que quiere hablar mientras baila (la regla de silencio es estricta). Gente que busca una rave (es sobrio, no hay barra).
+
+**El test:** Si la idea de bailar solo en una sala oscura te da curiosidad Y un poco de miedo, es exactamente para ti. Esa tensión entre curiosidad y miedo es la señal de que estás al borde de una experiencia que te expandirá.
+
+## Después de tu primera sesión
+
+La mayoría de gente sale de su primera sesión de danza extática pensando una de tres cosas: "no puedo creer que acabo de hacer eso" (lo más común), "necesito hacer esto cada semana" (lo segundo más común), o "no es para mí" (raro, pero válido).
+
+Lo que casi nadie dice es "me arrepiento de haber ido." El peor caso es 90 minutos de ejercicio con buena música. El mejor caso es una experiencia que reconfigura tu relación con el movimiento y con tu propio cuerpo.
+
+Y si descubres que la danza extática te abre algo, el [pack de 3 clases de SABDA por €48](https://momence.com/m/443935) te da acceso a sound healing, breathwork, y yoga en la misma sala de 360°. La mayoría de gente que viene por ecstatic dance acaba probando sound healing — son dos lados de la misma moneda.

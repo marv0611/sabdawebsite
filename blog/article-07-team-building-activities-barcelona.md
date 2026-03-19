@@ -28,7 +28,7 @@ This is the one nobody expects at a team building — and the one they remember.
 FC Barcelona, Alpro, and Decathlon have all used the space for team experiences. Capacity: 20-80 people. Sessions run 60-90 minutes, and SABDA can customise the visuals with your brand content or event theme.
 
 **Price:** From €350/session. Full production packages with branded visuals available.
-**Contact:** [connect@sabdastudio.com](mailto:connect@sabdastudio.com) | [Corporate page →](https://sabdastudio.com/hire/)
+**Contact:** [connect@sabdastudio.com](mailto:connect@sabdastudio.com) | [Corporate page →](https://sabdastudio.com/hire/) | [Team building →](https://sabdastudio.com/team-building/)
 
 ### 3. Graffiti workshop in Poblenou
 
@@ -94,7 +94,7 @@ A practical note: for groups larger than 20, book at least 3-4 weeks in advance,
 
 For corporate team experiences at SABDA (10-200 people, customisable, Eixample location): [connect@sabdastudio.com](mailto:connect@sabdastudio.com) | [Hire the space →](https://sabdastudio.com/hire/)
 
-**Related:** [Actividades para empresas en Barcelona](/blog/actividades-para-empresas-barcelona/)
+**Related:** [Actividades para empresas en Barcelona](/blog/actividades-para-empresas-barcelona/) | [Corporate Wellness](/blog/corporate-wellness-barcelona/)
 
 ---
 

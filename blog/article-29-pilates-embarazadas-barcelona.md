@@ -61,7 +61,7 @@ Sesiones individuales adaptadas al embarazo. Si prefieres atención 1:1, es una 
 Reformer y mat en grupos pequeños con profesoras que adaptan. Ambiente acogedor, formación seria. Precio: ~€20-28/clase.
 
 ### SABDA (Eixample)
-[SABDA](https://sabdastudio.com/classes/) ofrece clases de pilates mat en grupo ("all levels") donde los profesores proporcionan modificaciones para embarazadas. No es un programa prenatal específico, pero si ya practicabas pilates, la sala inmersiva con proyecciones 360° y audio espacial Dolby Atmos añade un nivel de relajación y enfoque que complementa la práctica durante el embarazo. Las clases de Core Pilates y Full Body Pilates son las más adaptables. Desde €16/clase. [3 clases por €48](https://momence.com/m/443935).
+[SABDA](https://sabdastudio.com/classes/pilates/) ofrece clases de pilates mat en grupo ("all levels") donde los profesores proporcionan modificaciones para embarazadas. No es un programa prenatal específico, pero si ya practicabas pilates, la sala inmersiva con proyecciones 360° y audio espacial Dolby Atmos añade un nivel de relajación y enfoque que complementa la práctica durante el embarazo. Las clases de Core Pilates y Full Body Pilates son las más adaptables. Desde €16/clase. [3 clases por €48](https://momence.com/m/443935).
 
 ### Sesiones individuales con fisioterapeuta
 Para casos con complicaciones o necesidades específicas, varios fisioterapeutas en Barcelona ofrecen pilates perinatal individual. Busca profesionales con doble formación: pilates (Stott, BASI, Polestar) + perinatal. Precio: €50-80/sesión.
@@ -85,3 +85,13 @@ Consulta siempre con tu ginecólogo o matrona antes de empezar cualquier activid
 ---
 
 *[Schema: BreadcrumbList → Inicio > Blog > Pilates Para Embarazadas en Barcelona]*
+
+---
+
+## Suelo pélvico: por qué es la prioridad
+
+Si solo haces una cosa durante el embarazo en términos de ejercicio, que sea trabajar el suelo pélvico. Los músculos del suelo pélvico sostienen el útero, la vejiga, y el intestino. Durante el embarazo, el peso creciente del bebé los estira y debilita. Un suelo pélvico fuerte facilita el parto (mejor control durante el expulsivo), acelera la recuperación postparto, y previene la incontinencia (que afecta al 30-50% de las mujeres después del parto).
+
+El pilates es particularmente bueno para esto porque integra el suelo pélvico en cada ejercicio — no como un add-on de "aprieta ahí," sino como parte del control central que el método enseña.
+
+**Ejercicio básico:** Kegel con respiración. Exhala y contrae el suelo pélvico (imagina que cierras una cremallera de pubis a ombligo). Inhala y suelta. 10 repeticiones, 3 series al día. Parece poco. Es suficiente si lo haces consistentemente.

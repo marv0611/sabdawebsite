@@ -93,10 +93,11 @@ The honest answer is that most people who try a guided ice bath session — espe
 
 **Book:** [Ice bath + breathwork at SABDA](https://sabdastudio.com/classes/ice-bath/) | [3 classes for €48](https://momence.com/m/443935)
 
-**Related:** [What Is Breathwork?](/blog/what-is-breathwork/) | [Classes at SABDA](/classes/)
+**Related:** [What Is Breathwork?](/blog/what-is-breathwork/) | [Wim Hof Method in Barcelona](/blog/wim-hof-barcelona/) | [Classes at SABDA](/classes/)
 
 ---
 
 *[Schema: BreadcrumbList → Home > Blog > Ice Bath in Barcelona]*
+*[hreflang: en → this page | es → /blog/crioterapia-barcelona/]
 *[Images needed: hero (ice bath/cold plunge), SABDA patio ice bath session, person breathing before plunge]*
 *[All images require alt text with "ice bath barcelona" and "cold plunge barcelona"]*

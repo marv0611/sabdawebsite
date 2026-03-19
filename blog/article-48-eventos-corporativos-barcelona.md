@@ -65,3 +65,29 @@ Los mejores eventos corporativos barcelona son los que nadie espera. Para algo q
 ---
 
 *[Schema: BreadcrumbList → Inicio > Blog > Eventos Corporativos en Barcelona]*
+
+---
+
+## Errores comunes al organizar eventos corporativos
+
+**Elegir el espacio antes que el formato.** El espacio debería servir al objetivo, no al revés. Si el objetivo es conexión de equipo, una sala de conferencias en un hotel de 5 estrellas no lo consigue. Si el objetivo es una presentación formal, un loft industrial sin AV es un dolor de cabeza.
+
+**No comunicar la logística a tiempo.** Dirección, hora de llegada, código de vestimenta, y qué esperar. Envíalo 5 días antes, no la noche anterior. Si el evento incluye una experiencia inusual (breathwork, ice bath), avisa con antelación para que nadie se presente en traje.
+
+**Olvidar el catering.** Un equipo hambriento no conecta. Planifica coffee breaks, almuerzo, o cena según la duración del evento. SABDA no incluye catering, pero hay decenas de opciones de catering y restaurantes en Eixample a 5 minutos a pie.
+
+**Llenar todo el tiempo.** Los mejores eventos corporativos tienen huecos. Tiempo para café, conversación libre, y digestión. Un programa de 8 horas sin pausas produce agotamiento, no conexión.
+
+**No medir el impacto.** Envía una encuesta de 3 preguntas la semana siguiente. ¿Qué te gustó? ¿Qué cambiarías? ¿Recomendarías la experiencia? Los datos justifican el presupuesto del próximo evento.
+
+## Cuánto presupuesto necesitas
+
+| Tipo de evento | Presupuesto por persona | Ejemplo |
+|---|---|---|
+| Experiencia inmersiva (SABDA) | €10-25 | Breathwork + sound healing para 40 |
+| Team building outdoor | €30-60 | Vela, kayak, o ruta gastronómica |
+| Conferencia (hotel) | €50-100 | Medio día con catering |
+| Cena de empresa | €40-80 | Restaurante privatizado |
+| Retiro de equipo (1 día) | €80-150 | SABDA + almuerzo + actividad |
+
+El presupuesto más inteligente para un evento corporativo en Barcelona no es el más alto — es el que produce la mayor conexión entre los asistentes por euro gastado.

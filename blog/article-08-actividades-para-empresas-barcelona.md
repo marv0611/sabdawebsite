@@ -84,7 +84,7 @@ Las mejores actividades para empresas en Barcelona son las que no parecen team b
 
 Un consejo práctico: para grupos de más de 20 personas, reserva con al menos 3-4 semanas de antelación, especialmente si venís durante el MWC (febrero), Primavera Sound (junio), o cualquier semana de congresos. Barcelona organiza miles de eventos corporativos y los mejores espacios se llenan rápido.
 
-**Eventos corporativos y wellness corporativo en SABDA (10-200 personas):** [connect@sabdastudio.com](mailto:connect@sabdastudio.com) | [Alquilar el espacio →](https://sabdastudio.com/hire/)
+**Eventos corporativos y wellness corporativo en SABDA (10-200 personas):** [connect@sabdastudio.com](mailto:connect@sabdastudio.com) | [Alquilar el espacio →](https://sabdastudio.com/hire/) | [Team building →](https://sabdastudio.com/team-building/)
 
 **Relacionado:** [Team Building Activities in Barcelona (English)](/blog/team-building-activities-barcelona/)
 

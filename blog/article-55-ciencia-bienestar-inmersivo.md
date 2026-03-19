@@ -60,3 +60,15 @@ Experimenta la diferencia: [3 clases inmersivas en SABDA por €48](https://mome
 ---
 
 *[Schema: BreadcrumbList → Inicio > Blog > La Ciencia del Bienestar Inmersivo]*
+
+---
+
+## Limitaciones y honestidad
+
+La investigación sobre wellness inmersivo es joven. La mayoría de estudios sobre meditación y mindfulness se han hecho en salas normales, no en entornos 360° con audio espacial. Extrapolar directamente es tentador pero prematuro.
+
+Lo que podemos decir con confianza: los mecanismos individuales están bien documentados (efecto del nervio vago, reducción de DMN, estados de flujo). La hipótesis de que un entorno inmersivo amplifica estos mecanismos es plausible y consistente con lo que los usuarios reportan. Pero no hay ensayos controlados específicos sobre "wellness inmersivo" aún.
+
+Esto no significa que no funcione. Significa que la ciencia necesita tiempo para alcanzar a la experiencia. Y mientras tanto, la experiencia habla por sí misma: la gente que prueba una clase en [SABDA](https://sabdastudio.com/classes/) y la compara con una clase equivalente en un estudio convencional nota la diferencia inmediatamente. Esa diferencia es medible en HRV (variabilidad de frecuencia cardíaca) y estados de ánimo — los datos anecdóticos son consistentes con la teoría neurológica.
+
+La ciencia del bienestar inmersivo está en su infancia. Pero los ladrillos — neurociencia del sonido, psicología de la inmersión, fisiología del nervio vago — son sólidos. Lo que falta es el edificio completo. Y alguien tiene que construirlo.

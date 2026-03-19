@@ -72,3 +72,27 @@ El día de lluvia perfecto en Barcelona: una clase de sound healing en [SABDA](h
 ---
 
 *[Schema: BreadcrumbList → Inicio > Blog > Qué Hacer en Barcelona Cuando Llueve]*
+
+---
+
+## Más ideas para días grises
+
+### Librerías con café
+Barcelona tiene librerías donde puedes sentarte, leer, y tomar un café sin que nadie te moleste. La Central (Raval) es la más grande. Laie (Eixample) tiene un café-restaurante arriba. +Bernat (Born) es pequeña y tiene personalidad. Un día de lluvia con un libro y un café no necesita nada más.
+
+### Comida reconfortante
+Los días de lluvia piden caldos, cocidos, y cosas calientes. Bar Cañete (Raval) tiene uno de los mejores caldos de Barcelona. Can Culleretes (Gòtic, abierto desde 1786) sirve cocina catalana de la de verdad — escudella, carn d'olla, canelons. La Pepita (Gràcia) hace bocadillos creativos que compensan cualquier chaparrón.
+
+### Mercados cubiertos como plan de día
+Sant Antoni, Santa Caterina, y La Boqueria (sí, con lluvia tiene menos turistas) son planes de 2-3 horas: pasear, mirar, comprar algo, sentarte en el bar del mercado, y repetir. Los mercados cubiertos de Barcelona son arquitectura, gastronomía, y vida de barrio — todo bajo techo.
+
+### Bowling, billar, y juegos
+Si quieres algo más activo bajo techo, Bowling Pedralbes y Billar Barcelona tienen mesas y boleras que funcionan llueva o haga sol. No es sofisticado, pero es divertido, barato, y no necesita reserva.
+
+El plan perfecto de día de lluvia: [sound healing en SABDA](https://sabdastudio.com/classes/sound-healing/) a las 10:00, mercado de Sant Antoni a las 12:00, librería + café a las 14:00, Filmoteca a las 16:00. Coste total: ~€30. Mejor que la mayoría de días soleados.
+
+## Cuándo llueve en Barcelona
+
+Barcelona tiene unos 55-60 días de lluvia al año — principalmente en octubre-noviembre y marzo-abril. Los chubascos suelen ser intensos pero cortos (1-2 horas). Rara vez llueve todo el día. La estrategia: planifica una actividad bajo techo para la mañana (SABDA, museo, mercado) y deja la tarde para ver si sale el sol. Suele salir.
+
+La lluvia en Barcelona no arruina planes — los redirige hacia sitios que en un día soleado ignorarías.

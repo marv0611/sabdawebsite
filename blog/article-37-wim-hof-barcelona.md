@@ -69,3 +69,23 @@ You don't need to be a biohacker, a fitness fanatic, or a Wim Hof devotee. SABDA
 ---
 
 *[Schema: BreadcrumbList → Home > Blog > Wim Hof Method in Barcelona]*
+
+---
+
+## Common misconceptions
+
+**"You need to build up to it."** Not at SABDA. The breathwork preparation IS the build-up. You don't need weeks of cold showers first. The facilitated session takes you from zero to ice bath in 90 minutes.
+
+**"It's dangerous."** For healthy adults, brief cold water immersion (2-3 minutes) is safe. The facilitator monitors everyone. If you have cardiovascular conditions, uncontrolled blood pressure, or are pregnant, skip the ice bath (the breathwork alone is worth it).
+
+**"The breathing makes you pass out."** Not with proper facilitation. The rapid breathing phase produces tingling and light-headedness, which is normal and temporary. At SABDA, the facilitator manages the pacing to keep everyone within safe limits.
+
+**"It's just a trend."** Cold exposure has been used therapeutically for centuries (Finnish saunas + cold lakes, Japanese cold water purification, Russian ice swimming). Wim Hof systematised it and added breathwork. The science supports the practice — the branding is new, the principles aren't.
+
+## After the session
+
+The 30-60 minutes after an ice bath are worth describing because they're what keep people coming back. The norepinephrine spike produces a calm alertness that's different from caffeine (no jitter, no crash). Colours look slightly brighter. Sounds are clearer. You feel present in a way that's hard to manufacture through any other means.
+
+Most people describe it as "feeling 10 years younger for an hour." That's not scientific. But it's honest.
+
+The effect fades, but the reference point stays. The next time you're stressed in a meeting or a difficult conversation, you have a physical memory of staying calm under extreme conditions. That translates.

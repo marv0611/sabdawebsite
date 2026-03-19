@@ -96,7 +96,7 @@ El mindfulness no requiere creer en nada. No requiere flexibilidad, ni ropa espe
 
 Si quieres probar en un entorno que facilita la práctica: [meditación guiada en SABDA](https://sabdastudio.com/classes/meditation/) desde €16. [3 clases por €48](https://momence.com/m/443935) — combina meditación con sound healing para la experiencia completa.
 
-**Relacionado:** [What Is Sound Healing?](/blog/what-is-sound-healing/) | [Yoga en Barcelona: Guía definitiva](/blog/yoga-barcelona-guia/)
+**Relacionado:** [What Is Sound Healing?](/blog/what-is-sound-healing/) | [Yoga en Barcelona: Guía definitiva](/blog/yoga-barcelona-guia/) | [Cursos de mindfulness](/blog/curso-mindfulness-barcelona/) | [Meditación guiada](/blog/meditacion-guiada-barcelona/)
 
 ---
 

@@ -96,3 +96,4 @@ Y si queréis probar algo realmente distinto: [3 clases inmersivas en SABDA por 
 *[Schema: BreadcrumbList → Inicio > Blog > 12 Planes en Pareja en Barcelona]*
 *[Images needed: hero (Barcelona couple silhouette/sunset), SABDA sound healing, Bunkers del Carmel, seafront walk, Poblenou street, sailboat Barcelona]*
 *[All images require alt text with Spanish keywords]*
+*[hreflang: es → this page | en → /blog/couples-activities-barcelona/]*

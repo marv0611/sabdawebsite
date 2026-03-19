@@ -2,7 +2,7 @@
 
 **Last updated: March 2026**
 
-**Meta description:** Skip the Sagrada Familia queue. Here are 15 genuinely unique things to do in Barcelona — from immersive wellness to hidden rooftops to the best vermouth bars. (155 chars)
+**Meta description:** Skip the Sagrada Familia queue. 15 genuinely unique things to do in Barcelona — immersive wellness, hidden rooftops, vermouth bars.
 
 **Slug:** `/blog/things-to-do-in-barcelona/`
 
@@ -128,7 +128,7 @@ This is free, requires nothing but shoes, and might be the best date activity in
 
 ## 13. Explore Gaudí Year 2026
 
-2026 is the 100th anniversary of Antoni Gaudí's death, and Barcelona is going hard. The city has been named World Capital of Architecture by UNESCO, and there are over 1,500 events scheduled through December. Open-house visits to buildings that are normally closed, new exhibitions at Casa Batlló (the "Beyond the Façade" show in the new Contemporary space), architecture walking tours, and special nighttime openings across the city. If you're visiting in 2026, check [meet.barcelona](https://www.meet.barcelona/en/main-events) for what's on this week — there's something architectural happening nearly every day.
+2026 is the 100th anniversary of Antoni Gaudí's death, and Barcelona is going hard. The city has been named World Capital of Architecture by UNESCO, and there are over 1,500 events scheduled through December. Open-house visits to buildings that are normally closed, new exhibitions at Casa Batlló (the "Beyond the Façade" show in the new Contemporary space), architecture walking tours, and special nighttime openings across the city. If you're visiting in 2026, check [meet.barcelona](https://www.meet.barcelona/en/main-events) for what's on — there's something architectural happening nearly every day.
 
 ---
 
@@ -150,7 +150,7 @@ Barcelona rewards the people who wander slightly off the path. The Sagrada Famil
 
 If you're looking for something genuinely different during your visit, [SABDA's intro offer — 3 classes for €48](https://momence.com/m/443935) — is worth it. Yoga, breathwork, sound healing, or ecstatic dance inside a 360° projection room. It's the kind of thing Barcelona does that no other city does.
 
-**Related:** [Cosas que hacer en Barcelona este fin de semana](/blog/cosas-que-hacer-en-barcelona/) | [Planes en pareja en Barcelona](/blog/planes-en-pareja-barcelona/)
+**Related:** [Cosas que hacer en Barcelona este fin de semana](/blog/cosas-que-hacer-en-barcelona/) | [Planes en pareja en Barcelona](/blog/planes-en-pareja-barcelona/) | [Best Immersive Experiences](/blog/immersive-experiences-barcelona/)
 
 ---
 

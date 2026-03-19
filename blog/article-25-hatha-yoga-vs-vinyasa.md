@@ -31,7 +31,7 @@ Hatha es el formato clásico. Cada postura (asana) se mantiene durante 5-10 resp
 **Intensidad:** Moderada. Trabajas fuerza isométrica (mantener) más que cardio.
 **Mejor para:** Principiantes (te da tiempo para entender la mecánica), gente que quiere profundidad técnica, personas con lesiones que necesitan tiempo para ajustar.
 
-El hatha yoga en Barcelona se enseña en prácticamente todos los estudios. En [SABDA](https://sabdastudio.com/classes/), las clases de Hatha Vinyasa combinan la precisión del hatha con transiciones suaves entre posturas, todo dentro de la sala inmersiva de 360°.
+El hatha yoga en Barcelona se enseña en prácticamente todos los estudios. En [SABDA](https://sabdastudio.com/classes/yoga/), las clases de Hatha Vinyasa combinan la precisión del hatha con transiciones suaves entre posturas, todo dentro de la sala inmersiva de 360°.
 
 ---
 
@@ -96,3 +96,15 @@ Tanto el hatha como el vinyasa están disponibles en [SABDA](https://sabdastudio
 ---
 
 *[Schema: BreadcrumbList → Inicio > Blog > Hatha Yoga vs Vinyasa]*
+
+---
+
+## Mitos que no son verdad
+
+**"Hatha es para principiantes, vinyasa es avanzado."** No. Hay clases de hatha muy exigentes (mantener guerrero II durante 2 minutos es brutal) y clases de vinyasa suave perfectas para principiantes. El nivel depende de la clase, no del estilo.
+
+**"Vinyasa quema más calorías, así que es mejor."** Las calorías no son la medida de una buena práctica de yoga. Si tu objetivo es quemar calorías, corre. Si tu objetivo es movimiento consciente, flexibilidad, fuerza, y calma mental, las calorías son irrelevantes.
+
+**"Necesitas ser flexible para hacer hatha."** Necesitas ser flexible para hacer hatha como necesitas estar limpio para ducharte. El punto es ir hacia la flexibilidad, no partir de ella.
+
+**"Vinyasa es meditación en movimiento."** Puede serlo. También puede ser 60 minutos de movimiento sin consciencia si estás pensando en el trabajo. La meditación en movimiento ocurre cuando la mente está en el cuerpo, no cuando el cuerpo está en movimiento.

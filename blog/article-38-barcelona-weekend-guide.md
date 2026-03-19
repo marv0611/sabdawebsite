@@ -65,8 +65,34 @@ Watch the city turn gold, then pink, then dark. Walk down. Dinner somewhere in G
 
 [3 classes at SABDA for €48](https://momence.com/m/443935) — the Sunday morning that makes the weekend.
 
-**Related:** [15 Unique Things to Do in Barcelona](/blog/things-to-do-in-barcelona/)
+**Related:** [15 Unique Things to Do in Barcelona](/blog/things-to-do-in-barcelona/) | [Barcelona in Summer](/blog/barcelona-summer-activities/)
 
 ---
 
 *[Schema: BreadcrumbList → Home > Blog > Barcelona Weekend Guide]*
+
+---
+
+## What most guides miss
+
+The biggest mistake visitors make in Barcelona: they plan too much. Three museums, two Gaudí buildings, a cooking class, and a flamenco show — all in 48 hours. You'll see everything and experience nothing.
+
+The best Barcelona weekends have 2-3 anchors and the rest is wandering. The anchors give you direction. The wandering gives you the stories you'll actually tell people when you get home.
+
+This itinerary has three anchors: a market (Saturday morning), SABDA (Sunday morning), and Bunkers (Sunday evening). Everything else flows naturally around them.
+
+## If you have 3 days
+
+Add Monday morning: bike tour through Poblenou with Steel Donkey or a similar operator. Skip La Rambla, skip the tourist circuit. See the neighbourhood that's actually shaping Barcelona's future — converted factories, startup offices, and coffee shops that could be in Berlin or Brooklyn.
+
+Monday afternoon: whatever you missed. A museum you didn't get to (CCCB or CaixaForum are both under €6 and rarely crowded). A vermouth you didn't have time for. A street you walked past and want to go back to.
+
+Monday evening: Gaudí building at night. La Pedrera's night experience (rooftop tour, projections, cava) is €35 and wraps up around 10:30pm — early enough for a last dinner in Eixample.
+
+## Money-saving tips
+
+The T-Casual metro card (10 trips, ~€11) covers all metro, bus, and tram within Barcelona. It's valid for multiple people — just pass it to your travel companion after you beep through.
+
+Skip the tourist restaurants on La Rambla and the Gothic Quarter tourist strip. Walk two blocks in any direction and prices drop 40%. The quality floor in Barcelona is remarkably high — even a random bar in Sant Antoni serves better food than most tourist restaurants.
+
+For SABDA: the [3-class intro pack (€48)](https://momence.com/m/443935) works out to €16/class — less than a ticket to most Barcelona "experiences" and more memorable than any of them.

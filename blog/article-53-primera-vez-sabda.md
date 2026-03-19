@@ -79,3 +79,26 @@ Duchas disponibles. Recepción puede ayudarte a reservar tu próxima clase o a u
 ---
 
 *[Schema: BreadcrumbList → Inicio > Blog > Tu Primera Vez en SABDA]*
+*[hreflang: es → this page | en → /blog/first-time-sabda/]*
+
+---
+
+## Preguntas de primera vez
+
+**¿Necesito ser flexible/estar en forma?** No. Todas las clases son para todos los niveles. Los profesores dan modificaciones. Nadie te juzga — la sala está oscura.
+
+**¿Y si no puedo seguir el ritmo?** Descansa cuando quieras. Postura del niño en yoga, tumbarte en breathwork, quedarte quieto en ecstatic dance. Nadie mira.
+
+**¿Es raro ir solo?** No. La mayoría viene sola. Son experiencias individuales en un espacio compartido.
+
+**¿Cuál es la mejor primera clase?** Sound healing si quieres relajarte (solo te tumbas). Vinyasa si quieres movimiento. Breathwork si quieres algo intenso. Pilates si quieres algo físico y estructurado.
+
+**¿Puedo ducharme después?** Sí. Vestuarios con duchas disponibles.
+
+**¿Se puede reservar sin el pack?** Sí, hay clases sueltas. Pero el [pack de 3 por €48](https://momence.com/m/443935) (€16/clase) es mejor valor y te permite probar distintos formatos.
+
+## Después de tu primera clase
+
+La mayoría de gente sale de su primera clase en SABDA ligeramente aturdida, profundamente relajada, y preguntándose por qué tardó tanto en probar. La segunda clase es donde empiezas a entender la diferencia que hace el entorno inmersivo — entras en foco más rápido porque sabes qué esperar. Para la tercera, la mayoría ha encontrado su formato favorito y está considerando una membresía.
+
+Ese es el diseño del [pack de 3 clases por €48](https://momence.com/m/443935): probar lo suficiente para encontrar lo que te resuena.

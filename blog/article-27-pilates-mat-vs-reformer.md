@@ -46,7 +46,7 @@
 
 **Quieres entender tu cuerpo.** Sin máquina, no hay muleta. Aprendes a controlar tu cuerpo con tu propio peso, lo cual traduce mejor a la vida real.
 
-**Te interesa la experiencia inmersiva.** [SABDA](https://sabdastudio.com/classes/) ofrece pilates mat dentro de una sala de 360° con Dolby Atmos — proyecciones inmersivas y audio espacial que amplifican la concentración de una forma que ni el mejor estudio convencional consigue. Formatos: Core Pilates, Power Pilates, Pilates Sculpt, Full Body Pilates. Desde €16/clase con el [pack de 3 por €48](https://momence.com/m/443935).
+**Te interesa la experiencia inmersiva.** [SABDA](https://sabdastudio.com/classes/pilates/) ofrece pilates mat dentro de una sala de 360° con Dolby Atmos — proyecciones inmersivas y audio espacial que amplifican la concentración de una forma que ni el mejor estudio convencional consigue. Formatos: Core Pilates, Power Pilates, Pilates Sculpt, Full Body Pilates. Desde €16/clase con el [pack de 3 por €48](https://momence.com/m/443935).
 
 ---
 
@@ -86,7 +86,7 @@ La mayoría de la gente piensa que la decisión es mat vs reformer. Pero hay una
 
 Un ejercicio de core hecho mientras tu cerebro planifica la cena es menos efectivo que el mismo ejercicio hecho con atención plena. La concentración es el multiplicador.
 
-[SABDA](https://sabdastudio.com/classes/) resuelve esto por diseño. Las clases de pilates mat suceden dentro de proyecciones 360° con audio espacial Dolby Atmos. El entorno inmersivo captura tu atención de una forma que un estudio convencional — con sus espejos, su música de fondo, y la persona de al lado mirando el móvil — simplemente no puede.
+[SABDA](https://sabdastudio.com/classes/pilates/) resuelve esto por diseño. Las clases de pilates mat suceden dentro de proyecciones 360° con audio espacial Dolby Atmos. El entorno inmersivo captura tu atención de una forma que un estudio convencional — con sus espejos, su música de fondo, y la persona de al lado mirando el móvil — simplemente no puede.
 
 El resultado: cada repetición tiene más calidad porque tu mente está donde tu cuerpo está. Es pilates mat con la concentración del reformer individual, al precio de una clase de grupo.
 
@@ -98,7 +98,7 @@ El resultado: cada repetición tiene más calidad porque tu mente está donde tu
 
 **Si buscas el mejor valor por tu dinero:** Mat en un buen estudio. El core trabaja más duro, el precio es la mitad, y la transferencia a la vida real es mayor.
 
-**Si quieres lo mejor de ambos mundos:** Mat inmersivo en [SABDA](https://sabdastudio.com/classes/). La concentración amplificada por el entorno compensa la falta de muelles, y €16/clase te permite ir 3 veces por semana sin arruinarte. [3 clases por €48](https://momence.com/m/443935).
+**Si quieres lo mejor de ambos mundos:** Mat inmersivo en [SABDA](https://sabdastudio.com/classes/pilates/). La concentración amplificada por el entorno compensa la falta de muelles, y €16/clase te permite ir 3 veces por semana sin arruinarte. [3 clases por €48](https://momence.com/m/443935).
 
 **Relacionado:** [Pilates en Barcelona: guía completa](/blog/pilates-barcelona-guia/) | [Pilates para embarazadas](/blog/pilates-embarazadas-barcelona/)
 

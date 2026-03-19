@@ -63,8 +63,22 @@ Most wellness spaces compete on teachers, class variety, and interior design. SA
 
 You don't need to understand the technology to experience the difference. You just need to lie down, close your eyes, and notice that the sound is everywhere. [3 classes for €48](https://momence.com/m/443935).
 
-**Related:** [What Is Sound Healing?](/blog/what-is-sound-healing/) | [Classes at SABDA](/classes/)
+**Related:** [What Is Sound Healing?](/blog/what-is-sound-healing/) | [La ciencia del bienestar inmersivo (ES)](/blog/ciencia-bienestar-inmersivo/) | [Classes at SABDA](/classes/)
 
 ---
 
 *[Schema: BreadcrumbList → Home > Blog > Dolby Atmos and Wellness]*
+
+---
+
+## Who else is doing this?
+
+Globally, the intersection of audio technology and wellness is emerging. Some meditation apps use binaural beats (two slightly different frequencies in each ear to create a perceived third frequency). High-end spas in Tokyo and London are experimenting with multi-speaker sound environments. And a handful of yoga studios in LA and New York have installed surround sound systems.
+
+But Dolby Atmos — cinema-grade, object-based spatial audio with dozens of individually addressable speakers — in a wellness studio? That's a different category. SABDA is, to our knowledge, the first studio in Europe to use this level of audio technology for wellness classes. The system wasn't adapted from a cinema — it was designed specifically for the space, with speaker placement optimised for prone and supine positions (lying face-up and face-down, how most wellness activities are experienced, not sitting in a cinema seat facing forward).
+
+The result is a level of audio immersion that earbuds, headphones, and standard studio speakers simply cannot replicate. Sound that moves around your body. Bass that vibrates through the floor into your spine. Tones that arrive from above and dissolve downward. It's the difference between listening to the ocean on Spotify and lying on the beach with waves breaking around you.
+
+## Try it
+
+Words can't fully convey the difference spatial audio makes for wellness. It needs to be experienced. [3 classes at SABDA for €48](https://momence.com/m/443935) — sound healing is the best starting point to understand what the room can do.

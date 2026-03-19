@@ -114,3 +114,32 @@ Para alquiler de la sala inmersiva de SABDA: [connect@sabdastudio.com](mailto:co
 ---
 
 *[Schema: BreadcrumbList → Inicio > Blog > Alquiler de Salas Para Eventos en Barcelona]*
+
+---
+
+## Cómo elegir el espacio correcto
+
+La decisión del espacio debería seguir al objetivo, no al revés:
+
+**Objetivo: impresionar a clientes.** Espacio histórico (Casa Batlló, Palau de la Música) o hotel premium (W, Mandarin Oriental). El espacio ES el mensaje.
+
+**Objetivo: conectar al equipo.** Espacio experiencial (SABDA) o actividad al aire libre. La conexión viene de experiencias compartidas, no de una sala bonita.
+
+**Objetivo: lanzar un producto.** Espacio con tecnología (SABDA para contenido de marca en 360°) o loft industrial personalizable. Necesitas control sobre la narrativa visual.
+
+**Objetivo: celebrar.** Terraza, restaurante privatizable, o velero. La celebración necesita comida, bebida, y ambiente relajado.
+
+**Objetivo: conferencia/formación.** Hotel o centro de conferencias. Necesitas AV fiable, wifi, y catering resuelto.
+
+## Checklist antes de reservar
+
+- Capacidad real (no la que dice la web — ve a verlo)
+- AV incluido o extra (proyector, micro, pantalla)
+- Catering in-house o externo
+- Acceso: ¿hay ascensor? ¿parking? ¿metro cerca?
+- Horarios de montaje/desmontaje
+- Coste de hora extra
+- Política de cancelación
+- Seguro de responsabilidad civil (quién lo cubre)
+
+Para alquiler de la sala inmersiva de SABDA: [connect@sabdastudio.com](mailto:connect@sabdastudio.com)

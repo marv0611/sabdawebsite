@@ -77,7 +77,7 @@ Barcelona es una ciudad cara si dejas que te la vendan. Y una ciudad increíblem
 
 ## El que no es gratis pero vale cada céntimo
 
-**SABDA — una clase inmersiva por €16.** Yoga, sound healing, breathwork, o pilates dentro de una sala de 360° con Dolby Atmos. Es el precio de dos cafés de especialidad — por una hora dentro de un espacio que no existe en ninguna otra ciudad. [3 clases por €48](https://momence.com/m/443935).
+**[SABDA](https://sabdastudio.com/classes/) — una clase inmersiva por €16.** Yoga, sound healing, breathwork, o pilates dentro de una sala de 360° con Dolby Atmos. Es el precio de dos cafés de especialidad — por una hora dentro de un espacio que no existe en ninguna otra ciudad. [Ver precios](https://sabdastudio.com/pricing/). [3 clases por €48](https://momence.com/m/443935).
 
 ---
 
@@ -86,3 +86,25 @@ Barcelona es una ciudad cara si dejas que te la vendan. Y una ciudad increíblem
 ---
 
 *[Schema: BreadcrumbList → Inicio > Blog > Planes Gratis en Barcelona]*
+
+---
+
+## La ruta gratis perfecta (por barrio)
+
+### Ruta Eixample (3-4 horas)
+Mercat de Sant Antoni (pasear, no comprar) → Carrer del Parlament (mirar escaparates y gente) → terrazas de bares (un vermut cuesta €3, pero el paseo es gratis) → MNAC terrazas exteriores (vistas, gratis).
+
+### Ruta Gràcia (3-4 horas)
+Plaza del Sol → Plaza de la Virreina → calles estrechas con arte de carrer → Mercat de l'Abaceria → Park Güell zona gratuita → vermut de vuelta en una plaza.
+
+### Ruta Poblenou (3-4 horas)
+Rambla del Poblenou → Palo Alto Market (primer finde del mes) → galerías de Carrer de Pujades → playa de Bogatell → chiringuito al atardecer (la cerveza cuesta, el atardecer no).
+
+### Ruta Montjuïc (4-5 horas)
+Plaça Espanya → CaixaForum exterior (la fachada es gratis) → jardines de Montjuïc → Castillo (gratis domingos tarde) → vistas del puerto → Fuente Mágica (si es jueves-sábado noche).
+
+## El coste real de un día en Barcelona
+
+Un día "gratis" en Barcelona cuesta €0 si caminas, miras, y no comes. Si eres humano, un presupuesto realista para un día de planes gratuitos + comida/bebida: €15-20 (un café, un vermut, y algo de comer en un mercado).
+
+Un día de planes pagados pero inteligentes: ~€30-40 (museo + SABDA + vermut + cena barata). Barcelona no es cara si sabes dónde ir. Es cara si vas donde te llevan las guías turísticas.

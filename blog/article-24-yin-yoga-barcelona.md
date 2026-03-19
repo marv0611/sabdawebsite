@@ -51,7 +51,7 @@ Clase típica: 60-75 minutos. Ambiente cálido (no caliente). Música ambiental.
 
 ## Yin yoga en SABDA — la versión inmersiva
 
-En [SABDA](https://sabdastudio.com/classes/), las clases de yin suceden dentro de la sala de 360° con Dolby Atmos. Los visuals son lentos — geometrías orgánicas, tonos profundos, patrones que se mueven tan despacio que casi no los notas. El audio espacial envuelve con paisajes sonoros ambientales y frecuencias graves que se sienten en el suelo.
+En [SABDA](https://sabdastudio.com/classes/yoga/), las clases de yin suceden dentro de la sala de 360° con Dolby Atmos. Los visuals son lentos — geometrías orgánicas, tonos profundos, patrones que se mueven tan despacio que casi no los notas. El audio espacial envuelve con paisajes sonoros ambientales y frecuencias graves que se sienten en el suelo.
 
 La combinación de quietud física + inmersión visual + audio espacial crea un estado de atención que ningún estudio convencional consigue. Es como una versión concentrada de lo que sientes cuando miras el mar durante mucho tiempo — excepto que está calibrado para complementar cada postura.
 
@@ -75,7 +75,7 @@ No son opuestos — son complementarios. Muchos practicantes hacen vinyasa 2-3 v
 
 ## Antes de ir
 
-El yin yoga barcelona más interesante lo encontrarás en [SABDA](https://sabdastudio.com/classes/) — la sala inmersiva convierte una práctica lenta en una experiencia sensorial completa. [3 clases por €48](https://momence.com/m/443935).
+El yin yoga barcelona más interesante lo encontrarás en [SABDA](https://sabdastudio.com/classes/yoga/) — la sala inmersiva convierte una práctica lenta en una experiencia sensorial completa. [3 clases por €48](https://momence.com/m/443935).
 
 **Relacionado:** [Hatha vs Vinyasa: diferencias](/blog/hatha-yoga-vs-vinyasa/) | [Yoga en Barcelona: guía completa](/blog/yoga-barcelona-guia/)
 
@@ -83,3 +83,5 @@ El yin yoga barcelona más interesante lo encontrarás en [SABDA](https://sabdas
 
 *[Schema: BreadcrumbList → Inicio > Blog > Yin Yoga en Barcelona]*
 *[Images needed: hero (yin yoga pose held), SABDA yin class in immersive room]*
+
+Lo que diferencia al yin de cualquier otro estilo de yoga es que no intentas llegar a ningún sitio. No hay una versión "avanzada" de la postura. El objetivo es encontrar tu límite y quedarte ahí — observando, respirando, aceptando.

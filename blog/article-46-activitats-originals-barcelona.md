@@ -72,3 +72,32 @@ Les millors activitats barcelona són les que trobes quan deixes de seguir les g
 ---
 
 *[Schema: BreadcrumbList → Inici > Blog > Activitats Originals a Barcelona]*
+
+---
+
+## Per categories: què triar
+
+**Si t'agrada l'art:** CCCB + galeries de Poblenou + Fundació Miró. Un dia sencer de cultura per menys de €15.
+
+**Si t'agrada menjar:** Vermut a Morro Fi, mercat de Sant Antoni, El Xampanyet. La ruta gastronòmica perfecta per menys de €20.
+
+**Si busques experiències:** Una classe immersiva a [SABDA](https://sabdastudio.com/classes/yoga/) (€16) + ice bath al pati. El tipus d'experiència que només existeix a Barcelona.
+
+**Si vols aire lliure:** Búnquers del Carmel al capvespre + passejada fins al Fòrum + piscines de Montjuïc. Tot gratis (excepte la piscina, €7).
+
+**Si surts de nit:** Jazz al Jamboree + ruta de bars per Sant Antoni + El Raval quan tothom ja ha marxat. Barcelona de nit és una altra ciutat.
+
+Les millors activitats a Barcelona no necessiten pressupost ni planificació. Necessiten curiositat i la voluntat de sortir del camí marcat. Si busques alguna cosa que no trobaràs a cap altra ciutat: [3 classes immersives a SABDA per €48](https://momence.com/m/443935). Ioga, breathwork, teràpia de so o dansa extàtica dins d'una sala de 360° amb Dolby Atmos.
+
+## Consells pràctics
+
+**El millor moment per explorar Barcelona:** Dimarts a dijous. Els caps de setmana són més plens i més cars. Els dimarts a Barcelona tenen una energia particular — la ciutat funciona però sense la intensitat del dilluns ni l'expectativa del cap de setmana.
+
+**Com trobar coses noves:** Segueix comptes locals a Instagram (@secretsdebarcelona, @bcnmes, @timeout_barcelona). Passeja per barris que no coneixes — Poblenou, Horta, el Carmel. Les millors troballes són les que no busques.
+
+**Pressupost per a un bon dia:** €20-40 per persona cobreix una activitat, un àpat decent, i un parell de begudes. Barcelona no és cara si saps on anar.
+
+**El secret:** Barcelona premia als que s'allunyen dels mapes. Les millors experiències no estan a Google Maps amb 4.8 estrelles i 2,000 ressenyes. Estan al carrer que no tenies previst agafar, al bar que no té cartell, i a la sala de 360° que no sabies que existia.
+
+[3 classes immersives per €48 →](https://momence.com/m/443935)
+Ioga, pilates, teràpia de so, breathwork, dansa extàtica, meditació, i bany de gel.

@@ -59,7 +59,7 @@ Al final, la guía te trae de vuelta gradualmente. La mayoría de gente se sient
 
 ## Yoga nidra en la sala inmersiva
 
-En [SABDA](https://sabdastudio.com/classes/), las sesiones de yoga nidra suceden dentro de la sala de 360° con Dolby Atmos. Las proyecciones se calibran al estado: colores suaves, movimiento casi imperceptible, geometrías que se transforman tan despacio que parecen parte de tu propia visualización. La guía llega desde todas las direcciones a través del audio espacial — no desde un punto fijo, sino envolvente, como si viniera de dentro de tu cabeza.
+En [SABDA](https://sabdastudio.com/classes/yoga/), las sesiones de yoga nidra suceden dentro de la sala de 360° con Dolby Atmos. Las proyecciones se calibran al estado: colores suaves, movimiento casi imperceptible, geometrías que se transforman tan despacio que parecen parte de tu propia visualización. La guía llega desde todas las direcciones a través del audio espacial — no desde un punto fijo, sino envolvente, como si viniera de dentro de tu cabeza.
 
 Es la combinación perfecta: una práctica que te pide cerrar los ojos + un entorno que sigue trabajando contigo incluso con los ojos cerrados (las frecuencias graves vibran a través del suelo, los tonos espaciales envuelven).
 

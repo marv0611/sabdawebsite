@@ -64,3 +64,27 @@ The best summer plan in Barcelona: [SABDA class in the morning](https://sabdastu
 ---
 
 *[Schema: BreadcrumbList → Home > Blog > Barcelona in Summer]*
+
+---
+
+## What to eat in summer
+
+Barcelona's summer food scene has its own rhythm. Skip heavy paella at noon — eat it at 9pm when the temperature drops. During the day, go for açaí bowls at Barceloneta, horchata at any traditional horchatería, or a cold gazpacho at a terrace in Gràcia.
+
+The vermouth-before-lunch ritual works even better in summer: Morro Fi or Senyor Vermut in the Eixample, vermut from the barrel, olives, anchovies, and a cold caña. It's how locals survive July.
+
+For dinner, the Born and Gràcia come alive after 9pm when the air cools. Tables spill onto the street. Wine flows. Nobody's in a hurry. That's summer in Barcelona.
+
+## When to avoid the beach
+
+Barceloneta between 12pm-5pm in July and August is miserable — wall-to-wall towels, persistent sellers, and not enough shade on the planet. Go before 9am (empty, calm, perfect water) or after 6pm (thinning crowds, golden light). Bogatell and Mar Bella are better options year-round. Nova Icària has the best facilities.
+
+The real summer secret: Barcelona is better in the evenings. Plan your days around cool indoor activities (SABDA, museums, markets) and save the outdoor time for the golden hours.
+
+## The air conditioning strategy
+
+Barcelona in July and August runs on a simple principle: cool spaces during the hot hours (12pm-5pm), outdoor spaces in the mornings and evenings. The smartest summer visitors don't fight the heat — they work with it.
+
+The ideal summer day: wake early, beach or kayak before 10am. By noon, move indoors: [SABDA class](https://sabdastudio.com/classes/) (the dark, air-conditioned room feels like a different planet when it's 35°C outside), museum, or market. By 6pm, the city cools enough for terraces, Bunkers, and the seafront walk. By 9pm, dinner outdoors is comfortable again. By midnight, you're in Sant Antoni wondering how it's already 1am.
+
+This is not a compromise itinerary. This is how locals actually live through Barcelona summers — and it's better than forcing yourself through midday heat at Park Güell.

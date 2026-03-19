@@ -35,7 +35,7 @@ El pilates reactiva los estabilizadores profundos. Los ejercicios se diseñan pa
 
 **Reformer** suele ser mejor al principio: los muelles proporcionan asistencia y resistencia controlada, permitiendo trabajar sin sobrecargar. Un fisioterapeuta puede ajustar la carga con precisión.
 
-**Mat** es más exigente para el core (sin asistencia de muelles), pero es excelente una vez que tienes una base. El entorno inmersivo de [SABDA](https://sabdastudio.com/classes/) añade concentración — cuando el entorno captura tu atención, la calidad de cada ejercicio sube porque tu mente está donde tu cuerpo está.
+**Mat** es más exigente para el core (sin asistencia de muelles), pero es excelente una vez que tienes una base. El entorno inmersivo de [SABDA](https://sabdastudio.com/classes/pilates/) añade concentración — cuando el entorno captura tu atención, la calidad de cada ejercicio sube porque tu mente está donde tu cuerpo está.
 
 ---
 
@@ -60,3 +60,30 @@ La mayoría de estudios muestran mejoras a partir de 6-8 semanas practicando 2 v
 ---
 
 *[Schema: BreadcrumbList → Inicio > Blog > Pilates Para Dolor de Espalda]*
+
+---
+
+## Ejercicios que ayudan (y los que no)
+
+### Lo que funciona
+- **Pelvic curl (puente):** Fortalece glúteos y multífidos sin cargar la columna. Fundamental.
+- **Dead bug:** Trabajo de core con la espalda apoyada en el suelo. Enseña a estabilizar sin compensar.
+- **Bird-dog:** Extensión opuesta de brazo y pierna. Entrena la estabilización en movimiento.
+- **Side plank modificado:** Fortalece los oblicuos y el cuadrado lumbar — los estabilizadores laterales que la mayoría de gente ignora.
+- **Cat-cow:** Movilidad de columna. Alivia rigidez y enseña el movimiento segmentario de la columna.
+
+### Lo que NO funciona (o empeora las cosas)
+- **Crunches / abdominales clásicos:** Flexionan la columna bajo carga. Exactamente lo contrario de lo que una espalda dolorida necesita.
+- **Superman (extensión completa boca abajo):** Comprime las facetas articulares. Mal para hernias y estenosis.
+- **Rotaciones con resistencia en pie:** Pueden agravar discos y articulaciones si no se controlan perfectamente.
+
+### La regla de oro
+Si un ejercicio produce dolor agudo durante o después: no es el ejercicio correcto para ti ahora. "Molestia" durante un estiramiento es normal. "Dolor" que se irradia o persiste después de la sesión es una señal de que algo no va.
+
+## Cuántas sesiones antes de mejorar — expectativas realistas
+
+La mayoría de la gente quiere resultados en 2 semanas. La ciencia dice 6-8 semanas con 2 sesiones/semana (12-16 sesiones totales). Los primeros cambios son neurológicos — tu cerebro reaprendiendo a activar los estabilizadores profundos. Los cambios estructurales (fuerza real) vienen después.
+
+Paciencia + consistencia > intensidad. Dos sesiones suaves por semana durante 8 semanas cambian más que una sesión intensa por semana durante 16.
+
+Para empezar: [SABDA](https://sabdastudio.com/classes/pilates/) ofrece pilates mat inmersivo desde €16/clase. La concentración amplificada del entorno 360° mejora la calidad de cada ejercicio. [3 clases por €48](https://momence.com/m/443935).

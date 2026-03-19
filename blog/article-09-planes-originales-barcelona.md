@@ -2,7 +2,7 @@
 
 **Última actualización: marzo 2026**
 
-**Meta description:** Cansado de lo mismo? Planes originales en Barcelona: wellness inmersivo, experiencias sensoriales, rincones secretos y actividades que no encontrarás en ninguna guía. (155 chars)
+**Meta description:** Planes originales en Barcelona: wellness inmersivo, rincones secretos y actividades que no encontrarás en ninguna guía.
 
 **Slug:** `/blog/planes-originales-barcelona/`
 

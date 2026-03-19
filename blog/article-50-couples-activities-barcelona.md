@@ -17,6 +17,8 @@ Here are 12 things to do together that range from free to €60, and none of the
 
 ---
 
+## The 12 best couples activities
+
 ### 1. Sound healing as a date
 Lie down in a dark room, close your eyes, and for 60 minutes Tibetan singing bowls, crystal bowls, and gongs fill the space through Dolby Atmos spatial audio. [SABDA's sound healing](https://sabdastudio.com/classes/sound-healing/) happens in the 360° projection room — slowly shifting visuals while sound moves through you. Profoundly relaxing, unexpectedly intimate. From €16/person. [3 classes for €48](https://momence.com/m/443935).
 
@@ -63,3 +65,27 @@ The best couples activities in Barcelona are the ones that break the pattern. An
 
 *[Schema: BreadcrumbList → Home > Blog > Couples Activities in Barcelona]*
 *[hreflang: en → this page | es → /blog/planes-en-pareja-barcelona/]*
+
+---
+
+## Free date ideas that are actually good
+
+Barcelona has more free date potential than most cities charge for:
+
+**Sunset at Bunkers del Carmel.** Already mentioned, but it's so good it deserves emphasis. Bring wine, cheese, and a blanket. Stay until the city lights come on. Walk down through the quiet streets of El Carmel afterwards.
+
+**Poblenou gallery walk.** No map, no destination. Converted factories, street art, hidden courtyards. End at the beach. The less you plan, the better.
+
+**Mercat de Sant Antoni on Sunday.** Browse the book market together. The kind of slow, unhurried morning that relationships need more of.
+
+**Barceloneta at dawn.** Set an alarm. The beach at 7am is empty, the water is calm, and the light is perfect. Swim, dry off, get coffee. You'll feel like you've stolen time from the rest of the day.
+
+**Parc de la Ciutadella.** Rent a rowboat on the lake (€6 for 30 min — technically not free). Watch the parrots in the palm trees. Lie on the grass. Simple and perfect.
+
+The best dates in Barcelona don't cost much. They cost attention — showing up, noticing things, and being somewhere together without checking your phone. The city makes that easy if you let it.
+
+## When to go
+
+Barcelona's rhythm changes with the seasons, and so should your dates. Summer evenings (sunset at 9:30pm) are perfect for rooftop drinks and seafront walks. Winter afternoons (sunset at 5:30pm) call for museum visits and early hammam sessions. Spring and autumn are ideal for everything — mild temperatures, fewer tourists, and a city that feels like it's performing just for you.
+
+The best time of day for couples activities: late morning to early afternoon (markets, vermouth, SABDA), or golden hour onwards (rooftops, Bunkers, Barceloneta walk, jazz).

@@ -75,3 +75,33 @@ Varias organizaciones ofrecen programas de mindfulness corporativo: sesiones sem
 ---
 
 *[Schema: BreadcrumbList → Inicio > Blog > Cursos de Mindfulness en Barcelona]*
+
+---
+
+## Qué esperar de un curso MBSR
+
+El programa MBSR de 8 semanas sigue una estructura probada:
+
+**Semana 1-2:** Body scan. Aprendes a dirigir atención a partes del cuerpo sistemáticamente. 45 minutos diarios de práctica en casa.
+
+**Semana 3-4:** Meditación sentada. Respiración como ancla. Los pensamientos vienen y van — aprendes a observarlos sin engancharte.
+
+**Semana 5-6:** Movimiento consciente. Yoga suave, caminar con atención. La práctica se extiende más allá del cojín.
+
+**Semana 7-8:** Integración. Cómo llevar la práctica a la vida cotidiana: conversaciones difíciles, estrés laboral, decisiones.
+
+**Jornada de silencio (entre semana 6-7):** Un día completo de práctica en silencio. Para muchos participantes, es el momento más impactante del programa.
+
+El compromiso es real: 2.5 horas semanales de clase + 45 minutos diarios en casa. Es el equivalente a entrenar para una media maratón, pero para tu mente. La mayoría de la gente que lo completa dice que fue una de las mejores inversiones de tiempo que ha hecho.
+
+## Mindfulness vs meditación — la diferencia
+
+Mindfulness es la habilidad. Meditación es el ejercicio.
+
+Mindfulness = prestar atención a lo que está pasando, ahora, sin juzgarlo. Puedes practicarlo lavando platos, caminando, o en una reunión.
+
+Meditación = el entrenamiento formal. Sentarte (o tumbarte), cerrar los ojos, y practicar la habilidad durante un periodo definido.
+
+No necesitas meditar para ser mindful. Pero meditar entrena la habilidad mucho más rápido. Es como la diferencia entre "ser más fuerte en general" y "hacer sentadillas regularmente." Ambos ayudan. Uno es más eficiente.
+
+El primer paso no es el perfecto. Es el que das. Si estás leyendo esto, ya has empezado.

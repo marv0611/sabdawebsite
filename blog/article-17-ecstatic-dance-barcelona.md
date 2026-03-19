@@ -114,5 +114,6 @@ Want to try more than ecstatic dance? SABDA's [intro 3-pack — €48 for 3 clas
 ---
 
 *[Schema: BreadcrumbList → Home > Blog > Ecstatic Dance in Barcelona]*
+*[hreflang: en → this page | es → /blog/ecstatic-dance-que-es/]
 *[Images needed: hero (movement/dance in immersive space), SABDA ecstatic dance event, people moving freely]*
 *[All images require alt text with "ecstatic dance barcelona"]*

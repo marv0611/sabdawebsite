@@ -21,7 +21,7 @@ Here's the decision tree. Pick based on what you actually want.
 
 **Power Vinyasa:** Fast-paced vinyasa with more strength holds and fewer rest periods. You'll sweat. A lot. Expect planks, chaturangas, and warriors held until your legs complain.
 
-**Yoga Sculpt:** Vinyasa sequences plus weights, bands, and functional strength exercises. It's yoga meets HIIT. In [SABDA's](https://sabdastudio.com/classes/) immersive room, the projections accelerate with the intensity — visually engaging enough that you forget you're on your fifth set of squats.
+**Yoga Sculpt:** Vinyasa sequences plus weights, bands, and functional strength exercises. It's yoga meets HIIT. In [SABDA's](https://sabdastudio.com/classes/yoga/) immersive room, the projections accelerate with the intensity — visually engaging enough that you forget you're on your fifth set of squats.
 
 ---
 
@@ -78,3 +78,28 @@ Try three different styles. The [SABDA 3-class intro pack (€48)](https://momen
 ---
 
 *[Schema: BreadcrumbList → Home > Blog > How to Choose a Yoga Style]*
+
+---
+
+## The "I tried yoga once and hated it" problem
+
+Nine times out of ten, the person who "hated yoga" tried the wrong style. They went to a slow hatha class when they needed vinyasa's movement. Or they went to a power class when they needed yin's stillness. Or they went to a hot yoga class and thought the sweating was the yoga (it's not — it's the heating system).
+
+Yoga isn't one thing. It's a category containing radically different experiences. Hating one style and assuming you hate all yoga is like eating at one bad restaurant and concluding you hate food.
+
+If your first class didn't work:
+- **Too slow?** Try Power Vinyasa or Yoga Sculpt.
+- **Too fast?** Try Hatha or Yin.
+- **Too spiritual?** Try any class at SABDA — the immersive tech angle removes the candle-and-incense factor entirely.
+- **Too easy?** You weren't in the right class. Power Vinyasa at SABDA will fix that.
+- **Too hard?** Start with Hatha (technique-focused, slower pace, more explanation).
+
+## The SABDA factor
+
+Every yoga style at [SABDA](https://sabdastudio.com/classes/yoga/) happens inside a 360° projection room with Dolby Atmos spatial audio. The projections and music adapt to the style: fast and rhythmic for Power Vinyasa, slow and ambient for Yin, dreamlike for Yoga Nidra.
+
+The immersive environment doesn't change what yoga is — it changes how it feels. The darkness removes self-consciousness (no mirrors, no one watching). The spatial audio makes the teacher's voice arrive from everywhere (you follow naturally instead of straining to hear). The visuals give your eyes something to rest on that isn't the back of someone's head.
+
+For people who've never connected with yoga in a conventional studio, the immersive version often clicks where the traditional one didn't.
+
+Available styles at SABDA: Vinyasa Flow, Hatha Vinyasa, Power Vinyasa, Yoga Sculpt, Yin. [3 classes for €48](https://momence.com/m/443935) — try three different styles and know by the third which one is yours.

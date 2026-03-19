@@ -99,7 +99,7 @@ Las [sesiones de sound healing en SABDA](https://sabdastudio.com/classes/sound-h
 
 [3 clases por €48](https://momence.com/m/443935) — prueba sound healing junto con breathwork, yoga, o meditación para ver qué te resuena.
 
-**Relacionado:** [Qué es el breathwork](/blog/que-es-el-breathwork/) | [Clases en SABDA](/classes/)
+**Relacionado:** [Qué es el breathwork](/blog/que-es-el-breathwork/) | [Cuencos tibetanos](/blog/cuencos-tibetanos/) | [Clases en SABDA](/classes/)
 
 ---
 

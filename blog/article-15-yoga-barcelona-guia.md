@@ -122,7 +122,7 @@ El mejor estudio de yoga en Barcelona es el que te hace volver la segunda vez. N
 
 Si quieres algo diferente a cualquier otro estudio: [SABDA's yoga classes](https://sabdastudio.com/classes/) dentro de 360° de proyecciones y audio espacial. [3 clases por €48](https://momence.com/m/443935).
 
-**Relacionado:** [Pilates en Barcelona: Guía completa](/blog/pilates-barcelona-guia/)
+**Relacionado:** [Pilates en Barcelona: Guía completa](/blog/pilates-barcelona-guia/) | [Wellness del Eixample](/blog/wellness-eixample-barcelona/)
 
 ---
 

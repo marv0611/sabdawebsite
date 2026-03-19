@@ -2,7 +2,7 @@
 
 **Last updated: March 2026**
 
-**Meta description:** Sound healing explained: what it is, how it works, what to expect, and why doing it in Dolby Atmos spatial audio changes everything. No experience needed. (155 chars)
+**Meta description:** Sound healing explained: what it is, how it works, what to expect, and why Dolby Atmos spatial audio changes everything.
 
 **Slug:** `/blog/what-is-sound-healing/`
 
@@ -108,5 +108,6 @@ It's explicitly not for people seeking a spiritual experience they need to belie
 ---
 
 *[Schema: BreadcrumbList → Home > Blog > What Is Sound Healing]*
+*[hreflang: en → this page | es → /blog/que-es-el-sound-healing/]
 *[Images needed: hero (singing bowls close-up or immersive room during sound healing), Tibetan bowls, crystal bowls, SABDA session from above]*
 *[All images require alt text with keywords including "sound healing barcelona" and "cuencos tibetanos"]*

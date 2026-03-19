@@ -127,3 +127,5 @@ Y si necesitas algo para hoy: [tarjeta regalo digital de SABDA desde €20](http
 *[FAQPage schema: N/A]*
 *[Images needed: hero (wrapped experience gift concept), SABDA immersive room, velero Barcelona skyline, Morro Fi vermut, La Pedrera night, chocolate workshop]*
 *[All images require alt text with Spanish keywords]*
+
+*[hreflang: es → this page | en → /blog/gift-experiences-barcelona/]*

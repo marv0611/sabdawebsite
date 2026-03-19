@@ -107,5 +107,6 @@ People who've done breathwork in regular studios and then try it at SABDA consis
 ---
 
 *[Schema: BreadcrumbList → Home > Blog > What Is Breathwork]*
+*[hreflang: en → this page | es → /blog/que-es-el-breathwork/]
 *[Images needed: hero (breathwork session, person lying down, immersive room), SABDA breathwork class, technique diagram optional]*
 *[All images require alt text with "breathwork barcelona" keyword]*

@@ -1,4 +1,4 @@
-# Actividades en Barcelona: 25 Planes Para Hoy, Este Finde y Más Allá (2026)
+# Las 25 Mejores Actividades en Barcelona (2026)
 
 **Última actualización: marzo 2026**
 

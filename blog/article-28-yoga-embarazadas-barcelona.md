@@ -67,10 +67,30 @@ Varios profesores en Barcelona ofrecen yoga prenatal individual (€40-60/sesió
 
 ---
 
-El yoga embarazadas barcelona más accesible lo encontrarás en estudios con profesores formados en perinatal. Para clases inmersivas de yin y hatha con modificaciones: [SABDA](https://sabdastudio.com/classes/). [3 clases por €48](https://momence.com/m/443935).
+El yoga embarazadas barcelona más accesible lo encontrarás en estudios con profesores formados en perinatal. Para clases inmersivas de yin y hatha con modificaciones: [SABDA](https://sabdastudio.com/classes/yoga/). [3 clases por €48](https://momence.com/m/443935).
 
 **Relacionado:** [Pilates para embarazadas en Barcelona](/blog/pilates-embarazadas-barcelona/) | [Yoga en Barcelona: guía completa](/blog/yoga-barcelona-guia/)
 
 ---
 
 *[Schema: BreadcrumbList → Inicio > Blog > Yoga Para Embarazadas en Barcelona]*
+
+---
+
+## La respiración como preparación al parto
+
+Una de las cosas más útiles que el yoga prenatal enseña no es una postura — es una respiración. La exhalación larga y controlada (inhalar 4 tiempos, exhalar 8 tiempos) es la base de las técnicas de respiración para el parto.
+
+Durante las contracciones, tu instinto es tensar todo y contener la respiración. Eso aumenta el dolor y dificulta la dilatación. La exhalación larga hace lo opuesto: relaja el suelo pélvico, reduce la percepción de dolor, y facilita el proceso.
+
+Si solo aprendes una cosa del yoga prenatal, que sea esto: exhalar el doble de lo que inhalas, especialmente bajo presión. Práctica 10 minutos al día durante el tercer trimestre. Tu matrona te lo agradecerá.
+
+## Yoga postnatal — cuándo y cómo volver
+
+**6 semanas postparto (parto vaginal):** Puedes empezar con yoga restaurativo y suelo pélvico. Nada activo. Tu cuerpo necesita reconstruir la base antes de volver a cargar.
+
+**8 semanas postparto (cesárea):** Consulta con tu ginecólogo. La cicatriz necesita tiempo. Empieza con respiración y suelo pélvico, sin flexiones abdominales.
+
+**3-4 meses postparto:** Vuelta gradual a hatha y vinyasa suave. Comprueba si tienes diástasis abdominal (separación de los rectos) antes de volver a trabajo de core — un fisioterapeuta pélvico puede evaluarte.
+
+**6+ meses:** Vuelta a la práctica normal con consciencia. El cuerpo postparto es diferente al pre-embarazo — acepta donde estás.

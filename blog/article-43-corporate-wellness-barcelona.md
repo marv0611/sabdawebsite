@@ -51,7 +51,7 @@ For teams that want something intense: guided breathwork inside the immersive ro
 **Capacity:** 20-80 people (immersive room), up to 200 (full venue)
 **Previous clients:** FC Barcelona, Alpro, Decathlon, and fashion/tech brands
 **Price:** From €350/session. Custom packages available.
-**Contact:** [connect@sabdastudio.com](mailto:connect@sabdastudio.com) | [Corporate page →](https://sabdastudio.com/hire/)
+**Contact:** [connect@sabdastudio.com](mailto:connect@sabdastudio.com) | [Corporate page →](https://sabdastudio.com/hire/) | [Team building →](https://sabdastudio.com/team-building/)
 
 ---
 
@@ -70,3 +70,28 @@ But honestly, the best pitch is: "FC Barcelona did their team session here. We s
 ---
 
 *[Schema: BreadcrumbList → Home > Blog > Corporate Wellness in Barcelona]*
+
+---
+
+## Formats and pricing at SABDA
+
+| Format | Duration | Capacity | Best for |
+|--------|----------|----------|----------|
+| Breathwork session | 45-60 min | 20-80 | Team connection, stress reset |
+| Sound healing | 60 min | 20-80 | Deep relaxation, post-conference wind-down |
+| Breathwork + ice bath | 90 min | 20-40 | Intense bonding, leadership retreats |
+| Custom branded experience | 60-120 min | Up to 200 | Brand activations, product launches |
+
+**Pricing:** From €350/session. Custom packages with branded 360° visuals, catering coordination, and multi-session programmes available.
+
+**What's included:** The 360° immersive room, Dolby Atmos spatial audio, professional facilitators, all equipment (mats, blankets, ice bath setup), and post-session recovery space.
+
+**What's not included:** Catering (dozens of options within 5 minutes in Eixample), transport, and branded visual content (available as an add-on).
+
+## The ROI conversation
+
+Wellness isn't free, and your finance team will ask what the return is. Here's the honest answer: a single breathwork session doesn't produce measurable ROI. A pattern of team experiences over 6-12 months does. Companies that invest in quarterly team wellness experiences (not just annual offsites) report: higher engagement survey scores, lower turnover in wellness-participating teams, and improved cross-functional collaboration.
+
+The cost of one SABDA session (€350 for 40 people = €8.75/person) is less than a round of coffees at a conference. The impact lasts longer.
+
+**Contact:** [connect@sabdastudio.com](mailto:connect@sabdastudio.com) | [Corporate page →](https://sabdastudio.com/hire/) | [Team building →](https://sabdastudio.com/team-building/)

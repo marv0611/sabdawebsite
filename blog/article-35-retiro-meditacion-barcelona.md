@@ -65,3 +65,23 @@ C/Muntaner 83B, Eixample. Sesiones varias veces por semana.
 ---
 
 *[Schema: BreadcrumbList → Inicio > Blog > Retiros de Meditación Cerca de Barcelona]*
+
+---
+
+## Qué buscar en un retiro
+
+No todos los retiros son iguales. Algunos son genuinamente transformadores. Otros son un hotel con una clase de yoga por la mañana y un precio inflado. Antes de reservar:
+
+**Facilitador:** ¿Quién dirige las sesiones? Busca facilitadores con formación seria (MBSR certificado, profesores de meditación con años de práctica, psicólogos con especialización en mindfulness). Un retiro dirigido por alguien con un curso de fin de semana y un feed de Instagram no es un retiro — es una experiencia de lifestyle con meditación de fondo.
+
+**Estructura:** Un buen retiro tiene estructura clara: sesiones guiadas por la mañana, períodos de silencio, comida consciente, sesiones de la tarde, y tiempo libre. Si el programa es vago ("actividades wellness varias"), probablemente está improvisado.
+
+**Silencio:** Los retiros con períodos de silencio son significativamente más efectivos que los que no los tienen. El silencio no es castigo — es el espacio donde la práctica se profundiza. Si nunca has hecho silencio, un retiro de un día con silencio parcial es un buen comienzo.
+
+**Comida:** La comida en un retiro importa más de lo que piensas. Comer conscientemente — sin móvil, sin conversación, prestando atención a cada bocado — es una práctica en sí misma. Los mejores retiros incluyen comida preparada con intención.
+
+**Precio:** Desconfía de los extremos. Un retiro de fin de semana por €100 probablemente recorta en facilitadores o alojamiento. Uno por €800 probablemente infla el precio con "experiencia premium." El rango razonable para un fin de semana cerca de Barcelona con alojamiento, comida, y sesiones: €200-450.
+
+Para probar antes de comprometerte: una sesión de meditación inmersiva en [SABDA](https://sabdastudio.com/classes/meditation/) te da el efecto de un mini retiro en 60 minutos. [3 clases por €48](https://momence.com/m/443935).
+
+La meditación no requiere una montaña, un monasterio, ni una semana libre. A veces, lo único que necesitas es una hora en el lugar correcto. Y a veces, esa hora vale más que un fin de semana en un retiro mal dirigido.

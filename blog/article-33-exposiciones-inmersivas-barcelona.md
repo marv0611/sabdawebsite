@@ -80,3 +80,23 @@ Conciertos de música clásica a la luz de las velas en espacios bonitos. Es atm
 ---
 
 *[Schema: BreadcrumbList → Inicio > Blog > Exposiciones Inmersivas en Barcelona]*
+
+---
+
+## El problema de la palabra "inmersivo"
+
+"Inmersivo" se ha convertido en un adjetivo que todo el mundo usa y que ya no significa nada concreto. Un restaurante con luces bonitas se llama "inmersivo." Una exposición con un proyector en la pared se llama "inmersiva." Un concierto a la luz de las velas se llama "experiencia inmersiva."
+
+La inmersión real tiene tres componentes: te rodea (360°, no una pantalla al frente), involucra múltiples sentidos (vista + sonido + tacto), y elimina el mundo exterior (no puedes ver la salida, la calle, o tu teléfono). Por esa definición, IDEAL se acerca (proyecciones a gran escala pero audio estándar), SABDA lo cumple completamente (360° + Dolby Atmos + sala sellada), y la mayoría de lo demás es marketing.
+
+## Cuánto cuesta experimentar todo
+
+Si quisieras probar todas las experiencias inmersivas de Barcelona:
+- SABDA (3 clases): €48
+- IDEAL: ~€16
+- Moco Museum: ~€16
+- IKONO: ~€18
+
+Total: ~€98 para el panorama completo. La diferencia: después de IDEAL, Moco, e IKONO, has terminado (una visita es suficiente). Después de SABDA, puedes volver cada semana durante un año y cada sesión es diferente. Es la experiencia inmersiva como rutina, no como evento.
+
+Si solo tienes tiempo para una experiencia inmersiva en Barcelona, la decisión se reduce a una pregunta: quieres mirar o quieres participar. Las dos son válidas. Pero solo una cambia cómo te sientes cuando sales.

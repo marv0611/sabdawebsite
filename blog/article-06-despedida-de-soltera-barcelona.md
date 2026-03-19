@@ -92,7 +92,7 @@ Lo que no falla: planes que solo se pueden hacer en Barcelona. Y eso descarta el
 
 **Consulta para reservar SABDA para grupos:** [connect@sabdastudio.com](mailto:connect@sabdastudio.com) | [Página de alquiler →](https://sabdastudio.com/hire/)
 
-**Relacionado:** [Planes en pareja en Barcelona](/blog/planes-en-pareja-barcelona/) | [Regalos experiencia en Barcelona](/blog/regalo-experiencia-barcelona/)
+**Relacionado:** [Planes en pareja en Barcelona](/blog/planes-en-pareja-barcelona/) | [Regalos experiencia en Barcelona](/blog/regalo-experiencia-barcelona/) | [Hen Party in Barcelona (EN)](/blog/hen-party-barcelona/)
 
 ---
 
@@ -100,3 +100,4 @@ Lo que no falla: planes que solo se pueden hacer en Barcelona. Y eso descarta el
 *[CTA routes to /hire/ inquiry form — this is a venue hire lead, not a class booking]*
 *[Images needed: hero (group celebration non-generic), SABDA group session, sailboat, vermut bar, Bunkers group sunset, spa/hammam]*
 *[All images require alt text with Spanish keywords]*
+*[hreflang: es → this page | en → /blog/hen-party-barcelona/]*

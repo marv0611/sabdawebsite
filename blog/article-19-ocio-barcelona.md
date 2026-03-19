@@ -2,7 +2,7 @@
 
 **Última actualización: marzo 2026**
 
-**Meta description:** Los mejores planes de ocio permanente en Barcelona: mercados, miradores, barrios, música en vivo, wellness inmersivo y experiencias que siempre están ahí. (155 chars)
+**Meta description:** Los mejores planes de ocio en Barcelona: mercados, miradores, barrios, música en vivo y wellness inmersivo que siempre están.
 
 **Slug:** `/blog/ocio-barcelona/`
 
@@ -136,7 +136,7 @@ El mejor ocio barcelona no es el que aparece y desaparece — es el que siempre 
 
 Si buscas algo que solo existe en Barcelona: [3 clases inmersivas en SABDA por €48](https://momence.com/m/443935). 360° de proyecciones, Dolby Atmos, y más de 42 clases semanales.
 
-**Relacionado:** [Cosas que hacer en Barcelona](/blog/cosas-que-hacer-en-barcelona/) | [Actividades en Barcelona](/blog/actividades-barcelona/)
+**Relacionado:** [Cosas que hacer en Barcelona](/blog/cosas-que-hacer-en-barcelona/) | [Actividades en Barcelona](/blog/actividades-barcelona/) | [Ocio en Barcelona](/blog/ocio-barcelona/)
 
 ---
 

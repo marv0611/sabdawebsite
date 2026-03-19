@@ -31,7 +31,7 @@ Ashtanga, vinyasa, mysore. Estudio técnico y funcional. ~€14-17/clase.
 ## Pilates en el Eixample
 
 ### SABDA (C/Muntaner 83B)
-Pilates mat inmersivo: Core Pilates, Power Pilates, Pilates Sculpt, Full Body Pilates. El entorno 360° amplifica la concentración. Desde €16/clase.
+[Pilates mat inmersivo](https://sabdastudio.com/classes/pilates/): Core Pilates, Power Pilates, Pilates Sculpt, Full Body Pilates. El entorno 360° amplifica la concentración. Desde €16/clase.
 
 ### Dona10 (varias sedes Eixample — metro Passeig de Gràcia)
 Reformer, mat, Cadillac, y clases especializadas. El centro de pilates más completo de Barcelona. Programa prenatal. ~€25-35/clase reformer.
@@ -90,3 +90,25 @@ El wellness eixample más completo lo encontrarás combinando [SABDA](https://sa
 ---
 
 *[Schema: BreadcrumbList → Inicio > Blog > Guía Wellness del Eixample]*
+
+---
+
+## Spas y recuperación en el Eixample
+
+El Eixample no tiene los grandes spas de Barcelona (Aire Ancient Baths está en el Born, Hammam al Àndalus cerca del Gòtic), pero varios hoteles del barrio ofrecen acceso a spa para no-huéspedes:
+
+- **Hotel Majestic** (Passeig de Gràcia) — Spa con piscina, sauna, y tratamientos. Acceso desde ~€50.
+- **Hotel Claris** (Pau Claris) — Spa boutique con terraza. Acceso limitado para no-huéspedes.
+- **Monument Hotel** (Passeig de Gràcia) — Spa premium con vistas.
+
+Para recuperación deportiva: crioterapia en Cryosense (Eixample), fisioterapia en varios centros del barrio, y el ice bath en [SABDA](https://sabdastudio.com/classes/ice-bath/) como opción guiada con breathwork.
+
+## El mapa del wellness en el Eixample
+
+Todo lo mencionado en esta guía está en un radio de 15 minutos a pie. El Eixample es una cuadrícula — es imposible perderse y fácil de calcular distancias (cada manzana mide ~113 metros).
+
+**Eje Muntaner:** SABDA (83B), cafeterías, y restaurantes saludables.
+**Eje Passeig de Gràcia:** Yoga One, Dona10, hoteles con spa, y las terrazas para el vermut post-clase.
+**Eje Consell de Cent:** Morro Fi (vermut), galerías, y la vida de barrio que hace que el wellness no se sienta como una obligación sino como parte del día.
+
+El Eixample no es solo el mejor barrio de Barcelona para wellness — es el mejor barrio de Barcelona para vivir bien. Y eso incluye la clase de yoga a las 7:30, el café a las 8:30, y el vermut a las 13:00.

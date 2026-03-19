@@ -78,3 +78,27 @@ El benestar immersiu és el futur del wellness. A Barcelona, el futur ja existei
 ---
 
 *[Schema: BreadcrumbList → Inici > Blog > Benestar Immersiu a Barcelona]*
+
+---
+
+## Preguntes freqüents
+
+**Necessito experiència prèvia?** No. Totes les classes són per a tots els nivells. Els professors donen modificacions.
+
+**Puc anar-hi sol/a?** Sí. La majoria de gent ve sola. Les classes són experiències individuals en un espai compartit — no et posen en parella amb ningú.
+
+**Quina classe és millor per començar?** Sound healing si vols relaxar-te (només t'estires). Vinyasa si vols moviment. Breathwork si vols alguna cosa intensa. Pilates si vols alguna cosa física i estructurada.
+
+**Què he de portar?** Roba còmoda. Res més. SABDA proporciona estoretes, mantes, i tot el que necessitis.
+
+**Hi ha dutxes?** Sí. Vestuaris amb dutxes disponibles.
+
+**Les classes són en català?** Les classes regulars són en anglès, castellà, o bilingüe. Per a sessions privades o corporatives, les classes es poden fer en català.
+
+## Per què Barcelona necessitava això
+
+Barcelona és una ciutat de contrastos: el soroll de la Rambla i la calma del Born. El sol de la platja i la foscor d'un soterrani de jazz. L'energia d'un mercat a les 10 del matí i el silenci d'una plaça de Gràcia a les 3 de la tarda.
+
+El benestar immersiu encaixa en aquest contrast. Entres des del carrer — trànsit, obres, turistes — i en 10 segons estàs dins una sala fosca on l'únic que existeix és el so, la llum, i el teu cos. El contrast no és accidental. És el que fa que funcioni.
+
+Barcelona ja tenia el millor menjar, la millor arquitectura, i la millor vida de carrer d'Europa. Ara també té l'experiència de wellness més avançada del continent. [3 classes per €48 →](https://momence.com/m/443935)
