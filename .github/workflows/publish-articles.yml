@@ -1,0 +1,143 @@
+name: Publish Scheduled Articles
+
+on:
+  schedule:
+    # Run daily at 7:00 UTC (8:00 Barcelona time)
+    - cron: '0 7 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Publish articles scheduled for today
+        run: |
+          python3 << 'SCRIPT'
+          import json
+          import os
+          import re
+          from datetime import datetime, timezone
+
+          today = datetime.now(timezone.utc).strftime('%Y-%m-%d')
+          print(f"Today: {today}")
+
+          with open('.github/publish-schedule.json', 'r') as f:
+              schedule = json.load(f)
+
+          published_today = []
+
+          for item in schedule:
+              if item['date'] > today:
+                  continue
+
+              path = f"{item['slug']}/index.html"
+              if not os.path.exists(path):
+                  print(f"  SKIP {item['slug']}: file not found")
+                  continue
+
+              with open(path, 'r') as f:
+                  html = f.read()
+
+              # Check if still noindexed (not yet published)
+              if '<meta name="robots" content="noindex">' not in html:
+                  continue  # Already published
+
+              # Remove noindex
+              html = html.replace('<meta name="robots" content="noindex">\n', '')
+              html = html.replace('<meta name="robots" content="noindex">', '')
+
+              with open(path, 'w') as f:
+                  f.write(html)
+
+              published_today.append(item)
+              print(f"  PUBLISHED: {item['slug']} (scheduled {item['date']})")
+
+          if not published_today:
+              print("No articles to publish today.")
+              # Create marker file so we can check in next step
+              with open('/tmp/nothing_to_publish', 'w') as f:
+                  f.write('true')
+              exit(0)
+
+          # Add published articles to sitemap
+          with open('sitemap.xml', 'r') as f:
+              sitemap = f.read()
+
+          new_entries = ''
+          for item in published_today:
+              url = f"https://sabdastudio.com/{item['slug']}/"
+              if url not in sitemap:
+                  new_entries += f'  <url><loc>{url}</loc><lastmod>{today}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>\n'
+
+          if new_entries:
+              sitemap = sitemap.replace('</urlset>', new_entries + '</urlset>')
+              with open('sitemap.xml', 'w') as f:
+                  f.write(sitemap)
+              print(f"  Sitemap updated: +{len(published_today)} URLs")
+
+          # Add published articles to blog listing
+          with open('blog/index.html', 'r') as f:
+              blog = f.read()
+
+          # If still showing "coming soon", replace with blog-list
+          if 'blog-coming' in blog and 'blog-list' not in blog:
+              blog = blog.replace(
+                  blog[blog.index('<div class="blog-coming'):blog.index('</div>', blog.index('blog-coming')) + 6],
+                  '<div class="blog-list">\n  </div>'
+              )
+
+          # Add cards for newly published articles
+          for item in published_today:
+              slug = item['slug']
+              rel = slug.replace('blog/', '')
+              
+              # Get title and description from the HTML
+              with open(f"{slug}/index.html", 'r') as f:
+                  art_html = f.read()
+              
+              title_match = re.search(r'<h1>(.+?)</h1>', art_html)
+              title = title_match.group(1) if title_match else slug
+              title = re.sub(r'<[^>]+>', '', title)  # strip any HTML in title
+              
+              desc_match = re.search(r'<meta name="description" content="([^"]+)"', art_html)
+              desc = desc_match.group(1)[:120] + '...' if desc_match else ''
+
+              card = f'''    <a href="{rel}/" class="blog-card rv">
+                <h2>{title}</h2>
+                <p>{desc}</p>
+                <span class="blog-card-meta">SABDA &middot; March 2026</span>
+              </a>\n'''
+
+              if card.strip() not in blog and f'href="{rel}/"' not in blog:
+                  blog = blog.replace('  </div>\n\n', card + '  </div>\n\n', 1)
+                  if card.strip() not in blog:
+                      # Fallback: insert before closing blog-list div
+                      blog = blog.replace('</div>\n\n<footer', card + '</div>\n\n<footer', 1)
+
+          with open('blog/index.html', 'w') as f:
+              f.write(blog)
+          print(f"  Blog listing updated: +{len(published_today)} cards")
+
+          print(f"\nDone. Published {len(published_today)} article(s).")
+          SCRIPT
+
+      - name: Commit and push if changes
+        run: |
+          if [ -f /tmp/nothing_to_publish ]; then
+            echo "Nothing to publish today, skipping commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git diff --staged --quiet && echo "No changes to commit" && exit 0
+          git commit -m "Auto-publish: scheduled blog articles for $(date -u +%Y-%m-%d)"
+          git push
