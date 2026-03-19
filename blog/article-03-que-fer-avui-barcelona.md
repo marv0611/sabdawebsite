@@ -1,8 +1,8 @@
-# Què Fer Avui a Barcelona — Plans i Activitats 2026
+# Els Millors Plans a Barcelona — Activitats i Experiències 2026
 
 **Última actualització: març 2026**
 
-**Meta description:** Descobreix els millors plans a Barcelona: experiències immersives, wellness, art, gastronomia i activitats originals. Actualitzat cada setmana. (149 chars)
+**Meta description:** Descobreix els millors plans a Barcelona: experiències immersives, wellness, art, gastronomia i activitats originals per a tots els gustos. (152 chars)
 
 **Slug:** `/blog/que-fer-avui-barcelona/`
 
@@ -11,9 +11,9 @@
 
 ---
 
-Busques plans a Barcelona? Aquí no trobaràs la Sagrada Familia ni la Boqueria. Això ja ho saps. El que trobaràs són activitats que realment valen la pena — provades, actualitzades cada setmana, i recomanades per gent que viu aquí de debò.
+Busques plans a Barcelona? Aquí no trobaràs la Sagrada Familia ni la Boqueria. Això ja ho saps. El que trobaràs són activitats que realment valen la pena — provades i recomanades per gent que viu aquí de debò.
 
-Tant si busques que fer avui a Barcelona com si planifiques el cap de setmana, aquí tens opcions per a tots els gustos i pressupostos.
+Opcions per a tots els gustos i pressupostos. Cultura, gastronomia, aire lliure, wellness, i vida nocturna.
 
 ---
 
@@ -129,13 +129,12 @@ Si busques alguna cosa diferent, el [pack de 3 classes de SABDA per €48](https
 
 ---
 
-*[Schema: BreadcrumbList → Inici > Blog > Què Fer Avui a Barcelona]*
+*[Schema: BreadcrumbList → Inici > Blog > Els Millors Plans a Barcelona]*
 *[hreflang tags:]*
 ```html
 <link rel="alternate" hreflang="ca" href="https://sabdastudio.com/blog/que-fer-avui-barcelona/" />
 <link rel="alternate" hreflang="es" href="https://sabdastudio.com/blog/cosas-que-hacer-en-barcelona/" />
 <link rel="alternate" hreflang="en" href="https://sabdastudio.com/blog/things-to-do-in-barcelona/" />
 ```
-*[Update frequency: WEEKLY]*
 *[Images needed: hero (Barcelona street scene), Morro Fi, Búnquers sunset, SABDA room, Poblenou, Palau de la Música, Sant Antoni market]*
 *[All images require alt text with Catalan keywords]*

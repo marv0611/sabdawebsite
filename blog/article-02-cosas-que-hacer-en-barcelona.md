@@ -1,8 +1,8 @@
-# 20 Cosas Que Hacer en Barcelona Este Fin de Semana (2026)
+# 20 Mejores Planes en Barcelona (2026)
 
 **Última actualización: marzo 2026**
 
-**Meta description:** Planes para hoy, mañana y este finde en Barcelona. Experiencias inmersivas, gastronomía, cultura, aire libre y más allá de lo típico. (148 chars)
+**Meta description:** Los 20 mejores planes en Barcelona. Experiencias inmersivas, gastronomía, cultura, aire libre y actividades que no encontrarás en ninguna guía. (155 chars)
 
 **Slug:** `/blog/cosas-que-hacer-en-barcelona/`
 
@@ -11,13 +11,13 @@
 
 ---
 
-¿Buscando planes en Barcelona? Te entiendo. Es viernes, no tienes nada cerrado, y Google te está sugiriendo La Boqueria por décima vez. Esta lista es otra cosa. Se actualiza cada semana con planes que merecen la pena — no los que aparecen en todas las guías, sino los que recomendarías a un amigo.
+¿Buscando planes en Barcelona? Te entiendo. Google te está sugiriendo La Boqueria por décima vez. Esta lista es otra cosa — planes que merecen la pena, los que recomendarías a un amigo, no los que aparecen en todas las guías.
 
-Hay cosas que hacer en Barcelona para hoy, para mañana y para el fin de semana. Algunas gratis, otras no. Todas probadas.
+Hay cosas que hacer en Barcelona para todos los gustos y presupuestos. Algunas gratis, otras no. Todas probadas.
 
 ---
 
-## Para hoy — planes rápidos que no necesitan reserva
+## Planes rápidos — sin reserva necesaria
 
 ### 1. Vermut en Morro Fi
 
@@ -41,7 +41,7 @@ La mejor vista gratuita de Barcelona. 360 grados de ciudad, con la Sagrada Famil
 
 ---
 
-## Este fin de semana — planes que hay que planificar un poco
+## Planes que necesitan algo de planificación
 
 ### 6. La Pedrera de noche
 
@@ -69,7 +69,7 @@ Si estás en Barcelona entre febrero y abril, la calcotada es obligatoria. Calç
 
 ---
 
-## Planes nocturnos — que hacer en barcelona por la noche
+## Planes nocturnos en Barcelona
 
 ### 11. Jazz en Jamboree
 
@@ -89,7 +89,7 @@ Sin coreografía, sin hablar, sin zapatos, sin móviles. Solo tú, la música, y
 
 ---
 
-## Planes originales — cosas que hacer en barcelona que no conocías
+## Planes originales — lo que no sale en las guías
 
 ### 15. Cementiri de Montjuïc
 
@@ -119,7 +119,7 @@ Si tu fin de semana coincide con Primavera Sound (junio 2026), tienes suerte. Th
 
 ## Antes de irte
 
-Barcelona premia a los que se salen un poco de la ruta marcada. La Sagrada Familia es genuinamente increíble — ve a verla. Pero los mejores planes en Barcelona este fin de semana suelen pasar en los espacios entre los monumentos: un vermut al mediodía, una azotea al atardecer, una sesión de sound healing que no tenías planeada.
+Barcelona premia a los que se salen un poco de la ruta marcada. La Sagrada Familia es genuinamente increíble — ve a verla. Pero los mejores planes en Barcelona suelen pasar en los espacios entre los monumentos: un vermut al mediodía, una azotea al atardecer, una sesión de sound healing que no tenías planeada.
 
 La ciudad tiene una forma particular de sorprenderte cuando dejas de buscar lo que esperabas encontrar. El barrio que no estaba en tu itinerario, la terraza que no aparecía en ninguna lista, el bar que descubriste porque estaba lloviendo y era lo primero que tenía un toldo.
 
@@ -129,8 +129,7 @@ Si buscas cosas que hacer en Barcelona que nadie más está haciendo, el [pack d
 
 ---
 
-*[Schema: BreadcrumbList → Inicio > Blog > 20 Cosas Que Hacer en Barcelona Este Fin de Semana]*
+*[Schema: BreadcrumbList → Inicio > Blog > 20 Mejores Planes en Barcelona]*
 *[hreflang: es → this page | en → /blog/things-to-do-in-barcelona/ | ca → /blog/que-fer-avui-barcelona/]*
-*[Update frequency: WEEKLY — add fresh content/dates to maintain freshness signals]*
 *[Images needed: hero (Barcelona weekend vibe), Morro Fi interior, Bunkers sunset, SABDA room, Sant Antoni market, Palau de la Música, Raval nightlife, Montjuïc pool]*
 *[All images require alt text with Spanish keywords]*

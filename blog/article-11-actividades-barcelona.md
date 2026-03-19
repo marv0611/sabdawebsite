@@ -11,13 +11,13 @@
 
 ---
 
-Si estás buscando actividades en Barcelona, probablemente estés en una de estas situaciones: acabas de llegar y quieres saber qué hacer, llevas aquí un tiempo y necesitas ideas nuevas, o es jueves por la tarde y no tienes plan para el fin de semana. Esta guía cubre las tres.
+Si estás buscando actividades en Barcelona, probablemente estés en una de estas situaciones: acabas de llegar y quieres saber qué hacer, llevas aquí un tiempo y necesitas ideas nuevas, o simplemente buscas algo distinto a lo de siempre. Esta guía cubre las tres.
 
-Actividades gratis y de pago, para adultos, parejas y grupos. Actualizada cada semana con planes que funcionan hoy, mañana y este fin de semana.
+Actividades gratis y de pago, para adultos, parejas y grupos. Planes permanentes que siempre funcionan.
 
 ---
 
-## Actividades barcelona hoy — planes inmediatos
+## Planes rápidos — sin reserva necesaria
 
 ### 1. Vermut en Morro Fi o Senyor Vermut
 El ritual del vermut antes de comer. Morro Fi (Consell de Cent, 171) es el referente, Senyor Vermut (Provença, 85) tiene 40 variedades. Ambos en Eixample. Vermut a €3. Mejor entre 12:30-14:00.
@@ -36,7 +36,7 @@ La mejor vista de Barcelona. 360 grados, gratis, 80% locales. Llega 45 minutos a
 
 ---
 
-## Actividades barcelona este fin de semana — planes con algo de organización
+## Planes que necesitan algo de planificación
 
 ### 6. Yoga, sound healing o breathwork inmersivo
 [SABDA](https://sabdastudio.com/classes/) es una sala de 360° con Dolby Atmos en Eixample. Yoga, pilates, sound healing, breathwork, ecstatic dance, meditación, ice bath. Los visuals cambian cada clase. El audio espacial envuelve. 3 clases €48. [Reservar →](https://momence.com/m/443935)
@@ -112,7 +112,7 @@ Barcelona iluminada desde el agua. ~€25-35/persona. De mayo a octubre. Una per
 
 ---
 
-## Dónde buscar actividades barcelona hoy
+## Dónde buscar actividades en Barcelona
 
 - [SABDA — horario semanal de clases](https://sabdastudio.com/classes/)
 - [Time Out Barcelona](https://www.timeout.com/barcelona) — lo que pasa esta semana
@@ -133,5 +133,4 @@ Si buscas algo distinto este fin de semana: [3 clases en SABDA por €48](https:
 ---
 
 *[Schema: BreadcrumbList → Inicio > Blog > Actividades en Barcelona]*
-*[Update frequency: WEEKLY]*
 *[Images needed: hero (Barcelona activity montage), SABDA room, Bunkers, Sant Antoni bars, Poblenou, Montjuïc]*

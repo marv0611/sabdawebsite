@@ -55,11 +55,11 @@ La sala sinfónica de Barcelona. Sede de la OBC (Orquestra Simfònica de Barcelo
 
 ### Pedralbes Festival (verano)
 
-Los jardines del Palau de Pedralbes se convierten en un escenario al aire libre cada verano. En 2026: Sting, Mika, Raphael, Diana Krall, entre otros. El formato es íntimo para ser un festival — jardines del siglo XIV, copas de vino, y un artista a pocos metros.
+Los jardines del Palau de Pedralbes se convierten en un escenario al aire libre cada verano con artistas nacionales e internacionales. El formato es íntimo para ser un festival — jardines del siglo XIV, copas de vino, y un artista a pocos metros. Consulta cartel del año en curso.
 
 ### Primavera Sound (junio)
 
-The Cure, Massive Attack, The xx, Gorillaz, My Bloody Valentine, Bicep — tres días en el Fòrum Park. El miércoles de apertura suele ser gratuito (Wet Leg, Guitarricadelafuente). Es el festival de música independiente más importante de Europa. Junio 2026.
+Tres días de los mejores conciertos independientes del mundo en el Fòrum Park cada junio. El miércoles de apertura suele ser gratuito. Es el festival de música independiente más importante de Europa. Consulta cartel del año en curso.
 
 ---
 
@@ -71,11 +71,11 @@ No es un espectáculo en el sentido tradicional, pero es una experiencia audiovi
 
 ### IDEAL — Centre d'Arts Digitals
 
-El gran espacio de exposiciones inmersivas de Barcelona. Proyecciones a gran escala de obras de artistas clásicos (Klimt, Monet, Frida Kahlo) sobre paredes y suelos de una antigua nave industrial. Es pasivo — caminas, miras, y te dejas envolver. Bueno para una visita, pero sin la participación activa ni el audio espacial de espacios como SABDA. ~€15-18.
+El gran espacio de exposiciones inmersivas de Barcelona. Proyecciones a gran escala sobre paredes y suelos de una antigua nave industrial en Poblenou. Las exposiciones rotan cada 6-12 meses — consulta la programación actual. Es pasivo — caminas, miras, y te dejas envolver. Bueno para una visita, pero sin la participación activa ni el audio espacial de espacios como SABDA. ~€15-18.
 
 ### Moco Museum
 
-Arte digital y contemporáneo (Banksy, teamLab, Kusama) en un palacete de Montcadell en el Born. Más galería que experiencia inmersiva, pero con salas interactivas que merecen la foto. ~€16.
+Arte digital y contemporáneo en un palacete del Born. Colección permanente con artistas de primer nivel más exposiciones temporales rotativas. Más galería que experiencia inmersiva, pero con salas interactivas que merecen la foto. ~€16.
 
 ### Candlelight Concerts (Fever)
 
@@ -108,9 +108,9 @@ La programación cambia constantemente. Estas son las fuentes fiables:
 
 ## Espectáculos barcelona 2026 — lo que no te puedes perder
 
-2026 es un año especial: el centenario de Gaudí ha convertido a Barcelona en Capital Mundial de la Arquitectura (UNESCO), con más de 1.500 eventos hasta diciembre. Además, el Tour de France arranca en Barcelona en julio (con la primera etapa por Montjuïc), y Primavera Sound trae uno de los mejores carteles de su historia en junio.
+Barcelona es una ciudad con una escena cultural que no para. Cada año trae festivales de primer nivel (Primavera Sound, Sónar, Pedralbes, Grec), temporadas de teatro y danza de referencia europea, y una escena de música en vivo que funciona todas las noches del año.
 
-Fuera de los grandes eventos: el Palau de la Música tiene una temporada excepcional, el Grec Festival (julio) llena la ciudad de artes escénicas al aire libre, y SABDA sigue expandiendo su programación de eventos inmersivos.
+Fuera de los grandes festivales: el Palau de la Música tiene una de las programaciones más completas de Europa, el Grec Festival (julio) llena la ciudad de artes escénicas al aire libre cada verano, y SABDA sigue expandiendo su programación de eventos inmersivos.
 
 ---
 
