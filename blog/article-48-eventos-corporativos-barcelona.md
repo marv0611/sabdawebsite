@@ -91,3 +91,5 @@ Los mejores eventos corporativos barcelona son los que nadie espera. Para algo q
 | Retiro de equipo (1 día) | €80-150 | SABDA + almuerzo + actividad |
 
 El presupuesto más inteligente para un evento corporativo en Barcelona no es el más alto — es el que produce la mayor conexión entre los asistentes por euro gastado.
+
+Para team building inmersivo: [SABDA team building →](https://sabdastudio.com/team-building/)

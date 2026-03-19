@@ -109,7 +109,7 @@ Naves góticas del siglo XIII. Espacio monumental para eventos grandes (hasta 1,
 
 Para alquiler de la sala inmersiva de SABDA: [connect@sabdastudio.com](mailto:connect@sabdastudio.com) | [Más info →](https://sabdastudio.com/hire/)
 
-**Relacionado:** [Eventos corporativos en Barcelona](/blog/eventos-corporativos-barcelona/) | [Team building en Barcelona](/blog/actividades-para-empresas-barcelona/)
+**Relacionado:** [Eventos corporativos en Barcelona](/blog/eventos-corporativos-barcelona/) | [Team building](/blog/team-building-activities-barcelona/) | [Team building en Barcelona](/blog/actividades-para-empresas-barcelona/)
 
 ---
 

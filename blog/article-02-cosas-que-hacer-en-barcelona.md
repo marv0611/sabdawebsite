@@ -125,7 +125,7 @@ La ciudad tiene una forma particular de sorprenderte cuando dejas de buscar lo q
 
 Si buscas cosas que hacer en Barcelona que nadie más está haciendo, el [pack de 3 clases de SABDA por €48](https://momence.com/m/443935) merece la pena. Yoga, breathwork, sound healing o danza extática dentro de una sala de proyecciones 360° con Dolby Atmos. Es el tipo de experiencia que Barcelona ofrece y que no vas a encontrar en ninguna otra ciudad.
 
-**Relacionado:** [15 Unique Things to Do in Barcelona](/blog/things-to-do-in-barcelona/) | [Què fer avui a Barcelona](/blog/que-fer-avui-barcelona/) | [Planes en pareja en Barcelona](/blog/planes-en-pareja-barcelona/) | [Planes originales](/blog/planes-originales-barcelona/) | [Barcelona en invierno](/blog/barcelona-invierno-planes/)
+**Relacionado:** [15 Unique Things to Do in Barcelona](/blog/things-to-do-in-barcelona/) | [Què fer avui a Barcelona](/blog/que-fer-avui-barcelona/) | [Planes en pareja en Barcelona](/blog/planes-en-pareja-barcelona/) | [Planes originales](/blog/planes-originales-barcelona/) | [Barcelona en invierno](/blog/barcelona-invierno-planes/) | [Ocio en Barcelona](/blog/ocio-barcelona/)
 
 ---
 

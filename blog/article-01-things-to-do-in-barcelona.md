@@ -124,7 +124,7 @@ This is free, requires nothing but shoes, and might be the best date activity in
 
 ---
 
-## Things to Do in Barcelona This Week
+## Things to Do in Barcelona Any Week
 
 ## 13. Explore Gaudí Year 2026
 

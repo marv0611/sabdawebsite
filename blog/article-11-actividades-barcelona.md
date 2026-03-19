@@ -2,7 +2,7 @@
 
 **Última actualización: marzo 2026**
 
-**Meta description:** Las mejores actividades en Barcelona para hoy, mañana y este fin de semana. Gratis y de pago, para adultos, parejas y grupos. Actualizado semanalmente. (155 chars)
+**Meta description:** Las mejores actividades en Barcelona: gratis y de pago, para adultos, parejas y grupos. Guía completa con 25 planes.
 
 **Slug:** `/blog/actividades-barcelona/`
 
@@ -115,7 +115,7 @@ Barcelona iluminada desde el agua. ~€25-35/persona. De mayo a octubre. Una per
 ## Dónde buscar actividades en Barcelona
 
 - [SABDA — horario semanal de clases](https://sabdastudio.com/classes/)
-- [Time Out Barcelona](https://www.timeout.com/barcelona) — lo que pasa esta semana
+- [Time Out Barcelona](https://www.timeout.com/barcelona) — lo que pasa en la ciudad
 - [meet.barcelona](https://www.meet.barcelona/en/main-events) — agenda oficial del Ajuntament
 - [Razzmatazz](https://www.salarazzmatazz.com) — conciertos y clubbing
 - [Palau de la Música](https://www.palaumusica.cat) — conciertos
@@ -126,9 +126,9 @@ Barcelona iluminada desde el agua. ~€25-35/persona. De mayo a octubre. Una per
 
 Las mejores actividades en Barcelona no son las más obvias. La ciudad recompensa a los que se salen de la ruta: un barrio que no conocían, una azotea que no estaba en el plan, una clase inmersiva que reservaron a última hora.
 
-Si buscas algo distinto este fin de semana: [3 clases en SABDA por €48](https://momence.com/m/443935). 360° de proyecciones, audio espacial, y más de 42 clases semanales entre yoga, breathwork, sound healing y más.
+Si buscas algo distinto: [3 clases en SABDA por €48](https://momence.com/m/443935). 360° de proyecciones, audio espacial, y más de 42 clases semanales entre yoga, breathwork, sound healing y más.
 
-**Relacionado:** [Cosas que hacer en Barcelona](/blog/cosas-que-hacer-en-barcelona/) | [Espectáculos en Barcelona](/blog/espectaculos-barcelona/)
+**Relacionado:** [Cosas que hacer en Barcelona](/blog/cosas-que-hacer-en-barcelona/) | [Espectáculos en Barcelona](/blog/espectaculos-barcelona/) | [Planes gratis en Barcelona](/blog/planes-barcelona-gratis/) | [Ocio en Barcelona](/blog/ocio-barcelona/)
 
 ---
 
