@@ -69,6 +69,20 @@
   }
 }
 </script>
+<!-- FAQPage Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org", "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "What is SABDA?", "acceptedAnswer": {"@type": "Answer", "text": "SABDA is an immersive audio-visual wellness studio in Barcelona's Eixample offering yoga, pilates, sound healing, breathwork, meditation, ecstatic dance, and ice bath inside a 360° projection room with Dolby Atmos spatial audio."}},
+    {"@type": "Question", "name": "How is SABDA different from IDEAL or Moco Museum?", "acceptedAnswer": {"@type": "Answer", "text": "IDEAL, Moco Museum, and IKONO are immersive art exhibitions where you observe. SABDA is a wellness studio where you actively participate with yoga, pilates, sound healing inside 360° projections and Dolby Atmos."}},
+    {"@type": "Question", "name": "Where is SABDA located in Barcelona?", "acceptedAnswer": {"@type": "Answer", "text": "C/Muntaner 83B, Local 2, 08011 Barcelona, Eixample district. 10 min from Universitat metro."}},
+    {"@type": "Question", "name": "What's included in the intro 3-pack?", "acceptedAnswer": {"@type": "Answer", "text": "3 classes of any type within 30 days for 48 euros. No commitment."}},
+    {"@type": "Question", "name": "Do I need experience?", "acceptedAnswer": {"@type": "Answer", "text": "No. All classes are open to every level with modifications provided."}},
+    {"@type": "Question", "name": "What should I give as a unique gift in Barcelona?", "acceptedAnswer": {"@type": "Answer", "text": "SABDA gift cards from 48 euros. One of the most unique experience gifts in Barcelona."}}
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -310,6 +324,18 @@ a.cls-item{display:block;color:inherit;text-decoration:none}
 .b-all-link{display:inline-flex;align-items:center;gap:10px;font-size:.88rem;color:var(--salmon);font-weight:500;letter-spacing:.02em;transition:gap .3s,color .2s}
 .b-all-link:hover{gap:16px;color:var(--white)}
 
+/* ── FAQ ── */
+.faq{padding:100px 80px;border-top:1px solid rgba(240,239,233,.06)}
+.faq-inner{max-width:680px;margin:0 auto}
+.faq-heading{text-align:center;margin-bottom:48px}
+.faq-item{border-bottom:1px solid rgba(240,239,233,.07)}
+.faq-q{width:100%;padding:22px 0;background:none;border:none;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:500;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq-q svg{width:16px;height:16px;flex-shrink:0;transition:transform .35s var(--ease-expo);color:var(--white38)}
+.faq-item.open .faq-q svg{transform:rotate(45deg);color:var(--cyan)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .45s var(--ease-expo),padding .35s}
+.faq-item.open .faq-a{max-height:300px;padding-bottom:22px}
+.faq-a p{font-size:.9rem;color:var(--white60);line-height:1.7}
+
 /* ── REVIEW NUDGE ── */
 .review-nudge{padding:100px 80px;border-top:1px solid rgba(240,239,233,.06);position:relative;z-index:2;overflow:hidden}
 .rn-inner{max-width:540px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;position:relative;z-index:2}
@@ -533,7 +559,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
         <div class="cls-item-ov"></div>
         <div class="cls-item-label"><div class="cls-item-name">Pilates</div><div class="cls-item-tag">50 min · All levels</div></div>
       </a>
-      <a href="classes.html" class="cls-item">
+      <a href="classes/meditation/" class="cls-item">
         <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/meditation_moon.jpg" alt="Guided meditation journey in SABDA immersive room with 360-degree visuals Barcelona" loading="lazy">
         <div class="cls-item-ov"></div>
         <div class="cls-item-label"><div class="cls-item-name">Meditation Journeys</div><div class="cls-item-tag">45 min · All levels</div></div>
@@ -549,7 +575,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
         <div class="cls-item-ov"></div>
         <div class="cls-item-label"><div class="cls-item-name">Pilates</div><div class="cls-item-tag">50 min · All levels</div></div>
       </a>
-      <a href="classes.html" class="cls-item">
+      <a href="classes/meditation/" class="cls-item">
         <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/meditation_moon.jpg" alt="Guided meditation journey in SABDA immersive room with 360-degree visuals Barcelona" loading="lazy">
         <div class="cls-item-ov"></div>
         <div class="cls-item-label"><div class="cls-item-name">Meditation Journeys</div><div class="cls-item-tag">45 min · All levels</div></div>
@@ -687,6 +713,19 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     <div class="rv" style="transition-delay:.42s"><a href="events.html" class="b-event-btn">Explore Our Space
       <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a></div>
+  </div>
+</section>
+
+<!-- HOMEPAGE FAQ -->
+<section class="faq">
+  <div class="faq-inner">
+    <div class="faq-heading rv"><span class="sl">Questions</span><h2 class="sh2">Good ones, <em>answered.</em></h2></div>
+    <div class="faq-item rv" style="transition-delay:.05s"><button class="faq-q" aria-expanded="false">What is SABDA?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>SABDA is an immersive audio-visual wellness studio in Barcelona's Eixample district. We offer <a href="classes/yoga/" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">yoga</a>, <a href="classes/pilates/" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">pilates</a>, <a href="classes/sound-healing/" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">sound healing</a>, <a href="classes/breathwork/" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">breathwork</a>, <a href="classes/meditation/" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">meditation</a>, <a href="classes/ecstatic-dance/" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">ecstatic dance</a>, and <a href="classes/ice-bath/" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">ice bath</a> inside a 360° projection room with Dolby Atmos spatial audio. Not a yoga studio. Not a museum. Something new.</p></div></div>
+    <div class="faq-item rv" style="transition-delay:.1s"><button class="faq-q" aria-expanded="false">How is SABDA different from immersive experiences like IDEAL or Moco Museum?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>IDEAL, Moco Museum, and IKONO are immersive art exhibitions where you walk through and observe. SABDA is an immersive wellness studio where you actively participate. You move, breathe, and practice yoga, pilates, sound healing, or breathwork inside 360° laser projections with Dolby Atmos spatial audio. It's the difference between watching a concert on a screen and being inside the music.</p></div></div>
+    <div class="faq-item rv" style="transition-delay:.15s"><button class="faq-q" aria-expanded="false">Where is SABDA located in Barcelona?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>SABDA is at C/Muntaner 83B, Local 2, 08011 Barcelona, in the heart of the Eixample district. 10 minute walk from Universitat metro (L1/L2) and 5 minutes from Passeig de Gràcia (L2/L3/L4). <a href="contact/" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">Get directions</a>.</p></div></div>
+    <div class="faq-item rv" style="transition-delay:.2s"><button class="faq-q" aria-expanded="false">What's included in the intro 3-pack?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>3 classes of any type within 30 days for €48 (€16/class). Yoga, pilates, sound healing, breathwork, meditation, or ecstatic dance, all inside 360° immersive projections and Dolby Atmos spatial audio. For new students. No commitment. <a href="pricing.html" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">See all pricing and memberships</a>.</p></div></div>
+    <div class="faq-item rv" style="transition-delay:.25s"><button class="faq-q" aria-expanded="false">Do I need experience to attend classes?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>No. All classes at SABDA are open to every level. Teachers provide modifications for beginners and progressions for experienced practitioners. Just show up. <a href="classes.html" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">Browse the schedule</a>.</p></div></div>
+    <div class="faq-item rv" style="transition-delay:.3s"><button class="faq-q" aria-expanded="false">What should I give as a unique gift in Barcelona?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>A SABDA gift card is one of the most unique regalos experiencia in Barcelona. Available from €48 (3 class pack) to custom amounts. Perfect for birthdays, couples, or anyone who loves wellness, music, and art. <a href="pricing.html" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">Buy a gift card</a>.</p></div></div>
   </div>
 </section>
 
@@ -995,6 +1034,7 @@ const colors=['#02F3C5','#F8A6A3'];
 /* =====================================================
    MOBILE STICKY
 ===================================================== */
+document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));if(!wasOpen)item.classList.add('open');btn.setAttribute('aria-expanded',!wasOpen)})});
 const sbk=document.getElementById('sbk');
 const heroEl=document.getElementById('hero');
 window.addEventListener('scroll',()=>{

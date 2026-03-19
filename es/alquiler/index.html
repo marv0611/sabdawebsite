@@ -34,7 +34,29 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org", "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "¿Cuántas personas caben en la sala inmersiva?", "acceptedAnswer": {"@type": "Answer", "text": "20 a 80 sentadas en la sala. Hasta 200 de pie con espacio completo."}},
+    {"@type": "Question", "name": "¿Se puede alquilar para un cumpleaños?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Alquiler con proyecciones personalizables, Dolby Atmos y catering. Desde 350 euros."}},
+    {"@type": "Question", "name": "¿Se pueden personalizar las proyecciones?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Visuales 360° a medida para marcas y eventos. FC Barcelona, Alpro y PERDÓN han confiado en SABDA."}},
+    {"@type": "Question", "name": "¿Ofrecen catering?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Paquetes propios o catering externo."}}
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org", "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "¿Cuántas personas caben en la sala inmersiva?", "acceptedAnswer": {"@type": "Answer", "text": "20 a 80 sentadas en la sala. Hasta 200 de pie con espacio completo."}},
+    {"@type": "Question", "name": "¿Se puede alquilar para un cumpleaños?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Alquiler con proyecciones personalizables, Dolby Atmos y catering. Desde 350 euros."}},
+    {"@type": "Question", "name": "¿Se pueden personalizar las proyecciones?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Visuales 360° a medida para marcas y eventos. FC Barcelona, Alpro y PERDÓN han confiado en SABDA."}},
+    {"@type": "Question", "name": "¿Ofrecen catering?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Paquetes propios o catering externo."}}
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -50,6 +72,13 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:0 48px
 .breadcrumbs{padding:0 80px;margin-top:84px;position:relative;z-index:3;font-size:.75rem;color:var(--white38)}.breadcrumbs a{color:var(--white60);transition:color .2s}.breadcrumbs a:hover{color:var(--cyan)}
 .sect{padding:100px 80px;border-top:1px solid rgba(240,239,233,.06);position:relative;z-index:2}.sect-in{max-width:800px;margin:0 auto}.sect-in p{font-size:1.05rem;line-height:1.75;color:var(--white60);margin-bottom:24px}.sect-in p:last-child{margin-bottom:0}.sect-in h3{font-family:'PT Serif',serif;font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:700;letter-spacing:-.015em;margin-bottom:20px;margin-top:48px;color:var(--white)}.sect-in h3:first-child{margin-top:0}
 .inline-link{color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3);padding-bottom:1px;transition:border-color .25s}.inline-link:hover{border-color:var(--cyan)}
+.faq-item{border-bottom:1px solid rgba(240,239,233,.07)}
+.faq-q{width:100%;padding:22px 0;background:none;border:none;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:500;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq-q svg{width:16px;height:16px;flex-shrink:0;transition:transform .35s var(--ease-expo);color:var(--white38)}
+.faq-item.open .faq-q svg{transform:rotate(45deg);color:var(--cyan)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .45s var(--ease-expo),padding .35s}
+.faq-item.open .faq-a{max-height:300px;padding-bottom:22px}
+.faq-a p{font-size:.9rem;color:var(--white60);line-height:1.7}
 .final-cta{padding:100px 80px;text-align:center;background:radial-gradient(ellipse 70% 50% at 50% 60%,rgba(2,243,197,.03) 0%,transparent 70%);border-top:1px solid rgba(240,239,233,.06)}.final-cta h2{font-family:'PT Serif',serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:700;letter-spacing:-.025em;line-height:1.1;margin-bottom:16px}.final-cta h2 em{font-style:italic;color:var(--salmon)}.final-cta .sub{font-size:.95rem;color:var(--white60);margin-bottom:36px;max-width:440px;margin-left:auto;margin-right:auto}
 .btn-p{display:inline-flex;align-items:center;gap:10px;background:var(--cyan);color:var(--navy);padding:14px 28px;border-radius:4px;font-size:.85rem;font-weight:700;letter-spacing:.04em;transition:background .25s,transform .25s}.btn-p:hover{background:#00ddb0;transform:translateY(-1px)}.btn-p svg{width:16px;height:16px}
 footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);background:rgba(9,12,38,.6);position:relative;z-index:2}.ft-in{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;max-width:1140px;margin:0 auto}.ft-brand img{height:20px;width:auto;object-fit:contain;margin-bottom:12px}.ft-pillars{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--white38);display:flex;gap:8px;margin-bottom:24px}.fp-art{color:var(--salmon)}.fp-tech{color:var(--cyan)}.fp-well{color:var(--white)}.ft-symbol{width:52px;height:52px;object-fit:contain;opacity:.5}.ft-col h4{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--white38);margin-bottom:18px;font-weight:600}.ft-col ul{list-style:none}.ft-col li{margin-bottom:10px}.ft-col a{font-size:.85rem;color:var(--white60);transition:color .2s}.ft-col a:hover{color:var(--white)}.ft-bot{display:flex;justify-content:space-between;align-items:center;margin-top:40px;padding-top:24px;border-top:1px solid rgba(240,239,233,.05);font-size:.72rem;color:var(--white38)}.ft-legal{display:flex;gap:20px}.ft-legal a{color:var(--white38);transition:color .2s}.ft-legal a:hover{color:var(--white)}
@@ -102,6 +131,17 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   </div>
 </section>
 
+<!-- FAQ -->
+<section class="sect" style="border-top:1px solid rgba(240,239,233,.06)">
+  <div class="sect-in" style="max-width:680px">
+    <div style="text-align:center;margin-bottom:48px" class="rv"><span class="sl">Preguntas Frecuentes</span><h2 class="sh2">Sobre el <em>alquiler.</em></h2></div>
+    <div class="faq-item rv" style="transition-delay:.05s"><button class="faq-q" aria-expanded="false">¿Cuántas personas caben en la sala inmersiva?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>La sala inmersiva de SABDA tiene capacidad para 20 a 80 personas sentadas. Con el espacio completo (sala + cafetería + terraza), hasta 200 personas de pie. Ideal para team building, eventos corporativos, y celebraciones privadas en Barcelona.</p></div></div>
+    <div class="faq-item rv" style="transition-delay:.1s"><button class="faq-q" aria-expanded="false">¿Se puede alquilar la sala para un cumpleaños?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Sí. Ofrecemos alquiler de sala para cumpleaños y celebraciones privadas en Barcelona. El espacio incluye proyecciones 360° personalizables, Dolby Atmos, y opción de catering. Desde €350. Contacta en <a href="mailto:connect@sabdastudio.com" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">connect@sabdastudio.com</a>.</p></div></div>
+    <div class="faq-item rv" style="transition-delay:.15s"><button class="faq-q" aria-expanded="false">¿Se pueden personalizar las proyecciones con nuestra marca?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Sí. Creamos visuales 360° personalizados para lanzamientos de producto, activaciones de marca, y eventos corporativos. FC Barcelona, Alpro (Danone) y PERDÓN han tenido entornos visuales totalmente personalizados en SABDA.</p></div></div>
+    <div class="faq-item rv" style="transition-delay:.2s"><button class="faq-q" aria-expanded="false">¿Ofrecen servicio de catering?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Sí. Ofrecemos paquetes de catering a través de nuestra cafetería y bar. También aceptamos catering externo si lo prefieres. Consulta opciones en <a href="mailto:connect@sabdastudio.com" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">connect@sabdastudio.com</a>.</p></div></div>
+  </div>
+</section>
+
 <div class="final-cta">
   <h2 class="rv">Tu evento.<br><em>Nuestro universo.</em></h2>
   <p class="sub rv" style="transition-delay:.06s">Cuéntanos tu idea. Te enviamos una propuesta personalizada en 24 horas.</p>
@@ -140,6 +180,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 
 <script>
 const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>40)},{passive:true});
+document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));if(!wasOpen)item.classList.add('open');btn.setAttribute('aria-expanded',!wasOpen)})});
 const rvEls=document.querySelectorAll('.rv');const rvObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');rvObs.unobserve(e.target)}});},{threshold:.15,rootMargin:'0px 0px -40px 0px'});rvEls.forEach(el=>rvObs.observe(el));
 </script>
 </body>
