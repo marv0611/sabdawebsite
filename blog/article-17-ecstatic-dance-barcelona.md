@@ -105,7 +105,9 @@ The scene is smaller than Ibiza or Berlin, but it's growing fast, and the commun
 
 If you love music and dancing but hate clubs: yes. If you're curious about movement practices but find yoga too slow: yes. If you're a man who feels weird about wellness spaces: ecstatic dance has a surprisingly balanced gender mix, especially at SABDA. If you're sceptical: try it once. The worst case is 90 minutes of exercise to good music.
 
-**Book:** [Ecstatic dance events at SABDA](https://sabdastudio.com/events/) | [Newsletter signup for event notifications](https://sabdastudio.com/)
+Want to try more than ecstatic dance? SABDA's [intro 3-pack — €48 for 3 classes](https://momence.com/m/443935) — gets you into sound healing, breathwork, yoga, or pilates in the same 360° room. Most people who come for one thing end up trying three.
+
+**Book:** [Ecstatic dance events at SABDA](https://sabdastudio.com/events/) | [3 classes for €48](https://momence.com/m/443935) | [Newsletter signup](https://sabdastudio.com/)
 
 **Related:** [What Is Sound Healing?](/blog/what-is-sound-healing/)
 

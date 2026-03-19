@@ -114,6 +114,12 @@ Fuera de los grandes eventos: el Palau de la Música tiene una temporada excepci
 
 ---
 
+---
+
+Si buscas una experiencia inmersiva que va más allá de sentarte a mirar: [SABDA ofrece 3 clases por €48](https://momence.com/m/443935) — yoga, sound healing, breathwork, o danza extática dentro de proyecciones 360° con Dolby Atmos. Es el tipo de espectáculo donde tú eres parte de lo que ocurre.
+
+---
+
 ## Antes de ir
 
 Los mejores espectáculos en Barcelona no son siempre los más publicitados. El show de flamenco en un sótano, el concierto de jazz a las 21h en Jamboree, la sesión de ecstatic dance un viernes por la noche — son experiencias que no aparecen en las marquesinas pero que recordarás mucho más que el espectáculo con asientos numerados.
