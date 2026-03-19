@@ -24,6 +24,19 @@
   ]
 }
 </script>
+<!-- FAQPage Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org", "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "How many people can SABDA accommodate?", "acceptedAnswer": {"@type": "Answer", "text": "Immersive room seats 20-80. Full venue up to 200 standing with café, bar, and patio."}},
+    {"@type": "Question", "name": "Can you customize visuals for our brand?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Custom 360-degree branded projections. Alpro, FC Barcelona, and PERDÓN have used this."}},
+    {"@type": "Question", "name": "What's included in venue hire?", "acceptedAnswer": {"@type": "Answer", "text": "86m² immersive room with 360° projections and Dolby Atmos, plus event coordinator. From 350 euros."}},
+    {"@type": "Question", "name": "How far in advance should we book?", "acceptedAnswer": {"@type": "Answer", "text": "2-3 weeks standard. 4-6 weeks for custom visuals."}},
+    {"@type": "Question", "name": "Do you offer team building?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Breathwork, sound healing, yoga, and ice bath for corporate groups."}}
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -268,6 +281,16 @@ section{position:relative;padding:120px 80px;z-index:2}
 .inq-success p{color:var(--white60);font-size:.95rem}
 
 /* ── FOOTER ── */
+.faq{padding:80px 80px;border-top:1px solid rgba(240,239,233,.06)}
+.faq-inner{max-width:680px;margin:0 auto}
+.faq-heading{text-align:center;margin-bottom:48px}
+.faq-item{border-bottom:1px solid rgba(240,239,233,.07)}
+.faq-q{width:100%;padding:22px 0;background:none;border:none;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:500;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq-q svg{width:16px;height:16px;flex-shrink:0;transition:transform .35s var(--ease-expo);color:var(--white38)}
+.faq-item.open .faq-q svg{transform:rotate(45deg);color:var(--cyan)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .45s var(--ease-expo),padding .35s}
+.faq-item.open .faq-a{max-height:300px;padding-bottom:22px}
+.faq-a p{font-size:.9rem;color:var(--white60);line-height:1.7}
 footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);background:rgba(9,12,38,.6);position:relative;z-index:2}
 .ft-in{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:44px}
 .ft-brand{text-align:left}
@@ -1056,6 +1079,7 @@ window.addEventListener('scroll',()=>{
   const nearFooter=footerEl.getBoundingClientRect().top<window.innerHeight+80;
   sbk.classList.toggle('vis',pastHero&&!nearFooter);
 },{passive:true});
+document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));if(!wasOpen)item.classList.add('open');btn.setAttribute('aria-expanded',!wasOpen)})});
 </script>
 </body>
 </html>

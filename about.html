@@ -42,6 +42,17 @@
   ]
 }
 </script>
+<!-- FAQPage Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org", "@type": "FAQPage",
+  "mainEntity": [
+    {"@type": "Question", "name": "Who founded SABDA?", "acceptedAnswer": {"@type": "Answer", "text": "Juliet Levine (yoga teacher, sound healer) and Marvyn Halfon (founder of DROP Dance Society) in Barcelona's Eixample."}},
+    {"@type": "Question", "name": "What does SABDA mean?", "acceptedAnswer": {"@type": "Answer", "text": "Sanskrit word meaning sound or vibration."}},
+    {"@type": "Question", "name": "What makes SABDA different?", "acceptedAnswer": {"@type": "Answer", "text": "Only studio in Barcelona with 360° projections and Dolby Atmos spatial audio for every class."}}
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -170,6 +181,16 @@ nav.on{background:rgba(14,18,53,.88);backdrop-filter:blur(22px)}
 .rn-q cite{font-style:normal;font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--salmon);font-weight:500}
 
 /* FOOTER */
+.faq{padding:80px 80px;border-top:1px solid rgba(240,239,233,.06)}
+.faq-inner{max-width:680px;margin:0 auto}
+.faq-heading{text-align:center;margin-bottom:48px}
+.faq-item{border-bottom:1px solid rgba(240,239,233,.07)}
+.faq-q{width:100%;padding:22px 0;background:none;border:none;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:500;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq-q svg{width:16px;height:16px;flex-shrink:0;transition:transform .35s var(--ease-expo);color:var(--white38)}
+.faq-item.open .faq-q svg{transform:rotate(45deg);color:var(--cyan)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .45s var(--ease-expo),padding .35s}
+.faq-item.open .faq-a{max-height:300px;padding-bottom:22px}
+.faq-a p{font-size:.9rem;color:var(--white60);line-height:1.7}
 footer{padding:44px clamp(24px,4vw,80px) 24px;background:rgba(9,12,38,.6);position:relative;z-index:6}
 .ft-in{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:32px;margin-bottom:32px}
 .ft-brand img:first-child{height:30px;margin-bottom:12px}
@@ -530,6 +551,7 @@ addEventListener('scroll',function(){
   var nearFooter=footerEl.getBoundingClientRect().top<innerHeight+80;
   sbk.classList.toggle('vis',pastTop&&!nearFooter);
 },{passive:true});
+document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));if(!wasOpen)item.classList.add('open');btn.setAttribute('aria-expanded',!wasOpen)})});
 </script>
 </body>
 </html>
