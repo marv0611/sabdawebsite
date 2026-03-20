@@ -94,7 +94,7 @@ Las apps son perfectas para mantener una práctica diaria de 10 minutos. Un espa
 
 El mindfulness no requiere creer en nada. No requiere flexibilidad, ni ropa especial, ni silenciar tu mente. Requiere presentarse y practicar. La mente va a divagar — eso no es un fracaso, es literalmente el ejercicio. Notar que la mente se ha ido y traerla de vuelta es el equivalente de una repetición en el gimnasio.
 
-Si quieres probar en un entorno que facilita la práctica: [meditación guiada en SABDA](https://sabdastudio.com/classes/sound-healing/) desde €16. [3 clases por €48](https://momence.com/m/443935) — combina meditación con sound healing para la experiencia completa.
+Si quieres probar en un entorno que facilita la práctica: [sound healing y breathwork en SABDA](https://sabdastudio.com/classes/sound-healing/) desde €16. [3 clases por €48](https://momence.com/m/443935) — combina sound healing con breathwork para la experiencia completa.
 
 **Relacionado:** [What Is Sound Healing?](/blog/what-is-sound-healing/) | [Yoga en Barcelona: Guía definitiva](/blog/yoga-barcelona-guia/) | [Cursos de mindfulness](/blog/curso-mindfulness-barcelona/) | [Meditación guiada](/blog/meditacion-guiada-barcelona/)
 

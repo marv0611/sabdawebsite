@@ -98,7 +98,7 @@ If your first class didn't work:
 
 ## The SABDA factor
 
-Every yoga style at [SABDA](https://sabdastudio.com/classes/yoga/) happens inside a 360° projection room with Dolby Atmos spatial audio. The projections and music adapt to the style: fast and rhythmic for Power Vinyasa, slow and ambient for Yin, dreamlike for Yoga Nidra.
+Every yoga style at [SABDA](https://sabdastudio.com/classes/yoga/) happens inside a 360° projection room with Dolby Atmos spatial audio. The projections and music adapt to the style: fast and rhythmic for Power Vinyasa, slow and ambient for Yin, dreamlike for Yin Yoga.
 
 The immersive environment doesn't change what yoga is — it changes how it feels. The darkness removes self-consciousness (no mirrors, no one watching). The spatial audio makes the teacher's voice arrive from everywhere (you follow naturally instead of straining to hear). The visuals give your eyes something to rest on that isn't the back of someone's head.
 
