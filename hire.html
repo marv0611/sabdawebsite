@@ -31,11 +31,12 @@
 {
   "@context": "https://schema.org", "@type": "FAQPage",
   "mainEntity": [
-    {"@type": "Question", "name": "How many people can SABDA accommodate?", "acceptedAnswer": {"@type": "Answer", "text": "Immersive room seats 20-80. Full venue up to 200 standing with café, bar, and patio."}},
-    {"@type": "Question", "name": "Can you customize visuals for our brand?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Custom 360-degree branded projections. Alpro, FC Barcelona, and PERDÓN have used this."}},
-    {"@type": "Question", "name": "What's included in venue hire?", "acceptedAnswer": {"@type": "Answer", "text": "86m² immersive room with 360° projections and Dolby Atmos, plus event coordinator. From 350 euros."}},
-    {"@type": "Question", "name": "How far in advance should we book?", "acceptedAnswer": {"@type": "Answer", "text": "2-3 weeks standard. 4-6 weeks for custom visuals."}},
-    {"@type": "Question", "name": "Do you offer team building?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Breathwork, sound healing, yoga, and ice bath for corporate groups."}}
+    {"@type": "Question", "name": "Can I rent SABDA for a private event?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. SABDA is available for brand activations, corporate events, private sound baths, immersive dinners, photoshoots, and more. 360° projections and Dolby Atmos spatial audio fully customisable."}},
+    {"@type": "Question", "name": "Can you customise visuals for our brand?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Bespoke 360° visual environments for brands. FC Barcelona, Alpro, and PERDÓN have had custom environments built."}},
+    {"@type": "Question", "name": "What's included in a private hire?", "acceptedAnswer": {"@type": "Answer", "text": "86m² immersive room, content library, on-site technician. Add-ons: staff, seating, custom content, catering. From 350 euros."}},
+    {"@type": "Question", "name": "Is SABDA suitable for filming?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Production-ready set with 360° controllable backdrops and Dolby Atmos acoustics. No permits needed. FC Barcelona's 22M-view production was filmed here."}},
+    {"@type": "Question", "name": "Can I host a celebration?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Up to 100 guests standing. Bachelorette parties, kids' parties, birthdays, dinners all available as private hire."}},
+    {"@type": "Question", "name": "How far in advance should I book?", "acceptedAnswer": {"@type": "Answer", "text": "2-3 weeks for standard events. More for custom visual content."}}
   ]
 }
 </script>
@@ -189,6 +190,20 @@ section{position:relative;padding:120px 80px;z-index:2}
 .uc-card:hover .uc-arrow{opacity:1;transform:none;border-color:rgba(2,243,197,.3);background:rgba(2,243,197,.06)}
 .uc-arrow svg{width:14px;height:14px;stroke:var(--cyan);fill:none;stroke-width:1.5}
 
+/* ── CATEGORY SECTIONS ── */
+.cat-section{padding:100px 80px;border-top:1px solid rgba(240,239,233,.06);position:relative;z-index:2}
+.cat-in{max-width:1000px;margin:0 auto}
+.cat-intro{font-size:1.05rem;line-height:1.75;color:var(--white60);max-width:640px;margin-bottom:48px}
+.cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.cat-card{background:rgba(19,24,66,.65);border:1px solid rgba(240,239,233,.06);border-radius:16px;padding:32px 28px;transition:border-color .3s}
+.cat-card:hover{border-color:rgba(2,243,197,.2)}
+.cat-card-name{font-family:'PT Serif',serif;font-size:1.1rem;font-weight:700;margin-bottom:10px}
+.cat-card-desc{font-size:.88rem;color:var(--white60);line-height:1.65}
+.cross-links{padding:60px 80px;border-top:1px solid rgba(240,239,233,.06);text-align:center}
+.cross-links-in{max-width:600px;margin:0 auto}
+.cl-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+.cl-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border:1px solid rgba(240,239,233,.1);border-radius:4px;font-size:.85rem;font-weight:500;color:var(--white60);transition:border-color .25s,color .25s}
+.cl-btn:hover{border-color:rgba(2,243,197,.3);color:var(--cyan)}
 /* ── CASE STUDIES ── */
 .case-study{padding:120px 80px;z-index:2;position:relative;border-top:1px solid rgba(240,239,233,.04)}
 .cs-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
@@ -333,7 +348,8 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .nav-social{gap:10px;padding-left:14px;margin-left:14px}
   .nav-login{padding-left:12px;margin-left:10px}
   .lang-sel a{padding:4px 5px;font-size:.65rem}
-  section,.inquiry,.use-cases,.addons,footer{padding-left:24px;padding-right:24px}
+  section,.inquiry,.use-cases,.addons,.cat-section,.cross-links,footer{padding-left:24px;padding-right:24px}
+  .cat-grid{grid-template-columns:1fr}
   section{padding-top:80px;padding-bottom:80px}
   .hero-content{padding:0 24px 72px}
   .hero h1{font-size:clamp(2.2rem,8vw,3.6rem)}
@@ -425,53 +441,79 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 </div>
 
 <!-- ═══════════════════════════════════════════════════════
-     USE CASES — visual navigation
+     CATEGORY 1 — CORPORATE & TEAM BUILDING
+═══════════════════════════════════════════════════════ -->
+<section class="cat-section" id="corporate">
+  <div class="cat-in">
+    <span class="sl rv">Corporate</span>
+    <h2 class="sh2 rv" style="transition-delay:.07s">Corporate Wellness &<br><em>Team Experiences</em></h2>
+    <p class="cat-intro rv" style="transition-delay:.12s">Most team events are forgettable. SABDA is not. 360° projection mapping and Dolby Atmos spatial audio create an environment that strips away distraction and brings people into genuine presence, together. For dedicated team building packages, <a href="team-building/" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">see our team building page</a>.</p>
+    <div class="cat-grid">
+      <div class="cat-card rv" style="transition-delay:.15s"><div class="cat-card-name">Corporate Wellness Classes</div><div class="cat-card-desc">Private yoga, breathwork, sound healing, or ecstatic dance sessions led by SABDA instructors. Bookable for teams of any size, with content adapted to your group.</div></div>
+      <div class="cat-card rv" style="transition-delay:.19s"><div class="cat-card-name">Team Away Days</div><div class="cat-card-desc">A half or full day format combining movement, a shared immersive experience, and space to decompress. A reset that actually works.</div></div>
+      <div class="cat-card rv" style="transition-delay:.23s"><div class="cat-card-name">Onboarding & Culture Events</div><div class="cat-card-desc">Introduce new team members to your company culture in an environment that says something about who you are. First impressions made in a space like this land differently.</div></div>
+      <div class="cat-card rv" style="transition-delay:.27s"><div class="cat-card-name">End of Year & Offsite Gatherings</div><div class="cat-card-desc">Skip the dinner that everyone forgets. Close out the year or kick off a new chapter in a setting that gives people something to talk about.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     CATEGORY 2 — BRAND ACTIVATIONS
+═══════════════════════════════════════════════════════ -->
+<section class="cat-section" id="activations">
+  <div class="cat-in">
+    <span class="sl rv">Brands</span>
+    <h2 class="sh2 rv" style="transition-delay:.07s">Brand Activations &<br><em>Product Launches</em></h2>
+    <p class="cat-intro rv" style="transition-delay:.12s">SABDA is a blank canvas built for brands that have something to say. The immersive room transforms completely: your visuals, your audio, your message, surrounded by 360° of content and spatial sound. No boardroom. No blank white walls. An environment your audience will remember and share.</p>
+    <div class="cat-grid">
+      <div class="cat-card rv" style="transition-delay:.15s"><div class="cat-card-name">Influencer Events</div><div class="cat-card-desc">Host a curated group in an environment designed for content creation. The space photographs and films unlike anything else in Barcelona.</div></div>
+      <div class="cat-card rv" style="transition-delay:.19s"><div class="cat-card-name">Taster Experiences</div><div class="cat-card-desc">Introduce your product or service through a multi-sensory moment. Pair your brand with an immersive class, a listening session, or a custom activation built around your audience.</div></div>
+      <div class="cat-card rv" style="transition-delay:.23s"><div class="cat-card-name">Product Launches</div><div class="cat-card-desc">Announce something new in a space that commands attention. Full venue hire, branded visual content, and a captive audience primed to engage.</div></div>
+      <div class="cat-card rv" style="transition-delay:.27s"><div class="cat-card-name">Pop-up Experiences</div><div class="cat-card-desc">Run a branded immersive session over one or several days. Drive footfall, generate content, and give your audience a reason to show up in person.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     CATEGORY 3 — PRODUCTION
+═══════════════════════════════════════════════════════ -->
+<section class="cat-section" id="production">
+  <div class="cat-in">
+    <span class="sl rv">Production</span>
+    <h2 class="sh2 rv" style="transition-delay:.07s">Production &<br><em>Filming</em></h2>
+    <p class="cat-intro rv" style="transition-delay:.12s">SABDA has hosted FC Barcelona's farewell video for Sergi Roberto, a production that reached over 22 million views. The immersive room is a production-ready set unlike anything available in the city. 360° projection creates infinite visual backdrops. Dolby Atmos provides a controlled acoustic environment. No location permits. No street noise. No compromises.</p>
+    <div class="cat-grid">
+      <div class="cat-card rv" style="transition-delay:.15s"><div class="cat-card-name">Film & Video Production</div><div class="cat-card-desc">A fully controllable visual and audio environment for brand films, campaign content, and creative projects.</div></div>
+      <div class="cat-card rv" style="transition-delay:.19s"><div class="cat-card-name">Photography</div><div class="cat-card-desc">Dynamic, immersive backdrops that change with every shoot. Static or motion-reactive visuals on request.</div></div>
+      <div class="cat-card rv" style="transition-delay:.23s"><div class="cat-card-name">Influencer Content Days</div><div class="cat-card-desc">Book the space for a full session. Bring your own creative direction or work with our content packs.</div></div>
+      <div class="cat-card rv" style="transition-delay:.27s"><div class="cat-card-name">Talks & Panels</div><div class="cat-card-desc">An intimate, high-impact setting for keynotes, interviews, and recorded conversations. The environment alone communicates forward thinking.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     CATEGORY 4 — CELEBRATIONS
+═══════════════════════════════════════════════════════ -->
+<section class="cat-section" id="celebrations">
+  <div class="cat-in">
+    <span class="sl rv">Celebrations</span>
+    <h2 class="sh2 rv" style="transition-delay:.07s">Private Celebrations &<br><em>Events</em></h2>
+    <p class="cat-intro rv" style="transition-delay:.12s">Some occasions deserve more than a restaurant back room. SABDA's immersive room holds up to 100 guests standing, with full control over the visual and audio environment. Every celebration is private hire. The space is yours for the duration of your event.</p>
+    <div class="cat-grid">
+      <div class="cat-card rv" style="transition-delay:.15s"><div class="cat-card-name">Bachelorette & Hen Parties</div><div class="cat-card-desc">A multi-sensory experience that doubles as a wellness ritual. Sound healing, yoga, movement, designed around your group.</div></div>
+      <div class="cat-card rv" style="transition-delay:.19s"><div class="cat-card-name">Kids' Parties</div><div class="cat-card-desc">A genuinely unique environment for children. Interactive visuals and spatial sound create an experience that no other venue in Barcelona offers.</div></div>
+      <div class="cat-card rv" style="transition-delay:.23s"><div class="cat-card-name">Milestone Birthdays</div><div class="cat-card-desc">30, 40, 50. Mark them somewhere that matches the occasion. Private hire with full visual customisation and optional wellness programming.</div></div>
+      <div class="cat-card rv" style="transition-delay:.27s"><div class="cat-card-name">Intimate Dinners & Gatherings</div><div class="cat-card-desc">A seated dinner for up to 80 guests, surrounded by immersive visuals and spatial audio. A format no restaurant in Barcelona can replicate.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     CASE STUDIES — social proof
 ═══════════════════════════════════════════════════════ -->
 <section class="use-cases" id="case-studies">
   <span class="sl rv">Our Work</span>
   <h2 class="sh2 rv" style="transition-delay:.07s">Case <em>Studies</em></h2>
-  <div class="uc-grid">
-    <a href="#cs-launches" class="uc-card rv" style="transition-delay:.1s">
-      <div class="uc-card-bg" style="background-image:url('https://raw.githubusercontent.com/marv0611/sabdawebsite/main/alpro_product.jpg')"></div>
-      <div class="uc-card-ov"></div>
-      <div class="uc-arrow"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4v6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <div class="uc-card-content">
-        <span class="uc-num">01</span>
-        <div class="uc-name">Product Launches</div>
-        <div class="uc-desc">Custom 360° branded environments for unforgettable reveals.</div>
-      </div>
-    </a>
-    <a href="#cs-production" class="uc-card rv" style="transition-delay:.17s">
-      <div class="uc-card-bg" style="background-image:url('https://raw.githubusercontent.com/marv0611/sabdawebsite/main/fcb_room.jpg')"></div>
-      <div class="uc-card-ov"></div>
-      <div class="uc-arrow"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4v6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <div class="uc-card-content">
-        <span class="uc-num">02</span>
-        <div class="uc-name">Film & Production</div>
-        <div class="uc-desc">Projection-mapped sets for video, photo, and content creation.</div>
-      </div>
-    </a>
-    <a href="#cs-activations" class="uc-card rv" style="transition-delay:.24s">
-      <div class="uc-card-bg" style="background-image:url('https://raw.githubusercontent.com/marv0611/sabdawebsite/main/perdon_room.jpg')"></div>
-      <div class="uc-card-ov"></div>
-      <div class="uc-arrow"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4v6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <div class="uc-card-content">
-        <span class="uc-num">03</span>
-        <div class="uc-name">Brand Activations</div>
-        <div class="uc-desc">Immersive experiences that put your brand inside the story.</div>
-      </div>
-    </a>
-    <a href="#cs-workshops" class="uc-card rv" style="transition-delay:.31s">
-      <div class="uc-card-bg" style="background-image:url('https://raw.githubusercontent.com/marv0611/sabdawebsite/main/astral_workshop.jpg')"></div>
-      <div class="uc-card-ov"></div>
-      <div class="uc-arrow"><svg viewBox="0 0 16 16"><path d="M4 12L12 4M12 4H6M12 4v6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <div class="uc-card-content">
-        <span class="uc-num">04</span>
-        <div class="uc-name">Workshops & Talks</div>
-        <div class="uc-desc">Presentations wrapped in 360° visuals. No more slide decks.</div>
-      </div>
-    </a>
-  </div>
 </section>
 
 <!-- ═══════════════════════════════════════════════════════
@@ -611,44 +653,33 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 </section>
 
 <!-- ═══════════════════════════════════════════════════════
-     ADD-ONS
+     CROSS-LINKS
 ═══════════════════════════════════════════════════════ -->
-<section class="addons">
-  <span class="sl rv">Enhance Your Event</span>
-  <h2 class="sh2 rv" style="transition-delay:.07s">Available <em>Add-Ons</em></h2>
-  <div class="addons-grid">
-    <div class="addon rv" style="transition-delay:.08s">
-      <span class="addon-icon">🧘</span>
-      <div class="addon-name">Wellness Facilitator</div>
-      <div class="addon-desc">Guided breathwork, yoga, or sound bath for your group</div>
+<div class="cross-links">
+  <div class="cross-links-in">
+    <span class="sl rv">Explore More</span>
+    <h2 class="sh2 rv" style="transition-delay:.06s">Related <em>Pages</em></h2>
+    <div class="cl-btns rv" style="transition-delay:.12s">
+      <a href="team-building/" class="cl-btn">Team Building Packages →</a>
+      <a href="events.html" class="cl-btn">Public Events →</a>
+      <a href="classes.html" class="cl-btn">Class Schedule →</a>
+      <a href="pricing.html" class="cl-btn">Pricing →</a>
     </div>
-    <div class="addon rv" style="transition-delay:.14s">
-      <span class="addon-icon">🎨</span>
-      <div class="addon-name">Custom Visuals</div>
-      <div class="addon-desc">Branded 360° projections designed for your event</div>
-    </div>
+  </div>
+</div>
 
-    <div class="addon rv" style="transition-delay:.2s">
-      <span class="addon-icon">🎛</span>
-      <div class="addon-name">AV Technician</div>
-      <div class="addon-desc">Dedicated on-site tech support for the full event</div>
-    </div>
-    <div class="addon rv" style="transition-delay:.26s">
-      <span class="addon-icon">🧊</span>
-      <div class="addon-name">Ice Bath</div>
-      <div class="addon-desc">Cold plunge experience on the patio. Guided or self-serve</div>
-    </div>
-    <div class="addon rv" style="transition-delay:.32s">
-      <span class="addon-icon">📸</span>
-      <div class="addon-name">Photo & Video</div>
-      <div class="addon-desc">Professional event coverage and content creation</div>
-    </div>
-    <div class="addon rv" style="transition-delay:.38s">
-      <span class="addon-icon">🍽</span>
-      <div class="addon-name">Catering</div>
-      <div class="addon-desc">Food & beverage packages via our partner network</div>
-    </div>
-
+<!-- ═══════════════════════════════════════════════════════
+     FAQ — RENT THE SPACE
+═══════════════════════════════════════════════════════ -->
+<section class="faq" style="padding:100px 80px;border-top:1px solid rgba(240,239,233,.06)">
+  <div class="faq-inner" style="max-width:680px;margin:0 auto">
+    <div class="faq-heading rv" style="text-align:center;margin-bottom:48px"><span class="sl">Questions</span><h2 class="sh2">About hiring <em>the space.</em></h2></div>
+    <div class="faq-item rv" style="transition-delay:.05s"><button class="faq-q" aria-expanded="false">Can I rent the space for a private event?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Yes. SABDA is available for brand activations, corporate events, private sound baths, immersive dinners, photoshoots, and more. The 360° projection system and Dolby Atmos spatial audio can be fully customised for your event in Barcelona's Eixample district.</p></div></div>
+    <div class="faq-item rv" style="transition-delay:.1s"><button class="faq-q" aria-expanded="false">Can you customise the visuals and audio for our brand?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Yes. Bespoke 360° visual environments built around your brand, campaign, or event concept are available. FC Barcelona, Alpro (Danone), and PERDÓN have all had fully custom environments built at SABDA. Contact us at least one week before your event date.</p></div></div>
+    <div class="faq-item rv" style="transition-delay:.15s"><button class="faq-q" aria-expanded="false">What's included in a private hire?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Private hire includes use of the 86m² immersive room, SABDA's content library, and a required on-site technician. Reception staff, event staff, seating, and custom branded content are available as add-ons. Catering packages available through our café and bar, or bring your own caterer. From €350/session.</p></div></div>
+    <div class="faq-item rv" style="transition-delay:.2s"><button class="faq-q" aria-expanded="false">Is SABDA suitable for filming and content creation?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Yes. The immersive room is a production-ready set. 360° projection creates fully controllable visual backdrops (static or motion-reactive) and the Dolby Atmos system provides a controlled acoustic environment. No location permits needed. No street noise. Past productions include FC Barcelona's Sergi Roberto farewell video (22M+ views).</p></div></div>
+    <div class="faq-item rv" style="transition-delay:.25s"><button class="faq-q" aria-expanded="false">Can I host a celebration at SABDA?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Yes. The immersive room holds up to 100 guests standing and is available for full private hire. Bachelorette and hen parties, kids' parties, milestone birthdays, and intimate dinners are all popular formats. Every celebration is yours for the duration of the event.</p></div></div>
+    <div class="faq-item rv" style="transition-delay:.3s"><button class="faq-q" aria-expanded="false">How far in advance do I need to book?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>At least 2 to 3 weeks ahead for private events. For larger productions or bespoke visual content, give us more runway. Email <a href="mailto:connect@sabdastudio.com" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">connect@sabdastudio.com</a> or fill in the form below.</p></div></div>
   </div>
 </section>
 
