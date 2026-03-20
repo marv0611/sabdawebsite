@@ -125,7 +125,7 @@ Les millors activitats barcelona passen quan deixes de seguir la ruta marcada. L
 
 Si busques alguna cosa diferent, el [pack de 3 classes de SABDA per €48](https://momence.com/m/443935) val molt la pena. Ioga, breathwork, teràpia de so o dansa extàtica dins d'una sala de projeccions 360°. És el tipus d'experiència que Barcelona ofereix i que no trobaràs a cap altra ciutat.
 
-**Relacionat:** [Cosas que hacer en Barcelona este fin de semana](/blog/cosas-que-hacer-en-barcelona/) | [15 Unique Things to Do in Barcelona](/blog/things-to-do-in-barcelona/) | [Benestar immersiu (CA)](/blog/benestar-immersiu-barcelona/)
+**Relacionat:** [Millors plans a Barcelona](/blog/cosas-que-hacer-en-barcelona/) | [15 Unique Things to Do in Barcelona](/blog/things-to-do-in-barcelona/) | [Benestar immersiu (CA)](/blog/benestar-immersiu-barcelona/)
 
 ---
 

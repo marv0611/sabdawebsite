@@ -93,7 +93,7 @@ Ambos formatos están disponibles varias veces por semana. C/Muntaner 83B, Eixam
 
 ---
 
-Si buscas la profundidad del yoga nidra dentro de un entorno inmersivo, las sesiones de Yin Yoga y Serenity and Sound en [SABDA](https://sabdastudio.com/classes/) son lo más cercano que encontrarás en Barcelona. [3 clases por €48](https://momence.com/m/443935).
+Si buscas la profundidad del yoga nidra dentro de un entorno inmersivo, las sesiones de [Yin Yoga](https://sabdastudio.com/classes/yoga/) y Serenity and Sound en [SABDA](https://sabdastudio.com/classes/) son lo más cercano que encontrarás en Barcelona. [3 clases por €48](https://momence.com/m/443935).
 
 **Relacionado:** [Yoga en Barcelona: guía completa](/blog/yoga-barcelona-guia/) | [Qué es el sound healing](/blog/que-es-el-sound-healing/)
 
