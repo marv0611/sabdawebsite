@@ -101,5 +101,5 @@ Si quieres probar en un entorno que facilita la práctica: [sound healing y brea
 ---
 
 *[Schema: BreadcrumbList → Inicio > Blog > Mindfulness en Barcelona]*
-*[Images needed: hero (meditation/mindfulness space), SABDA meditation session, Montserrat retreat landscape]*
+*[Images needed: hero (sound healing/mindfulness space), SABDA sound healing session, Montserrat retreat landscape]*
 *[All images require alt text with "mindfulness barcelona," "meditación guiada barcelona," "clases meditación barcelona"]*

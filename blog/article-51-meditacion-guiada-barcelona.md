@@ -45,7 +45,7 @@ Las apps son para mantenimiento. Los espacios son para profundidad.
 
 ## Dónde hacer meditación guiada en Barcelona
 
-**SABDA (Eixample)** — Sesiones de meditación inmersiva varias veces por semana. La sala de 360° convierte la meditación guiada en una experiencia sensorial: proyecciones lentas, audio espacial envolvente, guía de voz desde todas las direcciones. C/Muntaner 83B. Desde €16/sesión. [3 clases por €48](https://momence.com/m/443935).
+**SABDA (Eixample)** — Sesiones de sound healing y breathwork varias veces por semana. La sala de 360° convierte el sound healing en una experiencia sensorial: proyecciones lentas, audio espacial envolvente, guía de voz desde todas las direcciones. C/Muntaner 83B. Desde €16/sesión. [3 clases por €48](https://momence.com/m/443935).
 
 **Centre de Meditació Kadampa** — Tradición budista Kadampa. Clases de meditación guiada para principiantes. Donación sugerida (~€5-10).
 
@@ -53,7 +53,7 @@ Las apps son para mantenimiento. Los espacios son para profundidad.
 
 ---
 
-Las clases de meditación en [SABDA](https://sabdastudio.com/classes/sound-healing/) son la mejor entrada para principiantes — el entorno hace el trabajo que normalmente tienes que hacer tú. [3 clases por €48](https://momence.com/m/443935).
+Las sesiones de sound healing en [SABDA](https://sabdastudio.com/classes/sound-healing/) son la mejor entrada para principiantes — el entorno hace el trabajo que normalmente tienes que hacer tú. [3 clases por €48](https://momence.com/m/443935).
 
 **Relacionado:** [Mindfulness en Barcelona](/blog/mindfulness-barcelona/) | [Serenity and Sound en Barcelona](/blog/yoga-nidra-barcelona/)
 
@@ -73,7 +73,7 @@ No todas las meditaciones guiadas son iguales. Aquí van las que encontrarás en
 
 **Visualización guiada:** El facilitador te describe escenas o paisajes que imaginas con los ojos cerrados. En [SABDA](https://sabdastudio.com/classes/sound-healing/), la visualización se complementa con proyecciones 360° reales — no tienes que imaginar nada, el entorno lo crea por ti.
 
-**Meditación con sonido:** Cuencos tibetanos, gongs, o música ambiental como ancla de atención. Relacionada con el sound healing pero con un enfoque más meditativo y menos "terapéutico." En SABDA, el Dolby Atmos convierte el sonido en una experiencia envolvente que ancla la atención sin esfuerzo.
+**Sound healing:** Cuencos tibetanos, gongs, o música ambiental como ancla de atención. En [SABDA](https://sabdastudio.com/classes/sound-healing/), el Dolby Atmos convierte el sonido en una experiencia envolvente que ancla la atención sin esfuerzo — el sonido hace el trabajo que tu mente no consigue hacer sola.
 
 **Serenity and Sound:** Relajación guiada tumbado boca arriba durante 30-45 minutos. El estado más profundo de relajación consciente. Ver nuestro [artículo dedicado sobre Serenity and Sound](/blog/yoga-nidra-barcelona/).
 

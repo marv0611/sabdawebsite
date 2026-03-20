@@ -40,8 +40,8 @@ Jornadas de inmersión de 6-8 horas: meditación guiada, prácticas de atención
 
 Sin compromiso de 8 semanas. Vas cuando puedes, pagas por sesión.
 
-### SABDA — Meditación inmersiva
-[SABDA](https://sabdastudio.com/classes/sound-healing/) ofrece sesiones de meditación guiada varias veces por semana dentro de la sala de 360° con Dolby Atmos. No es un curso estructurado — es una clase drop-in que puedes integrar en tu rutina semanal. El entorno inmersivo hace el trabajo que normalmente tienes que hacer tú: mantener la atención. Las proyecciones lentas y el audio espacial anclan tu mente sin esfuerzo.
+### SABDA — Sound healing y breathwork inmersivo
+[SABDA](https://sabdastudio.com/classes/sound-healing/) ofrece sesiones de sound healing y breathwork varias veces por semana dentro de la sala de 360° con Dolby Atmos. No es un curso estructurado — es una clase drop-in que puedes integrar en tu rutina semanal. El entorno inmersivo hace el trabajo que normalmente tienes que hacer tú: mantener la atención. Las proyecciones lentas y el audio espacial anclan tu mente sin esfuerzo.
 
 Desde €16/sesión. [3 clases por €48](https://momence.com/m/443935).
 
@@ -57,7 +57,7 @@ Meditación zen y mindfulness. Sesiones regulares en el Eixample.
 
 Varias organizaciones ofrecen programas de mindfulness corporativo: sesiones semanales en la oficina, talleres de un día para equipos, o retiros de equipo fuera de la ciudad.
 
-[SABDA](https://sabdastudio.com/hire/) ofrece wellness corporativo inmersivo — sesiones de breathwork, meditación, y sound healing para equipos dentro de la sala de 360°. Es mindfulness para empresas en un formato que nadie ha experimentado antes. Contacto: [connect@sabdastudio.com](mailto:connect@sabdastudio.com).
+[SABDA](https://sabdastudio.com/hire/) ofrece wellness corporativo inmersivo — sesiones de breathwork y sound healing para equipos dentro de la sala de 360°. Es mindfulness para empresas en un formato que nadie ha experimentado antes. Contacto: [connect@sabdastudio.com](mailto:connect@sabdastudio.com).
 
 ---
 

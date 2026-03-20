@@ -44,7 +44,7 @@ Reformer en grupos reducidos. Enfoque técnico, buena reputación en rehabilitac
 ## Sound healing y breathwork
 
 ### SABDA — la única opción en el Eixample
-No hay otro espacio de sound healing con cuencos tibetanos y audio espacial en el barrio. [SABDA](https://sabdastudio.com/classes/sound-healing/) es la referencia: sesiones varias veces por semana con Dolby Atmos. También breathwork (Alchemy Breath, Reset & Calm) y meditación guiada inmersiva. Desde €16/clase.
+No hay otro espacio de sound healing con cuencos tibetanos y audio espacial en el barrio. [SABDA](https://sabdastudio.com/classes/sound-healing/) es la referencia: sesiones varias veces por semana con Dolby Atmos. También breathwork (Alchemy Breath, Reset & Calm) y sound healing inmersivo. Desde €16/clase.
 
 ---
 

@@ -53,7 +53,7 @@ El entorno 360° desactiva la DMN más rápido. El audio espacial estimula el ne
 
 ---
 
-Experimenta la diferencia: [3 clases inmersivas en SABDA por €48](https://momence.com/m/443935). Yoga, sound healing, breathwork, o meditación dentro de 360° de proyecciones y Dolby Atmos.
+Experimenta la diferencia: [3 clases inmersivas en SABDA por €48](https://momence.com/m/443935). Yoga, sound healing, breathwork, o yin yoga dentro de 360° de proyecciones y Dolby Atmos.
 
 **Relacionado:** [Qué es el sound healing](/blog/que-es-el-sound-healing/) | [Cómo Dolby Atmos cambia el wellness (EN)](/blog/dolby-atmos-wellness/)
 

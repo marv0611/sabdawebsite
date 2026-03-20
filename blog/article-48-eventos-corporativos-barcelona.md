@@ -32,7 +32,7 @@ Hoteles como W Barcelona, Hotel Arts, y Mandarin Oriental tienen salas equipadas
 Restaurantes privatizables: El Nacional (Passeig de Gràcia, hasta 300), Can Culleretes (Gòtic, desde 1786), o restaurantes del Born y Poblenou con salas privadas.
 
 ### Retiros de equipo
-Fuera de la ciudad: masías en el Penedès (vino + meditación), Montseny (naturaleza + mindfulness), o Montserrat (aventura + cultura). En la ciudad: SABDA para la experiencia inmersiva + restaurante para la cena.
+Fuera de la ciudad: masías en el Penedès (vino + mindfulness), Montseny (naturaleza + mindfulness), o Montserrat (aventura + cultura). En la ciudad: SABDA para la experiencia inmersiva + restaurante para la cena.
 
 ---
 

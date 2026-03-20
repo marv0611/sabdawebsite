@@ -62,7 +62,7 @@ Tarantos (Plaça Reial) or Tablao de Carmen (Poble Espanyol). Not the tourist sh
 Chök or ChocoMuseum. Make your own bars, truffles, or bonbons. From €25/person. You leave with chocolate and a story.
 
 ### 15. SABDA gift card — the last-minute save
-It's midnight and the birthday is tomorrow. [SABDA gift cards](https://sabdastudio.com/pricing/) are digital and instant. From €20 to custom amounts. The €48 (3 classes) is the most popular. Works for yoga, pilates, sound healing, breathwork, ecstatic dance, meditation, or ice bath.
+It's midnight and the birthday is tomorrow. [SABDA gift cards](https://sabdastudio.com/pricing/) are digital and instant. From €20 to custom amounts. The €48 (3 classes) is the most popular. Works for yoga, pilates, sound healing, breathwork, ecstatic dance, or ice bath.
 
 ---
 
