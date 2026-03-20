@@ -2,7 +2,7 @@
 
 **Última actualización: marzo 2026**
 
-**Meta description:** Guía de mindfulness en Barcelona: clases de meditación, cursos, retiros de un día y los mejores espacios para practicar. Desde €16 por sesión. (147 chars)
+**Meta description:** Guía de mindfulness en Barcelona: sesiones de sound healing y breathwork, cursos, retiros de un día y los mejores espacios para practicar. Desde €16 por sesión. (147 chars)
 
 **Slug:** `/blog/mindfulness-barcelona/`
 
@@ -33,20 +33,20 @@ La ciudad también tiene suficiente ruido, pantallas, y estímulos como para que
 
 ## Opciones de mindfulness en Barcelona
 
-### Clases de meditación semanales
+### Sound healing y breathwork como práctica de mindfulness
 
-**SABDA — Meditation Journeys**
-Las sesiones de meditación guiada en [SABDA](https://sabdastudio.com/classes/meditation/) suceden dentro de una sala de 360° con Dolby Atmos. Proyecciones inmersivas — paisajes abstractos, geometría orgánica, cielos que se mueven lentamente — crean un entorno que facilita la atención de una forma que una sala vacía con los ojos cerrados no consigue. El audio espacial guía: la voz del facilitador llega desde todas las direcciones, la música envuelve. Es un mini retiro en el corazón de la ciudad.
+**SABDA — Sound Healing, Serenity and Sound, y Guide Sound Experience**
+Las sesiones de sound healing y breathwork en [SABDA](https://sabdastudio.com/classes/sound-healing/) suceden dentro de una sala de 360° con Dolby Atmos. Proyecciones inmersivas — paisajes abstractos, geometría orgánica, cielos que se mueven lentamente — crean un entorno que facilita la atención de una forma que una sala vacía con los ojos cerrados no consigue. El audio espacial guía: la voz del facilitador llega desde todas las direcciones, la música envuelve. Es un mini retiro en el corazón de la ciudad.
 
 Esto no es meditación para expertos. Es meditación guiada para gente que no sabe meditar. El entorno hace el trabajo que normalmente tienes que hacer tú: mantener la atención, evitar que tu mente se escape a la lista de tareas.
 
-**Precio:** Desde €16. [3 clases por €48](https://momence.com/m/443935) — combina meditación con sound healing o breathwork.
+**Precio:** Desde €16. [3 clases por €48](https://momence.com/m/443935) — combina sound healing con breathwork o yin yoga.
 **Dónde:** C/Muntaner 83B, Eixample.
 
 **Otros espacios con meditación regular:**
 - **Shanga Barcelona** — Meditación zen y mindfulness. Clases regulares en el Eixample.
 - **Centre de Meditació Kadampa** — Tradición budista Kadampa. Clases de meditación guiada para principiantes.
-- **Yoga studios** — La mayoría de estudios de yoga en Barcelona (Frizzant, Soma, Yoga One) incluyen clases de meditación o yoga nidra en su programación.
+- **Yoga studios** — La mayoría de estudios de yoga en Barcelona (Frizzant, Soma, Yoga One) incluyen sesiones de sound healing y breathwork o yoga nidra en su programación.
 
 ### Cursos de mindfulness (8 semanas)
 
@@ -72,7 +72,7 @@ No necesitas irte a una montaña para hacer un retiro. Barcelona y sus alrededor
 
 Headspace y Calm son buenas herramientas de inicio. Pero la diferencia entre meditar con una app en tu sofá y meditar en un espacio diseñado para ello es la misma que entre hacer yoga viendo un vídeo de YouTube y hacerlo en un estudio. El contexto importa.
 
-En una app, tú proporcionas toda la disciplina. En un espacio como [SABDA](https://sabdastudio.com/classes/meditation/), el entorno te sostiene: la sala oscura, las proyecciones lentas, el audio espacial, la presencia de otras personas. Tu cerebro tiene menos oportunidades de escaparse porque el entorno reclama tu atención de forma gentil pero constante.
+En una app, tú proporcionas toda la disciplina. En un espacio como [SABDA](https://sabdastudio.com/classes/sound-healing/), el entorno te sostiene: la sala oscura, las proyecciones lentas, el audio espacial, la presencia de otras personas. Tu cerebro tiene menos oportunidades de escaparse porque el entorno reclama tu atención de forma gentil pero constante.
 
 Las apps son perfectas para mantener una práctica diaria de 10 minutos. Un espacio inmersivo es donde la práctica se profundiza.
 
@@ -86,7 +86,7 @@ Las apps son perfectas para mantener una práctica diaria de 10 minutos. Un espa
 
 **Si trabajas en pantallas todo el día:** Tu cerebro lleva 8+ horas procesando información visual y tomando microdecisiones. El mindfulness es el contrapeso: 30-60 minutos de no producir nada, no decidir nada, no consumir nada.
 
-**Si te cuesta meditar:** Eso no significa que no sea para ti. Significa que necesitas más apoyo — un espacio inmersivo, una guía de voz, un grupo. Las clases de meditación en [SABDA](https://sabdastudio.com/classes/meditation/) están diseñadas exactamente para esto.
+**Si te cuesta meditar:** Eso no significa que no sea para ti. Significa que necesitas más apoyo — un espacio inmersivo, una guía de voz, un grupo. Las sesiones de sound healing y breathwork en [SABDA](https://sabdastudio.com/classes/sound-healing/) están diseñadas exactamente para esto.
 
 ---
 
@@ -94,7 +94,7 @@ Las apps son perfectas para mantener una práctica diaria de 10 minutos. Un espa
 
 El mindfulness no requiere creer en nada. No requiere flexibilidad, ni ropa especial, ni silenciar tu mente. Requiere presentarse y practicar. La mente va a divagar — eso no es un fracaso, es literalmente el ejercicio. Notar que la mente se ha ido y traerla de vuelta es el equivalente de una repetición en el gimnasio.
 
-Si quieres probar en un entorno que facilita la práctica: [meditación guiada en SABDA](https://sabdastudio.com/classes/meditation/) desde €16. [3 clases por €48](https://momence.com/m/443935) — combina meditación con sound healing para la experiencia completa.
+Si quieres probar en un entorno que facilita la práctica: [meditación guiada en SABDA](https://sabdastudio.com/classes/sound-healing/) desde €16. [3 clases por €48](https://momence.com/m/443935) — combina meditación con sound healing para la experiencia completa.
 
 **Relacionado:** [What Is Sound Healing?](/blog/what-is-sound-healing/) | [Yoga en Barcelona: Guía definitiva](/blog/yoga-barcelona-guia/) | [Cursos de mindfulness](/blog/curso-mindfulness-barcelona/) | [Meditación guiada](/blog/meditacion-guiada-barcelona/)
 

@@ -6,7 +6,7 @@
 
 **Slug:** `/blog/pilates-mat-vs-reformer/`
 
-**Primary keyword:** pilates reformer barcelona
+**Primary keyword:** pilates mat vs reformer barcelona
 **Secondary keywords:** pilates mat barcelona, pilates reformer vs mat, reformer pilates
 
 ---

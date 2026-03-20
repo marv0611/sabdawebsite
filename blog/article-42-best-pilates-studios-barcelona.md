@@ -81,7 +81,7 @@ The choice isn't just "which studio" — it's "what do I need?"
 
 **Post-injury or specific condition:** Start with individual sessions at Dona10 or Pilat3s. A professional assessment before group classes saves you time and potential re-injury. Budget 5-8 individual sessions (€250-500) before transitioning to group.
 
-**General fitness and core strength:** Mat pilates at [SABDA](https://sabdastudio.com/classes/pilates/) or group reformer at Dona10. Mat at SABDA costs half of reformer and the immersive environment compensates with enhanced focus. Try both formats and see what your body prefers.
+**General fitness and core strength:** Mat pilates at [SABDA](https://sabdastudio.com/classes/pilates/) gives you immersive focus that amplifies every rep (from €16/class). For machine-based resistance work, Dona10 group reformer classes are the standard. SABDA costs half the price of reformer and the immersive environment compensates with enhanced concentration.
 
 **Pregnancy:** Dona10 has the most structured prenatal programme. Pilat3s offers adapted individual sessions. See our [pilates para embarazadas guide](/blog/pilates-embarazadas-barcelona/) for trimester-specific advice.
 

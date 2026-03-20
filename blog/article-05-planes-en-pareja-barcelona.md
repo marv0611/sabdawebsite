@@ -63,7 +63,7 @@ Sin mapa, sin plan, sin destino. Fábricas textiles convertidas en galerías, ca
 
 ### 9. Yoga inmersivo un domingo por la mañana
 
-Hay una diferencia entre hacer yoga y hacer yoga dentro de una sala de proyecciones 360° con audio espacial. [SABDA](https://sabdastudio.com/classes/) ofrece vinyasa, pilates, y clases de meditación en el Eixample. Los domingos por la mañana son particularmente buenos: empezáis el día moviéndoos juntos dentro de un espacio que parece otro planeta, y después bajáis a desayunar a cualquiera de los cafés de Muntaner. Desde €16/persona.
+Hay una diferencia entre hacer yoga y hacer yoga dentro de una sala de proyecciones 360° con audio espacial. [SABDA](https://sabdastudio.com/classes/) ofrece vinyasa, pilates, y clases de sound healing y breathwork en el Eixample. Los domingos por la mañana son particularmente buenos: empezáis el día moviéndoos juntos dentro de un espacio que parece otro planeta, y después bajáis a desayunar a cualquiera de los cafés de Muntaner. Desde €16/persona.
 
 ### 10. Kayak + brunch en Barceloneta
 

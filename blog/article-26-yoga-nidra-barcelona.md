@@ -2,7 +2,7 @@
 
 **Última actualización: marzo 2026**
 
-**Meta description:** Yoga nidra explicado: el sueño consciente que equivale a 4 horas de descanso en 45 minutos. Sesiones inmersivas en Barcelona. (127 chars)
+**Meta description:** Yoga nidra explicado: el sueño consciente que equivale a 4 horas de descanso en 45 minutos. Qué es, dónde practicarlo, y alternativas inmersivas. (150 chars)
 
 **Slug:** `/blog/yoga-nidra-barcelona/`
 
@@ -57,17 +57,31 @@ Al final, la guía te trae de vuelta gradualmente. La mayoría de gente se sient
 
 ---
 
-## Yoga nidra en la sala inmersiva
+## Dónde practicar yoga nidra en Barcelona
 
-En [SABDA](https://sabdastudio.com/classes/yoga/), las sesiones de yoga nidra suceden dentro de la sala de 360° con Dolby Atmos. Las proyecciones se calibran al estado: colores suaves, movimiento casi imperceptible, geometrías que se transforman tan despacio que parecen parte de tu propia visualización. La guía llega desde todas las direcciones a través del audio espacial — no desde un punto fijo, sino envolvente, como si viniera de dentro de tu cabeza.
+Yoga nidra no está ampliamente disponible como clase regular en Barcelona. Algunos estudios lo ofrecen como taller ocasional o sesión especial:
 
-Es la combinación perfecta: una práctica que te pide cerrar los ojos + un entorno que sigue trabajando contigo incluso con los ojos cerrados (las frecuencias graves vibran a través del suelo, los tonos espaciales envuelven).
+- **Centre de Meditació Kadampa** — Sesiones de relajación guiada que incluyen elementos de yoga nidra.
+- **Shanga Barcelona** — Talleres periódicos de yoga nidra y meditación profunda.
+- **Profesores independientes** — Varios profesores certificados ofrecen sesiones privadas o talleres. Busca en Barcelona Holística o grupos de meetup.
 
 ---
 
-## Para quién es
+## Si te atrae el yoga nidra, te encantará lo que ofrece SABDA
 
-**Insomnio:** Yoga nidra antes de dormir (o al mediodía) es una de las intervenciones no farmacológicas más efectivas para problemas de sueño.
+El yoga nidra atrae a gente que busca relajación profunda sin esfuerzo — tumbarse, cerrar los ojos, y dejar que el sonido o la guía haga el trabajo. [SABDA](https://sabdastudio.com/classes/) ofrece dos formatos que consiguen exactamente eso:
+
+**Yin Yoga** — Posturas pasivas mantenidas 3-5 minutos, tumbado o sentado, sin esfuerzo muscular. Dentro de la sala de 360° con Dolby Atmos, los visuals son lentos y orgánicos, el audio espacial envuelve con paisajes sonoros ambientales. La combinación produce un estado de quietud profunda comparable al yoga nidra — pero con el añadido del estiramiento de tejido conectivo.
+
+**Serenity and Sound** — Una sesión guiada donde te tumbas mientras cuencos tibetanos, cuencos de cristal, y frecuencias ambientales llenan la sala a través de Dolby Atmos. Es la experiencia más cercana al yoga nidra en SABDA: no hay movimiento, la guía dirige, y el audio espacial crea un estado de relajación tan profundo que el tiempo desaparece. La diferencia es que el sonido hace el trabajo de anclaje que en yoga nidra hace la visualización.
+
+Ambos formatos están disponibles varias veces por semana. C/Muntaner 83B, Eixample. [3 clases por €48](https://momence.com/m/443935).
+
+---
+
+## Para quién es el yoga nidra
+
+**Insomnio:** Una de las intervenciones no farmacológicas más efectivas para problemas de sueño.
 
 **Agotamiento/burnout:** Si tu cerebro lleva semanas en modo de producción constante, 45 minutos de yoga nidra son un cortafuegos.
 
@@ -75,13 +89,13 @@ Es la combinación perfecta: una práctica que te pide cerrar los ojos + un ento
 
 **Recuperación deportiva:** El estado de relajación profunda acelera la recuperación muscular y reduce la inflamación sistémica.
 
-**Curiosos sobre meditación que no consiguen meditar:** Si cada vez que intentas meditar tu cerebro se dispara en 40 direcciones, yoga nidra es tu puerta de entrada.
+**Curiosos que no consiguen meditar:** Si cada vez que intentas meditar tu cerebro se dispara en 40 direcciones, yoga nidra — o las sesiones de sound healing en SABDA — son tu puerta de entrada.
 
 ---
 
-Sesiones de meditación y yoga nidra en [SABDA](https://sabdastudio.com/classes/meditation/) varias veces por semana. C/Muntaner 83B, Eixample. [3 clases por €48](https://momence.com/m/443935).
+Si buscas la profundidad del yoga nidra dentro de un entorno inmersivo, las sesiones de Yin Yoga y Serenity and Sound en [SABDA](https://sabdastudio.com/classes/) son lo más cercano que encontrarás en Barcelona. [3 clases por €48](https://momence.com/m/443935).
 
-**Relacionado:** [Yoga en Barcelona: guía completa](/blog/yoga-barcelona-guia/) | [Mindfulness en Barcelona](/blog/mindfulness-barcelona/)
+**Relacionado:** [Yoga en Barcelona: guía completa](/blog/yoga-barcelona-guia/) | [Qué es el sound healing](/blog/que-es-el-sound-healing/)
 
 ---
 

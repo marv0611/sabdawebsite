@@ -49,7 +49,7 @@ La experiencia nocturna de La Pedrera es otra cosa. Tour por la azotea con las c
 
 ### 7. Yoga, sound healing o breathwork en 360°
 
-Esto es lo que pasa cuando combinas wellness con tecnología: una sala de proyecciones 360° con audio espacial Dolby Atmos en el Eixample. [SABDA](https://sabdastudio.com/classes/) ofrece más de 42 clases a la semana — yoga, pilates, sound healing, breathwork, danza extática, meditación, ice bath. No es un museo por el que caminas. Estás dentro del arte, moviéndote en él. Los visuales cambian cada clase. El sonido envolvente hace algo que no puedes replicar con un altavoz Bluetooth.
+Esto es lo que pasa cuando combinas wellness con tecnología: una sala de proyecciones 360° con audio espacial Dolby Atmos en el Eixample. [SABDA](https://sabdastudio.com/classes/) ofrece más de 42 clases a la semana — yoga, pilates, sound healing, breathwork, danza extática, e ice bath. No es un museo por el que caminas. Estás dentro del arte, moviéndote en él. Los visuales cambian cada clase. El sonido envolvente hace algo que no puedes replicar con un altavoz Bluetooth.
 
 3 clases por €48 (€16 cada una). [Reserva aquí](https://momence.com/m/443935).
 

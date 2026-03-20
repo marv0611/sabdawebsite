@@ -41,7 +41,7 @@ Jornadas de inmersión de 6-8 horas: meditación guiada, prácticas de atención
 Sin compromiso de 8 semanas. Vas cuando puedes, pagas por sesión.
 
 ### SABDA — Meditación inmersiva
-[SABDA](https://sabdastudio.com/classes/meditation/) ofrece sesiones de meditación guiada varias veces por semana dentro de la sala de 360° con Dolby Atmos. No es un curso estructurado — es una clase drop-in que puedes integrar en tu rutina semanal. El entorno inmersivo hace el trabajo que normalmente tienes que hacer tú: mantener la atención. Las proyecciones lentas y el audio espacial anclan tu mente sin esfuerzo.
+[SABDA](https://sabdastudio.com/classes/sound-healing/) ofrece sesiones de meditación guiada varias veces por semana dentro de la sala de 360° con Dolby Atmos. No es un curso estructurado — es una clase drop-in que puedes integrar en tu rutina semanal. El entorno inmersivo hace el trabajo que normalmente tienes que hacer tú: mantener la atención. Las proyecciones lentas y el audio espacial anclan tu mente sin esfuerzo.
 
 Desde €16/sesión. [3 clases por €48](https://momence.com/m/443935).
 

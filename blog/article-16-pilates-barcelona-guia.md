@@ -30,7 +30,7 @@ Ejercicios en una máquina con muelles, correas, y una plataforma deslizante. Lo
 El reformer es particularmente bueno para rehabilitación, post-lesión, y embarazadas (más opciones de posición con la máquina).
 
 ### ¿Cuál elegir?
-Si buscas fuerza funcional y core: mat. Si buscas rehabilitación o variedad de resistencia: reformer. Si quieres la experiencia más inmersiva: mat en un espacio como SABDA, donde el entorno amplifica la concentración.
+Si buscas fuerza funcional y core: mat. Si buscas rehabilitación o variedad de resistencia: reformer. SABDA ofrece exclusivamente pilates mat — Core Pilates, Power Pilates, Full Body Pilates y Pilates Sculpt — en un entorno inmersivo de 360°, donde el entorno amplifica la concentración.
 
 ---
 
@@ -128,5 +128,5 @@ Si quieres pilates mat en un entorno que no se parece a ningún otro estudio: [S
 ---
 
 *[Schema: BreadcrumbList → Inicio > Blog > Pilates en Barcelona: Guía Completa]*
-*[Images needed: hero (pilates class), SABDA pilates in immersive room, reformer close-up, mat class]*
+*[Images needed: hero (pilates class), SABDA pilates in immersive room, mat class detail shot, mat class]*
 *[All images require alt text with "pilates barcelona," "pilates eixample," "pilates mat barcelona"]*

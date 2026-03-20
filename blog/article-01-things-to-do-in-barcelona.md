@@ -41,7 +41,7 @@ Get there about 45 minutes before sunset. Bring your own drinks and something to
 
 ## 3. Step Into a 360° Projection Room at SABDA
 
-Most people don't expect to find a floor-to-ceiling immersive art space hidden in the Eixample — and then walk in, lie down, and do breathwork or sound healing inside it. [SABDA](https://sabdastudio.com/classes/) is a 360° projection room with Dolby Atmos spatial audio that runs yoga, pilates, sound healing, breathwork, ecstatic dance, and meditation. It's not a museum you walk through. You're inside the art, moving through it.
+Most people don't expect to find a floor-to-ceiling immersive art space hidden in the Eixample — and then walk in, lie down, and do breathwork or sound healing inside it. [SABDA](https://sabdastudio.com/classes/) is a 360° projection room with Dolby Atmos spatial audio that runs yoga, pilates, sound healing, breathwork, and ecstatic dance. It's not a museum you walk through. You're inside the art, moving through it.
 
 The visuals change every class. One day you're flowing through vinyasa under abstract nebulae, the next you're lying still while singing bowls resonate from every wall. The sound does something different when it's coming from invisible speakers in every direction rather than a Bluetooth speaker in the corner. Hard to describe. You just have to show up.
 

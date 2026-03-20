@@ -29,7 +29,7 @@ La diferencia clave es entre experiencias **pasivas** (caminas, miras, te rodea)
 
 ### SABDA — Wellness inmersivo participativo
 
-[SABDA](https://sabdastudio.com/classes/) es el único espacio en Barcelona donde wellness y tecnología inmersiva convergen. Una sala de 360° con proyecciones láser LCD y audio espacial Dolby Atmos (altavoces invisibles en paredes y techo, subwoofers en el suelo) donde se hacen clases de yoga, pilates, sound healing, breathwork, danza extática, meditación y ice bath.
+[SABDA](https://sabdastudio.com/classes/) es el único espacio en Barcelona donde wellness y tecnología inmersiva convergen. Una sala de 360° con proyecciones láser LCD y audio espacial Dolby Atmos (altavoces invisibles en paredes y techo, subwoofers en el suelo) donde se hacen clases de yoga, pilates, sound healing, breathwork, danza extática y ice bath.
 
 **Lo que lo diferencia:** No miras — te mueves, respiras, y participas dentro del arte. Los visuals se diseñan específicamente para cada clase. Una sesión de vinyasa tiene paisajes abstractos que fluyen con el ritmo. Una sesión de sound healing tiene geometría viva que pulsa con los bols tibetanos. El audio espacial envuelve: el sonido viene de todas las direcciones, creando una sensación de inmersión total.
 

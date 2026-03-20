@@ -19,7 +19,7 @@ Estos son 15 planes originales en Barcelona para gente que ya ha hecho lo obvio 
 
 ### 1. Wellness inmersivo en una sala de 360°
 
-[SABDA](https://sabdastudio.com/classes/) tiene una sala de proyecciones 360° con Dolby Atmos en el Eixample donde se hacen clases de yoga, sound healing, breathwork, pilates, danza extática y meditación. Los visuals cambian cada clase — un día fluyes entre nebulosas abstractas, al siguiente te tumbas mientras geometría viva se mueve con el sonido de los gongs. No es un museo. No es un gimnasio. Es otra cosa. 3 clases por €48. [Reservar →](https://momence.com/m/443935)
+[SABDA](https://sabdastudio.com/classes/) tiene una sala de proyecciones 360° con Dolby Atmos en el Eixample donde se hacen clases de yoga, sound healing, breathwork, pilates, y danza extática. Los visuals cambian cada clase — un día fluyes entre nebulosas abstractas, al siguiente te tumbas mientras geometría viva se mueve con el sonido de los gongs. No es un museo. No es un gimnasio. Es otra cosa. 3 clases por €48. [Reservar →](https://momence.com/m/443935)
 
 ### 2. Cementiri de Montjuïc
 

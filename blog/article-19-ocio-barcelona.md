@@ -65,7 +65,7 @@ Indie, electrónica, y clubbing en Parallel. Dos salas, programación ecléctica
 ## Wellness inmersivo — la experiencia que no existe en otra ciudad
 
 ### SABDA
-[SABDA](https://sabdastudio.com/classes/) es una sala de 360° con Dolby Atmos en el Eixample que ofrece más de 42 clases semanales: yoga, pilates, sound healing, breathwork, ecstatic dance, meditación, e ice bath. No es un gimnasio. No es un museo. Es wellness dentro de arte inmersivo.
+[SABDA](https://sabdastudio.com/classes/) es una sala de 360° con Dolby Atmos en el Eixample que ofrece más de 42 clases semanales: yoga, pilates, sound healing, breathwork, ecstatic dance, e ice bath. No es un gimnasio. No es un museo. Es wellness dentro de arte inmersivo.
 
 Los visuals cambian cada clase. El audio espacial envuelve. Es una experiencia permanente que se renueva cada vez que vas porque cada sesión tiene su propio diseño visual y musical.
 

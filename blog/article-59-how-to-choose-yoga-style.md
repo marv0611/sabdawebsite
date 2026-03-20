@@ -55,6 +55,8 @@ Lie down. Close your eyes. A facilitator guides you through progressive relaxati
 
 Perfect for: insomnia, burnout, anxiety, post-workout recovery.
 
+Yoga nidra isn't currently offered at SABDA, but if restorative practice appeals to you, Yin Yoga at SABDA delivers a similar depth of stillness inside the immersive room.
+
 ---
 
 ## Want balance (everything)? → Hatha Vinyasa

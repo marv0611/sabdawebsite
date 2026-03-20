@@ -39,7 +39,7 @@ La mejor vista de Barcelona. 360 grados, gratis, 80% locales. Llega 45 minutos a
 ## Planes que necesitan algo de planificación
 
 ### 6. Yoga, sound healing o breathwork inmersivo
-[SABDA](https://sabdastudio.com/classes/) es una sala de 360° con Dolby Atmos en Eixample. Yoga, pilates, sound healing, breathwork, ecstatic dance, meditación, ice bath. Los visuals cambian cada clase. El audio espacial envuelve. 3 clases €48. [Reservar →](https://momence.com/m/443935)
+[SABDA](https://sabdastudio.com/classes/) es una sala de 360° con Dolby Atmos en Eixample. Yoga, pilates, sound healing, breathwork, ecstatic dance, ice bath. Los visuals cambian cada clase. El audio espacial envuelve. 3 clases €48. [Reservar →](https://momence.com/m/443935)
 
 ### 7. La Pedrera de noche
 Tour nocturno por la azotea de Gaudí + proyección audiovisual + cava. ~€35. Reserva online.

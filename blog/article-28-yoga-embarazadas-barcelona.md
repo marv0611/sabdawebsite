@@ -20,17 +20,17 @@ El yoga durante el embarazo es una de las actividades más recomendadas por matr
 ### Primer trimestre (semanas 1-12)
 **Sí:** Vinyasa suave, hatha, yin con modificaciones. Si ya practicabas yoga antes del embarazo, puedes mantener tu práctica habitual con ajustes menores.
 **Evita:** Torsiones profundas (comprimen el abdomen), posturas boca abajo prolongadas, bikram/hot yoga (la temperatura elevada es un riesgo), saltos entre posturas.
-**Nota:** Muchas mujeres se sienten cansadas y con náuseas. Si tu cuerpo dice no, escúchalo. El yoga restaurativo y el yoga nidra son opciones seguras y reconfortantes.
+**Nota:** Muchas mujeres se sienten cansadas y con náuseas. Si tu cuerpo dice no, escúchalo. El yoga restaurativo y el yin yoga son opciones seguras y reconfortantes.
 
 ### Segundo trimestre (semanas 13-26)
-**Sí:** Hatha (el mejor estilo para este trimestre — tiempo para alinear y usar apoyos), yin con modificaciones, yoga nidra. Enfoque en apertura de cadera, fortalecimiento de piernas, y trabajo de respiración.
+**Sí:** Hatha (el mejor estilo para este trimestre — tiempo para alinear y usar apoyos), yin con modificaciones, yin yoga. Enfoque en apertura de cadera, fortalecimiento de piernas, y trabajo de respiración.
 **Evita:** Posturas boca abajo (sarvangasana, sirsasana), abdominales clásicos, posturas que compriman el abdomen, torsiones cerradas. A partir de la semana 16, evita estar tumbada boca arriba durante períodos largos (la vena cava).
 **Consejo:** Usa apoyos generosamente. Bloques, mantas, bolsters — todo lo que te permita estar cómoda sin forzar.
 
 ### Tercer trimestre (semanas 27-40)
-**Sí:** Yin yoga (posturas sentadas con apoyos), restaurativo, yoga nidra, trabajo de suelo pélvico, y técnicas de respiración para el parto.
+**Sí:** Yin yoga (posturas sentadas con apoyos), restaurativo, yin yoga, trabajo de suelo pélvico, y técnicas de respiración para el parto.
 **Evita:** Cualquier postura que se sienta inestable, equilibrios avanzados, flexiones profundas hacia adelante, cualquier cosa que genere presión abdominal.
-**Enfoque:** Respiración (aprende a exhalar largo y controlado — es la respiración del parto), movilidad de cadera (la postura de mariposa con apoyos es tu mejor amiga), y relajación profunda (yoga nidra).
+**Enfoque:** Respiración (aprende a exhalar largo y controlado — es la respiración del parto), movilidad de cadera (la postura de mariposa con apoyos es tu mejor amiga), y relajación profunda (yin yoga).
 
 ---
 

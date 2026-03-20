@@ -29,7 +29,7 @@ Posturas pasivas mantenidas 3-5 minutos. Trabaja tejido conectivo (fascia, ligam
 ### Power Yoga / Power Vinyasa
 Vinyasa intensificado. Más fuerza, más velocidad, menos meditación. Si vienes del gimnasio y quieres que el yoga se sienta como un entrenamiento, esta es tu entrada. Power vinyasa en SABDA añade el factor inmersivo — las proyecciones 360° y el audio espacial convierten una clase exigente en algo que se siente más como una experiencia que como un workout. Clases de 50-60 minutos. Espera planks, chaturangas, y sentadillas con un ritmo que no te deja pensar en la lista de tareas.
 
-### Yoga Nidra
+### Yin Yoga — el formato más restaurativo de SABDA, con posturas largas y visuals inmersivos lentos
 "Yoga del sueño." Te tumbas y el profesor te guía por una relajación progresiva durante 30-45 minutos. No hay movimiento. No hay posturas. Es una técnica de relajación profunda que induce un estado entre la vigilia y el sueño — algo parecido a lo que sientes justo antes de dormirte, pero mantenido de forma consciente. La ciencia es interesante: 30 minutos de yoga nidra pueden equivaler a 2-3 horas de sueño en términos de recuperación del sistema nervioso. Funciona incluso si no crees en ella. Especialmente útil para insomnio, ansiedad, y agotamiento. Varios estudios de yoga en Barcelona ofrecen sesiones regulares.
 
 ### Yoga Restaurativo
@@ -47,7 +47,7 @@ No es un estudio de yoga convencional. [SABDA](https://sabdastudio.com/classes/y
 
 Formatos de yoga en SABDA: Vinyasa Flow, Hatha Vinyasa, Power Vinyasa, Yoga Sculpt, y Yin. Cada formato tiene su propio diseño visual y musical — una clase de yin tiene tonos graves y geometría lenta, una de power vinyasa tiene ritmo alto y paisajes que se aceleran contigo.
 
-Más allá del yoga, SABDA ofrece sound healing, breathwork, pilates, meditación y ecstatic dance, todo en la sala inmersiva.
+Más allá del yoga, SABDA ofrece sound healing, breathwork, pilates y ecstatic dance, todo en la sala inmersiva.
 
 **Precio:** Desde €16/clase con el [pack de 3 clases por €48](https://momence.com/m/443935).
 **Dónde:** C/Muntaner 83B, Eixample. Metro Universitat.

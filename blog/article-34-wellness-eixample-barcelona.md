@@ -77,7 +77,7 @@ El Eixample es uno de los mejores barrios de Barcelona para correr. La cuadrícu
 
 **Mañana activa:** Clase de vinyasa o pilates en SABDA (7:30-8:30), después café en uno de los veinte sitios buenos de Muntaner.
 
-**Mediodía recuperación:** Sound healing o yoga nidra en SABDA (13:00), después vermut en Senyor Vermut o Morro Fi (13:30).
+**Mediodía recuperación:** Sound healing o Yin Yoga en SABDA (13:00), después vermut en Senyor Vermut o Morro Fi (13:30).
 
 **Tarde de fuerza:** Gimnasio DIR o Holmes Place (17:00), después cena en cualquiera de los restaurantes de Consell de Cent.
 
