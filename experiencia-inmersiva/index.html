@@ -92,11 +92,23 @@ nav.scrolled{background:rgba(14,18,53,.92);backdrop-filter:blur(18px);-webkit-ba
 .faq-a{max-height:0;overflow:hidden;transition:max-height .45s var(--ease-expo),padding .35s}
 .faq-item.open .faq-a{max-height:300px;padding-bottom:22px}
 .faq-a p{font-size:.9rem;color:var(--white60);line-height:1.7}
+.cases{padding:100px 80px;border-top:1px solid rgba(240,239,233,.06)}
+.cases-in{max-width:900px;margin:0 auto}
+.case-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:48px}
+.case-card{background:rgba(19,24,66,.65);border:1px solid rgba(240,239,233,.06);border-radius:16px;padding:32px 28px;transition:border-color .3s}
+.case-card:hover{border-color:rgba(2,243,197,.2)}
+.case-card-tag{font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan);font-weight:500;margin-bottom:8px}
+.case-card-name{font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;margin-bottom:10px}
+.case-card-desc{font-size:.88rem;color:var(--white60);line-height:1.65}
+.case-card-stat{font-size:.78rem;color:var(--white38);margin-top:14px}
+.case-card-stat strong{color:var(--cyan);font-weight:700}
 .final-cta{padding:100px 80px;text-align:center;background:radial-gradient(ellipse 70% 50% at 50% 60%,rgba(2,243,197,.03) 0%,transparent 70%);border-top:1px solid rgba(240,239,233,.06)}.final-cta h2{font-family:'PT Serif',serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:700;letter-spacing:-.025em;line-height:1.1;margin-bottom:16px}.final-cta h2 em{font-style:italic;color:var(--salmon)}.final-cta .sub{font-size:.95rem;color:var(--white60);margin-bottom:36px;max-width:440px;margin-left:auto;margin-right:auto}
 footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);background:rgba(9,12,38,.6);position:relative;z-index:2}
 .ft-in{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;max-width:1140px;margin:0 auto}.ft-brand img{height:20px;width:auto;object-fit:contain;margin-bottom:12px}.ft-pillars{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--white38);display:flex;gap:8px;margin-bottom:24px}.fp-art{color:var(--salmon)}.fp-tech{color:var(--cyan)}.fp-well{color:var(--white)}.ft-symbol{width:52px;height:52px;object-fit:contain;opacity:.5}.ft-col h4{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--white38);margin-bottom:18px;font-weight:600}.ft-col ul{list-style:none}.ft-col li{margin-bottom:10px}.ft-col a{font-size:.85rem;color:var(--white60);transition:color .2s}.ft-col a:hover{color:var(--white)}.ft-bot{display:flex;justify-content:space-between;align-items:center;margin-top:40px;padding-top:24px;border-top:1px solid rgba(240,239,233,.05);font-size:.72rem;color:var(--white38)}.ft-legal{display:flex;gap:20px}.ft-legal a{color:var(--white38);transition:color .2s}.ft-legal a:hover{color:var(--white)}
 .sbk{position:fixed;bottom:0;left:0;right:0;z-index:99;background:rgba(14,18,53,.95);backdrop-filter:blur(18px);border-top:1px solid rgba(240,239,233,.08);padding:12px 22px;display:none;align-items:center;justify-content:space-between;transform:translateY(100%);transition:transform .4s var(--ease-expo)}.sbk.vis{transform:none}.sbk-txt{font-size:.85rem;font-weight:500}.sbk-txt span{color:var(--cyan);font-weight:700}.sbk-btn{background:var(--cyan);color:var(--navy);padding:10px 20px;border-radius:3px;font-size:.82rem;font-weight:700;letter-spacing:.05em;white-space:nowrap}
-@media(max-width:860px){nav{padding:0 24px}.nav-links{display:none}.nav-social svg{width:15px;height:15px}.nav-social{gap:10px;padding-left:14px;margin-left:14px}.lang-sel a{padding:4px 5px;font-size:.65rem}.hero{height:400px}.hero-content{padding:0 24px 40px}.sect,.final-cta,footer{padding-left:24px;padding-right:24px}.sect{padding-top:72px;padding-bottom:72px}.ft-in{grid-template-columns:1fr 1fr}.sbk{display:flex}}
+@media(max-width:860px){nav{padding:0 24px}.nav-links{display:none}.nav-social svg{width:15px;height:15px}.nav-social{gap:10px;padding-left:14px;margin-left:14px}.lang-sel a{padding:4px 5px;font-size:.65rem}.hero{height:400px}.hero-content{padding:0 24px 40px}.sect,.final-cta,footer{padding-left:24px;padding-right:24px}.sect{padding-top:72px;padding-bottom:72px}
+  .cases{padding:60px 24px}
+  .case-grid{grid-template-columns:1fr}.ft-in{grid-template-columns:1fr 1fr}.sbk{display:flex}}
 @media(max-width:520px){.hero{height:340px}.hero-content h1{font-size:2rem}.ft-in{grid-template-columns:1fr}}
 </style>
 </head>
@@ -118,35 +130,59 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     </div>
     <div class="nav-social">
       <a href="https://instagram.com/sabda_studio" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 1.5A4 4 0 0 0 3.5 7.5v9a4 4 0 0 0 4 4h9a4 4 0 0 0 4-4v-9a4 4 0 0 0-4-4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.25-2.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg></a>
-      <a href="https://tiktok.com/@sabdastudio" target="_blank" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0 1 13.8 3h-3v12.4a2.6 2.6 0 0 1-2.6 2.6 2.6 2.6 0 0 1-2.6-2.6A2.6 2.6 0 0 1 8.2 12.8c.28 0 .56.04.82.12V9.84A5.6 5.6 0 0 0 2.6 15.4a5.6 5.6 0 0 0 5.6 5.6 5.6 5.6 0 0 0 5.6-5.6V9.72a7.3 7.3 0 0 0 4.2 1.32V8.02a4.28 4.28 0 0 1-1.4-2.2z"/></svg></a>
-    </div>
-  </div>
-</nav>
-
-
-<div class="hero">
-  <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Copy_of_Sabda2-167__1_.jpg" alt="Experiencia inmersiva en la sala de 360 grados de SABDA Barcelona">
-  <div class="hero-content">
-    <h1 class="rv">Experiencia Inmersiva en <em>Barcelona</em></h1>
-    <p class="hero-sub rv" style="transition-delay:.1s">No es un museo. No es un gimnasio. Es un espacio inmersivo donde el arte, la tecnología y el bienestar convergen.</p>
-    <div class="rv" style="transition-delay:.2s">
-      <a href="https://momence.com/m/443935" class="btn-p" target="_blank">3 Clases por €48 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-    </div>
-  </div>
-</div>
-
-<section class="sect">
+      <a href="https://tiktok.com/@sabdastudio" target="_blank" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0 1 13.8 3h-3v12.4a2.6 2.6 0 0 1-2.6 2.6 2.6 2.6 0 0 1-2.6-2.6A2.6 2.6 0 0 1 8.2 12.8c.28 0 .56.04.82.12V9.84A5.6 5.6 0 0 0 2.6 15.4a5.6 5.6 0 0 0 5.6 5.6 5.6 5.6 0 0 0 5.6-5.6V9.72a7.3 7.3 0 0 0 4.2 1.32V8.02a4.28 <section class="sect">
   <div class="sect-in">
     <span class="sl rv">Qué es SABDA</span>
-    <h2 class="sh2 rv" style="transition-delay:.06s">Una experiencia sensorial<br><em>que no existe en ningún otro lugar.</em></h2>
-    <p class="rv" style="transition-delay:.12s">SABDA es un estudio de wellness inmersivo en el barrio del Eixample de Barcelona. Nuestra sala inmersiva de 86m² cuenta con proyecciones láser de 360° en todas las superficies y un sistema certificado Dolby Atmos de audio espacial con altavoces invisibles integrados en las paredes y subwoofers en el techo. Cada clase, cada evento, cada experiencia ocurre dentro de un mundo visual y sonoro diseñado específicamente para ese momento.</p>
-    <p class="rv" style="transition-delay:.18s">Si buscas actividades inmersivas en Barcelona, probablemente hayas visto IDEAL, IKONO o Moco Museum. SABDA es diferente. Esos son espacios de arte inmersivo donde observas. Aquí participas. Te mueves. Respiras. Sientes. Ofrecemos <a href="classes/yoga/" class="inline-link">yoga</a>, <a href="classes/pilates/" class="inline-link">pilates</a>, <a href="classes/sound-healing/" class="inline-link">sound healing</a>, <a href="classes/breathwork/" class="inline-link">breathwork</a>, meditación, <a href="classes/ecstatic-dance/" class="inline-link">ecstatic dance</a> e <a href="classes/ice-bath/" class="inline-link">ice bath</a>. Cada sesión transforma la sala en un mundo completamente nuevo.</p>
+    <h2 class="sh2 rv" style="transition-delay:.06s">Una experiencia inmersiva<br><em>que no existe en ningún otro lugar.</em></h2>
+    <p class="rv" style="transition-delay:.12s">SABDA es un estudio de wellness inmersivo en el barrio del Eixample de Barcelona. Nuestra sala inmersiva de 86m² cuenta con proyecciones láser de 360° en todas las superficies y un sistema certificado Dolby Atmos de audio espacial. Cada clase, cada evento, cada experiencia ocurre dentro de un mundo visual y sonoro diseñado específicamente para ese momento. Experiència immersiva a Barcelona al seu màxim nivell.</p>
+    <p class="rv" style="transition-delay:.18s">Si buscas actividades inmersivas en Barcelona, probablemente hayas visto IDEAL, IKONO o Moco Museum. La diferencia es que SABDA no es un espacio donde observas. Aquí participas. Te mueves. Respiras. Sientes.</p>
 
-    <h3 class="rv" style="transition-delay:.06s">La Sala</h3>
-    <p class="rv" style="transition-delay:.08s">Nuestro espacio inmersivo es una sala de 86 metros cuadrados con proyecciones 360° de láser LCD y audio Dolby Atmos espacial. No es una pantalla en la pared. Son proyecciones en cada superficie: suelo, paredes, techo. El sonido viene de todas partes, moviéndose a tu alrededor desde altavoces invisibles. La experiencia inmersiva que creamos es arquitectónica, no decorativa. Experiència immersiva a Barcelona al seu màxim nivell.</p>
+    <h3 class="rv" style="transition-delay:.06s">Clases Inmersivas</h3>
+    <p class="rv" style="transition-delay:.08s">Ofrecemos <a href="classes/yoga/" class="inline-link">yoga</a>, <a href="classes/pilates/" class="inline-link">pilates</a>, <a href="classes/sound-healing/" class="inline-link">sound healing</a>, <a href="classes/breathwork/" class="inline-link">breathwork</a>, <a href="classes/meditation/" class="inline-link">meditación</a>, <a href="classes/ecstatic-dance/" class="inline-link">ecstatic dance</a> e <a href="classes/ice-bath/" class="inline-link">ice bath</a>. Cada sesión transforma la sala en un mundo completamente nuevo. Yoga vinyasa a través de paisajes abstractos. Sound healing con cuencos tibetanos y frecuencias espaciales envolventes. Breathwork bajo cielos infinitos. Pilates con proyecciones que responden a la energía de la clase.</p>
 
-    <h3 class="rv" style="transition-delay:.06s">Tipos de Experiencias</h3>
-    <p class="rv" style="transition-delay:.08s">Yoga vinyasa a través de paisajes abstractos. Pilates con proyecciones que responden a la energía de la clase. Sound healing con cuencos de cristal y frecuencias espaciales envolventes. Breathwork bajo cielos infinitos. Meditación guiada dentro de geometría viva. Ecstatic dance con DJ y visuales reactivos. Ice bath en nuestra terraza privada. Y eventos privados, activaciones de marca y experiencias corporativas en un espacio que no se parece a nada en Barcelona.</p>
+    <h3 class="rv" style="transition-delay:.06s">Eventos Privados y Activaciones</h3>
+    <p class="rv" style="transition-delay:.08s">Además de las clases, SABDA es un espacio inmersivo para <a href="hire.html" class="inline-link">eventos privados</a>, activaciones de marca, producciones audiovisuales, y <a href="team-building/" class="inline-link">team building corporativo</a>. Las proyecciones 360° se pueden personalizar completamente para tu marca o evento. Desde €350 por sesión.</p>
+
+    <h3 class="rv" style="transition-delay:.06s">Cómo Reservar</h3>
+    <p class="rv" style="transition-delay:.08s">Tu primera experiencia inmersiva: Intro 3-Pack, 3 clases de cualquier tipo por €48 (€16 por clase). Sin compromiso. <a href="classes.html" class="inline-link">Consulta el horario</a> y reserva online. C/Muntaner 83B, Eixample. A 10 minutos del metro Universitat. <a href="pricing.html" class="inline-link">Ver precios y membresías</a>.</p>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section class="cases">
+  <div class="cases-in">
+    <span class="sl rv">Nuestro Trabajo</span>
+    <h2 class="sh2 rv" style="transition-delay:.06s">Marcas que confían<br><em>en SABDA.</em></h2>
+    <div class="case-grid">
+      <div class="case-card rv" style="transition-delay:.1s">
+        <div class="case-card-tag">FC Barcelona</div>
+        <div class="case-card-name">Vídeo de despedida de Sergi Roberto</div>
+        <div class="case-card-desc">FC Barcelona eligió SABDA para filmar el vídeo de despedida de Sergi Roberto. La sala inmersiva se convirtió en el escenario de una de las producciones más emotivas del club.</div>
+        <div class="case-card-stat"><strong>22M+</strong> visualizaciones</div>
+      </div>
+      <div class="case-card rv" style="transition-delay:.15s">
+        <div class="case-card-tag">Alpro · Danone</div>
+        <div class="case-card-name">Lanzamiento sabor cereza</div>
+        <div class="case-card-desc">Alpro lanzó su nuevo sabor cereza con visuales 360° personalizados para más de 100 invitados. Proyecciones sincronizadas con música y Dolby Atmos espacial.</div>
+        <div class="case-card-stat"><strong>100+</strong> asistentes</div>
+      </div>
+      <div class="case-card rv" style="transition-delay:.2s">
+        <div class="case-card-tag">PERDÓN</div>
+        <div class="case-card-name">Activación de marca y lanzamiento</div>
+        <div class="case-card-desc">PERDÓN lanzó su plataforma de yoga en SABDA con una experiencia inmersiva totalmente personalizada. La sala se transformó en su mundo de marca.</div>
+        <div class="case-card-stat"><strong>Full</strong> venue hire</div>
+      </div>
+      <div class="case-card rv" style="transition-delay:.25s">
+        <div class="case-card-tag">The Astral Method</div>
+        <div class="case-card-name">Taller inmersivo de astrología</div>
+        <div class="case-card-desc">Un taller de astrología inmersivo con proyecciones de campos estelares y audio espacial que transformaron una presentación en una experiencia compartida.</div>
+        <div class="case-card-stat"><strong>80+</strong> asistentes</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+. Ice bath en nuestra terraza privada. Y eventos privados, activaciones de marca y experiencias corporativas en un espacio que no se parece a nada en Barcelona.</p>
 
     <h3 class="rv" style="transition-delay:.06s">Cómo Reservar</h3>
     <p class="rv" style="transition-delay:.08s">Tu primera experiencia inmersiva comienza con el Intro 3-Pack: 3 clases de cualquier tipo por €48 (€16 por clase). Sin compromiso. Válido 30 días. Consulta el <a href="classes.html" class="inline-link">horario completo</a>, elige tus clases y reserva online. Para eventos privados y alquiler del espacio, contacta con nuestro equipo en <a href="mailto:connect@sabdastudio.com" class="inline-link">connect@sabdastudio.com</a>. C/Muntaner 83B, Eixample. A 10 minutos andando del metro Universitat. <a href="pricing.html" class="inline-link">Ver todos los precios y membresías</a>.</p>
