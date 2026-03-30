@@ -289,23 +289,22 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 }
 
 
-/* ── Week/Month toggle active state ── */
-#momence-plugin-host-schedule [class*="toggle"] [class*="active"],
-#momence-plugin-host-schedule [class*="toggle"] [aria-selected="true"],
-#momence-plugin-host-schedule [class*="view_toggle"] [class*="selected"],
-#momence-plugin-host-schedule button[class*="active"]{
+/* ── Week/Month toggle — green active state ── */
+#momence-plugin-host-schedule [class*="toggle"] button[class*="active"],
+#momence-plugin-host-schedule [class*="toggle"] [data-active="true"],
+#momence-plugin-host-schedule [class*="toggle"] [aria-pressed="true"],
+#momence-plugin-host-schedule [class*="first_row"] button:first-child{
   color:#02F3C5 !important;
-  border-color:#02F3C5 !important;
+  border-color:rgba(2,243,197,.4) !important;
+}
+/* Today button green */
+#momence-plugin-host-schedule [class*="third_row"] button:first-child,
+#momence-plugin-host-schedule [class*="filter"] button[class*="active"]{
+  background:rgba(2,243,197,.15) !important;
+  color:#02F3C5 !important;
+  border-color:rgba(2,243,197,.4) !important;
 }
 
-/* ── Teacher dropdown — better positioning ── */
-#momence-plugin-host-schedule .momence-session_filters,
-#momence-plugin-host-schedule [class*="session_filters"]{
-  display:flex !important;
-  align-items:center !important;
-  gap:12px !important;
-  flex-wrap:wrap !important;
-}
 /* ── HIDE ONLY what's truly unwanted ── */
 #momence-plugin-host-schedule .momence-host_schedule-sys_row{display:none !important}
 #momence-plugin-host-schedule .momence-host_schedule-powered_by_momence{display:none !important}
@@ -453,15 +452,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
   max-width:920px;margin:0 auto;
 }
 .sabda-member-login{
-  position:absolute;top:auto !important;
-  right:40px;
-  top:0;
+  position:relative;
+  text-align:right;
+  padding:0 40px 16px;
+  max-width:920px;
+  margin:0 auto;
   z-index:12;
-  opacity:0;
-  transition:opacity .3s;
-  pointer-events:none;
 }
-.sabda-member-login.visible{opacity:1;pointer-events:auto}
 .sabda-member-login a{
   display:inline-flex;align-items:center;gap:5px;
   padding:8px 16px;
@@ -1137,7 +1134,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       const rightOffset=wrapperRect.right-cardRect.right;
       loginBtn.style.right=Math.max(0,Math.round(rightOffset))+'px';
     }
-    loginBtn.classList.add('visible');
+    /* login is now static, no positioning needed */
   }
   [800,1200,2000,3000,5000,8000].forEach(ms=>setTimeout(positionLogin,ms));
   new MutationObserver(()=>requestAnimationFrame(positionLogin))
