@@ -637,7 +637,9 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   /* ── Force dark theme on ALL widget elements ── */
   function forceStyles(){
     /* Every element inside widget: white text, transparent bg */
+    /* SKIP: second_row contains the calendar — don't touch it */
     el.querySelectorAll('*').forEach(node=>{
+      if(node.closest&&node.closest('[class*="second_row"]'))return;
       const s=node.style;
       const tag=node.tagName;
       const cls=node.className||'';
