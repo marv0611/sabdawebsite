@@ -636,10 +636,18 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 
   /* ── Force dark theme on ALL widget elements ── */
   function forceStyles(){
-    /* Every element inside widget: white text, transparent bg */
-    /* SKIP: second_row contains the calendar — don't touch it */
+    /* Skip ALL force-styling if month/calendar view is active */
+    if(el.querySelector('.momence-calendar-grid,[class*="calendar"],[class*="month_view"],table,thead')){
+      /* Month view detected — only style the first row (Classes + Week/Month toggle) */
+      el.querySelectorAll('[class*="first_row"] *').forEach(node=>{
+        const s=node.style;
+        s.setProperty('color','#f0efe9','important');
+        s.setProperty('background','transparent','important');
+      });
+      return;
+    }
+    /* Week view: apply full styling */
     el.querySelectorAll('*').forEach(node=>{
-      if(node.closest&&node.closest('[class*="second_row"]'))return;
       const s=node.style;
       const tag=node.tagName;
       const cls=node.className||'';
