@@ -185,8 +185,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
   z-index:2 !important;
   transform:translateZ(0) !important;
 }
-#momence-plugin-host-schedule [style*="DISABLED-position: fixed"],
-#momence-plugin-host-schedule [style*="DISABLED-position:fixed"]{
+#momence-plugin-host-schedule [style*="position: fixed"],
+#momence-plugin-host-schedule [style*="position:fixed"]{
   position:relative !important;
 }
 /* Target the known modal overlay by styled-component ID */
@@ -289,15 +289,22 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 }
 
 
+/* ── Week/Month toggle active state ── */
+#momence-plugin-host-schedule [class*="toggle"] [class*="active"],
+#momence-plugin-host-schedule [class*="toggle"] [aria-selected="true"],
+#momence-plugin-host-schedule [class*="view_toggle"] [class*="selected"],
+#momence-plugin-host-schedule button[class*="active"]{
+  color:#02F3C5 !important;
+  border-color:#02F3C5 !important;
+}
 
-
-/* ── Style Momence native member login ── */
-#momence-plugin-host-schedule [class*="member_login"],
-#momence-plugin-host-schedule [class*="auth_link"],
-#momence-plugin-host-schedule a[href*="sign-in"]{
-  border-color:rgba(2,243,197,.25) !important;
-  color:rgba(240,239,233,.5) !important;
-  margin-left:auto !important;
+/* ── Teacher dropdown — better positioning ── */
+#momence-plugin-host-schedule .momence-session_filters,
+#momence-plugin-host-schedule [class*="session_filters"]{
+  display:flex !important;
+  align-items:center !important;
+  gap:12px !important;
+  flex-wrap:wrap !important;
 }
 /* ── HIDE ONLY what's truly unwanted ── */
 #momence-plugin-host-schedule .momence-host_schedule-sys_row{display:none !important}
@@ -358,6 +365,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 #momence-plugin-host-schedule [class*="third_row"]{
   position:relative !important;
   z-index:10 !important;
+  display:flex !important;
+  align-items:center !important;
+  gap:8px !important;
   margin-bottom:20px !important;
 }
 /* Quick filters group */
@@ -442,9 +452,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
   position:relative;
   max-width:920px;margin:0 auto;
 }
-.sabda-member-login{
-  display:none;
+.sabda-member-login{display:none !important;
+  position:absolute;top:auto !important;
+  right:40px;
+  top:0;
+  z-index:12;
+  opacity:0;
+  transition:opacity .3s;
+  pointer-events:none;
 }
+.sabda-member-login.visible{opacity:1;pointer-events:auto}
 .sabda-member-login a{
   display:inline-flex;align-items:center;gap:5px;
   padding:8px 16px;
@@ -533,7 +550,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .nav-login{padding-left:14px;margin-left:14px}.nav-login a{font-size:.65rem;gap:5px}
   .hero-banner{height:240px}.hero-overlay h1{font-size:2rem}.hero-overlay{bottom:32px}
   #momence-plugin-host-schedule{padding:24px 16px 12px}
-  .sabda-member-login{right:16px}
+  .sabda-member-login{display:none !important;right:16px}
   .sabda-member-login a{font-size:.65rem;padding:6px 12px}
   .pricing-summary{padding:60px 24px 0}
   .ps-grid{flex-wrap:wrap;gap:14px}.ps-card{max-width:none;min-width:120px}
@@ -844,7 +861,18 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       }
     }
 
-    /* Position overrides removed — was breaking month view */
+    /* ── CRITICAL: Neutralize any position:fixed children ── */
+    /* Momence renders modal overlays with position:fixed that escape the widget */
+    el.querySelectorAll('*').forEach(node=>{
+      const pos=getComputedStyle(node).position;
+      if(pos==='fixed'){
+        node.style.setProperty('position','relative','important');
+        node.style.setProperty('top','auto','important');
+        node.style.setProperty('left','auto','important');
+        node.style.setProperty('right','auto','important');
+        node.style.setProperty('bottom','auto','important');
+      }
+    });
     /* Fix Teachers dropdown z-index — must sit above class cards */
     el.querySelectorAll('[role="listbox"], [class*="select-popup"], [class*="cmpnl9-2"]').forEach(popup=>{
       popup.style.setProperty('z-index','999','important');
@@ -879,7 +907,12 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       d.style.setProperty('margin','0','important');
       d.style.setProperty('padding','0','important');
     });
-    /* Third row — do NOT override display (breaks month view) */
+    /* Third row — uniform flex layout, kill spacer */
+    el.querySelectorAll('.momence-host_schedule-third_row,[class*="third_row"]').forEach(row=>{
+      row.style.setProperty('display','flex','important');
+      row.style.setProperty('align-items','center','important');
+      row.style.setProperty('gap','8px','important');
+    });
     el.querySelectorAll('[class*="fqxJDI"]').forEach(s=>s.style.setProperty('display','none','important'));
   }
 
@@ -1104,7 +1137,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       const rightOffset=wrapperRect.right-cardRect.right;
       loginBtn.style.right=Math.max(0,Math.round(rightOffset))+'px';
     }
-    /* login is now static, no positioning needed */
+    loginBtn.classList.add('visible');
   }
   [800,1200,2000,3000,5000,8000].forEach(ms=>setTimeout(positionLogin,ms));
   new MutationObserver(()=>requestAnimationFrame(positionLogin))
@@ -1156,18 +1189,6 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 
 
 <!-- REVIEW NUDGE -->
-<!-- FAQ -->
-<section class="faq">
-  <div class="faq-inner">
-    <div class="faq-heading rv"><span class="sl">FAQ</span><h2 class="sh2">Common <em>questions.</em></h2></div>
-    <div class="faq-item rv" style="transition-delay:.05s"><button class="faq-q" aria-expanded="false">What classes does SABDA offer?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Yoga (Vinyasa, Power Vinyasa, Hatha Vinyasa, Hatha Yoga, Yoga Sculpt, Yin Yoga), Pilates (Power Pilates, Core Pilates, Full Body Pilates, Glutes and Core Lab), Sound Healing, Breathwork (Alchemy Breathwork, Reset & Calm, Transformational), and Ecstatic Dance. All inside a 360° projection room with spatial audio in Barcelona's Eixample.</p></div></div>
-    <div class="faq-item rv" style="transition-delay:.1s"><button class="faq-q" aria-expanded="false">Do I need experience to attend?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>No. All classes welcome every level. Teachers provide modifications for beginners and progressions for experienced practitioners.</p></div></div>
-    <div class="faq-item rv" style="transition-delay:.15s"><button class="faq-q" aria-expanded="false">What should I bring?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Comfortable clothes. We provide mats, blocks, straps, bolsters, blankets, and towels. Changing rooms and showers available.</p></div></div>
-    <div class="faq-item rv" style="transition-delay:.2s"><button class="faq-q" aria-expanded="false">Are classes in English or Spanish?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Most classes are in English. Some are bilingual English and Spanish. The schedule shows the language for each class.</p></div></div>
-    <div class="faq-item rv" style="transition-delay:.25s"><button class="faq-q" aria-expanded="false">How much does it cost?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Trial class €18. Intro 3-pack €50 (€18/class). Unlimited membership €130/month. <a href="pricing.html" style="color:#4ff8d6">Full pricing</a>.</p></div></div>
-  </div>
-</section>
-
 <div class="review-nudge rv">
   <div class="rn-ticker">
     <div class="rn-quote active"><q>Such a powerful breathwork class. The SABDA space is unrivalled.</q><cite>Sophie &middot; Breathwork</cite></div>
@@ -1278,48 +1299,6 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   },4000);
 })();
 document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));if(!wasOpen)item.classList.add('open');btn.setAttribute('aria-expanded',!wasOpen)})});
-
-/* Fix Momence: toggle green + login alignment */
-(function(){
-  let activeToggle=0; /* 0=Week (default), 1=Month */
-  
-  function styleToggles(){
-    const el=document.getElementById('momence-plugin-host-schedule');
-    if(!el)return;
-    const firstRow=el.querySelector('[class*="first_row"]');
-    if(!firstRow)return;
-    const btns=Array.from(firstRow.querySelectorAll('button'));
-    if(btns.length<2)return;
-    
-    /* Style both buttons: active=green, inactive=dim */
-    btns.forEach((btn,i)=>{
-      if(i===activeToggle){
-        btn.style.setProperty('color','#02F3C5','important');
-        btn.style.setProperty('border-color','#02F3C5','important');
-        btn.style.setProperty('background','rgba(2,243,197,.08)','important');
-      } else {
-        btn.style.setProperty('color','rgba(240,239,233,.5)','important');
-        btn.style.setProperty('border-color','rgba(240,239,233,.12)','important');
-        btn.style.setProperty('background','transparent','important');
-      }
-      
-      if(!btn._fixed){
-        btn._fixed=true;
-        btn.addEventListener('click',function(){
-          activeToggle=i;
-          setTimeout(styleToggles,200);
-          setTimeout(styleToggles,600);
-        });
-      }
-    });
-  }
-  
-  function fixAll(){styleToggles();}
-  [800,1500,2500,4000,6000,10000].forEach(ms=>setTimeout(fixAll,ms));
-  const obs=new MutationObserver(()=>{requestAnimationFrame(styleToggles);});
-  const t=document.getElementById('momence-plugin-host-schedule');
-  if(t)obs.observe(t,{childList:true,subtree:true,attributes:true});
-})();
 </script>
 </body>
 </html>
