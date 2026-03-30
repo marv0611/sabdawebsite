@@ -1053,10 +1053,22 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   }
 
   /* ── Run everything ── */
+  /* Track view mode via click, not DOM detection */
+  let isMonthView=false;
+  function watchToggle(){
+    const firstRow=el.querySelector('[class*="first_row"]');
+    if(!firstRow||firstRow._toggleWatched)return;
+    firstRow._toggleWatched=true;
+    const btns=firstRow.querySelectorAll('button');
+    if(btns.length>=2){
+      btns[0].addEventListener('click',()=>{isMonthView=false;});
+      btns[1].addEventListener('click',()=>{isMonthView=true;});
+    }
+  }
+
   function runAll(){
     applyVars();
-    /* If month view is showing, skip ALL JS overrides — let Momence render natively */
-    const isMonthView=el.querySelector('[class*="month_view"],[class*="calendar-grid"],table.momence-calendar,table');
+    watchToggle();
     if(isMonthView){
       el.classList.add('themed');
       return;
