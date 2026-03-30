@@ -288,24 +288,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
   background:transparent !important;
 }
 
-
-/* ── Week/Month toggle active state ── */
-#momence-plugin-host-schedule [class*="toggle"] [class*="active"],
-#momence-plugin-host-schedule [class*="toggle"] [aria-selected="true"],
-#momence-plugin-host-schedule [class*="view_toggle"] [class*="selected"],
-#momence-plugin-host-schedule button[class*="active"]{
-  color:#02F3C5 !important;
-  border-color:#02F3C5 !important;
-}
-
-/* ── Teacher dropdown — better positioning ── */
-#momence-plugin-host-schedule .momence-session_filters,
-#momence-plugin-host-schedule [class*="session_filters"]{
-  display:flex !important;
-  align-items:center !important;
-  gap:12px !important;
-  flex-wrap:wrap !important;
-}
 /* ── HIDE ONLY what's truly unwanted ── */
 #momence-plugin-host-schedule .momence-host_schedule-sys_row{display:none !important}
 #momence-plugin-host-schedule .momence-host_schedule-powered_by_momence{display:none !important}
@@ -452,8 +434,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
   position:relative;
   max-width:920px;margin:0 auto;
 }
-.sabda-member-login{display:none !important;
-  position:absolute;top:auto !important;
+.sabda-member-login{
+  position:absolute;
   right:40px;
   top:0;
   z-index:12;
@@ -550,7 +532,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .nav-login{padding-left:14px;margin-left:14px}.nav-login a{font-size:.65rem;gap:5px}
   .hero-banner{height:240px}.hero-overlay h1{font-size:2rem}.hero-overlay{bottom:32px}
   #momence-plugin-host-schedule{padding:24px 16px 12px}
-  .sabda-member-login{display:none !important;right:16px}
+  .sabda-member-login{right:16px}
   .sabda-member-login a{font-size:.65rem;padding:6px 12px}
   .pricing-summary{padding:60px 24px 0}
   .ps-grid{flex-wrap:wrap;gap:14px}.ps-card{max-width:none;min-width:120px}
@@ -1178,14 +1160,13 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   <p style="font-size:1.02rem;line-height:1.8;color:rgba(240,239,233,.6);max-width:720px;margin:0 auto">From <a href="classes/yoga/" style="color:#4ff8d6;text-decoration:none;border-bottom:none">vinyasa yoga</a> and <a href="classes/pilates/" style="color:#4ff8d6;text-decoration:none;border-bottom:none">pilates</a> to <a href="classes/sound-healing/" style="color:#4ff8d6;text-decoration:none;border-bottom:none">sound healing</a>, <a href="classes/breathwork/" style="color:#4ff8d6;text-decoration:none;border-bottom:none">breathwork</a>, and <a href="classes/ecstatic-dance/" style="color:#4ff8d6;text-decoration:none;border-bottom:none">ecstatic dance</a>. Every session takes place inside our 360° projection room with spatial audio. Whether you are a complete beginner or a dedicated practitioner, there is a class for you.</p>
 </section>
 
-<!-- ICE BATH — returning May 2026 -->
+<!-- ICE BATH -->
 <section style="padding:48px 80px;border-top:1px solid rgba(240,239,233,.06);text-align:center;position:relative;z-index:2">
   <h2 style="font-family:'PT Serif',serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:700;letter-spacing:-.015em;margin-bottom:16px">Ice Bath</h2>
-  <p style="font-size:1rem;color:rgba(240,239,233,.6);max-width:600px;margin:0 auto 16px;line-height:1.7">Guided cold plunge sessions on our private patio. Breathwork preparation, 3°C to 8°C water, trained facilitator by your side. One of the most popular add-ons at SABDA.</p>
+  <p style="font-size:1rem;color:rgba(240,239,233,.6);max-width:600px;margin:0 auto 16px;line-height:1.7">Guided cold plunge sessions on our private patio. Breathwork preparation, trained facilitator by your side.</p>
   <p style="font-size:.9rem;color:var(--cyan);font-weight:600;letter-spacing:.03em">Restarting 1st May 2026</p>
-  <p style="margin-top:12px"><a href="classes/ice-bath/" style="color:rgba(240,239,233,.5);font-size:.85rem;border-bottom:1px solid rgba(240,239,233,.15)">Learn more about ice bath at SABDA →</a></p>
+  <p style="margin-top:12px"><a href="classes/ice-bath/" style="color:rgba(240,239,233,.5);font-size:.85rem;border-bottom:1px solid rgba(240,239,233,.15)">Learn more →</a></p>
 </section>
-
 
 
 <!-- REVIEW NUDGE -->
@@ -1199,6 +1180,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     <div class="rn-quote"><q>The whole experience is one of a kind. I totally recommend it to everyone who wants to practice yoga in Barcelona.</q><cite>Andili &middot; Yoga</cite></div>
     <div class="rn-quote"><q>I&#8217;m in love with the vinyasa classes here. Sabda is one of the highlights of my stay in Barcelona.</q><cite>Clara &middot; Vinyasa</cite></div>
   </div>
+  <div style="border-top:1px solid rgba(240,239,233,.06);max-width:400px;margin:24px auto"></div>
   <div class="rn-inner">
     <div class="rn-stars"><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg></div>
     <div class="rn-scoreline"><span class="rn-score">4.8</span><span class="rn-count">350+ reviews</span></div>
