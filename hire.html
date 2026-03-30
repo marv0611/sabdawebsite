@@ -199,11 +199,6 @@ section{position:relative;padding:120px 80px;z-index:2}
 .cat-card:hover{border-color:rgba(2,243,197,.2)}
 .cat-card-name{font-family:'PT Serif',serif;font-size:1.1rem;font-weight:700;margin-bottom:10px}
 .cat-card-desc{font-size:.88rem;color:var(--white60);line-height:1.65}
-.cross-links{padding:60px 80px;border-top:1px solid rgba(240,239,233,.06);text-align:center}
-.cross-links-in{max-width:600px;margin:0 auto}
-.cl-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:24px}
-.cl-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border:1px solid rgba(240,239,233,.1);border-radius:4px;font-size:.85rem;font-weight:500;color:var(--white60);transition:border-color .25s,color .25s}
-.cl-btn:hover{border-color:rgba(2,243,197,.3);color:var(--cyan)}
 /* ── CASE STUDIES ── */
 .case-study{padding:120px 80px;z-index:2;position:relative;border-top:1px solid rgba(240,239,233,.04)}
 .cs-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
@@ -441,69 +436,35 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 </div>
 
 <!-- ═══════════════════════════════════════════════════════
-     CATEGORY 1 — CORPORATE & TEAM BUILDING
+     WHAT WE DO — compact 4-category grid
 ═══════════════════════════════════════════════════════ -->
-<section class="cat-section" id="corporate">
-  <div class="cat-in">
-    <span class="sl rv">Corporate</span>
-    <h2 class="sh2 rv" style="transition-delay:.07s">Corporate Wellness &<br><em>Team Experiences</em></h2>
-    <p class="cat-intro rv" style="transition-delay:.12s">Most team events are forgettable. SABDA is not. 360° projection mapping and Dolby Atmos spatial audio create an environment that strips away distraction and brings people into genuine presence, together. For dedicated team building packages, <a href="team-building/" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">see our team building page</a>.</p>
-    <div class="cat-grid">
-      <div class="cat-card rv" style="transition-delay:.15s"><div class="cat-card-name">Corporate Wellness Classes</div><div class="cat-card-desc">Private yoga, breathwork, sound healing, or ecstatic dance sessions led by SABDA instructors. Bookable for teams of any size, with content adapted to your group.</div></div>
-      <div class="cat-card rv" style="transition-delay:.19s"><div class="cat-card-name">Team Away Days</div><div class="cat-card-desc">A half or full day format combining movement, a shared immersive experience, and space to decompress. A reset that actually works.</div></div>
-      <div class="cat-card rv" style="transition-delay:.23s"><div class="cat-card-name">Onboarding & Culture Events</div><div class="cat-card-desc">Introduce new team members to your company culture in an environment that says something about who you are. First impressions made in a space like this land differently.</div></div>
-      <div class="cat-card rv" style="transition-delay:.27s"><div class="cat-card-name">End of Year & Offsite Gatherings</div><div class="cat-card-desc">Skip the dinner that everyone forgets. Close out the year or kick off a new chapter in a setting that gives people something to talk about.</div></div>
-    </div>
-  </div>
-</section>
+<section class="cat-section">
+  <div class="cat-in" style="max-width:1100px">
+    <span class="sl rv">What We Do</span>
+    <h2 class="sh2 rv" style="transition-delay:.07s">Four Ways to Use<br><em>the Space.</em></h2>
+    <div class="cat-grid" style="grid-template-columns:1fr 1fr;gap:28px;margin-top:40px">
 
-<!-- ═══════════════════════════════════════════════════════
-     CATEGORY 2 — BRAND ACTIVATIONS
-═══════════════════════════════════════════════════════ -->
-<section class="cat-section" id="activations">
-  <div class="cat-in">
-    <span class="sl rv">Brands</span>
-    <h2 class="sh2 rv" style="transition-delay:.07s">Brand Activations &<br><em>Product Launches</em></h2>
-    <p class="cat-intro rv" style="transition-delay:.12s">SABDA is a blank canvas built for brands that have something to say. The immersive room transforms completely: your visuals, your audio, your message, surrounded by 360° of content and spatial sound. No boardroom. No blank white walls. An environment your audience will remember and share.</p>
-    <div class="cat-grid">
-      <div class="cat-card rv" style="transition-delay:.15s"><div class="cat-card-name">Influencer Events</div><div class="cat-card-desc">Host a curated group in an environment designed for content creation. The space photographs and films unlike anything else in Barcelona.</div></div>
-      <div class="cat-card rv" style="transition-delay:.19s"><div class="cat-card-name">Taster Experiences</div><div class="cat-card-desc">Introduce your product or service through a multi-sensory moment. Pair your brand with an immersive class, a listening session, or a custom activation built around your audience.</div></div>
-      <div class="cat-card rv" style="transition-delay:.23s"><div class="cat-card-name">Product Launches</div><div class="cat-card-desc">Announce something new in a space that commands attention. Full venue hire, branded visual content, and a captive audience primed to engage.</div></div>
-      <div class="cat-card rv" style="transition-delay:.27s"><div class="cat-card-name">Pop-up Experiences</div><div class="cat-card-desc">Run a branded immersive session over one or several days. Drive footfall, generate content, and give your audience a reason to show up in person.</div></div>
-    </div>
-  </div>
-</section>
+      <div class="cat-card rv" style="transition-delay:.1s" id="corporate">
+        <h3 style="font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;color:var(--salmon);margin-bottom:12px">Corporate Wellness & Team Experiences</h3>
+        <p class="cat-card-desc">Private yoga, breathwork, sound healing sessions. Team away days. Onboarding events. End of year gatherings. Content adapted to your group.</p>
+        <a href="team-building/" style="display:inline-block;margin-top:14px;font-size:.82rem;color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.4)">Team building packages →</a>
+      </div>
 
-<!-- ═══════════════════════════════════════════════════════
-     CATEGORY 3 — PRODUCTION
-═══════════════════════════════════════════════════════ -->
-<section class="cat-section" id="production">
-  <div class="cat-in">
-    <span class="sl rv">Production</span>
-    <h2 class="sh2 rv" style="transition-delay:.07s">Production &<br><em>Filming</em></h2>
-    <p class="cat-intro rv" style="transition-delay:.12s">SABDA has hosted FC Barcelona's farewell video for Sergi Roberto, a production that reached over 22 million views. The immersive room is a production-ready set unlike anything available in the city. 360° projection creates infinite visual backdrops. Dolby Atmos provides a controlled acoustic environment. No location permits. No street noise. No compromises.</p>
-    <div class="cat-grid">
-      <div class="cat-card rv" style="transition-delay:.15s"><div class="cat-card-name">Film & Video Production</div><div class="cat-card-desc">A fully controllable visual and audio environment for brand films, campaign content, and creative projects.</div></div>
-      <div class="cat-card rv" style="transition-delay:.19s"><div class="cat-card-name">Photography</div><div class="cat-card-desc">Dynamic, immersive backdrops that change with every shoot. Static or motion-reactive visuals on request.</div></div>
-      <div class="cat-card rv" style="transition-delay:.23s"><div class="cat-card-name">Influencer Content Days</div><div class="cat-card-desc">Book the space for a full session. Bring your own creative direction or work with our content packs.</div></div>
-      <div class="cat-card rv" style="transition-delay:.27s"><div class="cat-card-name">Talks & Panels</div><div class="cat-card-desc">An intimate, high-impact setting for keynotes, interviews, and recorded conversations. The environment alone communicates forward thinking.</div></div>
-    </div>
-  </div>
-</section>
+      <div class="cat-card rv" style="transition-delay:.15s" id="activations">
+        <h3 style="font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;color:var(--salmon);margin-bottom:12px">Brand Activations & Product Launches</h3>
+        <p class="cat-card-desc">Influencer events. Taster experiences. Product launches. Pop-up sessions. Your visuals, your audio, your message in 360°.</p>
+      </div>
 
-<!-- ═══════════════════════════════════════════════════════
-     CATEGORY 4 — CELEBRATIONS
-═══════════════════════════════════════════════════════ -->
-<section class="cat-section" id="celebrations">
-  <div class="cat-in">
-    <span class="sl rv">Celebrations</span>
-    <h2 class="sh2 rv" style="transition-delay:.07s">Private Celebrations &<br><em>Events</em></h2>
-    <p class="cat-intro rv" style="transition-delay:.12s">Some occasions deserve more than a restaurant back room. SABDA's immersive room holds up to 100 guests standing, with full control over the visual and audio environment. Every celebration is private hire. The space is yours for the duration of your event.</p>
-    <div class="cat-grid">
-      <div class="cat-card rv" style="transition-delay:.15s"><div class="cat-card-name">Bachelorette & Hen Parties</div><div class="cat-card-desc">A multi-sensory experience that doubles as a wellness ritual. Sound healing, yoga, movement, designed around your group.</div></div>
-      <div class="cat-card rv" style="transition-delay:.19s"><div class="cat-card-name">Kids' Parties</div><div class="cat-card-desc">A genuinely unique environment for children. Interactive visuals and spatial sound create an experience that no other venue in Barcelona offers.</div></div>
-      <div class="cat-card rv" style="transition-delay:.23s"><div class="cat-card-name">Milestone Birthdays</div><div class="cat-card-desc">30, 40, 50. Mark them somewhere that matches the occasion. Private hire with full visual customisation and optional wellness programming.</div></div>
-      <div class="cat-card rv" style="transition-delay:.27s"><div class="cat-card-name">Intimate Dinners & Gatherings</div><div class="cat-card-desc">A seated dinner for up to 80 guests, surrounded by immersive visuals and spatial audio. A format no restaurant in Barcelona can replicate.</div></div>
+      <div class="cat-card rv" style="transition-delay:.2s" id="production">
+        <h3 style="font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;color:var(--salmon);margin-bottom:12px">Production & Filming</h3>
+        <p class="cat-card-desc">Film and video production. Photography. Influencer content days. Talks and panels. Fully controllable 360° backdrops, no location permits needed.</p>
+      </div>
+
+      <div class="cat-card rv" style="transition-delay:.25s" id="celebrations">
+        <h3 style="font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;color:var(--salmon);margin-bottom:12px">Private Celebrations & Events</h3>
+        <p class="cat-card-desc">Bachelorette parties. Kids' parties. Milestone birthdays. Intimate dinners for up to 80 seated. Full private hire with visual customisation.</p>
+      </div>
+
     </div>
   </div>
 </section>
@@ -652,20 +613,12 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════════════════
-     CROSS-LINKS
-═══════════════════════════════════════════════════════ -->
-<div class="cross-links">
-  <div class="cross-links-in">
-    <span class="sl rv">Explore More</span>
-    <h2 class="sh2 rv" style="transition-delay:.06s">Related <em>Pages</em></h2>
-    <div class="cl-btns rv" style="transition-delay:.12s">
-      <a href="team-building/" class="cl-btn">Team Building Packages →</a>
-      <a href="events.html" class="cl-btn">Public Events →</a>
-      <a href="classes.html" class="cl-btn">Class Schedule →</a>
-      <a href="pricing.html" class="cl-btn">Pricing →</a>
-    </div>
-  </div>
+<div style="text-align:center;padding:32px 80px;border-top:1px solid rgba(240,239,233,.06)">
+  <a href="team-building/" style="color:var(--cyan);font-size:.88rem;border-bottom:1px solid rgba(2,243,197,.4)">See dedicated team building packages →</a>
+  <span style="color:rgba(240,239,233,.15);margin:0 16px">|</span>
+  <a href="events.html" style="color:var(--white60);font-size:.88rem;border-bottom:1px solid rgba(240,239,233,.1)">Public events →</a>
+  <span style="color:rgba(240,239,233,.15);margin:0 16px">|</span>
+  <a href="classes.html" style="color:var(--white60);font-size:.88rem;border-bottom:1px solid rgba(240,239,233,.1)">Class schedule →</a>
 </div>
 
 <!-- ═══════════════════════════════════════════════════════
