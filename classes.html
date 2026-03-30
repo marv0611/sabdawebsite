@@ -185,8 +185,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
   z-index:2 !important;
   transform:translateZ(0) !important;
 }
-#momence-plugin-host-schedule [style*="position: fixed"],
-#momence-plugin-host-schedule [style*="position:fixed"]{
+#momence-plugin-host-schedule [style*="DISABLED-position: fixed"],
+#momence-plugin-host-schedule [style*="DISABLED-position:fixed"]{
   position:relative !important;
 }
 /* Target the known modal overlay by styled-component ID */
@@ -844,18 +844,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       }
     }
 
-    /* ── CRITICAL: Neutralize any position:fixed children ── */
-    /* Momence renders modal overlays with position:fixed that escape the widget */
-    el.querySelectorAll('*').forEach(node=>{
-      const pos=getComputedStyle(node).position;
-      if(pos==='fixed'){
-        node.style.setProperty('position','relative','important');
-        node.style.setProperty('top','auto','important');
-        node.style.setProperty('left','auto','important');
-        node.style.setProperty('right','auto','important');
-        node.style.setProperty('bottom','auto','important');
-      }
-    });
+    /* Position overrides removed — was breaking month view */
     /* Fix Teachers dropdown z-index — must sit above class cards */
     el.querySelectorAll('[role="listbox"], [class*="select-popup"], [class*="cmpnl9-2"]').forEach(popup=>{
       popup.style.setProperty('z-index','999','important');
