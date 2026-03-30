@@ -675,10 +675,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
         s.setProperty('background','rgba(2,243,197,.12)','important');
         s.setProperty('border-color','rgba(2,243,197,.35)','important');
         s.setProperty('color','#02F3C5','important');
-      }else{
-        s.setProperty('background-color','transparent','important');
-        s.setProperty('background','transparent','important');
-      }
+      }/* else: let Momence handle backgrounds */
 
       /* SVGs */
       if(tag==='SVG'||tag==='PATH'||tag==='CIRCLE'||tag==='LINE'||tag==='POLYLINE'){
@@ -1053,26 +1050,8 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   }
 
   /* ── Run everything ── */
-  /* Track view mode via click, not DOM detection */
-  let isMonthView=false;
-  function watchToggle(){
-    const firstRow=el.querySelector('[class*="first_row"]');
-    if(!firstRow||firstRow._toggleWatched)return;
-    firstRow._toggleWatched=true;
-    const btns=firstRow.querySelectorAll('button');
-    if(btns.length>=2){
-      btns[0].addEventListener('click',()=>{isMonthView=false;});
-      btns[1].addEventListener('click',()=>{isMonthView=true;});
-    }
-  }
-
   function runAll(){
     applyVars();
-    watchToggle();
-    if(isMonthView){
-      el.classList.add('themed');
-      return;
-    }
     forceStyles();
     patchText();
     hideElements();
