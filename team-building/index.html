@@ -201,6 +201,18 @@ nav.scrolled{background:rgba(14,18,53,.92);backdrop-filter:blur(18px);-webkit-ba
 .rn-quote cite{font-family:'DM Sans',sans-serif;font-style:normal;font-size:.8rem;color:var(--white38);letter-spacing:.04em}
 
 /* ── FOOTER ── */
+/* ── GALLERY ── */
+.sg{position:relative;width:100%;height:520px;overflow:hidden}
+.sg-slides{display:flex;height:100%;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.sg-slide{min-width:100%;height:100%;position:relative}
+.sg-slide img{width:100%;height:100%;object-fit:cover}
+.sg-nav{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:16px;z-index:3}
+.sg-prev,.sg-next{background:rgba(14,18,53,.7);border:1px solid rgba(240,239,233,.1);border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--white60);transition:border-color .25s}
+.sg-prev:hover,.sg-next:hover{border-color:rgba(2,243,197,.3)}
+.sg-prev svg,.sg-next svg{width:18px;height:18px}
+.sg-dots{display:flex;gap:6px}
+.sg-dot{width:8px;height:8px;border-radius:50%;background:rgba(240,239,233,.2);cursor:pointer;transition:background .25s}
+.sg-dot.active{background:var(--cyan)}
 footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);background:rgba(9,12,38,.6);position:relative;z-index:2}
 .ft-in{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;max-width:1140px;margin:0 auto}
 .ft-brand img{height:20px;width:auto;object-fit:contain;margin-bottom:12px}
@@ -225,7 +237,19 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .nav-social svg{width:15px;height:15px}.nav-social{gap:10px;padding-left:14px;margin-left:14px}
   .lang-sel a{padding:4px 5px;font-size:.65rem}
   .hero{height:400px}.hero-content{padding:0 24px 40px}
-  .sect,.case,.faq,.inquiry,.review-nudge,footer{padding-left:24px;padding-right:24px}
+  .sect,.case,.faq,.inquiry,.review-nudge,/* ── GALLERY ── */
+.sg{position:relative;width:100%;height:520px;overflow:hidden}
+.sg-slides{display:flex;height:100%;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.sg-slide{min-width:100%;height:100%;position:relative}
+.sg-slide img{width:100%;height:100%;object-fit:cover}
+.sg-nav{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:16px;z-index:3}
+.sg-prev,.sg-next{background:rgba(14,18,53,.7);border:1px solid rgba(240,239,233,.1);border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--white60);transition:border-color .25s}
+.sg-prev:hover,.sg-next:hover{border-color:rgba(2,243,197,.3)}
+.sg-prev svg,.sg-next svg{width:18px;height:18px}
+.sg-dots{display:flex;gap:6px}
+.sg-dot{width:8px;height:8px;border-radius:50%;background:rgba(240,239,233,.2);cursor:pointer;transition:background .25s}
+.sg-dot.active{background:var(--cyan)}
+footer{padding-left:24px;padding-right:24px}
   .sect{padding-top:72px;padding-bottom:72px}
   .formats{grid-template-columns:1fr}
   .case-card{grid-template-columns:1fr;gap:28px}
@@ -282,7 +306,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     <span class="sl rv">Why SABDA</span>
     <h2 class="sh2 rv" style="transition-delay:.06s">Your team deserves<br><em>better than trust falls.</em></h2>
     <p class="rv" style="transition-delay:.12s">SABDA is an immersive audio-visual venue in Barcelona's Eixample district with 360° laser projections and cinema-grade Dolby Atmos spatial audio. Companies come here to do team building that actually changes how their people connect. Not through icebreaker games. Through shared experience in an environment that's impossible to ignore.</p>
-    <p class="rv" style="transition-delay:.18s">We've hosted brand activations for Alpro and Danone, filmed a farewell video for FC Barcelona's Sergi Roberto that hit 22 million views, run immersive wellness workshops for corporate teams, and built custom branded worlds for product launches. Whether your team is 15 or 150, we design experiences around what you need. Actividades para empresas en Barcelona that go far beyond the usual corporate playbook. Wellness, creativity, connection, celebration. The best team building activities in Barcelona start with an environment nobody expects. The 360° room does the rest.</p>
+    <p class="rv" style="transition-delay:.18s">We've hosted brand activations for Alpro and Danone, filmed a farewell video for FC Barcelona's Sergi Roberto that hit 22 million views, run immersive wellness workshops for corporate teams, and built custom branded worlds for product launches. Whether your team is 15 or 150, we design experiences around what you need. Whether your team is 15 or 150, we design experiences around what you need. The best team building activities in Barcelona start with an environment nobody expects.</p>
   </div>
 </section>
 
@@ -513,6 +537,33 @@ function handleSubmit(e){
   document.getElementById('inqSuccess').classList.add('show');
   return false;
 }
+
+/* Gallery */
+(function(){
+  const imgs=[
+    'https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Copy_of_Sabda2-167__1_.jpg',
+    'https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_016.jpg',
+    'https://raw.githubusercontent.com/marv0611/sabdawebsite/main/pilates_new.jpg',
+    'https://raw.githubusercontent.com/marv0611/sabdawebsite/main/fcb_room.jpg',
+    'https://raw.githubusercontent.com/marv0611/sabdawebsite/main/alpro_product.jpg'
+  ];
+  const sl=document.getElementById('sgSlides');
+  const dots=document.getElementById('sgDots');
+  if(!sl)return;
+  imgs.forEach((src,i)=>{
+    const d=document.createElement('div');d.className='sg-slide';
+    const img=document.createElement('img');img.src=src;img.alt='SABDA immersive room Barcelona';img.loading='lazy';
+    d.appendChild(img);sl.appendChild(d);
+    const dot=document.createElement('div');dot.className='sg-dot'+(i===0?' active':'');
+    dot.onclick=()=>goTo(i);dots.appendChild(dot);
+  });
+  let cur=0;
+  function goTo(i){cur=i;sl.style.transform='translateX(-'+cur*100+'%)';
+    document.querySelectorAll('.sg-dot').forEach((d,j)=>d.classList.toggle('active',j===cur));}
+  document.querySelector('.sg-prev').onclick=()=>goTo((cur-1+imgs.length)%imgs.length);
+  document.querySelector('.sg-next').onclick=()=>goTo((cur+1)%imgs.length);
+  setInterval(()=>goTo((cur+1)%imgs.length),5000);
+})();
 </script>
 </body>
 </html>
