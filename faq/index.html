@@ -50,10 +50,14 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%;height:aut
 .grain{position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.038;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px}
 nav{display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:72px;position:fixed;top:0;left:0;right:0;z-index:100;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}nav.scrolled{background:rgba(14,18,53,.92);backdrop-filter:blur(18px);border-color:rgba(240,239,233,.06)}
 .nav-logo img{height:22px;width:auto;object-fit:contain}.nav-links{display:flex;gap:36px;list-style:none}.nav-links a{font-size:.82rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--white60);transition:color .25s}.nav-links a:hover{color:var(--white)}.nav-right{display:flex;align-items:center;gap:18px}.lang-sel{display:flex;gap:2px;border-left:1px solid rgba(240,239,233,.08);padding-left:18px}.lang-sel a{padding:4px 7px;font-size:.68rem;font-weight:600;letter-spacing:.08em;color:var(--white38);border-radius:3px;transition:color .2s,background .2s}.lang-sel a:first-child{color:var(--cyan);background:rgba(2,243,197,.08)}.nav-social{display:flex;gap:14px;padding-left:14px;border-left:1px solid rgba(240,239,233,.08)}.nav-social a{display:flex}.nav-social svg{width:17px;height:17px;fill:var(--white38);transition:fill .25s}.nav-social a:hover svg{fill:var(--white)}
+.faq-hero{position:relative;width:100%;height:320px;overflow:hidden;margin-top:72px}
+.faq-hero img{width:100%;height:100%;object-fit:cover;object-position:center center;filter:brightness(.35) contrast(1.1) saturate(1.15)}
+.faq-hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(14,18,53,.3) 0%,rgba(14,18,53,.1) 30%,rgba(14,18,53,.7) 70%,var(--navy) 100%)}
+.faq-hero-content{position:absolute;bottom:48px;left:0;right:0;z-index:3;text-align:center;padding:0 80px}
 .sl{font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--cyan);font-weight:500;margin-bottom:18px;display:block}
 .sh2{font-family:'PT Serif',serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:700;line-height:1.08;letter-spacing:-.025em}.sh2 em{font-style:italic;color:var(--salmon)}
-.page-header{padding:120px 80px 60px;text-align:center;position:relative;z-index:2}
-.faq-section{padding:60px 80px;border-top:1px solid rgba(240,239,233,.06);position:relative;z-index:2}
+.page-header{display:none}
+.faq-section{padding:80px 80px;border-top:1px solid rgba(240,239,233,.06);position:relative;z-index:2}
 .faq-section-inner{max-width:720px;margin:0 auto}
 .faq-section-heading{margin-bottom:40px}
 .faq-section-heading h2{font-family:'PT Serif',serif;font-size:1.6rem;font-weight:700;margin-bottom:8px;color:var(--cyan)}
@@ -66,8 +70,9 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:0 48px
 .faq-item.open .faq-a{max-height:400px;padding-bottom:22px}
 .faq-a p{font-size:.9rem;color:var(--white60);line-height:1.7}
 .faq-a a{color:#4ff8d6;border-bottom:1px solid rgba(2,243,197,.5)}
-footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);background:rgba(9,12,38,.6);position:relative;z-index:2}.ft-in{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;max-width:1140px;margin:0 auto}.ft-brand img{height:20px;width:auto;object-fit:contain;margin-bottom:12px}.ft-pillars{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--white38);display:flex;gap:8px;margin-bottom:24px}.fp-art{color:var(--salmon)}.fp-tech{color:var(--cyan)}.fp-well{color:var(--white)}.ft-symbol{width:52px;height:52px;object-fit:contain;opacity:.5}.ft-col h4{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--white38);margin-bottom:18px;font-weight:600}.ft-col ul{list-style:none;margin:0;padding:0}.ft-col li{margin-bottom:10px}.ft-col a{font-size:.85rem;color:var(--white60);transition:color .2s;border-bottom:none}.ft-col a:hover{color:var(--white)}.ft-bot{display:flex;justify-content:space-between;align-items:center;margin-top:40px;padding-top:24px;border-top:1px solid rgba(240,239,233,.05);font-size:.72rem;color:var(--white38)}.ft-legal{display:flex;gap:20px}.ft-legal a{color:var(--white38);transition:color .2s;border-bottom:none}.ft-legal a:hover{color:var(--white)}
-@media(max-width:860px){nav{padding:0 24px}.nav-links{display:none}.nav-social svg{width:15px;height:15px}.nav-social{gap:10px;padding-left:14px;margin-left:14px}.lang-sel a{padding:4px 5px;font-size:.65rem}.page-header{padding:100px 24px 40px}.faq-section{padding:48px 24px}footer{padding-left:24px;padding-right:24px}.ft-in{grid-template-columns:1fr 1fr}}
+footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);background:rgba(9,12,38,.6);position:relative;z-index:2}.ft-in{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;max-width:1140px;margin:0 auto}.ft-brand img{height:20px;width:auto;object-fit:contain;margin-bottom:12px}.ft-pillars{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--white38);display:flex;gap:8px;margin-bottom:24px}.fp-art{color:var(--salmon)}.fp-tech{color:var(--cyan)}.fp-well{color:var(--white)}.ft-symbol{width:72px;height:72px;object-fit:contain;opacity:.5}.ft-col h4{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--white38);margin-bottom:18px;font-weight:600}.ft-col ul{list-style:none;margin:0;padding:0}.ft-col li{margin-bottom:10px}.ft-col a{font-size:.85rem;color:var(--white60);transition:color .2s;border-bottom:none}.ft-col a:hover{color:var(--white)}.ft-bot{display:flex;justify-content:space-between;align-items:center;margin-top:40px;padding-top:24px;border-top:1px solid rgba(240,239,233,.05);font-size:.72rem;color:var(--white38)}.ft-legal{display:flex;gap:20px}.ft-legal a{color:var(--white38);transition:color .2s;border-bottom:none}.ft-legal a:hover{color:var(--white)}
+@media(max-width:860px){nav{padding:0 24px}.nav-links{display:none}.nav-social svg{width:15px;height:15px}.nav-social{gap:10px;padding-left:14px;margin-left:14px}.lang-sel a{padding:4px 5px;font-size:.65rem}.faq-hero{height:260px}
+  .faq-hero-content{padding:0 24px;bottom:32px}.faq-section{padding:48px 24px}footer{padding-left:24px;padding-right:24px}.ft-in{grid-template-columns:1fr 1fr}}
 @media(max-width:520px){.ft-in{grid-template-columns:1fr}}
 </style>
 </head>
@@ -94,9 +99,11 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   </div>
 </nav>
 
-<div class="page-header">
-  <span class="sl">Help</span>
-  <h1 class="sh2">Frequently Asked <em>Questions</em></h1>
+<div class="faq-hero">
+  <img src="../Copy_of_Sabda2-167__1_.jpg" alt="SABDA immersive room Barcelona FAQ" loading="eager">
+  <div class="faq-hero-content">
+    <h1 class="sh2">Frequently Asked <em>Questions</em></h1>
+  </div>
 </div>
 
 <!-- CLASSES FAQ -->
@@ -119,7 +126,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 
     <div class="faq-item"><button class="faq-q" aria-expanded="false">What is the cancellation policy?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Cancel up to 8 hours before class time with no penalty. After that window, cancellations are non-refundable. Memberships auto-renew but can be cancelled before the next renewal date.</p></div></div>
 
-    <div class="faq-item"><button class="faq-q" aria-expanded="false">How much does it cost?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Trial class €16. <a href="https://momence.com/m/443935" target="_blank">Intro 3-pack €48</a> (€16/class). 5-pack €80. 10-pack €140. Unlimited membership €130/month. <a href="../pricing.html">Full pricing and memberships</a>.</p></div></div>
+    <div class="faq-item"><button class="faq-q" aria-expanded="false">How much does it cost?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Trial class €18. <a href="https://momence.com/m/443935" target="_blank">Intro 3-pack €50</a> (€18/class). 5-pack €80. 10-pack €140. Unlimited membership €130/month. <a href="../pricing.html">Full pricing and memberships</a>.</p></div></div>
 
     <div class="faq-item"><button class="faq-q" aria-expanded="false">Do you accept ClassPass, Urban Sports Club, or Wellhub?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Yes to all three. You can also book directly for the best rates and more class availability.</p></div></div>
 
