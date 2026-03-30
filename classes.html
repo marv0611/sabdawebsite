@@ -184,8 +184,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
   z-index:2 !important;
   transform:translateZ(0) !important;
 }
-#momence-plugin-host-schedule [style*="position: fixed"],
-#momence-plugin-host-schedule [style*="position:fixed"]{
+/* position:fixed override removed — was breaking month view header */
+#momence-plugin-host-schedule [style*="SKIP-position:fixed"]{
   position:relative !important;
 }
 /* Target the known modal overlay by styled-component ID */
@@ -675,8 +675,11 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
         s.setProperty('border-color','rgba(2,243,197,.35)','important');
         s.setProperty('color','#02F3C5','important');
       }else{
-        s.setProperty('background-color','transparent','important');
-        s.setProperty('background','transparent','important');
+        /* Only clear backgrounds on non-calendar elements */
+        if(tag!=='TABLE'&&tag!=='THEAD'&&tag!=='TBODY'&&tag!=='TR'&&tag!=='TD'&&tag!=='TH'&&!node.closest('table')){
+          s.setProperty('background-color','transparent','important');
+          s.setProperty('background','transparent','important');
+        }
       }
 
       /* SVGs */
