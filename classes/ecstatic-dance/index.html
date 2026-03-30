@@ -90,11 +90,11 @@ nav.scrolled{background:rgba(14,18,53,.92);backdrop-filter:blur(18px);-webkit-ba
 .nav-links a:hover{color:var(--white)}
 .nav-right{display:flex;align-items:center;gap:18px}
 .lang-sel{display:flex;gap:2px;border-left:1px solid rgba(240,239,233,.08);padding-left:18px}
-.lang-sel a{padding:4px 7px;font-size:.68rem;font-weight:600;letter-spacing:.08em;color:var(--white38);border-radius:3px;transition:color .2s,background .2s}
-.lang-sel a:first-child{color:var(--cyan);background:rgba(2,243,197,.08)}
+.lang-sel a{padding:4px 7px;font-size:.68rem;font-weight:600;letter-spacing:.08em;color:rgba(240,239,233,.4);border-radius:3px;transition:color .2s,background .2s}
+.lang-sel a.active,.lang-sel a:first-child{color:var(--cyan);opacity:1;background:rgba(2,243,197,.08)}
 .nav-social{display:flex;gap:14px;padding-left:14px;border-left:1px solid rgba(240,239,233,.08)}
 .nav-social a{display:flex}
-.nav-social svg{width:17px;height:17px;fill:var(--white38);transition:fill .25s}
+.nav-social svg{width:17px;height:17px;fill:rgba(240,239,233,.55);transition:fill .25s}
 .nav-social a:hover svg{fill:var(--white)}
 
 /* ── SCROLL REVEAL ── */
@@ -188,7 +188,7 @@ nav.scrolled{background:rgba(14,18,53,.92);backdrop-filter:blur(18px);-webkit-ba
 .related-link:hover{border-color:rgba(2,243,197,.3);color:var(--cyan)}
 
 /* ── REVIEW NUDGE ── */
-.review-nudge{padding:100px 80px;border-top:1px solid rgba(240,239,233,.06);position:relative;z-index:2;overflow:hidden}
+.review-nudge{padding:60px 80px;border-top:1px solid rgba(240,239,233,.06);position:relative;z-index:2;overflow:hidden}
 .rn-inner{text-align:center;max-width:480px;margin:0 auto}
 .rn-stars{display:flex;justify-content:center;gap:4px;margin-bottom:14px}
 .rn-stars svg{width:22px;height:22px;fill:var(--salmon)}

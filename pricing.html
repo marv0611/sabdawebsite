@@ -79,8 +79,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 .nav-links a.active{opacity:1}.nav-links a.active::after{right:0}
 .nav-right{display:flex;align-items:center;gap:0}
 .lang-sel{display:flex;align-items:center;gap:0;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;font-weight:500}
-.lang-sel a{color:var(--white);opacity:.35;padding:5px 7px;transition:opacity .25s,color .25s}
-.lang-sel a:hover{opacity:.7}
+.lang-sel a{color:var(--white);opacity:.4;padding:5px 7px;transition:opacity .25s,color .25s}
+.lang-sel a:hover{opacity:.8}
+.lang-sel a.active{color:var(--cyan);opacity:1}
 .lang-sel a.active{opacity:.9;color:var(--cyan)}
 .nav-social{display:flex;align-items:center;gap:14px;padding-left:20px;margin-left:16px;border-left:1px solid rgba(240,239,233,.1)}
 .nav-social a{display:flex;align-items:center;opacity:.35;transition:opacity .25s}
@@ -125,7 +126,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 .pricing-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--salmon);color:var(--navy);font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:5px 14px;border-radius:20px;white-space:nowrap}
 
 /* ── GIFT CARDS ── */
-.giftcards{padding:80px 80px;position:relative;z-index:2;border-top:1px solid rgba(240,239,233,.06);margin-top:80px}
+.giftcards{padding:60px 80px;position:relative;z-index:2;border-top:1px solid rgba(240,239,233,.06);margin-top:80px}
 .giftcards-hdr{text-align:center;margin-bottom:44px}
 .giftcards-hdr h2{font-family:'PT Serif',serif;font-size:2.2rem;font-weight:400;margin-bottom:10px}
 .giftcards-hdr p{color:var(--white38);font-size:.92rem;max-width:400px;margin:0 auto}
@@ -135,7 +136,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 .gc-grid a.custom{color:var(--cyan)}
 
 /* ── SCHEDULE CTA ── */
-.schedule-cta{padding:60px 80px 80px;position:relative;z-index:2;text-align:center}
+.schedule-cta{padding:40px 80px 80px;position:relative;z-index:2;text-align:center}
 .schedule-cta p{color:var(--white38);font-size:.95rem;margin-bottom:20px}
 .schedule-cta a{display:inline-flex;align-items:center;gap:8px;padding:16px 36px;border-radius:40px;border:1.5px solid var(--salmon);color:var(--white);font-weight:600;font-size:.88rem;letter-spacing:.05em;text-transform:uppercase;transition:border-color .25s,background .25s,transform .15s,color .25s}
 .schedule-cta a:hover{border-color:var(--cyan);background:rgba(2,243,197,.06);color:var(--cyan);transform:translateY(-2px)}
@@ -188,7 +189,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.06);positio
 .faq-a{max-height:0;overflow:hidden;transition:max-height .45s var(--ease-expo),padding .35s}
 .faq-item.open .faq-a{max-height:300px;padding-bottom:22px}
 .faq-a p{font-size:.9rem;color:var(--white60);line-height:1.7}
-.review-nudge{padding:100px 80px;border-top:1px solid rgba(240,239,233,.06);position:relative;z-index:2;overflow:hidden}
+.review-nudge{padding:60px 80px;border-top:1px solid rgba(240,239,233,.06);position:relative;z-index:2;overflow:hidden}
 .rn-inner{max-width:540px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;position:relative;z-index:2}
 .rn-stars{display:flex;gap:3px;margin-bottom:6px}
 .rn-stars svg{width:14px;height:14px;fill:var(--cyan)}
@@ -326,13 +327,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.06);positio
   <a href="classes.html">View Schedule & Book <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
 </div>
 
-<!-- GIFT CARDS -->
-<section style="padding:80px 80px;border-top:1px solid rgba(240,239,233,.06);text-align:center;position:relative;z-index:2">
-  <span class="sl rv">Gift Cards</span>
-  <h2 style="font-family:'PT Serif',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;line-height:1.1;letter-spacing:-.025em;margin-bottom:16px" class="rv" >Give the Gift of <em style="font-style:italic;color:#F8A6A3">SABDA</em></h2>
-  <p style="font-size:1rem;color:rgba(240,239,233,.6);max-width:520px;margin:0 auto 32px;line-height:1.7" class="rv">Looking for a unique gift in Barcelona? SABDA gift cards are available from €50 (3 class pack) to custom amounts. Perfect for birthdays, couples, or anyone who needs something extraordinary. Regalos experiencia, tarjetas regalo, and regalos originales Barcelona.</p>
-  <div class="rv"><a href="https://momence.com/SABDA-54278" target="_blank" style="display:inline-flex;align-items:center;gap:10px;background:#02F3C5;color:#0e1235;padding:14px 28px;border-radius:4px;font-size:.85rem;font-weight:700;letter-spacing:.04em;transition:background .25s,transform .25s">Buy a Gift Card <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
-</section>
+
 
 
 <!-- PRICING FAQ -->
