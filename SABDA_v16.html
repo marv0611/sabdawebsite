@@ -352,14 +352,14 @@ a.cls-item{display:block;color:inherit;text-decoration:none}
 .rn-link{display:inline-flex;align-items:center;gap:10px;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--navy);background:var(--cyan);padding:18px 44px;border-radius:4px;border:none;transition:background .25s,transform .2s,box-shadow .3s}
 .rn-link:hover{background:#33f5d1;transform:translateY(-2px);box-shadow:0 8px 28px rgba(2,243,197,.25)}
 .rn-link svg{width:18px;height:18px;opacity:.9}
-.rn-ticker{position:relative;max-width:600px;margin:0 auto 56px;text-align:center;min-height:120px;display:flex;align-items:center;justify-content:center}
+.rn-ticker{position:relative;max-width:600px;margin:0 auto 0;text-align:center;min-height:120px;display:flex;align-items:center;justify-content:center}
 .rn-quote{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:opacity .8s ease,transform .8s ease;transform:translateY(10px)}
 .rn-quote.active{opacity:1;transform:translateY(0)}
 .rn-quote q{font-family:'PT Serif',serif;font-size:1.5rem;font-style:italic;color:var(--white);line-height:1.5;quotes:"“" "”";display:block;margin-bottom:14px}
 .rn-quote q::before{content:open-quote;color:var(--cyan);font-size:1.8rem;margin-right:2px}
 .rn-quote q::after{content:close-quote;color:var(--cyan);font-size:1.8rem;margin-left:2px}
 .rn-quote cite{font-style:normal;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--salmon);font-weight:500}
-@media(max-width:860px){.rn-quote q{font-size:1.2rem}.rn-ticker{min-height:110px;margin-bottom:40px}}
+@media(max-width:860px){.rn-quote q{font-size:1.2rem}.rn-ticker{min-height:110px;margin-bottom:0}}
 
 /* ── LOCATION ── */
 .location{padding:120px 80px}
@@ -477,10 +477,9 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     </div>
     <h1 class="rv" style="transition-delay:.1s">The Future<br>of <em>Wellness</em></h1>
     <div class="hero-ctas rv" style="transition-delay:.3s">
-      <a href="classes.html" class="btn-p">3 Classes for €50
+      <a href="classes.html" class="btn-p">Book a Class
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
-      <span class="hero-note">€18/class · New students · No commitment</span>
     </div>
   </div>
 </section>
@@ -518,21 +517,6 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   <p class="p-label rv">Trusted by leading brands</p>
   <div class="mq" id="mq"></div>
 </div>
-
-<!-- THIS IS SABDA — indexable body text for SEO -->
-<section class="intro">
-  <div class="intro-in">
-    <div class="intro-txt">
-      <span class="sl rv">This is SABDA</span>
-      <h2 class="sh2 rv" style="transition-delay:.06s">Not a yoga studio.<br>Not a museum.<br><em>Something new.</em></h2>
-      <p class="rv" style="transition-delay:.12s">SABDA is an immersive audio-visual wellness studio in Barcelona's Eixample district where art, technology, and wellness converge. Walk in from the streets of Muntaner and step into 360° laser projections, cinema-grade Dolby Atmos spatial audio, and classes designed to move your body and your mind. We offer yoga, pilates, sound healing, breathwork, meditation, ecstatic dance, and ice bath. Each one inside a custom-designed immersive world.</p>
-      <p class="rv" style="transition-delay:.18s">Every class is different. Vinyasa yoga through abstract landscapes. Sound healing inside living geometry with spatial audio that wraps around you from invisible in-wall speakers. Breathwork under infinite starfields. Pilates with projections that respond to the energy of the room. This isn't wellness with a screen in the corner. This is movement, sound, and art fused into something that doesn't exist anywhere else in Barcelona.</p>
-    </div>
-    <div class="intro-img rv" style="transition-delay:.15s">
-      <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Copy_of_Sabda2-167__1_.jpg" alt="Inside SABDA 360-degree immersive projection room with Dolby Atmos spatial audio Barcelona" loading="lazy">
-    </div>
-  </div>
-</section>
 
 <!-- CLASSES -->
 <section class="classes" id="classes">
@@ -717,11 +701,26 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   </div>
 </section>
 
+<!-- THIS IS SABDA — indexable body text for SEO -->
+<section class="intro">
+  <div class="intro-in">
+    <div class="intro-txt">
+      <span class="sl rv">What is SABDA</span>
+      <h2 class="sh2 rv" style="transition-delay:.06s">Immersive Wellness<br>in <em>Barcelona.</em></h2>
+      <p class="rv" style="transition-delay:.12s">SABDA is an immersive audio-visual wellness studio in Barcelona's Eixample district where art, technology, and wellness converge. Walk in from the streets of Muntaner and step into 360° laser projections, cinema-grade spatial audio, and classes designed to move your body and your mind. We offer yoga, pilates, sound healing, breathwork, ecstatic dance, and ice bath. Each one inside a custom-designed immersive world.</p>
+      <p class="rv" style="transition-delay:.18s">Every class is different. Vinyasa yoga through abstract landscapes. Sound healing with spatial audio that wraps around you from invisible in-wall speakers. Breathwork under infinite starfields. Pilates with projections that respond to the energy of the room. Movement, sound, and art fused into something that doesn't exist anywhere else in Barcelona. C/Muntaner 83B, Eixample. 10 minutes from Universitat metro.</p>
+    </div>
+    <div class="intro-img rv" style="transition-delay:.15s">
+      <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Copy_of_Sabda2-167__1_.jpg" alt="Inside SABDA 360-degree immersive projection room with spatial audio Barcelona" loading="lazy">
+    </div>
+  </div>
+</section>
+
 <!-- HOMEPAGE FAQ -->
 <section class="faq">
   <div class="faq-inner">
     <div class="faq-heading rv"><span class="sl">Questions</span><h2 class="sh2">Good ones, <em>answered.</em></h2></div>
-    <div class="faq-item rv" style="transition-delay:.05s"><button class="faq-q" aria-expanded="false">What is SABDA?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>SABDA is an immersive audio-visual wellness studio in Barcelona's Eixample district. We offer <a href="classes/yoga/" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">yoga</a>, <a href="classes/pilates/" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">pilates</a>, <a href="classes/sound-healing/" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">sound healing</a>, <a href="classes/breathwork/" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">breathwork</a>, <a href="classes/meditation/" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">meditation</a>, <a href="classes/ecstatic-dance/" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">ecstatic dance</a>, and <a href="classes/ice-bath/" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">ice bath</a> inside a 360° projection room with Dolby Atmos spatial audio. Not a yoga studio. Not a museum. Something new.</p></div></div>
+    <div class="faq-item rv" style="transition-delay:.05s"><button class="faq-q" aria-expanded="false">What is SABDA?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>SABDA is an immersive audio-visual wellness studio in Barcelona's Eixample district. We offer <a href="classes/yoga/" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">yoga</a>, <a href="classes/pilates/" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">pilates</a>, <a href="classes/sound-healing/" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">sound healing</a>, <a href="classes/breathwork/" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">breathwork</a>, <a href="classes/meditation/" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">meditation</a>, <a href="classes/ecstatic-dance/" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">ecstatic dance</a>, and <a href="classes/ice-bath/" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">ice bath</a> inside a 360° projection room with Dolby Atmos spatial audio. An immersive wellness studio where you actively participate inside 360° projections.</p></div></div>
     <div class="faq-item rv" style="transition-delay:.1s"><button class="faq-q" aria-expanded="false">How is SABDA different from immersive experiences like IDEAL or Moco Museum?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>IDEAL, Moco Museum, and IKONO are immersive art exhibitions where you walk through and observe. SABDA is an immersive wellness studio where you actively participate. You move, breathe, and practice yoga, pilates, sound healing, or breathwork inside 360° laser projections with Dolby Atmos spatial audio. It's the difference between watching a concert on a screen and being inside the music.</p></div></div>
     <div class="faq-item rv" style="transition-delay:.15s"><button class="faq-q" aria-expanded="false">Where is SABDA located in Barcelona?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>SABDA is at C/Muntaner 83B, Local 2, 08011 Barcelona, in the heart of the Eixample district. 10 minute walk from Universitat metro (L1/L2) and 5 minutes from Passeig de Gràcia (L2/L3/L4). <a href="contact/" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">Get directions</a>.</p></div></div>
     <div class="faq-item rv" style="transition-delay:.2s"><button class="faq-q" aria-expanded="false">What's included in the intro 3-pack?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>3 classes of any type within 30 days for €50 (€18/class). Yoga, pilates, sound healing, breathwork, meditation, or ecstatic dance, all inside 360° immersive projections and Dolby Atmos spatial audio. For new students. No commitment. <a href="pricing.html" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">See all pricing and memberships</a>.</p></div></div>
@@ -744,7 +743,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 </div>
 </div>
   <div class="rn-inner">
-    <div style="border-top:1px solid rgba(240,239,233,.06);margin-top:40px;padding-top:48px"></div>
+    <div style="border-top:1px solid rgba(240,239,233,.06);margin-top:32px;padding-top:32px"></div>
     <div class="rn-stars"><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg></div>
     <div class="rn-scoreline"><span class="rn-score">4.8</span><span class="rn-count">350+ reviews</span></div>
     <p class="rn-text">Spread the <em>Love.</em></p>
