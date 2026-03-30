@@ -317,86 +317,13 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 </section>
 
 <!-- CASE STUDIES -->
-<section class="case" id="cases">
-  <div class="case-in">
-    <span class="sl rv">Our Work</span>
-    <h2 class="sh2 rv" style="transition-delay:.06s">Eventos corporativos<br><em>that leave a mark.</em></h2>
-
-    <div class="case-card rv" style="transition-delay:.1s">
-      <div class="case-media">
-        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/fcb_room.jpg" alt="FC Barcelona Sergi Roberto farewell video filmed at SABDA immersive venue Barcelona">
-      </div>
-      <div>
-        <div class="case-tag">FC Barcelona</div>
-        <div class="case-title">Sergi Roberto <em>Farewell</em></div>
-        <div class="case-desc">FC Barcelona chose SABDA to film Sergi Roberto's farewell video. The immersive room became the backdrop for one of the club's most emotional productions. The video reached over 22 million views across platforms.</div>
-        <div class="case-stats">
-          <div><span class="case-stat-val">22M+</span><span class="case-stat-lbl">Views</span></div>
-          <div><span class="case-stat-val">360°</span><span class="case-stat-lbl">Production</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="case-card rv" style="transition-delay:.1s">
-      <div class="case-media">
-        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/alpro_product.jpg" alt="Alpro Danone cherry flavour launch at SABDA 360-degree immersive venue Barcelona">
-      </div>
-      <div>
-        <div class="case-tag">Alpro · Danone</div>
-        <div class="case-title">Cherry Flavour <em>Launch</em></div>
-        <div class="case-desc">Alpro chose SABDA to unveil their new cherry flavour to press and influencers. Custom 360° branded visuals transformed the room into a living product experience with Dolby Atmos spatial audio and full catering.</div>
-        <div class="case-stats">
-          <div><span class="case-stat-val">100+</span><span class="case-stat-lbl">Attendees</span></div>
-          <div><span class="case-stat-val">360°</span><span class="case-stat-lbl">Custom visuals</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="case-card rv" style="transition-delay:.1s">
-      <div class="case-media">
-        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/perdon_room.jpg" alt="PERDÓN brand activation and yoga platform launch at SABDA Barcelona">
-      </div>
-      <div>
-        <div class="case-tag">PERDÓN</div>
-        <div class="case-title">Brand Activation <em>& Launch</em></div>
-        <div class="case-desc">PERDÓN launched their yoga platform at SABDA with a fully branded immersive experience. The 360° room became their brand world for the evening, combining product launch with live wellness demonstration.</div>
-        <div class="case-stats">
-          <div><span class="case-stat-val">Full</span><span class="case-stat-lbl">Venue hire</span></div>
-          <div><span class="case-stat-val">Custom</span><span class="case-stat-lbl">Branded visuals</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="case-card rv" style="transition-delay:.1s">
-      <div class="case-media">
-        <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/astral_method_workshop.jpg" alt="The Astral Method immersive astrology workshop at SABDA Barcelona">
-      </div>
-      <div>
-        <div class="case-tag">The Astral Method</div>
-        <div class="case-title">Immersive <em>Workshop</em></div>
-        <div class="case-desc">An immersive astrology workshop that packed the room with 80+ attendees. Custom starfield projections and spatial audio created an environment that transformed a presentation into a shared experience.</div>
-        <div class="case-stats">
-          <div><span class="case-stat-val">80+</span><span class="case-stat-lbl">Attendees</span></div>
-          <div><span class="case-stat-val">Custom</span><span class="case-stat-lbl">Starfield visuals</span></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- THE SPACE -->
-<section class="sect">
-  <div class="sect-wide">
-    <span class="sl rv">The Space</span>
-    <h2 class="sh2 rv" style="transition-delay:.06s">Built for <em>impact.</em></h2>
-    <div class="specs rv" style="transition-delay:.12s">
-      <div class="spec-card"><div class="spec-val">86m²</div><div class="spec-lbl">Immersive room</div></div>
-      <div class="spec-card"><div class="spec-val">360°</div><div class="spec-lbl">LCD laser projections</div></div>
-      <div class="spec-card"><div class="spec-val">Dolby</div><div class="spec-lbl">Atmos spatial audio</div></div>
-      <div class="spec-card"><div class="spec-val">80</div><div class="spec-lbl">Seated capacity</div></div>
-      <div class="spec-card"><div class="spec-val">200</div><div class="spec-lbl">Standing (full venue)</div></div>
-      <div class="spec-card"><div class="spec-val">€350</div><div class="spec-lbl">From / session</div></div>
-    </div>
+<!-- SPACE GALLERY -->
+<section class="sg" id="space" style="padding:0;border-top:1px solid rgba(240,239,233,.06)">
+  <div class="sg-slides" id="sgSlides"></div>
+  <div class="sg-nav">
+    <button class="sg-prev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg></button>
+    <div class="sg-dots" id="sgDots"></div>
+    <button class="sg-next" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg></button>
   </div>
 </section>
 
@@ -404,7 +331,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 <section class="sect">
   <div class="sect-wide">
     <span class="sl rv">How It Works</span>
-    <h2 class="sh2 rv" style="transition-delay:.06s">Three steps to <em>something unforgettable.</em></h2>
+    <h2 class="sh2 rv" style="transition-delay:.06s">Three steps to<br><em>something unforgettable.</em></h2>
     <div class="steps rv" style="transition-delay:.12s">
       <div class="step">
         <div class="step-title">Tell us about your event</div>
@@ -540,16 +467,16 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       <div class="ft-pillars"><span class="fp-art">Art</span><span>·</span><span class="fp-tech">Tech</span><span>·</span><span class="fp-well">Wellness</span></div>
       <img class="ft-symbol" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20symbol%20multi-colored%20(1).png" alt="SABDA symbol">
     </div>
-    <div class="ft-col"><h4>Explore</h4><ul>
+    <div class="ft-col"><h4 style="color:var(--cyan)">Explore</h4><ul>
       <li><a href="../classes.html">Classes</a></li><li><a href="../hire.html">Hire</a></li><li><a href="../pricing.html">Pricing</a></li><li><a href="../events.html">Events</a></li><li><a href="../about.html">About</a></li><li><a href="../faq/">FAQ</a></li>
     </ul></div>
-    <div class="ft-col"><h4>Connect</h4><ul>
+    <div class="ft-col"><h4 style="color:var(--salmon)">Connect</h4><ul>
       <li><a href="https://instagram.com/sabda_studio" target="_blank">Instagram</a></li>
       <li><a href="https://tiktok.com/@sabdastudio" target="_blank">TikTok</a></li>
       <li><a href="https://www.linkedin.com/company/sabdastudio" target="_blank">LinkedIn</a></li>
       <li><a href="#">Newsletter</a></li>
     </ul></div>
-    <div class="ft-col"><h4>Contact</h4><ul>
+    <div class="ft-col"><h4 style="color:var(--white)">Contact</h4><ul>
       <li><a href="mailto:info@sabdastudio.com">info@sabdastudio.com</a></li>
       <li><a href="tel:+34625449878">+34 625 44 98 78</a></li>
       <li><a href="https://maps.google.com/?q=SABDA+Studio,+Barcelona" target="_blank" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3);padding-bottom:2px;transition:border-color .25s">Get Directions →</a></li>
