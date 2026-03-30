@@ -1284,79 +1284,61 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 })();
 document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));if(!wasOpen)item.classList.add('open');btn.setAttribute('aria-expanded',!wasOpen)})});
 
-/* Fix Momence: toggle active green + align member login */
+/* Fix Momence: toggle green + login alignment */
 (function(){
-  function fixMomence(){
+  let activeToggle=0; /* 0=Week (default), 1=Month */
+  
+  function styleToggles(){
     const el=document.getElementById('momence-plugin-host-schedule');
     if(!el)return;
-    
-    /* 1. Week/Month toggle: find the first row with 2 buttons */
     const firstRow=el.querySelector('[class*="first_row"]');
-    if(firstRow){
-      const btns=Array.from(firstRow.querySelectorAll('button'));
-      if(btns.length>=2){
-        /* Reset all toggle buttons to default */
-        btns.forEach(btn=>{
-          btn.style.setProperty('color','rgba(240,239,233,.6)','important');
-          btn.style.setProperty('border-color','rgba(240,239,233,.15)','important');
-        });
-        
-        /* Find the active one: Momence gives the active button a visible border or different opacity */
-        let activeFound=false;
-        btns.forEach(btn=>{
-          const cs=getComputedStyle(btn);
-          /* Check for aria-selected, data attributes, or class containing "active"/"selected" */
-          const isActive=btn.getAttribute('aria-selected')==='true'||
-                         btn.getAttribute('aria-pressed')==='true'||
-                         btn.className.includes('active')||
-                         btn.className.includes('selected')||
-                         btn.getAttribute('data-active')==='true';
-          if(isActive){
-            btn.style.setProperty('color','#02F3C5','important');
-            btn.style.setProperty('border-color','#02F3C5','important');
-            activeFound=true;
-          }
-        });
-        
-        /* Fallback: if no aria/class detected, check border width — active has thicker border */
-        if(!activeFound){
-          let maxBorder=0;let activeBtn=null;
-          btns.forEach(btn=>{
-            const bw=parseFloat(getComputedStyle(btn).borderWidth)||0;
-            if(bw>maxBorder){maxBorder=bw;activeBtn=btn;}
-          });
-          if(activeBtn){
-            activeBtn.style.setProperty('color','#02F3C5','important');
-            activeBtn.style.setProperty('border-color','#02F3C5','important');
-          }
-        }
-        
-        /* Add click listeners so switching toggles re-applies */
-        btns.forEach(btn=>{
-          if(!btn._momenceFixed){
-            btn._momenceFixed=true;
-            btn.addEventListener('click',()=>setTimeout(fixMomence,400));
-          }
+    if(!firstRow)return;
+    const btns=Array.from(firstRow.querySelectorAll('button'));
+    if(btns.length<2)return;
+    
+    /* Style both buttons: active=green, inactive=dim */
+    btns.forEach((btn,i)=>{
+      if(i===activeToggle){
+        btn.style.setProperty('color','#02F3C5','important');
+        btn.style.setProperty('border-color','#02F3C5','important');
+        btn.style.setProperty('background','rgba(2,243,197,.08)','important');
+      } else {
+        btn.style.setProperty('color','rgba(240,239,233,.5)','important');
+        btn.style.setProperty('border-color','rgba(240,239,233,.12)','important');
+        btn.style.setProperty('background','transparent','important');
+      }
+      
+      if(!btn._fixed){
+        btn._fixed=true;
+        btn.addEventListener('click',function(){
+          activeToggle=i;
+          setTimeout(styleToggles,200);
+          setTimeout(styleToggles,600);
         });
       }
-    }
-    
-    /* 2. Align member login with filter row */
+    });
+  }
+  
+  function alignLogin(){
+    const el=document.getElementById('momence-plugin-host-schedule');
     const wrapper=document.querySelector('.schedule-wrapper');
     const loginBtn=document.querySelector('.sabda-member-login');
-    if(!wrapper||!loginBtn)return;
+    if(!el||!wrapper||!loginBtn)return;
     const thirdRow=el.querySelector('[class*="third_row"]');
-    if(thirdRow){
-      const wRect=wrapper.getBoundingClientRect();
-      const tRect=thirdRow.getBoundingClientRect();
-      loginBtn.style.top=Math.round(tRect.top-wRect.top+((tRect.height-loginBtn.offsetHeight)/2))+'px';
-      loginBtn.style.right='0px';
-      loginBtn.style.opacity='1';
-      loginBtn.style.pointerEvents='auto';
-    }
+    if(!thirdRow)return;
+    const wRect=wrapper.getBoundingClientRect();
+    const tRect=thirdRow.getBoundingClientRect();
+    const top=tRect.top-wRect.top+((tRect.height-loginBtn.offsetHeight)/2);
+    loginBtn.style.position='absolute';
+    loginBtn.style.top=Math.round(top)+'px';
+    loginBtn.style.right='0px';
+    loginBtn.style.opacity='1';
+    loginBtn.style.pointerEvents='auto';
   }
-  [800,1500,2500,4000,6000,10000].forEach(ms=>setTimeout(fixMomence,ms));
-  const obs=new MutationObserver(()=>requestAnimationFrame(fixMomence));
+  
+  function fixAll(){styleToggles();alignLogin();}
+  [800,1500,2500,4000,6000,10000].forEach(ms=>setTimeout(fixAll,ms));
+  const obs=new MutationObserver(()=>{requestAnimationFrame(styleToggles);requestAnimationFrame(alignLogin);});
   const t=document.getElementById('momence-plugin-host-schedule');
   if(t)obs.observe(t,{childList:true,subtree:true,attributes:true});
 })();
