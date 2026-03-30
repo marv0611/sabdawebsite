@@ -890,12 +890,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       d.style.setProperty('margin','0','important');
       d.style.setProperty('padding','0','important');
     });
-    /* Third row — uniform flex layout, kill spacer */
-    el.querySelectorAll('.momence-host_schedule-third_row,[class*="third_row"]').forEach(row=>{
-      row.style.setProperty('display','flex','important');
-      row.style.setProperty('align-items','center','important');
-      row.style.setProperty('gap','8px','important');
-    });
+    /* Third row — do NOT override display (breaks month view) */
     el.querySelectorAll('[class*="fqxJDI"]').forEach(s=>s.style.setProperty('display','none','important'));
   }
 
