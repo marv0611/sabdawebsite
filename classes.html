@@ -452,13 +452,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
   max-width:920px;margin:0 auto;
 }
 .sabda-member-login{
-  position:relative;
-  text-align:right;
-  padding:0 40px 16px;
-  max-width:920px;
-  margin:0 auto;
+  position:absolute;
+  right:40px;
+  top:0;
   z-index:12;
+  opacity:0;
+  transition:opacity .3s;
+  pointer-events:none;
 }
+.sabda-member-login.visible{opacity:1;pointer-events:auto}
 .sabda-member-login a{
   display:inline-flex;align-items:center;gap:5px;
   padding:8px 16px;
@@ -1297,27 +1299,51 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 })();
 document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));if(!wasOpen)item.classList.add('open');btn.setAttribute('aria-expanded',!wasOpen)})});
 
-/* Fix Momence toggle active state */
+/* Fix Momence: toggle active green + align member login */
 (function(){
-  function fixToggle(){
+  function fixMomence(){
     const el=document.getElementById('momence-plugin-host-schedule');
     if(!el)return;
-    /* Find all toggle buttons and style the active one green */
-    el.querySelectorAll('button').forEach(btn=>{
-      const style=window.getComputedStyle(btn);
-      const bg=style.backgroundColor;
-      const border=style.borderColor;
-      /* Momence marks active with a visible border or different bg */
-      if(border && border!=='rgba(0, 0, 0, 0)' && border!=='transparent' && border!=='rgb(255, 255, 255)'){
-        btn.style.setProperty('color','#02F3C5','important');
-        btn.style.setProperty('border-color','rgba(2,243,197,.4)','important');
-      }
-    });
+    
+    /* 1. Find Week/Month toggle - it is the first row with exactly 2 buttons */
+    const firstRow=el.querySelector('[class*="first_row"]');
+    if(firstRow){
+      const btns=firstRow.querySelectorAll('button');
+      btns.forEach(btn=>{
+        /* Check if this button has a visible border (= active in Momence) */
+        const cs=getComputedStyle(btn);
+        const bw=cs.borderWidth;
+        const bc=cs.borderColor;
+        const hasVisibleBorder=bw && bw!=='0px' && bc && bc!=='rgba(0, 0, 0, 0)' && bc!=='transparent';
+        const hasBg=cs.backgroundColor && cs.backgroundColor!=='rgba(0, 0, 0, 0)' && cs.backgroundColor!=='transparent';
+        
+        if(hasVisibleBorder || hasBg){
+          btn.style.setProperty('color','#02F3C5','important');
+          btn.style.setProperty('border-color','#02F3C5','important');
+        }
+        
+        /* Also add click listener to re-apply on toggle */
+        btn.addEventListener('click',()=>setTimeout(fixMomence,300));
+      });
+    }
+    
+    /* 2. Align "Already a member" with the filter row */
+    const thirdRow=el.querySelector('[class*="third_row"],[class*="session_filters"]');
+    const memberBtn=document.querySelector('.sabda-member-login');
+    if(thirdRow && memberBtn){
+      /* Position member login on the same line as filters, right-aligned */
+      const rect=thirdRow.getBoundingClientRect();
+      memberBtn.style.position='absolute';
+      memberBtn.style.top=(rect.top-el.closest('.schedule-wrapper').getBoundingClientRect().top)+'px';
+      memberBtn.style.right='0px';
+      memberBtn.style.opacity='1';
+      memberBtn.style.pointerEvents='auto';
+    }
   }
-  [1000,2000,3000,5000,8000].forEach(ms=>setTimeout(fixToggle,ms));
-  const observer=new MutationObserver(()=>requestAnimationFrame(fixToggle));
-  const target=document.getElementById('momence-plugin-host-schedule');
-  if(target)observer.observe(target,{childList:true,subtree:true,attributes:true});
+  [800,1500,2500,4000,6000,10000].forEach(ms=>setTimeout(fixMomence,ms));
+  const obs=new MutationObserver(()=>requestAnimationFrame(fixMomence));
+  const t=document.getElementById('momence-plugin-host-schedule');
+  if(t)obs.observe(t,{childList:true,subtree:true,attributes:true});
 })();
 </script>
 </body>
