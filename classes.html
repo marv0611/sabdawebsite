@@ -1175,6 +1175,15 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   <p style="font-size:1.02rem;line-height:1.8;color:rgba(240,239,233,.6);max-width:720px;margin:0 auto">From <a href="classes/yoga/" style="color:#4ff8d6;text-decoration:none;border-bottom:none">vinyasa yoga</a> and <a href="classes/pilates/" style="color:#4ff8d6;text-decoration:none;border-bottom:none">pilates</a> to <a href="classes/sound-healing/" style="color:#4ff8d6;text-decoration:none;border-bottom:none">sound healing</a>, <a href="classes/breathwork/" style="color:#4ff8d6;text-decoration:none;border-bottom:none">breathwork</a>, and <a href="classes/ecstatic-dance/" style="color:#4ff8d6;text-decoration:none;border-bottom:none">ecstatic dance</a>. Every session takes place inside our 360° projection room with spatial audio. Whether you are a complete beginner or a dedicated practitioner, there is a class for you.</p>
 </section>
 
+<!-- ICE BATH — returning May 2026 -->
+<section style="padding:48px 80px;border-top:1px solid rgba(240,239,233,.06);text-align:center;position:relative;z-index:2">
+  <h2 style="font-family:'PT Serif',serif;font-size:clamp(1.4rem,2.5vw,1.8rem);font-weight:700;letter-spacing:-.015em;margin-bottom:16px">Ice Bath</h2>
+  <p style="font-size:1rem;color:rgba(240,239,233,.6);max-width:600px;margin:0 auto 16px;line-height:1.7">Guided cold plunge sessions on our private patio. Breathwork preparation, 3°C to 8°C water, trained facilitator by your side. One of the most popular add-ons at SABDA.</p>
+  <p style="font-size:.9rem;color:var(--cyan);font-weight:600;letter-spacing:.03em">Restarting 1st May 2026</p>
+  <p style="margin-top:12px"><a href="classes/ice-bath/" style="color:rgba(240,239,233,.5);font-size:.85rem;border-bottom:1px solid rgba(240,239,233,.15)">Learn more about ice bath at SABDA →</a></p>
+</section>
+
+
 
 <!-- REVIEW NUDGE -->
 <div class="review-nudge rv">
@@ -1287,6 +1296,29 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   },4000);
 })();
 document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));if(!wasOpen)item.classList.add('open');btn.setAttribute('aria-expanded',!wasOpen)})});
+
+/* Fix Momence toggle active state */
+(function(){
+  function fixToggle(){
+    const el=document.getElementById('momence-plugin-host-schedule');
+    if(!el)return;
+    /* Find all toggle buttons and style the active one green */
+    el.querySelectorAll('button').forEach(btn=>{
+      const style=window.getComputedStyle(btn);
+      const bg=style.backgroundColor;
+      const border=style.borderColor;
+      /* Momence marks active with a visible border or different bg */
+      if(border && border!=='rgba(0, 0, 0, 0)' && border!=='transparent' && border!=='rgb(255, 255, 255)'){
+        btn.style.setProperty('color','#02F3C5','important');
+        btn.style.setProperty('border-color','rgba(2,243,197,.4)','important');
+      }
+    });
+  }
+  [1000,2000,3000,5000,8000].forEach(ms=>setTimeout(fixToggle,ms));
+  const observer=new MutationObserver(()=>requestAnimationFrame(fixToggle));
+  const target=document.getElementById('momence-plugin-host-schedule');
+  if(target)observer.observe(target,{childList:true,subtree:true,attributes:true});
+})();
 </script>
 </body>
 </html>
