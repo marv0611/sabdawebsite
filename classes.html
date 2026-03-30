@@ -636,16 +636,6 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 
   /* ── Force dark theme on ALL widget elements ── */
   function forceStyles(){
-    /* Skip ALL force-styling if month/calendar view is active */
-    if(el.querySelector('.momence-calendar-grid,[class*="calendar"],[class*="month_view"],table,thead')){
-      /* Month view detected — only style the first row (Classes + Week/Month toggle) */
-      el.querySelectorAll('[class*="first_row"] *').forEach(node=>{
-        const s=node.style;
-        s.setProperty('color','#f0efe9','important');
-        s.setProperty('background','transparent','important');
-      });
-      return;
-    }
     /* Week view: apply full styling */
     el.querySelectorAll('*').forEach(node=>{
       const s=node.style;
@@ -1065,10 +1055,16 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   /* ── Run everything ── */
   function runAll(){
     applyVars();
+    /* If month view is showing, skip ALL JS overrides — let Momence render natively */
+    const isMonthView=el.querySelector('[class*="month_view"],[class*="calendar-grid"],table.momence-calendar,table');
+    if(isMonthView){
+      el.classList.add('themed');
+      return;
+    }
     forceStyles();
     patchText();
     hideElements();
-    applyActiveState(); /* AFTER forceStyles so it wins */
+    applyActiveState();
     limitSessions();
     el.classList.add('themed');
   }
