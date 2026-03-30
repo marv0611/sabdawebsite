@@ -290,6 +290,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 
 
 
+
+/* ── Style Momence native member login ── */
+#momence-plugin-host-schedule [class*="member_login"],
+#momence-plugin-host-schedule [class*="auth_link"],
+#momence-plugin-host-schedule a[href*="sign-in"]{
+  border-color:rgba(2,243,197,.25) !important;
+  color:rgba(240,239,233,.5) !important;
+  margin-left:auto !important;
+}
 /* ── HIDE ONLY what's truly unwanted ── */
 #momence-plugin-host-schedule .momence-host_schedule-sys_row{display:none !important}
 #momence-plugin-host-schedule .momence-host_schedule-powered_by_momence{display:none !important}
@@ -347,6 +356,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 /* The filter row — uniform spacing between ALL items */
 #momence-plugin-host-schedule .momence-host_schedule-third_row,
 #momence-plugin-host-schedule [class*="third_row"]{
+  display:flex !important;
+  align-items:center !important;
+  flex-wrap:wrap !important;
+  gap:10px !important;
   position:relative !important;
   z-index:10 !important;
   display:flex !important;
@@ -437,15 +450,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
   max-width:920px;margin:0 auto;
 }
 .sabda-member-login{
-  position:absolute;
-  right:40px;
-  top:0;
-  z-index:12;
-  opacity:0;
-  transition:opacity .3s;
-  pointer-events:none;
+  display:none;
 }
-.sabda-member-login.visible{opacity:1;pointer-events:auto}
 .sabda-member-login a{
   display:inline-flex;align-items:center;gap:5px;
   padding:8px 16px;
@@ -1319,26 +1325,9 @@ document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',(
     });
   }
   
-  function alignLogin(){
-    const el=document.getElementById('momence-plugin-host-schedule');
-    const wrapper=document.querySelector('.schedule-wrapper');
-    const loginBtn=document.querySelector('.sabda-member-login');
-    if(!el||!wrapper||!loginBtn)return;
-    const thirdRow=el.querySelector('[class*="third_row"]');
-    if(!thirdRow)return;
-    const wRect=wrapper.getBoundingClientRect();
-    const tRect=thirdRow.getBoundingClientRect();
-    const top=tRect.top-wRect.top+((tRect.height-loginBtn.offsetHeight)/2);
-    loginBtn.style.position='absolute';
-    loginBtn.style.top=Math.round(top)+'px';
-    loginBtn.style.right='0px';
-    loginBtn.style.opacity='1';
-    loginBtn.style.pointerEvents='auto';
-  }
-  
-  function fixAll(){styleToggles();alignLogin();}
+  function fixAll(){styleToggles();}
   [800,1500,2500,4000,6000,10000].forEach(ms=>setTimeout(fixAll,ms));
-  const obs=new MutationObserver(()=>{requestAnimationFrame(styleToggles);requestAnimationFrame(alignLogin);});
+  const obs=new MutationObserver(()=>{requestAnimationFrame(styleToggles);});
   const t=document.getElementById('momence-plugin-host-schedule');
   if(t)obs.observe(t,{childList:true,subtree:true,attributes:true});
 })();
