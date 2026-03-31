@@ -69,7 +69,7 @@
 | Clase suelta | €12-20 | €22-40 |
 | Pack 5 clases | €55-90 | €100-180 |
 | Pack 10 clases | €100-160 | €180-320 |
-| Mensual ilimitado | €79-130 | €180-300 |
+| Mensual ilimitado | €99-130 | €180-300 |
 | Clase individual | €40-60 | €50-80 |
 
 **SABDA** (mat inmersivo): Desde €18/clase con el pack intro.

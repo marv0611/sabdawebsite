@@ -70,7 +70,7 @@ Para trabajo personalizado (post-lesión, rehabilitación, objetivos específico
 | Clase suelta | €12-20 | €22-40 |
 | Pack 5 clases | €55-90 | €100-180 |
 | Pack 10 clases | €100-160 | €180-320 |
-| Mensual ilimitado | €79-130 | €180-300 |
+| Mensual ilimitado | €99-130 | €180-300 |
 | Clase individual | €40-60 | €50-80 |
 
 El [pack intro de SABDA (3 clases por €50)](https://momence.com/m/443935) da acceso a pilates mat y a todas las demás clases del estudio — yoga, sound healing, breathwork, etc.

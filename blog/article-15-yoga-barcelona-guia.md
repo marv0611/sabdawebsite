@@ -69,14 +69,14 @@ Ashtanga, vinyasa, y mysore en un estudio limpio y funcional. Si buscas rigor t�
 
 ## Precios: qué esperar
 
-El precio medio de una clase suelta de yoga en Barcelona está entre €12-20, dependiendo del estudio y el barrio. Los packs (5-10 clases) bajan el precio por clase a €10-16. Las membresías mensuales oscilan entre €79-130 para acceso ilimitado.
+El precio medio de una clase suelta de yoga en Barcelona está entre €12-20, dependiendo del estudio y el barrio. Los packs (5-10 clases) bajan el precio por clase a €10-16. Las membresías mensuales oscilan entre €99-130 para acceso ilimitado.
 
 | Formato | Rango de precios |
 |---------|-----------------|
 | Clase suelta | €12-20 |
 | Pack 3 clases (intro) | €36-48 |
 | Pack 10 clases | €120-160 |
-| Membresía mensual | €79-130 |
+| Membresía mensual | €99-130 |
 
 El [intro 3-pack de SABDA (€50. €18/clase)](https://momence.com/m/443935) es competitivo y da acceso no solo a yoga sino a todas las clases del estudio.
 

@@ -63,7 +63,7 @@ Crioterapia in Barcelona: Cryosense (Eixample) and several sports recovery centr
 
 ## Where to do an ice bath in Barcelona
 
-**SABDA (Eixample)** — Guided ice bath sessions on the studio patio (seasonal — check schedule for current availability), combined with breathwork preparation in the 360° immersive room. The breathwork component makes a real difference — you arrive at the water already calm, focused, and breathing properly. Facilitated by trained guides. From €18/session with the [intro 3-pack (€50)](https://momence.com/m/443935). C/Muntaner 83B. [Book →](https://sabdastudio.com/classes/ice-bath/)
+**SABDA (Eixample)** — Guided ice bath sessions on the studio patio, combined with breathwork preparation in the 360° immersive room. The breathwork component makes a real difference — you arrive at the water already calm, focused, and breathing properly. Facilitated by trained guides. From €18/session with the [intro 3-pack (€50)](https://momence.com/m/443935). C/Muntaner 83B. [Book →](https://sabdastudio.com/classes/ice-bath/)
 
 **Aire Ancient Baths (Born)** — The contrast pool circuit includes a cold plunge as part of a broader thermal experience. Beautiful space, but the cold component is one element of a spa circuit, not a dedicated ice bath practice. ~€40-50.
 
