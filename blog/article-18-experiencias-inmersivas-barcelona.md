@@ -35,7 +35,7 @@ La diferencia clave es entre experiencias **pasivas** (caminas, miras, te rodea)
 
 **Para quién es:** Gente que quiere sentir algo, no solo ver algo bonito. Personas interesadas en wellness que buscan algo más allá del estudio convencional. Parejas que quieren una experiencia compartida. Cualquiera que tenga curiosidad por la intersección entre arte, tecnología y bienestar.
 
-**Precio:** Desde €16/clase. [3 clases por €48](https://momence.com/m/443935).
+**Precio:** Desde €18/clase. [3 clases por €50](https://momence.com/m/443935).
 **Frecuencia:** Más de 42 clases semanales + eventos especiales.
 **Dónde:** C/Muntaner 83B, Eixample.
 
@@ -88,7 +88,7 @@ Conciertos de música clásica y bandas sonoras a la luz de las velas en espacio
 
 | Espacio | Precio | Tipo | Duración |
 |---------|--------|------|----------|
-| SABDA | Desde €16/clase | Participativo | 45-90 min |
+| SABDA | Desde €18/clase | Participativo | 45-90 min |
 | IDEAL | ~€15-18 | Pasivo (exposición) | 60-90 min |
 | Moco Museum | ~€16 | Galería + interactivo | 60-90 min |
 | IKONO | ~€16-20 | Fotogénico/sensorial | 45-60 min |
@@ -122,7 +122,7 @@ Las actividades inmersivas en Barcelona están creciendo rápidamente (+200% YoY
 
 Si solo tienes tiempo para una experiencia inmersiva en Barcelona, elige según lo que quieres llevarte: una foto, un recuerdo visual, o una transformación física. Las tres opciones existen. Solo una te cambia cómo te sientes cuando sales.
 
-[3 clases inmersivas en SABDA por €48](https://momence.com/m/443935) — yoga, sound healing, breathwork, o ecstatic dance dentro de 360° de proyecciones y audio espacial.
+[3 clases inmersivas en SABDA por €50.(https://momence.com/m/443935) — yoga, sound healing, breathwork, o ecstatic dance dentro de 360° de proyecciones y audio espacial.
 
 **Relacionado:** [Espectáculos en Barcelona](/blog/espectaculos-barcelona/) | [Exposiciones inmersivas](/blog/exposiciones-inmersivas-barcelona/) | [Sala inmersiva Barcelona](/blog/sala-inmersiva-barcelona/) | [Cosas que hacer en Barcelona](/blog/cosas-que-hacer-en-barcelona/)
 

@@ -73,7 +73,7 @@ At [SABDA](https://sabdastudio.com/classes/), Yoga Sculpt combines vinyasa seque
 
 ## Still not sure?
 
-Try three different styles. The [SABDA 3-class intro pack (€48)](https://momence.com/m/443935) lets you try Vinyasa, Yin, and Sculpt (or any other combination) in the same immersive space. You'll know by class three which style is yours.
+Try three different styles. The [SABDA 3-class intro pack (€50)](https://momence.com/m/443935) lets you try Vinyasa, Yin, and Sculpt (or any other combination) in the same immersive space. You'll know by class three which style is yours.
 
 **Related:** [Yin Yoga in Barcelona](/blog/yin-yoga-barcelona/) | [Hatha vs Vinyasa](/blog/hatha-yoga-vs-vinyasa/) | [Yoga Nidra](/blog/yoga-nidra-barcelona/)
 
@@ -104,4 +104,4 @@ The immersive environment doesn't change what yoga is — it changes how it feel
 
 For people who've never connected with yoga in a conventional studio, the immersive version often clicks where the traditional one didn't.
 
-Available styles at SABDA: Vinyasa Flow, Hatha Vinyasa, Power Vinyasa, Yoga Sculpt, Yin. [3 classes for €48](https://momence.com/m/443935) — try three different styles and know by the third which one is yours.
+Available styles at SABDA: Vinyasa Flow, Hatha Vinyasa, Power Vinyasa, Yoga Sculpt, Yin. [3 classes for €50](https://momence.com/m/443935) — try three different styles and know by the third which one is yours.

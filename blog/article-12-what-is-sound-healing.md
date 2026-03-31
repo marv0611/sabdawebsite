@@ -101,7 +101,7 @@ It's explicitly not for people seeking a spiritual experience they need to belie
 
 [SABDA's sound healing sessions](https://sabdastudio.com/classes/sound-healing/) run multiple times per week in the Eixample (C/Muntaner 83B, 10 min from Universitat metro). No experience needed. Blankets provided.
 
-[3 classes for €48](https://momence.com/m/443935) — try sound healing alongside breathwork, yoga, or meditation to see what resonates.
+[3 classes for €50](https://momence.com/m/443935) — try sound healing alongside breathwork or yoga to see what resonates.
 
 **Related:** [What Is Breathwork?](/blog/what-is-breathwork/) | [Classes at SABDA](/classes/)
 

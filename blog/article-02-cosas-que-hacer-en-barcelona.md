@@ -51,7 +51,7 @@ La experiencia nocturna de La Pedrera es otra cosa. Tour por la azotea con las c
 
 Esto es lo que pasa cuando combinas wellness con tecnología: una sala de proyecciones 360° con audio espacial Dolby Atmos en el Eixample. [SABDA](https://sabdastudio.com/classes/) ofrece más de 42 clases a la semana — yoga, pilates, sound healing, breathwork, danza extática, e ice bath. No es un museo por el que caminas. Estás dentro del arte, moviéndote en él. Los visuales cambian cada clase. El sonido envolvente hace algo que no puedes replicar con un altavoz Bluetooth.
 
-3 clases por €48 (€16 cada una). [Reserva aquí](https://momence.com/m/443935).
+3 clases por €50 (€18 cada una). [Reserva aquí](https://momence.com/m/443935).
 
 **Dónde:** C/Muntaner 83B, Eixample. A 10 min del metro Universitat.
 
@@ -123,7 +123,7 @@ Barcelona premia a los que se salen un poco de la ruta marcada. La Sagrada Famil
 
 La ciudad tiene una forma particular de sorprenderte cuando dejas de buscar lo que esperabas encontrar. El barrio que no estaba en tu itinerario, la terraza que no aparecía en ninguna lista, el bar que descubriste porque estaba lloviendo y era lo primero que tenía un toldo.
 
-Si buscas cosas que hacer en Barcelona que nadie más está haciendo, el [pack de 3 clases de SABDA por €48](https://momence.com/m/443935) merece la pena. Yoga, breathwork, sound healing o danza extática dentro de una sala de proyecciones 360° con Dolby Atmos. Es el tipo de experiencia que Barcelona ofrece y que no vas a encontrar en ninguna otra ciudad.
+Si buscas cosas que hacer en Barcelona que nadie más está haciendo, el [pack de 3 clases de SABDA por €50.(https://momence.com/m/443935) merece la pena. Yoga, breathwork, sound healing o danza extática dentro de una sala de proyecciones 360° con Dolby Atmos. Es el tipo de experiencia que Barcelona ofrece y que no vas a encontrar en ninguna otra ciudad.
 
 **Relacionado:** [15 Unique Things to Do in Barcelona](/blog/things-to-do-in-barcelona/) | [Què fer avui a Barcelona](/blog/que-fer-avui-barcelona/) | [Planes en pareja en Barcelona](/blog/planes-en-pareja-barcelona/) | [Planes originales](/blog/planes-originales-barcelona/) | [Barcelona en invierno](/blog/barcelona-invierno-planes/) | [Ocio en Barcelona](/blog/ocio-barcelona/)
 

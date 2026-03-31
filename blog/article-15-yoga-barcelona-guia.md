@@ -49,7 +49,7 @@ Formatos de yoga en SABDA: Vinyasa Flow, Hatha Vinyasa, Power Vinyasa, Yoga Scul
 
 Más allá del yoga, SABDA ofrece sound healing, breathwork, pilates y ecstatic dance, todo en la sala inmersiva.
 
-**Precio:** Desde €16/clase con el [pack de 3 clases por €48](https://momence.com/m/443935).
+**Precio:** Desde €18/clase con el [pack de 3 clases por €50](https://momence.com/m/443935).
 **Dónde:** C/Muntaner 83B, Eixample. Metro Universitat.
 **Idioma:** Clases en inglés, español, o bilingüe.
 
@@ -78,7 +78,7 @@ El precio medio de una clase suelta de yoga en Barcelona está entre €12-20, d
 | Pack 10 clases | €120-160 |
 | Membresía mensual | €79-130 |
 
-El [intro 3-pack de SABDA (€48, €16/clase)](https://momence.com/m/443935) es competitivo y da acceso no solo a yoga sino a todas las clases del estudio.
+El [intro 3-pack de SABDA (€50. €18/clase)](https://momence.com/m/443935) es competitivo y da acceso no solo a yoga sino a todas las clases del estudio.
 
 ---
 
@@ -120,7 +120,7 @@ La mayoría de estudios de yoga en Barcelona ofrecen clases en inglés, español
 
 El mejor estudio de yoga en Barcelona es el que te hace volver la segunda vez. No el que tiene los mejores reviews, el interior más bonito, o el profesor más famoso en Instagram. Prueba dos o tres, quédate con el que sientas.
 
-Si quieres algo diferente a cualquier otro estudio: [SABDA's yoga classes](https://sabdastudio.com/classes/) dentro de 360° de proyecciones y audio espacial. [3 clases por €48](https://momence.com/m/443935).
+Si quieres algo diferente a cualquier otro estudio: [SABDA's yoga classes](https://sabdastudio.com/classes/) dentro de 360° de proyecciones y audio espacial. [3 clases por €50](https://momence.com/m/443935).
 
 **Relacionado:** [Pilates en Barcelona: Guía completa](/blog/pilates-barcelona-guia/) | [Wellness del Eixample](/blog/wellness-eixample-barcelona/)
 

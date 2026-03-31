@@ -2,7 +2,7 @@
 
 **Última actualización: marzo 2026**
 
-**Meta description:** Los mejores regalos experiencia en Barcelona. Wellness inmersivo, gastronomía, aventura, arte y más. Tarjetas regalo SABDA desde €48. (139 chars)
+**Meta description:** Los mejores regalos experiencia en Barcelona. Wellness inmersivo, gastronomía, aventura, arte y más. Tarjetas regalo SABDA desde €50. (139 chars)
 
 **Slug:** `/blog/regalo-experiencia-barcelona/`
 
@@ -21,7 +21,7 @@ Regalar una experiencia es mejor que regalar una cosa. Esto ya lo sabes. El prob
 
 Una sesión de sound healing dentro de una sala de proyecciones 360° con Dolby Atmos. Te tumbas, cierras los ojos, y durante 60 minutos los bols tibetanos, los gongs y los cuencos de cristal llenan el espacio desde todas las direcciones mientras las proyecciones crean un mundo detrás de tus párpados. Es profundamente relajante, vagamente psicodélico, y funcionalmente lo contrario de cualquier cena de pareja. No necesitas experiencia previa. No necesitas ropa especial. Solo tienes que presentarte.
 
-La [tarjeta regalo de SABDA — 3 clases por €48](https://sabdastudio.com/pricing/) (€16 cada una) permite elegir entre yoga, pilates, sound healing, breathwork o danza extática. Es entrega digital, así que funciona como regalo de última hora.
+La [tarjeta regalo de SABDA — 3 clases por €50](https://sabdastudio.com/pricing/) (€18 cada una) permite elegir entre yoga, pilates, sound healing, breathwork o danza extática. Es entrega digital, así que funciona como regalo de última hora.
 
 **Dónde:** C/Muntaner 83B, Eixample. [Comprar tarjeta regalo →](https://sabdastudio.com/pricing/)
 
@@ -87,7 +87,7 @@ Barcelona rota exposiciones internacionales constantemente. CaixaForum, CCCB, Fu
 
 ### 13. Tarjeta regalo de SABDA (entrega inmediata)
 
-Si es medianoche y el cumpleaños es mañana, las [tarjetas regalo de SABDA](https://sabdastudio.com/pricing/) son digitales y se entregan al instante. Desde €20 hasta valor personalizado. La de €48 (3 clases) es la más popular — permite elegir entre yoga, sound healing, breathwork, pilates, danza extática o , todo dentro de la sala inmersiva de 360°.
+Si es medianoche y el cumpleaños es mañana, las [tarjetas regalo de SABDA](https://sabdastudio.com/pricing/) son digitales y se entregan al instante. Desde €20 hasta valor personalizado. La de €50.(3 clases) es la más popular — permite elegir entre yoga, sound healing, breathwork, pilates, danza extática o , todo dentro de la sala inmersiva de 360°.
 
 ### 14. Membresía de un mes a Filmoteca
 
@@ -109,7 +109,7 @@ Para alguien que "ya lo ha hecho todo": la experiencia de cava en el Penedès o 
 
 Para alguien nuevo en Barcelona: la ruta de vermut o la clase de cocina. Experiencias que enseñan algo sobre la ciudad.
 
-Para alguien que necesita desconectar: 3 clases inmersivas en SABDA. El pack de [3 clases por €48](https://momence.com/m/443935) es el formato perfecto para probar varias cosas.
+Para alguien que necesita desconectar: 3 clases inmersivas en SABDA. El pack de [3 clases por €50](https://momence.com/m/443935) es el formato perfecto para probar varias cosas.
 
 ---
 

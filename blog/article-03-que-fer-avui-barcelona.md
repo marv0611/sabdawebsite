@@ -77,7 +77,7 @@ Les piscines olímpiques del 92 segueixen obertes al públic. Nedar amb la ciuta
 
 Una experiència immersiva de wellness al cor de l'Eixample. [SABDA](https://sabdastudio.com/classes/) és una sala de projeccions 360° amb Dolby Atmos que ofereix ioga, pilates, teràpia de so, breathwork, dansa extàtica, meditació i bany de gel. No és un museu — ets dins de l'art, movent-te en ell. Els visuals canvien a cada classe. L'àudio espacial fa alguna cosa que un altaveu Bluetooth no pot replicar.
 
-Classes des de €16. [3 classes per €48](https://momence.com/m/443935).
+Classes des de €18. [3 classes per €50.(https://momence.com/m/443935).
 
 **On:** C/Muntaner 83B, Eixample. A 10 min del metro Universitat.
 
@@ -123,7 +123,7 @@ Lloguer de kayak o paddle surf per uns €15-20/hora. Veure Barcelona des de l'a
 
 Les millors activitats barcelona passen quan deixes de seguir la ruta marcada. La Sagrada Familia és increïble — ves-hi. Però el que recordaràs són els moments entre els monuments: un vermut al migdia, uns búnquers a la posta de sol, una sessió de sound healing que no tenies prevista.
 
-Si busques alguna cosa diferent, el [pack de 3 classes de SABDA per €48](https://momence.com/m/443935) val molt la pena. Ioga, breathwork, teràpia de so o dansa extàtica dins d'una sala de projeccions 360°. És el tipus d'experiència que Barcelona ofereix i que no trobaràs a cap altra ciutat.
+Si busques alguna cosa diferent, el [pack de 3 classes de SABDA per €50.(https://momence.com/m/443935) val molt la pena. Ioga, breathwork, teràpia de so o dansa extàtica dins d'una sala de projeccions 360°. És el tipus d'experiència que Barcelona ofereix i que no trobaràs a cap altra ciutat.
 
 **Relacionat:** [Millors plans a Barcelona](/blog/cosas-que-hacer-en-barcelona/) | [15 Unique Things to Do in Barcelona](/blog/things-to-do-in-barcelona/) | [Benestar immersiu (CA)](/blog/benestar-immersiu-barcelona/)
 

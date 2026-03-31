@@ -23,7 +23,7 @@ Aquí van 12 planes en pareja en Barcelona que realmente merecen la pena — alg
 
 Esto necesita una aclaración primero: no es lo que parece. No hay incienso. No hay gurú. Lo que hay es una sala oscura con proyecciones 360°, audio espacial Dolby Atmos, y 60 minutos de bols tibetanos, gongs y cuencos de cristal llenando el espacio desde todas las direcciones. Te tumbas al lado de tu pareja, cierras los ojos, y durante una hora el sonido hace algo que es difícil de describir hasta que lo experimentas. Es profundamente relajante, extrañamente íntimo, y funcionalmente lo opuesto a cualquier cita que hayas tenido.
 
-[SABDA](https://sabdastudio.com/classes/sound-healing/) ofrece sound healing varias veces por semana en el Eixample. Desde €16/persona con el [pack de 3 clases por €48](https://momence.com/m/443935).
+[SABDA](https://sabdastudio.com/classes/sound-healing/) ofrece sound healing varias veces por semana en el Eixample. Desde €18/persona con el [pack de 3 clases por €50](https://momence.com/m/443935).
 
 ### 2. La Pedrera de noche
 
@@ -63,7 +63,7 @@ Sin mapa, sin plan, sin destino. Fábricas textiles convertidas en galerías, ca
 
 ### 9. Yoga inmersivo un domingo por la mañana
 
-Hay una diferencia entre hacer yoga y hacer yoga dentro de una sala de proyecciones 360° con audio espacial. [SABDA](https://sabdastudio.com/classes/) ofrece vinyasa, pilates, y clases de sound healing y breathwork en el Eixample. Los domingos por la mañana son particularmente buenos: empezáis el día moviéndoos juntos dentro de un espacio que parece otro planeta, y después bajáis a desayunar a cualquiera de los cafés de Muntaner. Desde €16/persona.
+Hay una diferencia entre hacer yoga y hacer yoga dentro de una sala de proyecciones 360° con audio espacial. [SABDA](https://sabdastudio.com/classes/) ofrece vinyasa, pilates, y clases de sound healing y breathwork en el Eixample. Los domingos por la mañana son particularmente buenos: empezáis el día moviéndoos juntos dentro de un espacio que parece otro planeta, y después bajáis a desayunar a cualquiera de los cafés de Muntaner. Desde €18/persona.
 
 ### 10. Kayak + brunch en Barceloneta
 
@@ -79,7 +79,7 @@ Un velero para 2-6 personas, dos horas navegando frente a la costa de Barcelona 
 
 ### 12. Tarjeta regalo SABDA para regalar la experiencia
 
-Si tu pareja nunca ha hecho sound healing, breathwork, o yoga inmersivo, la [tarjeta regalo de SABDA](https://sabdastudio.com/pricing/) (desde €20, digital, entrega inmediata) es un regalo que no espera. El [pack de 3 clases por €48](https://momence.com/m/443935) permite elegir entre distintas clases — así probáis varias cosas juntos. El tipo de regalo que alguien recuerda mucho más que una cena.
+Si tu pareja nunca ha hecho sound healing, breathwork, o yoga inmersivo, la [tarjeta regalo de SABDA](https://sabdastudio.com/pricing/) (desde €20, digital, entrega inmediata) es un regalo que no espera. El [pack de 3 clases por €50](https://momence.com/m/443935) permite elegir entre distintas clases — así probáis varias cosas juntos. El tipo de regalo que alguien recuerda mucho más que una cena.
 
 ---
 
@@ -87,7 +87,7 @@ Si tu pareja nunca ha hecho sound healing, breathwork, o yoga inmersivo, la [tar
 
 Los mejores planes en pareja en Barcelona no son los más elaborados. Son los que os sacan de la rutina: una azotea que no conocíais, un barrio por el que nunca pasáis, un sound healing que ninguno de los dos se habría apuntado solo. La ciudad está llena de rincones que funcionan mejor en dos.
 
-Y si queréis probar algo realmente distinto: [3 clases inmersivas en SABDA por €48](https://momence.com/m/443935). Yoga, breathwork, sound healing o danza extática dentro de una sala de 360°. Es lo más parecido a transportarse a otro sitio sin salir de Eixample.
+Y si queréis probar algo realmente distinto: [3 clases inmersivas en SABDA por €50.(https://momence.com/m/443935). Yoga, breathwork, sound healing o danza extática dentro de una sala de 360°. Es lo más parecido a transportarse a otro sitio sin salir de Eixample.
 
 **Relacionado:** [Regalos experiencia en Barcelona](/blog/regalo-experiencia-barcelona/) | [Cosas que hacer en Barcelona](/blog/cosas-que-hacer-en-barcelona/)
 

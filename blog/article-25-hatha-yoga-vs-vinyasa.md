@@ -73,7 +73,7 @@ El vinyasa yoga en Barcelona es el estilo más popular. En SABDA, las clases de 
 
 **Quiero reducir estrés:** Ambos funcionan, pero por razones diferentes. Hatha te calma con la pausa. Vinyasa te calma con el flujo (tu mente no tiene espacio para preocuparse cuando tiene que seguir una secuencia).
 
-**Quiero ambos:** La mayoría de practicantes hacen ambos. Vinyasa 2-3 veces/semana, hatha 1 vez. En [SABDA](https://sabdastudio.com/classes/), el pack de [3 clases por €48](https://momence.com/m/443935) te permite probar ambos estilos en la sala inmersiva.
+**Quiero ambos:** La mayoría de practicantes hacen ambos. Vinyasa 2-3 veces/semana, hatha 1 vez. En [SABDA](https://sabdastudio.com/classes/), el pack de [3 clases por €50](https://momence.com/m/443935) te permite probar ambos estilos en la sala inmersiva.
 
 ---
 
@@ -89,7 +89,7 @@ Lo que no necesitas: flexibilidad, experiencia, o la capacidad de tocar tus pies
 
 ## Antes de ir
 
-Tanto el hatha como el vinyasa están disponibles en [SABDA](https://sabdastudio.com/classes/) dentro de la sala de 360° con Dolby Atmos. Los visuals y el audio se adaptan al estilo — hatha tiene proyecciones más lentas y estables, vinyasa tiene movimiento y ritmo. [3 clases por €48](https://momence.com/m/443935).
+Tanto el hatha como el vinyasa están disponibles en [SABDA](https://sabdastudio.com/classes/) dentro de la sala de 360° con Dolby Atmos. Los visuals y el audio se adaptan al estilo — hatha tiene proyecciones más lentas y estables, vinyasa tiene movimiento y ritmo. [3 clases por €50](https://momence.com/m/443935).
 
 **Relacionado:** [Yin Yoga en Barcelona](/blog/yin-yoga-barcelona/) | [Yoga en Barcelona: guía completa](/blog/yoga-barcelona-guia/)
 

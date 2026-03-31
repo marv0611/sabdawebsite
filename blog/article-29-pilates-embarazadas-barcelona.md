@@ -61,7 +61,7 @@ Sesiones individuales adaptadas al embarazo. Si prefieres atención 1:1, es una 
 Reformer y mat en grupos pequeños con profesoras que adaptan. Ambiente acogedor, formación seria. Precio: ~€20-28/clase.
 
 ### SABDA (Eixample)
-[SABDA](https://sabdastudio.com/classes/pilates/) ofrece clases de pilates mat en grupo ("all levels") donde los profesores proporcionan modificaciones para embarazadas. No es un programa prenatal específico, pero si ya practicabas pilates, la sala inmersiva con proyecciones 360° y audio espacial Dolby Atmos añade un nivel de relajación y enfoque que complementa la práctica durante el embarazo. Las clases de Core Pilates y Full Body Pilates son las más adaptables. Desde €16/clase. [3 clases por €48](https://momence.com/m/443935).
+[SABDA](https://sabdastudio.com/classes/pilates/) ofrece clases de pilates mat en grupo ("all levels") donde los profesores proporcionan modificaciones para embarazadas. No es un programa prenatal específico, pero si ya practicabas pilates, la sala inmersiva con proyecciones 360° y audio espacial Dolby Atmos añade un nivel de relajación y enfoque que complementa la práctica durante el embarazo. Las clases de Core Pilates y Full Body Pilates son las más adaptables. Desde €18/clase. [3 clases por €50](https://momence.com/m/443935).
 
 ### Sesiones individuales con fisioterapeuta
 Para casos con complicaciones o necesidades específicas, varios fisioterapeutas en Barcelona ofrecen pilates perinatal individual. Busca profesionales con doble formación: pilates (Stott, BASI, Polestar) + perinatal. Precio: €50-80/sesión.

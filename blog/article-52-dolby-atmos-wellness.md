@@ -61,7 +61,7 @@ The system runs on cinema-grade hardware — the same technology used in Dolby C
 
 Most wellness spaces compete on teachers, class variety, and interior design. SABDA competes on physics. The room is the differentiator. A good teacher in a standard room produces a good session. The same teacher in a room where sound moves in 3D and visuals surround you produces something categorically different.
 
-You don't need to understand the technology to experience the difference. You just need to lie down, close your eyes, and notice that the sound is everywhere. [3 classes for €48](https://momence.com/m/443935).
+You don't need to understand the technology to experience the difference. You just need to lie down, close your eyes, and notice that the sound is everywhere. [3 classes for €50](https://momence.com/m/443935).
 
 **Related:** [What Is Sound Healing?](/blog/what-is-sound-healing/) | [La ciencia del bienestar inmersivo (ES)](/blog/ciencia-bienestar-inmersivo/) | [Classes at SABDA](/classes/)
 
@@ -81,4 +81,4 @@ The result is a level of audio immersion that earbuds, headphones, and standard 
 
 ## Try it
 
-Words can't fully convey the difference spatial audio makes for wellness. It needs to be experienced. [3 classes at SABDA for €48](https://momence.com/m/443935) — sound healing is the best starting point to understand what the room can do.
+Words can't fully convey the difference spatial audio makes for wellness. It needs to be experienced. [3 classes at SABDA for €50.(https://momence.com/m/443935) — sound healing is the best starting point to understand what the room can do.

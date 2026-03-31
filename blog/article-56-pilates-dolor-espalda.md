@@ -49,7 +49,7 @@ La mayoría de estudios muestran mejoras a partir de 6-8 semanas practicando 2 v
 
 **Para rehabilitación con máquinas:** Dona10 (reformer, Cadillac), Pilat3s (reformer con enfoque técnico).
 **Para sesiones individuales post-lesión:** Busca fisioterapeutas con certificación completa de pilates (Stott, BASI, Polestar).
-**Para mantenimiento y prevención:** [SABDA](https://sabdastudio.com/classes/) — pilates mat inmersivo (Core Pilates, Full Body Pilates) con la concentración amplificada del entorno 360°. Desde €16/clase. [3 clases por €48](https://momence.com/m/443935).
+**Para mantenimiento y prevención:** [SABDA](https://sabdastudio.com/classes/) — pilates mat inmersivo (Core Pilates, Full Body Pilates) con la concentración amplificada del entorno 360°. Desde €18/clase. [3 clases por €50](https://momence.com/m/443935).
 
 **Importante:** Si tienes una lesión diagnosticada (hernia discal, estenosis, escoliosis severa), empieza con un fisioterapeuta, no con una clase de grupo.
 
@@ -86,4 +86,4 @@ La mayoría de la gente quiere resultados en 2 semanas. La ciencia dice 6-8 sema
 
 Paciencia + consistencia > intensidad. Dos sesiones suaves por semana durante 8 semanas cambian más que una sesión intensa por semana durante 16.
 
-Para empezar: [SABDA](https://sabdastudio.com/classes/pilates/) ofrece pilates mat inmersivo desde €16/clase. La concentración amplificada del entorno 360° mejora la calidad de cada ejercicio. [3 clases por €48](https://momence.com/m/443935).
+Para empezar: [SABDA](https://sabdastudio.com/classes/pilates/) ofrece pilates mat inmersivo desde €18/clase. La concentración amplificada del entorno 360° mejora la calidad de cada ejercicio. [3 clases por €50](https://momence.com/m/443935).

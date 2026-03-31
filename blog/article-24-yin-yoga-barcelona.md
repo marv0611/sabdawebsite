@@ -2,7 +2,7 @@
 
 **Última actualización: marzo 2026**
 
-**Meta description:** Yin yoga explicado: posturas lentas, tejido profundo, y el tipo de calma que no consigues en ningún otro sitio. Clases en Barcelona desde €16. (145 chars)
+**Meta description:** Yin yoga explicado: posturas lentas, tejido profundo, y el tipo de calma que no consigues en ningún otro sitio. Clases en Barcelona desde €18. (145 chars)
 
 **Slug:** `/blog/yin-yoga-barcelona/`
 
@@ -55,7 +55,7 @@ En [SABDA](https://sabdastudio.com/classes/yoga/), las clases de yin suceden den
 
 La combinación de quietud física + inmersión visual + audio espacial crea un estado de atención que ningún estudio convencional consigue. Es como una versión concentrada de lo que sientes cuando miras el mar durante mucho tiempo — excepto que está calibrado para complementar cada postura.
 
-Desde €16/clase. [3 clases por €48](https://momence.com/m/443935).
+Desde €18/clase. [3 clases por €50](https://momence.com/m/443935).
 
 ---
 
@@ -75,7 +75,7 @@ No son opuestos — son complementarios. Muchos practicantes hacen vinyasa 2-3 v
 
 ## Antes de ir
 
-El yin yoga barcelona más interesante lo encontrarás en [SABDA](https://sabdastudio.com/classes/yoga/) — la sala inmersiva convierte una práctica lenta en una experiencia sensorial completa. [3 clases por €48](https://momence.com/m/443935).
+El yin yoga barcelona más interesante lo encontrarás en [SABDA](https://sabdastudio.com/classes/yoga/) — la sala inmersiva convierte una práctica lenta en una experiencia sensorial completa. [3 clases por €50](https://momence.com/m/443935).
 
 **Relacionado:** [Hatha vs Vinyasa: diferencias](/blog/hatha-yoga-vs-vinyasa/) | [Yoga en Barcelona: guía completa](/blog/yoga-barcelona-guia/)
 

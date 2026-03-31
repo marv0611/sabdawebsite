@@ -46,7 +46,7 @@ Si buscas un spa despedida de soltera barcelona que no sea un circuito genérico
 
 ### 6. Ice bath en grupo (sí, en serio)
 
-Si el grupo es del tipo "hacemos cosas raras y nos reímos mucho," el ice bath en [SABDA](https://sabdastudio.com/classes/ice-bath/) es perfecto. Sesión guiada de breathwork + inmersión en agua fría en el patio del estudio. Los primeros 30 segundos son intensos. Después pasa algo. Todo el mundo sale riendo, temblando, y sintiéndose ridículamente vivo. Desde €16/persona con el pack intro. No apto para grupos que prefieren cócteles de paragüitas — absolutamente apto para grupos que quieren una historia que contar.
+Si el grupo es del tipo "hacemos cosas raras y nos reímos mucho," el ice bath en [SABDA](https://sabdastudio.com/classes/ice-bath/) es perfecto. Sesión guiada de breathwork + inmersión en agua fría en el patio del estudio. Los primeros 30 segundos son intensos. Después pasa algo. Todo el mundo sale riendo, temblando, y sintiéndose ridículamente vivo. Desde €18/persona con el pack intro. No apto para grupos que prefieren cócteles de paragüitas — absolutamente apto para grupos que quieren una historia que contar.
 
 ---
 

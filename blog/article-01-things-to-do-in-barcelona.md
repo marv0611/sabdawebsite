@@ -45,10 +45,10 @@ Most people don't expect to find a floor-to-ceiling immersive art space hidden i
 
 The visuals change every class. One day you're flowing through vinyasa under abstract nebulae, the next you're lying still while singing bowls resonate from every wall. The sound does something different when it's coming from invisible speakers in every direction rather than a Bluetooth speaker in the corner. Hard to describe. You just have to show up.
 
-Three classes cost €48 (€16 each), which is less than a single ticket to most of Barcelona's "immersive experiences." The difference is you'll actually feel different when you leave.
+Three classes cost €50.(€18 each), which is less than a single ticket to most of Barcelona's "immersive experiences." The difference is you'll actually feel different when you leave.
 
 **Where:** C/Muntaner 83B, Eixample. 10 minutes from Universitat metro.
-**Book:** [3 Classes for €48](https://momence.com/m/443935) | [Just one class — €16](https://momence.com/m/443934)
+**Book:** [3 Classes for €50.(https://momence.com/m/443935) | [Just one class — €18](https://momence.com/m/443934)
 
 ---
 
@@ -106,7 +106,7 @@ Carrer del Parlament and the streets around Sant Antoni market have enough inter
 
 I know how it sounds. But hear this out: you lie down in a dark room, close your eyes, and for 60 minutes, Tibetan singing bowls, crystal bowls, and gongs fill the space through a cinema-grade sound system. It's profoundly relaxing, mildly psychedelic, and weirdly intimate. [SABDA's sound healing sessions](https://sabdastudio.com/classes/sound-healing/) happen in the 360° projection room, so you're surrounded by slowly shifting visuals while the sound moves through you. It's the opposite of every dinner date you've ever been on — and that's exactly the point.
 
-**Price:** From €16/person with the [intro 3-pack](https://momence.com/m/443935).
+**Price:** From €18/person with the [intro 3-pack](https://momence.com/m/443935).
 
 ---
 
@@ -148,7 +148,7 @@ Forget La Boqueria — it's beautiful, but it's been optimised for tourists. Mer
 
 Barcelona rewards the people who wander slightly off the path. The Sagrada Familia is genuinely incredible — go see it. But the city's best moments tend to happen in the spaces between the big landmarks: a vermouth bar at noon, a rooftop at sunset, a sound bath you didn't plan on.
 
-If you're looking for something genuinely different during your visit, [SABDA's intro offer — 3 classes for €48](https://momence.com/m/443935) — is worth it. Yoga, breathwork, sound healing, or ecstatic dance inside a 360° projection room. It's the kind of thing Barcelona does that no other city does.
+If you're looking for something genuinely different during your visit, [SABDA's intro offer — 3 classes for €50](https://momence.com/m/443935) — is worth it. Yoga, breathwork, sound healing, or ecstatic dance inside a 360° projection room. It's the kind of thing Barcelona does that no other city does.
 
 **Related:** [Mejores planes en Barcelona](/blog/cosas-que-hacer-en-barcelona/) | [Planes en pareja en Barcelona](/blog/planes-en-pareja-barcelona/) | [Best Immersive Experiences](/blog/immersive-experiences-barcelona/)
 

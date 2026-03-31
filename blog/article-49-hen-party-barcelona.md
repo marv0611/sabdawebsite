@@ -33,7 +33,7 @@ Local sisters Clara and Sara teach paella with wine and rooftop views. ~€60/pe
 Stone vaults, candles, thermal pools in the Born. ~€80-100/person for spa + massage. Book ahead for groups.
 
 ### 6. Group ice bath (yes, really)
-If your group is the "we do weird things and laugh about it" type, [SABDA's ice bath](https://sabdastudio.com/classes/ice-bath/) is perfect. Guided breathwork + cold plunge. Everyone emerges laughing, shaking, and feeling ridiculously alive. From €16/person.
+If your group is the "we do weird things and laugh about it" type, [SABDA's ice bath](https://sabdastudio.com/classes/ice-bath/) is perfect. Guided breathwork + cold plunge. Everyone emerges laughing, shaking, and feeling ridiculously alive. From €18/person.
 
 ### 7. Bunkers del Carmel at sunset
 Best free viewpoint in Barcelona. 360° panorama. Perfect for the group photo. Bring drinks.

@@ -45,7 +45,7 @@ No todo el mundo tiene un fin de semana libre. A veces lo que necesitas es una h
 
 Las sesiones de sound healing y breathwork en [SABDA](https://sabdastudio.com/classes/sound-healing/) funcionan exactamente así. 60 minutos dentro de una sala de 360° con Dolby Atmos: proyecciones lentas, audio espacial envolvente, guía de voz que llega desde todas las direcciones. Sales con la sensación de haber estado fuera de la ciudad durante medio día.
 
-Es el equivalente urbano de un retiro — sin el desplazamiento, sin el fin de semana bloqueado, sin la maleta. Desde €16/sesión. [3 clases por €48](https://momence.com/m/443935).
+Es el equivalente urbano de un retiro — sin el desplazamiento, sin el fin de semana bloqueado, sin la maleta. Desde €18/sesión. [3 clases por €50](https://momence.com/m/443935).
 
 C/Muntaner 83B, Eixample. Sesiones varias veces por semana.
 
@@ -82,6 +82,6 @@ No todos los retiros son iguales. Algunos son genuinamente transformadores. Otro
 
 **Precio:** Desconfía de los extremos. Un retiro de fin de semana por €100 probablemente recorta en facilitadores o alojamiento. Uno por €800 probablemente infla el precio con "experiencia premium." El rango razonable para un fin de semana cerca de Barcelona con alojamiento, comida, y sesiones: €200-450.
 
-Para probar antes de comprometerte: una sesión de sound healing en [SABDA](https://sabdastudio.com/classes/sound-healing/) te da el efecto de un mini retiro en 60 minutos. [3 clases por €48](https://momence.com/m/443935).
+Para probar antes de comprometerte: una sesión de sound healing en [SABDA](https://sabdastudio.com/classes/sound-healing/) te da el efecto de un mini retiro en 60 minutos. [3 clases por €50](https://momence.com/m/443935).
 
 La meditación no requiere una montaña, un monasterio, ni una semana libre. A veces, lo único que necesitas es una hora en el lugar correcto. Y a veces, esa hora vale más que un fin de semana en un retiro mal dirigido.

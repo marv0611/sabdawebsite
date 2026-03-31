@@ -20,7 +20,7 @@ Barcelona has more yoga studios than you can visit in a month. Some are excellen
 
 **Vibe:** Dark, immersive, premium. Like stepping into another dimension and doing yoga there.
 **Styles:** Vinyasa, Hatha, Power, Sculpt, Yin
-**Price:** From €16/class. [3 classes for €48](https://momence.com/m/443935).
+**Price:** From €18/class. [3 classes for €50](https://momence.com/m/443935).
 **Language:** English, Spanish, bilingual
 **Location:** C/Muntaner 83B, Eixample (metro Universitat)
 **Best for:** Anyone who wants yoga to feel like an experience, not just exercise.
@@ -96,7 +96,7 @@ Small studio in Gràcia with hatha, vinyasa, and meditation. Intimate classes, e
 
 | Studio | Price/class | Styles | Language | Vibe |
 |--------|-----------|--------|----------|------|
-| SABDA | From €16 | Vinyasa, Hatha, Yin, Sculpt | EN/ES | Immersive, premium |
+| SABDA | From €18 | Vinyasa, Hatha, Yin, Sculpt | EN/ES | Immersive, premium |
 | Yoga One | €15-20 | All major styles | EN/ES | Professional chain |
 | Frizzant | €15-18 | Vinyasa, hot, creative | EN/ES | Hip, social |
 | Soma | €14-16 | Vinyasa, yin | EN/ES | Intimate, warm |
@@ -108,7 +108,7 @@ Small studio in Gràcia with hatha, vinyasa, and meditation. Intimate classes, e
 
 The best yoga studio in Barcelona is the one that makes you come back a second time. Not the one with the best interior, the most followers, or the fanciest website. Try 2-3, and stick with whatever feels right.
 
-If you want something no other city has: [SABDA](https://sabdastudio.com/classes/). 360° projections, spatial audio, yoga that feels like entering another world. [3 classes for €48](https://momence.com/m/443935).
+If you want something no other city has: [SABDA](https://sabdastudio.com/classes/). 360° projections, spatial audio, yoga that feels like entering another world. [3 classes for €50](https://momence.com/m/443935).
 
 **Related:** [Yoga en Barcelona: guía completa (ES)](/blog/yoga-barcelona-guia/) | [Best Pilates Studios](/blog/best-pilates-studios-barcelona/) | [Your First Time at SABDA](/blog/first-time-sabda/) | [How to Choose a Yoga Style](/blog/how-to-choose-yoga-style/)
 

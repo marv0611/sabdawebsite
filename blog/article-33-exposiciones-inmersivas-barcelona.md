@@ -25,7 +25,7 @@ Esta guía es opinionada. No todos los espacios merecen tu tiempo.
 
 **Por qué merece la pena:** Es el único espacio inmersivo en Barcelona donde eres parte activa del arte. El formato de clase (no de exposición) significa que cada visita es diferente. El audio espacial produce una inmersión que las proyecciones solas no consiguen.
 
-**Precio:** Desde €16/clase. [3 clases por €48](https://momence.com/m/443935).
+**Precio:** Desde €18/clase. [3 clases por €50](https://momence.com/m/443935).
 **Frecuencia de visita ideal:** Semanal (es un espacio de wellness recurrente, no una exposición puntual).
 
 ### IDEAL — Centre d'Arts Digitals
@@ -73,7 +73,7 @@ Conciertos de música clásica a la luz de las velas en espacios bonitos. Es atm
 
 ---
 
-[3 clases inmersivas en SABDA por €48](https://momence.com/m/443935) — la exposición inmersiva que visitas cada semana.
+[3 clases inmersivas en SABDA por €50.(https://momence.com/m/443935) — la exposición inmersiva que visitas cada semana.
 
 **Relacionado:** [Experiencias inmersivas en Barcelona (guía completa)](/blog/experiencias-inmersivas-barcelona/) | [Espectáculos en Barcelona](/blog/espectaculos-barcelona/)
 
@@ -92,7 +92,7 @@ La inmersión real tiene tres componentes: te rodea (360°, no una pantalla al f
 ## Cuánto cuesta experimentar todo
 
 Si quisieras probar todas las experiencias inmersivas de Barcelona:
-- SABDA (3 clases): €48
+- SABDA (3 clases): €50
 - IDEAL: ~€16
 - Moco Museum: ~€16
 - IKONO: ~€18

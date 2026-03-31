@@ -94,7 +94,7 @@ El audio espacial significa que las indicaciones del facilitador vienen de todas
 
 Las [sesiones de breathwork en SABDA](https://sabdastudio.com/classes/breathwork/) se hacen varias veces por semana en el Eixample (C/Muntaner 83B, metro Universitat). Las sesiones van desde calmantes (Reset & Calm) hasta activantes (Alchemy Breath). Todos los niveles. No necesitas experiencia.
 
-[3 clases por €48](https://momence.com/m/443935) — combina breathwork con sound healing o ice bath para el rango completo.
+[3 clases por €50](https://momence.com/m/443935) — combina breathwork con sound healing o ice bath para el rango completo.
 
 **Relacionado:** [Qué es el sound healing](/blog/que-es-el-sound-healing/) | [Crioterapia en Barcelona](/blog/crioterapia-barcelona/)
 

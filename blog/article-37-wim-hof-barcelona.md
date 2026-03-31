@@ -61,7 +61,7 @@ The honest answer: the cold exposure benefits are well-supported. The breathing 
 
 You don't need to be a biohacker, a fitness fanatic, or a Wim Hof devotee. SABDA's sessions are designed for curious beginners. The breathwork preparation is what makes it accessible — you arrive at the cold water already calm and focused, not just gritting your teeth.
 
-**Price:** From €16/session with the [intro 3-pack (€48)](https://momence.com/m/443935).
+**Price:** From €18/session with the [intro 3-pack (€50)](https://momence.com/m/443935).
 **Where:** [SABDA](https://sabdastudio.com/classes/ice-bath/), C/Muntaner 83B, Eixample.
 
 **Related:** [Ice Bath in Barcelona](/blog/ice-bath-barcelona/) | [What Is Breathwork?](/blog/what-is-breathwork/)

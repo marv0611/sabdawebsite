@@ -43,7 +43,7 @@ Formatos de pilates en SABDA: Core Pilates (enfoque en centro, estabilización p
 
 Clases de pilates mat varios días a la semana. Todos los niveles. Esterilla proporcionada. Grip socks recomendados.
 
-**Precio:** Desde €16/clase con el [pack de 3 por €48](https://momence.com/m/443935).
+**Precio:** Desde €18/clase con el [pack de 3 por €50.(https://momence.com/m/443935).
 **Dónde:** C/Muntaner 83B, Eixample. Metro Universitat (10 min).
 
 ### Dona10 (Eixample)
@@ -73,7 +73,7 @@ Para trabajo personalizado (post-lesión, rehabilitación, objetivos específico
 | Mensual ilimitado | €79-130 | €180-300 |
 | Clase individual | €40-60 | €50-80 |
 
-El [pack intro de SABDA (3 clases por €48)](https://momence.com/m/443935) da acceso a pilates mat y a todas las demás clases del estudio — yoga, sound healing, breathwork, etc.
+El [pack intro de SABDA (3 clases por €50)](https://momence.com/m/443935) da acceso a pilates mat y a todas las demás clases del estudio — yoga, sound healing, breathwork, etc.
 
 ---
 
@@ -121,7 +121,7 @@ La ventaja del Eixample para pilates: calles amplias para caminar a clase, buena
 
 El mejor centro de pilates en Barcelona es el que te hace ir dos veces por semana. El pilates funciona con consistencia — una clase espectacular al mes no cambia nada. Dos clases regulares por semana transforman tu postura, tu core, y probablemente tu espalda.
 
-Si quieres pilates mat en un entorno que no se parece a ningún otro estudio: [SABDA](https://sabdastudio.com/classes/). 360° de proyecciones, audio espacial, y la concentración que viene de estar inmerso. [3 clases por €48](https://momence.com/m/443935).
+Si quieres pilates mat en un entorno que no se parece a ningún otro estudio: [SABDA](https://sabdastudio.com/classes/). 360° de proyecciones, audio espacial, y la concentración que viene de estar inmerso. [3 clases por €50](https://momence.com/m/443935).
 
 **Relacionado:** [Yoga en Barcelona: Guía definitiva](/blog/yoga-barcelona-guia/) | [Pilates para dolor de espalda](/blog/pilates-dolor-espalda/)
 

@@ -2,7 +2,7 @@
 
 **Última actualización: marzo 2026**
 
-**Meta description:** Cursos de mindfulness en Barcelona: MBSR de 8 semanas, talleres intensivos, clases semanales y opciones para empresas. Desde €16/sesión. (142 chars)
+**Meta description:** Cursos de mindfulness en Barcelona: MBSR de 8 semanas, talleres intensivos, clases semanales y opciones para empresas. Desde €18/sesión. (142 chars)
 
 **Slug:** `/blog/curso-mindfulness-barcelona/`
 
@@ -43,7 +43,7 @@ Sin compromiso de 8 semanas. Vas cuando puedes, pagas por sesión.
 ### SABDA — Sound healing y breathwork inmersivo
 [SABDA](https://sabdastudio.com/classes/sound-healing/) ofrece sesiones de sound healing y breathwork varias veces por semana dentro de la sala de 360° con Dolby Atmos. No es un curso estructurado — es una clase drop-in que puedes integrar en tu rutina semanal. El entorno inmersivo hace el trabajo que normalmente tienes que hacer tú: mantener la atención. Las proyecciones lentas y el audio espacial anclan tu mente sin esfuerzo.
 
-Desde €16/sesión. [3 clases por €48](https://momence.com/m/443935).
+Desde €18/sesión. [3 clases por €50](https://momence.com/m/443935).
 
 ### Centre de Meditació Kadampa
 Tradición budista Kadampa. Clases de meditación guiada para principiantes. Donación sugerida (~€5-10).

@@ -81,7 +81,7 @@ Las proyecciones 360° responden a la energía de la sesión. Durante la apertur
 
 ---
 
-¿Quieres probar más que ecstatic dance? El [pack de 3 clases de SABDA por €48](https://momence.com/m/443935) te da acceso a sound healing, breathwork, yoga, y pilates en la misma sala de 360°.
+¿Quieres probar más que ecstatic dance? El [pack de 3 clases de SABDA por €50.(https://momence.com/m/443935) te da acceso a sound healing, breathwork, yoga, y pilates en la misma sala de 360°.
 
 **Relacionado:** [Qué es el sound healing](/blog/que-es-el-sound-healing/) | [Ecstatic Dance in Barcelona (EN)](/blog/ecstatic-dance-barcelona/)
 
@@ -106,4 +106,4 @@ La mayoría de gente sale de su primera sesión de danza extática pensando una 
 
 Lo que casi nadie dice es "me arrepiento de haber ido." El peor caso es 90 minutos de ejercicio con buena música. El mejor caso es una experiencia que reconfigura tu relación con el movimiento y con tu propio cuerpo.
 
-Y si descubres que la danza extática te abre algo, el [pack de 3 clases de SABDA por €48](https://momence.com/m/443935) te da acceso a sound healing, breathwork, y yoga en la misma sala de 360°. La mayoría de gente que viene por ecstatic dance acaba probando sound healing — son dos lados de la misma moneda.
+Y si descubres que la danza extática te abre algo, el [pack de 3 clases de SABDA por €50.(https://momence.com/m/443935) te da acceso a sound healing, breathwork, y yoga en la misma sala de 360°. La mayoría de gente que viene por ecstatic dance acaba probando sound healing — son dos lados de la misma moneda.

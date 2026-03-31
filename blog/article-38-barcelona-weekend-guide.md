@@ -41,7 +41,7 @@ Book a class at [SABDA](https://sabdastudio.com/classes/) — yoga, sound healin
 
 The visuals change every class. The sound wraps around you. It's 60 minutes that feel like 25. You'll walk out into the Eixample sunshine with a specific kind of calm that lasts the rest of the day.
 
-C/Muntaner 83B, Eixample. From €16/class. [3 classes for €48](https://momence.com/m/443935).
+C/Muntaner 83B, Eixample. From €18/class. [3 classes for €50](https://momence.com/m/443935).
 
 ### Afternoon (13:00-16:00) — Vermouth + Gràcia
 Walk or metro to Gràcia (one stop from Diagonal). This is Barcelona's village neighbourhood — small plazas, independent shops, and the best vermut bars in the city.
@@ -63,7 +63,7 @@ Watch the city turn gold, then pink, then dark. Walk down. Dinner somewhere in G
 
 ---
 
-[3 classes at SABDA for €48](https://momence.com/m/443935) — the Sunday morning that makes the weekend.
+[3 classes at SABDA for €50.(https://momence.com/m/443935) — the Sunday morning that makes the weekend.
 
 **Related:** [15 Unique Things to Do in Barcelona](/blog/things-to-do-in-barcelona/) | [Barcelona in Summer](/blog/barcelona-summer-activities/)
 
@@ -95,4 +95,4 @@ The T-Casual metro card (10 trips, ~€11) covers all metro, bus, and tram withi
 
 Skip the tourist restaurants on La Rambla and the Gothic Quarter tourist strip. Walk two blocks in any direction and prices drop 40%. The quality floor in Barcelona is remarkably high — even a random bar in Sant Antoni serves better food than most tourist restaurants.
 
-For SABDA: the [3-class intro pack (€48)](https://momence.com/m/443935) works out to €16/class — less than a ticket to most Barcelona "experiences" and more memorable than any of them.
+For SABDA: the [3-class intro pack (€50)](https://momence.com/m/443935) works out to €18/class — less than a ticket to most Barcelona "experiences" and more memorable than any of them.

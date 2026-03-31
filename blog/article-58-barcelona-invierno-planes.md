@@ -17,7 +17,7 @@ El invierno en Barcelona no es el invierno del norte de Europa — rara vez baja
 
 ## Planes cálidos
 
-**1. Sound healing en SABDA** — Tumbado en una sala oscura a 22°C, envuelto en una manta, mientras los cuencos tibetanos llenan la sala a través de Dolby Atmos. [SABDA](https://sabdastudio.com/classes/sound-healing/) en invierno es particularmente bueno: el contraste entre el frío exterior y la calidez envolvente de la sala amplifica la relajación. Desde €16/clase. [3 clases por €48](https://momence.com/m/443935).
+**1. Sound healing en SABDA** — Tumbado en una sala oscura a 22°C, envuelto en una manta, mientras los cuencos tibetanos llenan la sala a través de Dolby Atmos. [SABDA](https://sabdastudio.com/classes/sound-healing/) en invierno es particularmente bueno: el contraste entre el frío exterior y la calidez envolvente de la sala amplifica la relajación. Desde €18/clase. [3 clases por €50](https://momence.com/m/443935).
 
 **2. Hammam al Àndalus** — Baños árabes cerca de la Catedral. Piscinas calientes, sauna, masaje. ~€35-50.
 
@@ -57,7 +57,7 @@ El invierno en Barcelona no es el invierno del norte de Europa — rara vez baja
 
 ---
 
-El invierno barcelona perfecto: [clase de sound healing o breathwork en SABDA](https://sabdastudio.com/classes/) por la mañana, vermut en Morro Fi al mediodía, hammam por la tarde, y un concierto en el Palau por la noche. [3 clases por €48](https://momence.com/m/443935).
+El invierno barcelona perfecto: [clase de sound healing o breathwork en SABDA](https://sabdastudio.com/classes/) por la mañana, vermut en Morro Fi al mediodía, hammam por la tarde, y un concierto en el Palau por la noche. [3 clases por €50](https://momence.com/m/443935).
 
 **Relacionado:** [Cosas que hacer en Barcelona](/blog/cosas-que-hacer-en-barcelona/) | [Qué hacer cuando llueve](/blog/que-hacer-barcelona-lluvia/)
 

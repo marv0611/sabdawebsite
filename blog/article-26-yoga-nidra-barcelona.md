@@ -75,7 +75,7 @@ El yoga nidra atrae a gente que busca relajación profunda sin esfuerzo — tumb
 
 **Serenity and Sound** — Una sesión guiada donde te tumbas mientras cuencos tibetanos, cuencos de cristal, y frecuencias ambientales llenan la sala a través de Dolby Atmos. Es la experiencia más cercana al yoga nidra en SABDA: no hay movimiento, la guía dirige, y el audio espacial crea un estado de relajación tan profundo que el tiempo desaparece. La diferencia es que el sonido hace el trabajo de anclaje que en yoga nidra hace la visualización.
 
-Ambos formatos están disponibles varias veces por semana. C/Muntaner 83B, Eixample. [3 clases por €48](https://momence.com/m/443935).
+Ambos formatos están disponibles varias veces por semana. C/Muntaner 83B, Eixample. [3 clases por €50](https://momence.com/m/443935).
 
 ---
 
@@ -93,7 +93,7 @@ Ambos formatos están disponibles varias veces por semana. C/Muntaner 83B, Eixam
 
 ---
 
-Si buscas la profundidad del yoga nidra dentro de un entorno inmersivo, las sesiones de [Yin Yoga](https://sabdastudio.com/classes/yoga/) y Serenity and Sound en [SABDA](https://sabdastudio.com/classes/) son lo más cercano que encontrarás en Barcelona. [3 clases por €48](https://momence.com/m/443935).
+Si buscas la profundidad del yoga nidra dentro de un entorno inmersivo, las sesiones de [Yin Yoga](https://sabdastudio.com/classes/yoga/) y Serenity and Sound en [SABDA](https://sabdastudio.com/classes/) son lo más cercano que encontrarás en Barcelona. [3 clases por €50](https://momence.com/m/443935).
 
 **Relacionado:** [Yoga en Barcelona: guía completa](/blog/yoga-barcelona-guia/) | [Qué es el sound healing](/blog/que-es-el-sound-healing/)
 

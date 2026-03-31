@@ -67,7 +67,7 @@ Tres días de los mejores conciertos independientes del mundo en el Fòrum Park 
 
 ### SABDA — Wellness inmersivo
 
-No es un espectáculo en el sentido tradicional, pero es una experiencia audiovisual completa. [SABDA](https://sabdastudio.com/classes/) es una sala de 360° con Dolby Atmos en el Eixample donde se hacen clases de yoga, sound healing, breathwork, y danza extática dentro de proyecciones en tiempo real. Las sesiones de [ecstatic dance](https://sabdastudio.com/classes/ecstatic-dance/) y los [eventos especiales](https://sabdastudio.com/events/) como Listening Sessions son particularmente "espectaculares" — el sonido y las visuals responden a la energía colectiva del grupo. Desde €16/clase. [Ver programación →](https://sabdastudio.com/classes/)
+No es un espectáculo en el sentido tradicional, pero es una experiencia audiovisual completa. [SABDA](https://sabdastudio.com/classes/) es una sala de 360° con Dolby Atmos en el Eixample donde se hacen clases de yoga, sound healing, breathwork, y danza extática dentro de proyecciones en tiempo real. Las sesiones de [ecstatic dance](https://sabdastudio.com/classes/ecstatic-dance/) y los [eventos especiales](https://sabdastudio.com/events/) como Listening Sessions son particularmente "espectaculares" — el sonido y las visuals responden a la energía colectiva del grupo. Desde €18/clase. [Ver programación →](https://sabdastudio.com/classes/)
 
 ### IDEAL — Centre d'Arts Digitals
 
@@ -116,7 +116,7 @@ Fuera de los grandes festivales: el Palau de la Música tiene una de las program
 
 ---
 
-Si buscas una experiencia inmersiva que va más allá de sentarte a mirar: [SABDA ofrece 3 clases por €48](https://momence.com/m/443935) — yoga, sound healing, breathwork, o danza extática dentro de proyecciones 360° con Dolby Atmos. Es el tipo de espectáculo donde tú eres parte de lo que ocurre.
+Si buscas una experiencia inmersiva que va más allá de sentarte a mirar: [SABDA ofrece 3 clases por €50](https://momence.com/m/443935) — yoga, sound healing, breathwork, o danza extática dentro de proyecciones 360° con Dolby Atmos. Es el tipo de espectáculo donde tú eres parte de lo que ocurre.
 
 ---
 

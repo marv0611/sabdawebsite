@@ -70,7 +70,7 @@ La diferencia entre escuchar cuencos tibetanos en una sala normal y escucharlos 
 
 ## Dónde experimentar cuencos tibetanos en Barcelona
 
-**SABDA (Eixample)** — Sound healing con cuencos tibetanos, cuencos de cristal, gongs, y diapasones dentro de la sala inmersiva de 360° con Dolby Atmos. Sesiones varias veces por semana. Desde €16/clase. [3 clases por €48](https://momence.com/m/443935). C/Muntaner 83B.
+**SABDA (Eixample)** — Sound healing con cuencos tibetanos, cuencos de cristal, gongs, y diapasones dentro de la sala inmersiva de 360° con Dolby Atmos. Sesiones varias veces por semana. Desde €18/clase. [3 clases por €50](https://momence.com/m/443935). C/Muntaner 83B.
 
 **Practicantes privados** — Varios terapeutas de sonido en Barcelona ofrecen sesiones individuales con cuencos tibetanos en espacios privados. Precio: €40-80/sesión. Busca en plataformas como Barcelona Holística.
 
@@ -78,7 +78,7 @@ La diferencia entre escuchar cuencos tibetanos en una sala normal y escucharlos 
 
 ---
 
-Los cuencos tibetanos barcelona más intensos los encontrarás en [SABDA](https://sabdastudio.com/classes/sound-healing/) — el Dolby Atmos convierte los instrumentos acústicos en una experiencia tridimensional. [3 clases por €48](https://momence.com/m/443935).
+Los cuencos tibetanos barcelona más intensos los encontrarás en [SABDA](https://sabdastudio.com/classes/sound-healing/) — el Dolby Atmos convierte los instrumentos acústicos en una experiencia tridimensional. [3 clases por €50](https://momence.com/m/443935).
 
 **Relacionado:** [Qué es el sound healing](/blog/que-es-el-sound-healing/) | [Clases en SABDA](/classes/)
 

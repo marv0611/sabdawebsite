@@ -69,7 +69,7 @@ Indie, electrónica, y clubbing en Parallel. Dos salas, programación ecléctica
 
 Los visuals cambian cada clase. El audio espacial envuelve. Es una experiencia permanente que se renueva cada vez que vas porque cada sesión tiene su propio diseño visual y musical.
 
-Desde €16/clase. [3 clases por €48](https://momence.com/m/443935).
+Desde €18/clase. [3 clases por €50](https://momence.com/m/443935).
 **Dónde:** C/Muntaner 83B, Eixample. Metro Universitat.
 
 ---
@@ -134,7 +134,7 @@ Conciertos de música clásica y bandas sonoras a la luz de las velas en espacio
 
 El mejor ocio barcelona no es el que aparece y desaparece — es el que siempre está ahí, esperando a que tengas un martes libre, un domingo sin planes, o un amigo de visita al que quieres enseñar la ciudad de verdad.
 
-Si buscas algo que solo existe en Barcelona: [3 clases inmersivas en SABDA por €48](https://momence.com/m/443935). 360° de proyecciones, Dolby Atmos, y más de 42 clases semanales.
+Si buscas algo que solo existe en Barcelona: [3 clases inmersivas en SABDA por €50.(https://momence.com/m/443935). 360° de proyecciones, Dolby Atmos, y más de 42 clases semanales.
 
 **Relacionado:** [Cosas que hacer en Barcelona](/blog/cosas-que-hacer-en-barcelona/) | [Actividades en Barcelona](/blog/actividades-barcelona/) | [Ocio en Barcelona](/blog/ocio-barcelona/)
 

@@ -2,7 +2,7 @@
 
 **Última actualización: marzo 2026**
 
-**Meta description:** Guía de mindfulness en Barcelona: sesiones de sound healing y breathwork, cursos, retiros de un día y los mejores espacios para practicar. Desde €16 por sesión. (147 chars)
+**Meta description:** Guía de mindfulness en Barcelona: sesiones de sound healing y breathwork, cursos, retiros de un día y los mejores espacios para practicar. Desde €18 por sesión. (147 chars)
 
 **Slug:** `/blog/mindfulness-barcelona/`
 
@@ -40,7 +40,7 @@ Las sesiones de sound healing y breathwork en [SABDA](https://sabdastudio.com/cl
 
 Esto no es meditación para expertos. Es meditación guiada para gente que no sabe meditar. El entorno hace el trabajo que normalmente tienes que hacer tú: mantener la atención, evitar que tu mente se escape a la lista de tareas.
 
-**Precio:** Desde €16. [3 clases por €48](https://momence.com/m/443935) — combina sound healing con breathwork o yin yoga.
+**Precio:** Desde €18. [3 clases por €50](https://momence.com/m/443935) — combina sound healing con breathwork o yin yoga.
 **Dónde:** C/Muntaner 83B, Eixample.
 
 **Otros espacios con meditación regular:**
@@ -94,7 +94,7 @@ Las apps son perfectas para mantener una práctica diaria de 10 minutos. Un espa
 
 El mindfulness no requiere creer en nada. No requiere flexibilidad, ni ropa especial, ni silenciar tu mente. Requiere presentarse y practicar. La mente va a divagar — eso no es un fracaso, es literalmente el ejercicio. Notar que la mente se ha ido y traerla de vuelta es el equivalente de una repetición en el gimnasio.
 
-Si quieres probar en un entorno que facilita la práctica: [sound healing y breathwork en SABDA](https://sabdastudio.com/classes/sound-healing/) desde €16. [3 clases por €48](https://momence.com/m/443935) — combina sound healing con breathwork para la experiencia completa.
+Si quieres probar en un entorno que facilita la práctica: [sound healing y breathwork en SABDA](https://sabdastudio.com/classes/sound-healing/) desde €18. [3 clases por €50](https://momence.com/m/443935) — combina sound healing con breathwork para la experiencia completa.
 
 **Relacionado:** [What Is Sound Healing?](/blog/what-is-sound-healing/) | [Yoga en Barcelona: Guía definitiva](/blog/yoga-barcelona-guia/) | [Cursos de mindfulness](/blog/curso-mindfulness-barcelona/) | [Meditación guiada](/blog/meditacion-guiada-barcelona/)
 

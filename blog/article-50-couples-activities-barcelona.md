@@ -20,7 +20,7 @@ Here are 12 things to do together that range from free to €60, and none of the
 ## The 12 best couples activities
 
 ### 1. Sound healing as a date
-Lie down in a dark room, close your eyes, and for 60 minutes Tibetan singing bowls, crystal bowls, and gongs fill the space through Dolby Atmos spatial audio. [SABDA's sound healing](https://sabdastudio.com/classes/sound-healing/) happens in the 360° projection room — slowly shifting visuals while sound moves through you. Profoundly relaxing, unexpectedly intimate. From €16/person. [3 classes for €48](https://momence.com/m/443935).
+Lie down in a dark room, close your eyes, and for 60 minutes Tibetan singing bowls, crystal bowls, and gongs fill the space through Dolby Atmos spatial audio. [SABDA's sound healing](https://sabdastudio.com/classes/sound-healing/) happens in the 360° projection room — slowly shifting visuals while sound moves through you. Profoundly relaxing, unexpectedly intimate. From €18/person. [3 classes for €50](https://momence.com/m/443935).
 
 ### 2. Bunkers del Carmel at sunset
 Best free viewpoint in Barcelona. 360° panorama. Bring drinks. Arrive 45 minutes before sunset.
@@ -38,7 +38,7 @@ Saturday noon. Morro Fi (Eixample). House vermut from the barrel, tinned anchovi
 Gaudí's rooftop lit up, audiovisual projections, and a glass of cava. ~€35/person.
 
 ### 7. Sunday morning yoga at SABDA
-Start the day moving together inside a 360° projection room. [SABDA's vinyasa](https://sabdastudio.com/classes/) on Sunday mornings, then breakfast at any of the cafés on Muntaner. From €16/person.
+Start the day moving together inside a 360° projection room. [SABDA's vinyasa](https://sabdastudio.com/classes/) on Sunday mornings, then breakfast at any of the cafés on Muntaner. From €18/person.
 
 ### 8. Kayak + brunch
 Rent kayak or paddle board in the morning (~€15-20/hour), then dry off and brunch at Barceloneta.
@@ -53,7 +53,7 @@ Learn to make paella from local cooks. Wine flows while you stir. ~€60/person.
 83.3 Terrace Bar, Passeig de Gràcia. Sagrada Familia one way, sea the other. Reserve for sunset in high season.
 
 ### 12. Gift each other a SABDA 3-pack
-[€48 for 3 classes](https://momence.com/m/443935) — try sound healing, breathwork, and yoga together over three dates. It's the gift that keeps becoming plans.
+[€50 for 3 classes](https://momence.com/m/443935) — try sound healing, breathwork, and yoga together over three dates. It's the gift that keeps becoming plans.
 
 ---
 

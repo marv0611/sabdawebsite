@@ -19,7 +19,7 @@ Estos son 15 planes originales en Barcelona para gente que ya ha hecho lo obvio 
 
 ### 1. Wellness inmersivo en una sala de 360°
 
-[SABDA](https://sabdastudio.com/classes/) tiene una sala de proyecciones 360° con Dolby Atmos en el Eixample donde se hacen clases de yoga, sound healing, breathwork, pilates, y danza extática. Los visuals cambian cada clase — un día fluyes entre nebulosas abstractas, al siguiente te tumbas mientras geometría viva se mueve con el sonido de los gongs. No es un museo. No es un gimnasio. Es otra cosa. 3 clases por €48. [Reservar →](https://momence.com/m/443935)
+[SABDA](https://sabdastudio.com/classes/) tiene una sala de proyecciones 360° con Dolby Atmos en el Eixample donde se hacen clases de yoga, sound healing, breathwork, pilates, y danza extática. Los visuals cambian cada clase — un día fluyes entre nebulosas abstractas, al siguiente te tumbas mientras geometría viva se mueve con el sonido de los gongs. No es un museo. No es un gimnasio. Es otra cosa. 3 clases por €50. [Reservar →](https://momence.com/m/443935)
 
 ### 2. Cementiri de Montjuïc
 
@@ -83,7 +83,7 @@ El Museo Nacional d'Art de Catalunya tiene unas terrazas exteriores (acceso grat
 
 Los mejores planes originales en Barcelona son los que encuentras cuando dejas de buscar "cosas que hacer" y empiezas a caminar por barrios que no estaban en tu plan. El Raval de noche, Sants un domingo, Poblenou cualquier tarde. La ciudad recompensa la curiosidad.
 
-Si buscas algo que no existe en ningún otro sitio: [3 clases inmersivas en SABDA por €48](https://momence.com/m/443935). Yoga, breathwork o sound healing dentro de una sala de 360°.
+Si buscas algo que no existe en ningún otro sitio: [3 clases inmersivas en SABDA por €50.(https://momence.com/m/443935). Yoga, breathwork o sound healing dentro de una sala de 360°.
 
 **Relacionado:** [Cosas que hacer en Barcelona](/blog/cosas-que-hacer-en-barcelona/) | [Planes en pareja en Barcelona](/blog/planes-en-pareja-barcelona/)
 

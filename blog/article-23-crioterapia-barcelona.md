@@ -2,7 +2,7 @@
 
 **Última actualización: marzo 2026**
 
-**Meta description:** Crioterapia y baños de hielo en Barcelona: qué esperar, beneficios reales, y dónde probar. Sesiones guiadas en SABDA desde €16. (128 chars)
+**Meta description:** Crioterapia y baños de hielo en Barcelona: qué esperar, beneficios reales, y dónde probar. Sesiones guiadas en SABDA desde €18. (128 chars)
 
 **Slug:** `/blog/crioterapia-barcelona/`
 
@@ -51,7 +51,7 @@ Crioterapia en cabina en Barcelona: Cryosense (Eixample) y varios centros de rec
 
 ## Dónde hacer un baño de hielo en Barcelona
 
-**SABDA (Eixample)** — Sesiones guiadas de ice bath en el patio del estudio (temporada — consulta horarios para disponibilidad) (temporada — consulta horarios para disponibilidad actual), combinadas con preparación de breathwork en la sala inmersiva de 360°. El componente de breathwork marca una diferencia real — llegas al agua ya calmado, enfocado, y respirando bien. Facilitado por guías formados. Desde €16/sesión con el [pack intro (€48 por 3 clases)](https://momence.com/m/443935). C/Muntaner 83B. [Reservar →](https://sabdastudio.com/classes/ice-bath/)
+**SABDA (Eixample)** — Sesiones guiadas de ice bath en el patio del estudio (temporada — consulta horarios para disponibilidad) (temporada — consulta horarios para disponibilidad actual), combinadas con preparación de breathwork en la sala inmersiva de 360°. El componente de breathwork marca una diferencia real — llegas al agua ya calmado, enfocado, y respirando bien. Facilitado por guías formados. Desde €18/sesión con el [pack intro (€50 por 3 clases)](https://momence.com/m/443935). C/Muntaner 83B. [Reservar →](https://sabdastudio.com/classes/ice-bath/)
 
 **Aire Ancient Baths (Born)** — El circuito de contraste incluye un cold plunge como parte de una experiencia termal más amplia. Espacio bonito, pero el componente frío es un elemento de un circuito de spa, no una práctica dedicada. ~€40-50.
 
@@ -77,7 +77,7 @@ Si te interesa tu sistema nervioso: sí. El baño de hielo es una de las formas 
 
 Si buscas una experiencia transformadora: calibra expectativas. Es profundo durante 30 minutos, no para siempre. Pero esos 30 minutos son algo.
 
-[3 clases por €48](https://momence.com/m/443935) — prueba breathwork + ice bath en SABDA.
+[3 clases por €50](https://momence.com/m/443935) — prueba breathwork + ice bath en SABDA.
 
 **Relacionado:** [Qué es el breathwork](/blog/que-es-el-breathwork/) | [Clases en SABDA](/classes/)
 

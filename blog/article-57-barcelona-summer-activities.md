@@ -17,7 +17,7 @@ Barcelona summers are glorious until they're not. When it hits 35°C and the bea
 
 ## Cool indoor experiences
 
-**1. SABDA — air-conditioned immersive wellness.** The 360° projection room is dark, cool, and the opposite of a hot beach. Yoga, sound healing, breathwork, or pilates inside an immersive visual world. [From €16/class](https://momence.com/m/443935). The perfect summer plan: cool room, Dolby Atmos audio, and 60 minutes where the heat doesn't exist.
+**1. SABDA — air-conditioned immersive wellness.** The 360° projection room is dark, cool, and the opposite of a hot beach. Yoga, sound healing, breathwork, or pilates inside an immersive visual world. [From €18/class](https://momence.com/m/443935). The perfect summer plan: cool room, Dolby Atmos audio, and 60 minutes where the heat doesn't exist.
 
 **2. CCCB** — Air-conditioned contemporary art in the Raval. ~€6.
 
@@ -57,7 +57,7 @@ Barcelona summers are glorious until they're not. When it hits 35°C and the bea
 
 ---
 
-The best summer plan in Barcelona: [SABDA class in the morning](https://sabdastudio.com/classes/) (cool, dark, immersive) → beach in the late afternoon (when the crowds thin) → Bunkers at sunset → Sant Antoni bars at night. [3 classes for €48](https://momence.com/m/443935).
+The best summer plan in Barcelona: [SABDA class in the morning](https://sabdastudio.com/classes/) (cool, dark, immersive) → beach in the late afternoon (when the crowds thin) → Bunkers at sunset → Sant Antoni bars at night. [3 classes for €50](https://momence.com/m/443935).
 
 **Related:** [Things to Do in Barcelona](/blog/things-to-do-in-barcelona/) | [Barcelona Weekend Guide](/blog/barcelona-weekend-guide/)
 

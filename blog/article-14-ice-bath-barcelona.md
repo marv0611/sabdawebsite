@@ -2,7 +2,7 @@
 
 **Last updated: March 2026**
 
-**Meta description:** Ice bath and cold plunge in Barcelona: what it feels like, the real benefits, and where to try it. Guided sessions on SABDA's patio from €16. (144 chars)
+**Meta description:** Ice bath and cold plunge in Barcelona: what it feels like, the real benefits, and where to try it. Guided sessions on SABDA's patio from €18. (144 chars)
 
 **Slug:** `/blog/ice-bath-barcelona/`
 
@@ -63,7 +63,7 @@ Crioterapia in Barcelona: Cryosense (Eixample) and several sports recovery centr
 
 ## Where to do an ice bath in Barcelona
 
-**SABDA (Eixample)** — Guided ice bath sessions on the studio patio (seasonal — check schedule for current availability), combined with breathwork preparation in the 360° immersive room. The breathwork component makes a real difference — you arrive at the water already calm, focused, and breathing properly. Facilitated by trained guides. From €16/session with the [intro 3-pack (€48)](https://momence.com/m/443935). C/Muntaner 83B. [Book →](https://sabdastudio.com/classes/ice-bath/)
+**SABDA (Eixample)** — Guided ice bath sessions on the studio patio (seasonal — check schedule for current availability), combined with breathwork preparation in the 360° immersive room. The breathwork component makes a real difference — you arrive at the water already calm, focused, and breathing properly. Facilitated by trained guides. From €18/session with the [intro 3-pack (€50)](https://momence.com/m/443935). C/Muntaner 83B. [Book →](https://sabdastudio.com/classes/ice-bath/)
 
 **Aire Ancient Baths (Born)** — The contrast pool circuit includes a cold plunge as part of a broader thermal experience. Beautiful space, but the cold component is one element of a spa circuit, not a dedicated ice bath practice. ~€40-50.
 
@@ -89,9 +89,9 @@ If you're curious about your nervous system: yes. The ice bath is one of the fas
 
 If you're looking for a life-changing experience: calibrate expectations. It's profound for 30 minutes, not forever. But those 30 minutes are something.
 
-The honest answer is that most people who try a guided ice bath session — especially one combined with breathwork — are surprised by how much they get out of it. The bar for entry is low (one session, €16 at SABDA), and the worst case is you spend 2 minutes uncomfortable and then feel great.
+The honest answer is that most people who try a guided ice bath session — especially one combined with breathwork — are surprised by how much they get out of it. The bar for entry is low (one session, €18 at SABDA), and the worst case is you spend 2 minutes uncomfortable and then feel great.
 
-**Book:** [Ice bath + breathwork at SABDA](https://sabdastudio.com/classes/ice-bath/) | [3 classes for €48](https://momence.com/m/443935)
+**Book:** [Ice bath + breathwork at SABDA](https://sabdastudio.com/classes/ice-bath/) | [3 classes for €50](https://momence.com/m/443935)
 
 **Related:** [What Is Breathwork?](/blog/what-is-breathwork/) | [Wim Hof Method in Barcelona](/blog/wim-hof-barcelona/) | [Classes at SABDA](/classes/)
 

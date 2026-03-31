@@ -17,7 +17,7 @@ You're going to SABDA for the first time. You don't know exactly what to expect,
 
 ## Before you go
 
-**Book online.** All classes are booked through [Momence](https://momence.com/m/443935). Pick a class, select a time, and book. The [3-class intro pack (€48, €16/class)](https://momence.com/m/443935) is the best way to start — lets you try different classes.
+**Book online.** All classes are booked through [Momence](https://momence.com/m/443935). Pick a class, select a time, and book. The [3-class intro pack (€50. €18/class)](https://momence.com/m/443935) is the best way to start — lets you try different classes.
 
 **What to bring:** Comfortable clothes you can move in. That's it. SABDA provides mats, blankets, and everything else. For pilates, grip socks are recommended (available at reception).
 
@@ -71,7 +71,7 @@ Showers are available. Reception can help you book your next class or use the re
 
 ---
 
-[Book your first class →](https://momence.com/m/443935) | [3 classes for €48](https://momence.com/m/443935)
+[Book your first class →](https://momence.com/m/443935) | [3 classes for €50](https://momence.com/m/443935)
 
 **Related:** [Classes at SABDA](/classes/) | [Best Yoga Studios in Barcelona](/blog/best-yoga-studios-barcelona/)
 
@@ -104,4 +104,4 @@ Showers are available. Reception can help you book your next class or use the re
 
 Most people leave their first SABDA class slightly dazed, deeply relaxed, and wondering why it took them so long to try it. The second class is where you start to understand the difference the immersive environment makes — you drop into focus faster because you know what to expect. By the third class, most people have found their format and are considering a membership.
 
-That's the design of the [3-class intro pack (€48)](https://momence.com/m/443935): try enough to find what resonates.
+That's the design of the [3-class intro pack (€50)](https://momence.com/m/443935): try enough to find what resonates.

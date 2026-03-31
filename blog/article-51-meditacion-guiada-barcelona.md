@@ -45,7 +45,7 @@ Las apps son para mantenimiento. Los espacios son para profundidad.
 
 ## Dónde hacer meditación guiada en Barcelona
 
-**SABDA (Eixample)** — Sesiones de sound healing y breathwork varias veces por semana. La sala de 360° convierte el sound healing en una experiencia sensorial: proyecciones lentas, audio espacial envolvente, guía de voz desde todas las direcciones. C/Muntaner 83B. Desde €16/sesión. [3 clases por €48](https://momence.com/m/443935).
+**SABDA (Eixample)** — Sesiones de sound healing y breathwork varias veces por semana. La sala de 360° convierte el sound healing en una experiencia sensorial: proyecciones lentas, audio espacial envolvente, guía de voz desde todas las direcciones. C/Muntaner 83B. Desde €18/sesión. [3 clases por €50](https://momence.com/m/443935).
 
 **Centre de Meditació Kadampa** — Tradición budista Kadampa. Clases de meditación guiada para principiantes. Donación sugerida (~€5-10).
 
@@ -53,7 +53,7 @@ Las apps son para mantenimiento. Los espacios son para profundidad.
 
 ---
 
-Las sesiones de sound healing en [SABDA](https://sabdastudio.com/classes/sound-healing/) son la mejor entrada para principiantes — el entorno hace el trabajo que normalmente tienes que hacer tú. [3 clases por €48](https://momence.com/m/443935).
+Las sesiones de sound healing en [SABDA](https://sabdastudio.com/classes/sound-healing/) son la mejor entrada para principiantes — el entorno hace el trabajo que normalmente tienes que hacer tú. [3 clases por €50](https://momence.com/m/443935).
 
 **Relacionado:** [Mindfulness en Barcelona](/blog/mindfulness-barcelona/) | [Serenity and Sound en Barcelona](/blog/yoga-nidra-barcelona/)
 

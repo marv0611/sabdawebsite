@@ -100,7 +100,7 @@ People who've done breathwork in regular studios and then try it at SABDA consis
 
 [SABDA's breathwork sessions](https://sabdastudio.com/classes/breathwork/) run multiple times per week in the Eixample (C/Muntaner 83B, 10 min from Universitat metro). Sessions range from calming (Reset & Calm) to activating (Alchemy Breath). All levels welcome. No experience needed.
 
-[3 classes for €48](https://momence.com/m/443935) — combine breathwork with sound healing or ice bath for the full range.
+[3 classes for €50](https://momence.com/m/443935) — combine breathwork with sound healing or ice bath for the full range.
 
 **Related:** [What Is Sound Healing?](/blog/what-is-sound-healing/) | [Ice Bath in Barcelona](/blog/ice-bath-barcelona/)
 

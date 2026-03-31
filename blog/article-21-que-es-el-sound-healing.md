@@ -97,7 +97,7 @@ No necesitas creer en nada. Te tumbas y la física del sonido hace lo suyo.
 
 Las [sesiones de sound healing en SABDA](https://sabdastudio.com/classes/sound-healing/) se hacen varias veces por semana en el Eixample (C/Muntaner 83B, 10 min del metro Universitat). No necesitas experiencia. Mantas proporcionadas.
 
-[3 clases por €48](https://momence.com/m/443935) — prueba sound healing junto con breathwork, yoga, o meditación para ver qué te resuena.
+[3 clases por €50](https://momence.com/m/443935) — prueba sound healing junto con breathwork o yoga para ver qué te resuena.
 
 **Relacionado:** [Qué es el breathwork](/blog/que-es-el-breathwork/) | [Cuencos tibetanos](/blog/cuencos-tibetanos/) | [Clases en SABDA](/classes/)
 

@@ -33,7 +33,7 @@ Visión 360° + audio 360° = inmersión total. Tu cerebro deja de procesar el e
 ## Para qué se usa una sala inmersiva
 
 ### Wellness y clases
-En [SABDA](https://sabdastudio.com/classes/), la sala inmersiva aloja más de 42 clases semanales: yoga, pilates, sound healing, breathwork, ecstatic dance, e ice bath (el ice bath es en el patio, pero la preparación de breathwork es en la sala). Cada clase tiene su propio diseño visual y musical. Desde €16/clase. [3 clases por €48](https://momence.com/m/443935).
+En [SABDA](https://sabdastudio.com/classes/), la sala inmersiva aloja más de 42 clases semanales: yoga, pilates, sound healing, breathwork, ecstatic dance, e ice bath (el ice bath es en el patio, pero la preparación de breathwork es en la sala). Cada clase tiene su propio diseño visual y musical. Desde €18/clase. [3 clases por €50](https://momence.com/m/443935).
 
 ### Brand activations y eventos corporativos
 Marcas como FC Barcelona, Alpro, y Decathlon han usado la sala para experiencias de equipo, lanzamientos de producto, y activaciones de marca. Las proyecciones se pueden personalizar con contenido de marca. Desde €350/sesión. [connect@sabdastudio.com](mailto:connect@sabdastudio.com).
@@ -58,7 +58,7 @@ Celebraciones, cenas inmersivas, presentaciones, y experiencias privadas para gr
 
 ---
 
-La única sala inmersiva barcelona de wellness está en [SABDA](https://sabdastudio.com/classes/), C/Muntaner 83B, Eixample. [3 clases por €48](https://momence.com/m/443935) | [Alquiler →](https://sabdastudio.com/hire/)
+La única sala inmersiva barcelona de wellness está en [SABDA](https://sabdastudio.com/classes/), C/Muntaner 83B, Eixample. [3 clases por €50](https://momence.com/m/443935) | [Alquiler →](https://sabdastudio.com/hire/)
 
 **Relacionado:** [Experiencias inmersivas en Barcelona](/blog/experiencias-inmersivas-barcelona/) | [Alquiler de salas para eventos](/blog/alquiler-sala-eventos-barcelona/)
 
@@ -84,4 +84,4 @@ La única sala inmersiva barcelona de wellness está en [SABDA](https://sabdastu
 
 La tendencia es clara: los estudios de wellness convencionales compiten en profesores, horarios, y decoración. Los espacios inmersivos compiten en tecnología y experiencia. SABDA es el primer studio en Barcelona (y uno de los primeros en Europa) que trata el entorno como un componente tan importante como la clase misma.
 
-La pregunta no es si más estudios adoptarán tecnología inmersiva — es cuánto tardarán. Mientras tanto, SABDA es el único lugar donde puedes experimentar wellness inmersivo en Barcelona. [3 clases por €48](https://momence.com/m/443935).
+La pregunta no es si más estudios adoptarán tecnología inmersiva — es cuánto tardarán. Mientras tanto, SABDA es el único lugar donde puedes experimentar wellness inmersivo en Barcelona. [3 clases por €50](https://momence.com/m/443935).

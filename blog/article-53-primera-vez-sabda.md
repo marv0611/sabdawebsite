@@ -17,7 +17,7 @@ Vas a ir a SABDA por primera vez. No sabes exactamente qué esperar, y eso es pa
 
 ## Antes de ir
 
-**Reserva online.** Todas las clases se reservan a través de [Momence](https://momence.com/m/443935). Elige la clase que te interesa, selecciona fecha y hora, y completa la reserva. El [pack de 3 clases por €48](https://momence.com/m/443935) (€16/clase) es la mejor forma de empezar — te permite probar distintas clases.
+**Reserva online.** Todas las clases se reservan a través de [Momence](https://momence.com/m/443935). Elige la clase que te interesa, selecciona fecha y hora, y completa la reserva. El [pack de 3 clases por €50](https://momence.com/m/443935) (€18/clase) es la mejor forma de empezar — te permite probar distintas clases.
 
 **Qué llevar:** Ropa cómoda que te permita moverte. Nada más. SABDA proporciona esterillas, mantas, y todo lo que necesites. Para pilates, grip socks son recomendados (los puedes comprar en recepción si no tienes).
 
@@ -72,7 +72,7 @@ Duchas disponibles. Recepción puede ayudarte a reservar tu próxima clase o a u
 
 ---
 
-[Reserva tu primera clase →](https://momence.com/m/443935) | [3 clases por €48](https://momence.com/m/443935)
+[Reserva tu primera clase →](https://momence.com/m/443935) | [3 clases por €50](https://momence.com/m/443935)
 
 **Relacionado:** [Clases en SABDA](/classes/) | [Yoga en Barcelona](/blog/yoga-barcelona-guia/)
 
@@ -95,10 +95,10 @@ Duchas disponibles. Recepción puede ayudarte a reservar tu próxima clase o a u
 
 **¿Puedo ducharme después?** Sí. Vestuarios con duchas disponibles.
 
-**¿Se puede reservar sin el pack?** Sí, hay clases sueltas. Pero el [pack de 3 por €48](https://momence.com/m/443935) (€16/clase) es mejor valor y te permite probar distintos formatos.
+**¿Se puede reservar sin el pack?** Sí, hay clases sueltas. Pero el [pack de 3 por €50.(https://momence.com/m/443935) (€18/clase) es mejor valor y te permite probar distintos formatos.
 
 ## Después de tu primera clase
 
 La mayoría de gente sale de su primera clase en SABDA ligeramente aturdida, profundamente relajada, y preguntándose por qué tardó tanto en probar. La segunda clase es donde empiezas a entender la diferencia que hace el entorno inmersivo — entras en foco más rápido porque sabes qué esperar. Para la tercera, la mayoría ha encontrado su formato favorito y está considerando una membresía.
 
-Ese es el diseño del [pack de 3 clases por €48](https://momence.com/m/443935): probar lo suficiente para encontrar lo que te resuena.
+Ese es el diseño del [pack de 3 clases por €50](https://momence.com/m/443935): probar lo suficiente para encontrar lo que te resuena.

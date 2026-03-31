@@ -18,7 +18,7 @@ Llueve en Barcelona más de lo que los folletos turísticos admiten. Y cuando ll
 ## Experiencias inmersivas
 
 **1. SABDA — wellness inmersivo en 360°**
-El plan perfecto para días de lluvia. [SABDA](https://sabdastudio.com/classes/) es una sala cerrada de 360° con Dolby Atmos donde haces yoga, sound healing, breathwork, o pilates dentro de proyecciones inmersivas. No necesitas sol, no necesitas salir, y la experiencia es exactamente igual — o mejor — cuando fuera llueve. La oscuridad de la sala y el contraste con el exterior hacen el sound healing especialmente potente en días grises. Desde €16/clase. [3 clases por €48](https://momence.com/m/443935).
+El plan perfecto para días de lluvia. [SABDA](https://sabdastudio.com/classes/) es una sala cerrada de 360° con Dolby Atmos donde haces yoga, sound healing, breathwork, o pilates dentro de proyecciones inmersivas. No necesitas sol, no necesitas salir, y la experiencia es exactamente igual — o mejor — cuando fuera llueve. La oscuridad de la sala y el contraste con el exterior hacen el sound healing especialmente potente en días grises. Desde €18/clase. [3 clases por €50](https://momence.com/m/443935).
 
 **2. IDEAL** — Exposiciones inmersivas a gran escala en Poblenou. Caminas, miras, te sientas. ~€15-18.
 
@@ -65,7 +65,7 @@ El plan perfecto para días de lluvia. [SABDA](https://sabdastudio.com/classes/)
 
 El día de lluvia perfecto en Barcelona: una clase de sound healing en [SABDA](https://sabdastudio.com/classes/sound-healing/) por la mañana, vermut en Morro Fi al mediodía, Filmoteca por la tarde. Total: ~€25. Mejor que la mayoría de días soleados.
 
-[3 clases por €48](https://momence.com/m/443935).
+[3 clases por €50](https://momence.com/m/443935).
 
 **Relacionado:** [Cosas que hacer en Barcelona](/blog/cosas-que-hacer-en-barcelona/) | [Experiencias inmersivas](/blog/experiencias-inmersivas-barcelona/)
 

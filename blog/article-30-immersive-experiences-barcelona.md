@@ -35,7 +35,7 @@ The key difference: passive immersion is impressive. Participatory immersion is 
 
 **Best for:** People who want to feel something, not just see something pretty. Anyone curious about the intersection of art, technology, and wellness.
 
-**Price:** From €16/class. [3 classes for €48](https://momence.com/m/443935).
+**Price:** From €18/class. [3 classes for €50](https://momence.com/m/443935).
 **Frequency:** 42+ classes per week + special events.
 **Where:** C/Muntaner 83B, Eixample.
 
@@ -80,7 +80,7 @@ Classical music and soundtrack concerts by candlelight in atmospheric venues lik
 
 | Space | Price | Type | Duration |
 |-------|-------|------|----------|
-| SABDA | From €16/class | Participatory | 45-90 min |
+| SABDA | From €18/class | Participatory | 45-90 min |
 | IDEAL | ~€15-18 | Passive (exhibition) | 60-90 min |
 | Moco Museum | ~€16 | Gallery + interactive | 60-90 min |
 | IKONO | ~€16-20 | Photogenic/sensory | 45-60 min |
@@ -106,7 +106,7 @@ Classical music and soundtrack concerts by candlelight in atmospheric venues lik
 
 If you only have time for one immersive experience in Barcelona, choose based on what you want to take away: a photo, a visual memory, or a physical transformation. All three options exist. Only one changes how you feel when you leave.
 
-[3 immersive classes at SABDA for €48](https://momence.com/m/443935) — yoga, sound healing, breathwork, or ecstatic dance inside 360° projections with Dolby Atmos spatial audio.
+[3 immersive classes at SABDA for €50.(https://momence.com/m/443935) — yoga, sound healing, breathwork, or ecstatic dance inside 360° projections with Dolby Atmos spatial audio.
 
 **Related:** [Things to Do in Barcelona](/blog/things-to-do-in-barcelona/) | [Experiencias inmersivas en Barcelona (ES)](/blog/experiencias-inmersivas-barcelona/)
 

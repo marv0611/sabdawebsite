@@ -67,7 +67,7 @@ Varios profesores en Barcelona ofrecen yoga prenatal individual (€40-60/sesió
 
 ---
 
-El yoga embarazadas barcelona más accesible lo encontrarás en estudios con profesores formados en perinatal. Para clases inmersivas de yin y hatha con modificaciones: [SABDA](https://sabdastudio.com/classes/yoga/). [3 clases por €48](https://momence.com/m/443935).
+El yoga embarazadas barcelona más accesible lo encontrarás en estudios con profesores formados en perinatal. Para clases inmersivas de yin y hatha con modificaciones: [SABDA](https://sabdastudio.com/classes/yoga/). [3 clases por €50](https://momence.com/m/443935).
 
 **Relacionado:** [Pilates para embarazadas en Barcelona](/blog/pilates-embarazadas-barcelona/) | [Yoga en Barcelona: guía completa](/blog/yoga-barcelona-guia/)
 

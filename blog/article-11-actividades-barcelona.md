@@ -39,7 +39,7 @@ La mejor vista de Barcelona. 360 grados, gratis, 80% locales. Llega 45 minutos a
 ## Planes que necesitan algo de planificación
 
 ### 6. Yoga, sound healing o breathwork inmersivo
-[SABDA](https://sabdastudio.com/classes/) es una sala de 360° con Dolby Atmos en Eixample. Yoga, pilates, sound healing, breathwork, ecstatic dance, ice bath. Los visuals cambian cada clase. El audio espacial envuelve. 3 clases €48. [Reservar →](https://momence.com/m/443935)
+[SABDA](https://sabdastudio.com/classes/) es una sala de 360° con Dolby Atmos en Eixample. Yoga, pilates, sound healing, breathwork, ecstatic dance, ice bath. Los visuals cambian cada clase. El audio espacial envuelve. 3 clases €50. [Reservar →](https://momence.com/m/443935)
 
 ### 7. La Pedrera de noche
 Tour nocturno por la azotea de Gaudí + proyección audiovisual + cava. ~€35. Reserva online.
@@ -83,7 +83,7 @@ El Central Park de Barcelona. Lago con barcas (~€6, no gratis), pero pasear, s
 ## Actividades barcelona adultos — planes para mayores de 25
 
 ### 18. Sound healing como cita
-Tumbados en la sala oscura de [SABDA](https://sabdastudio.com/classes/sound-healing/), 60 minutos de bols tibetanos y gongs en audio espacial. Profundamente relajante, inesperadamente íntimo. Desde €16/persona.
+Tumbados en la sala oscura de [SABDA](https://sabdastudio.com/classes/sound-healing/), 60 minutos de bols tibetanos y gongs en audio espacial. Profundamente relajante, inesperadamente íntimo. Desde €18/persona.
 
 ### 19. Jazz en Jamboree
 Plaça Reial. Jazz en vivo en bóveda de sótano, después DJ y club. Shows a las 20-21h.
@@ -126,7 +126,7 @@ Barcelona iluminada desde el agua. ~€25-35/persona. De mayo a octubre. Una per
 
 Las mejores actividades en Barcelona no son las más obvias. La ciudad recompensa a los que se salen de la ruta: un barrio que no conocían, una azotea que no estaba en el plan, una clase inmersiva que reservaron a última hora.
 
-Si buscas algo distinto: [3 clases en SABDA por €48](https://momence.com/m/443935). 360° de proyecciones, audio espacial, y más de 42 clases semanales entre yoga, breathwork, sound healing y más.
+Si buscas algo distinto: [3 clases en SABDA por €50.(https://momence.com/m/443935). 360° de proyecciones, audio espacial, y más de 42 clases semanales entre yoga, breathwork, sound healing y más.
 
 **Relacionado:** [Cosas que hacer en Barcelona](/blog/cosas-que-hacer-en-barcelona/) | [Espectáculos en Barcelona](/blog/espectaculos-barcelona/) | [Planes gratis en Barcelona](/blog/planes-barcelona-gratis/) | [Ocio en Barcelona](/blog/ocio-barcelona/)
 

@@ -37,7 +37,7 @@ Barcelona té plans per a tothom. El problema és que la majoria de guies recoma
 
 ## Wellness i experiències immersives
 
-**7. Una classe immersiva a SABDA** — [SABDA](https://sabdastudio.com/classes/) és una sala de 360° amb Dolby Atmos on fas ioga, pilates, teràpia de so o breathwork dins projeccions immersives. No és un museu — ets dins l'art. Classes des de €16. [3 classes per €48](https://momence.com/m/443935).
+**7. Una classe immersiva a SABDA** — [SABDA](https://sabdastudio.com/classes/) és una sala de 360° amb Dolby Atmos on fas ioga, pilates, teràpia de so o breathwork dins projeccions immersives. No és un museu — ets dins l'art. Classes des de €18. [3 classes per €50.(https://momence.com/m/443935).
 
 **8. Ice bath al pati de SABDA** — Breathwork guiat dins la sala immersiva, seguit de bany de gel al pati. Intens, memorable, i l'oposat de qualsevol activitat "normal."
 
@@ -65,7 +65,7 @@ Barcelona té plans per a tothom. El problema és que la majoria de guies recoma
 
 ---
 
-Les millors activitats barcelona són les que trobes quan deixes de seguir les guies. Si busques alguna cosa única: [3 classes a SABDA per €48](https://momence.com/m/443935).
+Les millors activitats barcelona són les que trobes quan deixes de seguir les guies. Si busques alguna cosa única: [3 classes a SABDA per €50.(https://momence.com/m/443935).
 
 **Relacionat:** [Què fer a Barcelona](/blog/que-fer-avui-barcelona/) | [Cosas que hacer en Barcelona (ES)](/blog/cosas-que-hacer-en-barcelona/)
 
@@ -81,13 +81,13 @@ Les millors activitats barcelona són les que trobes quan deixes de seguir les g
 
 **Si t'agrada menjar:** Vermut a Morro Fi, mercat de Sant Antoni, El Xampanyet. La ruta gastronòmica perfecta per menys de €20.
 
-**Si busques experiències:** Una classe immersiva a [SABDA](https://sabdastudio.com/classes/yoga/) (€16) + ice bath al pati. El tipus d'experiència que només existeix a Barcelona.
+**Si busques experiències:** Una classe immersiva a [SABDA](https://sabdastudio.com/classes/yoga/) ( €18) + ice bath al pati. El tipus d'experiència que només existeix a Barcelona.
 
 **Si vols aire lliure:** Búnquers del Carmel al capvespre + passejada fins al Fòrum + piscines de Montjuïc. Tot gratis (excepte la piscina, €7).
 
 **Si surts de nit:** Jazz al Jamboree + ruta de bars per Sant Antoni + El Raval quan tothom ja ha marxat. Barcelona de nit és una altra ciutat.
 
-Les millors activitats a Barcelona no necessiten pressupost ni planificació. Necessiten curiositat i la voluntat de sortir del camí marcat. Si busques alguna cosa que no trobaràs a cap altra ciutat: [3 classes immersives a SABDA per €48](https://momence.com/m/443935). Ioga, breathwork, teràpia de so o dansa extàtica dins d'una sala de 360° amb Dolby Atmos.
+Les millors activitats a Barcelona no necessiten pressupost ni planificació. Necessiten curiositat i la voluntat de sortir del camí marcat. Si busques alguna cosa que no trobaràs a cap altra ciutat: [3 classes immersives a SABDA per €50.(https://momence.com/m/443935). Ioga, breathwork, teràpia de so o dansa extàtica dins d'una sala de 360° amb Dolby Atmos.
 
 ## Consells pràctics
 
@@ -99,5 +99,5 @@ Les millors activitats a Barcelona no necessiten pressupost ni planificació. Ne
 
 **El secret:** Barcelona premia als que s'allunyen dels mapes. Les millors experiències no estan a Google Maps amb 4.8 estrelles i 2,000 ressenyes. Estan al carrer que no tenies previst agafar, al bar que no té cartell, i a la sala de 360° que no sabies que existia.
 
-[3 classes immersives per €48 →](https://momence.com/m/443935)
+[3 classes immersives per €50.→](https://momence.com/m/443935)
 Ioga, pilates, teràpia de so, breathwork, dansa extàtica, meditació, i bany de gel.

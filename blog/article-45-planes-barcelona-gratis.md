@@ -2,7 +2,7 @@
 
 **Última actualización: marzo 2026**
 
-**Meta description:** Los mejores planes gratis en Barcelona: miradores, mercados, rutas, playas, arte y cultura. Más uno que cuesta €16 y vale cada céntimo. (139 chars)
+**Meta description:** Los mejores planes gratis en Barcelona: miradores, mercados, rutas, playas, arte y cultura. Más uno que cuesta €18 y vale cada céntimo. (139 chars)
 
 **Slug:** `/blog/planes-barcelona-gratis/`
 
@@ -11,7 +11,7 @@
 
 ---
 
-Barcelona es una ciudad cara si dejas que te la vendan. Y una ciudad increíblemente asequible si sabes dónde ir. Estos son 20 planes que no cuestan absolutamente nada — más uno al final que cuesta €16 y merece cada céntimo.
+Barcelona es una ciudad cara si dejas que te la vendan. Y una ciudad increíblemente asequible si sabes dónde ir. Estos son 20 planes que no cuestan absolutamente nada — más uno al final que cuesta €18 y merece cada céntimo.
 
 ---
 
@@ -77,7 +77,7 @@ Barcelona es una ciudad cara si dejas que te la vendan. Y una ciudad increíblem
 
 ## El que no es gratis pero vale cada céntimo
 
-**[SABDA](https://sabdastudio.com/classes/) — una clase inmersiva por €16.** Yoga, sound healing, breathwork, o pilates dentro de una sala de 360° con Dolby Atmos. Es el precio de dos cafés de especialidad — por una hora dentro de un espacio que no existe en ninguna otra ciudad. [Ver precios](https://sabdastudio.com/pricing/). [3 clases por €48](https://momence.com/m/443935).
+**[SABDA](https://sabdastudio.com/classes/) — una clase inmersiva por €18.** Yoga, sound healing, breathwork, o pilates dentro de una sala de 360° con Dolby Atmos. Es el precio de dos cafés de especialidad — por una hora dentro de un espacio que no existe en ninguna otra ciudad. [Ver precios](https://sabdastudio.com/pricing/). [3 clases por €50](https://momence.com/m/443935).
 
 ---
 

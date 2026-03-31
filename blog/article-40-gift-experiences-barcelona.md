@@ -2,7 +2,7 @@
 
 **Last updated: March 2026**
 
-**Meta description:** The best experience gifts in Barcelona: immersive wellness, food tours, sailing, spa days and more. SABDA gift cards from €48. (129 chars)
+**Meta description:** The best experience gifts in Barcelona: immersive wellness, food tours, sailing, spa days and more. SABDA gift cards from €50. (129 chars)
 
 **Slug:** `/blog/gift-experiences-barcelona/`
 
@@ -20,7 +20,7 @@ Here are 15 ideas across every budget, from €20 to €200.
 ## The best gift experiences in Barcelona
 
 ### 1. Immersive sound healing at SABDA
-[SABDA gift cards](https://sabdastudio.com/pricing/) start at €20 (digital delivery, instant). The €48 option (3 classes) is the sweet spot — lets the recipient try sound healing, breathwork, yoga, or any combination inside a 360° projection room with Dolby Atmos. It's the kind of gift that makes someone say "I never would have done this myself, and I'm so glad I did." [Buy gift card →](https://sabdastudio.com/pricing/)
+[SABDA gift cards](https://sabdastudio.com/pricing/) start at €20 (digital delivery, instant). The €50 option (3 classes) is the sweet spot — lets the recipient try sound healing, breathwork, yoga, or any combination inside a 360° projection room with Dolby Atmos. It's the kind of gift that makes someone say "I never would have done this myself, and I'm so glad I did." [Buy gift card →](https://sabdastudio.com/pricing/)
 
 ### 2. Sailing at sunset
 Private sailboat for 2-6 people along the Barcelona coastline. Cava on board, option to swim. From ~€60/person. Best at golden hour.
@@ -62,7 +62,7 @@ Tarantos (Plaça Reial) or Tablao de Carmen (Poble Espanyol). Not the tourist sh
 Chök or ChocoMuseum. Make your own bars, truffles, or bonbons. From €25/person. You leave with chocolate and a story.
 
 ### 15. SABDA gift card — the last-minute save
-It's midnight and the birthday is tomorrow. [SABDA gift cards](https://sabdastudio.com/pricing/) are digital and instant. From €20 to custom amounts. The €48 (3 classes) is the most popular. Works for yoga, pilates, sound healing, breathwork, ecstatic dance, or ice bath.
+It's midnight and the birthday is tomorrow. [SABDA gift cards](https://sabdastudio.com/pricing/) are digital and instant. From €20 to custom amounts. The €50 (3 classes) is the most popular. Works for yoga, pilates, sound healing, breathwork, ecstatic dance, or ice bath.
 
 ---
 
@@ -71,7 +71,7 @@ It's midnight and the birthday is tomorrow. [SABDA gift cards](https://sabdastud
 **For someone who never stops:** Sound healing or breathwork at SABDA. 60 minutes of forced stillness.
 **For someone who's "done everything":** Helicopter or cava bottling in Penedès.
 **For someone new to Barcelona:** Vermouth crawl or cooking class.
-**For someone who needs to disconnect:** [3 immersive classes at SABDA for €48](https://momence.com/m/443935).
+**For someone who needs to disconnect:** [3 immersive classes at SABDA for €50.(https://momence.com/m/443935).
 
 **Related:** [Regalos experiencia en Barcelona (ES)](/blog/regalo-experiencia-barcelona/) | [Couples Activities in Barcelona](/blog/couples-activities-barcelona/)
 

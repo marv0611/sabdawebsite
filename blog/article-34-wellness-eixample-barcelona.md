@@ -18,7 +18,7 @@ El Eixample tiene la mayor concentración de opciones de wellness de Barcelona. 
 ## Yoga en el Eixample
 
 ### SABDA (C/Muntaner 83B — metro Universitat, 10 min)
-[Yoga inmersivo](https://sabdastudio.com/classes/) dentro de una sala de 360° con Dolby Atmos. Vinyasa Flow, Hatha Vinyasa, Power Vinyasa, Yoga Sculpt, y Yin. Cada clase tiene diseño visual y musical propio. Desde €16/clase. [3 clases por €48](https://momence.com/m/443935).
+[Yoga inmersivo](https://sabdastudio.com/classes/) dentro de una sala de 360° con Dolby Atmos. Vinyasa Flow, Hatha Vinyasa, Power Vinyasa, Yoga Sculpt, y Yin. Cada clase tiene diseño visual y musical propio. Desde €18/clase. [3 clases por €50](https://momence.com/m/443935).
 
 ### Yoga One (varias sedes Eixample — metro Passeig de Gràcia, Diagonal)
 Cadena local con vinyasa, hatha, yin, ashtanga. Hot yoga en algunas sedes. ~€15-20/clase, membresías desde ~€90/mes.
@@ -31,7 +31,7 @@ Ashtanga, vinyasa, mysore. Estudio técnico y funcional. ~€14-17/clase.
 ## Pilates en el Eixample
 
 ### SABDA (C/Muntaner 83B)
-[Pilates mat inmersivo](https://sabdastudio.com/classes/pilates/): Core Pilates, Power Pilates, Pilates Sculpt, Full Body Pilates. El entorno 360° amplifica la concentración. Desde €16/clase.
+[Pilates mat inmersivo](https://sabdastudio.com/classes/pilates/): Core Pilates, Power Pilates, Pilates Sculpt, Full Body Pilates. El entorno 360° amplifica la concentración. Desde €18/clase.
 
 ### Dona10 (varias sedes Eixample — metro Passeig de Gràcia)
 Reformer, mat, Cadillac, y clases especializadas. El centro de pilates más completo de Barcelona. Programa prenatal. ~€25-35/clase reformer.
@@ -44,7 +44,7 @@ Reformer en grupos reducidos. Enfoque técnico, buena reputación en rehabilitac
 ## Sound healing y breathwork
 
 ### SABDA — la única opción en el Eixample
-No hay otro espacio de sound healing con cuencos tibetanos y audio espacial en el barrio. [SABDA](https://sabdastudio.com/classes/sound-healing/) es la referencia: sesiones varias veces por semana con Dolby Atmos. También breathwork (Alchemy Breath, Reset & Calm) y sound healing inmersivo. Desde €16/clase.
+No hay otro espacio de sound healing con cuencos tibetanos y audio espacial en el barrio. [SABDA](https://sabdastudio.com/classes/sound-healing/) es la referencia: sesiones varias veces por semana con Dolby Atmos. También breathwork (Alchemy Breath, Reset & Calm) y sound healing inmersivo. Desde €18/clase.
 
 ---
 
@@ -83,7 +83,7 @@ El Eixample es uno de los mejores barrios de Barcelona para correr. La cuadrícu
 
 ---
 
-El wellness eixample más completo lo encontrarás combinando [SABDA](https://sabdastudio.com/classes/) (inmersivo, €16/clase) con un gimnasio para pesas y un vermut para compensar. [3 clases por €48](https://momence.com/m/443935).
+El wellness eixample más completo lo encontrarás combinando [SABDA](https://sabdastudio.com/classes/) (inmersivo, €18/clase) con un gimnasio para pesas y un vermut para compensar. [3 clases por €50](https://momence.com/m/443935).
 
 **Relacionado:** [Yoga en Barcelona: guía completa](/blog/yoga-barcelona-guia/) | [Pilates en Barcelona: guía completa](/blog/pilates-barcelona-guia/)
 

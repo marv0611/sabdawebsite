@@ -67,7 +67,7 @@ Si mai has fet res de wellness — aquesta és la millor porta d'entrada que exi
 ## On és
 
 **SABDA** — C/Muntaner 83B, Eixample. Metro Universitat (10 min a peu).
-Més de 42 classes setmanals. Des de €16/classe. [3 classes per €48](https://momence.com/m/443935).
+Més de 42 classes setmanals. Des de €18/classe. [3 classes per €50.(https://momence.com/m/443935).
 
 ---
 
@@ -101,4 +101,4 @@ Barcelona és una ciutat de contrastos: el soroll de la Rambla i la calma del Bo
 
 El benestar immersiu encaixa en aquest contrast. Entres des del carrer — trànsit, obres, turistes — i en 10 segons estàs dins una sala fosca on l'únic que existeix és el so, la llum, i el teu cos. El contrast no és accidental. És el que fa que funcioni.
 
-Barcelona ja tenia el millor menjar, la millor arquitectura, i la millor vida de carrer d'Europa. Ara també té l'experiència de wellness més avançada del continent. [3 classes per €48 →](https://momence.com/m/443935)
+Barcelona ja tenia el millor menjar, la millor arquitectura, i la millor vida de carrer d'Europa. Ara també té l'experiència de wellness més avançada del continent. [3 classes per €50.→](https://momence.com/m/443935)

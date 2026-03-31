@@ -18,7 +18,7 @@ Barcelona's pilates scene is dense. Reformer studios, mat studios, gym chains wi
 ## 1. SABDA — Immersive mat pilates
 [SABDA](https://sabdastudio.com/classes/pilates/) offers mat pilates inside a 360° room with Dolby Atmos spatial audio. The environment captures your focus in a way mirrors and background music can't. Formats: Core Pilates, Power Pilates, Pilates Sculpt, Full Body Pilates.
 
-**Type:** Mat (immersive) | **Price:** From €16/class | [3 for €48](https://momence.com/m/443935)
+**Type:** Mat (immersive) | **Price:** From €18/class | [3 for €50.(https://momence.com/m/443935)
 **Location:** C/Muntaner 83B, Eixample | **Best for:** Focus-amplified mat work
 
 ## 2. Dona10 — The complete reformer centre
@@ -57,7 +57,7 @@ Reformer-focused studio with structured programmes and small groups. Clean, func
 
 | Studio | Mat group | Reformer group | Individual |
 |--------|----------|---------------|-----------|
-| SABDA (immersive) | From €16 | — | — |
+| SABDA (immersive) | From €18 | — | — |
 | Dona10 | ~€18 | ~€25-35 | ~€45-60 |
 | Pilat3s | — | ~€25-30 | ~€50-65 |
 | Simply Be | ~€18 | ~€20-28 | ~€40-55 |
@@ -65,7 +65,7 @@ Reformer-focused studio with structured programmes and small groups. Clean, func
 
 ---
 
-The best pilates studio in Barcelona depends on what you need: machines and rehabilitation (Dona10), technique and small groups (Pilat3s), intimate neighbourhood feel (Simply Be), gym convenience (DIR/Holmes Place), or immersive focus that makes every rep count ([SABDA](https://sabdastudio.com/classes/)). [3 classes for €48](https://momence.com/m/443935).
+The best pilates studio in Barcelona depends on what you need: machines and rehabilitation (Dona10), technique and small groups (Pilat3s), intimate neighbourhood feel (Simply Be), gym convenience (DIR/Holmes Place), or immersive focus that makes every rep count ([SABDA](https://sabdastudio.com/classes/)). [3 classes for €50](https://momence.com/m/443935).
 
 **Related:** [Pilates en Barcelona: guía completa (ES)](/blog/pilates-barcelona-guia/) | [Pilates Mat vs Reformer](/blog/pilates-mat-vs-reformer/)
 
@@ -81,13 +81,13 @@ The choice isn't just "which studio" — it's "what do I need?"
 
 **Post-injury or specific condition:** Start with individual sessions at Dona10 or Pilat3s. A professional assessment before group classes saves you time and potential re-injury. Budget 5-8 individual sessions (€250-500) before transitioning to group.
 
-**General fitness and core strength:** Mat pilates at [SABDA](https://sabdastudio.com/classes/pilates/) gives you immersive focus that amplifies every rep (from €16/class). For machine-based resistance work, Dona10 group reformer classes are the standard. SABDA costs half the price of reformer and the immersive environment compensates with enhanced concentration.
+**General fitness and core strength:** Mat pilates at [SABDA](https://sabdastudio.com/classes/pilates/) gives you immersive focus that amplifies every rep (from €18/class). For machine-based resistance work, Dona10 group reformer classes are the standard. SABDA costs half the price of reformer and the immersive environment compensates with enhanced concentration.
 
 **Pregnancy:** Dona10 has the most structured prenatal programme. Pilat3s offers adapted individual sessions. See our [pilates para embarazadas guide](/blog/pilates-embarazadas-barcelona/) for trimester-specific advice.
 
-**Budget-conscious:** Holmes Place or DIR gym membership includes mat pilates classes. Quality varies by teacher and location, but at €60-90/month for unlimited gym + classes, it's the most economical option if you also want weights and cardio. For dedicated pilates only, [SABDA's 3-pack at €48](https://momence.com/m/443935) is the best entry point.
+**Budget-conscious:** Holmes Place or DIR gym membership includes mat pilates classes. Quality varies by teacher and location, but at €60-90/month for unlimited gym + classes, it's the most economical option if you also want weights and cardio. For dedicated pilates only, [SABDA's 3-pack at €50.(https://momence.com/m/443935) is the best entry point.
 
-**Want something different:** [SABDA](https://sabdastudio.com/classes/pilates/) is the only studio in Barcelona where pilates happens inside 360° projections with Dolby Atmos. The immersive environment isn't a gimmick — it measurably improves focus, which means every rep has better quality. From €16/class.
+**Want something different:** [SABDA](https://sabdastudio.com/classes/pilates/) is the only studio in Barcelona where pilates happens inside 360° projections with Dolby Atmos. The immersive environment isn't a gimmick — it measurably improves focus, which means every rep has better quality. From €18/class.
 
 ## What to look for in a pilates studio
 
@@ -95,4 +95,4 @@ Before committing to any studio, do a trial class. Every studio listed here offe
 
 The best pilates studios in Barcelona share one thing: they take the method seriously without taking themselves too seriously. Find the one where the teaching is precise and the atmosphere is welcoming.
 
-[3 classes for €48](https://momence.com/m/443935) — try the immersive difference at SABDA.
+[3 classes for €50](https://momence.com/m/443935) — try the immersive difference at SABDA.
