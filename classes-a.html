@@ -605,28 +605,7 @@ function doGuestCheck(){
 function customerFieldsHTML(){
   return '<div class="bk-label" style="margin-top:16px">Phone number / Número de teléfono</div>'
     +'<div style="display:flex;gap:8px">'
-    +'<select class="bk-input" id="bk-cc" style="width:90px;flex-shrink:0;appearance:auto;cursor:pointer;padding:12px 6px">'
-    +'<option value="+34">+34</option>'
-    +'<option value="+33">+33</option>'
-    +'<option value="+44">+44</option>'
-    +'<option value="+49">+49</option>'
-    +'<option value="+39">+39</option>'
-    +'<option value="+31">+31</option>'
-    +'<option value="+1">+1</option>'
-    +'<option value="+351">+351</option>'
-    +'<option value="+46">+46</option>'
-    +'<option value="+47">+47</option>'
-    +'<option value="+48">+48</option>'
-    +'<option value="+55">+55</option>'
-    +'<option value="+61">+61</option>'
-    +'<option value="+81">+81</option>'
-    +'<option value="+82">+82</option>'
-    +'<option value="+86">+86</option>'
-    +'<option value="+91">+91</option>'
-    +'<option value="+52">+52</option>'
-    +'<option value="+54">+54</option>'
-    +'<option value="+57">+57</option>'
-    +'</select>'
+    +'<input class="bk-input" id="bk-cc" type="text" value="+34" style="width:68px;flex-shrink:0;text-align:center;font-weight:600" />'
     +'<input class="bk-input" id="bk-phone" type="tel" placeholder="612 345 678" style="flex:1" />'
     +'</div>'
     +'<div class="bk-label">Preferred language / Idioma preferido</div>'
@@ -640,16 +619,22 @@ function customerFieldsHTML(){
 }
 function getCustomerFields(){
   var cc=(document.getElementById('bk-cc')||{}).value||'+34';
+  if(!cc.startsWith('+')) cc='+'+cc;
   var phone=(document.getElementById('bk-phone')||{}).value||'';
+  phone=phone.replace(/\s/g,'').replace(/^0+/,'');
   var lang=(document.getElementById('bk-lang')||{}).value||'';
   var city=(document.getElementById('bk-city')||{}).value||'';
-  return{phoneNumber:cc+phone.replace(/^\+/,'').replace(/\s/g,''),customerFields:{"164360":lang,"164361":city}};
+  return{phoneNumber:cc+phone,customerFields:{"164360":lang,"164361":city}};
 }
 function validateCustomerFields(){
+  var cc=(document.getElementById('bk-cc')||{}).value||'';
   var phone=(document.getElementById('bk-phone')||{}).value||'';
+  phone=phone.replace(/\s/g,'');
   var lang=(document.getElementById('bk-lang')||{}).value||'';
   var city=(document.getElementById('bk-city')||{}).value||'';
-  if(!phone||!lang||!city) return 'Please fill in phone, language, and city';
+  if(!cc||!phone||!lang||!city) return 'Please fill in all fields';
+  if(!cc.startsWith('+')) return 'Country code must start with +';
+  if(phone.length<6) return 'Phone number is too short';
   return null;
 }
 
