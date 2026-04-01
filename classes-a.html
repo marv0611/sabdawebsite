@@ -262,19 +262,19 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
         <div class="pt-label">Intro 3-Pack</div>
         <div class="pt-price">€50</div>
         <div class="pt-note">New students<br>Valid for 30 days</div>
-        <a href="https://momence.com/m/443935" class="pt-btn pt-ghost" target="_blank">Get Started</a>
+        <a href="pricing.html" class="pt-btn pt-ghost">Get Started</a>
       </div>
       <div class="pt-card feat">
         <div class="pt-label">Immerse</div>
         <div class="pt-price">€130<span>/mo</span></div>
         <div class="pt-note">Unlimited classes<br>Cancel anytime</div>
-        <a href="https://momence.com/m/431216" class="pt-btn pt-cyan" target="_blank">Join Now</a>
+        <a href="pricing.html" class="pt-btn pt-cyan">Join Now</a>
       </div>
       <div class="pt-card">
         <div class="pt-label">Immerse 3 Month</div>
         <div class="pt-price">€330<span>/3 mo</span></div>
         <div class="pt-note">€110/month<br>Unlimited classes<br>Cancel anytime</div>
-        <a href="https://momence.com/m/445600" class="pt-btn pt-ghost" target="_blank">Start Unlimited</a>
+        <a href="pricing.html" class="pt-btn pt-ghost">Start Unlimited</a>
       </div>
     </div>
     <p class="pt-foot"><a href="pricing.html">See all our offers →</a></p>
@@ -368,8 +368,8 @@ function renderSched(){
     let sc='av',st=sp+' spots left';
     if(full){sc='fu';st='Full';}
     else if(sp<=5){sc='lo';st=sp+' spots left';}
-    const fn=e.teacher.split(' ')[0];
-    const lnk=e.link.replace(/'/g,"\\'");
+    const fn=(e.teacher||'').split(' ')[0]||'';
+    const lnk=(e.link||'').replace(/'/g,"\\'");
     const ttl=title.replace(/'/g,"\\'");
 
     return`<div class="cc" style="animation-delay:${i*.05}s"><div class="ct"><div class="ct-h">${h}:${m}</div><div class="ct-d">${e.duration} min</div></div><div class="ci"><div class="ci-t">${title}${lang?`<span class="ci-lg">${lang}</span>`:''}</div><div class="ci-tc">${fn}</div><div class="ci-sp ${sc}">${st}</div></div><div class="ca">${full?(e.allowWaitlist?`<button class="bb wl" onclick="openMo('${lnk}','${ttl}','${time}','${fn}')">Waitlist</button>`:`<button class="bb fu">Full</button>`):`<button class="bb" onclick="openMo('${lnk}','${ttl}','${time}','${fn}')">Book</button>`}</div></div>`;
@@ -602,7 +602,6 @@ function doGuestCheck(){
   if(!ln){lnEl.classList.add('bk-field-err');ok=false;}
   if(!email||!validateEmail(email)){emailEl.classList.add('bk-field-err');ok=false;}
   if(!ok){err.textContent='Please fill in the highlighted fields';return;}
-  err.textContent='';btn.textContent='Checking...';btn.disabled=true;
 
   curUser={id:null,email:email,firstName:fn,lastName:ln,memberId:null,isGuest:true};
   showNoMembership();
