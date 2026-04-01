@@ -321,8 +321,9 @@ function renderGrid(){
 
 function openMo(link,title,time,teacher){
   document.getElementById('mo-t').textContent=title;
-  document.getElementById('mo-c').textContent=time+' · '+teacher;
-  document.getElementById('mo-bd').innerHTML='<iframe src="'+link+'" title="Book '+title+'" style="width:100%;height:100%;border:none"></iframe>';
+  document.getElementById('mo-c').textContent=time+' \u00b7 '+teacher;
+  var url=link+(link.indexOf('?')>-1?'&':'?')+'disableLoginRedirect=true';
+  document.getElementById('mo-bd').innerHTML='<iframe src="'+url+'" title="Book" style="width:100%;height:100%;border:none"></iframe>';
   document.getElementById('mo-ext').href=link;
   document.getElementById('mo').style.display='flex';
   requestAnimationFrame(function(){document.getElementById('mo').classList.add('open');});
