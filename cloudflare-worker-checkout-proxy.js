@@ -1,31 +1,9 @@
-/**
- * SABDA Checkout Proxy — Cloudflare Worker
- * 
- * Routes:
- *   sabdastudio.com/book/*        → momence.com/*
- *   sabdastudio.com/book/_api/*   → momence.com/_api/*
- *   sabdastudio.com/book/s/*      → momence.com/s/* (shortlinks)
- *   sabdastudio.com/book/m/*      → momence.com/m/* (membership links)
- *   sabdastudio.com/book/sign-in  → momence.com/sign-in
- * 
- * SETUP (5 minutes):
- *   1. Log in to Cloudflare → dash.cloudflare.com
- *   2. Left sidebar → Workers & Pages → Create Application → Create Worker
- *   3. Name it: sabda-checkout-proxy
- *   4. Click "Edit Code" → delete default code → paste this entire file
- *   5. Click "Save and Deploy"
- *   6. Go to your worker → Settings → Triggers → Add Route
- *   7. Route: sabdastudio.com/book/* | Zone: sabdastudio.com
- *   8. Done. Test: visit sabdastudio.com/book/SABDA-54278
- */
-
 const MOMENCE = 'https://momence.com';
 
 export default {
   async fetch(request) {
     const url = new URL(request.url);
 
-    // Handle CORS preflight
     if (request.method === 'OPTIONS') {
       return new Response(null, {
         headers: {
@@ -37,19 +15,16 @@ export default {
       });
     }
 
-    // Strip /book prefix to get Momence path
-    const path = url.pathname.replace(/^\/book/, '') || '/';
-    const target = MOMENCE + path + url.search;
+    const target = MOMENCE + url.pathname + url.search;
 
-    // Build headers to forward
     const fwd = new Headers();
     for (const [k, v] of request.headers) {
       if (k.startsWith('cf-') || k === 'host') continue;
       fwd.set(k, v);
     }
     fwd.set('Host', 'momence.com');
-    fwd.set('Origin', 'https://momence.com');
-    fwd.set('Referer', 'https://momence.com/');
+    fwd.set('Origin', MOMENCE);
+    fwd.set('Referer', MOMENCE + '/');
 
     let res;
     try {
@@ -63,70 +38,155 @@ export default {
       return new Response('Proxy error: ' + err.message, { status: 502 });
     }
 
-    // Rewrite redirects to stay on our domain
-    if ([301, 302, 303, 307, 308].includes(res.status)) {
-      let loc = res.headers.get('Location') || '';
-      if (loc.startsWith('https://momence.com/')) {
-        loc = '/book/' + loc.slice('https://momence.com/'.length);
-      } else if (loc.startsWith('/')) {
-        loc = '/book' + loc;
+    // Build headers, strip cookie domains
+    const h = new Headers();
+    for (const [k, v] of res.headers) {
+      if (k.toLowerCase() === 'set-cookie') {
+        let c = v.replace(/;\s*[Dd]omain=[^;]*/g, '');
+        if (!/SameSite/i.test(c)) c += '; SameSite=Lax; Secure';
+        h.append('Set-Cookie', c);
+        continue;
       }
-      const h = new Headers(res.headers);
+      if (k.toLowerCase() === 'x-frame-options' || k.toLowerCase() === 'content-security-policy') continue;
+      h.set(k, v);
+    }
+    h.set('Access-Control-Allow-Origin', url.origin);
+    h.set('Access-Control-Allow-Credentials', 'true');
+    h.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH');
+    h.set('Access-Control-Allow-Headers', 'Content-Type, Authorization, x-session-v2, x-api-key, x-app, x-origin, sentry-trace, baggage, x-idempotence-key');
+
+    // Redirects: if going to /dashboard, check for saved checkout URL
+    if ([301, 302, 303, 307, 308].includes(res.status)) {
+      let loc = h.get('Location') || '';
+      if (loc.startsWith(MOMENCE)) loc = loc.replace(MOMENCE, '');
       h.set('Location', loc);
-      h.delete('X-Frame-Options');
-      h.delete('Content-Security-Policy');
       return new Response(null, { status: res.status, headers: h });
     }
 
-    const ct = res.headers.get('Content-Type') || '';
+    const ct = h.get('Content-Type') || '';
 
-    // HTML pages: inject iframe override + rewrite links
     if (ct.includes('text/html')) {
       let html = await res.text();
 
-      // Override iframe detection before any other script runs
-      html = html.replace('<head>', `<head>
+      const inject = `
 <script>
+(function(){
 try{
   Object.defineProperty(window,'top',{get:function(){return window},configurable:true});
   Object.defineProperty(window,'parent',{get:function(){return window},configurable:true});
 }catch(e){}
-</script>`);
 
-      // Rewrite all momence.com URLs to proxy
-      html = html.replace(/https:\/\/momence\.com\/_api/g, '/book/_api');
-      html = html.replace(/https:\/\/momence\.com\/sign-in/g, '/book/sign-in');
-      html = html.replace(/https:\/\/momence\.com\/sign-up/g, '/book/sign-up');
-      html = html.replace(/https:\/\/momence\.com\/SABDA/g, '/book/SABDA');
-      html = html.replace(/https:\/\/momence\.com\/s\//g, '/book/s/');
-      html = html.replace(/https:\/\/momence\.com\/m\//g, '/book/m/');
-      html = html.replace(/https:\/\/momence\.com\/gcc\//g, '/book/gcc/');
+// If we just logged in and got redirected to dashboard, bounce back to checkout
+var returnTo=sessionStorage.getItem('sabda_checkout');
+if(returnTo && window.location.pathname.indexOf('/dashboard')>-1){
+  sessionStorage.removeItem('sabda_checkout');
+  window.location.replace(returnTo);
+  return;
+}
+// Also catch if we're on ANY non-checkout page after login
+if(returnTo && window.location.pathname.indexOf('/SABDA')===-1 && window.location.pathname!=='/sign-in'){
+  sessionStorage.removeItem('sabda_checkout');
+  window.location.replace(returnTo);
+  return;
+}
+if(returnTo) sessionStorage.removeItem('sabda_checkout');
 
-      const h = new Headers(res.headers);
-      h.delete('X-Frame-Options');
-      h.delete('Content-Security-Policy');
-      h.set('Access-Control-Allow-Origin', '*');
+// Intercept sign-in clicks
+document.addEventListener('click',function(e){
+  var a=e.target.closest?e.target.closest('a'):null;
+  if(!a)return;
+  var hr=a.getAttribute('href')||a.href||'';
+  if(hr.indexOf('/sign-in')>-1||hr.indexOf('momence.com/sign-in')>-1){
+    e.preventDefault();e.stopPropagation();
+    showSabdaLogin();return;
+  }
+  if(hr.indexOf('momence.com/')>-1){
+    e.preventDefault();e.stopPropagation();
+    window.location.href=hr.replace(/https:\\/\\/momence\\.com/,'');
+  }
+},true);
+
+var _wo=window.open;
+window.open=function(u){
+  if(u&&typeof u==='string'){
+    if(u.indexOf('/sign-in')>-1||u.indexOf('momence.com/sign-in')>-1){showSabdaLogin();return window;}
+    if(u.indexOf('momence.com/')>-1){window.location.href=u.replace(/https:\\/\\/momence\\.com/,'');return window;}
+  }
+  return _wo.apply(window,arguments);
+};
+
+var _fetch=window.fetch;
+window.fetch=function(u,o){
+  if(typeof u==='string'&&u.indexOf('momence.com/')>-1) u=u.replace('https://momence.com','');
+  if(!o)o={};o.credentials='include';
+  return _fetch.call(window,u,o);
+};
+var _xo=XMLHttpRequest.prototype.open;
+XMLHttpRequest.prototype.open=function(m,u){
+  if(typeof u==='string'&&u.indexOf('momence.com/')>-1) u=u.replace('https://momence.com','');
+  this.withCredentials=true;
+  return _xo.apply(this,[m,u].concat(Array.prototype.slice.call(arguments,2)));
+};
+
+function showSabdaLogin(){
+  if(document.getElementById('sabda-login'))return;
+  var d=document.createElement('div');d.id='sabda-login';
+  d.style.cssText='position:fixed;inset:0;z-index:999999;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif';
+  d.innerHTML='<div style="background:#fff;border-radius:12px;padding:32px;width:340px;max-width:90vw;box-shadow:0 20px 60px rgba(0,0,0,.3)">'
+    +'<div style="text-align:center;margin-bottom:24px"><div style="font-size:20px;font-weight:700;color:#1a1a2e">Welcome back</div><div style="font-size:13px;color:#666;margin-top:4px">Sign in to your Momence account</div></div>'
+    +'<label style="display:block;font-size:13px;font-weight:600;color:#333;margin-bottom:4px">Email</label>'
+    +'<input id="sl-email" type="email" placeholder="your@email.com" style="width:100%;padding:10px 12px;border:1px solid #ddd;border-radius:8px;font-size:15px;margin-bottom:16px;box-sizing:border-box;outline:none" />'
+    +'<label style="display:block;font-size:13px;font-weight:600;color:#333;margin-bottom:4px">Password</label>'
+    +'<input id="sl-pass" type="password" placeholder="Password" style="width:100%;padding:10px 12px;border:1px solid #ddd;border-radius:8px;font-size:15px;margin-bottom:8px;box-sizing:border-box;outline:none" />'
+    +'<div id="sl-err" style="color:#e53e3e;font-size:12px;min-height:18px;margin-bottom:8px"></div>'
+    +'<button id="sl-btn" onclick="doSabdaLogin()" style="width:100%;padding:12px;background:#6c63ff;color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer">Log in</button>'
+    +'<div style="text-align:center;margin-top:16px"><a href="#" onclick="closeSabdaLogin();return false" style="font-size:13px;color:#666;text-decoration:none">Cancel</a></div></div>';
+  document.body.appendChild(d);
+  document.getElementById('sl-email').focus();
+  document.getElementById('sl-pass').addEventListener('keydown',function(e){if(e.key==='Enter')doSabdaLogin();});
+}
+function closeSabdaLogin(){var d=document.getElementById('sabda-login');if(d)d.remove();}
+function doSabdaLogin(){
+  var email=document.getElementById('sl-email').value.trim();
+  var pass=document.getElementById('sl-pass').value;
+  var err=document.getElementById('sl-err');
+  var btn=document.getElementById('sl-btn');
+  if(!email||!pass){err.textContent='Please enter email and password';return;}
+  err.textContent='';btn.textContent='Signing in...';btn.disabled=true;
+  // Save checkout URL BEFORE any redirect can happen
+  sessionStorage.setItem('sabda_checkout',window.location.pathname+window.location.search);
+  fetch('/_api/primary/auth/login',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    credentials:'include',
+    body:JSON.stringify({email:email,password:pass})
+  }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
+  .then(function(r){
+    if(r.ok){
+      if(r.data.id) localStorage.setItem('userId',String(r.data.id));
+      if(r.data.email) localStorage.setItem('userEmail',r.data.email);
+      if(r.data.firstName) localStorage.setItem('userFirstName',r.data.firstName);
+      closeSabdaLogin();
+      // Navigate to checkout - if Momence redirects to dashboard,
+      // our script at the top of the page will catch it and bounce back
+      var dest=sessionStorage.getItem('sabda_checkout');
+      window.location.href=dest;
+    } else {
+      err.textContent=r.data.message||r.data.error||'Invalid credentials';
+      btn.textContent='Log in';btn.disabled=false;
+    }
+  }).catch(function(){
+    err.textContent='Connection error. Please try again.';
+    btn.textContent='Log in';btn.disabled=false;
+  });
+}
+})();
+</script>`;
+
+      html = html.replace('<head>', '<head>' + inject);
       return new Response(html, { status: res.status, headers: h });
     }
 
-    // JavaScript: rewrite API base URLs in bundles
-    if (ct.includes('javascript') || path.endsWith('.js')) {
-      let js = await res.text();
-      js = js.replace(/https:\/\/momence\.com\/_api/g, '/book/_api');
-      js = js.replace(/"https:\/\/momence\.com\/sign-in/g, '"/book/sign-in');
-      js = js.replace(/"https:\/\/momence\.com\/sign-up/g, '"/book/sign-up');
-      js = js.replace(/"https:\/\/momence\.com"/g, '""');
-
-      const h = new Headers(res.headers);
-      h.set('Access-Control-Allow-Origin', '*');
-      return new Response(js, { status: res.status, headers: h });
-    }
-
-    // Everything else: pass through with CORS headers
-    const h = new Headers(res.headers);
-    h.set('Access-Control-Allow-Origin', '*');
-    h.delete('X-Frame-Options');
-    h.delete('Content-Security-Policy');
     return new Response(res.body, { status: res.status, headers: h });
   },
 };
