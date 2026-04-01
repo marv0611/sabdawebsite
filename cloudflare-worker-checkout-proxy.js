@@ -18,6 +18,14 @@ export default {
       });
     }
 
+    // ── SABDA API: server-side login + membership check ──
+    if (url.pathname === '/sabda-api/login') {
+      return handleLogin(request, reqOrigin);
+    }
+    if (url.pathname === '/sabda-api/book') {
+      return handleBook(request, reqOrigin);
+    }
+
     // ── CUSTOM SIGN-IN PAGE: intercept /sign-in and show our form ──
     if (url.pathname === '/sign-in' || url.pathname.startsWith('/sign-in')) {
       return new Response(buildSignInPage(url.search), {
@@ -272,6 +280,146 @@ XMLHttpRequest.prototype.open=function(m,u){
 };
 })();
 <\/script>`;
+
+function corsHeaders(origin) {
+  return {
+    'Access-Control-Allow-Origin': origin,
+    'Access-Control-Allow-Credentials': 'true',
+    'Content-Type': 'application/json',
+  };
+}
+
+// ── SERVER-SIDE LOGIN: login + fetch profile + check memberships ──
+async function handleLogin(request, origin) {
+  try {
+    const { email, password, sessionId } = await request.json();
+    if (!email || !password) {
+      return new Response(JSON.stringify({ error: 'Email and password required' }), {
+        status: 400, headers: corsHeaders(origin),
+      });
+    }
+
+    // Step 1: Login to Momence
+    const loginRes = await fetch(MOMENCE + '/_api/primary/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Host': 'momence.com' },
+      body: JSON.stringify({ email, password }),
+    });
+
+    if (!loginRes.ok) {
+      const err = await loginRes.json().catch(() => ({}));
+      return new Response(JSON.stringify({ error: err.message || 'Invalid credentials' }), {
+        status: 401, headers: corsHeaders(origin),
+      });
+    }
+
+    // Collect cookies from login response
+    const cookies = [];
+    for (const [k, v] of loginRes.headers) {
+      if (k.toLowerCase() === 'set-cookie') cookies.push(v.split(';')[0]);
+    }
+    const cookieStr = cookies.join('; ');
+
+    // Step 2: Fetch profile
+    const profileRes = await fetch(MOMENCE + '/_api/primary/auth/profile', {
+      headers: { 'Cookie': cookieStr, 'Host': 'momence.com' },
+    });
+    const profile = profileRes.ok ? await profileRes.json().catch(() => ({})) : {};
+
+    // Extract memberId from profile
+    let memberId = null;
+    if (profile.userRoles) {
+      const mr = profile.userRoles.find(r => r.type === 'member');
+      if (mr) memberId = mr.memberId || mr.id;
+    }
+
+    // Step 3: Check compatible memberships (if sessionId provided)
+    let memberships = [];
+    if (sessionId && memberId) {
+      try {
+        const mRes = await fetch(
+          MOMENCE + '/_api/primary/plugin/memberships/session-compatible-memberships?sessionId=' + sessionId + '&hostId=54278',
+          { headers: { 'Cookie': cookieStr, 'Host': 'momence.com' } }
+        );
+        const mData = await mRes.json().catch(() => []);
+        memberships = Array.isArray(mData) ? mData : (mData.memberships || mData.message || []);
+      } catch (e) {}
+    }
+
+    // Encode session for client to pass back on booking
+    const sessionToken = btoa(cookieStr);
+
+    return new Response(JSON.stringify({
+      user: {
+        id: profile.id,
+        email: profile.email || email,
+        firstName: profile.firstName || '',
+        lastName: profile.lastName || '',
+        memberId,
+      },
+      memberships,
+      sessionToken,
+    }), { status: 200, headers: corsHeaders(origin) });
+
+  } catch (e) {
+    return new Response(JSON.stringify({ error: 'Server error: ' + e.message }), {
+      status: 500, headers: corsHeaders(origin),
+    });
+  }
+}
+
+// ── SERVER-SIDE BOOKING: book with membership using session token ──
+async function handleBook(request, origin) {
+  try {
+    const { sessionId, sessionToken, memberId, memberMembershipId, firstName, lastName, email } = await request.json();
+
+    if (!sessionId || !sessionToken) {
+      return new Response(JSON.stringify({ error: 'Missing sessionId or sessionToken' }), {
+        status: 400, headers: corsHeaders(origin),
+      });
+    }
+
+    const cookieStr = atob(sessionToken);
+
+    const body = {
+      tickets: [{ firstName, lastName, email, isAdditionalTicket: false }],
+      totalPriceInCurrency: 0,
+      loadDate: new Date().toISOString(),
+    };
+    if (memberId) body.memberId = memberId;
+    if (memberMembershipId) body.memberMembershipId = memberMembershipId;
+
+    const bookRes = await fetch(
+      MOMENCE + '/_api/primary/plugin/sessions/' + sessionId + '/membership-pay',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Cookie': cookieStr,
+          'Host': 'momence.com',
+        },
+        body: JSON.stringify(body),
+      }
+    );
+
+    const bookData = await bookRes.json().catch(() => ({}));
+
+    if (bookRes.ok) {
+      return new Response(JSON.stringify({ success: true, data: bookData }), {
+        status: 200, headers: corsHeaders(origin),
+      });
+    } else {
+      return new Response(JSON.stringify({ error: bookData.message || bookData.error || 'Booking failed', data: bookData }), {
+        status: bookRes.status, headers: corsHeaders(origin),
+      });
+    }
+
+  } catch (e) {
+    return new Response(JSON.stringify({ error: 'Server error: ' + e.message }), {
+      status: 500, headers: corsHeaders(origin),
+    });
+  }
+}
 
 // ── CUSTOM SIGN-IN PAGE (served when /sign-in is hit on proxy) ──
 function buildSignInPage(qs) {
