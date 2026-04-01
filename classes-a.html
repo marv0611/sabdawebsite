@@ -553,6 +553,7 @@ function showConfirmStep(membership){
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-confirm-btn" onclick="doBookWithMembership()">Confirm Booking</button>'
     +'<div class="bk-link" onclick="curUser=null;curSessionToken=null;showLoginStep()">Switch account</div>'
+    +'<div class="bk-link" style="margin-top:8px" onclick="closeMo()">← Back to schedule</div>'
     +'</div>';
 }
 
@@ -590,12 +591,11 @@ function doBookWithMembership(){
   });
 }
 
-// ── STEP 3B: NO MEMBERSHIP — SHOW PAYMENT FORM ──
+// ── STEP 3B: NO MEMBERSHIP — SHOW ALL PRICING OPTIONS ──
 var stripeInstance=null, cardElement=null;
 
 function showNoMembership(){
   var bd=document.getElementById('mo-bd');
-  // Get session price
   var price=curSession.price||22;
 
   bd.innerHTML='<div class="bk-class">'
@@ -606,13 +606,54 @@ function showNoMembership(){
     +'</div></div>'
     +'<div class="bk-confirm">'
     +'<div class="bk-user">Booking as <strong>'+curUser.firstName+' '+curUser.lastName+'</strong></div>'
+    +'<p style="font-size:.85rem;color:var(--white60);text-align:center;margin-bottom:20px;line-height:1.5">Choose how you want to book this class</p>'
+    // Memberships - push these first
+    +'<div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);font-weight:600;margin-bottom:10px">Memberships</div>'
+    +'<div class="bk-pkg" onclick="showPayForm(\'membership\',130,431216,\'Immerse\',\'Unlimited classes\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
+    +'<div><div style="font-weight:600">Immerse</div><div style="font-size:.75rem;color:var(--white60)">Unlimited classes</div></div>'
+    +'<div style="font-family:PT Serif,serif;font-weight:700">€130<span style="font-size:.75rem;font-weight:400;color:var(--white60)">/mo</span></div></div>'
+    +'<div class="bk-pkg" onclick="showPayForm(\'membership\',109,447498,\'Ritual\',\'8 classes/month\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
+    +'<div><div style="font-weight:600">Ritual</div><div style="font-size:.75rem;color:var(--white60)">8 classes/month</div></div>'
+    +'<div style="font-family:PT Serif,serif;font-weight:700">€109<span style="font-size:.75rem;font-weight:400;color:var(--white60)">/mo</span></div></div>'
+    +'<div class="bk-pkg" onclick="showPayForm(\'membership\',99,447497,\'Flex\',\'4 classes/month\')" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center">'
+    +'<div><div style="font-weight:600">Flex</div><div style="font-size:.75rem;color:var(--white60)">4 classes/month</div></div>'
+    +'<div style="font-family:PT Serif,serif;font-weight:700">€99<span style="font-size:.75rem;font-weight:400;color:var(--white60)">/mo</span></div></div>'
+    // Packs
+    +'<div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--salmon);font-weight:600;margin-bottom:10px">Class Packs</div>'
+    +'<div class="bk-pkg feat" onclick="showPayForm(\'pack\',50,443935,\'Intro 3-Pack\',\'3 classes · €16.67 each\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
+    +'<div><div style="font-weight:600">Intro 3-Pack</div><div style="font-size:.75rem;color:var(--white60)">3 classes · €16.67 each</div></div>'
+    +'<div style="font-family:PT Serif,serif;font-weight:700">€50</div></div>'
+    // Single class
+    +'<div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--white38);font-weight:600;margin:16px 0 10px">Single Class</div>'
+    +'<div class="bk-pkg" onclick="showPayForm(\'single\','+price+',0,\'Single Class\',\'One class\')" style="display:flex;justify-content:space-between;align-items:center">'
+    +'<div><div style="font-weight:600">Drop-in</div><div style="font-size:.75rem;color:var(--white60)">One class, no commitment</div></div>'
+    +'<div style="font-family:PT Serif,serif;font-weight:700">€'+price+'</div></div>'
+    +'<div class="bk-link" onclick="showLoginStep()">← Back</div>'
+    +'</div>';
+}
+
+// ── STEP 3C: PAYMENT FORM (after selecting an option) ──
+function showPayForm(type,price,productId,name,desc){
+  var bd=document.getElementById('mo-bd');
+  bd.innerHTML='<div class="bk-class">'
+    +'<div class="bk-class-name">'+curSession.title+'</div>'
+    +'<div class="bk-class-meta">'
+    +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+curSession.time+'</span>'
+    +(curSession.teacher?'<span>'+curSession.teacher+'</span>':'')
+    +'</div></div>'
+    +'<div class="bk-confirm">'
+    +'<div class="bk-user">Booking as <strong>'+curUser.firstName+' '+curUser.lastName+'</strong></div>'
+    +'<div class="bk-membership">'
+    +'<div class="bk-membership-name">'+name+'</div>'
+    +'<div class="bk-membership-detail">'+desc+(type==='membership'?' · Billed monthly':'')+'</div>'
+    +'</div>'
     +'<div class="bk-pay-total">€'+price+'</div>'
-    +'<div class="bk-pay-desc">Single class</div>'
+    +'<div class="bk-pay-desc">'+(type==='membership'?'First month':'One-time payment')+'</div>'
     +'<div class="bk-label">Card Details</div>'
     +'<div class="bk-card-wrap" id="bk-card"></div>'
     +'<div class="bk-err" id="bk-err"></div>'
-    +'<button class="bk-primary" id="bk-pay-btn" onclick="doPayAndBook()">Pay €'+price+' & Book</button>'
-    +'<div class="bk-link" onclick="curUser=null;curSessionToken=null;showLoginStep()">Switch account</div>'
+    +'<button class="bk-primary" id="bk-pay-btn" onclick="doPayAndBook(\''+type+'\','+price+','+productId+')">Pay €'+price+(type==='single'?' & Book':' & Book Class')+'</button>'
+    +'<div class="bk-link" onclick="showNoMembership()">← Change plan</div>'
     +'</div>';
 
   // Initialize Stripe
@@ -629,7 +670,7 @@ function showNoMembership(){
   cardElement.mount('#bk-card');
 }
 
-function doPayAndBook(){
+function doPayAndBook(type,price,productId){
   var btn=document.getElementById('bk-pay-btn');
   var err=document.getElementById('bk-err');
   btn.textContent='Processing...';btn.disabled=true;err.textContent='';
@@ -643,7 +684,6 @@ function doPayAndBook(){
       btn.textContent='Pay & Book';btn.disabled=false;
       return;
     }
-    // Send payment method to Worker
     return fetch(PROXY+'/sabda-api/pay',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
@@ -653,14 +693,15 @@ function doPayAndBook(){
         stripePaymentMethodId:result.paymentMethod.id,
         firstName:curUser.firstName,
         lastName:curUser.lastName,
-        email:curUser.email
+        email:curUser.email,
+        type:type,
+        productId:productId
       })
     }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
     .then(function(r){
       if(r.data.success){
         showSuccess();
       } else if(r.data.clientSecret){
-        // 3D Secure required
         return stripeInstance.confirmCardPayment(r.data.clientSecret).then(function(conf){
           if(conf.error){
             err.textContent=conf.error.message;
