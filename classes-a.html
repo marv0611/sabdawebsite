@@ -307,11 +307,11 @@ function renderSched(){
 }
 
 function openMo(link,title,time,teacher){
-  document.getElementById('mo-t').textContent=title;
-  document.getElementById('mo-c').textContent=time+' · '+teacher;
-  document.getElementById('mo-bd').innerHTML='<iframe src="'+link+'" title="Book '+title+'"></iframe>';document.getElementById('mo-ext').href=link;
-  document.getElementById('mo').classList.add('open');
-  document.body.style.overflow='hidden';
+  // Open Momence checkout in centered popup window
+  var w=500,h=700;
+  var left=(screen.width-w)/2,top=(screen.height-h)/2;
+  var popup=window.open(link,'sabda_book','width='+w+',height='+h+',left='+left+',top='+top+',scrollbars=yes,resizable=yes');
+  if(!popup||popup.closed){window.location.href=link;}
 }
 function closeMo(){
   document.getElementById('mo').classList.remove('open');
