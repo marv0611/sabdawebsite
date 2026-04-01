@@ -381,9 +381,22 @@ async function handleBook(request, origin) {
 
     const cookieStr = atob(sessionToken);
 
+    // Fetch session details to get the correct price
+    let sessionPrice = 0;
+    try {
+      const sessRes = await fetch(
+        MOMENCE + '/_api/readonly/plugin/sessions/' + sessionId + '?hostId=54278',
+        { headers: { 'Host': 'momence.com' } }
+      );
+      const sessData = await sessRes.json();
+      if (sessData.message) {
+        sessionPrice = sessData.message.fixedTicketPrice || sessData.message.price || 0;
+      }
+    } catch (e) {}
+
     const body = {
       tickets: [{ firstName, lastName, email, isAdditionalTicket: false }],
-      totalPriceInCurrency: 0,
+      totalPriceInCurrency: sessionPrice,
       loadDate: new Date().toISOString(),
     };
     if (memberId) body.memberId = memberId;
