@@ -136,6 +136,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 clamp(24px,4vw,56p
 .bk-input{width:100%;padding:12px 14px;background:rgba(240,239,233,.04);border:1px solid var(--white12);border-radius:8px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;transition:border-color .25s;margin-bottom:16px;box-sizing:border-box}
 .bk-input:focus{border-color:rgba(2,243,197,.4)}
 .bk-input::placeholder{color:var(--white38)}
+.bk-input.bk-field-err{border-color:var(--salmon);background:rgba(248,166,163,.04)}
+.bk-input.bk-field-err+.bk-field-msg{display:block}
+.bk-field-msg{display:none;font-size:.7rem;color:var(--salmon);margin:-12px 0 12px;padding:0 2px}
 select.bk-input{color:var(--white);background:rgba(240,239,233,.04)}
 select.bk-input option{background:var(--navy-light);color:var(--white)}
 .bk-err{color:var(--salmon);font-size:.78rem;min-height:20px;margin-bottom:8px;text-align:center}
@@ -400,10 +403,19 @@ function openMo(link,title,time,teacher){
 function closeMo(){
   document.getElementById('mo').classList.remove('open');
   document.body.style.overflow='';
-  setTimeout(function(){document.getElementById('mo').style.display='none';},300);
+  setTimeout(function(){
+    document.getElementById('mo').style.display='none';
+    document.getElementById('mo-bd').innerHTML='';
+  },300);
+  // Reset state
+  curSession=null;curMembership=null;
+  if(cardElement){try{cardElement.destroy();}catch(e){}cardElement=null;}
 }
 document.getElementById('mo').addEventListener('click',function(e){if(e.target===this)closeMo();});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMo();});
+// Clear field error state on input
+document.addEventListener('input',function(e){if(e.target.classList)e.target.classList.remove('bk-field-err');});
+document.addEventListener('change',function(e){if(e.target.classList)e.target.classList.remove('bk-field-err');});
 
 // ── STEP 1A: LOGIN (default) ──
 function showLoginStep(){
@@ -461,11 +473,17 @@ function showGuestStep(){
 }
 
 function doLogin(){
-  var email=document.getElementById('bk-email').value.trim();
-  var pass=document.getElementById('bk-pass').value;
+  var emailEl=document.getElementById('bk-email');
+  var passEl=document.getElementById('bk-pass');
+  var email=emailEl.value.trim();
+  var pass=passEl.value;
   var err=document.getElementById('bk-err');
   var btn=document.getElementById('bk-login-btn');
-  if(!email||!pass){err.textContent='Please enter email and password';return;}
+  var ok=true;
+  emailEl.classList.remove('bk-field-err');passEl.classList.remove('bk-field-err');
+  if(!email||!validateEmail(email)){emailEl.classList.add('bk-field-err');ok=false;}
+  if(!pass){passEl.classList.add('bk-field-err');ok=false;}
+  if(!ok){err.textContent='Please fill in the highlighted fields';return;}
   err.textContent='';btn.textContent='Signing in...';btn.disabled=true;
 
   fetch(PROXY+'/sabda-api/login',{
@@ -570,35 +588,24 @@ function doMfaVerify(){
 
 // ── GUEST CHECK ──
 function doGuestCheck(){
-  var fn=document.getElementById('bk-fn').value.trim();
-  var ln=document.getElementById('bk-ln').value.trim();
-  var email=document.getElementById('bk-email').value.trim();
+  var fnEl=document.getElementById('bk-fn');
+  var lnEl=document.getElementById('bk-ln');
+  var emailEl=document.getElementById('bk-email');
+  var fn=fnEl.value.trim();
+  var ln=lnEl.value.trim();
+  var email=emailEl.value.trim();
   var err=document.getElementById('bk-err');
   var btn=document.getElementById('bk-guest-btn');
-  if(!fn||!ln||!email){err.textContent='Please fill in all fields';return;}
+  var ok=true;
+  fnEl.classList.remove('bk-field-err');lnEl.classList.remove('bk-field-err');emailEl.classList.remove('bk-field-err');
+  if(!fn){fnEl.classList.add('bk-field-err');ok=false;}
+  if(!ln){lnEl.classList.add('bk-field-err');ok=false;}
+  if(!email||!validateEmail(email)){emailEl.classList.add('bk-field-err');ok=false;}
+  if(!ok){err.textContent='Please fill in the highlighted fields';return;}
   err.textContent='';btn.textContent='Checking...';btn.disabled=true;
 
   curUser={id:null,email:email,firstName:fn,lastName:ln,memberId:null,isGuest:true};
-
-  fetch(PROXY+'/_api/primary/plugin/sessions/'+curSession.id+'/can-be-booked',{
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    credentials:'include',
-    body:JSON.stringify({
-      tickets:[{firstName:fn,lastName:ln,email:email,isAdditionalTicket:false}],
-      totalPriceInCurrency:0,
-      loadDate:new Date().toISOString()
-    })
-  }).then(function(r){return r.json();})
-  .then(function(data){
-    if(data.canBeBooked){
-      showConfirmStep({name:'Guest Booking',detail:'No membership required'});
-    } else {
-      showNoMembership();
-    }
-  }).catch(function(){
-    showNoMembership();
-  });
+  showNoMembership();
 }
 
 // ── CUSTOMER FIELDS HTML (phone, language, city) ──
@@ -627,15 +634,29 @@ function getCustomerFields(){
   return{phoneNumber:cc+phone,customerFields:{"164360":lang,"164361":city}};
 }
 function validateCustomerFields(){
-  var cc=(document.getElementById('bk-cc')||{}).value||'';
-  var phone=(document.getElementById('bk-phone')||{}).value||'';
-  phone=phone.replace(/\s/g,'');
-  var lang=(document.getElementById('bk-lang')||{}).value||'';
-  var city=(document.getElementById('bk-city')||{}).value||'';
-  if(!cc||!phone||!lang||!city) return 'Please fill in all fields';
-  if(!cc.startsWith('+')) return 'Country code must start with +';
-  if(phone.length<6) return 'Phone number is too short';
-  return null;
+  var ok=true;
+  var fields=[
+    {id:'bk-cc',test:function(v){return v&&v.startsWith('+')&&v.length>=2;},msg:'Country code required'},
+    {id:'bk-phone',test:function(v){return v.replace(/\s/g,'').length>=6;},msg:'Phone number required'},
+    {id:'bk-lang',test:function(v){return!!v;},msg:'Please select a language'},
+    {id:'bk-city',test:function(v){return v.trim().length>0;},msg:'City is required'}
+  ];
+  fields.forEach(function(f){
+    var el=document.getElementById(f.id);
+    if(!el)return;
+    if(!f.test(el.value)){
+      el.classList.add('bk-field-err');ok=false;
+    } else {
+      el.classList.remove('bk-field-err');
+    }
+  });
+  return ok?null:'Please fill in the highlighted fields';
+}
+function clearFieldErrors(){
+  document.querySelectorAll('.bk-field-err').forEach(function(el){el.classList.remove('bk-field-err');});
+}
+function validateEmail(email){
+  return/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
 // ── STEP 3A: CONFIRM WITH MEMBERSHIP ──
@@ -754,7 +775,7 @@ function showNoMembership(){
     +'<div class="bk-pkg" onclick="showPayForm(\'single\',22,445630,\'Drop-in\',\'1 class · No commitment\')" style="display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">Drop-in</div><div style="font-size:.75rem;color:var(--white60)">One class, no commitment</div></div>'
     +'<div style="font-family:PT Serif,serif;font-weight:700">€22</div></div>'
-    +'<div class="bk-link" onclick="showLoginStep()">← Back</div>'
+    +'<div class="bk-link" onclick="closeMo()">← Back to schedule</div>'
     +'</div>';
 }
 
@@ -783,7 +804,8 @@ function showPayForm(type,price,productId,name,desc){
     +'<div class="bk-link" onclick="showNoMembership()">← Change plan</div>'
     +'</div>';
 
-  // Initialize Stripe
+  // Initialize Stripe — clean up previous card element
+  if(cardElement){try{cardElement.destroy();}catch(e){}cardElement=null;}
   if(!stripeInstance){
     stripeInstance=Stripe('pk_live_RoPa2iuvwBbqEISUd2LYTmKF',{stripeAccount:'acct_1RUWnoBf6nsynAht'});
   }
