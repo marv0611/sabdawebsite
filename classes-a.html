@@ -397,18 +397,47 @@ function closeMo(){
 document.getElementById('mo').addEventListener('click',function(e){if(e.target===this)closeMo();});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMo();});
 
-// ── STEP 1: LOGIN ──
+// ── STEP 1A: LOGIN (default) ──
 function showLoginStep(){
   var sp=curSession.spots;
   var spotsHtml=sp!==null?('<div class="bk-spots '+(sp<=5?'lo':'av')+'">'+sp+' spots left</div>'):'';
-  var bd=document.getElementById('mo-bd');
-  bd.innerHTML='<div class="bk-class">'
+  var classBlock='<div class="bk-class">'
     +'<div class="bk-class-name">'+curSession.title+'</div>'
     +'<div class="bk-class-meta">'
     +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+curSession.time+'</span>'
     +(curSession.duration?'<span>'+curSession.duration+' min</span>':'')
     +(curSession.teacher?'<span>'+curSession.teacher+'</span>':'')
-    +'</div>'+spotsHtml+'</div>'
+    +'</div>'+spotsHtml+'</div>';
+
+  var bd=document.getElementById('mo-bd');
+  bd.innerHTML=classBlock
+    +'<div class="bk-login">'
+    +'<div class="bk-label">Email</div>'
+    +'<input class="bk-input" id="bk-email" type="email" placeholder="your@email.com" />'
+    +'<div class="bk-label">Password</div>'
+    +'<input class="bk-input" id="bk-pass" type="password" placeholder="Password" />'
+    +'<div class="bk-err" id="bk-err"></div>'
+    +'<button class="bk-primary" id="bk-login-btn" onclick="doLogin()">Log in & Book</button>'
+    +'<div class="bk-link" onclick="showGuestStep()">New here? Book as guest</div>'
+    +'</div>';
+  document.getElementById('bk-email').focus();
+  document.getElementById('bk-pass').addEventListener('keydown',function(e){if(e.key==='Enter')doLogin();});
+}
+
+// ── STEP 1B: GUEST ──
+function showGuestStep(){
+  var sp=curSession.spots;
+  var spotsHtml=sp!==null?('<div class="bk-spots '+(sp<=5?'lo':'av')+'">'+sp+' spots left</div>'):'';
+  var classBlock='<div class="bk-class">'
+    +'<div class="bk-class-name">'+curSession.title+'</div>'
+    +'<div class="bk-class-meta">'
+    +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+curSession.time+'</span>'
+    +(curSession.duration?'<span>'+curSession.duration+' min</span>':'')
+    +(curSession.teacher?'<span>'+curSession.teacher+'</span>':'')
+    +'</div>'+spotsHtml+'</div>';
+
+  var bd=document.getElementById('mo-bd');
+  bd.innerHTML=classBlock
     +'<div class="bk-login">'
     +'<div class="bk-label">First Name</div>'
     +'<input class="bk-input" id="bk-fn" type="text" placeholder="First name" />'
@@ -418,13 +447,9 @@ function showLoginStep(){
     +'<input class="bk-input" id="bk-email" type="email" placeholder="your@email.com" />'
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">Continue</button>'
-    +'<div class="bk-divider">have an account?</div>'
-    +'<div class="bk-label">Password</div>'
-    +'<input class="bk-input" id="bk-pass" type="password" placeholder="Password" />'
-    +'<button class="bk-primary" id="bk-login-btn" style="background:transparent;border:1px solid var(--cyan);color:var(--cyan)" onclick="doLogin()">Log in & Book</button>'
+    +'<div class="bk-link" onclick="showLoginStep()">Have an account? Log in</div>'
     +'</div>';
   document.getElementById('bk-fn').focus();
-  document.getElementById('bk-pass').addEventListener('keydown',function(e){if(e.key==='Enter')doLogin();});
 }
 
 function doLogin(){
@@ -458,7 +483,6 @@ function doLogin(){
           lastName:profile.lastName||'',
           memberId:null
         };
-        // Extract memberId from userRoles
         if(profile.userRoles){
           var mr=profile.userRoles.find(function(r){return r.type==='member';});
           if(mr) curUser.memberId=mr.memberId||mr.id;
@@ -471,7 +495,7 @@ function doLogin(){
   });
 }
 
-// ── GUEST CHECK: verify booking eligibility without login ──
+// ── GUEST CHECK ──
 function doGuestCheck(){
   var fn=document.getElementById('bk-fn').value.trim();
   var ln=document.getElementById('bk-ln').value.trim();
@@ -483,7 +507,6 @@ function doGuestCheck(){
 
   curUser={id:null,email:email,firstName:fn,lastName:ln,memberId:null,isGuest:true};
 
-  // Check if this session can be booked
   fetch(PROXY+'/_api/primary/plugin/sessions/'+curSession.id+'/can-be-booked',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
@@ -496,10 +519,8 @@ function doGuestCheck(){
   }).then(function(r){return r.json();})
   .then(function(data){
     if(data.canBeBooked){
-      // Guest can book (maybe has a pack linked to this email)
       showConfirmStep({name:'Guest Booking',detail:'No membership required'});
     } else {
-      // Needs to purchase
       showNoMembership();
     }
   }).catch(function(){
