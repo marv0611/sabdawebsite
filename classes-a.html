@@ -309,7 +309,7 @@ function renderSched(){
 function openMo(link,title,time,teacher){
   document.getElementById('mo-t').textContent=title;
   document.getElementById('mo-c').textContent=time+' · '+teacher;
-  document.getElementById('mo-bd').innerHTML='<iframe src="'+link+'" title="Book '+title+'" sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-top-navigation"></iframe>';document.getElementById('mo-ext').href=link;
+  document.getElementById('mo-bd').innerHTML='<iframe src="'+link+'" title="Book '+title+'"></iframe>';document.getElementById('mo-ext').href=link;
   document.getElementById('mo').classList.add('open');
   document.body.style.overflow='hidden';
 }
