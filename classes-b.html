@@ -215,9 +215,9 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 <!-- MODAL -->
 <div class="mo" id="mo">
   <div class="mo-box">
-    <div class="mo-head"><div><div class="mo-t" id="mo-t">Book Class</div><div class="mo-c" id="mo-c"></div></div><button class="mo-x" onclick="closeMo()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
+    <div class="mo-head"><div><div class="mo-t" id="mo-t">Book Class</div><div class="mo-c" id="mo-c"></div></div><button id="mo-signin" style="background:none;border:1px solid rgba(2,243,197,.3);color:#02F3C5;padding:6px 14px;border-radius:4px;font-family:DM Sans,sans-serif;font-size:.72rem;font-weight:600;cursor:pointer;letter-spacing:.04em;transition:background .25s;margin-right:12px" onmouseover="this.style.background='rgba(2,243,197,.06)'" onmouseout="this.style.background='none'">Sign In</button><button class="mo-x" onclick="closeMo()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button></div>
     <div class="mo-bd" id="mo-bd"><div class="mo-ld">Loading checkout...</div></div>
-    <div id="mo-refresh" style="display:none;align-items:center;justify-content:center;gap:10px;padding:12px 24px;background:rgba(2,243,197,.08);border-top:1px solid rgba(2,243,197,.15);flex-shrink:0;cursor:pointer" onclick="moRefresh()"><span style="font-size:.82rem;font-weight:600;color:#02F3C5">Signed in? Tap here to refresh your booking</span></div><div class="mo-ft"><a id="mo-ext" href="#" target="_blank" style="display:inline-flex;align-items:center;gap:6px;font-size:.72rem;color:var(--cyan);margin-bottom:10px;justify-content:center;border-bottom:1px solid rgba(2,243,197,.3);padding-bottom:1px">Already a member? Sign in on Momence →</a><div class="mo-sec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Secure checkout via Momence</div></div>
+    <div class="mo-ft"><div class="mo-sec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Secure checkout via Momence</div></div>
   </div>
 </div>
 
@@ -323,28 +323,20 @@ function openMo(link,title,time,teacher){
   document.getElementById('mo-t').textContent=title;
   document.getElementById('mo-c').textContent=time+' \u00b7 '+teacher;
   window._moUrl=link;
-  document.getElementById('mo-bd').innerHTML='<iframe id="mo-iframe" src="'+link+'" title="Book" style="width:100%;height:100%;border:none;background:#fff"></iframe>';
-  document.getElementById('mo-ext').href=link;
-  document.getElementById('mo-refresh').style.display='none';
+  var signInUrl='https://momence.com/sign-in?redirect='+encodeURIComponent(link)+'&hostId=54278';
+  window._moSignIn=signInUrl;
+  document.getElementById('mo-bd').innerHTML='<iframe id="mo-iframe" src="'+link+'" title="Book" sandbox="allow-scripts allow-same-origin allow-forms" style="width:100%;height:100%;border:none;background:#fff"></iframe>';
+  document.getElementById('mo-signin').onclick=function(){document.getElementById('mo-iframe').src=signInUrl;};
   document.getElementById('mo').style.display='flex';
   requestAnimationFrame(function(){document.getElementById('mo').classList.add('open');});
   document.body.style.overflow='hidden';
-  // Detect when user leaves and comes back (sign-in flow)
-  document.addEventListener('visibilitychange',moVisCheck);
 }
-function moVisCheck(){
-  if(document.visibilityState==='visible'&&document.getElementById('mo').classList.contains('open')){
-    document.getElementById('mo-refresh').style.display='flex';
-  }
 }
-function moRefresh(){
-  var f=document.getElementById('mo-iframe');
-  if(f&&window._moUrl){f.src=window._moUrl;document.getElementById('mo-refresh').style.display='none';}
 }
 function closeMo(){
   document.getElementById('mo').classList.remove('open');
   document.body.style.overflow='';
-  document.removeEventListener('visibilitychange',moVisCheck);
+  
   setTimeout(function(){
     document.getElementById('mo').style.display='none';
     document.getElementById('mo-bd').innerHTML='<div class="mo-ld">Loading checkout...</div>';
