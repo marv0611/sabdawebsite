@@ -362,7 +362,7 @@ function renderSched(){
 }
 
 const PROXY='https://sabda-checkout-proxy.sabda.workers.dev';
-let curSession=null, curUser=null;
+let curSession=null, curUser=null, curMembership=null;
 
 function openMo(link,title,time,teacher){
   // Extract session ID from link
@@ -533,21 +533,31 @@ function showCheckMemberships(){
     +'<div class="bk-user">Booking as <strong>'+curUser.firstName+' '+(curUser.lastName||'')+'</strong></div>'
     +'<div class="bk-loading" id="bk-load">Checking your memberships</div>';
 
-  // Check compatible memberships
   fetch(PROXY+'/_api/primary/plugin/memberships/session-compatible-memberships?sessionId='+curSession.id+'&hostId=54278',{
     credentials:'include'
   }).then(function(r){return r.json();})
   .then(function(data){
-    // data might be an array of compatible memberships or an object
+    // Log full response for debugging
+    console.log('Compatible memberships response:', JSON.stringify(data));
     var memberships=Array.isArray(data)?data:(data.memberships||data.message||[]);
-    if(memberships.length>0){
-      showConfirmStep(memberships[0]);
+    if(Array.isArray(memberships)&&memberships.length>0){
+      var m=memberships[0];
+      // Extract memberId from membership data — try all possible fields
+      if(!curUser.memberId){
+        curUser.memberId=m.memberId||m.member_id||m.memberMembershipId||null;
+      }
+      // Also check nested objects
+      if(!curUser.memberId&&m.member){
+        curUser.memberId=m.member.id||m.member.memberId;
+      }
+      console.log('Membership object:', JSON.stringify(m));
+      console.log('curUser.memberId:', curUser.memberId);
+      showConfirmStep(m);
     } else {
-      // No compatible membership — check can-be-booked as guest purchase
       showNoMembership();
     }
-  }).catch(function(){
-    // If membership check fails, try can-be-booked directly
+  }).catch(function(e){
+    console.error('Membership check error:', e);
     showNoMembership();
   });
 }
@@ -555,9 +565,11 @@ function showCheckMemberships(){
 // ── STEP 3A: CONFIRM WITH MEMBERSHIP ──
 function showConfirmStep(membership){
   var bd=document.getElementById('mo-bd');
-  var mName=membership.name||membership.membershipName||'Membership';
-  var credits=membership.remainingCredits||membership.eventsRemaining||membership.creditsRemaining||'';
+  var mName=membership.name||membership.membershipName||membership.planName||'Membership';
+  var credits=membership.remainingCredits||membership.eventsRemaining||membership.creditsRemaining||membership.remainingEvents||'';
   var detail=credits?credits+' class'+(credits!==1?'es':'')+' remaining':'Active membership';
+  // Store membership for booking
+  curMembership=membership;
 
   bd.innerHTML='<div class="bk-class">'
     +'<div class="bk-class-name">'+curSession.title+'</div>'
@@ -572,22 +584,30 @@ function showConfirmStep(membership){
     +'<div class="bk-membership-detail">'+detail+'</div>'
     +'</div>'
     +'<div class="bk-err" id="bk-err"></div>'
-    +'<button class="bk-primary" id="bk-confirm-btn" onclick="doBookWithMembership('+JSON.stringify(membership.id||membership.membershipId||0).replace(/"/g,'&quot;')+')">Confirm Booking</button>'
+    +'<button class="bk-primary" id="bk-confirm-btn" onclick="doBookWithMembership()">Confirm Booking</button>'
     +'<div class="bk-link" onclick="curUser=null;showLoginStep()">Switch account</div>'
     +'</div>';
 }
 
-function doBookWithMembership(membershipId){
+function doBookWithMembership(){
   var btn=document.getElementById('bk-confirm-btn');
   var err=document.getElementById('bk-err');
   btn.textContent='Booking...';btn.disabled=true;err.textContent='';
 
+  var m=curMembership||{};
+  // Try every possible memberId field from the membership object
+  var mId=curUser.memberId||m.memberId||m.memberMembershipId||m.id||m.member_id;
+  var msId=m.membershipId||m.id||m.membership_id;
+
+  console.log('Booking with memberId:', mId, 'membershipId:', msId, 'full membership:', JSON.stringify(m));
+
   var body={
     tickets:[{firstName:curUser.firstName,lastName:curUser.lastName,email:curUser.email,isAdditionalTicket:false}],
     totalPriceInCurrency:0,
-    loadDate:new Date().toISOString()
+    loadDate:new Date().toISOString(),
+    memberId:mId,
+    memberMembershipId:msId
   };
-  if(membershipId) body.membershipId=membershipId;
 
   fetch(PROXY+'/_api/primary/plugin/sessions/'+curSession.id+'/membership-pay',{
     method:'POST',
@@ -596,14 +616,16 @@ function doBookWithMembership(membershipId){
     body:JSON.stringify(body)
   }).then(function(r){return r.json().then(function(d){return{ok:r.ok,status:r.status,data:d}});})
   .then(function(r){
-    if(r.ok||r.status===200||r.status===201||(r.data&&!r.data.error)){
+    console.log('Booking response:', JSON.stringify(r));
+    if(r.ok||r.status===200||r.status===201||(r.data&&r.data.payload)){
       showSuccess();
     } else {
       var msg=(r.data&&(r.data.message||r.data.error))||'Booking failed. Please try again.';
       err.textContent=msg;
       btn.textContent='Confirm Booking';btn.disabled=false;
     }
-  }).catch(function(){
+  }).catch(function(e){
+    console.error('Booking error:', e);
     err.textContent='Connection error. Please try again.';
     btn.textContent='Confirm Booking';btn.disabled=false;
   });
