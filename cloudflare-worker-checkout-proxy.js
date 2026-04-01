@@ -349,8 +349,9 @@ async function handleMfaVerify(request, origin) {
     let memberships = [];
     if (sessionId) {
       try {
+        const memberEmail = profile.email || '';
         const mRes = await fetch(
-          MOMENCE + '/_api/primary/plugin/memberships/session-compatible-memberships?sessionId=' + sessionId + '&hostId=54278',
+          MOMENCE + '/_api/primary/plugin/memberships/session-compatible-memberships?sessionId=' + sessionId + '&email=' + encodeURIComponent(memberEmail) + '&tickets=1&isGuestOnlyBooking=false',
           { headers: { 'Cookie': cookieStr, 'Host': 'momence.com' } }
         );
         const mData = await mRes.json().catch(() => []);
@@ -460,8 +461,9 @@ async function handleLogin(request, origin) {
     let memberships = [];
     if (sessionId) {
       try {
+        const memberEmail = profile.email || email;
         const mRes = await fetch(
-          MOMENCE + '/_api/primary/plugin/memberships/session-compatible-memberships?sessionId=' + sessionId + '&hostId=54278',
+          MOMENCE + '/_api/primary/plugin/memberships/session-compatible-memberships?sessionId=' + sessionId + '&email=' + encodeURIComponent(memberEmail) + '&tickets=1&isGuestOnlyBooking=false',
           { headers: { 'Cookie': cookieStr, 'Host': 'momence.com' } }
         );
         const mData = await mRes.json().catch(() => []);
