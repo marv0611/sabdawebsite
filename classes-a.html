@@ -551,7 +551,7 @@ function getCustomerFields(){
   var phone=(document.getElementById('bk-phone')||{}).value||'';
   var lang=(document.getElementById('bk-lang')||{}).value||'';
   var city=(document.getElementById('bk-city')||{}).value||'';
-  return{phoneNumber:phone,customerFields:[{id:164360,value:lang},{id:164361,value:city}]};
+  return{phoneNumber:phone,customerFields:{"164360":lang,"164361":city}};
 }
 function validateCustomerFields(){
   var phone=(document.getElementById('bk-phone')||{}).value||'';

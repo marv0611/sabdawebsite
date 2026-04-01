@@ -309,9 +309,17 @@ async function handleLogin(request, origin) {
       body: JSON.stringify({ email, password }),
     });
 
+    const loginData = await loginRes.json().catch(() => ({}));
+
     if (!loginRes.ok) {
-      const err = await loginRes.json().catch(() => ({}));
-      return new Response(JSON.stringify({ error: err.message || 'Invalid credentials' }), {
+      return new Response(JSON.stringify({ error: loginData.message || 'Invalid credentials' }), {
+        status: 401, headers: corsHeaders(origin),
+      });
+    }
+
+    // Handle MFA-enabled accounts
+    if (loginData.verificationRequired) {
+      return new Response(JSON.stringify({ error: 'This account has two-factor authentication enabled. Please use an account without 2FA, or contact the studio.' }), {
         status: 401, headers: corsHeaders(origin),
       });
     }
@@ -415,8 +423,9 @@ async function handleBook(request, origin) {
 
     const cookieStr = atob(sessionToken);
 
-    // Fetch session details to get the correct price
+    // Fetch session details to get the correct price and loadDate
     let sessionPrice = 0;
+    let loadDate = new Date().toISOString();
     try {
       const sessRes = await fetch(
         MOMENCE + '/_api/readonly/plugin/sessions/' + sessionId + '?hostId=54278',
@@ -425,13 +434,14 @@ async function handleBook(request, origin) {
       const sessData = await sessRes.json();
       if (sessData.message) {
         sessionPrice = sessData.message.fixedTicketPrice || sessData.message.price || 0;
+        if (sessData.message.loadDate) loadDate = sessData.message.loadDate;
       }
     } catch (e) {}
 
     const body = {
       tickets: [{ firstName, lastName, email, isAdditionalTicket: false }],
       totalPriceInCurrency: sessionPrice,
-      loadDate: new Date().toISOString(),
+      loadDate,
     };
     if (memberId) body.memberId = memberId;
     if (memberMembershipId) {
@@ -497,11 +507,12 @@ async function handlePay(request, origin) {
     const session = sessData.message || {};
     const price = session.fixedTicketPrice || 0;
     const stripeAcct = session.stripeConnectedAccount || '';
+    const loadDate = session.loadDate || new Date().toISOString();
 
     const body = {
       tickets: [{ firstName, lastName, email, isAdditionalTicket: false }],
       totalPriceInCurrency: price,
-      loadDate: new Date().toISOString(),
+      loadDate,
       stripePaymentMethodId,
       shouldSavePaymentMethod: false,
       boughtMembershipIds: [],
