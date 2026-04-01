@@ -310,7 +310,10 @@ function openMo(link,title,time,teacher){
   document.getElementById('mo-t').textContent=title;
   document.getElementById('mo-c').textContent=time+' \u00b7 '+teacher;
   var proxyUrl=link.replace('https://momence.com','https://sabda-checkout-proxy.sabda.workers.dev');
-  document.getElementById('mo-bd').innerHTML='<iframe id="mo-iframe" src="'+proxyUrl+'" title="Book" style="width:100%;height:100%;border:none;background:#fff"></iframe>';
+  // Open directly in iframe — proxy handles everything
+  var bd=document.getElementById('mo-bd');
+  bd.style.position='relative';
+  bd.innerHTML='<iframe id="mo-iframe" src="'+proxyUrl+'" title="Book" style="width:100%;height:100%;border:none;background:#fff" allow="payment"></iframe>';
   document.getElementById('mo').style.display='flex';
   requestAnimationFrame(function(){document.getElementById('mo').classList.add('open');});
   document.body.style.overflow='hidden';
