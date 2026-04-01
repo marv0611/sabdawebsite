@@ -103,7 +103,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 clamp(24px,4vw,56p
 .pt-foot a{color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3);padding-bottom:1px}
 
 /* MODAL */
-.mo{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);display:inline-flex;align-items:center;justify-content:center;opacity:0;transition:opacity .3s}
+.mo{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;opacity:0;transition:opacity .3s}
 .mo.open{display:flex;opacity:1}
 .mo-box{width:95vw;max-width:520px;height:90vh;max-height:750px;background:var(--navy-light);border:1px solid var(--white12);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transform:translateY(20px);transition:transform .35s var(--ease);box-shadow:0 32px 80px rgba(0,0,0,.5)}
 .mo.open .mo-box{transform:none}
