@@ -307,25 +307,15 @@ function renderSched(){
 }
 
 function openMo(link,title,time,teacher){
-  // Convert momence.com URL to proxy URL
-  var proxyUrl=link.replace('https://momence.com/','/book/');
-  // Detect if proxy is available (sabdastudio.com) or not (github.io)
-  var isProxy=window.location.hostname==='sabdastudio.com'||window.location.hostname==='www.sabdastudio.com';
-  if(isProxy){
-    // PROXY MODE: iframe modal, sign-in works inside
-    document.getElementById('mo-t').textContent=title;
-    document.getElementById('mo-c').textContent=time+' \u00b7 '+teacher;
-    document.getElementById('mo-bd').innerHTML='<iframe src="'+proxyUrl+'" title="Book" style="width:100%;height:100%;border:none;background:#fff"></iframe>';
-    document.getElementById('mo').style.display='flex';
-    requestAnimationFrame(function(){document.getElementById('mo').classList.add('open');});
-    document.body.style.overflow='hidden';
-  } else {
-    // FALLBACK: popup window for GitHub Pages testing
-    var w=480,h=Math.min(window.innerHeight-60,720);
-    var left=Math.round((screen.width-w)/2);
-    var top=Math.round((screen.height-h)/2);
-    window.open(link,'sabda_checkout','width='+w+',height='+h+',left='+left+',top='+top+',scrollbars=yes,resizable=yes,toolbar=no,menubar=no,location=no,status=no');
-  }
+  document.getElementById('mo-t').textContent=title;
+  document.getElementById('mo-c').textContent=time+' \u00b7 '+teacher;
+  // Rewrite momence.com URL to proxy
+  var proxyBase='https://sabda-checkout-proxy.sabda.workers.dev/book/';
+  var proxyUrl=link.replace('https://momence.com/',proxyBase);
+  document.getElementById('mo-bd').innerHTML='<iframe id="mo-iframe" src="'+proxyUrl+'" title="Book" style="width:100%;height:100%;border:none;background:#fff"></iframe>';
+  document.getElementById('mo').style.display='flex';
+  requestAnimationFrame(function(){document.getElementById('mo').classList.add('open');});
+  document.body.style.overflow='hidden';
 }
 function closeMo(){
   document.getElementById('mo').classList.remove('open');
