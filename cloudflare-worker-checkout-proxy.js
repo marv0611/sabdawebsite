@@ -22,6 +22,9 @@ export default {
     if (url.pathname === '/sabda-api/login') {
       return handleLogin(request, reqOrigin);
     }
+    if (url.pathname === '/sabda-api/mfa-verify') {
+      return handleMfaVerify(request, reqOrigin);
+    }
     if (url.pathname === '/sabda-api/book') {
       return handleBook(request, reqOrigin);
     }
@@ -292,6 +295,109 @@ function corsHeaders(origin) {
   };
 }
 
+// ── SERVER-SIDE MFA VERIFICATION ──
+async function handleMfaVerify(request, origin) {
+  try {
+    const { mfaToken, code, sessionId } = await request.json();
+    if (!mfaToken || !code) {
+      return new Response(JSON.stringify({ error: 'Missing code or session' }), {
+        status: 400, headers: corsHeaders(origin),
+      });
+    }
+
+    const partialCookies = atob(mfaToken);
+
+    // Verify TOTP code
+    const verifyRes = await fetch(MOMENCE + '/_api/primary/auth/mfa/totp/verify', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Cookie': partialCookies,
+        'Host': 'momence.com',
+      },
+      body: JSON.stringify({ token: code }),
+    });
+
+    const verifyData = await verifyRes.json().catch(() => ({}));
+
+    if (!verifyRes.ok || verifyData.error) {
+      return new Response(JSON.stringify({ error: verifyData.error || verifyData.message || 'Invalid code. Please try again.' }), {
+        status: 401, headers: corsHeaders(origin),
+      });
+    }
+
+    // MFA succeeded — collect all cookies (partial + new from verify)
+    const allCookies = [partialCookies];
+    for (const [k, v] of verifyRes.headers) {
+      if (k.toLowerCase() === 'set-cookie') allCookies.push(v.split(';')[0]);
+    }
+    const cookieStr = allCookies.join('; ');
+
+    // Fetch profile
+    const profileRes = await fetch(MOMENCE + '/_api/primary/auth/profile', {
+      headers: { 'Cookie': cookieStr, 'Host': 'momence.com' },
+    });
+    const profile = profileRes.ok ? await profileRes.json().catch(() => ({})) : {};
+
+    let memberId = null;
+    if (profile.userRoles) {
+      const mr = profile.userRoles.find(r => r.type === 'member');
+      if (mr) memberId = mr.memberId || mr.id;
+    }
+
+    // Check compatible memberships
+    let memberships = [];
+    if (sessionId) {
+      try {
+        const mRes = await fetch(
+          MOMENCE + '/_api/primary/plugin/memberships/session-compatible-memberships?sessionId=' + sessionId + '&hostId=54278',
+          { headers: { 'Cookie': cookieStr, 'Host': 'momence.com' } }
+        );
+        const mData = await mRes.json().catch(() => []);
+        const rawList = Array.isArray(mData) ? mData : (mData.memberships || mData.message || []);
+        memberships = rawList.filter(m => {
+          return (m.remainingCredits > 0) || (m.eventsRemaining > 0) || (m.creditsRemaining > 0)
+            || (m.remainingEvents > 0) || (m.unlimited === true)
+            || (m.type === 'subscription' && m.status === 'active');
+        });
+        if (memberships.length === 0 && rawList.length > 0) {
+          memberships = rawList.map(m => ({ ...m, _unverified: true }));
+        }
+      } catch (e) {}
+    }
+
+    const sessionToken = btoa(cookieStr);
+
+    let sessionPrice = 0;
+    if (sessionId) {
+      try {
+        const sRes = await fetch(MOMENCE + '/_api/readonly/plugin/sessions/' + sessionId + '?hostId=54278', { headers: { 'Host': 'momence.com' } });
+        const sData = await sRes.json();
+        if (sData.message) sessionPrice = sData.message.fixedTicketPrice || 0;
+      } catch(e) {}
+    }
+
+    return new Response(JSON.stringify({
+      user: {
+        id: profile.id,
+        email: profile.email,
+        firstName: profile.firstName || '',
+        lastName: profile.lastName || '',
+        memberId,
+      },
+      memberships,
+      hasUsableMembership: memberships.length > 0 && !memberships[0]._unverified,
+      sessionPrice,
+      sessionToken,
+    }), { status: 200, headers: corsHeaders(origin) });
+
+  } catch (e) {
+    return new Response(JSON.stringify({ error: 'Server error: ' + e.message }), {
+      status: 500, headers: corsHeaders(origin),
+    });
+  }
+}
+
 // ── SERVER-SIDE LOGIN: login + fetch profile + check memberships ──
 async function handleLogin(request, origin) {
   try {
@@ -319,9 +425,15 @@ async function handleLogin(request, origin) {
 
     // Handle MFA-enabled accounts
     if (loginData.verificationRequired) {
-      return new Response(JSON.stringify({ error: 'This account has two-factor authentication enabled. Please use an account without 2FA, or contact the studio.' }), {
-        status: 401, headers: corsHeaders(origin),
-      });
+      // Collect cookies from partial login — needed for MFA verification
+      const mfaCookies = [];
+      for (const [k, v] of loginRes.headers) {
+        if (k.toLowerCase() === 'set-cookie') mfaCookies.push(v.split(';')[0]);
+      }
+      return new Response(JSON.stringify({
+        mfaRequired: true,
+        mfaToken: btoa(mfaCookies.join('; ')),
+      }), { status: 200, headers: corsHeaders(origin) });
     }
 
     // Collect cookies from login response
