@@ -387,7 +387,12 @@ async function handleBook(request, origin) {
       loadDate: new Date().toISOString(),
     };
     if (memberId) body.memberId = memberId;
-    if (memberMembershipId) body.memberMembershipId = memberMembershipId;
+    if (memberMembershipId) {
+      body.memberMembershipId = memberMembershipId;
+      body.boughtMembershipIds = [memberMembershipId];
+    } else {
+      body.boughtMembershipIds = [];
+    }
 
     const bookRes = await fetch(
       MOMENCE + '/_api/primary/plugin/sessions/' + sessionId + '/membership-pay',
