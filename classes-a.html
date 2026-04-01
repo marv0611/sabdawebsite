@@ -315,16 +315,18 @@ function get7d(){
   for(let i=0;i<7;i++){const d=new Date(now);d.setDate(now.getDate()+i);days.push(d);}
   return days;
 }
+function getMadridDate(d){return d.toLocaleDateString('en-CA',{timeZone:'Europe/Madrid'});}
 
 function renderDays(){
   const c=document.getElementById('days');
   const days=get7d();
   const nm=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
   c.innerHTML=days.map((d,i)=>{
-    const ds=d.toISOString().split('T')[0];
-    return`<button class="day-btn${i===0?' active':''}" data-d="${ds}" onclick="selDay(this,'${ds}')"><span class="day-name">${i===0?'Today':nm[d.getDay()]}</span><span class="day-num">${d.getDate()}</span></button>`;
+    const ds=getMadridDate(d);
+    const madridDay=new Date(d.toLocaleString('en-US',{timeZone:'Europe/Madrid'}));
+    return`<button class="day-btn${i===0?' active':''}" data-d="${ds}" onclick="selDay(this,'${ds}')"><span class="day-name">${i===0?'Today':nm[madridDay.getDay()]}</span><span class="day-num">${madridDay.getDate()}</span></button>`;
   }).join('');
-  selDate=days[0].toISOString().split('T')[0];
+  selDate=getMadridDate(days[0]);
 }
 
 function selDay(b,ds){
