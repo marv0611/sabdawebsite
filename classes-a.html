@@ -309,9 +309,7 @@ function renderSched(){
 function openMo(link,title,time,teacher){
   document.getElementById('mo-t').textContent=title;
   document.getElementById('mo-c').textContent=time+' \u00b7 '+teacher;
-  // Rewrite momence.com URL to proxy
-  var proxyBase='https://sabda-checkout-proxy.sabda.workers.dev/book/';
-  var proxyUrl=link.replace('https://momence.com/',proxyBase);
+  var proxyUrl=link.replace('https://momence.com','https://sabda-checkout-proxy.sabda.workers.dev');
   document.getElementById('mo-bd').innerHTML='<iframe id="mo-iframe" src="'+proxyUrl+'" title="Book" style="width:100%;height:100%;border:none;background:#fff"></iframe>';
   document.getElementById('mo').style.display='flex';
   requestAnimationFrame(function(){document.getElementById('mo').classList.add('open');});
