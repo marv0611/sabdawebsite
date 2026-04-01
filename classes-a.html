@@ -410,17 +410,20 @@ function showLoginStep(){
     +(curSession.teacher?'<span>'+curSession.teacher+'</span>':'')
     +'</div>'+spotsHtml+'</div>'
     +'<div class="bk-login">'
+    +'<div class="bk-label">First Name</div>'
+    +'<input class="bk-input" id="bk-fn" type="text" placeholder="First name" />'
+    +'<div class="bk-label">Last Name</div>'
+    +'<input class="bk-input" id="bk-ln" type="text" placeholder="Last name" />'
     +'<div class="bk-label">Email</div>'
     +'<input class="bk-input" id="bk-email" type="email" placeholder="your@email.com" />'
+    +'<div class="bk-err" id="bk-err"></div>'
+    +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">Continue</button>'
+    +'<div class="bk-divider">have an account?</div>'
     +'<div class="bk-label">Password</div>'
     +'<input class="bk-input" id="bk-pass" type="password" placeholder="Password" />'
-    +'<div class="bk-err" id="bk-err"></div>'
-    +'<button class="bk-primary" id="bk-login-btn" onclick="doLogin()">Log in & Book</button>'
-    +'<div class="bk-divider">or</div>'
-    +'<a class="bk-primary" style="display:block;text-align:center;text-decoration:none;background:transparent;border:1px solid var(--white12);color:var(--white)" href="'+curSession.link+'" target="_blank">Continue on Momence</a>'
+    +'<button class="bk-primary" id="bk-login-btn" style="background:transparent;border:1px solid var(--cyan);color:var(--cyan)" onclick="doLogin()">Log in & Book</button>'
     +'</div>';
-  var em=document.getElementById('bk-email');
-  em.focus();
+  document.getElementById('bk-fn').focus();
   document.getElementById('bk-pass').addEventListener('keydown',function(e){if(e.key==='Enter')doLogin();});
 }
 
@@ -439,21 +442,68 @@ function doLogin(){
     body:JSON.stringify({email:email,password:pass})
   }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
   .then(function(r){
-    if(r.ok&&r.data){
-      curUser={
-        id:r.data.id,
-        email:r.data.email||email,
-        firstName:r.data.firstName||'',
-        lastName:r.data.lastName||''
-      };
-      showCheckMemberships();
-    } else {
+    if(!r.ok){
       err.textContent=(r.data&&(r.data.message||r.data.error))||'Invalid email or password';
       btn.textContent='Log in & Book';btn.disabled=false;
+      return;
     }
+    // Login sets cookies — now fetch profile for name + memberId
+    return fetch(PROXY+'/_api/primary/auth/profile',{credentials:'include'})
+      .then(function(pr){return pr.json();})
+      .then(function(profile){
+        curUser={
+          id:profile.id,
+          email:profile.email||email,
+          firstName:profile.firstName||'',
+          lastName:profile.lastName||'',
+          memberId:null
+        };
+        // Extract memberId from userRoles
+        if(profile.userRoles){
+          var mr=profile.userRoles.find(function(r){return r.type==='member';});
+          if(mr) curUser.memberId=mr.memberId||mr.id;
+        }
+        showCheckMemberships();
+      });
   }).catch(function(){
     err.textContent='Connection error. Please try again.';
     btn.textContent='Log in & Book';btn.disabled=false;
+  });
+}
+
+// ── GUEST CHECK: verify booking eligibility without login ──
+function doGuestCheck(){
+  var fn=document.getElementById('bk-fn').value.trim();
+  var ln=document.getElementById('bk-ln').value.trim();
+  var email=document.getElementById('bk-email').value.trim();
+  var err=document.getElementById('bk-err');
+  var btn=document.getElementById('bk-guest-btn');
+  if(!fn||!ln||!email){err.textContent='Please fill in all fields';return;}
+  err.textContent='';btn.textContent='Checking...';btn.disabled=true;
+
+  curUser={id:null,email:email,firstName:fn,lastName:ln,memberId:null,isGuest:true};
+
+  // Check if this session can be booked
+  fetch(PROXY+'/_api/primary/plugin/sessions/'+curSession.id+'/can-be-booked',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    credentials:'include',
+    body:JSON.stringify({
+      tickets:[{firstName:fn,lastName:ln,email:email,isAdditionalTicket:false}],
+      totalPriceInCurrency:0,
+      loadDate:new Date().toISOString()
+    })
+  }).then(function(r){return r.json();})
+  .then(function(data){
+    if(data.canBeBooked){
+      // Guest can book (maybe has a pack linked to this email)
+      showConfirmStep({name:'Guest Booking',detail:'No membership required'});
+    } else {
+      // Needs to purchase
+      showNoMembership();
+    }
+  }).catch(function(){
+    showNoMembership();
   });
 }
 
