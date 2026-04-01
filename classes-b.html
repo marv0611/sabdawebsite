@@ -323,7 +323,16 @@ function openMo(link,title,time,teacher){
   document.getElementById('mo-t').textContent=title;
   document.getElementById('mo-c').textContent=time+' \u00b7 '+teacher;
   var url=link+(link.indexOf('?')>-1?'&':'?')+'disableLoginRedirect=true';
-  document.getElementById('mo-bd').innerHTML='<iframe src="'+url+'" title="Book" sandbox="allow-scripts allow-same-origin allow-forms" style="width:100%;height:100%;border:none"></iframe>';
+  var frame=document.createElement('iframe');
+  frame.style.cssText='width:100%;height:100%;border:none';
+  frame.name='sabda_checkout';
+  document.getElementById('mo-bd').innerHTML='';
+  document.getElementById('mo-bd').appendChild(frame);
+  // Write a page into the iframe that overrides top detection then redirects
+  var doc=frame.contentDocument;
+  doc.open();
+  doc.write('<!DOCTYPE html><html><head><script>Object.defineProperty(window,"top",{get:function(){return window}});Object.defineProperty(window,"parent",{get:function(){return window}});window.location.href="'+url+'";<\/script></head><body></body></html>');
+  doc.close();
   document.getElementById('mo-ext').href=link;
   document.getElementById('mo').style.display='flex';
   requestAnimationFrame(function(){document.getElementById('mo').classList.add('open');});

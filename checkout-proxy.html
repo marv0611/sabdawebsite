@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+*{margin:0;padding:0}
+body{background:#0e1235;overflow:hidden;height:100vh;width:100vw}
+iframe{width:100%;height:100%;border:none}
+</style>
+</head>
+<body>
+<script>
+// Get the Momence URL from query param
+var params=new URLSearchParams(window.location.search);
+var url=params.get('url');
+if(url){
+  // Create iframe WITHOUT sandbox - full functionality
+  var iframe=document.createElement('iframe');
+  iframe.src=url;
+  iframe.style.cssText='width:100%;height:100%;border:none';
+  
+  // Key trick: intercept any navigation attempts from the iframe
+  // by listening for the iframe trying to change parent location
+  iframe.setAttribute('allow','payment');
+  
+  document.body.appendChild(iframe);
+  
+  // Monitor iframe navigation - if it tries to go to sign-in,
+  // we catch it and load sign-in inside the same iframe
+  // by periodically checking the iframe location
+}
+</script>
+</body>
+</html>

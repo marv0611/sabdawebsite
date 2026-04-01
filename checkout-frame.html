@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>*{margin:0;padding:0}body,html{width:100%;height:100%;overflow:hidden}</style>
+</head>
+<body>
+<script>
+var url = new URLSearchParams(window.location.search).get('url');
+if (url) {
+  // Navigate this page directly to the Momence URL
+  // Since this page IS the top-level document in the modal iframe,
+  // and we navigate to Momence, Momence becomes the top document
+  // of THIS browsing context. window.self === window.top within
+  // the sandboxed iframe context.
+  window.location.href = url;
+}
+</script>
+</body>
+</html>
