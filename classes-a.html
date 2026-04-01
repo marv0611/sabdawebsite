@@ -113,7 +113,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 clamp(24px,4vw,56p
 .mo-x{background:none;border:1px solid var(--white12);color:var(--white60);width:36px;height:36px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .25s,color .25s;flex-shrink:0}
 .mo-x:hover{border-color:var(--white38);color:var(--white)}
 .mo-x svg{width:14px;height:14px}
-.mo-bd{flex:1;overflow:hidden}
+.mo-bd{flex:1;overflow:hidden;position:relative}
 .mo-bd iframe{width:100%;height:100%;border:none}
 .mo-ld{display:flex;align-items:center;justify-content:center;height:100%;color:var(--white38);font-size:.85rem}
 .mo-ft{padding:14px 24px;border-top:1px solid var(--white06);text-align:center}
@@ -309,7 +309,7 @@ function renderSched(){
 function openMo(link,title,time,teacher){
   document.getElementById('mo-t').textContent=title;
   document.getElementById('mo-c').textContent=time+' \u00b7 '+teacher;
-  document.getElementById('mo-bd').innerHTML='<iframe src="'+link+'" title="Book" style="width:100%;height:100%;border:none"></iframe>';
+  document.getElementById('mo-bd').innerHTML='<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#999;font-size:14px;z-index:1">Loading Momence...</div><iframe src="'+link+'" title="Book" style="position:relative;z-index:2;width:100%;height:100%;border:none;background:#fff"></iframe>';
   document.getElementById('mo-ext').href=link;
   document.getElementById('mo').style.display='flex';
   requestAnimationFrame(function(){document.getElementById('mo').classList.add('open');});
