@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://js.stripe.com/v3/"></script>
 <style>
 :root{--navy:#0e1235;--navy-light:#131842;--salmon:#F8A6A3;--cyan:#02F3C5;--white:#f0efe9;--white60:rgba(240,239,233,.6);--white38:rgba(240,239,233,.38);--white12:rgba(240,239,233,.12);--white06:rgba(240,239,233,.06);--ease:cubic-bezier(.16,1,.3,1)}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -170,6 +171,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 clamp(24px,4vw,56p
 
 /* SUCCESS */
 .bk-success{text-align:center;padding:20px 0;animation:bkIn .4s var(--ease)}
+
+/* STRIPE CARD */
+.bk-card-wrap{background:rgba(240,239,233,.06);border:1px solid var(--white12);border-radius:8px;padding:14px;margin-bottom:16px}
+.bk-card-wrap.StripeElement--focus{border-color:rgba(2,243,197,.4)}
+.bk-card-wrap.StripeElement--invalid{border-color:var(--salmon)}
+.bk-pay-total{text-align:center;font-family:'PT Serif',serif;font-size:1.6rem;font-weight:700;margin-bottom:4px}
+.bk-pay-desc{text-align:center;font-size:.82rem;color:var(--white60);margin-bottom:20px}
 .bk-check{width:56px;height:56px;border-radius:50%;background:rgba(2,243,197,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
 .bk-check svg{width:28px;height:28px;color:var(--cyan)}
 .bk-success h3{font-family:'PT Serif',serif;font-size:1.2rem;font-weight:700;margin-bottom:8px}
@@ -476,6 +484,7 @@ function doLogin(){
       memberId:d.user.memberId
     };
     curSessionToken=d.sessionToken;
+    curSession.price=d.sessionPrice||22;
 
     if(d.hasUsableMembership&&d.memberships.length>0){
       showConfirmStep(d.memberships[0]);
@@ -581,30 +590,94 @@ function doBookWithMembership(){
   });
 }
 
-// ── STEP 3B: NO MEMBERSHIP — SHOW PACKAGES ──
+// ── STEP 3B: NO MEMBERSHIP — SHOW PAYMENT FORM ──
+var stripeInstance=null, cardElement=null;
+
 function showNoMembership(){
   var bd=document.getElementById('mo-bd');
+  // Get session price
+  var price=curSession.price||22;
+
   bd.innerHTML='<div class="bk-class">'
     +'<div class="bk-class-name">'+curSession.title+'</div>'
     +'<div class="bk-class-meta">'
     +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+curSession.time+'</span>'
     +(curSession.teacher?'<span>'+curSession.teacher+'</span>':'')
     +'</div></div>'
-    +'<div class="bk-nopkg">'
-    +'<p>You need a class pack or membership to book. Grab one below and come back to book.</p>'
-    +'<div class="bk-pkg-cards">'
-    +'<a class="bk-pkg" href="https://momence.com/m/443934" target="_blank">'
-    +'<div class="bk-pkg-label">Trial Class</div>'
-    +'<div class="bk-pkg-price">€18</div>'
-    +'<div class="bk-pkg-note">Single class</div></a>'
-    +'<a class="bk-pkg feat" href="https://momence.com/m/443935" target="_blank">'
-    +'<div class="bk-pkg-label">Intro 3-Pack</div>'
-    +'<div class="bk-pkg-price">€50</div>'
-    +'<div class="bk-pkg-note">Best value</div></a>'
-    +'</div>'
-    +'<a href="pricing.html" style="font-size:.82rem;color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3);padding-bottom:1px">See all plans →</a>'
-    +'<div class="bk-link" style="margin-top:16px" onclick="curUser=null;showLoginStep()">Try a different account</div>'
+    +'<div class="bk-confirm">'
+    +'<div class="bk-user">Booking as <strong>'+curUser.firstName+' '+curUser.lastName+'</strong></div>'
+    +'<div class="bk-pay-total">€'+price+'</div>'
+    +'<div class="bk-pay-desc">Single class</div>'
+    +'<div class="bk-label">Card Details</div>'
+    +'<div class="bk-card-wrap" id="bk-card"></div>'
+    +'<div class="bk-err" id="bk-err"></div>'
+    +'<button class="bk-primary" id="bk-pay-btn" onclick="doPayAndBook()">Pay €'+price+' & Book</button>'
+    +'<div class="bk-link" onclick="curUser=null;curSessionToken=null;showLoginStep()">Switch account</div>'
     +'</div>';
+
+  // Initialize Stripe
+  if(!stripeInstance){
+    stripeInstance=Stripe('pk_live_RoPa2iuvwBbqEISUd2LYTmKF',{stripeAccount:'acct_1RUWnoBf6nsynAht'});
+  }
+  var elements=stripeInstance.elements();
+  cardElement=elements.create('card',{
+    style:{
+      base:{color:'#f0efe9',fontSize:'16px',fontFamily:'DM Sans, sans-serif','::placeholder':{color:'rgba(240,239,233,0.38)'}},
+      invalid:{color:'#F8A6A3'}
+    }
+  });
+  cardElement.mount('#bk-card');
+}
+
+function doPayAndBook(){
+  var btn=document.getElementById('bk-pay-btn');
+  var err=document.getElementById('bk-err');
+  btn.textContent='Processing...';btn.disabled=true;err.textContent='';
+
+  stripeInstance.createPaymentMethod({type:'card',card:cardElement,billing_details:{
+    name:curUser.firstName+' '+curUser.lastName,
+    email:curUser.email
+  }}).then(function(result){
+    if(result.error){
+      err.textContent=result.error.message;
+      btn.textContent='Pay & Book';btn.disabled=false;
+      return;
+    }
+    // Send payment method to Worker
+    return fetch(PROXY+'/sabda-api/pay',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        sessionId:curSession.id,
+        sessionToken:curSessionToken,
+        stripePaymentMethodId:result.paymentMethod.id,
+        firstName:curUser.firstName,
+        lastName:curUser.lastName,
+        email:curUser.email
+      })
+    }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
+    .then(function(r){
+      if(r.data.success){
+        showSuccess();
+      } else if(r.data.clientSecret){
+        // 3D Secure required
+        return stripeInstance.confirmCardPayment(r.data.clientSecret).then(function(conf){
+          if(conf.error){
+            err.textContent=conf.error.message;
+            btn.textContent='Pay & Book';btn.disabled=false;
+          } else {
+            showSuccess();
+          }
+        });
+      } else {
+        err.textContent=r.data.error||'Payment failed. Please try again.';
+        btn.textContent='Pay & Book';btn.disabled=false;
+      }
+    });
+  }).catch(function(){
+    err.textContent='Connection error. Please try again.';
+    btn.textContent='Pay & Book';btn.disabled=false;
+  });
 }
 
 // ── STEP 4: SUCCESS ──

@@ -25,6 +25,9 @@ export default {
     if (url.pathname === '/sabda-api/book') {
       return handleBook(request, reqOrigin);
     }
+    if (url.pathname === '/sabda-api/pay') {
+      return handlePay(request, reqOrigin);
+    }
 
     // ── CUSTOM SIGN-IN PAGE: intercept /sign-in and show our form ──
     if (url.pathname === '/sign-in' || url.pathname.startsWith('/sign-in')) {
@@ -368,6 +371,16 @@ async function handleLogin(request, origin) {
     // Encode session for client to pass back on booking
     const sessionToken = btoa(cookieStr);
 
+    // Get session price for display
+    let sessionPrice = 0;
+    if (sessionId) {
+      try {
+        const sRes = await fetch(MOMENCE + '/_api/readonly/plugin/sessions/' + sessionId + '?hostId=54278', { headers: { 'Host': 'momence.com' } });
+        const sData = await sRes.json();
+        if (sData.message) sessionPrice = sData.message.fixedTicketPrice || 0;
+      } catch(e) {}
+    }
+
     return new Response(JSON.stringify({
       user: {
         id: profile.id,
@@ -378,6 +391,7 @@ async function handleLogin(request, origin) {
       },
       memberships,
       hasUsableMembership: memberships.length > 0 && !memberships[0]._unverified,
+      sessionPrice,
       sessionToken,
     }), { status: 200, headers: corsHeaders(origin) });
 
@@ -450,6 +464,79 @@ async function handleBook(request, origin) {
       return new Response(JSON.stringify({ error: bookData.message || bookData.error || 'Booking failed', data: bookData }), {
         status: bookRes.status, headers: corsHeaders(origin),
       });
+    }
+
+  } catch (e) {
+    return new Response(JSON.stringify({ error: 'Server error: ' + e.message }), {
+      status: 500, headers: corsHeaders(origin),
+    });
+  }
+}
+
+// ── SERVER-SIDE PAYMENT: pay for a class with Stripe ──
+async function handlePay(request, origin) {
+  try {
+    const { sessionId, sessionToken, stripePaymentMethodId, firstName, lastName, email } = await request.json();
+
+    if (!sessionId || !stripePaymentMethodId) {
+      return new Response(JSON.stringify({ error: 'Missing required fields' }), {
+        status: 400, headers: corsHeaders(origin),
+      });
+    }
+
+    const cookieStr = sessionToken ? atob(sessionToken) : '';
+
+    // Fetch session details for price and stripe account
+    const sessRes = await fetch(
+      MOMENCE + '/_api/readonly/plugin/sessions/' + sessionId + '?hostId=54278',
+      { headers: { 'Host': 'momence.com' } }
+    );
+    const sessData = await sessRes.json();
+    const session = sessData.message || {};
+    const price = session.fixedTicketPrice || 0;
+    const stripeAcct = session.stripeConnectedAccount || '';
+
+    const body = {
+      tickets: [{ firstName, lastName, email, isAdditionalTicket: false }],
+      totalPriceInCurrency: price,
+      loadDate: new Date().toISOString(),
+      stripePaymentMethodId,
+      shouldSavePaymentMethod: false,
+      boughtMembershipIds: [],
+    };
+    if (stripeAcct) body.stripeConnectedAccountId = stripeAcct;
+
+    const payRes = await fetch(
+      MOMENCE + '/_api/primary/plugin/sessions/' + sessionId + '/pay',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Cookie': cookieStr,
+          'Host': 'momence.com',
+        },
+        body: JSON.stringify(body),
+      }
+    );
+
+    const payData = await payRes.json().catch(() => ({}));
+
+    if (payRes.ok) {
+      // Check if 3D Secure is needed
+      if (payData.payload && payData.payload.clientSecret) {
+        return new Response(JSON.stringify({
+          clientSecret: payData.payload.clientSecret,
+          newMemberId: payData.payload.newMemberId,
+        }), { status: 200, headers: corsHeaders(origin) });
+      }
+      return new Response(JSON.stringify({ success: true, data: payData }), {
+        status: 200, headers: corsHeaders(origin),
+      });
+    } else {
+      return new Response(JSON.stringify({
+        error: payData.message || payData.error || 'Payment failed',
+        data: payData,
+      }), { status: payRes.status, headers: corsHeaders(origin) });
     }
 
   } catch (e) {
