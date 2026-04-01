@@ -335,14 +335,33 @@ async function handleLogin(request, origin) {
 
     // Step 3: Check compatible memberships (if sessionId provided)
     let memberships = [];
-    if (sessionId && memberId) {
+    if (sessionId) {
       try {
         const mRes = await fetch(
           MOMENCE + '/_api/primary/plugin/memberships/session-compatible-memberships?sessionId=' + sessionId + '&hostId=54278',
           { headers: { 'Cookie': cookieStr, 'Host': 'momence.com' } }
         );
         const mData = await mRes.json().catch(() => []);
-        memberships = Array.isArray(mData) ? mData : (mData.memberships || mData.message || []);
+        const rawList = Array.isArray(mData) ? mData : (mData.memberships || mData.message || []);
+        
+        // Filter to only memberships that actually have remaining credits
+        memberships = rawList.filter(m => {
+          // Check various fields that indicate usable credits
+          const hasCredits = (m.remainingCredits && m.remainingCredits > 0)
+            || (m.eventsRemaining && m.eventsRemaining > 0)
+            || (m.creditsRemaining && m.creditsRemaining > 0)
+            || (m.remainingEvents && m.remainingEvents > 0)
+            || (m.unlimited === true)
+            || (m.type === 'subscription' && m.status === 'active');
+          return hasCredits;
+        });
+
+        // If filtering removed everything, try the raw list but mark as unverified
+        // Some memberships may use different field names
+        if (memberships.length === 0 && rawList.length > 0) {
+          // Log the raw data so we can see the actual structure
+          memberships = rawList.map(m => ({ ...m, _unverified: true }));
+        }
       } catch (e) {}
     }
 
@@ -358,6 +377,7 @@ async function handleLogin(request, origin) {
         memberId,
       },
       memberships,
+      hasUsableMembership: memberships.length > 0 && !memberships[0]._unverified,
       sessionToken,
     }), { status: 200, headers: corsHeaders(origin) });
 

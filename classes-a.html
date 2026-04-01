@@ -477,9 +477,8 @@ function doLogin(){
     };
     curSessionToken=d.sessionToken;
 
-    var memberships=d.memberships||[];
-    if(memberships.length>0){
-      showConfirmStep(memberships[0]);
+    if(d.hasUsableMembership&&d.memberships.length>0){
+      showConfirmStep(d.memberships[0]);
     } else {
       showNoMembership();
     }
