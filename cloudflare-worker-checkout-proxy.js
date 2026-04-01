@@ -52,7 +52,8 @@ export default {
     for (const [k, v] of res.headers) {
       if (k.toLowerCase() === 'set-cookie') {
         let c = v.replace(/;\s*[Dd]omain=[^;]*/g, '');
-        if (!/SameSite/i.test(c)) c += '; SameSite=Lax; Secure';
+        c = c.replace(/;\s*[Ss]ame[Ss]ite=[^;]*/g, '');
+        c += '; SameSite=None; Secure';
         h.append('Set-Cookie', c);
         continue;
       }
