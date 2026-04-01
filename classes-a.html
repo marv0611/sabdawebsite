@@ -472,23 +472,16 @@ function doLogin(){
       btn.textContent='Log in & Book';btn.disabled=false;
       return;
     }
-    // Login sets cookies — now fetch profile for name + memberId
-    return fetch(PROXY+'/_api/primary/auth/profile',{credentials:'include'})
-      .then(function(pr){return pr.json();})
-      .then(function(profile){
-        curUser={
-          id:profile.id,
-          email:profile.email||email,
-          firstName:profile.firstName||'',
-          lastName:profile.lastName||'',
-          memberId:null
-        };
-        if(profile.userRoles){
-          var mr=profile.userRoles.find(function(r){return r.type==='member';});
-          if(mr) curUser.memberId=mr.memberId||mr.id;
-        }
-        showCheckMemberships();
-      });
+    // Use login response directly — profile fetch has CORS/cookie issues
+    var d=r.data||{};
+    curUser={
+      id:d.id||null,
+      email:d.email||email,
+      firstName:d.firstName||d.first_name||email.split('@')[0],
+      lastName:d.lastName||d.last_name||'',
+      memberId:d.memberId||null
+    };
+    showCheckMemberships();
   }).catch(function(){
     err.textContent='Connection error. Please try again.';
     btn.textContent='Log in & Book';btn.disabled=false;
