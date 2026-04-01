@@ -38,7 +38,6 @@ export default {
       return new Response('Proxy error: ' + err.message, { status: 502 });
     }
 
-    // Build headers, strip cookie domains
     const h = new Headers();
     for (const [k, v] of res.headers) {
       if (k.toLowerCase() === 'set-cookie') {
@@ -55,7 +54,6 @@ export default {
     h.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH');
     h.set('Access-Control-Allow-Headers', 'Content-Type, Authorization, x-session-v2, x-api-key, x-app, x-origin, sentry-trace, baggage, x-idempotence-key');
 
-    // Redirects: if going to /dashboard, check for saved checkout URL
     if ([301, 302, 303, 307, 308].includes(res.status)) {
       let loc = h.get('Location') || '';
       if (loc.startsWith(MOMENCE)) loc = loc.replace(MOMENCE, '');
@@ -76,20 +74,77 @@ try{
   Object.defineProperty(window,'parent',{get:function(){return window},configurable:true});
 }catch(e){}
 
-// If we just logged in and got redirected to dashboard, bounce back to checkout
-var returnTo=sessionStorage.getItem('sabda_checkout');
-if(returnTo && window.location.pathname.indexOf('/dashboard')>-1){
-  sessionStorage.removeItem('sabda_checkout');
-  window.location.replace(returnTo);
-  return;
+function isDash(p){return p&&p.indexOf('/dashboard')>-1;}
+function bounceBack(){
+  var dest=sessionStorage.getItem('sabda_checkout');
+  if(dest&&isDash(window.location.pathname)){
+    window.location.replace(dest);
+    return true;
+  }
+  return false;
 }
-// Also catch if we're on ANY non-checkout page after login
-if(returnTo && window.location.pathname.indexOf('/SABDA')===-1 && window.location.pathname!=='/sign-in'){
-  sessionStorage.removeItem('sabda_checkout');
-  window.location.replace(returnTo);
-  return;
-}
-if(returnTo) sessionStorage.removeItem('sabda_checkout');
+if(bounceBack()) return;
+
+// Block SPA navigation to /dashboard via pushState/replaceState
+var _ps=history.pushState;
+history.pushState=function(){
+  var u=arguments[2]||'';
+  if(typeof u==='string'&&isDash(u)){
+    var d=sessionStorage.getItem('sabda_checkout');
+    if(d){_ps.apply(history,[arguments[0],arguments[1],d]);return;}
+    return;
+  }
+  return _ps.apply(history,arguments);
+};
+var _rs=history.replaceState;
+history.replaceState=function(){
+  var u=arguments[2]||'';
+  if(typeof u==='string'&&isDash(u)){
+    var d=sessionStorage.getItem('sabda_checkout');
+    if(d){_rs.apply(history,[arguments[0],arguments[1],d]);return;}
+    return;
+  }
+  return _rs.apply(history,arguments);
+};
+
+// Poll URL every 200ms for 10s as safety net
+var pn=0;
+var pid=setInterval(function(){
+  pn++;
+  if(isDash(window.location.pathname)){
+    var d=sessionStorage.getItem('sabda_checkout');
+    if(d){clearInterval(pid);window.location.replace(d);return;}
+  }
+  if(pn>15&&!isDash(window.location.pathname)&&window.location.pathname.indexOf('/SABDA')>-1){
+    sessionStorage.removeItem('sabda_checkout');
+    clearInterval(pid);
+  }
+  if(pn>50) clearInterval(pid);
+},200);
+
+window.addEventListener('popstate',function(){
+  if(isDash(window.location.pathname)){bounceBack();}
+});
+
+// Intercept location.assign and location.replace for /dashboard
+try{
+  var _la=window.location.assign.bind(window.location);
+  window.location.assign=function(u){
+    if(typeof u==='string'&&isDash(u)){
+      var d=sessionStorage.getItem('sabda_checkout');
+      if(d){_la(d);return;}
+    }
+    _la(u);
+  };
+  var _lr=window.location.replace.bind(window.location);
+  window.location.replace=function(u){
+    if(typeof u==='string'&&isDash(u)){
+      var d=sessionStorage.getItem('sabda_checkout');
+      if(d){_lr(d);return;}
+    }
+    _lr(u);
+  };
+}catch(e){}
 
 // Intercept sign-in clicks
 document.addEventListener('click',function(e){
@@ -130,6 +185,9 @@ XMLHttpRequest.prototype.open=function(m,u){
 
 function showSabdaLogin(){
   if(document.getElementById('sabda-login'))return;
+  if(window.location.pathname.indexOf('/SABDA')>-1){
+    sessionStorage.setItem('sabda_checkout',window.location.pathname+window.location.search);
+  }
   var d=document.createElement('div');d.id='sabda-login';
   d.style.cssText='position:fixed;inset:0;z-index:999999;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif';
   d.innerHTML='<div style="background:#fff;border-radius:12px;padding:32px;width:340px;max-width:90vw;box-shadow:0 20px 60px rgba(0,0,0,.3)">'
@@ -153,8 +211,6 @@ function doSabdaLogin(){
   var btn=document.getElementById('sl-btn');
   if(!email||!pass){err.textContent='Please enter email and password';return;}
   err.textContent='';btn.textContent='Signing in...';btn.disabled=true;
-  // Save checkout URL BEFORE any redirect can happen
-  sessionStorage.setItem('sabda_checkout',window.location.pathname+window.location.search);
   fetch('/_api/primary/auth/login',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
@@ -167,10 +223,9 @@ function doSabdaLogin(){
       if(r.data.email) localStorage.setItem('userEmail',r.data.email);
       if(r.data.firstName) localStorage.setItem('userFirstName',r.data.firstName);
       closeSabdaLogin();
-      // Navigate to checkout - if Momence redirects to dashboard,
-      // our script at the top of the page will catch it and bounce back
       var dest=sessionStorage.getItem('sabda_checkout');
-      window.location.href=dest;
+      if(dest) window.location.replace(dest);
+      else window.location.reload();
     } else {
       err.textContent=r.data.message||r.data.error||'Invalid credentials';
       btn.textContent='Log in';btn.disabled=false;
@@ -181,7 +236,7 @@ function doSabdaLogin(){
   });
 }
 })();
-</script>`;
+<\/script>`;
 
       html = html.replace('<head>', '<head>' + inject);
       return new Response(html, { status: res.status, headers: h });
