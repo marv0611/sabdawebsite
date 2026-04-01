@@ -15,6 +15,13 @@ export default {
       });
     }
 
+    // ── CUSTOM SIGN-IN PAGE: intercept /sign-in and show our form ──
+    if (url.pathname === '/sign-in' || url.pathname.startsWith('/sign-in')) {
+      return new Response(buildSignInPage(url.search), {
+        headers: { 'Content-Type': 'text/html;charset=utf-8' },
+      });
+    }
+
     const target = MOMENCE + url.pathname + url.search;
 
     const fwd = new Headers();
@@ -65,9 +72,71 @@ export default {
 
     if (ct.includes('text/html')) {
       let html = await res.text();
+      html = html.replace('<head>', '<head>' + INJECT_SCRIPT);
+      return new Response(html, { status: res.status, headers: h });
+    }
 
-      const inject = `
+    return new Response(res.body, { status: res.status, headers: h });
+  },
+};
+
+// ── INJECTED SCRIPT for checkout pages ──
+const INJECT_SCRIPT = `
 <script>
+// Make login functions global so onclick attributes work
+window.showSabdaLogin=function(){
+  if(document.getElementById('sabda-login'))return;
+  if(window.location.pathname.indexOf('/SABDA')>-1){
+    sessionStorage.setItem('sabda_checkout',window.location.pathname+window.location.search);
+  }
+  var d=document.createElement('div');d.id='sabda-login';
+  d.style.cssText='position:fixed;inset:0;z-index:999999;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif';
+  d.innerHTML='<div style="background:#fff;border-radius:12px;padding:32px;width:340px;max-width:90vw;box-shadow:0 20px 60px rgba(0,0,0,.3)">'
+    +'<div style="text-align:center;margin-bottom:24px"><div style="font-size:20px;font-weight:700;color:#1a1a2e">Welcome back</div><div style="font-size:13px;color:#666;margin-top:4px">Sign in to your Momence account</div></div>'
+    +'<label style="display:block;font-size:13px;font-weight:600;color:#333;margin-bottom:4px">Email</label>'
+    +'<input id="sl-email" type="email" placeholder="your@email.com" style="width:100%;padding:10px 12px;border:1px solid #ddd;border-radius:8px;font-size:15px;margin-bottom:16px;box-sizing:border-box;outline:none" />'
+    +'<label style="display:block;font-size:13px;font-weight:600;color:#333;margin-bottom:4px">Password</label>'
+    +'<input id="sl-pass" type="password" placeholder="Password" style="width:100%;padding:10px 12px;border:1px solid #ddd;border-radius:8px;font-size:15px;margin-bottom:8px;box-sizing:border-box;outline:none" />'
+    +'<div id="sl-err" style="color:#e53e3e;font-size:12px;min-height:18px;margin-bottom:8px"></div>'
+    +'<button id="sl-btn" onclick="window.doSabdaLogin()" style="width:100%;padding:12px;background:#6c63ff;color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer">Log in</button>'
+    +'<div style="text-align:center;margin-top:16px"><a href="#" onclick="window.closeSabdaLogin();return false" style="font-size:13px;color:#666;text-decoration:none">Cancel</a></div></div>';
+  document.body.appendChild(d);
+  document.getElementById('sl-email').focus();
+  document.getElementById('sl-pass').addEventListener('keydown',function(e){if(e.key==='Enter')window.doSabdaLogin();});
+};
+window.closeSabdaLogin=function(){var d=document.getElementById('sabda-login');if(d)d.remove();};
+window.doSabdaLogin=function(){
+  var email=document.getElementById('sl-email').value.trim();
+  var pass=document.getElementById('sl-pass').value;
+  var err=document.getElementById('sl-err');
+  var btn=document.getElementById('sl-btn');
+  if(!email||!pass){err.textContent='Please enter email and password';return;}
+  err.textContent='';btn.textContent='Signing in...';btn.disabled=true;
+  fetch('/_api/primary/auth/login',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    credentials:'include',
+    body:JSON.stringify({email:email,password:pass})
+  }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
+  .then(function(r){
+    if(r.ok){
+      if(r.data.id) localStorage.setItem('userId',String(r.data.id));
+      if(r.data.email) localStorage.setItem('userEmail',r.data.email);
+      if(r.data.firstName) localStorage.setItem('userFirstName',r.data.firstName);
+      window.closeSabdaLogin();
+      var dest=sessionStorage.getItem('sabda_checkout');
+      if(dest) window.location.replace(dest);
+      else window.location.reload();
+    } else {
+      err.textContent=r.data.message||r.data.error||'Invalid credentials';
+      btn.textContent='Log in';btn.disabled=false;
+    }
+  }).catch(function(){
+    err.textContent='Connection error. Please try again.';
+    btn.textContent='Log in';btn.disabled=false;
+  });
+};
+
 (function(){
 try{
   Object.defineProperty(window,'top',{get:function(){return window},configurable:true});
@@ -85,7 +154,12 @@ function bounceBack(){
 }
 if(bounceBack()) return;
 
-// Block SPA navigation to /dashboard via pushState/replaceState
+// Auto-save checkout URL when on a checkout page
+if(window.location.pathname.indexOf('/SABDA')>-1){
+  sessionStorage.setItem('sabda_checkout',window.location.pathname+window.location.search);
+}
+
+// Block SPA navigation to /dashboard
 var _ps=history.pushState;
 history.pushState=function(){
   var u=arguments[2]||'';
@@ -130,46 +204,56 @@ window.addEventListener('popstate',function(){
 try{
   var _la=window.location.assign.bind(window.location);
   window.location.assign=function(u){
-    if(typeof u==='string'&&isDash(u)){
-      var d=sessionStorage.getItem('sabda_checkout');
-      if(d){_la(d);return;}
-    }
+    if(typeof u==='string'&&isDash(u)){var d=sessionStorage.getItem('sabda_checkout');if(d){_la(d);return;}}
     _la(u);
   };
   var _lr=window.location.replace.bind(window.location);
   window.location.replace=function(u){
-    if(typeof u==='string'&&isDash(u)){
-      var d=sessionStorage.getItem('sabda_checkout');
-      if(d){_lr(d);return;}
-    }
+    if(typeof u==='string'&&isDash(u)){var d=sessionStorage.getItem('sabda_checkout');if(d){_lr(d);return;}}
     _lr(u);
   };
 }catch(e){}
 
-// Intercept sign-in clicks
+// ── BROAD CLICK INTERCEPTOR: catch <a>, <button>, and any clickable with sign-in text ──
 document.addEventListener('click',function(e){
-  var a=e.target.closest?e.target.closest('a'):null;
-  if(!a)return;
-  var hr=a.getAttribute('href')||a.href||'';
-  if(hr.indexOf('/sign-in')>-1||hr.indexOf('momence.com/sign-in')>-1){
-    e.preventDefault();e.stopPropagation();
-    showSabdaLogin();return;
-  }
-  if(hr.indexOf('momence.com/')>-1){
-    e.preventDefault();e.stopPropagation();
-    window.location.href=hr.replace(/https:\\/\\/momence\\.com/,'');
+  var el=e.target;
+  // Walk up the DOM tree checking each element
+  while(el&&el!==document){
+    var hr=(el.getAttribute&&el.getAttribute('href'))||'';
+    var txt=(el.textContent||'').toLowerCase();
+    // Check href for sign-in
+    if(hr&&(hr.indexOf('/sign-in')>-1||hr.indexOf('momence.com/sign-in')>-1)){
+      e.preventDefault();e.stopPropagation();e.stopImmediatePropagation();
+      window.showSabdaLogin();return;
+    }
+    // Check href for other momence.com links
+    if(hr&&hr.indexOf('momence.com/')>-1){
+      e.preventDefault();e.stopPropagation();e.stopImmediatePropagation();
+      window.location.href=hr.replace(/https:\\/\\/momence\\.com/,'');return;
+    }
+    // Check text content for sign-in buttons/links (narrow: only small elements)
+    if(txt.length<30&&(txt.indexOf('sign in')>-1||txt.indexOf('log in')>-1||txt.indexOf('sign-in')>-1)){
+      var tag=el.tagName;
+      if(tag==='A'||tag==='BUTTON'||tag==='SPAN'||(el.getAttribute&&el.getAttribute('role')==='button')){
+        e.preventDefault();e.stopPropagation();e.stopImmediatePropagation();
+        window.showSabdaLogin();return;
+      }
+    }
+    el=el.parentElement;
   }
 },true);
 
+// ── INTERCEPT window.open for sign-in ──
 var _wo=window.open;
 window.open=function(u){
   if(u&&typeof u==='string'){
-    if(u.indexOf('/sign-in')>-1||u.indexOf('momence.com/sign-in')>-1){showSabdaLogin();return window;}
+    if(u.indexOf('/sign-in')>-1||u.indexOf('momence.com/sign-in')>-1){window.showSabdaLogin();return window;}
     if(u.indexOf('momence.com/')>-1){window.location.href=u.replace(/https:\\/\\/momence\\.com/,'');return window;}
   }
   return _wo.apply(window,arguments);
 };
 
+// ── REWRITE FETCH/XHR to stay on proxy ──
 var _fetch=window.fetch;
 window.fetch=function(u,o){
   if(typeof u==='string'&&u.indexOf('momence.com/')>-1) u=u.replace('https://momence.com','');
@@ -182,33 +266,56 @@ XMLHttpRequest.prototype.open=function(m,u){
   this.withCredentials=true;
   return _xo.apply(this,[m,u].concat(Array.prototype.slice.call(arguments,2)));
 };
+})();
+<\/script>`;
 
-function showSabdaLogin(){
-  if(document.getElementById('sabda-login'))return;
-  if(window.location.pathname.indexOf('/SABDA')>-1){
-    sessionStorage.setItem('sabda_checkout',window.location.pathname+window.location.search);
-  }
-  var d=document.createElement('div');d.id='sabda-login';
-  d.style.cssText='position:fixed;inset:0;z-index:999999;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif';
-  d.innerHTML='<div style="background:#fff;border-radius:12px;padding:32px;width:340px;max-width:90vw;box-shadow:0 20px 60px rgba(0,0,0,.3)">'
-    +'<div style="text-align:center;margin-bottom:24px"><div style="font-size:20px;font-weight:700;color:#1a1a2e">Welcome back</div><div style="font-size:13px;color:#666;margin-top:4px">Sign in to your Momence account</div></div>'
-    +'<label style="display:block;font-size:13px;font-weight:600;color:#333;margin-bottom:4px">Email</label>'
-    +'<input id="sl-email" type="email" placeholder="your@email.com" style="width:100%;padding:10px 12px;border:1px solid #ddd;border-radius:8px;font-size:15px;margin-bottom:16px;box-sizing:border-box;outline:none" />'
-    +'<label style="display:block;font-size:13px;font-weight:600;color:#333;margin-bottom:4px">Password</label>'
-    +'<input id="sl-pass" type="password" placeholder="Password" style="width:100%;padding:10px 12px;border:1px solid #ddd;border-radius:8px;font-size:15px;margin-bottom:8px;box-sizing:border-box;outline:none" />'
-    +'<div id="sl-err" style="color:#e53e3e;font-size:12px;min-height:18px;margin-bottom:8px"></div>'
-    +'<button id="sl-btn" onclick="doSabdaLogin()" style="width:100%;padding:12px;background:#6c63ff;color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer">Log in</button>'
-    +'<div style="text-align:center;margin-top:16px"><a href="#" onclick="closeSabdaLogin();return false" style="font-size:13px;color:#666;text-decoration:none">Cancel</a></div></div>';
-  document.body.appendChild(d);
-  document.getElementById('sl-email').focus();
-  document.getElementById('sl-pass').addEventListener('keydown',function(e){if(e.key==='Enter')doSabdaLogin();});
+// ── CUSTOM SIGN-IN PAGE (served when /sign-in is hit on proxy) ──
+function buildSignInPage(qs) {
+  // Extract redirect param if present
+  return `<!DOCTYPE html>
+<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sign In</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{min-height:100vh;display:flex;align-items:center;justify-content:center;background:#f5f5f5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
+.card{background:#fff;border-radius:16px;padding:40px 36px;width:380px;max-width:92vw;box-shadow:0 8px 30px rgba(0,0,0,.08)}
+.logo{text-align:center;margin-bottom:28px}
+.logo svg{width:32px;height:32px}
+h1{font-size:22px;font-weight:700;color:#1a1a2e;text-align:center;margin-bottom:6px}
+.sub{font-size:14px;color:#666;text-align:center;margin-bottom:28px}
+label{display:block;font-size:13px;font-weight:600;color:#333;margin-bottom:5px}
+input{width:100%;padding:11px 14px;border:1px solid #ddd;border-radius:8px;font-size:15px;margin-bottom:18px;outline:none;transition:border-color .2s}
+input:focus{border-color:#6c63ff}
+.err{color:#e53e3e;font-size:13px;min-height:20px;margin-bottom:10px;text-align:center}
+button{width:100%;padding:13px;background:#6c63ff;color:#fff;border:none;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;transition:background .2s}
+button:hover{background:#5a52e0}
+button:disabled{opacity:.6;cursor:default}
+.back{text-align:center;margin-top:20px}
+.back a{font-size:13px;color:#6c63ff;text-decoration:none}
+</style></head><body>
+<div class="card">
+<h1>Welcome back</h1>
+<p class="sub">Sign in to complete your booking</p>
+<label for="em">Email</label>
+<input id="em" type="email" placeholder="your@email.com" autofocus>
+<label for="pw">Password</label>
+<input id="pw" type="password" placeholder="Password">
+<div class="err" id="err"></div>
+<button id="btn" onclick="doLogin()">Log in</button>
+<div class="back"><a href="#" onclick="goBack();return false">Back to checkout</a></div>
+</div>
+<script>
+document.getElementById('pw').addEventListener('keydown',function(e){if(e.key==='Enter')doLogin();});
+function goBack(){
+  var dest=sessionStorage.getItem('sabda_checkout');
+  if(dest) window.location.replace(dest);
+  else history.back();
 }
-function closeSabdaLogin(){var d=document.getElementById('sabda-login');if(d)d.remove();}
-function doSabdaLogin(){
-  var email=document.getElementById('sl-email').value.trim();
-  var pass=document.getElementById('sl-pass').value;
-  var err=document.getElementById('sl-err');
-  var btn=document.getElementById('sl-btn');
+function doLogin(){
+  var email=document.getElementById('em').value.trim();
+  var pass=document.getElementById('pw').value;
+  var err=document.getElementById('err');
+  var btn=document.getElementById('btn');
   if(!email||!pass){err.textContent='Please enter email and password';return;}
   err.textContent='';btn.textContent='Signing in...';btn.disabled=true;
   fetch('/_api/primary/auth/login',{
@@ -219,15 +326,14 @@ function doSabdaLogin(){
   }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
   .then(function(r){
     if(r.ok){
-      if(r.data.id) localStorage.setItem('userId',String(r.data.id));
-      if(r.data.email) localStorage.setItem('userEmail',r.data.email);
-      if(r.data.firstName) localStorage.setItem('userFirstName',r.data.firstName);
-      closeSabdaLogin();
+      if(r.data.id)localStorage.setItem('userId',String(r.data.id));
+      if(r.data.email)localStorage.setItem('userEmail',r.data.email);
+      if(r.data.firstName)localStorage.setItem('userFirstName',r.data.firstName);
       var dest=sessionStorage.getItem('sabda_checkout');
-      if(dest) window.location.replace(dest);
-      else window.location.reload();
-    } else {
-      err.textContent=r.data.message||r.data.error||'Invalid credentials';
+      if(dest){window.location.replace(dest);}
+      else{window.location.replace('/');}
+    }else{
+      err.textContent=r.data.message||r.data.error||'Invalid email or password';
       btn.textContent='Log in';btn.disabled=false;
     }
   }).catch(function(){
@@ -235,13 +341,5 @@ function doSabdaLogin(){
     btn.textContent='Log in';btn.disabled=false;
   });
 }
-})();
-<\/script>`;
-
-      html = html.replace('<head>', '<head>' + inject);
-      return new Response(html, { status: res.status, headers: h });
-    }
-
-    return new Response(res.body, { status: res.status, headers: h });
-  },
-};
+</script></body></html>`;
+}

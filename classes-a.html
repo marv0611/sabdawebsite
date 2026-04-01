@@ -307,12 +307,33 @@ function renderSched(){
 }
 
 function openMo(link,title,time,teacher){
-  var proxyUrl=link.replace('https://momence.com','https://sabda-checkout-proxy.sabda.workers.dev');
+  var proxyBase='https://sabda-checkout-proxy.sabda.workers.dev';
+  var proxyUrl=link.replace('https://momence.com',proxyBase);
+  var checkoutPath=proxyUrl.replace(proxyBase,'');
   var w=480,h=Math.min(window.innerHeight-40,740);
   var left=Math.round((screen.width-w)/2);
   var top=Math.round((screen.height-h)/2);
-  var popup=window.open(proxyUrl,'sabda_checkout','width='+w+',height='+h+',left='+left+',top='+top+',scrollbars=yes,resizable=yes,toolbar=no,menubar=no,location=no,status=no');
-  if(!popup||popup.closed){window.open(proxyUrl,'_blank');}
+  var features='width='+w+',height='+h+',left='+left+',top='+top+',scrollbars=yes,resizable=yes,toolbar=no,menubar=no,location=no,status=no';
+  var popup=window.open(proxyUrl,'sabda_checkout',features);
+  if(!popup||popup.closed){popup=window.open(proxyUrl,'_blank');}
+  // Monitor popup — if it navigates to momence.com (cross-origin), redirect to proxy sign-in
+  var mid=setInterval(function(){
+    if(!popup||popup.closed){clearInterval(mid);return;}
+    try{
+      var loc=popup.location.href; // throws if cross-origin
+    }catch(e){
+      // Popup left the proxy domain (e.g. momence.com/sign-in)
+      clearInterval(mid);
+      try{
+        // Try to redirect popup back to our proxy sign-in page
+        popup.location=proxyBase+'/sign-in';
+      }catch(e2){
+        // Can't redirect — close and reopen on proxy
+        popup.close();
+        window.open(proxyBase+'/sign-in','sabda_checkout',features);
+      }
+    }
+  },300);
 }
 function closeMo(){
   document.getElementById('mo').classList.remove('open');
