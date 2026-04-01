@@ -4,10 +4,13 @@ export default {
   async fetch(request) {
     const url = new URL(request.url);
 
+    const reqOrigin = request.headers.get('Origin') || '*';
+
     if (request.method === 'OPTIONS') {
       return new Response(null, {
         headers: {
-          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Origin': reqOrigin,
+          'Access-Control-Allow-Credentials': 'true',
           'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
           'Access-Control-Allow-Headers': 'Content-Type, Authorization, x-session-v2, x-api-key, x-app, x-origin, sentry-trace, baggage, x-idempotence-key',
           'Access-Control-Max-Age': '86400',
@@ -56,7 +59,7 @@ export default {
       if (k.toLowerCase() === 'x-frame-options' || k.toLowerCase() === 'content-security-policy') continue;
       h.set(k, v);
     }
-    h.set('Access-Control-Allow-Origin', url.origin);
+    h.set('Access-Control-Allow-Origin', reqOrigin);
     h.set('Access-Control-Allow-Credentials', 'true');
     h.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH');
     h.set('Access-Control-Allow-Headers', 'Content-Type, Authorization, x-session-v2, x-api-key, x-app, x-origin, sentry-trace, baggage, x-idempotence-key');
