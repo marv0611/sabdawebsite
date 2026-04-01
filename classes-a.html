@@ -136,6 +136,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 clamp(24px,4vw,56p
 .bk-input{width:100%;padding:12px 14px;background:rgba(240,239,233,.04);border:1px solid var(--white12);border-radius:8px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;transition:border-color .25s;margin-bottom:16px;box-sizing:border-box}
 .bk-input:focus{border-color:rgba(2,243,197,.4)}
 .bk-input::placeholder{color:var(--white38)}
+select.bk-input{color:var(--white);background:rgba(240,239,233,.04)}
+select.bk-input option{background:var(--navy-light);color:var(--white)}
 .bk-err{color:var(--salmon);font-size:.78rem;min-height:20px;margin-bottom:8px;text-align:center}
 .bk-primary{width:100%;padding:14px;background:var(--cyan);color:var(--navy);border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:700;letter-spacing:.02em;cursor:pointer;transition:background .25s,transform .2s}
 .bk-primary:hover{background:#33f5d1;transform:translateY(-1px)}
@@ -532,6 +534,33 @@ function doGuestCheck(){
   });
 }
 
+// ── CUSTOMER FIELDS HTML (phone, language, city) ──
+function customerFieldsHTML(){
+  return '<div class="bk-label" style="margin-top:16px">Phone number / Número de teléfono</div>'
+    +'<input class="bk-input" id="bk-phone" type="tel" placeholder="+34..." />'
+    +'<div class="bk-label">Preferred language / Idioma preferido</div>'
+    +'<select class="bk-input" id="bk-lang" style="appearance:auto;cursor:pointer">'
+    +'<option value="">Select / Seleccionar</option>'
+    +'<option value="English">English</option>'
+    +'<option value="Castellano">Castellano</option>'
+    +'</select>'
+    +'<div class="bk-label">City of residence / Ciudad de residencia</div>'
+    +'<input class="bk-input" id="bk-city" type="text" placeholder="Barcelona" />';
+}
+function getCustomerFields(){
+  var phone=(document.getElementById('bk-phone')||{}).value||'';
+  var lang=(document.getElementById('bk-lang')||{}).value||'';
+  var city=(document.getElementById('bk-city')||{}).value||'';
+  return{phoneNumber:phone,customerFields:[{id:164360,value:lang},{id:164361,value:city}]};
+}
+function validateCustomerFields(){
+  var phone=(document.getElementById('bk-phone')||{}).value||'';
+  var lang=(document.getElementById('bk-lang')||{}).value||'';
+  var city=(document.getElementById('bk-city')||{}).value||'';
+  if(!phone||!lang||!city) return 'Please fill in phone, language, and city';
+  return null;
+}
+
 // ── STEP 3A: CONFIRM WITH MEMBERSHIP ──
 function showConfirmStep(membership){
   var bd=document.getElementById('mo-bd');
@@ -552,6 +581,7 @@ function showConfirmStep(membership){
     +'<div class="bk-membership-name">'+mName+'</div>'
     +'<div class="bk-membership-detail">'+detail+'</div>'
     +'</div>'
+    +customerFieldsHTML()
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-confirm-btn" onclick="doBookWithMembership()">Confirm Booking</button>'
     +'<div class="bk-link" onclick="curUser=null;curSessionToken=null;showLoginStep()">Switch account</div>'
@@ -562,9 +592,12 @@ function showConfirmStep(membership){
 function doBookWithMembership(){
   var btn=document.getElementById('bk-confirm-btn');
   var err=document.getElementById('bk-err');
+  var vErr=validateCustomerFields();
+  if(vErr){err.textContent=vErr;return;}
   btn.textContent='Booking...';btn.disabled=true;err.textContent='';
 
   var m=curMembership||{};
+  var cf=getCustomerFields();
 
   fetch(PROXY+'/sabda-api/book',{
     method:'POST',
@@ -576,7 +609,9 @@ function doBookWithMembership(){
       memberMembershipId:m.memberMembershipId||m.id||m.membershipId,
       firstName:curUser.firstName,
       lastName:curUser.lastName,
-      email:curUser.email
+      email:curUser.email,
+      phoneNumber:cf.phoneNumber,
+      customerFields:cf.customerFields
     })
   }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
   .then(function(r){
@@ -663,7 +698,8 @@ function showPayForm(type,price,productId,name,desc){
     +'</div>'
     +'<div class="bk-pay-total">€'+price+'</div>'
     +'<div class="bk-pay-desc">'+(type==='membership'?'First month':'One-time payment')+'</div>'
-    +'<div class="bk-label">Card Details</div>'
+    +customerFieldsHTML()
+    +'<div class="bk-label" style="margin-top:16px">Card Details</div>'
     +'<div class="bk-card-wrap" id="bk-card"></div>'
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-pay-btn" onclick="doPayAndBook(\''+type+'\','+price+','+productId+')">Pay €'+price+(type==='single'?' & Book':' & Book Class')+'</button>'
@@ -687,7 +723,11 @@ function showPayForm(type,price,productId,name,desc){
 function doPayAndBook(type,price,productId){
   var btn=document.getElementById('bk-pay-btn');
   var err=document.getElementById('bk-err');
+  var vErr=validateCustomerFields();
+  if(vErr){err.textContent=vErr;return;}
   btn.textContent='Processing...';btn.disabled=true;err.textContent='';
+
+  var cf=getCustomerFields();
 
   stripeInstance.createPaymentMethod({type:'card',card:cardElement,billing_details:{
     name:curUser.firstName+' '+curUser.lastName,
@@ -709,7 +749,9 @@ function doPayAndBook(type,price,productId){
         lastName:curUser.lastName,
         email:curUser.email,
         type:type,
-        productId:productId
+        productId:productId,
+        phoneNumber:cf.phoneNumber,
+        customerFields:cf.customerFields
       })
     }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
     .then(function(r){

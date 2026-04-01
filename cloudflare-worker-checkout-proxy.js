@@ -405,7 +405,7 @@ async function handleLogin(request, origin) {
 // ── SERVER-SIDE BOOKING: book with membership using session token ──
 async function handleBook(request, origin) {
   try {
-    const { sessionId, sessionToken, memberId, memberMembershipId, firstName, lastName, email } = await request.json();
+    const { sessionId, sessionToken, memberId, memberMembershipId, firstName, lastName, email, phoneNumber, customerFields } = await request.json();
 
     if (!sessionId || !sessionToken) {
       return new Response(JSON.stringify({ error: 'Missing sessionId or sessionToken' }), {
@@ -440,6 +440,8 @@ async function handleBook(request, origin) {
     } else {
       body.boughtMembershipIds = [];
     }
+    if (phoneNumber) body.phoneNumber = phoneNumber;
+    if (customerFields) body.customerFields = customerFields;
 
     const bookRes = await fetch(
       MOMENCE + '/_api/primary/plugin/sessions/' + sessionId + '/membership-pay',
@@ -476,7 +478,7 @@ async function handleBook(request, origin) {
 // ── SERVER-SIDE PAYMENT: pay for a class with Stripe ──
 async function handlePay(request, origin) {
   try {
-    const { sessionId, sessionToken, stripePaymentMethodId, firstName, lastName, email } = await request.json();
+    const { sessionId, sessionToken, stripePaymentMethodId, firstName, lastName, email, phoneNumber, customerFields, type, productId } = await request.json();
 
     if (!sessionId || !stripePaymentMethodId) {
       return new Response(JSON.stringify({ error: 'Missing required fields' }), {
@@ -505,6 +507,8 @@ async function handlePay(request, origin) {
       boughtMembershipIds: [],
     };
     if (stripeAcct) body.stripeConnectedAccountId = stripeAcct;
+    if (phoneNumber) body.phoneNumber = phoneNumber;
+    if (customerFields) body.customerFields = customerFields;
 
     const payRes = await fetch(
       MOMENCE + '/_api/primary/plugin/sessions/' + sessionId + '/pay',
