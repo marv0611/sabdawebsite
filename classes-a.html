@@ -607,7 +607,7 @@ function showNoMembership(){
     +'<div class="bk-confirm">'
     +'<div class="bk-user">Booking as <strong>'+curUser.firstName+' '+curUser.lastName+'</strong></div>'
     +'<p style="font-size:.85rem;color:var(--white60);text-align:center;margin-bottom:20px;line-height:1.5">Choose how you want to book this class</p>'
-    // Intro offers - push these first for new users
+    // Intro offers first
     +'<div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);font-weight:600;margin-bottom:10px">New to SABDA?</div>'
     +'<div class="bk-pkg feat" onclick="showPayForm(\'pack\',50,443935,\'Intro 3-Pack\',\'3 classes · €16.67 each · 30 days\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">Intro 3-Pack</div><div style="font-size:.75rem;color:var(--white60)">3 classes · €16.67 each</div></div>'
@@ -620,14 +620,26 @@ function showNoMembership(){
     +'<div class="bk-pkg" onclick="showPayForm(\'membership\',130,431216,\'Immerse\',\'Unlimited classes · Cancel anytime\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">Immerse</div><div style="font-size:.75rem;color:var(--white60)">Unlimited classes</div></div>'
     +'<div style="font-family:PT Serif,serif;font-weight:700">€130<span style="font-size:.75rem;font-weight:400;color:var(--white60)">/mo</span></div></div>'
+    +'<div class="bk-pkg" onclick="showPayForm(\'membership\',109,709976,\'Ritual\',\'8 classes/month · Cancel anytime\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
+    +'<div><div style="font-weight:600">Ritual</div><div style="font-size:.75rem;color:var(--white60)">8 classes/month</div></div>'
+    +'<div style="font-family:PT Serif,serif;font-weight:700">€109<span style="font-size:.75rem;font-weight:400;color:var(--white60)">/mo</span></div></div>'
+    +'<div class="bk-pkg" onclick="showPayForm(\'membership\',99,706876,\'Flex\',\'4 classes/month · Cancel anytime\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
+    +'<div><div style="font-weight:600">Flex</div><div style="font-size:.75rem;color:var(--white60)">4 classes/month</div></div>'
+    +'<div style="font-family:PT Serif,serif;font-weight:700">€99<span style="font-size:.75rem;font-weight:400;color:var(--white60)">/mo</span></div></div>'
     +'<div class="bk-pkg" onclick="showPayForm(\'membership\',330,445600,\'Immerse 3-Month\',\'Unlimited classes · 3 month commitment\')" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">Immerse 3-Month</div><div style="font-size:.75rem;color:var(--white60)">€110/mo · Unlimited classes</div></div>'
     +'<div style="font-family:PT Serif,serif;font-weight:700">€330</div></div>'
-    // Single class
-    +'<div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--white38);font-weight:600;margin:0 0 10px">Single Class</div>'
-    +'<div class="bk-pkg" onclick="showPayForm(\'single\','+price+',0,\'Single Class\',\'One class · No commitment\')" style="display:flex;justify-content:space-between;align-items:center">'
+    // Class packs
+    +'<div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--white38);font-weight:600;margin:0 0 10px">Class Packs</div>'
+    +'<div class="bk-pkg" onclick="showPayForm(\'pack\',85,443937,\'5 Pack\',\'5 classes · €17 each · 2 months\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
+    +'<div><div style="font-weight:600">5 Pack</div><div style="font-size:.75rem;color:var(--white60)">5 classes · €17 each</div></div>'
+    +'<div style="font-family:PT Serif,serif;font-weight:700">€85</div></div>'
+    +'<div class="bk-pkg" onclick="showPayForm(\'pack\',149,443939,\'10 Pack\',\'10 classes · €14.90 each · 3 months\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
+    +'<div><div style="font-weight:600">10 Pack</div><div style="font-size:.75rem;color:var(--white60)">10 classes · €14.90 each</div></div>'
+    +'<div style="font-family:PT Serif,serif;font-weight:700">€149</div></div>'
+    +'<div class="bk-pkg" onclick="showPayForm(\'single\',22,445630,\'Drop-in\',\'1 class · No commitment\')" style="display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">Drop-in</div><div style="font-size:.75rem;color:var(--white60)">One class, no commitment</div></div>'
-    +'<div style="font-family:PT Serif,serif;font-weight:700">€'+price+'</div></div>'
+    +'<div style="font-family:PT Serif,serif;font-weight:700">€22</div></div>'
     +'<div class="bk-link" onclick="showLoginStep()">← Back</div>'
     +'</div>';
 }
