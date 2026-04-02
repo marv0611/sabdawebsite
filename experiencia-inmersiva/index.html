@@ -73,12 +73,14 @@ nav.scrolled{background:rgba(14,18,53,.92);backdrop-filter:blur(18px);-webkit-ba
 footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);background:rgba(9,12,38,.6);position:relative;z-index:2}
 .ft-in{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;max-width:1140px;margin:0 auto}.ft-brand img:first-child{height:36px;width:auto;margin-bottom:16px;display:block;margin-right:auto}.ft-pillars{display:flex;gap:12px;margin-top:14px;font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--white38)}.fp-art{color:var(--salmon)}.fp-tech{color:var(--cyan)}.fp-well{color:var(--white)}.ft-symbol{width:200px!important;height:auto!important;margin-top:28px;opacity:.35;display:block;object-fit:contain;max-width:200px}.ft-col h4{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--white38);margin-bottom:18px;font-weight:600}.ft-col ul{list-style:none}.ft-col li{margin-bottom:10px}.ft-col a{font-size:.85rem;color:var(--white60);transition:color .2s}.ft-col a:hover{color:var(--white)}.ft-bot{display:flex;justify-content:space-between;align-items:center;margin-top:40px;padding-top:24px;border-top:1px solid rgba(240,239,233,.05);font-size:.72rem;color:var(--white38)}.ft-legal{display:flex;gap:20px}.ft-legal a{color:var(--white38);transition:color .2s}.ft-legal a:hover{color:var(--white)}
 .sbk{position:fixed;bottom:0;left:0;right:0;z-index:99;background:rgba(14,18,53,.95);backdrop-filter:blur(18px);border-top:1px solid rgba(240,239,233,.08);padding:12px 22px;display:none;align-items:center;justify-content:space-between;transform:translateY(100%);transition:transform .4s var(--ease-expo)}.sbk.vis{transform:none}.sbk-txt{font-size:.85rem;font-weight:500}.sbk-txt span{color:var(--cyan);font-weight:700}.sbk-btn{background:var(--cyan);color:var(--navy);padding:10px 20px;border-radius:3px;font-size:.82rem;font-weight:700;letter-spacing:.05em;white-space:nowrap}
+#globalParticles{position:fixed;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
 @media(max-width:860px){nav{padding:0 24px}.nav-links{display:none}.hero{height:400px}.hero-content{padding:0 24px 40px}.sect,.final-cta,.inquiry,footer{padding-left:24px;padding-right:24px}.sect{padding-top:72px;padding-bottom:72px}.cases{padding:60px 24px}.case-grid{grid-template-columns:1fr}.ft-in{grid-template-columns:1fr 1fr}.sbk{display:flex}.inq-row{grid-template-columns:1fr}}
 @media(max-width:520px){.hero{height:340px}.hero-content h1{font-size:2rem}.ft-in{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div class="grain"></div>
+<canvas id="globalParticles"></canvas>
 <nav id="nav">
   <a href="../SABDA_v16.html" class="nav-logo"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA"></a>
   <ul class="nav-links">
@@ -261,6 +263,34 @@ function handleSubmit(e){
   document.getElementById('inqSuccess').classList.add('show');
   return false;
 }
+(function(){
+  var canvas=document.getElementById('globalParticles');if(!canvas)return;
+  var ctx=canvas.getContext('2d'),W,H,mouseX=-9999,mouseY=-9999;
+  function resize(){W=window.innerWidth;H=window.innerHeight;canvas.width=W*devicePixelRatio;canvas.height=H*devicePixelRatio;ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0)}
+  resize();window.addEventListener('resize',resize);
+  document.addEventListener('mousemove',function(e){mouseX=e.clientX;mouseY=e.clientY});
+  var COUNT=672,t=0;
+  var particles=[];for(var i=0;i<COUNT;i++){var c=Math.random();particles.push({x:Math.random()*3000,y:Math.random(),vx:0.008+Math.random()*0.06,vy:(Math.random()-0.5)*0.003,fx:0,fy:0,size:0.3+Math.random()*1.5,glow:4+Math.random()*16,color:c<0.38?[2,243,197]:c<0.72?[248,166,163]:[32,57,153],opacity:0.025+Math.random()*0.12,phase:Math.random()*Math.PI*2,waveAmp:0.01+Math.random()*0.04,waveFreq:0.0001+Math.random()*0.0005})}
+  function draw(){t++;ctx.clearRect(0,0,W,H);
+    for(var i=0;i<particles.length;i++){var p=particles[i];p.x+=p.vx;p.y+=p.vy;
+      var waveY=p.waveAmp*Math.sin(p.phase+t*p.waveFreq),drawX=p.x+p.fx,drawY=(p.y+waveY)*H+p.fy;
+      var dx=drawX-mouseX,dy=drawY-mouseY,dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<120&&dist>0){var force=(1-dist/120)*2.5;p.fx+=(dx/dist)*force;p.fy+=(dy/dist)*force}
+      p.fx*=0.94;p.fy*=0.94;drawX=p.x+p.fx;drawY=(p.y+waveY)*H+p.fy;
+      if(p.x>W+60){p.x=-50;p.y=Math.random();p.fx=0;p.fy=0}
+      if(p.y<-0.05)p.y=1.05;if(p.y>1.05)p.y=-0.05;
+      var pulse=0.4+0.6*Math.sin(p.phase+t*0.001),op=p.opacity*pulse;if(op<0.002)continue;
+      var g=ctx.createRadialGradient(drawX,drawY,0,drawX,drawY,p.glow);
+      g.addColorStop(0,'rgba('+p.color[0]+','+p.color[1]+','+p.color[2]+','+op*0.7+')');
+      g.addColorStop(0.3,'rgba('+p.color[0]+','+p.color[1]+','+p.color[2]+','+op*0.28+')');
+      g.addColorStop(0.7,'rgba('+p.color[0]+','+p.color[1]+','+p.color[2]+','+op*0.04+')');
+      g.addColorStop(1,'rgba('+p.color[0]+','+p.color[1]+','+p.color[2]+',0)');
+      ctx.fillStyle=g;ctx.beginPath();ctx.arc(drawX,drawY,p.glow,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.arc(drawX,drawY,p.size*0.5,0,Math.PI*2);
+      ctx.fillStyle='rgba('+p.color[0]+','+p.color[1]+','+p.color[2]+','+Math.min(0.6,op*2)+')';ctx.fill()}
+    requestAnimationFrame(draw)}
+  requestAnimationFrame(draw);
+})();
 </script>
 </body>
 </html>
