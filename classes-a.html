@@ -438,6 +438,7 @@ function closeMo(){
   },300);
   // Reset state
   curSession=null;curMembership=null;isProcessing=false;
+  activePromo=null;discountedPrice=null;
   if(cardElement){try{cardElement.destroy();}catch(e){}cardElement=null;}
 }
 document.getElementById('mo').addEventListener('click',function(e){if(e.target===this)closeMo();});
@@ -775,8 +776,71 @@ function doBookWithMembership(){if(isProcessing)return;
 
 // ── STEP 3B: NO MEMBERSHIP — SHOW ALL PRICING OPTIONS ──
 var stripeInstance=null, cardElement=null;
+var activePromo=null, discountedPrice=null;
+
+function applyPromo(type,origPrice,productId){
+  var code=(document.getElementById('bk-promo')||{}).value.trim().toUpperCase();
+  var okEl=document.getElementById('bk-promo-ok');
+  var errEl=document.getElementById('bk-promo-err');
+  var btn=document.getElementById('bk-promo-btn');
+  if(!code){errEl.textContent='Enter a code';errEl.style.display='block';okEl.style.display='none';return;}
+  btn.textContent='...';btn.disabled=true;errEl.style.display='none';okEl.style.display='none';
+
+  var body={code:code,hostId:54278,price:origPrice};
+  if(type==='membership') body.membershipId=productId;
+  else body.sessionId=curSession.id;
+
+  fetch(PROXY+'/sabda-api/promo',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(body)
+  }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
+  .then(function(r){
+    btn.textContent='Apply';btn.disabled=false;
+    if(!r.ok||r.data.error){
+      errEl.textContent=r.data.error||'Invalid code';
+      errEl.style.display='block';
+      activePromo=null;discountedPrice=null;
+      return;
+    }
+    activePromo=r.data.code;
+    discountedPrice=r.data.newPrice;
+    // Update UI
+    var desc=r.data.type==='percentage'?r.data.appliedDiscount+'% off':'€'+r.data.appliedDiscount+' off';
+    okEl.innerHTML='<strong>'+activePromo+'</strong> applied — '+desc+' <span onclick="removePromo('+origPrice+')" style="cursor:pointer;text-decoration:underline;margin-left:8px">Remove</span>';
+    okEl.style.display='block';
+    document.getElementById('bk-total').innerHTML='<span style="text-decoration:line-through;color:var(--white38);font-size:1rem;margin-right:8px">€'+origPrice+'</span> €'+discountedPrice.toFixed(2);
+    // Update pay button
+    var payBtn=document.getElementById('bk-pay-btn');
+    if(payBtn){
+      if(discountedPrice===0){
+        payBtn.textContent='Book Free Class';
+      } else {
+        payBtn.textContent='Pay €'+discountedPrice.toFixed(2)+' & Book Class';
+      }
+    }
+    // Hide the promo input, show applied state
+    document.getElementById('bk-promo-fields').style.display='none';
+    document.getElementById('bk-promo-toggle').style.display='none';
+  }).catch(function(){
+    btn.textContent='Apply';btn.disabled=false;
+    errEl.textContent='Could not validate code. Try again.';errEl.style.display='block';
+  });
+}
+
+function removePromo(origPrice){
+  activePromo=null;discountedPrice=null;
+  document.getElementById('bk-promo-ok').style.display='none';
+  document.getElementById('bk-promo-toggle').style.display='block';
+  document.getElementById('bk-promo-fields').style.display='none';
+  document.getElementById('bk-promo').value='';
+  document.getElementById('bk-total').textContent='€'+origPrice;
+  var payBtn=document.getElementById('bk-pay-btn');
+  if(payBtn) payBtn.textContent='Pay €'+origPrice+' & Book Class';
+}
 
 function showNoMembership(){stepChange();
+  activePromo=null;discountedPrice=null;
   var bd=document.getElementById('mo-bd');
   var price=curSession.price||22;
 
@@ -841,8 +905,17 @@ function showPayForm(type,price,productId,name,desc){stepChange();
     +'<div class="bk-membership-name">'+name+'</div>'
     +'<div class="bk-membership-detail">'+desc+(type==='membership'&&price<200?' · Billed monthly':'')+'</div>'
     +'</div>'
-    +'<div class="bk-pay-total">€'+price+'</div>'
-    +'<div class="bk-pay-desc">'+(type==='membership'&&price<200?'First month, renews monthly':type==='membership'?'Billed once':'One-time payment')+'</div>'
+    +'<div class="bk-pay-total" id="bk-total">€'+price+'</div>'
+    +'<div class="bk-pay-desc" id="bk-pay-desc">'+(type==='membership'&&price<200?'First month, renews monthly':type==='membership'?'Billed once':'One-time payment')+'</div>'
+    +'<div id="bk-promo-wrap" style="margin-bottom:16px">'
+    +'<div class="bk-link" id="bk-promo-toggle" onclick="document.getElementById(\'bk-promo-fields\').style.display=\'flex\';this.style.display=\'none\'" style="margin:0;font-size:.8rem;text-align:left">Apply promo code →</div>'
+    +'<div id="bk-promo-fields" style="display:none;gap:8px;align-items:flex-start">'
+    +'<input class="bk-input" id="bk-promo" type="text" placeholder="Code" style="flex:1;margin-bottom:0;text-transform:uppercase" />'
+    +'<button class="bk-primary" id="bk-promo-btn" onclick="applyPromo(\''+type+'\','+price+','+productId+')" style="width:auto;padding:12px 20px;flex-shrink:0;font-size:.8rem">Apply</button>'
+    +'</div>'
+    +'<div id="bk-promo-ok" style="display:none;font-size:.78rem;color:var(--cyan);margin-top:6px"></div>'
+    +'<div id="bk-promo-err" style="display:none;font-size:.78rem;color:var(--salmon);margin-top:6px"></div>'
+    +'</div>'
     +customerFieldsHTML()
     +'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'
     +'<div id="bk-pay-divider" class="bk-divider" style="display:none">or pay with card</div>'
@@ -966,6 +1039,7 @@ function doPayAndBook(type,price,productId){if(isProcessing)return;
         email:curUser.email,
         type:type,
         productId:productId,
+        discountCode:activePromo||undefined,
         phoneNumber:cf.phoneNumber,
         customerFields:cf.customerFields
       })

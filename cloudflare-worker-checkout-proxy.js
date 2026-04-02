@@ -24,6 +24,9 @@ export default {
         status: 200, headers: corsHeaders(reqOrigin),
       });
     }
+    if (url.pathname === '/sabda-api/promo') {
+      return handlePromo(request, reqOrigin);
+    }
     if (url.pathname === '/sabda-api/login') {
       return handleLogin(request, reqOrigin);
     }
@@ -298,6 +301,62 @@ function corsHeaders(origin) {
     'Access-Control-Allow-Credentials': 'true',
     'Content-Type': 'application/json',
   };
+}
+
+// ── SERVER-SIDE PROMO CODE VALIDATION ──
+async function handlePromo(request, origin) {
+  try {
+    const { code, sessionId, membershipId, price, hostId } = await request.json();
+    if (!code) {
+      return new Response(JSON.stringify({ error: 'No code provided' }), {
+        status: 400, headers: corsHeaders(origin),
+      });
+    }
+
+    const body = {
+      accessCode: code,
+      hostId: hostId || 54278,
+      price: Math.round((price || 0) * 100),
+      numberOfTickets: 1,
+    };
+    if (sessionId) body.sessionId = Number(sessionId);
+    if (membershipId) body.membershipId = Number(membershipId);
+
+    const res = await fetch(MOMENCE + '/_api/primary/plugin/CheckAccessCode', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Host': 'momence.com' },
+      body: JSON.stringify(body),
+    });
+
+    const data = await res.json().catch(() => ({}));
+
+    if (data.status === 'error') {
+      return new Response(JSON.stringify({ error: data.message || 'Invalid promo code' }), {
+        status: 400, headers: corsHeaders(origin),
+      });
+    }
+
+    if (data.status === 'success' && data.message) {
+      const m = data.message;
+      return new Response(JSON.stringify({
+        valid: true,
+        code: m.usedCode,
+        discountCodeId: m.discountCodeId,
+        type: m.type,
+        appliedDiscount: m.appliedDiscount,
+        newPrice: m.priceInCurrency / 100,
+        renewalsValid: m.numberOfRenewalsDiscountIsValidFor,
+      }), { status: 200, headers: corsHeaders(origin) });
+    }
+
+    return new Response(JSON.stringify({ error: 'Invalid promo code' }), {
+      status: 400, headers: corsHeaders(origin),
+    });
+  } catch (e) {
+    return new Response(JSON.stringify({ error: 'Server error: ' + e.message }), {
+      status: 500, headers: corsHeaders(origin),
+    });
+  }
 }
 
 // ── SERVER-SIDE MFA VERIFICATION ──
@@ -607,7 +666,7 @@ async function handleBook(request, origin) {
 // ── SERVER-SIDE PAYMENT: pay for a class with Stripe ──
 async function handlePay(request, origin) {
   try {
-    const { sessionId, sessionToken, stripePaymentMethodId, firstName, lastName, email, phoneNumber, customerFields, type, productId } = await request.json();
+    const { sessionId, sessionToken, stripePaymentMethodId, firstName, lastName, email, phoneNumber, customerFields, type, productId, discountCode } = await request.json();
 
     if (!sessionId || !stripePaymentMethodId) {
       return new Response(JSON.stringify({ error: 'Missing required fields' }), {
@@ -655,6 +714,7 @@ async function handlePay(request, origin) {
     if (stripeAcct) body.stripeConnectedAccountId = stripeAcct;
     if (phoneNumber) body.phoneNumber = phoneNumber;
     if (customerFields) body.customerFields = customerFields;
+    if (discountCode) body.discountCode = discountCode;
 
     const payRes = await fetch(
       MOMENCE + '/_api/primary/plugin/sessions/' + sessionId + '/pay',
