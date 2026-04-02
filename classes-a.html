@@ -844,7 +844,9 @@ function showPayForm(type,price,productId,name,desc){stepChange();
     +'<div class="bk-pay-total">€'+price+'</div>'
     +'<div class="bk-pay-desc">'+(type==='membership'&&price<200?'First month, renews monthly':type==='membership'?'Billed once':'One-time payment')+'</div>'
     +customerFieldsHTML()
-    +'<div class="bk-label" style="margin-top:16px">Card Details</div>'
+    +'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'
+    +'<div id="bk-pay-divider" class="bk-divider" style="display:none">or pay with card</div>'
+    +'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Card Details</div>'
     +'<div class="bk-card-wrap" id="bk-card"></div>'
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-pay-btn" onclick="doPayAndBook(\''+type+'\','+price+','+productId+')">Pay €'+price+(type==='single'?' & Book':' & Book Class')+'</button>'
@@ -860,6 +862,69 @@ function showPayForm(type,price,productId,name,desc){stepChange();
   if(!stripeInstance){
     stripeInstance=Stripe('pk_live_RoPa2iuvwBbqEISUd2LYTmKF',{stripeAccount:'acct_1RUWnoBf6nsynAht'});
   }
+
+  // Apple Pay / Google Pay via Payment Request API
+  try{
+    var payReq=stripeInstance.paymentRequest({
+      country:'ES',
+      currency:'eur',
+      total:{label:'SABDA Studio — '+name,amount:Math.round(price*100)},
+      requestPayerName:true,
+      requestPayerEmail:true
+    });
+    var prButton=stripeInstance.elements().create('paymentRequestButton',{
+      paymentRequest:payReq,
+      style:{paymentRequestButton:{type:'default',theme:'light-outline',height:'48px'}}
+    });
+    payReq.canMakePayment().then(function(result){
+      if(result){
+        document.getElementById('bk-pay-request').style.display='block';
+        document.getElementById('bk-pay-divider').style.display='flex';
+        prButton.mount('#bk-pay-request');
+      }
+    });
+    payReq.on('paymentmethod',function(ev){
+      // Validate customer fields first
+      var vErr=validateCustomerFields();
+      if(vErr){ev.complete('fail');return;}
+      isProcessing=true;
+      var cf=getCustomerFields();
+      fetch(PROXY+'/sabda-api/pay',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+          sessionId:curSession.id,
+          sessionToken:curSessionToken,
+          stripePaymentMethodId:ev.paymentMethod.id,
+          firstName:curUser.firstName,
+          lastName:curUser.lastName,
+          email:curUser.email,
+          type:type,
+          productId:productId,
+          phoneNumber:cf.phoneNumber,
+          customerFields:cf.customerFields
+        })
+      }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
+      .then(function(r){
+        if(r.data.success){
+          ev.complete('success');
+          showSuccess();
+        } else if(r.data.clientSecret){
+          stripeInstance.confirmCardPayment(r.data.clientSecret).then(function(conf){
+            if(conf.error){ev.complete('fail');isProcessing=false;}
+            else{ev.complete('success');showSuccess();}
+          });
+        } else {
+          ev.complete('fail');
+          var errEl=document.getElementById('bk-err');
+          if(errEl) errEl.textContent=r.data.error||'Payment failed.';
+          showFallback();
+          isProcessing=false;
+        }
+      }).catch(function(){ev.complete('fail');isProcessing=false;});
+    });
+  }catch(e){}
+
   var elements=stripeInstance.elements();
   cardElement=elements.create('card',{
     style:{
