@@ -581,6 +581,7 @@ var curMfaToken=null;
 var stripeInstance=null, cardElement=null;
 var activePromo=null, discountedPrice=null;
 var activePayReq=null, activePayName=null;
+var pendingPack=null;
 
 // ── Utilities ──
 function clean(t){return t.replace(/\s*\[.*?\]\s*/,'').trim();}
@@ -782,7 +783,7 @@ function openMo(sessionId){
 
   document.getElementById('mo-t').textContent=curSession.title;
   document.getElementById('mo-c').textContent=time+(teacher?' \u00B7 '+teacher:'');
-  showGuestStep();
+  showNoMembership();
   document.getElementById('mo').classList.add('open');
   document.getElementById('mo').style.display='flex';
   document.body.style.overflow='hidden';
@@ -799,6 +800,7 @@ function closeMo(){
   curSession=null;curMembership=null;isProcessing=false;
   activePromo=null;discountedPrice=null;
   activePayReq=null;activePayName=null;
+  pendingPack=null;
 
   if(cardElement){try{cardElement.destroy();}catch(e){}cardElement=null;}
 }
@@ -842,8 +844,10 @@ function showLoginStep(){stepChange();
 // ── STEP 1B: GUEST ──
 function showGuestStep(){stepChange();
   var bd=document.getElementById('mo-bd');
+  var packNote=pendingPack?'<div style="background:rgba(2,243,197,.05);border:1px solid rgba(2,243,197,.12);border-radius:8px;padding:12px 16px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center"><div style="font-size:.82rem;color:var(--white60)">'+esc(pendingPack.name)+'</div><div style="font-family:PT Serif,serif;font-weight:700;color:var(--cyan)">\u20AC'+pendingPack.price+'</div></div>':'';
   bd.innerHTML=classBlockHtml()
     +'<div class="bk-login">'
+    +packNote
     +'<div class="bk-label">First Name</div>'
     +'<input class="bk-input" id="bk-fn" type="text" placeholder="First name" />'
     +'<div class="bk-label">Last Name</div>'
@@ -853,6 +857,7 @@ function showGuestStep(){stepChange();
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">Continue</button>'
     +'<div class="bk-link" onclick="showLoginStep()">Have an account? Log in</div>'
+    +'<div class="bk-link" onclick="pendingPack=null;showNoMembership()">\u2190 Change selection</div>'
     +'</div>';
   document.getElementById('bk-fn').focus();
 }
@@ -1103,44 +1108,54 @@ window.doBookWithMembership=function(){if(isProcessing)return;
 // ── STEP 3B: NO MEMBERSHIP — PRICING ──
 function showNoMembership(){stepChange();
   activePromo=null;discountedPrice=null;
+  // If user already picked a pack and just finished login/guest → go straight to payment
+  if(pendingPack&&curUser){var p=pendingPack;pendingPack=null;showPayForm(p.type,p.price,p.id,p.name,p.desc);return;}
   var bd=document.getElementById('mo-bd');
+  var userLine=curUser?'<div class="bk-user">Booking as <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>':'';
 
   bd.innerHTML=classBlockHtml()
     +'<div class="bk-confirm">'
-    +'<div class="bk-user">Booking as <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>'
+    +userLine
     +'<p style="font-size:.85rem;color:var(--white60);text-align:center;margin-bottom:20px;line-height:1.5">Choose how you want to book this class</p>'
     +'<div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);font-weight:600;margin-bottom:10px">New to SABDA?</div>'
-    +'<div class="bk-pkg feat" onclick="showPayForm(\'pack\',50,443935,\'Intro 3-Pack\',\'3 classes \u00B7 \u20AC16.67 each \u00B7 30 days\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
+    +'<div class="bk-pkg feat" onclick="selectPack(\'pack\',50,443935,\'Intro 3-Pack\',\'3 classes \u00B7 \u20AC16.67 each \u00B7 30 days\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">Intro 3-Pack</div><div style="font-size:.75rem;color:var(--white60)">3 classes \u00B7 \u20AC16.67 each</div></div>'
     +'<div style="font-family:PT Serif,serif;font-weight:700">\u20AC50</div></div>'
-    +'<div class="bk-pkg" onclick="showPayForm(\'pack\',18,443934,\'Trial Class\',\'1 class \u00B7 First-timers only\')" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center">'
+    +'<div class="bk-pkg" onclick="selectPack(\'pack\',18,443934,\'Trial Class\',\'1 class \u00B7 First-timers only\')" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">Trial Class</div><div style="font-size:.75rem;color:var(--white60)">First-timers only</div></div>'
     +'<div style="font-family:PT Serif,serif;font-weight:700">\u20AC18</div></div>'
     +'<div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--salmon);font-weight:600;margin-bottom:10px">Memberships</div>'
-    +'<div class="bk-pkg" onclick="showPayForm(\'membership\',130,431216,\'Immerse\',\'Unlimited classes \u00B7 Cancel anytime\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
+    +'<div class="bk-pkg" onclick="selectPack(\'membership\',130,431216,\'Immerse\',\'Unlimited classes \u00B7 Cancel anytime\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">Immerse</div><div style="font-size:.75rem;color:var(--white60)">Unlimited classes</div></div>'
     +'<div style="font-family:PT Serif,serif;font-weight:700">\u20AC130<span style="font-size:.75rem;font-weight:400;color:var(--white60)">/mo</span></div></div>'
-    +'<div class="bk-pkg" onclick="showPayForm(\'membership\',109,709976,\'Ritual\',\'8 classes/month \u00B7 Cancel anytime\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
+    +'<div class="bk-pkg" onclick="selectPack(\'membership\',109,709976,\'Ritual\',\'8 classes/month \u00B7 Cancel anytime\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">Ritual</div><div style="font-size:.75rem;color:var(--white60)">8 classes/month</div></div>'
     +'<div style="font-family:PT Serif,serif;font-weight:700">\u20AC109<span style="font-size:.75rem;font-weight:400;color:var(--white60)">/mo</span></div></div>'
-    +'<div class="bk-pkg" onclick="showPayForm(\'membership\',99,706876,\'Flex\',\'4 classes/month \u00B7 Cancel anytime\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
+    +'<div class="bk-pkg" onclick="selectPack(\'membership\',99,706876,\'Flex\',\'4 classes/month \u00B7 Cancel anytime\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">Flex</div><div style="font-size:.75rem;color:var(--white60)">4 classes/month</div></div>'
     +'<div style="font-family:PT Serif,serif;font-weight:700">\u20AC99<span style="font-size:.75rem;font-weight:400;color:var(--white60)">/mo</span></div></div>'
-    +'<div class="bk-pkg" onclick="showPayForm(\'membership\',330,445600,\'Immerse 3-Month\',\'Unlimited classes \u00B7 3 month commitment\')" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center">'
+    +'<div class="bk-pkg" onclick="selectPack(\'membership\',330,445600,\'Immerse 3-Month\',\'Unlimited classes \u00B7 3 month commitment\')" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">Immerse 3-Month</div><div style="font-size:.75rem;color:var(--white60)">\u20AC110/mo \u00B7 Unlimited classes</div></div>'
     +'<div style="font-family:PT Serif,serif;font-weight:700">\u20AC330</div></div>'
     +'<div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--white38);font-weight:600;margin:0 0 10px">Class Packs</div>'
-    +'<div class="bk-pkg" onclick="showPayForm(\'pack\',85,443937,\'5 Pack\',\'5 classes \u00B7 \u20AC17 each \u00B7 2 months\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
+    +'<div class="bk-pkg" onclick="selectPack(\'pack\',85,443937,\'5 Pack\',\'5 classes \u00B7 \u20AC17 each \u00B7 2 months\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">5 Pack</div><div style="font-size:.75rem;color:var(--white60)">5 classes \u00B7 \u20AC17 each</div></div>'
     +'<div style="font-family:PT Serif,serif;font-weight:700">\u20AC85</div></div>'
-    +'<div class="bk-pkg" onclick="showPayForm(\'pack\',149,443939,\'10 Pack\',\'10 classes \u00B7 \u20AC14.90 each \u00B7 3 months\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
+    +'<div class="bk-pkg" onclick="selectPack(\'pack\',149,443939,\'10 Pack\',\'10 classes \u00B7 \u20AC14.90 each \u00B7 3 months\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">10 Pack</div><div style="font-size:.75rem;color:var(--white60)">10 classes \u00B7 \u20AC14.90 each</div></div>'
     +'<div style="font-family:PT Serif,serif;font-weight:700">\u20AC149</div></div>'
-    +'<div class="bk-pkg" onclick="showPayForm(\'single\',22,445630,\'Drop-in\',\'1 class \u00B7 No commitment\')" style="display:flex;justify-content:space-between;align-items:center">'
+    +'<div class="bk-pkg" onclick="selectPack(\'single\',22,445630,\'Drop-in\',\'1 class \u00B7 No commitment\')" style="display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">Drop-in</div><div style="font-size:.75rem;color:var(--white60)">One class, no commitment</div></div>'
     +'<div style="font-family:PT Serif,serif;font-weight:700">\u20AC22</div></div>'
     +'<div class="bk-link" onclick="closeMo()">\u2190 Back to schedule</div>'
     +'</div>';
+}
+
+// ── PACK SELECTION ROUTER ──
+function selectPack(type,price,id,name,desc){
+  if(curUser){showPayForm(type,price,id,name,desc);return;}
+  pendingPack={type:type,price:price,id:id,name:name,desc:desc};
+  showGuestStep();
 }
 
 // ── PROMO CODE ──
@@ -1479,6 +1494,7 @@ window.nextWeek=nextWeek;
 window.toggleTeacher=toggleTeacher;
 window.pickTeacher=pickTeacher;
 window.toggleInfo=toggleInfo;
+window.selectPack=selectPack;
 
 // Close teacher dropdown on outside click
 document.addEventListener('click',function(e){
