@@ -509,6 +509,7 @@ function showGuestStep(){stepChange();
     +'<input class="bk-input" id="bk-email" type="email" placeholder="your@email.com" />'
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">Continue</button>'
+    +'<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.12);border-radius:8px;padding:12px;margin-top:16px;font-size:.75rem;color:var(--white60);line-height:1.5;text-align:center">Booked with us before? <span onclick="showLoginStep()" style="color:var(--cyan);cursor:pointer;text-decoration:underline">Log in instead</span> to keep your history and credits together.</div>'
     +'<div class="bk-link" onclick="showLoginStep()">Have an account? Log in</div>'
     +'</div>';
   document.getElementById('bk-fn').focus();
@@ -650,21 +651,7 @@ function doGuestCheck(){
   if(!ok){err.textContent='Please fill in the highlighted fields';return;}
 
   curUser={id:null,email:email,firstName:fn,lastName:ln,memberId:null,isGuest:true};
-
-  // Ask user if they've booked before to prevent duplicate accounts
-  var bd=document.getElementById('mo-bd');
-  var classBlock='<div class="bk-class">'
-    +'<div class="bk-class-name">'+curSession.title+'</div>'
-    +'<div class="bk-class-meta">'
-    +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+curSession.time+'</span>'
-    +'</div>'+getSpotsHtml()+'</div>';
-  bd.innerHTML=classBlock
-    +'<div class="bk-confirm" style="text-align:center">'
-    +'<p style="font-size:.95rem;color:var(--white);margin-bottom:20px;line-height:1.5">Have you booked at SABDA before?</p>'
-    +'<button class="bk-primary" onclick="showLoginStep()" style="margin-bottom:12px">Yes — Log in</button>'
-    +'<button class="bk-primary" onclick="showNoMembership()" style="background:none;border:1px solid var(--white12);color:var(--white)">No — First time</button>'
-    +'<div style="margin-top:16px;font-size:.75rem;color:var(--white38);line-height:1.5">If you have booked before, logging in keeps your history and credits together.</div>'
-    +'</div>';
+  showNoMembership();
 }
 
 // ── CUSTOMER FIELDS HTML (phone, language, city) ──
