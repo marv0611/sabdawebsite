@@ -201,6 +201,8 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .cls-item{width:300px;height:180px}
   .press-grid{grid-template-columns:1fr;max-width:400px;margin:0 auto;gap:48px}
   .press{padding-top:72px;padding-bottom:72px}
+  .how-sect{padding-top:72px;padding-bottom:72px}
+  .steps{grid-template-columns:1fr;max-width:400px}
   .booking{padding-left:24px;padding-right:24px}
   .b-cards{grid-template-columns:1fr;max-width:400px;margin:0 auto}
   .loc-in{grid-template-columns:1fr;gap:44px}
@@ -320,6 +322,19 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     <div class="rn-scoreline"><span class="rn-score">4.8</span><span class="rn-count">350+ reviews on Google</span></div>
   </div>
 </div>
+
+<!-- HOW IT WORKS -->
+<section class="how-sect">
+  <div class="how-in">
+    <span class="sl rv">Your First Visit</span>
+    <h2 class="sh2 rv" style="transition-delay:.06s">Book it. Show up.<br><em>Feel the difference.</em></h2>
+    <div class="steps">
+      <div class="step-card rv" style="transition-delay:.1s"><div class="step-n">1</div><h4>Pick Your 3 Classes</h4><p>Yoga, pilates, sound healing, breathwork. Mix and match from 43 weekly sessions. Two taps, done.</p></div>
+      <div class="step-card rv" style="transition-delay:.16s"><div class="step-n">2</div><h4>Walk In, We Handle the Rest</h4><p>Mats, props, towels, water. All here. Wear something you can move in. That is literally it.</p></div>
+      <div class="step-card rv" style="transition-delay:.22s"><div class="step-n">3</div><h4>Step Into the Room</h4><p>360° projections wrap every surface. Dolby Atmos fills the air. 60 minutes later, you will not want to leave.</p></div>
+    </div>
+  </div>
+</section>
 
 <!-- BOOKING — Single class left, 3-Pack center (featured), Immerse right -->
 <section class="booking">
@@ -453,6 +468,14 @@ document.querySelectorAll('a[href*="momence.com"]').forEach(function(b){b.addEve
 
 /* Particles */
 (function(){var c=document.getElementById('gP');if(!c)return;var x=c.getContext('2d'),W,H,mx=-9999,my=-9999;function rz(){W=innerWidth;H=innerHeight;c.width=W*devicePixelRatio;c.height=H*devicePixelRatio;x.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0)}rz();addEventListener('resize',rz);document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY});var N=672,t=0,P=[];for(var i=0;i<N;i++){var r=Math.random();P.push({x:Math.random()*3e3,y:Math.random(),vx:.008+Math.random()*.06,vy:(Math.random()-.5)*.003,fx:0,fy:0,s:.3+Math.random()*1.5,g:4+Math.random()*16,c:r<.38?[2,243,197]:r<.72?[248,166,163]:[32,57,153],o:.025+Math.random()*.12,ph:Math.random()*Math.PI*2,wa:.01+Math.random()*.04,wf:1e-4+Math.random()*5e-4})}function dr(){t++;x.clearRect(0,0,W,H);for(var i=0;i<P.length;i++){var p=P[i];p.x+=p.vx;p.y+=p.vy;var wy=p.wa*Math.sin(p.ph+t*p.wf),dx2=p.x+p.fx,dy2=(p.y+wy)*H+p.fy,dx=dx2-mx,dy=dy2-my,d=Math.sqrt(dx*dx+dy*dy);if(d<120&&d>0){var f=(1-d/120)*2.5;p.fx+=dx/d*f;p.fy+=dy/d*f}p.fx*=.94;p.fy*=.94;dx2=p.x+p.fx;dy2=(p.y+wy)*H+p.fy;if(p.x>W+60){p.x=-50;p.y=Math.random();p.fx=0;p.fy=0}if(p.y<-.05)p.y=1.05;if(p.y>1.05)p.y=-.05;var pl=.4+.6*Math.sin(p.ph+t*.001),op=p.o*pl;if(op<.002)continue;var g=x.createRadialGradient(dx2,dy2,0,dx2,dy2,p.g);g.addColorStop(0,'rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+','+op*.7+')');g.addColorStop(.3,'rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+','+op*.28+')');g.addColorStop(.7,'rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+','+op*.04+')');g.addColorStop(1,'rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+',0)');x.fillStyle=g;x.beginPath();x.arc(dx2,dy2,p.g,0,Math.PI*2);x.fill();x.beginPath();x.arc(dx2,dy2,p.s*.5,0,Math.PI*2);x.fillStyle='rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+','+Math.min(.6,op*2)+')';x.fill()}requestAnimationFrame(dr)}requestAnimationFrame(dr)})();
+
+/* Fallback — if counters haven't fired after 4s (Instagram in-app browser), force them */
+setTimeout(function(){
+  var t=document.getElementById('trustSection');
+  if(t && !t.querySelector('.ti2.anim')){triggerTrust()}
+  var s=document.getElementById('statsSection');
+  if(s && !s.querySelector('.ss-item.anim')){triggerStats()}
+},4000);
 
 /* Spanish */
 (function(){var p=new URLSearchParams(location.search);if(p.get('lang')==='es'){document.documentElement.lang='es';document.title='3 Clases Inmersivas por \u20AC50 | SABDA Barcelona';var t={'t-label':'TUS PRIMERAS 3 CLASES INMERSIVAS','t-tag':'Tu intro al wellness inmersivo. Cualquier clase, cualquier momento, 30 d\u00EDas.','t-det':'<b>\u20AC16,67 por clase</b> \u00B7 V\u00E1lido 30 d\u00EDas \u00B7 Sin suscripci\u00F3n','t-cta':'Consigue tu Pack Intro <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>','t-alt':'\u00BFSolo quieres probar una clase? <span>Clase de prueba \u2014 \u20AC18</span>','t-closer':'Tu cuerpo te lo <em>agradecer\u00E1.</em>','t-cta2':'Consigue tu Pack Intro <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>','t-cn':'V\u00E1lido 30 d\u00EDas. Sin membres\u00EDa. Sin compromiso.','t-loc':'5 min andando desde metro Hospital Cl\u00EDnic \u00B7 L5','t-sticky':'Reservar'};for(var id in t){var el=document.getElementById(id);if(el)el.innerHTML=t[id]}}})();
