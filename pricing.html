@@ -167,19 +167,21 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.06);positio
   nav{padding:0 24px}.nav-links{display:none}
   .nav-social svg{width:15px;height:15px}.nav-social{gap:10px;padding-left:14px;margin-left:14px}.lang-sel a{padding:4px 5px;font-size:.65rem}
   .hero-banner{height:240px}.hero-overlay h1{font-size:2rem}.hero-overlay{bottom:32px}
-  .memberships{padding:60px 24px 0}
-  .intro-offers{padding:60px 24px 0}
-  .membership-grid{gap:16px;max-width:100%;grid-template-columns:1fr 1fr}
-  .pricing-grid{grid-template-columns:1fr 1fr;gap:16px}
-  .giftcards{padding:60px 24px}
-  .schedule-cta{padding:40px 24px 60px}
-  footer{padding:36px 24px 22px}.ft-in{grid-template-columns:1fr 1fr}
+  .memberships{padding:48px 20px 0}
+  .intro-offers{padding:48px 20px 0}
+  .membership-grid{display:flex;gap:16px;overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;padding-bottom:8px;max-width:none}
+  .membership-grid .m-card{min-width:270px;flex-shrink:0;scroll-snap-align:center}
+  .pricing-grid{display:flex;gap:14px;overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;padding-bottom:8px}
+  .pricing-grid>*{min-width:220px;flex-shrink:0;scroll-snap-align:start}
+  .giftcards{padding:48px 20px}
+  .schedule-cta{padding:32px 20px 48px}
+  footer{padding:36px 20px 22px}.ft-in{grid-template-columns:1fr 1fr}
 }
 @media(max-width:520px){
   .ft-in{grid-template-columns:1fr}.hero-overlay h1{font-size:1.7rem}
   .hero-banner{height:200px}
-  .membership-grid{grid-template-columns:1fr}
-  .pricing-grid{grid-template-columns:1fr}
+  .membership-grid .m-card{min-width:250px}
+  .pricing-grid>*{min-width:200px}
 }
 
 /* ── REVIEW NUDGE ── */

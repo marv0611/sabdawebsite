@@ -409,24 +409,94 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .nav-social svg{width:15px;height:15px}
   .nav-social{gap:10px;padding-left:14px;margin-left:14px}
   .lang-sel a{padding:4px 5px;font-size:.65rem}
-  section,.booking,.location,.trust,.stats-strip,.press,.review-nudge,footer{padding-left:24px;padding-right:24px}
-  .classes-hdr{padding:0 24px}
-  section{padding-top:80px;padding-bottom:80px}
-  .hero-content{padding:0 24px 80px}
-  .hero-label{font-size:.9rem;letter-spacing:.16em;gap:14px;justify-content:center;flex-wrap:wrap}
-  .hero h1{font-size:2.4rem}
-  .cls-item{width:280px;height:200px}
-  .loc-in{grid-template-columns:1fr;gap:44px}
-  .ft-in{grid-template-columns:1fr 1fr}
-  .b-cards{grid-template-columns:1fr;max-width:400px;margin:0 auto}
-  .press-grid{grid-template-columns:1fr;max-width:400px;margin:0 auto;gap:48px}
-  .press{padding-top:72px;padding-bottom:72px}
-  .intro{padding:72px 24px}
-  .intro-in{grid-template-columns:1fr;gap:40px}
-  .intro-img{max-width:100%;aspect-ratio:16/10}
+
+  /* COMPACT SECTION PADDING — kill the whitespace bloat */
+  section,.booking,.location,.trust,.stats-strip,.press,.review-nudge,footer{padding-left:20px;padding-right:20px}
+  section{padding-top:48px;padding-bottom:48px}
+  .classes-hdr{padding:0 20px}
+
+  /* HERO — tighter */
+  .hero{min-height:85vh}
+  .hero-content{padding:0 20px 60px}
+  .hero-label{font-size:.78rem;letter-spacing:.14em;gap:12px;justify-content:center;flex-wrap:wrap}
+  .hero h1{font-size:2.2rem}
+
+  /* TRUST — compact */
+  .trust{padding-top:40px;padding-bottom:40px}
+
+  /* STATS — compact, wrap tighter */
+  .stats-strip{padding-top:40px;padding-bottom:40px}
+  .stats-in{gap:28px}
+  .ss-val{font-size:1.8rem}
+  .ss-lbl{font-size:.6rem}
+  .ss-div{display:none}
+
+  /* PARTNERS — compact */
+  .partners{padding:36px 0}
+  .p-label{margin-bottom:28px}
+
+  /* CLASS GALLERY — shorter cards */
+  .cls-item{width:260px;height:170px}
+  .cls-item-name{font-size:1rem}
+  .classes{padding-top:48px}
+  .classes::after{height:80px}
+
+  /* PRESS — horizontal scroll instead of stacked */
+  .press{padding-top:48px;padding-bottom:48px;overflow-x:auto;overflow-y:hidden}
+  .press-hdr{margin-bottom:32px}
+  .press-grid{display:flex;gap:24px;overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;padding-bottom:8px;max-width:none}
+  .press-card{min-width:280px;flex-shrink:0;scroll-snap-align:start}
+  .press-quote{font-size:1rem}
+  .press-quote::before{font-size:2.4rem}
+
+  /* INTRO (What is SABDA) — landscape image, less gap */
+  .intro{padding:48px 20px}
+  .intro-in{grid-template-columns:1fr;gap:28px}
+  .intro-img{max-width:100%;aspect-ratio:16/9}
+  .intro-txt p{font-size:.92rem}
+
+  /* FAQ — tighter */
+  .faq{padding:48px 20px}
+
+  /* REVIEW NUDGE — compact */
+  .review-nudge{padding:48px 20px}
+  .rn-ticker{min-height:100px}
+  .rn-quote q{font-size:1.1rem}
+  .rn-text{font-size:2rem}
+
+  /* LOCATION — side by side on larger phones, compact on small */
+  .location{padding:48px 20px}
+  .loc-in{grid-template-columns:1fr;gap:28px}
+  .loc-map{height:240px}
+  .loc-addr{font-size:.92rem;margin-bottom:20px}
+  .loc-dir{margin-bottom:24px}
+
+  /* BOOKING — horizontal scroll cards */
+  .booking{padding:48px 20px 48px}
+  .booking-sub{margin:12px auto 36px;font-size:.88rem}
+  .b-cards{display:flex;gap:16px;overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;padding-bottom:8px;max-width:none}
+  .b-card{min-width:280px;flex-shrink:0;scroll-snap-align:center;transform:none!important}
+  .b-card.pri{transform:none!important}
+
+  /* FOOTER — compact */
+  .ft-in{grid-template-columns:1fr 1fr;gap:28px;margin-bottom:28px}
+  .ft-bot{padding-top:20px}
+  footer{padding:36px 20px 20px}
+
   .sbk{display:flex}
 }
-@media(max-width:520px){.ft-in{grid-template-columns:1fr}.trust-in{gap:36px}.classes-hdr{flex-direction:column;align-items:flex-start;gap:16px}}
+@media(max-width:520px){
+  .ft-in{grid-template-columns:1fr}
+  .trust-in{gap:24px}
+  .stats-in{gap:20px}
+  .ss-val{font-size:1.6rem}
+  .classes-hdr{flex-direction:column;align-items:flex-start;gap:12px}
+  .hero h1{font-size:1.9rem}
+  .hero-label{font-size:.68rem;gap:10px}
+  .b-card{min-width:260px}
+  .press-card{min-width:260px}
+  .loc-map{height:200px}
+}
 .nav-ham{display:none;flex-direction:column;gap:4px;padding:12px;cursor:pointer;z-index:101;background:none;border:none}.nav-ham span{width:20px;height:1.5px;background:var(--white);transition:transform .3s,opacity .3s}.mob-menu{position:fixed;inset:0;z-index:99;background:rgba(14,18,53,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;pointer-events:none;transition:opacity .35s}.mob-menu.open{opacity:1;pointer-events:auto}.mob-menu a{font-family:'PT Serif',serif;font-size:1.6rem;font-weight:700;color:var(--white);opacity:.85;transition:opacity .2s,color .2s}.mob-menu a:hover{opacity:1;color:var(--cyan)}.mob-close{position:absolute;top:24px;right:24px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:none;border:none}.mob-close svg{width:24px;height:24px;stroke:var(--white);stroke-width:2}@media(max-width:860px){.nav-ham{display:flex}}
 </style>
 </head>
