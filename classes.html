@@ -150,10 +150,16 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 @keyframes ci{to{opacity:1;transform:none}}
 .ct{text-align:center}
 .ct-h{font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;line-height:1.1}
-.ct-d{font-size:.65rem;color:var(--white38);margin-top:6px;letter-spacing:.04em}
+.ct-d{font-size:.65rem;color:var(--cyan);margin-top:6px;letter-spacing:.04em}
 .ci{min-width:0}
 .ci-t{font-family:'PT Serif',serif;font-size:1.1rem;font-weight:700;margin-bottom:4px;letter-spacing:-.01em}
 .ci-tc{font-size:.82rem;color:var(--white60)}
+.ci-more{font-size:.72rem;color:var(--cyan);cursor:pointer;margin-top:6px;display:inline-flex;align-items:center;gap:4px;opacity:.7;transition:opacity .2s}
+.ci-more:hover{opacity:1}
+.ci-more svg{width:10px;height:10px;transition:transform .25s}
+.ci-more.open svg{transform:rotate(180deg)}
+.ci-desc{max-height:0;overflow:hidden;transition:max-height .35s ease,opacity .25s;opacity:0;font-size:.78rem;color:var(--white38);line-height:1.65;margin-top:0}
+.ci-desc.open{max-height:200px;opacity:1;margin-top:8px}
 .ci-lg{display:inline-block;font-size:.62rem;color:var(--white38);border:1px solid var(--white06);padding:2px 6px;border-radius:3px;margin-left:8px;letter-spacing:.04em;vertical-align:middle}
 .ca{text-align:right}
 .bb{background:var(--cyan);color:var(--navy);border:none;padding:12px 28px;border-radius:4px;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.04em;cursor:pointer;transition:background .25s,transform .2s,box-shadow .3s;white-space:nowrap}
@@ -587,7 +593,7 @@ function getCat(t){
   var l=t.toLowerCase();
   if(l.indexOf('vinyasa')>-1||l.indexOf('hatha')>-1||l.indexOf('yin yoga')>-1||l.indexOf('yoga sculpt')>-1||l.indexOf('yoga &')>-1)return'Yoga';
   if(l.indexOf('pilates')>-1||l.indexOf('glutes')>-1)return'Pilates';
-  if(l.indexOf('sound')>-1||l.indexOf('serenity')>-1||l.indexOf('guided sound')>-1)return'Sound';
+  if(l.indexOf('sound')>-1||l.indexOf('serenity')>-1||l.indexOf('guided sound')>-1)return'Other';
   if(l.indexOf('breath')>-1||l.indexOf('recharge')>-1)return'Breathwork';
   return'Other';
 }
@@ -607,6 +613,7 @@ function renderDays(){
   var days=get7d(weekOffset);
   var nm=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
   var today=getMadridDate(new Date());
+  if(!selDate) selDate=getMadridDate(days[0]);
   var leftSvg='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>';
   var rightSvg='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>';
   var html='<button class="day-arr" onclick="prevWeek()"'+(weekOffset===0?' disabled':'')+'>'+leftSvg+'</button>';
@@ -624,7 +631,6 @@ function renderDays(){
   html+='</div>';
   html+='<button class="day-arr" onclick="nextWeek()">'+rightSvg+'</button>';
   c.innerHTML=html;
-  if(!selDate) selDate=getMadridDate(days[0]);
 }
 
 function prevWeek(){if(weekOffset>0){weekOffset--;renderDays();renderSched();}}
@@ -638,7 +644,7 @@ function selDay(b,ds){
 function renderFilters(ev){
   var c=document.getElementById('filters');
   var cats=[];var catSet={};
-  ev.forEach(function(e){var cat=getCat(e.title);if(!catSet[cat]){catSet[cat]=true;cats.push(cat);}});
+  ev.forEach(function(e){var cat=getCat(e.title);if(!catSet[cat]&&cat!=='Other'){catSet[cat]=true;cats.push(cat);}});
   cats.sort();cats.unshift('All');
   var teachers=[];var tSet={};
   ev.forEach(function(e){
@@ -684,6 +690,11 @@ function setF(b,cat){
   b.classList.add('active');actF=cat;renderSched();
 }
 function setTeacher(val){actTeacher=val;renderSched();}
+function toggleInfo(el){
+  el.classList.toggle('open');
+  var desc=el.nextElementSibling;
+  if(desc) desc.classList.toggle('open');
+}
 
 function renderSched(){
   var c=document.getElementById('sched');
@@ -707,7 +718,9 @@ function renderSched(){
     return '<div class="cc" style="animation-delay:'+i*.05+'s">'
       +'<div class="ct"><div class="ct-h">'+h+':'+m+'</div><div class="ct-d">'+e.duration+' min</div></div>'
       +'<div class="ci"><div class="ci-t">'+esc(title)+(lang?'<span class="ci-lg">'+lang+'</span>':'')+'</div>'
-      +'<div class="ci-tc">'+esc(fn)+'</div></div>'
+      +'<div class="ci-tc">'+esc(fn)+'</div>'
+      +(e.desc?'<div class="ci-more" onclick="toggleInfo(this)">More info <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="ci-desc">'+esc(e.desc)+'</div>':'')
+      +'</div>'
       +'<div class="ca">'
       +(full?(e.allowWaitlist?'<button class="bb wl" onclick="openMo('+sid+')">Waitlist</button>':'<button class="bb fu">Full</button>')
         :'<button class="bb" onclick="openMo('+sid+')">Book</button>')
@@ -1409,7 +1422,8 @@ async function init(){
         isCancelled:e.isCancelled||false,
         isDeleted:false,
         allowWaitlist:e.allowWaitlist||false,
-        capacity:e.capacity||30
+        capacity:e.capacity||30,
+        desc:(e.level||'').replace(/^\([A-Z]{2}\):\s*/,'').trim()
       };
     });
     renderFilters(allE);renderSched();
@@ -1435,6 +1449,7 @@ window.prevWeek=prevWeek;
 window.nextWeek=nextWeek;
 window.toggleTeacher=toggleTeacher;
 window.pickTeacher=pickTeacher;
+window.toggleInfo=toggleInfo;
 
 // Close teacher dropdown on outside click
 document.addEventListener('click',function(e){
