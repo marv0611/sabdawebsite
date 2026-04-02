@@ -406,9 +406,9 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 @media(max-width:860px){
   nav{padding:0 24px}
   .nav-links{display:none}
-  .nav-social svg{width:15px;height:15px}
-  .nav-social{gap:10px;padding-left:14px;margin-left:14px}
-  .lang-sel a{padding:4px 5px;font-size:.65rem}
+  .nav-social{display:none}
+  .nav-logo img{height:24px}
+  .lang-sel{display:none}
 
   /* SECTIONS — balanced breathing room */
   section,.booking,.location,.trust,.stats-strip,.press,.review-nudge,footer{padding-left:24px;padding-right:24px}
@@ -418,7 +418,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   /* HERO */
   .hero{min-height:92vh}
   .hero-content{padding:0 24px 64px}
-  .hero-label{font-size:.82rem;letter-spacing:.15em;gap:14px;justify-content:center;flex-wrap:wrap}
+  .hero-label{font-size:.7rem;letter-spacing:.12em;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:20px}
   .sh2{font-size:clamp(1.7rem,5vw,2.4rem)}
   .hero h1{font-size:2.2rem}
   .hero-ctas .btn-p{width:100%;max-width:340px;justify-content:center;padding:16px 24px}
@@ -465,15 +465,19 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .intro-img{max-width:100%;aspect-ratio:16/10}
 
   /* FAQ */
-  .faq{padding:64px 24px}
+  .faq{padding:56px 24px}
+  .faq-item{margin-bottom:0}
+  .faq-q{padding:16px 0;font-size:.88rem}
 
   /* REVIEW NUDGE */
   .review-nudge{padding:64px 24px}
   .rn-text{font-size:1.8rem}
+  .rn-link{padding:16px 28px;font-size:.78rem;width:100%;max-width:320px;justify-content:center}
 
   /* LOCATION */
   .location{padding:64px 24px}
   .loc-in{grid-template-columns:1fr;gap:32px}
+  .loc-link{display:flex;width:100%;max-width:320px;padding:14px 24px;background:rgba(2,243,197,.08);border:1px solid rgba(2,243,197,.25);border-radius:4px;justify-content:center;border-bottom:none}
   .loc-map{height:260px}
 
   /* BOOKING — horizontal swipe cards */
@@ -489,10 +493,11 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 
   /* FOOTER */
   .ft-in{grid-template-columns:1fr 1fr;gap:32px}
+  .ft-col a{word-break:break-all}
   .ft-symbol{display:none}
   footer{padding:44px 24px 24px}
 
-  .sbk{display:flex}
+  .sbk{display:flex;padding-bottom:calc(12px + env(safe-area-inset-bottom,0px))}
 }
 @media(max-width:520px){
   .ft-in{grid-template-columns:1fr}
@@ -504,7 +509,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .b-card{min-width:270px}
   .press-card{min-width:260px}
 }
-.scroll-top{position:fixed;bottom:80px;right:20px;width:40px;height:40px;border-radius:50%;background:rgba(14,18,53,.85);border:1px solid rgba(240,239,233,.1);display:none;align-items:center;justify-content:center;cursor:pointer;z-index:98;opacity:0;transition:opacity .3s,transform .3s;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}.scroll-top.vis{opacity:1}.scroll-top svg{width:16px;height:16px;stroke:var(--cyan);stroke-width:2;fill:none}
+.scroll-top{position:fixed;bottom:calc(80px + env(safe-area-inset-bottom,0px));right:20px;width:40px;height:40px;border-radius:50%;background:rgba(14,18,53,.85);border:1px solid rgba(240,239,233,.1);display:none;align-items:center;justify-content:center;cursor:pointer;z-index:98;opacity:0;transition:opacity .3s,transform .3s;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}.scroll-top.vis{opacity:1}.scroll-top svg{width:16px;height:16px;stroke:var(--cyan);stroke-width:2;fill:none}
 @media(max-width:860px){.scroll-top{display:flex}}
 .nav-ham{display:none;flex-direction:column;gap:4px;padding:12px;cursor:pointer;z-index:101;background:none;border:none}.nav-ham span{width:20px;height:1.5px;background:var(--white);transition:transform .3s,opacity .3s}.mob-menu{position:fixed;inset:0;z-index:99;background:rgba(14,18,53,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;pointer-events:none;transition:opacity .35s}.mob-menu.open{opacity:1;pointer-events:auto}.mob-menu a{font-family:'PT Serif',serif;font-size:1.6rem;font-weight:700;color:var(--white);opacity:.85;transition:opacity .2s,color .2s}.mob-menu a:hover{opacity:1;color:var(--cyan)}.mob-close{position:absolute;top:24px;right:24px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:none;border:none}.mob-close svg{width:24px;height:24px;stroke:var(--white);stroke-width:2}@media(max-width:860px){.nav-ham{display:flex}}
 </style>
