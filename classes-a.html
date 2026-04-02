@@ -451,7 +451,7 @@ document.addEventListener('input',function(e){if(e.target.classList)e.target.cla
 document.addEventListener('change',function(e){if(e.target.classList)e.target.classList.remove('bk-field-err');});
 
 function getSpotsHtml(){
-  
+  var sp=curSession?curSession.spots:null;
   if(sp===0) return curSession.isWaitlist?'<div class="bk-spots lo">Waitlist</div>':'<div class="bk-spots lo">Full</div>';
   if(sp!==null) return '<div class="bk-spots '+(sp<=5?'lo':'av')+'">'+sp+(sp===1?' spot left':' spots left')+'</div>';
   return '';
