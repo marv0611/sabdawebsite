@@ -651,15 +651,15 @@ function doGuestCheck(){
 
   curUser={id:null,email:email,firstName:fn,lastName:ln,memberId:null,isGuest:true};
 
-  // Check if this email has existing credits
+  // Check if this email already has a Momence account
   fetch(PROXY+'/sabda-api/check-email',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:email,sessionId:curSession.id})
+    body:JSON.stringify({email:email,firstName:fn,lastName:ln,sessionId:curSession.id})
   }).then(function(r){return r.json();})
   .then(function(d){
-    if(d.hasCredits){
-      // Show prompt to log in instead
+    if(d.exists){
+      // Email is registered — prompt to log in
       var bd=document.getElementById('mo-bd');
       var classBlock='<div class="bk-class">'
         +'<div class="bk-class-name">'+curSession.title+'</div>'
@@ -668,12 +668,12 @@ function doGuestCheck(){
         +'</div>'+getSpotsHtml()+'</div>';
       bd.innerHTML=classBlock
         +'<div class="bk-confirm" style="text-align:center">'
-        +'<div style="background:rgba(2,243,197,.06);border:1px solid rgba(2,243,197,.12);border-radius:10px;padding:20px;margin-bottom:20px">'
-        +'<div style="font-size:.9rem;font-weight:600;color:var(--cyan);margin-bottom:6px">You have credits!</div>'
-        +'<div style="font-size:.82rem;color:var(--white60);line-height:1.5">This email has an active '+(d.membershipName||'membership')+'. Log in to book for free with your credits.</div>'
+        +'<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.15);border-radius:10px;padding:20px;margin-bottom:20px">'
+        +'<div style="font-size:.9rem;font-weight:600;color:var(--salmon);margin-bottom:6px">Account found</div>'
+        +'<div style="font-size:.82rem;color:var(--white60);line-height:1.5">This email is already registered. Please log in to keep your booking history and credits together.</div>'
         +'</div>'
-        +'<button class="bk-primary" onclick="showLoginStep()">Log in & Use Credits</button>'
-        +'<div class="bk-link" onclick="showNoMembership()">Continue without logging in</div>'
+        +'<button class="bk-primary" onclick="showLoginStep()">Log in</button>'
+        +'<div class="bk-link" style="margin-top:12px"><a href="https://momence.com/forgot-password" target="_blank" style="color:var(--white38);font-size:.78rem;text-decoration:underline">Forgot your password?</a></div>'
         +'</div>';
     } else {
       showNoMembership();

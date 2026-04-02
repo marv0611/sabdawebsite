@@ -306,41 +306,43 @@ function corsHeaders(origin) {
   };
 }
 
-// ── CHECK IF EMAIL HAS EXISTING ACCOUNT WITH CREDITS ──
+// ── CHECK IF EMAIL HAS EXISTING ACCOUNT ──
 async function handleCheckEmail(request, origin) {
   try {
-    const { email, sessionId } = await request.json();
+    const { email, firstName, lastName, sessionId } = await request.json();
     if (!email) {
       return new Response(JSON.stringify({ exists: false }), {
         status: 200, headers: corsHeaders(origin),
       });
     }
 
-    // Check compatible memberships using email (no auth required for this endpoint)
-    let hasCredits = false;
-    let membershipName = '';
-    if (sessionId) {
-      try {
-        const mRes = await fetch(
-          MOMENCE + '/_api/primary/plugin/memberships/session-compatible-memberships?sessionId=' + sessionId + '&email=' + encodeURIComponent(email) + '&tickets=1&isGuestOnlyBooking=false',
-          { headers: { 'Host': 'momence.com' } }
-        );
-        const mData = await mRes.json().catch(() => []);
-        const rawList = Array.isArray(mData) ? mData : [];
-        if (rawList.length > 0) {
-          hasCredits = true;
-          membershipName = rawList[0].name || rawList[0].membershipName || 'membership';
-        }
-      } catch (e) {}
+    // POST /plugin/members with API token:
+    // - Existing email → HTTP 400 (account exists)
+    // - New email → HTTP 200 + {id} (creates member, which would happen at checkout anyway)
+    const res = await fetch(
+      MOMENCE + '/_api/primary/plugin/members?hostId=54278&token=a0314a80ca',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Host': 'momence.com' },
+        body: JSON.stringify({ email, firstName: firstName || 'Guest', lastName: lastName || '' }),
+      }
+    );
+
+    if (res.status === 400) {
+      // Email already exists in Momence
+      return new Response(JSON.stringify({ exists: true }), {
+        status: 200, headers: corsHeaders(origin),
+      });
     }
 
-    return new Response(JSON.stringify({
-      hasCredits,
-      membershipName,
-    }), { status: 200, headers: corsHeaders(origin) });
+    // New email — member was created (200 + {id})
+    return new Response(JSON.stringify({ exists: false }), {
+      status: 200, headers: corsHeaders(origin),
+    });
 
   } catch (e) {
-    return new Response(JSON.stringify({ hasCredits: false }), {
+    // On error, don't block the user — let them proceed
+    return new Response(JSON.stringify({ exists: false }), {
       status: 200, headers: corsHeaders(origin),
     });
   }
