@@ -447,12 +447,13 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .classes{padding-top:64px}
 
   /* PRESS — horizontal swipe */
-  .press{padding:64px 24px;overflow:visible}
-  .press-hdr{margin-bottom:40px}
+  .press{padding:56px 24px;overflow:visible}
+  .press-hdr{margin-bottom:28px}
   .press-grid{display:flex;gap:20px;overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;padding-bottom:12px;max-width:none;scrollbar-width:none}
   .press-grid::-webkit-scrollbar{display:none}
-  .press-card{min-width:290px;flex-shrink:0;scroll-snap-align:start}
-  .press-quote{font-size:1.08rem}
+  .press-card{min-width:280px;max-width:320px;flex-shrink:0;scroll-snap-align:start;padding:0 8px}
+  .press-quote{font-size:.98rem;padding-left:4px;padding-right:4px}
+  .press-logo{margin-bottom:24px}
 
   /* INTRO */
   .intro{padding:64px 24px}
@@ -472,12 +473,15 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .loc-map{height:260px}
 
   /* BOOKING — horizontal swipe cards */
-  .booking{padding:64px 24px}
-  .booking-sub{margin:14px auto 44px}
+  .booking{padding:56px 24px}
+  .booking-sub{margin:12px auto 32px;font-size:.9rem}
+  .sh2{font-size:clamp(1.8rem,4vw,3rem)}
   .b-cards{display:flex;gap:16px;overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;padding-bottom:12px;max-width:none;scrollbar-width:none}
   .b-cards::-webkit-scrollbar{display:none}
-  .b-card{min-width:290px;flex-shrink:0;scroll-snap-align:center;transform:none!important}
+  .b-card{min-width:290px;flex-shrink:0;scroll-snap-align:center;transform:none!important;text-align:center}
   .b-card.pri{transform:none!important}
+  .b-features{text-align:left}
+  .b-btn-p,.b-btn-g{max-width:240px;margin:0 auto}
 
   /* FOOTER */
   .ft-in{grid-template-columns:1fr 1fr;gap:32px}
@@ -692,7 +696,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
         <svg viewBox="0 0 400 40" xmlns="http://www.w3.org/2000/svg"><text x="200" y="33" text-anchor="middle" font-family="'Georgia','Times New Roman',serif" font-weight="700" font-size="32" fill="#f0efe9" letter-spacing="1.5">El Periódico</text></svg>
       </div>
       <div class="press-line"></div>
-      <p class="press-quote">"Sci-fi fitness: Spain's first immersive wellness studio."</p>
+      <p class="press-quote">Sci-fi fitness: Spain's first immersive wellness studio.</p>
     </div>
     <div class="press-card rv" style="transition-delay:.18s">
       <div class="press-logo" style="height:32px">
@@ -700,7 +704,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
         <svg viewBox="0 0 520 36" xmlns="http://www.w3.org/2000/svg"><text x="260" y="30" text-anchor="middle" font-family="'Georgia','Times New Roman',serif" font-weight="400" font-size="28" fill="#f0efe9" letter-spacing="3" font-style="italic">Condé Nast Traveler</text></svg>
       </div>
       <div class="press-line" style="background:linear-gradient(to right,transparent,var(--white38),transparent)"></div>
-      <p class="press-quote">"A door to another dimension. Art in its purest form."</p>
+      <p class="press-quote">A door to another dimension. Art in its purest form.</p>
     </div>
     <div class="press-card rv" style="transition-delay:.28s">
       <div class="press-logo" style="height:34px">
@@ -708,7 +712,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
         <svg viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg"><text x="80" y="34" text-anchor="middle" font-family="'CNN',Impact,'Arial Black',sans-serif" font-weight="900" font-size="42" fill="#E40000" letter-spacing="5">CNN</text></svg>
       </div>
       <div class="press-line" style="background:linear-gradient(to right,transparent,rgba(228,0,0,.3),transparent)"></div>
-      <p class="press-quote">"A meeting point between technology, art, and consciousness."</p>
+      <p class="press-quote">A meeting point between technology, art, and consciousness.</p>
     </div>
   </div>
 </section>
@@ -884,7 +888,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 
 <!-- MOBILE STICKY -->
 <div class="sbk" id="sbk">
-  <div class="sbk-txt">3 Classes · <span>€50</span> · €18 each</div>
+  <div class="sbk-txt">3 Classes · <span>€50</span> · €16.67 each</div>
   <a href="classes.html" class="sbk-btn">Book Now</a>
 </div>
 
