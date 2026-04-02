@@ -159,7 +159,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 .ci-more svg{width:10px;height:10px;transition:transform .25s}
 .ci-more.open svg{transform:rotate(180deg)}
 .ci-desc{max-height:0;overflow:hidden;transition:max-height .35s ease,opacity .25s;opacity:0;font-size:.78rem;color:var(--white38);line-height:1.65;margin-top:0}
-.ci-desc.open{max-height:200px;opacity:1;margin-top:8px}
+.ci-desc.open{max-height:600px;opacity:1;margin-top:8px}
+.ci-desc p{margin:0}
+.ci-lang-sep{margin-top:14px !important;padding-top:14px;border-top:1px solid rgba(240,239,233,.06)}
 .ci-lg{display:inline-block;font-size:.62rem;color:var(--white38);border:1px solid var(--white06);padding:2px 6px;border-radius:3px;margin-left:8px;letter-spacing:.04em;vertical-align:middle}
 .ca{text-align:right}
 .bb{background:var(--cyan);color:var(--navy);border:none;padding:12px 28px;border-radius:4px;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:700;letter-spacing:.04em;cursor:pointer;transition:background .25s,transform .2s,box-shadow .3s;white-space:nowrap}
@@ -719,7 +721,7 @@ function renderSched(){
       +'<div class="ct"><div class="ct-h">'+h+':'+m+'</div><div class="ct-d">'+e.duration+' min</div></div>'
       +'<div class="ci"><div class="ci-t">'+esc(title)+(lang?'<span class="ci-lg">'+lang+'</span>':'')+'</div>'
       +'<div class="ci-tc">'+esc(fn)+'</div>'
-      +(e.desc?'<div class="ci-more" onclick="toggleInfo(this)">More info <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="ci-desc">'+esc(e.desc)+'</div>':'')
+      +(e.desc?'<div class="ci-more" onclick="toggleInfo(this)">More info <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="ci-desc">'+esc(e.desc).replace(/---ES---/g,'</p><p class="ci-lang-sep"><span class="ci-lg">ES</span></p><p>').replace(/---CA---/g,'</p><p class="ci-lang-sep"><span class="ci-lg">CA</span></p><p>')+'</div>':'')
       +'</div>'
       +'<div class="ca">'
       +(full?(e.allowWaitlist?'<button class="bb wl" onclick="openMo('+sid+')">Waitlist</button>':'<button class="bb fu">Full</button>')
@@ -1423,7 +1425,13 @@ async function init(){
         isDeleted:false,
         allowWaitlist:e.allowWaitlist||false,
         capacity:e.capacity||30,
-        desc:(e.level||'').replace(/^\([A-Z]{2}\):\s*/,'').trim()
+        desc:(function(){
+          var raw=(e.level||'').replace(/^\([A-Z]{2}\):\s*/,'').trim();
+          if(!raw) return '';
+          // Split EN/ES/CA sections with visual separator
+          raw=raw.replace(/\n*\(ES\):\s*/g,'\n---ES---\n').replace(/\n*\(CA\):\s*/g,'\n---CA---\n');
+          return raw;
+        })()
       };
     });
     renderFilters(allE);renderSched();
