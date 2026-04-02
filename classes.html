@@ -57,7 +57,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<script src="https://js.stripe.com/v3/"></script>
+<script src="https://js.stripe.com/v3/" defer></script>
 <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -1925,7 +1925,7 @@ window.showPayForm=function(type,price,productId,name,desc){stepChange();
     });
     activePayReq.on('paymentmethod',function(ev){
       var vErr=validateCustomerFields();
-      if(vErr){ev.complete('fail');return;}
+      if(vErr){ev.complete('fail');setTimeout(function(){var errEl=document.getElementById('bk-err');if(errEl)errEl.textContent=vErr;},500);return;}
       isProcessing=true;
       var cf=getCustomerFields();
       fetch(PROXY+'/sabda-api/pay',{
