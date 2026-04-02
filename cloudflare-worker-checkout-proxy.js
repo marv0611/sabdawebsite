@@ -1,7 +1,7 @@
 const MOMENCE = 'https://momence.com';
 
 export default {
-  async fetch(request) {
+  async fetch(request, env) {
     const url = new URL(request.url);
 
     const reqOrigin = request.headers.get('Origin') || '*';
@@ -44,7 +44,7 @@ export default {
     }
 
     if (url.pathname === '/sabda-api/contact') {
-      return handleContact(request, reqOrigin);
+      return handleContact(request, reqOrigin, env);
     }
 
     // ── CUSTOM SIGN-IN PAGE: intercept /sign-in and show our form ──
@@ -892,7 +892,7 @@ function doLogin(){
 // NOTION_TOKEN — Notion API integration token
 // NOTION_DATABASE_ID — Deals database ID
 
-async function handleContact(request, origin) {
+async function handleContact(request, origin, env) {
   try {
     const body = await request.json();
     const { name, email, phone, topic, message } = body;
@@ -903,46 +903,57 @@ async function handleContact(request, origin) {
       });
     }
 
+    env = env || {};
+
     // Step 1: Classify with Claude Haiku
-    let classification = { category: topic || 'general', action: 'send_to_katrina', confidence: 'low', summary: message.substring(0, 200) };
+    let classification = { category: topic || 'general', action: 'send_to_katrina', confidence: 'low', summary: message.substring(0, 200), send_brochure: false };
+    let classifyError = null;
 
     try {
-      const ANTHROPIC_KEY = typeof Claude !== 'undefined' ? Claude : null;
-      if (ANTHROPIC_KEY) {
-        classification = await classifyWithClaude(ANTHROPIC_KEY, { name, email, phone, topic, message });
-      }
+      if (env.Claude) {
+        var aiResult = await classifyWithClaude(env.Claude, { name, email, phone, topic, message });
+        if (aiResult && aiResult.category) {
+          classification = aiResult;
+        } else {
+          classifyError = 'no_category_in_response: ' + JSON.stringify(aiResult).substring(0, 200);
+        }
+      } else { classifyError = 'no_claude_key'; }
     } catch (e) {
-      // Classification failed — fall through to default routing
+      classifyError = e.message;
     }
 
     // Step 2: Send email to Katrina via Resend
     let emailSent = false;
+    let emailError = null;
     try {
-      const RESEND_KEY = typeof Resend !== 'undefined' ? Resend : null;
-      if (RESEND_KEY) {
-        emailSent = await sendEmailViaResend(RESEND_KEY, { name, email, phone, topic, message, classification });
-      }
+      if (env.Resend) {
+        emailSent = await sendEmailViaResend(env.Resend, { name, email, phone, topic, message, classification });
+      } else { emailError = 'no_resend_key'; }
     } catch (e) {
-      // Email failed — will still log to Notion
+      emailError = e.message;
     }
 
     // Step 3: Log to Notion
     let notionLogged = false;
+    let notionError = null;
     try {
-      const N_TOKEN = typeof Notion !== 'undefined' ? Notion : null;
-      const N_DB = typeof NOTION_DATABASE_ID !== 'undefined' ? NOTION_DATABASE_ID : null;
-      if (N_TOKEN && N_DB) {
-        notionLogged = await logToNotion(N_TOKEN, N_DB, { name, email, phone, topic, message, classification });
-      }
+      if (env.Notion && env.NOTION_DATABASE_ID) {
+        notionLogged = await logToNotion(env.Notion, env.NOTION_DATABASE_ID, { name, email, phone, topic, message, classification });
+      } else { notionError = 'missing_key:Notion=' + !!env.Notion + ',DB=' + !!env.NOTION_DATABASE_ID; }
     } catch (e) {
-      // Notion failed — not critical
+      notionError = e.message;
     }
 
     return new Response(JSON.stringify({
       ok: true,
       emailSent,
+      emailError,
       notionLogged,
+      notionError,
+      classifyError,
       category: classification.category,
+      summary: classification.summary || null,
+      send_brochure: classification.send_brochure || false,
     }), {
       status: 200, headers: corsHeaders(origin),
     });
@@ -992,6 +1003,7 @@ Return JSON: {"category":"...","summary":"one sentence summary of what they want
   });
 
   const result = await res.json();
+  if (result.error) throw new Error('Claude API: ' + (result.error.message || JSON.stringify(result.error)).substring(0, 200));
   const text = result.content && result.content[0] && result.content[0].text || '{}';
   // Strip markdown fences if present
   const clean = text.replace(/```json|```/g, '').trim();
@@ -1046,33 +1058,42 @@ ${phone ? `<tr><td style="color:#888;vertical-align:top;padding:4px 0">Phone</td
   });
 
   const result = await res.json();
-  return !!result.id;
+  if (!result.id) throw new Error(JSON.stringify(result).substring(0, 200));
+  return true;
 }
 
 async function logToNotion(token, databaseId, data) {
   const { name, email, phone, topic, message, classification } = data;
 
+  const categoryLabels = {
+    rental_high_value: 'Rental (High Value)', rental_low_value: 'Rental (Individual)',
+    corporate_wellness: 'Corporate Wellness', class_inquiry: 'Class Inquiry',
+    press_media: 'Press & Media', partnership: 'Partnership', general: 'General',
+  };
+
+  const today = new Date().toISOString().split('T')[0];
+
   const res = await fetch('https://api.notion.com/v1/pages', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${token}`,
+      'Authorization': 'Bearer ' + token,
       'Notion-Version': '2022-06-28',
     },
     body: JSON.stringify({
       parent: { database_id: databaseId },
       properties: {
-        'Name': { title: [{ text: { content: name } }] },
-        'Email': { email: email },
-        'Phone': { phone_number: phone || null },
-        'Source': { select: { name: 'Website Contact Form' } },
-        'Category': { select: { name: classification.category || 'general' } },
-        'Summary': { rich_text: [{ text: { content: (classification.summary || message).substring(0, 200) } }] },
-        'Message': { rich_text: [{ text: { content: message.substring(0, 2000) } }] },
+        'Booking ref': { title: [{ text: { content: name + ' — Website Lead' } }] },
+        'Company': { rich_text: [{ text: { content: (message.match(/[Cc]ompany:\s*([^\n]*)/)?.[1] || '').substring(0, 200) } }] },
+        'Contact': { rich_text: [{ text: { content: email + (phone ? ' | ' + phone : '') } }] },
+        'Type': { rich_text: [{ text: { content: categoryLabels[classification.category] || classification.category || topic || 'General' } }] },
+        'Notes': { rich_text: [{ text: { content: ('AI: ' + (classification.summary || '') + '\n\n' + message).substring(0, 2000) } }] },
+        'Date': { date: { start: today } },
       },
     }),
   });
 
   const result = await res.json();
-  return !!result.id;
+  if (!result.id) throw new Error(JSON.stringify(result).substring(0, 300));
+  return true;
 }
