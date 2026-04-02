@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>SABDA Responsive Test Matrix</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#111;color:#fff;font-family:system-ui,-apple-system,sans-serif;padding:20px}
+h1{font-size:1.2rem;margin-bottom:20px;color:#02F3C5}
+.controls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.controls button{padding:8px 16px;background:#1a1a2e;border:1px solid #333;color:#fff;border-radius:4px;cursor:pointer;font-size:.75rem}
+.controls button.active{border-color:#02F3C5;color:#02F3C5}
+.grid{display:flex;gap:20px;flex-wrap:wrap;justify-content:center}
+.device{background:#1a1a2e;border-radius:8px;padding:12px;display:flex;flex-direction:column;align-items:center}
+.device-label{font-size:.65rem;color:#888;margin-bottom:8px;text-align:center}
+.device-label b{color:#F8A6A3;display:block;font-size:.75rem;margin-bottom:2px}
+.frame-wrap{border:2px solid #333;border-radius:4px;overflow:hidden;position:relative}
+iframe{border:none;background:#0e1235}
+.page-nav{display:flex;gap:4px;flex-wrap:wrap;margin-bottom:16px;padding:12px;background:#1a1a2e;border-radius:6px}
+.page-nav button{padding:6px 12px;background:transparent;border:1px solid #333;color:#aaa;border-radius:3px;cursor:pointer;font-size:.7rem}
+.page-nav button.active{border-color:#02F3C5;color:#02F3C5;background:rgba(2,243,197,.08)}
+.issue{background:#2a1a1a;border:1px solid #633;border-radius:4px;padding:8px 12px;margin-top:8px;font-size:.7rem;color:#F8A6A3}
+</style>
+</head>
+<body>
+<h1>SABDA Responsive Test Matrix</h1>
+
+<div class="page-nav" id="pageNav"></div>
+<div class="grid" id="grid"></div>
+
+<script>
+const pages = [
+  {name:'Homepage', url:'SABDA_v16.html'},
+  {name:'Classes', url:'classes.html'},
+  {name:'Pricing', url:'pricing.html'},
+  {name:'Hire', url:'hire.html'},
+  {name:'Events', url:'events.html'},
+  {name:'About', url:'about.html'},
+  {name:'Contact', url:'contact/index.html'},
+  {name:'Blog', url:'blog/index.html'},
+  {name:'Intro (Ad)', url:'intro/index.html'},
+  {name:'Exp. Inmersiva', url:'experiencia-inmersiva/index.html'},
+  {name:'Team Building', url:'team-building/index.html'},
+  {name:'FAQ', url:'faq/index.html'},
+  {name:'Yoga', url:'classes/yoga/index.html'},
+  {name:'Pilates', url:'classes/pilates/index.html'},
+  {name:'Sound Healing', url:'classes/sound-healing/index.html'},
+  {name:'Breathwork', url:'classes/breathwork/index.html'},
+  {name:'Ice Bath', url:'classes/ice-bath/index.html'},
+  {name:'Schedule', url:'schedule.html'},
+  {name:'ES Alquiler', url:'es/alquiler/index.html'},
+];
+
+const devices = [
+  {name:'iPhone SE', w:375, h:667},
+  {name:'iPhone 14', w:390, h:844},
+  {name:'iPhone 14 Pro Max', w:430, h:932},
+  {name:'Samsung Galaxy S21', w:360, h:800},
+  {name:'Pixel 7', w:412, h:915},
+  {name:'iPad Mini', w:744, h:1133},
+  {name:'iPad Air', w:820, h:1180},
+  {name:'iPad Pro 11"', w:834, h:1194},
+];
+
+const scale = 0.3;
+let currentPage = pages[0].url;
+
+// Build page nav
+const nav = document.getElementById('pageNav');
+pages.forEach((p,i) => {
+  const btn = document.createElement('button');
+  btn.textContent = p.name;
+  btn.className = i===0?'active':'';
+  btn.onclick = () => {
+    currentPage = p.url;
+    nav.querySelectorAll('button').forEach(b=>b.className='');
+    btn.className='active';
+    render();
+  };
+  nav.appendChild(btn);
+});
+
+function render(){
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+  devices.forEach(d => {
+    const div = document.createElement('div');
+    div.className = 'device';
+    div.innerHTML = `
+      <div class="device-label"><b>${d.name}</b>${d.w}×${d.h}</div>
+      <div class="frame-wrap" style="width:${d.w*scale}px;height:${d.h*scale}px">
+        <iframe src="${currentPage}?v=${Date.now()}" style="width:${d.w}px;height:${d.h}px;transform:scale(${scale});transform-origin:top left"></iframe>
+      </div>
+    `;
+    grid.appendChild(div);
+  });
+}
+render();
+</script>
+</body>
+</html>
