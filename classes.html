@@ -1428,9 +1428,19 @@ async function init(){
         desc:(function(){
           var raw=(e.level||'').replace(/^\([A-Z]{2}\):\s*/,'').trim();
           if(!raw) return '';
-          // Split EN/ES/CA sections with visual separator
-          raw=raw.replace(/\n*\(ES\):\s*/g,'\n---ES---\n').replace(/\n*\(CA\):\s*/g,'\n---CA---\n');
-          return raw;
+          // Split on language markers, dedupe
+          var parts=raw.split(/\n*\(ES\):\s*/);
+          var en=parts[0].trim();
+          var es=parts.length>1?parts[1].trim():'';
+          // Check for CA in remaining
+          var caParts=es?es.split(/\n*\(CA\):\s*/):[en.split(/\n*\(CA\):\s*/)].flat();
+          if(caParts.length>1&&!es){en=caParts[0].trim();var ca=caParts[1].trim();}
+          else if(caParts.length>1){es=caParts[0].trim();var ca=caParts[1].trim();}
+          else{var ca='';}
+          var result=en;
+          if(es) result+='---ES---'+es;
+          if(ca) result+='---CA---'+ca;
+          return result;
         })()
       };
     });
