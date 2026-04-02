@@ -1050,7 +1050,7 @@ ${phone ? `<tr><td style="color:#888;vertical-align:top;padding:4px 0">Phone</td
     },
     body: JSON.stringify({
       from: 'SABDA Website <noreply@sabdastudio.com>',
-      to: ['connect@sabdastudio.com'],
+      to: ['connect@sabdastudio.com', 'marvyn@sabdastudio.com'],
       reply_to: email,
       subject: `New Lead: ${categoryLabels[classification.category] || 'Inquiry'} from ${name}`,
       html: emailBody,
@@ -1072,6 +1072,8 @@ async function logToNotion(token, databaseId, data) {
   };
 
   const today = new Date().toISOString().split('T')[0];
+  const summaryText = classification.summary || '';
+  const msgText = message || '';
 
   const res = await fetch('https://api.notion.com/v1/pages', {
     method: 'POST',
@@ -1084,10 +1086,16 @@ async function logToNotion(token, databaseId, data) {
       parent: { database_id: databaseId },
       properties: {
         'Booking ref': { title: [{ text: { content: name + ' — Website Lead' } }] },
-        'Company': { rich_text: [{ text: { content: (message.match(/[Cc]ompany:\s*([^\n]*)/)?.[1] || '').substring(0, 200) } }] },
-        'Contact': { rich_text: [{ text: { content: email + (phone ? ' | ' + phone : '') } }] },
+        'Contact Name': { rich_text: [{ text: { content: name } }] },
+        'Contact Email': { email: email },
+        'Contact Phone': { phone_number: phone || null },
+        'Company': { rich_text: [{ text: { content: (msgText.match(/[Cc]ompany:\s*([^\n]*)/)?.[1] || '').substring(0, 200) } }] },
         'Type': { rich_text: [{ text: { content: categoryLabels[classification.category] || classification.category || topic || 'General' } }] },
-        'Notes': { rich_text: [{ text: { content: ('AI: ' + (classification.summary || '') + '\n\n' + message).substring(0, 2000) } }] },
+        'Notes': { rich_text: [
+          { text: { content: 'AI Summary: ' }, annotations: { bold: true } },
+          { text: { content: summaryText.substring(0, 400) + '\n\n' }, annotations: { bold: false } },
+          { text: { content: '"' + msgText.substring(0, 1500) + '"' }, annotations: { italic: true } }
+        ] },
         'Date': { date: { start: today } },
       },
     }),
