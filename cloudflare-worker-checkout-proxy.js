@@ -1091,10 +1091,10 @@ async function logToNotion(token, databaseId, data) {
         'Contact Phone': { phone_number: phone || null },
         'Company': { rich_text: [{ text: { content: (msgText.match(/[Cc]ompany:\s*([^\n]*)/)?.[1] || '').substring(0, 200) } }] },
         'Type': { rich_text: [{ text: { content: categoryLabels[classification.category] || classification.category || topic || 'General' } }] },
+        'AI Summary': { rich_text: [{ text: { content: summaryText.substring(0, 400) }, annotations: { bold: true } }] },
+        'Message': { rich_text: [{ text: { content: msgText.substring(0, 2000) }, annotations: { italic: true } }] },
         'Notes': { rich_text: [
-          { text: { content: 'AI Summary: ' }, annotations: { bold: true } },
-          { text: { content: summaryText.substring(0, 400) + '\n\n' }, annotations: { bold: false } },
-          { text: { content: '"' + msgText.substring(0, 1500) + '"' }, annotations: { italic: true } }
+          { text: { content: 'Send brochure: ' + (classification.send_brochure ? 'YES' : 'No') + ' | Confidence: ' + (classification.confidence || 'n/a') } }
         ] },
         'Date': { date: { start: today } },
       },
