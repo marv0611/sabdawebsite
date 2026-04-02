@@ -1480,6 +1480,36 @@ async function init(){
 }
 init();
 
+// ── URL param: ?pack=ID opens modal with pre-selected product ──
+var PACK_MAP={
+  '443934':{type:'pack',price:18,id:443934,name:'Trial Class',desc:'1 class \u00B7 First-timers only'},
+  '443935':{type:'pack',price:50,id:443935,name:'Intro 3-Pack',desc:'3 classes \u00B7 \u20AC16.67 each \u00B7 30 days'},
+  '431216':{type:'membership',price:130,id:431216,name:'Immerse',desc:'Unlimited classes \u00B7 Cancel anytime'},
+  '445600':{type:'membership',price:330,id:445600,name:'Immerse 3-Month',desc:'Unlimited classes \u00B7 3 month commitment'},
+  '709976':{type:'membership',price:109,id:709976,name:'Ritual',desc:'8 classes/month \u00B7 Cancel anytime'},
+  '706876':{type:'membership',price:99,id:706876,name:'Flex',desc:'4 classes/month \u00B7 Cancel anytime'},
+  '443937':{type:'pack',price:85,id:443937,name:'5 Pack',desc:'5 classes \u00B7 \u20AC17 each \u00B7 2 months'},
+  '443939':{type:'pack',price:149,id:443939,name:'10 Pack',desc:'10 classes \u00B7 \u20AC14.90 each \u00B7 3 months'},
+  '445630':{type:'single',price:22,id:445630,name:'Drop-in',desc:'1 class \u00B7 No commitment'}
+};
+(function checkUrlPack(){
+  var params=new URLSearchParams(window.location.search);
+  var packId=params.get('pack');
+  if(packId&&PACK_MAP[packId]){
+    var p=PACK_MAP[packId];
+    // Set a dummy session so the modal can open (no specific class context)
+    curSession={id:null,title:'Choose a class after checkout',time:'',teacher:'',link:'',spots:99,duration:0,isWaitlist:false};
+    document.getElementById('mo-t').textContent=p.name;
+    document.getElementById('mo-c').textContent=p.desc;
+    pendingPack={type:p.type,price:p.price,id:p.id,name:p.name,desc:p.desc};
+    showGuestStep();
+    document.getElementById('mo').classList.add('open');
+    document.getElementById('mo').style.display='flex';
+    document.body.style.overflow='hidden';
+    history.replaceState({},'',window.location.pathname);
+  }
+})();
+
 // Expose to global scope for onclick attributes
 window.closeMo=closeMo;
 window.showLoginStep=showLoginStep;
