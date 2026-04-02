@@ -456,9 +456,9 @@ select.bk-input option{background:var(--navy-light);color:var(--white)}
 <footer style="border-top:1px solid rgba(240,239,233,.07)">
   <div class="ft-in">
     <div class="ft-brand">
-      <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA">
+      <img loading="lazy" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA">
       <div class="ft-pillars"><span class="fp-art">Art</span><span>·</span><span class="fp-tech">Tech</span><span>·</span><span class="fp-well">Wellness</span></div>
-      <img class="ft-symbol" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20symbol%20multi-colored%20(1).png" alt="SABDA symbol">
+      <img class="ft-symbol" loading="lazy" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20symbol%20multi-colored%20(1).png" alt="SABDA symbol">
     </div>
     <div class="ft-col"><h4 style="color:var(--cyan)">Explore</h4><ul>
       <li><a href="classes.html">Classes</a></li><li><a href="hire.html">Rent</a></li><li><a href="pricing.html">Pricing</a></li><li><a href="events.html">Events</a></li><li><a href="about.html">About</a></li>
@@ -493,7 +493,7 @@ select.bk-input option{background:var(--navy-light);color:var(--white)}
   function resize(){W=window.innerWidth;H=window.innerHeight;canvas.width=W*devicePixelRatio;canvas.height=H*devicePixelRatio;ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0)}
   resize();window.addEventListener('resize',resize);
   document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY});
-  const COUNT=672;
+  const COUNT=window.innerWidth<768?200:672;
   const particles=Array.from({length:COUNT},()=>({
     x:Math.random()*3000,y:Math.random(),vx:0.008+Math.random()*0.06,vy:(Math.random()-0.5)*0.003,
     fx:0,fy:0,size:0.3+Math.random()*1.5,glow:4+Math.random()*16,
@@ -562,7 +562,7 @@ document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',(
 ═══════════════════════════════════════════════════════ */
 (function(){
 
-var EVENTS_API='https://momence.com/_api/primary/api/v1/Events?hostId=54278&token=a0314a80ca';
+var SCHEDULE_API='https://readonly-api.momence.com/host-plugins/host/54278/host-schedule/sessions';
 var PROXY='https://sabda-checkout-proxy.sabda.workers.dev';
 var allE=[],selDate=null,actF='All',actTeacher='All';
 var curSession=null, curUser=null, curMembership=null, curSessionToken=null;
@@ -1384,12 +1384,34 @@ function showSuccess(){stepChange();
 }
 
 // ── Init: fetch schedule + render ──
+function buildApiUrl(){
+  var now=new Date();
+  var from=now.toISOString();
+  var to=new Date(now.getTime()+28*86400000).toISOString();
+  return SCHEDULE_API+'?fromDate='+encodeURIComponent(from)+'&toDate='+encodeURIComponent(to)+'&pageSize=500&page=0';
+}
 async function init(){
   renderDays();
   try{
-    var r=await fetch(EVENTS_API);var d=await r.json();
-    var now=new Date();
-    allE=d.filter(function(e){return new Date(e.dateTime)>new Date(now.getTime()-3600000)&&!e.isDeleted;});
+    var r=await fetch(buildApiUrl());var d=await r.json();
+    var raw=d.payload||d.data||d;
+    if(!Array.isArray(raw)) raw=[];
+    // Map readonly API fields to our expected format
+    allE=raw.filter(function(e){return!e.isCancelled;}).map(function(e){
+      return{
+        id:e.id,
+        title:e.sessionName||e.title||'',
+        dateTime:e.startsAt||e.dateTime||'',
+        teacher:e.teacher||'',
+        duration:e.durationMinutes||e.duration||0,
+        spotsRemaining:(e.capacity!=null&&e.ticketsSold!=null)?e.capacity-e.ticketsSold:(e.spotsRemaining!=null?e.spotsRemaining:99),
+        link:e.link||('https://momence.com/s/'+e.id),
+        isCancelled:e.isCancelled||false,
+        isDeleted:false,
+        allowWaitlist:e.allowWaitlist||false,
+        capacity:e.capacity||30
+      };
+    });
     renderFilters(allE);renderSched();
     document.getElementById('sk').style.display='none';
     document.getElementById('sched').style.display='block';
