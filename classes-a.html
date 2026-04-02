@@ -650,7 +650,37 @@ function doGuestCheck(){
   if(!ok){err.textContent='Please fill in the highlighted fields';return;}
 
   curUser={id:null,email:email,firstName:fn,lastName:ln,memberId:null,isGuest:true};
-  showNoMembership();
+
+  // Check if this email has existing credits
+  fetch(PROXY+'/sabda-api/check-email',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({email:email,sessionId:curSession.id})
+  }).then(function(r){return r.json();})
+  .then(function(d){
+    if(d.hasCredits){
+      // Show prompt to log in instead
+      var bd=document.getElementById('mo-bd');
+      var classBlock='<div class="bk-class">'
+        +'<div class="bk-class-name">'+curSession.title+'</div>'
+        +'<div class="bk-class-meta">'
+        +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+curSession.time+'</span>'
+        +'</div>'+getSpotsHtml()+'</div>';
+      bd.innerHTML=classBlock
+        +'<div class="bk-confirm" style="text-align:center">'
+        +'<div style="background:rgba(2,243,197,.06);border:1px solid rgba(2,243,197,.12);border-radius:10px;padding:20px;margin-bottom:20px">'
+        +'<div style="font-size:.9rem;font-weight:600;color:var(--cyan);margin-bottom:6px">You have credits!</div>'
+        +'<div style="font-size:.82rem;color:var(--white60);line-height:1.5">This email has an active '+(d.membershipName||'membership')+'. Log in to book for free with your credits.</div>'
+        +'</div>'
+        +'<button class="bk-primary" onclick="showLoginStep()">Log in & Use Credits</button>'
+        +'<div class="bk-link" onclick="showNoMembership()">Continue without logging in</div>'
+        +'</div>';
+    } else {
+      showNoMembership();
+    }
+  }).catch(function(){
+    showNoMembership();
+  });
 }
 
 // ── CUSTOMER FIELDS HTML (phone, language, city) ──

@@ -27,6 +27,9 @@ export default {
     if (url.pathname === '/sabda-api/promo') {
       return handlePromo(request, reqOrigin);
     }
+    if (url.pathname === '/sabda-api/check-email') {
+      return handleCheckEmail(request, reqOrigin);
+    }
     if (url.pathname === '/sabda-api/login') {
       return handleLogin(request, reqOrigin);
     }
@@ -301,6 +304,46 @@ function corsHeaders(origin) {
     'Access-Control-Allow-Credentials': 'true',
     'Content-Type': 'application/json',
   };
+}
+
+// ── CHECK IF EMAIL HAS EXISTING ACCOUNT WITH CREDITS ──
+async function handleCheckEmail(request, origin) {
+  try {
+    const { email, sessionId } = await request.json();
+    if (!email) {
+      return new Response(JSON.stringify({ exists: false }), {
+        status: 200, headers: corsHeaders(origin),
+      });
+    }
+
+    // Check compatible memberships using email (no auth required for this endpoint)
+    let hasCredits = false;
+    let membershipName = '';
+    if (sessionId) {
+      try {
+        const mRes = await fetch(
+          MOMENCE + '/_api/primary/plugin/memberships/session-compatible-memberships?sessionId=' + sessionId + '&email=' + encodeURIComponent(email) + '&tickets=1&isGuestOnlyBooking=false',
+          { headers: { 'Host': 'momence.com' } }
+        );
+        const mData = await mRes.json().catch(() => []);
+        const rawList = Array.isArray(mData) ? mData : [];
+        if (rawList.length > 0) {
+          hasCredits = true;
+          membershipName = rawList[0].name || rawList[0].membershipName || 'membership';
+        }
+      } catch (e) {}
+    }
+
+    return new Response(JSON.stringify({
+      hasCredits,
+      membershipName,
+    }), { status: 200, headers: corsHeaders(origin) });
+
+  } catch (e) {
+    return new Response(JSON.stringify({ hasCredits: false }), {
+      status: 200, headers: corsHeaders(origin),
+    });
+  }
 }
 
 // ── SERVER-SIDE PROMO CODE VALIDATION ──
