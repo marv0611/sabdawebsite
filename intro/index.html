@@ -137,6 +137,39 @@ a.cls-item{display:block;color:inherit;text-decoration:none}
 .loc-map{border-radius:6px;overflow:hidden;height:400px;border:1px solid rgba(240,239,233,.08);position:relative}
 .loc-map iframe{width:100%;height:100%;border:0;filter:invert(90%) hue-rotate(180deg) brightness(1.1) contrast(1.1)}
 
+/* PARTNERS MARQUEE */
+.partners{padding:72px 0;overflow:hidden;position:relative;z-index:2;background:transparent;border-bottom:1px solid rgba(240,239,233,.06)}
+.partners::before,.partners::after{content:'';position:absolute;top:0;bottom:0;width:180px;z-index:3;pointer-events:none}
+.partners::before{left:0;background:linear-gradient(to right,var(--navy),transparent)}
+.partners::after{right:0;background:linear-gradient(to left,var(--navy),transparent)}
+.p-label{text-align:center;margin-bottom:52px;font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--white38)}
+.mq{display:flex;align-items:center;width:max-content;animation:mqAnim 55s linear infinite}
+.mq-item{padding:0 38px;font-size:.82rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;white-space:nowrap;opacity:.7;transition:opacity .4s}.mq-item:hover{opacity:1}
+.mq-sep{padding:0 8px;font-size:.5rem;color:rgba(240,239,233,.2);flex-shrink:0}
+@keyframes mqAnim{from{transform:translateX(0)}to{transform:translateX(-33.333%)}}
+
+/* BOOKING CARDS */
+.booking{padding:120px 80px 64px;border-top:1px solid rgba(240,239,233,.06);position:relative;z-index:2}
+.booking-in{max-width:1140px;margin:0 auto;text-align:center}
+.booking-sub{color:var(--white38);font-size:1rem;line-height:1.72;max-width:540px;margin:18px auto 68px}
+.b-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:center}
+.b-card{border-radius:6px;padding:42px 34px;border:1px solid rgba(240,239,233,.1);transition:border-color .3s,transform .3s;position:relative;overflow:hidden;text-align:left;display:flex;flex-direction:column}
+.b-card:not(.pri){padding:32px 30px;transform:scale(.92);transform-origin:center top}
+.b-card:hover{border-color:rgba(240,239,233,.2);transform:translateY(-5px)}
+.b-card.pri{border-color:rgba(2,243,197,.24);background:linear-gradient(140deg,rgba(2,243,197,.045) 0%,transparent 55%)}
+.b-card.pri:hover{transform:translateY(-5px)}
+.b-badge{display:inline-block;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--navy);background:var(--cyan);padding:4px 10px;border-radius:2px;font-weight:700;margin-bottom:22px}
+.b-lbl{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--white38);margin-bottom:14px;display:block}
+.b-price{font-family:'PT Serif',serif;font-size:3.2rem;font-weight:700;letter-spacing:-.03em;line-height:1;margin-bottom:6px}
+.b-mo{font-size:1rem;font-weight:400;color:var(--white38);letter-spacing:0}
+.b-price-sub{font-size:.8rem;color:var(--white38);margin-bottom:22px}
+.b-desc{font-size:.85rem;color:var(--white60);line-height:1.66;margin-bottom:28px;flex:1}
+.b-btn-p{display:block;text-align:center;background:var(--cyan);color:var(--navy);padding:14px 24px;border-radius:3px;font-size:.82rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;transition:background .2s,transform .15s}.b-btn-p:hover{background:#18ffda;transform:translateY(-2px)}
+.b-btn-g{display:block;text-align:center;border:1px solid rgba(240,239,233,.2);padding:13px 24px;border-radius:3px;font-size:.82rem;font-weight:500;letter-spacing:.05em;color:var(--white60);transition:border-color .25s,color .25s}.b-btn-g:hover{border-color:var(--white);color:var(--white)}
+.b-features{list-style:none;margin-top:26px;padding-top:22px;border-top:1px solid rgba(240,239,233,.06);display:flex;flex-direction:column;gap:12px}
+.b-features li{font-size:.82rem;color:var(--white38);padding-left:20px;position:relative}
+.b-features li::before{content:'';position:absolute;left:0;top:6px;width:6px;height:6px;border-radius:50%;background:var(--cyan);opacity:.5}
+
 /* CLOSER */
 .closer{padding:100px 80px;text-align:center;position:relative;z-index:2;border-top:1px solid rgba(240,239,233,.06);background:radial-gradient(ellipse 70% 50% at 50% 60%,rgba(2,243,197,.03) 0%,transparent 70%)}
 .closer-sub{font-size:.92rem;color:var(--white60);margin:12px 0 36px}.closer-sub b{color:var(--white);font-weight:700}
@@ -168,15 +201,15 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .cls-item{width:300px;height:180px}
   .press-grid{grid-template-columns:1fr;max-width:400px;margin:0 auto;gap:48px}
   .press{padding-top:72px;padding-bottom:72px}
-  .how-sect{padding-top:72px;padding-bottom:72px}
-  .steps{grid-template-columns:1fr;max-width:400px}
+  .booking{padding-left:24px;padding-right:24px}
+  .b-cards{grid-template-columns:1fr;max-width:400px;margin:0 auto}
   .loc-in{grid-template-columns:1fr;gap:44px}
   .location{padding:72px 24px}
   .sbk{display:flex}
   footer{padding:40px 24px 24px}.ft-in{grid-template-columns:1fr 1fr}.ft-symbol{display:none}
 }
 @media(max-width:860px){.rn-quote q{font-size:1.2rem}.rn-ticker{min-height:110px;margin-bottom:0}}
-@media(max-width:520px){.ft-in{grid-template-columns:1fr}.trust-in{gap:36px}.classes-hdr{flex-direction:column;align-items:flex-start;gap:16px}.hero-price{font-size:4rem}}
+@media(max-width:520px){.ft-in{grid-template-columns:1fr}.trust-in{gap:36px}.classes-hdr{flex-direction:column;align-items:flex-start;gap:16px}.hero-price{font-size:4rem}.b-card:not(.pri){transform:none}}
 </style>
 </head>
 <body>
@@ -236,28 +269,30 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   </div>
 </div>
 
-<!-- CLASSES — dual-row -->
+<!-- PARTNERS — exact homepage -->
+<div class="partners">
+  <p class="p-label rv">Trusted by leading brands</p>
+  <div class="mq" id="mq"></div>
+</div>
+
+<!-- CLASSES — exact homepage dual-row gallery -->
 <section class="classes">
   <div class="classes-hdr"><div><span class="sl rv">Classes</span><h2 class="sh2 rv" style="transition-delay:.07s">Move. Breathe.<br><em>Tune In.</em></h2></div></div>
   <div class="cls-row-wrap"><div class="cls-row scroll-left">
-    <a href="../classes/yoga/" class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_016.jpg" alt="Yoga SABDA" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Yoga</div><div class="cls-item-tag">60 min · All levels</div></div></a>
+    <a href="../classes/yoga/" class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_016.jpg" alt="Vinyasa yoga SABDA" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Vinyasa Yoga</div><div class="cls-item-tag">60 min · All levels</div></div></a>
     <a href="../classes/pilates/" class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/pilates_new.jpg" alt="Pilates SABDA" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Pilates</div><div class="cls-item-tag">50 min · All levels</div></div></a>
-    <a href="../classes/sound-healing/" class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/sound_healing.jpg" alt="Sound Healing" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Sound Healing</div><div class="cls-item-tag">60 min · No experience needed</div></div></a>
-    <a href="../classes/breathwork/" class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/breathwork_new.jpg" alt="Breathwork" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Breathwork</div><div class="cls-item-tag">45 to 60 min · All levels</div></div></a>
-    <a href="../classes/yoga/" class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_016.jpg" alt="Yoga" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Yoga</div><div class="cls-item-tag">60 min · All levels</div></div></a>
+    <a href="../classes/breathwork/" class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_015.jpg" alt="Breathwork SABDA" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Breathwork</div><div class="cls-item-tag">60 min · All levels</div></div></a>
+    <a href="../classes/yoga/" class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_016.jpg" alt="Vinyasa yoga" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Vinyasa Yoga</div><div class="cls-item-tag">60 min · All levels</div></div></a>
     <a href="../classes/pilates/" class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/pilates_new.jpg" alt="Pilates" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Pilates</div><div class="cls-item-tag">50 min · All levels</div></div></a>
-    <a href="../classes/sound-healing/" class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/sound_healing.jpg" alt="Sound Healing" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Sound Healing</div><div class="cls-item-tag">60 min · No experience needed</div></div></a>
-    <a href="../classes/breathwork/" class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/breathwork_new.jpg" alt="Breathwork" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Breathwork</div><div class="cls-item-tag">45 to 60 min · All levels</div></div></a>
+    <a href="../classes/breathwork/" class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_015.jpg" alt="Breathwork" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Breathwork</div><div class="cls-item-tag">60 min · All levels</div></div></a>
   </div></div>
   <div class="cls-row-wrap"><div class="cls-row scroll-right">
-    <a href="../classes/ice-bath/" class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Copy_of_Sabda2-167__1_.jpg" alt="SABDA Room" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Vinyasa Flow</div><div class="cls-item-tag">60 min · All levels</div></div></a>
-    <a href="../experiencia-inmersiva/" class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_009.jpg" alt="Immersive" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Immersive Experience</div><div class="cls-item-tag">360° Projection Room</div></div></a>
-    <a href="../classes/sound-healing/" class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/sound_healing.jpg" alt="Yin Sound" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Yin & Sound</div><div class="cls-item-tag">75 min · Deep relaxation</div></div></a>
-    <a href="../classes/yoga/" class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/vinyasa_new.jpg" alt="Hatha Yoga" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Hatha Yoga</div><div class="cls-item-tag">60 min · All levels</div></div></a>
-    <a href="../classes/ice-bath/" class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Copy_of_Sabda2-167__1_.jpg" alt="SABDA Room" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Vinyasa Flow</div><div class="cls-item-tag">60 min · All levels</div></div></a>
-    <a href="../experiencia-inmersiva/" class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_009.jpg" alt="Immersive" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Immersive Experience</div><div class="cls-item-tag">360° Projection Room</div></div></a>
-    <a href="../classes/sound-healing/" class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/sound_healing.jpg" alt="Yin Sound" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Yin & Sound</div><div class="cls-item-tag">75 min · Deep relaxation</div></div></a>
-    <a href="../classes/yoga/" class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/vinyasa_new.jpg" alt="Hatha Yoga" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Hatha Yoga</div><div class="cls-item-tag">60 min · All levels</div></div></a>
+    <a href="../classes/ice-bath/" class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/icebath_patio.jpg" alt="Ice bath SABDA" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Ice Bath</div><div class="cls-item-tag">Open use · Private terrace</div></div></a>
+    <a href="../classes/sound-healing/" class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/sound_healing.jpg" alt="Sound healing SABDA" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Sound Healing</div><div class="cls-item-tag">60 min · No experience needed</div></div></a>
+    <a href="../classes/breathwork/" class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/breathwork_new.jpg" alt="Breathwork SABDA" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Alchemy Breath</div><div class="cls-item-tag">45 to 60 min · All levels</div></div></a>
+    <a href="../classes/ice-bath/" class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/icebath_patio.jpg" alt="Ice bath" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Ice Bath</div><div class="cls-item-tag">Open use · Private terrace</div></div></a>
+    <a href="../classes/sound-healing/" class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/sound_healing.jpg" alt="Sound healing" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Sound Healing</div><div class="cls-item-tag">60 min · No experience needed</div></div></a>
+    <a href="../classes/breathwork/" class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/breathwork_new.jpg" alt="Breathwork" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Alchemy Breath</div><div class="cls-item-tag">45 to 60 min · All levels</div></div></a>
   </div></div>
 </section>
 
@@ -286,15 +321,55 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   </div>
 </div>
 
-<!-- HOW IT WORKS — 3 visual cards -->
-<section class="how-sect">
-  <div class="how-in">
-    <span class="sl rv" id="t-how">Your First Visit</span>
-    <h2 class="sh2 rv" style="transition-delay:.06s">Book it. Show up.<br><em>Feel the difference.</em></h2>
-    <div class="steps">
-      <div class="step-card rv" style="transition-delay:.1s"><div class="step-n">1</div><h4 id="t-s1h">Pick Your 3 Classes</h4><p id="t-s1p">Yoga, pilates, sound healing, breathwork. Mix and match from 43 weekly sessions. Two taps, done.</p></div>
-      <div class="step-card rv" style="transition-delay:.16s"><div class="step-n">2</div><h4 id="t-s2h">Walk In, We Handle the Rest</h4><p id="t-s2p">Mats, props, towels, water. All here. Wear something you can move in. That is literally it.</p></div>
-      <div class="step-card rv" style="transition-delay:.22s"><div class="step-n">3</div><h4 id="t-s3h">Step Into the Room</h4><p id="t-s3p">360° projections wrap every surface. Dolby Atmos fills the air. 60 minutes later, you will not want to leave.</p></div>
+<!-- BOOKING — Single class left, 3-Pack center (featured), Immerse right -->
+<section class="booking">
+  <div class="booking-in">
+    <span class="sl rv">Get started</span>
+    <h2 class="sh2 rv" style="transition-delay:.06s">Find the right rhythm<br><em>for your practice.</em></h2>
+    <p class="booking-sub rv" style="transition-delay:.12s">First time? Start with an intro offer. Ready to commit? Go unlimited.</p>
+    <div class="b-cards">
+
+      <div class="b-card rv" style="transition-delay:.15s">
+        <span class="b-lbl">Single Class</span>
+        <div class="b-price">€18</div>
+        <div class="b-price-sub">Trial class · No commitment</div>
+        <p class="b-desc">Just want to try one class? Drop in for a single session and see the room for yourself.</p>
+        <a href="https://momence.com/m/443934" class="b-btn-g">Try One Class</a>
+        <ul class="b-features">
+          <li>1 class, any type</li>
+          <li>No commitment</li>
+          <li>Mat and towel provided</li>
+        </ul>
+      </div>
+
+      <div class="b-card pri rv" style="transition-delay:.2s">
+        <div class="b-badge">Best Value</div>
+        <span class="b-lbl">Intro 3-Pack</span>
+        <div class="b-price">€50</div>
+        <div class="b-price-sub">€16.67/class · Valid 30 days</div>
+        <p class="b-desc">Try any 3 classes within 30 days. Yoga, sound healing, breathwork, pilates. All in 360° immersion.</p>
+        <a href="https://momence.com/m/443935" class="b-btn-p">Get Started</a>
+        <ul class="b-features">
+          <li>3 classes, any type</li>
+          <li>Valid 30 days</li>
+          <li>No commitment</li>
+          <li>Mat and towel provided</li>
+        </ul>
+      </div>
+
+      <div class="b-card rv" style="transition-delay:.25s">
+        <span class="b-lbl">Immerse</span>
+        <div class="b-price">€130<span class="b-mo">/month</span></div>
+        <div class="b-price-sub">Unlimited classes · Cancel anytime</div>
+        <p class="b-desc">For those who already know. Unlimited access to every class, every week.</p>
+        <a href="https://momence.com/m/431216" class="b-btn-g">Join Now</a>
+        <ul class="b-features">
+          <li>Unlimited classes</li>
+          <li>4 ice baths / month</li>
+          <li>2 guest passes / month (new students only)</li>
+        </ul>
+      </div>
+
     </div>
   </div>
 </section>
@@ -364,6 +439,15 @@ var statsObs=new IntersectionObserver(function(e){if(e[0].isIntersecting){trigge
 var statsEl=document.getElementById('statsSection');if(statsEl)statsObs.observe(statsEl);
 function triggerStats(){var el=document.getElementById('statsSection');if(!el)return;el.querySelectorAll('.ss-item').forEach(function(item,i){setTimeout(function(){item.classList.add('anim')},i*180)});el.querySelectorAll('.ss-div').forEach(function(d,i){setTimeout(function(){d.classList.add('anim')},i*180+90)});el.querySelectorAll('[data-count]').forEach(function(c,i){setTimeout(function(){animateCount(c)},i*200+250)})}
 
+/* Partners marquee */
+var pData=['FC Barcelona','Danone','Liga Endesa','Elisava','Honest Greens','Aire','Time Out','Ametller'];
+var mqEl=document.getElementById('mq');
+var colors=['#02F3C5','#F8A6A3'];
+[].concat(pData,pData,pData).forEach(function(name,i){
+  var sep=document.createElement('span');sep.className='mq-sep';sep.textContent='\u00B7';mqEl.appendChild(sep);
+  var s=document.createElement('span');s.className='mq-item';s.textContent=name;s.style.color=colors[i%2];mqEl.appendChild(s);
+});
+
 /* Pixel */
 document.querySelectorAll('a[href*="momence.com"]').forEach(function(b){b.addEventListener('click',function(){if(typeof fbq==='function')fbq('track','InitiateCheckout',{content_name:b.textContent.trim(),currency:'EUR',value:b.href.indexOf('443935')!==-1?50:18})})});
 
@@ -371,7 +455,7 @@ document.querySelectorAll('a[href*="momence.com"]').forEach(function(b){b.addEve
 (function(){var c=document.getElementById('gP');if(!c)return;var x=c.getContext('2d'),W,H,mx=-9999,my=-9999;function rz(){W=innerWidth;H=innerHeight;c.width=W*devicePixelRatio;c.height=H*devicePixelRatio;x.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0)}rz();addEventListener('resize',rz);document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY});var N=672,t=0,P=[];for(var i=0;i<N;i++){var r=Math.random();P.push({x:Math.random()*3e3,y:Math.random(),vx:.008+Math.random()*.06,vy:(Math.random()-.5)*.003,fx:0,fy:0,s:.3+Math.random()*1.5,g:4+Math.random()*16,c:r<.38?[2,243,197]:r<.72?[248,166,163]:[32,57,153],o:.025+Math.random()*.12,ph:Math.random()*Math.PI*2,wa:.01+Math.random()*.04,wf:1e-4+Math.random()*5e-4})}function dr(){t++;x.clearRect(0,0,W,H);for(var i=0;i<P.length;i++){var p=P[i];p.x+=p.vx;p.y+=p.vy;var wy=p.wa*Math.sin(p.ph+t*p.wf),dx2=p.x+p.fx,dy2=(p.y+wy)*H+p.fy,dx=dx2-mx,dy=dy2-my,d=Math.sqrt(dx*dx+dy*dy);if(d<120&&d>0){var f=(1-d/120)*2.5;p.fx+=dx/d*f;p.fy+=dy/d*f}p.fx*=.94;p.fy*=.94;dx2=p.x+p.fx;dy2=(p.y+wy)*H+p.fy;if(p.x>W+60){p.x=-50;p.y=Math.random();p.fx=0;p.fy=0}if(p.y<-.05)p.y=1.05;if(p.y>1.05)p.y=-.05;var pl=.4+.6*Math.sin(p.ph+t*.001),op=p.o*pl;if(op<.002)continue;var g=x.createRadialGradient(dx2,dy2,0,dx2,dy2,p.g);g.addColorStop(0,'rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+','+op*.7+')');g.addColorStop(.3,'rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+','+op*.28+')');g.addColorStop(.7,'rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+','+op*.04+')');g.addColorStop(1,'rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+',0)');x.fillStyle=g;x.beginPath();x.arc(dx2,dy2,p.g,0,Math.PI*2);x.fill();x.beginPath();x.arc(dx2,dy2,p.s*.5,0,Math.PI*2);x.fillStyle='rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+','+Math.min(.6,op*2)+')';x.fill()}requestAnimationFrame(dr)}requestAnimationFrame(dr)})();
 
 /* Spanish */
-(function(){var p=new URLSearchParams(location.search);if(p.get('lang')==='es'){document.documentElement.lang='es';document.title='3 Clases Inmersivas por \u20AC50 | SABDA Barcelona';var t={'t-label':'TUS PRIMERAS 3 CLASES INMERSIVAS','t-tag':'Tu intro al wellness inmersivo. Cualquier clase, cualquier momento, 30 d\u00EDas.','t-det':'<b>\u20AC16,67 por clase</b> \u00B7 V\u00E1lido 30 d\u00EDas \u00B7 Sin compromiso','t-cta':'Consigue tu Pack Intro <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>','t-alt':'\u00BFSolo quieres probar una clase? <span>Clase de prueba \u2014 \u20AC18</span>','t-how':'Tu Primera Visita','t-s1h':'Elige Tus 3 Clases','t-s1p':'Yoga, pilates, sound healing, breathwork. Mezcla y combina entre 43 sesiones semanales. Dos toques, listo.','t-s2h':'Ven, Nosotros Nos Encargamos','t-s2p':'Esterillas, accesorios, toallas, agua. Todo aqu\u00ED. Trae ropa c\u00F3moda. Eso es literalmente todo.','t-s3h':'Entra en la Sala','t-s3p':'Proyecciones 360\u00B0 envuelven cada superficie. Dolby Atmos llena el aire. 60 minutos despu\u00E9s, no querr\u00E1s irte.','t-closer':'Tu cuerpo te lo <em>agradecer\u00E1.</em>','t-cta2':'Consigue tu Pack Intro <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>','t-cn':'V\u00E1lido 30 d\u00EDas. Sin membres\u00EDa. Sin compromiso.','t-loc':'5 min andando desde metro Hospital Cl\u00EDnic \u00B7 L5','t-sticky':'Reservar'};for(var id in t){var el=document.getElementById(id);if(el)el.innerHTML=t[id]}}})();
+(function(){var p=new URLSearchParams(location.search);if(p.get('lang')==='es'){document.documentElement.lang='es';document.title='3 Clases Inmersivas por \u20AC50 | SABDA Barcelona';var t={'t-label':'TUS PRIMERAS 3 CLASES INMERSIVAS','t-tag':'Tu intro al wellness inmersivo. Cualquier clase, cualquier momento, 30 d\u00EDas.','t-det':'<b>\u20AC16,67 por clase</b> \u00B7 V\u00E1lido 30 d\u00EDas \u00B7 Sin compromiso','t-cta':'Consigue tu Pack Intro <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>','t-alt':'\u00BFSolo quieres probar una clase? <span>Clase de prueba \u2014 \u20AC18</span>','t-closer':'Tu cuerpo te lo <em>agradecer\u00E1.</em>','t-cta2':'Consigue tu Pack Intro <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>','t-cn':'V\u00E1lido 30 d\u00EDas. Sin membres\u00EDa. Sin compromiso.','t-loc':'5 min andando desde metro Hospital Cl\u00EDnic \u00B7 L5','t-sticky':'Reservar'};for(var id in t){var el=document.getElementById(id);if(el)el.innerHTML=t[id]}}})();
 </script>
 </body>
 </html>
