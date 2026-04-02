@@ -907,7 +907,7 @@ async function handleContact(request, origin) {
     let classification = { category: topic || 'general', action: 'send_to_katrina', confidence: 'low', summary: message.substring(0, 200) };
 
     try {
-      const ANTHROPIC_KEY = typeof ANTHROPIC_API_KEY !== 'undefined' ? ANTHROPIC_API_KEY : null;
+      const ANTHROPIC_KEY = typeof Claude !== 'undefined' ? Claude : null;
       if (ANTHROPIC_KEY) {
         classification = await classifyWithClaude(ANTHROPIC_KEY, { name, email, phone, topic, message });
       }
@@ -918,7 +918,7 @@ async function handleContact(request, origin) {
     // Step 2: Send email to Katrina via Resend
     let emailSent = false;
     try {
-      const RESEND_KEY = typeof RESEND_API_KEY !== 'undefined' ? RESEND_API_KEY : null;
+      const RESEND_KEY = typeof Resend !== 'undefined' ? Resend : null;
       if (RESEND_KEY) {
         emailSent = await sendEmailViaResend(RESEND_KEY, { name, email, phone, topic, message, classification });
       }
@@ -929,7 +929,7 @@ async function handleContact(request, origin) {
     // Step 3: Log to Notion
     let notionLogged = false;
     try {
-      const N_TOKEN = typeof NOTION_TOKEN !== 'undefined' ? NOTION_TOKEN : null;
+      const N_TOKEN = typeof Notion !== 'undefined' ? Notion : null;
       const N_DB = typeof NOTION_DATABASE_ID !== 'undefined' ? NOTION_DATABASE_ID : null;
       if (N_TOKEN && N_DB) {
         notionLogged = await logToNotion(N_TOKEN, N_DB, { name, email, phone, topic, message, classification });
