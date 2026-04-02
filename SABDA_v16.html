@@ -419,7 +419,9 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .hero{min-height:92vh}
   .hero-content{padding:0 24px 64px}
   .hero-label{font-size:.82rem;letter-spacing:.15em;gap:14px;justify-content:center;flex-wrap:wrap}
+  .sh2{font-size:clamp(1.7rem,5vw,2.4rem)}
   .hero h1{font-size:2.2rem}
+  .hero-ctas .btn-p{width:100%;max-width:340px;justify-content:center;padding:16px 24px}
 
   /* TRUST — clean vertical stack */
   .trust{padding:56px 24px}
@@ -441,10 +443,12 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   /* PARTNERS */
   .partners{padding:44px 0}
   .p-label{margin-bottom:32px}
+  .mq-item{padding:0 24px;font-size:.72rem}
 
   /* CLASS GALLERY */
   .cls-item{width:280px;height:190px}
   .classes{padding-top:64px}
+  .classes::before{content:"";position:absolute;top:0;bottom:0;left:0;width:40px;background:linear-gradient(to right,var(--navy),transparent);z-index:4;pointer-events:none}
 
   /* PRESS — horizontal swipe */
   .press{padding:56px 24px;overflow:visible}
@@ -465,7 +469,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 
   /* REVIEW NUDGE */
   .review-nudge{padding:64px 24px}
-  .rn-text{font-size:2.2rem}
+  .rn-text{font-size:1.8rem}
 
   /* LOCATION */
   .location{padding:64px 24px}
@@ -485,6 +489,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 
   /* FOOTER */
   .ft-in{grid-template-columns:1fr 1fr;gap:32px}
+  .ft-symbol{display:none}
   footer{padding:44px 24px 24px}
 
   .sbk{display:flex}
@@ -499,6 +504,8 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .b-card{min-width:270px}
   .press-card{min-width:260px}
 }
+.scroll-top{position:fixed;bottom:80px;right:20px;width:40px;height:40px;border-radius:50%;background:rgba(14,18,53,.85);border:1px solid rgba(240,239,233,.1);display:none;align-items:center;justify-content:center;cursor:pointer;z-index:98;opacity:0;transition:opacity .3s,transform .3s;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}.scroll-top.vis{opacity:1}.scroll-top svg{width:16px;height:16px;stroke:var(--cyan);stroke-width:2;fill:none}
+@media(max-width:860px){.scroll-top{display:flex}}
 .nav-ham{display:none;flex-direction:column;gap:4px;padding:12px;cursor:pointer;z-index:101;background:none;border:none}.nav-ham span{width:20px;height:1.5px;background:var(--white);transition:transform .3s,opacity .3s}.mob-menu{position:fixed;inset:0;z-index:99;background:rgba(14,18,53,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;pointer-events:none;transition:opacity .35s}.mob-menu.open{opacity:1;pointer-events:auto}.mob-menu a{font-family:'PT Serif',serif;font-size:1.6rem;font-weight:700;color:var(--white);opacity:.85;transition:opacity .2s,color .2s}.mob-menu a:hover{opacity:1;color:var(--cyan)}.mob-close{position:absolute;top:24px;right:24px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:none;border:none}.mob-close svg{width:24px;height:24px;stroke:var(--white);stroke-width:2}@media(max-width:860px){.nav-ham{display:flex}}
 </style>
 </head>
@@ -545,7 +552,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 
 <!-- HERO -->
 <section class="hero" id="hero">
-  <video autoplay muted loop playsinline preload="auto">
+  <video autoplay muted loop playsinline preload="auto" poster="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_009.jpg">
     <source src="https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/0312.mp4" type="video/mp4">
   </video>
   <div class="hero-grad"></div>
@@ -885,6 +892,8 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     <div class="ft-legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a></div>
   </div>
 </footer>
+
+<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Scroll to top"><svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
 
 <!-- MOBILE STICKY -->
 <div class="sbk" id="sbk">
