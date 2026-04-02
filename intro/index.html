@@ -84,7 +84,7 @@ nav.scrolled{background:rgba(14,18,53,.92);border-color:rgba(240,239,233,.06)}
 @keyframes clsScrollL{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 @keyframes clsScrollR{0%{transform:translateX(-50%)}100%{transform:translateX(0)}}
 a.cls-item{display:block;color:inherit;text-decoration:none}
-.cls-item{position:relative;flex-shrink:0;border-radius:12px;overflow:hidden;width:460px;height:320px}
+.cls-item{position:relative;flex-shrink:0;border-radius:12px;overflow:hidden;width:480px;height:260px}
 .cls-item img{width:100%;height:100%;object-fit:cover}
 .cls-item-ov{position:absolute;inset:0;background:linear-gradient(to top,rgba(14,18,53,.72) 0%,rgba(14,18,53,.08) 45%,transparent 70%);pointer-events:none}
 .cls-item-label{position:absolute;bottom:20px;left:24px;right:24px;pointer-events:none}
@@ -121,11 +121,12 @@ a.cls-item{display:block;color:inherit;text-decoration:none}
 .how-sect{padding:100px 80px;border-top:1px solid rgba(240,239,233,.06);position:relative;z-index:2}
 .how-in{max-width:860px;margin:0 auto}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-top:48px}
-.step-card{border:1px solid rgba(240,239,233,.08);border-radius:8px;padding:36px 28px;position:relative;transition:border-color .3s}
-.step-card:hover{border-color:rgba(2,243,197,.2)}
-.step-card .step-n{width:40px;height:40px;border-radius:50%;border:1px solid rgba(2,243,197,.25);display:flex;align-items:center;justify-content:center;font-family:'PT Serif',serif;font-size:1.1rem;font-weight:700;color:var(--cyan);margin-bottom:20px}
-.step-card h4{font-family:'PT Serif',serif;font-size:1.1rem;font-weight:700;margin-bottom:8px}
-.step-card p{font-size:.82rem;color:var(--white60);line-height:1.6}
+.step-card{border:1px solid rgba(240,239,233,.08);border-radius:8px;padding:36px 28px;position:relative;transition:border-color .3s,background .3s}
+.step-card:hover{border-color:rgba(2,243,197,.2);background:rgba(2,243,197,.02)}
+.step-card .step-n{width:44px;height:44px;border-radius:50%;border:1px solid rgba(2,243,197,.25);display:flex;align-items:center;justify-content:center;font-family:'PT Serif',serif;font-size:1.2rem;font-weight:700;color:var(--cyan);margin-bottom:20px;transition:background .3s,border-color .3s}
+.step-card:hover .step-n{background:rgba(2,243,197,.08);border-color:rgba(2,243,197,.4)}
+.step-card h4{font-family:'PT Serif',serif;font-size:1.1rem;font-weight:700;margin-bottom:10px}
+.step-card p{font-size:.85rem;color:var(--white60);line-height:1.65}
 
 /* LOCATION — 2-col, exact homepage */
 .location{padding:120px 80px;position:relative;z-index:2;border-top:1px solid rgba(240,239,233,.06)}
@@ -164,7 +165,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .nav-social svg{width:15px;height:15px}.nav-social{gap:10px;padding-left:14px;margin-left:14px}.lang-sel a{padding:4px 5px;font-size:.65rem}
   .trust,.stats-strip,.press,.review-nudge,.how-sect,.closer,.location{padding-left:24px;padding-right:24px}
   .classes-hdr{padding:0 24px}
-  .cls-item{width:280px;height:200px}
+  .cls-item{width:300px;height:180px}
   .press-grid{grid-template-columns:1fr;max-width:400px;margin:0 auto;gap:48px}
   .press{padding-top:72px;padding-bottom:72px}
   .how-sect{padding-top:72px;padding-bottom:72px}
@@ -206,7 +207,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   <div class="hero-in">
     <div class="sl rv" id="t-label">Your First 3 Immersive Classes</div>
     <div class="hero-price rv" style="transition-delay:.08s">€50</div>
-    <div class="hero-tagline rv" style="transition-delay:.14s" id="t-tag">3 classes. Any type. 30 days. No commitment.</div>
+    <div class="hero-tagline rv" style="transition-delay:.14s" id="t-tag">Your intro to immersive wellness. Any class, any time, 30 days.</div>
     <div class="hero-details rv" style="transition-delay:.18s" id="t-det"><b>€16.67 per class</b> · Valid 30 days · Cancel anytime</div>
     <a href="https://momence.com/m/443935" class="cta-p rv" style="transition-delay:.24s" id="t-cta">Get Your Intro 3-Pack <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     <a href="https://momence.com/m/443934" class="hero-alt rv" style="transition-delay:.3s" id="t-alt">Just want to try one class? <span id="t-alt-s">Single trial — €18</span></a>
@@ -288,12 +289,12 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 <!-- HOW IT WORKS — 3 visual cards -->
 <section class="how-sect">
   <div class="how-in">
-    <span class="sl rv" id="t-how">How It Works</span>
-    <h2 class="sh2 rv" style="transition-delay:.06s">Three steps to<br><em>something different.</em></h2>
+    <span class="sl rv" id="t-how">Your First Visit</span>
+    <h2 class="sh2 rv" style="transition-delay:.06s">Book it. Show up.<br><em>Feel the difference.</em></h2>
     <div class="steps">
-      <div class="step-card rv" style="transition-delay:.1s"><div class="step-n">1</div><h4 id="t-s1h">Book Online</h4><p id="t-s1p">Choose any 3 classes from the weekly schedule. Takes 2 minutes.</p></div>
-      <div class="step-card rv" style="transition-delay:.16s"><div class="step-n">2</div><h4 id="t-s2h">Show Up</h4><p id="t-s2p">We provide mats, props, everything. Just wear comfortable clothes.</p></div>
-      <div class="step-card rv" style="transition-delay:.22s"><div class="step-n">3</div><h4 id="t-s3h">Immerse</h4><p id="t-s3p">60 minutes inside the 360° room. Leave feeling different.</p></div>
+      <div class="step-card rv" style="transition-delay:.1s"><div class="step-n">1</div><h4 id="t-s1h">Pick Your 3 Classes</h4><p id="t-s1p">Yoga, pilates, sound healing, breathwork. Mix and match from 43 weekly sessions. Two taps, done.</p></div>
+      <div class="step-card rv" style="transition-delay:.16s"><div class="step-n">2</div><h4 id="t-s2h">Walk In, We Handle the Rest</h4><p id="t-s2p">Mats, props, towels, water. All here. Wear something you can move in. That is literally it.</p></div>
+      <div class="step-card rv" style="transition-delay:.22s"><div class="step-n">3</div><h4 id="t-s3h">Step Into the Room</h4><p id="t-s3p">360° projections wrap every surface. Dolby Atmos fills the air. 60 minutes later, you will not want to leave.</p></div>
     </div>
   </div>
 </section>
@@ -301,7 +302,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 <!-- CLOSER -->
 <div class="closer">
   <span class="sl rv">Ready?</span>
-  <h2 class="sh2 rv" style="transition-delay:.06s" id="t-closer">Try something <em>different.</em></h2>
+  <h2 class="sh2 rv" style="transition-delay:.06s" id="t-closer">Your body will<br><em>thank you.</em></h2>
   <p class="closer-sub rv" style="transition-delay:.12s">Intro 3-Pack: <b>3 Classes for €50</b></p>
   <div class="rv" style="transition-delay:.18s"><a href="https://momence.com/m/443935" class="cta-p" style="margin:0 auto" id="t-cta2">Get Your Intro 3-Pack <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
   <p class="closer-note rv" style="transition-delay:.24s" id="t-cn">Valid for 30 days. No membership. No commitment.</p>
@@ -370,7 +371,7 @@ document.querySelectorAll('a[href*="momence.com"]').forEach(function(b){b.addEve
 (function(){var c=document.getElementById('gP');if(!c)return;var x=c.getContext('2d'),W,H,mx=-9999,my=-9999;function rz(){W=innerWidth;H=innerHeight;c.width=W*devicePixelRatio;c.height=H*devicePixelRatio;x.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0)}rz();addEventListener('resize',rz);document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY});var N=672,t=0,P=[];for(var i=0;i<N;i++){var r=Math.random();P.push({x:Math.random()*3e3,y:Math.random(),vx:.008+Math.random()*.06,vy:(Math.random()-.5)*.003,fx:0,fy:0,s:.3+Math.random()*1.5,g:4+Math.random()*16,c:r<.38?[2,243,197]:r<.72?[248,166,163]:[32,57,153],o:.025+Math.random()*.12,ph:Math.random()*Math.PI*2,wa:.01+Math.random()*.04,wf:1e-4+Math.random()*5e-4})}function dr(){t++;x.clearRect(0,0,W,H);for(var i=0;i<P.length;i++){var p=P[i];p.x+=p.vx;p.y+=p.vy;var wy=p.wa*Math.sin(p.ph+t*p.wf),dx2=p.x+p.fx,dy2=(p.y+wy)*H+p.fy,dx=dx2-mx,dy=dy2-my,d=Math.sqrt(dx*dx+dy*dy);if(d<120&&d>0){var f=(1-d/120)*2.5;p.fx+=dx/d*f;p.fy+=dy/d*f}p.fx*=.94;p.fy*=.94;dx2=p.x+p.fx;dy2=(p.y+wy)*H+p.fy;if(p.x>W+60){p.x=-50;p.y=Math.random();p.fx=0;p.fy=0}if(p.y<-.05)p.y=1.05;if(p.y>1.05)p.y=-.05;var pl=.4+.6*Math.sin(p.ph+t*.001),op=p.o*pl;if(op<.002)continue;var g=x.createRadialGradient(dx2,dy2,0,dx2,dy2,p.g);g.addColorStop(0,'rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+','+op*.7+')');g.addColorStop(.3,'rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+','+op*.28+')');g.addColorStop(.7,'rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+','+op*.04+')');g.addColorStop(1,'rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+',0)');x.fillStyle=g;x.beginPath();x.arc(dx2,dy2,p.g,0,Math.PI*2);x.fill();x.beginPath();x.arc(dx2,dy2,p.s*.5,0,Math.PI*2);x.fillStyle='rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+','+Math.min(.6,op*2)+')';x.fill()}requestAnimationFrame(dr)}requestAnimationFrame(dr)})();
 
 /* Spanish */
-(function(){var p=new URLSearchParams(location.search);if(p.get('lang')==='es'){document.documentElement.lang='es';document.title='3 Clases Inmersivas por \u20AC50 | SABDA Barcelona';var t={'t-label':'TUS PRIMERAS 3 CLASES INMERSIVAS','t-tag':'3 clases. Cualquier tipo. 30 d\u00EDas. Sin compromiso.','t-det':'<b>\u20AC16,67 por clase</b> \u00B7 V\u00E1lido 30 d\u00EDas \u00B7 Sin compromiso','t-cta':'Consigue tu Pack Intro <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>','t-alt':'\u00BFSolo quieres probar una clase? <span>Clase de prueba \u2014 \u20AC18</span>','t-how':'C\u00F3mo Funciona','t-s1h':'Reserva Online','t-s1p':'Elige 3 clases del horario semanal. En 2 minutos.','t-s2h':'Ven','t-s2p':'Proporcionamos esterillas, accesorios, todo. Solo trae ropa c\u00F3moda.','t-s3h':'Sum\u00E9rgete','t-s3p':'60 minutos dentro de la sala 360\u00B0. Sal sinti\u00E9ndote diferente.','t-closer':'Prueba algo <em>diferente.</em>','t-cta2':'Consigue tu Pack Intro <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>','t-cn':'V\u00E1lido 30 d\u00EDas. Sin membres\u00EDa. Sin compromiso.','t-loc':'5 min andando desde metro Hospital Cl\u00EDnic \u00B7 L5','t-sticky':'Reservar'};for(var id in t){var el=document.getElementById(id);if(el)el.innerHTML=t[id]}}})();
+(function(){var p=new URLSearchParams(location.search);if(p.get('lang')==='es'){document.documentElement.lang='es';document.title='3 Clases Inmersivas por \u20AC50 | SABDA Barcelona';var t={'t-label':'TUS PRIMERAS 3 CLASES INMERSIVAS','t-tag':'Tu intro al wellness inmersivo. Cualquier clase, cualquier momento, 30 d\u00EDas.','t-det':'<b>\u20AC16,67 por clase</b> \u00B7 V\u00E1lido 30 d\u00EDas \u00B7 Sin compromiso','t-cta':'Consigue tu Pack Intro <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>','t-alt':'\u00BFSolo quieres probar una clase? <span>Clase de prueba \u2014 \u20AC18</span>','t-how':'Tu Primera Visita','t-s1h':'Elige Tus 3 Clases','t-s1p':'Yoga, pilates, sound healing, breathwork. Mezcla y combina entre 43 sesiones semanales. Dos toques, listo.','t-s2h':'Ven, Nosotros Nos Encargamos','t-s2p':'Esterillas, accesorios, toallas, agua. Todo aqu\u00ED. Trae ropa c\u00F3moda. Eso es literalmente todo.','t-s3h':'Entra en la Sala','t-s3p':'Proyecciones 360\u00B0 envuelven cada superficie. Dolby Atmos llena el aire. 60 minutos despu\u00E9s, no querr\u00E1s irte.','t-closer':'Tu cuerpo te lo <em>agradecer\u00E1.</em>','t-cta2':'Consigue tu Pack Intro <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>','t-cn':'V\u00E1lido 30 d\u00EDas. Sin membres\u00EDa. Sin compromiso.','t-loc':'5 min andando desde metro Hospital Cl\u00EDnic \u00B7 L5','t-sticky':'Reservar'};for(var id in t){var el=document.getElementById(id);if(el)el.innerHTML=t[id]}}})();
 </script>
 </body>
 </html>
