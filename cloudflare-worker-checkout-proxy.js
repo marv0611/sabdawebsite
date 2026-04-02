@@ -19,6 +19,11 @@ export default {
     }
 
     // ── SABDA API: server-side login + membership check ──
+    if (url.pathname === '/sabda-api/health') {
+      return new Response(JSON.stringify({ ok: true }), {
+        status: 200, headers: corsHeaders(reqOrigin),
+      });
+    }
     if (url.pathname === '/sabda-api/login') {
       return handleLogin(request, reqOrigin);
     }

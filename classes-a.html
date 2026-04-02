@@ -382,6 +382,10 @@ function renderSched(){
 const PROXY='https://sabda-checkout-proxy.sabda.workers.dev';
 let curSession=null, curUser=null, curMembership=null, curSessionToken=null;
 let isProcessing=false;
+let proxyAlive=true;
+
+// Health check — if Worker is down, fall back to Momence for all bookings
+fetch(PROXY+'/sabda-api/health',{method:'GET'}).then(function(r){proxyAlive=r.ok;}).catch(function(){proxyAlive=false;});
 
 // Fix #5: scroll modal to top on every step change
 function stepChange(){
@@ -389,9 +393,19 @@ function stepChange(){
   var box=document.querySelector('.mo-box');
   if(box) box.scrollTop=0;
 }
+function showFallback(){
+  if(!curSession||!curSession.link) return;
+  var err=document.getElementById('bk-err');
+  if(err&&err.textContent){
+    err.innerHTML=err.textContent+'<br><a href="'+curSession.link+'" target="_blank" style="color:var(--cyan);text-decoration:underline;font-size:.78rem">Book on Momence instead →</a>';
+  }
+}
 
 function openMo(link,title,time,teacher){
   if(isProcessing) return;
+
+  // Layer 1: if proxy is down, go straight to Momence
+  if(!proxyAlive){window.open(link,'_blank');return;}
   // Extract session ID from link
   var sid=link.match(/\/s\/(\d+)/);
   if(sid) sid=sid[1]; else { sid=link.match(/\/(\d+)$/); sid=sid?sid[1]:null; }
@@ -520,6 +534,7 @@ function doLogin(){if(isProcessing)return;
   .then(function(r){
     if(!r.ok||r.data.error){
       err.textContent=r.data.error||'Invalid email or password';
+      showFallback();
       isProcessing=false;btn.textContent='Log in & Book';btn.disabled=false;
       return;
     }
@@ -548,6 +563,7 @@ function doLogin(){if(isProcessing)return;
   }).catch(function(){
     err.textContent='Connection error. Please try again.';
     isProcessing=false;btn.textContent='Log in & Book';btn.disabled=false;
+    showFallback();
   });
 }
 
@@ -588,6 +604,7 @@ function doMfaVerify(){if(isProcessing)return;
   .then(function(r){
     if(!r.ok||r.data.error){
       err.textContent=r.data.error||'Invalid code. Please try again.';
+      showFallback();
       isProcessing=false;btn.textContent='Verify & Continue';btn.disabled=false;
       return;
     }
@@ -611,6 +628,7 @@ function doMfaVerify(){if(isProcessing)return;
   }).catch(function(){
     err.textContent='Connection error. Please try again.';
     isProcessing=false;btn.textContent='Verify & Continue';btn.disabled=false;
+    showFallback();
   });
 }
 
@@ -745,11 +763,13 @@ function doBookWithMembership(){if(isProcessing)return;
     } else {
       var msg=(r.data&&(r.data.error||r.data.message))||'Booking failed. Please try again.';
       if(document.getElementById('bk-err')) document.getElementById('bk-err').textContent=msg;
+      showFallback();
       isProcessing=false;
       var b=document.getElementById('bk-confirm-btn');if(b){b.textContent='Confirm Booking';b.disabled=false;}
     }
   }).catch(function(){
     var e=document.getElementById('bk-err');if(e)e.textContent='Connection error. Please try again.';
+    showFallback();
     isProcessing=false;var b=document.getElementById('bk-confirm-btn');if(b){b.textContent='Confirm Booking';b.disabled=false;}
   });
 }
@@ -866,6 +886,7 @@ function doPayAndBook(type,price,productId){if(isProcessing)return;
   }}).then(function(result){
     if(result.error){
       err.textContent=result.error.message;
+      showFallback();
       isProcessing=false;btn.textContent='Pay & Book';btn.disabled=false;
       return;
     }
@@ -892,6 +913,7 @@ function doPayAndBook(type,price,productId){if(isProcessing)return;
         return stripeInstance.confirmCardPayment(r.data.clientSecret).then(function(conf){
           if(conf.error){
             err.textContent=conf.error.message;
+            showFallback();
             isProcessing=false;btn.textContent='Pay & Book';btn.disabled=false;
           } else {
             showSuccess();
@@ -899,12 +921,14 @@ function doPayAndBook(type,price,productId){if(isProcessing)return;
         });
       } else {
         err.textContent=r.data.error||'Payment failed. Please try again.';
+        showFallback();
         isProcessing=false;btn.textContent='Pay & Book';btn.disabled=false;
       }
     });
   }).catch(function(){
     err.textContent='Connection error. Please try again.';
     isProcessing=false;btn.textContent='Pay & Book';btn.disabled=false;
+    showFallback();
   });
 }
 
