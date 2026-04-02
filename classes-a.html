@@ -651,36 +651,20 @@ function doGuestCheck(){
 
   curUser={id:null,email:email,firstName:fn,lastName:ln,memberId:null,isGuest:true};
 
-  // Check if this email already has a Momence account
-  fetch(PROXY+'/sabda-api/check-email',{
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:email,firstName:fn,lastName:ln,sessionId:curSession.id})
-  }).then(function(r){return r.json();})
-  .then(function(d){
-    if(d.exists){
-      // Email is registered — prompt to log in
-      var bd=document.getElementById('mo-bd');
-      var classBlock='<div class="bk-class">'
-        +'<div class="bk-class-name">'+curSession.title+'</div>'
-        +'<div class="bk-class-meta">'
-        +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+curSession.time+'</span>'
-        +'</div>'+getSpotsHtml()+'</div>';
-      bd.innerHTML=classBlock
-        +'<div class="bk-confirm" style="text-align:center">'
-        +'<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.15);border-radius:10px;padding:20px;margin-bottom:20px">'
-        +'<div style="font-size:.9rem;font-weight:600;color:var(--salmon);margin-bottom:6px">Account found</div>'
-        +'<div style="font-size:.82rem;color:var(--white60);line-height:1.5">This email is already registered. Please log in to keep your booking history and credits together.</div>'
-        +'</div>'
-        +'<button class="bk-primary" onclick="showLoginStep()">Log in</button>'
-        +'<div class="bk-link" style="margin-top:12px"><a href="https://momence.com/forgot-password" target="_blank" style="color:var(--white38);font-size:.78rem;text-decoration:underline">Forgot your password?</a></div>'
-        +'</div>';
-    } else {
-      showNoMembership();
-    }
-  }).catch(function(){
-    showNoMembership();
-  });
+  // Ask user if they've booked before to prevent duplicate accounts
+  var bd=document.getElementById('mo-bd');
+  var classBlock='<div class="bk-class">'
+    +'<div class="bk-class-name">'+curSession.title+'</div>'
+    +'<div class="bk-class-meta">'
+    +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+curSession.time+'</span>'
+    +'</div>'+getSpotsHtml()+'</div>';
+  bd.innerHTML=classBlock
+    +'<div class="bk-confirm" style="text-align:center">'
+    +'<p style="font-size:.95rem;color:var(--white);margin-bottom:20px;line-height:1.5">Have you booked at SABDA before?</p>'
+    +'<button class="bk-primary" onclick="showLoginStep()" style="margin-bottom:12px">Yes — Log in</button>'
+    +'<button class="bk-primary" onclick="showNoMembership()" style="background:none;border:1px solid var(--white12);color:var(--white)">No — First time</button>'
+    +'<div style="margin-top:16px;font-size:.75rem;color:var(--white38);line-height:1.5">If you have booked before, logging in keeps your history and credits together.</div>'
+    +'</div>';
 }
 
 // ── CUSTOMER FIELDS HTML (phone, language, city) ──
