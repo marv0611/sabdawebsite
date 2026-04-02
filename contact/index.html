@@ -262,15 +262,19 @@ document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',(
 function handleContact(e){
   e.preventDefault();
   var f=document.getElementById('contactForm');
+  var btn=f.querySelector('.inq-submit');
+  btn.textContent='Sending...';btn.disabled=true;
   var data=new FormData(f);
-  var topic=data.get('topic');
-  var routes={classes:'info@sabdastudio.com',events:'connect@sabdastudio.com',corporate:'connect@sabdastudio.com',press:'marketing@sabdastudio.com',partnership:'connect@sabdastudio.com',general:'info@sabdastudio.com'};
-  var email=routes[topic]||'info@sabdastudio.com';
-  var labels={classes:'Classes & Booking',events:'Events & Venue Rental',corporate:'Corporate & Team Building',press:'Press & Media',partnership:'Partnership',general:'General Inquiry'};
-  var body='Name: '+data.get('name')+'\nEmail: '+data.get('email')+'\nPhone: '+(data.get('phone')||'N/A')+'\nTopic: '+(labels[topic]||topic)+'\n\nMessage:\n'+(data.get('message')||'No message.');
-  window.location.href='mailto:'+email+'?subject='+encodeURIComponent('SABDA Contact: '+(labels[topic]||'Inquiry')+' from '+data.get('name'))+'&body='+encodeURIComponent(body);
-  f.style.display='none';
-  document.getElementById('contactSuccess').classList.add('show');
+  var payload={name:data.get('name'),email:data.get('email'),phone:data.get('phone')||'',topic:data.get('topic'),message:data.get('message')};
+  fetch('https://sabda-checkout-proxy.sabda.workers.dev/sabda-api/contact',{
+    method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)
+  }).then(function(r){return r.json()}).then(function(r){
+    if(r.ok){f.style.display='none';document.getElementById('contactSuccess').classList.add('show')}
+    else{btn.textContent='Send Message';btn.disabled=false;alert('Something went wrong. Please email info@sabdastudio.com directly.')}
+  }).catch(function(){
+    btn.textContent='Send Message';btn.disabled=false;
+    alert('Connection error. Please email info@sabdastudio.com directly.');
+  });
   return false;
 }
 </script>

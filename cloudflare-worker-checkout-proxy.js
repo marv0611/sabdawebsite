@@ -43,6 +43,10 @@ export default {
       return handlePay(request, reqOrigin);
     }
 
+    if (url.pathname === '/sabda-api/contact') {
+      return handleContact(request, reqOrigin);
+    }
+
     // ── CUSTOM SIGN-IN PAGE: intercept /sign-in and show our form ──
     if (url.pathname === '/sign-in' || url.pathname.startsWith('/sign-in')) {
       return new Response(buildSignInPage(url.search), {
@@ -876,4 +880,199 @@ function doLogin(){
   });
 }
 </script></body></html>`;
+}
+
+// ══════════════════════════════════════════════════════════
+// CONTACT FORM HANDLER — AI classification + email + Notion
+// ══════════════════════════════════════════════════════════
+
+// API keys stored as Cloudflare Worker secrets (set via dashboard or wrangler):
+// ANTHROPIC_API_KEY — Claude Haiku for classification
+// RESEND_API_KEY — email delivery
+// NOTION_TOKEN — Notion API integration token
+// NOTION_DATABASE_ID — Deals database ID
+
+async function handleContact(request, origin) {
+  try {
+    const body = await request.json();
+    const { name, email, phone, topic, message } = body;
+
+    if (!name || !email || !message) {
+      return new Response(JSON.stringify({ error: 'Name, email, and message are required' }), {
+        status: 400, headers: corsHeaders(origin),
+      });
+    }
+
+    // Step 1: Classify with Claude Haiku
+    let classification = { category: topic || 'general', action: 'send_to_katrina', confidence: 'low', summary: message.substring(0, 200) };
+
+    try {
+      const ANTHROPIC_KEY = typeof ANTHROPIC_API_KEY !== 'undefined' ? ANTHROPIC_API_KEY : null;
+      if (ANTHROPIC_KEY) {
+        classification = await classifyWithClaude(ANTHROPIC_KEY, { name, email, phone, topic, message });
+      }
+    } catch (e) {
+      // Classification failed — fall through to default routing
+    }
+
+    // Step 2: Send email to Katrina via Resend
+    let emailSent = false;
+    try {
+      const RESEND_KEY = typeof RESEND_API_KEY !== 'undefined' ? RESEND_API_KEY : null;
+      if (RESEND_KEY) {
+        emailSent = await sendEmailViaResend(RESEND_KEY, { name, email, phone, topic, message, classification });
+      }
+    } catch (e) {
+      // Email failed — will still log to Notion
+    }
+
+    // Step 3: Log to Notion
+    let notionLogged = false;
+    try {
+      const N_TOKEN = typeof NOTION_TOKEN !== 'undefined' ? NOTION_TOKEN : null;
+      const N_DB = typeof NOTION_DATABASE_ID !== 'undefined' ? NOTION_DATABASE_ID : null;
+      if (N_TOKEN && N_DB) {
+        notionLogged = await logToNotion(N_TOKEN, N_DB, { name, email, phone, topic, message, classification });
+      }
+    } catch (e) {
+      // Notion failed — not critical
+    }
+
+    return new Response(JSON.stringify({
+      ok: true,
+      emailSent,
+      notionLogged,
+      category: classification.category,
+    }), {
+      status: 200, headers: corsHeaders(origin),
+    });
+
+  } catch (e) {
+    return new Response(JSON.stringify({ error: 'Server error', detail: e.message }), {
+      status: 500, headers: corsHeaders(origin),
+    });
+  }
+}
+
+async function classifyWithClaude(apiKey, data) {
+  const prompt = `You are SABDA's intake system. SABDA is an immersive wellness studio in Barcelona offering classes (yoga, pilates, sound healing, breathwork), venue rental, corporate events, and exhibitions.
+
+Read this form submission and classify it. Return ONLY valid JSON, no other text.
+
+Form data:
+- Name: ${data.name}
+- Email: ${data.email}
+- Phone: ${data.phone || 'not provided'}
+- Topic selected: ${data.topic || 'not selected'}
+- Message: ${data.message}
+
+Classify into exactly one category:
+- "rental_high_value" — company/brand wanting to rent the space for an activation, launch, production, dinner, or large event (20+ people). These get the venue brochure.
+- "rental_low_value" — individual wanting to rent the space for their own class/workshop/small gathering. No brochure.
+- "corporate_wellness" — company wanting to book wellness classes/team building for their employees.
+- "class_inquiry" — someone asking about booking classes, pricing, schedule, memberships.
+- "press_media" — journalist, blogger, or media outlet wanting to feature SABDA.
+- "partnership" — brand or business proposing a collaboration or sponsorship.
+- "general" — anything else.
+
+Return JSON: {"category":"...","summary":"one sentence summary of what they want","confidence":"high|medium|low","send_brochure":true|false}`;
+
+  const res = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'x-api-key': apiKey,
+      'anthropic-version': '2023-06-01',
+    },
+    body: JSON.stringify({
+      model: 'claude-haiku-4-5-20251001',
+      max_tokens: 200,
+      messages: [{ role: 'user', content: prompt }],
+    }),
+  });
+
+  const result = await res.json();
+  const text = result.content && result.content[0] && result.content[0].text || '{}';
+  // Strip markdown fences if present
+  const clean = text.replace(/```json|```/g, '').trim();
+  return JSON.parse(clean);
+}
+
+async function sendEmailViaResend(apiKey, data) {
+  const { name, email, phone, topic, message, classification } = data;
+
+  const topicLabels = {
+    classes: 'Classes & Booking', events: 'Events & Venue Rental',
+    corporate: 'Corporate & Team Building', press: 'Press & Media',
+    partnership: 'Partnership', general: 'General Inquiry',
+  };
+
+  const categoryLabels = {
+    rental_high_value: 'Rental (High Value)', rental_low_value: 'Rental (Individual)',
+    corporate_wellness: 'Corporate Wellness', class_inquiry: 'Class Inquiry',
+    press_media: 'Press & Media', partnership: 'Partnership', general: 'General',
+  };
+
+  const emailBody = `<div style="font-family:sans-serif;max-width:600px;margin:0 auto;padding:24px">
+<h2 style="color:#203999;margin-bottom:4px">New Lead from sabdastudio.com</h2>
+<p style="color:#888;font-size:13px;margin-top:0">AI Classification: <strong style="color:#02F3C5">${categoryLabels[classification.category] || classification.category}</strong> (${classification.confidence || 'n/a'} confidence)</p>
+<hr style="border:none;border-top:1px solid #eee;margin:16px 0">
+<table style="width:100%;font-size:14px;line-height:1.6">
+<tr><td style="color:#888;width:120px;vertical-align:top;padding:4px 0">Name</td><td style="padding:4px 0"><strong>${name}</strong></td></tr>
+<tr><td style="color:#888;vertical-align:top;padding:4px 0">Email</td><td style="padding:4px 0"><a href="mailto:${email}">${email}</a></td></tr>
+${phone ? `<tr><td style="color:#888;vertical-align:top;padding:4px 0">Phone</td><td style="padding:4px 0">${phone}</td></tr>` : ''}
+<tr><td style="color:#888;vertical-align:top;padding:4px 0">Topic</td><td style="padding:4px 0">${topicLabels[topic] || topic || 'Not selected'}</td></tr>
+<tr><td style="color:#888;vertical-align:top;padding:4px 0">AI Summary</td><td style="padding:4px 0;color:#203999"><em>${classification.summary || 'No summary'}</em></td></tr>
+</table>
+<hr style="border:none;border-top:1px solid #eee;margin:16px 0">
+<p style="font-size:14px;line-height:1.7;white-space:pre-wrap">${message}</p>
+<hr style="border:none;border-top:1px solid #eee;margin:16px 0">
+<p style="font-size:12px;color:#aaa">Send brochure: ${classification.send_brochure ? 'YES' : 'No'} | Reply directly to ${email}</p>
+</div>`;
+
+  const res = await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${apiKey}`,
+    },
+    body: JSON.stringify({
+      from: 'SABDA Website <noreply@sabdastudio.com>',
+      to: ['connect@sabdastudio.com'],
+      reply_to: email,
+      subject: `New Lead: ${categoryLabels[classification.category] || 'Inquiry'} from ${name}`,
+      html: emailBody,
+    }),
+  });
+
+  const result = await res.json();
+  return !!result.id;
+}
+
+async function logToNotion(token, databaseId, data) {
+  const { name, email, phone, topic, message, classification } = data;
+
+  const res = await fetch('https://api.notion.com/v1/pages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+      'Notion-Version': '2022-06-28',
+    },
+    body: JSON.stringify({
+      parent: { database_id: databaseId },
+      properties: {
+        'Name': { title: [{ text: { content: name } }] },
+        'Email': { email: email },
+        'Phone': { phone_number: phone || null },
+        'Source': { select: { name: 'Website Contact Form' } },
+        'Category': { select: { name: classification.category || 'general' } },
+        'Summary': { rich_text: [{ text: { content: (classification.summary || message).substring(0, 200) } }] },
+        'Message': { rich_text: [{ text: { content: message.substring(0, 2000) } }] },
+      },
+    }),
+  });
+
+  const result = await res.json();
+  return !!result.id;
 }
