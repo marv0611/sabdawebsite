@@ -316,7 +316,7 @@ async function handlePromo(request, origin) {
     const body = {
       accessCode: code,
       hostId: hostId || 54278,
-      price: Math.round((price || 0) * 100),
+      price: price || 0,
       numberOfTickets: 1,
     };
     if (sessionId) body.sessionId = Number(sessionId);
@@ -344,7 +344,7 @@ async function handlePromo(request, origin) {
         discountCodeId: m.discountCodeId,
         type: m.type,
         appliedDiscount: m.appliedDiscount,
-        newPrice: m.priceInCurrency / 100,
+        newPrice: m.priceInCurrency,
         renewalsValid: m.numberOfRenewalsDiscountIsValidFor,
       }), { status: 200, headers: corsHeaders(origin) });
     }
