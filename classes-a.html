@@ -798,7 +798,7 @@ function applyPromo(type,origPrice,productId){
   .then(function(r){
     btn.textContent='Apply';btn.disabled=false;
     if(!r.ok||r.data.error){
-      errEl.textContent=r.data.error||'Invalid code';
+      errEl.textContent=r.data.error||'Invalid promo code';
       errEl.style.display='block';
       activePromo=null;discountedPrice=null;
       return;
@@ -908,7 +908,7 @@ function showPayForm(type,price,productId,name,desc){stepChange();
     +'<div class="bk-pay-total" id="bk-total">€'+price+'</div>'
     +'<div class="bk-pay-desc" id="bk-pay-desc">'+(type==='membership'&&price<200?'First month, renews monthly':type==='membership'?'Billed once':'One-time payment')+'</div>'
     +'<div id="bk-promo-wrap" style="margin-bottom:16px">'
-    +'<div class="bk-link" id="bk-promo-toggle" onclick="document.getElementById(\'bk-promo-fields\').style.display=\'flex\';this.style.display=\'none\'" style="margin:0;font-size:.8rem;text-align:left">Apply promo code →</div>'
+    +'<div class="bk-link" id="bk-promo-toggle" onclick="document.getElementById(\'bk-promo-fields\').style.display=\'flex\';this.style.display=\'none\'" style="margin:0;font-size:.8rem;text-align:left;color:var(--cyan)">Apply promo code →</div>'
     +'<div id="bk-promo-fields" style="display:none;gap:8px;align-items:flex-start">'
     +'<input class="bk-input" id="bk-promo" type="text" placeholder="Code" style="flex:1;margin-bottom:0;text-transform:uppercase" />'
     +'<button class="bk-primary" id="bk-promo-btn" onclick="applyPromo(\''+type+'\','+price+','+productId+')" style="width:auto;padding:12px 20px;flex-shrink:0;font-size:.8rem">Apply</button>'

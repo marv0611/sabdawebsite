@@ -331,7 +331,7 @@ async function handlePromo(request, origin) {
     const data = await res.json().catch(() => ({}));
 
     if (data.status === 'error') {
-      return new Response(JSON.stringify({ error: data.message || 'Invalid promo code' }), {
+      return new Response(JSON.stringify({ error: 'Invalid promo code' }), {
         status: 400, headers: corsHeaders(origin),
       });
     }
