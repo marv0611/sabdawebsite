@@ -1709,7 +1709,7 @@ function showConfirmStep(membership){stepChange();
     +customerFieldsHTML()
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-confirm-btn" onclick="doBookWithMembership()">Confirm Booking</button>'
-    +'<div class="bk-link" onclick="curUser=null;curSessionToken=null;showLoginStep()">Switch account</div>'
+    +'<div class="bk-link" onclick="switchAccount()">Switch account</div>'
     +'<div class="bk-link" style="margin-top:8px" onclick="closeMo()">\u2190 Back to schedule</div>'
     +'</div>';
 }
@@ -2120,6 +2120,14 @@ fetch(EVENTS_API).then(function(r){return r.json();}).then(function(d){
   // Events fetch failed — interceptor still works, falls back to Momence
   setupInterceptor();
 });
+
+// Expose to global scope for onclick attributes
+window.closeMo=closeMo;
+window.showLoginStep=showLoginStep;
+window.showGuestStep=showGuestStep;
+window.showNoMembership=showNoMembership;
+window.openMo=openMo;
+window.switchAccount=function(){curUser=null;curSessionToken=null;showLoginStep();};
 
 })();
 </script>
