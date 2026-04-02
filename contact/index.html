@@ -100,6 +100,16 @@ nav.scrolled{background:rgba(14,18,53,.92);backdrop-filter:blur(18px);-webkit-ba
 .faq-a{max-height:0;overflow:hidden;transition:max-height .45s var(--ease-expo),padding .35s}
 .faq-item.open .faq-a{max-height:300px;padding-bottom:22px}
 .faq-a p{font-size:.9rem;color:var(--white60);line-height:1.7}
+.inq-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}.inq-row.full{grid-template-columns:1fr}
+.inq-field{display:flex;flex-direction:column;gap:6px}.inq-field label{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--white38);font-weight:500}
+.inq-field input,.inq-field select,.inq-field textarea{padding:14px 16px;background:rgba(19,24,66,.65);border:1px solid rgba(240,239,233,.08);border-radius:4px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.88rem;outline:none;transition:border-color .3s,background .3s}
+.inq-field input::placeholder,.inq-field textarea::placeholder{color:rgba(240,239,233,.2)}
+.inq-field input:focus,.inq-field select:focus,.inq-field textarea:focus{border-color:rgba(2,243,197,.4);background:rgba(2,243,197,.03)}
+.inq-field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='rgba(240,239,233,0.35)' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;cursor:pointer}
+.inq-field select option{background:var(--navy);color:var(--white)}.inq-field textarea{resize:vertical;min-height:100px}
+.inq-submit{display:inline-flex;align-items:center;gap:10px;background:var(--cyan);color:var(--navy);padding:15px 36px;border-radius:3px;font-size:.9rem;font-weight:700;letter-spacing:.05em;border:none;cursor:pointer;transition:background .2s,transform .2s,box-shadow .2s;margin-top:8px;font-family:'DM Sans',sans-serif}
+.inq-submit:hover{background:#18ffda;transform:translateY(-2px);box-shadow:0 14px 36px rgba(2,243,197,.22)}
+.inq-success{display:none;text-align:center;padding:48px 0}.inq-success.show{display:block}.inq-success-icon{font-size:2.4rem;margin-bottom:16px}.inq-success h3{font-family:'PT Serif',serif;font-size:1.6rem;font-weight:700;margin-bottom:10px}
 footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);background:rgba(9,12,38,.6);position:relative;z-index:2}
 .ft-in{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;max-width:1140px;margin:0 auto}
 .ft-brand img:first-child{height:36px;width:auto;margin-bottom:16px;display:block;margin-right:auto}
@@ -115,6 +125,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   nav{padding:0 24px}.nav-links{display:none}.nav-social svg{width:15px;height:15px}.nav-social{gap:10px;padding-left:14px;margin-left:14px}.lang-sel a{padding:4px 5px;font-size:.65rem}
   .contact-page{padding:40px 24px 72px}
   .contact-grid{grid-template-columns:1fr;gap:48px}
+  .inq-row{grid-template-columns:1fr}
   .ft-in{grid-template-columns:1fr 1fr}
 }
 @media(max-width:520px){.ft-in{grid-template-columns:1fr}}
@@ -178,6 +189,39 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   <div class="map-wrap rv" style="transition-delay:.2s">
     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.5!2d2.1589!3d41.38905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a28c9f7f0001%3A0x7774ae2006e29997!2sSABDA!5e0!3m2!1sen!2ses!4v1" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="SABDA Studio location on Google Maps"></iframe>
   </div>
+
+  <!-- CONTACT FORM -->
+  <div class="rv" style="transition-delay:.25s;margin-top:80px;max-width:680px">
+    <h2 class="sh2">Get in <em>Touch</em></h2>
+    <p style="color:var(--white38);font-size:.95rem;line-height:1.72;margin-bottom:36px">Questions about classes, events, partnerships, or anything else? Tell us what you need and we will route your message to the right person.</p>
+    <form id="contactForm" onsubmit="return handleContact(event)">
+      <div class="inq-row">
+        <div class="inq-field"><label for="c-name">Your Name</label><input type="text" id="c-name" name="name" placeholder="Full name" required></div>
+        <div class="inq-field"><label for="c-email">Email</label><input type="email" id="c-email" name="email" placeholder="your@email.com" required></div>
+      </div>
+      <div class="inq-row">
+        <div class="inq-field"><label for="c-topic">Topic</label>
+          <select id="c-topic" name="topic" required>
+            <option value="" disabled selected>What is this about?</option>
+            <option value="classes">Classes and Booking</option>
+            <option value="events">Events and Venue Rental</option>
+            <option value="corporate">Corporate and Team Building</option>
+            <option value="press">Press and Media</option>
+            <option value="partnership">Partnership</option>
+            <option value="general">General Inquiry</option>
+          </select>
+        </div>
+        <div class="inq-field"><label for="c-phone">Phone (optional)</label><input type="tel" id="c-phone" name="phone" placeholder="+34 ..."></div>
+      </div>
+      <div class="inq-row full"><div class="inq-field"><label for="c-message">Message</label><textarea id="c-message" name="message" placeholder="Tell us how we can help..." required></textarea></div></div>
+      <button type="submit" class="inq-submit">Send Message <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </form>
+    <div class="inq-success" id="contactSuccess">
+      <div class="inq-success-icon">&#10003;</div>
+      <h3>Message Sent</h3>
+      <p>We will get back to you within 24 hours.</p>
+    </div>
+  </div>
 </div>
 
 <footer style="border-top:1px solid rgba(240,239,233,.07)">
@@ -215,6 +259,20 @@ const rvEls=document.querySelectorAll('.rv');
 const rvObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');rvObs.unobserve(e.target)}});},{threshold:.15,rootMargin:'0px 0px -40px 0px'});
 rvEls.forEach(el=>rvObs.observe(el));
 document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));if(!wasOpen)item.classList.add('open');btn.setAttribute('aria-expanded',!wasOpen)})});
+function handleContact(e){
+  e.preventDefault();
+  var f=document.getElementById('contactForm');
+  var data=new FormData(f);
+  var topic=data.get('topic');
+  var routes={classes:'info@sabdastudio.com',events:'connect@sabdastudio.com',corporate:'connect@sabdastudio.com',press:'marketing@sabdastudio.com',partnership:'connect@sabdastudio.com',general:'info@sabdastudio.com'};
+  var email=routes[topic]||'info@sabdastudio.com';
+  var labels={classes:'Classes & Booking',events:'Events & Venue Rental',corporate:'Corporate & Team Building',press:'Press & Media',partnership:'Partnership',general:'General Inquiry'};
+  var body='Name: '+data.get('name')+'\nEmail: '+data.get('email')+'\nPhone: '+(data.get('phone')||'N/A')+'\nTopic: '+(labels[topic]||topic)+'\n\nMessage:\n'+(data.get('message')||'No message.');
+  window.location.href='mailto:'+email+'?subject='+encodeURIComponent('SABDA Contact: '+(labels[topic]||'Inquiry')+' from '+data.get('name'))+'&body='+encodeURIComponent(body);
+  f.style.display='none';
+  document.getElementById('contactSuccess').classList.add('show');
+  return false;
+}
 </script>
 </body>
 </html>
