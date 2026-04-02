@@ -64,11 +64,12 @@ nav.scrolled{background:rgba(14,18,53,.92);backdrop-filter:blur(18px);-webkit-ba
 .nav-social{display:flex;gap:14px;padding-left:14px;border-left:1px solid rgba(240,239,233,.08)}.nav-social a{display:flex}.nav-social svg{width:17px;height:17px;fill:rgba(240,239,233,.55);transition:fill .25s}.nav-social a:hover svg{fill:var(--white)}
 .rv{opacity:0;transform:translateY(32px);transition:opacity .8s var(--ease-expo),transform .8s var(--ease-expo)}.rv.vis{opacity:1;transform:none}
 .sl{font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--cyan);font-weight:500;margin-bottom:18px;display:block}
-.sh2{font-family:'PT Serif',serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:700;line-height:1.08;letter-spacing:-.025em}.sh2 em{font-style:italic;color:var(--salmon)}
+.sh2{font-family:'PT Serif',serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:700;line-height:1.08;letter-spacing:-.025em;margin-bottom:32px}.sh2 em{font-style:italic;color:var(--salmon)}
 .hero{position:relative;width:100%;height:520px;overflow:hidden;margin-top:72px}.hero img{width:100%;height:100%;object-fit:cover;filter:brightness(.45) contrast(1.1) saturate(1.15)}.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(14,18,53,.2) 0%,rgba(14,18,53,.1) 30%,rgba(14,18,53,.6) 70%,var(--navy) 100%)}
 .hero-content{position:absolute;bottom:56px;left:0;right:0;z-index:3;padding:0 80px}.hero-content h1{font-family:'PT Serif',serif;font-size:clamp(2.4rem,5vw,4rem);font-weight:700;line-height:1.05;letter-spacing:-.025em;margin-bottom:16px}.hero-content h1 em{font-style:italic;color:var(--salmon)}.hero-content .hero-sub{font-size:1.05rem;color:var(--white60);max-width:540px;margin-bottom:28px;line-height:1.6}
 .btn-p{display:inline-flex;align-items:center;gap:10px;background:var(--cyan);color:var(--navy);padding:14px 28px;border-radius:4px;font-size:.85rem;font-weight:700;letter-spacing:.04em;transition:background .25s,transform .25s}.btn-p:hover{background:#00ddb0;transform:translateY(-1px)}.btn-p svg{width:16px;height:16px}
 .hero-ctas{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.btn-s{font-size:.85rem;font-weight:500;color:var(--white60);border-bottom:1px solid rgba(240,239,233,.15);padding-bottom:2px;transition:color .25s,border-color .25s}.btn-s:hover{color:var(--white);border-color:rgba(240,239,233,.4)}
 .sect{padding:100px 80px;border-top:1px solid rgba(240,239,233,.06);position:relative;z-index:2}.sect-in{max-width:800px;margin:0 auto}.sect-in p{font-size:1.05rem;line-height:1.75;color:var(--white60);margin-bottom:24px}.sect-in p:last-child{margin-bottom:0}
 .sect-in h3{font-family:'PT Serif',serif;font-size:clamp(1.3rem,2.5vw,1.8rem);font-weight:700;letter-spacing:-.015em;margin-bottom:20px;margin-top:48px;color:var(--white)}.sect-in h3:first-child{margin-top:0}
 .inline-link{color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3);padding-bottom:1px;transition:border-color .25s}.inline-link:hover{border-color:var(--cyan)}
@@ -127,9 +128,10 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/breathwork.jpg" alt="Experiencia inmersiva wellness 360 grados Barcelona Eixample SABDA">
   <div class="hero-content">
     <h1 class="rv">Experiencia Inmersiva en <em>Barcelona</em></h1>
-    <p class="hero-sub rv" style="transition-delay:.1s">Yoga, pilates, sound healing y breathwork dentro de una sala de proyecciones 360° con Dolby Atmos en el Eixample.</p>
+    <p class="hero-sub rv" style="transition-delay:.1s">Wellness inmersivo, exposiciones audiovisuales y eventos privados en nuestra sala 360° con Dolby Atmos en el Eixample.</p>
     <div class="hero-ctas rv" style="transition-delay:.2s">
-      <a href="../classes.html?pack=443935" class="btn-p" target="_blank">3 Clases por €50 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="../classes.html" class="btn-p">Reservar una clase <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+      <a href="../hire.html" class="btn-s">Alquilar el espacio</a>
     </div>
   </div>
 </div>
@@ -153,8 +155,6 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     <h3 class="rv" style="transition-delay:.06s">Eventos Privados y Activaciones</h3>
     <p class="rv" style="transition-delay:.08s">La sala 360° se puede personalizar completamente para tu marca, evento o celebración. FC Barcelona, Alpro, Danone, Decathlon y Elisava ya han confiado en SABDA. Desde activaciones de marca hasta producciones audiovisuales, <a href="../team-building/" class="inline-link">team building corporativo</a> y cenas inmersivas. <a href="../hire.html" class="inline-link">Más información y precios</a>.</p>
 
-    <h3 class="rv" style="transition-delay:.06s">Tu Primera Experiencia</h3>
-    <p class="rv" style="transition-delay:.08s">Intro 3-Pack: 3 clases de cualquier tipo por €50 (€18 por clase). Sin compromiso. Válido 30 días. <a href="../classes.html" class="inline-link">Consulta el horario</a> y reserva online. <a href="../pricing.html" class="inline-link">Ver todos los precios y membresías</a>.</p>
   </div>
 </section>
 
@@ -209,11 +209,50 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 
 <div class="final-cta">
   <h2 class="rv">Tu primera experiencia<br><em>empieza aquí.</em></h2>
-  <p class="sub rv" style="transition-delay:.06s">3 clases. Cualquier tipo. 30 días para usarlas. Sin compromiso.</p>
-  <div class="rv" style="transition-delay:.12s">
-    <a href="../classes.html?pack=443935" class="btn-p" target="_blank">3 Clases por €50 <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  <p class="sub rv" style="transition-delay:.06s">Clases inmersivas todos los días. Espacio disponible para eventos privados.</p>
+  <div class="rv" style="transition-delay:.12s;display:flex;gap:20px;justify-content:center;align-items:center;flex-wrap:wrap">
+    <a href="../classes.html" class="btn-p">Reservar una clase <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <a href="#contacto" class="btn-s">Alquilar el espacio</a>
   </div>
 </div>
+
+<!-- RENTAL INQUIRY -->
+<section id="contacto" class="sect" style="border-top:1px solid rgba(240,239,233,.06)">
+  <div class="sect-in" style="max-width:560px;text-align:center">
+    <span class="sl rv">Alquiler del Espacio</span>
+    <h2 class="sh2 rv" style="transition-delay:.06s">¿Quieres organizar un evento<br><em>en SABDA?</em></h2>
+    <p class="rv" style="transition-delay:.1s;margin-bottom:36px">Activaciones de marca, producciones, team building, celebraciones. Cuéntanos tu idea y te respondemos en 24h.</p>
+    <form class="rv" style="transition-delay:.14s;text-align:left" action="https://formsubmit.co/connect@sabdastudio.com" method="POST">
+      <input type="hidden" name="_subject" value="Consulta Alquiler Espacio SABDA">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://sabdastudio.com/experiencia-inmersiva/">
+      <div style="margin-bottom:16px">
+        <label style="display:block;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--white38);margin-bottom:8px;font-weight:500">Nombre</label>
+        <input type="text" name="name" required style="width:100%;padding:14px 16px;background:rgba(19,24,66,.65);border:1px solid rgba(240,239,233,.1);border-radius:4px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;transition:border-color .25s" onfocus="this.style.borderColor='rgba(2,243,197,.4)'" onblur="this.style.borderColor='rgba(240,239,233,.1)'">
+      </div>
+      <div style="margin-bottom:16px">
+        <label style="display:block;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--white38);margin-bottom:8px;font-weight:500">Email</label>
+        <input type="email" name="email" required style="width:100%;padding:14px 16px;background:rgba(19,24,66,.65);border:1px solid rgba(240,239,233,.1);border-radius:4px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;transition:border-color .25s" onfocus="this.style.borderColor='rgba(2,243,197,.4)'" onblur="this.style.borderColor='rgba(240,239,233,.1)'">
+      </div>
+      <div style="margin-bottom:16px">
+        <label style="display:block;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--white38);margin-bottom:8px;font-weight:500">Tipo de evento</label>
+        <select name="event_type" required style="width:100%;padding:14px 16px;background:rgba(19,24,66,.65);border:1px solid rgba(240,239,233,.1);border-radius:4px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;appearance:none;cursor:pointer">
+          <option value="" disabled selected style="color:rgba(240,239,233,.4)">Selecciona una opción</option>
+          <option value="brand_activation">Activación de marca</option>
+          <option value="production">Producción audiovisual</option>
+          <option value="corporate">Evento corporativo / Team building</option>
+          <option value="celebration">Celebración privada</option>
+          <option value="other">Otro</option>
+        </select>
+      </div>
+      <div style="margin-bottom:24px">
+        <label style="display:block;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--white38);margin-bottom:8px;font-weight:500">Cuéntanos más</label>
+        <textarea name="message" rows="4" style="width:100%;padding:14px 16px;background:rgba(19,24,66,.65);border:1px solid rgba(240,239,233,.1);border-radius:4px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;resize:vertical;transition:border-color .25s" onfocus="this.style.borderColor='rgba(2,243,197,.4)'" onblur="this.style.borderColor='rgba(240,239,233,.1)'" placeholder="Fecha, número de personas, idea del evento..."></textarea>
+      </div>
+      <button type="submit" class="btn-p" style="width:100%;justify-content:center;border:none;cursor:pointer;font-family:'DM Sans',sans-serif">Enviar consulta <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </form>
+  </div>
+</section>
 
 <footer style="border-top:1px solid rgba(240,239,233,.07)">
   <div class="ft-in">
@@ -244,8 +283,8 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 </footer>
 
 <div class="sbk" id="sbk">
-  <div class="sbk-txt">3 Clases · <span>€50</span> · €18 cada una</div>
-  <a href="../classes.html?pack=443935" class="sbk-btn" target="_blank">Reservar</a>
+  <div class="sbk-txt">Experiencia Inmersiva · <span>SABDA</span></div>
+  <a href="../classes.html" class="sbk-btn">Reservar</a>
 </div>
 
 <script>
