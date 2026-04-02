@@ -421,17 +421,22 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .hero-label{font-size:.82rem;letter-spacing:.15em;gap:14px;justify-content:center;flex-wrap:wrap}
   .hero h1{font-size:2.2rem}
 
-  /* TRUST — stack vertically, centered */
-  .trust{padding:52px 24px}
-  .trust-in{flex-direction:column;gap:36px;align-items:center}
-  .tdiv{width:48px;height:1px}
-  .tdiv.anim{height:1px;width:48px}
+  /* TRUST — clean vertical stack */
+  .trust{padding:56px 24px}
+  .trust-in{flex-direction:column;gap:40px;align-items:center}
+  .ti2{gap:10px}
+  .tscore{font-size:2.2rem}
+  .tlbl{font-size:.64rem}
+  .tdiv{width:56px;height:1px;background:rgba(240,239,233,.09)}
+  .tdiv.anim{height:1px;width:56px}
 
-  /* STATS — 2x2 grid, centered */
-  .stats-strip{padding:52px 24px}
-  .stats-in{display:grid;grid-template-columns:1fr 1fr;gap:36px 32px;justify-items:center;max-width:340px;margin:0 auto}
+  /* STATS — 2x2 grid, aligned */
+  .stats-strip{padding:56px 24px}
+  .stats-in{display:grid;grid-template-columns:1fr 1fr;gap:40px 0;max-width:360px;margin:0 auto;text-align:center}
+  .ss-item{align-items:center}
   .ss-div{display:none}
-  .ss-val{font-size:1.9rem}
+  .ss-val{font-size:2rem;white-space:nowrap}
+  .ss-lbl{font-size:.62rem;letter-spacing:.16em;max-width:120px;margin:0 auto}
 
   /* PARTNERS */
   .partners{padding:44px 0}
@@ -483,8 +488,8 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 @media(max-width:520px){
   .ft-in{grid-template-columns:1fr}
   .trust-in{gap:28px}
-  .stats-in{max-width:300px;gap:28px 24px}
-  .ss-val{font-size:1.7rem}
+  .stats-in{max-width:320px;gap:36px 0}
+  .ss-val{font-size:1.8rem}
   .classes-hdr{flex-direction:column;align-items:flex-start;gap:12px}
   .hero h1{font-size:1.9rem}
   .b-card{min-width:270px}
