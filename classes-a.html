@@ -439,6 +439,7 @@ function closeMo(){
   // Reset state
   curSession=null;curMembership=null;isProcessing=false;
   activePromo=null;discountedPrice=null;
+  activePayReq=null;activePayName=null;
   if(cardElement){try{cardElement.destroy();}catch(e){}cardElement=null;}
 }
 document.getElementById('mo').addEventListener('click',function(e){if(e.target===this)closeMo();});
@@ -807,6 +808,7 @@ function doBookWithMembership(){if(isProcessing)return;
 // ── STEP 3B: NO MEMBERSHIP — SHOW ALL PRICING OPTIONS ──
 var stripeInstance=null, cardElement=null;
 var activePromo=null, discountedPrice=null;
+var activePayReq=null, activePayName=null;
 
 function applyPromo(type,origPrice,productId){
   var code=(document.getElementById('bk-promo')||{}).value.trim().toUpperCase();
@@ -852,6 +854,8 @@ function applyPromo(type,origPrice,productId){
     // Hide the promo input, show applied state
     document.getElementById('bk-promo-fields').style.display='none';
     document.getElementById('bk-promo-toggle').style.display='none';
+    // Update Apple/Google Pay amount if active
+    if(activePayReq){try{activePayReq.update({total:{label:'SABDA Studio'+(activePayName?' — '+activePayName:''),amount:Math.round(discountedPrice*100)}});}catch(e){}}
   }).catch(function(){
     btn.textContent='Apply';btn.disabled=false;
     errEl.textContent='Could not validate code. Try again.';errEl.style.display='block';
@@ -867,6 +871,7 @@ function removePromo(origPrice){
   document.getElementById('bk-total').textContent='€'+origPrice;
   var payBtn=document.getElementById('bk-pay-btn');
   if(payBtn) payBtn.textContent='Pay €'+origPrice+' & Book Class';
+  if(activePayReq){try{activePayReq.update({total:{label:'SABDA Studio'+(activePayName?' — '+activePayName:''),amount:Math.round(origPrice*100)}});}catch(e){}}
 }
 
 function showNoMembership(){stepChange();
@@ -968,7 +973,8 @@ function showPayForm(type,price,productId,name,desc){stepChange();
 
   // Apple Pay / Google Pay via Payment Request API
   try{
-    var payReq=stripeInstance.paymentRequest({
+    activePayName=name;
+    activePayReq=stripeInstance.paymentRequest({
       country:'ES',
       currency:'eur',
       total:{label:'SABDA Studio — '+name,amount:Math.round(price*100)},
@@ -976,17 +982,17 @@ function showPayForm(type,price,productId,name,desc){stepChange();
       requestPayerEmail:true
     });
     var prButton=stripeInstance.elements().create('paymentRequestButton',{
-      paymentRequest:payReq,
+      paymentRequest:activePayReq,
       style:{paymentRequestButton:{type:'default',theme:'light-outline',height:'48px'}}
     });
-    payReq.canMakePayment().then(function(result){
+    activePayReq.canMakePayment().then(function(result){
       if(result){
         document.getElementById('bk-pay-request').style.display='block';
         document.getElementById('bk-pay-divider').style.display='flex';
         prButton.mount('#bk-pay-request');
       }
     });
-    payReq.on('paymentmethod',function(ev){
+    activePayReq.on('paymentmethod',function(ev){
       // Validate customer fields first
       var vErr=validateCustomerFields();
       if(vErr){ev.complete('fail');return;}
@@ -1004,6 +1010,7 @@ function showPayForm(type,price,productId,name,desc){stepChange();
           email:curUser.email,
           type:type,
           productId:productId,
+          discountCode:activePromo||undefined,
           phoneNumber:cf.phoneNumber,
           customerFields:cf.customerFields
         })

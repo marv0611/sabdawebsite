@@ -719,20 +719,25 @@ async function handlePay(request, origin) {
     const stripeAcct = session.stripeConnectedAccount || '';
     const loadDate = session.loadDate || new Date().toISOString();
 
-    // If buying a membership/pack, fetch its price instead of session price
+    // If buying a membership/pack, use known price
+    // /host/54278/memberships returns 401 from CF Workers — hardcode instead
     if (productId) {
-      try {
-        const mRes = await fetch(
-          MOMENCE + '/_api/primary/host/54278/memberships',
-          { headers: { 'Host': 'momence.com' } }
-        );
-        const mData = await mRes.json();
-        const allMemberships = Array.isArray(mData) ? mData : (mData.data || mData.memberships || mData.message || []);
-        const product = allMemberships.find(m => m.id === productId || m.id === Number(productId));
-        if (product) {
-          price = product.price || product.amount || price;
-        }
-      } catch (e) {}
+      const PRODUCT_PRICES = {
+        443934: 18,   // Trial Drop-in
+        443935: 50,   // Intro 3-Pack
+        445630: 22,   // Drop-in
+        443937: 85,   // 5 Pack
+        443939: 149,  // 10 Pack
+        706876: 99,   // Flex monthly
+        709976: 109,  // Ritual monthly
+        431216: 130,  // Immerse monthly
+        445600: 330,  // Immerse 3-Month
+        507726: 12,   // Ice Bath single
+        507728: 30,   // Ice Bath 3-Pack
+        507729: 40,   // Ice Bath 5-Pack
+      };
+      const knownPrice = PRODUCT_PRICES[Number(productId)];
+      if (knownPrice !== undefined) price = knownPrice;
     }
 
     const body = {
