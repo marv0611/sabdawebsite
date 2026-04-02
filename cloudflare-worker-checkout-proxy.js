@@ -619,9 +619,25 @@ async function handlePay(request, origin) {
     );
     const sessData = await sessRes.json();
     const session = sessData.message || {};
-    const price = session.fixedTicketPrice || 0;
+    let price = session.fixedTicketPrice || 0;
     const stripeAcct = session.stripeConnectedAccount || '';
     const loadDate = session.loadDate || new Date().toISOString();
+
+    // If buying a membership/pack, fetch its price instead of session price
+    if (productId) {
+      try {
+        const mRes = await fetch(
+          MOMENCE + '/_api/primary/host/54278/memberships',
+          { headers: { 'Host': 'momence.com' } }
+        );
+        const mData = await mRes.json();
+        const allMemberships = Array.isArray(mData) ? mData : (mData.data || mData.memberships || mData.message || []);
+        const product = allMemberships.find(m => m.id === productId || m.id === Number(productId));
+        if (product) {
+          price = product.price || product.amount || price;
+        }
+      } catch (e) {}
+    }
 
     const body = {
       tickets: [{ firstName, lastName, email, isAdditionalTicket: false }],
@@ -629,7 +645,7 @@ async function handlePay(request, origin) {
       loadDate,
       stripePaymentMethodId,
       shouldSavePaymentMethod: false,
-      boughtMembershipIds: [],
+      boughtMembershipIds: productId ? [productId] : [],
     };
     if (stripeAcct) body.stripeConnectedAccountId = stripeAcct;
     if (phoneNumber) body.phoneNumber = phoneNumber;

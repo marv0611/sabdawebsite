@@ -357,6 +357,8 @@ function renderSched(){
     return ed===selDate&&!e.isCancelled&&!e.isDeleted;
   });
   if(actF!=='All')f=f.filter(e=>getCat(e.title)===actF);
+  // Filter out classes that already started
+  f=f.filter(e=>new Date(e.dateTime)>=new Date());
   f.sort((a,b)=>new Date(a.dateTime)-new Date(b.dateTime));
 
   if(!f.length){c.innerHTML='<div class="empty">No classes scheduled for this day.</div>';return;}
@@ -365,21 +367,31 @@ function renderSched(){
     const time=fmtTime(e.dateTime);const[h,m]=time.split(':');
     const title=clean(e.title);const lang=getLang(e.title);
     const sp=e.spotsRemaining;const full=sp===0;
-    let sc='av',st=sp+' spots left';
+    let sc='av',st=sp+(sp===1?' spot left':' spots left');
     if(full){sc='fu';st='Full';}
-    else if(sp<=5){sc='lo';st=sp+' spots left';}
+    else if(sp<=5){sc='lo';}
     const fn=(e.teacher||'').split(' ')[0]||'';
     const lnk=(e.link||'').replace(/'/g,"\\'");
     const ttl=title.replace(/'/g,"\\'");
+    const tfn=fn.replace(/'/g,"\\'");
 
-    return`<div class="cc" style="animation-delay:${i*.05}s"><div class="ct"><div class="ct-h">${h}:${m}</div><div class="ct-d">${e.duration} min</div></div><div class="ci"><div class="ci-t">${title}${lang?`<span class="ci-lg">${lang}</span>`:''}</div><div class="ci-tc">${fn}</div><div class="ci-sp ${sc}">${st}</div></div><div class="ca">${full?(e.allowWaitlist?`<button class="bb wl" onclick="openMo('${lnk}','${ttl}','${time}','${fn}')">Waitlist</button>`:`<button class="bb fu">Full</button>`):`<button class="bb" onclick="openMo('${lnk}','${ttl}','${time}','${fn}')">Book</button>`}</div></div>`;
+    return`<div class="cc" style="animation-delay:${i*.05}s"><div class="ct"><div class="ct-h">${h}:${m}</div><div class="ct-d">${e.duration} min</div></div><div class="ci"><div class="ci-t">${title}${lang?`<span class="ci-lg">${lang}</span>`:''}</div><div class="ci-tc">${fn}</div><div class="ci-sp ${sc}">${st}</div></div><div class="ca">${full?(e.allowWaitlist?`<button class="bb wl" onclick="openMo('${lnk}','${ttl}','${time}','${tfn}')">Waitlist</button>`:`<button class="bb fu">Full</button>`):`<button class="bb" onclick="openMo('${lnk}','${ttl}','${time}','${tfn}')">Book</button>`}</div></div>`;
   }).join('');
 }
 
 const PROXY='https://sabda-checkout-proxy.sabda.workers.dev';
 let curSession=null, curUser=null, curMembership=null, curSessionToken=null;
+let isProcessing=false;
+
+// Fix #5: scroll modal to top on every step change
+function stepChange(){
+  isProcessing=false;
+  var box=document.querySelector('.mo-box');
+  if(box) box.scrollTop=0;
+}
 
 function openMo(link,title,time,teacher){
+  if(isProcessing) return;
   // Extract session ID from link
   var sid=link.match(/\/s\/(\d+)/);
   if(sid) sid=sid[1]; else { sid=link.match(/\/(\d+)$/); sid=sid?sid[1]:null; }
@@ -388,7 +400,8 @@ function openMo(link,title,time,teacher){
   // Find session data
   var sess=allE.find(function(e){return String(e.id)===sid;});
   curSession={id:sid,title:clean(title),time:time,teacher:teacher,link:link,
-    spots:sess?sess.spotsRemaining:null,duration:sess?sess.duration:null};
+    spots:sess?sess.spotsRemaining:null,duration:sess?sess.duration:null,
+    isWaitlist:sess?sess.spotsRemaining===0:false};
 
   document.getElementById('mo-t').textContent=curSession.title;
   document.getElementById('mo-c').textContent=time+(teacher?' · '+teacher:'');
@@ -398,6 +411,8 @@ function openMo(link,title,time,teacher){
   document.getElementById('mo').classList.add('open');
   document.getElementById('mo').style.display='flex';
   document.body.style.overflow='hidden';
+  // Fix #9: push history state so browser back closes modal
+  history.pushState({modal:true},'');
 }
 
 function closeMo(){
@@ -408,26 +423,37 @@ function closeMo(){
     document.getElementById('mo-bd').innerHTML='';
   },300);
   // Reset state
-  curSession=null;curMembership=null;
+  curSession=null;curMembership=null;isProcessing=false;
   if(cardElement){try{cardElement.destroy();}catch(e){}cardElement=null;}
 }
 document.getElementById('mo').addEventListener('click',function(e){if(e.target===this)closeMo();});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMo();});
+// Fix #9: browser back closes modal
+window.addEventListener('popstate',function(e){
+  if(document.getElementById('mo').classList.contains('open')) closeMo();
+});
 // Clear field error state on input
 document.addEventListener('input',function(e){if(e.target.classList)e.target.classList.remove('bk-field-err');});
 document.addEventListener('change',function(e){if(e.target.classList)e.target.classList.remove('bk-field-err');});
 
+function getSpotsHtml(){
+  
+  if(sp===0) return curSession.isWaitlist?'<div class="bk-spots lo">Waitlist</div>':'<div class="bk-spots lo">Full</div>';
+  if(sp!==null) return '<div class="bk-spots '+(sp<=5?'lo':'av')+'">'+sp+(sp===1?' spot left':' spots left')+'</div>';
+  return '';
+}
+
 // ── STEP 1A: LOGIN (default) ──
-function showLoginStep(){
-  var sp=curSession.spots;
-  var spotsHtml=sp!==null?('<div class="bk-spots '+(sp<=5?'lo':'av')+'">'+sp+' spots left</div>'):'';
+function showLoginStep(){stepChange();
+  
+  
   var classBlock='<div class="bk-class">'
     +'<div class="bk-class-name">'+curSession.title+'</div>'
     +'<div class="bk-class-meta">'
     +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+curSession.time+'</span>'
     +(curSession.duration?'<span>'+curSession.duration+' min</span>':'')
     +(curSession.teacher?'<span>'+curSession.teacher+'</span>':'')
-    +'</div>'+spotsHtml+'</div>';
+    +'</div>'+getSpotsHtml()+'</div>';
 
   var bd=document.getElementById('mo-bd');
   bd.innerHTML=classBlock
@@ -445,16 +471,16 @@ function showLoginStep(){
 }
 
 // ── STEP 1B: GUEST ──
-function showGuestStep(){
-  var sp=curSession.spots;
-  var spotsHtml=sp!==null?('<div class="bk-spots '+(sp<=5?'lo':'av')+'">'+sp+' spots left</div>'):'';
+function showGuestStep(){stepChange();
+  
+  
   var classBlock='<div class="bk-class">'
     +'<div class="bk-class-name">'+curSession.title+'</div>'
     +'<div class="bk-class-meta">'
     +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+curSession.time+'</span>'
     +(curSession.duration?'<span>'+curSession.duration+' min</span>':'')
     +(curSession.teacher?'<span>'+curSession.teacher+'</span>':'')
-    +'</div>'+spotsHtml+'</div>';
+    +'</div>'+getSpotsHtml()+'</div>';
 
   var bd=document.getElementById('mo-bd');
   bd.innerHTML=classBlock
@@ -472,7 +498,7 @@ function showGuestStep(){
   document.getElementById('bk-fn').focus();
 }
 
-function doLogin(){
+function doLogin(){if(isProcessing)return;
   var emailEl=document.getElementById('bk-email');
   var passEl=document.getElementById('bk-pass');
   var email=emailEl.value.trim();
@@ -484,7 +510,7 @@ function doLogin(){
   if(!email||!validateEmail(email)){emailEl.classList.add('bk-field-err');ok=false;}
   if(!pass){passEl.classList.add('bk-field-err');ok=false;}
   if(!ok){err.textContent='Please fill in the highlighted fields';return;}
-  err.textContent='';btn.textContent='Signing in...';btn.disabled=true;
+  err.textContent='';isProcessing=true;btn.textContent='Signing in...';btn.disabled=true;
 
   fetch(PROXY+'/sabda-api/login',{
     method:'POST',
@@ -494,7 +520,7 @@ function doLogin(){
   .then(function(r){
     if(!r.ok||r.data.error){
       err.textContent=r.data.error||'Invalid email or password';
-      btn.textContent='Log in & Book';btn.disabled=false;
+      isProcessing=false;btn.textContent='Log in & Book';btn.disabled=false;
       return;
     }
     // MFA required — show code input
@@ -503,6 +529,7 @@ function doLogin(){
       return;
     }
     var d=r.data;
+    if(!curSession) return; // modal was closed during request
     curUser={
       id:d.user.id,
       email:d.user.email||email,
@@ -520,13 +547,13 @@ function doLogin(){
     }
   }).catch(function(){
     err.textContent='Connection error. Please try again.';
-    btn.textContent='Log in & Book';btn.disabled=false;
+    isProcessing=false;btn.textContent='Log in & Book';btn.disabled=false;
   });
 }
 
 // ── STEP 1C: MFA CODE INPUT ──
 var curMfaToken=null;
-function showMfaStep(mfaToken){
+function showMfaStep(mfaToken){stepChange();
   curMfaToken=mfaToken;
   var bd=document.getElementById('mo-bd');
   bd.innerHTML='<div class="bk-class">'
@@ -546,12 +573,12 @@ function showMfaStep(mfaToken){
   document.getElementById('bk-mfa').addEventListener('keydown',function(e){if(e.key==='Enter')doMfaVerify();});
 }
 
-function doMfaVerify(){
+function doMfaVerify(){if(isProcessing)return;
   var code=document.getElementById('bk-mfa').value.trim();
   var err=document.getElementById('bk-err');
   var btn=document.getElementById('bk-mfa-btn');
   if(!code||code.length<6){err.textContent='Please enter the 6-digit code';return;}
-  err.textContent='';btn.textContent='Verifying...';btn.disabled=true;
+  err.textContent='';isProcessing=true;btn.textContent='Verifying...';btn.disabled=true;
 
   fetch(PROXY+'/sabda-api/mfa-verify',{
     method:'POST',
@@ -561,10 +588,11 @@ function doMfaVerify(){
   .then(function(r){
     if(!r.ok||r.data.error){
       err.textContent=r.data.error||'Invalid code. Please try again.';
-      btn.textContent='Verify & Continue';btn.disabled=false;
+      isProcessing=false;btn.textContent='Verify & Continue';btn.disabled=false;
       return;
     }
     var d=r.data;
+    if(!curSession) return; // modal was closed
     curUser={
       id:d.user.id,
       email:d.user.email,
@@ -582,7 +610,7 @@ function doMfaVerify(){
     }
   }).catch(function(){
     err.textContent='Connection error. Please try again.';
-    btn.textContent='Verify & Continue';btn.disabled=false;
+    isProcessing=false;btn.textContent='Verify & Continue';btn.disabled=false;
   });
 }
 
@@ -659,11 +687,11 @@ function validateEmail(email){
 }
 
 // ── STEP 3A: CONFIRM WITH MEMBERSHIP ──
-function showConfirmStep(membership){
+function showConfirmStep(membership){stepChange();
   var bd=document.getElementById('mo-bd');
   var mName=membership.name||membership.membershipName||membership.planName||'Membership';
   var credits=membership.remainingCredits||membership.eventsRemaining||membership.creditsRemaining||membership.remainingEvents||'';
-  var detail=credits?credits+' class'+(credits!==1?'es':'')+' remaining':'Active membership';
+  var detail=credits?(Number(credits)===1?'1 class remaining':credits+' classes remaining'):'Active membership';
   curMembership=membership;
 
   bd.innerHTML='<div class="bk-class">'
@@ -686,12 +714,12 @@ function showConfirmStep(membership){
     +'</div>';
 }
 
-function doBookWithMembership(){
+function doBookWithMembership(){if(isProcessing)return;
   var btn=document.getElementById('bk-confirm-btn');
   var err=document.getElementById('bk-err');
   var vErr=validateCustomerFields();
   if(vErr){err.textContent=vErr;return;}
-  btn.textContent='Booking...';btn.disabled=true;err.textContent='';
+  isProcessing=true;btn.textContent='Booking...';btn.disabled=true;err.textContent='';
 
   var m=curMembership||{};
   var cf=getCustomerFields();
@@ -716,19 +744,20 @@ function doBookWithMembership(){
       showSuccess();
     } else {
       var msg=(r.data&&(r.data.error||r.data.message))||'Booking failed. Please try again.';
-      err.textContent=msg;
-      btn.textContent='Confirm Booking';btn.disabled=false;
+      if(document.getElementById('bk-err')) document.getElementById('bk-err').textContent=msg;
+      isProcessing=false;
+      var b=document.getElementById('bk-confirm-btn');if(b){b.textContent='Confirm Booking';b.disabled=false;}
     }
   }).catch(function(){
-    err.textContent='Connection error. Please try again.';
-    btn.textContent='Confirm Booking';btn.disabled=false;
+    var e=document.getElementById('bk-err');if(e)e.textContent='Connection error. Please try again.';
+    isProcessing=false;var b=document.getElementById('bk-confirm-btn');if(b){b.textContent='Confirm Booking';b.disabled=false;}
   });
 }
 
 // ── STEP 3B: NO MEMBERSHIP — SHOW ALL PRICING OPTIONS ──
 var stripeInstance=null, cardElement=null;
 
-function showNoMembership(){
+function showNoMembership(){stepChange();
   var bd=document.getElementById('mo-bd');
   var price=curSession.price||22;
 
@@ -779,7 +808,7 @@ function showNoMembership(){
 }
 
 // ── STEP 3C: PAYMENT FORM (after selecting an option) ──
-function showPayForm(type,price,productId,name,desc){
+function showPayForm(type,price,productId,name,desc){stepChange();
   var bd=document.getElementById('mo-bd');
   bd.innerHTML='<div class="bk-class">'
     +'<div class="bk-class-name">'+curSession.title+'</div>'
@@ -791,10 +820,10 @@ function showPayForm(type,price,productId,name,desc){
     +'<div class="bk-user">Booking as <strong>'+curUser.firstName+' '+curUser.lastName+'</strong></div>'
     +'<div class="bk-membership">'
     +'<div class="bk-membership-name">'+name+'</div>'
-    +'<div class="bk-membership-detail">'+desc+(type==='membership'?' · Billed monthly':'')+'</div>'
+    +'<div class="bk-membership-detail">'+desc+(type==='membership'&&price<200?' · Billed monthly':'')+'</div>'
     +'</div>'
     +'<div class="bk-pay-total">€'+price+'</div>'
-    +'<div class="bk-pay-desc">'+(type==='membership'?'First month':'One-time payment')+'</div>'
+    +'<div class="bk-pay-desc">'+(type==='membership'&&price<200?'First month, renews monthly':type==='membership'?'Billed once':'One-time payment')+'</div>'
     +customerFieldsHTML()
     +'<div class="bk-label" style="margin-top:16px">Card Details</div>'
     +'<div class="bk-card-wrap" id="bk-card"></div>'
@@ -805,6 +834,10 @@ function showPayForm(type,price,productId,name,desc){
 
   // Initialize Stripe — clean up previous card element
   if(cardElement){try{cardElement.destroy();}catch(e){}cardElement=null;}
+  if(typeof Stripe==='undefined'){
+    document.getElementById('bk-err').textContent='Payment form could not load. Please disable ad blockers and refresh.';
+    return;
+  }
   if(!stripeInstance){
     stripeInstance=Stripe('pk_live_RoPa2iuvwBbqEISUd2LYTmKF',{stripeAccount:'acct_1RUWnoBf6nsynAht'});
   }
@@ -818,12 +851,12 @@ function showPayForm(type,price,productId,name,desc){
   cardElement.mount('#bk-card');
 }
 
-function doPayAndBook(type,price,productId){
+function doPayAndBook(type,price,productId){if(isProcessing)return;
   var btn=document.getElementById('bk-pay-btn');
   var err=document.getElementById('bk-err');
   var vErr=validateCustomerFields();
   if(vErr){err.textContent=vErr;return;}
-  btn.textContent='Processing...';btn.disabled=true;err.textContent='';
+  isProcessing=true;btn.textContent='Processing...';btn.disabled=true;err.textContent='';
 
   var cf=getCustomerFields();
 
@@ -833,7 +866,7 @@ function doPayAndBook(type,price,productId){
   }}).then(function(result){
     if(result.error){
       err.textContent=result.error.message;
-      btn.textContent='Pay & Book';btn.disabled=false;
+      isProcessing=false;btn.textContent='Pay & Book';btn.disabled=false;
       return;
     }
     return fetch(PROXY+'/sabda-api/pay',{
@@ -859,32 +892,38 @@ function doPayAndBook(type,price,productId){
         return stripeInstance.confirmCardPayment(r.data.clientSecret).then(function(conf){
           if(conf.error){
             err.textContent=conf.error.message;
-            btn.textContent='Pay & Book';btn.disabled=false;
+            isProcessing=false;btn.textContent='Pay & Book';btn.disabled=false;
           } else {
             showSuccess();
           }
         });
       } else {
         err.textContent=r.data.error||'Payment failed. Please try again.';
-        btn.textContent='Pay & Book';btn.disabled=false;
+        isProcessing=false;btn.textContent='Pay & Book';btn.disabled=false;
       }
     });
   }).catch(function(){
     err.textContent='Connection error. Please try again.';
-    btn.textContent='Pay & Book';btn.disabled=false;
+    isProcessing=false;btn.textContent='Pay & Book';btn.disabled=false;
   });
 }
 
 // ── STEP 4: SUCCESS ──
-function showSuccess(){
+function showSuccess(){stepChange();
   var bd=document.getElementById('mo-bd');
+  // Fix #8: decrement spots locally
+  if(curSession&&curSession.id){
+    var sess=allE.find(function(e){return String(e.id)===String(curSession.id);});
+    if(sess&&sess.spotsRemaining>0) sess.spotsRemaining--;
+  }
   bd.innerHTML='<div class="bk-success">'
     +'<div class="bk-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>'
     +'<h3>You\'re booked!</h3>'
     +'<p>'+curSession.title+'<br>'+curSession.time+(curSession.teacher?' with '+curSession.teacher:'')+'</p>'
     +'<p style="margin-top:16px;font-size:.78rem;color:var(--white38)">Check your email for confirmation. See you on the mat.</p>'
-    +'<button class="bk-primary" style="margin-top:20px" onclick="closeMo()">Done</button>'
+    +'<button class="bk-primary" style="margin-top:20px" onclick="closeMo();renderSched()">Done</button>'
     +'</div>';
+  isProcessing=false;
 }
 
 async function init(){
