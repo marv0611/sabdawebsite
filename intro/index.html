@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"><!-- intro-v3 -->
+<meta charset="UTF-8"><!-- intro-v4 -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>3 Immersive Classes for &euro;50 | SABDA Barcelona</title>
 <meta name="description" content="Your first 3 immersive classes for &euro;50. 360&deg; projections. Dolby Atmos. Yoga, pilates, sound healing in Barcelona.">
@@ -20,102 +20,116 @@ html{scroll-behavior:smooth}
 body{background:var(--navy);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
 ::selection{background:rgba(248,166,163,.18)}
-
-/* GRAIN + PARTICLES */
 .grain{position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.038;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px}
 #gP{position:fixed;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
-
-/* SHARED */
 .rv{opacity:0;transform:translateY(32px);transition:opacity .8s var(--ease-expo),transform .8s var(--ease-expo)}.rv.vis{opacity:1;transform:none}
+.sl{font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--cyan);font-weight:500;margin-bottom:18px;display:block}
+.sh2{font-family:'PT Serif',serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:700;line-height:1.08;letter-spacing:-.025em}.sh2 em{font-style:italic;color:var(--salmon)}
 
-/* ═══ HERO — FULL VIEWPORT ═══ */
+/* NAV — minimal, just logo */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;display:flex;align-items:center;justify-content:space-between;transition:background .5s,border-color .5s;border-bottom:1px solid rgba(240,239,233,.04);background:rgba(14,18,53,.45);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+nav.scrolled{background:rgba(14,18,53,.92);border-color:rgba(240,239,233,.06)}
+.nav-logo img{height:22px;width:auto;display:block;object-fit:contain}
+
+/* HERO */
 .hero{position:relative;width:100%;min-height:100vh;min-height:100svh;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .hero-bg{position:absolute;inset:0;background:url('https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_009.jpg') center 40%/cover no-repeat;filter:brightness(.32) contrast(1.1) saturate(1.2)}
 .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,18,53,.2) 0%,rgba(14,18,53,.05) 30%,rgba(14,18,53,.45) 65%,var(--navy) 100%)}
 .hero-in{position:relative;z-index:3;text-align:center;padding:0 28px;max-width:480px}
-.hero-logo{height:18px;width:auto;opacity:.4;margin:0 auto 52px}
-.hero-label{font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--cyan);font-weight:500;margin-bottom:22px}
-.hero-price{font-family:'PT Serif',serif;font-size:clamp(4rem,14vw,6rem);font-weight:700;line-height:.9;letter-spacing:-.04em;margin-bottom:14px}
+.hero-price{font-family:'PT Serif',serif;font-size:clamp(4.5rem,16vw,7rem);font-weight:700;line-height:.85;letter-spacing:-.04em;margin-bottom:14px}
 .hero-tagline{font-family:'PT Serif',serif;font-size:clamp(1rem,2.8vw,1.25rem);font-weight:400;font-style:italic;color:var(--salmon);line-height:1.4;margin-bottom:20px}
 .hero-details{font-size:.82rem;color:var(--white60);margin-bottom:40px}
 .hero-details b{color:var(--white);font-weight:600}
-.hero-btn{display:block;width:100%;max-width:320px;margin:0 auto;padding:16px 28px;background:var(--cyan);color:var(--navy);font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:.05em;border-radius:3px;border:none;cursor:pointer;text-align:center;transition:background .2s,transform .15s,box-shadow .2s}
-.hero-btn:hover{background:#18ffda;transform:translateY(-2px);box-shadow:0 14px 36px rgba(2,243,197,.22)}
-.hero-btn svg{display:inline;vertical-align:middle;margin-left:6px}
-.hero-alt{display:block;margin-top:22px;font-size:.78rem;color:var(--white38)}
-.hero-alt span{color:var(--white60);border-bottom:1px solid rgba(240,239,233,.1);padding-bottom:1px;transition:color .2s,border-color .2s}
-.hero-alt:hover span{color:var(--white);border-color:rgba(240,239,233,.3)}
+.cta-p{display:block;width:100%;max-width:320px;margin:0 auto;padding:16px 28px;background:var(--cyan);color:var(--navy);font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:.05em;border-radius:3px;text-align:center;transition:background .2s,transform .15s,box-shadow .2s}.cta-p:hover{background:#18ffda;transform:translateY(-2px);box-shadow:0 14px 36px rgba(2,243,197,.22)}
+.cta-p svg{display:inline;vertical-align:middle;margin-left:6px}
+.hero-alt{display:block;margin-top:22px;font-size:.78rem;color:var(--white38)}.hero-alt span{color:var(--white60);border-bottom:1px solid rgba(240,239,233,.1);padding-bottom:1px;transition:color .2s,border-color .2s}.hero-alt:hover span{color:var(--white);border-color:rgba(240,239,233,.3)}
 
-/* ═══ SECTIONS ═══ */
-.sect{padding:100px 80px;position:relative;z-index:2}
-.sect-border{border-top:1px solid rgba(240,239,233,.06)}
-.sect-in{max-width:860px;margin:0 auto}
-.sect-label{font-size:.68rem;letter-spacing:.26em;text-transform:uppercase;color:var(--cyan);font-weight:500;margin-bottom:18px;display:block}
+/* CLASS IMAGE STRIP — from homepage */
+.cls-strip{overflow:hidden;padding:64px 0;border-top:1px solid rgba(240,239,233,.06);position:relative;z-index:2}
+.cls-track{display:flex;gap:16px;width:max-content;animation:slideTrack 30s linear infinite}
+@keyframes slideTrack{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.cls-item{position:relative;width:220px;height:280px;flex-shrink:0;border-radius:8px;overflow:hidden}
+.cls-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease-expo)}
+.cls-item:hover img{transform:scale(1.06)}
+.cls-item-ov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(14,18,53,.85) 100%)}
+.cls-item-label{position:absolute;bottom:16px;left:16px;z-index:2}
+.cls-item-name{font-family:'PT Serif',serif;font-size:1rem;font-weight:700}
+.cls-item-tag{font-size:.65rem;color:var(--white60);margin-top:4px;letter-spacing:.02em}
 
-/* ═══ 3-CARD PROOF ═══ */
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.card{border-radius:6px;padding:32px 28px;border:1px solid rgba(240,239,233,.1);text-align:left;transition:border-color .3s}
-.card:hover{border-color:rgba(2,243,197,.2)}
-.card-icon{width:38px;height:38px;border-radius:50%;background:rgba(2,243,197,.06);border:1px solid rgba(2,243,197,.12);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
-.card-icon svg{width:17px;height:17px;stroke:var(--cyan);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-.card h3{font-family:'PT Serif',serif;font-size:1rem;font-weight:700;margin-bottom:8px}
-.card p{font-size:.82rem;color:var(--white60);line-height:1.6}
+/* REVIEW TICKER — exact homepage match */
+.review-nudge{padding:80px 80px;border-top:1px solid rgba(240,239,233,.06);position:relative;z-index:2;overflow:hidden}
+.rn-inner{text-align:center;max-width:480px;margin:0 auto}
+.rn-ticker{position:relative;max-width:600px;margin:0 auto 24px;text-align:center;min-height:120px;display:flex;align-items:center;justify-content:center}
+.rn-quote{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:opacity .6s}.rn-quote.active{opacity:1}
+.rn-quote q{font-family:'PT Serif',serif;font-style:italic;font-size:clamp(1.1rem,2.5vw,1.4rem);line-height:1.5;color:var(--white);display:block;margin-bottom:12px;quotes:none}
+.rn-quote cite{font-family:'DM Sans',sans-serif;font-style:normal;font-size:.75rem;color:var(--white38);letter-spacing:.04em}
+.rn-stars{display:flex;justify-content:center;gap:4px;margin-bottom:14px}.rn-stars svg{width:18px;height:18px;fill:var(--salmon)}
+.rn-scoreline{display:flex;align-items:baseline;justify-content:center;gap:10px;margin-bottom:28px}
+.rn-score{font-family:'PT Serif',serif;font-size:2.2rem;font-weight:700}
+.rn-count{font-size:.85rem;color:var(--white38)}
 
-/* ═══ REVIEW TICKER ═══ */
-.ticker{position:relative;max-width:560px;margin:0 auto 28px;text-align:center;min-height:90px;display:flex;align-items:center;justify-content:center}
-.tq{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:opacity .6s}
-.tq.on{opacity:1}
-.tq q{font-family:'PT Serif',serif;font-style:italic;font-size:clamp(1.05rem,2.4vw,1.3rem);line-height:1.5;color:var(--white);display:block;margin-bottom:10px;quotes:none}
-.tq cite{font-family:'DM Sans',sans-serif;font-style:normal;font-size:.72rem;color:var(--white38);letter-spacing:.04em}
-.tq cite span{color:var(--cyan)}
-.badge{display:flex;align-items:baseline;justify-content:center;gap:8px}
-.badge-stars{display:flex;gap:3px}
-.badge-stars svg{width:16px;height:16px;fill:var(--salmon)}
-.badge-score{font-family:'PT Serif',serif;font-size:1.5rem;font-weight:700}
-.badge-count{font-size:.75rem;color:var(--white38)}
-
-/* ═══ STEPS ═══ */
+/* HOW IT WORKS */
+.how-sect{padding:100px 80px;border-top:1px solid rgba(240,239,233,.06);position:relative;z-index:2}
+.how-in{max-width:860px;margin:0 auto}
 .steps{max-width:420px;margin-top:36px}
-.step{display:flex;gap:18px;margin-bottom:28px;position:relative}
-.step:last-child{margin-bottom:0}
+.step{display:flex;gap:18px;margin-bottom:28px;position:relative}.step:last-child{margin-bottom:0}
 .step-n{width:34px;height:34px;flex-shrink:0;border-radius:50%;border:1px solid rgba(2,243,197,.2);display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;color:var(--cyan);background:var(--navy);z-index:1}
 .step:not(:last-child)::after{content:'';position:absolute;left:16px;top:34px;width:1px;height:calc(100% - 6px);background:rgba(2,243,197,.08)}
 .step h4{font-size:.88rem;font-weight:700;margin-bottom:3px}
 .step p{font-size:.82rem;color:var(--white60);line-height:1.55}
 
-/* ═══ CLOSER ═══ */
-.closer{padding:100px 80px;text-align:center;position:relative;z-index:2;background:radial-gradient(ellipse 70% 50% at 50% 60%,rgba(2,243,197,.03) 0%,transparent 70%)}
-.closer h2{font-family:'PT Serif',serif;font-size:clamp(2rem,4.5vw,3.2rem);font-weight:700;line-height:1.08;letter-spacing:-.025em;margin-bottom:8px}
-.closer h2 em{font-style:italic;color:var(--salmon)}
-.closer-sub{font-size:.92rem;color:var(--white60);margin-bottom:36px}
+/* PRESS — from homepage */
+.press{padding:72px 80px;border-top:1px solid rgba(240,239,233,.06);position:relative;z-index:2}
+.press-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;max-width:900px;margin:0 auto;text-align:center}
+.press-logo{display:flex;align-items:center;justify-content:center;margin-bottom:12px;position:relative}
+.press-logo svg{height:100%;width:auto}
+.press-line{height:1px;max-width:100px;margin:12px auto;background:linear-gradient(to right,transparent,rgba(240,239,233,.12),transparent)}
+.press-quote{font-family:'PT Serif',serif;font-style:italic;font-size:.82rem;color:var(--white38);line-height:1.5}
+
+/* CLOSER */
+.closer{padding:100px 80px;text-align:center;position:relative;z-index:2;border-top:1px solid rgba(240,239,233,.06);background:radial-gradient(ellipse 70% 50% at 50% 60%,rgba(2,243,197,.03) 0%,transparent 70%)}
+.closer-sub{font-size:.92rem;color:var(--white60);margin:12px 0 36px}
 .closer-sub b{color:var(--white);font-weight:700}
 .closer-note{font-size:.75rem;color:var(--white38);margin-top:18px}
 
-/* ═══ LOCATION ═══ */
-.loc{padding:56px 80px;text-align:center;position:relative;z-index:2}
+/* LOCATION */
+.loc{padding:48px 80px;text-align:center;border-top:1px solid rgba(240,239,233,.06);position:relative;z-index:2}
 .loc-addr{font-size:.88rem;font-weight:600;margin-bottom:4px}
 .loc-metro{font-size:.75rem;color:var(--white38)}
 
-/* ═══ STICKY MOBILE ═══ */
-.sbk{position:fixed;bottom:0;left:0;right:0;z-index:99;background:rgba(14,18,53,.95);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-top:1px solid rgba(240,239,233,.08);padding:12px 22px;display:none;align-items:center;justify-content:space-between;transform:translateY(100%);transition:transform .4s var(--ease-expo)}
-.sbk.vis{transform:none}
+/* FOOTER — exact homepage match */
+footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);background:rgba(9,12,38,.6);position:relative;z-index:2}
+.ft-in{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:44px}
+.ft-brand{text-align:left}
+.ft-brand img{height:36px;width:auto;display:block;margin-bottom:16px;object-fit:contain}
+.ft-pillars{display:flex;gap:12px;margin-top:14px;font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--white38)}
+.fp-art{color:var(--cyan)}.fp-tech{color:var(--white)}.fp-well{color:var(--salmon)}
+.ft-symbol{width:200px;height:auto;margin-top:28px;opacity:.35;display:block;object-fit:contain;max-width:200px}
+.ft-col h4{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--white38);margin-bottom:18px;font-weight:600}
+.ft-col ul{list-style:none}.ft-col li{margin-bottom:10px}
+.ft-col a{font-size:.85rem;color:var(--white60);transition:color .2s}.ft-col a:hover{color:var(--white)}
+.ft-bot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding-top:30px;border-top:1px solid rgba(240,239,233,.06);font-size:.74rem;color:rgba(240,239,233,.2)}
+.ft-legal{display:flex;gap:24px}.ft-legal a{color:rgba(240,239,233,.2);transition:color .2s}.ft-legal a:hover{color:var(--white60)}
+
+/* STICKY */
+.sbk{position:fixed;bottom:0;left:0;right:0;z-index:99;background:rgba(14,18,53,.95);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-top:1px solid rgba(240,239,233,.08);padding:12px 22px;display:none;align-items:center;justify-content:space-between;transform:translateY(100%);transition:transform .4s var(--ease-expo)}.sbk.vis{transform:none}
 .sbk-txt{font-size:.85rem;font-weight:500}.sbk-txt span{color:var(--cyan);font-weight:700}
 .sbk-btn{background:var(--cyan);color:var(--navy);padding:10px 20px;border-radius:3px;font-size:.82rem;font-weight:700;letter-spacing:.05em;white-space:nowrap}
 
-/* ═══ FOOTER ═══ */
-.foot{padding:28px 80px;text-align:center;font-size:.65rem;color:rgba(240,239,233,.25);position:relative;z-index:2;border-top:1px solid rgba(240,239,233,.03)}
-.foot a{color:rgba(240,239,233,.25);margin:0 8px;transition:color .2s}.foot a:hover{color:var(--white60)}
-
-/* ═══ RESPONSIVE ═══ */
 @media(max-width:860px){
-  .sect,.closer,.loc{padding-left:24px;padding-right:24px}
-  .sect{padding-top:72px;padding-bottom:72px}
-  .cards{grid-template-columns:1fr;gap:16px}
+  nav{padding:0 24px}
+  .how-sect,.press,.closer,.loc,.review-nudge{padding-left:24px;padding-right:24px}
+  .how-sect,.press{padding-top:72px;padding-bottom:72px}
+  .press-grid{grid-template-columns:1fr;gap:32px}
+  .cls-item{width:180px;height:230px}
   .sbk{display:flex}
-  .foot{padding-left:24px;padding-right:24px}
+  footer{padding:40px 24px 24px}
+  .ft-in{grid-template-columns:1fr 1fr}
+  .ft-symbol{display:none}
 }
 @media(max-width:520px){
-  .hero-price{font-size:3.4rem}
+  .hero-price{font-size:4rem}
+  .ft-in{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -123,120 +137,156 @@ a{color:inherit;text-decoration:none}
 <div class="grain"></div>
 <canvas id="gP"></canvas>
 
-<!-- ═══ HERO ═══ -->
+<nav id="nav"><a href="../SABDA_v16.html" class="nav-logo"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA"></a></nav>
+
+<!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero-bg"></div>
   <div class="hero-in">
-    <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA" style="height:18px;width:auto;opacity:.4;margin:0 auto 52px;display:block;object-fit:contain">
-    <div class="hero-label rv" id="t-label">Your First 3 Immersive Classes</div>
+    <div class="sl rv" id="t-label">Your First 3 Immersive Classes</div>
     <div class="hero-price rv" style="transition-delay:.08s">&euro;50</div>
     <div class="hero-tagline rv" style="transition-delay:.14s" id="t-tag">3 classes. Any type. 30 days. No commitment.</div>
     <div class="hero-details rv" style="transition-delay:.18s" id="t-det"><b>&euro;16.67 per class</b> &middot; Valid 30 days &middot; Cancel anytime</div>
-    <a href="https://momence.com/m/443935" class="hero-btn rv" style="transition-delay:.24s" id="t-cta">Get Your Intro 3-Pack <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <a href="https://momence.com/m/443935" class="cta-p rv" style="transition-delay:.24s" id="t-cta">Get Your Intro 3-Pack <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     <a href="https://momence.com/m/443934" class="hero-alt rv" style="transition-delay:.3s" id="t-alt">Just want to try one class? <span id="t-alt-s">Single trial &mdash; &euro;18</span></a>
   </div>
 </section>
 
-<!-- ═══ PROOF CARDS ═══ -->
-<section class="sect">
-  <div class="sect-in">
-    <div class="cards">
-      <div class="card rv">
-        <div class="card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
-        <h3 id="t-c1h">360&#176; Projections</h3>
-        <p id="t-c1p">Immersive visuals that surround you. Floor, walls, ceiling. Every session is different.</p>
-      </div>
-      <div class="card rv" style="transition-delay:.08s">
-        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
-        <h3 id="t-c2h">Spatial Audio</h3>
-        <p id="t-c2p">Dolby Atmos sound designed for each class. You feel the music, not just hear it.</p>
-      </div>
-      <div class="card rv" style="transition-delay:.16s">
-        <div class="card-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <h3 id="t-c3h">Expert-Led Classes</h3>
-        <p id="t-c3p">Yoga, pilates, breathwork, sound healing and more. All levels welcome.</p>
-      </div>
-    </div>
+<!-- CLASS IMAGE STRIP — scrolling, from homepage -->
+<div class="cls-strip">
+  <div class="cls-track">
+    <div class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/vinyasa_new.jpg" alt="Vinyasa Yoga" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Yoga</div><div class="cls-item-tag">60 min &middot; All levels</div></div></div>
+    <div class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/pilates_new.jpg" alt="Pilates" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Pilates</div><div class="cls-item-tag">50 min &middot; All levels</div></div></div>
+    <div class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/sound_healing.jpg" alt="Sound Healing" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Sound Healing</div><div class="cls-item-tag">60 min &middot; No experience needed</div></div></div>
+    <div class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/breathwork_new.jpg" alt="Breathwork" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Breathwork</div><div class="cls-item-tag">45 to 60 min &middot; All levels</div></div></div>
+    <div class="cls-item"><img src="classes/ice-bath/hero-people.jpg" alt="Ice Bath" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Ice Bath</div><div class="cls-item-tag">Open use &middot; Private terrace</div></div></div>
+    <div class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/vinyasa_new.jpg" alt="Vinyasa Yoga" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Yoga</div><div class="cls-item-tag">60 min &middot; All levels</div></div></div>
+    <div class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/pilates_new.jpg" alt="Pilates" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Pilates</div><div class="cls-item-tag">50 min &middot; All levels</div></div></div>
+    <div class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/sound_healing.jpg" alt="Sound Healing" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Sound Healing</div><div class="cls-item-tag">60 min &middot; No experience needed</div></div></div>
+    <div class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/breathwork_new.jpg" alt="Breathwork" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Breathwork</div><div class="cls-item-tag">45 to 60 min &middot; All levels</div></div></div>
+    <div class="cls-item"><img src="classes/ice-bath/hero-people.jpg" alt="Ice Bath" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Ice Bath</div><div class="cls-item-tag">Open use &middot; Private terrace</div></div></div>
   </div>
-</section>
-
-<!-- ═══ SOCIAL PROOF ═══ -->
-<section class="sect sect-border" style="text-align:center">
-  <div class="sect-in">
-    <div class="ticker" id="ticker">
-      <div class="tq on"><q>The 360&#176; room blew my mind.</q><cite>Sara &middot; <span>Sound Healing</span></cite></div>
-      <div class="tq"><q>Booked three more classes on the spot.</q><cite>Amara &middot; <span>Vinyasa Yoga</span></cite></div>
-      <div class="tq"><q>Nothing else like this in the city.</q><cite>Tom &middot; <span>Pilates</span></cite></div>
-      <div class="tq"><q>Finally, wellness that isn&#8217;t cringe.</q><cite>Luca &middot; <span>Breathwork</span></cite></div>
-      <div class="tq"><q>My new favourite place in Barcelona.</q><cite>Nadia &middot; <span>Sound Healing</span></cite></div>
-    </div>
-    <div class="badge rv">
-      <div class="badge-stars"><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg></div>
-      <span class="badge-score">4.8</span>
-      <span class="badge-count">350+ reviews on Google</span>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ HOW IT WORKS ═══ -->
-<section class="sect sect-border">
-  <div class="sect-in">
-    <span class="sect-label rv" id="t-how">How It Works</span>
-    <div class="steps">
-      <div class="step rv"><div class="step-n">1</div><div><h4 id="t-s1h">Book Online</h4><p id="t-s1p">Choose any 3 classes from the weekly schedule. Takes 2 minutes.</p></div></div>
-      <div class="step rv" style="transition-delay:.08s"><div class="step-n">2</div><div><h4 id="t-s2h">Show Up</h4><p id="t-s2p">We provide mats, props, everything. Just wear comfortable clothes.</p></div></div>
-      <div class="step rv" style="transition-delay:.16s"><div class="step-n">3</div><div><h4 id="t-s3h">Immerse</h4><p id="t-s3p">60 minutes inside the 360&#176; room. Leave feeling different.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ CLOSER CTA ═══ -->
-<div class="closer sect-border">
-  <h2 class="rv" id="t-closer">Ready to <em>try it?</em></h2>
-  <p class="closer-sub rv" style="transition-delay:.06s">Intro 3-Pack: <b>3 Classes for &euro;50</b></p>
-  <div class="rv" style="transition-delay:.12s">
-    <a href="https://momence.com/m/443935" class="hero-btn" style="max-width:320px;margin:0 auto" id="t-cta2">Get Your Intro 3-Pack <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-  </div>
-  <p class="closer-note rv" style="transition-delay:.18s" id="t-cn">Valid for 30 days. No membership. No commitment.</p>
 </div>
 
-<!-- ═══ LOCATION ═══ -->
-<div class="loc sect-border">
+<!-- REVIEW TICKER — exact homepage component -->
+<div class="review-nudge rv">
+  <div class="rn-ticker">
+    <div class="rn-quote active"><q>Such a powerful breathwork class. The SABDA space is unrivalled.</q><cite>Sophie &middot; Breathwork</cite></div>
+    <div class="rn-quote"><q>Sabda has been my go-to yoga place for a year and a half. The teachers have helped me so much.</q><cite>Jack &middot; Vinyasa Yoga</cite></div>
+    <div class="rn-quote"><q>I took a Pilates class while visiting Barcelona and I&#8217;m obsessed. The visuals made it unforgettable.</q><cite>Alexis &middot; Pilates</cite></div>
+    <div class="rn-quote"><q>Came here for power pilates and everything from entering the space to leaving was fantastic.</q><cite>Veronika &middot; Power Pilates</cite></div>
+    <div class="rn-quote"><q>The whole experience is one of a kind. I totally recommend it to everyone.</q><cite>Andili &middot; Yoga</cite></div>
+  </div>
+  <div class="rn-inner">
+    <div class="rn-stars"><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg></div>
+    <div class="rn-scoreline"><span class="rn-score">4.8</span><span class="rn-count">350+ reviews</span></div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="how-sect">
+  <div class="how-in">
+    <span class="sl rv" id="t-how">How It Works</span>
+    <h2 class="sh2 rv" style="transition-delay:.06s">Three steps to<br><em>something different.</em></h2>
+    <div class="steps">
+      <div class="step rv" style="transition-delay:.1s"><div class="step-n">1</div><div><h4 id="t-s1h">Book Online</h4><p id="t-s1p">Choose any 3 classes from the weekly schedule. Takes 2 minutes.</p></div></div>
+      <div class="step rv" style="transition-delay:.16s"><div class="step-n">2</div><div><h4 id="t-s2h">Show Up</h4><p id="t-s2p">We provide mats, props, everything. Just wear comfortable clothes.</p></div></div>
+      <div class="step rv" style="transition-delay:.22s"><div class="step-n">3</div><div><h4 id="t-s3h">Immerse</h4><p id="t-s3p">60 minutes inside the 360&deg; room. Leave feeling different.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRESS — from homepage -->
+<section class="press">
+  <div class="press-grid">
+    <div class="rv">
+      <div class="press-logo" style="height:34px"><svg viewBox="0 0 400 40" xmlns="http://www.w3.org/2000/svg"><text x="200" y="33" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="32" fill="#f0efe9" letter-spacing="1.5">El Peri&oacute;dico</text></svg></div>
+      <div class="press-line"></div>
+      <p class="press-quote">&ldquo;Sci-fi fitness: Spain&#8217;s first immersive wellness studio.&rdquo;</p>
+    </div>
+    <div class="rv" style="transition-delay:.1s">
+      <div class="press-logo" style="height:32px"><svg viewBox="0 0 520 36" xmlns="http://www.w3.org/2000/svg"><text x="260" y="30" text-anchor="middle" font-family="Georgia,serif" font-weight="400" font-size="28" fill="#f0efe9" letter-spacing="3" font-style="italic">Cond&eacute; Nast Traveler</text></svg></div>
+      <div class="press-line" style="background:linear-gradient(to right,transparent,var(--white38),transparent)"></div>
+      <p class="press-quote">&ldquo;A door to another dimension. Art in its purest form.&rdquo;</p>
+    </div>
+    <div class="rv" style="transition-delay:.2s">
+      <div class="press-logo" style="height:34px"><svg viewBox="0 0 160 40" xmlns="http://www.w3.org/2000/svg"><text x="80" y="34" text-anchor="middle" font-family="Impact,'Arial Black',sans-serif" font-weight="900" font-size="42" fill="#E40000" letter-spacing="5">CNN</text></svg></div>
+      <div class="press-line" style="background:linear-gradient(to right,transparent,rgba(228,0,0,.3),transparent)"></div>
+      <p class="press-quote">&ldquo;A meeting point between technology, art, and consciousness.&rdquo;</p>
+    </div>
+  </div>
+</section>
+
+<!-- CLOSER -->
+<div class="closer">
+  <span class="sl rv" id="t-closer-l">Ready?</span>
+  <h2 class="sh2 rv" style="transition-delay:.06s" id="t-closer">Try something <em>different.</em></h2>
+  <p class="closer-sub rv" style="transition-delay:.12s">Intro 3-Pack: <b>3 Classes for &euro;50</b></p>
+  <div class="rv" style="transition-delay:.18s"><a href="https://momence.com/m/443935" class="cta-p" style="margin:0 auto" id="t-cta2">Get Your Intro 3-Pack <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+  <p class="closer-note rv" style="transition-delay:.24s" id="t-cn">Valid for 30 days. No membership. No commitment.</p>
+</div>
+
+<!-- LOCATION -->
+<div class="loc">
   <div class="loc-addr rv">C/Muntaner 83B, Eixample, Barcelona</div>
   <div class="loc-metro rv" style="transition-delay:.06s" id="t-loc">5 min walk from Hospital Cl&#237;nic metro &middot; L5</div>
 </div>
 
-<!-- ═══ STICKY MOBILE ═══ -->
+<!-- FOOTER — exact homepage -->
+<footer>
+  <div class="ft-in">
+    <div class="ft-brand">
+      <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA">
+      <div class="ft-pillars"><span class="fp-art">Art</span><span>&middot;</span><span class="fp-tech">Tech</span><span>&middot;</span><span class="fp-well">Wellness</span></div>
+      <img class="ft-symbol" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20symbol%20multi-colored%20(1).png" alt="SABDA symbol">
+    </div>
+    <div class="ft-col"><h4 style="color:var(--cyan)">Explore</h4><ul>
+      <li><a href="../classes.html">Classes</a></li><li><a href="../hire.html">Rent</a></li><li><a href="../pricing.html">Pricing</a></li><li><a href="../events.html">Events</a></li><li><a href="../about.html">About</a></li><li><a href="../faq/">FAQ</a></li>
+    </ul></div>
+    <div class="ft-col"><h4 style="color:var(--salmon)">Connect</h4><ul>
+      <li><a href="https://instagram.com/sabda_studio" target="_blank">Instagram</a></li>
+      <li><a href="https://tiktok.com/@sabdastudio" target="_blank">TikTok</a></li>
+      <li><a href="https://www.linkedin.com/company/sabdastudio" target="_blank">LinkedIn</a></li>
+    </ul></div>
+    <div class="ft-col"><h4 style="color:var(--white)">Contact</h4><ul>
+      <li><a href="mailto:info@sabdastudio.com">info@sabdastudio.com</a></li>
+      <li><a href="tel:+34625449878">+34 625 44 98 78</a></li>
+      <li><a href="https://maps.google.com/?q=SABDA+Studio,+Barcelona" target="_blank" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3);padding-bottom:2px">Get Directions &rarr;</a></li>
+    </ul></div>
+  </div>
+  <div class="ft-bot">
+    <span>&copy; 2026 SABDA STUDIO S.L. All rights reserved.</span>
+    <div class="ft-legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a></div>
+  </div>
+</footer>
+
+<!-- STICKY MOBILE -->
 <div class="sbk" id="sbk">
-  <div class="sbk-txt">Intro 3-Pack &middot; <span>&euro;50</span></div>
+  <div class="sbk-txt">3 Classes &middot; <span>&euro;50</span></div>
   <a href="https://momence.com/m/443935" class="sbk-btn" id="t-sticky">Book Now</a>
 </div>
 
-<footer class="foot">
-  &copy; 2026 SABDA STUDIO S.L. &middot; C/Muntaner 83B, Barcelona<br>
-  <a href="../SABDA_v16.html">Home</a><a href="#">Privacy</a><a href="#">Terms</a>
-</footer>
-
 <script>
 /* Scroll reveal */
-var rvEls=document.querySelectorAll('.rv');var rvObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');rvObs.unobserve(e.target)}})},{threshold:.15,rootMargin:'0px 0px -40px 0px'});rvEls.forEach(function(el){rvObs.observe(el)});
+var rvEls=document.querySelectorAll('.rv');var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){x.target.classList.add('vis');obs.unobserve(x.target)}})},{threshold:.15,rootMargin:'0px 0px -40px 0px'});rvEls.forEach(function(el){obs.observe(el)});
+
+/* Nav scroll */
+var nav=document.getElementById('nav');window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',scrollY>80)},{passive:true});
 
 /* Sticky */
-var sbk=document.getElementById('sbk');var heroEl=document.getElementById('hero');
-window.addEventListener('scroll',function(){sbk.classList.toggle('vis',scrollY>heroEl.offsetHeight-100)},{passive:true});
+var sbk=document.getElementById('sbk'),hro=document.getElementById('hero');window.addEventListener('scroll',function(){sbk.classList.toggle('vis',scrollY>hro.offsetHeight-100)},{passive:true});
 
-/* Ticker */
-var qs=document.querySelectorAll('.tq');var qi=0;
-setInterval(function(){qs[qi].classList.remove('on');qi=(qi+1)%qs.length;qs[qi].classList.add('on')},4000);
+/* Review ticker */
+var qs=document.querySelectorAll('.rn-quote'),qi=0;setInterval(function(){qs[qi].classList.remove('active');qi=(qi+1)%qs.length;qs[qi].classList.add('active')},4000);
 
-/* Pixel */
+/* Pixel — InitiateCheckout */
 document.querySelectorAll('a[href*="momence.com"]').forEach(function(b){b.addEventListener('click',function(){if(typeof fbq==='function')fbq('track','InitiateCheckout',{content_name:b.textContent.trim(),currency:'EUR',value:b.href.indexOf('443935')!==-1?50:18})})});
 
 /* Particles */
 (function(){var c=document.getElementById('gP');if(!c)return;var x=c.getContext('2d'),W,H,mx=-9999,my=-9999;function rz(){W=innerWidth;H=innerHeight;c.width=W*devicePixelRatio;c.height=H*devicePixelRatio;x.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0)}rz();addEventListener('resize',rz);document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY});var N=672,t=0,P=[];for(var i=0;i<N;i++){var r=Math.random();P.push({x:Math.random()*3e3,y:Math.random(),vx:.008+Math.random()*.06,vy:(Math.random()-.5)*.003,fx:0,fy:0,s:.3+Math.random()*1.5,g:4+Math.random()*16,c:r<.38?[2,243,197]:r<.72?[248,166,163]:[32,57,153],o:.025+Math.random()*.12,ph:Math.random()*Math.PI*2,wa:.01+Math.random()*.04,wf:1e-4+Math.random()*5e-4})}function dr(){t++;x.clearRect(0,0,W,H);for(var i=0;i<P.length;i++){var p=P[i];p.x+=p.vx;p.y+=p.vy;var wy=p.wa*Math.sin(p.ph+t*p.wf),dx2=p.x+p.fx,dy2=(p.y+wy)*H+p.fy,dx=dx2-mx,dy=dy2-my,d=Math.sqrt(dx*dx+dy*dy);if(d<120&&d>0){var f=(1-d/120)*2.5;p.fx+=dx/d*f;p.fy+=dy/d*f}p.fx*=.94;p.fy*=.94;dx2=p.x+p.fx;dy2=(p.y+wy)*H+p.fy;if(p.x>W+60){p.x=-50;p.y=Math.random();p.fx=0;p.fy=0}if(p.y<-.05)p.y=1.05;if(p.y>1.05)p.y=-.05;var pl=.4+.6*Math.sin(p.ph+t*.001),op=p.o*pl;if(op<.002)continue;var g=x.createRadialGradient(dx2,dy2,0,dx2,dy2,p.g);g.addColorStop(0,'rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+','+op*.7+')');g.addColorStop(.3,'rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+','+op*.28+')');g.addColorStop(.7,'rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+','+op*.04+')');g.addColorStop(1,'rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+',0)');x.fillStyle=g;x.beginPath();x.arc(dx2,dy2,p.g,0,Math.PI*2);x.fill();x.beginPath();x.arc(dx2,dy2,p.s*.5,0,Math.PI*2);x.fillStyle='rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+','+Math.min(.6,op*2)+')';x.fill()}requestAnimationFrame(dr)}requestAnimationFrame(dr)})();
 
 /* Spanish */
-(function(){var p=new URLSearchParams(location.search);if(p.get('lang')==='es'){document.documentElement.lang='es';document.title='3 Clases Inmersivas por \u20AC50 | SABDA Barcelona';var t={'t-label':'TUS PRIMERAS 3 CLASES INMERSIVAS','t-tag':'3 clases. Cualquier tipo. 30 d\u00EDas. Sin compromiso.','t-det':'<b>\u20AC16,67 por clase</b> \u00B7 V\u00E1lido 30 d\u00EDas \u00B7 Sin compromiso','t-cta':'Consigue tu Pack Intro <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>','t-alt':'\u00BFSolo quieres probar una clase? <span>Clase de prueba \u2014 \u20AC18</span>','t-c1h':'Proyecciones 360\u00B0','t-c1p':'Visuales inmersivos que te rodean. Suelo, paredes, techo. Cada sesi\u00F3n es diferente.','t-c2h':'Audio Espacial','t-c2p':'Sonido Dolby Atmos dise\u00F1ado para cada clase. Sientes la m\u00FAsica, no solo la escuchas.','t-c3h':'Clases con Profesionales','t-c3p':'Yoga, pilates, breathwork, sound healing y m\u00E1s. Todos los niveles.','t-how':'C\u00F3mo Funciona','t-s1h':'Reserva Online','t-s1p':'Elige 3 clases del horario semanal. En 2 minutos.','t-s2h':'Ven','t-s2p':'Proporcionamos esterillas, accesorios, todo. Solo trae ropa c\u00F3moda.','t-s3h':'Sum\u00E9rgete','t-s3p':'60 minutos dentro de la sala 360\u00B0. Sal sinti\u00E9ndote diferente.','t-closer':'\u00BFLista/o para <em>probarlo?</em>','t-cta2':'Consigue tu Pack Intro <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>','t-cn':'V\u00E1lido 30 d\u00EDas. Sin membres\u00EDa. Sin compromiso.','t-loc':'5 min andando desde metro Hospital Cl\u00EDnic \u00B7 L5','t-sticky':'Reservar'};for(var id in t){var el=document.getElementById(id);if(el)el.innerHTML=t[id]}}})();
+(function(){var p=new URLSearchParams(location.search);if(p.get('lang')==='es'){document.documentElement.lang='es';document.title='3 Clases Inmersivas por \u20AC50 | SABDA Barcelona';var t={'t-label':'TUS PRIMERAS 3 CLASES INMERSIVAS','t-tag':'3 clases. Cualquier tipo. 30 d\u00EDas. Sin compromiso.','t-det':'<b>\u20AC16,67 por clase</b> \u00B7 V\u00E1lido 30 d\u00EDas \u00B7 Sin compromiso','t-cta':'Consigue tu Pack Intro <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>','t-alt':'\u00BFSolo quieres probar una clase? <span>Clase de prueba \u2014 \u20AC18</span>','t-how':'C\u00F3mo Funciona','t-s1h':'Reserva Online','t-s1p':'Elige 3 clases del horario semanal. En 2 minutos.','t-s2h':'Ven','t-s2p':'Proporcionamos esterillas, accesorios, todo. Solo trae ropa c\u00F3moda.','t-s3h':'Sum\u00E9rgete','t-s3p':'60 minutos dentro de la sala 360\u00B0. Sal sinti\u00E9ndote diferente.','t-closer-l':'\u00BFLista/o?','t-closer':'Prueba algo <em>diferente.</em>','t-cta2':'Consigue tu Pack Intro <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>','t-cn':'V\u00E1lido 30 d\u00EDas. Sin membres\u00EDa. Sin compromiso.','t-loc':'5 min andando desde metro Hospital Cl\u00EDnic \u00B7 L5','t-sticky':'Reservar'};for(var id in t){var el=document.getElementById(id);if(el)el.innerHTML=t[id]}}})();
 </script>
 </body>
 </html>
