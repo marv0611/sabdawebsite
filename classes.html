@@ -107,7 +107,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 .nav-login svg{width:14px;height:14px;stroke:currentColor;fill:none;flex-shrink:0}
 
 /* ── HERO BANNER ── */
-.hero-banner{position:relative;width:100%;height:320px;overflow:hidden}
+.hero-banner{position:relative;width:100%;height:320px;overflow:hidden;margin-top:72px}
 .hero-banner img{width:100%;height:100%;object-fit:cover;object-position:center 40%;filter:brightness(.55) contrast(1.1) saturate(1.15)}
 .hero-banner::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(14,18,53,.3) 0%,rgba(14,18,53,.12) 40%,rgba(14,18,53,.7) 80%,var(--navy) 100%)}
 .hero-overlay{position:absolute;bottom:44px;left:0;right:0;z-index:3;text-align:center}
@@ -528,6 +528,8 @@ select.bk-input option{background:var(--navy-light);color:var(--white)}
   },4000);
 })();
 document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));if(!wasOpen)item.classList.add('open');btn.setAttribute('aria-expanded',!wasOpen)})});
+</script>
+
 <!-- BOOKING MODAL -->
 <div class="mo" id="mo">
   <div class="mo-box">
