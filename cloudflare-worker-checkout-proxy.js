@@ -656,10 +656,8 @@ async function handleBook(request, origin) {
     if (memberId) body.memberId = memberId;
     if (memberMembershipId) {
       body.memberMembershipId = memberMembershipId;
-      body.boughtMembershipIds = [memberMembershipId];
-    } else {
-      body.boughtMembershipIds = [];
     }
+    body.boughtMembershipIds = [];
     if (phoneNumber) body.phoneNumber = phoneNumber;
     if (customerFields) body.customerFields = customerFields;
 
@@ -698,10 +696,17 @@ async function handleBook(request, origin) {
 // ── SERVER-SIDE PAYMENT: pay for a class with Stripe ──
 async function handlePay(request, origin) {
   try {
-    const { sessionId, sessionToken, stripePaymentMethodId, firstName, lastName, email, phoneNumber, customerFields, type, productId, discountCode } = await request.json();
+    const { sessionId, sessionToken, stripePaymentMethodId, firstName, lastName, email, phoneNumber, customerFields, type, productId, discountCode, actualPrice } = await request.json();
 
-    if (!sessionId || !stripePaymentMethodId) {
-      return new Response(JSON.stringify({ error: 'Missing required fields' }), {
+    if (!sessionId) {
+      return new Response(JSON.stringify({ error: 'Missing sessionId' }), {
+        status: 400, headers: corsHeaders(origin),
+      });
+    }
+
+    const isFree = stripePaymentMethodId === 'free' || actualPrice === 0;
+    if (!isFree && !stripePaymentMethodId) {
+      return new Response(JSON.stringify({ error: 'Missing payment method' }), {
         status: 400, headers: corsHeaders(origin),
       });
     }
@@ -740,14 +745,19 @@ async function handlePay(request, origin) {
       if (knownPrice !== undefined) price = knownPrice;
     }
 
+    // If frontend sent an actualPrice (e.g. after promo discount), use that
+    if (actualPrice !== undefined && actualPrice !== null) {
+      price = actualPrice;
+    }
+
     const body = {
       tickets: [{ firstName, lastName, email, isAdditionalTicket: false }],
       totalPriceInCurrency: price,
       loadDate,
-      stripePaymentMethodId,
       shouldSavePaymentMethod: false,
       boughtMembershipIds: productId ? [productId] : [],
     };
+    if (!isFree && stripePaymentMethodId) body.stripePaymentMethodId = stripePaymentMethodId;
     if (stripeAcct) body.stripeConnectedAccountId = stripeAcct;
     if (phoneNumber) body.phoneNumber = phoneNumber;
     if (customerFields) body.customerFields = customerFields;
