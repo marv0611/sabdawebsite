@@ -497,7 +497,7 @@ function handleSubmit(e){
   fetch('https://sabda-checkout-proxy.sabda.workers.dev/sabda-api/contact',{
     method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)
   }).then(function(r){return r.json()}).then(function(r){
-    if(r.ok){f.style.display='none';document.getElementById('inqSuccess').classList.add('show')}
+    if(r.ok){var sib=f.parentElement.children;for(var i=0;i<sib.length;i++){if(sib[i].id!=='inqSuccess')sib[i].style.display='none';}document.getElementById('inqSuccess').classList.add('show')}
     else{if(btn){btn.textContent='Send Inquiry';btn.disabled=false;}alert('Something went wrong. Please email connect@sabdastudio.com directly.')}
   }).catch(function(){
     if(btn){btn.textContent='Send Inquiry';btn.disabled=false;}
