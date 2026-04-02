@@ -335,6 +335,9 @@ async function handleCheckEmail(request, origin) {
       });
     }
 
+    // Check response body too — some cases return 200 with existing ID
+    const data = await res.json().catch(() => null);
+
     // New email — member was created (200 + {id})
     return new Response(JSON.stringify({ exists: false }), {
       status: 200, headers: corsHeaders(origin),
