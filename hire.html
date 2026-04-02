@@ -78,7 +78,7 @@
   --ease-expo:cubic-bezier(.16,1,.3,1);--ease-circ:cubic-bezier(.85,0,.15,1);
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;overflow-x:hidden}
 body{
   background:var(--navy);color:var(--white);
   font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.6;
@@ -408,7 +408,8 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       Log In
     </a>
   </div>
-</nav>
+<button class="nav-ham" onclick="document.getElementById('mobMenu').classList.add('open')" aria-label="Menu"><span></span><span></span><span></span></button></nav>
+<div class="mob-menu" id="mobMenu"><button class="mob-close" onclick="this.parentElement.classList.remove('open')"><svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12"/></svg></button><a href="classes.html">Classes</a><a href="pricing.html">Pricing</a><a href="hire.html">Rent</a><a href="events.html">Events</a><a href="about.html">About</a><a href="contact/">Contact</a></div>
 
 <!-- ═══════════════════════════════════════════════════════
      HERO

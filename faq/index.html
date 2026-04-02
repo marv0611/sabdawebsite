@@ -44,7 +44,7 @@
 <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--navy:#0e1235;--salmon:#F8A6A3;--cyan:#02F3C5;--white:#f0efe9;--white60:rgba(240,239,233,.6);--white38:rgba(240,239,233,.38);--ease-expo:cubic-bezier(.16,1,.3,1)}
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;overflow-x:hidden}
 body{background:var(--navy);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}img{display:block;max-width:100%;height:auto}::selection{background:rgba(248,166,163,.18)}
 .grain{position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.038;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:200px}
@@ -98,7 +98,8 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       <a href="https://tiktok.com/@sabdastudio" target="_blank" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0 1 13.8 3h-3v12.4a2.6 2.6 0 0 1-2.6 2.6 2.6 2.6 0 0 1-2.6-2.6A2.6 2.6 0 0 1 8.2 12.8c.28 0 .56.04.82.12V9.84A5.6 5.6 0 0 0 2.6 15.4a5.6 5.6 0 0 0 5.6 5.6 5.6 5.6 0 0 0 5.6-5.6V9.72a7.3 7.3 0 0 0 4.2 1.32V8.02a4.28 4.28 0 0 1-1.4-2.2z"/></svg></a>
     </div>
   </div>
-</nav>
+<button class="nav-ham" onclick="document.getElementById('mobMenu').classList.add('open')" aria-label="Menu"><span></span><span></span><span></span></button></nav>
+<div class="mob-menu" id="mobMenu"><button class="mob-close" onclick="this.parentElement.classList.remove('open')"><svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12"/></svg></button><a href="../classes.html">Classes</a><a href="../pricing.html">Pricing</a><a href="../hire.html">Rent</a><a href="../events.html">Events</a><a href="../about.html">About</a><a href="../contact/">Contact</a></div>
 
 <div class="faq-hero">
   <img src="hero.jpg" alt="SABDA immersive room Barcelona FAQ" loading="eager">
