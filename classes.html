@@ -721,7 +721,7 @@ function renderSched(){
       +'<div class="ct"><div class="ct-h">'+h+':'+m+'</div><div class="ct-d">'+e.duration+' min</div></div>'
       +'<div class="ci"><div class="ci-t">'+esc(title)+(lang?'<span class="ci-lg">'+lang+'</span>':'')+'</div>'
       +'<div class="ci-tc">'+esc(fn)+'</div>'
-      +(e.desc?'<div class="ci-more" onclick="toggleInfo(this)">More info <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="ci-desc">'+esc(e.desc).replace(/---ES---/g,'</p><p class="ci-lang-sep"><span class="ci-lg">ES</span></p><p>').replace(/---CA---/g,'</p><p class="ci-lang-sep"><span class="ci-lg">CA</span></p><p>')+'</div>':'')
+      +(e.desc?'<div class="ci-more" onclick="toggleInfo(this)">More info <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="ci-desc"><p>'+esc(e.desc).replace(/\n/g,'<br>').replace(/---ES---/g,'</p><p class="ci-lang-sep"><span class="ci-lg">ES</span></p><p>').replace(/---CA---/g,'</p><p class="ci-lang-sep"><span class="ci-lg">CA</span></p><p>')+'</p></div>':'')
       +'</div>'
       +'<div class="ca">'
       +(full?(e.allowWaitlist?'<button class="bb wl" onclick="openMo('+sid+')">Waitlist</button>':'<button class="bb fu">Full</button>')
@@ -1426,20 +1426,27 @@ async function init(){
         allowWaitlist:e.allowWaitlist||false,
         capacity:e.capacity||30,
         desc:(function(){
-          var raw=(e.level||'').replace(/^\([A-Z]{2}\):\s*/,'').trim();
+          var raw=(e.level||'').trim();
           if(!raw) return '';
-          // Split on language markers, dedupe
-          var parts=raw.split(/\n*\(ES\):\s*/);
-          var en=parts[0].trim();
-          var es=parts.length>1?parts[1].trim():'';
-          // Check for CA in remaining
-          var caParts=es?es.split(/\n*\(CA\):\s*/):[en.split(/\n*\(CA\):\s*/)].flat();
-          if(caParts.length>1&&!es){en=caParts[0].trim();var ca=caParts[1].trim();}
-          else if(caParts.length>1){es=caParts[0].trim();var ca=caParts[1].trim();}
-          else{var ca='';}
+          // Strip leading language tag: (EN):, (EN), [EN], [EN]:, etc.
+          raw=raw.replace(/^[\[(]EN[\])]:?\s*/i,'');
+          // Find ES section: match [ES], (ES):, (ES), [ES]:, etc.
+          var esIdx=-1,esTag=/[\[(]ES[\])]:?\s*/i;
+          var m=raw.match(esTag);
+          if(m) esIdx=m.index;
+          var en=esIdx>-1?raw.substring(0,esIdx).trim():raw.trim();
+          var esRaw=esIdx>-1?raw.substring(esIdx).replace(esTag,'').trim():'';
+          // If ES appears again (duplicate), take only up to the second marker
+          if(esRaw){var dup=esRaw.match(esTag);if(dup)esRaw=esRaw.substring(0,dup.index).trim();}
+          // Find CA section in remaining
+          var caTag=/[\[(]CA[\])]:?\s*/i;
+          var caM=esRaw?esRaw.match(caTag):en.match(caTag);
+          var ca='';
+          if(caM&&esRaw){ca=esRaw.substring(caM.index).replace(caTag,'').trim();esRaw=esRaw.substring(0,caM.index).trim();}
+          else if(caM){ca=en.substring(caM.index).replace(caTag,'').trim();en=en.substring(0,caM.index).trim();}
           var result=en;
-          if(es) result+='---ES---'+es;
-          if(ca) result+='---CA---'+ca;
+          if(esRaw) result+='\n---ES---\n'+esRaw;
+          if(ca) result+='\n---CA---\n'+ca;
           return result;
         })()
       };
