@@ -749,7 +749,7 @@ function showFallback(){
 function getSpotsHtml(){
   var sp=curSession?curSession.spots:null;
   if(sp===0) return curSession.isWaitlist?'<div class="bk-spots lo">Waitlist</div>':'<div class="bk-spots lo">Full</div>';
-  if(sp!==null) return '<div class="bk-spots '+(sp<=5?'lo':'av')+'">'+sp+(sp===1?' spot left':' spots left')+'</div>';
+  if(sp!==null&&sp<=5) return '<div class="bk-spots lo">'+sp+(sp===1?' spot left':' spots left')+'</div>';
   return '';
 }
 
@@ -781,7 +781,7 @@ function openMo(sessionId){
 
   document.getElementById('mo-t').textContent=curSession.title;
   document.getElementById('mo-c').textContent=time+(teacher?' \u00B7 '+teacher:'');
-  showLoginStep();
+  showGuestStep();
   document.getElementById('mo').classList.add('open');
   document.getElementById('mo').style.display='flex';
   document.body.style.overflow='hidden';
@@ -1109,9 +1109,9 @@ function showNoMembership(){stepChange();
     +'<div class="bk-pkg feat" onclick="showPayForm(\'pack\',50,443935,\'Intro 3-Pack\',\'3 classes \u00B7 \u20AC16.67 each \u00B7 30 days\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">Intro 3-Pack</div><div style="font-size:.75rem;color:var(--white60)">3 classes \u00B7 \u20AC16.67 each</div></div>'
     +'<div style="font-family:PT Serif,serif;font-weight:700">\u20AC50</div></div>'
-    +'<div class="bk-pkg" onclick="showPayForm(\'pack\',18,443934,\'Trial Class\',\'1 class \u00B7 First-timers only\')" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center">'
+    +(curUser.isGuest?'<div class="bk-pkg" onclick="showPayForm(\'pack\',18,443934,\'Trial Class\',\'1 class \u00B7 First-timers only\')" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">Trial Class</div><div style="font-size:.75rem;color:var(--white60)">First-timers only</div></div>'
-    +'<div style="font-family:PT Serif,serif;font-weight:700">\u20AC18</div></div>'
+    +'<div style="font-family:PT Serif,serif;font-weight:700">\u20AC18</div></div>':'')
     +'<div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--salmon);font-weight:600;margin-bottom:10px">Memberships</div>'
     +'<div class="bk-pkg" onclick="showPayForm(\'membership\',130,431216,\'Immerse\',\'Unlimited classes \u00B7 Cancel anytime\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">Immerse</div><div style="font-size:.75rem;color:var(--white60)">Unlimited classes</div></div>'
