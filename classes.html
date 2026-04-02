@@ -574,6 +574,7 @@ var SCHEDULE_API='https://readonly-api.momence.com/host-plugins/host/54278/host-
 var PROXY='https://sabda-checkout-proxy.sabda.workers.dev';
 var allE=[],selDate=null,actF='All',actTeacher='All';
 var curSession=null, curUser=null, curMembership=null, curSessionToken=null;
+var userMemberships=[];
 var isProcessing=false;
 var proxyAlive=true;
 var curMfaToken=null;
@@ -798,6 +799,7 @@ function closeMo(){
   curSession=null;curMembership=null;isProcessing=false;
   activePromo=null;discountedPrice=null;
   activePayReq=null;activePayName=null;
+  userMemberships=[];
   if(cardElement){try{cardElement.destroy();}catch(e){}cardElement=null;}
 }
 document.getElementById('mo').addEventListener('click',function(e){if(e.target===this)closeMo();});
@@ -887,6 +889,7 @@ window.doLogin=function(){if(isProcessing)return;
     curUser={id:d.user.id,email:d.user.email||email,firstName:d.user.firstName||email.split('@')[0],lastName:d.user.lastName||'',memberId:d.user.memberId};
     curSessionToken=d.sessionToken;
     curSession.price=d.sessionPrice||22;
+    userMemberships=d.memberships||[];
     if(d.hasUsableMembership&&d.memberships.length>0){showConfirmStep(d.memberships[0]);}
     else{showNoMembership();}
   }).catch(function(){
@@ -937,6 +940,7 @@ window.doMfaVerify=function(){if(isProcessing)return;
     curUser={id:d.user.id,email:d.user.email,firstName:d.user.firstName||d.user.email.split('@')[0],lastName:d.user.lastName||'',memberId:d.user.memberId};
     curSessionToken=d.sessionToken;
     curSession.price=d.sessionPrice||22;
+    userMemberships=d.memberships||[];
     if(d.hasUsableMembership&&d.memberships.length>0){showConfirmStep(d.memberships[0]);}
     else{showNoMembership();}
   }).catch(function(){
@@ -1105,13 +1109,15 @@ function showNoMembership(){stepChange();
     +'<div class="bk-confirm">'
     +'<div class="bk-user">Booking as <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>'
     +'<p style="font-size:.85rem;color:var(--white60);text-align:center;margin-bottom:20px;line-height:1.5">Choose how you want to book this class</p>'
-    +'<div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);font-weight:600;margin-bottom:10px">New to SABDA?</div>'
+    +(curUser.isGuest||userMemberships.length===0?
+     '<div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);font-weight:600;margin-bottom:10px">New to SABDA?</div>'
     +'<div class="bk-pkg feat" onclick="showPayForm(\'pack\',50,443935,\'Intro 3-Pack\',\'3 classes \u00B7 \u20AC16.67 each \u00B7 30 days\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">Intro 3-Pack</div><div style="font-size:.75rem;color:var(--white60)">3 classes \u00B7 \u20AC16.67 each</div></div>'
     +'<div style="font-family:PT Serif,serif;font-weight:700">\u20AC50</div></div>'
     +'<div class="bk-pkg" onclick="showPayForm(\'pack\',18,443934,\'Trial Class\',\'1 class \u00B7 First-timers only\')" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">Trial Class</div><div style="font-size:.75rem;color:var(--white60)">First-timers only</div></div>'
     +'<div style="font-family:PT Serif,serif;font-weight:700">\u20AC18</div></div>'
+    :'')
     +'<div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--salmon);font-weight:600;margin-bottom:10px">Memberships</div>'
     +'<div class="bk-pkg" onclick="showPayForm(\'membership\',130,431216,\'Immerse\',\'Unlimited classes \u00B7 Cancel anytime\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">Immerse</div><div style="font-size:.75rem;color:var(--white60)">Unlimited classes</div></div>'
