@@ -971,23 +971,20 @@ const mqColors=['#02F3C5','#F8A6A3'];
 ═══════════════════════════════════════════════════════ */
 function handleSubmit(e){
   e.preventDefault();
-  const f=document.getElementById('inquiryForm');
-  const data=new FormData(f);
-  const body=`Name: ${data.get('name')}
-Company: ${data.get('company')||'N/A'}
-Email: ${data.get('email')}
-Event Type: ${data.get('event_type')}
-Guests: ${data.get('guests')||'TBD'}
-Date: ${data.get('date')||'Flexible'}
-
-Message:
-${data.get('message')||'No additional details.'}`;
-
-  window.location.href=`mailto:connect@sabdastudio.com?subject=${encodeURIComponent('Event Inquiry from '+data.get('company'||'SABDA Website'))}&body=${encodeURIComponent(body)}`;
-
-  /* Show success state */
-  f.style.display='none';
-  document.getElementById('inqSuccess').classList.add('show');
+  var f=document.getElementById('inquiryForm');
+  var btn=f.querySelector('.inq-submit');
+  btn.textContent='Sending...';btn.disabled=true;
+  var data=new FormData(f);
+  var payload={name:data.get('name'),email:data.get('email'),phone:'',topic:'events',message:'Company: '+(data.get('company')||'N/A')+'\nEvent Type: '+data.get('event_type')+'\nGuests: '+(data.get('guests')||'TBD')+'\nDate: '+(data.get('date')||'Flexible')+'\n\n'+(data.get('message')||'')};
+  fetch('https://sabda-checkout-proxy.sabda.workers.dev/sabda-api/contact',{
+    method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)
+  }).then(function(r){return r.json()}).then(function(r){
+    if(r.ok){f.style.display='none';document.getElementById('inqSuccess').classList.add('show')}
+    else{btn.textContent='Send Inquiry';btn.disabled=false;alert('Something went wrong. Please email connect@sabdastudio.com directly.')}
+  }).catch(function(){
+    btn.textContent='Send Inquiry';btn.disabled=false;
+    alert('Connection error. Please email connect@sabdastudio.com directly.');
+  });
   return false;
 }
 

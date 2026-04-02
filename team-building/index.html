@@ -489,12 +489,20 @@ document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',(
 const sbk=document.getElementById('sbk');const heroEl=document.querySelector('.hero');if(heroEl&&sbk){window.addEventListener('scroll',()=>{sbk.classList.toggle('vis',scrollY>heroEl.offsetHeight*.65)},{passive:true})}
 function handleSubmit(e){
   e.preventDefault();
-  const f=document.getElementById('inquiryForm');
-  const data=new FormData(f);
-  const body=`Name: ${data.get('name')}\nCompany: ${data.get('company')||'N/A'}\nEmail: ${data.get('email')}\nEvent Type: ${data.get('event_type')}\nGuests: ${data.get('guests')||'TBD'}\nDate: ${data.get('date')||'Flexible'}\n\nMessage:\n${data.get('message')||'No additional details.'}`;
-  window.location.href=`mailto:<a href="mailto:connect@sabdastudio.com" style="color:var(--cyan)">connect@sabdastudio.com</a>?subject=${encodeURIComponent('Team Building Inquiry from '+(data.get('company')||'Website'))}&body=${encodeURIComponent(body)}`;
-  f.style.display='none';
-  document.getElementById('inqSuccess').classList.add('show');
+  var f=document.getElementById('inquiryForm');
+  var btn=f.querySelector('.inq-submit')||f.querySelector('button[type="submit"]');
+  if(btn){btn.textContent='Sending...';btn.disabled=true;}
+  var data=new FormData(f);
+  var payload={name:data.get('name'),email:data.get('email'),phone:'',topic:'corporate',message:'Company: '+(data.get('company')||'N/A')+'\nEvent Type: '+(data.get('event_type')||'Team Building')+'\nGuests: '+(data.get('guests')||'TBD')+'\nDate: '+(data.get('date')||'Flexible')+'\n\n'+(data.get('message')||'')};
+  fetch('https://sabda-checkout-proxy.sabda.workers.dev/sabda-api/contact',{
+    method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)
+  }).then(function(r){return r.json()}).then(function(r){
+    if(r.ok){f.style.display='none';document.getElementById('inqSuccess').classList.add('show')}
+    else{if(btn){btn.textContent='Send Inquiry';btn.disabled=false;}alert('Something went wrong. Please email connect@sabdastudio.com directly.')}
+  }).catch(function(){
+    if(btn){btn.textContent='Send Inquiry';btn.disabled=false;}
+    alert('Connection error. Please email connect@sabdastudio.com directly.');
+  });
   return false;
 }
 
