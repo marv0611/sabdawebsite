@@ -1251,7 +1251,7 @@ window.showPayForm=function(type,price,productId,name,desc){stepChange();
     +'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Card Details</div>'
     +'<div class="bk-card-wrap" id="bk-card"></div>'
     +'<div class="bk-err" id="bk-err"></div>'
-    +'<label style="display:flex;align-items:center;gap:8px;margin:12px 0 16px;cursor:pointer;font-size:.78rem;color:var(--white60)"><input type="checkbox" id="bk-autoenroll" checked style="accent-color:var(--cyan);width:16px;height:16px;cursor:pointer"> Auto-enroll me in <strong style="color:var(--white)">'+esc(curSession.title)+'</strong></label>'
+    +(curSession.id?'<label style="display:flex;align-items:center;gap:8px;margin:12px 0 16px;cursor:pointer;font-size:.78rem;color:var(--white60)"><input type="checkbox" id="bk-autoenroll" checked style="accent-color:var(--cyan);width:16px;height:16px;cursor:pointer"> Auto-enroll me in <strong style="color:var(--white)">'+esc(curSession.title)+'</strong></label>':'')
     +'<button class="bk-primary" id="bk-pay-btn" onclick="doPayAndBook(\''+type+'\','+price+','+productId+')">Pay \u20AC'+price+(type==='single'?' & Book':' & Book Class')+'</button>'
     +'<div class="bk-link" onclick="showNoMembership()">\u2190 Change plan</div>'
     +'</div>';
