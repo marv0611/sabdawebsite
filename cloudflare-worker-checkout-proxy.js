@@ -309,67 +309,26 @@ function corsHeaders(origin) {
 // ── CHECK IF EMAIL HAS EXISTING ACCOUNT ──
 async function handleCheckEmail(request, origin) {
   try {
-    const { email, firstName, lastName, sessionId } = await request.json();
+    const { email } = await request.json();
     if (!email) {
       return new Response(JSON.stringify({ exists: false }), {
         status: 200, headers: corsHeaders(origin),
       });
     }
 
-    // POST /plugin/members with API token:
-    // - Existing email → HTTP 400 (account exists)
-    // - New email → HTTP 200 + {id} (creates member, which would happen at checkout anyway)
-    const res = await fetch(
-      MOMENCE + '/_api/primary/plugin/members?hostId=54278&token=a0314a80ca',
-      {
-        method: 'POST',
-        headers: { 
-          'Content-Type': 'application/json',
-          'Host': 'momence.com',
-          'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify({ email, firstName: firstName || 'Guest', lastName: lastName || '' }),
-      }
-    );
-
-    const resText = await res.text();
-    const resStatus = res.status;
-    
-    // Debug: always return full info
-    if (email.startsWith('debug')) {
-      return new Response(JSON.stringify({ 
-        debug: true, status: resStatus, body: resText.substring(0,300), 
-        url: MOMENCE + '/_api/primary/plugin/members?hostId=54278&token=a0314a80ca',
-        sentBody: JSON.stringify({ email, firstName: firstName || 'Guest', lastName: lastName || '' })
-      }), { status: 200, headers: corsHeaders(origin) });
-    }
-
-    if (resStatus === 400 && !resText) {
-      // HTTP 400 with empty body = email already exists in Momence
-      return new Response(JSON.stringify({ exists: true }), {
-        status: 200, headers: corsHeaders(origin),
-      });
-    }
-
-    if (res.status === 400) {
-      // HTTP 400 with body = validation error, not existing email
-      return new Response(JSON.stringify({ exists: false, note: 'validation_error' }), {
-        status: 200, headers: corsHeaders(origin),
-      });
-    }
-
-    // Check response body — 200 with {id} means new member created
-    let data = null;
-    try { data = JSON.parse(resText); } catch(e) {}
-
-    // New email — member was created (200 + {id})
-    return new Response(JSON.stringify({ exists: false, debug_status: res.status, debug_body: resText ? resText.substring(0,200) : 'empty' }), {
-      status: 200, headers: corsHeaders(origin),
+    const res = await fetch(MOMENCE + '/_api/primary/checkout/customer/alert', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Host': 'momence.com' },
+      body: JSON.stringify({ email, hostId: 54278 }),
     });
 
+    const data = await res.json().catch(() => ({}));
+
+    return new Response(JSON.stringify({
+      exists: !!data.memberId,
+    }), { status: 200, headers: corsHeaders(origin) });
+
   } catch (e) {
-    // On error, don't block the user — let them proceed
     return new Response(JSON.stringify({ exists: false }), {
       status: 200, headers: corsHeaders(origin),
     });

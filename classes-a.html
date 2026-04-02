@@ -651,7 +651,36 @@ function doGuestCheck(){
   if(!ok){err.textContent='Please fill in the highlighted fields';return;}
 
   curUser={id:null,email:email,firstName:fn,lastName:ln,memberId:null,isGuest:true};
-  showNoMembership();
+
+  // Check if email already exists in Momence
+  fetch(PROXY+'/sabda-api/check-email',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({email:email})
+  }).then(function(r){return r.json();})
+  .then(function(d){
+    if(d.exists){
+      stepChange();
+      var bd=document.getElementById('mo-bd');
+      bd.innerHTML='<div class="bk-class">'
+        +'<div class="bk-class-name">'+curSession.title+'</div>'
+        +'<div class="bk-class-meta">'
+        +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+curSession.time+'</span>'
+        +'</div>'+getSpotsHtml()+'</div>'
+        +'<div class="bk-confirm" style="text-align:center">'
+        +'<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.15);border-radius:10px;padding:20px;margin-bottom:20px">'
+        +'<div style="font-size:.9rem;font-weight:600;color:var(--salmon);margin-bottom:6px">Account found</div>'
+        +'<div style="font-size:.82rem;color:var(--white60);line-height:1.5">This email is already registered. Log in to keep your booking history and credits together.</div>'
+        +'</div>'
+        +'<button class="bk-primary" onclick="showLoginStep()">Log in</button>'
+        +'<div class="bk-link" style="margin-top:12px"><a href="https://momence.com/forgot-password" target="_blank" style="color:var(--white38);font-size:.78rem;text-decoration:underline">Forgot your password?</a></div>'
+        +'</div>';
+    } else {
+      showNoMembership();
+    }
+  }).catch(function(){
+    showNoMembership();
+  });
 }
 
 // ── CUSTOMER FIELDS HTML (phone, language, city) ──
