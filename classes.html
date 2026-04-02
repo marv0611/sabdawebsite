@@ -116,7 +116,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 .hero-overlay p{font-size:.95rem;color:var(--white60);max-width:480px;margin:0 auto}
 
 /* ── MOMENCE WIDGET ── */
-#momence-plugin-host-schedule{max-width:920px;margin:0 auto;padding:40px 40px 20px;position:relative;z-index:2;background:var(--navy)}
+#momence-plugin-host-schedule{max-width:920px;margin:0 auto;padding:40px 40px 20px;position:relative;z-index:2;background:var(--navy);min-height:700px}
 #momence-plugin-host-schedule::before{content:'';position:absolute;inset:0;background:var(--navy);z-index:9999;pointer-events:none;opacity:1;transition:opacity .8s ease .3s}
 #momence-plugin-host-schedule.themed::before{opacity:0}
 #momence-plugin-host-schedule,#momence-plugin-host-schedule *{font-family:'DM Sans',sans-serif !important}
@@ -532,12 +532,16 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .nav-social svg{width:15px;height:15px}.nav-social{gap:10px;padding-left:14px;margin-left:14px}.lang-sel a{padding:4px 5px;font-size:.65rem}
   .nav-login{padding-left:14px;margin-left:14px}.nav-login a{font-size:.65rem;gap:5px}
   .hero-banner{height:240px}.hero-overlay h1{font-size:2rem}.hero-overlay{bottom:32px}
-  #momence-plugin-host-schedule{padding:24px 16px 12px}
+  #momence-plugin-host-schedule{padding:24px 16px 12px;min-height:500px}
   .sabda-member-login{right:16px}
   .sabda-member-login a{font-size:.65rem;padding:6px 12px}
   .pricing-summary{padding:60px 24px 0}
   .ps-grid{flex-wrap:wrap;gap:14px}.ps-card{max-width:none;min-width:120px}
   footer{padding:36px 24px 22px}.ft-in{grid-template-columns:1fr 1fr}
+  /* Fix inline-style sections that have 80px side padding */
+  section[style*="padding:80px"]{padding-left:24px !important;padding-right:24px !important}
+  section[style*="padding:60px"]{padding-left:24px !important;padding-right:24px !important}
+  section[style*="padding:48px"]{padding-left:24px !important;padding-right:24px !important}
 }
 @media(max-width:520px){
   .ft-in{grid-template-columns:1fr}.hero-overlay h1{font-size:1.7rem}
