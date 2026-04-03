@@ -166,14 +166,12 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
 .sd{color:var(--w10);font-size:.4rem;padding:0 2px!important;letter-spacing:0}
 
 /* REVIEW QUOTE */
-.rq{padding:14px 24px;border-bottom:1px solid var(--w06);text-align:center;min-height:56px;position:relative;overflow:hidden}
-.rq-i{font-family:'PT Serif',serif;font-style:italic;font-size:.75rem;color:var(--w60);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:6px;padding:0 24px;opacity:0;transition:opacity .6s}
-.rq-i.on{opacity:1;position:relative}
-.rq-i cite{font-style:normal;color:var(--salmon);font-size:.65rem;font-family:'DM Sans',sans-serif;font-weight:600}
+.rq{padding:12px 24px;border-bottom:1px solid var(--w06);text-align:center;font-family:'PT Serif',serif;font-style:italic;font-size:.75rem;color:var(--w60);line-height:1.5}
+.rq em{font-style:normal;color:var(--salmon);font-size:.62rem;font-family:'DM Sans',sans-serif;font-weight:600}
 
 /* FEATURED CARD */
 .feat-card{margin:0 24px 12px;border-radius:var(--r);overflow:hidden;position:relative;height:200px}
-.feat-card img{width:100%;height:100%;object-fit:cover}
+.feat-card img{width:100%;height:100%;object-fit:cover;transition:opacity .8s ease}
 .feat-card-ov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 20%,rgba(14,18,53,.9) 100%)}
 .feat-card-t{position:absolute;bottom:0;left:0;right:0;padding:20px}
 .feat-card-badge{display:inline-block;font-size:.46rem;letter-spacing:.16em;text-transform:uppercase;color:var(--navy);background:var(--cyan);padding:3px 10px;border-radius:100px;font-weight:700;margin-bottom:8px}
@@ -236,13 +234,8 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
   <span>360&deg; Projections</span><span class="sd">&middot;</span><span>Dolby Atmos</span><span class="sd">&middot;</span><span>43 Classes/Week</span>
 </div>
 
-<!-- REVIEW QUOTE -->
-<div class="rq fi" id="rq">
-  <div class="rq-i on">&ldquo;The SABDA space is unrivalled.&rdquo; <cite>&mdash; Sophie</cite></div>
-  <div class="rq-i">&ldquo;My go-to yoga place for a year and a half.&rdquo; <cite>&mdash; Jack</cite></div>
-  <div class="rq-i">&ldquo;Unforgettable. I took one class and I&rsquo;m obsessed.&rdquo; <cite>&mdash; Alexis</cite></div>
-  <div class="rq-i">&ldquo;One of a kind experience.&rdquo; <cite>&mdash; Andili</cite></div>
-</div>
+<!-- REVIEW — static, not competing with featured card -->
+<div class="rq fi">&ldquo;The SABDA space is unrivalled.&rdquo; &mdash; <em>Sophie, 350+ Google reviews</em></div>
 
 <!-- CLASSES — swipeable cards -->
 <!-- FEATURED CLASS -->
@@ -329,11 +322,19 @@ var feats=[
   {img:'https://raw.githubusercontent.com/marv0611/sabdawebsite/main/pilates_new.jpg',name:'Power Pilates',desc:'50 min · Full body · All levels',badge:'Trending',href:'pilates.html'}
 ];
 var fi=0,fc=document.getElementById('featCard'),fimg=document.getElementById('featImg'),fn=document.getElementById('featName'),fd=document.getElementById('featDesc'),fb=document.getElementById('featBadge');
-setInterval(function(){fi=(fi+1)%feats.length;var f=feats[fi];fc.onclick=function(){location.href=f.href};fimg.src=f.img;fn.textContent=f.name;fd.textContent=f.desc;fb.textContent=f.badge},5000);
+var preload=new Image();
+setInterval(function(){
+  var next=(fi+1)%feats.length;var f=feats[next];
+  preload.src=f.img;
+  fimg.style.opacity='0';
+  setTimeout(function(){
+    fi=next;fimg.src=f.img;fn.textContent=f.name;fd.textContent=f.desc;fb.textContent=f.badge;
+    fc.onclick=function(){location.href=f.href};
+    fimg.style.opacity='1';
+  },400);
+},5000);
 
-/* Rotating review quote */
-var rqs=document.querySelectorAll('.rq-i'),rqi=0;
-setInterval(function(){rqs[rqi].classList.remove('on');rqi=(rqi+1)%rqs.length;rqs[rqi].classList.add('on')},4000);
+
 
 /* Scroll reveal */
 var fis=document.querySelectorAll('.fi');

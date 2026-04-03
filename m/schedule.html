@@ -124,6 +124,20 @@ a{color:inherit;text-decoration:none}
 
 .fi{opacity:0;transform:translateY(16px);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1)}
 .fi.vis{opacity:1;transform:none}
+
+.skel{padding:16px 16px 0}
+.skel-row{display:flex;gap:8px;margin-bottom:12px}
+.skel-day{width:48px;height:56px;border-radius:10px;background:var(--w03);border:1px solid var(--w06)}
+.skel-day.on{border-color:rgba(2,243,197,.15);background:rgba(2,243,197,.04)}
+.skel-chips{display:flex;gap:8px;margin-bottom:20px}
+.skel-chip{height:32px;border-radius:100px;background:var(--w03);border:1px solid var(--w06)}
+.skel-card{border-radius:12px;background:var(--w03);border:1px solid var(--w06);padding:16px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+.skel-lines{display:flex;flex-direction:column;gap:6px}
+.skel-line{height:10px;border-radius:4px;background:var(--w06)}
+.skel-btn{width:72px;height:36px;border-radius:6px;background:rgba(2,243,197,.08)}
+@keyframes shimload{0%{opacity:.5}50%{opacity:1}100%{opacity:.5}}
+.skel *{animation:shimload 1.5s ease infinite}
+.skel.hide{display:none}
 </style>
 </head>
 <body>
@@ -137,6 +151,26 @@ a{color:inherit;text-decoration:none}
 <div class="pg fi">
   <div class="pg-t">This Week's <em>Schedule</em></div>
   <div class="pg-s">Filter by day, class type, or teacher.</div>
+</div>
+
+<div class="skel" id="skel">
+  <div class="skel-row">
+    <div class="skel-day on" style="width:56px"></div>
+    <div class="skel-day" style="width:48px"></div>
+    <div class="skel-day" style="width:48px"></div>
+    <div class="skel-day" style="width:48px"></div>
+    <div class="skel-day" style="width:48px"></div>
+    <div class="skel-day" style="width:48px"></div>
+  </div>
+  <div class="skel-chips">
+    <div class="skel-chip" style="width:80px"></div>
+    <div class="skel-chip" style="width:90px"></div>
+    <div class="skel-chip" style="width:60px"></div>
+    <div class="skel-chip" style="width:70px"></div>
+  </div>
+  <div class="skel-card"><div class="skel-lines"><div class="skel-line" style="width:120px"></div><div class="skel-line" style="width:80px"></div></div><div class="skel-btn"></div></div>
+  <div class="skel-card"><div class="skel-lines"><div class="skel-line" style="width:140px"></div><div class="skel-line" style="width:90px"></div></div><div class="skel-btn"></div></div>
+  <div class="skel-card"><div class="skel-lines"><div class="skel-line" style="width:100px"></div><div class="skel-line" style="width:70px"></div></div><div class="skel-btn"></div></div>
 </div>
 
 <div id="momence-plugin-host-schedule"></div>
@@ -194,6 +228,16 @@ a{color:inherit;text-decoration:none}
 var fis=document.querySelectorAll('.fi');
 var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{threshold:.15});
 fis.forEach(function(el){io.observe(el)});
+</script>
+
+<script>
+var skel=document.getElementById('skel');
+var mo=new MutationObserver(function(){
+  var widget=document.getElementById('momence-plugin-host-schedule');
+  if(widget&&widget.children.length>0){skel.classList.add('hide');mo.disconnect()}
+});
+mo.observe(document.getElementById('momence-plugin-host-schedule'),{childList:true});
+setTimeout(function(){skel.classList.add('hide')},8000);
 </script>
 </body>
 </html>
