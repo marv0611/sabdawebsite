@@ -192,10 +192,10 @@ let allE=[],selDate=null,actF='All';
 
 function getCat(t){
   const l=t.toLowerCase();
-  if(l.includes('vinyasa')||l.includes('hatha')||l.includes('yin yoga')||l.includes('yoga sculpt'))return'Yoga';
+  if(l.includes('vinyasa')||l.includes('hatha')||l.includes('yin yoga')||l.includes('yoga sculpt')||l.includes('yoga &'))return'Yoga';
   if(l.includes('pilates')||l.includes('glutes'))return'Pilates';
-  if(l.includes('sound')||l.includes('serenity')||l.includes('guided sound'))return'Sound';
-  if(l.includes('breath')||l.includes('recharge'))return'Breathwork';
+  if(l.includes('breath')||l.includes('recharge')||l.includes('reset'))return'Breathwork';
+  if(l.includes('sound')||l.includes('serenity')||l.includes('guided sound'))return'Sound Healing';
   return'Other';
 }
 function getLang(t){const m=t.match(/\[(.*?)\]/);return m?m[1]:'';}
@@ -311,7 +311,7 @@ function openMo(link,title,time,teacher){
   document.getElementById('mo-c').textContent=time+(teacher?' · '+teacher:'');
 
   // Always show login step — server handles session
-  showLoginStep();
+  showGuestStep();
   document.getElementById('mo').classList.add('open');
   document.getElementById('mo').style.display='flex';
   document.body.style.overflow='hidden';
