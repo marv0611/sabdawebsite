@@ -8,112 +8,121 @@
 <title>Schedule | SABDA</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,700;1,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<script src="https://js.stripe.com/v3/"></script>
 <style>
-:root{
-  --navy:#0e1235;--navy95:rgba(14,18,53,.95);--salmon:#F8A6A3;--cyan:#02F3C5;--white:#f0efe9;
-  --w60:rgba(240,239,233,.6);--w38:rgba(240,239,233,.38);--w10:rgba(240,239,233,.1);--w06:rgba(240,239,233,.06);--w03:rgba(240,239,233,.03);
-  --r:16px;--safe-b:env(safe-area-inset-bottom,0px);--safe-t:env(safe-area-inset-top,0px);
-  --momenceColorPrimary:#02F3C5;--momenceColorBlack:#f0efe9;--momenceColorBackground:#0e1235;
-}
+:root{--navy:#0e1235;--navy95:rgba(14,18,53,.95);--navy-light:#131842;--salmon:#F8A6A3;--cyan:#02F3C5;--white:#f0efe9;--white80:rgba(240,239,233,.8);--white60:rgba(240,239,233,.6);--white38:rgba(240,239,233,.38);--white20:rgba(240,239,233,.2);--white12:rgba(240,239,233,.12);--white06:rgba(240,239,233,.06);--white03:rgba(240,239,233,.03);--safe-b:env(safe-area-inset-bottom,0px);--safe-t:env(safe-area-inset-top,0px);--ease:cubic-bezier(.16,1,.3,1)}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{overflow-x:hidden;-webkit-text-size-adjust:100%}
 body{background:var(--navy);color:var(--white);font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;padding-top:calc(52px + var(--safe-t));padding-bottom:calc(72px + var(--safe-b));overflow-x:hidden}
-a{color:inherit;text-decoration:none}
-.grain{position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:150px}
-.touch{transition:transform .15s cubic-bezier(.2,.8,.4,1),opacity .15s}.touch:active{transform:scale(.97);opacity:.85}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{font-family:inherit;border:none;background:none;cursor:pointer;color:inherit}
+.touch{transition:transform .12s,opacity .12s}.touch:active{transform:scale(.98);opacity:.8}
 
 /* HEADER */
-.hdr{position:fixed;top:0;left:0;right:0;z-index:100;height:calc(52px + var(--safe-t));padding-top:var(--safe-t);display:flex;align-items:center;justify-content:space-between;padding-left:20px;padding-right:16px;background:var(--navy95);backdrop-filter:saturate(1.4) blur(24px);-webkit-backdrop-filter:saturate(1.4) blur(24px);border-bottom:1px solid var(--w06)}
+.hdr{position:fixed;top:0;left:0;right:0;z-index:100;height:calc(52px + var(--safe-t));padding-top:var(--safe-t);display:flex;align-items:center;justify-content:space-between;padding-left:20px;padding-right:16px;background:var(--navy95);backdrop-filter:saturate(1.4) blur(24px);-webkit-backdrop-filter:saturate(1.4) blur(24px);border-bottom:1px solid var(--white06)}
 .hdr img{height:18px;width:auto;opacity:.9}
-.hdr-pill{padding:7px 16px;background:var(--cyan);color:var(--navy);border-radius:100px;font-size:.68rem;font-weight:700;letter-spacing:.02em;line-height:1;box-shadow:0 2px 12px rgba(2,243,197,.2)}
+.hdr-pill{padding:7px 16px;background:var(--cyan);color:var(--navy);border-radius:100px;font-size:.68rem;font-weight:700;line-height:1;box-shadow:0 2px 12px rgba(2,243,197,.2)}
+.hdr-back{display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--white60);font-weight:500}
+.hdr-back svg{width:16px;height:16px;stroke:var(--white60);fill:none;stroke-width:2}
 
-/* PAGE TITLE */
-.pg{padding:24px 24px 12px}
-.pg-t{font-family:'PT Serif',serif;font-size:1.5rem;font-weight:700;letter-spacing:-.02em}
-.pg-t em{font-style:italic;color:var(--salmon)}
-.pg-s{font-size:.78rem;color:var(--w60);margin-top:4px}
+/* DAYS — horizontal scroll */
+.days{display:flex;gap:6px;padding:16px 20px 0;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.days::-webkit-scrollbar{display:none}
+.day-btn{background:none;border:1px solid var(--white12);color:var(--white60);padding:8px 14px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.72rem;font-weight:500;cursor:pointer;transition:all .25s;min-width:64px;text-align:center;flex-shrink:0}
+.day-btn:hover{border-color:rgba(2,243,197,.3)}
+.day-btn.active{background:rgba(2,243,197,.08);border-color:var(--cyan);color:var(--cyan);font-weight:700}
+.day-lbl{display:block;font-size:.48rem;letter-spacing:.08em;text-transform:uppercase;color:inherit;opacity:.7;margin-bottom:2px}
+.day-num{font-size:1rem;font-weight:700;line-height:1}
 
-/* MOMENCE WIDGET */
-#momence-plugin-host-schedule{padding:0 4px 40px;position:relative;z-index:2}
-#momence-plugin-host-schedule,#momence-plugin-host-schedule *{font-family:'DM Sans',sans-serif !important}
+/* FILTERS */
+.filters{display:flex;gap:6px;padding:12px 20px 0;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.filters::-webkit-scrollbar{display:none}
+.flt-btn{background:none;border:1px solid var(--white12);color:var(--white60);padding:6px 14px;border-radius:100px;font-size:.68rem;font-weight:500;cursor:pointer;transition:all .25s;white-space:nowrap;flex-shrink:0}
+.flt-btn:hover{border-color:rgba(2,243,197,.3)}
+.flt-btn.active{background:rgba(2,243,197,.08);border-color:var(--cyan);color:var(--cyan);font-weight:700}
 
-/* Momence CSS variable overrides */
-:root{
-  --momence-primary-050:rgba(2,243,197,.04);--momence-primary-100:rgba(2,243,197,.08);
-  --momence-primary-200:rgba(2,243,197,.16);--momence-primary-300:rgba(2,243,197,.3);
-  --momence-primary-400:rgba(2,243,197,.55);--momence-primary-500:#02F3C5;
-  --momence-primary-600:#00d4ac;--momence-primary-700:#00b594;
-  --momence-primary-800:#00967b;--momence-primary-900:#007862;
-  --momence-background:#0e1235;--momence-white:#131842;
-  --momence-primary-color:#f0efe9;
-  --momence-secondary-color:rgba(240,239,233,.6);
-  --momence-tertiary-color:rgba(240,239,233,.38);
-  --momence-black-100:rgba(240,239,233,.35);--momence-black-200:rgba(240,239,233,.5);
-  --momence-black-300:rgba(240,239,233,.65);--momence-black-400:rgba(240,239,233,.8);
-  --momence-black-500:#f0efe9;
-  --momence-grey-050:rgba(240,239,233,.03);--momence-grey-100:rgba(240,239,233,.05);
-  --momence-grey-200:rgba(240,239,233,.08);--momence-grey-300:rgba(240,239,233,.1);
-  --momence-grey-400:rgba(240,239,233,.15);--momence-grey-500:rgba(240,239,233,.2);
-  --momence-grey-600:rgba(240,239,233,.28);--momence-grey-700:rgba(240,239,233,.38);
-  --momence-grey-800:rgba(240,239,233,.48);--momence-grey-900:rgba(240,239,233,.6);
-  --momence-session-separator-color:rgba(240,239,233,.06);
-  --momence-dark-alpha-fill-100:rgba(240,239,233,.04);--momence-dark-alpha-fill-200:rgba(240,239,233,.06);
-  --momence-dark-alpha-fill-300:rgba(240,239,233,.08);--momence-dark-alpha-fill-400:rgba(240,239,233,.12);
-  --momence-dark-alpha-fill-500:rgba(240,239,233,.15);--momence-dark-alpha-fill-600:rgba(240,239,233,.25);
-  --momence-dark-alpha-fill-700:rgba(240,239,233,.38);--momence-dark-alpha-fill-800:rgba(240,239,233,.55);
-  --momence-dark-alpha-fill-900:rgba(240,239,233,.85);
-  --momence-light-alpha-fill-900:rgba(14,18,53,.9);--momence-light-alpha-fill-700:rgba(14,18,53,.6);
-  --momence-light-alpha-fill-600:rgba(14,18,53,.3);--momence-light-alpha-fill-500:rgba(14,18,53,.18);
-  --momence-dark-background-200:rgba(240,239,233,.05);--momence-dark-background-300:rgba(240,239,233,.08);
-  --momence-dark-background-400:rgba(240,239,233,.12);--momence-dark-background-500:rgba(240,239,233,.16);
-  --momence-dark-background-800:rgba(240,239,233,.4);--momence-dark-background-900:rgba(14,18,53,.85);
-  --momence-light-background-900:rgba(14,18,53,.9);
-}
+/* CLASS LIST */
+.schedule{padding:16px 0 0}
+.cc{display:grid;grid-template-columns:52px 1fr auto;gap:12px;align-items:center;padding:14px 20px;border-bottom:1px solid var(--white06);opacity:0;transform:translateY(8px);animation:ci .4s var(--ease) forwards}
+@keyframes ci{to{opacity:1;transform:none}}
+.cc-time{font-family:'PT Serif',serif;font-size:.95rem;font-weight:700;line-height:1.1}
+.cc-dur{font-size:.55rem;color:var(--cyan);margin-top:2px}
+.cc-name{font-family:'PT Serif',serif;font-size:.9rem;font-weight:700}
+.cc-teacher{font-size:.7rem;color:var(--white60);margin-top:1px}
+.cc-lang{display:inline-block;font-size:.5rem;letter-spacing:.06em;color:var(--white38);border:1px solid var(--white12);padding:1px 5px;border-radius:3px;margin-left:6px;vertical-align:middle}
+.cc-book{padding:8px 16px;background:rgba(2,243,197,.08);border:1px solid rgba(2,243,197,.2);border-radius:100px;font-size:.68rem;font-weight:700;color:var(--cyan);cursor:pointer;transition:all .2s;white-space:nowrap}
+.cc-book:active{background:rgba(2,243,197,.15);transform:scale(.96)}
+.no-classes{text-align:center;padding:60px 20px;color:var(--white38);font-size:.88rem}
+.loading{text-align:center;padding:60px 20px;color:var(--white38);font-size:.82rem}
 
-/* Widget cosmetics */
-#momence-plugin-host-schedule .momence-host-schedule-layout{background:transparent !important}
-#momence-plugin-host-schedule article{background:rgba(19,24,66,.65) !important;border-color:rgba(240,239,233,.06) !important;backdrop-filter:blur(8px);border-radius:12px !important}
-#momence-plugin-host-schedule article img{border-radius:8px !important}
-#momence-plugin-host-schedule h3{color:var(--salmon) !important;letter-spacing:.15em !important}
-#momence-plugin-host-schedule h4{font-family:'PT Serif',serif !important;font-weight:400 !important;color:var(--white) !important}
-#momence-plugin-host-schedule .momence-button[class*="primary"],
-#momence-plugin-host-schedule a[class*="sc-12tukza"]{background:#02F3C5 !important;color:#0e1235 !important;font-weight:700 !important;letter-spacing:.04em !important;border-radius:4px !important}
-#momence-plugin-host-schedule .momence-button:disabled,
-#momence-plugin-host-schedule .momence-button[class*="booked"]{background:rgba(240,239,233,.08) !important;color:rgba(240,239,233,.35) !important}
-#momence-plugin-host-schedule button[class*="day_selection"]{background:transparent !important}
-#momence-plugin-host-schedule button[class*="day_selection"]:hover{background:rgba(240,239,233,.05) !important}
-#momence-plugin-host-schedule button[class*="quick_filters"]{background:transparent !important;border-color:rgba(240,239,233,.12) !important;color:var(--white) !important}
-#momence-plugin-host-schedule button[class*="view-toggle"]{background:transparent !important;border-color:rgba(240,239,233,.12) !important;color:var(--white) !important;stroke:var(--white) !important}
-#momence-plugin-host-schedule button.momence-select-button{background:rgba(19,24,66,.6) !important;border-color:rgba(240,239,233,.12) !important;color:var(--white) !important}
-#momence-plugin-host-schedule .momence-select-popup{background:#131842 !important;border-color:rgba(240,239,233,.1) !important}
-#momence-plugin-host-schedule .momence-select-option{background:#131842 !important;color:var(--white) !important}
-#momence-plugin-host-schedule .momence-arrow-button{background:transparent !important;border-color:rgba(240,239,233,.1) !important;color:var(--white) !important}
-#momence-plugin-host-schedule .momence-arrow-button:disabled{color:rgba(240,239,233,.15) !important}
-#momence-plugin-host-schedule .momence-event_type_select-button{background:transparent !important;color:rgba(240,239,233,.5) !important}
-#momence-plugin-host-schedule .momence-host_schedule-session_list-no_results-text{color:rgba(240,239,233,.5) !important}
-#momence-plugin-host-schedule .momence-host_dashboard-tag_button{background:transparent !important;border-color:rgba(240,239,233,.12) !important;color:var(--white) !important}
-#momence-plugin-host-schedule .momence-host_schedule-powered_by_momence{display:none !important}
-#momence-plugin-host-schedule .momence-session-in_person{display:none !important}
-#momence-plugin-host-schedule .momence-session_filters > *:last-child{display:none !important}
-#momence-plugin-host-schedule .momence-host_schedule-sys_row{display:none !important}
-#momence-plugin-host-schedule .momence-host_schedule-session_list-item-price{display:none !important}
-#momence-plugin-host-schedule [class*="session-price"]{display:none !important}
-#momence-plugin-host-schedule .momence-pagination{display:none !important}
-#momence-plugin-host-schedule .momence-day_selection{display:flex !important}
-#momence-plugin-host-schedule .momence-host_schedule-second_row{display:flex !important;margin-bottom:0 !important}
-#momence-plugin-host-schedule .momence-host_schedule-second_row:empty{display:none !important}
-#momence-plugin-host-schedule .momence-host_schedule-first_row{display:flex !important;flex-wrap:wrap !important;align-items:center !important;gap:10px !important}
-#momence-plugin-host-schedule [class*="fS"]{background:rgba(2,243,197,.06) !important}
-#momence-plugin-host-schedule > div{background:transparent !important}
-#momence-plugin-host-schedule [class*="host-schedule-layout"]{background:var(--navy) !important}
-#momence-plugin-host-schedule [class*="host_schedule"]{background:transparent !important}
-#momence-plugin-host-schedule nav,#momence-plugin-host-schedule [role="tablist"]{background:transparent !important}
-#momence-plugin-host-schedule .momence-host_schedule-loader div::after,
-#momence-plugin-host-schedule [class*="sc-1oszok8"] div{background:var(--cyan) !important}
+/* MODAL — full screen on mobile */
+.mo{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.75);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;opacity:0;transition:opacity .3s}
+.mo.open{display:flex;opacity:1}
+.mo-box{width:100vw;height:100vh;max-height:none;background:var(--navy-light);overflow-y:auto;border-radius:0}
+.mo.open .mo-box{transform:none}
+.mo-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--white06);position:sticky;top:0;background:var(--navy-light);z-index:2}
+.mo-t{font-family:'PT Serif',serif;font-size:1rem;font-weight:700}
+.mo-c{font-size:.75rem;color:var(--white60);margin-top:2px}
+.mo-x{background:none;border:1px solid var(--white12);color:var(--white60);width:36px;height:36px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.mo-x svg{width:14px;height:14px}
+.mo-bd{padding:20px}
+.mo-ft{padding:12px 20px;border-top:1px solid var(--white06);text-align:center;position:sticky;bottom:0;background:var(--navy-light)}
+.mo-sec{font-size:.62rem;color:var(--white38);display:flex;align-items:center;justify-content:center;gap:6px}
+.mo-sec svg{width:12px;height:12px;opacity:.5}
+
+/* BOOKING FLOW */
+.bk-class{text-align:center;padding-bottom:16px;border-bottom:1px solid var(--white06);margin-bottom:16px}
+.bk-class-name{font-family:'PT Serif',serif;font-size:1.2rem;font-weight:700;margin-bottom:4px}
+.bk-class-meta{font-size:.78rem;color:var(--white60);display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+.bk-class-meta span{display:flex;align-items:center;gap:4px}
+.bk-class-meta svg{width:14px;height:14px;opacity:.5}
+.bk-spots{display:inline-block;font-size:.65rem;font-weight:600;padding:3px 10px;border-radius:20px;margin-top:8px}
+.bk-spots.av{color:var(--cyan);background:rgba(2,243,197,.08);border:1px solid rgba(2,243,197,.15)}
+.bk-spots.lo{color:var(--salmon);background:rgba(248,166,163,.08);border:1px solid rgba(248,166,163,.15)}
+.bk-login{animation:bkIn .3s var(--ease)}
+@keyframes bkIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.bk-label{display:block;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--white38);font-weight:600;margin-bottom:6px}
+.bk-input{width:100%;padding:14px;background:rgba(240,239,233,.04);border:1px solid var(--white12);border-radius:10px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.88rem;outline:none;transition:border-color .25s;margin-bottom:14px;box-sizing:border-box;-webkit-appearance:none}
+.bk-input:focus{border-color:rgba(2,243,197,.4)}
+.bk-input::placeholder{color:var(--white38)}
+.bk-input.bk-field-err{border-color:var(--salmon);background:rgba(248,166,163,.04)}
+.bk-field-msg{display:none;font-size:.65rem;color:var(--salmon);margin:-10px 0 10px;padding:0 2px}
+.bk-input.bk-field-err+.bk-field-msg{display:block}
+.bk-err{color:var(--salmon);font-size:.72rem;min-height:20px;margin-bottom:8px;text-align:center}
+.bk-primary{width:100%;padding:16px;background:var(--cyan);color:var(--navy);border:none;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;transition:background .25s,transform .2s;-webkit-appearance:none}
+.bk-primary:hover{background:#33f5d1}
+.bk-primary:disabled{opacity:.5;cursor:default}
+.bk-link{display:block;text-align:center;margin-top:14px;font-size:.78rem;color:var(--white60);cursor:pointer}
+.bk-link:hover{color:var(--white)}
+.bk-or{display:flex;align-items:center;gap:12px;margin:16px 0;color:var(--white38);font-size:.7rem;text-transform:uppercase;letter-spacing:.1em}
+.bk-or::before,.bk-or::after{content:'';flex:1;height:1px;background:var(--white06)}
+.bk-social{width:100%;padding:13px;border:1px solid var(--white12);border-radius:10px;font-size:.82rem;color:var(--white60);display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;transition:border-color .25s;margin-bottom:8px;-webkit-appearance:none}
+.bk-social:hover{border-color:var(--white38)}
+.bk-social svg{width:18px;height:18px}
+.bk-mfa-inputs{display:flex;gap:8px;justify-content:center;margin-bottom:16px}
+.bk-mfa-digit{width:44px;height:52px;text-align:center;font-size:1.3rem;font-weight:700;background:rgba(240,239,233,.04);border:1px solid var(--white12);border-radius:10px;color:var(--white);font-family:'DM Sans',sans-serif;outline:none;-webkit-appearance:none}
+.bk-mfa-digit:focus{border-color:rgba(2,243,197,.4)}
+
+/* CONFIRM */
+.bk-done{text-align:center;animation:bkIn .4s var(--ease)}
+.bk-done-icon{width:56px;height:56px;border-radius:50%;background:rgba(2,243,197,.1);border:2px solid var(--cyan);display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.bk-done-icon svg{width:24px;height:24px;stroke:var(--cyan);stroke-width:3;fill:none}
+.bk-done h3{font-family:'PT Serif',serif;font-size:1.2rem;margin-bottom:6px}
+.bk-done p{font-size:.82rem;color:var(--white60)}
+
+/* STRIPE CARD */
+.bk-pay-total{text-align:center;font-family:'PT Serif',serif;font-size:1.4rem;font-weight:700;margin-bottom:4px}
+.bk-pay-desc{text-align:center;font-size:.78rem;color:var(--white60);margin-bottom:16px}
+.bk-divider{display:flex;align-items:center;gap:12px;color:var(--white38);font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;margin:12px 0}
+.bk-divider::before,.bk-divider::after{content:'';flex:1;height:1px;background:var(--white06)}
+.promo-row{display:flex;gap:8px;margin-bottom:14px}
+.promo-row input{flex:1}
+.promo-row button{padding:0 16px;background:var(--white06);border:1px solid var(--white12);border-radius:10px;color:var(--white60);font-size:.78rem;font-weight:600;cursor:pointer}
+.promo-msg{font-size:.7rem;margin:-10px 0 12px;padding:0 2px}
+.promo-msg.ok{color:var(--cyan)}.promo-msg.err{color:var(--salmon)}
 
 /* TAB BAR */
-.tabs{position:fixed;bottom:0;left:0;right:0;z-index:100;display:flex;align-items:flex-end;justify-content:space-around;height:calc(72px + var(--safe-b));padding-bottom:var(--safe-b);background:var(--navy95);backdrop-filter:saturate(1.4) blur(24px);-webkit-backdrop-filter:saturate(1.4) blur(24px);border-top:1px solid var(--w06)}
-.tab{display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 0 6px;flex:1;color:var(--w38);transition:color .2s}
+.tabs{position:fixed;bottom:0;left:0;right:0;z-index:100;display:flex;align-items:flex-end;justify-content:space-around;height:calc(72px + var(--safe-b));padding-bottom:var(--safe-b);background:var(--navy95);backdrop-filter:saturate(1.4) blur(24px);-webkit-backdrop-filter:saturate(1.4) blur(24px);border-top:1px solid var(--white06)}
+.tab{display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 0 6px;flex:1;color:var(--white38);transition:color .2s}
 .tab.on{color:var(--cyan)}
 .tab svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .tab span{font-size:.5rem;letter-spacing:.04em;font-weight:600}
@@ -121,60 +130,35 @@ a{color:inherit;text-decoration:none}
 .tab-bk-o{width:56px;height:56px;border-radius:50%;background:var(--cyan);display:flex;align-items:center;justify-content:center;position:relative;top:-10px;box-shadow:0 4px 24px rgba(2,243,197,.28)}
 .tab-bk-o svg{stroke:var(--navy);width:22px;height:22px;stroke-width:2.5}
 .tab-bk span{position:relative;top:-6px}
-
-.fi{opacity:0;transform:translateY(16px);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1)}
-.fi.vis{opacity:1;transform:none}
-
-.skel{padding:16px 16px 0}
-.skel-row{display:flex;gap:8px;margin-bottom:12px}
-.skel-day{width:48px;height:56px;border-radius:10px;background:var(--w03);border:1px solid var(--w06)}
-.skel-day.on{border-color:rgba(2,243,197,.15);background:rgba(2,243,197,.04)}
-.skel-chips{display:flex;gap:8px;margin-bottom:20px}
-.skel-chip{height:32px;border-radius:100px;background:var(--w03);border:1px solid var(--w06)}
-.skel-card{border-radius:12px;background:var(--w03);border:1px solid var(--w06);padding:16px;margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
-.skel-lines{display:flex;flex-direction:column;gap:6px}
-.skel-line{height:10px;border-radius:4px;background:var(--w06)}
-.skel-btn{width:72px;height:36px;border-radius:6px;background:rgba(2,243,197,.08)}
-@keyframes shimload{0%{opacity:.5}50%{opacity:1}100%{opacity:.5}}
-.skel *{animation:shimload 1.5s ease infinite}
-.skel.hide{display:none}
 </style>
 </head>
 <body>
-<div class="grain"></div>
 
 <header class="hdr">
-  <a href="index.html"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA"></a>
+  <a href="index.html" class="hdr-back"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>Home</a>
   <a href="https://momence.com/m/443935" class="hdr-pill touch">3-Pack · €50</a>
 </header>
 
-<div class="pg fi">
-  <div class="pg-t">This Week's <em>Schedule</em></div>
-  <div class="pg-s">Filter by day, class type, or teacher.</div>
+<!-- DAYS -->
+<div class="days" id="days"></div>
+<!-- FILTERS -->
+<div class="filters" id="filters"></div>
+<!-- CLASS LIST -->
+<div class="schedule" id="schedule"><div class="loading">Loading today's classes...</div></div>
+
+<!-- BOOKING MODAL -->
+<div class="mo" id="mo">
+  <div class="mo-box">
+    <div class="mo-head">
+      <div><div class="mo-t" id="mo-t">Book Class</div><div class="mo-c" id="mo-c"></div></div>
+      <button class="mo-x" onclick="closeMo()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="mo-bd" id="mo-bd"></div>
+    <div class="mo-ft"><div class="mo-sec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Secure booking via SABDA</div></div>
+  </div>
 </div>
 
-<div class="skel" id="skel">
-  <div class="skel-row">
-    <div class="skel-day on" style="width:56px"></div>
-    <div class="skel-day" style="width:48px"></div>
-    <div class="skel-day" style="width:48px"></div>
-    <div class="skel-day" style="width:48px"></div>
-    <div class="skel-day" style="width:48px"></div>
-    <div class="skel-day" style="width:48px"></div>
-  </div>
-  <div class="skel-chips">
-    <div class="skel-chip" style="width:80px"></div>
-    <div class="skel-chip" style="width:90px"></div>
-    <div class="skel-chip" style="width:60px"></div>
-    <div class="skel-chip" style="width:70px"></div>
-  </div>
-  <div class="skel-card"><div class="skel-lines"><div class="skel-line" style="width:120px"></div><div class="skel-line" style="width:80px"></div></div><div class="skel-btn"></div></div>
-  <div class="skel-card"><div class="skel-lines"><div class="skel-line" style="width:140px"></div><div class="skel-line" style="width:90px"></div></div><div class="skel-btn"></div></div>
-  <div class="skel-card"><div class="skel-lines"><div class="skel-line" style="width:100px"></div><div class="skel-line" style="width:70px"></div></div><div class="skel-btn"></div></div>
-</div>
-
-<div id="momence-plugin-host-schedule"></div>
-
+<!-- TAB BAR -->
 <nav class="tabs">
   <a href="classes.html" class="tab"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Classes</span></a>
   <a href="schedule.html" class="tab on"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span>Schedule</span></a>
@@ -183,79 +167,890 @@ a{color:inherit;text-decoration:none}
   <a href="index.html" class="tab"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></a>
 </nav>
 
-<script src="https://momence.com/plugin/host-schedule/host-schedule.js" host_id="54278" locale="en" i18n='{"TEACHER_SELECT_PLACEHOLDER":"Teachers","TEACHER":"Teacher","SUBSTITUTES_FOR_SHORT":"Sub for"}'></script>
 <script>
-(function(){
-  var el=document.getElementById('momence-plugin-host-schedule');
-  if(!el)return;
-  var vars={'--momence-background':'#0e1235','--momence-white':'#131842','--momence-primary-color':'#f0efe9','--momence-secondary-color':'rgba(240,239,233,.6)','--momence-tertiary-color':'rgba(240,239,233,.38)','--momence-primary-500':'#02F3C5','--momence-primary-400':'rgba(2,243,197,.55)','--momence-primary-600':'#00d4ac','--momence-primary-050':'rgba(2,243,197,.04)','--momence-primary-100':'rgba(2,243,197,.08)','--momence-black-500':'#f0efe9','--momence-black-400':'rgba(240,239,233,.8)','--momence-black-300':'rgba(240,239,233,.65)','--momence-black-200':'rgba(240,239,233,.5)','--momence-black-100':'rgba(240,239,233,.35)','--momence-grey-200':'rgba(240,239,233,.08)','--momence-grey-100':'rgba(240,239,233,.05)','--momence-grey-050':'rgba(240,239,233,.03)','--momence-session-separator-color':'rgba(240,239,233,.06)'};
-  function av(){var r=document.documentElement;for(var k in vars)r.style.setProperty(k,vars[k],'important')}
-  av();
-  new MutationObserver(av).observe(document.head,{childList:true,subtree:true});
-  var vc=0,vi=setInterval(function(){av();if(++vc>25)clearInterval(vi)},200);
-  var moved=false;
-  function moveDaySelector(){
-    if(moved)return;
-    var fr=el.querySelector('.momence-host_schedule-first_row');
-    var ds=el.querySelector('.momence-day_selection');
-    if(!fr||!ds)return;
-    var vt=fr.querySelector('.momence-view-toggle');
-    if(vt&&vt.parentElement)fr.insertBefore(ds,vt.parentElement);
-    else fr.appendChild(ds);
-    fr.style.cssText='display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:12px';
-    ds.style.cssText='flex:1;min-width:200px;order:1';
-    var et=fr.querySelector('.momence-event_type_select');
-    if(et)et.style.cssText='order:0;flex-shrink:0';
-    if(vt&&vt.parentElement)vt.parentElement.style.cssText='order:2;flex-shrink:0;margin-left:auto';
-    moved=true;
-  }
-  function patchText(){
-    el.querySelectorAll('button,span').forEach(function(b){
-      b.childNodes.forEach(function(n){
-        if(n.nodeType===3){
-          if(n.textContent.indexOf('Practitioners')>=0)n.textContent=n.textContent.replace(/Practitioners/g,'Teachers');
-          if(n.textContent.indexOf('Practitioner')>=0)n.textContent=n.textContent.replace(/Practitioner/g,'Teacher');
-        }
-      });
-    });
-  }
-  new MutationObserver(function(){moveDaySelector();patchText()}).observe(el,{childList:true,subtree:true,characterData:true});
-  [500,1000,1500,2500,4000].forEach(function(ms){setTimeout(function(){moveDaySelector();patchText();hidePastDays()},ms)});
-
-  /* Hide past day buttons — only show today forward */
-  function hidePastDays(){
-    var today=new Date();today.setHours(0,0,0,0);
-    el.querySelectorAll('button[class*="day_selection"]').forEach(function(btn){
-      var dateText=btn.textContent.trim();
-      // Try to find the date number and determine if it's past
-      var dayNum=parseInt(dateText.replace(/\D/g,''));
-      if(isNaN(dayNum))return;
-      // If button contains "TODAY", always show
-      if(dateText.toUpperCase().indexOf('TODAY')>=0)return;
-      // Check aria-label or other attributes for the actual date
-      // For now, don't hide — just ensure TODAY is clicked
-    });
-    // Click TODAY button if not already selected
-    var todayBtn=el.querySelector('button[class*="day_selection"][class*="active"],button[class*="day_selection"]:first-child');
-    // Force the first visible day (which should be today)
-  }
-})();
-</script>
-
 <script>
-var fis=document.querySelectorAll('.fi');
-var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{threshold:.01});
-fis.forEach(function(el){io.observe(el)});
-</script>
+const API='https://momence.com/_api/primary/api/v1/Events?hostId=54278&token=a0314a80ca';
+let allE=[],selDate=null,actF='All';
 
-<script>
-var skel=document.getElementById('skel');
-var mo=new MutationObserver(function(){
-  var widget=document.getElementById('momence-plugin-host-schedule');
-  if(widget&&widget.children.length>0){skel.classList.add('hide');mo.disconnect()}
+function getCat(t){
+  const l=t.toLowerCase();
+  if(l.includes('vinyasa')||l.includes('hatha')||l.includes('yin yoga')||l.includes('yoga sculpt'))return'Yoga';
+  if(l.includes('pilates')||l.includes('glutes'))return'Pilates';
+  if(l.includes('sound')||l.includes('serenity')||l.includes('guided sound'))return'Sound';
+  if(l.includes('breath')||l.includes('recharge'))return'Breathwork';
+  return'Other';
+}
+function getLang(t){const m=t.match(/\[(.*?)\]/);return m?m[1]:'';}
+function clean(t){return t.replace(/\s*\[.*?\]\s*/,'').trim();}
+function fmtTime(iso){
+  const d=new Date(iso);
+  return d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',hour12:false,timeZone:'Europe/Madrid'});
+}
+
+function get7d(){
+  const days=[];const now=new Date();
+  for(let i=0;i<7;i++){const d=new Date(now);d.setDate(now.getDate()+i);days.push(d);}
+  return days;
+}
+function getMadridDate(d){return d.toLocaleDateString('en-CA',{timeZone:'Europe/Madrid'});}
+
+function renderDays(){
+  const c=document.getElementById('days');
+  const days=get7d();
+  const nm=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  c.innerHTML=days.map((d,i)=>{
+    const ds=getMadridDate(d);
+    const madridDay=new Date(d.toLocaleString('en-US',{timeZone:'Europe/Madrid'}));
+    return`<button class="day-btn${i===0?' active':''}" data-d="${ds}" onclick="selDay(this,'${ds}')"><span class="day-name">${i===0?'Today':nm[madridDay.getDay()]}</span><span class="day-num">${madridDay.getDate()}</span></button>`;
+  }).join('');
+  selDate=getMadridDate(days[0]);
+}
+
+function selDay(b,ds){
+  document.querySelectorAll('.day-btn').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');selDate=ds;renderSched();
+}
+
+function renderFilters(ev){
+  const c=document.getElementById('filters');
+  const cats=new Set(['All']);ev.forEach(e=>cats.add(getCat(e.title)));
+  c.innerHTML=[...cats].map(x=>`<button class="fp${x==='All'?' active':''}" onclick="setF(this,'${x}')">${x}</button>`).join('');
+}
+
+function setF(b,cat){
+  document.querySelectorAll('.fp').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');actF=cat;renderSched();
+}
+
+function renderSched(){
+  const c=document.getElementById('sched');
+  let f=allE.filter(e=>{
+    const ed=new Date(e.dateTime).toLocaleDateString('en-CA',{timeZone:'Europe/Madrid'});
+    return ed===selDate&&!e.isCancelled&&!e.isDeleted;
+  });
+  if(actF!=='All')f=f.filter(e=>getCat(e.title)===actF);
+  // Filter out classes that already started
+  f=f.filter(e=>new Date(e.dateTime)>=new Date());
+  f.sort((a,b)=>new Date(a.dateTime)-new Date(b.dateTime));
+
+  if(!f.length){c.innerHTML='<div class="empty">No classes scheduled for this day.</div>';return;}
+
+  c.innerHTML=f.map((e,i)=>{
+    const time=fmtTime(e.dateTime);const[h,m]=time.split(':');
+    const title=clean(e.title);const lang=getLang(e.title);
+    const sp=e.spotsRemaining;const full=sp===0;
+    let sc='av',st=sp+(sp===1?' spot left':' spots left');
+    if(full){sc='fu';st='Full';}
+    else if(sp<=5){sc='lo';}
+    const fn=(e.teacher||'').split(' ')[0]||'';
+    const lnk=(e.link||'').replace(/'/g,"\\'");
+    const ttl=title.replace(/'/g,"\\'");
+    const tfn=fn.replace(/'/g,"\\'");
+
+    return`<div class="cc" style="animation-delay:${i*.05}s"><div class="ct"><div class="ct-h">${h}:${m}</div><div class="ct-d">${e.duration} min</div></div><div class="ci"><div class="ci-t">${title}${lang?`<span class="ci-lg">${lang}</span>`:''}</div><div class="ci-tc">${fn}</div><div class="ci-sp ${sc}">${st}</div></div><div class="ca">${full?(e.allowWaitlist?`<button class="bb wl" onclick="openMo('${lnk}','${ttl}','${time}','${tfn}')">Waitlist</button>`:`<button class="bb fu">Full</button>`):`<button class="bb" onclick="openMo('${lnk}','${ttl}','${time}','${tfn}')">Book</button>`}</div></div>`;
+  }).join('');
+}
+
+const PROXY='https://sabda-checkout-proxy.sabda.workers.dev';
+let curSession=null, curUser=null, curMembership=null, curSessionToken=null;
+let isProcessing=false;
+let proxyAlive=true;
+
+// Health check — if Worker is down, fall back to Momence for all bookings
+fetch(PROXY+'/sabda-api/health',{method:'GET'}).then(function(r){proxyAlive=r.ok;}).catch(function(){proxyAlive=false;});
+
+// Fix #5: scroll modal to top on every step change
+function stepChange(){
+  isProcessing=false;
+  var box=document.querySelector('.mo-box');
+  if(box) box.scrollTop=0;
+}
+function showFallback(){
+  if(!curSession||!curSession.link) return;
+  var err=document.getElementById('bk-err');
+  if(err&&err.textContent){
+    err.innerHTML=err.textContent+'<br><a href="'+curSession.link+'" target="_blank" style="color:var(--cyan);text-decoration:underline;font-size:.78rem">Book on Momence instead →</a>';
+  }
+}
+
+function openMo(link,title,time,teacher){
+  if(isProcessing) return;
+
+  // Layer 1: if proxy is down, go straight to Momence
+  if(!proxyAlive){window.open(link,'_blank');return;}
+  // Extract session ID from link
+  var sid=link.match(/\/s\/(\d+)/);
+  if(sid) sid=sid[1]; else { sid=link.match(/\/(\d+)$/); sid=sid?sid[1]:null; }
+  if(!sid){window.open(link,'_blank');return;}
+
+  // Find session data
+  var sess=allE.find(function(e){return String(e.id)===sid;});
+  curSession={id:sid,title:clean(title),time:time,teacher:teacher,link:link,
+    spots:sess?sess.spotsRemaining:null,duration:sess?sess.duration:null,
+    isWaitlist:sess?sess.spotsRemaining===0:false};
+
+  document.getElementById('mo-t').textContent=curSession.title;
+  document.getElementById('mo-c').textContent=time+(teacher?' · '+teacher:'');
+
+  // Always show login step — server handles session
+  showLoginStep();
+  document.getElementById('mo').classList.add('open');
+  document.getElementById('mo').style.display='flex';
+  document.body.style.overflow='hidden';
+  // Fix #9: push history state so browser back closes modal
+  history.pushState({modal:true},'');
+}
+
+function closeMo(){
+  document.getElementById('mo').classList.remove('open');
+  document.body.style.overflow='';
+  setTimeout(function(){
+    document.getElementById('mo').style.display='none';
+    document.getElementById('mo-bd').innerHTML='';
+  },300);
+  // Reset state
+  curSession=null;curMembership=null;isProcessing=false;
+  activePromo=null;discountedPrice=null;
+  activePayReq=null;activePayName=null;
+  if(cardElement){try{cardElement.destroy();}catch(e){}cardElement=null;}
+}
+document.getElementById('mo').addEventListener('click',function(e){if(e.target===this)closeMo();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMo();});
+// Fix #9: browser back closes modal
+window.addEventListener('popstate',function(e){
+  if(document.getElementById('mo').classList.contains('open')) closeMo();
 });
-mo.observe(document.getElementById('momence-plugin-host-schedule'),{childList:true});
-setTimeout(function(){skel.classList.add('hide')},8000);
+// Clear field error state on input
+document.addEventListener('input',function(e){if(e.target.classList)e.target.classList.remove('bk-field-err');});
+document.addEventListener('change',function(e){if(e.target.classList)e.target.classList.remove('bk-field-err');});
+
+function getSpotsHtml(){
+  var sp=curSession?curSession.spots:null;
+  if(sp===0) return curSession.isWaitlist?'<div class="bk-spots lo">Waitlist</div>':'<div class="bk-spots lo">Full</div>';
+  if(sp!==null) return '<div class="bk-spots '+(sp<=5?'lo':'av')+'">'+sp+(sp===1?' spot left':' spots left')+'</div>';
+  return '';
+}
+
+// ── STEP 1A: LOGIN (default) ──
+function showLoginStep(){stepChange();
+  
+  
+  var classBlock='<div class="bk-class">'
+    +'<div class="bk-class-name">'+curSession.title+'</div>'
+    +'<div class="bk-class-meta">'
+    +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+curSession.time+'</span>'
+    +(curSession.duration?'<span>'+curSession.duration+' min</span>':'')
+    +(curSession.teacher?'<span>'+curSession.teacher+'</span>':'')
+    +'</div>'+getSpotsHtml()+'</div>';
+
+  var bd=document.getElementById('mo-bd');
+  bd.innerHTML=classBlock
+    +'<div class="bk-login">'
+    +'<div class="bk-label">Email</div>'
+    +'<input class="bk-input" id="bk-email" type="email" placeholder="your@email.com" />'
+    +'<div class="bk-label">Password</div>'
+    +'<input class="bk-input" id="bk-pass" type="password" placeholder="Password" />'
+    +'<div style="text-align:right;margin:-10px 0 12px"><a href="https://momence.com/forgot-password" target="_blank" style="font-size:.75rem;color:var(--white38);text-decoration:none;border-bottom:1px solid var(--white12)">Forgot password?</a></div>'
+    +'<div class="bk-err" id="bk-err"></div>'
+    +'<button class="bk-primary" id="bk-login-btn" onclick="doLogin()">Log in & Book</button>'
+    +'<div class="bk-link" onclick="showGuestStep()">New here? Book as guest</div>'
+    +'</div>';
+  document.getElementById('bk-email').focus();
+  document.getElementById('bk-pass').addEventListener('keydown',function(e){if(e.key==='Enter')doLogin();});
+}
+
+// ── STEP 1B: GUEST ──
+function showGuestStep(){stepChange();
+  
+  
+  var classBlock='<div class="bk-class">'
+    +'<div class="bk-class-name">'+curSession.title+'</div>'
+    +'<div class="bk-class-meta">'
+    +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+curSession.time+'</span>'
+    +(curSession.duration?'<span>'+curSession.duration+' min</span>':'')
+    +(curSession.teacher?'<span>'+curSession.teacher+'</span>':'')
+    +'</div>'+getSpotsHtml()+'</div>';
+
+  var bd=document.getElementById('mo-bd');
+  bd.innerHTML=classBlock
+    +'<div class="bk-login">'
+    +'<div class="bk-label">First Name</div>'
+    +'<input class="bk-input" id="bk-fn" type="text" placeholder="First name" />'
+    +'<div class="bk-label">Last Name</div>'
+    +'<input class="bk-input" id="bk-ln" type="text" placeholder="Last name" />'
+    +'<div class="bk-label">Email</div>'
+    +'<input class="bk-input" id="bk-email" type="email" placeholder="your@email.com" />'
+    +'<div class="bk-err" id="bk-err"></div>'
+    +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">Continue</button>'
+    +'<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.12);border-radius:8px;padding:12px;margin-top:16px;font-size:.75rem;color:var(--white60);line-height:1.5;text-align:center">Booked with us before? <span onclick="showLoginStep()" style="color:var(--cyan);cursor:pointer;text-decoration:underline">Log in instead</span> to keep your history and credits together.</div>'
+    +'<div class="bk-link" onclick="showLoginStep()">Have an account? Log in</div>'
+    +'</div>';
+  document.getElementById('bk-fn').focus();
+}
+
+function doLogin(){if(isProcessing)return;
+  var emailEl=document.getElementById('bk-email');
+  var passEl=document.getElementById('bk-pass');
+  var email=emailEl.value.trim();
+  var pass=passEl.value;
+  var err=document.getElementById('bk-err');
+  var btn=document.getElementById('bk-login-btn');
+  var ok=true;
+  emailEl.classList.remove('bk-field-err');passEl.classList.remove('bk-field-err');
+  if(!email||!validateEmail(email)){emailEl.classList.add('bk-field-err');ok=false;}
+  if(!pass){passEl.classList.add('bk-field-err');ok=false;}
+  if(!ok){err.textContent='Please fill in the highlighted fields';return;}
+  err.textContent='';isProcessing=true;btn.textContent='Signing in...';btn.disabled=true;
+
+  fetch(PROXY+'/sabda-api/login',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({email:email,password:pass,sessionId:curSession.id})
+  }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
+  .then(function(r){
+    if(!r.ok||r.data.error){
+      err.innerHTML='Wrong email or password. <a href="'+curSession.link+'" target="_blank" style="color:var(--cyan);text-decoration:underline">Book on Momence →</a>';
+      isProcessing=false;btn.textContent='Log in & Book';btn.disabled=false;
+      return;
+    }
+    // MFA required — show code input
+    if(r.data.mfaRequired){
+      showMfaStep(r.data.mfaToken);
+      return;
+    }
+    var d=r.data;
+    if(!curSession) return; // modal was closed during request
+    curUser={
+      id:d.user.id,
+      email:d.user.email||email,
+      firstName:d.user.firstName||email.split('@')[0],
+      lastName:d.user.lastName||'',
+      memberId:d.user.memberId
+    };
+    curSessionToken=d.sessionToken;
+    curSession.price=d.sessionPrice||22;
+
+    if(d.hasUsableMembership&&d.memberships.length>0){
+      showConfirmStep(d.memberships[0]);
+    } else {
+      showNoMembership();
+    }
+  }).catch(function(){
+    err.textContent='Connection error. Please try again.';
+    isProcessing=false;btn.textContent='Log in & Book';btn.disabled=false;
+    showFallback();
+  });
+}
+
+// ── STEP 1C: MFA CODE INPUT ──
+var curMfaToken=null;
+function showMfaStep(mfaToken){stepChange();
+  curMfaToken=mfaToken;
+  var bd=document.getElementById('mo-bd');
+  bd.innerHTML='<div class="bk-class">'
+    +'<div class="bk-class-name">'+curSession.title+'</div>'
+    +'<div class="bk-class-meta">'
+    +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+curSession.time+'</span>'
+    +'</div></div>'
+    +'<div class="bk-login">'
+    +'<p style="font-size:.85rem;color:var(--white60);text-align:center;margin-bottom:20px;line-height:1.5">Enter the 6-digit code from your authenticator app</p>'
+    +'<div class="bk-label">Verification Code</div>'
+    +'<input class="bk-input" id="bk-mfa" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="000000" style="text-align:center;font-size:1.4rem;letter-spacing:.3em" />'
+    +'<div class="bk-err" id="bk-err"></div>'
+    +'<button class="bk-primary" id="bk-mfa-btn" onclick="doMfaVerify()">Verify & Continue</button>'
+    +'<div class="bk-link" onclick="showLoginStep()">← Back</div>'
+    +'</div>';
+  document.getElementById('bk-mfa').focus();
+  document.getElementById('bk-mfa').addEventListener('keydown',function(e){if(e.key==='Enter')doMfaVerify();});
+  document.getElementById('bk-mfa').addEventListener('input',function(e){if(e.target.value.replace(/\s/g,'').length===6)setTimeout(doMfaVerify,150);});
+}
+
+function doMfaVerify(){if(isProcessing)return;
+  var code=document.getElementById('bk-mfa').value.trim();
+  var err=document.getElementById('bk-err');
+  var btn=document.getElementById('bk-mfa-btn');
+  if(!code||code.length<6){err.textContent='Please enter the 6-digit code';return;}
+  err.textContent='';isProcessing=true;btn.textContent='Verifying...';btn.disabled=true;
+
+  fetch(PROXY+'/sabda-api/mfa-verify',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({mfaToken:curMfaToken,code:code,sessionId:curSession.id})
+  }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
+  .then(function(r){
+    if(!r.ok||r.data.error){
+      err.innerHTML='Invalid code. <a href="'+curSession.link+'" target="_blank" style="color:var(--cyan);text-decoration:underline">Book on Momence instead →</a>';
+      isProcessing=false;btn.textContent='Verify & Continue';btn.disabled=false;
+      return;
+    }
+    var d=r.data;
+    if(!curSession) return; // modal was closed
+    curUser={
+      id:d.user.id,
+      email:d.user.email,
+      firstName:d.user.firstName||d.user.email.split('@')[0],
+      lastName:d.user.lastName||'',
+      memberId:d.user.memberId
+    };
+    curSessionToken=d.sessionToken;
+    curSession.price=d.sessionPrice||22;
+
+    if(d.hasUsableMembership&&d.memberships.length>0){
+      showConfirmStep(d.memberships[0]);
+    } else {
+      showNoMembership();
+    }
+  }).catch(function(){
+    err.textContent='Connection error. Please try again.';
+    isProcessing=false;btn.textContent='Verify & Continue';btn.disabled=false;
+    showFallback();
+  });
+}
+
+// ── GUEST CHECK ──
+function doGuestCheck(){
+  var fnEl=document.getElementById('bk-fn');
+  var lnEl=document.getElementById('bk-ln');
+  var emailEl=document.getElementById('bk-email');
+  var fn=fnEl.value.trim();
+  var ln=lnEl.value.trim();
+  var email=emailEl.value.trim();
+  var err=document.getElementById('bk-err');
+  var btn=document.getElementById('bk-guest-btn');
+  var ok=true;
+  fnEl.classList.remove('bk-field-err');lnEl.classList.remove('bk-field-err');emailEl.classList.remove('bk-field-err');
+  if(!fn){fnEl.classList.add('bk-field-err');ok=false;}
+  if(!ln){lnEl.classList.add('bk-field-err');ok=false;}
+  if(!email||!validateEmail(email)){emailEl.classList.add('bk-field-err');ok=false;}
+  if(!ok){err.textContent='Please fill in the highlighted fields';return;}
+
+  curUser={id:null,email:email,firstName:fn,lastName:ln,memberId:null,isGuest:true};
+
+  // Check if email already exists in Momence
+  fetch(PROXY+'/sabda-api/check-email',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({email:email})
+  }).then(function(r){return r.json();})
+  .then(function(d){
+    if(d.exists){
+      stepChange();
+      var bd=document.getElementById('mo-bd');
+      bd.innerHTML='<div class="bk-class">'
+        +'<div class="bk-class-name">'+curSession.title+'</div>'
+        +'<div class="bk-class-meta">'
+        +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+curSession.time+'</span>'
+        +'</div>'+getSpotsHtml()+'</div>'
+        +'<div class="bk-confirm" style="text-align:center">'
+        +'<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.15);border-radius:10px;padding:20px;margin-bottom:20px">'
+        +'<div style="font-size:.9rem;font-weight:600;color:var(--salmon);margin-bottom:6px">Account found</div>'
+        +'<div style="font-size:.82rem;color:var(--white60);line-height:1.5">This email is already registered. Log in to keep your booking history and credits together.</div>'
+        +'</div>'
+        +'<button class="bk-primary" onclick="showLoginStep()">Log in</button>'
+        +'<div class="bk-link" style="margin-top:12px"><a href="https://momence.com/forgot-password" target="_blank" style="color:var(--white38);font-size:.78rem;text-decoration:underline">Forgot your password?</a></div>'
+        +'</div>';
+    } else {
+      showNoMembership();
+    }
+  }).catch(function(){
+    showNoMembership();
+  });
+}
+
+// ── CUSTOMER FIELDS HTML (phone, language, city) ──
+function customerFieldsHTML(){
+  return '<div class="bk-label" style="margin-top:16px">Phone number / Número de teléfono</div>'
+    +'<div style="display:flex;gap:8px">'
+    +'<input class="bk-input" id="bk-cc" type="text" value="+34" style="width:68px;flex-shrink:0;text-align:center;font-weight:600" />'
+    +'<input class="bk-input" id="bk-phone" type="tel" placeholder="612 345 678" style="flex:1" />'
+    +'</div>'
+    +'<div class="bk-label">Preferred language / Idioma preferido</div>'
+    +'<select class="bk-input" id="bk-lang" style="appearance:auto;cursor:pointer">'
+    +'<option value="">Select / Seleccionar</option>'
+    +'<option value="English">English</option>'
+    +'<option value="Castellano">Castellano</option>'
+    +'</select>'
+    +'<div class="bk-label">City of residence / Ciudad de residencia</div>'
+    +'<input class="bk-input" id="bk-city" type="text" placeholder="Barcelona" />';
+}
+function getCustomerFields(){
+  var cc=(document.getElementById('bk-cc')||{}).value||'+34';
+  if(!cc.startsWith('+')) cc='+'+cc;
+  var phone=(document.getElementById('bk-phone')||{}).value||'';
+  phone=phone.replace(/\s/g,'').replace(/^0+/,'');
+  var lang=(document.getElementById('bk-lang')||{}).value||'';
+  var city=(document.getElementById('bk-city')||{}).value||'';
+  return{phoneNumber:cc+phone,customerFields:{"164360":lang,"164361":city}};
+}
+function validateCustomerFields(){
+  var ok=true;
+  var fields=[
+    {id:'bk-cc',test:function(v){return v&&v.startsWith('+')&&v.length>=2;},msg:'Country code required'},
+    {id:'bk-phone',test:function(v){return v.replace(/\s/g,'').length>=6;},msg:'Phone number required'},
+    {id:'bk-lang',test:function(v){return!!v;},msg:'Please select a language'},
+    {id:'bk-city',test:function(v){return v.trim().length>0;},msg:'City is required'}
+  ];
+  fields.forEach(function(f){
+    var el=document.getElementById(f.id);
+    if(!el)return;
+    if(!f.test(el.value)){
+      el.classList.add('bk-field-err');ok=false;
+    } else {
+      el.classList.remove('bk-field-err');
+    }
+  });
+  return ok?null:'Please fill in the highlighted fields';
+}
+function clearFieldErrors(){
+  document.querySelectorAll('.bk-field-err').forEach(function(el){el.classList.remove('bk-field-err');});
+}
+function validateEmail(email){
+  return/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+// ── STEP 3A: CONFIRM WITH MEMBERSHIP ──
+function showConfirmStep(membership){stepChange();
+  var bd=document.getElementById('mo-bd');
+  var mName=membership.name||membership.membershipName||membership.planName||'Membership';
+  var credits=membership.remainingCredits||membership.eventsRemaining||membership.creditsRemaining||membership.remainingEvents||'';
+  var detail=credits?(Number(credits)===1?'1 class remaining':credits+' classes remaining'):'Active membership';
+  curMembership=membership;
+
+  bd.innerHTML='<div class="bk-class">'
+    +'<div class="bk-class-name">'+curSession.title+'</div>'
+    +'<div class="bk-class-meta">'
+    +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+curSession.time+'</span>'
+    +(curSession.teacher?'<span>'+curSession.teacher+'</span>':'')
+    +'</div></div>'
+    +'<div class="bk-confirm">'
+    +'<div class="bk-user">Booking as <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>'
+    +'<div class="bk-membership">'
+    +'<div class="bk-membership-name">'+mName+'</div>'
+    +'<div class="bk-membership-detail">'+detail+'</div>'
+    +'</div>'
+    +customerFieldsHTML()
+    +'<div class="bk-err" id="bk-err"></div>'
+    +'<button class="bk-primary" id="bk-confirm-btn" onclick="doBookWithMembership()">Confirm Booking</button>'
+    +'<div class="bk-link" onclick="curUser=null;curSessionToken=null;showLoginStep()">Switch account</div>'
+    +'<div class="bk-link" style="margin-top:8px" onclick="closeMo()">← Back to schedule</div>'
+    +'</div>';
+}
+
+function doBookWithMembership(){if(isProcessing)return;
+  var btn=document.getElementById('bk-confirm-btn');
+  var err=document.getElementById('bk-err');
+  var vErr=validateCustomerFields();
+  if(vErr){err.textContent=vErr;return;}
+  isProcessing=true;btn.textContent='Booking...';btn.disabled=true;err.textContent='';
+
+  var m=curMembership||{};
+  var cf=getCustomerFields();
+
+  fetch(PROXY+'/sabda-api/book',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({
+      sessionId:curSession.id,
+      sessionToken:curSessionToken,
+      memberId:curUser.memberId,
+      memberMembershipId:m.memberMembershipId||m.id||m.membershipId,
+      firstName:curUser.firstName,
+      lastName:curUser.lastName,
+      email:curUser.email,
+      phoneNumber:cf.phoneNumber,
+      customerFields:cf.customerFields
+    })
+  }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
+  .then(function(r){
+    if(r.ok&&r.data.success){
+      showSuccess();
+    } else {
+      var msg=(r.data&&(r.data.error||r.data.message))||'Booking failed. Please try again.';
+      if(document.getElementById('bk-err')) document.getElementById('bk-err').textContent=msg;
+      showFallback();
+      isProcessing=false;
+      var b=document.getElementById('bk-confirm-btn');if(b){b.textContent='Confirm Booking';b.disabled=false;}
+    }
+  }).catch(function(){
+    var e=document.getElementById('bk-err');if(e)e.textContent='Connection error. Please try again.';
+    showFallback();
+    isProcessing=false;var b=document.getElementById('bk-confirm-btn');if(b){b.textContent='Confirm Booking';b.disabled=false;}
+  });
+}
+
+// ── STEP 3B: NO MEMBERSHIP — SHOW ALL PRICING OPTIONS ──
+var stripeInstance=null, cardElement=null;
+var activePromo=null, discountedPrice=null;
+var activePayReq=null, activePayName=null;
+
+function applyPromo(type,origPrice,productId){
+  var code=(document.getElementById('bk-promo')||{}).value.trim().toUpperCase();
+  var okEl=document.getElementById('bk-promo-ok');
+  var errEl=document.getElementById('bk-promo-err');
+  var btn=document.getElementById('bk-promo-btn');
+  if(!code){errEl.textContent='Enter a code';errEl.style.display='block';okEl.style.display='none';return;}
+  btn.textContent='...';btn.disabled=true;errEl.style.display='none';okEl.style.display='none';
+
+  var body={code:code,hostId:54278,price:origPrice};
+  body.sessionId=curSession.id;
+  if(productId) body.membershipId=productId;
+
+  fetch(PROXY+'/sabda-api/promo',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(body)
+  }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
+  .then(function(r){
+    btn.textContent='Apply';btn.disabled=false;
+    if(!r.ok||r.data.error){
+      errEl.textContent=r.data.error||'Invalid promo code';
+      errEl.style.display='block';
+      activePromo=null;discountedPrice=null;
+      return;
+    }
+    activePromo=r.data.code;
+    discountedPrice=r.data.newPrice;
+    // Update UI
+    var desc=r.data.type==='percentage'?r.data.appliedDiscount+'% off':'€'+r.data.appliedDiscount+' off';
+    okEl.innerHTML='<strong>'+activePromo+'</strong> applied — '+desc+' <span onclick="removePromo('+origPrice+')" style="cursor:pointer;text-decoration:underline;margin-left:8px">Remove</span>';
+    okEl.style.display='block';
+    document.getElementById('bk-total').innerHTML='<span style="text-decoration:line-through;color:var(--white38);font-size:1rem;margin-right:8px">€'+origPrice+'</span> €'+discountedPrice.toFixed(2);
+    // Update pay button
+    var payBtn=document.getElementById('bk-pay-btn');
+    if(payBtn){
+      if(discountedPrice===0){
+        payBtn.textContent='Book Free Class';
+        // Hide card and Apple Pay — no payment needed
+        var cardWrap=document.getElementById('bk-card');if(cardWrap)cardWrap.parentElement.style.display='none';
+        var cardLabel=document.getElementById('bk-card-label');if(cardLabel)cardLabel.style.display='none';
+        var payDiv=document.getElementById('bk-pay-divider');if(payDiv)payDiv.style.display='none';
+        var payReqEl=document.getElementById('bk-pay-request');if(payReqEl)payReqEl.style.display='none';
+      } else {
+        payBtn.textContent='Pay €'+discountedPrice.toFixed(2)+' & Book Class';
+      }
+    }
+    // Hide the promo input, show applied state
+    document.getElementById('bk-promo-fields').style.display='none';
+    document.getElementById('bk-promo-toggle').style.display='none';
+    // Update Apple/Google Pay amount if active
+    if(activePayReq){try{activePayReq.update({total:{label:'SABDA Studio'+(activePayName?' — '+activePayName:''),amount:Math.round(discountedPrice*100)}});}catch(e){}}
+  }).catch(function(){
+    btn.textContent='Apply';btn.disabled=false;
+    errEl.textContent='Could not validate code. Try again.';errEl.style.display='block';
+  });
+}
+
+function removePromo(origPrice){
+  activePromo=null;discountedPrice=null;
+  document.getElementById('bk-promo-ok').style.display='none';
+  document.getElementById('bk-promo-toggle').style.display='block';
+  document.getElementById('bk-promo-fields').style.display='none';
+  document.getElementById('bk-promo').value='';
+  document.getElementById('bk-total').textContent='€'+origPrice;
+  var payBtn=document.getElementById('bk-pay-btn');
+  if(payBtn) payBtn.textContent='Pay €'+origPrice+' & Book Class';
+  // Restore card fields in case they were hidden by a €0 promo
+  var cardWrap=document.getElementById('bk-card');if(cardWrap)cardWrap.parentElement.style.display='';
+  var cardLabel=document.getElementById('bk-card-label');if(cardLabel)cardLabel.style.display='';
+  if(activePayReq){try{activePayReq.update({total:{label:'SABDA Studio'+(activePayName?' — '+activePayName:''),amount:Math.round(origPrice*100)}});}catch(e){}}
+}
+
+function showNoMembership(){stepChange();
+  activePromo=null;discountedPrice=null;
+  var bd=document.getElementById('mo-bd');
+
+  bd.innerHTML='<div class="bk-class">'
+    +'<div class="bk-class-name">'+curSession.title+'</div>'
+    +'<div class="bk-class-meta">'
+    +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+curSession.time+'</span>'
+    +(curSession.teacher?'<span>'+curSession.teacher+'</span>':'')
+    +'</div></div>'
+    +'<div class="bk-confirm">'
+    +'<div class="bk-user">Booking as <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>'
+    +'<p style="font-size:.85rem;color:var(--white60);text-align:center;margin-bottom:20px;line-height:1.5">Choose how you want to book this class</p>'
+    // Intro offers first
+    +'<div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);font-weight:600;margin-bottom:10px">New to SABDA?</div>'
+    +'<div class="bk-pkg feat" onclick="showPayForm(\'pack\',50,443935,\'Intro 3-Pack\',\'3 classes · €16.67 each · 30 days\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
+    +'<div><div style="font-weight:600">Intro 3-Pack</div><div style="font-size:.75rem;color:var(--white60)">3 classes · €16.67 each</div></div>'
+    +'<div style="font-family:PT Serif,serif;font-weight:700">€50</div></div>'
+    +'<div class="bk-pkg" onclick="showPayForm(\'pack\',18,443934,\'Trial Class\',\'1 class · First-timers only\')" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center">'
+    +'<div><div style="font-weight:600">Trial Class</div><div style="font-size:.75rem;color:var(--white60)">First-timers only</div></div>'
+    +'<div style="font-family:PT Serif,serif;font-weight:700">€18</div></div>'
+    // Memberships
+    +'<div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--salmon);font-weight:600;margin-bottom:10px">Memberships</div>'
+    +'<div class="bk-pkg" onclick="showPayForm(\'membership\',130,431216,\'Immerse\',\'Unlimited classes · Cancel anytime\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
+    +'<div><div style="font-weight:600">Immerse</div><div style="font-size:.75rem;color:var(--white60)">Unlimited classes</div></div>'
+    +'<div style="font-family:PT Serif,serif;font-weight:700">€130<span style="font-size:.75rem;font-weight:400;color:var(--white60)">/mo</span></div></div>'
+    +'<div class="bk-pkg" onclick="showPayForm(\'membership\',109,709976,\'Ritual\',\'8 classes/month · Cancel anytime\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
+    +'<div><div style="font-weight:600">Ritual</div><div style="font-size:.75rem;color:var(--white60)">8 classes/month</div></div>'
+    +'<div style="font-family:PT Serif,serif;font-weight:700">€109<span style="font-size:.75rem;font-weight:400;color:var(--white60)">/mo</span></div></div>'
+    +'<div class="bk-pkg" onclick="showPayForm(\'membership\',99,706876,\'Flex\',\'4 classes/month · Cancel anytime\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
+    +'<div><div style="font-weight:600">Flex</div><div style="font-size:.75rem;color:var(--white60)">4 classes/month</div></div>'
+    +'<div style="font-family:PT Serif,serif;font-weight:700">€99<span style="font-size:.75rem;font-weight:400;color:var(--white60)">/mo</span></div></div>'
+    +'<div class="bk-pkg" onclick="showPayForm(\'membership\',330,445600,\'Immerse 3-Month\',\'Unlimited classes · 3 month commitment\')" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center">'
+    +'<div><div style="font-weight:600">Immerse 3-Month</div><div style="font-size:.75rem;color:var(--white60)">€110/mo · Unlimited classes</div></div>'
+    +'<div style="font-family:PT Serif,serif;font-weight:700">€330</div></div>'
+    // Class packs
+    +'<div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--white38);font-weight:600;margin:0 0 10px">Class Packs</div>'
+    +'<div class="bk-pkg" onclick="showPayForm(\'pack\',85,443937,\'5 Pack\',\'5 classes · €17 each · 2 months\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
+    +'<div><div style="font-weight:600">5 Pack</div><div style="font-size:.75rem;color:var(--white60)">5 classes · €17 each</div></div>'
+    +'<div style="font-family:PT Serif,serif;font-weight:700">€85</div></div>'
+    +'<div class="bk-pkg" onclick="showPayForm(\'pack\',149,443939,\'10 Pack\',\'10 classes · €14.90 each · 3 months\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
+    +'<div><div style="font-weight:600">10 Pack</div><div style="font-size:.75rem;color:var(--white60)">10 classes · €14.90 each</div></div>'
+    +'<div style="font-family:PT Serif,serif;font-weight:700">€149</div></div>'
+    +'<div class="bk-pkg" onclick="showPayForm(\'single\',22,445630,\'Drop-in\',\'1 class · No commitment\')" style="display:flex;justify-content:space-between;align-items:center">'
+    +'<div><div style="font-weight:600">Drop-in</div><div style="font-size:.75rem;color:var(--white60)">One class, no commitment</div></div>'
+    +'<div style="font-family:PT Serif,serif;font-weight:700">€22</div></div>'
+    +'<div class="bk-link" onclick="closeMo()">← Back to schedule</div>'
+    +'</div>';
+}
+
+// ── STEP 3C: PAYMENT FORM (after selecting an option) ──
+function showPayForm(type,price,productId,name,desc){stepChange();
+  var bd=document.getElementById('mo-bd');
+  bd.innerHTML='<div class="bk-class">'
+    +'<div class="bk-class-name">'+curSession.title+'</div>'
+    +'<div class="bk-class-meta">'
+    +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+curSession.time+'</span>'
+    +(curSession.teacher?'<span>'+curSession.teacher+'</span>':'')
+    +'</div></div>'
+    +'<div class="bk-confirm">'
+    +'<div class="bk-user">Booking as <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>'
+    +'<div class="bk-membership">'
+    +'<div class="bk-membership-name">'+name+'</div>'
+    +'<div class="bk-membership-detail">'+desc+(type==='membership'&&price<200?' · Billed monthly':'')+'</div>'
+    +'</div>'
+    +'<div class="bk-pay-total" id="bk-total">€'+price+'</div>'
+    +'<div class="bk-pay-desc" id="bk-pay-desc">'+(type==='membership'&&price<200?'First month, renews monthly':type==='membership'?'Billed once':'One-time payment')+'</div>'
+    +'<div id="bk-promo-wrap" style="margin-bottom:16px">'
+    +'<div class="bk-link" id="bk-promo-toggle" onclick="document.getElementById(\'bk-promo-fields\').style.display=\'flex\';this.style.display=\'none\'" style="margin:0;font-size:.8rem;text-align:left;color:var(--cyan)">Apply promo code →</div>'
+    +'<div id="bk-promo-fields" style="display:none;gap:8px;align-items:flex-start">'
+    +'<input class="bk-input" id="bk-promo" type="text" placeholder="Code" style="flex:1;margin-bottom:0;text-transform:uppercase" />'
+    +'<button class="bk-primary" id="bk-promo-btn" onclick="applyPromo(\''+type+'\','+price+','+productId+')" style="width:auto;padding:12px 20px;flex-shrink:0;font-size:.8rem">Apply</button>'
+    +'</div>'
+    +'<div id="bk-promo-ok" style="display:none;font-size:.78rem;color:var(--cyan);margin-top:6px"></div>'
+    +'<div id="bk-promo-err" style="display:none;font-size:.78rem;color:var(--salmon);margin-top:6px"></div>'
+    +'</div>'
+    +customerFieldsHTML()
+    +'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'
+    +'<div id="bk-pay-divider" class="bk-divider" style="display:none">or pay with card</div>'
+    +'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Card Details</div>'
+    +'<div class="bk-card-wrap" id="bk-card"></div>'
+    +'<div class="bk-err" id="bk-err"></div>'
+    +'<button class="bk-primary" id="bk-pay-btn" onclick="doPayAndBook(\''+type+'\','+price+','+productId+')">Pay €'+price+(type==='single'?' & Book':' & Book Class')+'</button>'
+    +'<div class="bk-link" onclick="showNoMembership()">← Change plan</div>'
+    +'</div>';
+
+  // Initialize Stripe — clean up previous card element
+  if(cardElement){try{cardElement.destroy();}catch(e){}cardElement=null;}
+  if(typeof Stripe==='undefined'){
+    document.getElementById('bk-err').textContent='Payment form could not load. Please disable ad blockers and refresh.';
+    return;
+  }
+  if(!stripeInstance){
+    stripeInstance=Stripe('pk_live_RoPa2iuvwBbqEISUd2LYTmKF',{stripeAccount:'acct_1RUWnoBf6nsynAht'});
+  }
+
+  // Apple Pay / Google Pay via Payment Request API
+  try{
+    activePayName=name;
+    activePayReq=stripeInstance.paymentRequest({
+      country:'ES',
+      currency:'eur',
+      total:{label:'SABDA Studio — '+name,amount:Math.round(price*100)},
+      requestPayerName:true,
+      requestPayerEmail:true
+    });
+    var prButton=stripeInstance.elements().create('paymentRequestButton',{
+      paymentRequest:activePayReq,
+      style:{paymentRequestButton:{type:'default',theme:'light-outline',height:'48px'}}
+    });
+    activePayReq.canMakePayment().then(function(result){
+      if(result){
+        document.getElementById('bk-pay-request').style.display='block';
+        document.getElementById('bk-pay-divider').style.display='flex';
+        prButton.mount('#bk-pay-request');
+      }
+    });
+    activePayReq.on('paymentmethod',function(ev){
+      // Validate customer fields first
+      var vErr=validateCustomerFields();
+      if(vErr){ev.complete('fail');return;}
+      isProcessing=true;
+      var cf=getCustomerFields();
+      fetch(PROXY+'/sabda-api/pay',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+          sessionId:curSession.id,
+          sessionToken:curSessionToken,
+          stripePaymentMethodId:ev.paymentMethod.id,
+          firstName:curUser.firstName,
+          lastName:curUser.lastName,
+          email:curUser.email,
+          type:type,
+          productId:productId,
+          discountCode:activePromo||undefined,
+          actualPrice:(discountedPrice!==null)?discountedPrice:price,
+          phoneNumber:cf.phoneNumber,
+          customerFields:cf.customerFields
+        })
+      }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
+      .then(function(r){
+        if(r.data.success){
+          ev.complete('success');
+          showSuccess();
+        } else if(r.data.clientSecret){
+          stripeInstance.confirmCardPayment(r.data.clientSecret).then(function(conf){
+            if(conf.error){ev.complete('fail');isProcessing=false;}
+            else{ev.complete('success');showSuccess();}
+          });
+        } else {
+          ev.complete('fail');
+          var errEl=document.getElementById('bk-err');
+          if(errEl) errEl.textContent=r.data.error||'Payment failed.';
+          showFallback();
+          isProcessing=false;
+        }
+      }).catch(function(){ev.complete('fail');isProcessing=false;});
+    });
+  }catch(e){}
+
+  var elements=stripeInstance.elements();
+  cardElement=elements.create('card',{
+    style:{
+      base:{color:'#f0efe9',fontSize:'16px',fontFamily:'DM Sans, sans-serif','::placeholder':{color:'rgba(240,239,233,0.38)'}},
+      invalid:{color:'#F8A6A3'}
+    }
+  });
+  cardElement.mount('#bk-card');
+}
+
+function doPayAndBook(type,price,productId){if(isProcessing)return;
+  var btn=document.getElementById('bk-pay-btn');
+  var err=document.getElementById('bk-err');
+  var vErr=validateCustomerFields();
+  if(vErr){err.textContent=vErr;return;}
+  isProcessing=true;btn.textContent='Processing...';btn.disabled=true;err.textContent='';
+
+  var cf=getCustomerFields();
+  var finalPrice=(discountedPrice!==null)?discountedPrice:price;
+
+  // Free booking (100% promo) — skip Stripe entirely
+  if(finalPrice===0){
+    fetch(PROXY+'/sabda-api/pay',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        sessionId:curSession.id,
+        sessionToken:curSessionToken,
+        stripePaymentMethodId:'free',
+        firstName:curUser.firstName,
+        lastName:curUser.lastName,
+        email:curUser.email,
+        type:type,
+        productId:productId,
+        discountCode:activePromo||undefined,
+        actualPrice:0,
+        phoneNumber:cf.phoneNumber,
+        customerFields:cf.customerFields
+      })
+    }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
+    .then(function(r){
+      if(r.data.success){showSuccess();}
+      else{err.textContent=r.data.error||'Booking failed.';showFallback();isProcessing=false;btn.textContent='Book Free Class';btn.disabled=false;}
+    }).catch(function(){err.textContent='Connection error.';isProcessing=false;btn.textContent='Book Free Class';btn.disabled=false;showFallback();});
+    return;
+  }
+
+  stripeInstance.createPaymentMethod({type:'card',card:cardElement,billing_details:{
+    name:curUser.firstName+' '+curUser.lastName,
+    email:curUser.email
+  }}).then(function(result){
+    if(result.error){
+      err.textContent=result.error.message;
+      showFallback();
+      isProcessing=false;btn.textContent='Pay & Book';btn.disabled=false;
+      return;
+    }
+    return fetch(PROXY+'/sabda-api/pay',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        sessionId:curSession.id,
+        sessionToken:curSessionToken,
+        stripePaymentMethodId:result.paymentMethod.id,
+        firstName:curUser.firstName,
+        lastName:curUser.lastName,
+        email:curUser.email,
+        type:type,
+        productId:productId,
+        discountCode:activePromo||undefined,
+        actualPrice:(discountedPrice!==null)?discountedPrice:price,
+        phoneNumber:cf.phoneNumber,
+        customerFields:cf.customerFields
+      })
+    }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
+    .then(function(r){
+      if(r.data.success){
+        showSuccess();
+      } else if(r.data.clientSecret){
+        return stripeInstance.confirmCardPayment(r.data.clientSecret).then(function(conf){
+          if(conf.error){
+            err.textContent=conf.error.message;
+            showFallback();
+            isProcessing=false;btn.textContent='Pay & Book';btn.disabled=false;
+          } else {
+            showSuccess();
+          }
+        });
+      } else {
+        err.textContent=r.data.error||'Payment failed. Please try again.';
+        showFallback();
+        isProcessing=false;btn.textContent='Pay & Book';btn.disabled=false;
+      }
+    });
+  }).catch(function(){
+    err.textContent='Connection error. Please try again.';
+    isProcessing=false;btn.textContent='Pay & Book';btn.disabled=false;
+    showFallback();
+  });
+}
+
+// ── STEP 4: SUCCESS ──
+function showSuccess(){stepChange();
+  var bd=document.getElementById('mo-bd');
+  // Fix #8: decrement spots locally
+  if(curSession&&curSession.id){
+    var sess=allE.find(function(e){return String(e.id)===String(curSession.id);});
+    if(sess&&sess.spotsRemaining>0) sess.spotsRemaining--;
+  }
+  bd.innerHTML='<div class="bk-success">'
+    +'<div class="bk-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>'
+    +'<h3>You\'re booked!</h3>'
+    +'<p>'+curSession.title+'<br>'+curSession.time+(curSession.teacher?' with '+curSession.teacher:'')+'</p>'
+    +'<p style="margin-top:16px;font-size:.78rem;color:var(--white38)">Check your email for confirmation. See you on the mat.</p>'
+    +'<button class="bk-primary" style="margin-top:20px" onclick="closeMo();renderSched()">Done</button>'
+    +'</div>';
+  isProcessing=false;
+}
+
+async function init(){
+  renderDays();
+  try{
+    const r=await fetch(API);const d=await r.json();
+    const now=new Date();
+    allE=d.filter(e=>new Date(e.dateTime)>new Date(now.getTime()-3600000)&&!e.isDeleted);
+    renderFilters(allE);renderSched();
+    document.getElementById('sk').style.display='none';
+    document.getElementById('sched').style.display='block';
+  }catch(err){
+    document.getElementById('sk').innerHTML='<div class="empty">Could not load schedule. Please try again.</div>';
+  }
+}
+init();
+</script>
 </script>
 </body>
 </html>
