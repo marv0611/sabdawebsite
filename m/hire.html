@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0e1235">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,700;1,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<title>Rent | SABDA</title>
+<style>
+:root{--navy:#0e1235;--navy95:rgba(14,18,53,.95);--salmon:#F8A6A3;--cyan:#02F3C5;--white:#f0efe9;--w80:rgba(240,239,233,.8);--w60:rgba(240,239,233,.6);--w38:rgba(240,239,233,.38);--w20:rgba(240,239,233,.2);--w10:rgba(240,239,233,.1);--w06:rgba(240,239,233,.06);--w03:rgba(240,239,233,.03);--r:16px;--safe-b:env(safe-area-inset-bottom,0px);--safe-t:env(safe-area-inset-top,0px)}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{overflow-x:hidden;-webkit-text-size-adjust:100%}
+body{background:var(--navy);color:var(--white);font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;padding-top:calc(52px + var(--safe-t));padding-bottom:calc(72px + var(--safe-b));overflow-x:hidden;line-height:1.55}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{font-family:inherit;border:none;background:none;cursor:pointer;color:inherit}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:150px}
+.touch{transition:transform .15s cubic-bezier(.2,.8,.4,1),opacity .15s}.touch:active{transform:scale(.97);opacity:.85}
+.hdr{position:fixed;top:0;left:0;right:0;z-index:100;height:calc(52px + var(--safe-t));padding-top:var(--safe-t);display:flex;align-items:center;justify-content:space-between;padding-left:20px;padding-right:16px;background:var(--navy95);backdrop-filter:saturate(1.4) blur(24px);-webkit-backdrop-filter:saturate(1.4) blur(24px);border-bottom:1px solid var(--w06)}
+.hdr img{height:18px;width:auto;opacity:.9}
+.hdr-pill{padding:7px 16px;background:var(--cyan);color:var(--navy);border-radius:100px;font-size:.68rem;font-weight:700;letter-spacing:.02em;line-height:1;box-shadow:0 2px 12px rgba(2,243,197,.2)}
+.hdr-back{display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--w60);font-weight:500}
+.hdr-back svg{width:16px;height:16px;stroke:var(--w60);fill:none;stroke-width:2}
+.pg{padding:24px 24px 16px}
+.pg-t{font-family:'PT Serif',serif;font-size:1.5rem;font-weight:700;letter-spacing:-.02em}
+.pg-t em{font-style:italic;color:var(--salmon)}
+.pg-s{font-size:.78rem;color:var(--w60);margin-top:4px;line-height:1.55}
+.sec{padding:24px 24px}
+.sl{font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:var(--cyan);font-weight:700;margin-bottom:8px;display:block}
+.sh{font-family:'PT Serif',serif;font-size:1.3rem;font-weight:700;line-height:1.15;letter-spacing:-.01em;margin-bottom:12px}
+.sh em{font-style:italic;color:var(--salmon)}
+.sp{font-size:.82rem;color:var(--w60);line-height:1.65;margin-bottom:12px}
+.divider{height:1px;background:var(--w06);margin:0 24px}
+.hero-img{width:100%;height:200px;object-fit:cover}
+.cta-strip{padding:20px 24px;border-top:1px solid var(--w06)}
+.cta-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px;background:var(--cyan);color:var(--navy);border-radius:100px;font-size:.84rem;font-weight:700;box-shadow:0 4px 20px rgba(2,243,197,.2)}
+.cta-btn svg{width:14px;height:14px;stroke:var(--navy);stroke-width:2.5;fill:none}
+.ct{padding:20px 24px;border-bottom:1px solid var(--w06)}
+.ct-name{font-family:'PT Serif',serif;font-size:1rem;font-weight:700;margin-bottom:4px}
+.ct-desc{font-size:.78rem;color:var(--w60);line-height:1.6}
+.ct-tag{display:inline-block;margin-top:8px;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--w38)}
+
+.tabs{position:fixed;bottom:0;left:0;right:0;z-index:100;display:flex;align-items:flex-end;justify-content:space-around;height:calc(72px + var(--safe-b));padding-bottom:var(--safe-b);background:var(--navy95);backdrop-filter:saturate(1.4) blur(24px);-webkit-backdrop-filter:saturate(1.4) blur(24px);border-top:1px solid var(--w06)}
+.tab{display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 0 6px;flex:1;color:var(--w38);transition:color .2s}
+.tab.on{color:var(--cyan)}
+.tab svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tab span{font-size:.5rem;letter-spacing:.04em;font-weight:600}
+.tab-bk{position:relative}
+.tab-bk-o{width:56px;height:56px;border-radius:50%;background:var(--cyan);display:flex;align-items:center;justify-content:center;position:relative;top:-10px;box-shadow:0 4px 24px rgba(2,243,197,.28)}
+.tab-bk-o svg{stroke:var(--navy);width:22px;height:22px;stroke-width:2.5}
+.tab-bk span{position:relative;top:-6px}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<header class="hdr">
+  <a href="index.html" class="hdr-back"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>SABDA</a>
+  <a href="https://momence.com/m/443935" class="hdr-pill touch">3-Pack &middot; &euro;50</a>
+</header>
+
+<div class="pg">
+  <div class="pg-t">Rent the <em>Space</em></div>
+  <div class="pg-s">360° projections. Dolby Atmos. Up to 200 standing. The most unique venue in Barcelona.</div>
+</div>
+<div class="divider"></div>
+<div class="ct"><div class="ct-name">Corporate Wellness</div><div class="ct-desc">Team yoga, breathwork, or sound healing sessions in an unforgettable setting.</div></div>
+<div class="ct"><div class="ct-name">Brand Activations</div><div class="ct-desc">Product launches, immersive showcases, experiential marketing.</div></div>
+<div class="ct"><div class="ct-name">Production & Content</div><div class="ct-desc">Music videos, photo shoots, podcast recording, film sets.</div></div>
+<div class="ct"><div class="ct-name">Celebrations</div><div class="ct-desc">Birthdays, proposals, private group experiences.</div></div>
+<div class="divider"></div>
+<div class="sec">
+  <span class="sl">Past Clients</span>
+  <p class="sp">FC Barcelona, Danone, Liga Endesa, Elisava, Honest Greens, Aire, Time Out, Ametller.</p>
+</div>
+<div class="cta-strip">
+  <a href="mailto:connect@sabdastudio.com" class="cta-btn touch">Get in Touch</a>
+</div>
+<nav class="tabs">
+  <a href="classes.html" class="tab "><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Classes</span></a>
+  <a href="schedule.html" class="tab "><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span>Schedule</span></a>
+  <a href="https://momence.com/m/443935" class="tab tab-bk"><div class="tab-bk-o"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><span>Book</span></a>
+  <a href="pricing.html" class="tab "><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Pricing</span></a>
+  <a href="index.html" class="tab "><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></a>
+</nav>
+</body>
+</html>
