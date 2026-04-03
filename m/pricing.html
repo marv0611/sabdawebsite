@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0e1235">
+<title>Pricing | SABDA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,700;1,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0e1235;--navy95:rgba(14,18,53,.95);--salmon:#F8A6A3;--cyan:#02F3C5;--white:#f0efe9;--w80:rgba(240,239,233,.8);--w60:rgba(240,239,233,.6);--w38:rgba(240,239,233,.38);--w20:rgba(240,239,233,.2);--w10:rgba(240,239,233,.1);--w06:rgba(240,239,233,.06);--w03:rgba(240,239,233,.03);--r:16px;--safe-b:env(safe-area-inset-bottom,0px);--safe-t:env(safe-area-inset-top,0px);--ease:cubic-bezier(.16,1,.3,1)}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{overflow-x:hidden;-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--navy);color:var(--white);font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;padding-top:calc(52px + var(--safe-t));padding-bottom:calc(72px + var(--safe-b));overflow-x:hidden}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{font-family:inherit;border:none;background:none;cursor:pointer;color:inherit}
+.touch{transition:transform .15s cubic-bezier(.2,.8,.4,1),opacity .15s}.touch:active{transform:scale(.97);opacity:.85}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:150px}
+.hdr{position:fixed;top:0;left:0;right:0;z-index:100;height:calc(52px + var(--safe-t));padding-top:var(--safe-t);display:flex;align-items:center;justify-content:space-between;padding-left:20px;padding-right:16px;background:var(--navy95);backdrop-filter:saturate(1.4) blur(24px);-webkit-backdrop-filter:saturate(1.4) blur(24px);border-bottom:1px solid var(--w06)}
+.hdr img{height:18px;width:auto;opacity:.9}
+.hdr-pill{padding:7px 16px;background:var(--cyan);color:var(--navy);border-radius:100px;font-size:.68rem;font-weight:700;letter-spacing:.02em;line-height:1;box-shadow:0 2px 12px rgba(2,243,197,.2)}
+
+/* PAGE */
+.pg{padding:28px 24px 24px}
+.pg-t{font-family:'PT Serif',serif;font-size:1.6rem;font-weight:700;letter-spacing:-.02em}
+.pg-t em{font-style:italic;color:var(--salmon)}
+.pg-s{font-size:.82rem;color:var(--w60);margin-top:6px;line-height:1.5}
+
+/* SECTION LABEL */
+.sl{font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:var(--cyan);font-weight:700;margin-bottom:16px;display:block;padding:0 24px}
+
+/* FEATURED CARD */
+.feat{margin:0 24px 24px;padding:28px 24px;border:1px solid rgba(2,243,197,.2);border-radius:var(--r);background:linear-gradient(140deg,rgba(2,243,197,.04) 0%,transparent 50%);position:relative;overflow:hidden}
+.feat-badge{display:inline-block;font-size:.5rem;letter-spacing:.18em;text-transform:uppercase;color:var(--navy);background:var(--cyan);padding:3px 10px;border-radius:100px;font-weight:700;margin-bottom:16px}
+.feat-name{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--w38);margin-bottom:8px}
+.feat-price{font-family:'PT Serif',serif;font-size:2.6rem;font-weight:700;margin-bottom:4px}
+.feat-sub{font-size:.78rem;color:var(--w38);margin-bottom:20px}
+.feat-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px;background:var(--cyan);color:var(--navy);border-radius:100px;font-size:.84rem;font-weight:700;box-shadow:0 4px 20px rgba(2,243,197,.2);position:relative;overflow:hidden}
+.feat-btn::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.12) 50%,transparent 60%);transform:translateX(-100%);animation:shimmer 3s ease infinite 2s}
+@keyframes shimmer{0%{transform:translateX(-100%)}30%{transform:translateX(100%)}100%{transform:translateX(100%)}}
+.feat-list{margin-top:20px;display:flex;flex-direction:column;gap:10px}
+.feat-list li{font-size:.75rem;color:var(--w60);padding-left:16px;position:relative;list-style:none}
+.feat-list li::before{content:'';position:absolute;left:0;top:6px;width:5px;height:5px;border-radius:50%;background:var(--cyan);opacity:.5}
+
+/* SIMPLE OPTION */
+.opt{margin:0 24px;padding:20px 24px;border:1px solid var(--w06);border-radius:var(--r);display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.opt-info{flex:1}
+.opt-name{font-size:.82rem;font-weight:600}
+.opt-sub{font-size:.68rem;color:var(--w38);margin-top:2px}
+.opt-price{font-family:'PT Serif',serif;font-size:1.2rem;font-weight:700;margin-right:14px;white-space:nowrap}
+.opt-btn{padding:9px 16px;border:1px solid var(--w20);border-radius:100px;font-size:.62rem;font-weight:700;color:var(--w80);letter-spacing:.03em;white-space:nowrap}
+
+/* MEMBERSHIP CARDS */
+.mcards{display:flex;gap:10px;padding:0 24px 24px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.mcards::-webkit-scrollbar{display:none}
+.mc{flex:0 0 72%;scroll-snap-align:start;padding:24px 20px;border:1px solid var(--w06);border-radius:var(--r);background:var(--w03);position:relative}
+.mc.pop{border-color:rgba(2,243,197,.2);background:linear-gradient(140deg,rgba(2,243,197,.03) 0%,transparent 50%)}
+.mc-badge{display:inline-block;font-size:.46rem;letter-spacing:.16em;text-transform:uppercase;color:var(--navy);background:var(--cyan);padding:3px 8px;border-radius:100px;font-weight:700;margin-bottom:12px}
+.mc-name{font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--w38);margin-bottom:6px}
+.mc-price{font-family:'PT Serif',serif;font-size:1.8rem;font-weight:700}
+.mc-price s{font-size:.72rem;color:var(--w38);font-weight:400;text-decoration:none;font-family:'DM Sans',sans-serif}
+.mc-sub{font-size:.7rem;color:var(--w38);margin-top:4px;margin-bottom:16px;line-height:1.4}
+.mc-btn{display:block;text-align:center;width:100%;padding:12px;border:1px solid var(--w20);border-radius:100px;font-size:.72rem;font-weight:700;color:var(--w80)}
+.mc.pop .mc-btn{background:var(--cyan);color:var(--navy);border-color:var(--cyan)}
+.mc-list{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.mc-list li{font-size:.68rem;color:var(--w38);padding-left:14px;position:relative;list-style:none}
+.mc-list li::before{content:'';position:absolute;left:0;top:5px;width:4px;height:4px;border-radius:50%;background:var(--cyan);opacity:.4}
+
+/* ICE */
+.ice{padding:20px 24px;border-top:1px solid var(--w06)}
+.ice-t{font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--salmon);font-weight:600;margin-bottom:12px}
+.ice-row{display:flex;gap:8px}
+.ice-c{flex:1;padding:16px 14px;border:1px solid var(--w06);border-radius:var(--r);text-align:center;background:var(--w03)}
+.ice-p{font-family:'PT Serif',serif;font-size:1.1rem;font-weight:700;margin-bottom:2px}
+.ice-n{font-size:.52rem;letter-spacing:.08em;text-transform:uppercase;color:var(--w38)}
+
+/* TAB BAR */
+.tabs{position:fixed;bottom:0;left:0;right:0;z-index:100;display:flex;align-items:flex-end;justify-content:space-around;height:calc(72px + var(--safe-b));padding-bottom:var(--safe-b);background:var(--navy95);backdrop-filter:saturate(1.4) blur(24px);-webkit-backdrop-filter:saturate(1.4) blur(24px);border-top:1px solid var(--w06)}
+.tab{display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 0 6px;flex:1;color:var(--w38);transition:color .2s}
+.tab.on{color:var(--cyan)}
+.tab svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tab span{font-size:.5rem;letter-spacing:.04em;font-weight:600}
+.tab-bk{position:relative}
+.tab-bk-o{width:56px;height:56px;border-radius:50%;background:var(--cyan);display:flex;align-items:center;justify-content:center;position:relative;top:-10px;box-shadow:0 4px 24px rgba(2,243,197,.28)}
+.tab-bk-o svg{stroke:var(--navy);width:22px;height:22px;stroke-width:2.5}
+.tab-bk span{position:relative;top:-6px}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<header class="hdr">
+  <a href="index.html"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA"></a>
+  <a href="https://momence.com/m/443935" class="hdr-pill touch">3-Pack · €50</a>
+</header>
+
+<div class="pg">
+  <div class="pg-t">Simple <em>Pricing</em></div>
+  <div class="pg-s">No hidden fees. No contracts. Start with a trial or go unlimited.</div>
+</div>
+
+<!-- FEATURED: 3-PACK -->
+<span class="sl">Best way to start</span>
+<div class="feat">
+  <div class="feat-badge">Best Value</div>
+  <div class="feat-name">Intro 3-Pack</div>
+  <div class="feat-price">€50</div>
+  <div class="feat-sub">€16.67 per class · Valid 30 days</div>
+  <a href="https://momence.com/m/443935" class="feat-btn touch">Get Started</a>
+  <ul class="feat-list">
+    <li>3 classes, any type</li>
+    <li>Yoga, pilates, sound healing, breathwork</li>
+    <li>Mat and towel provided</li>
+    <li>No subscription, no commitment</li>
+  </ul>
+</div>
+
+<!-- SINGLE CLASS -->
+<a href="https://momence.com/m/443934" class="opt touch">
+  <div class="opt-info"><div class="opt-name">Single Class</div><div class="opt-sub">Just try one class</div></div>
+  <div class="opt-price">€18</div>
+  <div class="opt-btn">Book</div>
+</a>
+
+<!-- PACKS -->
+<a href="https://momence.com/m/443937" class="opt touch">
+  <div class="opt-info"><div class="opt-name">5-Pack</div><div class="opt-sub">€17 per class · Valid 60 days</div></div>
+  <div class="opt-price">€85</div>
+  <div class="opt-btn">Book</div>
+</a>
+
+<a href="https://momence.com/m/443939" class="opt touch" style="margin-bottom:32px">
+  <div class="opt-info"><div class="opt-name">10-Pack</div><div class="opt-sub">€14.90 per class · Valid 90 days</div></div>
+  <div class="opt-price">€149</div>
+  <div class="opt-btn">Book</div>
+</a>
+
+<!-- MEMBERSHIPS -->
+<span class="sl">Monthly memberships</span>
+<div class="mcards">
+  <div class="mc">
+    <div class="mc-name">Flex</div>
+    <div class="mc-price">€99<s>/mo</s></div>
+    <div class="mc-sub">Unlimited off-peak classes<br>Mon–Fri before 17:30 and after 20:00</div>
+    <a href="https://momence.com/m/706876" class="mc-btn touch">Get Flex</a>
+    <ul class="mc-list"><li>Unlimited off-peak classes</li><li>2 ice baths / month</li></ul>
+  </div>
+  <div class="mc">
+    <div class="mc-name">Ritual</div>
+    <div class="mc-price">€109<s>/mo</s></div>
+    <div class="mc-sub">8 classes per month<br>Any time, any class</div>
+    <a href="https://momence.com/m/709976" class="mc-btn touch">Get Ritual</a>
+    <ul class="mc-list"><li>8 classes, any time</li><li>2 ice baths / month</li><li>1 guest pass / month</li></ul>
+  </div>
+  <div class="mc pop">
+    <div class="mc-badge">Most Popular</div>
+    <div class="mc-name">Immerse</div>
+    <div class="mc-price">€130<s>/mo</s></div>
+    <div class="mc-sub">Unlimited classes<br>Cancel anytime</div>
+    <a href="https://momence.com/m/431216" class="mc-btn touch">Get Immerse</a>
+    <ul class="mc-list"><li>Unlimited classes, any time</li><li>4 ice baths / month</li><li>2 guest passes / month</li></ul>
+  </div>
+  <div class="mc">
+    <div class="mc-name">Immerse 3-Month</div>
+    <div class="mc-price">€330<s>/3 mo</s></div>
+    <div class="mc-sub">€110/month · Best rate<br>Unlimited classes</div>
+    <a href="https://momence.com/m/445600" class="mc-btn touch">Get 3-Month</a>
+    <ul class="mc-list"><li>Unlimited classes, any time</li><li>4 ice baths / month</li><li>2 guest passes / month</li></ul>
+  </div>
+</div>
+
+<!-- ICE BATH -->
+<div class="ice">
+  <div class="ice-t">Ice Bath Add-Ons</div>
+  <div class="ice-row">
+    <a href="https://momence.com/m/507726" class="ice-c touch"><div class="ice-p">€12</div><div class="ice-n">Single</div></a>
+    <a href="https://momence.com/m/507728" class="ice-c touch"><div class="ice-p">€30</div><div class="ice-n">3-Pack</div></a>
+    <a href="https://momence.com/m/507729" class="ice-c touch"><div class="ice-p">€40</div><div class="ice-n">5-Pack</div></a>
+  </div>
+</div>
+
+<nav class="tabs">
+  <a href="classes.html" class="tab"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Classes</span></a>
+  <a href="schedule.html" class="tab"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span>Schedule</span></a>
+  <a href="https://momence.com/m/443935" class="tab tab-bk"><div class="tab-bk-o"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><span>Book</span></a>
+  <a href="pricing.html" class="tab on"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Pricing</span></a>
+  <a href="index.html" class="tab"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></a>
+</nav>
+</body>
+</html>
