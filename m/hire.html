@@ -95,8 +95,9 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
 
 <script>
 var fis=document.querySelectorAll('.fi');
-var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{threshold:.15});
+var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{threshold:.01});
 fis.forEach(function(el){io.observe(el)});
+setTimeout(function(){fis.forEach(function(el){el.classList.add('vis')})},800);
 </script>
 </body>
 </html>
