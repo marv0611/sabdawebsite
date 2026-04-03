@@ -9,24 +9,107 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,700;1,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#0e1235;--navy95:rgba(14,18,53,.95);--salmon:#F8A6A3;--cyan:#02F3C5;--white:#f0efe9;--w80:rgba(240,239,233,.8);--w60:rgba(240,239,233,.6);--w38:rgba(240,239,233,.38);--w20:rgba(240,239,233,.2);--w10:rgba(240,239,233,.1);--w06:rgba(240,239,233,.06);--w03:rgba(240,239,233,.03);--r:16px;--safe-b:env(safe-area-inset-bottom,0px);--safe-t:env(safe-area-inset-top,0px)}
+:root{
+  --navy:#0e1235;--navy95:rgba(14,18,53,.95);--salmon:#F8A6A3;--cyan:#02F3C5;--white:#f0efe9;
+  --w60:rgba(240,239,233,.6);--w38:rgba(240,239,233,.38);--w10:rgba(240,239,233,.1);--w06:rgba(240,239,233,.06);--w03:rgba(240,239,233,.03);
+  --r:16px;--safe-b:env(safe-area-inset-bottom,0px);--safe-t:env(safe-area-inset-top,0px);
+  --momenceColorPrimary:#02F3C5;--momenceColorBlack:#f0efe9;--momenceColorBackground:#0e1235;
+}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html{overflow-x:hidden;-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+html{overflow-x:hidden;-webkit-text-size-adjust:100%}
 body{background:var(--navy);color:var(--white);font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;padding-top:calc(52px + var(--safe-t));padding-bottom:calc(72px + var(--safe-b));overflow-x:hidden}
-a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{font-family:inherit;border:none;background:none;cursor:pointer;color:inherit}
+a{color:inherit;text-decoration:none}
 .grain{position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:150px}
+.touch{transition:transform .15s cubic-bezier(.2,.8,.4,1),opacity .15s}.touch:active{transform:scale(.97);opacity:.85}
+
+/* HEADER */
 .hdr{position:fixed;top:0;left:0;right:0;z-index:100;height:calc(52px + var(--safe-t));padding-top:var(--safe-t);display:flex;align-items:center;justify-content:space-between;padding-left:20px;padding-right:16px;background:var(--navy95);backdrop-filter:saturate(1.4) blur(24px);-webkit-backdrop-filter:saturate(1.4) blur(24px);border-bottom:1px solid var(--w06)}
 .hdr img{height:18px;width:auto;opacity:.9}
 .hdr-pill{padding:7px 16px;background:var(--cyan);color:var(--navy);border-radius:100px;font-size:.68rem;font-weight:700;letter-spacing:.02em;line-height:1;box-shadow:0 2px 12px rgba(2,243,197,.2)}
 
-.pg{padding:28px 24px 16px}
-.pg-t{font-family:'PT Serif',serif;font-size:1.6rem;font-weight:700;letter-spacing:-.02em}
+/* PAGE TITLE */
+.pg{padding:24px 24px 12px}
+.pg-t{font-family:'PT Serif',serif;font-size:1.5rem;font-weight:700;letter-spacing:-.02em}
 .pg-t em{font-style:italic;color:var(--salmon)}
-.pg-s{font-size:.82rem;color:var(--w60);margin-top:6px;line-height:1.5}
+.pg-s{font-size:.78rem;color:var(--w60);margin-top:4px}
 
-/* MOMENCE EMBED */
-.sched-wrap{padding:0 12px}
-#momence-plugin-host-schedule{min-height:60vh}
+/* MOMENCE WIDGET */
+#momence-plugin-host-schedule{padding:8px 12px 40px;position:relative;z-index:2}
+#momence-plugin-host-schedule,#momence-plugin-host-schedule *{font-family:'DM Sans',sans-serif !important}
+
+/* Momence CSS variable overrides */
+:root{
+  --momence-primary-050:rgba(2,243,197,.04);--momence-primary-100:rgba(2,243,197,.08);
+  --momence-primary-200:rgba(2,243,197,.16);--momence-primary-300:rgba(2,243,197,.3);
+  --momence-primary-400:rgba(2,243,197,.55);--momence-primary-500:#02F3C5;
+  --momence-primary-600:#00d4ac;--momence-primary-700:#00b594;
+  --momence-primary-800:#00967b;--momence-primary-900:#007862;
+  --momence-background:#0e1235;--momence-white:#131842;
+  --momence-primary-color:#f0efe9;
+  --momence-secondary-color:rgba(240,239,233,.6);
+  --momence-tertiary-color:rgba(240,239,233,.38);
+  --momence-black-100:rgba(240,239,233,.35);--momence-black-200:rgba(240,239,233,.5);
+  --momence-black-300:rgba(240,239,233,.65);--momence-black-400:rgba(240,239,233,.8);
+  --momence-black-500:#f0efe9;
+  --momence-grey-050:rgba(240,239,233,.03);--momence-grey-100:rgba(240,239,233,.05);
+  --momence-grey-200:rgba(240,239,233,.08);--momence-grey-300:rgba(240,239,233,.1);
+  --momence-grey-400:rgba(240,239,233,.15);--momence-grey-500:rgba(240,239,233,.2);
+  --momence-grey-600:rgba(240,239,233,.28);--momence-grey-700:rgba(240,239,233,.38);
+  --momence-grey-800:rgba(240,239,233,.48);--momence-grey-900:rgba(240,239,233,.6);
+  --momence-session-separator-color:rgba(240,239,233,.06);
+  --momence-dark-alpha-fill-100:rgba(240,239,233,.04);--momence-dark-alpha-fill-200:rgba(240,239,233,.06);
+  --momence-dark-alpha-fill-300:rgba(240,239,233,.08);--momence-dark-alpha-fill-400:rgba(240,239,233,.12);
+  --momence-dark-alpha-fill-500:rgba(240,239,233,.15);--momence-dark-alpha-fill-600:rgba(240,239,233,.25);
+  --momence-dark-alpha-fill-700:rgba(240,239,233,.38);--momence-dark-alpha-fill-800:rgba(240,239,233,.55);
+  --momence-dark-alpha-fill-900:rgba(240,239,233,.85);
+  --momence-light-alpha-fill-900:rgba(14,18,53,.9);--momence-light-alpha-fill-700:rgba(14,18,53,.6);
+  --momence-light-alpha-fill-600:rgba(14,18,53,.3);--momence-light-alpha-fill-500:rgba(14,18,53,.18);
+  --momence-dark-background-200:rgba(240,239,233,.05);--momence-dark-background-300:rgba(240,239,233,.08);
+  --momence-dark-background-400:rgba(240,239,233,.12);--momence-dark-background-500:rgba(240,239,233,.16);
+  --momence-dark-background-800:rgba(240,239,233,.4);--momence-dark-background-900:rgba(14,18,53,.85);
+  --momence-light-background-900:rgba(14,18,53,.9);
+}
+
+/* Widget cosmetics */
+#momence-plugin-host-schedule .momence-host-schedule-layout{background:transparent !important}
+#momence-plugin-host-schedule article{background:rgba(19,24,66,.65) !important;border-color:rgba(240,239,233,.06) !important;backdrop-filter:blur(8px);border-radius:12px !important}
+#momence-plugin-host-schedule article img{border-radius:8px !important}
+#momence-plugin-host-schedule h3{color:var(--salmon) !important;letter-spacing:.15em !important}
+#momence-plugin-host-schedule h4{font-family:'PT Serif',serif !important;font-weight:400 !important;color:var(--white) !important}
+#momence-plugin-host-schedule .momence-button[class*="primary"],
+#momence-plugin-host-schedule a[class*="sc-12tukza"]{background:#02F3C5 !important;color:#0e1235 !important;font-weight:700 !important;letter-spacing:.04em !important;border-radius:4px !important}
+#momence-plugin-host-schedule .momence-button:disabled,
+#momence-plugin-host-schedule .momence-button[class*="booked"]{background:rgba(240,239,233,.08) !important;color:rgba(240,239,233,.35) !important}
+#momence-plugin-host-schedule button[class*="day_selection"]{background:transparent !important}
+#momence-plugin-host-schedule button[class*="day_selection"]:hover{background:rgba(240,239,233,.05) !important}
+#momence-plugin-host-schedule button[class*="quick_filters"]{background:transparent !important;border-color:rgba(240,239,233,.12) !important;color:var(--white) !important}
+#momence-plugin-host-schedule button[class*="view-toggle"]{background:transparent !important;border-color:rgba(240,239,233,.12) !important;color:var(--white) !important;stroke:var(--white) !important}
+#momence-plugin-host-schedule button.momence-select-button{background:rgba(19,24,66,.6) !important;border-color:rgba(240,239,233,.12) !important;color:var(--white) !important}
+#momence-plugin-host-schedule .momence-select-popup{background:#131842 !important;border-color:rgba(240,239,233,.1) !important}
+#momence-plugin-host-schedule .momence-select-option{background:#131842 !important;color:var(--white) !important}
+#momence-plugin-host-schedule .momence-arrow-button{background:transparent !important;border-color:rgba(240,239,233,.1) !important;color:var(--white) !important}
+#momence-plugin-host-schedule .momence-arrow-button:disabled{color:rgba(240,239,233,.15) !important}
+#momence-plugin-host-schedule .momence-event_type_select-button{background:transparent !important;color:rgba(240,239,233,.5) !important}
+#momence-plugin-host-schedule .momence-host_schedule-session_list-no_results-text{color:rgba(240,239,233,.5) !important}
+#momence-plugin-host-schedule .momence-host_dashboard-tag_button{background:transparent !important;border-color:rgba(240,239,233,.12) !important;color:var(--white) !important}
+#momence-plugin-host-schedule .momence-host_schedule-powered_by_momence{display:none !important}
+#momence-plugin-host-schedule .momence-session-in_person{display:none !important}
+#momence-plugin-host-schedule .momence-session_filters > *:last-child{display:none !important}
+#momence-plugin-host-schedule .momence-host_schedule-sys_row{display:none !important}
+#momence-plugin-host-schedule .momence-host_schedule-session_list-item-price{display:none !important}
+#momence-plugin-host-schedule [class*="session-price"]{display:none !important}
+#momence-plugin-host-schedule .momence-pagination{display:none !important}
+#momence-plugin-host-schedule .momence-day_selection{display:flex !important}
+#momence-plugin-host-schedule .momence-host_schedule-second_row{display:flex !important;margin-bottom:0 !important}
+#momence-plugin-host-schedule .momence-host_schedule-second_row:empty{display:none !important}
+#momence-plugin-host-schedule .momence-host_schedule-first_row{display:flex !important;flex-wrap:wrap !important;align-items:center !important;gap:10px !important}
+#momence-plugin-host-schedule [class*="fS"]{background:rgba(2,243,197,.06) !important}
+#momence-plugin-host-schedule > div{background:transparent !important}
+#momence-plugin-host-schedule [class*="host-schedule-layout"]{background:var(--navy) !important}
+#momence-plugin-host-schedule [class*="host_schedule"]{background:transparent !important}
+#momence-plugin-host-schedule nav,#momence-plugin-host-schedule [role="tablist"]{background:transparent !important}
+#momence-plugin-host-schedule .momence-host_schedule-loader div::after,
+#momence-plugin-host-schedule [class*="sc-1oszok8"] div{background:var(--cyan) !important}
 
 /* TAB BAR */
 .tabs{position:fixed;bottom:0;left:0;right:0;z-index:100;display:flex;align-items:flex-end;justify-content:space-around;height:calc(72px + var(--safe-b));padding-bottom:var(--safe-b);background:var(--navy95);backdrop-filter:saturate(1.4) blur(24px);-webkit-backdrop-filter:saturate(1.4) blur(24px);border-top:1px solid var(--w06)}
@@ -50,12 +133,10 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
 
 <div class="pg">
   <div class="pg-t">This Week's <em>Schedule</em></div>
-  <div class="pg-s">Tap any class to book. Filter by type or teacher.</div>
+  <div class="pg-s">Tap any class to book instantly.</div>
 </div>
 
-<div class="sched-wrap">
-  <div id="momence-plugin-host-schedule"></div>
-</div>
+<div id="momence-plugin-host-schedule"></div>
 
 <nav class="tabs">
   <a href="classes.html" class="tab"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Classes</span></a>
@@ -65,6 +146,45 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
   <a href="index.html" class="tab"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></a>
 </nav>
 
-<script src="https://momence.com/plugin/scheduler.js" data-host-id="54278"></script>
+<script src="https://momence.com/plugin/host-schedule/host-schedule.js" host_id="54278" locale="en" i18n='{"TEACHER_SELECT_PLACEHOLDER":"Teachers","TEACHER":"Teacher","SUBSTITUTES_FOR_SHORT":"Sub for"}'></script>
+<script>
+(function(){
+  var el=document.getElementById('momence-plugin-host-schedule');
+  if(!el)return;
+  var vars={'--momence-background':'#0e1235','--momence-white':'#131842','--momence-primary-color':'#f0efe9','--momence-secondary-color':'rgba(240,239,233,.6)','--momence-tertiary-color':'rgba(240,239,233,.38)','--momence-primary-500':'#02F3C5','--momence-primary-400':'rgba(2,243,197,.55)','--momence-primary-600':'#00d4ac','--momence-primary-050':'rgba(2,243,197,.04)','--momence-primary-100':'rgba(2,243,197,.08)','--momence-black-500':'#f0efe9','--momence-black-400':'rgba(240,239,233,.8)','--momence-black-300':'rgba(240,239,233,.65)','--momence-black-200':'rgba(240,239,233,.5)','--momence-black-100':'rgba(240,239,233,.35)','--momence-grey-200':'rgba(240,239,233,.08)','--momence-grey-100':'rgba(240,239,233,.05)','--momence-grey-050':'rgba(240,239,233,.03)','--momence-session-separator-color':'rgba(240,239,233,.06)'};
+  function av(){var r=document.documentElement;for(var k in vars)r.style.setProperty(k,vars[k],'important')}
+  av();
+  new MutationObserver(av).observe(document.head,{childList:true,subtree:true});
+  var vc=0,vi=setInterval(function(){av();if(++vc>25)clearInterval(vi)},200);
+  var moved=false;
+  function moveDaySelector(){
+    if(moved)return;
+    var fr=el.querySelector('.momence-host_schedule-first_row');
+    var ds=el.querySelector('.momence-day_selection');
+    if(!fr||!ds)return;
+    var vt=fr.querySelector('.momence-view-toggle');
+    if(vt&&vt.parentElement)fr.insertBefore(ds,vt.parentElement);
+    else fr.appendChild(ds);
+    fr.style.cssText='display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:12px';
+    ds.style.cssText='flex:1;min-width:200px;order:1';
+    var et=fr.querySelector('.momence-event_type_select');
+    if(et)et.style.cssText='order:0;flex-shrink:0';
+    if(vt&&vt.parentElement)vt.parentElement.style.cssText='order:2;flex-shrink:0;margin-left:auto';
+    moved=true;
+  }
+  function patchText(){
+    el.querySelectorAll('button,span').forEach(function(b){
+      b.childNodes.forEach(function(n){
+        if(n.nodeType===3){
+          if(n.textContent.indexOf('Practitioners')>=0)n.textContent=n.textContent.replace(/Practitioners/g,'Teachers');
+          if(n.textContent.indexOf('Practitioner')>=0)n.textContent=n.textContent.replace(/Practitioner/g,'Teacher');
+        }
+      });
+    });
+  }
+  new MutationObserver(function(){moveDaySelector();patchText()}).observe(el,{childList:true,subtree:true,characterData:true});
+  [500,1000,1500,2500,4000].forEach(function(ms){setTimeout(function(){moveDaySelector();patchText()},ms)});
+})();
+</script>
 </body>
 </html>
