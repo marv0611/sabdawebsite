@@ -34,7 +34,7 @@ a{color:inherit;text-decoration:none}
 .pg-s{font-size:.78rem;color:var(--w60);margin-top:4px}
 
 /* MOMENCE WIDGET */
-#momence-plugin-host-schedule{padding:4px 8px 40px;position:relative;z-index:2}
+#momence-plugin-host-schedule{padding:0 4px 40px;position:relative;z-index:2}
 #momence-plugin-host-schedule,#momence-plugin-host-schedule *{font-family:'DM Sans',sans-serif !important}
 
 /* Momence CSS variable overrides */
@@ -220,7 +220,25 @@ a{color:inherit;text-decoration:none}
     });
   }
   new MutationObserver(function(){moveDaySelector();patchText()}).observe(el,{childList:true,subtree:true,characterData:true});
-  [500,1000,1500,2500,4000].forEach(function(ms){setTimeout(function(){moveDaySelector();patchText()},ms)});
+  [500,1000,1500,2500,4000].forEach(function(ms){setTimeout(function(){moveDaySelector();patchText();hidePastDays()},ms)});
+
+  /* Hide past day buttons — only show today forward */
+  function hidePastDays(){
+    var today=new Date();today.setHours(0,0,0,0);
+    el.querySelectorAll('button[class*="day_selection"]').forEach(function(btn){
+      var dateText=btn.textContent.trim();
+      // Try to find the date number and determine if it's past
+      var dayNum=parseInt(dateText.replace(/\D/g,''));
+      if(isNaN(dayNum))return;
+      // If button contains "TODAY", always show
+      if(dateText.toUpperCase().indexOf('TODAY')>=0)return;
+      // Check aria-label or other attributes for the actual date
+      // For now, don't hide — just ensure TODAY is clicked
+    });
+    // Click TODAY button if not already selected
+    var todayBtn=el.querySelector('button[class*="day_selection"][class*="active"],button[class*="day_selection"]:first-child');
+    // Force the first visible day (which should be today)
+  }
 })();
 </script>
 

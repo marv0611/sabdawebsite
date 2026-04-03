@@ -68,15 +68,7 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
 .sec-lk svg{width:12px;height:12px;stroke:var(--w38);stroke-width:2;fill:none}
 
 /* CLASS CARDS */
-.cards{display:flex;gap:10px;padding:0 24px 20px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-.cards::-webkit-scrollbar{display:none}
-.cc{flex:0 0 72%;scroll-snap-align:start;border-radius:var(--r);overflow:hidden;position:relative;aspect-ratio:4/3}
-.cc img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease)}
-.cc:active img{transform:scale(1.03)}
-.cc-ov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(14,18,53,.85) 100%)}
-.cc-t{position:absolute;bottom:0;left:0;right:0;padding:16px}
-.cc-n{font-family:'PT Serif',serif;font-size:1.05rem;font-weight:700;margin-bottom:3px}
-.cc-d{font-size:.52rem;letter-spacing:.12em;text-transform:uppercase;color:var(--w60)}
+
 
 /* MARQUEE */
 .mq-w{overflow:hidden;padding:20px 0;border-top:1px solid var(--w06);border-bottom:1px solid var(--w06);position:relative}
@@ -169,14 +161,16 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
 .rq{padding:12px 24px;border-bottom:1px solid var(--w06);text-align:center;font-family:'PT Serif',serif;font-style:italic;font-size:.75rem;color:var(--w60);line-height:1.5}
 .rq em{font-style:normal;color:var(--salmon);font-size:.62rem;font-family:'DM Sans',sans-serif;font-weight:600}
 
-/* FEATURED CARD */
-.feat-card{margin:0 24px 12px;border-radius:var(--r);overflow:hidden;position:relative;height:200px}
-.feat-card img{width:100%;height:100%;object-fit:cover;transition:opacity .8s ease}
-.feat-card-ov{position:absolute;inset:0;background:linear-gradient(180deg,transparent 20%,rgba(14,18,53,.9) 100%)}
-.feat-card-t{position:absolute;bottom:0;left:0;right:0;padding:20px}
-.feat-card-badge{display:inline-block;font-size:.46rem;letter-spacing:.16em;text-transform:uppercase;color:var(--navy);background:var(--cyan);padding:3px 10px;border-radius:100px;font-weight:700;margin-bottom:8px}
-.feat-card-n{font-family:'PT Serif',serif;font-size:1.2rem;font-weight:700;margin-bottom:4px}
-.feat-card-d{font-size:.68rem;color:var(--w60)}
+
+
+
+/* COMPACT CLASS LIST */
+.cls-row{display:flex;align-items:center;gap:12px;padding:13px 24px;border-bottom:1px solid var(--w06)}
+.cls-row:active{background:var(--w03)}
+.cls-ico{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.95rem}
+.cls-n{font-size:.86rem;font-weight:600;flex:1}
+.cls-m{font-size:.6rem;letter-spacing:.08em;color:var(--w38);text-transform:uppercase;font-weight:500}
+.cls-c{width:12px;height:12px;stroke:var(--w20);fill:none;stroke-width:2;flex-shrink:0}
 
 /* SCROLL ANIMATIONS */
 .fi{opacity:0;transform:translateY(16px);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1)}
@@ -238,27 +232,19 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
 <div class="rq fi">&ldquo;The SABDA space is unrivalled.&rdquo; &mdash; <em>Sophie, 350+ Google reviews</em></div>
 
 <!-- CLASSES — swipeable cards -->
-<!-- FEATURED CLASS -->
-<div class="feat-card fi touch" onclick="location.href='yoga.html'" id="featCard">
-  <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_016.jpg" alt="Featured" loading="lazy" id="featImg">
-  <div class="feat-card-ov"></div>
-  <div class="feat-card-t">
-    <div class="feat-card-badge" id="featBadge">Popular</div>
-    <div class="feat-card-n" id="featName">Vinyasa Yoga</div>
-    <div class="feat-card-d" id="featDesc">60 min &middot; All levels &middot; 360&deg; immersive</div>
-  </div>
+<!-- CLASSES — compact list -->
+<div style="padding:24px 24px 8px">
+  <span class="sl">Classes</span>
+  <div class="sh" style="margin-bottom:0">43 classes. 6 types. <em>One room.</em></div>
+</div>
+<div style="padding:4px 0">
+  <a href="yoga.html" class="cls-row fi touch"><span class="cls-ico" style="background:rgba(2,243,197,.06)">🧘</span><span class="cls-n">Yoga</span><span class="cls-m">7 types</span><svg class="cls-c" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+  <a href="pilates.html" class="cls-row fi touch"><span class="cls-ico" style="background:rgba(248,166,163,.06)">💪</span><span class="cls-n">Pilates</span><span class="cls-m">4 types</span><svg class="cls-c" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+  <a href="sound-healing.html" class="cls-row fi touch"><span class="cls-ico" style="background:rgba(2,243,197,.06)">🔔</span><span class="cls-n">Sound Healing</span><span class="cls-m">4 types</span><svg class="cls-c" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+  <a href="breathwork.html" class="cls-row fi touch"><span class="cls-ico" style="background:rgba(248,166,163,.06)">🌬️</span><span class="cls-n">Breathwork</span><span class="cls-m">2 types</span><svg class="cls-c" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+  <a href="ice-bath.html" class="cls-row fi touch"><span class="cls-ico" style="background:rgba(2,243,197,.06)">🧊</span><span class="cls-n">Ice Bath</span><span class="cls-m">drop-in</span><svg class="cls-c" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
 </div>
 
-<section class="sec fi" style="padding-top:20px;padding-bottom:8px">
-  <span class="sl">All Classes</span>
-  <a href="classes.html" style="font-size:.68rem;color:var(--w38);float:right;margin-top:-18px">See all &rarr;</a>
-</section>
-<div class="cards fi">
-  <a href="yoga.html" class="cc touch"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_016.jpg" alt="Yoga" loading="lazy"><div class="cc-ov"></div><div class="cc-t"><div class="cc-n">Yoga</div><div class="cc-d">7 class types &middot; All levels</div></div></a>
-  <a href="pilates.html" class="cc touch"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/pilates_new.jpg" alt="Pilates" loading="lazy"><div class="cc-ov"></div><div class="cc-t"><div class="cc-n">Pilates</div><div class="cc-d">4 class types &middot; All levels</div></div></a>
-  <a href="sound-healing.html" class="cc touch"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/sound_healing.jpg" alt="Sound Healing" loading="lazy"><div class="cc-ov"></div><div class="cc-t"><div class="cc-n">Sound Healing</div><div class="cc-d">No experience needed</div></div></a>
-  <a href="breathwork.html" class="cc touch"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/breathwork_new.jpg" alt="Breathwork" loading="lazy"><div class="cc-ov"></div><div class="cc-t"><div class="cc-n">Breathwork</div><div class="cc-d">All levels</div></div></a>
-  <a href="ice-bath.html" class="cc touch"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/icebath_patio.jpg" alt="Ice Bath" loading="lazy"><div class="cc-ov"></div><div class="cc-t"><div class="cc-n">Ice Bath</div><div class="cc-d">Private terrace</div></div></a>
 </div>
 
 <!-- BOOK CTA -->
@@ -313,28 +299,6 @@ window.addEventListener('scroll',function(){h.classList.toggle('solid',scrollY>6
 /* More menu */
 document.getElementById('moreBtn').addEventListener('click',function(){document.getElementById('more').classList.add('on')});
 document.getElementById('moreX').addEventListener('click',function(){document.getElementById('more').classList.remove('on')});
-
-/* Rotating featured card */
-var feats=[
-  {img:'https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_016.jpg',name:'Vinyasa Yoga',desc:'60 min · All levels · 360° immersive',badge:'Popular',href:'yoga.html'},
-  {img:'https://raw.githubusercontent.com/marv0611/sabdawebsite/main/sound_healing.jpg',name:'Sound Healing',desc:'60 min · No experience needed',badge:'Try This',href:'sound-healing.html'},
-  {img:'https://raw.githubusercontent.com/marv0611/sabdawebsite/main/breathwork_new.jpg',name:'Alchemy Breathwork',desc:'60 min · Transformative',badge:'New',href:'breathwork.html'},
-  {img:'https://raw.githubusercontent.com/marv0611/sabdawebsite/main/pilates_new.jpg',name:'Power Pilates',desc:'50 min · Full body · All levels',badge:'Trending',href:'pilates.html'}
-];
-var fi=0,fc=document.getElementById('featCard'),fimg=document.getElementById('featImg'),fn=document.getElementById('featName'),fd=document.getElementById('featDesc'),fb=document.getElementById('featBadge');
-var preload=new Image();
-setInterval(function(){
-  var next=(fi+1)%feats.length;var f=feats[next];
-  preload.src=f.img;
-  fimg.style.opacity='0';
-  setTimeout(function(){
-    fi=next;fimg.src=f.img;fn.textContent=f.name;fd.textContent=f.desc;fb.textContent=f.badge;
-    fc.onclick=function(){location.href=f.href};
-    fimg.style.opacity='1';
-  },400);
-},5000);
-
-
 
 /* Scroll reveal */
 var fis=document.querySelectorAll('.fi');
