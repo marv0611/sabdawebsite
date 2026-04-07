@@ -697,22 +697,13 @@ async function handleBook(request, origin) {
   }
 }
 
-// ── SERVER-SIDE PAYMENT: pay via Momence /checkout/cart endpoints ──
-// Two-step flow:
-//   1. POST /checkout/cart/recalculate to get signature + numeric stripeConnectedAccountId
-//   2. POST /checkout/cart/pay with signature, items, ticket info, payment method
-// ── SERVER-SIDE PAYMENT: pay via correct Momence /plugin endpoints ──
-// Two code paths:
-//   1. productId set    → /plugin/memberships/{id}/pay  (membership/pack purchase)
-//   2. sessionId only   → /plugin/sessions/{id}/pay     (paid class booking)
-// Both use paymentMethod:{id:stripePaymentMethodId} format, NOT stripePaymentMethodId at top level.
-// stripeConnectedAccountId is NUMERIC (38966), discovered from /load-stripe-connected-account.
+// ── SERVER-SIDE PAYMENT: pay for a class with Stripe ──
 async function handlePay(request, origin) {
   try {
-    const { sessionId, sessionToken, stripePaymentMethodId, firstName, lastName, email, password, phoneNumber, customerFields, type, productId, discountCode, actualPrice } = await request.json();
+    const { sessionId, sessionToken, stripePaymentMethodId, firstName, lastName, email, phoneNumber, customerFields, type, productId, discountCode, actualPrice } = await request.json();
 
-    if (!firstName || !lastName || !email) {
-      return new Response(JSON.stringify({ error: 'Missing customer details' }), {
+    if (!sessionId) {
+      return new Response(JSON.stringify({ error: 'Missing sessionId' }), {
         status: 400, headers: corsHeaders(origin),
       });
     }
@@ -725,112 +716,74 @@ async function handlePay(request, origin) {
     }
 
     const cookieStr = sessionToken ? atob(sessionToken) : '';
-    const STRIPE_ACCOUNT_ID = 38966; // SABDA's numeric Momence-side account ID
-    const HOME_LOCATION_ID = 49623;  // Studio location ID
-    const HOST_ID = 54278;
 
-    // Hardcoded prices (Cloudflare Workers can't reach Momence's authenticated /memberships endpoint)
-    const PRODUCT_PRICES = {
-      443934: 18, 443935: 50, 445630: 22, 443937: 85, 443939: 149,
-      706876: 99, 709976: 109, 431216: 130, 445600: 330,
-      507726: 12, 507728: 30, 507729: 40,
-    };
+    // Fetch session details for price and stripe account
+    const sessRes = await fetch(
+      MOMENCE + '/_api/readonly/plugin/sessions/' + sessionId + '?hostId=54278',
+      { headers: { 'Host': 'momence.com' } }
+    );
+    const sessData = await sessRes.json();
+    const session = sessData.message || {};
+    let price = session.fixedTicketPrice || 0;
+    const stripeAcct = session.stripeConnectedAccount || '';
+    const loadDate = session.loadDate || new Date().toISOString();
 
-    let momenceUrl;
-    let body;
-
+    // If buying a membership/pack, use known price
+    // /host/54278/memberships returns 401 from CF Workers — hardcode instead
     if (productId) {
-      // ── PATH 1: MEMBERSHIP / PACKAGE PURCHASE ──
-      const price = (actualPrice !== undefined && actualPrice !== null)
-        ? actualPrice
-        : (PRODUCT_PRICES[Number(productId)] || 0);
-
-      momenceUrl = MOMENCE + '/_api/primary/plugin/memberships/' + Number(productId) + '/pay';
-      body = {
-        priceInCurrency: price,
-        email: email,
-        firstName: firstName,
-        lastName: lastName,
-        phoneNumber: phoneNumber || undefined,
-        password: password || undefined,
-        isGift: false,
-        isPaymentPlanUsed: false,
-        applyDiscountToPaidTrial: true,
-        stripeConnectedAccountId: STRIPE_ACCOUNT_ID,
-        customerFields: customerFields || {},
-        smsCommunicationsTransactionalConsent: false,
-        smsCommunicationsMarketingConsent: false,
-        isLoginRedirectDisabled: true,
-        customQuestionAnswers: [],
-        appliedPriceRuleIds: [],
-        homeLocationId: HOME_LOCATION_ID,
-        hasRecurringChargesConsent: true,
-        enableCardAutofill: false,
+      const PRODUCT_PRICES = {
+        443934: 18,   // Trial Drop-in
+        443935: 50,   // Intro 3-Pack
+        445630: 22,   // Drop-in
+        443937: 85,   // 5 Pack
+        443939: 149,  // 10 Pack
+        706876: 99,   // Flex monthly
+        709976: 109,  // Ritual monthly
+        431216: 130,  // Immerse monthly
+        445600: 330,  // Immerse 3-Month
+        507726: 12,   // Ice Bath single
+        507728: 30,   // Ice Bath 3-Pack
+        507729: 40,   // Ice Bath 5-Pack
       };
-      if (discountCode) body.discountCode = discountCode;
-      if (!isFree) body.paymentMethod = { id: stripePaymentMethodId };
-
-    } else if (sessionId) {
-      // ── PATH 2: PAID CLASS BOOKING ──
-      // Need to fetch session details for loadDate
-      let loadDate = new Date().toISOString();
-      let sessionPrice = 0;
-      try {
-        const sessRes = await fetch(
-          MOMENCE + '/_api/readonly/plugin/sessions/' + sessionId + '?hostId=' + HOST_ID,
-          { headers: { 'Host': 'momence.com' } }
-        );
-        const sessData = await sessRes.json();
-        if (sessData.message) {
-          sessionPrice = sessData.message.fixedTicketPrice || 0;
-          if (sessData.message.loadDate) loadDate = sessData.message.loadDate;
-        }
-      } catch (e) {}
-
-      const price = (actualPrice !== undefined && actualPrice !== null) ? actualPrice : sessionPrice;
-
-      momenceUrl = MOMENCE + '/_api/primary/plugin/sessions/' + sessionId + '/pay';
-      body = {
-        tickets: [{
-          firstName: firstName,
-          lastName: lastName,
-          email: email,
-          isAdditionalTicket: false,
-        }],
-        totalPriceInCurrency: price,
-        loadDate: loadDate,
-        stripeConnectedAccountId: STRIPE_ACCOUNT_ID,
-        phoneNumber: phoneNumber || undefined,
-        customerFields: customerFields || {},
-        isLoginRedirectDisabled: true,
-        isGuestOnlyBooking: true,
-      };
-      if (discountCode) body.discountCode = discountCode;
-      if (!isFree) body.paymentMethod = { id: stripePaymentMethodId };
-
-    } else {
-      return new Response(JSON.stringify({ error: 'Missing productId or sessionId' }), {
-        status: 400, headers: corsHeaders(origin),
-      });
+      const knownPrice = PRODUCT_PRICES[Number(productId)];
+      if (knownPrice !== undefined) price = knownPrice;
     }
 
-    // Strip undefined fields
-    Object.keys(body).forEach(k => body[k] === undefined && delete body[k]);
+    // If frontend sent an actualPrice (e.g. after promo discount), use that
+    if (actualPrice !== undefined && actualPrice !== null) {
+      price = actualPrice;
+    }
 
-    const payRes = await fetch(momenceUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Host': 'momence.com',
-        ...(cookieStr ? { 'Cookie': cookieStr } : {}),
-      },
-      body: JSON.stringify(body),
-    });
+    const body = {
+      tickets: [{ firstName, lastName, email, isAdditionalTicket: false }],
+      totalPriceInCurrency: price,
+      loadDate,
+      shouldSavePaymentMethod: false,
+      boughtMembershipIds: productId ? [productId] : [],
+    };
+    if (!isFree && stripePaymentMethodId) body.stripePaymentMethodId = stripePaymentMethodId;
+    if (stripeAcct) body.stripeConnectedAccountId = stripeAcct;
+    if (phoneNumber) body.phoneNumber = phoneNumber;
+    if (customerFields) body.customerFields = customerFields;
+    if (discountCode) body.discountCode = discountCode;
+
+    const payRes = await fetch(
+      MOMENCE + '/_api/primary/plugin/sessions/' + sessionId + '/pay',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Cookie': cookieStr,
+          'Host': 'momence.com',
+        },
+        body: JSON.stringify(body),
+      }
+    );
 
     const payData = await payRes.json().catch(() => ({}));
 
     if (payRes.ok) {
-      // 3D Secure check
+      // Check if 3D Secure is needed
       if (payData.payload && payData.payload.clientSecret) {
         return new Response(JSON.stringify({
           clientSecret: payData.payload.clientSecret,

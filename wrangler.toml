@@ -1,0 +1,4 @@
+name = "sabda-checkout-proxy"
+main = "cloudflare-worker-checkout-proxy.js"
+compatibility_date = "2024-01-01"
+account_id = "ac63756828d402343fc988ec9f161f56"
