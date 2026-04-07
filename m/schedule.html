@@ -252,7 +252,7 @@ function renderSched(){
   f=f.filter(e=>new Date(e.dateTime)>=new Date());
   f.sort((a,b)=>new Date(a.dateTime)-new Date(b.dateTime));
 
-  if(!f.length){c.innerHTML='<div class="empty">No classes scheduled for this day.</div>';return;}
+  if(!f.length){c.innerHTML='<div class="no-classes">No classes scheduled for this day.</div>';return;}
 
   c.innerHTML=f.map((e,i)=>{
     const time=fmtTime(e.dateTime);const[h,m]=time.split(':');
@@ -1065,7 +1065,7 @@ async function init(){
     document.getElementById('sk').style.display='none';
     document.getElementById('sched').style.display='block';
   }catch(err){
-    document.getElementById('sk').innerHTML='<div class="empty">Could not load schedule. Please try again.</div>';
+    document.getElementById('sk').innerHTML='<div class="no-classes">Could not load schedule. Please try again.</div>';
   }
 }
 init();
