@@ -262,9 +262,9 @@ function renderSched(){
     if(full){sc='fu';st='Full';}
     else if(sp<=5){sc='lo';}
     const fn=(e.teacher||'').split(' ')[0]||'';
-    const lnk=(e.link||'').replace(/'/g,"\\'");
-    const ttl=title.replace(/'/g,"\\'");
-    const tfn=fn.replace(/'/g,"\\'");
+    const lnk=(e.link||'').replace(/'/g,"\\'").replace(/"/g,"&quot;");
+    const ttl=title.replace(/'/g,"\\'").replace(/"/g,"&quot;");
+    const tfn=fn.replace(/'/g,"\\'").replace(/"/g,"&quot;");
 
     return`<div class="cc" style="animation-delay:${i*.05}s"><div class="ct"><div class="ct-h">${h}:${m}</div><div class="ct-d">${e.duration} min</div></div><div class="ci"><div class="ci-t">${title}${lang?`<span class="ci-lg">${lang}</span>`:''}</div><div class="ci-tc">${fn}</div><div class="ci-sp ${sc}">${st}</div></div><div class="ca">${full?(e.allowWaitlist?`<button class="bb wl touch" onclick="openMo('${lnk}','${ttl}','${time}','${tfn}')">Waitlist</button>`:`<button class="bb fu">Full</button>`):`<button class="bb touch" onclick="openMo('${lnk}','${ttl}','${time}','${tfn}')">Book</button>`}</div></div>`;
   }).join('');
@@ -355,11 +355,11 @@ function showLoginStep(){stepChange();
   
   
   var classBlock='<div class="bk-class">'
-    +'<div class="bk-class-name">'+curSession.title+'</div>'
+    +'<div class="bk-class-name">'+esc(curSession.title)+'</div>'
     +'<div class="bk-class-meta">'
-    +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+curSession.time+'</span>'
+    +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+esc(curSession.time)+'</span>'
     +(curSession.duration?'<span>'+curSession.duration+' min</span>':'')
-    +(curSession.teacher?'<span>'+curSession.teacher+'</span>':'')
+    +(curSession.teacher?'<span>'+esc(curSession.teacher)+'</span>':'')
     +'</div>'+getSpotsHtml()+'</div>';
 
   var bd=document.getElementById('mo-bd');
@@ -383,11 +383,11 @@ function showGuestStep(){stepChange();
   
   
   var classBlock='<div class="bk-class">'
-    +'<div class="bk-class-name">'+curSession.title+'</div>'
+    +'<div class="bk-class-name">'+esc(curSession.title)+'</div>'
     +'<div class="bk-class-meta">'
-    +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+curSession.time+'</span>'
+    +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+esc(curSession.time)+'</span>'
     +(curSession.duration?'<span>'+curSession.duration+' min</span>':'')
-    +(curSession.teacher?'<span>'+curSession.teacher+'</span>':'')
+    +(curSession.teacher?'<span>'+esc(curSession.teacher)+'</span>':'')
     +'</div>'+getSpotsHtml()+'</div>';
 
   var bd=document.getElementById('mo-bd');
@@ -467,9 +467,9 @@ function showMfaStep(mfaToken){stepChange();
   curMfaToken=mfaToken;
   var bd=document.getElementById('mo-bd');
   bd.innerHTML='<div class="bk-class">'
-    +'<div class="bk-class-name">'+curSession.title+'</div>'
+    +'<div class="bk-class-name">'+esc(curSession.title)+'</div>'
     +'<div class="bk-class-meta">'
-    +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+curSession.time+'</span>'
+    +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+esc(curSession.time)+'</span>'
     +'</div></div>'
     +'<div class="bk-login">'
     +'<p style="font-size:.85rem;color:var(--white60);text-align:center;margin-bottom:20px;line-height:1.5">Enter the 6-digit code from your authenticator app</p>'
@@ -556,9 +556,9 @@ function doGuestCheck(){
       stepChange();
       var bd=document.getElementById('mo-bd');
       bd.innerHTML='<div class="bk-class">'
-        +'<div class="bk-class-name">'+curSession.title+'</div>'
+        +'<div class="bk-class-name">'+esc(curSession.title)+'</div>'
         +'<div class="bk-class-meta">'
-        +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+curSession.time+'</span>'
+        +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+esc(curSession.time)+'</span>'
         +'</div>'+getSpotsHtml()+'</div>'
         +'<div class="bk-confirm" style="text-align:center">'
         +'<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.15);border-radius:10px;padding:20px;margin-bottom:20px">'
@@ -637,10 +637,10 @@ function showConfirmStep(membership){stepChange();
   curMembership=membership;
 
   bd.innerHTML='<div class="bk-class">'
-    +'<div class="bk-class-name">'+curSession.title+'</div>'
+    +'<div class="bk-class-name">'+esc(curSession.title)+'</div>'
     +'<div class="bk-class-meta">'
-    +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+curSession.time+'</span>'
-    +(curSession.teacher?'<span>'+curSession.teacher+'</span>':'')
+    +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+esc(curSession.time)+'</span>'
+    +(curSession.teacher?'<span>'+esc(curSession.teacher)+'</span>':'')
     +'</div></div>'
     +'<div class="bk-confirm">'
     +'<div class="bk-user">Booking as <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>'
@@ -780,10 +780,10 @@ function showNoMembership(){stepChange();
   var bd=document.getElementById('mo-bd');
 
   bd.innerHTML='<div class="bk-class">'
-    +'<div class="bk-class-name">'+curSession.title+'</div>'
+    +'<div class="bk-class-name">'+esc(curSession.title)+'</div>'
     +'<div class="bk-class-meta">'
-    +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+curSession.time+'</span>'
-    +(curSession.teacher?'<span>'+curSession.teacher+'</span>':'')
+    +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+esc(curSession.time)+'</span>'
+    +(curSession.teacher?'<span>'+esc(curSession.teacher)+'</span>':'')
     +'</div></div>'
     +'<div class="bk-confirm">'
     +'<div class="bk-user">Booking as <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>'
@@ -829,10 +829,10 @@ function showNoMembership(){stepChange();
 function showPayForm(type,price,productId,name,desc){stepChange();
   var bd=document.getElementById('mo-bd');
   bd.innerHTML='<div class="bk-class">'
-    +'<div class="bk-class-name">'+curSession.title+'</div>'
+    +'<div class="bk-class-name">'+esc(curSession.title)+'</div>'
     +'<div class="bk-class-meta">'
-    +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+curSession.time+'</span>'
-    +(curSession.teacher?'<span>'+curSession.teacher+'</span>':'')
+    +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+esc(curSession.time)+'</span>'
+    +(curSession.teacher?'<span>'+esc(curSession.teacher)+'</span>':'')
     +'</div></div>'
     +'<div class="bk-confirm">'
     +'<div class="bk-user">Booking as <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>'
@@ -1048,7 +1048,7 @@ function showSuccess(){stepChange();
   bd.innerHTML='<div class="bk-success">'
     +'<div class="bk-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>'
     +'<h3>You\'re booked!</h3>'
-    +'<p>'+curSession.title+'<br>'+curSession.time+(curSession.teacher?' with '+curSession.teacher:'')+'</p>'
+    +'<p>'+esc(curSession.title)+'<br>'+esc(curSession.time)+(curSession.teacher?' with '+esc(curSession.teacher):'')+'</p>'
     +'<p style="margin-top:16px;font-size:.78rem;color:var(--white38)">Check your email for confirmation. See you on the mat.</p>'
     +'<button class="bk-primary" style="margin-top:20px" onclick="closeMo();renderSched()">Done</button>'
     +'</div>';
