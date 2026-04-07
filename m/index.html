@@ -223,14 +223,16 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
 
 <header class="hdr" id="hdr">
   <a href="index.html"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA" class="hdr-logo"></a>
-  <button class="hdr-ham" id="moreBtn"><svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="1.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  <div style="display:flex;align-items:center;gap:8px">
+    <a href="schedule.html" class="hdr-pill touch">Book a Class</a>
+    <button class="hdr-ham" id="moreBtn" style="background:none;border:none;color:var(--w60);padding:8px;cursor:pointer"><svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="1.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  </div>
 </header>
 
 <section class="hero">
   <div class="hero-bg"></div>
   <div class="hero-c">
-    <div class="hero-pill"><span class="hero-dot"></span>Now Open &middot; Eixample</div>
-    <h1>The Future<br>of <em>Wellness</em></h1>
+        <h1>The Future<br>of <em>Wellness</em></h1>
     <p class="hero-sub">360&deg; immersive yoga, pilates, sound healing and breathwork. Dolby Atmos spatial audio.</p>
     <div class="hero-btns">
       <a href="schedule.html" class="btn-cy touch">Book a Class <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
@@ -287,8 +289,8 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
   <div class="sh" style="text-align:center">Your first 3 classes.</div>
   <div class="book-p">&euro;50</div>
   <div class="book-m">&euro;16.67 per class &middot; Valid 30 days</div>
-  <a href="https://momence.com/m/443935" class="book-btn touch">Get Your Intro 3-Pack <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-  <a href="https://momence.com/m/443934" class="book-alt">Just one class? <b>Trial &mdash; &euro;18</b></a>
+  <a href="schedule.html?buy=443935" class="book-btn touch">Get Your Intro 3-Pack <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+  <a href="schedule.html?buy=443934" class="book-alt">Just one class? <b>Trial &mdash; &euro;18</b></a>
 </section>
 
 <!-- LOCATION -->

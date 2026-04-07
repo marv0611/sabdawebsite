@@ -149,7 +149,7 @@ body.mo-open{overflow:hidden;position:fixed;width:100%;height:100%}
 
 <header class="hdr">
   <a href="index.html" class="hdr-back"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>Home</a>
-  <a href="https://momence.com/m/443935" class="hdr-pill touch">3-Pack · €50</a>
+  <button onclick="document.querySelector('.day-btn.active').scrollIntoView({behavior:'smooth'})" class="hdr-pill touch" style="border:none;cursor:pointer">Book a Class</button>
 </header>
 
 <!-- DAYS -->
@@ -1064,9 +1064,107 @@ async function init(){
     renderFilters(allE);renderSched();
     document.getElementById('sk').style.display='none';
     document.getElementById('sched').style.display='block';
+    
+    // Handle ?buy=PRODUCT_ID deep link
+    var params = new URLSearchParams(window.location.search);
+    var buyId = params.get('buy');
+    if (buyId) {
+      // Open package purchase flow without requiring class selection
+      openPackagePurchase(buyId);
+    }
   }catch(err){
     document.getElementById('sk').innerHTML='<div class="no-classes">Could not load schedule. Please try again.</div>';
   }
+}
+
+// Open the booking modal in standalone package-purchase mode
+var PACKAGES = {
+  '443934': {name:'Trial Class', price:18, type:'pack', desc:'1 class · First-timers only'},
+  '445630': {name:'Drop-in', price:22, type:'pack', desc:'1 class · Any time'},
+  '443935': {name:'Intro 3-Pack', price:50, type:'pack', desc:'3 classes · €16.67 each · 30 days'},
+  '443937': {name:'5-Pack', price:85, type:'pack', desc:'5 classes · €17 each · 60 days'},
+  '443939': {name:'10-Pack', price:149, type:'pack', desc:'10 classes · €14.90 each · 90 days'},
+  '706876': {name:'Flex', price:99, type:'membership', desc:'4 classes/month · Cancel anytime'},
+  '709976': {name:'Ritual', price:109, type:'membership', desc:'8 classes/month · Cancel anytime'},
+  '431216': {name:'Immerse', price:130, type:'membership', desc:'Unlimited classes · Cancel anytime'},
+  '445600': {name:'Immerse 3-Month', price:330, type:'membership', desc:'€110/mo · Unlimited · 3 month commitment'}
+};
+
+function openPackagePurchase(productId) {
+  if (isProcessing) return;
+  if (!proxyAlive) { window.open('https://momence.com/m/' + productId, '_blank'); return; }
+  var pkg = PACKAGES[productId];
+  if (!pkg) { window.open('https://momence.com/m/' + productId, '_blank'); return; }
+  
+  // Set up a fake "session" representing the package purchase (no class)
+  curSession = {
+    id: null,
+    title: pkg.name,
+    time: pkg.desc,
+    teacher: '',
+    link: 'https://momence.com/m/' + productId,
+    spots: null,
+    duration: null,
+    isWaitlist: false,
+    isPackagePurchase: true,
+    productId: productId,
+    productPrice: pkg.price,
+    productType: pkg.type
+  };
+  
+  document.getElementById('mo-t').textContent = 'Buy ' + pkg.name;
+  document.getElementById('mo-c').textContent = '€' + pkg.price + ' · ' + pkg.desc;
+  
+  // Show simplified guest form (skip email check, go straight to pay form)
+  showPackageGuestStep();
+  document.getElementById('mo').classList.add('open');
+  document.getElementById('mo').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  history.pushState({modal:true}, '');
+}
+
+function showPackageGuestStep() {
+  stepChange();
+  var pkg = PACKAGES[curSession.productId];
+  var bd = document.getElementById('mo-bd');
+  bd.innerHTML = '<div class="bk-class">'
+    + '<div class="bk-class-name">' + esc(pkg.name) + '</div>'
+    + '<div class="bk-class-meta"><span style="font-family:PT Serif,serif;font-size:1.4rem;font-weight:700;color:var(--cyan)">€' + pkg.price + '</span></div>'
+    + '<div style="font-size:.78rem;color:var(--white60);margin-top:8px">' + esc(pkg.desc) + '</div>'
+    + '</div>'
+    + '<div class="bk-login">'
+    + '<div class="bk-label">First Name</div>'
+    + '<input class="bk-input" id="bk-fn" type="text" placeholder="First name" autocomplete="given-name" />'
+    + '<div class="bk-label">Last Name</div>'
+    + '<input class="bk-input" id="bk-ln" type="text" placeholder="Last name" autocomplete="family-name" />'
+    + '<div class="bk-label">Email</div>'
+    + '<input class="bk-input" id="bk-email" type="email" placeholder="your@email.com" autocomplete="email" />'
+    + '<div class="bk-err" id="bk-err"></div>'
+    + '<button class="bk-primary" id="bk-guest-btn" onclick="doPackageGuestCheck()">Continue to payment</button>'
+    + '<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.12);border-radius:8px;padding:12px;margin-top:16px;font-size:.75rem;color:var(--white60);line-height:1.5;text-align:center">Already a customer? <span onclick="showLoginStep()" style="color:var(--cyan);cursor:pointer;text-decoration:underline">Log in instead</span></div>'
+    + '</div>';
+  document.getElementById('bk-fn').focus();
+}
+
+function doPackageGuestCheck() {
+  var fnEl = document.getElementById('bk-fn');
+  var lnEl = document.getElementById('bk-ln');
+  var emailEl = document.getElementById('bk-email');
+  var fn = fnEl.value.trim();
+  var ln = lnEl.value.trim();
+  var email = emailEl.value.trim();
+  var err = document.getElementById('bk-err');
+  var ok = true;
+  fnEl.classList.remove('bk-field-err'); lnEl.classList.remove('bk-field-err'); emailEl.classList.remove('bk-field-err');
+  if (!fn) { fnEl.classList.add('bk-field-err'); ok = false; }
+  if (!ln) { lnEl.classList.add('bk-field-err'); ok = false; }
+  if (!email || !validateEmail(email)) { emailEl.classList.add('bk-field-err'); ok = false; }
+  if (!ok) { err.textContent = 'Please fill in the highlighted fields'; return; }
+  
+  curUser = { id: null, email: email, firstName: fn, lastName: ln, memberId: null, isGuest: true };
+  
+  // Skip email check for package purchases — go straight to pay form
+  showPayForm(curSession.productType, curSession.productPrice, curSession.productId, PACKAGES[curSession.productId].name, PACKAGES[curSession.productId].desc);
 }
 init();
 </script>
