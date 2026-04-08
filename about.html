@@ -236,7 +236,7 @@ footer{padding:44px clamp(24px,4vw,80px) 24px;background:rgba(9,12,38,.6);positi
     <a href="https://momence.com/sign-in" class="nli" target="_blank"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg>Log In</a>
   </div>
 <button class="nav-ham" onclick="document.getElementById('mobMenu').classList.add('open')" aria-label="Menu"><span></span><span></span><span></span></button></nav>
-<div class="mob-menu" id="mobMenu"><button class="mob-close" onclick="this.parentElement.classList.remove('open')"><svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12"/></svg></button><a href="classes.html">Classes</a><a href="pricing.html">Pricing</a><a href="hire.html">Rent</a><a href="events.html">Events</a><a href="about.html">About</a><a href="contact/">Contact</a><div style="width:60px;height:1px;background:rgba(240,239,233,.12);margin:4px 0"></div><a href="legal-notice.html" style="font-size:.9rem;font-weight:500;opacity:.6">Legal Notice</a><a href="privacy-policy.html" style="font-size:.9rem;font-weight:500;opacity:.6">Privacy Policy</a><a href="terms.html" style="font-size:.9rem;font-weight:500;opacity:.6">Terms &amp; Conditions</a></div>
+<div class="mob-menu" id="mobMenu"><button class="mob-close" onclick="this.parentElement.classList.remove('open')"><svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12"/></svg></button><a href="classes.html">Classes</a><a href="pricing.html">Pricing</a><a href="hire.html">Rent</a><a href="events.html">Events</a><a href="about.html">About</a><a href="contact/">Contact</a><div style="width:60px;height:1px;background:rgba(240,239,233,.12);margin:4px 0"></div><a href="legal-notice.html" style="font-size:.9rem;font-weight:500;opacity:.6">Legal Notice</a><a href="privacy-policy.html" style="font-size:.9rem;font-weight:500;opacity:.6">Privacy Policy</a><a href="terms.html" style="font-size:.9rem;font-weight:500;opacity:.6">Terms &amp; Conditions</a><a href="cookies.html" style="font-size:.9rem;font-weight:500;opacity:.6">Cookies</a></div>
 
 <div class="scroll-space">
 
@@ -287,7 +287,7 @@ footer{padding:44px clamp(24px,4vw,80px) 24px;background:rgba(9,12,38,.6);positi
       <li><a href="https://www.tiktok.com/@sabda_studio" target="_blank">TikTok</a></li>
       <li><a href="https://www.linkedin.com/company/sabdastudio" target="_blank">LinkedIn</a></li>
       <li><a href="contact/">Newsletter</a></li>
-    </ul></div><div class="ft-col"><h4 style="color:var(--white)">Contact</h4><ul><li><a href="mailto:info@sabdastudio.com">info@sabdastudio.com</a></li><li><a href="tel:+34625449878">+34 625 44 98 78</a></li><li><a href="https://maps.google.com/?q=SABDA+Studio,+Barcelona" target="_blank" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3);padding-bottom:2px">Get Directions →</a></li></ul></div></div><div class="ft-bt"><span>© 2026 SABDA STUDIO S.L.</span><div class="ft-lg"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a></div></div></footer>
+    </ul></div><div class="ft-col"><h4 style="color:var(--white)">Contact</h4><ul><li><a href="mailto:info@sabdastudio.com">info@sabdastudio.com</a></li><li><a href="tel:+34625449878">+34 625 44 98 78</a></li><li><a href="https://maps.google.com/?q=SABDA+Studio,+Barcelona" target="_blank" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3);padding-bottom:2px">Get Directions →</a></li></ul></div></div><div class="ft-bt"><span>© 2026 SABDA STUDIO S.L.</span><div class="ft-lg"><a href="legal-notice.html">Legal Notice</a><a href="privacy-policy.html">Privacy Policy</a><a href="terms.html">Terms &amp; Conditions</a><a href="cookies.html">Cookies</a></div></div></footer>
 
 <div class="sbk" id="sbk"><div class="sbk-txt">3 Classes · <span>€50</span> · €18 each</div><a href="classes.html?pack=443935" class="sbk-btn" target="_blank">Book Now</a></div>
 
@@ -526,5 +526,6 @@ addEventListener('scroll',function(){
 document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));if(!wasOpen)item.classList.add('open');btn.setAttribute('aria-expanded',!wasOpen)})});
 </script>
 <script defer src="cookies.js"></script>
+<script src="cookie-consent.js"></script>
 </body>
 </html>

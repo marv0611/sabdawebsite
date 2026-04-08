@@ -54,15 +54,16 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
 .intro-p{font-size:.92rem;color:var(--w80);line-height:1.68;margin-bottom:16px}
 .intro-p:last-child{margin-bottom:0}
 .intro-p a{color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)}
-.types-sec{padding:28px 0 16px}
+.types-sec{padding:28px 0 16px;border-top:1px solid var(--w06);margin-top:8px}
 .types-lab{display:block;padding:0 24px 14px;font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:var(--cyan);font-weight:700}
-.ct{padding:18px 24px;border-top:1px solid var(--w06);display:flex;gap:16px;align-items:flex-start}
+.ct{padding:18px 24px;display:flex;gap:16px;align-items:flex-start}
+.ct + .ct{border-top:1px solid var(--w06)}
 .ct-num{width:30px;height:30px;border-radius:50%;background:rgba(2,243,197,.06);border:1px solid rgba(2,243,197,.16);display:flex;align-items:center;justify-content:center;font-size:.64rem;font-weight:700;color:var(--cyan);flex-shrink:0;margin-top:2px}
 .ct-body{flex:1;min-width:0}
 .ct-name{font-family:'PT Serif',serif;font-size:1rem;font-weight:700;margin-bottom:6px;line-height:1.3}
 .ct-desc{font-size:.8rem;color:var(--w60);line-height:1.6}
 .ct-desc a{color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)}
-.faq-sec{padding:40px 24px 28px;border-top:1px solid var(--w06)}
+.faq-sec{padding:40px 24px 28px;border-top:1px solid var(--w06);margin-top:12px}
 .faq-h{font-family:'PT Serif',serif;font-size:1.4rem;font-weight:700;line-height:1.15;margin-bottom:20px;margin-top:10px}
 .faq-h em{font-style:italic;color:var(--salmon)}
 .faq-it{border-bottom:1px solid var(--w06)}
@@ -73,7 +74,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
 .faq-it.open .faq-a{max-height:800px}
 .faq-a p{padding:0 0 18px;font-size:.8rem;color:var(--w60);line-height:1.68}
 .faq-a a{color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)}
-.pt-sec{padding:40px 24px 28px;border-top:1px solid var(--w06)}
+.pt-sec{padding:40px 24px 28px;border-top:1px solid var(--w06);margin-top:12px}
 .pt-h{font-family:'PT Serif',serif;font-size:1.4rem;font-weight:700;line-height:1.15;margin-bottom:20px;margin-top:10px}
 .pt-h em{font-style:italic;color:var(--salmon)}
 .pt-card-m{display:flex;align-items:center;justify-content:space-between;padding:18px;background:var(--w03);border:1px solid var(--w06);border-radius:14px;margin-bottom:10px;gap:14px}
@@ -213,5 +214,6 @@ function setLang(c){try{localStorage.setItem('sabda_lang',c)}catch(e){}document.
 try{var sl=localStorage.getItem('sabda_lang')||'en';document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===sl)})}catch(e){}
 </script>
 <script defer src="../cookies.js"></script>
+<script src="../cookie-consent.js"></script>
 </body>
 </html>

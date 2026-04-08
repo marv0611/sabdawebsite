@@ -245,5 +245,6 @@ function setLang(c){try{localStorage.setItem('sabda_lang',c)}catch(e){}document.
 try{var sl=localStorage.getItem('sabda_lang')||'en';document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===sl)})}catch(e){}
 </script>
 <script defer src="../cookies.js"></script>
+<script src="../cookie-consent.js"></script>
 </body>
 </html>

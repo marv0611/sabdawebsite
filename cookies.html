@@ -116,7 +116,7 @@ th{font-family:'DM Sans',sans-serif;color:var(--cyan);font-weight:700;font-size:
   <div class="cookie-actions">
     <h3>Manage your consent</h3>
     <p style="margin-bottom:8px">Click below to open the cookie settings panel and update your preferences.</p>
-    <button type="button" onclick="if(window.SABDA_openCookieSettings){window.SABDA_openCookieSettings()}else{localStorage.removeItem('sabda_consent');location.reload()}">Open Cookie Settings</button>
+    <button type="button" onclick="if(window.SABDAcookies){window.SABDAcookies.reset()}else{try{localStorage.removeItem('sabda_cookie_consent');localStorage.removeItem('sabda_consent')}catch(e){}location.reload()}">Open Cookie Settings</button>
   </div>
 
   <h2>Browser controls</h2>
@@ -148,6 +148,6 @@ th{font-family:'DM Sans',sans-serif;color:var(--cyan);font-weight:700;font-size:
   </div>
 </main>
 
-<script defer src="cookies.js"></script>
+<script src="cookie-consent.js"></script>
 </body>
 </html>
