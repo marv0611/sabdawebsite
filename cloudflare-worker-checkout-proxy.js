@@ -7,6 +7,12 @@ const MOMENCE = 'https://momence.com';
 // SABDA host (host_id 54278) gets rate-limited and EVERY visitor sees
 // "You have reached the limit of number of failed retries for your payment".
 //
+// CRITICAL: pass the original `request` object as the second arg whenever
+// possible, so we can forward the real visitor IP (cf-connecting-ip) and
+// real browser headers (User-Agent, Accept-Language). Without this, ALL
+// visitors look identical to Momence — same IP, same UA, same headers —
+// and they trip Momence's per-IP rate limit on top of the per-host one.
+//
 // Required minimum headers a real browser sends when calling Momence's widget:
 // - User-Agent: a real browser UA, not 'cloudflare-workers' (default)
 // - Origin: https://momence.com (or the embed origin)
@@ -15,12 +21,26 @@ const MOMENCE = 'https://momence.com';
 // - Accept-Language: en-US,en;q=0.9
 // - X-Requested-With: XMLHttpRequest (sent by jQuery/axios in their widget)
 // - sec-fetch-* headers (sent by modern browsers)
-function momenceHeaders(extra) {
+// - X-Forwarded-For + cf-connecting-ip → visitor's real IP, NOT cloudflare's
+function momenceHeaders(extra, originalRequest) {
+  // Extract real visitor data from the incoming request if available
+  let visitorIp = null;
+  let visitorUa = null;
+  let visitorLang = null;
+  if (originalRequest && originalRequest.headers) {
+    visitorIp =
+      originalRequest.headers.get('cf-connecting-ip') ||
+      originalRequest.headers.get('x-real-ip') ||
+      originalRequest.headers.get('x-forwarded-for');
+    visitorUa = originalRequest.headers.get('user-agent');
+    visitorLang = originalRequest.headers.get('accept-language');
+  }
+
   const base = {
     'Host': 'momence.com',
-    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
+    'User-Agent': visitorUa || 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
     'Accept': 'application/json, text/plain, */*',
-    'Accept-Language': 'en-US,en;q=0.9',
+    'Accept-Language': visitorLang || 'en-US,en;q=0.9',
     'Origin': 'https://momence.com',
     'Referer': 'https://momence.com/u/sabda',
     'X-Requested-With': 'XMLHttpRequest',
@@ -31,6 +51,16 @@ function momenceHeaders(extra) {
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-origin',
   };
+
+  // CRITICAL: forward the visitor's real IP so Momence doesn't see all our
+  // traffic as a single Cloudflare edge IP. This is the actual fix for the
+  // per-IP rate limit that affects ALL users of the proxy at once.
+  if (visitorIp) {
+    base['X-Forwarded-For'] = visitorIp;
+    base['CF-Connecting-IP'] = visitorIp;
+    base['X-Real-IP'] = visitorIp;
+  }
+
   if (extra) {
     for (const k in extra) {
       if (extra[k] !== undefined && extra[k] !== null) base[k] = extra[k];
@@ -832,7 +862,7 @@ async function handlePay(request, origin) {
       try {
         const sessRes = await fetch(
           MOMENCE + '/_api/readonly/plugin/sessions/' + sessionId + '?hostId=' + HOST_ID,
-          { headers: momenceHeaders() }
+          { headers: momenceHeaders(null, request) }
         );
         const sessData = await sessRes.json();
         if (sessData.message) {
@@ -872,6 +902,30 @@ async function handlePay(request, origin) {
     // Strip undefined fields
     Object.keys(body).forEach(k => body[k] === undefined && delete body[k]);
 
+    // ── WARM-UP CALL ──
+    // Before posting the payment, call /load-stripe-connected-account to
+    // identify ourselves as a legitimate Momence widget session. A real
+    // browser running their checkout widget hits this endpoint first to
+    // load the connected account ID. We hardcode the result (38966) but
+    // skipping the warm-up call entirely is a strong bot signal.
+    // Cookies set by this call are also forwarded to the /pay request.
+    let warmupCookie = '';
+    try {
+      const warmupUrl = MOMENCE + '/_api/readonly/plugin/load-stripe-connected-account?hostId=' + HOST_ID;
+      console.log('[PAY] warm-up →', warmupUrl);
+      const warmupRes = await fetch(warmupUrl, {
+        headers: momenceHeaders(null, request),
+      });
+      const setCookie = warmupRes.headers.get('set-cookie');
+      if (setCookie) {
+        // Strip everything after the first ; and join multiple cookies with ;
+        warmupCookie = setCookie.split(',').map(c => c.split(';')[0]).join('; ');
+      }
+      console.log('[PAY] warm-up status', warmupRes.status, 'cookies?', !!warmupCookie);
+    } catch (e) {
+      console.log('[PAY] warm-up failed (non-fatal):', e.message);
+    }
+
     // Log outgoing request to Momence (visible in Cloudflare Workers Logs tab)
     console.log('[PAY] →', momenceUrl);
     console.log('[PAY] body:', JSON.stringify({
@@ -879,9 +933,15 @@ async function handlePay(request, origin) {
       paymentMethod: body.paymentMethod ? { id: body.paymentMethod.id } : undefined,
     }));
 
+    // Combine warm-up cookies with any existing session cookies
+    const combinedCookies = [warmupCookie, cookieStr].filter(Boolean).join('; ');
+
     const payRes = await fetch(momenceUrl, {
       method: 'POST',
-      headers: momenceHeaders({ 'Content-Type': 'application/json', ...(cookieStr ? { 'Cookie': cookieStr } : {}) }),
+      headers: momenceHeaders(
+        { 'Content-Type': 'application/json', ...(combinedCookies ? { 'Cookie': combinedCookies } : {}) },
+        request
+      ),
       body: JSON.stringify(body),
     });
 
