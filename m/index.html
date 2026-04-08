@@ -382,6 +382,10 @@ setTimeout(function(){fis.forEach(function(el){el.classList.add('vis')})},800);
 function setLang(code){
   try{localStorage.setItem('sabda_lang',code);}catch(e){}
   document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===code);});
+  // Actually navigate to the language version
+  if(code==='es'){window.location.href='/es/';}
+  if(code==='en'){window.location.href='/m/index.html';}
+  // Catalan: fallback to current page (no CA translations yet)
 }
 try{var saved=localStorage.getItem('sabda_lang')||'en';document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===saved);});}catch(e){}
 </script>
