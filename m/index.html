@@ -217,6 +217,10 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
 .more-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch}
 .more-group{padding:24px 24px 8px}
 .more-group-t{font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:var(--w38);font-weight:600;margin-bottom:8px}
+.lang-row{display:flex;gap:8px;padding:4px 24px 28px;padding-bottom:calc(28px + var(--safe-b))}
+.lang-btn{flex:1;padding:13px 10px;background:var(--w03);border:1px solid var(--w10);border-radius:100px;color:var(--w80);font-size:.72rem;font-weight:600;letter-spacing:.02em;font-family:inherit;cursor:pointer;transition:all .2s}
+.lang-btn.on{background:var(--cyan);color:var(--navy);border-color:var(--cyan);box-shadow:0 2px 12px rgba(2,243,197,.18)}
+.lang-btn:active{transform:scale(.97)}
 .more-row{display:flex;align-items:center;gap:14px;padding:14px 24px;border-bottom:1px solid var(--w06)}
 .more-row:active{background:var(--w03)}
 .more-row-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
@@ -351,6 +355,12 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
     <a href="https://instagram.com/sabda_studio" target="_blank" class="more-row"><div class="more-row-icon" style="background:rgba(248,166,163,.08);color:var(--salmon)"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg></div><div class="more-row-txt">Instagram</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
     <a href="https://www.tiktok.com/@sabda_studio" target="_blank" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></div><div class="more-row-txt">TikTok</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
     <a href="https://www.linkedin.com/company/sabdastudio" target="_blank" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div><div class="more-row-txt">LinkedIn</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <div class="more-group"><div class="more-group-t">Language</div></div>
+    <div class="lang-row">
+      <button class="lang-btn on" data-lang="en" onclick="setLang('en')">English</button>
+      <button class="lang-btn" data-lang="es" onclick="setLang('es')">Espa&ntilde;ol</button>
+      <button class="lang-btn" data-lang="ca" onclick="setLang('ca')">Catal&agrave;</button>
+    </div>
   </div>
 </div>
 
@@ -369,6 +379,25 @@ var fis=document.querySelectorAll('.fi');
 var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{threshold:.01});
 fis.forEach(function(el){io.observe(el)});
 setTimeout(function(){fis.forEach(function(el){el.classList.add('vis')})},800);
+
+/* Language switcher — persists selection, toast until translations land */
+function setLang(code){
+  try{localStorage.setItem('sabda_lang',code);}catch(e){}
+  document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===code);});
+  if(code!=='en'){
+    var t=document.getElementById('lang-toast');
+    if(!t){
+      t=document.createElement('div');t.id='lang-toast';
+      t.style.cssText='position:fixed;bottom:calc(92px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%) translateY(20px);background:rgba(14,18,53,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(2,243,197,.25);color:var(--white);padding:12px 20px;border-radius:100px;font-size:.74rem;font-weight:500;z-index:2000;opacity:0;transition:opacity .3s,transform .3s;box-shadow:0 8px 32px rgba(0,0,0,.4);white-space:nowrap';
+      document.body.appendChild(t);
+    }
+    t.textContent=code==='es'?'Espa\u00f1ol pronto disponible':'Catal\u00e0 aviat disponible';
+    requestAnimationFrame(function(){t.style.opacity='1';t.style.transform='translateX(-50%) translateY(0)';});
+    clearTimeout(window._lt);
+    window._lt=setTimeout(function(){t.style.opacity='0';t.style.transform='translateX(-50%) translateY(20px)';},2600);
+  }
+}
+try{var saved=localStorage.getItem('sabda_lang')||'en';document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===saved);});}catch(e){}
 </script>
 
 </body>
