@@ -1,27 +1,34 @@
 const MOMENCE = 'https://momence.com';
 
+// Generate a random UUID v4 (Cloudflare Workers have crypto.randomUUID natively)
+function uuid() {
+  if (typeof crypto !== 'undefined' && crypto.randomUUID) return crypto.randomUUID();
+  // Fallback for environments without crypto.randomUUID
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    const r = Math.random() * 16 | 0;
+    const v = c === 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+  });
+}
+
 // ── BROWSER-LIKE HEADERS for Momence API calls ──
-// Momence has anti-bot protection that locks out hosts (per host_id, NOT per IP)
-// when it sees obvious server-to-server requests with no browser fingerprint.
-// EVERY call to a Momence endpoint MUST go through this helper, otherwise the
-// SABDA host (host_id 54278) gets rate-limited and EVERY visitor sees
+// Momence has multi-layer anti-bot protection. EVERY call to a Momence
+// endpoint MUST go through this helper, otherwise the SABDA host
+// (host_id 54278) gets rate-limited and ALL visitors see
 // "You have reached the limit of number of failed retries for your payment".
 //
-// CRITICAL: pass the original `request` object as the second arg whenever
-// possible, so we can forward the real visitor IP (cf-connecting-ip) and
-// real browser headers (User-Agent, Accept-Language). Without this, ALL
-// visitors look identical to Momence — same IP, same UA, same headers —
-// and they trip Momence's per-IP rate limit on top of the per-host one.
+// Layers we've identified and now address:
+// 1. User-Agent / Accept-Language / sec-fetch-* fingerprint check
+// 2. Per-IP rate limit (we forward visitor's real IP via cf-connecting-ip)
+// 3. Per-session widget activity (we make warm-up calls)
+// 4. Required Momence-specific headers: x-app, x-session-v2, x-idempotence-key
+//    (these were in our CORS allowlist but never actually being sent —
+//    real Momence widgets DO send them and Momence likely validates presence)
 //
-// Required minimum headers a real browser sends when calling Momence's widget:
-// - User-Agent: a real browser UA, not 'cloudflare-workers' (default)
-// - Origin: https://momence.com (or the embed origin)
-// - Referer: a Momence widget page URL
-// - Accept: */* or application/json
-// - Accept-Language: en-US,en;q=0.9
-// - X-Requested-With: XMLHttpRequest (sent by jQuery/axios in their widget)
-// - sec-fetch-* headers (sent by modern browsers)
-// - X-Forwarded-For + cf-connecting-ip → visitor's real IP, NOT cloudflare's
+// CRITICAL: pass the original `request` object as the second arg so we
+// forward the visitor's real IP and User-Agent. Without this, ALL visitors
+// look identical to Momence (same Cloudflare edge IP, same headers) and they
+// trip the per-IP rate limit on top of the per-host one.
 function momenceHeaders(extra, originalRequest) {
   // Extract real visitor data from the incoming request if available
   let visitorIp = null;
@@ -35,6 +42,10 @@ function momenceHeaders(extra, originalRequest) {
     visitorUa = originalRequest.headers.get('user-agent');
     visitorLang = originalRequest.headers.get('accept-language');
   }
+
+  const requestId = uuid();
+  const traceId = uuid().replace(/-/g, '').substring(0, 32);
+  const spanId = uuid().replace(/-/g, '').substring(0, 16);
 
   const base = {
     'Host': 'momence.com',
@@ -50,6 +61,14 @@ function momenceHeaders(extra, originalRequest) {
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
     'sec-fetch-site': 'same-origin',
+    // Momence-specific session headers (from CORS allowlist — these are what
+    // their real widget sends and what their API likely validates):
+    'x-app': 'momence-web',
+    'x-origin': 'plugin',
+    'x-session-v2': uuid(),
+    'x-idempotence-key': requestId,
+    'sentry-trace': traceId + '-' + spanId + '-1',
+    'baggage': 'sentry-environment=production,sentry-public_key=momence,sentry-trace_id=' + traceId,
   };
 
   // CRITICAL: forward the visitor's real IP so Momence doesn't see all our
@@ -67,6 +86,18 @@ function momenceHeaders(extra, originalRequest) {
     }
   }
   return base;
+}
+
+// Capture ALL Set-Cookie headers from a response. headers.get('set-cookie')
+// only returns the first one in Cloudflare Workers; we need to iterate.
+function captureCookies(res) {
+  const cookies = [];
+  for (const [k, v] of res.headers) {
+    if (k.toLowerCase() === 'set-cookie') {
+      cookies.push(v.split(';')[0]);
+    }
+  }
+  return cookies.join('; ');
 }
 
 export default {
@@ -902,29 +933,61 @@ async function handlePay(request, origin) {
     // Strip undefined fields
     Object.keys(body).forEach(k => body[k] === undefined && delete body[k]);
 
-    // ── WARM-UP CALL ──
-    // Before posting the payment, call /load-stripe-connected-account to
-    // identify ourselves as a legitimate Momence widget session. A real
-    // browser running their checkout widget hits this endpoint first to
-    // load the connected account ID. We hardcode the result (38966) but
-    // skipping the warm-up call entirely is a strong bot signal.
-    // Cookies set by this call are also forwarded to the /pay request.
+    // ── WARM-UP SEQUENCE ──
+    // A real Momence checkout widget hits multiple endpoints during page
+    // initialization to establish a "session of activity" before posting
+    // payment. We mimic that pattern to look like a legitimate widget user.
+    // Each warm-up call's Set-Cookie headers are accumulated and forwarded
+    // with the actual /pay request.
     let warmupCookie = '';
     try {
-      const warmupUrl = MOMENCE + '/_api/readonly/plugin/load-stripe-connected-account?hostId=' + HOST_ID;
-      console.log('[PAY] warm-up →', warmupUrl);
-      const warmupRes = await fetch(warmupUrl, {
-        headers: momenceHeaders(null, request),
-      });
-      const setCookie = warmupRes.headers.get('set-cookie');
-      if (setCookie) {
-        // Strip everything after the first ; and join multiple cookies with ;
-        warmupCookie = setCookie.split(',').map(c => c.split(';')[0]).join('; ');
-      }
-      console.log('[PAY] warm-up status', warmupRes.status, 'cookies?', !!warmupCookie);
+      // 1. Load the connected Stripe account (this is what set 38966 originally)
+      const u1 = MOMENCE + '/_api/readonly/plugin/load-stripe-connected-account?hostId=' + HOST_ID;
+      console.log('[PAY] warm-up 1 →', u1);
+      const r1 = await fetch(u1, { headers: momenceHeaders(null, request) });
+      const c1 = captureCookies(r1);
+      if (c1) warmupCookie = c1;
+      console.log('[PAY] warm-up 1 status', r1.status, 'cookies:', c1 ? c1.split(';').length : 0);
     } catch (e) {
-      console.log('[PAY] warm-up failed (non-fatal):', e.message);
+      console.log('[PAY] warm-up 1 failed (non-fatal):', e.message);
     }
+
+    // 2. Load host info — another endpoint a real widget calls on init
+    try {
+      const u2 = MOMENCE + '/_api/readonly/plugin/host-info?hostId=' + HOST_ID;
+      console.log('[PAY] warm-up 2 →', u2);
+      const r2 = await fetch(u2, {
+        headers: momenceHeaders(warmupCookie ? { 'Cookie': warmupCookie } : null, request),
+      });
+      const c2 = captureCookies(r2);
+      if (c2) warmupCookie = warmupCookie ? warmupCookie + '; ' + c2 : c2;
+      console.log('[PAY] warm-up 2 status', r2.status, 'cookies:', c2 ? c2.split(';').length : 0);
+    } catch (e) {
+      console.log('[PAY] warm-up 2 failed (non-fatal):', e.message);
+    }
+
+    // 3. For session bookings, also load the session details (already done above
+    //    in the sessionId branch, but for membership purchases we should load
+    //    the membership info too).
+    if (productId) {
+      try {
+        const u3 = MOMENCE + '/_api/readonly/plugin/memberships/' + Number(productId) + '?hostId=' + HOST_ID;
+        console.log('[PAY] warm-up 3 →', u3);
+        const r3 = await fetch(u3, {
+          headers: momenceHeaders(warmupCookie ? { 'Cookie': warmupCookie } : null, request),
+        });
+        const c3 = captureCookies(r3);
+        if (c3) warmupCookie = warmupCookie ? warmupCookie + '; ' + c3 : c3;
+        console.log('[PAY] warm-up 3 status', r3.status, 'cookies:', c3 ? c3.split(';').length : 0);
+      } catch (e) {
+        console.log('[PAY] warm-up 3 failed (non-fatal):', e.message);
+      }
+    }
+
+    console.log('[PAY] total warmup cookies:', warmupCookie ? warmupCookie.split(';').length : 0);
+
+    // Small delay to look more human (real users don't tap Pay 0ms after page load)
+    await new Promise(resolve => setTimeout(resolve, 350));
 
     // Log outgoing request to Momence (visible in Cloudflare Workers Logs tab)
     console.log('[PAY] →', momenceUrl);
