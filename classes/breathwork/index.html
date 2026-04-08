@@ -95,7 +95,7 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 }
 
 /* ── NAV ── */
-nav{display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:72px;position:fixed;top:0;left:0;right:0;z-index:100;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
+nav{display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:72px;position:fixed;top:0;left:0;right:0;z-index:100;transition:background .4s,backdrop-filter .4s,border-color .4s;border-bottom:1px solid rgba(240,239,233,.04);background:rgba(14,18,53,.45);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
 nav.scrolled{background:rgba(14,18,53,.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-color:rgba(240,239,233,.06)}
 .nav-logo img{height:22px;width:auto;object-fit:contain}
 .nav-links{display:flex;gap:36px;list-style:none}
@@ -302,7 +302,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     </div>
     <div class="nav-social">
       <a href="https://instagram.com/sabda_studio" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 1.5A4 4 0 0 0 3.5 7.5v9a4 4 0 0 0 4 4h9a4 4 0 0 0 4-4v-9a4 4 0 0 0-4-4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.25-2.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg></a>
-      <a href="https://tiktok.com/@sabdastudio" target="_blank" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0 1 13.8 3h-3v12.4a2.6 2.6 0 0 1-2.6 2.6 2.6 2.6 0 0 1-2.6-2.6A2.6 2.6 0 0 1 8.2 12.8c.28 0 .56.04.82.12V9.84A5.6 5.6 0 0 0 2.6 15.4a5.6 5.6 0 0 0 5.6 5.6 5.6 5.6 0 0 0 5.6-5.6V9.72a7.3 7.3 0 0 0 4.2 1.32V8.02a4.28 4.28 0 0 1-1.4-2.2z"/></svg></a>
+      <a href="https://www.tiktok.com/@sabda_studio" target="_blank" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0 1 13.8 3h-3v12.4a2.6 2.6 0 0 1-2.6 2.6 2.6 2.6 0 0 1-2.6-2.6A2.6 2.6 0 0 1 8.2 12.8c.28 0 .56.04.82.12V9.84A5.6 5.6 0 0 0 2.6 15.4a5.6 5.6 0 0 0 5.6 5.6 5.6 5.6 0 0 0 5.6-5.6V9.72a7.3 7.3 0 0 0 4.2 1.32V8.02a4.28 4.28 0 0 1-1.4-2.2z"/></svg></a>
     </div>
   </div>
 <button class="nav-ham" onclick="document.getElementById('mobMenu').classList.add('open')" aria-label="Menu"><span></span><span></span><span></span></button></nav>
@@ -354,7 +354,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     <div class="faq-item rv" style="transition-delay:.25s"><button class="faq-q" aria-expanded="false">Do I need experience?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>No. All sessions are guided and open to every level. Our teachers walk you through every breath. Just show up.</p></div></div>
     <div class="faq-item rv" style="transition-delay:.3s"><button class="faq-q" aria-expanded="false">What if I can't quiet my mind?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>That's exactly what the immersive environment helps with. The projections and spatial audio anchor your senses, which naturally quiets mental chatter. Many people who struggle with traditional meditation find breathwork much easier.</p></div></div>
 
-    <div class="rv" style="text-align:center;margin-top:48px;margin-bottom:24px"><a href="../../pricing.html#faq" style="display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border:1px solid rgba(240,239,233,.12);border-radius:4px;font-size:.85rem;font-weight:500;color:var(--white60);transition:border-color .25s,color .25s">See our full FAQ <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+    <div class="rv" style="text-align:center;margin-top:48px;margin-bottom:24px"><a href="../../faq/" style="display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border:1px solid rgba(240,239,233,.12);border-radius:4px;font-size:.85rem;font-weight:500;color:var(--white60);transition:border-color .25s,color .25s">See our full FAQ <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
   </div>
 </section>
 
@@ -434,13 +434,13 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       <img class="ft-symbol" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20symbol%20multi-colored%20(1).png" alt="SABDA symbol">
     </div>
     <div class="ft-col"><h4 style="color:var(--cyan)">Explore</h4><ul>
-      <li><a href="../../classes.html">Classes</a></li><li><a href="../../hire.html">Rent</a></li><li><a href="../../pricing.html">Pricing</a></li><li><a href="../../events.html">Events</a></li><li><a href="../../about.html">About</a></li><li><a href="../../pricing.html#faq">FAQ</a></li>
+      <li><a href="../../classes.html">Classes</a></li><li><a href="../../hire.html">Rent</a></li><li><a href="../../pricing.html">Pricing</a></li><li><a href="../../events.html">Events</a></li><li><a href="../../about.html">About</a></li><li><a href="../../faq/">FAQ</a></li><li><a href="../../contact/">Get in touch</a></li>
     </ul></div>
     <div class="ft-col"><h4 style="color:var(--salmon)">Connect</h4><ul>
       <li><a href="https://instagram.com/sabda_studio" target="_blank">Instagram</a></li>
-      <li><a href="https://tiktok.com/@sabdastudio" target="_blank">TikTok</a></li>
+      <li><a href="https://www.tiktok.com/@sabda_studio" target="_blank">TikTok</a></li>
       <li><a href="https://www.linkedin.com/company/sabdastudio" target="_blank">LinkedIn</a></li>
-      <li><a href="#">Newsletter</a></li>
+      <li><a href="../../contact/">Newsletter</a></li>
     </ul></div>
     <div class="ft-col"><h4 style="color:var(--white)">Contact</h4><ul>
       <li><a href="mailto:info@sabdastudio.com">info@sabdastudio.com</a></li>
