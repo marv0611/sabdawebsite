@@ -148,10 +148,17 @@ body.mo-open{overflow:hidden;position:fixed;width:100%;height:100%}
 .bk-pkg-grp:first-child{margin-top:8px}
 /* CONTACT FIELD GROUPS — clear separation between phone / language / city */
 .bk-fld{margin-bottom:20px}
-.bk-card-wrap{width:100%;padding:16px;background:rgba(240,239,233,.04);border:1px solid var(--white12);border-radius:10px;min-height:54px;box-sizing:border-box;transition:border-color .25s}
+.bk-card-wrap{width:100%;padding:16px;background:rgba(240,239,233,.04);border:1px solid var(--white12);border-radius:10px;min-height:54px;box-sizing:border-box;transition:border-color .25s;pointer-events:auto;touch-action:auto}
 .bk-card-wrap.StripeElement--focus{border-color:var(--cyan)}
 .bk-card-wrap.StripeElement--invalid{border-color:var(--salmon)}
-.bk-card-wrap iframe{width:100% !important}
+.bk-card-wrap.StripeElement--complete{border-color:rgba(2,243,197,.45)}
+.bk-card-wrap iframe{width:100% !important;pointer-events:auto !important}
+.bk-card-row{display:flex;gap:10px;margin-top:10px}
+.bk-card-row .bk-card-wrap{flex:1;min-width:0}
+.bk-card-status{display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--white38);margin-top:8px;min-height:18px;transition:color .2s}
+.bk-card-status.ok{color:var(--cyan)}
+.bk-card-status.err{color:var(--salmon)}
+.bk-card-status svg{width:14px;height:14px;flex-shrink:0}
 .bk-fld:last-of-type{margin-bottom:8px}
 .bk-fld .bk-input{margin-bottom:0}
 .bk-fld .bk-label{margin-bottom:8px;margin-top:0}
@@ -448,7 +455,10 @@ function closeMo(){
   activePromo=null;discountedPrice=null;
   activePayReq=null;activePayName=null;
   setBack(null);
-  if(cardElement){try{cardElement.destroy();}catch(e){}cardElement=null;}
+  if(cardNumberEl){try{cardNumberEl.destroy();}catch(e){}cardNumberEl=null;}
+  if(cardExpiryEl){try{cardExpiryEl.destroy();}catch(e){}cardExpiryEl=null;}
+  if(cardCvcEl){try{cardCvcEl.destroy();}catch(e){}cardCvcEl=null;}
+  cardCompleteState={cardNumber:false,cardExpiry:false,cardCvc:false};
 }
 document.getElementById('mo').addEventListener('click',function(e){if(e.target===this)closeMo();});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMo();});
@@ -822,7 +832,10 @@ function doBookWithMembership(){if(isProcessing)return;
 }
 
 // ── STEP 3B: NO MEMBERSHIP — SHOW ALL PRICING OPTIONS ──
-var stripeInstance=null, cardElement=null;
+var stripeInstance=null, cardNumberEl=null, cardExpiryEl=null, cardCvcEl=null;
+var cardCompleteState={cardNumber:false,cardExpiry:false,cardCvc:false};
+// Backwards-compat alias so any leftover refs to cardElement don't crash
+var cardElement=null;
 var activePromo=null, discountedPrice=null;
 var activePayReq=null, activePayName=null;
 
@@ -863,13 +876,16 @@ function applyPromo(type,origPrice,productId){
     if(payBtn){
       if(discountedPrice===0){
         payBtn.textContent='Book Free Class';
-        // Hide card and Apple Pay — no payment needed
-        var cardWrap=document.getElementById('bk-card');if(cardWrap)cardWrap.parentElement.style.display='none';
-        var cardLabel=document.getElementById('bk-card-label');if(cardLabel)cardLabel.style.display='none';
+        payBtn.disabled=false; // override card-validation gate — no card needed
+        // Hide card section and Apple Pay — no payment needed
+        var cardSec=document.getElementById('bk-card-section');if(cardSec)cardSec.style.display='none';
         var payDiv=document.getElementById('bk-pay-divider');if(payDiv)payDiv.style.display='none';
         var payReqEl=document.getElementById('bk-pay-request');if(payReqEl)payReqEl.style.display='none';
       } else {
         payBtn.textContent='Pay €'+discountedPrice.toFixed(2)+' & Book Class';
+        // Re-evaluate card-validation gate (button stays disabled if card incomplete)
+        var allDone=cardCompleteState.cardNumber && cardCompleteState.cardExpiry && cardCompleteState.cardCvc;
+        payBtn.disabled=!allDone;
       }
     }
     // Hide the promo input, show applied state
@@ -891,10 +907,14 @@ function removePromo(origPrice){
   document.getElementById('bk-promo').value='';
   document.getElementById('bk-total').textContent='€'+origPrice;
   var payBtn=document.getElementById('bk-pay-btn');
-  if(payBtn) payBtn.textContent='Pay €'+origPrice+' & Book Class';
-  // Restore card fields in case they were hidden by a €0 promo
-  var cardWrap=document.getElementById('bk-card');if(cardWrap)cardWrap.parentElement.style.display='';
-  var cardLabel=document.getElementById('bk-card-label');if(cardLabel)cardLabel.style.display='';
+  if(payBtn){
+    payBtn.textContent='Pay €'+origPrice+' & Book Class';
+    // Re-apply card-validation gate
+    var allDone=cardCompleteState.cardNumber && cardCompleteState.cardExpiry && cardCompleteState.cardCvc;
+    payBtn.disabled=!allDone;
+  }
+  // Restore card section in case it was hidden by a €0 promo
+  var cardSec=document.getElementById('bk-card-section');if(cardSec)cardSec.style.display='';
   if(activePayReq){try{activePayReq.update({total:{label:'SABDA Studio'+(activePayName?' · '+activePayName:''),amount:Math.round(origPrice*100)}});}catch(e){}}
 }
 
@@ -967,23 +987,45 @@ function showPayForm(type,price,productId,name,desc){stepChange();
     +customerFieldsHTML()
     +'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'
     +'<div id="bk-pay-divider" class="bk-divider" style="display:none">or pay with card</div>'
+    +'<div id="bk-card-section">'
     +'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Card Details</div>'
-    +'<div class="bk-card-wrap" id="bk-card"></div>'
+    +'<div class="bk-card-wrap" id="bk-card-number"></div>'
+    +'<div class="bk-card-row">'
+    +'<div class="bk-card-wrap" id="bk-card-expiry"></div>'
+    +'<div class="bk-card-wrap" id="bk-card-cvc"></div>'
+    +'</div>'
+    +'<div class="bk-card-status" id="bk-card-status"><span>Enter your card details to continue</span></div>'
+    +'</div>'
     +'<div class="bk-err" id="bk-err"></div>'
-    +'<button class="bk-primary" id="bk-pay-btn" onclick="doPayAndBook(\''+type+'\','+price+','+productId+')">Pay €'+price+(type==='single'?' & Book':' & Book Class')+'</button>'
+    +'<button class="bk-primary" id="bk-pay-btn" disabled onclick="doPayAndBook(\''+type+'\','+price+','+productId+')">Pay €'+price+(type==='single'?' & Book':' & Book Class')+'</button>'
     +'</div>';
 
-  // Initialize Stripe — clean up previous card element
-  if(cardElement){try{cardElement.destroy();}catch(e){}cardElement=null;}
+  // Initialize Stripe — clean up previous card elements
+  if(cardNumberEl){try{cardNumberEl.destroy();}catch(e){}cardNumberEl=null;}
+  if(cardExpiryEl){try{cardExpiryEl.destroy();}catch(e){}cardExpiryEl=null;}
+  if(cardCvcEl){try{cardCvcEl.destroy();}catch(e){}cardCvcEl=null;}
+  cardCompleteState={cardNumber:false,cardExpiry:false,cardCvc:false};
+
+  try{console.log('[SABDA] showPayForm type=',type,'price=',price,'productId=',productId,'StripeLoaded=',typeof Stripe!=='undefined');}catch(e){}
+
   if(typeof Stripe==='undefined'){
     document.getElementById('bk-err').textContent='Payment form could not load. Please disable ad blockers and refresh.';
+    try{console.warn('[SABDA] Stripe.js not loaded — script may have been blocked or is still loading async');}catch(e){}
     return;
   }
   if(!stripeInstance){
-    stripeInstance=Stripe('pk_live_RoPa2iuvwBbqEISUd2LYTmKF',{stripeAccount:'acct_1RUWnoBf6nsynAht'});
+    try{
+      stripeInstance=Stripe('pk_live_RoPa2iuvwBbqEISUd2LYTmKF',{stripeAccount:'acct_1RUWnoBf6nsynAht'});
+      try{console.log('[SABDA] Stripe initialized with stripeAccount acct_1RUWnoBf6nsynAht');}catch(e){}
+    } catch(e){
+      try{console.error('[SABDA] Stripe init FAILED:',e);}catch(e2){}
+      document.getElementById('bk-err').textContent='Payment system unavailable. Please use the Momence link below.';
+      showFallback();
+      return;
+    }
   }
 
-  // Apple Pay / Google Pay via Payment Request API
+  // Apple Pay / Google Pay via Payment Request API — wrapped in try but logs errors
   try{
     activePayName=name;
     activePayReq=stripeInstance.paymentRequest({
@@ -998,7 +1040,6 @@ function showPayForm(type,price,productId,name,desc){stepChange();
       style:{paymentRequestButton:{type:'default',theme:'light-outline',height:'48px'}}
     });
     activePayReq.canMakePayment().then(function(result){
-      // Diagnostic: log to console so Marvyn can see why Apple Pay is/isn't showing
       try{console.log('[SABDA] canMakePayment result:',result);}catch(e){}
       if(result){
         document.getElementById('bk-pay-request').style.display='block';
@@ -1007,9 +1048,8 @@ function showPayForm(type,price,productId,name,desc){stepChange();
       } else {
         try{console.log('[SABDA] Apple/Google Pay hidden. Most common cause: domain not registered in Stripe Dashboard → Settings → Payment Methods → Apple Pay → Add new domain → sabdastudio.com');}catch(e){}
       }
-    }).catch(function(e){try{console.log('[SABDA] canMakePayment error:',e);}catch(e2){}});
+    }).catch(function(e){try{console.warn('[SABDA] canMakePayment error:',e);}catch(e2){}});
     activePayReq.on('paymentmethod',function(ev){
-      // Validate customer fields first
       var vErr=validateCustomerFields();
       if(vErr){ev.complete('fail');return;}
       isProcessing=true;
@@ -1051,16 +1091,83 @@ function showPayForm(type,price,productId,name,desc){stepChange();
         }
       }).catch(function(){ev.complete('fail');isProcessing=false;});
     });
-  }catch(e){}
+  }catch(e){
+    try{console.warn('[SABDA] Payment Request setup failed (Apple/Google Pay disabled):',e);}catch(e2){}
+  }
 
-  var elements=stripeInstance.elements();
-  cardElement=elements.create('card',{
-    style:{
-      base:{color:'#f0efe9',fontSize:'16px',fontFamily:'DM Sans, sans-serif','::placeholder':{color:'rgba(240,239,233,0.38)'}},
-      invalid:{color:'#F8A6A3'}
+  // ── SPLIT CARD ELEMENTS ──
+  // Using cardNumber/cardExpiry/cardCvc separately fixes iOS Safari iframe
+  // interaction bugs that the unified 'card' element has inside scrollable modals.
+  try{
+    var elements=stripeInstance.elements();
+    var elStyle={
+      base:{
+        color:'#f0efe9',
+        fontSize:'16px',
+        fontFamily:'DM Sans, sans-serif',
+        '::placeholder':{color:'rgba(240,239,233,0.38)'},
+        iconColor:'#f0efe9'
+      },
+      invalid:{color:'#F8A6A3',iconColor:'#F8A6A3'}
+    };
+    cardNumberEl=elements.create('cardNumber',{style:elStyle,placeholder:'1234 1234 1234 1234',showIcon:true});
+    cardExpiryEl=elements.create('cardExpiry',{style:elStyle,placeholder:'MM / YY'});
+    cardCvcEl=elements.create('cardCvc',{style:elStyle,placeholder:'CVC'});
+
+    cardNumberEl.mount('#bk-card-number');
+    cardExpiryEl.mount('#bk-card-expiry');
+    cardCvcEl.mount('#bk-card-cvc');
+
+    function updateCardStatus(){
+      var pb=document.getElementById('bk-pay-btn');
+      var st=document.getElementById('bk-card-status');
+      var allComplete=cardCompleteState.cardNumber && cardCompleteState.cardExpiry && cardCompleteState.cardCvc;
+      if(pb){
+        pb.disabled=!allComplete;
+      }
+      if(st){
+        if(allComplete){
+          st.className='bk-card-status ok';
+          st.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg><span>Card ready</span>';
+        } else {
+          st.className='bk-card-status';
+          st.innerHTML='<span>Enter your card details to continue</span>';
+        }
+      }
     }
-  });
-  cardElement.mount('#bk-card');
+
+    cardNumberEl.on('change',function(ev){
+      cardCompleteState.cardNumber=!!ev.complete;
+      updateCardStatus();
+      if(ev.error){
+        var st=document.getElementById('bk-card-status');
+        if(st){st.className='bk-card-status err';st.innerHTML='<span>'+ev.error.message+'</span>';}
+      }
+      try{console.log('[SABDA] cardNumber change complete=',ev.complete,'error=',ev.error?ev.error.message:null);}catch(e){}
+    });
+    cardExpiryEl.on('change',function(ev){
+      cardCompleteState.cardExpiry=!!ev.complete;
+      updateCardStatus();
+      if(ev.error){
+        var st=document.getElementById('bk-card-status');
+        if(st){st.className='bk-card-status err';st.innerHTML='<span>'+ev.error.message+'</span>';}
+      }
+    });
+    cardCvcEl.on('change',function(ev){
+      cardCompleteState.cardCvc=!!ev.complete;
+      updateCardStatus();
+      if(ev.error){
+        var st=document.getElementById('bk-card-status');
+        if(st){st.className='bk-card-status err';st.innerHTML='<span>'+ev.error.message+'</span>';}
+      }
+    });
+    cardNumberEl.on('ready',function(){try{console.log('[SABDA] cardNumber element mounted and ready');}catch(e){}});
+
+  } catch(e) {
+    try{console.error('[SABDA] Card element creation FAILED:',e);}catch(e2){}
+    document.getElementById('bk-err').textContent='Card form failed to load. Please use the Momence link below.';
+    showFallback();
+  }
 }
 
 function doPayAndBook(type,price,productId){if(isProcessing)return;
@@ -1103,10 +1210,12 @@ function doPayAndBook(type,price,productId){if(isProcessing)return;
     return;
   }
 
-  stripeInstance.createPaymentMethod({type:'card',card:cardElement,billing_details:{
+  try{console.log('[SABDA] doPayAndBook calling createPaymentMethod with split cardNumber element');}catch(e){}
+  stripeInstance.createPaymentMethod({type:'card',card:cardNumberEl,billing_details:{
     name:curUser.firstName+' '+curUser.lastName,
     email:curUser.email
   }}).then(function(result){
+    try{console.log('[SABDA] createPaymentMethod result:',result.error?('ERROR: '+result.error.message):('OK pm='+result.paymentMethod.id));}catch(e){}
     if(result.error){
       // Stripe client-side validation error (incomplete card, invalid CVC, etc.)
       // Show inline error only — no Momence fallback bailout for typos
