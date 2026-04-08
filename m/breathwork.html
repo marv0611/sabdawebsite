@@ -59,6 +59,30 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
 
 .fi{opacity:0;transform:translateY(16px);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1)}
 .fi.vis{opacity:1;transform:none}
+
+.cls-intro{padding:14px 24px;font-size:.88rem;color:var(--w80);line-height:1.65}
+.cls-intro a{color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)}
+.faq-sec{padding:36px 24px 24px;border-top:1px solid var(--w06);margin-top:12px}
+.faq-h{font-family:'PT Serif',serif;font-size:1.4rem;font-weight:700;line-height:1.15;margin-bottom:18px}
+.faq-h em{font-style:italic;color:var(--salmon)}
+.faq-it{border-bottom:1px solid var(--w06)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;width:100%;padding:18px 0;text-align:left;font-size:.86rem;font-weight:600;color:var(--white);line-height:1.4;gap:14px}
+.faq-q svg{width:18px;height:18px;stroke:var(--cyan);fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0;transition:transform .25s}
+.faq-it.open .faq-q svg{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.16,1,.3,1)}
+.faq-it.open .faq-a{max-height:600px}
+.faq-a p{padding:0 0 18px;font-size:.8rem;color:var(--w60);line-height:1.68}
+.faq-a a{color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)}
+.pt-sec{padding:36px 24px 28px;border-top:1px solid var(--w06);margin-top:8px}
+.pt-h{font-family:'PT Serif',serif;font-size:1.4rem;font-weight:700;line-height:1.15;margin-bottom:18px}
+.pt-h em{font-style:italic;color:var(--salmon)}
+.pt-card-m{display:flex;align-items:center;justify-content:space-between;padding:16px;background:var(--w03);border:1px solid var(--w06);border-radius:14px;margin-bottom:10px;gap:14px}
+.pt-card-l{flex:1;min-width:0}
+.pt-card-lbl{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--w38);font-weight:700;margin-bottom:4px}
+.pt-card-note{font-size:.72rem;color:var(--w60);line-height:1.45}
+.pt-card-price{font-family:'PT Serif',serif;font-size:1.4rem;font-weight:700;color:var(--white);white-space:nowrap}
+.pt-more{font-size:.78rem;color:var(--cyan);font-weight:600;border-bottom:1px solid rgba(2,243,197,.3);padding-bottom:2px}
+
 .ct-book{display:inline-flex;padding:8px 18px;background:rgba(2,243,197,.1);border:1px solid rgba(2,243,197,.2);border-radius:100px;font-size:.6rem;font-weight:700;color:var(--cyan);letter-spacing:.04em;margin-top:10px;margin-right:8px}
 </style>
 </head>
@@ -69,20 +93,17 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
   <a href="schedule.html" class="hdr-pill touch">Book a Class</a>
 </header>
 
-<img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_015.jpg" alt="Breathwork at SABDA" class="hero-img" loading="lazy">
-<div class="pg fi">
-  <div class="pg-t">Breathwork at <em>SABDA</em></div>
-  <div class="pg-s">Breathwork at SABDA takes place inside a 360° projection room with spatial audio. Your breath becomes the portal. All levels.</div>
-</div>
+<img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/breathwork_class.jpg" alt="Breathwork at SABDA" class="hero-img" loading="lazy">
+<div class="pg fi"><div class="pg-t">Breathwork at <em>SABDA</em></div><div class="pg-s">Alchemy Breath, Reset & Calm. Guided journeys inside the 360° immersive room with Dolby Atmos.</div></div>
 <div class="divider"></div>
-<div class="sec" style="padding-bottom:8px"><span class="sl">Class Types</span></div>
-<div class="ct fi"><div class="ct-num">1</div><div class="ct-body"><div class="ct-name">Alchemy Breathwork</div><div class="ct-desc">Circular breathing, music, and somatic release. A guided journey.</div><a href="schedule.html" class="ct-book touch" onclick="event.stopPropagation()">Book</a><div class="ct-tag">60 min · All levels</div></div></div>
-<div class="ct fi"><div class="ct-num">2</div><div class="ct-body"><div class="ct-name">Reset & Calm Breathwork</div><div class="ct-desc">Regulate the nervous system. Step out of autopilot.</div><a href="schedule.html" class="ct-book touch" onclick="event.stopPropagation()">Book</a><div class="ct-tag">45 min · All levels</div></div></div>
-
-<div class="ct fi"><div class="ct-num">3</div><div class="ct-body"><div class="ct-name">Transformational Breathwork</div><div class="ct-desc">Conscious connected breathing to access altered states. Release stuck patterns, traumas, and limiting beliefs.</div><a href="schedule.html" class="ct-book touch" onclick="event.stopPropagation()">Book</a><div class="ct-tag">75 min · All levels</div></div></div>
-<div class="cta-strip fi">
-  <a href="schedule.html" class="cta-btn touch">Book a Class <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-</div>
+<div class="sec"><span class="sl">Immersive Breathwork</span></div>
+<p class="cls-intro fi">Breathwork at SABDA takes place inside a 360° projection room with spatial audio in Barcelona's Eixample district. Guided breathing techniques in an environment where the visuals and sound respond to the practice. All levels. No experience needed. Mats and blankets provided.</p>
+<div class="ct fi"><div class="ct-num">1</div><div class="ct-body"><div class="ct-name">Alchemy Breathwork</div><div class="ct-desc">A guided journey where your breath becomes the portal. Through circular breathing, music and somatic release, you drop beneath the thinking mind and into altered states of clarity, vision and emotional release. No substances, just the power of your own breath. 60 min. English and Spanish.</div></div></div>
+<div class="ct fi"><div class="ct-num">2</div><div class="ct-body"><div class="ct-name">Reset & Calm Breathwork</div><div class="ct-desc">Using a conscious and connected breathing technique to regulate the nervous system, step out of autopilot mode, and access a more conscious and aligned state. When the nervous system is dysregulated, the mind believes it is in danger. This practice helps restore equilibrium. 60 min. English or bilingual.</div></div></div>
+<div class="ct fi"><div class="ct-num">3</div><div class="ct-body"><div class="ct-name">Transformational Breathwork</div><div class="ct-desc">Using a conscious and connected breathing technique, you access an altered state of consciousness. The conscious mind falls asleep and the subconscious becomes the main focus. This allows everything that is stuck, everything that no longer serves you, to be released. Negative patterns, traumas, and limiting beliefs surface and are processed. 75 min. English and Spanish.</div></div></div>
+<div class="pt-sec fi"><span class="sl">Pricing</span><div class="pt-h">Class <em>pricing.</em></div><div class="pt-card-m"><div class="pt-card-l"><div class="pt-card-lbl">Intro 3-Pack</div><div class="pt-card-note">New students<br>Valid for 30 days</div></div><div class="pt-card-price">€50</div></div><div class="pt-card-m"><div class="pt-card-l"><div class="pt-card-lbl">Immerse</div><div class="pt-card-note">Unlimited classes<br>Cancel anytime</div></div><div class="pt-card-price">€130<span style="font-size:.72rem;color:var(--w38);font-weight:400">/mo</span></div></div><div class="pt-card-m"><div class="pt-card-l"><div class="pt-card-lbl">Immerse 3 Month</div><div class="pt-card-note">€110/month<br>Unlimited classes<br>Cancel anytime</div></div><div class="pt-card-price">€330<span style="font-size:.72rem;color:var(--w38);font-weight:400">/3 mo</span></div></div><div style="text-align:center;margin-top:18px"><a href="pricing.html" class="pt-more">See all offers &rarr;</a></div></div>
+<div class="faq-sec fi"><span class="sl">FAQ</span><div class="faq-h">Common <em>questions.</em></div><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">What is breathwork?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Breathwork uses guided breathing techniques to shift your physical and mental state. It can reduce stress, increase energy, and release stored tension. At SABDA, sessions are enhanced by 360° projections and Dolby Atmos spatial audio in Barcelona's Eixample district.</p></div></div><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">Is breathwork safe?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Yes, for most people. If you have cardiovascular conditions, are pregnant, or have a history of seizures, please consult your doctor first. Our teachers guide you through every stage.</p></div></div><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">What does breathwork feel like?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Physical sensations can include tingling, temperature changes, emotional release, and deep relaxation. Many people describe feeling lighter, clearer, and more present afterward.</p></div></div><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">Can I combine breathwork with ice bath?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Yes. Breathwork followed by a cold plunge on our private patio is one of the most popular combinations at SABDA. The breathing prepares your nervous system for the cold. Check the schedule for back-to-back sessions.</p></div></div><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">Do I need experience?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>No. All sessions are guided and open to every level. Our teachers walk you through every breath. Just show up.</p></div></div><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">What if I can't quiet my mind?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>That's exactly what the immersive environment helps with. The projections and spatial audio anchor your senses, which naturally quiets mental chatter. Many people who struggle with traditional meditation find breathwork much easier.</p></div></div></div>
+<div class="cta-strip fi"><a href="schedule.html" class="cta-btn touch">Book a Class</a></div>
 <nav class="tabs">
   <a href="classes.html" class="tab on"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Classes</span></a>
   <a href="schedule.html" class="tab "><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span>Schedule</span></a>
@@ -92,6 +113,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
 </nav>
 
 <script>
+function toggleFaq(btn){var it=btn.parentElement;it.classList.toggle('open');btn.setAttribute('aria-expanded',it.classList.contains('open'))}
 var fis=document.querySelectorAll('.fi');
 var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{threshold:.01});
 fis.forEach(function(el){io.observe(el)});

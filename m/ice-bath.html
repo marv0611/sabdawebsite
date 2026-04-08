@@ -59,6 +59,30 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
 
 .fi{opacity:0;transform:translateY(16px);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1)}
 .fi.vis{opacity:1;transform:none}
+
+.cls-intro{padding:14px 24px;font-size:.88rem;color:var(--w80);line-height:1.65}
+.cls-intro a{color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)}
+.faq-sec{padding:36px 24px 24px;border-top:1px solid var(--w06);margin-top:12px}
+.faq-h{font-family:'PT Serif',serif;font-size:1.4rem;font-weight:700;line-height:1.15;margin-bottom:18px}
+.faq-h em{font-style:italic;color:var(--salmon)}
+.faq-it{border-bottom:1px solid var(--w06)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;width:100%;padding:18px 0;text-align:left;font-size:.86rem;font-weight:600;color:var(--white);line-height:1.4;gap:14px}
+.faq-q svg{width:18px;height:18px;stroke:var(--cyan);fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0;transition:transform .25s}
+.faq-it.open .faq-q svg{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.16,1,.3,1)}
+.faq-it.open .faq-a{max-height:600px}
+.faq-a p{padding:0 0 18px;font-size:.8rem;color:var(--w60);line-height:1.68}
+.faq-a a{color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)}
+.pt-sec{padding:36px 24px 28px;border-top:1px solid var(--w06);margin-top:8px}
+.pt-h{font-family:'PT Serif',serif;font-size:1.4rem;font-weight:700;line-height:1.15;margin-bottom:18px}
+.pt-h em{font-style:italic;color:var(--salmon)}
+.pt-card-m{display:flex;align-items:center;justify-content:space-between;padding:16px;background:var(--w03);border:1px solid var(--w06);border-radius:14px;margin-bottom:10px;gap:14px}
+.pt-card-l{flex:1;min-width:0}
+.pt-card-lbl{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--w38);font-weight:700;margin-bottom:4px}
+.pt-card-note{font-size:.72rem;color:var(--w60);line-height:1.45}
+.pt-card-price{font-family:'PT Serif',serif;font-size:1.4rem;font-weight:700;color:var(--white);white-space:nowrap}
+.pt-more{font-size:.78rem;color:var(--cyan);font-weight:600;border-bottom:1px solid rgba(2,243,197,.3);padding-bottom:2px}
+
 .ct-book{display:inline-flex;padding:8px 18px;background:rgba(2,243,197,.1);border:1px solid rgba(2,243,197,.2);border-radius:100px;font-size:.6rem;font-weight:700;color:var(--cyan);letter-spacing:.04em;margin-top:10px;margin-right:8px}
 </style>
 </head>
@@ -69,19 +93,20 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
   <a href="schedule.html" class="hdr-pill touch">Book a Class</a>
 </header>
 
-<img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/icebath_patio.jpg" alt="Ice Bath at SABDA" class="hero-img" loading="lazy">
-<div class="pg fi">
-  <div class="pg-t">Ice Bath at <em>SABDA</em></div>
-  <div class="pg-s">The ice bath at SABDA is on our private terrace in Eixample. Water between 3°C and 8°C. Stay as long as you like. Towel included.</div>
-</div>
+<div style="text-align:center;padding:16px 24px 0"><span style="display:inline-block;padding:8px 18px;background:rgba(2,243,197,.1);border:1px solid rgba(2,243,197,.25);border-radius:100px;font-size:.74rem;color:var(--cyan);font-weight:700;letter-spacing:.04em">Reopening 1st of May</span></div>
+<div style="text-align:center;padding:16px 24px 0"><span style="display:inline-block;padding:8px 18px;background:rgba(2,243,197,.1);border:1px solid rgba(2,243,197,.25);border-radius:100px;font-size:.74rem;color:var(--cyan);font-weight:700;letter-spacing:.04em">Reopening 1st of May</span></div>
+<img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/immersive_aurora.jpg" alt="Ice Bath at SABDA" class="hero-img" loading="lazy">
+<div class="pg fi"><div class="pg-t">Ice Bath at <em>SABDA</em></div><div class="pg-s">Private terrace ice bath. Water between 3°C and 8°C. Pair with breathwork or sound healing.</div></div>
 <div class="divider"></div>
-<div class="sec" style="padding-bottom:8px"><span class="sl">Class Types</span></div>
-<div class="ct fi"><div class="ct-num">1</div><div class="ct-body"><div class="ct-name">Breathwork + Ice Bath</div><div class="ct-desc">The most popular combo. Full breathwork session then plunge.</div><span class="ct-book" style="opacity:.5;cursor:default;border-color:rgba(248,166,163,.4);color:var(--salmon)">Reopening May 1st</span><div class="ct-tag">Combo · €28</div></div></div>
-<div class="ct fi"><div class="ct-num">2</div><div class="ct-body"><div class="ct-name">Sound Healing + Ice Bath</div><div class="ct-desc">Deep restoration meets deep cold. Sound session then plunge.</div><span class="ct-book" style="opacity:.5;cursor:default;border-color:rgba(248,166,163,.4);color:var(--salmon)">Reopening May 1st</span><div class="ct-tag">Combo · €28</div></div></div>
-
-<div class="cta-strip fi">
-  <span class="cta-btn" style="opacity:.6;cursor:default;color:var(--salmon)">Reopening May 1st</span>
-</div>
+<div class="sec"><span class="sl">Ice Bath</span></div>
+<p class="cls-intro fi">The ice bath at SABDA takes place on our private terrace in Barcelona's Eixample district. Whether you call it an ice bath or cold plunge, the experience here is open use, at your own pace, and surprisingly addictive.</p>
+<p class="cls-intro fi">Plunge into water between 3°C and 8°C, stay as long as you like, and warm up between rounds. Many people pair their ice bath with a <a href="../breathwork/" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">breathwork</a> or <a href="../yoga/" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">yoga</a> class to prepare the body beforehand. Reduced inflammation, improved circulation, enhanced mood, and a nervous system reset that lasts for hours.</p>
+<div class="ct fi"><div class="ct-num">1</div><div class="ct-body"><div class="ct-name">Breathwork + Ice Bath</div><div class="ct-desc">The most popular combination at SABDA. A full <a href="../breathwork/" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">breathwork class</a> inside the 360° immersive room followed by a cold plunge on the terrace. The breathing prepares your body for the cold. The cold locks in the calm.</div></div></div>
+<div class="ct fi"><div class="ct-num">2</div><div class="ct-body"><div class="ct-name">Sound Healing + Ice Bath</div><div class="ct-desc">Deep restoration meets deep cold. Start with a <a href="../sound-healing/" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">sound healing session</a> in Dolby Atmos spatial audio, then step out onto the terrace for the plunge. The contrast between total relaxation and the rush of cold water is something you feel for the rest of the day.</div></div></div>
+<div class="ct fi"><div class="ct-num">3</div><div class="ct-body"><div class="ct-name">What to Bring</div><div class="ct-desc">Swimwear required. Towel included with every session. Bring warm layers for before and after.</div></div></div>
+<div class="pt-sec fi"><span class="sl">Pricing</span><div class="pt-h">Class <em>pricing.</em></div><div class="pt-card-m"><div class="pt-card-l"><div class="pt-card-lbl">Single Session</div><div class="pt-card-note">One ice bath session<br>Towel included</div></div><div class="pt-card-price">€12</div></div><div class="pt-card-m"><div class="pt-card-l"><div class="pt-card-lbl">3 Pack</div><div class="pt-card-note">€10 per session · Towel included<br>Valid for 2 months</div></div><div class="pt-card-price">€30</div></div><div class="pt-card-m"><div class="pt-card-l"><div class="pt-card-lbl">5 Pack</div><div class="pt-card-note">€8 per session · Towel included<br>Valid for 2 months</div></div><div class="pt-card-price">€40</div></div><div class="pt-card-m"><div class="pt-card-l"><div class="pt-card-lbl">Combo</div><div class="pt-card-note">Single class drop-in + Ice Bath<br>Towel included</div></div><div class="pt-card-price">€28</div></div><div class="pt-card-m"><div class="pt-card-l"><div class="pt-card-lbl">Combo</div><div class="pt-card-note">Trial class + Ice Bath<br>Towel included</div></div><div class="pt-card-price">€24</div></div><div style="text-align:center;margin-top:18px"><a href="pricing.html" class="pt-more">See all offers &rarr;</a></div></div>
+<div class="faq-sec fi"><span class="sl">FAQ</span><div class="faq-h">Common <em>questions.</em></div><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">Is cryotherapy / ice bath safe?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Ice bath and cold plunge sessions are safe for most healthy adults. At SABDA, the ice bath on our private patio in Barcelona's Eixample is open use, so you control your own duration and pace. We recommend pairing it with a <a href="breathwork.html" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">breathwork</a> class for maximum benefit. Not recommended if you have cardiovascular conditions, Raynaud's disease, or are pregnant. If you're unsure, consult your doctor first.</p></div></div><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">How cold is the water and how long do I stay in?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Between 3°C and 8°C depending on the session at SABDA in Barcelona. Stay as long as you like, with warm-up periods between rounds. Most people do 2 to 5 minutes per plunge. It's open use, so you go at your own pace. <a href="classes.html" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">Browse the schedule</a>.</p></div></div><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">Is the ice bath guided or open use?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>The ice bath at SABDA is open use. There is no structured programme or guided method. You plunge at your own pace, for as long as you feel comfortable. Staff are on hand if you need anything, but the experience is yours to lead. Many people pair it with a <a href="breathwork.html" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">breathwork</a> or <a href="yoga.html" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">yoga</a> class before or after.</p></div></div><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">Can I combine ice bath with other classes at SABDA?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Yes. Many students combine <a href="yoga.html" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">yoga</a> or <a href="breathwork.html" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">breathwork</a> with an ice bath. Breathwork followed by cold plunge is our most popular combination. Check the schedule for back-to-back sessions at our Eixample studio. <a href="pricing.html" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">Classes from €18. See full offers</a>.</p></div></div><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">What should I bring to an ice bath session?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Swimwear (required for the plunge), warm layers for before and after, and an open mind. Towel included with every session.</p></div></div></div>
+<div class="cta-strip fi"><span class="cta-btn" style="opacity:.7;cursor:default;background:rgba(2,243,197,.12);color:var(--cyan);box-shadow:none;border:1px solid rgba(2,243,197,.3)">Reopening 1st of May</span></div>
 <nav class="tabs">
   <a href="classes.html" class="tab on"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Classes</span></a>
   <a href="schedule.html" class="tab "><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span>Schedule</span></a>
@@ -91,6 +116,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
 </nav>
 
 <script>
+function toggleFaq(btn){var it=btn.parentElement;it.classList.toggle('open');btn.setAttribute('aria-expanded',it.classList.contains('open'))}
 var fis=document.querySelectorAll('.fi');
 var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{threshold:.01});
 fis.forEach(function(el){io.observe(el)});
