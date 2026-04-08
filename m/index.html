@@ -380,22 +380,10 @@ var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if
 fis.forEach(function(el){io.observe(el)});
 setTimeout(function(){fis.forEach(function(el){el.classList.add('vis')})},800);
 
-/* Language switcher — persists selection, toast until translations land */
+/* Language switcher — persists selection; translations coming soon */
 function setLang(code){
   try{localStorage.setItem('sabda_lang',code);}catch(e){}
   document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===code);});
-  if(code!=='en'){
-    var t=document.getElementById('lang-toast');
-    if(!t){
-      t=document.createElement('div');t.id='lang-toast';
-      t.style.cssText='position:fixed;bottom:calc(92px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%) translateY(20px);background:rgba(14,18,53,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(2,243,197,.25);color:var(--white);padding:12px 20px;border-radius:100px;font-size:.74rem;font-weight:500;z-index:2000;opacity:0;transition:opacity .3s,transform .3s;box-shadow:0 8px 32px rgba(0,0,0,.4);white-space:nowrap';
-      document.body.appendChild(t);
-    }
-    t.textContent=code==='es'?'Espa\u00f1ol pronto disponible':'Catal\u00e0 aviat disponible';
-    requestAnimationFrame(function(){t.style.opacity='1';t.style.transform='translateX(-50%) translateY(0)';});
-    clearTimeout(window._lt);
-    window._lt=setTimeout(function(){t.style.opacity='0';t.style.transform='translateX(-50%) translateY(20px)';},2600);
-  }
 }
 try{var saved=localStorage.getItem('sabda_lang')||'en';document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===saved);});}catch(e){}
 </script>
