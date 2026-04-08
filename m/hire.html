@@ -81,11 +81,17 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
 .pc-row .pc-sep{color:var(--w20);font-size:.5rem;padding:0 2px}
 @keyframes pc-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* TECH SPECS GRID */
-.specs{padding:20px 24px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.spec{padding:14px;background:var(--w03);border:1px solid var(--w06);border-radius:12px}
-.spec-n{font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--w38);margin-bottom:4px;font-weight:700}
-.spec-v{font-size:.82rem;font-weight:600;color:var(--white);line-height:1.3}
+/* SPACE GALLERY */
+.sg{padding:20px 0 16px}
+.sg-scroll{display:flex;gap:14px;padding:0 24px 8px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-x:contain;overscroll-behavior-y:auto;touch-action:pan-x pan-y}
+.sg-scroll::-webkit-scrollbar{display:none}
+.sg-card{flex:0 0 82%;scroll-snap-align:start;border-radius:16px;overflow:hidden;background:var(--w03);border:1px solid var(--w06);position:relative;aspect-ratio:4/5}
+.sg-card img{width:100%;height:100%;object-fit:cover;display:block}
+.sg-card-ov{position:absolute;left:0;right:0;bottom:0;padding:16px 18px 18px;background:linear-gradient(to top,rgba(14,18,53,.95),rgba(14,18,53,.7) 40%,transparent);z-index:2}
+.sg-card-num{font-size:.52rem;letter-spacing:.22em;text-transform:uppercase;color:var(--cyan);font-weight:700;margin-bottom:4px}
+.sg-card-t{font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:6px;line-height:1.2}
+.sg-card-t em{font-style:italic;color:var(--salmon)}
+.sg-card-d{font-size:.7rem;color:var(--w80);line-height:1.5}
 
 /* INQUIRY FORM */
 .iq-wrap{padding:32px 24px 24px;border-top:1px solid var(--w06);margin-top:8px}
@@ -114,7 +120,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
 <div class="grain"></div>
 <header class="hdr">
   <a href="index.html" class="hdr-logo-link"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA" style="height:18px;width:auto;opacity:.9;display:block"></a>
-  <a href="schedule.html" class="hdr-pill touch">Book a Class</a>
+  <a href="#iqForm" class="hdr-pill touch">Rent the Space</a>
 </header>
 
 <div class="pg fi">
@@ -194,16 +200,46 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
 <div class="ct fi"><div class="ct-num">3</div><div class="ct-body"><div class="ct-name">Production &amp; Content</div><div class="ct-desc">Music videos, photo shoots, podcast recording, film sets inside a cinema-grade 360&deg; projection room.</div></div></div>
 <div class="ct fi"><div class="ct-num">4</div><div class="ct-body"><div class="ct-name">Private Celebrations</div><div class="ct-desc">Birthdays, proposals, private group experiences, immersive dinners.</div></div></div>
 
-<!-- TECH SPECS -->
+<!-- SPACE GALLERY -->
 <div class="sec fi" style="padding-bottom:4px;text-align:center">
   <span class="sl">The Space</span>
-  <div class="sh">Cinema grade, <em>floor to ceiling</em>.</div>
+  <div class="sh">Four rooms. <em>One venue.</em></div>
 </div>
-<div class="specs fi">
-  <div class="spec"><div class="spec-n">Capacity</div><div class="spec-v">200 standing<br>80 seated</div></div>
-  <div class="spec"><div class="spec-n">Visuals</div><div class="spec-v">360&deg; LCD laser<br>projection</div></div>
-  <div class="spec"><div class="spec-n">Audio</div><div class="spec-v">Dolby Atmos<br>spatial sound</div></div>
-  <div class="spec"><div class="spec-n">Floor Area</div><div class="spec-v">200 m&sup2;<br>fully adaptable</div></div>
+<div class="sg fi">
+  <div class="sg-scroll">
+    <div class="sg-card">
+      <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/immersive_underwater.jpg" alt="SABDA immersive room with 360 degree projections" loading="lazy">
+      <div class="sg-card-ov">
+        <div class="sg-card-num">01 / 04</div>
+        <div class="sg-card-t">The <em>Immersive</em> Room</div>
+        <div class="sg-card-d">86 m&sup2; &middot; 360&deg; projection-mapped walls &middot; 8 laser projectors &middot; Dolby Atmos &middot; 20 to 120 capacity</div>
+      </div>
+    </div>
+    <div class="sg-card">
+      <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/cafe_bar.jpg" alt="SABDA cafe and lounge area" loading="lazy">
+      <div class="sg-card-ov">
+        <div class="sg-card-num">02 / 04</div>
+        <div class="sg-card-t">Caf&eacute; &amp; <em>Lounge</em></div>
+        <div class="sg-card-d">65 m&sup2; modular space &middot; SONOS system &middot; equipped bar &middot; ideal for workshops and reception</div>
+      </div>
+    </div>
+    <div class="sg-card">
+      <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/DSC06911__1_.jpg" alt="SABDA outdoor patio with ice bath" loading="lazy">
+      <div class="sg-card-ov">
+        <div class="sg-card-num">03 / 04</div>
+        <div class="sg-card-t">The <em>Patio</em></div>
+        <div class="sg-card-d">20 m&sup2; outdoor terrace &middot; ice bath &middot; outdoor shower &middot; natural light</div>
+      </div>
+    </div>
+    <div class="sg-card">
+      <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/entrance_door.jpg" alt="SABDA street entrance on Muntaner" loading="lazy">
+      <div class="sg-card-ov">
+        <div class="sg-card-num">04 / 04</div>
+        <div class="sg-card-t">The <em>Entrance</em></div>
+        <div class="sg-card-d">Welcome desk with smart art screen &middot; street-level access on C/Muntaner &middot; heart of Eixample</div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- INQUIRY FORM -->

@@ -164,13 +164,13 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
 
 /* PARTNERS MARQUEE */
 .marquee{padding:14px 0;border-bottom:1px solid var(--w06);overflow:hidden;position:relative}
-.mq-label{font-size:.5rem;letter-spacing:.22em;text-transform:uppercase;color:var(--cyan);text-align:center;font-weight:700;margin-bottom:10px}
+.mq-label{font-size:.5rem;letter-spacing:.22em;text-transform:uppercase;color:var(--white);text-align:center;font-weight:700;margin-bottom:10px}
 .mq-track{overflow:hidden;position:relative}
 .mq-track::before,.mq-track::after{content:'';position:absolute;top:0;bottom:0;width:60px;z-index:2;pointer-events:none}
 .mq-track::before{left:0;background:linear-gradient(to right,var(--navy),transparent)}
 .mq-track::after{right:0;background:linear-gradient(to left,var(--navy),transparent)}
 .mq-inner{display:flex;gap:0;animation:scroll 20s linear infinite;width:max-content}
-.mq-inner span{padding:0 24px;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--w60);font-weight:600;white-space:nowrap}
+.mq-inner span{padding:0 24px;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap}
 @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
 /* STAT BAR */
@@ -233,7 +233,7 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
 <header class="hdr" id="hdr">
   <a href="index.html"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA" class="hdr-logo"></a>
   <div style="display:flex;align-items:center;gap:8px">
-    <a href="schedule.html" class="hdr-pill touch">Book a Class</a>
+    <a href="hire.html" class="hdr-pill touch">Rent the Space</a>
     <button class="hdr-ham" id="moreBtn" style="background:none;border:none;color:var(--w60);padding:8px;cursor:pointer"><svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="1.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
   </div>
 </header>
@@ -244,7 +244,7 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
         <h1>The Future<br>of <em>Wellness</em></h1>
     <p class="hero-sub">360&deg; immersive yoga, pilates, sound healing and breathwork. Dolby Atmos spatial audio.</p>
     <div class="hero-btns">
-      <a href="schedule.html" class="btn-cy touch">Book a Class <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      <a href="schedule.html" class="btn-cy touch">Book a Class</a>
       <a href="pricing.html" class="btn-gl touch">Pricing</a>
     </div>
   </div>
@@ -270,8 +270,8 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
 <div class="marquee fi">
   <div class="mq-label">Trusted by leading brands</div>
   <div class="mq-track"><div class="mq-inner" id="mq">
-    <span>FC Barcelona</span><span>Danone</span><span>Liga Endesa</span><span>Elisava</span><span>Honest Greens</span><span>Aire</span><span>Time Out</span><span>Ametller</span>
-    <span>FC Barcelona</span><span>Danone</span><span>Liga Endesa</span><span>Elisava</span><span>Honest Greens</span><span>Aire</span><span>Time Out</span><span>Ametller</span>
+    <span style="color:#02F3C5">FC Barcelona</span><span style="color:#F8A6A3">Danone</span><span style="color:#02F3C5">Liga Endesa</span><span style="color:#F8A6A3">Elisava</span><span style="color:#02F3C5">Honest Greens</span><span style="color:#F8A6A3">Aire</span><span style="color:#02F3C5">Time Out</span><span style="color:#F8A6A3">Ametller</span>
+    <span style="color:#02F3C5">FC Barcelona</span><span style="color:#F8A6A3">Danone</span><span style="color:#02F3C5">Liga Endesa</span><span style="color:#F8A6A3">Elisava</span><span style="color:#02F3C5">Honest Greens</span><span style="color:#F8A6A3">Aire</span><span style="color:#02F3C5">Time Out</span><span style="color:#F8A6A3">Ametller</span>
   </div></div>
 </div>
 
@@ -323,7 +323,7 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
 <!-- LOCATION -->
 <a href="https://maps.google.com/?q=SABDA+Studio+Barcelona,+Carrer+de+Muntaner+83B" target="_blank" class="loc touch fi">
   <div class="loc-pin"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3" fill="none" stroke="var(--navy)" stroke-width="2"/></svg></div>
-  <div class="loc-i"><div class="loc-a">C/Muntaner 83B, Eixample</div><div class="loc-s">5 min from Hospital Clinic &middot; L5</div></div>
+  <div class="loc-i"><div class="loc-a">C/Muntaner 83B, Eixample</div><div class="loc-s">10 min from Universitat &middot; L1/L2</div></div>
   <div class="loc-go">Directions</div>
 </a>
 
