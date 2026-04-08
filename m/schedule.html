@@ -104,8 +104,10 @@ body.mo-open{overflow:hidden;position:fixed;width:100%;height:100%}
 .bk-primary{width:100%;padding:16px;background:var(--cyan);color:var(--navy);border:none;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;transition:background .25s,transform .2s;-webkit-appearance:none}
 .bk-primary:hover{background:#33f5d1}
 .bk-primary:disabled{opacity:.5;cursor:default}
-.bk-link{display:block;text-align:center;margin-top:14px;font-size:.78rem;color:var(--white60);cursor:pointer}
+.bk-link{display:block;text-align:center;margin-top:14px;font-size:.78rem;color:var(--white60);cursor:pointer;padding:10px 8px}
 .bk-link:hover{color:var(--white)}
+.bk-link-row{display:block;margin-top:18px;padding-top:16px;border-top:1px solid var(--white06)}
+.bk-link-row .bk-link{margin-top:0;padding:12px 8px}
 .bk-or{display:flex;align-items:center;gap:12px;margin:16px 0;color:var(--white38);font-size:.7rem;text-transform:uppercase;letter-spacing:.1em}
 .bk-or::before,.bk-or::after{content:'';flex:1;height:1px;background:var(--white06)}
 .bk-social{width:100%;padding:13px;border:1px solid var(--white12);border-radius:10px;font-size:.82rem;color:var(--white60);display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;transition:border-color .25s;margin-bottom:8px;-webkit-appearance:none}
@@ -258,15 +260,15 @@ function renderSched(){
     const time=fmtTime(e.dateTime);const[h,m]=time.split(':');
     const title=clean(e.title);const lang=getLang(e.title);
     const sp=e.spotsRemaining;const full=sp===0;
-    let sc='av',st=sp+(sp===1?' spot left':' spots left');
+    let sc='',st='';
     if(full){sc='fu';st='Full';}
-    else if(sp<=5){sc='lo';}
+    else if(sp!=null && sp<=5){sc='lo';st=sp+(sp===1?' spot left':' spots left');}
     const fn=(e.teacher||'').split(' ')[0]||'';
     const lnk=(e.link||'').replace(/'/g,"\\'").replace(/"/g,"&quot;");
     const ttl=title.replace(/'/g,"\\'").replace(/"/g,"&quot;");
     const tfn=fn.replace(/'/g,"\\'").replace(/"/g,"&quot;");
 
-    return`<div class="cc" style="animation-delay:${i*.05}s"><div class="ct"><div class="ct-h">${h}:${m}</div><div class="ct-d">${e.duration} min</div></div><div class="ci"><div class="ci-t">${title}${lang?`<span class="ci-lg">${lang}</span>`:''}</div><div class="ci-tc">${fn}</div><div class="ci-sp ${sc}">${st}</div></div><div class="ca">${full?(e.allowWaitlist?`<button class="bb wl touch" onclick="openMo('${lnk}','${ttl}','${time}','${tfn}')">Waitlist</button>`:`<button class="bb fu">Full</button>`):`<button class="bb touch" onclick="openMo('${lnk}','${ttl}','${time}','${tfn}')">Book</button>`}</div></div>`;
+    return`<div class="cc" style="animation-delay:${i*.05}s"><div class="ct"><div class="ct-h">${h}:${m}</div><div class="ct-d">${e.duration} min</div></div><div class="ci"><div class="ci-t">${title}${lang?`<span class="ci-lg">${lang}</span>`:''}</div><div class="ci-tc">${fn}</div>${st?`<div class="ci-sp ${sc}">${st}</div>`:''}</div><div class="ca">${full?(e.allowWaitlist?`<button class="bb wl touch" onclick="openMo('${lnk}','${ttl}','${time}','${tfn}')">Waitlist</button>`:`<button class="bb fu">Full</button>`):`<button class="bb touch" onclick="openMo('${lnk}','${ttl}','${time}','${tfn}')">Book</button>`}</div></div>`;
   }).join('');
 }
 
@@ -349,7 +351,8 @@ document.addEventListener('change',function(e){if(e.target.classList)e.target.cl
 function getSpotsHtml(){
   var sp=curSession?curSession.spots:null;
   if(sp===0) return curSession.isWaitlist?'<div class="bk-spots lo">Waitlist</div>':'<div class="bk-spots lo">Full</div>';
-  if(sp!==null) return '<div class="bk-spots '+(sp<=5?'lo':'av')+'">'+sp+(sp===1?' spot left':' spots left')+'</div>';
+  if(sp!==null && sp<=5) return '<div class="bk-spots lo">'+sp+(sp===1?' spot left':' spots left')+'</div>';
+  return '';
   return '';
 }
 
@@ -654,8 +657,8 @@ function showConfirmStep(membership){stepChange();
     +customerFieldsHTML()
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-confirm-btn" onclick="doBookWithMembership()">Confirm Booking</button>'
-    +'<div class="bk-link" onclick="curUser=null;curSessionToken=null;showLoginStep()">Switch account</div>'
-    +'<div class="bk-link" style="margin-top:8px" onclick="closeMo()">← Back to schedule</div>'
+    +'<div class="bk-link-row"><div class="bk-link" onclick="curUser=null;curSessionToken=null;showLoginStep()">Switch account</div>'
+    +'<div class="bk-link" onclick="closeMo()">← Back to schedule</div></div>'
     +'</div>';
 }
 
@@ -824,7 +827,7 @@ function showNoMembership(){stepChange();
     +'<div class="bk-pkg" onclick="showPayForm(\'single\',22,445630,\'Drop-in\',\'1 class · No commitment\')" style="display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">Drop-in</div><div style="font-size:.75rem;color:var(--white60)">One class, no commitment</div></div>'
     +'<div style="font-family:PT Serif,serif;font-weight:700">€22</div></div>'
-    +'<div class="bk-link" onclick="closeMo()">← Back to schedule</div>'
+    +'<div class="bk-link-row"><div class="bk-link" onclick="closeMo()">← Back to schedule</div></div>'
     +'</div>';
 }
 
@@ -861,7 +864,7 @@ function showPayForm(type,price,productId,name,desc){stepChange();
     +'<div class="bk-card-wrap" id="bk-card"></div>'
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-pay-btn" onclick="doPayAndBook(\''+type+'\','+price+','+productId+')">Pay €'+price+(type==='single'?' & Book':' & Book Class')+'</button>'
-    +'<div class="bk-link" onclick="showNoMembership()">← Change plan</div>'
+    +'<div class="bk-link-row"><div class="bk-link" onclick="showNoMembership()">← Change plan</div></div>'
     +'</div>';
 
   // Initialize Stripe — clean up previous card element

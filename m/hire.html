@@ -59,6 +59,33 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
 
 .fi{opacity:0;transform:translateY(16px);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1)}
 .fi.vis{opacity:1;transform:none}
+
+/* VIDEO GALLERY */
+.vid-gallery{padding:16px 0 8px}
+.vid-scroll{display:flex;gap:14px;padding:0 24px 8px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.vid-scroll::-webkit-scrollbar{display:none}
+.vid-card{flex:0 0 78%;scroll-snap-align:start;border-radius:16px;overflow:hidden;background:var(--w03);border:1px solid var(--w06);position:relative;aspect-ratio:3/4}
+.vid-card video{width:100%;height:100%;object-fit:cover;display:block;background:#000}
+.vid-card-ov{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;background:linear-gradient(to top,rgba(14,18,53,.95),rgba(14,18,53,.6) 60%,transparent);z-index:2}
+.vid-card-t{font-family:'PT Serif',serif;font-size:1rem;font-weight:700;color:var(--white);margin-bottom:2px}
+.vid-card-s{font-size:.64rem;color:var(--w60);letter-spacing:.06em;text-transform:uppercase}
+
+/* PAST CLIENTS MARQUEE */
+.pc-wrap{padding:20px 0 24px;border-top:1px solid var(--w06);border-bottom:1px solid var(--w06);overflow:hidden;position:relative;margin-top:8px}
+.pc-wrap::before,.pc-wrap::after{content:'';position:absolute;top:0;bottom:0;width:40px;z-index:3;pointer-events:none}
+.pc-wrap::before{left:0;background:linear-gradient(to right,var(--navy),transparent)}
+.pc-wrap::after{right:0;background:linear-gradient(to left,var(--navy),transparent)}
+.pc-lab{padding:0 24px 14px;display:block}
+.pc-row{display:flex;align-items:center;width:max-content;animation:pc-scroll 38s linear infinite}
+.pc-row span{padding:0 22px;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--w80);white-space:nowrap}
+.pc-row .pc-sep{color:var(--w20);font-size:.5rem;padding:0 2px}
+@keyframes pc-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* TECH SPECS GRID */
+.specs{padding:20px 24px;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.spec{padding:14px;background:var(--w03);border:1px solid var(--w06);border-radius:12px}
+.spec-n{font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--w38);margin-bottom:4px;font-weight:700}
+.spec-v{font-size:.82rem;font-weight:600;color:var(--white);line-height:1.3}
 </style>
 </head>
 <body>
@@ -72,18 +99,94 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
   <div class="pg-t">Rent the <em>Space</em></div>
   <div class="pg-s">360° projections. Dolby Atmos. Up to 200 standing. The most unique venue in Barcelona.</div>
 </div>
-<div class="divider"></div>
-<div class="ct fi"><div class="ct-name">Corporate Wellness</div><div class="ct-desc">Team yoga, breathwork, or sound healing sessions in an unforgettable setting.</div></div>
-<div class="ct fi"><div class="ct-name">Brand Activations</div><div class="ct-desc">Product launches, immersive showcases, experiential marketing.</div></div>
-<div class="ct fi"><div class="ct-name">Production & Content</div><div class="ct-desc">Music videos, photo shoots, podcast recording, film sets.</div></div>
-<div class="ct fi"><div class="ct-name">Celebrations</div><div class="ct-desc">Birthdays, proposals, private group experiences.</div></div>
-<div class="divider"></div>
-<div class="sec">
-  <span class="sl">Past Clients</span>
-  <p class="sp">FC Barcelona, Danone, Liga Endesa, Elisava, Honest Greens, Aire, Time Out, Ametller.</p>
+
+<!-- VIDEO GALLERY -->
+<div class="vid-gallery fi">
+  <div class="vid-scroll">
+    <div class="vid-card">
+      <video src="https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/fcb_sergi_roberto.mp4" muted loop playsinline autoplay preload="metadata" poster=""></video>
+      <div class="vid-card-ov">
+        <div class="vid-card-t">FC Barcelona</div>
+        <div class="vid-card-s">Brand activation</div>
+      </div>
+    </div>
+    <div class="vid-card">
+      <video src="https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/alpro_hq.mp4" muted loop playsinline autoplay preload="metadata"></video>
+      <div class="vid-card-ov">
+        <div class="vid-card-t">Alpro &middot; Danone</div>
+        <div class="vid-card-s">Product launch</div>
+      </div>
+    </div>
+    <div class="vid-card">
+      <video src="https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/perdon_activation.mp4" muted loop playsinline autoplay preload="metadata"></video>
+      <div class="vid-card-ov">
+        <div class="vid-card-t">PERD&Oacute;N</div>
+        <div class="vid-card-s">Immersive launch</div>
+      </div>
+    </div>
+    <div class="vid-card">
+      <video src="https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/Pantarhei.mp4" muted loop playsinline autoplay preload="metadata"></video>
+      <div class="vid-card-ov">
+        <div class="vid-card-t">Panta Rhei</div>
+        <div class="vid-card-s">Immersive dinner</div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- PAST CLIENTS ROTATING -->
+<div class="pc-wrap fi">
+  <span class="sl pc-lab">Past Clients</span>
+  <div class="pc-row">
+    <span>FC Barcelona</span><span class="pc-sep">&#9670;</span>
+    <span>Danone</span><span class="pc-sep">&#9670;</span>
+    <span>Alpro</span><span class="pc-sep">&#9670;</span>
+    <span>Liga Endesa</span><span class="pc-sep">&#9670;</span>
+    <span>Elisava</span><span class="pc-sep">&#9670;</span>
+    <span>Honest Greens</span><span class="pc-sep">&#9670;</span>
+    <span>Aire</span><span class="pc-sep">&#9670;</span>
+    <span>Time Out</span><span class="pc-sep">&#9670;</span>
+    <span>Ametller</span><span class="pc-sep">&#9670;</span>
+    <span>PERD&Oacute;N</span><span class="pc-sep">&#9670;</span>
+    <!-- duplicate for seamless loop -->
+    <span>FC Barcelona</span><span class="pc-sep">&#9670;</span>
+    <span>Danone</span><span class="pc-sep">&#9670;</span>
+    <span>Alpro</span><span class="pc-sep">&#9670;</span>
+    <span>Liga Endesa</span><span class="pc-sep">&#9670;</span>
+    <span>Elisava</span><span class="pc-sep">&#9670;</span>
+    <span>Honest Greens</span><span class="pc-sep">&#9670;</span>
+    <span>Aire</span><span class="pc-sep">&#9670;</span>
+    <span>Time Out</span><span class="pc-sep">&#9670;</span>
+    <span>Ametller</span><span class="pc-sep">&#9670;</span>
+    <span>PERD&Oacute;N</span><span class="pc-sep">&#9670;</span>
+  </div>
+</div>
+
+<!-- WHAT WE HOST -->
+<div class="sec fi">
+  <span class="sl">What we host</span>
+  <div class="sh">Your next <em>unforgettable</em> moment.</div>
+</div>
+<div class="ct fi"><div class="ct-num">1</div><div class="ct-body"><div class="ct-name">Corporate Wellness</div><div class="ct-desc">Team yoga, breathwork, or sound healing in an unforgettable setting. Offsites with substance.</div></div></div>
+<div class="ct fi"><div class="ct-num">2</div><div class="ct-body"><div class="ct-name">Brand Activations</div><div class="ct-desc">Product launches, immersive showcases, experiential marketing with custom 360&deg; visual environments.</div></div></div>
+<div class="ct fi"><div class="ct-num">3</div><div class="ct-body"><div class="ct-name">Production &amp; Content</div><div class="ct-desc">Music videos, photo shoots, podcast recording, film sets inside a cinema-grade 360&deg; projection room.</div></div></div>
+<div class="ct fi"><div class="ct-num">4</div><div class="ct-body"><div class="ct-name">Private Celebrations</div><div class="ct-desc">Birthdays, proposals, private group experiences, immersive dinners.</div></div></div>
+
+<!-- TECH SPECS -->
+<div class="sec fi" style="padding-bottom:4px">
+  <span class="sl">The Space</span>
+  <div class="sh">Cinema grade, <em>floor to ceiling</em>.</div>
+</div>
+<div class="specs fi">
+  <div class="spec"><div class="spec-n">Capacity</div><div class="spec-v">200 standing<br>80 seated</div></div>
+  <div class="spec"><div class="spec-n">Visuals</div><div class="spec-v">360&deg; LCD laser<br>projection</div></div>
+  <div class="spec"><div class="spec-n">Audio</div><div class="spec-v">Dolby Atmos<br>spatial sound</div></div>
+  <div class="spec"><div class="spec-n">Floor Area</div><div class="spec-v">200 m&sup2;<br>fully adaptable</div></div>
+</div>
+
 <div class="cta-strip fi">
-  <a href="mailto:connect@sabdastudio.com" class="cta-btn touch">Get in Touch</a>
+  <a href="mailto:connect@sabdastudio.com?subject=Rent%20the%20Space%20Inquiry" class="cta-btn touch">Rent the Space <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+  <div style="text-align:center;margin-top:10px;font-size:.7rem;color:var(--w38)">Or email <a href="mailto:connect@sabdastudio.com" style="color:var(--cyan)">connect@sabdastudio.com</a></div>
 </div>
 <nav class="tabs">
   <a href="classes.html" class="tab "><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Classes</span></a>
