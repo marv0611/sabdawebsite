@@ -148,6 +148,10 @@ body.mo-open{overflow:hidden;position:fixed;width:100%;height:100%}
 .bk-pkg-grp:first-child{margin-top:8px}
 /* CONTACT FIELD GROUPS — clear separation between phone / language / city */
 .bk-fld{margin-bottom:20px}
+.bk-card-wrap{width:100%;padding:16px;background:rgba(240,239,233,.04);border:1px solid var(--white12);border-radius:10px;min-height:54px;box-sizing:border-box;transition:border-color .25s}
+.bk-card-wrap.StripeElement--focus{border-color:var(--cyan)}
+.bk-card-wrap.StripeElement--invalid{border-color:var(--salmon)}
+.bk-card-wrap iframe{width:100% !important}
 .bk-fld:last-of-type{margin-bottom:8px}
 .bk-fld .bk-input{margin-bottom:0}
 .bk-fld .bk-label{margin-bottom:8px;margin-top:0}
@@ -994,12 +998,16 @@ function showPayForm(type,price,productId,name,desc){stepChange();
       style:{paymentRequestButton:{type:'default',theme:'light-outline',height:'48px'}}
     });
     activePayReq.canMakePayment().then(function(result){
+      // Diagnostic: log to console so Marvyn can see why Apple Pay is/isn't showing
+      try{console.log('[SABDA] canMakePayment result:',result);}catch(e){}
       if(result){
         document.getElementById('bk-pay-request').style.display='block';
         document.getElementById('bk-pay-divider').style.display='flex';
         prButton.mount('#bk-pay-request');
+      } else {
+        try{console.log('[SABDA] Apple/Google Pay hidden. Most common cause: domain not registered in Stripe Dashboard → Settings → Payment Methods → Apple Pay → Add new domain → sabdastudio.com');}catch(e){}
       }
-    });
+    }).catch(function(e){try{console.log('[SABDA] canMakePayment error:',e);}catch(e2){}});
     activePayReq.on('paymentmethod',function(ev){
       // Validate customer fields first
       var vErr=validateCustomerFields();
@@ -1058,6 +1066,8 @@ function showPayForm(type,price,productId,name,desc){stepChange();
 function doPayAndBook(type,price,productId){if(isProcessing)return;
   var btn=document.getElementById('bk-pay-btn');
   var err=document.getElementById('bk-err');
+  var origLabel=btn.textContent;
+  function resetBtn(){isProcessing=false;btn.textContent=origLabel;btn.disabled=false;}
   var vErr=validateCustomerFields();
   if(vErr){err.textContent=vErr;return;}
   isProcessing=true;btn.textContent='Processing...';btn.disabled=true;err.textContent='';
@@ -1088,8 +1098,8 @@ function doPayAndBook(type,price,productId){if(isProcessing)return;
     }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
     .then(function(r){
       if(r.data.success){showSuccess();}
-      else{err.textContent=r.data.error||'Booking failed.';showFallback();isProcessing=false;btn.textContent='Book Free Class';btn.disabled=false;}
-    }).catch(function(){err.textContent='Connection error.';isProcessing=false;btn.textContent='Book Free Class';btn.disabled=false;showFallback();});
+      else{err.textContent=r.data.error||'Booking failed.';showFallback();resetBtn();}
+    }).catch(function(){err.textContent='Connection error.';resetBtn();showFallback();});
     return;
   }
 
@@ -1098,9 +1108,10 @@ function doPayAndBook(type,price,productId){if(isProcessing)return;
     email:curUser.email
   }}).then(function(result){
     if(result.error){
+      // Stripe client-side validation error (incomplete card, invalid CVC, etc.)
+      // Show inline error only — no Momence fallback bailout for typos
       err.textContent=result.error.message;
-      showFallback();
-      isProcessing=false;btn.textContent='Pay & Book';btn.disabled=false;
+      resetBtn();
       return;
     }
     return fetch(PROXY+'/sabda-api/pay',{
@@ -1130,7 +1141,7 @@ function doPayAndBook(type,price,productId){if(isProcessing)return;
           if(conf.error){
             err.textContent=conf.error.message;
             showFallback();
-            isProcessing=false;btn.textContent='Pay & Book';btn.disabled=false;
+            resetBtn();
           } else {
             showSuccess();
           }
@@ -1138,12 +1149,12 @@ function doPayAndBook(type,price,productId){if(isProcessing)return;
       } else {
         err.textContent=r.data.error||'Payment failed. Please try again.';
         showFallback();
-        isProcessing=false;btn.textContent='Pay & Book';btn.disabled=false;
+        resetBtn();
       }
     });
   }).catch(function(){
     err.textContent='Connection error. Please try again.';
-    isProcessing=false;btn.textContent='Pay & Book';btn.disabled=false;
+    resetBtn();
     showFallback();
   });
 }
