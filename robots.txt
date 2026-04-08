@@ -1,5 +1,14 @@
 User-agent: *
 Allow: /
-Disallow: /welcome/
+
+# Disallow work-in-progress and internal tools
+Disallow: /welcome.html
+Disallow: /test-responsive.html
+Disallow: /checkout-frame.html
+Disallow: /checkout-proxy.html
+Disallow: /programming.html
+Disallow: /SABDA_v15.html
+Disallow: /classes-a.html
+Disallow: /classes-b.html
 
 Sitemap: https://sabdastudio.com/sitemap.xml
