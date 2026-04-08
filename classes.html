@@ -383,7 +383,7 @@ select.bk-input option{background:var(--navy-light);color:var(--white)}
     </div>
   </div>
 <button class="nav-ham" onclick="document.getElementById('mobMenu').classList.add('open')" aria-label="Menu"><span></span><span></span><span></span></button></nav>
-<div class="mob-menu" id="mobMenu"><button class="mob-close" onclick="this.parentElement.classList.remove('open')"><svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12"/></svg></button><a href="classes.html">Classes</a><a href="pricing.html">Pricing</a><a href="hire.html">Rent</a><a href="events.html">Events</a><a href="about.html">About</a><a href="contact/">Contact</a></div>
+<div class="mob-menu" id="mobMenu"><button class="mob-close" type="button" aria-label="Close menu" onclick="this.parentElement.classList.remove('open')"><svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12"/></svg></button><a href="classes.html">Classes</a><a href="pricing.html">Pricing</a><a href="hire.html">Rent</a><a href="events.html">Events</a><a href="about.html">About</a><a href="contact/">Contact</a><div style="width:60px;height:1px;background:rgba(240,239,233,.12);margin:4px 0"></div><a href="legal-notice.html" style="font-size:.9rem;font-weight:500;opacity:.6">Legal Notice</a><a href="privacy-policy.html" style="font-size:.9rem;font-weight:500;opacity:.6">Privacy Policy</a><a href="terms.html" style="font-size:.9rem;font-weight:500;opacity:.6">Terms &amp; Conditions</a></div>
 
 <!-- HERO BANNER — swap src with your rectangular hero image -->
 <div class="hero-banner">
@@ -571,7 +571,7 @@ document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',(
   <div class="mo-box">
     <div class="mo-head">
       <div><div class="mo-t" id="mo-t">Book Class</div><div class="mo-c" id="mo-c"></div></div>
-      <button class="mo-x" onclick="closeMo()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+      <button class="mo-x" type="button" aria-label="Close booking modal" onclick="closeMo()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
     <div class="mo-bd" id="mo-bd"></div>
     <div class="mo-ft"><div class="mo-sec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Secure booking via SABDA</div></div>
@@ -843,9 +843,9 @@ function showLoginStep(){stepChange();
   bd.innerHTML=classBlockHtml()
     +'<div class="bk-login">'
     +'<div class="bk-label">Email</div>'
-    +'<input class="bk-input" id="bk-email" type="email" placeholder="your@email.com" />'
+    +'<input class="bk-input" id="bk-email" type="email" aria-label="Email address" placeholder="your@email.com" />'
     +'<div class="bk-label">Password</div>'
-    +'<input class="bk-input" id="bk-pass" type="password" placeholder="Password" />'
+    +'<input class="bk-input" id="bk-pass" type="password" aria-label="Password" placeholder="Password" />'
     +'<div style="text-align:right;margin:-10px 0 12px"><a href="https://momence.com/forgot-password" target="_blank" style="font-size:.75rem;color:var(--white38);text-decoration:none;border-bottom:1px solid var(--white12)">Forgot password?</a></div>'
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-login-btn" onclick="doLogin()">Log in & Book</button>'
@@ -863,11 +863,11 @@ function showGuestStep(){stepChange();
     +'<div class="bk-login">'
     +packNote
     +'<div class="bk-label">First Name</div>'
-    +'<input class="bk-input" id="bk-fn" type="text" placeholder="First name" />'
+    +'<input class="bk-input" id="bk-fn" type="text" aria-label="First name" placeholder="First name" />'
     +'<div class="bk-label">Last Name</div>'
-    +'<input class="bk-input" id="bk-ln" type="text" placeholder="Last name" />'
+    +'<input class="bk-input" id="bk-ln" type="text" aria-label="Last name" placeholder="Last name" />'
     +'<div class="bk-label">Email</div>'
-    +'<input class="bk-input" id="bk-email" type="email" placeholder="your@email.com" />'
+    +'<input class="bk-input" id="bk-email" type="email" aria-label="Email address" placeholder="your@email.com" />'
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">Continue</button>'
     +'<div class="bk-link" onclick="showLoginStep()">Have an account? Log in</div>'
@@ -926,7 +926,7 @@ function showMfaStep(mfaToken){stepChange();
     +'<div class="bk-login">'
     +'<p style="font-size:.85rem;color:var(--white60);text-align:center;margin-bottom:20px;line-height:1.5">Enter the 6-digit code from your authenticator app</p>'
     +'<div class="bk-label">Verification Code</div>'
-    +'<input class="bk-input" id="bk-mfa" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="000000" style="text-align:center;font-size:1.4rem;letter-spacing:.3em" />'
+    +'<input class="bk-input" id="bk-mfa" aria-label="Verification code" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="000000" style="text-align:center;font-size:1.4rem;letter-spacing:.3em" />'
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-mfa-btn" onclick="doMfaVerify()">Verify & Continue</button>'
     +'<div class="bk-link" onclick="showLoginStep()">\u2190 Back</div>'
@@ -1017,17 +1017,17 @@ window.doGuestCheck=function(){
 function customerFieldsHTML(){
   return '<div class="bk-label" style="margin-top:16px">Phone number / N\u00FAmero de tel\u00E9fono</div>'
     +'<div style="display:flex;gap:8px">'
-    +'<input class="bk-input" id="bk-cc" type="text" value="+34" style="width:68px;flex-shrink:0;text-align:center;font-weight:600" />'
-    +'<input class="bk-input" id="bk-phone" type="tel" placeholder="612 345 678" style="flex:1" />'
+    +'<input class="bk-input" id="bk-cc" type="text" aria-label="Country code" value="+34" style="width:68px;flex-shrink:0;text-align:center;font-weight:600" />'
+    +'<input class="bk-input" id="bk-phone" type="tel" placeholder="612 345 678" style="flex:1"  aria-label="Phone number"/>'
     +'</div>'
     +'<div class="bk-label">Preferred language / Idioma preferido</div>'
-    +'<select class="bk-input" id="bk-lang" style="appearance:auto;cursor:pointer">'
+    +'<select class="bk-input" id="bk-lang" aria-label="Preferred language" style="appearance:auto;cursor:pointer">'
     +'<option value="">Select / Seleccionar</option>'
     +'<option value="English">English</option>'
     +'<option value="Castellano">Castellano</option>'
     +'</select>'
     +'<div class="bk-label">City of residence / Ciudad de residencia</div>'
-    +'<input class="bk-input" id="bk-city" type="text" placeholder="Barcelona" />';
+    +'<input class="bk-input" id="bk-city" type="text" aria-label="City" placeholder="Barcelona" />';
 }
 function getCustomerFields(){
   var cc=(document.getElementById('bk-cc')||{}).value||'+34';
@@ -1253,7 +1253,7 @@ window.showPayForm=function(type,price,productId,name,desc){stepChange();
     +'<div id="bk-promo-wrap" style="margin-bottom:16px">'
     +'<div class="bk-link" id="bk-promo-toggle" onclick="document.getElementById(\'bk-promo-fields\').style.display=\'flex\';this.style.display=\'none\'" style="margin:0;font-size:.8rem;text-align:left;color:var(--cyan)">Apply promo code \u2192</div>'
     +'<div id="bk-promo-fields" style="display:none;gap:8px;align-items:flex-start">'
-    +'<input class="bk-input" id="bk-promo" type="text" placeholder="Code" style="flex:1;margin-bottom:0;text-transform:uppercase" />'
+    +'<input class="bk-input" id="bk-promo" type="text" placeholder="Code" style="flex:1;margin-bottom:0;text-transform:uppercase"  aria-label="Promo code"/>'
     +'<button class="bk-primary" id="bk-promo-btn" onclick="applyPromo(\''+type+'\','+price+','+productId+')" style="width:auto;padding:12px 20px;flex-shrink:0;font-size:.8rem">Apply</button>'
     +'</div>'
     +'<div id="bk-promo-ok" style="display:none;font-size:.78rem;color:var(--cyan);margin-top:6px"></div>'

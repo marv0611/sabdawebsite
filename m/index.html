@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><!-- m/index v2 -->
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="theme-color" content="#0e1235">
@@ -239,7 +239,7 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
   <a href="index.html"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA" class="hdr-logo"></a>
   <div style="display:flex;align-items:center;gap:8px">
     <a href="hire.html" class="hdr-pill touch">Rent the Space</a>
-    <button class="hdr-ham" id="moreBtn" style="background:none;border:none;color:var(--w60);padding:8px;cursor:pointer"><svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="1.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+    <button class="hdr-ham" id="moreBtn" type="button" aria-label="Open menu" style="background:none;border:none;color:var(--w60);padding:8px;cursor:pointer"><svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" fill="none" stroke-width="1.5"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
   </div>
 </header>
 
@@ -362,6 +362,11 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
       <button class="lang-btn" data-lang="es" onclick="setLang('es')">Espa&ntilde;ol</button>
       <button class="lang-btn" data-lang="ca" onclick="setLang('ca')">Catal&agrave;</button>
     </div>
+    <div class="more-group"><div class="more-group-t">Legal</div></div>
+    <a href="../legal-notice.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="more-row-txt">Legal Notice</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="../privacy-policy.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="more-row-txt">Privacy Policy</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="../terms.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><div class="more-row-txt">Terms &amp; Conditions</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+
   </div>
 </div>
 
