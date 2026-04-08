@@ -14,42 +14,82 @@
 html{overflow-x:hidden;-webkit-text-size-adjust:100%}
 body{background:var(--navy);color:var(--white);font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;padding-top:calc(52px + var(--safe-t));padding-bottom:calc(84px + var(--safe-b));overflow-x:hidden;line-height:1.55}
 a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{font-family:inherit;border:none;background:none;cursor:pointer;color:inherit}
+
 .grain{position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:150px}
 .touch{transition:transform .15s cubic-bezier(.2,.8,.4,1),opacity .15s}.touch:active{transform:scale(.97);opacity:.85}
+
 .hdr{position:fixed;top:0;left:0;right:0;z-index:100;height:calc(52px + var(--safe-t));padding-top:var(--safe-t);display:flex;align-items:center;justify-content:space-between;padding-left:20px;padding-right:16px;background:var(--navy95);backdrop-filter:saturate(1.4) blur(24px);-webkit-backdrop-filter:saturate(1.4) blur(24px);border-bottom:1px solid var(--w06)}
 .hdr img{height:18px;width:auto;opacity:.9}
 .hdr-pill{padding:7px 16px;background:var(--cyan);color:var(--navy);border-radius:100px;font-size:.68rem;font-weight:700;letter-spacing:.02em;line-height:1;box-shadow:0 2px 12px rgba(2,243,197,.2)}
-.hdr-back{display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--w60);font-weight:500}
-.hdr-back svg{width:16px;height:16px;stroke:var(--w60);fill:none;stroke-width:2}
-.pg{padding:24px 24px 16px}
-.pg-t{font-family:'PT Serif',serif;font-size:1.5rem;font-weight:700;letter-spacing:-.02em}
-.pg-t em{font-style:italic;color:var(--salmon)}
-.pg-s{font-size:.78rem;color:var(--w60);margin-top:4px;line-height:1.55}
-.sec{padding:24px 24px}
-.sl{font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:var(--cyan);font-weight:700;margin-bottom:8px;display:block}
-.sh{font-family:'PT Serif',serif;font-size:1.3rem;font-weight:700;line-height:1.15;letter-spacing:-.01em;margin-bottom:12px}
-.sh em{font-style:italic;color:var(--salmon)}
-.sp{font-size:.82rem;color:var(--w60);line-height:1.65;margin-bottom:12px}
-.divider{height:1px;background:var(--w06);margin:0 24px}
-.hero-img{width:100%;height:200px;object-fit:cover}
-.cta-strip{padding:20px 24px;border-top:1px solid var(--w06)}
-.cta-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px;background:var(--cyan);color:var(--navy);border-radius:100px;font-size:.84rem;font-weight:700;box-shadow:0 4px 20px rgba(2,243,197,.2)}
-.cta-btn svg{width:14px;height:14px;stroke:var(--navy);stroke-width:2.5;fill:none}
 
-.ct{padding:16px 24px;border-bottom:1px solid var(--w06);display:flex;gap:14px;align-items:flex-start}
-.ct-num{width:28px;height:28px;border-radius:50%;background:rgba(2,243,197,.06);border:1px solid rgba(2,243,197,.12);display:flex;align-items:center;justify-content:center;font-size:.56rem;font-weight:700;color:var(--cyan);flex-shrink:0;margin-top:2px}
-.ct-body{flex:1}
-.ct-name{font-family:'PT Serif',serif;font-size:.92rem;font-weight:700;margin-bottom:3px}
-.ct-desc{font-size:.75rem;color:var(--w60);line-height:1.55}
-.ct-tag{display:inline-block;margin-top:6px;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--w38);background:var(--w03);padding:3px 8px;border-radius:100px;border:1px solid var(--w06)}
+/* OPENING HERO */
+.opener{padding:56px 24px 48px;text-align:center}
+.opener h1{font-family:'PT Serif',serif;font-size:2rem;font-weight:700;line-height:1.12;letter-spacing:-.02em}
+.opener h1 .cc{color:var(--cyan)}
+.opener h1 .cs{color:var(--salmon)}
+.opener h1 .cd{font-style:italic}
 
-.ct-name{font-family:'PT Serif',serif;font-size:1rem;font-weight:700;margin-bottom:4px}
-.ct-desc{font-size:.78rem;color:var(--w60);line-height:1.6}
-.ct-tag{display:inline-block;margin-top:8px;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--w38)}
+/* WHAT WE BUILT */
+.lead-sec{padding:32px 24px 48px;text-align:center;border-top:1px solid var(--w06)}
+.lead-p{font-family:'PT Serif',serif;font-size:1.2rem;font-weight:400;line-height:1.4;letter-spacing:-.01em;color:var(--white);margin-bottom:20px}
+.lead-p:last-child{margin-bottom:0}
+.lead-p .cc{color:var(--cyan)}
+.lead-p .cs{color:var(--salmon)}
 
+/* EDITORIAL IDEA */
+.ed{padding:40px 24px 40px;border-top:1px solid var(--w06)}
+.t-label{display:block;font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:var(--cyan);font-weight:700;margin-bottom:14px}
+.ed h2{font-family:'PT Serif',serif;font-size:1.55rem;font-weight:700;line-height:1.15;letter-spacing:-.01em;margin-bottom:22px}
+.ed h2 em{font-style:italic;color:var(--salmon)}
+.ed p{font-size:.95rem;color:var(--w80);line-height:1.68;margin-bottom:14px}
+.ed p:last-child{margin-bottom:0}
+.ed p .cc{color:var(--cyan)}
+.ed p .cs{color:var(--salmon)}
+.ed p .cd{color:var(--salmon);font-style:italic}
+
+/* BELIEFS */
+.bel{padding:56px 24px;border-top:1px solid var(--w06);text-align:center;position:relative;overflow:hidden}
+.bel-glow{position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(2,243,197,.05),transparent 60%);pointer-events:none}
+.bel-c{position:relative;z-index:1}
+.bel h2{font-family:'PT Serif',serif;font-size:1.75rem;font-weight:700;line-height:1.1;letter-spacing:-.01em;margin:12px 0 18px}
+.bel h2 em{font-style:italic;color:var(--salmon)}
+.bel-p{font-size:.9rem;color:var(--w60);line-height:1.7;max-width:320px;margin:0 auto}
+
+/* PILLARS */
+.pils{padding:48px 24px;border-top:1px solid var(--w06);display:flex;align-items:center;justify-content:center;gap:20px}
+.pil{text-align:center;flex:1;min-width:0}
+.pil-w{font-family:'PT Serif',serif;font-size:1.2rem;font-weight:700;line-height:1}
+.pw-a{color:var(--cyan)}
+.pw-t{color:var(--white)}
+.pw-w{color:var(--salmon)}
+.pil-ln{width:24px;height:1px;background:var(--w20);margin:10px auto 8px}
+.pil-sb{font-size:.56rem;letter-spacing:.16em;text-transform:uppercase;color:var(--w38);font-weight:600}
+.pd{color:var(--w20);font-size:1rem}
+
+/* CLOSE */
+.cl{padding:56px 24px 48px;text-align:center;border-top:1px solid var(--w06)}
+.cl h2{font-family:'PT Serif',serif;font-size:1.8rem;font-weight:700;line-height:1.15;letter-spacing:-.01em;margin-bottom:14px}
+.cl h2 em{font-style:italic;color:var(--salmon)}
+.cl-sub{font-size:.88rem;color:var(--w60);margin-bottom:28px;line-height:1.6}
+.cl-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 32px;background:var(--cyan);color:var(--navy);border-radius:100px;font-size:.82rem;font-weight:700;letter-spacing:.02em;box-shadow:0 4px 24px rgba(2,243,197,.22)}
+.cl-btn svg{width:14px;height:14px;stroke:var(--navy);stroke-width:2.5;fill:none}
+
+/* REVIEW */
+.rn{padding:48px 24px;border-top:1px solid var(--w06);text-align:center;background:rgba(2,243,197,.02)}
+.rn-stars{display:flex;justify-content:center;gap:4px;margin-bottom:10px}
+.rn-stars svg{width:16px;height:16px;fill:var(--cyan)}
+.rn-score{font-family:'PT Serif',serif;font-size:1.4rem;font-weight:700;display:inline-block;margin-right:8px}
+.rn-count{font-size:.72rem;color:var(--w60)}
+.rn-h{font-family:'PT Serif',serif;font-size:1.55rem;font-weight:700;line-height:1.2;letter-spacing:-.01em;margin:18px 0 8px}
+.rn-h em{font-style:italic;color:var(--salmon)}
+.rn-sb{font-size:.8rem;color:var(--w60);line-height:1.6;margin-bottom:22px}
+.rn-sb span{color:var(--cyan);font-weight:600}
+.rn-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 24px;background:transparent;color:var(--white);border:1px solid var(--w20);border-radius:100px;font-size:.78rem;font-weight:600}
+.rn-btn svg{width:14px;height:14px;fill:currentColor}
+
+/* TABS */
 .tabs{position:fixed;bottom:0;left:0;right:0;z-index:100;display:flex;align-items:flex-end;justify-content:space-around;height:calc(72px + var(--safe-b));padding-bottom:var(--safe-b);background:var(--navy95);backdrop-filter:saturate(1.4) blur(24px);-webkit-backdrop-filter:saturate(1.4) blur(24px);border-top:1px solid var(--w06)}
 .tab{display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 0 6px;flex:1;color:var(--w38);transition:color .2s}
-.tab.on{color:var(--cyan)}
 .tab svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
 .tab span{font-size:.5rem;letter-spacing:.04em;font-weight:600}
 .tab-bk{position:relative}
@@ -57,8 +97,11 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
 .tab-bk-o svg{stroke:var(--navy);width:22px;height:22px;stroke-width:2.5}
 .tab-bk span{position:relative;top:-6px}
 
-.fi{opacity:0;transform:translateY(16px);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1)}
+.fi{opacity:0;transform:translateY(16px);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)}
 .fi.vis{opacity:1;transform:none}
+.fi.d1{transition-delay:.08s}
+.fi.d2{transition-delay:.16s}
+.fi.d3{transition-delay:.24s}
 </style>
 </head>
 <body>
@@ -68,42 +111,93 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
   <a href="schedule.html" class="hdr-pill touch">Book a Class</a>
 </header>
 
-<img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Copy_of_Sabda2-167__1_.jpg" alt="SABDA immersive room" style="width:100%;height:200px;object-fit:cover;background:rgba(2,243,197,.03)" loading="lazy">
-<div class="pg fi">
-  <div class="pg-t">About <em>SABDA</em></div>
-  <div class="pg-s">Founded by Marvyn and Juliette in Barcelona. Where art, technology, and wellness meet.</div>
-</div>
-<div class="sec fi">
-  <span class="sl">The Conviction</span>
-  <p class="sp">Wellness does not need to be woo-woo. Technology does not need to be cold. We built a space that proves both.</p>
-</div>
-<div class="divider"></div>
-<div class="sec fi">
-  <span class="sl">The Mission</span>
-  <div class="sh">Art. Tech. <em>Wellness.</em></div>
-  <p class="sp">Movement is art. Technology should heal, not distract. The best experiences are the ones you return to, week after week.</p>
-</div>
-<div class="divider"></div>
-<img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_009.jpg" alt="SABDA room" loading="lazy" style="width:100%;height:200px;object-fit:cover" class="fi">
-<div class="sec fi">
-  <span class="sl">The Space</span>
-  <p class="sp">360 degree LCD laser projections on every surface. Invisible speakers with Dolby Atmos spatial audio. Custom visuals per class. 100-person capacity.</p>
-  <p class="sp" style="margin-top:8px">C/Muntaner 83B, Eixample. 5 min from Hospital Clinic (L5).</p>
-</div>
-<div class="divider"></div>
-<div class="sec fi">
-  <span class="sl">As Featured In</span>
-  <p class="sp" style="color:var(--w38);font-size:.72rem">El Periodico &middot; Conde Nast Traveler &middot; CNN</p>
-</div>
-<div class="cta-strip fi">
-  <a href="schedule.html" class="cta-btn touch">Book Your First Class <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-</div>
+<section class="opener">
+  <h1 class="fi">What happens when <span class="cc">art</span>, <span class="cs">technology</span>, and wellness <span class="cd">converge?</span></h1>
+</section>
+
+<section class="lead-sec">
+  <p class="lead-p fi">We built a space where <span class="cc">sound and visuals merge</span> to bring a new dimension to the practices people already love.</p>
+  <p class="lead-p fi d1">Where a yoga class becomes something you don&rsquo;t just attend but <span class="cs">inhabit.</span></p>
+  <p class="lead-p fi d2">Where breathwork happens inside a living artwork.</p>
+  <p class="lead-p fi d3">Where live music doesn&rsquo;t just play. It <span class="cc">surrounds</span> you.</p>
+</section>
+
+<section class="ed">
+  <span class="t-label fi">The idea</span>
+  <h2 class="fi">Consciousness that rises from technology, not bends <em>to it.</em></h2>
+  <p class="fi">Most technology asks for your attention.</p>
+  <p class="fi">SABDA gives it back.</p>
+  <p class="fi"><span class="cc">360&deg;</span> of projections and <span class="cs">Dolby Atmos</span> spatial audio create an environment where screens disappear and the experience takes over.</p>
+  <p class="fi">Pilates where geometry responds to your movement.</p>
+  <p class="fi">Sound healing where frequencies travel through the room around you.</p>
+  <p class="fi">An art exhibition you stand inside rather than look at.</p>
+  <p class="fi">Technology as a tool for <span class="cc">awareness</span>, not <span class="cd">distraction.</span></p>
+</section>
+
+<section class="bel">
+  <div class="bel-glow"></div>
+  <div class="bel-c">
+    <span class="t-label fi">We believe</span>
+    <h2 class="fi">Creative expression <em>heals.</em></h2>
+    <p class="bel-p fi">Art and music are medicine. Not a metaphor.<br><br>Every class is designed to get you out of your head and into something that actually helps.</p>
+  </div>
+</section>
+
+<section class="bel">
+  <div class="bel-glow" style="background:radial-gradient(circle at 50% 0%,rgba(248,166,163,.05),transparent 60%)"></div>
+  <div class="bel-c">
+    <span class="t-label fi">We believe</span>
+    <h2 class="fi">Movement is <em>art.</em></h2>
+    <p class="bel-p fi">The room responds to the people inside it.<br><br>360&deg; of light, shifting with the energy of the class. No two sessions look the same.</p>
+  </div>
+</section>
+
+<section class="bel">
+  <div class="bel-glow"></div>
+  <div class="bel-c">
+    <span class="t-label fi">We believe</span>
+    <h2 class="fi">Technology <em>connects.</em></h2>
+    <p class="bel-p fi">When you use it with intention, it brings people closer instead of pulling them apart.<br><br>That is the only kind we are interested in.</p>
+  </div>
+</section>
+
+<section class="pils fi">
+  <div class="pil"><div class="pil-w pw-a">Art</div><div class="pil-ln"></div><div class="pil-sb">Expression</div></div>
+  <div class="pd">&middot;</div>
+  <div class="pil"><div class="pil-w pw-t">Tech</div><div class="pil-ln"></div><div class="pil-sb">Intention</div></div>
+  <div class="pd">&middot;</div>
+  <div class="pil"><div class="pil-w pw-w">Wellness</div><div class="pil-ln"></div><div class="pil-sb">Practice</div></div>
+</section>
+
+<section class="cl">
+  <h2 class="fi">Honestly, you just have to <em>be there.</em></h2>
+  <p class="cl-sub fi">Come try a class. See what we mean.</p>
+  <a href="schedule.html" class="cl-btn touch fi">Book Your First Class <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+</section>
+
+<section class="rn">
+  <div class="rn-stars fi">
+    <svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg>
+    <svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg>
+    <svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg>
+    <svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg>
+    <svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg>
+  </div>
+  <div class="fi"><span class="rn-score">4.8</span><span class="rn-count">350+ reviews</span></div>
+  <h2 class="rn-h fi">Spread the <em>Love.</em></h2>
+  <p class="rn-sb fi">Share a quick review and <span>a ginger shot is on us</span> at your next visit.</p>
+  <a href="https://g.page/r/CZeZ4gZgrjR3EAE/review" target="_blank" class="rn-btn touch fi">
+    <svg viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+    Leave a Google Review
+  </a>
+</section>
+
 <nav class="tabs">
-  <a href="classes.html" class="tab "><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Classes</span></a>
-  <a href="schedule.html" class="tab "><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span>Schedule</span></a>
+  <a href="classes.html" class="tab"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Classes</span></a>
+  <a href="schedule.html" class="tab"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span>Schedule</span></a>
   <a href="schedule.html" class="tab tab-bk"><div class="tab-bk-o"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><span>Book</span></a>
-  <a href="pricing.html" class="tab "><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Pricing</span></a>
-  <a href="index.html" class="tab "><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></a>
+  <a href="pricing.html" class="tab"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Pricing</span></a>
+  <a href="index.html" class="tab"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><span>Home</span></a>
 </nav>
 
 <script>

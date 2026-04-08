@@ -49,26 +49,27 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
 .opt-sub{font-size:.68rem;color:var(--w38);margin-top:2px}
 .opt-price{font-family:'PT Serif',serif;font-size:1.2rem;font-weight:700;margin-right:14px;white-space:nowrap}
 .opt-btn{padding:9px 16px;border:1px solid var(--w20);border-radius:100px;font-size:.62rem;font-weight:700;color:var(--w80);letter-spacing:.03em;white-space:nowrap}
+.opt-btn.hi{background:var(--cyan);color:var(--navy);border-color:var(--cyan);box-shadow:0 2px 12px rgba(2,243,197,.18)}
 
 /* MEMBERSHIP CARDS */
-.mcards{display:flex;gap:12px;padding:4px 24px 24px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;scroll-padding-left:24px}
+.mcards{display:flex;gap:12px;padding:4px 24px 24px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;overscroll-behavior-y:auto;touch-action:pan-x pan-y;-webkit-overflow-scrolling:touch;scrollbar-width:none;scroll-padding-left:24px}
 .mcards::-webkit-scrollbar{display:none}
-.mc{flex:0 0 75%;scroll-snap-align:start;padding:24px 20px;border:1px solid var(--w06);border-radius:var(--r);background:var(--w03);position:relative}
+.mc{flex:0 0 75%;scroll-snap-align:start;padding:24px 20px;border:1px solid var(--w06);border-radius:var(--r);background:var(--w03);position:relative;display:flex;flex-direction:column}
 .mc.pop{border-color:rgba(2,243,197,.2);background:linear-gradient(140deg,rgba(2,243,197,.03) 0%,transparent 50%)}
 .mc-badge{display:inline-block;font-size:.46rem;letter-spacing:.16em;text-transform:uppercase;color:var(--navy);background:var(--cyan);padding:3px 8px;border-radius:100px;font-weight:700;margin-bottom:12px}
 .mc-name{font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--w38);margin-bottom:6px}
 .mc-price{font-family:'PT Serif',serif;font-size:1.8rem;font-weight:700}
 .mc-price s{font-size:.72rem;color:var(--w38);font-weight:400;text-decoration:none;font-family:'DM Sans',sans-serif}
-.mc-sub{font-size:.7rem;color:var(--w38);margin-top:4px;margin-bottom:16px;line-height:1.4}
-.mc-btn{display:block;text-align:center;width:100%;padding:12px;border:1px solid var(--w20);border-radius:100px;font-size:.72rem;font-weight:700;color:var(--w80)}
+.mc-sub{font-size:.7rem;color:var(--w38);margin-top:4px;margin-bottom:16px;line-height:1.4;min-height:2.5em;display:flex;align-items:flex-start}
+.mc-btn{display:block;text-align:center;width:100%;padding:12px;border:1px solid var(--w20);border-radius:100px;font-size:.72rem;font-weight:700;color:var(--w80);margin-top:auto}
 .mc.pop .mc-btn{background:var(--cyan);color:var(--navy);border-color:var(--cyan)}
-.mc-list{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+.mc-list{display:flex;flex-direction:column;gap:8px;margin-bottom:18px;flex:1;min-height:84px}
 .mc-list li{font-size:.68rem;color:var(--w38);padding-left:14px;position:relative;list-style:none}
 .mc-list li::before{content:'';position:absolute;left:0;top:5px;width:4px;height:4px;border-radius:50%;background:var(--cyan);opacity:.4}
 
 /* ICE */
 .ice{padding:16px 24px 24px;border-top:1px solid var(--w06)}
-.ice-t{font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--salmon);font-weight:600;margin-bottom:12px}
+.ice-t{font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);font-weight:600;margin-bottom:12px}
 .ice-row{display:flex;gap:8px}
 .ice-c{flex:1;padding:16px 14px;border:1px solid var(--w06);border-radius:var(--r);text-align:center;background:var(--w03)}
 .ice-p{font-family:'PT Serif',serif;font-size:1.1rem;font-weight:700;margin-bottom:2px}
@@ -125,19 +126,19 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
 <a href="schedule.html?buy=443934" class="opt touch">
   <div class="opt-info"><div class="opt-name">Trial Class</div><div class="opt-sub">Your first visit</div></div>
   <div class="opt-price">€18</div>
-  <div class="opt-btn">Book</div>
+  <div class="opt-btn hi">Book</div>
 </a>
 <!-- DROP IN -->
 <a href="schedule.html?buy=445630" class="opt touch">
   <div class="opt-info"><div class="opt-name">Drop-in</div><div class="opt-sub">Single class, any time</div></div>
   <div class="opt-price">€22</div>
-  <div class="opt-btn">Book</div>
+  <div class="opt-btn hi">Book</div>
 </a>
 <!-- BCN RESIDENT WEEK -->
 <a href="schedule.html?buy=443641" class="opt touch">
   <div class="opt-info"><div class="opt-name">BCN Resident Week</div><div class="opt-sub">Unlimited 7 days · Catalonia residents</div></div>
   <div class="opt-price">€50</div>
-  <div class="opt-btn">Book</div>
+  <div class="opt-btn hi">Book</div>
 </a>
 
 <!-- PACKS -->
@@ -159,31 +160,31 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
   <div class="mc">
     <div class="mc-name">Flex</div>
     <div class="mc-price">€99<s>/mo</s></div>
-    <div class="mc-sub">Unlimited off-peak classes<br></div>
+    <div class="mc-sub">4 classes per month<br>Off-peak only</div>
+    <ul class="mc-list"><li>4 classes per month</li><li>Off-peak times</li><li>2 ice baths / month</li></ul>
     <a href="schedule.html?buy=706876" class="mc-btn touch">Get Flex</a>
-    <ul class="mc-list"><li>Unlimited off-peak classes</li><li>2 ice baths / month</li></ul>
   </div>
   <div class="mc">
     <div class="mc-name">Ritual</div>
     <div class="mc-price">€109<s>/mo</s></div>
     <div class="mc-sub">8 classes per month<br>Any time, any class</div>
-    <a href="schedule.html?buy=709976" class="mc-btn touch">Get Ritual</a>
     <ul class="mc-list"><li>8 classes, any time</li><li>2 ice baths / month</li><li>1 guest pass / month</li></ul>
+    <a href="schedule.html?buy=709976" class="mc-btn touch">Get Ritual</a>
   </div>
   <div class="mc pop">
     <div class="mc-badge">Most Popular</div>
     <div class="mc-name">Immerse</div>
     <div class="mc-price">€130<s>/mo</s></div>
     <div class="mc-sub">Unlimited classes<br>Cancel anytime</div>
-    <a href="schedule.html?buy=431216" class="mc-btn touch">Get Immerse</a>
     <ul class="mc-list"><li>Unlimited classes, any time</li><li>4 ice baths / month</li><li>2 guest passes / month</li></ul>
+    <a href="schedule.html?buy=431216" class="mc-btn touch">Get Immerse</a>
   </div>
   <div class="mc">
     <div class="mc-name">Immerse 3-Month</div>
     <div class="mc-price">€330<s>/3 mo</s></div>
     <div class="mc-sub">€110/mo · Best rate<br>Unlimited classes</div>
-    <a href="schedule.html?buy=445600" class="mc-btn touch">Get 3-Month</a>
     <ul class="mc-list"><li>Unlimited classes, any time</li><li>4 ice baths / month</li><li>2 guest passes / month</li></ul>
+    <a href="schedule.html?buy=445600" class="mc-btn touch">Get 3-Month</a>
   </div>
 </div>
 

@@ -62,7 +62,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
 
 /* VIDEO GALLERY */
 .vid-gallery{padding:16px 0 8px}
-.vid-scroll{display:flex;gap:14px;padding:0 24px 8px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.vid-scroll{display:flex;gap:14px;padding:0 24px 8px;overflow-x:auto;scroll-snap-type:x mandatory;overscroll-behavior-x:contain;overscroll-behavior-y:auto;touch-action:pan-x pan-y;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .vid-scroll::-webkit-scrollbar{display:none}
 .vid-card{flex:0 0 78%;scroll-snap-align:start;border-radius:16px;overflow:hidden;background:var(--w03);border:1px solid var(--w06);position:relative;aspect-ratio:3/4}
 .vid-card video{width:100%;height:100%;object-fit:cover;display:block;background:#000}
@@ -75,7 +75,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
 .pc-wrap::before,.pc-wrap::after{content:'';position:absolute;top:0;bottom:0;width:40px;z-index:3;pointer-events:none}
 .pc-wrap::before{left:0;background:linear-gradient(to right,var(--navy),transparent)}
 .pc-wrap::after{right:0;background:linear-gradient(to left,var(--navy),transparent)}
-.pc-lab{padding:0 24px 14px;display:block}
+.pc-lab{padding:0 24px 14px;display:block;text-align:center}
 .pc-row{display:flex;align-items:center;width:max-content;animation:pc-scroll 38s linear infinite}
 .pc-row span{padding:0 22px;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--w80);white-space:nowrap}
 .pc-row .pc-sep{color:var(--w20);font-size:.5rem;padding:0 2px}
@@ -159,9 +159,9 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
     <span>Alpro</span><span class="pc-sep">&#9670;</span>
     <span>Liga Endesa</span><span class="pc-sep">&#9670;</span>
     <span>Elisava</span><span class="pc-sep">&#9670;</span>
-    <span>Honest Greens</span><span class="pc-sep">&#9670;</span>
-    <span>Aire</span><span class="pc-sep">&#9670;</span>
-    <span>Time Out</span><span class="pc-sep">&#9670;</span>
+    <span style="color:var(--salmon)">Honest Greens</span><span class="pc-sep">&#9670;</span>
+    <span style="color:var(--salmon)">Aire</span><span class="pc-sep">&#9670;</span>
+    <span style="color:var(--salmon)">Time Out</span><span class="pc-sep">&#9670;</span>
     <span>Ametller</span><span class="pc-sep">&#9670;</span>
     <span>PERD&Oacute;N</span><span class="pc-sep">&#9670;</span>
     <span>FC Barcelona</span><span class="pc-sep">&#9670;</span>
@@ -169,22 +169,22 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
     <span>Alpro</span><span class="pc-sep">&#9670;</span>
     <span>Liga Endesa</span><span class="pc-sep">&#9670;</span>
     <span>Elisava</span><span class="pc-sep">&#9670;</span>
-    <span>Honest Greens</span><span class="pc-sep">&#9670;</span>
-    <span>Aire</span><span class="pc-sep">&#9670;</span>
-    <span>Time Out</span><span class="pc-sep">&#9670;</span>
+    <span style="color:var(--salmon)">Honest Greens</span><span class="pc-sep">&#9670;</span>
+    <span style="color:var(--salmon)">Aire</span><span class="pc-sep">&#9670;</span>
+    <span style="color:var(--salmon)">Time Out</span><span class="pc-sep">&#9670;</span>
     <span>Ametller</span><span class="pc-sep">&#9670;</span>
     <span>PERD&Oacute;N</span><span class="pc-sep">&#9670;</span>
   </div>
 </div>
 
 <!-- WHAT WE HOST -->
-<div class="sec fi">
+<div class="sec fi" style="text-align:center">
   <span class="sl">What we host</span>
 </div>
 <div class="ct fi"><div class="ct-num" style="background:rgba(248,166,163,.08);border-color:rgba(248,166,163,.15);color:var(--salmon)">1</div><div class="ct-body"><div class="ct-name">Panta Rhei &middot; Exhibition</div><div class="ct-desc">An immersive exhibition bringing the ocean&rsquo;s changing seasons to life through art, science and technology. A meditative 360&deg; space where sound and imagery respond in real time to live ocean data.</div></div></div>
 <div class="ct fi"><div class="ct-num" style="background:rgba(248,166,163,.08);border-color:rgba(248,166,163,.15);color:var(--salmon)">2</div><div class="ct-body"><div class="ct-name">In Session &middot; AV Listening</div><div class="ct-desc">Full albums and curated soundscapes played through Dolby Atmos inside the 360&deg; room. No phones, no distractions. Just you, the music, and a room that moves with the sound.</div></div></div>
 <div class="ct fi"><div class="ct-num" style="background:rgba(248,166,163,.08);border-color:rgba(248,166,163,.15);color:var(--salmon)">3</div><div class="ct-body"><div class="ct-name">MOTION &middot; Ecstatic Experience</div><div class="ct-desc">A live audiovisual journey where electronic music and generative visuals converge. A space to move freely, express openly, and lose yourself in sound and light.</div></div></div>
-<div class="ct fi"><div class="ct-num" style="background:rgba(248,166,163,.08);border-color:rgba(248,166,163,.15);color:var(--salmon)">4</div><div class="ct-body"><div class="ct-name">Offline Club &middot; Community</div><div class="ct-desc">Ice baths, breath journeys, analog play and shared stillness. Phones away, presence on. Rare gatherings for genuine connection, no screens, no content.</div></div></div>
+<div class="ct fi"><div class="ct-num" style="background:rgba(248,166,163,.08);border-color:rgba(248,166,163,.15);color:var(--salmon)">4</div><div class="ct-body"><div class="ct-name">Offline Club &middot; Community</div><div class="ct-desc">Phones away, presence on. Rare gatherings for genuine connection.</div></div></div>
 
 <!-- INQUIRY FORM -->
 <div class="iq-wrap fi">
@@ -231,11 +231,6 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
     <h3>Thank You</h3>
     <p>We will get back to you as soon as possible.</p>
   </div>
-</div>
-
-<div class="cta-strip fi">
-  <a href="mailto:connect@sabdastudio.com?subject=Rent%20the%20Space%20Inquiry" class="cta-btn touch">Rent the Space <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-  <div style="text-align:center;margin-top:10px;font-size:.7rem;color:var(--w38)">Host your next event &middot; <a href="mailto:connect@sabdastudio.com" style="color:var(--cyan)">connect@sabdastudio.com</a></div>
 </div>
 
 <nav class="tabs">
