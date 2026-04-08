@@ -709,7 +709,7 @@ async function handleBook(request, origin) {
 // stripeConnectedAccountId is NUMERIC (38966), discovered from /load-stripe-connected-account.
 async function handlePay(request, origin) {
   try {
-    const { sessionId, sessionToken, stripePaymentMethodId, firstName, lastName, email, password, phoneNumber, customerFields, type, productId, discountCode, actualPrice } = await request.json();
+    const { sessionId, sessionToken, stripePaymentMethodId, firstName, lastName, email, password, phoneNumber, customerFields, type, productId, discountCode, discountCodeId, actualPrice } = await request.json();
 
     if (!firstName || !lastName || !email) {
       return new Response(JSON.stringify({ error: 'Missing customer details' }), {
@@ -718,7 +718,20 @@ async function handlePay(request, origin) {
     }
 
     const isFree = stripePaymentMethodId === 'free' || actualPrice === 0;
-    if (!isFree && !stripePaymentMethodId) {
+
+    // SAFETY NET: Momence's /plugin/{memberships|sessions}/{id}/pay endpoint
+    // does not accept priceInCurrency:0 — it routes through Stripe and rejects
+    // with a generic error that increments the failed-retry counter and locks
+    // out the customer/IP. Refuse server-side as a backstop in case the modal
+    // gets bypassed.
+    if (isFree) {
+      console.log('[PAY] REFUSED — €0 booking would fail at Momence and trigger anti-fraud lockout');
+      return new Response(JSON.stringify({
+        error: 'Free bookings (€0) cannot be processed through this checkout. Please claim directly via Momence.',
+      }), { status: 400, headers: corsHeaders(origin) });
+    }
+
+    if (!stripePaymentMethodId) {
       return new Response(JSON.stringify({ error: 'Missing payment method' }), {
         status: 400, headers: corsHeaders(origin),
       });
@@ -762,13 +775,13 @@ async function handlePay(request, origin) {
         smsCommunicationsMarketingConsent: false,
         isLoginRedirectDisabled: true,
         customQuestionAnswers: [],
-        appliedPriceRuleIds: [],
+        appliedPriceRuleIds: discountCodeId ? [Number(discountCodeId)] : [],
         homeLocationId: HOME_LOCATION_ID,
         hasRecurringChargesConsent: true,
         enableCardAutofill: false,
       };
       if (discountCode) body.discountCode = discountCode;
-      if (!isFree) body.paymentMethod = { id: stripePaymentMethodId };
+      body.paymentMethod = { id: stripePaymentMethodId };
 
     } else if (sessionId) {
       // ── PATH 2: PAID CLASS BOOKING ──
@@ -802,11 +815,12 @@ async function handlePay(request, origin) {
         stripeConnectedAccountId: STRIPE_ACCOUNT_ID,
         phoneNumber: phoneNumber || undefined,
         customerFields: customerFields || {},
+        appliedPriceRuleIds: discountCodeId ? [Number(discountCodeId)] : [],
         isLoginRedirectDisabled: true,
         isGuestOnlyBooking: true,
       };
       if (discountCode) body.discountCode = discountCode;
-      if (!isFree) body.paymentMethod = { id: stripePaymentMethodId };
+      body.paymentMethod = { id: stripePaymentMethodId };
 
     } else {
       return new Response(JSON.stringify({ error: 'Missing productId or sessionId' }), {

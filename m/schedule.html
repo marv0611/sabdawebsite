@@ -476,6 +476,7 @@ function resetCustomerAndStartOver(){
   sessionPassword=null;
   activePromo=null;
   discountedPrice=null;
+  activeDiscountCodeId=null;
   cardCompleteState={cardNumber:false,cardExpiry:false,cardCvc:false};
   if(cardNumberEl){try{cardNumberEl.destroy();}catch(e){}cardNumberEl=null;}
   if(cardExpiryEl){try{cardExpiryEl.destroy();}catch(e){}cardExpiryEl=null;}
@@ -525,7 +526,7 @@ function closeMo(){
   },300);
   // Reset state
   curSession=null;curMembership=null;isProcessing=false;
-  activePromo=null;discountedPrice=null;
+  activePromo=null;discountedPrice=null;activeDiscountCodeId=null;
   activePayReq=null;activePayName=null;
   setBack(null);
   if(cardNumberEl){try{cardNumberEl.destroy();}catch(e){}cardNumberEl=null;}
@@ -909,7 +910,7 @@ var stripeInstance=null, cardNumberEl=null, cardExpiryEl=null, cardCvcEl=null;
 var cardCompleteState={cardNumber:false,cardExpiry:false,cardCvc:false};
 // Backwards-compat alias so any leftover refs to cardElement don't crash
 var cardElement=null;
-var activePromo=null, discountedPrice=null;
+var activePromo=null, discountedPrice=null, activeDiscountCodeId=null;
 var activePayReq=null, activePayName=null;
 
 function applyPromo(type,origPrice,productId){
@@ -934,11 +935,26 @@ function applyPromo(type,origPrice,productId){
     if(!r.ok||r.data.error){
       errEl.textContent=r.data.error||'Invalid promo code';
       errEl.style.display='block';
-      activePromo=null;discountedPrice=null;
+      activePromo=null;discountedPrice=null;activeDiscountCodeId=null;
+      return;
+    }
+    // Reject 100% discounts that drop the price to exactly €0.
+    // Momence's /plugin/{memberships|sessions}/{id}/pay endpoint does not
+    // accept priceInCurrency:0 — it routes through Stripe and rejects with
+    // a generic error that increments the failed-retry counter and locks
+    // out the customer/IP. Free claims must use a separate Momence flow
+    // we don't have access to from the proxy.
+    if(r.data.newPrice===0){
+      errEl.textContent='This code makes the booking free, which we can\'t process here. Please use the Momence link to claim it directly.';
+      errEl.style.display='block';
+      activePromo=null;discountedPrice=null;activeDiscountCodeId=null;
+      try{console.warn('[SABDA] Refusing €0 discount — would route through wrong Momence endpoint');}catch(e){}
       return;
     }
     activePromo=r.data.code;
     discountedPrice=r.data.newPrice;
+    activeDiscountCodeId=r.data.discountCodeId||null;
+    try{console.log('[SABDA] Promo applied:',activePromo,'newPrice=',discountedPrice,'discountCodeId=',activeDiscountCodeId);}catch(e){}
     // Update UI
     var desc=r.data.type==='percentage'?r.data.appliedDiscount+'% off':'€'+r.data.appliedDiscount+' off';
     okEl.innerHTML='<strong>'+activePromo+'</strong> applied · '+desc+' <span onclick="removePromo('+origPrice+')" style="cursor:pointer;text-decoration:underline;margin-left:8px">Remove</span>';
@@ -973,7 +989,7 @@ function applyPromo(type,origPrice,productId){
 }
 
 function removePromo(origPrice){
-  activePromo=null;discountedPrice=null;
+  activePromo=null;discountedPrice=null;activeDiscountCodeId=null;
   document.getElementById('bk-promo-ok').style.display='none';
   document.getElementById('bk-promo-toggle').style.display='block';
   document.getElementById('bk-promo-fields').style.display='none';
@@ -993,7 +1009,7 @@ function removePromo(origPrice){
 
 function showNoMembership(){stepChange();
   setBack(showGuestStep);
-  activePromo=null;discountedPrice=null;
+  activePromo=null;discountedPrice=null;activeDiscountCodeId=null;
   var bd=document.getElementById('mo-bd');
 
   function row(cls,type,price,id,name,desc,priceLabel){
@@ -1142,6 +1158,7 @@ function showPayForm(type,price,productId,name,desc){stepChange();
           type:type,
           productId:productId,
           discountCode:activePromo||undefined,
+          discountCodeId:activeDiscountCodeId||undefined,
           actualPrice:(discountedPrice!==null)?discountedPrice:price,
           phoneNumber:cf.phoneNumber,
           customerFields:cf.customerFields
@@ -1272,6 +1289,7 @@ function doPayAndBook(type,price,productId){if(isProcessing)return;
         type:type,
         productId:productId,
         discountCode:activePromo||undefined,
+        discountCodeId:activeDiscountCodeId||undefined,
         actualPrice:0,
         phoneNumber:cf.phoneNumber,
         customerFields:cf.customerFields
@@ -1311,6 +1329,7 @@ function doPayAndBook(type,price,productId){if(isProcessing)return;
         type:type,
         productId:productId,
         discountCode:activePromo||undefined,
+        discountCodeId:activeDiscountCodeId||undefined,
         actualPrice:(discountedPrice!==null)?discountedPrice:price,
         phoneNumber:cf.phoneNumber,
         customerFields:cf.customerFields
