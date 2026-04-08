@@ -1,19 +1,25 @@
 # Ocio en Barcelona — Los Mejores Planes Permanentes (2026)
 
-**Última actualización: marzo 2026**
+**Última actualización: abril 2026**
 
-**Meta description:** Los mejores planes de ocio en Barcelona: mercados, miradores, barrios, música en vivo y wellness inmersivo que siempre están.
+**Meta description:** Los mejores planes de ocio permanentes en Barcelona: mercados, miradores, wellness inmersivo, música y experiencias que funcionan cualquier día.
 
 **Slug:** `/blog/ocio-barcelona/`
 
 **Primary keyword:** ocio barcelona
-**Secondary keywords:** planes barcelona, actividades barcelona
+**Secondary keywords:** planes barcelona, actividades barcelona, eventos hoy en barcelona, que hacer este domingo en barcelona, planes permanentes barcelona, ocio nocturno barcelona
 
 ---
 
 Barcelona tiene el tipo de oferta de ocio que la mayoría de ciudades envidian. Lo mejor: los planes que realmente definen la ciudad no son eventos puntuales ni exposiciones temporales. Son lugares, venues, y experiencias que siempre están ahí — esperando a que aparezcas.
 
 Esta guía cubre el ocio permanente de Barcelona. Sin fechas, sin "este fin de semana," sin nada que caduque. Todo lo que aparece aquí funciona cualquier día del año.
+
+---
+
+## Eventos hoy en Barcelona vs ocio permanente
+
+Hay dos formas de buscar planes en Barcelona: los eventos puntuales (conciertos esta noche, exposiciones temporales, festivales del fin de semana) y el ocio permanente (lugares y experiencias que siempre están ahí). Esta guía es lo segundo. Si buscas eventos hoy en Barcelona — conciertos, eventos especiales, ferias del fin de semana — Time Out Barcelona y la web del Ayuntamiento son las mejores fuentes. Si buscas el tipo de plan que define la ciudad, sigue leyendo.
 
 ---
 

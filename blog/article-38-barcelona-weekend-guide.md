@@ -1,13 +1,13 @@
 # Barcelona Weekend Guide: How to Spend 48 Hours Like a Local (2026)
 
-**Last updated: March 2026**
+**Last updated: April 2026**
 
-**Meta description:** The perfect 48-hour Barcelona itinerary: what to do Saturday and Sunday, where to eat, and the one experience most visitors miss. (130 chars)
+**Meta description:** 48 hours in Barcelona done right: what to do Saturday and Sunday, where to eat, and the immersive experience most visitors miss.
 
 **Slug:** `/blog/barcelona-weekend-guide/`
 
-**Primary keyword:** things to do in barcelona
-**Secondary keywords:** barcelona weekend, 48 hours barcelona, barcelona itinerary
+**Primary keyword:** what to do in barcelona for 3 days
+**Secondary keywords:** barcelona weekend, 48 hours in barcelona, barcelona itinerary 2 days, what to do in barcelona on a sunday, weekend in barcelona
 
 ---
 

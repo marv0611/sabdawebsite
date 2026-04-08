@@ -1,13 +1,13 @@
 # 15 Unique Things to Do in Barcelona That Aren't on Every Tourist List (2026)
 
-**Last updated: March 2026**
+**Last updated: April 2026**
 
-**Meta description:** Skip the Sagrada Familia queue. 15 genuinely unique things to do in Barcelona — immersive wellness, hidden rooftops, vermouth bars.
+**Meta description:** Things to do in Barcelona beyond the tourist lists: 15 unique experiences locals love, including immersive wellness, hidden rooftops, and vermouth bars.
 
 **Slug:** `/blog/things-to-do-in-barcelona/`
 
 **Primary keyword:** things to do in barcelona
-**Secondary keywords:** unique things to do barcelona, things to do in barcelona at night, things to do in barcelona for couples, things to do in barcelona this week
+**Secondary keywords:** what to do in barcelona, best things to do in barcelona, top 10 things to do in barcelona, what to do in barcelona for 3 days, unique things to do barcelona
 
 ---
 
@@ -141,6 +141,12 @@ Barcelona has world-class contemporary art spaces that most visitors skip in fav
 ## 15. Eat Your Way Through Mercat de Sant Antoni
 
 Forget La Boqueria — it's beautiful, but it's been optimised for tourists. Mercat de Sant Antoni reopened in 2018 after a full renovation and it's where actual Eixample residents buy their food. The building is gorgeous (iron and glass, very 19th century), the produce is absurd, and on Sunday mornings there's a book and coin market around the perimeter. Grab a coffee at the bar inside the market, pick up some Manchego and fuet, and then sit in the sun on Carrer del Comte d'Urgell. That's a Barcelona morning.
+
+---
+
+## What to do in Barcelona for 3 days, a week, or a weekend
+
+If you're in Barcelona for 3 days, the best advice is: don't try to do everything. Pick one major sight per morning (Sagrada Familia, Park Güell, or the Gothic Quarter), then spend each afternoon on something from this list. Your evenings are for vermouth, dinner, and the city. If you have a full week, repeat the formula but add a day trip to Montserrat or Sitges. If you have just a weekend, focus on the 5 experiences above that look most interesting to you — and skip the queues.
 
 ---
 

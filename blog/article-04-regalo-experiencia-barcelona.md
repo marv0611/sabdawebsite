@@ -1,13 +1,13 @@
 # 15 Regalos Experiencia en Barcelona Que No Son Otra Cena (2026)
 
-**Última actualización: marzo 2026**
+**Última actualización: abril 2026**
 
-**Meta description:** Los mejores regalos experiencia en Barcelona. Wellness inmersivo, gastronomía, aventura, arte y más. Tarjetas regalo SABDA desde €50. (139 chars)
+**Meta description:** Regalos originales y experiencias para regalar en Barcelona: wellness inmersivo, gastronomía, aventura, arte. Tarjetas regalo SABDA desde €50.
 
 **Slug:** `/blog/regalo-experiencia-barcelona/`
 
 **Primary keyword:** regalo experiencia barcelona
-**Secondary keywords:** regalos originales barcelona, experiencias para regalar en pareja barcelona
+**Secondary keywords:** regalos originales barcelona, regalo original barcelona, experiencias para regalar en pareja barcelona, regalo aniversario barcelona, regalo cumpleaños barcelona
 
 ---
 

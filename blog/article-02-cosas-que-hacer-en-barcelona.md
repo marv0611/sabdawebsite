@@ -1,19 +1,23 @@
-# 20 Mejores Planes en Barcelona (2026)
+# Qué Hacer en Barcelona Este Fin de Semana — 20 Planes Permanentes (2026)
 
-**Última actualización: marzo 2026**
+**Última actualización: abril 2026**
 
-**Meta description:** Los 20 mejores planes en Barcelona. Experiencias inmersivas, gastronomía, cultura, aire libre y actividades que no encontrarás en ninguna guía. (155 chars)
+**Meta description:** Qué hacer en Barcelona este fin de semana, hoy, o cualquier día: 20 planes permanentes que siempre funcionan. Experiencias inmersivas, cultura, ocio.
 
 **Slug:** `/blog/cosas-que-hacer-en-barcelona/`
 
 **Primary keyword:** que hacer en barcelona este fin de semana
-**Secondary keywords:** cosas que hacer en barcelona, que hacer mañana en barcelona, planes barcelona fin de semana, planes en barcelona hoy
+**Secondary keywords:** cosas que hacer en barcelona, que hacer en barcelona hoy, que hacer este domingo en barcelona, planes barcelona fin de semana, eventos hoy en barcelona
 
 ---
 
-¿Buscando planes en Barcelona? Te entiendo. Google te está sugiriendo La Boqueria por décima vez. Esta lista es otra cosa — planes que merecen la pena, los que recomendarías a un amigo, no los que aparecen en todas las guías.
+¿Buscando qué hacer en Barcelona este fin de semana? ¿O cualquier día de la semana? Esta guía es evergreen — los 20 planes que aparecen aquí funcionan siempre, sin fechas, sin caducidad. Ni eventos puntuales ni exposiciones temporales. Sólo planes permanentes que merecen la pena: experiencias inmersivas, gastronomía, cultura, aire libre, y actividades que recomendarías a un amigo.
 
-Hay cosas que hacer en Barcelona para todos los gustos y presupuestos. Algunas gratis, otras no. Todas probadas.
+---
+
+## Qué hacer en Barcelona hoy mismo
+
+Si has llegado a esta página un martes a las 16:00 buscando algo para hacer en las próximas dos horas, los planes 1, 4, 7 y 12 de esta lista funcionan sin reserva. Si tienes el fin de semana entero, los 20 planes están aquí para ti. Si buscas algo gratis, los planes marcados con (gratis) son los que necesitas.
 
 ---
 

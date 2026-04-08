@@ -1,8 +1,8 @@
 # Las 25 Mejores Actividades en Barcelona (2026)
 
-**Última actualización: marzo 2026**
+**Última actualización: abril 2026**
 
-**Meta description:** Las mejores actividades en Barcelona: gratis y de pago, para adultos, parejas y grupos. Guía completa con 25 planes.
+**Meta description:** Las mejores actividades en Barcelona: hoy, este fin de semana, gratis o de pago. 25 planes para adultos, parejas y grupos. Guía permanente.
 
 **Slug:** `/blog/actividades-barcelona/`
 
@@ -12,6 +12,8 @@
 ---
 
 Si estás buscando actividades en Barcelona, probablemente estés en una de estas situaciones: acabas de llegar y quieres saber qué hacer, llevas aquí un tiempo y necesitas ideas nuevas, o simplemente buscas algo distinto a lo de siempre. Esta guía cubre las tres.
+
+Si buscas actividades en Barcelona para hoy mismo, este fin de semana, gratis o de pago — todo está aquí. Sin fechas. Sin "este sábado." Las 25 actividades funcionan cualquier día del año.
 
 Actividades gratis y de pago, para adultos, parejas y grupos. Planes permanentes que siempre funcionan.
 

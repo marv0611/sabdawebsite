@@ -1,13 +1,13 @@
 # Qué Hacer en Barcelona Cuando Llueve: 15 Planes Bajo Techo (2026)
 
-**Última actualización: marzo 2026**
+**Última actualización: abril 2026**
 
-**Meta description:** Planes para días de lluvia en Barcelona: museos, experiencias inmersivas, talleres, spas y actividades indoor que merecen la pena. (132 chars)
+**Meta description:** 15 planes para días de lluvia en Barcelona: museos, experiencias inmersivas, talleres, spas y actividades indoor que merecen la pena llueva o no.
 
 **Slug:** `/blog/que-hacer-barcelona-lluvia/`
 
-**Primary keyword:** que hacer en barcelona
-**Secondary keywords:** planes lluvia barcelona, actividades indoor barcelona, que hacer en barcelona hoy
+**Primary keyword:** planes barcelona lluvia
+**Secondary keywords:** que hacer en barcelona cuando llueve, actividades indoor barcelona, planes bajo techo barcelona, barcelona dia lluvioso, que hacer barcelona dia frio
 
 ---
 
