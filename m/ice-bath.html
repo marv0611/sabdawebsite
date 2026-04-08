@@ -95,22 +95,27 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
 
 .ct-book{display:inline-flex;padding:8px 18px;background:rgba(2,243,197,.1);border:1px solid rgba(2,243,197,.2);border-radius:100px;font-size:.6rem;font-weight:700;color:var(--cyan);letter-spacing:.04em;margin-top:10px;margin-right:8px}
 
-.more{position:fixed;inset:0;z-index:200;background:rgba(14,18,53,.97);backdrop-filter:saturate(1.4) blur(24px);-webkit-backdrop-filter:saturate(1.4) blur(24px);display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .3s cubic-bezier(.16,1,.3,1)}
+/* MORE MENU — iOS Settings style */
+.more{position:fixed;inset:0;z-index:200;background:var(--navy);display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .25s}
 .more.on{opacity:1;pointer-events:auto}
-.more-hdr{display:flex;justify-content:flex-end;padding:14px 18px;padding-top:calc(14px + env(safe-area-inset-top));border-bottom:1px solid var(--w06)}
-.more-done{font-size:.92rem;color:var(--cyan);font-weight:600;padding:8px 12px;background:none;border:none}
+.more-hdr{height:calc(52px + var(--safe-t));padding-top:var(--safe-t);display:flex;align-items:center;padding-left:12px;padding-right:16px;border-bottom:1px solid var(--w06)}
+.more-done{font-size:.82rem;color:var(--cyan);font-weight:600;padding:8px 12px;display:flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;font-family:inherit;text-decoration:none}
+.more-done svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .more-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none}
 .more-body::-webkit-scrollbar{display:none;width:0;height:0}
-.more-group{padding:24px 24px 8px;text-align:center}
-.more-group-t{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--w38);font-weight:700}
-.more-row{display:flex;align-items:center;gap:14px;padding:14px 24px;border-bottom:1px solid var(--w06)}
-.more-row-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.more-row-icon svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.more-row-txt{flex:1;font-size:.94rem;font-weight:600;color:var(--white);font-family:'PT Serif',serif}
-.more-row-chev{width:14px;height:14px;stroke:var(--w38);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
-.lang-row{display:flex;justify-content:center;gap:8px;padding:6px 24px 16px;border-bottom:1px solid var(--w06)}
-.lang-btn{min-width:92px;padding:10px 16px;background:rgba(240,239,233,.04);border:1px solid var(--w06);border-radius:100px;font-size:.78rem;font-weight:600;color:var(--w60);font-family:'DM Sans',sans-serif}
-.lang-btn.on{background:rgba(2,243,197,.1);border-color:rgba(2,243,197,.3);color:var(--cyan)}
+.more-group{padding:18px 24px 6px;text-align:center}
+.more-group:first-child{padding-top:14px}
+.more-group-t{font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:var(--w38);font-weight:600;margin-bottom:6px}
+.lang-row{display:flex;gap:8px;padding:2px 24px 8px;justify-content:center}
+.lang-btn{flex:0 0 auto;min-width:88px;padding:11px 16px;background:var(--w03);border:1px solid var(--w10);border-radius:100px;color:var(--w80);font-size:.74rem;font-weight:600;letter-spacing:.02em;font-family:inherit;cursor:pointer;transition:all .2s;-webkit-tap-highlight-color:transparent}
+.lang-btn.on{background:var(--cyan);color:var(--navy);border-color:var(--cyan);box-shadow:0 2px 12px rgba(2,243,197,.18)}
+.lang-btn:active{transform:scale(.97)}
+.more-row{display:flex;align-items:center;gap:14px;padding:14px 24px;border-bottom:1px solid var(--w06);text-decoration:none;-webkit-tap-highlight-color:transparent}
+.more-row:active{background:var(--w03)}
+.more-row-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.more-row-icon svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.more-row-txt{flex:1;font-size:.84rem;font-weight:500;color:var(--white)}
+.more-row-chev{width:12px;height:12px;stroke:var(--w20);fill:none;stroke-width:2}
 </style>
 </head>
 <body>
@@ -174,10 +179,19 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
 </nav>
 <!-- MORE MENU — iOS Settings style -->
 <div class="more" id="more">
-  <div class="more-hdr"><button class="more-done" id="moreX">Done</button></div>
+  <div class="more-hdr"><a class="more-done" id="moreX" href="index.html" aria-label="Back to Home"><svg viewBox="0 0 24 24"><path d="M9 18l-6-6 6-6"/></svg>Home</a></div>
   <div class="more-body">
+    <div class="more-group"><div class="more-group-t">Language</div></div>
+    <div class="lang-row">
+      <button class="lang-btn on" data-lang="en" onclick="setLang('en')" type="button">English</button>
+      <button class="lang-btn" data-lang="es" onclick="setLang('es')" type="button">Espa&ntilde;ol</button>
+      <button class="lang-btn" data-lang="ca" onclick="setLang('ca')" type="button">Catal&agrave;</button>
+    </div>
     <div class="more-group"><div class="more-group-t">Explore</div></div>
     <a href="index.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div class="more-row-txt">Home</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="classes.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><div class="more-row-txt">Classes</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="schedule.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div class="more-row-txt">Schedule</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="pricing.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div class="more-row-txt">Pricing</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
     <a href="hire.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div><div class="more-row-txt">Rent the Space</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
     <a href="events.html" class="more-row"><div class="more-row-icon" style="background:rgba(248,166,163,.08);color:var(--salmon)"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="more-row-txt">Events</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
     <a href="about.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div><div class="more-row-txt">About</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
@@ -187,13 +201,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
     <div class="more-group"><div class="more-group-t">Connect</div></div>
     <a href="https://instagram.com/sabda_studio" target="_blank" rel="noopener" class="more-row"><div class="more-row-icon" style="background:rgba(248,166,163,.08);color:var(--salmon)"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg></div><div class="more-row-txt">Instagram</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
     <a href="https://www.tiktok.com/@sabda_studio" target="_blank" rel="noopener" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></div><div class="more-row-txt">TikTok</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
-    <a href="https://www.linkedin.com/company/sabdastudio" target="_blank" rel="noopener" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div><div class="more-row-txt">LinkedIn</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
-    <div class="more-group"><div class="more-group-t">Language</div></div>
-    <div class="lang-row">
-      <button class="lang-btn on" data-lang="en" onclick="setLang('en')">English</button>
-      <button class="lang-btn" data-lang="es" onclick="setLang('es')">Espa&ntilde;ol</button>
-      <button class="lang-btn" data-lang="ca" onclick="setLang('ca')">Catal&agrave;</button>
-    </div>
+    <a href="https://www.linkedin.com/company/sabdastudio" target="_blank" rel="noopener" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div><div class="more-row-txt">LinkedIn</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
     <div class="more-group"><div class="more-group-t">Legal</div></div>
     <a href="../legal-notice.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="more-row-txt">Legal Notice</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
     <a href="../privacy-policy.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="more-row-txt">Privacy Policy</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>

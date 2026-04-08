@@ -10,7 +10,7 @@
 <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,700;1,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
 <script src="https://js.stripe.com/v3/" async></script>
 <style>
-:root{--navy:#0e1235;--navy95:rgba(14,18,53,.95);--navy-light:#131842;--salmon:#F8A6A3;--cyan:#02F3C5;--white:#f0efe9;--white80:rgba(240,239,233,.8);--white60:rgba(240,239,233,.6);--white38:rgba(240,239,233,.38);--white20:rgba(240,239,233,.2);--white12:rgba(240,239,233,.12);--white06:rgba(240,239,233,.06);--white03:rgba(240,239,233,.03);--safe-b:env(safe-area-inset-bottom,0px);--safe-t:env(safe-area-inset-top,0px);--ease:cubic-bezier(.16,1,.3,1)}
+:root{--navy:#0e1235;--navy95:rgba(14,18,53,.95);--navy-light:#131842;--salmon:#F8A6A3;--cyan:#02F3C5;--white:#f0efe9;--white80:rgba(240,239,233,.8);--white60:rgba(240,239,233,.6);--white38:rgba(240,239,233,.38);--white20:rgba(240,239,233,.2);--white12:rgba(240,239,233,.12);--white06:rgba(240,239,233,.06);--white03:rgba(240,239,233,.03);--w80:rgba(240,239,233,.8);--w60:rgba(240,239,233,.6);--w38:rgba(240,239,233,.38);--w20:rgba(240,239,233,.2);--w12:rgba(240,239,233,.12);--w10:rgba(240,239,233,.1);--w06:rgba(240,239,233,.06);--w03:rgba(240,239,233,.03);--safe-b:env(safe-area-inset-bottom,0px);--safe-t:env(safe-area-inset-top,0px);--ease:cubic-bezier(.16,1,.3,1)}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{overflow-x:hidden;-webkit-text-size-adjust:100%}
 body{background:var(--navy);color:var(--white);font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;padding-top:calc(52px + var(--safe-t));padding-bottom:calc(84px + var(--safe-b));overflow-x:hidden}
@@ -116,6 +116,26 @@ body.mo-open{overflow:hidden;position:fixed;width:100%;height:100%}
 .bk-mfa-inputs{display:flex;gap:8px;justify-content:center;margin-bottom:16px}
 .bk-mfa-digit{width:44px;height:52px;text-align:center;font-size:1.3rem;font-weight:700;background:rgba(240,239,233,.04);border:1px solid var(--white12);border-radius:10px;color:var(--white);font-family:'DM Sans',sans-serif;outline:none;-webkit-appearance:none}
 .bk-mfa-digit:focus{border-color:rgba(2,243,197,.4)}
+/* PACKAGE PICKER ROWS — real tap targets, no misfires */
+.bk-pkg{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 16px;min-height:68px;background:rgba(240,239,233,.025);border:1px solid var(--white06);border-radius:12px;cursor:pointer;transition:background .18s,border-color .18s,transform .12s;-webkit-tap-highlight-color:transparent;margin-bottom:10px;box-sizing:border-box}
+.bk-pkg:active{background:rgba(2,243,197,.08);border-color:rgba(2,243,197,.35);transform:scale(.985)}
+.bk-pkg.feat{background:rgba(2,243,197,.06);border-color:rgba(2,243,197,.28)}
+.bk-pkg.feat:active{background:rgba(2,243,197,.12)}
+.bk-pkg-l{flex:1;min-width:0}
+.bk-pkg-name{font-weight:600;font-size:.95rem;color:var(--white);margin-bottom:3px}
+.bk-pkg-desc{font-size:.74rem;color:var(--white60);line-height:1.35}
+.bk-pkg-price{font-family:'PT Serif',serif;font-weight:700;font-size:1.05rem;color:var(--white);flex-shrink:0;white-space:nowrap}
+.bk-pkg-price small{font-size:.68rem;font-weight:400;color:var(--white60)}
+.bk-pkg-grp{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin:22px 0 10px;padding:0 2px}
+.bk-pkg-grp:first-child{margin-top:6px}
+/* CONTACT FIELD GROUPS — clear separation between phone / language / city */
+.bk-fld{margin-bottom:20px}
+.bk-fld:last-of-type{margin-bottom:8px}
+.bk-fld .bk-input{margin-bottom:0}
+.bk-fld .bk-label{margin-bottom:8px;margin-top:0}
+.bk-phone-row{display:flex;gap:8px}
+.bk-phone-row .bk-input{margin-bottom:0}
+select.bk-input{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='none' stroke='%23f0efe9' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round' d='M1 1.5l5 5 5-5'/></svg>");background-repeat:no-repeat;background-position:right 18px center;padding-right:42px}
 
 /* CONFIRM */
 .bk-done{text-align:center;animation:bkIn .4s var(--ease)}
@@ -146,22 +166,27 @@ body.mo-open{overflow:hidden;position:fixed;width:100%;height:100%}
 .tab-bk-o svg{stroke:var(--navy);width:22px;height:22px;stroke-width:2.5}
 .tab-bk span{position:relative;top:-6px}
 
-.more{position:fixed;inset:0;z-index:200;background:rgba(14,18,53,.97);backdrop-filter:saturate(1.4) blur(24px);-webkit-backdrop-filter:saturate(1.4) blur(24px);display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .3s cubic-bezier(.16,1,.3,1)}
+/* MORE MENU — iOS Settings style */
+.more{position:fixed;inset:0;z-index:200;background:var(--navy);display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .25s}
 .more.on{opacity:1;pointer-events:auto}
-.more-hdr{display:flex;justify-content:flex-end;padding:14px 18px;padding-top:calc(14px + env(safe-area-inset-top));border-bottom:1px solid var(--w06)}
-.more-done{font-size:.92rem;color:var(--cyan);font-weight:600;padding:8px 12px;background:none;border:none}
+.more-hdr{height:calc(52px + var(--safe-t));padding-top:var(--safe-t);display:flex;align-items:center;padding-left:12px;padding-right:16px;border-bottom:1px solid var(--w06)}
+.more-done{font-size:.82rem;color:var(--cyan);font-weight:600;padding:8px 12px;display:flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;font-family:inherit;text-decoration:none}
+.more-done svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .more-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none}
 .more-body::-webkit-scrollbar{display:none;width:0;height:0}
-.more-group{padding:24px 24px 8px;text-align:center}
-.more-group-t{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--w38);font-weight:700}
-.more-row{display:flex;align-items:center;gap:14px;padding:14px 24px;border-bottom:1px solid var(--w06)}
-.more-row-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.more-row-icon svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.more-row-txt{flex:1;font-size:.94rem;font-weight:600;color:var(--white);font-family:'PT Serif',serif}
-.more-row-chev{width:14px;height:14px;stroke:var(--w38);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
-.lang-row{display:flex;justify-content:center;gap:8px;padding:6px 24px 16px;border-bottom:1px solid var(--w06)}
-.lang-btn{min-width:92px;padding:10px 16px;background:rgba(240,239,233,.04);border:1px solid var(--w06);border-radius:100px;font-size:.78rem;font-weight:600;color:var(--w60);font-family:'DM Sans',sans-serif}
-.lang-btn.on{background:rgba(2,243,197,.1);border-color:rgba(2,243,197,.3);color:var(--cyan)}
+.more-group{padding:18px 24px 6px;text-align:center}
+.more-group:first-child{padding-top:14px}
+.more-group-t{font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:var(--w38);font-weight:600;margin-bottom:6px}
+.lang-row{display:flex;gap:8px;padding:2px 24px 8px;justify-content:center}
+.lang-btn{flex:0 0 auto;min-width:88px;padding:11px 16px;background:var(--w03);border:1px solid var(--w10);border-radius:100px;color:var(--w80);font-size:.74rem;font-weight:600;letter-spacing:.02em;font-family:inherit;cursor:pointer;transition:all .2s;-webkit-tap-highlight-color:transparent}
+.lang-btn.on{background:var(--cyan);color:var(--navy);border-color:var(--cyan);box-shadow:0 2px 12px rgba(2,243,197,.18)}
+.lang-btn:active{transform:scale(.97)}
+.more-row{display:flex;align-items:center;gap:14px;padding:14px 24px;border-bottom:1px solid var(--w06);text-decoration:none;-webkit-tap-highlight-color:transparent}
+.more-row:active{background:var(--w03)}
+.more-row-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.more-row-icon svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.more-row-txt{flex:1;font-size:.84rem;font-weight:500;color:var(--white)}
+.more-row-chev{width:12px;height:12px;stroke:var(--w20);fill:none;stroke-width:2}
 </style>
 </head>
 <body>
@@ -207,10 +232,19 @@ body.mo-open{overflow:hidden;position:fixed;width:100%;height:100%}
 </nav>
 <!-- MORE MENU — iOS Settings style -->
 <div class="more" id="more">
-  <div class="more-hdr"><button class="more-done" id="moreX">Done</button></div>
+  <div class="more-hdr"><a class="more-done" id="moreX" href="index.html" aria-label="Back to Home"><svg viewBox="0 0 24 24"><path d="M9 18l-6-6 6-6"/></svg>Home</a></div>
   <div class="more-body">
+    <div class="more-group"><div class="more-group-t">Language</div></div>
+    <div class="lang-row">
+      <button class="lang-btn on" data-lang="en" onclick="setLang('en')" type="button">English</button>
+      <button class="lang-btn" data-lang="es" onclick="setLang('es')" type="button">Espa&ntilde;ol</button>
+      <button class="lang-btn" data-lang="ca" onclick="setLang('ca')" type="button">Catal&agrave;</button>
+    </div>
     <div class="more-group"><div class="more-group-t">Explore</div></div>
     <a href="index.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div class="more-row-txt">Home</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="classes.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><div class="more-row-txt">Classes</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="schedule.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div class="more-row-txt">Schedule</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="pricing.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div class="more-row-txt">Pricing</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
     <a href="hire.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div><div class="more-row-txt">Rent the Space</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
     <a href="events.html" class="more-row"><div class="more-row-icon" style="background:rgba(248,166,163,.08);color:var(--salmon)"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="more-row-txt">Events</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
     <a href="about.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div><div class="more-row-txt">About</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
@@ -220,13 +254,7 @@ body.mo-open{overflow:hidden;position:fixed;width:100%;height:100%}
     <div class="more-group"><div class="more-group-t">Connect</div></div>
     <a href="https://instagram.com/sabda_studio" target="_blank" rel="noopener" class="more-row"><div class="more-row-icon" style="background:rgba(248,166,163,.08);color:var(--salmon)"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg></div><div class="more-row-txt">Instagram</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
     <a href="https://www.tiktok.com/@sabda_studio" target="_blank" rel="noopener" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></div><div class="more-row-txt">TikTok</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
-    <a href="https://www.linkedin.com/company/sabdastudio" target="_blank" rel="noopener" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div><div class="more-row-txt">LinkedIn</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
-    <div class="more-group"><div class="more-group-t">Language</div></div>
-    <div class="lang-row">
-      <button class="lang-btn on" data-lang="en" onclick="setLang('en')">English</button>
-      <button class="lang-btn" data-lang="es" onclick="setLang('es')">Espa&ntilde;ol</button>
-      <button class="lang-btn" data-lang="ca" onclick="setLang('ca')">Catal&agrave;</button>
-    </div>
+    <a href="https://www.linkedin.com/company/sabdastudio" target="_blank" rel="noopener" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div><div class="more-row-txt">LinkedIn</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
     <div class="more-group"><div class="more-group-t">Legal</div></div>
     <a href="../legal-notice.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="more-row-txt">Legal Notice</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
     <a href="../privacy-policy.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="more-row-txt">Privacy Policy</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
@@ -419,9 +447,9 @@ function showLoginStep(){stepChange();
   bd.innerHTML=classBlock
     +'<div class="bk-login">'
     +'<div class="bk-label">Email</div>'
-    +'<input class="bk-input" id="bk-email" type="email" placeholder="your@email.com" />'
+    +'<input class="bk-input" id="bk-email" type="email" inputmode="email" autocomplete="email" placeholder="your@email.com" aria-label="Email address" />'
     +'<div class="bk-label">Password</div>'
-    +'<input class="bk-input" id="bk-pass" type="password" placeholder="Password" />'
+    +'<input class="bk-input" id="bk-pass" type="password" autocomplete="current-password" placeholder="Password" aria-label="Password" />'
     +'<div style="text-align:right;margin:-10px 0 12px"><a href="https://momence.com/forgot-password" target="_blank" style="font-size:.75rem;color:var(--white38);text-decoration:none;border-bottom:1px solid var(--white12)">Forgot password?</a></div>'
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-login-btn" onclick="doLogin()">Log in & Book</button>'
@@ -447,11 +475,11 @@ function showGuestStep(){stepChange();
   bd.innerHTML=classBlock
     +'<div class="bk-login">'
     +'<div class="bk-label">First Name</div>'
-    +'<input class="bk-input" id="bk-fn" type="text" placeholder="First name" />'
+    +'<input class="bk-input" id="bk-fn" type="text" autocomplete="given-name" placeholder="First name" aria-label="First name" />'
     +'<div class="bk-label">Last Name</div>'
-    +'<input class="bk-input" id="bk-ln" type="text" placeholder="Last name" />'
+    +'<input class="bk-input" id="bk-ln" type="text" autocomplete="family-name" placeholder="Last name" aria-label="Last name" />'
     +'<div class="bk-label">Email</div>'
-    +'<input class="bk-input" id="bk-email" type="email" placeholder="your@email.com" />'
+    +'<input class="bk-input" id="bk-email" type="email" inputmode="email" autocomplete="email" placeholder="your@email.com" aria-label="Email address" />'
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">Continue</button>'
     +'<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.12);border-radius:8px;padding:12px;margin-top:16px;font-size:.75rem;color:var(--white60);line-height:1.5;text-align:center">Booked with us before? <span onclick="showLoginStep()" style="color:var(--cyan);cursor:pointer;text-decoration:underline">Log in instead</span> to keep your history and credits together.</div>'
@@ -527,7 +555,7 @@ function showMfaStep(mfaToken){stepChange();
     +'<div class="bk-login">'
     +'<p style="font-size:.85rem;color:var(--white60);text-align:center;margin-bottom:20px;line-height:1.5">Enter the 6-digit code from your authenticator app</p>'
     +'<div class="bk-label">Verification Code</div>'
-    +'<input class="bk-input" id="bk-mfa" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="000000" style="text-align:center;font-size:1.4rem;letter-spacing:.3em" />'
+    +'<input class="bk-input" id="bk-mfa" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="one-time-code" placeholder="000000" aria-label="6-digit verification code" style="text-align:center;font-size:1.4rem;letter-spacing:.3em" />'
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-mfa-btn" onclick="doMfaVerify()">Verify & Continue</button>'
     +'<div class="bk-link" onclick="showLoginStep()">← Back</div>'
@@ -631,19 +659,24 @@ function doGuestCheck(){
 
 // ── CUSTOMER FIELDS HTML (phone, language, city) ──
 function customerFieldsHTML(){
-  return '<div class="bk-label" style="margin-top:16px">Phone number / Número de teléfono</div>'
-    +'<div style="display:flex;gap:8px">'
-    +'<input class="bk-input" id="bk-cc" type="text" value="+34" style="width:68px;flex-shrink:0;text-align:center;font-weight:600" />'
-    +'<input class="bk-input" id="bk-phone" type="tel" placeholder="612 345 678" style="flex:1" />'
-    +'</div>'
-    +'<div class="bk-label">Preferred language / Idioma preferido</div>'
-    +'<select class="bk-input" id="bk-lang" style="appearance:auto;cursor:pointer">'
-    +'<option value="">Select / Seleccionar</option>'
+  return '<div class="bk-fld">'
+    +'<div class="bk-label">Phone number</div>'
+    +'<div class="bk-phone-row">'
+    +'<input class="bk-input" id="bk-cc" type="text" inputmode="tel" value="+34" aria-label="Country code" style="width:72px;flex-shrink:0;text-align:center;font-weight:600" />'
+    +'<input class="bk-input" id="bk-phone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="612 345 678" aria-label="Phone number" style="flex:1;min-width:0" />'
+    +'</div></div>'
+    +'<div class="bk-fld">'
+    +'<div class="bk-label">Preferred language</div>'
+    +'<select class="bk-input" id="bk-lang" aria-label="Preferred language">'
+    +'<option value="">Select a language</option>'
     +'<option value="English">English</option>'
     +'<option value="Castellano">Castellano</option>'
-    +'</select>'
-    +'<div class="bk-label">City of residence / Ciudad de residencia</div>'
-    +'<input class="bk-input" id="bk-city" type="text" placeholder="Barcelona" />';
+    +'<option value="Catala">Catal&agrave;</option>'
+    +'</select></div>'
+    +'<div class="bk-fld">'
+    +'<div class="bk-label">City of residence</div>'
+    +'<input class="bk-input" id="bk-city" type="text" autocomplete="address-level2" placeholder="Barcelona" aria-label="City of residence" />'
+    +'</div>';
 }
 function getCustomerFields(){
   var cc=(document.getElementById('bk-cc')||{}).value||'+34';
@@ -785,7 +818,7 @@ function applyPromo(type,origPrice,productId){
     discountedPrice=r.data.newPrice;
     // Update UI
     var desc=r.data.type==='percentage'?r.data.appliedDiscount+'% off':'€'+r.data.appliedDiscount+' off';
-    okEl.innerHTML='<strong>'+activePromo+'</strong> applied — '+desc+' <span onclick="removePromo('+origPrice+')" style="cursor:pointer;text-decoration:underline;margin-left:8px">Remove</span>';
+    okEl.innerHTML='<strong>'+activePromo+'</strong> applied · '+desc+' <span onclick="removePromo('+origPrice+')" style="cursor:pointer;text-decoration:underline;margin-left:8px">Remove</span>';
     okEl.style.display='block';
     document.getElementById('bk-total').innerHTML='<span style="text-decoration:line-through;color:var(--white38);font-size:1rem;margin-right:8px">€'+origPrice+'</span> €'+discountedPrice.toFixed(2);
     // Update pay button
@@ -806,7 +839,7 @@ function applyPromo(type,origPrice,productId){
     document.getElementById('bk-promo-fields').style.display='none';
     document.getElementById('bk-promo-toggle').style.display='none';
     // Update Apple/Google Pay amount if active
-    if(activePayReq){try{activePayReq.update({total:{label:'SABDA Studio'+(activePayName?' — '+activePayName:''),amount:Math.round(discountedPrice*100)}});}catch(e){}}
+    if(activePayReq){try{activePayReq.update({total:{label:'SABDA Studio'+(activePayName?' · '+activePayName:''),amount:Math.round(discountedPrice*100)}});}catch(e){}}
   }).catch(function(){
     btn.textContent='Apply';btn.disabled=false;
     errEl.textContent='Could not validate code. Try again.';errEl.style.display='block';
@@ -825,12 +858,18 @@ function removePromo(origPrice){
   // Restore card fields in case they were hidden by a €0 promo
   var cardWrap=document.getElementById('bk-card');if(cardWrap)cardWrap.parentElement.style.display='';
   var cardLabel=document.getElementById('bk-card-label');if(cardLabel)cardLabel.style.display='';
-  if(activePayReq){try{activePayReq.update({total:{label:'SABDA Studio'+(activePayName?' — '+activePayName:''),amount:Math.round(origPrice*100)}});}catch(e){}}
+  if(activePayReq){try{activePayReq.update({total:{label:'SABDA Studio'+(activePayName?' · '+activePayName:''),amount:Math.round(origPrice*100)}});}catch(e){}}
 }
 
 function showNoMembership(){stepChange();
   activePromo=null;discountedPrice=null;
   var bd=document.getElementById('mo-bd');
+
+  function row(cls,type,price,id,name,desc,priceLabel){
+    return '<div class="bk-pkg '+cls+'" onclick="showPayForm(\''+type+'\','+price+','+id+',\''+name.replace(/'/g,"\\'")+'\',\''+desc.replace(/'/g,"\\'")+'\')">'
+      +'<div class="bk-pkg-l"><div class="bk-pkg-name">'+name+'</div><div class="bk-pkg-desc">'+desc+'</div></div>'
+      +'<div class="bk-pkg-price">'+priceLabel+'</div></div>';
+  }
 
   bd.innerHTML='<div class="bk-class">'
     +'<div class="bk-class-name">'+esc(curSession.title)+'</div>'
@@ -840,40 +879,22 @@ function showNoMembership(){stepChange();
     +'</div></div>'
     +'<div class="bk-confirm">'
     +'<div class="bk-user">Booking as <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>'
-    +'<p style="font-size:.85rem;color:var(--white60);text-align:center;margin-bottom:20px;line-height:1.5">Choose how you want to book this class</p>'
+    +'<p style="font-size:.85rem;color:var(--white60);text-align:center;margin-bottom:18px;line-height:1.5">Choose how you want to book this class</p>'
     // Intro offers first
-    +'<div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);font-weight:600;margin-bottom:10px">New to SABDA?</div>'
-    +'<div class="bk-pkg feat" onclick="showPayForm(\'pack\',50,443935,\'Intro 3-Pack\',\'3 classes · €16.67 each · 30 days\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
-    +'<div><div style="font-weight:600">Intro 3-Pack</div><div style="font-size:.75rem;color:var(--white60)">3 classes · €16.67 each</div></div>'
-    +'<div style="font-family:PT Serif,serif;font-weight:700">€50</div></div>'
-    +'<div class="bk-pkg" onclick="showPayForm(\'pack\',18,443934,\'Trial Class\',\'1 class · First-timers only\')" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center">'
-    +'<div><div style="font-weight:600">Trial Class</div><div style="font-size:.75rem;color:var(--white60)">First-timers only</div></div>'
-    +'<div style="font-family:PT Serif,serif;font-weight:700">€18</div></div>'
+    +'<div class="bk-pkg-grp" style="color:var(--cyan)">New to SABDA?</div>'
+    +row('feat','pack',50,443935,'Intro 3-Pack','3 classes, valid 30 days','€50')
+    +row('','pack',18,443934,'Trial Class','First-timers only','€18')
     // Memberships
-    +'<div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--salmon);font-weight:600;margin-bottom:10px">Memberships</div>'
-    +'<div class="bk-pkg" onclick="showPayForm(\'membership\',130,431216,\'Immerse\',\'Unlimited classes · Cancel anytime\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
-    +'<div><div style="font-weight:600">Immerse</div><div style="font-size:.75rem;color:var(--white60)">Unlimited classes</div></div>'
-    +'<div style="font-family:PT Serif,serif;font-weight:700">€130<span style="font-size:.75rem;font-weight:400;color:var(--white60)">/mo</span></div></div>'
-    +'<div class="bk-pkg" onclick="showPayForm(\'membership\',109,709976,\'Ritual\',\'8 classes/month · Cancel anytime\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
-    +'<div><div style="font-weight:600">Ritual</div><div style="font-size:.75rem;color:var(--white60)">8 classes/month</div></div>'
-    +'<div style="font-family:PT Serif,serif;font-weight:700">€109<span style="font-size:.75rem;font-weight:400;color:var(--white60)">/mo</span></div></div>'
-    +'<div class="bk-pkg" onclick="showPayForm(\'membership\',99,706876,\'Flex\',\'4 classes/month · Cancel anytime\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
-    +'<div><div style="font-weight:600">Flex</div><div style="font-size:.75rem;color:var(--white60)">4 classes/month</div></div>'
-    +'<div style="font-family:PT Serif,serif;font-weight:700">€99<span style="font-size:.75rem;font-weight:400;color:var(--white60)">/mo</span></div></div>'
-    +'<div class="bk-pkg" onclick="showPayForm(\'membership\',330,445600,\'Immerse 3-Month\',\'Unlimited classes · 3 month commitment\')" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center">'
-    +'<div><div style="font-weight:600">Immerse 3-Month</div><div style="font-size:.75rem;color:var(--white60)">€110/mo · Unlimited classes</div></div>'
-    +'<div style="font-family:PT Serif,serif;font-weight:700">€330</div></div>'
+    +'<div class="bk-pkg-grp" style="color:var(--salmon)">Memberships</div>'
+    +row('','membership',130,431216,'Immerse','Unlimited classes, cancel anytime','€130<small>/mo</small>')
+    +row('','membership',109,709976,'Ritual','8 classes per month','€109<small>/mo</small>')
+    +row('','membership',99,706876,'Flex','4 classes per month','€99<small>/mo</small>')
+    +row('','membership',330,445600,'Immerse 3-Month','€110/mo, unlimited classes','€330')
     // Class packs
-    +'<div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--white38);font-weight:600;margin:0 0 10px">Class Packs</div>'
-    +'<div class="bk-pkg" onclick="showPayForm(\'pack\',85,443937,\'5 Pack\',\'5 classes · €17 each · 2 months\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
-    +'<div><div style="font-weight:600">5 Pack</div><div style="font-size:.75rem;color:var(--white60)">5 classes · €17 each</div></div>'
-    +'<div style="font-family:PT Serif,serif;font-weight:700">€85</div></div>'
-    +'<div class="bk-pkg" onclick="showPayForm(\'pack\',149,443939,\'10 Pack\',\'10 classes · €14.90 each · 3 months\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
-    +'<div><div style="font-weight:600">10 Pack</div><div style="font-size:.75rem;color:var(--white60)">10 classes · €14.90 each</div></div>'
-    +'<div style="font-family:PT Serif,serif;font-weight:700">€149</div></div>'
-    +'<div class="bk-pkg" onclick="showPayForm(\'single\',22,445630,\'Drop-in\',\'1 class · No commitment\')" style="display:flex;justify-content:space-between;align-items:center">'
-    +'<div><div style="font-weight:600">Drop-in</div><div style="font-size:.75rem;color:var(--white60)">One class, no commitment</div></div>'
-    +'<div style="font-family:PT Serif,serif;font-weight:700">€22</div></div>'
+    +'<div class="bk-pkg-grp" style="color:var(--white38)">Class Packs</div>'
+    +row('','pack',85,443937,'5 Pack','5 classes, valid 2 months','€85')
+    +row('','pack',149,443939,'10 Pack','10 classes, valid 3 months','€149')
+    +row('','single',22,445630,'Drop-in','One class, no commitment','€22')
     +'<div class="bk-link-row"><div class="bk-link" onclick="closeMo()">← Back to schedule</div></div>'
     +'</div>';
 }
@@ -898,7 +919,7 @@ function showPayForm(type,price,productId,name,desc){stepChange();
     +'<div id="bk-promo-wrap" style="margin-bottom:16px">'
     +'<div class="bk-link" id="bk-promo-toggle" onclick="document.getElementById(\'bk-promo-fields\').style.display=\'flex\';this.style.display=\'none\'" style="margin:0;font-size:.8rem;text-align:left;color:var(--cyan)">Apply promo code →</div>'
     +'<div id="bk-promo-fields" style="display:none;gap:8px;align-items:flex-start">'
-    +'<input class="bk-input" id="bk-promo" type="text" placeholder="Code" style="flex:1;margin-bottom:0;text-transform:uppercase" />'
+    +'<input class="bk-input" id="bk-promo" type="text" autocomplete="off" autocapitalize="characters" placeholder="Code" aria-label="Promo code" style="flex:1;margin-bottom:0;text-transform:uppercase" />'
     +'<button class="bk-primary" id="bk-promo-btn" onclick="applyPromo(\''+type+'\','+price+','+productId+')" style="width:auto;padding:12px 20px;flex-shrink:0;font-size:.8rem">Apply</button>'
     +'</div>'
     +'<div id="bk-promo-ok" style="display:none;font-size:.78rem;color:var(--cyan);margin-top:6px"></div>'
@@ -930,7 +951,7 @@ function showPayForm(type,price,productId,name,desc){stepChange();
     activePayReq=stripeInstance.paymentRequest({
       country:'ES',
       currency:'eur',
-      total:{label:'SABDA Studio — '+name,amount:Math.round(price*100)},
+      total:{label:'SABDA Studio · '+name,amount:Math.round(price*100)},
       requestPayerName:true,
       requestPayerEmail:true
     });
@@ -1187,11 +1208,11 @@ function showPackageGuestStep() {
     + '</div>'
     + '<div class="bk-login">'
     + '<div class="bk-label">First Name</div>'
-    + '<input class="bk-input" id="bk-fn" type="text" placeholder="First name" autocomplete="given-name" />'
+    + '<input class="bk-input" id="bk-fn" type="text" placeholder="First name" autocomplete="given-name" aria-label="First name" />'
     + '<div class="bk-label">Last Name</div>'
-    + '<input class="bk-input" id="bk-ln" type="text" placeholder="Last name" autocomplete="family-name" />'
+    + '<input class="bk-input" id="bk-ln" type="text" placeholder="Last name" autocomplete="family-name" aria-label="Last name" />'
     + '<div class="bk-label">Email</div>'
-    + '<input class="bk-input" id="bk-email" type="email" placeholder="your@email.com" autocomplete="email" />'
+    + '<input class="bk-input" id="bk-email" type="email" inputmode="email" placeholder="your@email.com" autocomplete="email" aria-label="Email address" />'
     + '<div class="bk-err" id="bk-err"></div>'
     + '<button class="bk-primary" id="bk-guest-btn" onclick="doPackageGuestCheck()">Continue to payment</button>'
     + '<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.12);border-radius:8px;padding:12px;margin-top:16px;font-size:.75rem;color:var(--white60);line-height:1.5;text-align:center">Already a customer? <span onclick="showLoginStep()" style="color:var(--cyan);cursor:pointer;text-decoration:underline">Log in instead</span></div>'
