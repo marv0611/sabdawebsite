@@ -817,6 +817,13 @@ async function handlePay(request, origin) {
     // Strip undefined fields
     Object.keys(body).forEach(k => body[k] === undefined && delete body[k]);
 
+    // Log outgoing request to Momence (visible in Cloudflare Workers Logs tab)
+    console.log('[PAY] →', momenceUrl);
+    console.log('[PAY] body:', JSON.stringify({
+      ...body,
+      paymentMethod: body.paymentMethod ? { id: body.paymentMethod.id } : undefined,
+    }));
+
     const payRes = await fetch(momenceUrl, {
       method: 'POST',
       headers: {
@@ -828,6 +835,9 @@ async function handlePay(request, origin) {
     });
 
     const payData = await payRes.json().catch(() => ({}));
+
+    // Log Momence response (status + first 1500 chars of body)
+    console.log('[PAY] ← status', payRes.status, 'body:', JSON.stringify(payData).slice(0, 1500));
 
     if (payRes.ok) {
       // 3D Secure check
@@ -841,13 +851,16 @@ async function handlePay(request, origin) {
         status: 200, headers: corsHeaders(origin),
       });
     } else {
+      // Surface Momence's full error structure to the client for debugging
       return new Response(JSON.stringify({
         error: payData.message || payData.error || 'Payment failed',
-        data: payData,
+        momenceStatus: payRes.status,
+        momenceData: payData,
       }), { status: payRes.status, headers: corsHeaders(origin) });
     }
 
   } catch (e) {
+    console.log('[PAY] EXCEPTION:', e.message, e.stack);
     return new Response(JSON.stringify({ error: 'Server error: ' + e.message }), {
       status: 500, headers: corsHeaders(origin),
     });
