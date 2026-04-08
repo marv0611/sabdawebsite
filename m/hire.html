@@ -86,6 +86,28 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
 .spec{padding:14px;background:var(--w03);border:1px solid var(--w06);border-radius:12px}
 .spec-n{font-size:.56rem;letter-spacing:.12em;text-transform:uppercase;color:var(--w38);margin-bottom:4px;font-weight:700}
 .spec-v{font-size:.82rem;font-weight:600;color:var(--white);line-height:1.3}
+
+/* INQUIRY FORM */
+.iq-wrap{padding:32px 24px 24px;border-top:1px solid var(--w06);margin-top:8px}
+.iq-h{font-family:'PT Serif',serif;font-size:1.4rem;font-weight:700;letter-spacing:-.01em;line-height:1.15;margin-bottom:8px;margin-top:8px}
+.iq-h em{font-style:italic;color:var(--salmon)}
+.iq-sub{font-size:.78rem;color:var(--w60);line-height:1.6;margin-bottom:20px}
+.iq-lab{display:block;font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--w38);font-weight:700;margin-bottom:6px;margin-top:14px}
+.iq-inp,.iq-sel,.iq-txt{width:100%;padding:14px 16px;background:var(--w03);border:1px solid var(--w10);border-radius:12px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:16px;outline:none;transition:border-color .2s,background .2s;-webkit-appearance:none;appearance:none}
+.iq-inp:focus,.iq-sel:focus,.iq-txt:focus{border-color:rgba(2,243,197,.45);background:rgba(2,243,197,.03)}
+.iq-inp::placeholder,.iq-txt::placeholder{color:var(--w38)}
+.iq-sel{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none' stroke='%23f0efe9' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1 1l5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px;color:var(--w80)}
+.iq-sel option{background:var(--navy);color:var(--white)}
+.iq-txt{min-height:100px;resize:vertical;font-family:inherit;line-height:1.5}
+.iq-submit{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:16px;background:var(--cyan);color:var(--navy);border-radius:100px;font-size:.82rem;font-weight:700;letter-spacing:.02em;margin-top:20px;box-shadow:0 4px 20px rgba(2,243,197,.2)}
+.iq-submit:disabled{opacity:.6}
+.iq-submit svg{width:14px;height:14px;stroke:currentColor;stroke-width:2.5;fill:none}
+.iq-err{font-size:.72rem;color:var(--salmon);text-align:center;margin-top:10px;min-height:16px}
+.iq-ok{display:none;text-align:center;padding:32px 24px;background:rgba(2,243,197,.04);border:1px solid rgba(2,243,197,.14);border-radius:16px;margin-top:8px}
+.iq-ok.show{display:block}
+.iq-ok-icon{width:48px;height:48px;border-radius:50%;background:rgba(2,243,197,.12);color:var(--cyan);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:1.4rem;font-weight:700}
+.iq-ok h3{font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;margin-bottom:6px}
+.iq-ok p{font-size:.78rem;color:var(--w60)}
 </style>
 </head>
 <body>
@@ -125,10 +147,10 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
       </div>
     </div>
     <div class="vid-card">
-      <video src="https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/Pantarhei.mp4" muted loop playsinline autoplay preload="metadata"></video>
+      <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/astral_workshop.jpg" alt="The Astral Method workshop at SABDA" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;background:#000">
       <div class="vid-card-ov">
-        <div class="vid-card-t">Panta Rhei</div>
-        <div class="vid-card-s">Immersive dinner</div>
+        <div class="vid-card-t">The Astral Method</div>
+        <div class="vid-card-s">Workshop &middot; 100+ attendees</div>
       </div>
     </div>
   </div>
@@ -184,6 +206,53 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
   <div class="spec"><div class="spec-n">Floor Area</div><div class="spec-v">200 m&sup2;<br>fully adaptable</div></div>
 </div>
 
+<!-- INQUIRY FORM -->
+<div class="iq-wrap fi">
+  <span class="sl">Let's Talk</span>
+  <div class="iq-h">Tell us about <em>your event</em></div>
+  <div class="iq-sub">Every event at SABDA is custom. Share the basics and Katrina from our events team will get back to you as soon as possible.</div>
+  <form id="iqForm" onsubmit="return handleHireInquiry(event)">
+    <label class="iq-lab" for="iq-name">Your name</label>
+    <input class="iq-inp" type="text" id="iq-name" name="name" placeholder="Full name" required autocomplete="name">
+    <label class="iq-lab" for="iq-company">Company (optional)</label>
+    <input class="iq-inp" type="text" id="iq-company" name="company" placeholder="Company or brand name" autocomplete="organization">
+    <label class="iq-lab" for="iq-email">Email</label>
+    <input class="iq-inp" type="email" id="iq-email" name="email" placeholder="your@email.com" required autocomplete="email">
+    <label class="iq-lab" for="iq-type">Event type</label>
+    <select class="iq-sel" id="iq-type" name="event_type" required>
+      <option value="" disabled selected>Select event type</option>
+      <option value="product-launch">Product launch</option>
+      <option value="brand-activation">Brand activation</option>
+      <option value="workshop">Workshop or presentation</option>
+      <option value="production">Film or photo production</option>
+      <option value="corporate-wellness">Corporate wellness</option>
+      <option value="private-event">Private event or party</option>
+      <option value="immersive-dinner">Immersive dinner</option>
+      <option value="other">Other</option>
+    </select>
+    <label class="iq-lab" for="iq-guests">Expected guests</label>
+    <select class="iq-sel" id="iq-guests" name="guests">
+      <option value="" disabled selected>Number of guests</option>
+      <option value="10-30">10 to 30</option>
+      <option value="30-50">30 to 50</option>
+      <option value="50-80">50 to 80</option>
+      <option value="80-120">80 to 120</option>
+      <option value="120-200">120 to 200</option>
+    </select>
+    <label class="iq-lab" for="iq-date">Preferred date</label>
+    <input class="iq-inp" type="text" id="iq-date" name="date" placeholder="e.g. June 15 2026 or flexible">
+    <label class="iq-lab" for="iq-message">Tell us more</label>
+    <textarea class="iq-txt" id="iq-message" name="message" placeholder="Brief description of your event, any specific requirements, or questions you have..."></textarea>
+    <button type="submit" class="iq-submit touch" id="iq-btn">Send Inquiry <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+    <div class="iq-err" id="iq-err"></div>
+  </form>
+  <div class="iq-ok" id="iq-ok">
+    <div class="iq-ok-icon">&#10003;</div>
+    <h3>Thank You</h3>
+    <p>We will get back to you as soon as possible.</p>
+  </div>
+</div>
+
 <div class="cta-strip fi">
   <a href="mailto:connect@sabdastudio.com?subject=Rent%20the%20Space%20Inquiry" class="cta-btn touch">Rent the Space <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
   <div style="text-align:center;margin-top:10px;font-size:.7rem;color:var(--w38)">Or email <a href="mailto:connect@sabdastudio.com" style="color:var(--cyan)">connect@sabdastudio.com</a></div>
@@ -197,6 +266,37 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
 </nav>
 
 <script>
+function handleHireInquiry(e){
+  e.preventDefault();
+  var f=document.getElementById('iqForm');
+  var btn=document.getElementById('iq-btn');
+  var err=document.getElementById('iq-err');
+  err.textContent='';
+  btn.disabled=true;
+  btn.innerHTML='Sending...';
+  var data=new FormData(f);
+  var msg='Company: '+(data.get('company')||'N/A')+'\nEvent Type: '+data.get('event_type')+'\nGuests: '+(data.get('guests')||'TBD')+'\nDate: '+(data.get('date')||'Flexible')+'\n\n'+(data.get('message')||'');
+  var payload={name:data.get('name'),email:data.get('email'),phone:'',topic:'events',message:msg};
+  fetch('https://sabda-checkout-proxy.sabda.workers.dev/sabda-api/contact',{
+    method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)
+  }).then(function(r){return r.json()}).then(function(r){
+    if(r && r.ok){
+      f.style.display='none';
+      document.getElementById('iq-ok').classList.add('show');
+      document.getElementById('iq-ok').scrollIntoView({behavior:'smooth',block:'center'});
+    } else {
+      btn.disabled=false;
+      btn.innerHTML='Send Inquiry <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>';
+      err.textContent='Something went wrong. Please email connect@sabdastudio.com directly.';
+    }
+  }).catch(function(){
+    btn.disabled=false;
+    btn.innerHTML='Send Inquiry <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>';
+    err.textContent='Connection error. Please email connect@sabdastudio.com directly.';
+  });
+  return false;
+}
+
 var fis=document.querySelectorAll('.fi');
 var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{threshold:.01});
 fis.forEach(function(el){io.observe(el)});
