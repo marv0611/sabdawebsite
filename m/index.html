@@ -179,6 +179,15 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
 /* REVIEW QUOTE */
 .rq{padding:12px 24px;border-bottom:1px solid var(--w06);text-align:center;font-family:'PT Serif',serif;font-style:italic;font-size:.75rem;color:var(--w60);line-height:1.5}
 .rq em{font-style:normal;color:var(--salmon);font-size:.62rem;font-family:'DM Sans',sans-serif;font-weight:600}
+.tmq-wrap{padding:14px 0;border-bottom:1px solid var(--w06);overflow:hidden;position:relative}
+.tmq-wrap::before,.tmq-wrap::after{content:'';position:absolute;top:0;bottom:0;width:40px;z-index:3;pointer-events:none}
+.tmq-wrap::before{left:0;background:linear-gradient(to right,var(--navy),transparent)}
+.tmq-wrap::after{right:0;background:linear-gradient(to left,var(--navy),transparent)}
+.tmq-row{display:flex;align-items:center;width:max-content;animation:tmq-right 55s linear infinite}
+.tmq-row span{padding:0 24px;font-family:'PT Serif',serif;font-style:italic;font-size:.78rem;color:var(--w60);white-space:nowrap;line-height:1.4}
+.tmq-row span::before{content:'"';color:var(--cyan);margin-right:3px;font-style:normal}
+.tmq-row span::after{content:'"';color:var(--cyan);margin-left:3px;font-style:normal}
+@keyframes tmq-right{from{transform:translateX(-50%)}to{transform:translateX(0)}}
 
 
 
@@ -267,7 +276,25 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
 </div>
 
 <!-- REVIEW -->
-<div class="rq fi">&ldquo;The SABDA space is unrivalled.&rdquo; &mdash; <em>Sophie</em></div>
+<div class="tmq-wrap fi">
+  <div class="tmq-row">
+    <span>The SABDA space is unrivalled.</span>
+    <span>The teachers have helped me so much.</span>
+    <span>The visuals made it unforgettable.</span>
+    <span>Absolutely fantastic from start to finish.</span>
+    <span>The teachers at SABDA are the best.</span>
+    <span>The whole experience is one of a kind.</span>
+    <span>One of the highlights of my stay in Barcelona.</span>
+    <!-- duplicate for seamless loop -->
+    <span>The SABDA space is unrivalled.</span>
+    <span>The teachers have helped me so much.</span>
+    <span>The visuals made it unforgettable.</span>
+    <span>Absolutely fantastic from start to finish.</span>
+    <span>The teachers at SABDA are the best.</span>
+    <span>The whole experience is one of a kind.</span>
+    <span>One of the highlights of my stay in Barcelona.</span>
+  </div>
+</div>
 
 <!-- CLASSES — swipeable cards -->
 <!-- CLASSES -->
@@ -279,7 +306,7 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
   <a href="pilates.html" class="hp-card fi touch" style="background-image:url(https://raw.githubusercontent.com/marv0611/sabdawebsite/main/pilates_new.jpg)"><div class="hp-card-ov"></div><div class="hp-card-t"><b>Pilates</b><span>4 types</span></div></a>
   <a href="breathwork.html" class="hp-card fi touch" style="background-image:url(https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_015.jpg)"><div class="hp-card-ov"></div><div class="hp-card-t"><b>Breathwork</b><span>3 types</span></div></a>
 </div>
-<a href="classes.html" class="fi" style="display:block;text-align:center;font-size:.68rem;color:var(--w38);padding:4px 0 16px">Sound Healing &middot; More classes &rarr;</a>
+<a href="classes.html" class="fi" style="display:block;text-align:center;font-size:.72rem;color:var(--white);padding:8px 0 16px;font-weight:500">More classes &rarr;</a>
 
 </div>
 
@@ -288,9 +315,9 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
   <span class="sl" style="text-align:center">Get Started</span>
   <div class="sh" style="text-align:center">Your first 3 classes.</div>
   <div class="book-p">&euro;50</div>
-  <div class="book-m">&euro;16.67 per class &middot; Valid 30 days</div>
+  <div class="book-m">Valid 30 days</div>
   <a href="schedule.html?buy=443935" class="book-btn touch">Get Your Intro 3-Pack <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-  <a href="schedule.html?buy=443934" class="book-alt">Just one class? <b>Trial &mdash; &euro;18</b></a>
+  <a href="schedule.html?buy=443934" class="book-alt">Just one class? <b>Trial &euro;18</b></a>
 </section>
 
 <!-- LOCATION -->

@@ -68,17 +68,17 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
 
 body.mo-open{overflow:hidden;position:fixed;width:100%;height:100%}
 /* MODAL — full screen on mobile */
-.mo{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.75);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;opacity:0;transition:opacity .3s}
+.mo{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.75);backdrop-filter:blur(12px);display:none;align-items:stretch;justify-content:stretch;opacity:0;transition:opacity .3s}
 .mo.open{display:flex;opacity:1}
-.mo-box{width:100vw;height:100vh;max-height:none;background:var(--navy-light);overflow-y:auto;border-radius:0}
+.mo-box{width:100%;height:100%;max-height:none;background:var(--navy-light);overflow-y:auto;border-radius:0;-webkit-overflow-scrolling:touch}
 .mo.open .mo-box{transform:none}
-.mo-head{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid var(--white06);position:sticky;top:0;background:var(--navy-light);z-index:2}
+.mo-head{display:flex;align-items:center;justify-content:space-between;padding:max(16px,env(safe-area-inset-top,16px)) 20px 16px;border-bottom:1px solid var(--white06);position:sticky;top:0;background:var(--navy-light);z-index:2}
 .mo-t{font-family:'PT Serif',serif;font-size:1rem;font-weight:700}
 .mo-c{font-size:.75rem;color:var(--white60);margin-top:2px}
 .mo-x{background:none;border:1px solid var(--white12);color:var(--white60);width:36px;height:36px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .mo-x svg{width:14px;height:14px}
-.mo-bd{padding:20px}
-.mo-ft{padding:12px 20px;border-top:1px solid var(--white06);text-align:center;position:sticky;bottom:0;background:var(--navy-light)}
+.mo-bd{padding:24px 20px}
+.mo-ft{padding:12px 20px max(12px,env(safe-area-inset-bottom,12px));border-top:1px solid var(--white06);text-align:center;position:sticky;bottom:0;background:var(--navy-light)}
 .mo-sec{font-size:.62rem;color:var(--white38);display:flex;align-items:center;justify-content:center;gap:6px}
 .mo-sec svg{width:12px;height:12px;opacity:.5}
 
@@ -148,7 +148,7 @@ body.mo-open{overflow:hidden;position:fixed;width:100%;height:100%}
 <body>
 
 <header class="hdr">
-  <a href="index.html" class="hdr-back"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>Home</a>
+  <a href="index.html" class="hdr-logo-link"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA" style="height:18px;width:auto;opacity:.9;display:block"></a>
   <button onclick="document.querySelector('.day-btn.active').scrollIntoView({behavior:'smooth'})" class="hdr-pill touch" style="border:none;cursor:pointer">Book a Class</button>
 </header>
 

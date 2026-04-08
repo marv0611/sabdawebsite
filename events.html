@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<script>(function(){if(/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)&&window.innerWidth<900){var p=window.location.pathname;var base=p.indexOf("/sabdawebsite/")===0?"/sabdawebsite":"";window.location.replace(base+"/m/events.html"+window.location.search)}})()</script>
+<script>(function(){try{var ua=navigator.userAgent||"";var isMobUA=/Mobi|Android|iPhone|iPad|iPod/i.test(ua);var smallScreen=(screen&&screen.width)?screen.width<=900:false;var touch=(navigator.maxTouchPoints||0)>1;var iPadOS=touch&&/Mac/i.test(ua)&&smallScreen;if(isMobUA||smallScreen||iPadOS){var p=window.location.pathname;var base=p.indexOf("/sabdawebsite/")===0?"/sabdawebsite":"";window.location.replace(base+"/m/events.html"+window.location.search)}}catch(e){}})()</script>
 
 
 <meta charset="UTF-8"><!-- programming-v1 -->
