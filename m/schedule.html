@@ -748,7 +748,7 @@ function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').repl
 
 // ── STEP 3A: CONFIRM WITH MEMBERSHIP ──
 function showConfirmStep(membership){stepChange();
-  setBack(null);
+  setBack(showGuestStep);
   var bd=document.getElementById('mo-bd');
   var mName=membership.name||membership.membershipName||membership.planName||'Membership';
   var credits=membership.remainingCredits||membership.eventsRemaining||membership.creditsRemaining||membership.remainingEvents||'';
@@ -770,8 +770,7 @@ function showConfirmStep(membership){stepChange();
     +customerFieldsHTML()
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-confirm-btn" onclick="doBookWithMembership()">Confirm Booking</button>'
-    +'<div class="bk-link-row"><div class="bk-link" onclick="curUser=null;curSessionToken=null;showLoginStep()">Switch account</div>'
-    +'<div class="bk-link" onclick="closeMo()">← Back to schedule</div></div>'
+    +'<div class="bk-link-row"><div class="bk-link" onclick="curUser=null;curSessionToken=null;showLoginStep()">Switch account</div></div>'
     +'</div>';
 }
 
@@ -895,7 +894,7 @@ function removePromo(origPrice){
 }
 
 function showNoMembership(){stepChange();
-  setBack(null);
+  setBack(showGuestStep);
   activePromo=null;discountedPrice=null;
   var bd=document.getElementById('mo-bd');
 
@@ -930,7 +929,6 @@ function showNoMembership(){stepChange();
     +row('','pack',85,443937,'5 Pack','5 classes, valid 2 months','€85')
     +row('','pack',149,443939,'10 Pack','10 classes, valid 3 months','€149')
     +row('','single',22,445630,'Drop-in','One class, no commitment','€22')
-    +'<div class="bk-link-row"><div class="bk-link" onclick="closeMo()">← Back to schedule</div></div>'
     +'</div>';
 }
 
@@ -968,7 +966,6 @@ function showPayForm(type,price,productId,name,desc){stepChange();
     +'<div class="bk-card-wrap" id="bk-card"></div>'
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-pay-btn" onclick="doPayAndBook(\''+type+'\','+price+','+productId+')">Pay €'+price+(type==='single'?' & Book':' & Book Class')+'</button>'
-    +'<div class="bk-link-row"><div class="bk-link" onclick="showNoMembership()">← Change plan</div></div>'
     +'</div>';
 
   // Initialize Stripe — clean up previous card element
