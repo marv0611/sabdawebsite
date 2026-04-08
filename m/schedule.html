@@ -72,25 +72,38 @@ body.mo-open{overflow:hidden;position:fixed;width:100%;height:100%}
 .mo.open{display:flex;opacity:1}
 .mo-box{width:100%;height:100%;max-height:none;background:var(--navy-light);overflow-y:auto;border-radius:0;-webkit-overflow-scrolling:touch}
 .mo.open .mo-box{transform:none}
-.mo-head{display:flex;align-items:center;justify-content:space-between;padding:max(16px,env(safe-area-inset-top,16px)) 20px 16px;border-bottom:1px solid var(--white06);position:sticky;top:0;background:var(--navy-light);z-index:2}
-.mo-t{font-family:'PT Serif',serif;font-size:1rem;font-weight:700}
-.mo-c{font-size:.75rem;color:var(--white60);margin-top:2px}
-.mo-x{background:none;border:1px solid var(--white12);color:var(--white60);width:36px;height:36px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.mo-x svg{width:14px;height:14px}
+.mo-head{display:flex;align-items:center;justify-content:space-between;padding:max(16px,env(safe-area-inset-top,16px)) 20px 16px;border-bottom:1px solid var(--white06);position:sticky;top:0;background:var(--navy-light);z-index:2;gap:10px}
+.mo-back{display:flex;align-items:center;gap:6px;background:none;border:1px solid var(--white12);color:var(--white);padding:8px 12px;border-radius:8px;font-size:.72rem;font-weight:600;font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;visibility:hidden;flex-shrink:0;-webkit-appearance:none}
+.mo-back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mo-back.on{visibility:visible}
+.mo-back:active{background:var(--white06);border-color:var(--white20)}
+.mo-head-t{flex:1;min-width:0;text-align:center;padding:0 6px}
+.mo-t{font-family:'PT Serif',serif;font-size:1rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mo-c{font-size:.75rem;color:var(--white60);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mo-x{background:none;border:1px solid var(--white12);color:var(--white60);width:auto;height:auto;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:8px 12px;gap:6px;font-size:.72rem;font-weight:600;font-family:inherit;-webkit-appearance:none}
+.mo-x svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
 .mo-bd{padding:24px 20px}
 .mo-ft{padding:12px 20px max(12px,env(safe-area-inset-bottom,12px));border-top:1px solid var(--white06);text-align:center;position:sticky;bottom:0;background:var(--navy-light)}
 .mo-sec{font-size:.62rem;color:var(--white38);display:flex;align-items:center;justify-content:center;gap:6px}
 .mo-sec svg{width:12px;height:12px;opacity:.5}
 
 /* BOOKING FLOW */
-.bk-class{text-align:center;padding-bottom:16px;border-bottom:1px solid var(--white06);margin-bottom:16px}
-.bk-class-name{font-family:'PT Serif',serif;font-size:1.1rem;font-weight:700;margin-bottom:4px}
-.bk-class-meta{font-size:.78rem;color:var(--white60);display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
-.bk-class-meta span{display:flex;align-items:center;gap:4px}
-.bk-class-meta svg{width:14px;height:14px;opacity:.5}
-.bk-spots{display:inline-block;font-size:.65rem;font-weight:600;padding:3px 10px;border-radius:20px;margin-top:8px}
+.bk-class{text-align:center;padding-bottom:14px;border-bottom:1px solid var(--white06);margin-bottom:18px}
+.bk-class-name{display:none}
+.bk-class-meta{font-size:.74rem;color:var(--white60);display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.bk-class-meta span{display:flex;align-items:center;gap:5px}
+.bk-class-meta svg{width:13px;height:13px;opacity:.5}
+.bk-spots{display:inline-block;font-size:.65rem;font-weight:600;padding:3px 10px;border-radius:20px;margin-top:10px}
 .bk-spots.av{color:var(--cyan);background:rgba(2,243,197,.08);border:1px solid rgba(2,243,197,.15)}
 .bk-spots.lo{color:var(--salmon);background:rgba(248,166,163,.08);border:1px solid rgba(248,166,163,.15)}
+/* Booking confirm wrapper — proper hierarchy + spacing */
+.bk-confirm{}
+.bk-user{font-size:.78rem;color:var(--white60);text-align:center;margin-bottom:6px;line-height:1.4}
+.bk-user strong{color:var(--white);font-weight:600}
+.bk-confirm > p{font-size:.85rem;color:var(--white60);text-align:center;margin:0 0 22px;line-height:1.5}
+.bk-membership{background:rgba(2,243,197,.05);border:1px solid rgba(2,243,197,.22);border-radius:12px;padding:14px 18px;margin-bottom:20px;text-align:center}
+.bk-membership-name{font-family:'PT Serif',serif;font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:3px}
+.bk-membership-detail{font-size:.74rem;color:var(--white60)}
 .bk-login{animation:bkIn .3s var(--ease)}
 @keyframes bkIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
 .bk-label{display:block;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--white38);font-weight:600;margin-bottom:6px}
@@ -117,17 +130,21 @@ body.mo-open{overflow:hidden;position:fixed;width:100%;height:100%}
 .bk-mfa-digit{width:44px;height:52px;text-align:center;font-size:1.3rem;font-weight:700;background:rgba(240,239,233,.04);border:1px solid var(--white12);border-radius:10px;color:var(--white);font-family:'DM Sans',sans-serif;outline:none;-webkit-appearance:none}
 .bk-mfa-digit:focus{border-color:rgba(2,243,197,.4)}
 /* PACKAGE PICKER ROWS — real tap targets, no misfires */
-.bk-pkg{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 16px;min-height:68px;background:rgba(240,239,233,.025);border:1px solid var(--white06);border-radius:12px;cursor:pointer;transition:background .18s,border-color .18s,transform .12s;-webkit-tap-highlight-color:transparent;margin-bottom:10px;box-sizing:border-box}
+.bk-pkg{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 14px 18px 18px;min-height:68px;background:rgba(240,239,233,.025);border:1px solid var(--white06);border-radius:12px;cursor:pointer;transition:background .18s,border-color .18s,transform .12s;-webkit-tap-highlight-color:transparent;margin-bottom:10px;box-sizing:border-box}
 .bk-pkg:active{background:rgba(2,243,197,.08);border-color:rgba(2,243,197,.35);transform:scale(.985)}
 .bk-pkg.feat{background:rgba(2,243,197,.06);border-color:rgba(2,243,197,.28)}
 .bk-pkg.feat:active{background:rgba(2,243,197,.12)}
 .bk-pkg-l{flex:1;min-width:0}
 .bk-pkg-name{font-weight:600;font-size:.95rem;color:var(--white);margin-bottom:3px}
 .bk-pkg-desc{font-size:.74rem;color:var(--white60);line-height:1.35}
+.bk-pkg-r{display:flex;align-items:center;gap:10px;flex-shrink:0}
 .bk-pkg-price{font-family:'PT Serif',serif;font-weight:700;font-size:1.05rem;color:var(--white);flex-shrink:0;white-space:nowrap}
 .bk-pkg-price small{font-size:.68rem;font-weight:400;color:var(--white60)}
-.bk-pkg-grp{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin:22px 0 10px;padding:0 2px}
-.bk-pkg-grp:first-child{margin-top:6px}
+.bk-pkg-chev{width:14px;height:14px;stroke:var(--white38);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;transition:stroke .18s}
+.bk-pkg.feat .bk-pkg-chev{stroke:var(--cyan)}
+.bk-pkg:active .bk-pkg-chev{stroke:var(--cyan)}
+.bk-pkg-grp{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin:24px 0 12px;padding:0 2px}
+.bk-pkg-grp:first-child{margin-top:8px}
 /* CONTACT FIELD GROUPS — clear separation between phone / language / city */
 .bk-fld{margin-bottom:20px}
 .bk-fld:last-of-type{margin-bottom:8px}
@@ -214,8 +231,9 @@ select.bk-input{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http:/
 <div class="mo" id="mo">
   <div class="mo-box">
     <div class="mo-head">
-      <div><div class="mo-t" id="mo-t">Book Class</div><div class="mo-c" id="mo-c"></div></div>
-      <button class="mo-x" onclick="closeMo()" style="width:auto;border-radius:8px;padding:8px 14px;gap:6px;font-size:.72rem;font-weight:600;display:flex;align-items:center"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:14px;height:14px"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Close</button>
+      <button class="mo-back" id="mo-back" type="button" aria-label="Back to previous step" onclick="goBack()"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>Back</button>
+      <div class="mo-head-t"><div class="mo-t" id="mo-t">Book Class</div><div class="mo-c" id="mo-c"></div></div>
+      <button class="mo-x" id="mo-x" type="button" aria-label="Close booking" onclick="closeMo()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Close</button>
     </div>
     <div class="mo-bd" id="mo-bd"></div>
     <div class="mo-ft"><div class="mo-sec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Secure booking via SABDA</div></div>
@@ -364,6 +382,19 @@ function stepChange(){
   var box=document.querySelector('.mo-box');
   if(box) box.scrollTop=0;
 }
+
+// Step navigation: each step calls setBack() to declare its previous step.
+// The Back button at the top of the modal calls goBack() which invokes prevStep.
+var prevStep=null;
+function setBack(fn){
+  prevStep=fn;
+  var b=document.getElementById('mo-back');
+  if(!b) return;
+  if(fn) b.classList.add('on'); else b.classList.remove('on');
+}
+function goBack(){
+  if(typeof prevStep==='function') prevStep();
+}
 function showFallback(){
   if(!curSession||!curSession.link) return;
   var err=document.getElementById('bk-err');
@@ -411,6 +442,7 @@ function closeMo(){
   curSession=null;curMembership=null;isProcessing=false;
   activePromo=null;discountedPrice=null;
   activePayReq=null;activePayName=null;
+  setBack(null);
   if(cardElement){try{cardElement.destroy();}catch(e){}cardElement=null;}
 }
 document.getElementById('mo').addEventListener('click',function(e){if(e.target===this)closeMo();});
@@ -433,8 +465,7 @@ function getSpotsHtml(){
 
 // ── STEP 1A: LOGIN (default) ──
 function showLoginStep(){stepChange();
-  
-  
+  setBack(showGuestStep);
   var classBlock='<div class="bk-class">'
     +'<div class="bk-class-name">'+esc(curSession.title)+'</div>'
     +'<div class="bk-class-meta">'
@@ -461,8 +492,7 @@ function showLoginStep(){stepChange();
 
 // ── STEP 1B: GUEST ──
 function showGuestStep(){stepChange();
-  
-  
+  setBack(null);
   var classBlock='<div class="bk-class">'
     +'<div class="bk-class-name">'+esc(curSession.title)+'</div>'
     +'<div class="bk-class-meta">'
@@ -545,6 +575,7 @@ function doLogin(){if(isProcessing)return;
 // ── STEP 1C: MFA CODE INPUT ──
 var curMfaToken=null;
 function showMfaStep(mfaToken){stepChange();
+  setBack(showLoginStep);
   curMfaToken=mfaToken;
   var bd=document.getElementById('mo-bd');
   bd.innerHTML='<div class="bk-class">'
@@ -635,6 +666,7 @@ function doGuestCheck(){
   .then(function(d){
     if(d.exists){
       stepChange();
+      setBack(showGuestStep);
       var bd=document.getElementById('mo-bd');
       bd.innerHTML='<div class="bk-class">'
         +'<div class="bk-class-name">'+esc(curSession.title)+'</div>'
@@ -716,6 +748,7 @@ function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').repl
 
 // ── STEP 3A: CONFIRM WITH MEMBERSHIP ──
 function showConfirmStep(membership){stepChange();
+  setBack(null);
   var bd=document.getElementById('mo-bd');
   var mName=membership.name||membership.membershipName||membership.planName||'Membership';
   var credits=membership.remainingCredits||membership.eventsRemaining||membership.creditsRemaining||membership.remainingEvents||'';
@@ -862,13 +895,15 @@ function removePromo(origPrice){
 }
 
 function showNoMembership(){stepChange();
+  setBack(null);
   activePromo=null;discountedPrice=null;
   var bd=document.getElementById('mo-bd');
 
   function row(cls,type,price,id,name,desc,priceLabel){
     return '<div class="bk-pkg '+cls+'" onclick="showPayForm(\''+type+'\','+price+','+id+',\''+name.replace(/'/g,"\\'")+'\',\''+desc.replace(/'/g,"\\'")+'\')">'
       +'<div class="bk-pkg-l"><div class="bk-pkg-name">'+name+'</div><div class="bk-pkg-desc">'+desc+'</div></div>'
-      +'<div class="bk-pkg-price">'+priceLabel+'</div></div>';
+      +'<div class="bk-pkg-r"><div class="bk-pkg-price">'+priceLabel+'</div>'
+      +'<svg class="bk-pkg-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div>';
   }
 
   bd.innerHTML='<div class="bk-class">'
@@ -901,6 +936,7 @@ function showNoMembership(){stepChange();
 
 // ── STEP 3C: PAYMENT FORM (after selecting an option) ──
 function showPayForm(type,price,productId,name,desc){stepChange();
+  setBack(curSession && curSession.isPackagePurchase ? showPackageGuestStep : showNoMembership);
   var bd=document.getElementById('mo-bd');
   bd.innerHTML='<div class="bk-class">'
     +'<div class="bk-class-name">'+esc(curSession.title)+'</div>'
@@ -1116,6 +1152,7 @@ function doPayAndBook(type,price,productId){if(isProcessing)return;
 
 // ── STEP 4: SUCCESS ──
 function showSuccess(){stepChange();
+  setBack(null);
   var bd=document.getElementById('mo-bd');
   // Fix #8: decrement spots locally
   if(curSession&&curSession.id){
@@ -1199,6 +1236,7 @@ function openPackagePurchase(productId) {
 
 function showPackageGuestStep() {
   stepChange();
+  setBack(null);
   var pkg = PACKAGES[curSession.productId];
   var bd = document.getElementById('mo-bd');
   bd.innerHTML = '<div class="bk-class">'
