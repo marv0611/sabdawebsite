@@ -1,5 +1,44 @@
 const MOMENCE = 'https://momence.com';
 
+// ── BROWSER-LIKE HEADERS for Momence API calls ──
+// Momence has anti-bot protection that locks out hosts (per host_id, NOT per IP)
+// when it sees obvious server-to-server requests with no browser fingerprint.
+// EVERY call to a Momence endpoint MUST go through this helper, otherwise the
+// SABDA host (host_id 54278) gets rate-limited and EVERY visitor sees
+// "You have reached the limit of number of failed retries for your payment".
+//
+// Required minimum headers a real browser sends when calling Momence's widget:
+// - User-Agent: a real browser UA, not 'cloudflare-workers' (default)
+// - Origin: https://momence.com (or the embed origin)
+// - Referer: a Momence widget page URL
+// - Accept: */* or application/json
+// - Accept-Language: en-US,en;q=0.9
+// - X-Requested-With: XMLHttpRequest (sent by jQuery/axios in their widget)
+// - sec-fetch-* headers (sent by modern browsers)
+function momenceHeaders(extra) {
+  const base = {
+    'Host': 'momence.com',
+    'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36',
+    'Accept': 'application/json, text/plain, */*',
+    'Accept-Language': 'en-US,en;q=0.9',
+    'Origin': 'https://momence.com',
+    'Referer': 'https://momence.com/u/sabda',
+    'X-Requested-With': 'XMLHttpRequest',
+    'sec-ch-ua': '"Chromium";v="131", "Not_A Brand";v="24"',
+    'sec-ch-ua-mobile': '?0',
+    'sec-ch-ua-platform': '"macOS"',
+    'sec-fetch-dest': 'empty',
+    'sec-fetch-mode': 'cors',
+    'sec-fetch-site': 'same-origin',
+  };
+  if (extra) {
+    for (const k in extra) {
+      if (extra[k] !== undefined && extra[k] !== null) base[k] = extra[k];
+    }
+  }
+  return base;
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -56,11 +95,21 @@ export default {
 
     const target = MOMENCE + url.pathname + url.search;
 
+    // Forward incoming request headers, then layer in browser-like defaults
+    // for anything missing. The catch-all proxy is what serves the iframe-style
+    // Momence pages, so the browser DOES send real headers we want to preserve.
     const fwd = new Headers();
     for (const [k, v] of request.headers) {
       if (k.startsWith('cf-') || k === 'host') continue;
       fwd.set(k, v);
     }
+    // Layer in Momence-required defaults (don't overwrite real browser values)
+    const mDefaults = momenceHeaders();
+    for (const k in mDefaults) {
+      if (!fwd.has(k)) fwd.set(k, mDefaults[k]);
+    }
+    // These MUST be overridden — browser sends its own Origin/Referer, but we
+    // need Momence to see Momence as the origin
     fwd.set('Host', 'momence.com');
     fwd.set('Origin', MOMENCE);
     fwd.set('Referer', MOMENCE + '/');
@@ -322,7 +371,7 @@ async function handleCheckEmail(request, origin) {
 
     const res = await fetch(MOMENCE + '/_api/primary/checkout/customer/alert', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Host': 'momence.com' },
+      headers: momenceHeaders({ 'Content-Type': 'application/json' }),
       body: JSON.stringify({ email, hostId: 54278 }),
     });
 
@@ -360,7 +409,7 @@ async function handlePromo(request, origin) {
 
     const res = await fetch(MOMENCE + '/_api/primary/plugin/CheckAccessCode', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Host': 'momence.com' },
+      headers: momenceHeaders({ 'Content-Type': 'application/json' }),
       body: JSON.stringify(body),
     });
 
@@ -410,11 +459,7 @@ async function handleMfaVerify(request, origin) {
     // Verify TOTP code
     const verifyRes = await fetch(MOMENCE + '/_api/primary/auth/mfa/totp/verify', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Cookie': partialCookies,
-        'Host': 'momence.com',
-      },
+      headers: momenceHeaders({ 'Content-Type': 'application/json', 'Cookie': partialCookies }),
       body: JSON.stringify({ token: code }),
     });
 
@@ -435,7 +480,7 @@ async function handleMfaVerify(request, origin) {
 
     // Fetch profile
     const profileRes = await fetch(MOMENCE + '/_api/primary/auth/profile', {
-      headers: { 'Cookie': cookieStr, 'Host': 'momence.com' },
+      headers: momenceHeaders({ 'Cookie': cookieStr }),
     });
     const profile = profileRes.ok ? await profileRes.json().catch(() => ({})) : {};
 
@@ -452,7 +497,7 @@ async function handleMfaVerify(request, origin) {
         const memberEmail = profile.email || '';
         const mRes = await fetch(
           MOMENCE + '/_api/primary/plugin/memberships/session-compatible-memberships?sessionId=' + sessionId + '&email=' + encodeURIComponent(memberEmail) + '&tickets=1&isGuestOnlyBooking=false',
-          { headers: { 'Cookie': cookieStr, 'Host': 'momence.com' } }
+          { headers: momenceHeaders({ 'Cookie': cookieStr }) }
         );
         const mData = await mRes.json().catch(() => []);
         const rawList = Array.isArray(mData) ? mData : (mData.memberships || mData.message || []);
@@ -472,7 +517,7 @@ async function handleMfaVerify(request, origin) {
     let sessionPrice = 0;
     if (sessionId) {
       try {
-        const sRes = await fetch(MOMENCE + '/_api/readonly/plugin/sessions/' + sessionId + '?hostId=54278', { headers: { 'Host': 'momence.com' } });
+        const sRes = await fetch(MOMENCE + '/_api/readonly/plugin/sessions/' + sessionId + '?hostId=54278', { headers: momenceHeaders() });
         const sData = await sRes.json();
         if (sData.message) sessionPrice = sData.message.fixedTicketPrice || 0;
       } catch(e) {}
@@ -512,7 +557,7 @@ async function handleLogin(request, origin) {
     // Step 1: Login to Momence
     const loginRes = await fetch(MOMENCE + '/_api/primary/auth/login', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Host': 'momence.com' },
+      headers: momenceHeaders({ 'Content-Type': 'application/json' }),
       body: JSON.stringify({ email, password }),
     });
 
@@ -546,7 +591,7 @@ async function handleLogin(request, origin) {
 
     // Step 2: Fetch profile
     const profileRes = await fetch(MOMENCE + '/_api/primary/auth/profile', {
-      headers: { 'Cookie': cookieStr, 'Host': 'momence.com' },
+      headers: momenceHeaders({ 'Cookie': cookieStr }),
     });
     const profile = profileRes.ok ? await profileRes.json().catch(() => ({})) : {};
 
@@ -564,7 +609,7 @@ async function handleLogin(request, origin) {
         const memberEmail = profile.email || email;
         const mRes = await fetch(
           MOMENCE + '/_api/primary/plugin/memberships/session-compatible-memberships?sessionId=' + sessionId + '&email=' + encodeURIComponent(memberEmail) + '&tickets=1&isGuestOnlyBooking=false',
-          { headers: { 'Cookie': cookieStr, 'Host': 'momence.com' } }
+          { headers: momenceHeaders({ 'Cookie': cookieStr }) }
         );
         const mData = await mRes.json().catch(() => []);
         const rawList = Array.isArray(mData) ? mData : (mData.memberships || mData.message || []);
@@ -597,7 +642,7 @@ async function handleLogin(request, origin) {
     let sessionPrice = 0;
     if (sessionId) {
       try {
-        const sRes = await fetch(MOMENCE + '/_api/readonly/plugin/sessions/' + sessionId + '?hostId=54278', { headers: { 'Host': 'momence.com' } });
+        const sRes = await fetch(MOMENCE + '/_api/readonly/plugin/sessions/' + sessionId + '?hostId=54278', { headers: momenceHeaders() });
         const sData = await sRes.json();
         if (sData.message) sessionPrice = sData.message.fixedTicketPrice || 0;
       } catch(e) {}
@@ -643,7 +688,7 @@ async function handleBook(request, origin) {
     try {
       const sessRes = await fetch(
         MOMENCE + '/_api/readonly/plugin/sessions/' + sessionId + '?hostId=54278',
-        { headers: { 'Host': 'momence.com' } }
+        { headers: momenceHeaders() }
       );
       const sessData = await sessRes.json();
       if (sessData.message) {
@@ -669,11 +714,7 @@ async function handleBook(request, origin) {
       MOMENCE + '/_api/primary/plugin/sessions/' + sessionId + '/membership-pay',
       {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Cookie': cookieStr,
-          'Host': 'momence.com',
-        },
+        headers: momenceHeaders({ 'Content-Type': 'application/json', 'Cookie': cookieStr }),
         body: JSON.stringify(body),
       }
     );
@@ -791,7 +832,7 @@ async function handlePay(request, origin) {
       try {
         const sessRes = await fetch(
           MOMENCE + '/_api/readonly/plugin/sessions/' + sessionId + '?hostId=' + HOST_ID,
-          { headers: { 'Host': 'momence.com' } }
+          { headers: momenceHeaders() }
         );
         const sessData = await sessRes.json();
         if (sessData.message) {
@@ -840,11 +881,7 @@ async function handlePay(request, origin) {
 
     const payRes = await fetch(momenceUrl, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Host': 'momence.com',
-        ...(cookieStr ? { 'Cookie': cookieStr } : {}),
-      },
+      headers: momenceHeaders({ 'Content-Type': 'application/json', ...(cookieStr ? { 'Cookie': cookieStr } : {}) }),
       body: JSON.stringify(body),
     });
 
