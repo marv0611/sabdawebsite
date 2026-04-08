@@ -142,7 +142,60 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
 .tab-bk-o svg{stroke:var(--navy);width:22px;height:22px;stroke-width:2.5}
 .tab-bk span{position:relative;top:-6px}
 
-/* MORE */
+/* TRUST SCORES */
+.trust{display:flex;align-items:center;justify-content:center;gap:0;padding:20px 24px;border-bottom:1px solid var(--w06)}
+.trust-col{text-align:center;flex:1}
+.trust-score{font-family:'PT Serif',serif;font-size:1.8rem;font-weight:700;color:var(--salmon);line-height:1}
+.trust-src{font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;color:var(--w60);font-weight:600;margin-top:4px}
+.trust-n{font-size:.5rem;color:var(--w38);margin-top:2px}
+.trust-div{width:1px;height:40px;background:var(--w06);flex-shrink:0}
+
+/* PARTNERS MARQUEE */
+.marquee{padding:14px 0;border-bottom:1px solid var(--w06);overflow:hidden;position:relative}
+.mq-label{font-size:.5rem;letter-spacing:.22em;text-transform:uppercase;color:var(--white);text-align:center;font-weight:700;margin-bottom:10px}
+.mq-track{overflow:hidden;position:relative}
+.mq-track::before,.mq-track::after{content:'';position:absolute;top:0;bottom:0;width:60px;z-index:2;pointer-events:none}
+.mq-track::before{left:0;background:linear-gradient(to right,var(--navy),transparent)}
+.mq-track::after{right:0;background:linear-gradient(to left,var(--navy),transparent)}
+.mq-inner{display:flex;gap:0;animation:scroll 20s linear infinite;width:max-content}
+.mq-inner span{padding:0 24px;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;white-space:nowrap}
+@keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* STAT BAR */
+
+
+/* REVIEW QUOTE */
+.rq{padding:12px 24px;border-bottom:1px solid var(--w06);text-align:center;font-family:'PT Serif',serif;font-style:italic;font-size:.75rem;color:var(--w60);line-height:1.5}
+.rq em{font-style:normal;color:var(--salmon);font-size:.62rem;font-family:'DM Sans',sans-serif;font-weight:600}
+.tmq-wrap{padding:14px 0;border-bottom:1px solid var(--w06);overflow:hidden;position:relative}
+.tmq-wrap::before,.tmq-wrap::after{content:'';position:absolute;top:0;bottom:0;width:40px;z-index:3;pointer-events:none}
+.tmq-wrap::before{left:0;background:linear-gradient(to right,var(--navy),transparent)}
+.tmq-wrap::after{right:0;background:linear-gradient(to left,var(--navy),transparent)}
+.tmq-row{display:flex;align-items:center;width:max-content;animation:tmq-right 55s linear infinite}
+.tmq-row span{padding:0 24px;font-family:'PT Serif',serif;font-style:italic;font-size:.78rem;color:var(--w60);white-space:nowrap;line-height:1.4}
+.tmq-row span::before{content:'"';color:var(--cyan);margin-right:3px;font-style:normal}
+.tmq-row span::after{content:'"';color:var(--cyan);margin-left:3px;font-style:normal}
+@keyframes tmq-right{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+
+
+
+
+
+/* HOMEPAGE CLASS CARDS */
+.hp-card{display:block;height:100px;border-radius:12px;overflow:hidden;position:relative;background-size:cover;background-position:center}
+.hp-card-ov{position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,18,53,.8) 0%,rgba(14,18,53,.3) 100%)}
+.hp-card-t{position:absolute;left:20px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:2px}
+.hp-card-t b{font-family:'PT Serif',serif;font-size:1.1rem;font-weight:700}
+.hp-card-t span{font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--w60)}
+
+
+/* SCROLL ANIMATIONS */
+.fi{opacity:0;transform:translateY(16px);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1)}
+.fi.vis{opacity:1;transform:none}
+.fi:nth-child(2){transition-delay:.06s}
+.fi:nth-child(3){transition-delay:.12s}
+.fi:nth-child(4){transition-delay:.18s}
+
 /* MORE MENU — iOS Settings style */
 .more{position:fixed;inset:0;z-index:200;background:var(--navy);display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .25s}
 .more.on{opacity:1;pointer-events:auto}
