@@ -31,21 +31,11 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
 .sh em{font-style:italic;color:var(--salmon)}
 .sp{font-size:.82rem;color:var(--w60);line-height:1.65;margin-bottom:12px}
 .divider{height:1px;background:var(--w06);margin:0 24px}
-.hero-img{width:100%;height:280px;object-fit:cover}
 .cta-strip{padding:20px 24px;border-top:1px solid var(--w06)}
 .cta-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px;background:var(--cyan);color:var(--navy);border-radius:100px;font-size:.84rem;font-weight:700;box-shadow:0 4px 20px rgba(2,243,197,.2)}
 .cta-btn svg{width:14px;height:14px;stroke:var(--navy);stroke-width:2.5;fill:none}
 
-.ct{padding:16px 24px;border-bottom:1px solid var(--w06);display:flex;gap:14px;align-items:flex-start}
-.ct-num{width:28px;height:28px;border-radius:50%;background:rgba(2,243,197,.06);border:1px solid rgba(2,243,197,.12);display:flex;align-items:center;justify-content:center;font-size:.56rem;font-weight:700;color:var(--cyan);flex-shrink:0;margin-top:2px}
-.ct-body{flex:1}
-.ct-name{font-family:'PT Serif',serif;font-size:.92rem;font-weight:700;margin-bottom:3px}
-.ct-desc{font-size:.75rem;color:var(--w60);line-height:1.55}
-.ct-tag{display:inline-block;margin-top:6px;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--w38);background:var(--w03);padding:3px 8px;border-radius:100px;border:1px solid var(--w06)}
 
-.ct-name{font-family:'PT Serif',serif;font-size:1rem;font-weight:700;margin-bottom:4px}
-.ct-desc{font-size:.78rem;color:var(--w60);line-height:1.6}
-.ct-tag{display:inline-block;margin-top:8px;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--w38)}
 
 .tabs{position:fixed;bottom:0;left:0;right:0;z-index:100;display:flex;align-items:flex-end;justify-content:space-around;height:calc(72px + var(--safe-b));padding-bottom:var(--safe-b);background:var(--navy95);backdrop-filter:saturate(1.4) blur(24px);-webkit-backdrop-filter:saturate(1.4) blur(24px);border-top:1px solid var(--w06)}
 .tab{display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 0 6px;flex:1;color:var(--w38);transition:color .2s}
@@ -59,29 +49,47 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
 
 .fi{opacity:0;transform:translateY(16px);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1)}
 .fi.vis{opacity:1;transform:none}
-
-.cls-intro{padding:14px 24px;font-size:.88rem;color:var(--w80);line-height:1.65}
-.cls-intro a{color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)}
-.faq-sec{padding:36px 24px 24px;border-top:1px solid var(--w06);margin-top:12px}
-.faq-h{font-family:'PT Serif',serif;font-size:1.4rem;font-weight:700;line-height:1.15;margin-bottom:18px}
+.hero-img{width:100%;height:240px;object-fit:cover;display:block}
+.intro-block{padding:28px 24px 8px}
+.intro-p{font-size:.92rem;color:var(--w80);line-height:1.68;margin-bottom:16px}
+.intro-p:last-child{margin-bottom:0}
+.intro-p a{color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)}
+.types-sec{padding:28px 0 16px}
+.types-lab{display:block;padding:0 24px 14px;font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:var(--cyan);font-weight:700}
+.ct{padding:18px 24px;border-top:1px solid var(--w06);display:flex;gap:16px;align-items:flex-start}
+.ct:last-child{border-bottom:1px solid var(--w06)}
+.ct-num{width:30px;height:30px;border-radius:50%;background:rgba(2,243,197,.06);border:1px solid rgba(2,243,197,.16);display:flex;align-items:center;justify-content:center;font-size:.64rem;font-weight:700;color:var(--cyan);flex-shrink:0;margin-top:2px}
+.ct-body{flex:1;min-width:0}
+.ct-name{font-family:'PT Serif',serif;font-size:1rem;font-weight:700;margin-bottom:6px;line-height:1.3}
+.ct-desc{font-size:.8rem;color:var(--w60);line-height:1.6}
+.ct-desc a{color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)}
+.faq-sec{padding:40px 24px 28px;border-top:1px solid var(--w06);margin-top:14px}
+.faq-h{font-family:'PT Serif',serif;font-size:1.4rem;font-weight:700;line-height:1.15;margin-bottom:20px;margin-top:10px}
 .faq-h em{font-style:italic;color:var(--salmon)}
 .faq-it{border-bottom:1px solid var(--w06)}
 .faq-q{display:flex;justify-content:space-between;align-items:center;width:100%;padding:18px 0;text-align:left;font-size:.86rem;font-weight:600;color:var(--white);line-height:1.4;gap:14px}
 .faq-q svg{width:18px;height:18px;stroke:var(--cyan);fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0;transition:transform .25s}
 .faq-it.open .faq-q svg{transform:rotate(45deg)}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.16,1,.3,1)}
-.faq-it.open .faq-a{max-height:600px}
+.faq-it.open .faq-a{max-height:800px}
 .faq-a p{padding:0 0 18px;font-size:.8rem;color:var(--w60);line-height:1.68}
 .faq-a a{color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)}
-.pt-sec{padding:36px 24px 28px;border-top:1px solid var(--w06);margin-top:8px}
-.pt-h{font-family:'PT Serif',serif;font-size:1.4rem;font-weight:700;line-height:1.15;margin-bottom:18px}
+.pt-sec{padding:40px 24px 28px;border-top:1px solid var(--w06);margin-top:8px}
+.pt-h{font-family:'PT Serif',serif;font-size:1.4rem;font-weight:700;line-height:1.15;margin-bottom:20px;margin-top:10px}
 .pt-h em{font-style:italic;color:var(--salmon)}
-.pt-card-m{display:flex;align-items:center;justify-content:space-between;padding:16px;background:var(--w03);border:1px solid var(--w06);border-radius:14px;margin-bottom:10px;gap:14px}
+.pt-card-m{display:flex;align-items:center;justify-content:space-between;padding:18px;background:var(--w03);border:1px solid var(--w06);border-radius:14px;margin-bottom:10px;gap:14px}
 .pt-card-l{flex:1;min-width:0}
-.pt-card-lbl{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--w38);font-weight:700;margin-bottom:4px}
-.pt-card-note{font-size:.72rem;color:var(--w60);line-height:1.45}
-.pt-card-price{font-family:'PT Serif',serif;font-size:1.4rem;font-weight:700;color:var(--white);white-space:nowrap}
+.pt-card-lbl{font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--w38);font-weight:700;margin-bottom:6px}
+.pt-card-note{font-size:.72rem;color:var(--w60);line-height:1.5}
+.pt-card-price{font-family:'PT Serif',serif;font-size:1.5rem;font-weight:700;color:var(--white);white-space:nowrap}
 .pt-more{font-size:.78rem;color:var(--cyan);font-weight:600;border-bottom:1px solid rgba(2,243,197,.3);padding-bottom:2px}
+.reopen-banner{text-align:center;padding:16px 24px 0}
+.reopen-banner span{display:inline-block;padding:9px 20px;background:rgba(2,243,197,.1);border:1px solid rgba(2,243,197,.28);border-radius:100px;font-size:.74rem;color:var(--cyan);font-weight:700;letter-spacing:.04em}
+.faq-h em{font-style:italic;color:var(--salmon)}
+.faq-q svg{width:18px;height:18px;stroke:var(--cyan);fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0;transition:transform .25s}
+.faq-it.open .faq-q svg{transform:rotate(45deg)}
+.faq-it.open .faq-a{max-height:600px}
+.pt-h em{font-style:italic;color:var(--salmon)}
 
 .ct-book{display:inline-flex;padding:8px 18px;background:rgba(2,243,197,.1);border:1px solid rgba(2,243,197,.2);border-radius:100px;font-size:.6rem;font-weight:700;color:var(--cyan);letter-spacing:.04em;margin-top:10px;margin-right:8px}
 </style>
@@ -93,16 +101,47 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
   <a href="schedule.html" class="hdr-pill touch">Book a Class</a>
 </header>
 
+
 <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/ecstatic_dance.jpg" alt="Ecstatic Dance at SABDA" class="hero-img" loading="lazy">
-<div class="pg fi"><div class="pg-t">Ecstatic Dance at <em>SABDA</em></div><div class="pg-s">Freeform movement inside 360° projections and Dolby Atmos. No choreography. No judgement. Just you and the music.</div></div>
-<div class="divider"></div>
-<div class="sec"><span class="sl">Ecstatic Dance</span></div>
-<p class="cls-intro fi">Ecstatic dance at SABDA is a guided freeform movement class inside our 360° immersive room with Dolby Atmos spatial audio. No choreography. No judgement. Just you, the music, and a room that moves with you. It's the only immersive ecstatic dance class in Barcelona.</p>
-<p class="cls-intro fi">Each session is led by a teacher who guides the class and curates the music live, taking the room through a journey of melodic house, electronic, ambient, and world music. The 360° projections respond to the sound, creating a visual landscape that makes the experience feel like dancing inside a living artwork.</p>
-<div class="ct fi"><div class="ct-num">1</div><div class="ct-body"><div class="ct-name">What to Expect</div><div class="ct-desc">The class opens with a brief grounding circle led by the teacher, then the music builds: slow and grounding, through rhythmic peaks, and returning to stillness. Around two hours total. The Dolby Atmos system makes the music feel three-dimensional. The 360° projections make the room feel infinite. You move however your body wants to move.</div></div></div>
-<div class="pt-sec fi"><span class="sl">Pricing</span><div class="pt-h">Class <em>pricing.</em></div><div class="pt-card-m"><div class="pt-card-l"><div class="pt-card-lbl">Intro 3-Pack</div><div class="pt-card-note">New students<br>Valid for 30 days</div></div><div class="pt-card-price">€50</div></div><div class="pt-card-m"><div class="pt-card-l"><div class="pt-card-lbl">Immerse</div><div class="pt-card-note">Unlimited classes<br>Cancel anytime</div></div><div class="pt-card-price">€130<span style="font-size:.72rem;color:var(--w38);font-weight:400">/mo</span></div></div><div class="pt-card-m"><div class="pt-card-l"><div class="pt-card-lbl">Immerse 3 Month</div><div class="pt-card-note">€110/month<br>Unlimited classes<br>Cancel anytime</div></div><div class="pt-card-price">€330<span style="font-size:.72rem;color:var(--w38);font-weight:400">/3 mo</span></div></div><div style="text-align:center;margin-top:18px"><a href="pricing.html" class="pt-more">See all offers &rarr;</a></div></div>
-<div class="faq-sec fi"><span class="sl">FAQ</span><div class="faq-h">Common <em>questions.</em></div><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">What is ecstatic dance?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Ecstatic dance is a guided freeform movement class with no choreography and no talking on the dance floor. You move however your body wants to curated music. At SABDA in Barcelona's Eixample, it takes place inside a 360° projection room with Dolby Atmos spatial audio.</p></div></div><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">Do I need to be a good dancer?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>No. There is no right or wrong way to move at ecstatic dance. Some people dance wildly. Some sway gently. Some sit still. All of it is welcome. No judgement, no choreography.</p></div></div><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">What music do you play at ecstatic dance?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>The teacher curates live music journeys through melodic house, electronic, ambient, and world music. Think Jon Hopkins, Ben Böhmer, Bicep. The Dolby Atmos system at SABDA makes the music feel three-dimensional. Also try our <a href="sound-healing.html" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">sound healing sessions</a>.</p></div></div><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">Is there alcohol at ecstatic dance?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>No. We offer water, tea, and light refreshments. Ecstatic dance at SABDA is about the experience of movement and music, not substances. The 360° immersive room creates its own natural high.</p></div></div><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">How long does ecstatic dance last?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>About 2 hours: 15 minute opening circle, 90 minutes of dancing, 15 minutes of closing integration. Check the <a href="classes.html" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">schedule</a> for upcoming sessions. <a href="pricing.html" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">Classes from €18. See full offers</a>.</p></div></div></div>
+
+<div class="pg fi">
+
+  <div class="pg-t">Ecstatic Dance at <em>SABDA</em></div>
+
+  <div class="pg-s">Freeform movement inside 360&deg; projections and Dolby Atmos. No choreography. No judgement. Just you and the music.</div>
+
+</div>
+
+<div class="intro-block">
+  <p class="intro-p fi">Ecstatic dance at SABDA is a guided freeform movement class inside our 360° immersive room with Dolby Atmos spatial audio. No choreography. No judgement. Just you, the music, and a room that moves with you. It's the only immersive ecstatic dance class in Barcelona.</p>
+  <p class="intro-p fi">Each session is led by a teacher who guides the class and curates the music live, taking the room through a journey of melodic house, electronic, ambient, and world music. The 360° projections respond to the sound, creating a visual landscape that makes the experience feel like dancing inside a living artwork.</p>
+</div>
+<div class="types-sec">
+  <span class="types-lab">Class Types</span>
+  <div class="ct fi"><div class="ct-num">1</div><div class="ct-body"><div class="ct-name">What to Expect</div><div class="ct-desc">The class opens with a brief grounding circle led by the teacher, then the music builds: slow and grounding, through rhythmic peaks, and returning to stillness. Around two hours total. The Dolby Atmos system makes the music feel three-dimensional. The 360° projections make the room feel infinite. You move however your body wants to move.</div></div></div>
+</div>
+
+<div class="pt-sec fi">
+  <span class="sl">Pricing</span>
+  <div class="pt-h">Class <em>pricing.</em></div>
+  <div class="pt-card-m"><div class="pt-card-l"><div class="pt-card-lbl">Intro 3-Pack</div><div class="pt-card-note">New students<br>Valid for 30 days</div></div><div class="pt-card-price">€50</div></div>
+  <div class="pt-card-m"><div class="pt-card-l"><div class="pt-card-lbl">Immerse</div><div class="pt-card-note">Unlimited classes<br>Cancel anytime</div></div><div class="pt-card-price">€130<span style="font-size:.72rem;color:var(--w38);font-weight:400">/mo</span></div></div>
+  <div class="pt-card-m"><div class="pt-card-l"><div class="pt-card-lbl">Immerse 3 Month</div><div class="pt-card-note">€110/month<br>Unlimited classes<br>Cancel anytime</div></div><div class="pt-card-price">€330<span style="font-size:.72rem;color:var(--w38);font-weight:400">/3 mo</span></div></div>
+  <div style="text-align:center;margin-top:18px"><a href="pricing.html" class="pt-more">See all offers &rarr;</a></div>
+</div>
+
+<div class="faq-sec fi">
+  <span class="sl">FAQ</span>
+  <div class="faq-h">Common <em>questions.</em></div>
+  <div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">What is ecstatic dance?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Ecstatic dance is a guided freeform movement class with no choreography and no talking on the dance floor. You move however your body wants to curated music. At SABDA in Barcelona's Eixample, it takes place inside a 360° projection room with Dolby Atmos spatial audio.</p></div></div>
+  <div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">Do I need to be a good dancer?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>No. There is no right or wrong way to move at ecstatic dance. Some people dance wildly. Some sway gently. Some sit still. All of it is welcome. No judgement, no choreography.</p></div></div>
+  <div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">What music do you play at ecstatic dance?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>The teacher curates live music journeys through melodic house, electronic, ambient, and world music. Think Jon Hopkins, Ben Böhmer, Bicep. The Dolby Atmos system at SABDA makes the music feel three-dimensional. Also try our <a href="sound-healing.html" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">sound healing sessions</a>.</p></div></div>
+  <div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">Is there alcohol at ecstatic dance?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>No. We offer water, tea, and light refreshments. Ecstatic dance at SABDA is about the experience of movement and music, not substances. The 360° immersive room creates its own natural high.</p></div></div>
+  <div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">How long does ecstatic dance last?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>About 2 hours: 15 minute opening circle, 90 minutes of dancing, 15 minutes of closing integration. Check the <a href="classes.html" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">schedule</a> for upcoming sessions. <a href="pricing.html" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">Classes from €18. See full offers</a>.</p></div></div>
+</div>
+
 <div class="cta-strip fi"><a href="schedule.html" class="cta-btn touch">Book a Class</a></div>
+
 <nav class="tabs">
   <a href="classes.html" class="tab on"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Classes</span></a>
   <a href="schedule.html" class="tab "><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span>Schedule</span></a>
