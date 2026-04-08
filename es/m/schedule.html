@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#0e1235">
-<title>Schedule | SABDA</title>
-<link rel="canonical" href="https://sabdastudio.com/schedule.html">
+<title>Horarios | SABDA</title>
+<link rel="canonical" href="https://sabdastudio.com/es/m/schedule.html">
 <link rel="alternate" hreflang="en" href="https://sabdastudio.com/schedule.html">
 <link rel="alternate" hreflang="es" href="https://sabdastudio.com/es/m/schedule.html">
 <link rel="alternate" hreflang="x-default" href="https://sabdastudio.com/schedule.html">
@@ -232,7 +232,7 @@ select.bk-input{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http:/
 
 <header class="hdr">
   <a href="index.html" class="hdr-logo-link"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA" style="height:18px;width:auto;opacity:.9;display:block"></a>
-  <button onclick="document.querySelector('.day-btn.active').scrollIntoView({behavior:'smooth'})" class="hdr-pill touch" style="border:none;cursor:pointer">Book a Class</button>
+  <button onclick="document.querySelector('.day-btn.active').scrollIntoView({behavior:'smooth'})" class="hdr-pill touch" style="border:none;cursor:pointer">Reservar Clase</button>
 </header>
 
 <!-- DAYS -->
@@ -253,8 +253,8 @@ select.bk-input{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http:/
 <div class="mo" id="mo">
   <div class="mo-box">
     <div class="mo-head">
-      <button class="mo-back" id="mo-back" type="button" aria-label="Back to previous step" onclick="goBack()"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>Back</button>
-      <div class="mo-head-t"><div class="mo-t" id="mo-t">Book Class</div><div class="mo-c" id="mo-c"></div></div>
+      <button class="mo-back" id="mo-back" type="button" aria-label="Volver al paso anterior" onclick="goBack()"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>Atrás</button>
+      <div class="mo-head-t"><div class="mo-t" id="mo-t">Reservar Clase</div><div class="mo-c" id="mo-c"></div></div>
       <button class="mo-x" id="mo-x" type="button" aria-label="Close booking" onclick="closeMo()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Close</button>
     </div>
     <div class="mo-bd" id="mo-bd"></div>
@@ -264,42 +264,42 @@ select.bk-input{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http:/
 
 <!-- TAB BAR -->
 <nav class="tabs">
-  <a href="classes.html" class="tab"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Classes</span></a>
-  <a href="schedule.html" class="tab on"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span>Schedule</span></a>
-  <a href="schedule.html" class="tab tab-bk"><div class="tab-bk-o"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><span>Book</span></a>
-  <a href="pricing.html" class="tab"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Pricing</span></a>
-  <button class="tab" id="moreBtn2" type="button" aria-label="More menu"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.5" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="12" cy="19" r="1.5" fill="currentColor" stroke="none"/></svg><span>More</span></button>
+  <a href="classes.html" class="tab"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Clases</span></a>
+  <a href="schedule.html" class="tab on"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span>Horarios</span></a>
+  <a href="schedule.html" class="tab tab-bk"><div class="tab-bk-o"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><span>Reservar</span></a>
+  <a href="pricing.html" class="tab"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Precios</span></a>
+  <button class="tab" id="moreBtn2" type="button" aria-label="Menú adicional"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.5" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="12" cy="19" r="1.5" fill="currentColor" stroke="none"/></svg><span>Más</span></button>
 </nav>
 <!-- MORE MENU — iOS Settings style -->
 <div class="more" id="more">
-  <div class="more-hdr"><a class="more-done" id="moreX" href="index.html" aria-label="Back to Home"><svg viewBox="0 0 24 24"><path d="M9 18l-6-6 6-6"/></svg>Home</a></div>
+  <div class="more-hdr"><a class="more-done" id="moreX" href="index.html" aria-label="Volver al inicio"><svg viewBox="0 0 24 24"><path d="M9 18l-6-6 6-6"/></svg>Home</a></div>
   <div class="more-body">
-    <div class="more-group"><div class="more-group-t">Language</div></div>
+    <div class="more-group"><div class="more-group-t">Idioma</div></div>
     <div class="lang-row">
-      <button class="lang-btn on" data-lang="en" onclick="setLang('en')" type="button">English</button>
-      <button class="lang-btn" data-lang="es" onclick="setLang('es')" type="button">Espa&ntilde;ol</button>
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')" type="button">English</button>
+      <button class="lang-btn on" data-lang="es" onclick="setLang('es')" type="button">Espa&ntilde;ol</button>
       <button class="lang-btn" data-lang="ca" onclick="setLang('ca')" type="button">Catal&agrave;</button>
     </div>
-    <div class="more-group"><div class="more-group-t">Explore</div></div>
-    <a href="index.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div class="more-row-txt">Home</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
-    <a href="classes.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><div class="more-row-txt">Classes</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
-    <a href="schedule.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div class="more-row-txt">Schedule</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
-    <a href="pricing.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div class="more-row-txt">Pricing</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
-    <a href="hire.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div><div class="more-row-txt">Rent the Space</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
-    <a href="events.html" class="more-row"><div class="more-row-icon" style="background:rgba(248,166,163,.08);color:var(--salmon)"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="more-row-txt">Events</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
-    <a href="about.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div><div class="more-row-txt">About</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
-    <div class="more-group"><div class="more-group-t">Support</div></div>
+    <div class="more-group"><div class="more-group-t">Explorar</div></div>
+    <a href="index.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div class="more-row-txt">Inicio</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="classes.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><div class="more-row-txt">Clases</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="schedule.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div class="more-row-txt">Horarios</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="pricing.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div class="more-row-txt">Precios</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="hire.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div><div class="more-row-txt">Alquila el Espacio</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="events.html" class="more-row"><div class="more-row-icon" style="background:rgba(248,166,163,.08);color:var(--salmon)"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="more-row-txt">Eventos</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="about.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div><div class="more-row-txt">Sobre</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <div class="more-group"><div class="more-group-t">Ayuda</div></div>
     <a href="faq.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><div class="more-row-txt">FAQ</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
-    <a href="contact.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="more-row-txt">Contact</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
-    <div class="more-group"><div class="more-group-t">Connect</div></div>
+    <a href="contact.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="more-row-txt">Contacto</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <div class="more-group"><div class="more-group-t">Conecta</div></div>
     <a href="https://instagram.com/sabda_studio" target="_blank" rel="noopener" class="more-row"><div class="more-row-icon" style="background:rgba(248,166,163,.08);color:var(--salmon)"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg></div><div class="more-row-txt">Instagram</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
     <a href="https://www.tiktok.com/@sabda_studio" target="_blank" rel="noopener" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></div><div class="more-row-txt">TikTok</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
     <a href="https://www.linkedin.com/company/sabdastudio" target="_blank" rel="noopener" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div><div class="more-row-txt">LinkedIn</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
     <div class="more-group"><div class="more-group-t">Legal</div></div>
-    <a href="../legal-notice.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="more-row-txt">Legal Notice</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
-    <a href="../privacy-policy.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="more-row-txt">Privacy Policy</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
-    <a href="../terms.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><div class="more-row-txt">Terms &amp; Conditions</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
-    <a href="../cookies.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/><path d="M11 17v.01"/><path d="M7 14v.01"/></svg></div><div class="more-row-txt">Cookie Policy</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="/es/legal/aviso-legal.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="more-row-txt">Aviso Legal</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="/es/legal/politica-privacidad.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="more-row-txt">Política de Privacidad</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="/es/legal/terminos.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><div class="more-row-txt">Términos y Condiciones</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="/es/legal/cookies.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/><path d="M11 17v.01"/><path d="M7 14v.01"/></svg></div><div class="more-row-txt">Política de Cookies</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
   </div>
 </div>
 
@@ -383,7 +383,7 @@ function renderSched(){
     const ttl=title.replace(/'/g,"\\'").replace(/"/g,"&quot;");
     const tfn=fn.replace(/'/g,"\\'").replace(/"/g,"&quot;");
 
-    return`<div class="cc" style="animation-delay:${i*.05}s"><div class="ct"><div class="ct-h">${h}:${m}</div><div class="ct-d">${e.duration} min</div></div><div class="ci"><div class="ci-t">${title}${lang?`<span class="ci-lg">${lang}</span>`:''}</div><div class="ci-tc">${fn}</div>${st?`<div class="ci-sp ${sc}">${st}</div>`:''}</div><div class="ca">${full?(e.allowWaitlist?`<button class="bb wl touch" onclick="openMo('${lnk}','${ttl}','${time}','${tfn}')">Waitlist</button>`:`<button class="bb fu">Full</button>`):`<button class="bb touch" onclick="openMo('${lnk}','${ttl}','${time}','${tfn}')">Book</button>`}</div></div>`;
+    return`<div class="cc" style="animation-delay:${i*.05}s"><div class="ct"><div class="ct-h">${h}:${m}</div><div class="ct-d">${e.duration} min</div></div><div class="ci"><div class="ci-t">${title}${lang?`<span class="ci-lg">${lang}</span>`:''}</div><div class="ci-tc">${fn}</div>${st?`<div class="ci-sp ${sc}">${st}</div>`:''}</div><div class="ca">${full?(e.allowWaitlist?`<button class="bb wl touch" onclick="openMo('${lnk}','${ttl}','${time}','${tfn}')">Lista de espera</button>`:`<button class="bb fu">Completa</button>`):`<button class="bb touch" onclick="openMo('${lnk}','${ttl}','${time}','${tfn}')">Reservar</button>`}</div></div>`;
   }).join('');
 }
 
@@ -571,12 +571,12 @@ function showLoginStep(){stepChange();
     +'<div class="bk-login">'
     +'<div class="bk-label">Email</div>'
     +'<input class="bk-input" id="bk-email" type="email" inputmode="email" autocomplete="email" placeholder="your@email.com" aria-label="Email address" />'
-    +'<div class="bk-label">Password</div>'
+    +'<div class="bk-label">Contraseña</div>'
     +'<input class="bk-input" id="bk-pass" type="password" autocomplete="current-password" placeholder="Password" aria-label="Password" />'
     +'<div style="text-align:right;margin:-10px 0 12px"><a href="https://momence.com/forgot-password" target="_blank" style="font-size:.75rem;color:var(--white38);text-decoration:none;border-bottom:1px solid var(--white12)">Forgot password?</a></div>'
     +'<div class="bk-err" id="bk-err"></div>'
-    +'<button class="bk-primary" id="bk-login-btn" onclick="doLogin()">Log in & Book</button>'
-    +'<div class="bk-link" onclick="showGuestStep()">New here? Book as guest</div>'
+    +'<button class="bk-primary" id="bk-login-btn" onclick="doLogin()">Iniciar sesión y reservar</button>'
+    +'<div class="bk-link" onclick="showGuestStep()">¿Nueva aquí? Reservar como invitada</div>'
     +'</div>';
   document.getElementById('bk-email').focus();
   document.getElementById('bk-pass').addEventListener('keydown',function(e){if(e.key==='Enter')doLogin();});
@@ -597,13 +597,13 @@ function showGuestStep(){stepChange();
   bd.innerHTML=classBlock
     +'<div class="bk-login">'
     +'<div class="bk-label">First Name</div>'
-    +'<input class="bk-input" id="bk-fn" type="text" autocomplete="given-name" placeholder="First name" aria-label="First name" />'
+    +'<input class="bk-input" id="bk-fn" type="text" autocomplete="given-name" placeholder="Nombre" aria-label="Nombre" />'
     +'<div class="bk-label">Last Name</div>'
-    +'<input class="bk-input" id="bk-ln" type="text" autocomplete="family-name" placeholder="Last name" aria-label="Last name" />'
+    +'<input class="bk-input" id="bk-ln" type="text" autocomplete="family-name" placeholder="Apellido" aria-label="Apellido" />'
     +'<div class="bk-label">Email</div>'
     +'<input class="bk-input" id="bk-email" type="email" inputmode="email" autocomplete="email" placeholder="your@email.com" aria-label="Email address" />'
     +'<div class="bk-err" id="bk-err"></div>'
-    +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">Continue</button>'
+    +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">Continuar</button>'
     +'<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.12);border-radius:8px;padding:12px;margin-top:16px;font-size:.75rem;color:var(--white60);line-height:1.5;text-align:center">Booked with us before? <span onclick="showLoginStep()" style="color:var(--cyan);cursor:pointer;text-decoration:underline">Log in instead</span> to keep your history and credits together.</div>'
     +'<div class="bk-link" onclick="showLoginStep()">Have an account? Log in</div>'
     +'</div>';
@@ -680,7 +680,7 @@ function showMfaStep(mfaToken){stepChange();
     +'<div class="bk-label">Verification Code</div>'
     +'<input class="bk-input" id="bk-mfa" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="one-time-code" placeholder="000000" aria-label="6-digit verification code" style="text-align:center;font-size:1.4rem;letter-spacing:.3em" />'
     +'<div class="bk-err" id="bk-err"></div>'
-    +'<button class="bk-primary" id="bk-mfa-btn" onclick="doMfaVerify()">Verify & Continue</button>'
+    +'<button class="bk-primary" id="bk-mfa-btn" onclick="doMfaVerify()">Verificar y continuar</button>'
     +'<div class="bk-link" onclick="showLoginStep()">← Back</div>'
     +'</div>';
   document.getElementById('bk-mfa').focus();
@@ -770,7 +770,7 @@ function doGuestCheck(){
         +'<div style="font-size:.9rem;font-weight:600;color:var(--salmon);margin-bottom:6px">Account found</div>'
         +'<div style="font-size:.82rem;color:var(--white60);line-height:1.5">This email is already registered. Log in to keep your booking history and credits together.</div>'
         +'</div>'
-        +'<button class="bk-primary" onclick="showLoginStep()">Log in</button>'
+        +'<button class="bk-primary" onclick="showLoginStep()">Iniciar sesión</button>'
         +'<div class="bk-link" style="margin-top:12px"><a href="https://momence.com/forgot-password" target="_blank" style="color:var(--white38);font-size:.78rem;text-decoration:underline">Forgot your password?</a></div>'
         +'</div>';
     } else {
@@ -784,15 +784,15 @@ function doGuestCheck(){
 // ── CUSTOMER FIELDS HTML (phone, language, city) ──
 function customerFieldsHTML(){
   return '<div class="bk-fld">'
-    +'<div class="bk-label">Phone number</div>'
+    +'<div class="bk-label">Teléfono</div>'
     +'<div class="bk-phone-row">'
     +'<input class="bk-input" id="bk-cc" type="text" inputmode="tel" value="+34" aria-label="Country code" style="width:72px;flex-shrink:0;text-align:center;font-weight:600" />'
-    +'<input class="bk-input" id="bk-phone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="612 345 678" aria-label="Phone number" style="flex:1;min-width:0" />'
+    +'<input class="bk-input" id="bk-phone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="612 345 678" aria-label="Teléfono" style="flex:1;min-width:0" />'
     +'</div></div>'
     +'<div class="bk-fld">'
     +'<div class="bk-label">Preferred language</div>'
     +'<select class="bk-input" id="bk-lang" aria-label="Preferred language">'
-    +'<option value="">Select a language</option>'
+    +'<option value="">Selecciona un idioma</option>'
     +'<option value="English">English</option>'
     +'<option value="Castellano">Castellano</option>'
     +'<option value="Catala">Catal&agrave;</option>'
@@ -815,7 +815,7 @@ function validateCustomerFields(){
   var ok=true;
   var fields=[
     {id:'bk-cc',test:function(v){return v&&v.startsWith('+')&&v.length>=2;},msg:'Country code required'},
-    {id:'bk-phone',test:function(v){return v.replace(/\s/g,'').length>=6;},msg:'Phone number required'},
+    {id:'bk-phone',test:function(v){return v.replace(/\s/g,'').length>=6;},msg:'Teléfono obligatorio'},
     {id:'bk-lang',test:function(v){return!!v;},msg:'Please select a language'},
     {id:'bk-city',test:function(v){return v.trim().length>0;},msg:'City is required'}
   ];
@@ -854,14 +854,14 @@ function showConfirmStep(membership){stepChange();
     +(curSession.teacher?'<span>'+esc(curSession.teacher)+'</span>':'')
     +'</div></div>'
     +'<div class="bk-confirm">'
-    +'<div class="bk-user">Booking as <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>'
+    +'<div class="bk-user">Reservando como <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>'
     +'<div class="bk-membership">'
     +'<div class="bk-membership-name">'+mName+'</div>'
     +'<div class="bk-membership-detail">'+detail+'</div>'
     +'</div>'
     +customerFieldsHTML()
     +'<div class="bk-err" id="bk-err"></div>'
-    +'<button class="bk-primary" id="bk-confirm-btn" onclick="doBookWithMembership()">Confirm Booking</button>'
+    +'<button class="bk-primary" id="bk-confirm-btn" onclick="doBookWithMembership()">Confirmar Reserva</button>'
     +'<div class="bk-link-row"><div class="bk-link" onclick="curUser=null;curSessionToken=null;showLoginStep()">Switch account</div></div>'
     +'</div>';
 }
@@ -1029,8 +1029,8 @@ function showNoMembership(){stepChange();
     +(curSession.teacher?'<span>'+esc(curSession.teacher)+'</span>':'')
     +'</div></div>'
     +'<div class="bk-confirm">'
-    +'<div class="bk-user">Booking as <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>'
-    +'<p style="font-size:.85rem;color:var(--white60);text-align:center;margin-bottom:18px;line-height:1.5">Choose how you want to book this class</p>'
+    +'<div class="bk-user">Reservando como <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>'
+    +'<p style="font-size:.85rem;color:var(--white60);text-align:center;margin-bottom:18px;line-height:1.5">Elige cómo quieres reservar esta clase</p>'
     // Intro offers first
     +'<div class="bk-pkg-grp" style="color:var(--cyan)">New to SABDA?</div>'
     +row('feat','pack',50,443935,'Intro 3-Pack','3 classes, valid 30 days','€50')
@@ -1060,7 +1060,7 @@ function showPayForm(type,price,productId,name,desc){stepChange();
     +(curSession.teacher?'<span>'+esc(curSession.teacher)+'</span>':'')
     +'</div></div>'
     +'<div class="bk-confirm">'
-    +'<div class="bk-user">Booking as <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>'
+    +'<div class="bk-user">Reservando como <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>'
     +'<div class="bk-membership">'
     +'<div class="bk-membership-name">'+name+'</div>'
     +'<div class="bk-membership-detail">'+desc+(type==='membership'&&price<200?' · Billed monthly':'')+'</div>'
@@ -1466,8 +1466,8 @@ function showPackageGuestStep() {
     + '<div class="bk-label">Email</div>'
     + '<input class="bk-input" id="bk-email" type="email" inputmode="email" placeholder="your@email.com" autocomplete="email" aria-label="Email address" />'
     + '<div class="bk-err" id="bk-err"></div>'
-    + '<button class="bk-primary" id="bk-guest-btn" onclick="doPackageGuestCheck()">Continue to payment</button>'
-    + '<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.12);border-radius:8px;padding:12px;margin-top:16px;font-size:.75rem;color:var(--white60);line-height:1.5;text-align:center">Already a customer? <span onclick="showLoginStep()" style="color:var(--cyan);cursor:pointer;text-decoration:underline">Log in instead</span></div>'
+    + '<button class="bk-primary" id="bk-guest-btn" onclick="doPackageGuestCheck()">Continuar al pago</button>'
+    + '<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.12);border-radius:8px;padding:12px;margin-top:16px;font-size:.75rem;color:var(--white60);line-height:1.5;text-align:center">¿Ya eres cliente? <span onclick="showLoginStep()" style="color:var(--cyan);cursor:pointer;text-decoration:underline">Inicia sesión</span></div>'
     + '</div>';
   document.getElementById('bk-fn').focus();
 }
@@ -1497,9 +1497,9 @@ function toggleMore(){var el=document.getElementById('more');if(el)el.classList.
 var mb2=document.getElementById('moreBtn2');if(mb2)mb2.addEventListener('click',function(){document.getElementById('more').classList.add('on')});
 var mx=document.getElementById('moreX');if(mx)mx.addEventListener('click',function(){document.getElementById('more').classList.remove('on')});
 function setLang(c){try{localStorage.setItem('sabda_lang',c)}catch(e){}document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===c)});if(c==='es'){window.location.href='/es/m/schedule.html';return;}if(c==='en'){window.location.href='/m/schedule.html';return;}}
-try{var sl=localStorage.getItem('sabda_lang')||'en';document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===sl)})}catch(e){}
+try{var sl=localStorage.getItem('sabda_lang')||'es';document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===sl)})}catch(e){}
 </script>
-<script defer src="../cookies.js"></script>
-<script src="../cookie-consent.js"></script>
+<script defer src="/cookies.js"></script>
+<script src="/cookie-consent.js"></script>
 </body>
 </html>

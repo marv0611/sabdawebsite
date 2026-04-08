@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0e1235">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,700;1,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<title>FAQ | SABDA</title>
+<link rel="canonical" href="https://sabdastudio.com/es/m/faq.html">
+<link rel="alternate" hreflang="en" href="https://sabdastudio.com/faq/">
+<link rel="alternate" hreflang="es" href="https://sabdastudio.com/es/m/faq.html">
+<link rel="alternate" hreflang="x-default" href="https://sabdastudio.com/faq/">
+<style>
+:root{--navy:#0e1235;--navy95:rgba(14,18,53,.95);--salmon:#F8A6A3;--cyan:#02F3C5;--white:#f0efe9;--w80:rgba(240,239,233,.8);--w60:rgba(240,239,233,.6);--w38:rgba(240,239,233,.38);--w20:rgba(240,239,233,.2);--w10:rgba(240,239,233,.1);--w06:rgba(240,239,233,.06);--w03:rgba(240,239,233,.03);--r:16px;--safe-b:env(safe-area-inset-bottom,0px);--safe-t:env(safe-area-inset-top,0px)}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{overflow-x:hidden;-webkit-text-size-adjust:100%}
+body{background:var(--navy);color:var(--white);font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;padding-top:calc(52px + var(--safe-t));padding-bottom:calc(84px + var(--safe-b));overflow-x:hidden;line-height:1.55}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{font-family:inherit;border:none;background:none;cursor:pointer;color:inherit}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:150px}
+.touch{transition:transform .15s cubic-bezier(.2,.8,.4,1),opacity .15s}.touch:active{transform:scale(.97);opacity:.85}
+.hdr{position:fixed;top:0;left:0;right:0;z-index:100;height:calc(52px + var(--safe-t));padding-top:var(--safe-t);display:flex;align-items:center;justify-content:space-between;padding-left:20px;padding-right:16px;background:var(--navy95);backdrop-filter:saturate(1.4) blur(24px);-webkit-backdrop-filter:saturate(1.4) blur(24px);border-bottom:1px solid var(--w06)}
+.hdr img{height:18px;width:auto;opacity:.9}
+.hdr-pill{padding:7px 16px;background:var(--cyan);color:var(--navy);border-radius:100px;font-size:.68rem;font-weight:700;letter-spacing:.02em;line-height:1;box-shadow:0 2px 12px rgba(2,243,197,.2)}
+.hdr-back{display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--w60);font-weight:500}
+.hdr-back svg{width:16px;height:16px;stroke:var(--w60);fill:none;stroke-width:2}
+.pg{padding:24px 24px 16px}
+.pg-t{font-family:'PT Serif',serif;font-size:1.5rem;font-weight:700;letter-spacing:-.02em}
+.pg-t em{font-style:italic;color:var(--salmon)}
+.pg-s{font-size:.78rem;color:var(--w60);margin-top:4px;line-height:1.55}
+.sec{padding:24px 24px}
+.sl{font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:var(--cyan);font-weight:700;margin-bottom:8px;display:block}
+.sh{font-family:'PT Serif',serif;font-size:1.3rem;font-weight:700;line-height:1.15;letter-spacing:-.01em;margin-bottom:12px}
+.sh em{font-style:italic;color:var(--salmon)}
+.sp{font-size:.82rem;color:var(--w60);line-height:1.65;margin-bottom:12px}
+.divider{height:1px;background:var(--w06);margin:0 24px}
+.hero-img{width:100%;height:200px;object-fit:cover}
+.cta-strip{padding:20px 24px;border-top:1px solid var(--w06)}
+.cta-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px;background:var(--cyan);color:var(--navy);border-radius:100px;font-size:.84rem;font-weight:700;box-shadow:0 4px 20px rgba(2,243,197,.2)}
+.cta-btn svg{width:14px;height:14px;stroke:var(--navy);stroke-width:2.5;fill:none}
+
+.ct{padding:16px 24px;border-bottom:1px solid var(--w06);display:flex;gap:14px;align-items:flex-start}
+.ct-num{width:28px;height:28px;border-radius:50%;background:rgba(2,243,197,.06);border:1px solid rgba(2,243,197,.12);display:flex;align-items:center;justify-content:center;font-size:.56rem;font-weight:700;color:var(--cyan);flex-shrink:0;margin-top:2px}
+.ct-body{flex:1}
+.ct-name{font-family:'PT Serif',serif;font-size:.92rem;font-weight:700;margin-bottom:3px}
+.ct-desc{font-size:.75rem;color:var(--w60);line-height:1.55}
+.ct-tag{display:inline-block;margin-top:6px;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--w38);background:var(--w03);padding:3px 8px;border-radius:100px;border:1px solid var(--w06)}
+
+.ct-name{font-family:'PT Serif',serif;font-size:1rem;font-weight:700;margin-bottom:4px}
+.ct-desc{font-size:.78rem;color:var(--w60);line-height:1.6}
+.ct-tag{display:inline-block;margin-top:8px;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--w38)}
+
+.tabs{position:fixed;bottom:0;left:0;right:0;z-index:100;display:flex;align-items:flex-end;justify-content:space-around;height:calc(72px + var(--safe-b));padding-bottom:var(--safe-b);background:var(--navy95);backdrop-filter:saturate(1.4) blur(24px);-webkit-backdrop-filter:saturate(1.4) blur(24px);border-top:1px solid var(--w06)}
+.tab{display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 0 6px;flex:1;color:var(--w38);transition:color .2s}
+.tab.on{color:var(--cyan)}
+.tab svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tab span{font-size:.5rem;letter-spacing:.04em;font-weight:600}
+.tab-bk{position:relative}
+.tab-bk-o{width:56px;height:56px;border-radius:50%;background:var(--cyan);display:flex;align-items:center;justify-content:center;position:relative;top:-10px;box-shadow:0 4px 24px rgba(2,243,197,.28)}
+.tab-bk-o svg{stroke:var(--navy);width:22px;height:22px;stroke-width:2.5}
+.tab-bk span{position:relative;top:-6px}
+
+.faq-cat{padding:20px 24px 8px}
+.faq-cat-name{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--salmon);font-weight:700}
+.faq-q{padding:16px 24px;border-bottom:1px solid var(--w06);cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.faq-q span{font-size:.84rem;font-weight:500;flex:1}
+.faq-q svg{width:16px;height:16px;stroke:var(--w38);stroke-width:2;fill:none;flex-shrink:0;transition:transform .3s}
+.faq-q.open svg{transform:rotate(45deg);stroke:var(--cyan)}
+.faq-a{padding:0 24px;max-height:0;overflow:hidden;transition:max-height .3s,padding .3s}
+.faq-a.open{max-height:1200px;padding:0 24px 16px}
+.faq-a p{font-size:.78rem;color:var(--w60);line-height:1.6}
+
+.fi{opacity:0;transform:translateY(16px);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1)}
+.fi.vis{opacity:1;transform:none}
+
+/* MORE MENU — iOS Settings style */
+.more{position:fixed;inset:0;z-index:200;background:var(--navy);display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .25s}
+.more.on{opacity:1;pointer-events:auto}
+.more-hdr{height:calc(52px + var(--safe-t));padding-top:var(--safe-t);display:flex;align-items:center;padding-left:12px;padding-right:16px;border-bottom:1px solid var(--w06)}
+.more-done{font-size:.82rem;color:var(--cyan);font-weight:600;padding:8px 12px;display:flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;font-family:inherit;text-decoration:none}
+.more-done svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.more-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none}
+.more-body::-webkit-scrollbar{display:none;width:0;height:0}
+.more-group{padding:18px 24px 6px;text-align:center}
+.more-group:first-child{padding-top:14px}
+.more-group-t{font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:var(--w38);font-weight:600;margin-bottom:6px}
+.lang-row{display:flex;gap:8px;padding:2px 24px 8px;justify-content:center}
+.lang-btn{flex:0 0 auto;min-width:88px;padding:11px 16px;background:var(--w03);border:1px solid var(--w10);border-radius:100px;color:var(--w80);font-size:.74rem;font-weight:600;letter-spacing:.02em;font-family:inherit;cursor:pointer;transition:all .2s;-webkit-tap-highlight-color:transparent}
+.lang-btn.on{background:var(--cyan);color:var(--navy);border-color:var(--cyan);box-shadow:0 2px 12px rgba(2,243,197,.18)}
+.lang-btn:active{transform:scale(.97)}
+.more-row{display:flex;align-items:center;gap:14px;padding:14px 24px;border-bottom:1px solid var(--w06);text-decoration:none;-webkit-tap-highlight-color:transparent}
+.more-row:active{background:var(--w03)}
+.more-row-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.more-row-icon svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.more-row-txt{flex:1;font-size:.84rem;font-weight:500;color:var(--white)}
+.more-row-chev{width:12px;height:12px;stroke:var(--w20);fill:none;stroke-width:2}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<header class="hdr">
+  <a href="index.html" class="hdr-logo-link"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA" style="height:18px;width:auto;opacity:.9;display:block"></a>
+  <a href="schedule.html" class="hdr-pill touch">Reservar Clase</a>
+</header>
+
+<div class="pg fi">
+  <div class="pg-t">Preguntas <em>Frecuentes</em></div>
+</div>
+<div class="faq-cat"><div class="faq-cat-name">Empezar</div></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Qué significa exactamente un entorno inmersivo?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Cada clase en SABDA ocurre dentro de una sala totalmente cerrada de 360° con proyección mapping del suelo al techo y audio espacial Dolby Atmos. Los visuales y el sonido transforman el espacio en un mundo diferente en cada sesión. Tus sentidos están totalmente activados, el móvil fuera, y durante 60 minutos el mundo exterior de verdad desaparece.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Tengo que reservar con antelación?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Sí. Las clases se llenan. Reserva a través de los <a href="../classes.html">horarios</a>.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>Nunca he hecho yoga, pilates ni sound healing. ¿Puedo venir igualmente?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Por supuesto. Todas las clases están abiertas a cualquier nivel. Si eres nueva, te recomendamos empezar con Vinyasa, Hatha Vinyasa o Core Pilates antes de pasar a formatos más intensos como Power Pilates o Yoga Sculpt. Cualquier clase de sound healing o yoga con sound healing es totalmente accesible desde el primer día.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>No estoy muy en forma ni soy muy flexible. ¿Me sentiré fuera de lugar?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>No. SABDA no va de rendimiento. Va de experiencia. En cada clase encontrarás a gente de todos los niveles. Nadie te está mirando.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Qué debo traer?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Solo tu buena energía. Ponemos esterillas, props, mantas y cojines. Para las clases de movimiento se recomienda una toalla de gimnasio. Los calcetines antideslizantes son opcionales para pilates. Ven con ropa cómoda con la que puedas moverte, trae toalla si quieres usar las duchas (también las puedes alquilar) y evita el perfume fuerte. Las botellas de agua son bienvenidas.</p></div>
+<div class="faq-cat"><div class="faq-cat-name">Las Clases</div></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Qué tipo de clases ofrecéis y qué nivel de intensidad tienen?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Hacemos unas 42 clases a la semana entre movimiento, breathwork y sonido. Fuertes y energizantes: Core Pilates, Power Pilates, Pilates Sculpt, Full Body Pilates, Power Vinyasa, Alchemy Breath, Yoga Sculpt. Equilibradas y de anclaje: Hatha Vinyasa, Vinyasa. Para bajar el ritmo y resetear: Yin Yoga, Sound Healing, Serenity and Sound, Guided Sound Experience, Breathe & Let Go, Reset & Calm Breathwork. ¿No sabes por dónde empezar? Te recomendamos Vinyasa, Hatha Vinyasa o Core Pilates.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Y si llego tarde?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Planifica llegar 10 minutos antes de tu clase. Tenemos un corte estricto de 5 minutos después del comienzo de la clase. Esto garantiza la mejor experiencia posible para todo el mundo en la sala. Si llegas después, la clase no es reembolsable.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Cuánto duran las clases?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>La mayoría de las clases duran 60 minutos. Algunos formatos van de 50 a 75 minutos. Consulta la ficha de cada clase en los <a href="../classes.html">horarios</a>.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Qué debo comer (o no comer) antes de clase?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Intenta no hacer una comida completa en los 90 minutos previos a la clase, sobre todo para breathwork. Un snack ligero está bien. Hidrátate antes.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿En qué idioma son las clases?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Inglés, español o ambos. Aparece en cada clase en los horarios. Tenemos catalán disponible para sesiones privadas. Escríbenos a <a href="mailto:info@sabdastudio.com">info@sabdastudio.com</a> para más información.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Puedo hacer fotos o vídeos durante la clase?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Puedes hacer fotos y vídeos antes y después de clase. El espacio está diseñado para la presencia, así que por favor mantén el móvil en modo avión o apagado durante la clase para que todo el mundo pueda desconectar.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Puedo traer a una amiga o venir en grupo?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Sí. Reserva plazas individuales en los horarios. Para grupos de 8 o más, escríbenos directamente y lo organizamos.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Hay restricciones de edad?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Las personas menores de 16 años deben venir acompañadas por un adulto. Se pueden hacer excepciones, pero las tiene que verificar el estudio. Para más info escríbenos a <a href="mailto:info@sabdastudio.com">info@sabdastudio.com</a>.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Las clases son mixtas?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Sí, todas las clases están abiertas a todo el mundo.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿El entorno inmersivo es apto para personas con fotosensibilidad o epilepsia?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>El estudio usa proyección 360° con visuales dinámicos y luz en movimiento. Si tienes fotosensibilidad o epilepsia, consulta primero con tu médico y avísanos con antelación. En general, los visuales de las clases de bienestar no contienen flashes.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Qué es el breathwork y es seguro?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>El breathwork usa patrones de respiración consciente para cambiar tu estado físico y mental. Puede ser activador o profundamente calmante según el formato. Es seguro y accesible para la mayoría de adultos sanos. No se recomienda si estás embarazada, tienes condiciones cardiovasculares, epilepsia o un historial de episodios graves de salud mental. Si tienes dudas, consulta primero con tu médico e informa a la profe de cualquier condición antes de la clase.</p></div>
+<div class="faq-cat"><div class="faq-cat-name">El Espacio y Logística</div></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Dónde estáis?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>C/Muntaner 83B, Local 2, 08011 Barcelona. En el corazón del Eixample. A 10 minutos a pie del metro Universitat (L1/L2) y a 10 minutos de Passeig de Gràcia. <a href="../contact/">Cómo llegar y mapa</a>.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Cuál es el horario de apertura?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Abrimos 15 minutos antes de la primera clase del día. Lunes 8:45 a 21:30. Martes 7:45 a 22:00. Miércoles 7:45 a 21:35. Jueves 7:45 a 21:30. Viernes 8:45 a 18:00. Sábado 9:00 a 14:00 y 16:45 a 19:00. Domingo 9:45 a 13:30 y 17:30 a 21:30.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Hay algún sitio donde dejar mis cosas?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Tenemos una zona de taquillas cerca de la sala de clase para dejar tus cosas. Si traes algo de valor, puedes guardarlo contigo, dejarlo en recepción o pedírselo a la profe.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Hay duchas disponibles?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Sí, gratis. Trae tu toalla o alquila una en el estudio.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿El espacio es accesible para personas con movilidad reducida?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Sí. El estudio es accesible. Si tienes necesidades específicas, escríbenos antes de tu visita y consulta con tu médico para asegurarte de que la práctica es adecuada para ti. Haremos todo lo posible por adaptarnos.</p></div>
+<div class="faq-cat"><div class="faq-cat-name">Reservas y Cancelaciones</div></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Cómo reservo una clase?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Reserva directamente desde nuestra web o app. Ve a los <a href="../classes.html">horarios</a>, elige tu clase y reserva tu plaza.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Puedo cancelar o reprogramar una clase?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Cancela hasta 8 horas antes del inicio de la clase y recuperas tu crédito íntegro. Si cancelas después de esa ventana, pierdes el crédito.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Y si una clase está llena?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Apúntate a la lista de espera directamente en los horarios. Te avisaremos automáticamente si se libera una plaza.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Cuál es la política de cancelación para eventos?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Los eventos no son reembolsables una vez reservados. Si ya no puedes asistir, escríbenos a <a href="mailto:connect@sabdastudio.com">connect@sabdastudio.com</a>. En algunos casos podemos transferir tu plaza a una amiga.</p></div>
+<div class="faq-cat"><div class="faq-cat-name">Precios y Membresía</div></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Qué ofertas de introducción tenéis para quien viene por primera vez?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Si es tu primera vez en SABDA, tienes tres opciones: clase suelta por 18€, Pack Intro de 3 (3 clases por 50€, poco más de 16€ por clase) o semana ilimitada por 50€ (solo residentes en Barcelona, muestra prueba de residencia en tu primera visita). El Pack de 3 es la mejor forma de explorar bien el espacio. Todas las ofertas de introducción son válidas en todo el horario semanal de clases. Los eventos especiales no están incluidos.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Qué packs de clases tenéis disponibles?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Clase suelta, pack de 5 clases y pack de 10 clases. Todos los packs son válidos en todo el horario semanal de clases. Los eventos especiales no están incluidos. <a href="../pricing.html">Ver precios</a>.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Qué opciones de membresía hay?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Las membresías te dan el mejor valor si piensas venir con regularidad. Ofrecemos Flex (horas valle), Ritual (8 al mes), Immerse (ilimitado mensual) e Immerse 3 Meses. <a href="../pricing.html">Ver el desglose completo</a>.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Puedo usar el Pack Intro de 3 en cualquier clase?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Sí. Válido en todas las clases semanales, pero no incluye eventos especiales.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Puedo compartir mis créditos con otra persona?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Los créditos y packs son personales e intransferibles. En el checkout hay una opción para pagar por una amiga. La membresía Immerse incluye 2 invitaciones al mes para invitadas que vengan por primera vez a SABDA.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Aceptáis ClassPass / Urban Sports Club / Wellhub?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Sí a los tres. Mira la disponibilidad en su plataforma. Para tener la mayor disponibilidad, reserva directamente en la nuestra.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Puedo cancelar o congelar mi membresía?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Las membresías se renuevan automáticamente cada mes. Para cancelar, hazlo al menos 5 días antes de tu próxima fecha de renovación desde tu cuenta. De momento no se pueden congelar las membresías.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Tenéis descuento para residentes en Barcelona?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Sí. Las personas residentes en Barcelona que vengan por primera vez pueden acceder a una semana ilimitada en SABDA por 50€. Solo tienes que mostrar prueba de residencia en tu primera visita: empadronamiento, NIE/DNI o una factura de suministros.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Puedo comprar una tarjeta regalo?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Sí, por cualquier importe, canjeable en cualquier clase o pack. <a href="../pricing.html">Comprar una tarjeta regalo</a>.</p></div>
+<div class="faq-cat"><div class="faq-cat-name">Eventos y Alquiler en SABDA</div></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Qué tipo de eventos organiza SABDA?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Más allá del horario semanal de clases, SABDA organiza una programación rotativa de eventos: exposiciones (artistas digitales toman la sala 360°), ecstatic dance, sesiones de escucha en Dolby Atmos, ceremonias en torno al breathwork y al sonido, y eventos de comunidad. Los eventos se anuncian por nuestro Instagram y newsletter.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Puedo alquilar el espacio para un evento privado?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Sí. SABDA está disponible para activaciones de marca, eventos corporativos, sound baths privados, cenas inmersivas, sesiones de fotos y más. El sistema de proyección 360° y el audio espacial se pueden personalizar por completo para tu evento. <a href="../hire.html">Ver alquiler del espacio</a>.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Qué tipos de eventos puedo organizar?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Sesiones de team building corporativo, activaciones de marca, eventos de influencers, producciones de cine y fotografía, despedidas de soltera, fiestas infantiles, celebraciones privadas y más. Si tienes algo específico en mente, escríbenos. La mayoría de formatos funcionan en el espacio.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Podéis personalizar los visuales y el audio para nuestra marca?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Sí. Creamos entornos visuales a medida construidos en torno a tu marca, campaña o concepto de evento. Escríbenos al menos una semana antes de tu evento para garantizar que todo salga bien.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Organizáis sesiones de corporate wellness?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Sí. Sesiones privadas de yoga, breathwork, sound healing y movimiento dirigidas por instructores de SABDA. Se pueden reservar para equipos de cualquier tamaño y se adaptan a tu grupo. Rellena el <a href="../hire.html#inquiry">formulario de consulta</a> o escribe a <a href="mailto:connect@sabdastudio.com">connect@sabdastudio.com</a>.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>Queremos grabar contenido en SABDA. ¿Qué es posible?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>La sala inmersiva es un set listo para producción. La proyección 360° crea fondos visuales totalmente controlables (estáticos o reactivos al movimiento) y el sistema Dolby Atmos ofrece un entorno acústico controlado. Sin permisos de localización, sin ruido de calle. Producciones pasadas incluyen el vídeo de despedida del FC Barcelona para Sergi Roberto, que superó los 22 millones de visualizaciones. Rodaje, fotografía, jornadas de contenido con influencers y charlas grabadas son reservables.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿SABDA es adecuado para eventos de influencers y catas de marca?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Sí. El espacio se fotografía y se filma como ningún otro en Barcelona. Para eventos de influencers, el entorno inmersivo crea contenido compartible sin necesidad de diseño de set adicional. Para catas de marca, SABDA puede combinar tu producto con una clase inmersiva, una sesión de escucha o una activación a medida construida alrededor de tu audiencia.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Puedo organizar una celebración (cumpleaños, despedida de soltera, fiesta infantil)?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Sí. La sala inmersiva alberga hasta 100 invitados de pie y está disponible para alquiler privado completo. Cada celebración es tuya durante todo el evento. Las despedidas de soltera se pueden construir en torno a una sesión de sound healing o de movimiento. Las fiestas infantiles usan visuales interactivos y sonido espacial para crear algo que no se parece a ningún otro espacio en Barcelona.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Qué incluye un alquiler privado?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>El alquiler privado incluye el uso de la sala inmersiva, la biblioteca de contenido de SABDA y un técnico en sala obligatorio. Personal de recepción, personal de evento, asientos y contenido personalizado están disponibles como extras. Las opciones de catering están en desarrollo.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Con cuánta antelación tengo que reservar?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Al menos 2 o 3 semanas antes para eventos privados. Para producciones más grandes o contenido a medida, danos más margen.</p></div>
+<div class="faq-q" onclick="this.classList.toggle('open');this.nextElementSibling.classList.toggle('open')"><span>¿Por dónde empiezo?</span><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div>
+<div class="faq-a"><p>Rellena el <a href="../hire.html#inquiry">formulario de consulta</a> o escribe a <a href="mailto:connect@sabdastudio.com">connect@sabdastudio.com</a>. Cuéntanos tu fecha, el tipo de evento y el número aproximado de invitados y te respondemos en 48 horas.</p></div>
+<nav class="tabs">
+  <a href="classes.html" class="tab "><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Clases</span></a>
+  <a href="schedule.html" class="tab "><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span>Horarios</span></a>
+  <a href="schedule.html" class="tab tab-bk"><div class="tab-bk-o"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><span>Reservar</span></a>
+  <a href="pricing.html" class="tab "><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Precios</span></a>
+  <button class="tab" id="moreBtn2" type="button" aria-label="Menú adicional"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.5" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="12" cy="19" r="1.5" fill="currentColor" stroke="none"/></svg><span>Más</span></button>
+</nav>
+<!-- MORE MENU — iOS Settings style -->
+<div class="more" id="more">
+  <div class="more-hdr"><a class="more-done" id="moreX" href="index.html" aria-label="Volver al inicio"><svg viewBox="0 0 24 24"><path d="M9 18l-6-6 6-6"/></svg>Home</a></div>
+  <div class="more-body">
+    <div class="more-group"><div class="more-group-t">Idioma</div></div>
+    <div class="lang-row">
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')" type="button">English</button>
+      <button class="lang-btn on" data-lang="es" onclick="setLang('es')" type="button">Espa&ntilde;ol</button>
+      <button class="lang-btn" data-lang="ca" onclick="setLang('ca')" type="button">Catal&agrave;</button>
+    </div>
+    <div class="more-group"><div class="more-group-t">Explorar</div></div>
+    <a href="index.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div class="more-row-txt">Inicio</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="classes.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><div class="more-row-txt">Clases</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="schedule.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div class="more-row-txt">Horarios</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="pricing.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div class="more-row-txt">Precios</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="hire.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div><div class="more-row-txt">Alquila el Espacio</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="events.html" class="more-row"><div class="more-row-icon" style="background:rgba(248,166,163,.08);color:var(--salmon)"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="more-row-txt">Eventos</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="about.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div><div class="more-row-txt">Sobre</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <div class="more-group"><div class="more-group-t">Ayuda</div></div>
+    <a href="faq.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><div class="more-row-txt">FAQ</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="contact.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="more-row-txt">Contacto</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <div class="more-group"><div class="more-group-t">Conecta</div></div>
+    <a href="https://instagram.com/sabda_studio" target="_blank" rel="noopener" class="more-row"><div class="more-row-icon" style="background:rgba(248,166,163,.08);color:var(--salmon)"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg></div><div class="more-row-txt">Instagram</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="https://www.tiktok.com/@sabda_studio" target="_blank" rel="noopener" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></div><div class="more-row-txt">TikTok</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="https://www.linkedin.com/company/sabdastudio" target="_blank" rel="noopener" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div><div class="more-row-txt">LinkedIn</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <div class="more-group"><div class="more-group-t">Legal</div></div>
+    <a href="/es/legal/aviso-legal.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="more-row-txt">Aviso Legal</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="/es/legal/politica-privacidad.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="more-row-txt">Política de Privacidad</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="/es/legal/terminos.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><div class="more-row-txt">Términos y Condiciones</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="/es/legal/cookies.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/><path d="M11 17v.01"/><path d="M7 14v.01"/></svg></div><div class="more-row-txt">Política de Cookies</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+  </div>
+</div>
+
+
+<script>
+var fis=document.querySelectorAll('.fi');
+var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{threshold:.01});
+fis.forEach(function(el){io.observe(el)});
+setTimeout(function(){fis.forEach(function(el){el.classList.add('vis')})},800);
+
+function toggleMore(){var el=document.getElementById('more');if(el)el.classList.toggle('on')}
+var mb2=document.getElementById('moreBtn2');if(mb2)mb2.addEventListener('click',function(){document.getElementById('more').classList.add('on')});
+var mx=document.getElementById('moreX');if(mx)mx.addEventListener('click',function(){document.getElementById('more').classList.remove('on')});
+function setLang(c){try{localStorage.setItem('sabda_lang',c)}catch(e){}document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===c)});if(c==='es'){window.location.href='/es/m/faq.html';return;}if(c==='en'){window.location.href='/m/faq.html';return;}}
+try{var sl=localStorage.getItem('sabda_lang')||'es';document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===sl)})}catch(e){}
+</script>
+<script defer src="/cookies.js"></script>
+<script src="/cookie-consent.js"></script>
+</body>
+</html>
