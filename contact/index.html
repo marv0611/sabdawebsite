@@ -172,7 +172,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     </div>
   </div>
 <button class="nav-ham" onclick="document.getElementById('mobMenu').classList.add('open')" aria-label="Menu"><span></span><span></span><span></span></button></nav>
-<div class="mob-menu" id="mobMenu"><button class="mob-close" onclick="this.parentElement.classList.remove('open')"><svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12"/></svg></button><a href="../classes.html">Classes</a><a href="../pricing.html">Pricing</a><a href="../hire.html">Rent</a><a href="../events.html">Events</a><a href="../about.html">About</a><a href="../contact/">Contact</a><div style="width:60px;height:1px;background:rgba(240,239,233,.12);margin:4px 0"></div><a href="../legal-notice.html" style="font-size:.9rem;font-weight:500;opacity:.6">Legal Notice</a><a href="../privacy-policy.html" style="font-size:.9rem;font-weight:500;opacity:.6">Privacy Policy</a><a href="../terms.html" style="font-size:.9rem;font-weight:500;opacity:.6">Terms &amp; Conditions</a></div>
+<div class="mob-menu" id="mobMenu"><button class="mob-close" onclick="this.parentElement.classList.remove('open')"><svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12"/></svg></button><a href="../classes.html">Classes</a><a href="../pricing.html">Pricing</a><a href="../hire.html">Rent</a><a href="../events.html">Events</a><a href="../about.html">About</a><a href="../contact/">Contact</a><div style="width:60px;height:1px;background:rgba(240,239,233,.12);margin:4px 0"></div><a href="../legal-notice.html" style="font-size:.9rem;font-weight:500;opacity:.6">Legal Notice</a><a href="../privacy-policy.html" style="font-size:.9rem;font-weight:500;opacity:.6">Privacy Policy</a><a href="../terms.html" style="font-size:.9rem;font-weight:500;opacity:.6">Terms &amp; Conditions</a><a href="../cookies.html" style="font-size:.9rem;font-weight:500;opacity:.6">Cookies</a></div>
 
 <!-- HERO -->
 <div class="hero">
@@ -275,7 +275,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   </div>
   <div class="ft-bot">
     <span>© 2026 SABDA STUDIO S.L. All rights reserved.</span>
-    <div class="ft-legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a></div>
+    <div class="ft-legal"><a href="../legal-notice.html">Legal Notice</a><a href="../privacy-policy.html">Privacy Policy</a><a href="../terms.html">Terms &amp; Conditions</a><a href="../cookies.html">Cookies</a></div>
   </div>
 </footer>
 
@@ -306,5 +306,6 @@ function handleContact(e){
 }
 (function(){var canvas=document.getElementById('globalParticles');if(!canvas)return;var ctx=canvas.getContext('2d'),W,H,mouseX=-9999,mouseY=-9999;function resize(){W=window.innerWidth;H=window.innerHeight;canvas.width=W*devicePixelRatio;canvas.height=H*devicePixelRatio;ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0)}resize();window.addEventListener('resize',resize);document.addEventListener('mousemove',function(e){mouseX=e.clientX;mouseY=e.clientY});var COUNT=672,t=0,particles=[];for(var i=0;i<COUNT;i++){var c=Math.random();particles.push({x:Math.random()*3000,y:Math.random(),vx:0.008+Math.random()*0.06,vy:(Math.random()-0.5)*0.003,fx:0,fy:0,size:0.3+Math.random()*1.5,glow:4+Math.random()*16,color:c<0.38?[2,243,197]:c<0.72?[248,166,163]:[32,57,153],opacity:0.025+Math.random()*0.12,phase:Math.random()*Math.PI*2,waveAmp:0.01+Math.random()*0.04,waveFreq:0.0001+Math.random()*0.0005})}function draw(){t++;ctx.clearRect(0,0,W,H);for(var i=0;i<particles.length;i++){var p=particles[i];p.x+=p.vx;p.y+=p.vy;var waveY=p.waveAmp*Math.sin(p.phase+t*p.waveFreq),drawX=p.x+p.fx,drawY=(p.y+waveY)*H+p.fy;var dx=drawX-mouseX,dy=drawY-mouseY,dist=Math.sqrt(dx*dx+dy*dy);if(dist<120&&dist>0){var force=(1-dist/120)*2.5;p.fx+=(dx/dist)*force;p.fy+=(dy/dist)*force}p.fx*=0.94;p.fy*=0.94;drawX=p.x+p.fx;drawY=(p.y+waveY)*H+p.fy;if(p.x>W+60){p.x=-50;p.y=Math.random();p.fx=0;p.fy=0}if(p.y<-0.05)p.y=1.05;if(p.y>1.05)p.y=-0.05;var pulse=0.4+0.6*Math.sin(p.phase+t*0.001),op=p.opacity*pulse;if(op<0.002)continue;var g=ctx.createRadialGradient(drawX,drawY,0,drawX,drawY,p.glow);g.addColorStop(0,'rgba('+p.color[0]+','+p.color[1]+','+p.color[2]+','+op*0.7+')');g.addColorStop(0.3,'rgba('+p.color[0]+','+p.color[1]+','+p.color[2]+','+op*0.28+')');g.addColorStop(0.7,'rgba('+p.color[0]+','+p.color[1]+','+p.color[2]+','+op*0.04+')');g.addColorStop(1,'rgba('+p.color[0]+','+p.color[1]+','+p.color[2]+',0)');ctx.fillStyle=g;ctx.beginPath();ctx.arc(drawX,drawY,p.glow,0,Math.PI*2);ctx.fill();ctx.beginPath();ctx.arc(drawX,drawY,p.size*0.5,0,Math.PI*2);ctx.fillStyle='rgba('+p.color[0]+','+p.color[1]+','+p.color[2]+','+Math.min(0.6,op*2)+')';ctx.fill()}requestAnimationFrame(draw)}requestAnimationFrame(draw)})();
 </script>
+<script defer src="../cookies.js"></script>
 </body>
 </html>
