@@ -306,7 +306,7 @@ select.bk-input{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http:/
 
 <script>
 const API='https://momence.com/_api/primary/api/v1/Events?hostId=54278&token=a0314a80ca';
-let allE=[],selDate=null,actF='All';
+let allE=[],selDate=null,actF='Todas';
 
 function getCat(t){
   const l=t.toLowerCase();
@@ -314,7 +314,7 @@ function getCat(t){
   if(l.includes('pilates')||l.includes('glutes'))return'Pilates';
   if(l.includes('breath')||l.includes('recharge')||l.includes('reset'))return'Breathwork';
   if(l.includes('sound')||l.includes('serenity')||l.includes('guided sound'))return'Sound Healing';
-  return'Other';
+  return'Otros';
 }
 function getLang(t){const m=t.match(/\[(.*?)\]/);return m?m[1]:'';}
 function clean(t){return t.replace(/\s*\[.*?\]\s*/,'').trim();}
@@ -333,7 +333,7 @@ function getMadridDate(d){return d.toLocaleDateString('en-CA',{timeZone:'Europe/
 function renderDays(){
   const c=document.getElementById('days');
   const days=get7d();
-  const nm=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  const nm=['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
   c.innerHTML=days.map((d,i)=>{
     const ds=getMadridDate(d);
     const madridDay=new Date(d.toLocaleString('en-US',{timeZone:'Europe/Madrid'}));
@@ -349,8 +349,8 @@ function selDay(b,ds){
 
 function renderFilters(ev){
   const c=document.getElementById('filters');
-  const cats=new Set(['All']);ev.forEach(e=>cats.add(getCat(e.title)));
-  c.innerHTML=[...cats].map(x=>`<button class="fp${x==='All'?' active':''}" onclick="setF(this,'${x}')">${x}</button>`).join('');
+  const cats=new Set(['Todas']);ev.forEach(e=>cats.add(getCat(e.title)));
+  c.innerHTML=[...cats].map(x=>`<button class="fp${x==='Todas'?' active':''}" onclick="setF(this,'${x}')">${x}</button>`).join('');
 }
 
 function setF(b,cat){
@@ -364,7 +364,7 @@ function renderSched(){
     const ed=new Date(e.dateTime).toLocaleDateString('en-CA',{timeZone:'Europe/Madrid'});
     return ed===selDate&&!e.isCancelled&&!e.isDeleted;
   });
-  if(actF!=='All')f=f.filter(e=>getCat(e.title)===actF);
+  if(actF!=='Todas')f=f.filter(e=>getCat(e.title)===actF);
   // Filter out classes that already started
   f=f.filter(e=>new Date(e.dateTime)>=new Date());
   f.sort((a,b)=>new Date(a.dateTime)-new Date(b.dateTime));
@@ -376,7 +376,7 @@ function renderSched(){
     const title=clean(e.title);const lang=getLang(e.title);
     const sp=e.spotsRemaining;const full=sp===0;
     let sc='',st='';
-    if(full){sc='fu';st='Full';}
+    if(full){sc='fu';st='Completa';}
     else if(sp!=null && sp<=5){sc='lo';st=sp+(sp===1?' spot left':' spots left');}
     const fn=(e.teacher||'').split(' ')[0]||'';
     const lnk=(e.link||'').replace(/'/g,"\\'").replace(/"/g,"&quot;");
@@ -421,7 +421,7 @@ function showFallback(){
   if(!curSession||!curSession.link) return;
   var err=document.getElementById('bk-err');
   if(err&&err.textContent){
-    err.innerHTML=err.textContent+'<br><a href="'+curSession.link+'" target="_blank">Book on Momence instead →</a>';
+    err.innerHTML=err.textContent+'<br><a href="'+curSession.link+'" target="_blank">Reservar en Momence →</a>';
   }
 }
 
@@ -434,7 +434,7 @@ function showError(msg, opts){
   if(!err) return;
   err.classList.add('show');
   // Always render as text first to escape, then optionally append HTML
-  err.textContent=msg||'Payment failed.';
+  err.textContent=msg||'El pago ha fallado.';
 
   // Detect known Momence errors
   var isRateLimit=/limit of number of failed retries|too many.*attempts|rate limit/i.test(msg||'');
@@ -442,7 +442,7 @@ function showError(msg, opts){
 
   // Append fallback link if requested
   if(opts.fallback!==false && curSession && curSession.link){
-    err.innerHTML=err.innerHTML+'<br><a href="'+curSession.link+'" target="_blank">Book on Momence instead →</a>';
+    err.innerHTML=err.innerHTML+'<br><a href="'+curSession.link+'" target="_blank">Reservar en Momence →</a>';
   }
 
   // Show recovery panel for rate limit
@@ -457,7 +457,7 @@ function showError(msg, opts){
     rec.classList.add('show');
     rec.innerHTML='<strong>Card couldn\'t be processed</strong>'
       +'There may be a configuration issue with the payment processor. Please book directly through Momence — the link works.'
-      +(curSession&&curSession.link?'<button onclick="window.open(\''+curSession.link+'\',\'_blank\')">Book on Momence</button>':'');
+      +(curSession&&curSession.link?'<button onclick="window.open(\''+curSession.link+'\',\'_blank\')">Reservar en Momence</button>':'');
   }
 
   try{console.log('[SABDA] showError:',msg,'rateLimit=',isRateLimit,'pmErr=',isPaymentMethodErr);}catch(e){}
@@ -570,7 +570,7 @@ function showLoginStep(){stepChange();
   bd.innerHTML=classBlock
     +'<div class="bk-login">'
     +'<div class="bk-label">Email</div>'
-    +'<input class="bk-input" id="bk-email" type="email" inputmode="email" autocomplete="email" placeholder="your@email.com" aria-label="Email address" />'
+    +'<input class="bk-input" id="bk-email" type="email" inputmode="email" autocomplete="email" placeholder="your@email.com" aria-label="Dirección de email" />'
     +'<div class="bk-label">Contraseña</div>'
     +'<input class="bk-input" id="bk-pass" type="password" autocomplete="current-password" placeholder="Password" aria-label="Password" />'
     +'<div style="text-align:right;margin:-10px 0 12px"><a href="https://momence.com/forgot-password" target="_blank" style="font-size:.75rem;color:var(--white38);text-decoration:none;border-bottom:1px solid var(--white12)">Forgot password?</a></div>'
@@ -601,7 +601,7 @@ function showGuestStep(){stepChange();
     +'<div class="bk-label">Last Name</div>'
     +'<input class="bk-input" id="bk-ln" type="text" autocomplete="family-name" placeholder="Apellido" aria-label="Apellido" />'
     +'<div class="bk-label">Email</div>'
-    +'<input class="bk-input" id="bk-email" type="email" inputmode="email" autocomplete="email" placeholder="your@email.com" aria-label="Email address" />'
+    +'<input class="bk-input" id="bk-email" type="email" inputmode="email" autocomplete="email" placeholder="your@email.com" aria-label="Dirección de email" />'
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">Continuar</button>'
     +'<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.12);border-radius:8px;padding:12px;margin-top:16px;font-size:.75rem;color:var(--white60);line-height:1.5;text-align:center">Booked with us before? <span onclick="showLoginStep()" style="color:var(--cyan);cursor:pointer;text-decoration:underline">Log in instead</span> to keep your history and credits together.</div>'
@@ -621,8 +621,8 @@ function doLogin(){if(isProcessing)return;
   emailEl.classList.remove('bk-field-err');passEl.classList.remove('bk-field-err');
   if(!email||!validateEmail(email)){emailEl.classList.add('bk-field-err');ok=false;}
   if(!pass){passEl.classList.add('bk-field-err');ok=false;}
-  if(!ok){err.textContent='Please fill in the highlighted fields';return;}
-  err.textContent='';isProcessing=true;btn.textContent='Signing in...';btn.disabled=true;
+  if(!ok){err.textContent='Por favor, rellena los campos destacados';return;}
+  err.textContent='';isProcessing=true;btn.textContent='Iniciando sesión...';btn.disabled=true;
 
   fetch(PROXY+'/sabda-api/login',{
     method:'POST',
@@ -631,8 +631,8 @@ function doLogin(){if(isProcessing)return;
   }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
   .then(function(r){
     if(!r.ok||r.data.error){
-      err.innerHTML='Wrong email or password. <a href="'+curSession.link+'" target="_blank" style="color:var(--cyan);text-decoration:underline">Book on Momence →</a>';
-      isProcessing=false;btn.textContent='Log in & Book';btn.disabled=false;
+      err.innerHTML='Email o contraseña incorrectos. <a href="'+curSession.link+'" target="_blank" style="color:var(--cyan);text-decoration:underline">Reservar en Momence →</a>';
+      isProcessing=false;btn.textContent='Iniciar sesión y reservar';btn.disabled=false;
       return;
     }
     // MFA required — show code input
@@ -658,8 +658,8 @@ function doLogin(){if(isProcessing)return;
       showNoMembership();
     }
   }).catch(function(){
-    err.textContent='Connection error. Please try again.';
-    isProcessing=false;btn.textContent='Log in & Book';btn.disabled=false;
+    err.textContent='Error de conexión. Inténtalo de nuevo.';
+    isProcessing=false;btn.textContent='Iniciar sesión y reservar';btn.disabled=false;
     showFallback();
   });
 }
@@ -693,7 +693,7 @@ function doMfaVerify(){if(isProcessing)return;
   var err=document.getElementById('bk-err');
   var btn=document.getElementById('bk-mfa-btn');
   if(!code||code.length<6){err.textContent='Please enter the 6-digit code';return;}
-  err.textContent='';isProcessing=true;btn.textContent='Verifying...';btn.disabled=true;
+  err.textContent='';isProcessing=true;btn.textContent='Verificando...';btn.disabled=true;
 
   fetch(PROXY+'/sabda-api/mfa-verify',{
     method:'POST',
@@ -702,7 +702,7 @@ function doMfaVerify(){if(isProcessing)return;
   }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
   .then(function(r){
     if(!r.ok||r.data.error){
-      err.innerHTML='Invalid code. <a href="'+curSession.link+'" target="_blank" style="color:var(--cyan);text-decoration:underline">Book on Momence instead →</a>';
+      err.innerHTML='Código no válido. <a href="'+curSession.link+'" target="_blank" style="color:var(--cyan);text-decoration:underline">Reservar en Momence →</a>';
       isProcessing=false;btn.textContent='Verify & Continue';btn.disabled=false;
       return;
     }
@@ -724,7 +724,7 @@ function doMfaVerify(){if(isProcessing)return;
       showNoMembership();
     }
   }).catch(function(){
-    err.textContent='Connection error. Please try again.';
+    err.textContent='Error de conexión. Inténtalo de nuevo.';
     isProcessing=false;btn.textContent='Verify & Continue';btn.disabled=false;
     showFallback();
   });
@@ -745,7 +745,7 @@ function doGuestCheck(){
   if(!fn){fnEl.classList.add('bk-field-err');ok=false;}
   if(!ln){lnEl.classList.add('bk-field-err');ok=false;}
   if(!email||!validateEmail(email)){emailEl.classList.add('bk-field-err');ok=false;}
-  if(!ok){err.textContent='Please fill in the highlighted fields';return;}
+  if(!ok){err.textContent='Por favor, rellena los campos destacados';return;}
 
   curUser={id:null,email:email,firstName:fn,lastName:ln,memberId:null,isGuest:true};
 
@@ -767,11 +767,11 @@ function doGuestCheck(){
         +'</div>'+getSpotsHtml()+'</div>'
         +'<div class="bk-confirm" style="text-align:center">'
         +'<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.15);border-radius:10px;padding:20px;margin-bottom:20px">'
-        +'<div style="font-size:.9rem;font-weight:600;color:var(--salmon);margin-bottom:6px">Account found</div>'
-        +'<div style="font-size:.82rem;color:var(--white60);line-height:1.5">This email is already registered. Log in to keep your booking history and credits together.</div>'
+        +'<div style="font-size:.9rem;font-weight:600;color:var(--salmon);margin-bottom:6px">Cuenta encontrada</div>'
+        +'<div style="font-size:.82rem;color:var(--white60);line-height:1.5">Este email ya está registrado. Inicia sesión para mantener tu historial de reservas y créditos juntos.</div>'
         +'</div>'
         +'<button class="bk-primary" onclick="showLoginStep()">Iniciar sesión</button>'
-        +'<div class="bk-link" style="margin-top:12px"><a href="https://momence.com/forgot-password" target="_blank" style="color:var(--white38);font-size:.78rem;text-decoration:underline">Forgot your password?</a></div>'
+        +'<div class="bk-link" style="margin-top:12px"><a href="https://momence.com/forgot-password" target="_blank" style="color:var(--white38);font-size:.78rem;text-decoration:underline">¿Has olvidado tu contraseña?</a></div>'
         +'</div>';
     } else {
       showNoMembership();
@@ -786,20 +786,20 @@ function customerFieldsHTML(){
   return '<div class="bk-fld">'
     +'<div class="bk-label">Teléfono</div>'
     +'<div class="bk-phone-row">'
-    +'<input class="bk-input" id="bk-cc" type="text" inputmode="tel" value="+34" aria-label="Country code" style="width:72px;flex-shrink:0;text-align:center;font-weight:600" />'
+    +'<input class="bk-input" id="bk-cc" type="text" inputmode="tel" value="+34" aria-label="Prefijo de país" style="width:72px;flex-shrink:0;text-align:center;font-weight:600" />'
     +'<input class="bk-input" id="bk-phone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="612 345 678" aria-label="Teléfono" style="flex:1;min-width:0" />'
     +'</div></div>'
     +'<div class="bk-fld">'
-    +'<div class="bk-label">Preferred language</div>'
-    +'<select class="bk-input" id="bk-lang" aria-label="Preferred language">'
+    +'<div class="bk-label">Idioma preferido</div>'
+    +'<select class="bk-input" id="bk-lang" aria-label="Idioma preferido">'
     +'<option value="">Selecciona un idioma</option>'
     +'<option value="English">English</option>'
     +'<option value="Castellano">Castellano</option>'
     +'<option value="Catala">Catal&agrave;</option>'
     +'</select></div>'
     +'<div class="bk-fld">'
-    +'<div class="bk-label">City of residence</div>'
-    +'<input class="bk-input" id="bk-city" type="text" autocomplete="address-level2" placeholder="Barcelona" aria-label="City of residence" />'
+    +'<div class="bk-label">Ciudad de residencia</div>'
+    +'<input class="bk-input" id="bk-city" type="text" autocomplete="address-level2" placeholder="Barcelona" aria-label="Ciudad de residencia" />'
     +'</div>';
 }
 function getCustomerFields(){
@@ -814,10 +814,10 @@ function getCustomerFields(){
 function validateCustomerFields(){
   var ok=true;
   var fields=[
-    {id:'bk-cc',test:function(v){return v&&v.startsWith('+')&&v.length>=2;},msg:'Country code required'},
+    {id:'bk-cc',test:function(v){return v&&v.startsWith('+')&&v.length>=2;},msg:'Prefijo de país obligatorio'},
     {id:'bk-phone',test:function(v){return v.replace(/\s/g,'').length>=6;},msg:'Teléfono obligatorio'},
-    {id:'bk-lang',test:function(v){return!!v;},msg:'Please select a language'},
-    {id:'bk-city',test:function(v){return v.trim().length>0;},msg:'City is required'}
+    {id:'bk-lang',test:function(v){return!!v;},msg:'Por favor, selecciona un idioma'},
+    {id:'bk-city',test:function(v){return v.trim().length>0;},msg:'La ciudad es obligatoria'}
   ];
   fields.forEach(function(f){
     var el=document.getElementById(f.id);
@@ -828,7 +828,7 @@ function validateCustomerFields(){
       el.classList.remove('bk-field-err');
     }
   });
-  return ok?null:'Please fill in the highlighted fields';
+  return ok?null:'Por favor, rellena los campos destacados';
 }
 function clearFieldErrors(){
   document.querySelectorAll('.bk-field-err').forEach(function(el){el.classList.remove('bk-field-err');});
@@ -842,9 +842,9 @@ function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').repl
 function showConfirmStep(membership){stepChange();
   setBack(showGuestStep);
   var bd=document.getElementById('mo-bd');
-  var mName=membership.name||membership.membershipName||membership.planName||'Membership';
+  var mName=membership.name||membership.membershipName||membership.planName||'Membresía';
   var credits=membership.remainingCredits||membership.eventsRemaining||membership.creditsRemaining||membership.remainingEvents||'';
-  var detail=credits?(Number(credits)===1?'1 class remaining':credits+' classes remaining'):'Active membership';
+  var detail=credits?(Number(credits)===1?'1 clase restante':credits+' clases restantes'):'Membresía activa';
   curMembership=membership;
 
   bd.innerHTML='<div class="bk-class">'
@@ -871,7 +871,7 @@ function doBookWithMembership(){if(isProcessing)return;
   var err=document.getElementById('bk-err');
   var vErr=validateCustomerFields();
   if(vErr){err.textContent=vErr;return;}
-  isProcessing=true;btn.textContent='Booking...';btn.disabled=true;err.textContent='';
+  isProcessing=true;btn.textContent='Reservando...';btn.disabled=true;err.textContent='';
 
   var m=curMembership||{};
   var cf=getCustomerFields();
@@ -895,7 +895,7 @@ function doBookWithMembership(){if(isProcessing)return;
     if(r.ok&&r.data.success){
       showSuccess();
     } else {
-      var msg=(r.data&&(r.data.error||r.data.message))||'Booking failed. Please try again.';
+      var msg=(r.data&&(r.data.error||r.data.message))||'No se ha podido completar la reserva. Inténtalo de nuevo.';
       if(document.getElementById('bk-err')) document.getElementById('bk-err').textContent=msg;
       showFallback();
       isProcessing=false;
@@ -921,7 +921,7 @@ function applyPromo(type,origPrice,productId){
   var okEl=document.getElementById('bk-promo-ok');
   var errEl=document.getElementById('bk-promo-err');
   var btn=document.getElementById('bk-promo-btn');
-  if(!code){errEl.textContent='Enter a code';errEl.style.display='block';okEl.style.display='none';return;}
+  if(!code){errEl.textContent='Introduce un código';errEl.style.display='block';okEl.style.display='none';return;}
   btn.textContent='...';btn.disabled=true;errEl.style.display='none';okEl.style.display='none';
 
   var body={code:code,hostId:54278,price:origPrice};
@@ -934,9 +934,9 @@ function applyPromo(type,origPrice,productId){
     body:JSON.stringify(body)
   }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
   .then(function(r){
-    btn.textContent='Apply';btn.disabled=false;
+    btn.textContent='Aplicar';btn.disabled=false;
     if(!r.ok||r.data.error){
-      errEl.textContent=r.data.error||'Invalid promo code';
+      errEl.textContent=r.data.error||'Código promocional no válido';
       errEl.style.display='block';
       activePromo=null;discountedPrice=null;activeDiscountCodeId=null;
       return;
@@ -948,7 +948,7 @@ function applyPromo(type,origPrice,productId){
     // out the customer/IP. Free claims must use a separate Momence flow
     // we don't have access to from the proxy.
     if(r.data.newPrice===0){
-      errEl.textContent='This code makes the booking free, which we can\'t process here. Please use the Momence link to claim it directly.';
+      errEl.textContent='Este código deja la reserva en gratuita y no podemos procesarla aquí. Por favor, usa el enlace de Momence para canjearlo directamente.';
       errEl.style.display='block';
       activePromo=null;discountedPrice=null;activeDiscountCodeId=null;
       try{console.warn('[SABDA] Refusing €0 discount — would route through wrong Momence endpoint');}catch(e){}
@@ -959,22 +959,22 @@ function applyPromo(type,origPrice,productId){
     activeDiscountCodeId=r.data.discountCodeId||null;
     try{console.log('[SABDA] Promo applied:',activePromo,'newPrice=',discountedPrice,'discountCodeId=',activeDiscountCodeId);}catch(e){}
     // Update UI
-    var desc=r.data.type==='percentage'?r.data.appliedDiscount+'% off':'€'+r.data.appliedDiscount+' off';
-    okEl.innerHTML='<strong>'+activePromo+'</strong> applied · '+desc+' <span onclick="removePromo('+origPrice+')" style="cursor:pointer;text-decoration:underline;margin-left:8px">Remove</span>';
+    var desc=r.data.type==='percentage'?r.data.appliedDiscount+'% de descuento':r.data.appliedDiscount+'€ de descuento';
+    okEl.innerHTML='<strong>'+activePromo+'</strong> aplicado · '+desc+' <span onclick="removePromo('+origPrice+')" style="cursor:pointer;text-decoration:underline;margin-left:8px">Quitar</span>';
     okEl.style.display='block';
     document.getElementById('bk-total').innerHTML='<span style="text-decoration:line-through;color:var(--white38);font-size:1rem;margin-right:8px">€'+origPrice+'</span> €'+discountedPrice.toFixed(2);
     // Update pay button
     var payBtn=document.getElementById('bk-pay-btn');
     if(payBtn){
       if(discountedPrice===0){
-        payBtn.textContent='Book Free Class';
+        payBtn.textContent='Reservar clase gratis';
         payBtn.disabled=false; // override card-validation gate — no card needed
         // Hide card section and Apple Pay — no payment needed
         var cardSec=document.getElementById('bk-card-section');if(cardSec)cardSec.style.display='none';
         var payDiv=document.getElementById('bk-pay-divider');if(payDiv)payDiv.style.display='none';
         var payReqEl=document.getElementById('bk-pay-request');if(payReqEl)payReqEl.style.display='none';
       } else {
-        payBtn.textContent='Pay €'+discountedPrice.toFixed(2)+' & Book Class';
+        payBtn.textContent='Pagar '+discountedPrice.toFixed(2)+'€ y reservar clase';
         // Re-evaluate card-validation gate (button stays disabled if card incomplete)
         var allDone=cardCompleteState.cardNumber && cardCompleteState.cardExpiry && cardCompleteState.cardCvc;
         payBtn.disabled=!allDone;
@@ -986,8 +986,8 @@ function applyPromo(type,origPrice,productId){
     // Update Apple/Google Pay amount if active
     if(activePayReq){try{activePayReq.update({total:{label:'SABDA Studio'+(activePayName?' · '+activePayName:''),amount:Math.round(discountedPrice*100)}});}catch(e){}}
   }).catch(function(){
-    btn.textContent='Apply';btn.disabled=false;
-    errEl.textContent='Could not validate code. Try again.';errEl.style.display='block';
+    btn.textContent='Aplicar';btn.disabled=false;
+    errEl.textContent='No se ha podido validar el código. Inténtalo de nuevo.';errEl.style.display='block';
   });
 }
 
@@ -1000,7 +1000,7 @@ function removePromo(origPrice){
   document.getElementById('bk-total').textContent='€'+origPrice;
   var payBtn=document.getElementById('bk-pay-btn');
   if(payBtn){
-    payBtn.textContent='Pay €'+origPrice+' & Book Class';
+    payBtn.textContent='Pagar '+origPrice+'€ y reservar clase';
     // Re-apply card-validation gate
     var allDone=cardCompleteState.cardNumber && cardCompleteState.cardExpiry && cardCompleteState.cardCvc;
     payBtn.disabled=!allDone;
@@ -1032,20 +1032,20 @@ function showNoMembership(){stepChange();
     +'<div class="bk-user">Reservando como <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>'
     +'<p style="font-size:.85rem;color:var(--white60);text-align:center;margin-bottom:18px;line-height:1.5">Elige cómo quieres reservar esta clase</p>'
     // Intro offers first
-    +'<div class="bk-pkg-grp" style="color:var(--cyan)">New to SABDA?</div>'
-    +row('feat','pack',50,443935,'Intro 3-Pack','3 classes, valid 30 days','€50')
-    +row('','pack',18,443934,'Trial Class','First-timers only','€18')
+    +'<div class="bk-pkg-grp" style="color:var(--cyan)">¿Nueva en SABDA?</div>'
+    +row('feat','pack',50,443935,'Pack Intro de 3','3 clases, válido 30 días','50€')
+    +row('','pack',18,443934,'Clase de prueba','Solo primera vez','18€')
     // Memberships
-    +'<div class="bk-pkg-grp" style="color:var(--salmon)">Memberships</div>'
-    +row('','membership',130,431216,'Immerse','Unlimited classes, cancel anytime','€130<small>/mo</small>')
-    +row('','membership',109,709976,'Ritual','8 classes per month','€109<small>/mo</small>')
-    +row('','membership',99,706876,'Flex','4 classes per month','€99<small>/mo</small>')
-    +row('','membership',330,445600,'Immerse 3-Month','€110/mo, unlimited classes','€330')
+    +'<div class="bk-pkg-grp" style="color:var(--salmon)">Membresías</div>'
+    +row('','membership',130,431216,'Immerse','Clases ilimitadas, cancela cuando quieras','130€<small>/mes</small>')
+    +row('','membership',109,709976,'Ritual','8 clases al mes','109€<small>/mes</small>')
+    +row('','membership',99,706876,'Flex','4 clases al mes','99€<small>/mes</small>')
+    +row('','membership',330,445600,'Immerse 3 Meses','110€/mes, clases ilimitadas','330€')
     // Class packs
-    +'<div class="bk-pkg-grp" style="color:var(--white38)">Class Packs</div>'
-    +row('','pack',85,443937,'5 Pack','5 classes, valid 2 months','€85')
-    +row('','pack',149,443939,'10 Pack','10 classes, valid 3 months','€149')
-    +row('','single',22,445630,'Drop-in','One class, no commitment','€22')
+    +'<div class="bk-pkg-grp" style="color:var(--white38)">Packs de clases</div>'
+    +row('','pack',85,443937,'Pack de 5','5 clases, válido 2 meses','85€')
+    +row('','pack',149,443939,'Pack de 10','10 clases, válido 3 meses','149€')
+    +row('','single',22,445630,'Clase suelta','Una clase, sin compromiso','22€')
     +'</div>';
 }
 
@@ -1063,34 +1063,34 @@ function showPayForm(type,price,productId,name,desc){stepChange();
     +'<div class="bk-user">Reservando como <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>'
     +'<div class="bk-membership">'
     +'<div class="bk-membership-name">'+name+'</div>'
-    +'<div class="bk-membership-detail">'+desc+(type==='membership'&&price<200?' · Billed monthly':'')+'</div>'
+    +'<div class="bk-membership-detail">'+desc+(type==='membership'&&price<200?' · Cobro mensual':'')+'</div>'
     +'</div>'
     +'<div class="bk-pay-total" id="bk-total">€'+price+'</div>'
-    +'<div class="bk-pay-desc" id="bk-pay-desc">'+(type==='membership'&&price<200?'First month, renews monthly':type==='membership'?'Billed once':'One-time payment')+'</div>'
+    +'<div class="bk-pay-desc" id="bk-pay-desc">'+(type==='membership'&&price<200?'Primer mes, se renueva cada mes':type==='membership'?'Cobro único':'Pago único')+'</div>'
     +'<div id="bk-promo-wrap" style="margin-bottom:16px">'
-    +'<div class="bk-link" id="bk-promo-toggle" onclick="document.getElementById(\'bk-promo-fields\').style.display=\'flex\';this.style.display=\'none\'" style="margin:0;font-size:.8rem;text-align:left;color:var(--cyan)">Apply promo code →</div>'
+    +'<div class="bk-link" id="bk-promo-toggle" onclick="document.getElementById(\'bk-promo-fields\').style.display=\'flex\';this.style.display=\'none\'" style="margin:0;font-size:.8rem;text-align:left;color:var(--cyan)">Aplicar código promocional →</div>'
     +'<div id="bk-promo-fields" style="display:none;gap:8px;align-items:flex-start">'
-    +'<input class="bk-input" id="bk-promo" type="text" autocomplete="off" autocapitalize="characters" placeholder="Code" aria-label="Promo code" style="flex:1;margin-bottom:0;text-transform:uppercase" />'
-    +'<button class="bk-primary" id="bk-promo-btn" onclick="applyPromo(\''+type+'\','+price+','+productId+')" style="width:auto;padding:12px 20px;flex-shrink:0;font-size:.8rem">Apply</button>'
+    +'<input class="bk-input" id="bk-promo" type="text" autocomplete="off" autocapitalize="characters" placeholder="Código" aria-label="Código promocional" style="flex:1;margin-bottom:0;text-transform:uppercase" />'
+    +'<button class="bk-primary" id="bk-promo-btn" onclick="applyPromo(\''+type+'\','+price+','+productId+')" style="width:auto;padding:12px 20px;flex-shrink:0;font-size:.8rem">Aplicar</button>'
     +'</div>'
     +'<div id="bk-promo-ok" style="display:none;font-size:.78rem;color:var(--cyan);margin-top:6px"></div>'
     +'<div id="bk-promo-err" style="display:none;font-size:.78rem;color:var(--salmon);margin-top:6px"></div>'
     +'</div>'
     +customerFieldsHTML()
     +'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'
-    +'<div id="bk-pay-divider" class="bk-divider" style="display:none">or pay with card</div>'
+    +'<div id="bk-pay-divider" class="bk-divider" style="display:none">o paga con tarjeta</div>'
     +'<div id="bk-card-section">'
-    +'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Card Details</div>'
+    +'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Datos de la tarjeta</div>'
     +'<div class="bk-card-wrap" id="bk-card-number"></div>'
     +'<div class="bk-card-row">'
     +'<div class="bk-card-wrap" id="bk-card-expiry"></div>'
     +'<div class="bk-card-wrap" id="bk-card-cvc"></div>'
     +'</div>'
-    +'<div class="bk-card-status" id="bk-card-status"><span>Enter your card details to continue</span></div>'
+    +'<div class="bk-card-status" id="bk-card-status"><span>Introduce los datos de tu tarjeta para continuar</span></div>'
     +'</div>'
     +'<div class="bk-err" id="bk-err"></div>'
     +'<div class="bk-recover" id="bk-recover"></div>'
-    +'<button class="bk-primary" id="bk-pay-btn" disabled onclick="doPayAndBook(\''+type+'\','+price+','+productId+')">Pay €'+price+(type==='single'?' & Book':' & Book Class')+'</button>'
+    +'<button class="bk-primary" id="bk-pay-btn" disabled onclick="doPayAndBook(\''+type+'\','+price+','+productId+')">Pagar '+price+'€'+(type==='single'?' y reservar':' y reservar clase')+'</button>'
     +'</div>';
 
   // Initialize Stripe — clean up previous card elements
@@ -1179,7 +1179,7 @@ function showPayForm(type,price,productId,name,desc){stepChange();
         } else {
           ev.complete('fail');
           var errEl=document.getElementById('bk-err');
-          if(errEl) errEl.textContent=r.data.error||'Payment failed.';
+          if(errEl) errEl.textContent=r.data.error||'El pago ha fallado.';
           showFallback();
           isProcessing=false;
         }
@@ -1271,7 +1271,7 @@ function doPayAndBook(type,price,productId){if(isProcessing)return;
   function resetBtn(){isProcessing=false;btn.textContent=origLabel;btn.disabled=false;}
   var vErr=validateCustomerFields();
   if(vErr){showError(vErr,{fallback:false});return;}
-  isProcessing=true;btn.textContent='Processing...';btn.disabled=true;clearError();
+  isProcessing=true;btn.textContent='Procesando...';btn.disabled=true;clearError();
 
   var cf=getCustomerFields();
   var finalPrice=(discountedPrice!==null)?discountedPrice:price;
@@ -1300,8 +1300,8 @@ function doPayAndBook(type,price,productId){if(isProcessing)return;
     }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
     .then(function(r){
       if(r.data.success){showSuccess();}
-      else{showError(r.data.error||'Booking failed.');resetBtn();}
-    }).catch(function(){showError('Connection error.');resetBtn();});
+      else{showError(r.data.error||'No se ha podido completar la reserva.');resetBtn();}
+    }).catch(function(){showError('Error de conexión.');resetBtn();});
     return;
   }
 
@@ -1353,13 +1353,13 @@ function doPayAndBook(type,price,productId){if(isProcessing)return;
           }
         });
       } else {
-        showError(r.data.error||'Payment failed. Please try again.');
+        showError(r.data.error||'El pago ha fallado. Inténtalo de nuevo.');
         resetBtn();
       }
     });
   }).catch(function(e){
     try{console.error('[SABDA] doPayAndBook caught error:',e);}catch(e2){}
-    showError('Connection error. Please try again.');
+    showError('Error de conexión. Inténtalo de nuevo.');
     resetBtn();
   });
 }
@@ -1375,10 +1375,10 @@ function showSuccess(){stepChange();
   }
   bd.innerHTML='<div class="bk-success">'
     +'<div class="bk-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>'
-    +'<h3>You\'re booked!</h3>'
-    +'<p>'+esc(curSession.title)+'<br>'+esc(curSession.time)+(curSession.teacher?' with '+esc(curSession.teacher):'')+'</p>'
-    +'<p style="margin-top:16px;font-size:.78rem;color:var(--white38)">Check your email for confirmation. See you on the mat.</p>'
-    +'<button class="bk-primary" style="margin-top:20px" onclick="closeMo();renderSched()">Done</button>'
+    +'<h3>¡Reserva confirmada!</h3>'
+    +'<p>'+esc(curSession.title)+'<br>'+esc(curSession.time)+(curSession.teacher?' con '+esc(curSession.teacher):'')+'</p>'
+    +'<p style="margin-top:16px;font-size:.78rem;color:var(--white38)">Revisa tu email para la confirmación. Nos vemos en la esterilla.</p>'
+    +'<button class="bk-primary" style="margin-top:20px" onclick="closeMo();renderSched()">Hecho</button>'
     +'</div>';
   isProcessing=false;
 }
@@ -1398,7 +1398,7 @@ async function init(){
     var buyId = params.get('buy');
     if (buyId) openPackagePurchase(buyId);
   }catch(err){
-    document.getElementById('sk').innerHTML='<div class="no-classes">Could not load schedule. Please try again.</div>';
+    document.getElementById('sk').innerHTML='<div class="no-classes">No se ha podido cargar el horario. Inténtalo de nuevo.</div>';
   }
 }
 
@@ -1406,16 +1406,16 @@ async function init(){
 
 // ── PACKAGE PURCHASE MODE — opens modal directly without class selection ──
 var PACKAGES = {
-  '443934': {name:'Trial Class', price:18, type:'pack', desc:'1 class · First-timers only'},
-  '445630': {name:'Drop-in', price:22, type:'pack', desc:'1 class · Any time'},
-  '443935': {name:'Intro 3-Pack', price:50, type:'pack', desc:'3 classes · €16.67 each · 30 days'},
-  '443641': {name:'BCN Resident Week', price:50, type:'pack', desc:'Unlimited · 7 days · Proof of residency required'},
-  '443937': {name:'5-Pack', price:85, type:'pack', desc:'5 classes · €17 each · 60 days'},
-  '443939': {name:'10-Pack', price:149, type:'pack', desc:'10 classes · €14.90 each · 90 days'},
-  '706876': {name:'Flex', price:99, type:'membership', desc:'4 classes/month · Cancel anytime'},
-  '709976': {name:'Ritual', price:109, type:'membership', desc:'8 classes/month · Cancel anytime'},
-  '431216': {name:'Immerse', price:130, type:'membership', desc:'Unlimited classes · Cancel anytime'},
-  '445600': {name:'Immerse 3-Month', price:330, type:'membership', desc:'€110/mo · Unlimited · 3 month commitment'}
+  '443934': {name:'Clase de prueba', price:18, type:'pack', desc:'1 clase · Solo primera vez'},
+  '445630': {name:'Clase suelta', price:22, type:'pack', desc:'1 clase · Cualquier momento'},
+  '443935': {name:'Pack Intro de 3', price:50, type:'pack', desc:'3 clases · 16,67€ cada una · 30 días'},
+  '443641': {name:'Semana Residente BCN', price:50, type:'pack', desc:'Ilimitado · 7 días · Necesaria prueba de residencia'},
+  '443937': {name:'Pack de 5', price:85, type:'pack', desc:'5 clases · 17€ cada una · 60 días'},
+  '443939': {name:'Pack de 10', price:149, type:'pack', desc:'10 clases · 14,90€ cada una · 90 días'},
+  '706876': {name:'Flex', price:99, type:'membership', desc:'4 clases al mes · Cancela cuando quieras'},
+  '709976': {name:'Ritual', price:109, type:'membership', desc:'8 clases al mes · Cancela cuando quieras'},
+  '431216': {name:'Immerse', price:130, type:'membership', desc:'Clases ilimitadas · Cancela cuando quieras'},
+  '445600': {name:'Immerse 3 Meses', price:330, type:'membership', desc:'110€/mes · Ilimitado · Compromiso de 3 meses'}
 };
 
 function openPackagePurchase(productId) {
@@ -1438,7 +1438,7 @@ function openPackagePurchase(productId) {
     productType: pkg.type
   };
   
-  document.getElementById('mo-t').textContent = 'Buy ' + pkg.name;
+  document.getElementById('mo-t').textContent = 'Comprar ' + pkg.name;
   document.getElementById('mo-c').textContent = '€' + pkg.price + ' · ' + pkg.desc;
   
   showPackageGuestStep();
@@ -1459,12 +1459,12 @@ function showPackageGuestStep() {
     + '<div style="font-size:.78rem;color:var(--white60);margin-top:8px">' + esc(pkg.desc) + '</div>'
     + '</div>'
     + '<div class="bk-login">'
-    + '<div class="bk-label">First Name</div>'
+    + '<div class="bk-label">Nombre</div>'
     + '<input class="bk-input" id="bk-fn" type="text" placeholder="First name" autocomplete="given-name" aria-label="First name" />'
-    + '<div class="bk-label">Last Name</div>'
+    + '<div class="bk-label">Apellido</div>'
     + '<input class="bk-input" id="bk-ln" type="text" placeholder="Last name" autocomplete="family-name" aria-label="Last name" />'
     + '<div class="bk-label">Email</div>'
-    + '<input class="bk-input" id="bk-email" type="email" inputmode="email" placeholder="your@email.com" autocomplete="email" aria-label="Email address" />'
+    + '<input class="bk-input" id="bk-email" type="email" inputmode="email" placeholder="your@email.com" autocomplete="email" aria-label="Dirección de email" />'
     + '<div class="bk-err" id="bk-err"></div>'
     + '<button class="bk-primary" id="bk-guest-btn" onclick="doPackageGuestCheck()">Continuar al pago</button>'
     + '<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.12);border-radius:8px;padding:12px;margin-top:16px;font-size:.75rem;color:var(--white60);line-height:1.5;text-align:center">¿Ya eres cliente? <span onclick="showLoginStep()" style="color:var(--cyan);cursor:pointer;text-decoration:underline">Inicia sesión</span></div>'
@@ -1485,7 +1485,7 @@ function doPackageGuestCheck() {
   if (!fn) { fnEl.classList.add('bk-field-err'); ok = false; }
   if (!ln) { lnEl.classList.add('bk-field-err'); ok = false; }
   if (!email || !validateEmail(email)) { emailEl.classList.add('bk-field-err'); ok = false; }
-  if (!ok) { err.textContent = 'Please fill in the highlighted fields'; return; }
+  if (!ok) { err.textContent = 'Por favor, rellena los campos destacados'; return; }
   
   curUser = { id: null, email: email, firstName: fn, lastName: ln, memberId: null, isGuest: true };
   showPayForm(curSession.productType, curSession.productPrice, curSession.productId, PACKAGES[curSession.productId].name, PACKAGES[curSession.productId].desc);
