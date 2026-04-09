@@ -32,11 +32,6 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   background-size:200px;
 }
 
-/* ── CURSOR ── */
-.cursor{position:fixed;width:9px;height:9px;border-radius:50%;background:var(--cyan);pointer-events:none;z-index:9999;mix-blend-mode:difference;transform:translate(-50%,-50%);transition:opacity .2s,width .25s var(--ease-expo),height .25s var(--ease-expo);will-change:transform}
-.cursor-ring{position:fixed;width:36px;height:36px;border-radius:50%;border:1px solid rgba(2,243,197,.4);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:opacity .2s,width .4s var(--ease-expo),height .4s var(--ease-expo),border-color .3s;will-change:transform}
-.cursor.hov{width:5px;height:5px}.cursor-ring.hov{width:52px;height:52px;border-color:rgba(248,166,163,.45)}
-
 /* ── LOADER ── */
 #loader{position:fixed;inset:0;background:var(--navy);z-index:10000;display:flex;align-items:center;justify-content:center;transition:opacity .9s var(--ease-expo),visibility .9s}
 #loader.out{opacity:0;visibility:hidden}
@@ -299,8 +294,6 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
 <body>
 
 <div class="grain"></div>
-<div class="cursor" id="C"></div>
-<div class="cursor-ring" id="CR"></div>
 
 <!-- LOADER -->
 <div id="loader">
@@ -638,21 +631,6 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
 ═══════════════════════════════════════════════════════ */
 window.addEventListener('load',()=>{
   setTimeout(()=>document.getElementById('loader').classList.add('out'),850);
-});
-
-/* ═══════════════════════════════════════════════════════
-   CURSOR
-═══════════════════════════════════════════════════════ */
-const CUR=document.getElementById('C'),RING=document.getElementById('CR');
-let cx=-200,cy=-200,rx=-200,ry=-200;
-document.addEventListener('mousemove',e=>{
-  cx=e.clientX;cy=e.clientY;
-  CUR.style.transform=`translate(${cx}px,${cy}px) translate(-50%,-50%)`;
-});
-(function rl(){rx+=(cx-rx)*.1;ry+=(cy-ry)*.1;RING.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;requestAnimationFrame(rl)})();
-document.querySelectorAll('a,button,.cls-card,.sg-arr,.tbtn,.tdot').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{CUR.classList.add('hov');RING.classList.add('hov')});
-  el.addEventListener('mouseleave',()=>{CUR.classList.remove('hov');RING.classList.remove('hov')});
 });
 
 /* ═══════════════════════════════════════════════════════

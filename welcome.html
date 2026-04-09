@@ -34,14 +34,6 @@ img{display:block;max-width:100%}
   background-size:200px;
 }
 
-/* ── CURSOR (desktop only) ── */
-@media(hover:hover){
-  .cursor{position:fixed;width:9px;height:9px;border-radius:50%;background:var(--cyan);pointer-events:none;z-index:9999;mix-blend-mode:difference;transform:translate(-50%,-50%);transition:opacity .2s,width .25s var(--ease-expo),height .25s var(--ease-expo);will-change:transform}
-  .cursor-ring{position:fixed;width:36px;height:36px;border-radius:50%;border:1px solid rgba(2,243,197,.4);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:opacity .2s,width .4s var(--ease-expo),height .4s var(--ease-expo),border-color .3s;will-change:transform}
-  .cursor.hov{width:5px;height:5px}.cursor-ring.hov{width:52px;height:52px;border-color:rgba(248,166,163,.45)}
-}
-@media(hover:none){.cursor,.cursor-ring{display:none}}
-
 /* ── SCROLL REVEAL ── */
 .rv{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease-expo),transform .9s var(--ease-expo)}
 .rv.vis{opacity:1;transform:none}
@@ -262,8 +254,6 @@ img{display:block;max-width:100%}
 <body>
 
 <div class="grain"></div>
-<div class="cursor" id="C"></div>
-<div class="cursor-ring" id="CR"></div>
 
 <!-- TOPBAR — logo only, no navigation -->
 <div class="topbar">
@@ -443,18 +433,6 @@ img{display:block;max-width:100%}
 </div>
 
 <script>
-/* ═══ CURSOR ═══ */
-if(window.matchMedia('(hover:hover)').matches){
-  const C=document.getElementById('C'),CR=document.getElementById('CR');
-  let cx=-200,cy=-200,rx=-200,ry=-200;
-  document.addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY;C.style.transform=`translate(${cx}px,${cy}px) translate(-50%,-50%)`});
-  (function rl(){rx+=(cx-rx)*.1;ry+=(cy-ry)*.1;CR.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;requestAnimationFrame(rl)})();
-  document.querySelectorAll('a,button').forEach(el=>{
-    el.addEventListener('mouseenter',()=>{C.classList.add('hov');CR.classList.add('hov')});
-    el.addEventListener('mouseleave',()=>{C.classList.remove('hov');CR.classList.remove('hov')});
-  });
-}
-
 /* ═══ SCROLL REVEAL ═══ */
 const obs=new IntersectionObserver(es=>es.forEach(e=>{
   if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target)}
