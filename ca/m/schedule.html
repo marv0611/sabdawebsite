@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0e1235">
+<title>Horarios | SABDA</title>
+<link rel="canonical" href="https://sabdastudio.com/ca/schedule.html">
+<link rel="alternate" hreflang="en" href="https://sabdastudio.com/schedule.html">
+<link rel="alternate" hreflang="es" href="https://sabdastudio.com/es/schedule.html">
+<link rel="alternate" hreflang="ca" href="https://sabdastudio.com/ca/schedule.html">
+<link rel="alternate" hreflang="x-default" href="https://sabdastudio.com/schedule.html">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,700;1,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<script src="https://js.stripe.com/v3/" async></script>
+<style>
+:root{--navy:#0e1235;--navy95:rgba(14,18,53,.95);--navy-light:#131842;--salmon:#F8A6A3;--cyan:#02F3C5;--white:#f0efe9;--white80:rgba(240,239,233,.8);--white60:rgba(240,239,233,.6);--white38:rgba(240,239,233,.38);--white20:rgba(240,239,233,.2);--white12:rgba(240,239,233,.12);--white06:rgba(240,239,233,.06);--white03:rgba(240,239,233,.03);--w80:rgba(240,239,233,.8);--w60:rgba(240,239,233,.6);--w38:rgba(240,239,233,.38);--w20:rgba(240,239,233,.2);--w12:rgba(240,239,233,.12);--w10:rgba(240,239,233,.1);--w06:rgba(240,239,233,.06);--w03:rgba(240,239,233,.03);--safe-b:env(safe-area-inset-bottom,0px);--safe-t:env(safe-area-inset-top,0px);--ease:cubic-bezier(.16,1,.3,1)}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{overflow-x:hidden;-webkit-text-size-adjust:100%}
+body{background:var(--navy);color:var(--white);font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;padding-top:calc(52px + var(--safe-t));padding-bottom:calc(84px + var(--safe-b));overflow-x:hidden}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{font-family:inherit;border:none;background:none;cursor:pointer;color:inherit}
+.touch{transition:transform .12s,opacity .12s}.touch:active{transform:scale(.98);opacity:.8}
+
+/* HEADER */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:100;height:calc(52px + var(--safe-t));padding-top:var(--safe-t);display:flex;align-items:center;justify-content:space-between;padding-left:20px;padding-right:16px;background:var(--navy95);backdrop-filter:saturate(1.4) blur(24px);-webkit-backdrop-filter:saturate(1.4) blur(24px);border-bottom:1px solid var(--white06)}
+.hdr img{height:18px;width:auto;opacity:.9}
+.hdr-pill{padding:7px 16px;background:var(--cyan);color:var(--navy);border-radius:100px;font-size:.68rem;font-weight:700;line-height:1;box-shadow:0 2px 12px rgba(2,243,197,.2)}
+.hdr-back{display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--white60);font-weight:500}
+.hdr-back svg{width:16px;height:16px;stroke:var(--white60);fill:none;stroke-width:2}
+
+/* DAYS — horizontal scroll */
+.days{display:flex;gap:6px;padding:16px 20px 0;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.days::-webkit-scrollbar{display:none}
+.day-btn{background:none;border:1px solid var(--white12);color:var(--white60);padding:8px 14px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.72rem;font-weight:500;cursor:pointer;transition:all .25s;min-width:64px;text-align:center;flex-shrink:0}
+.day-btn:hover{border-color:rgba(2,243,197,.3)}
+.day-btn.active{background:rgba(2,243,197,.08);border-color:var(--cyan);color:var(--cyan);font-weight:700}
+.day-name{display:block;font-size:.48rem;letter-spacing:.08em;text-transform:uppercase;color:inherit;opacity:.7;margin-bottom:2px}
+.day-num{font-size:1rem;font-weight:700;line-height:1}
+
+/* FILTERS */
+.filters{display:flex;gap:6px;padding:12px 20px 0;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.filters::-webkit-scrollbar{display:none}
+.fp{background:none;border:1px solid var(--white12);color:var(--white60);padding:6px 14px;border-radius:100px;font-size:.68rem;font-weight:500;cursor:pointer;transition:all .25s;white-space:nowrap;flex-shrink:0}
+.fp:hover{border-color:rgba(2,243,197,.3)}
+.fp.active{background:rgba(2,243,197,.08);border-color:var(--cyan);color:var(--cyan);font-weight:700}
+
+/* SCHEDULE LIST */
+.schedule{padding:8px 0 0}
+.cc{display:grid;grid-template-columns:52px 1fr auto;gap:12px;align-items:center;padding:14px 20px;border-bottom:1px solid var(--white06);opacity:0;transform:translateY(8px);animation:ci .4s var(--ease) forwards}
+@keyframes ci{to{opacity:1;transform:none}}
+.ct{text-align:center}
+.ct-h{font-family:'PT Serif',serif;font-size:.95rem;font-weight:700;line-height:1.1}
+.ct-d{font-size:.55rem;color:var(--white38);margin-top:4px;letter-spacing:.04em}
+.ci{min-width:0}
+.ci-t{font-family:'PT Serif',serif;font-size:.88rem;font-weight:700;margin-bottom:2px}
+.ci-tc{font-size:.72rem;color:var(--white60)}
+.ci-lg{display:inline-block;font-size:.5rem;color:var(--white38);border:1px solid var(--white06);padding:1px 5px;border-radius:3px;margin-left:6px;letter-spacing:.04em;vertical-align:middle}
+.ci-sp{font-size:.62rem;margin-top:4px}
+.ci-sp.av{color:var(--cyan)}.ci-sp.lo{color:var(--salmon)}.ci-sp.fu{color:var(--white38)}
+.ca{text-align:right}
+.bb{background:var(--cyan);color:var(--navy);border:none;padding:10px 20px;border-radius:100px;font-family:'DM Sans',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.04em;cursor:pointer;white-space:nowrap}
+.bb:active{transform:scale(.95)}
+.bb.fu{background:none;border:1px solid var(--white12);color:var(--white38);cursor:default;padding:9px 16px}
+.bb.wl{background:none;border:1px solid var(--salmon);color:var(--salmon)}
+.no-classes{text-align:center;padding:60px 20px;color:var(--white38);font-size:.82rem}
+
+/* SKELETON */
+.sk{padding:16px 20px}
+.sk-r{display:grid;grid-template-columns:52px 1fr auto;gap:12px;padding:14px 0;border-bottom:1px solid var(--white06);align-items:center}
+.sk-b{background:linear-gradient(90deg,rgba(240,239,233,.03) 25%,rgba(240,239,233,.06) 50%,rgba(240,239,233,.03) 75%);background-size:200% 100%;animation:sh 1.5s infinite;border-radius:4px}
+@keyframes sh{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+body.mo-open{overflow:hidden;position:fixed;width:100%;height:100%}
+/* MODAL — full screen on mobile */
+.mo{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.75);backdrop-filter:blur(12px);display:none;align-items:stretch;justify-content:stretch;opacity:0;transition:opacity .3s}
+.mo.open{display:flex;opacity:1}
+.mo-box{width:100%;height:100%;max-height:none;background:var(--navy-light);overflow-y:auto;border-radius:0;-webkit-overflow-scrolling:touch}
+.mo.open .mo-box{transform:none}
+.mo-head{display:flex;align-items:center;justify-content:space-between;padding:max(16px,env(safe-area-inset-top,16px)) 20px 16px;border-bottom:1px solid var(--white06);position:sticky;top:0;background:var(--navy-light);z-index:2;gap:10px}
+.mo-back{display:flex;align-items:center;gap:6px;background:none;border:1px solid var(--white12);color:var(--white);padding:8px 12px;border-radius:8px;font-size:.72rem;font-weight:600;font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;visibility:hidden;flex-shrink:0;-webkit-appearance:none}
+.mo-back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mo-back.on{visibility:visible}
+.mo-back:active{background:var(--white06);border-color:var(--white20)}
+.mo-head-t{flex:1;min-width:0;text-align:center;padding:0 6px}
+.mo-t{font-family:'PT Serif',serif;font-size:1rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mo-c{font-size:.75rem;color:var(--white60);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mo-x{background:none;border:1px solid var(--white12);color:var(--white60);width:auto;height:auto;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:8px 12px;gap:6px;font-size:.72rem;font-weight:600;font-family:inherit;-webkit-appearance:none}
+.mo-x svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
+.mo-bd{padding:24px 20px}
+.mo-ft{padding:12px 20px max(12px,env(safe-area-inset-bottom,12px));border-top:1px solid var(--white06);text-align:center;position:sticky;bottom:0;background:var(--navy-light)}
+.mo-sec{font-size:.62rem;color:var(--white38);display:flex;align-items:center;justify-content:center;gap:6px}
+.mo-sec svg{width:12px;height:12px;opacity:.5}
+
+/* BOOKING FLOW */
+.bk-class{text-align:center;padding-bottom:14px;border-bottom:1px solid var(--white06);margin-bottom:18px}
+.bk-class-name{display:none}
+.bk-class-meta{font-size:.74rem;color:var(--white60);display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.bk-class-meta span{display:flex;align-items:center;gap:5px}
+.bk-class-meta svg{width:13px;height:13px;opacity:.5}
+.bk-spots{display:inline-block;font-size:.65rem;font-weight:600;padding:3px 10px;border-radius:20px;margin-top:10px}
+.bk-spots.av{color:var(--cyan);background:rgba(2,243,197,.08);border:1px solid rgba(2,243,197,.15)}
+.bk-spots.lo{color:var(--salmon);background:rgba(248,166,163,.08);border:1px solid rgba(248,166,163,.15)}
+/* Booking confirm wrapper — proper hierarchy + spacing */
+.bk-confirm{}
+.bk-user{font-size:.78rem;color:var(--white60);text-align:center;margin-bottom:6px;line-height:1.4}
+.bk-user strong{color:var(--white);font-weight:600}
+.bk-confirm > p{font-size:.85rem;color:var(--white60);text-align:center;margin:0 0 22px;line-height:1.5}
+.bk-membership{background:rgba(2,243,197,.05);border:1px solid rgba(2,243,197,.22);border-radius:12px;padding:14px 18px;margin-bottom:20px;text-align:center}
+.bk-membership-name{font-family:'PT Serif',serif;font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:3px}
+.bk-membership-detail{font-size:.74rem;color:var(--white60)}
+.bk-login{animation:bkIn .3s var(--ease)}
+@keyframes bkIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.bk-label{display:block;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--white38);font-weight:600;margin-bottom:6px}
+.bk-input{width:100%;padding:16px;background:rgba(240,239,233,.04);border:1px solid var(--white12);border-radius:10px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:16px;outline:none;transition:border-color .25s;margin-bottom:14px;box-sizing:border-box;-webkit-appearance:none}
+.bk-input:focus{border-color:rgba(2,243,197,.4)}
+.bk-input::placeholder{color:var(--white38)}
+.bk-input.bk-field-err{border-color:var(--salmon);background:rgba(248,166,163,.04)}
+.bk-field-msg{display:none;font-size:.65rem;color:var(--salmon);margin:-10px 0 10px;padding:0 2px}
+.bk-input.bk-field-err+.bk-field-msg{display:block}
+.bk-err{color:var(--salmon);font-size:.78rem;line-height:1.5;min-height:0;margin:8px 0;text-align:left;padding:0;display:none}
+.bk-err.show{display:block;padding:14px 16px;background:rgba(248,166,163,.08);border:1px solid rgba(248,166,163,.18);border-radius:10px}
+.bk-err a{color:var(--cyan);text-decoration:underline}
+.bk-recover{display:none;margin:12px 0;padding:14px 16px;background:rgba(2,243,197,.06);border:1px solid rgba(2,243,197,.18);border-radius:10px;font-size:.78rem;color:var(--white60);line-height:1.5}
+.bk-recover.show{display:block}
+.bk-recover strong{color:var(--cyan);display:block;margin-bottom:6px;font-size:.82rem}
+.bk-recover button{display:block;width:100%;margin-top:12px;padding:12px;background:transparent;border:1px solid var(--cyan);color:var(--cyan);border-radius:8px;font-size:.82rem;font-weight:600;cursor:pointer;font-family:inherit}
+.bk-recover button:active{background:rgba(2,243,197,.1)}
+.bk-primary{width:100%;padding:16px;background:var(--cyan);color:var(--navy);border:none;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;transition:background .25s,transform .2s;-webkit-appearance:none}
+.bk-primary:hover{background:#33f5d1}
+.bk-primary:disabled{opacity:.5;cursor:default}
+.bk-link{display:block;text-align:center;margin-top:14px;font-size:.78rem;color:var(--white60);cursor:pointer;padding:10px 8px}
+.bk-link:hover{color:var(--white)}
+.bk-link-row{display:block;margin-top:18px;padding-top:16px;border-top:1px solid var(--white06)}
+.bk-link-row .bk-link{margin-top:0;padding:12px 8px}
+.bk-or{display:flex;align-items:center;gap:12px;margin:16px 0;color:var(--white38);font-size:.7rem;text-transform:uppercase;letter-spacing:.1em}
+.bk-or::before,.bk-or::after{content:'';flex:1;height:1px;background:var(--white06)}
+.bk-social{width:100%;padding:13px;border:1px solid var(--white12);border-radius:10px;font-size:.82rem;color:var(--white60);display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;transition:border-color .25s;margin-bottom:8px;-webkit-appearance:none}
+.bk-social:hover{border-color:var(--white38)}
+.bk-social svg{width:18px;height:18px}
+.bk-mfa-inputs{display:flex;gap:8px;justify-content:center;margin-bottom:16px}
+.bk-mfa-digit{width:44px;height:52px;text-align:center;font-size:1.3rem;font-weight:700;background:rgba(240,239,233,.04);border:1px solid var(--white12);border-radius:10px;color:var(--white);font-family:'DM Sans',sans-serif;outline:none;-webkit-appearance:none}
+.bk-mfa-digit:focus{border-color:rgba(2,243,197,.4)}
+/* PACKAGE PICKER ROWS — real tap targets, no misfires */
+.bk-pkg{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 14px 18px 18px;min-height:68px;background:rgba(240,239,233,.025);border:1px solid var(--white06);border-radius:12px;cursor:pointer;transition:background .18s,border-color .18s,transform .12s;-webkit-tap-highlight-color:transparent;margin-bottom:10px;box-sizing:border-box}
+.bk-pkg:active{background:rgba(2,243,197,.08);border-color:rgba(2,243,197,.35);transform:scale(.985)}
+.bk-pkg.feat{background:rgba(2,243,197,.06);border-color:rgba(2,243,197,.28)}
+.bk-pkg.feat:active{background:rgba(2,243,197,.12)}
+.bk-pkg-l{flex:1;min-width:0}
+.bk-pkg-name{font-weight:600;font-size:.95rem;color:var(--white);margin-bottom:3px}
+.bk-pkg-desc{font-size:.74rem;color:var(--white60);line-height:1.35}
+.bk-pkg-r{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.bk-pkg-price{font-family:'PT Serif',serif;font-weight:700;font-size:1.05rem;color:var(--white);flex-shrink:0;white-space:nowrap}
+.bk-pkg-price small{font-size:.68rem;font-weight:400;color:var(--white60)}
+.bk-pkg-chev{width:14px;height:14px;stroke:var(--white38);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;transition:stroke .18s}
+.bk-pkg.feat .bk-pkg-chev{stroke:var(--cyan)}
+.bk-pkg:active .bk-pkg-chev{stroke:var(--cyan)}
+.bk-pkg-grp{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;margin:24px 0 12px;padding:0 2px}
+.bk-pkg-grp:first-child{margin-top:8px}
+/* CONTACT FIELD GROUPS — clear separation between phone / language / city */
+.bk-fld{margin-bottom:20px}
+.bk-card-wrap{width:100%;padding:16px;background:rgba(240,239,233,.04);border:1px solid var(--white12);border-radius:10px;min-height:54px;box-sizing:border-box;transition:border-color .25s;pointer-events:auto;touch-action:auto}
+.bk-card-wrap.StripeElement--focus{border-color:var(--cyan)}
+.bk-card-wrap.StripeElement--invalid{border-color:var(--salmon)}
+.bk-card-wrap.StripeElement--complete{border-color:rgba(2,243,197,.45)}
+.bk-card-wrap iframe{width:100% !important;pointer-events:auto !important}
+.bk-card-row{display:flex;gap:10px;margin-top:10px}
+.bk-card-row .bk-card-wrap{flex:1;min-width:0}
+.bk-card-status{display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--white38);margin-top:8px;min-height:18px;transition:color .2s}
+.bk-card-status.ok{color:var(--cyan)}
+.bk-card-status.err{color:var(--salmon)}
+.bk-card-status svg{width:14px;height:14px;flex-shrink:0}
+.bk-fld:last-of-type{margin-bottom:8px}
+.bk-fld .bk-input{margin-bottom:0}
+.bk-fld .bk-label{margin-bottom:8px;margin-top:0}
+.bk-phone-row{display:flex;gap:8px}
+.bk-phone-row .bk-input{margin-bottom:0}
+select.bk-input{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='none' stroke='%23f0efe9' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round' d='M1 1.5l5 5 5-5'/></svg>");background-repeat:no-repeat;background-position:right 18px center;padding-right:42px}
+
+/* CONFIRM */
+.bk-done{text-align:center;animation:bkIn .4s var(--ease)}
+.bk-done-icon{width:56px;height:56px;border-radius:50%;background:rgba(2,243,197,.1);border:2px solid var(--cyan);display:flex;align-items:center;justify-content:center;margin:0 auto 16px}
+.bk-done-icon svg{width:24px;height:24px;stroke:var(--cyan);stroke-width:3;fill:none}
+.bk-done h3{font-family:'PT Serif',serif;font-size:1.2rem;margin-bottom:6px}
+.bk-done p{font-size:.82rem;color:var(--white60)}
+
+/* STRIPE CARD */
+.bk-pay-total{text-align:center;font-family:'PT Serif',serif;font-size:1.4rem;font-weight:700;margin-bottom:4px}
+.bk-pay-desc{text-align:center;font-size:.78rem;color:var(--white60);margin-bottom:16px}
+.bk-divider{display:flex;align-items:center;gap:12px;color:var(--white38);font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;margin:12px 0}
+.bk-divider::before,.bk-divider::after{content:'';flex:1;height:1px;background:var(--white06)}
+.promo-row{display:flex;gap:8px;margin-bottom:14px}
+.promo-row input{flex:1}
+.promo-row button{padding:0 16px;background:var(--white06);border:1px solid var(--white12);border-radius:10px;color:var(--white60);font-size:.78rem;font-weight:600;cursor:pointer}
+.promo-msg{font-size:.7rem;margin:-10px 0 12px;padding:0 2px}
+.promo-msg.ok{color:var(--cyan)}.promo-msg.err{color:var(--salmon)}
+
+/* TAB BAR */
+.tabs{position:fixed;bottom:0;left:0;right:0;z-index:100;display:flex;align-items:flex-end;justify-content:space-around;height:calc(72px + var(--safe-b));padding-bottom:var(--safe-b);background:var(--navy95);backdrop-filter:saturate(1.4) blur(24px);-webkit-backdrop-filter:saturate(1.4) blur(24px);border-top:1px solid var(--white06)}
+.tab{display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 0 6px;flex:1;color:var(--white38);transition:color .2s}
+.tab.on{color:var(--cyan)}
+.tab svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tab span{font-size:.5rem;letter-spacing:.04em;font-weight:600}
+.tab-bk{position:relative}
+.tab-bk-o{width:56px;height:56px;border-radius:50%;background:var(--cyan);display:flex;align-items:center;justify-content:center;position:relative;top:-10px;box-shadow:0 4px 24px rgba(2,243,197,.28)}
+.tab-bk-o svg{stroke:var(--navy);width:22px;height:22px;stroke-width:2.5}
+.tab-bk span{position:relative;top:-6px}
+
+/* MORE MENU — iOS Settings style */
+.more{position:fixed;inset:0;z-index:200;background:var(--navy);display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .25s}
+.more.on{opacity:1;pointer-events:auto}
+.more-hdr{height:calc(52px + var(--safe-t));padding-top:var(--safe-t);display:flex;align-items:center;padding-left:12px;padding-right:16px;border-bottom:1px solid var(--w06)}
+.more-done{font-size:.82rem;color:var(--cyan);font-weight:600;padding:8px 12px;display:flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;font-family:inherit;text-decoration:none}
+.more-done svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.more-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none}
+.more-body::-webkit-scrollbar{display:none;width:0;height:0}
+.more-group{padding:18px 24px 6px;text-align:center}
+.more-group:first-child{padding-top:14px}
+.more-group-t{font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:var(--w38);font-weight:600;margin-bottom:6px}
+.lang-row{display:flex;gap:8px;padding:2px 24px 8px;justify-content:center}
+.lang-btn{flex:0 0 auto;min-width:88px;padding:11px 16px;background:var(--w03);border:1px solid var(--w10);border-radius:100px;color:var(--w80);font-size:.74rem;font-weight:600;letter-spacing:.02em;font-family:inherit;cursor:pointer;transition:all .2s;-webkit-tap-highlight-color:transparent}
+.lang-btn.on{background:var(--cyan);color:var(--navy);border-color:var(--cyan);box-shadow:0 2px 12px rgba(2,243,197,.18)}
+.lang-btn:active{transform:scale(.97)}
+.more-row{display:flex;align-items:center;gap:14px;padding:14px 24px;border-bottom:1px solid var(--w06);text-decoration:none;-webkit-tap-highlight-color:transparent}
+.more-row:active{background:var(--w03)}
+.more-row-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.more-row-icon svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.more-row-txt{flex:1;font-size:.84rem;font-weight:500;color:var(--white)}
+.more-row-chev{width:12px;height:12px;stroke:var(--w20);fill:none;stroke-width:2}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <a href="index.html" class="hdr-logo-link"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA" style="height:18px;width:auto;opacity:.9;display:block"></a>
+  <button onclick="document.querySelector('.day-btn.active').scrollIntoView({behavior:'smooth'})" class="hdr-pill touch" style="border:none;cursor:pointer">Reservar Clase</button>
+</header>
+
+<!-- DAYS -->
+<div class="days" id="days"></div>
+<!-- FILTERS -->
+<div class="filters" id="filters"></div>
+<!-- SKELETON -->
+<div class="sk" id="sk">
+  <div class="sk-r"><div class="sk-b" style="width:48px;height:36px"></div><div><div class="sk-b" style="width:140px;height:14px;margin-bottom:8px"></div><div class="sk-b" style="width:90px;height:10px"></div></div><div class="sk-b" style="width:64px;height:36px"></div></div>
+  <div class="sk-r"><div class="sk-b" style="width:48px;height:36px"></div><div><div class="sk-b" style="width:120px;height:14px;margin-bottom:8px"></div><div class="sk-b" style="width:70px;height:10px"></div></div><div class="sk-b" style="width:64px;height:36px"></div></div>
+  <div class="sk-r"><div class="sk-b" style="width:48px;height:36px"></div><div><div class="sk-b" style="width:160px;height:14px;margin-bottom:8px"></div><div class="sk-b" style="width:100px;height:10px"></div></div><div class="sk-b" style="width:64px;height:36px"></div></div>
+  <div class="sk-r"><div class="sk-b" style="width:48px;height:36px"></div><div><div class="sk-b" style="width:130px;height:14px;margin-bottom:8px"></div><div class="sk-b" style="width:80px;height:10px"></div></div><div class="sk-b" style="width:64px;height:36px"></div></div>
+</div>
+<!-- CLASS LIST -->
+<div class="schedule" id="sched" style="display:none"></div>
+
+<!-- BOOKING MODAL -->
+<div class="mo" id="mo">
+  <div class="mo-box">
+    <div class="mo-head">
+      <button class="mo-back" id="mo-back" type="button" aria-label="Volver al paso anterior" onclick="goBack()"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>Atrás</button>
+      <div class="mo-head-t"><div class="mo-t" id="mo-t">Reservar Clase</div><div class="mo-c" id="mo-c"></div></div>
+      <button class="mo-x" id="mo-x" type="button" aria-label="Cerrar reserva" onclick="closeMo()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Cerrar</button>
+    </div>
+    <div class="mo-bd" id="mo-bd"></div>
+    <div class="mo-ft"><div class="mo-sec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Reserva segura vía SABDA</div></div>
+  </div>
+</div>
+
+<!-- TAB BAR -->
+<nav class="tabs">
+  <a href="classes.html" class="tab"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Clases</span></a>
+  <a href="schedule.html" class="tab on"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span>Horarios</span></a>
+  <a href="schedule.html" class="tab tab-bk"><div class="tab-bk-o"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><span>Reserva ara</span></a>
+  <a href="pricing.html" class="tab"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Precios</span></a>
+  <button class="tab" id="moreBtn2" type="button" aria-label="Menú adicional"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.5" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="12" cy="19" r="1.5" fill="currentColor" stroke="none"/></svg><span>Más</span></button>
+</nav>
+<!-- MORE MENU — iOS Settings style -->
+<div class="more" id="more">
+  <div class="more-hdr"><a class="more-done" id="moreX" href="index.html" aria-label="Volver al inicio"><svg viewBox="0 0 24 24"><path d="M9 18l-6-6 6-6"/></svg>Inicio</a></div>
+  <div class="more-body">
+    <div class="more-group"><div class="more-group-t">Idioma</div></div>
+    <div class="lang-row">
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')" type="button">English</button>
+      <button class="lang-btn on" data-lang="es" onclick="setLang('es')" type="button">Espa&ntilde;ol</button>
+      <button class="lang-btn" data-lang="ca" onclick="setLang('ca')" type="button">Catal&agrave;</button>
+    </div>
+    <div class="more-group"><div class="more-group-t">Explora</div></div>
+    <a href="index.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div class="more-row-txt">Inicio</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="classes.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><div class="more-row-txt">Clases</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="schedule.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div class="more-row-txt">Horarios</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="pricing.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div class="more-row-txt">Precios</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="hire.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div><div class="more-row-txt">Alquila el Espacio</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="events.html" class="more-row"><div class="more-row-icon" style="background:rgba(248,166,163,.08);color:var(--salmon)"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="more-row-txt">Eventos</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="about.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div><div class="more-row-txt">Sobre</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <div class="more-group"><div class="more-group-t">Ayuda</div></div>
+    <a href="faq.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><div class="more-row-txt">FAQ</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="contact.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="more-row-txt">Contacte</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <div class="more-group"><div class="more-group-t">Conecta</div></div>
+    <a href="https://instagram.com/sabda_studio" target="_blank" rel="noopener" class="more-row"><div class="more-row-icon" style="background:rgba(248,166,163,.08);color:var(--salmon)"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg></div><div class="more-row-txt">Instagram</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="https://www.tiktok.com/@sabda_studio" target="_blank" rel="noopener" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></div><div class="more-row-txt">TikTok</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="https://www.linkedin.com/company/sabdastudio" target="_blank" rel="noopener" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div><div class="more-row-txt">LinkedIn</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <div class="more-group"><div class="more-group-t">Legal</div></div>
+    <a href="/ca/legal/avis-legal.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="more-row-txt">Avís Legal</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="/ca/legal/politica-privacitat.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="more-row-txt">Política de Privacitat</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="/ca/legal/termes.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><div class="more-row-txt">Termes i Condicions</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="/ca/legal/cookies.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/><path d="M11 17v.01"/><path d="M7 14v.01"/></svg></div><div class="more-row-txt">Política de Cookies</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+  </div>
+</div>
+
+
+<script>
+const API='https://momence.com/_api/primary/api/v1/Events?hostId=54278&token=a0314a80ca';
+let allE=[],selDate=null,actF='Todas';
+
+function getCat(t){
+  const l=t.toLowerCase();
+  if(l.includes('vinyasa')||l.includes('hatha')||l.includes('yin yoga')||l.includes('yoga sculpt')||l.includes('yoga &'))return'Yoga';
+  if(l.includes('pilates')||l.includes('glutes'))return'Pilates';
+  if(l.includes('breath')||l.includes('recharge')||l.includes('reset'))return'Breathwork';
+  if(l.includes('sound')||l.includes('serenity')||l.includes('guided sound'))return'Sound Healing';
+  return'Otros';
+}
+function getLang(t){const m=t.match(/\[(.*?)\]/);return m?m[1]:'';}
+function clean(t){return t.replace(/\s*\[.*?\]\s*/,'').trim();}
+function fmtTime(iso){
+  const d=new Date(iso);
+  return d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',hour12:false,timeZone:'Europe/Madrid'});
+}
+
+function get7d(){
+  const days=[];const now=new Date();
+  for(let i=0;i<7;i++){const d=new Date(now);d.setDate(now.getDate()+i);days.push(d);}
+  return days;
+}
+function getMadridDate(d){return d.toLocaleDateString('en-CA',{timeZone:'Europe/Madrid'});}
+
+function renderDays(){
+  const c=document.getElementById('days');
+  const days=get7d();
+  const nm=['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+  c.innerHTML=days.map((d,i)=>{
+    const ds=getMadridDate(d);
+    const madridDay=new Date(d.toLocaleString('en-US',{timeZone:'Europe/Madrid'}));
+    return`<button class="day-btn${i===0?' active':''}" data-d="${ds}" onclick="selDay(this,'${ds}')"><span class="day-name">${i===0?'Hoy':nm[madridDay.getDay()]}</span><span class="day-num">${madridDay.getDate()}</span></button>`;
+  }).join('');
+  selDate=getMadridDate(days[0]);
+}
+
+function selDay(b,ds){
+  document.querySelectorAll('.day-btn').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');selDate=ds;renderSched();
+}
+
+function renderFilters(ev){
+  const c=document.getElementById('filters');
+  const cats=new Set(['Todas']);ev.forEach(e=>cats.add(getCat(e.title)));
+  c.innerHTML=[...cats].map(x=>`<button class="fp${x==='Todas'?' active':''}" onclick="setF(this,'${x}')">${x}</button>`).join('');
+}
+
+function setF(b,cat){
+  document.querySelectorAll('.fp').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active');actF=cat;renderSched();
+}
+
+function renderSched(){
+  const c=document.getElementById('sched');
+  let f=allE.filter(e=>{
+    const ed=new Date(e.dateTime).toLocaleDateString('en-CA',{timeZone:'Europe/Madrid'});
+    return ed===selDate&&!e.isCancelled&&!e.isDeleted;
+  });
+  if(actF!=='Todas')f=f.filter(e=>getCat(e.title)===actF);
+  // Filter out classes that already started
+  f=f.filter(e=>new Date(e.dateTime)>=new Date());
+  f.sort((a,b)=>new Date(a.dateTime)-new Date(b.dateTime));
+
+  if(!f.length){c.innerHTML='<div class="no-classes">No classes scheduled for this day.</div>';return;}
+
+  c.innerHTML=f.map((e,i)=>{
+    const time=fmtTime(e.dateTime);const[h,m]=time.split(':');
+    const title=clean(e.title);const lang=getLang(e.title);
+    const sp=e.spotsRemaining;const full=sp===0;
+    let sc='',st='';
+    if(full){sc='fu';st='Completa';}
+    else if(sp!=null && sp<=5){sc='lo';st=sp+(sp===1?' spot left':' spots left');}
+    const fn=(e.teacher||'').split(' ')[0]||'';
+    const lnk=(e.link||'').replace(/'/g,"\\'").replace(/"/g,"&quot;");
+    const ttl=title.replace(/'/g,"\\'").replace(/"/g,"&quot;");
+    const tfn=fn.replace(/'/g,"\\'").replace(/"/g,"&quot;");
+
+    return`<div class="cc" style="animation-delay:${i*.05}s"><div class="ct"><div class="ct-h">${h}:${m}</div><div class="ct-d">${e.duration} min</div></div><div class="ci"><div class="ci-t">${title}${lang?`<span class="ci-lg">${lang}</span>`:''}</div><div class="ci-tc">${fn}</div>${st?`<div class="ci-sp ${sc}">${st}</div>`:''}</div><div class="ca">${full?(e.allowWaitlist?`<button class="bb wl touch" onclick="openMo('${lnk}','${ttl}','${time}','${tfn}')">Lista de espera</button>`:`<button class="bb fu">Completa</button>`):`<button class="bb touch" onclick="openMo('${lnk}','${ttl}','${time}','${tfn}')">Reserva ara</button>`}</div></div>`;
+  }).join('');
+}
+
+const PROXY='https://sabda-checkout-proxy.sabda.workers.dev';
+let curSession=null, curUser=null, curMembership=null, curSessionToken=null;
+let isProcessing=false;
+// Auto-generate a strong password for new account creation (user can reset later via email)
+function genPassword(){var c='ABCDEFGHJKMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789!@#$';var p='';for(var i=0;i<14;i++)p+=c.charAt(Math.floor(Math.random()*c.length));return p;}
+var sessionPassword=genPassword();
+let proxyAlive=true;
+
+// Health check — if Worker is down, fall back to Momence for all bookings
+fetch(PROXY+'/sabda-api/health',{method:'GET'}).then(function(r){proxyAlive=r.ok;}).catch(function(){proxyAlive=false;});
+
+// Fix #5: scroll modal to top on every step change
+function stepChange(){
+  isProcessing=false;
+  var box=document.querySelector('.mo-box');
+  if(box) box.scrollTop=0;
+}
+
+// Step navigation: each step calls setBack() to declare its previous step.
+// The Back button at the top of the modal calls goBack() which invokes prevStep.
+var prevStep=null;
+function setBack(fn){
+  prevStep=fn;
+  var b=document.getElementById('mo-back');
+  if(!b) return;
+  if(fn) b.classList.add('on'); else b.classList.remove('on');
+}
+function goBack(){
+  if(typeof prevStep==='function') prevStep();
+}
+function showFallback(){
+  if(!curSession||!curSession.link) return;
+  var err=document.getElementById('bk-err');
+  if(err&&err.textContent){
+    err.innerHTML=err.textContent+'<br><a href="'+curSession.link+'" target="_blank">Reservar en Momence →</a>';
+  }
+}
+
+// ── Display an error in the modal with smart recovery for known cases ──
+// Detects Momence rate-limit and shows a recovery UI with "use a different email"
+function showError(msg, opts){
+  opts=opts||{};
+  var err=document.getElementById('bk-err');
+  var rec=document.getElementById('bk-recover');
+  if(!err) return;
+  err.classList.add('show');
+  // Always render as text first to escape, then optionally append HTML
+  err.textContent=msg||'El pago ha fallado.';
+
+  // Detect known Momence errors
+  var isRateLimit=/limit of number of failed retries|too many.*attempts|rate limit/i.test(msg||'');
+  var isPaymentMethodErr=/no such (payment_method|account)|invalid.*payment.method|payment method.*not found/i.test(msg||'');
+
+  // Append fallback link if requested
+  if(opts.fallback!==false && curSession && curSession.link){
+    err.innerHTML=err.innerHTML+'<br><a href="'+curSession.link+'" target="_blank">Reservar en Momence →</a>';
+  }
+
+  // Show recovery panel for rate limit
+  if(isRateLimit && rec){
+    rec.classList.add('show');
+    rec.innerHTML='<strong>Cuenta bloqueada temporalmente</strong>'
+      +'Momence ha pausado este email tras varios intentos de pago fallidos. Puedes:'
+      +'<br>• Espera 15-30 minutos e inténtalo de nuevo'
+      +'<br>• O empieza de cero con otro email abajo'
+      +'<button onclick="resetCustomerAndStartOver()">Probar con otro email</button>';
+  } else if(isPaymentMethodErr && rec){
+    rec.classList.add('show');
+    rec.innerHTML='<strong>No se pudo procesar la tarjeta</strong>'
+      +'Puede haber un problema de configuración con el procesador de pagos. Reserva directamente en Momence — el enlace funciona.'
+      +(curSession&&curSession.link?'<button onclick="window.open(\''+curSession.link+'\',\'_blank\')">Reservar en Momence</button>':'');
+  }
+
+  try{console.log('[SABDA] showError:',msg,'rateLimit=',isRateLimit,'pmErr=',isPaymentMethodErr);}catch(e){}
+}
+
+// Clear modal err state
+function clearError(){
+  var err=document.getElementById('bk-err');
+  var rec=document.getElementById('bk-recover');
+  if(err){err.classList.remove('show');err.innerHTML='';}
+  if(rec){rec.classList.remove('show');rec.innerHTML='';}
+}
+
+// Reset all customer state and bounce back to guest signup
+// Used when payments are repeatedly failing and user wants to retry with fresh details
+function resetCustomerAndStartOver(){
+  curUser=null;
+  curSessionToken=null;
+  sessionPassword=null;
+  activePromo=null;
+  discountedPrice=null;
+  activeDiscountCodeId=null;
+  cardCompleteState={cardNumber:false,cardExpiry:false,cardCvc:false};
+  if(cardNumberEl){try{cardNumberEl.destroy();}catch(e){}cardNumberEl=null;}
+  if(cardExpiryEl){try{cardExpiryEl.destroy();}catch(e){}cardExpiryEl=null;}
+  if(cardCvcEl){try{cardCvcEl.destroy();}catch(e){}cardCvcEl=null;}
+  clearError();
+  if(curSession && curSession.isPackagePurchase){
+    showPackageGuestStep();
+  } else {
+    showGuestStep();
+  }
+}
+
+function openMo(link,title,time,teacher){
+  if(isProcessing) return;
+
+  // Layer 1: if proxy is down, go straight to Momence
+  if(!proxyAlive){window.open(link,'_blank');return;}
+  // Extract session ID from link
+  var sid=link.match(/\/s\/(\d+)/);
+  if(sid) sid=sid[1]; else { sid=link.match(/\/(\d+)$/); sid=sid?sid[1]:null; }
+  if(!sid){window.open(link,'_blank');return;}
+
+  // Find session data
+  var sess=allE.find(function(e){return String(e.id)===sid;});
+  curSession={id:sid,title:clean(title),time:time,teacher:teacher,link:link,
+    spots:sess?sess.spotsRemaining:null,duration:sess?sess.duration:null,
+    isWaitlist:sess?sess.spotsRemaining===0:false};
+
+  document.getElementById('mo-t').textContent=curSession.title;
+  document.getElementById('mo-c').textContent=time+(teacher?' · '+teacher:'');
+
+  // Always show login step — server handles session
+  showGuestStep();
+  document.getElementById('mo').classList.add('open');
+  document.getElementById('mo').style.display='flex';
+  document.body.style.overflow='hidden';
+  // Fix #9: push history state so browser back closes modal
+  history.pushState({modal:true},'');
+}
+
+function closeMo(){
+  document.getElementById('mo').classList.remove('open');
+  document.body.style.overflow='';
+  setTimeout(function(){
+    document.getElementById('mo').style.display='none';
+    document.getElementById('mo-bd').innerHTML='';
+  },300);
+  // Reset state
+  curSession=null;curMembership=null;isProcessing=false;
+  activePromo=null;discountedPrice=null;activeDiscountCodeId=null;
+  activePayReq=null;activePayName=null;
+  setBack(null);
+  if(cardNumberEl){try{cardNumberEl.destroy();}catch(e){}cardNumberEl=null;}
+  if(cardExpiryEl){try{cardExpiryEl.destroy();}catch(e){}cardExpiryEl=null;}
+  if(cardCvcEl){try{cardCvcEl.destroy();}catch(e){}cardCvcEl=null;}
+  cardCompleteState={cardNumber:false,cardExpiry:false,cardCvc:false};
+}
+document.getElementById('mo').addEventListener('click',function(e){if(e.target===this)closeMo();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMo();});
+// Fix #9: browser back closes modal
+window.addEventListener('popstate',function(e){
+  if(document.getElementById('mo').classList.contains('open')) closeMo();
+});
+// Clear field error state on input
+document.addEventListener('input',function(e){if(e.target.classList)e.target.classList.remove('bk-field-err');});
+document.addEventListener('change',function(e){if(e.target.classList)e.target.classList.remove('bk-field-err');});
+
+function getSpotsHtml(){
+  var sp=curSession?curSession.spots:null;
+  if(sp===0) return curSession.isWaitlist?'<div class="bk-spots lo">Waitlist</div>':'<div class="bk-spots lo">Full</div>';
+  if(sp!==null && sp<=5) return '<div class="bk-spots lo">'+sp+(sp===1?' spot left':' spots left')+'</div>';
+  return '';
+  return '';
+}
+
+// ── STEP 1A: LOGIN (default) ──
+function showLoginStep(){stepChange();
+  setBack(showGuestStep);
+  var classBlock='<div class="bk-class">'
+    +'<div class="bk-class-name">'+esc(curSession.title)+'</div>'
+    +'<div class="bk-class-meta">'
+    +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+esc(curSession.time)+'</span>'
+    +(curSession.duration?'<span>'+curSession.duration+' min</span>':'')
+    +(curSession.teacher?'<span>'+esc(curSession.teacher)+'</span>':'')
+    +'</div>'+getSpotsHtml()+'</div>';
+
+  var bd=document.getElementById('mo-bd');
+  bd.innerHTML=classBlock
+    +'<div class="bk-login">'
+    +'<div class="bk-label">Email</div>'
+    +'<input class="bk-input" id="bk-email" type="email" inputmode="email" autocomplete="email" placeholder="tu@email.com" aria-label="Dirección de email" />'
+    +'<div class="bk-label">Contraseña</div>'
+    +'<input class="bk-input" id="bk-pass" type="password" autocomplete="current-password" placeholder="Contraseña" aria-label="Contraseña" />'
+    +'<div style="text-align:right;margin:-10px 0 12px"><a href="https://momence.com/forgot-password" target="_blank" style="font-size:.75rem;color:var(--white38);text-decoration:none;border-bottom:1px solid var(--white12)">¿Olvidaste tu contraseña?</a></div>'
+    +'<div class="bk-err" id="bk-err"></div>'
+    +'<button class="bk-primary" id="bk-login-btn" onclick="doLogin()">Iniciar sesión y reservar</button>'
+    +'<div class="bk-link" onclick="showGuestStep()">¿Nueva aquí? Reservar como invitada</div>'
+    +'</div>';
+  document.getElementById('bk-email').focus();
+  document.getElementById('bk-pass').addEventListener('keydown',function(e){if(e.key==='Enter')doLogin();});
+}
+
+// ── STEP 1B: GUEST ──
+function showGuestStep(){stepChange();
+  setBack(null);
+  var classBlock='<div class="bk-class">'
+    +'<div class="bk-class-name">'+esc(curSession.title)+'</div>'
+    +'<div class="bk-class-meta">'
+    +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+esc(curSession.time)+'</span>'
+    +(curSession.duration?'<span>'+curSession.duration+' min</span>':'')
+    +(curSession.teacher?'<span>'+esc(curSession.teacher)+'</span>':'')
+    +'</div>'+getSpotsHtml()+'</div>';
+
+  var bd=document.getElementById('mo-bd');
+  bd.innerHTML=classBlock
+    +'<div class="bk-login">'
+    +'<div class="bk-label">Nombre</div>'
+    +'<input class="bk-input" id="bk-fn" type="text" autocomplete="given-name" placeholder="Nombre" aria-label="Nombre" />'
+    +'<div class="bk-label">Apellido</div>'
+    +'<input class="bk-input" id="bk-ln" type="text" autocomplete="family-name" placeholder="Apellido" aria-label="Apellido" />'
+    +'<div class="bk-label">Email</div>'
+    +'<input class="bk-input" id="bk-email" type="email" inputmode="email" autocomplete="email" placeholder="tu@email.com" aria-label="Dirección de email" />'
+    +'<div class="bk-err" id="bk-err"></div>'
+    +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">Continuar</button>'
+    +'<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.12);border-radius:8px;padding:12px;margin-top:16px;font-size:.75rem;color:var(--white60);line-height:1.5;text-align:center">¿Ya has reservado antes con nosotros? <span onclick="showLoginStep()" style="color:var(--cyan);cursor:pointer;text-decoration:underline">Inicia sesión</span> para mantener tu historial y créditos juntos.</div>'
+    +'<div class="bk-link" onclick="showLoginStep()">¿Ya tienes cuenta? Inicia sesión</div>'
+    +'</div>';
+  document.getElementById('bk-fn').focus();
+}
+
+function doLogin(){if(isProcessing)return;
+  var emailEl=document.getElementById('bk-email');
+  var passEl=document.getElementById('bk-pass');
+  var email=emailEl.value.trim();
+  var pass=passEl.value;
+  var err=document.getElementById('bk-err');
+  var btn=document.getElementById('bk-login-btn');
+  var ok=true;
+  emailEl.classList.remove('bk-field-err');passEl.classList.remove('bk-field-err');
+  if(!email||!validateEmail(email)){emailEl.classList.add('bk-field-err');ok=false;}
+  if(!pass){passEl.classList.add('bk-field-err');ok=false;}
+  if(!ok){err.textContent='Por favor, rellena los campos destacados';return;}
+  err.textContent='';isProcessing=true;btn.textContent='Iniciando sesión...';btn.disabled=true;
+
+  fetch(PROXY+'/sabda-api/login',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({email:email,password:pass,sessionId:curSession.id})
+  }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
+  .then(function(r){
+    if(!r.ok||r.data.error){
+      err.innerHTML='Email o contraseña incorrectos. <a href="'+curSession.link+'" target="_blank" style="color:var(--cyan);text-decoration:underline">Reservar en Momence →</a>';
+      isProcessing=false;btn.textContent='Iniciar sesión y reservar';btn.disabled=false;
+      return;
+    }
+    // MFA required — show code input
+    if(r.data.mfaRequired){
+      showMfaStep(r.data.mfaToken);
+      return;
+    }
+    var d=r.data;
+    if(!curSession) return; // modal was closed during request
+    curUser={
+      id:d.user.id,
+      email:d.user.email||email,
+      firstName:d.user.firstName||email.split('@')[0],
+      lastName:d.user.lastName||'',
+      memberId:d.user.memberId
+    };
+    curSessionToken=d.sessionToken;
+    curSession.price=d.sessionPrice||22;
+
+    if(d.hasUsableMembership&&d.memberships.length>0){
+      showConfirmStep(d.memberships[0]);
+    } else {
+      showNoMembership();
+    }
+  }).catch(function(){
+    err.textContent='Error de conexión. Inténtalo de nuevo.';
+    isProcessing=false;btn.textContent='Iniciar sesión y reservar';btn.disabled=false;
+    showFallback();
+  });
+}
+
+// ── STEP 1C: MFA CODE INPUT ──
+var curMfaToken=null;
+function showMfaStep(mfaToken){stepChange();
+  setBack(showLoginStep);
+  curMfaToken=mfaToken;
+  var bd=document.getElementById('mo-bd');
+  bd.innerHTML='<div class="bk-class">'
+    +'<div class="bk-class-name">'+esc(curSession.title)+'</div>'
+    +'<div class="bk-class-meta">'
+    +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+esc(curSession.time)+'</span>'
+    +'</div></div>'
+    +'<div class="bk-login">'
+    +'<p style="font-size:.85rem;color:var(--white60);text-align:center;margin-bottom:20px;line-height:1.5">Enter the 6-digit code from your authenticator app</p>'
+    +'<div class="bk-label">Código de verificación</div>'
+    +'<input class="bk-input" id="bk-mfa" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="one-time-code" placeholder="000000" aria-label="Código de verificación de 6 dígitos" style="text-align:center;font-size:1.4rem;letter-spacing:.3em" />'
+    +'<div class="bk-err" id="bk-err"></div>'
+    +'<button class="bk-primary" id="bk-mfa-btn" onclick="doMfaVerify()">Verificar y continuar</button>'
+    +'<div class="bk-link" onclick="showLoginStep()">← Back</div>'
+    +'</div>';
+  document.getElementById('bk-mfa').focus();
+  document.getElementById('bk-mfa').addEventListener('keydown',function(e){if(e.key==='Enter')doMfaVerify();});
+  document.getElementById('bk-mfa').addEventListener('input',function(e){if(e.target.value.replace(/\s/g,'').length===6)setTimeout(doMfaVerify,150);});
+}
+
+function doMfaVerify(){if(isProcessing)return;
+  var code=document.getElementById('bk-mfa').value.trim();
+  var err=document.getElementById('bk-err');
+  var btn=document.getElementById('bk-mfa-btn');
+  if(!code||code.length<6){err.textContent='Introduce el código de 6 dígitos';return;}
+  err.textContent='';isProcessing=true;btn.textContent='Verificando...';btn.disabled=true;
+
+  fetch(PROXY+'/sabda-api/mfa-verify',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({mfaToken:curMfaToken,code:code,sessionId:curSession.id})
+  }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
+  .then(function(r){
+    if(!r.ok||r.data.error){
+      err.innerHTML='Código no válido. <a href="'+curSession.link+'" target="_blank" style="color:var(--cyan);text-decoration:underline">Reservar en Momence →</a>';
+      isProcessing=false;btn.textContent='Verificar y continuar';btn.disabled=false;
+      return;
+    }
+    var d=r.data;
+    if(!curSession) return; // modal was closed
+    curUser={
+      id:d.user.id,
+      email:d.user.email,
+      firstName:d.user.firstName||d.user.email.split('@')[0],
+      lastName:d.user.lastName||'',
+      memberId:d.user.memberId
+    };
+    curSessionToken=d.sessionToken;
+    curSession.price=d.sessionPrice||22;
+
+    if(d.hasUsableMembership&&d.memberships.length>0){
+      showConfirmStep(d.memberships[0]);
+    } else {
+      showNoMembership();
+    }
+  }).catch(function(){
+    err.textContent='Error de conexión. Inténtalo de nuevo.';
+    isProcessing=false;btn.textContent='Verificar y continuar';btn.disabled=false;
+    showFallback();
+  });
+}
+
+// ── GUEST CHECK ──
+function doGuestCheck(){
+  var fnEl=document.getElementById('bk-fn');
+  var lnEl=document.getElementById('bk-ln');
+  var emailEl=document.getElementById('bk-email');
+  var fn=fnEl.value.trim();
+  var ln=lnEl.value.trim();
+  var email=emailEl.value.trim();
+  var err=document.getElementById('bk-err');
+  var btn=document.getElementById('bk-guest-btn');
+  var ok=true;
+  fnEl.classList.remove('bk-field-err');lnEl.classList.remove('bk-field-err');emailEl.classList.remove('bk-field-err');
+  if(!fn){fnEl.classList.add('bk-field-err');ok=false;}
+  if(!ln){lnEl.classList.add('bk-field-err');ok=false;}
+  if(!email||!validateEmail(email)){emailEl.classList.add('bk-field-err');ok=false;}
+  if(!ok){err.textContent='Por favor, rellena los campos destacados';return;}
+
+  curUser={id:null,email:email,firstName:fn,lastName:ln,memberId:null,isGuest:true};
+
+  // Check if email already exists in Momence
+  fetch(PROXY+'/sabda-api/check-email',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({email:email})
+  }).then(function(r){return r.json();})
+  .then(function(d){
+    if(d.exists){
+      stepChange();
+      setBack(showGuestStep);
+      var bd=document.getElementById('mo-bd');
+      bd.innerHTML='<div class="bk-class">'
+        +'<div class="bk-class-name">'+esc(curSession.title)+'</div>'
+        +'<div class="bk-class-meta">'
+        +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+esc(curSession.time)+'</span>'
+        +'</div>'+getSpotsHtml()+'</div>'
+        +'<div class="bk-confirm" style="text-align:center">'
+        +'<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.15);border-radius:10px;padding:20px;margin-bottom:20px">'
+        +'<div style="font-size:.9rem;font-weight:600;color:var(--salmon);margin-bottom:6px">Cuenta encontrada</div>'
+        +'<div style="font-size:.82rem;color:var(--white60);line-height:1.5">Este email ya está registrado. Inicia sesión para mantener tu historial de reservas y créditos juntos.</div>'
+        +'</div>'
+        +'<button class="bk-primary" onclick="showLoginStep()">Iniciar sesión</button>'
+        +'<div class="bk-link" style="margin-top:12px"><a href="https://momence.com/forgot-password" target="_blank" style="color:var(--white38);font-size:.78rem;text-decoration:underline">¿Has olvidado tu contraseña?</a></div>'
+        +'</div>';
+    } else {
+      showNoMembership();
+    }
+  }).catch(function(){
+    showNoMembership();
+  });
+}
+
+// ── CUSTOMER FIELDS HTML (phone, language, city) ──
+function customerFieldsHTML(){
+  return '<div class="bk-fld">'
+    +'<div class="bk-label">Teléfono</div>'
+    +'<div class="bk-phone-row">'
+    +'<input class="bk-input" id="bk-cc" type="text" inputmode="tel" value="+34" aria-label="Prefijo de país" style="width:72px;flex-shrink:0;text-align:center;font-weight:600" />'
+    +'<input class="bk-input" id="bk-phone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="612 345 678" aria-label="Teléfono" style="flex:1;min-width:0" />'
+    +'</div></div>'
+    +'<div class="bk-fld">'
+    +'<div class="bk-label">Idioma preferido</div>'
+    +'<select class="bk-input" id="bk-lang" aria-label="Idioma preferido">'
+    +'<option value="">Selecciona un idioma</option>'
+    +'<option value="English">English</option>'
+    +'<option value="Castellano">Castellano</option>'
+    +'<option value="Catala">Catal&agrave;</option>'
+    +'</select></div>'
+    +'<div class="bk-fld">'
+    +'<div class="bk-label">Ciudad de residencia</div>'
+    +'<input class="bk-input" id="bk-city" type="text" autocomplete="address-level2" placeholder="Barcelona" aria-label="Ciudad de residencia" />'
+    +'</div>';
+}
+function getCustomerFields(){
+  var cc=(document.getElementById('bk-cc')||{}).value||'+34';
+  if(!cc.startsWith('+')) cc='+'+cc;
+  var phone=(document.getElementById('bk-phone')||{}).value||'';
+  phone=phone.replace(/\s/g,'').replace(/^0+/,'');
+  var lang=(document.getElementById('bk-lang')||{}).value||'';
+  var city=(document.getElementById('bk-city')||{}).value||'';
+  return{phoneNumber:cc+phone,customerFields:{"164360":lang,"164361":city}};
+}
+function validateCustomerFields(){
+  var ok=true;
+  var fields=[
+    {id:'bk-cc',test:function(v){return v&&v.startsWith('+')&&v.length>=2;},msg:'Prefijo de país obligatorio'},
+    {id:'bk-phone',test:function(v){return v.replace(/\s/g,'').length>=6;},msg:'Teléfono obligatorio'},
+    {id:'bk-lang',test:function(v){return!!v;},msg:'Por favor, selecciona un idioma'},
+    {id:'bk-city',test:function(v){return v.trim().length>0;},msg:'La ciudad es obligatoria'}
+  ];
+  fields.forEach(function(f){
+    var el=document.getElementById(f.id);
+    if(!el)return;
+    if(!f.test(el.value)){
+      el.classList.add('bk-field-err');ok=false;
+    } else {
+      el.classList.remove('bk-field-err');
+    }
+  });
+  return ok?null:'Por favor, rellena los campos destacados';
+}
+function clearFieldErrors(){
+  document.querySelectorAll('.bk-field-err').forEach(function(el){el.classList.remove('bk-field-err');});
+}
+function validateEmail(email){
+  return/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+// ── STEP 3A: CONFIRM WITH MEMBERSHIP ──
+function showConfirmStep(membership){stepChange();
+  setBack(showGuestStep);
+  var bd=document.getElementById('mo-bd');
+  var mName=membership.name||membership.membershipName||membership.planName||'Membresía';
+  var credits=membership.remainingCredits||membership.eventsRemaining||membership.creditsRemaining||membership.remainingEvents||'';
+  var detail=credits?(Number(credits)===1?'1 clase restante':credits+' clases restantes'):'Membresía activa';
+  curMembership=membership;
+
+  bd.innerHTML='<div class="bk-class">'
+    +'<div class="bk-class-name">'+esc(curSession.title)+'</div>'
+    +'<div class="bk-class-meta">'
+    +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+esc(curSession.time)+'</span>'
+    +(curSession.teacher?'<span>'+esc(curSession.teacher)+'</span>':'')
+    +'</div></div>'
+    +'<div class="bk-confirm">'
+    +'<div class="bk-user">Reservando como <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>'
+    +'<div class="bk-membership">'
+    +'<div class="bk-membership-name">'+mName+'</div>'
+    +'<div class="bk-membership-detail">'+detail+'</div>'
+    +'</div>'
+    +customerFieldsHTML()
+    +'<div class="bk-err" id="bk-err"></div>'
+    +'<button class="bk-primary" id="bk-confirm-btn" onclick="doBookWithMembership()">Confirmar Reserva</button>'
+    +'<div class="bk-link-row"><div class="bk-link" onclick="curUser=null;curSessionToken=null;showLoginStep()">Switch account</div></div>'
+    +'</div>';
+}
+
+function doBookWithMembership(){if(isProcessing)return;
+  var btn=document.getElementById('bk-confirm-btn');
+  var err=document.getElementById('bk-err');
+  var vErr=validateCustomerFields();
+  if(vErr){err.textContent=vErr;return;}
+  isProcessing=true;btn.textContent='Reservando...';btn.disabled=true;err.textContent='';
+
+  var m=curMembership||{};
+  var cf=getCustomerFields();
+
+  fetch(PROXY+'/sabda-api/book',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({
+      sessionId:curSession.id,
+      sessionToken:curSessionToken,
+      memberId:curUser.memberId,
+      memberMembershipId:m.memberMembershipId||m.id||m.membershipId,
+      firstName:curUser.firstName,
+      lastName:curUser.lastName,
+      email:curUser.email,
+      phoneNumber:cf.phoneNumber,
+      customerFields:cf.customerFields
+    })
+  }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
+  .then(function(r){
+    if(r.ok&&r.data.success){
+      showSuccess();
+    } else {
+      var msg=(r.data&&(r.data.error||r.data.message))||'No se ha podido completar la reserva. Inténtalo de nuevo.';
+      if(document.getElementById('bk-err')) document.getElementById('bk-err').textContent=msg;
+      showFallback();
+      isProcessing=false;
+      var b=document.getElementById('bk-confirm-btn');if(b){b.textContent='Confirmar reserva';b.disabled=false;}
+    }
+  }).catch(function(){
+    var e=document.getElementById('bk-err');if(e)e.textContent='Error de conexión. Inténtalo de nuevo.';
+    showFallback();
+    isProcessing=false;var b=document.getElementById('bk-confirm-btn');if(b){b.textContent='Confirmar reserva';b.disabled=false;}
+  });
+}
+
+// ── STEP 3B: NO MEMBERSHIP — SHOW ALL PRICING OPTIONS ──
+var stripeInstance=null, cardNumberEl=null, cardExpiryEl=null, cardCvcEl=null;
+var cardCompleteState={cardNumber:false,cardExpiry:false,cardCvc:false};
+// Backwards-compat alias so any leftover refs to cardElement don't crash
+var cardElement=null;
+var activePromo=null, discountedPrice=null, activeDiscountCodeId=null;
+var activePayReq=null, activePayName=null;
+
+function applyPromo(type,origPrice,productId){
+  var code=(document.getElementById('bk-promo')||{}).value.trim().toUpperCase();
+  var okEl=document.getElementById('bk-promo-ok');
+  var errEl=document.getElementById('bk-promo-err');
+  var btn=document.getElementById('bk-promo-btn');
+  if(!code){errEl.textContent='Introduce un código';errEl.style.display='block';okEl.style.display='none';return;}
+  btn.textContent='...';btn.disabled=true;errEl.style.display='none';okEl.style.display='none';
+
+  var body={code:code,hostId:54278,price:origPrice};
+  body.sessionId=curSession.id;
+  if(productId) body.membershipId=productId;
+
+  fetch(PROXY+'/sabda-api/promo',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(body)
+  }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
+  .then(function(r){
+    btn.textContent='Aplicar';btn.disabled=false;
+    if(!r.ok||r.data.error){
+      errEl.textContent=r.data.error||'Código promocional no válido';
+      errEl.style.display='block';
+      activePromo=null;discountedPrice=null;activeDiscountCodeId=null;
+      return;
+    }
+    // Reject 100% discounts that drop the price to exactly €0.
+    // Momence's /plugin/{memberships|sessions}/{id}/pay endpoint does not
+    // accept priceInCurrency:0 — it routes through Stripe and rejects with
+    // a generic error that increments the failed-retry counter and locks
+    // out the customer/IP. Free claims must use a separate Momence flow
+    // we don't have access to from the proxy.
+    if(r.data.newPrice===0){
+      errEl.textContent='Este código deja la reserva en gratuita y no podemos procesarla aquí. Por favor, usa el enlace de Momence para canjearlo directamente.';
+      errEl.style.display='block';
+      activePromo=null;discountedPrice=null;activeDiscountCodeId=null;
+      try{console.warn('[SABDA] Refusing €0 discount — would route through wrong Momence endpoint');}catch(e){}
+      return;
+    }
+    activePromo=r.data.code;
+    discountedPrice=r.data.newPrice;
+    activeDiscountCodeId=r.data.discountCodeId||null;
+    try{console.log('[SABDA] Promo applied:',activePromo,'newPrice=',discountedPrice,'discountCodeId=',activeDiscountCodeId);}catch(e){}
+    // Update UI
+    var desc=r.data.type==='percentage'?r.data.appliedDiscount+'% de descuento':r.data.appliedDiscount+'€ de descuento';
+    okEl.innerHTML='<strong>'+activePromo+'</strong> aplicado · '+desc+' <span onclick="removePromo('+origPrice+')" style="cursor:pointer;text-decoration:underline;margin-left:8px">Quitar</span>';
+    okEl.style.display='block';
+    document.getElementById('bk-total').innerHTML='<span style="text-decoration:line-through;color:var(--white38);font-size:1rem;margin-right:8px">€'+origPrice+'</span> €'+discountedPrice.toFixed(2);
+    // Update pay button
+    var payBtn=document.getElementById('bk-pay-btn');
+    if(payBtn){
+      if(discountedPrice===0){
+        payBtn.textContent='Reservar clase gratis';
+        payBtn.disabled=false; // override card-validation gate — no card needed
+        // Hide card section and Apple Pay — no payment needed
+        var cardSec=document.getElementById('bk-card-section');if(cardSec)cardSec.style.display='none';
+        var payDiv=document.getElementById('bk-pay-divider');if(payDiv)payDiv.style.display='none';
+        var payReqEl=document.getElementById('bk-pay-request');if(payReqEl)payReqEl.style.display='none';
+      } else {
+        payBtn.textContent='Pagar '+discountedPrice.toFixed(2)+'€ y reservar clase';
+        // Re-evaluate card-validation gate (button stays disabled if card incomplete)
+        var allDone=cardCompleteState.cardNumber && cardCompleteState.cardExpiry && cardCompleteState.cardCvc;
+        payBtn.disabled=!allDone;
+      }
+    }
+    // Hide the promo input, show applied state
+    document.getElementById('bk-promo-fields').style.display='none';
+    document.getElementById('bk-promo-toggle').style.display='none';
+    // Update Apple/Google Pay amount if active
+    if(activePayReq){try{activePayReq.update({total:{label:'SABDA Studio'+(activePayName?' · '+activePayName:''),amount:Math.round(discountedPrice*100)}});}catch(e){}}
+  }).catch(function(){
+    btn.textContent='Aplicar';btn.disabled=false;
+    errEl.textContent='No se ha podido validar el código. Inténtalo de nuevo.';errEl.style.display='block';
+  });
+}
+
+function removePromo(origPrice){
+  activePromo=null;discountedPrice=null;activeDiscountCodeId=null;
+  document.getElementById('bk-promo-ok').style.display='none';
+  document.getElementById('bk-promo-toggle').style.display='block';
+  document.getElementById('bk-promo-fields').style.display='none';
+  document.getElementById('bk-promo').value='';
+  document.getElementById('bk-total').textContent='€'+origPrice;
+  var payBtn=document.getElementById('bk-pay-btn');
+  if(payBtn){
+    payBtn.textContent='Pagar '+origPrice+'€ y reservar clase';
+    // Re-apply card-validation gate
+    var allDone=cardCompleteState.cardNumber && cardCompleteState.cardExpiry && cardCompleteState.cardCvc;
+    payBtn.disabled=!allDone;
+  }
+  // Restore card section in case it was hidden by a €0 promo
+  var cardSec=document.getElementById('bk-card-section');if(cardSec)cardSec.style.display='';
+  if(activePayReq){try{activePayReq.update({total:{label:'SABDA Studio'+(activePayName?' · '+activePayName:''),amount:Math.round(origPrice*100)}});}catch(e){}}
+}
+
+function showNoMembership(){stepChange();
+  setBack(showGuestStep);
+  activePromo=null;discountedPrice=null;activeDiscountCodeId=null;
+  var bd=document.getElementById('mo-bd');
+
+  function row(cls,type,price,id,name,desc,priceLabel){
+    return '<div class="bk-pkg '+cls+'" onclick="showPayForm(\''+type+'\','+price+','+id+',\''+name.replace(/'/g,"\\'")+'\',\''+desc.replace(/'/g,"\\'")+'\')">'
+      +'<div class="bk-pkg-l"><div class="bk-pkg-name">'+name+'</div><div class="bk-pkg-desc">'+desc+'</div></div>'
+      +'<div class="bk-pkg-r"><div class="bk-pkg-price">'+priceLabel+'</div>'
+      +'<svg class="bk-pkg-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div>';
+  }
+
+  bd.innerHTML='<div class="bk-class">'
+    +'<div class="bk-class-name">'+esc(curSession.title)+'</div>'
+    +'<div class="bk-class-meta">'
+    +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+esc(curSession.time)+'</span>'
+    +(curSession.teacher?'<span>'+esc(curSession.teacher)+'</span>':'')
+    +'</div></div>'
+    +'<div class="bk-confirm">'
+    +'<div class="bk-user">Reservando como <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>'
+    +'<p style="font-size:.85rem;color:var(--white60);text-align:center;margin-bottom:18px;line-height:1.5">Elige cómo quieres reservar esta clase</p>'
+    // Intro offers first
+    +'<div class="bk-pkg-grp" style="color:var(--cyan)">¿Nueva en SABDA?</div>'
+    +row('feat','pack',50,443935,'Pack Intro 3 Classes','3 clases, válido 30 días','50€')
+    +row('','pack',18,443934,'Clase de prueba','Solo primera vez','18€')
+    // Memberships
+    +'<div class="bk-pkg-grp" style="color:var(--salmon)">Membresías</div>'
+    +row('','membership',130,431216,'Immerse','Classes il·limitades, cancel·la quan vulguis','130€<small>/mes</small>')
+    +row('','membership',109,709976,'Ritual','8 clases al mes','109€<small>/mes</small>')
+    +row('','membership',99,706876,'Flex','4 clases al mes','99€<small>/mes</small>')
+    +row('','membership',330,445600,'Immerse 3 Mesos','110€/mes, clases ilimitadas','330€')
+    // Class packs
+    +'<div class="bk-pkg-grp" style="color:var(--white38)">Packs de clases</div>'
+    +row('','pack',85,443937,'Pack de 5','5 clases, válido 2 meses','85€')
+    +row('','pack',149,443939,'Pack de 10','10 clases, válido 3 meses','149€')
+    +row('','single',22,445630,'Clase suelta','Una clase, sin compromiso','22€')
+    +'</div>';
+}
+
+// ── STEP 3C: PAYMENT FORM (after selecting an option) ──
+function showPayForm(type,price,productId,name,desc){stepChange();
+  setBack(curSession && curSession.isPackagePurchase ? showPackageGuestStep : showNoMembership);
+  var bd=document.getElementById('mo-bd');
+  bd.innerHTML='<div class="bk-class">'
+    +'<div class="bk-class-name">'+esc(curSession.title)+'</div>'
+    +'<div class="bk-class-meta">'
+    +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+esc(curSession.time)+'</span>'
+    +(curSession.teacher?'<span>'+esc(curSession.teacher)+'</span>':'')
+    +'</div></div>'
+    +'<div class="bk-confirm">'
+    +'<div class="bk-user">Reservando como <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>'
+    +'<div class="bk-membership">'
+    +'<div class="bk-membership-name">'+name+'</div>'
+    +'<div class="bk-membership-detail">'+desc+(type==='membership'&&price<200?' · Facturació mensual':'')+'</div>'
+    +'</div>'
+    +'<div class="bk-pay-total" id="bk-total">€'+price+'</div>'
+    +'<div class="bk-pay-desc" id="bk-pay-desc">'+(type==='membership'&&price<200?'Primer mes, se renueva cada mes':type==='membership'?'Cobro único':'Pago único')+'</div>'
+    +'<div id="bk-promo-wrap" style="margin-bottom:16px">'
+    +'<div class="bk-link" id="bk-promo-toggle" onclick="document.getElementById(\'bk-promo-fields\').style.display=\'flex\';this.style.display=\'none\'" style="margin:0;font-size:.8rem;text-align:left;color:var(--cyan)">Aplicar código promocional →</div>'
+    +'<div id="bk-promo-fields" style="display:none;gap:8px;align-items:flex-start">'
+    +'<input class="bk-input" id="bk-promo" type="text" autocomplete="off" autocapitalize="characters" placeholder="Código" aria-label="Código promocional" style="flex:1;margin-bottom:0;text-transform:uppercase" />'
+    +'<button class="bk-primary" id="bk-promo-btn" onclick="applyPromo(\''+type+'\','+price+','+productId+')" style="width:auto;padding:12px 20px;flex-shrink:0;font-size:.8rem">Aplicar</button>'
+    +'</div>'
+    +'<div id="bk-promo-ok" style="display:none;font-size:.78rem;color:var(--cyan);margin-top:6px"></div>'
+    +'<div id="bk-promo-err" style="display:none;font-size:.78rem;color:var(--salmon);margin-top:6px"></div>'
+    +'</div>'
+    +customerFieldsHTML()
+    +'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'
+    +'<div id="bk-pay-divider" class="bk-divider" style="display:none">o paga con tarjeta</div>'
+    +'<div id="bk-card-section">'
+    +'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Datos de la tarjeta</div>'
+    +'<div class="bk-card-wrap" id="bk-card-number"></div>'
+    +'<div class="bk-card-row">'
+    +'<div class="bk-card-wrap" id="bk-card-expiry"></div>'
+    +'<div class="bk-card-wrap" id="bk-card-cvc"></div>'
+    +'</div>'
+    +'<div class="bk-card-status" id="bk-card-status"><span>Introduce los datos de tu tarjeta para continuar</span></div>'
+    +'</div>'
+    +'<div class="bk-err" id="bk-err"></div>'
+    +'<div class="bk-recover" id="bk-recover"></div>'
+    +'<button class="bk-primary" id="bk-pay-btn" disabled onclick="doPayAndBook(\''+type+'\','+price+','+productId+')">Pagar '+price+'€'+(type==='single'?' y reservar':' y reservar clase')+'</button>'
+    +'</div>';
+
+  // Initialize Stripe — clean up previous card elements
+  if(cardNumberEl){try{cardNumberEl.destroy();}catch(e){}cardNumberEl=null;}
+  if(cardExpiryEl){try{cardExpiryEl.destroy();}catch(e){}cardExpiryEl=null;}
+  if(cardCvcEl){try{cardCvcEl.destroy();}catch(e){}cardCvcEl=null;}
+  cardCompleteState={cardNumber:false,cardExpiry:false,cardCvc:false};
+
+  try{console.log('[SABDA] showPayForm type=',type,'price=',price,'productId=',productId,'StripeLoaded=',typeof Stripe!=='undefined');}catch(e){}
+
+  if(typeof Stripe==='undefined'){
+    document.getElementById('bk-err').textContent='No se pudo cargar el formulario de pago. Desactiva los bloqueadores de anuncios y recarga la página.';
+    try{console.warn('[SABDA] Stripe.js not loaded — script may have been blocked or is still loading async');}catch(e){}
+    return;
+  }
+  if(!stripeInstance){
+    try{
+      stripeInstance=Stripe('pk_live_RoPa2iuvwBbqEISUd2LYTmKF',{stripeAccount:'acct_1RUWnoBf6nsynAht'});
+      try{console.log('[SABDA] Stripe initialized with stripeAccount acct_1RUWnoBf6nsynAht');}catch(e){}
+    } catch(e){
+      try{console.error('[SABDA] Stripe init FAILED:',e);}catch(e2){}
+      document.getElementById('bk-err').textContent='Sistema de pago no disponible. Usa el enlace de Momence abajo.';
+      showFallback();
+      return;
+    }
+  }
+
+  // Apple Pay / Google Pay via Payment Request API — wrapped in try but logs errors
+  try{
+    activePayName=name;
+    activePayReq=stripeInstance.paymentRequest({
+      country:'ES',
+      currency:'eur',
+      total:{label:'SABDA Studio · '+name,amount:Math.round(price*100)},
+      requestPayerName:true,
+      requestPayerEmail:true
+    });
+    var prButton=stripeInstance.elements().create('paymentRequestButton',{
+      paymentRequest:activePayReq,
+      style:{paymentRequestButton:{type:'default',theme:'light-outline',height:'48px'}}
+    });
+    activePayReq.canMakePayment().then(function(result){
+      try{console.log('[SABDA] canMakePayment result:',result);}catch(e){}
+      if(result){
+        document.getElementById('bk-pay-request').style.display='block';
+        document.getElementById('bk-pay-divider').style.display='flex';
+        prButton.mount('#bk-pay-request');
+      } else {
+        try{console.log('[SABDA] Apple/Google Pay oculto. Causa más común: dominio no registrado en Stripe Dashboard → Settings → Payment Methods → Apple Pay → Add new domain → sabdastudio.com');}catch(e){}
+      }
+    }).catch(function(e){try{console.warn('[SABDA] canMakePayment error:',e);}catch(e2){}});
+    activePayReq.on('paymentmethod',function(ev){
+      var vErr=validateCustomerFields();
+      if(vErr){ev.complete('fail');return;}
+      isProcessing=true;
+      var cf=getCustomerFields();
+      fetch(PROXY+'/sabda-api/pay',{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+          sessionId:curSession.isPackagePurchase?null:curSession.id,
+          sessionToken:curSessionToken,
+          stripePaymentMethodId:ev.paymentMethod.id,
+          firstName:curUser.firstName,
+          lastName:curUser.lastName,
+          email:curUser.email,
+          password:sessionPassword,
+          type:type,
+          productId:productId,
+          discountCode:activePromo||undefined,
+          discountCodeId:activeDiscountCodeId||undefined,
+          actualPrice:(discountedPrice!==null)?discountedPrice:price,
+          phoneNumber:cf.phoneNumber,
+          customerFields:cf.customerFields
+        })
+      }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
+      .then(function(r){
+        if(r.data.success){
+          ev.complete('success');
+          showSuccess();
+        } else if(r.data.clientSecret){
+          stripeInstance.confirmCardPayment(r.data.clientSecret).then(function(conf){
+            if(conf.error){ev.complete('fail');isProcessing=false;}
+            else{ev.complete('success');showSuccess();}
+          });
+        } else {
+          ev.complete('fail');
+          var errEl=document.getElementById('bk-err');
+          if(errEl) errEl.textContent=r.data.error||'El pago ha fallado.';
+          showFallback();
+          isProcessing=false;
+        }
+      }).catch(function(){ev.complete('fail');isProcessing=false;});
+    });
+  }catch(e){
+    try{console.warn('[SABDA] Configuración de Payment Request fallida (Apple/Google Pay deshabilitado):',e);}catch(e2){}
+  }
+
+  // ── SPLIT CARD ELEMENTS ──
+  // Using cardNumber/cardExpiry/cardCvc separately fixes iOS Safari iframe
+  // interaction bugs that the unified 'card' element has inside scrollable modals.
+  try{
+    var elements=stripeInstance.elements();
+    var elStyle={
+      base:{
+        color:'#f0efe9',
+        fontSize:'16px',
+        fontFamily:'DM Sans, sans-serif',
+        '::placeholder':{color:'rgba(240,239,233,0.38)'},
+        iconColor:'#f0efe9'
+      },
+      invalid:{color:'#F8A6A3',iconColor:'#F8A6A3'}
+    };
+    cardNumberEl=elements.create('cardNumber',{style:elStyle,placeholder:'1234 1234 1234 1234',showIcon:true});
+    cardExpiryEl=elements.create('cardExpiry',{style:elStyle,placeholder:'MM / YY'});
+    cardCvcEl=elements.create('cardCvc',{style:elStyle,placeholder:'CVC'});
+
+    cardNumberEl.mount('#bk-card-number');
+    cardExpiryEl.mount('#bk-card-expiry');
+    cardCvcEl.mount('#bk-card-cvc');
+
+    function updateCardStatus(){
+      var pb=document.getElementById('bk-pay-btn');
+      var st=document.getElementById('bk-card-status');
+      var allComplete=cardCompleteState.cardNumber && cardCompleteState.cardExpiry && cardCompleteState.cardCvc;
+      if(pb){
+        pb.disabled=!allComplete;
+      }
+      if(st){
+        if(allComplete){
+          st.className='bk-card-status ok';
+          st.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg><span>Card ready</span>';
+        } else {
+          st.className='bk-card-status';
+          st.innerHTML='<span>Introduce los datos de tu tarjeta para continuar</span>';
+        }
+      }
+    }
+
+    cardNumberEl.on('change',function(ev){
+      cardCompleteState.cardNumber=!!ev.complete;
+      updateCardStatus();
+      if(ev.error){
+        var st=document.getElementById('bk-card-status');
+        if(st){st.className='bk-card-status err';st.innerHTML='<span>'+ev.error.message+'</span>';}
+      }
+      try{console.log('[SABDA] cardNumber change complete=',ev.complete,'error=',ev.error?ev.error.message:null);}catch(e){}
+    });
+    cardExpiryEl.on('change',function(ev){
+      cardCompleteState.cardExpiry=!!ev.complete;
+      updateCardStatus();
+      if(ev.error){
+        var st=document.getElementById('bk-card-status');
+        if(st){st.className='bk-card-status err';st.innerHTML='<span>'+ev.error.message+'</span>';}
+      }
+    });
+    cardCvcEl.on('change',function(ev){
+      cardCompleteState.cardCvc=!!ev.complete;
+      updateCardStatus();
+      if(ev.error){
+        var st=document.getElementById('bk-card-status');
+        if(st){st.className='bk-card-status err';st.innerHTML='<span>'+ev.error.message+'</span>';}
+      }
+    });
+    cardNumberEl.on('ready',function(){try{console.log('[SABDA] cardNumber element mounted and ready');}catch(e){}});
+
+  } catch(e) {
+    try{console.error('[SABDA] Card element creation FAILED:',e);}catch(e2){}
+    document.getElementById('bk-err').textContent='No se pudo cargar el formulario de pago. Usa el enlace de Momence abajo.';
+    showFallback();
+  }
+}
+
+function doPayAndBook(type,price,productId){if(isProcessing)return;
+  var btn=document.getElementById('bk-pay-btn');
+  var err=document.getElementById('bk-err');
+  var origLabel=btn.textContent;
+  function resetBtn(){isProcessing=false;btn.textContent=origLabel;btn.disabled=false;}
+  var vErr=validateCustomerFields();
+  if(vErr){showError(vErr,{fallback:false});return;}
+  isProcessing=true;btn.textContent='Procesando...';btn.disabled=true;clearError();
+
+  var cf=getCustomerFields();
+  var finalPrice=(discountedPrice!==null)?discountedPrice:price;
+
+  // Free booking (100% promo) — skip Stripe entirely
+  if(finalPrice===0){
+    fetch(PROXY+'/sabda-api/pay',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        sessionId:curSession.isPackagePurchase?null:curSession.id,
+        sessionToken:curSessionToken,
+        stripePaymentMethodId:'free',
+        firstName:curUser.firstName,
+        lastName:curUser.lastName,
+        email:curUser.email,
+        password:sessionPassword,
+        type:type,
+        productId:productId,
+        discountCode:activePromo||undefined,
+        discountCodeId:activeDiscountCodeId||undefined,
+        actualPrice:0,
+        phoneNumber:cf.phoneNumber,
+        customerFields:cf.customerFields
+      })
+    }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
+    .then(function(r){
+      if(r.data.success){showSuccess();}
+      else{showError(r.data.error||'No se ha podido completar la reserva.');resetBtn();}
+    }).catch(function(){showError('Error de conexión.');resetBtn();});
+    return;
+  }
+
+  try{console.log('[SABDA] doPayAndBook calling createPaymentMethod with split cardNumber element');}catch(e){}
+  stripeInstance.createPaymentMethod({type:'card',card:cardNumberEl,billing_details:{
+    name:curUser.firstName+' '+curUser.lastName,
+    email:curUser.email
+  }}).then(function(result){
+    try{console.log('[SABDA] createPaymentMethod result:',result.error?('ERROR: '+result.error.message):('OK pm='+result.paymentMethod.id));}catch(e){}
+    if(result.error){
+      // Stripe client-side validation error (incomplete card, invalid CVC, etc.)
+      // Show inline error only — no Momence fallback bailout for typos
+      showError(result.error.message,{fallback:false});
+      resetBtn();
+      return;
+    }
+    return fetch(PROXY+'/sabda-api/pay',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        sessionId:curSession.isPackagePurchase?null:curSession.id,
+        sessionToken:curSessionToken,
+        stripePaymentMethodId:result.paymentMethod.id,
+        firstName:curUser.firstName,
+        lastName:curUser.lastName,
+        email:curUser.email,
+        password:sessionPassword,
+        type:type,
+        productId:productId,
+        discountCode:activePromo||undefined,
+        discountCodeId:activeDiscountCodeId||undefined,
+        actualPrice:(discountedPrice!==null)?discountedPrice:price,
+        phoneNumber:cf.phoneNumber,
+        customerFields:cf.customerFields
+      })
+    }).then(function(r){return r.json().then(function(d){return{ok:r.ok,status:r.status,data:d}});})
+    .then(function(r){
+      try{console.log('[SABDA] /sabda-api/pay status=',r.status,'data=',r.data);}catch(e){}
+      if(r.data.success){
+        showSuccess();
+      } else if(r.data.clientSecret){
+        return stripeInstance.confirmCardPayment(r.data.clientSecret).then(function(conf){
+          try{console.log('[SABDA] confirmCardPayment result:',conf.error?('ERROR: '+conf.error.message):'OK');}catch(e){}
+          if(conf.error){
+            showError(conf.error.message);
+            resetBtn();
+          } else {
+            showSuccess();
+          }
+        });
+      } else {
+        showError(r.data.error||'El pago ha fallado. Inténtalo de nuevo.');
+        resetBtn();
+      }
+    });
+  }).catch(function(e){
+    try{console.error('[SABDA] doPayAndBook caught error:',e);}catch(e2){}
+    showError('Error de conexión. Inténtalo de nuevo.');
+    resetBtn();
+  });
+}
+
+// ── STEP 4: SUCCESS ──
+function showSuccess(){stepChange();
+  setBack(null);
+  var bd=document.getElementById('mo-bd');
+  // Fix #8: decrement spots locally
+  if(curSession&&curSession.id){
+    var sess=allE.find(function(e){return String(e.id)===String(curSession.id);});
+    if(sess&&sess.spotsRemaining>0) sess.spotsRemaining--;
+  }
+  bd.innerHTML='<div class="bk-success">'
+    +'<div class="bk-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>'
+    +'<h3>¡Reserva confirmada!</h3>'
+    +'<p>'+esc(curSession.title)+'<br>'+esc(curSession.time)+(curSession.teacher?' con '+esc(curSession.teacher):'')+'</p>'
+    +'<p style="margin-top:16px;font-size:.78rem;color:var(--white38)">Revisa tu email para la confirmación. Nos vemos en la esterilla.</p>'
+    +'<button class="bk-primary" style="margin-top:20px" onclick="closeMo();renderSched()">Hecho</button>'
+    +'</div>';
+  isProcessing=false;
+}
+
+async function init(){
+  renderDays();
+  try{
+    const r=await fetch(API);const d=await r.json();
+    const now=new Date();
+    allE=d.filter(e=>new Date(e.dateTime)>new Date(now.getTime()-3600000)&&!e.isDeleted);
+    renderFilters(allE);renderSched();
+    document.getElementById('sk').style.display='none';
+    document.getElementById('sched').style.display='block';
+    
+    // Handle ?buy=PRODUCT_ID deep link — opens modal in package purchase mode
+    var params = new URLSearchParams(window.location.search);
+    var buyId = params.get('buy');
+    if (buyId) openPackagePurchase(buyId);
+  }catch(err){
+    document.getElementById('sk').innerHTML='<div class="no-classes">No se ha podido cargar el horario. Inténtalo de nuevo.</div>';
+  }
+}
+
+
+
+// ── PACKAGE PURCHASE MODE — opens modal directly without class selection ──
+var PACKAGES = {
+  '443934': {name:'Clase de prueba', price:18, type:'pack', desc:'1 clase · Solo primera vez'},
+  '445630': {name:'Clase suelta', price:22, type:'pack', desc:'1 clase · Cualquier momento'},
+  '443935': {name:'Pack Intro 3 Classes', price:50, type:'pack', desc:'3 clases · 16,67€ cada una · 30 días'},
+  '443641': {name:'Semana Residente BCN', price:50, type:'pack', desc:'Ilimitado · 7 días · Necesaria prueba de residencia'},
+  '443937': {name:'Pack de 5', price:85, type:'pack', desc:'5 clases · 17€ cada una · 60 días'},
+  '443939': {name:'Pack de 10', price:149, type:'pack', desc:'10 clases · 14,90€ cada una · 90 días'},
+  '706876': {name:'Flex', price:99, type:'membership', desc:'4 clases al mes · Cancel·la quan vulguis'},
+  '709976': {name:'Ritual', price:109, type:'membership', desc:'8 clases al mes · Cancel·la quan vulguis'},
+  '431216': {name:'Immerse', price:130, type:'membership', desc:'Classes il·limitades · Cancel·la quan vulguis'},
+  '445600': {name:'Immerse 3 Mesos', price:330, type:'membership', desc:'110€/mes · Ilimitado · Compromiso de 3 meses'}
+};
+
+function openPackagePurchase(productId) {
+  if (isProcessing) return;
+  var pkg = PACKAGES[productId];
+  if (!pkg) return;
+  
+  curSession = {
+    id: null,
+    title: pkg.name,
+    time: pkg.desc,
+    teacher: '',
+    link: 'https://momence.com/m/' + productId,
+    spots: null,
+    duration: null,
+    isWaitlist: false,
+    isPackagePurchase: true,
+    productId: productId,
+    productPrice: pkg.price,
+    productType: pkg.type
+  };
+  
+  document.getElementById('mo-t').textContent = 'Comprar ' + pkg.name;
+  document.getElementById('mo-c').textContent = '€' + pkg.price + ' · ' + pkg.desc;
+  
+  showPackageGuestStep();
+  document.getElementById('mo').classList.add('open');
+  document.getElementById('mo').style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+  history.pushState({modal:true}, '');
+}
+
+function showPackageGuestStep() {
+  stepChange();
+  setBack(null);
+  var pkg = PACKAGES[curSession.productId];
+  var bd = document.getElementById('mo-bd');
+  bd.innerHTML = '<div class="bk-class">'
+    + '<div class="bk-class-name">' + esc(pkg.name) + '</div>'
+    + '<div class="bk-class-meta"><span style="font-family:PT Serif,serif;font-size:1.4rem;font-weight:700;color:var(--cyan)">€' + pkg.price + '</span></div>'
+    + '<div style="font-size:.78rem;color:var(--white60);margin-top:8px">' + esc(pkg.desc) + '</div>'
+    + '</div>'
+    + '<div class="bk-login">'
+    + '<div class="bk-label">Nombre</div>'
+    + '<input class="bk-input" id="bk-fn" type="text" placeholder="Nombre" autocomplete="given-name" aria-label="Nombre" />'
+    + '<div class="bk-label">Apellido</div>'
+    + '<input class="bk-input" id="bk-ln" type="text" placeholder="Apellido" autocomplete="family-name" aria-label="Apellido" />'
+    + '<div class="bk-label">Email</div>'
+    + '<input class="bk-input" id="bk-email" type="email" inputmode="email" placeholder="tu@email.com" autocomplete="email" aria-label="Dirección de email" />'
+    + '<div class="bk-err" id="bk-err"></div>'
+    + '<button class="bk-primary" id="bk-guest-btn" onclick="doPackageGuestCheck()">Continuar al pago</button>'
+    + '<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.12);border-radius:8px;padding:12px;margin-top:16px;font-size:.75rem;color:var(--white60);line-height:1.5;text-align:center">¿Ya eres cliente? <span onclick="showLoginStep()" style="color:var(--cyan);cursor:pointer;text-decoration:underline">Inicia sesión</span></div>'
+    + '</div>';
+  document.getElementById('bk-fn').focus();
+}
+
+function doPackageGuestCheck() {
+  var fnEl = document.getElementById('bk-fn');
+  var lnEl = document.getElementById('bk-ln');
+  var emailEl = document.getElementById('bk-email');
+  var fn = fnEl.value.trim();
+  var ln = lnEl.value.trim();
+  var email = emailEl.value.trim();
+  var err = document.getElementById('bk-err');
+  var ok = true;
+  fnEl.classList.remove('bk-field-err'); lnEl.classList.remove('bk-field-err'); emailEl.classList.remove('bk-field-err');
+  if (!fn) { fnEl.classList.add('bk-field-err'); ok = false; }
+  if (!ln) { lnEl.classList.add('bk-field-err'); ok = false; }
+  if (!email || !validateEmail(email)) { emailEl.classList.add('bk-field-err'); ok = false; }
+  if (!ok) { err.textContent = 'Por favor, rellena los campos destacados'; return; }
+  
+  curUser = { id: null, email: email, firstName: fn, lastName: ln, memberId: null, isGuest: true };
+  showPayForm(curSession.productType, curSession.productPrice, curSession.productId, PACKAGES[curSession.productId].name, PACKAGES[curSession.productId].desc);
+}
+
+init();
+
+function toggleMore(){var el=document.getElementById('more');if(el)el.classList.toggle('on')}
+var mb2=document.getElementById('moreBtn2');if(mb2)mb2.addEventListener('click',function(){document.getElementById('more').classList.add('on')});
+var mx=document.getElementById('moreX');if(mx)mx.addEventListener('click',function(){document.getElementById('more').classList.remove('on')});
+function setLang(c){try{localStorage.setItem('sabda_lang',c)}catch(e){}document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===c)});if(c==='es'){window.location.href='/es/m/schedule.html';return;}if(c==='en'){window.location.href='/m/schedule.html';return;}}
+try{var sl=localStorage.getItem('sabda_lang')||'es';document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===sl)})}catch(e){}
+</script>
+<script defer src="/cookies.js"></script>
+<script src="/cookie-consent.js"></script>
+</body>
+</html>

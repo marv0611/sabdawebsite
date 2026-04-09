@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<script>(function(){try{var ua=navigator.userAgent||"";var isMobUA=/Mobi|Android|iPhone|iPad|iPod/i.test(ua);var smallScreen=(screen&&screen.width)?screen.width<=900:false;var touch=(navigator.maxTouchPoints||0)>1;var iPadOS=touch&&/Mac/i.test(ua)&&smallScreen;if(isMobUA||smallScreen||iPadOS){var p=window.location.pathname;var base=p.indexOf("/sabdawebsite/")===0?"/sabdawebsite":"";window.location.replace(base+"/ca/m/schedule.html"+window.location.search)}}catch(e){}})()</script>
+
+
+<meta charset="UTF-8"><!-- classes-v6 -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="index,follow">
+<link rel="icon" type="image/png" href="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20symbol%20multi-colored%20%281%29.png">
+<title>Clases y Horarios | SABDA Studio Barcelona</title>
+<meta name="description" content="Explora nuestro horario semanal de clases inmersivas de yoga, pilates, sound healing, breathwork e ice bath. Reserva tu plaza ahora.">
+<link rel="canonical" href="https://sabdastudio.com/ca/schedule.html">
+<link rel="alternate" hreflang="en" href="https://sabdastudio.com/schedule.html">
+<link rel="alternate" hreflang="es" href="https://sabdastudio.com/es/schedule.html">
+<link rel="alternate" hreflang="ca" href="https://sabdastudio.com/ca/schedule.html">
+<link rel="alternate" hreflang="x-default" href="https://sabdastudio.com/schedule.html">
+<meta property="og:title" content="Clases y Horarios | SABDA Studio Barcelona">
+<meta property="og:description" content="Explora nuestro horario semanal de clases inmersivas de yoga, pilates, sound healing, breathwork e ice bath. Reserva tu plaza ahora.">
+<meta property="og:image" content="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Copy_of_Sabda2-167__1_.jpg">
+<meta property="og:url" content="https://sabdastudio.com/ca/schedule.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SABDA">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0e1235;--salmon:#F8A6A3;--cyan:#02F3C5;
+  --white:#f0efe9;--white60:rgba(240,239,233,.6);--white38:rgba(240,239,233,.38);
+  --ease-expo:cubic-bezier(.16,1,.3,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{background:var(--navy);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;
+  /* Old Momence prop names — widget reads these FIRST */
+  --momenceColorPrimary:#02F3C5;
+  --momenceColorBlack:#f0efe9;
+  --momenceColorBackground:#0e1235;
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+::selection{background:rgba(248,166,163,.18)}
+
+/* ── GRAIN ── */
+.grain{position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.038;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:200px}
+
+/* ── PARTICLES ── */
+#globalParticles{position:fixed;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;display:flex;align-items:center;justify-content:space-between;background:rgba(14,18,53,.88);backdrop-filter:blur(22px);border-bottom:1px solid rgba(240,239,233,.07)}
+.nav-logo img{height:27px;width:auto;display:block}
+.nav-links{display:flex;gap:36px;list-style:none;font-size:.8rem;letter-spacing:.09em;text-transform:uppercase;font-weight:500}
+.nav-links a{color:var(--white);opacity:.75;transition:opacity .25s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;right:100%;height:1px;background:var(--cyan);transition:right .3s var(--ease-expo)}
+.nav-links a:hover{opacity:1}.nav-links a:hover::after{right:0}
+.nav-links a.active{opacity:1}.nav-links a.active::after{right:0}
+.nav-cta{background:var(--cyan);color:var(--navy);padding:10px 22px;border-radius:3px;font-size:.8rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;transition:background .2s,transform .2s}
+.nav-cta:hover{background:#18ffda;transform:translateY(-1px)}
+
+/* ── HERO BANNER ── */
+.hero-banner{position:relative;width:100%;height:320px;overflow:hidden}
+.hero-banner img{width:100%;height:100%;object-fit:cover;object-position:center 40%;filter:brightness(.55) contrast(1.1) saturate(1.15)}
+.hero-banner::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(14,18,53,.3) 0%,rgba(14,18,53,.12) 40%,rgba(14,18,53,.7) 80%,var(--navy) 100%)}
+.hero-overlay{position:absolute;bottom:44px;left:0;right:0;z-index:3;text-align:center}
+.hero-overlay h1{font-family:'PT Serif',serif;font-size:2.8rem;font-weight:400;letter-spacing:-.01em;margin-bottom:10px}
+.hero-overlay h1 .cyan{color:var(--cyan)}
+.hero-overlay p{font-size:.95rem;color:var(--white60);max-width:480px;margin:0 auto}
+
+/* ── MOMENCE WIDGET ── */
+#momence-plugin-host-schedule{max-width:920px;margin:0 auto;padding:40px 40px 60px;position:relative;z-index:2}
+#momence-plugin-host-schedule,#momence-plugin-host-schedule *{font-family:'DM Sans',sans-serif !important}
+
+/* Momence CSS variable overrides → dark theme */
+:root{
+  --momence-primary-050:rgba(2,243,197,.04);--momence-primary-100:rgba(2,243,197,.08);
+  --momence-primary-200:rgba(2,243,197,.16);--momence-primary-300:rgba(2,243,197,.3);
+  --momence-primary-400:rgba(2,243,197,.55);--momence-primary-500:#02F3C5;
+  --momence-primary-600:#00d4ac;--momence-primary-700:#00b594;
+  --momence-primary-800:#00967b;--momence-primary-900:#007862;
+  --momence-background:#0e1235;--momence-white:#131842;
+  --momence-primary-color:#f0efe9;
+  --momence-secondary-color:rgba(240,239,233,.6);
+  --momence-tertiary-color:rgba(240,239,233,.38);
+  --momence-black-100:rgba(240,239,233,.35);--momence-black-200:rgba(240,239,233,.5);
+  --momence-black-300:rgba(240,239,233,.65);--momence-black-400:rgba(240,239,233,.8);
+  --momence-black-500:#f0efe9;
+  --momence-grey-050:rgba(240,239,233,.03);--momence-grey-100:rgba(240,239,233,.05);
+  --momence-grey-200:rgba(240,239,233,.08);--momence-grey-300:rgba(240,239,233,.1);
+  --momence-grey-400:rgba(240,239,233,.15);--momence-grey-500:rgba(240,239,233,.2);
+  --momence-grey-600:rgba(240,239,233,.28);--momence-grey-700:rgba(240,239,233,.38);
+  --momence-grey-800:rgba(240,239,233,.48);--momence-grey-900:rgba(240,239,233,.6);
+  --momence-session-separator-color:rgba(240,239,233,.06);
+  --momence-dark-alpha-fill-100:rgba(240,239,233,.04);--momence-dark-alpha-fill-200:rgba(240,239,233,.06);
+  --momence-dark-alpha-fill-300:rgba(240,239,233,.08);--momence-dark-alpha-fill-400:rgba(240,239,233,.12);
+  --momence-dark-alpha-fill-500:rgba(240,239,233,.15);--momence-dark-alpha-fill-600:rgba(240,239,233,.25);
+  --momence-dark-alpha-fill-700:rgba(240,239,233,.38);--momence-dark-alpha-fill-800:rgba(240,239,233,.55);
+  --momence-dark-alpha-fill-900:rgba(240,239,233,.85);
+  --momence-light-alpha-fill-900:rgba(14,18,53,.9);--momence-light-alpha-fill-700:rgba(14,18,53,.6);
+  --momence-light-alpha-fill-600:rgba(14,18,53,.3);--momence-light-alpha-fill-500:rgba(14,18,53,.18);
+  --momence-dark-background-200:rgba(240,239,233,.05);--momence-dark-background-300:rgba(240,239,233,.08);
+  --momence-dark-background-400:rgba(240,239,233,.12);--momence-dark-background-500:rgba(240,239,233,.16);
+  --momence-dark-background-800:rgba(240,239,233,.4);--momence-dark-background-900:rgba(14,18,53,.85);
+  --momence-light-background-900:rgba(14,18,53,.9);
+}
+
+/* Widget cosmetic overrides */
+#momence-plugin-host-schedule .momence-host-schedule-layout{background:transparent !important}
+#momence-plugin-host-schedule article{background:rgba(19,24,66,.65) !important;border-color:rgba(240,239,233,.06) !important;backdrop-filter:blur(8px);border-radius:16px !important}
+#momence-plugin-host-schedule article img{border-radius:10px !important}
+#momence-plugin-host-schedule h3{color:var(--salmon) !important;letter-spacing:.15em !important}
+#momence-plugin-host-schedule h4{font-family:'PT Serif',serif !important;font-weight:400 !important;color:var(--white) !important}
+
+/* Book button → cyan */
+#momence-plugin-host-schedule .momence-button[class*="primary"],
+#momence-plugin-host-schedule a[class*="sc-12tukza"]{background:#02F3C5 !important;color:#0e1235 !important;font-weight:700 !important;letter-spacing:.04em !important;border-radius:4px !important;transition:background .2s,transform .15s !important}
+#momence-plugin-host-schedule .momence-button[class*="primary"]:hover,
+#momence-plugin-host-schedule a[class*="sc-12tukza"]:hover{background:#18ffda !important;transform:translateY(-1px) !important}
+#momence-plugin-host-schedule .momence-button:disabled,
+#momence-plugin-host-schedule .momence-button[class*="booked"]{background:rgba(240,239,233,.08) !important;color:rgba(240,239,233,.35) !important}
+
+/* Interactive elements */
+#momence-plugin-host-schedule button[class*="day_selection"]{background:transparent !important}
+#momence-plugin-host-schedule button[class*="day_selection"]:hover{background:rgba(240,239,233,.05) !important}
+#momence-plugin-host-schedule button[class*="quick_filters"]{background:transparent !important;border-color:rgba(240,239,233,.12) !important;color:var(--white) !important}
+#momence-plugin-host-schedule button[class*="quick_filters"]:hover{background:rgba(240,239,233,.05) !important}
+#momence-plugin-host-schedule button[class*="view-toggle"]{background:transparent !important;border-color:rgba(240,239,233,.12) !important;color:var(--white) !important;stroke:var(--white) !important}
+#momence-plugin-host-schedule button.momence-select-button{background:rgba(19,24,66,.6) !important;border-color:rgba(240,239,233,.12) !important;color:var(--white) !important}
+#momence-plugin-host-schedule .momence-select-popup{background:#131842 !important;border-color:rgba(240,239,233,.1) !important}
+#momence-plugin-host-schedule .momence-select-option{background:#131842 !important;color:var(--white) !important}
+#momence-plugin-host-schedule .momence-select-option:hover{background:rgba(240,239,233,.06) !important}
+#momence-plugin-host-schedule .momence-arrow-button{background:transparent !important;border-color:rgba(240,239,233,.1) !important;color:var(--white) !important}
+#momence-plugin-host-schedule .momence-arrow-button:hover:not(:disabled){background:rgba(240,239,233,.06) !important}
+#momence-plugin-host-schedule .momence-arrow-button:disabled{color:rgba(240,239,233,.15) !important}
+#momence-plugin-host-schedule .momence-event_type_select-button{background:transparent !important;color:rgba(240,239,233,.5) !important}
+#momence-plugin-host-schedule .momence-month-switch *{color:var(--white) !important}
+#momence-plugin-host-schedule .momence-month-calendar-day{background:transparent !important}
+#momence-plugin-host-schedule .momence-month-calendar-day:hover:not(:disabled){background:rgba(240,239,233,.05) !important}
+#momence-plugin-host-schedule .momence-pagination button{background:transparent !important;color:var(--white) !important}
+#momence-plugin-host-schedule .momence-host_schedule-session_list-no_results-text{color:rgba(240,239,233,.5) !important}
+#momence-plugin-host-schedule .momence-host_dashboard-tag_button{background:transparent !important;border-color:rgba(240,239,233,.12) !important;color:var(--white) !important}
+#momence-plugin-host-schedule .momence-host_schedule-loader div::after,
+#momence-plugin-host-schedule [class*="sc-1oszok8"] div{background:var(--cyan) !important}
+
+/* Hide Powered by Momence */
+#momence-plugin-host-schedule .momence-host_schedule-powered_by_momence{display:none !important}
+/* Hide "Location: SABDA" — single venue */
+#momence-plugin-host-schedule .momence-session-in_person{display:none !important}
+/* Hide Locations filter dropdown — single venue */
+#momence-plugin-host-schedule .momence-session_filters > *:last-child{display:none !important}
+/* Hide system row (timezone/auth) */
+#momence-plugin-host-schedule .momence-host_schedule-sys_row{display:none !important}
+/* ★ Hide price from class cards — pricing is in dedicated section below */
+#momence-plugin-host-schedule .momence-host_schedule-session_list-item-price{display:none !important}
+#momence-plugin-host-schedule [class*="session-price"]{display:none !important}
+#momence-plugin-host-schedule [class*="183txmy"]{display:none !important}
+/* ★ Hide pagination (1 ... 99) — show all via Show All button */
+#momence-plugin-host-schedule .momence-pagination{display:none !important}
+#momence-plugin-host-schedule [class*="1rbd2nr"]{display:none !important}
+/* ★ Ensure day selector row is visible */
+#momence-plugin-host-schedule .momence-day_selection{display:flex !important}
+#momence-plugin-host-schedule .momence-host_schedule-second_row{display:flex !important;margin-bottom:0 !important}
+/* When day selector is moved into first row, make the second row container invisible */
+#momence-plugin-host-schedule .momence-host_schedule-second_row:empty{display:none !important}
+/* First row layout when day selector is inside it */
+#momence-plugin-host-schedule .momence-host_schedule-first_row{
+  display:flex !important;flex-wrap:wrap !important;align-items:center !important;gap:12px !important;
+}
+/* One-click booking banner */
+#momence-plugin-host-schedule [class*="fS"]{background:rgba(2,243,197,.06) !important}
+
+/* ── FORCE DARK BACKGROUNDS (fallback if vars don't take) ── */
+#momence-plugin-host-schedule > div{background:transparent !important}
+#momence-plugin-host-schedule [class*="host-schedule-layout"]{background:var(--navy) !important}
+#momence-plugin-host-schedule [class*="host_schedule"]{background:transparent !important}
+#momence-plugin-host-schedule nav,
+#momence-plugin-host-schedule [role="tablist"]{background:transparent !important}
+
+/* ── PRICING ── */
+.pricing{padding:80px 80px 0;position:relative;z-index:2;border-top:1px solid rgba(240,239,233,.06)}
+.pricing-hdr{text-align:center;margin-bottom:52px}
+.pricing-hdr h2{font-family:'PT Serif',serif;font-size:2.2rem;font-weight:400;margin-bottom:10px}
+.pricing-hdr p{color:var(--white38);font-size:.92rem;max-width:420px;margin:0 auto;line-height:1.7}
+.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:960px;margin:0 auto}
+.pricing-col{text-align:center;position:relative;padding:24px 8px 8px;border-radius:16px}
+.pricing-col h3{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--white60);margin-bottom:20px;font-weight:500;font-family:'DM Sans',sans-serif}
+.pricing-col a{display:block;padding:18px 12px;border-radius:40px;background:var(--cyan);color:var(--navy);font-weight:700;font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;margin-bottom:14px;transition:background .2s,transform .15s;text-align:center;position:relative}
+.pricing-col a:hover{background:#18ffda;transform:translateY(-2px)}
+/* Per-class price label */
+.per-class{display:block;font-size:.68rem;font-weight:500;letter-spacing:.04em;margin-top:3px;opacity:.7;text-transform:none}
+/* Hero column — "Best Value" */
+.hero-col{border:1px solid rgba(2,243,197,.25);background:rgba(2,243,197,.03);border-radius:16px}
+.pricing-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--salmon);color:var(--navy);font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:5px 14px;border-radius:20px;white-space:nowrap}
+
+/* ── GIFT CARDS ── */
+.giftcards{padding:80px 80px;position:relative;z-index:2;border-top:1px solid rgba(240,239,233,.06);margin-top:80px}
+.giftcards-hdr{text-align:center;margin-bottom:44px}
+.giftcards-hdr h2{font-family:'PT Serif',serif;font-size:2.2rem;font-weight:400;margin-bottom:10px}
+.giftcards-hdr p{color:var(--white38);font-size:.92rem;max-width:400px;margin:0 auto}
+.gc-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:14px;max-width:720px;margin:0 auto}
+.gc-grid a{padding:16px 32px;border-radius:40px;background:rgba(240,239,233,.05);border:1px solid rgba(240,239,233,.1);color:var(--white);font-weight:600;font-size:1rem;transition:background .2s,transform .15s,border-color .2s;min-width:140px;text-align:center}
+.gc-grid a:hover{background:rgba(2,243,197,.08);border-color:var(--cyan);transform:translateY(-2px)}
+.gc-grid a.custom{color:var(--cyan)}
+
+/* ── FOOTER ── */
+footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);background:rgba(9,12,38,.6);position:relative;z-index:2}
+.ft-in{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:52px;margin-bottom:72px}
+.ft-brand img:first-child{height:36px;width:auto;margin-bottom:16px;display:block;margin-right:auto}
+.ft-pillars{display:flex;gap:12px;margin-top:14px;font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:var(--white38)}
+.ft-pillars .fp-art{color:var(--cyan)}.ft-pillars .fp-tech{color:var(--white)}.ft-pillars .fp-well{color:var(--salmon)}
+.ft-col h4{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;margin-bottom:20px;font-family:'DM Sans',sans-serif}
+.ft-col:nth-child(2) h4{color:var(--cyan)}
+.ft-col:nth-child(3) h4{color:var(--salmon)}
+.ft-col:nth-child(4) h4{color:var(--white60)}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.ft-col a{font-size:.87rem;color:var(--white38);transition:color .2s}
+.ft-col a:hover{color:var(--white)}
+.ft-bot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding-top:30px;border-top:1px solid rgba(240,239,233,.06);font-size:.74rem;color:rgba(240,239,233,.2)}
+.ft-legal{display:flex;gap:24px}
+.ft-legal a:hover{color:var(--white38)}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  nav{padding:0 24px}.nav-links{display:none}
+  .hero-banner{height:240px}.hero-overlay h1{font-size:2rem}.hero-overlay{bottom:32px}
+  #momence-plugin-host-schedule{padding:24px 16px 40px}
+  .pricing{padding:60px 24px 0}.pricing-grid{grid-template-columns:1fr 1fr;gap:16px}
+  .giftcards{padding:60px 24px}
+  footer{padding:48px 24px 32px}.ft-in{grid-template-columns:1fr 1fr}
+}
+@media(max-width:520px){
+  .ft-in{grid-template-columns:1fr}.hero-overlay h1{font-size:1.7rem}
+  .hero-banner{height:200px}.pricing-grid{grid-template-columns:1fr}
+}
+
+/* ── REVIEW NUDGE ── */
+.review-nudge{padding:60px 80px;border-top:1px solid rgba(240,239,233,.06);position:relative;z-index:2;overflow:hidden}
+.rn-inner{max-width:540px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;position:relative;z-index:2}
+.rn-stars{display:flex;gap:3px;margin-bottom:6px}
+.rn-stars svg{width:14px;height:14px;fill:var(--cyan)}
+.rn-scoreline{display:flex;align-items:baseline;gap:8px;margin-bottom:28px}
+.rn-score{font-family:'PT Serif',serif;font-size:1.1rem;font-weight:700;color:var(--white60);line-height:1}
+.rn-count{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--white38)}
+.rn-text{font-family:'PT Serif',serif;font-size:2.8rem;font-weight:700;color:var(--white);line-height:1.15;margin-bottom:12px}
+.rn-text em{font-style:italic;color:var(--salmon)}
+.rn-sub{font-size:.88rem;color:var(--white60);line-height:1.6;margin-bottom:32px}
+.rn-sub span{color:var(--salmon);font-weight:600}
+.rn-link{display:inline-flex;align-items:center;gap:10px;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--navy);background:var(--cyan);padding:18px 44px;border-radius:4px;border:none;transition:background .25s,transform .2s,box-shadow .3s}
+.rn-link:hover{background:#33f5d1;transform:translateY(-2px);box-shadow:0 8px 28px rgba(2,243,197,.25)}
+.rn-link svg{width:18px;height:18px;opacity:.9}
+.rn-ticker{position:relative;max-width:600px;margin:0 auto 24px;text-align:center;min-height:120px;display:flex;align-items:center;justify-content:center}
+.rn-quote{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:opacity .8s ease,transform .8s ease;transform:translateY(10px)}
+.rn-quote.active{opacity:1;transform:translateY(0)}
+.rn-quote q{font-family:'PT Serif',serif;font-size:1.5rem;font-style:italic;color:var(--white);line-height:1.5;quotes:"“" "”";display:block;margin-bottom:14px}
+.rn-quote q::before{content:open-quote;color:var(--cyan);font-size:1.8rem;margin-right:2px}
+.rn-quote q::after{content:close-quote;color:var(--cyan);font-size:1.8rem;margin-left:2px}
+.rn-quote cite{font-style:normal;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--salmon);font-weight:500}
+@media(max-width:860px){
+  nav{padding:0 24px}.nav-links{display:none}
+  .hero-banner{height:240px}
+  .hero-overlay{bottom:28px;padding:0 24px}
+  .hero-overlay h1{font-size:1.8rem}
+  .hero-overlay p{font-size:.85rem;padding:0 8px}
+  #momence-plugin-host-schedule{padding:16px 12px 40px}
+  .pricing{padding:48px 24px 0}
+  .pricing-grid{grid-template-columns:1fr 1fr;gap:12px}
+  .pricing-col{padding:20px 8px 8px}
+  .giftcards{padding:48px 24px}
+  .schedule-cta{padding:32px 24px 48px}
+  .review-nudge{padding:48px 24px}
+  footer{padding:36px 24px 22px}
+  .ft-in{grid-template-columns:1fr 1fr}
+}
+.nav-ham{display:none;flex-direction:column;gap:4px;padding:12px;cursor:pointer;z-index:101;background:none;border:none}.nav-ham span{width:20px;height:1.5px;background:var(--white);transition:transform .3s,opacity .3s}.mob-menu{position:fixed;inset:0;z-index:99;background:rgba(14,18,53,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;pointer-events:none;transition:opacity .35s}.mob-menu.open{opacity:1;pointer-events:auto}.mob-menu a{font-family:'PT Serif',serif;font-size:1.6rem;font-weight:700;color:var(--white);opacity:.85;transition:opacity .2s,color .2s}.mob-menu a:hover{opacity:1;color:var(--cyan)}.mob-close{position:absolute;top:24px;right:24px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:none;border:none}.mob-close svg{width:24px;height:24px;stroke:var(--white);stroke-width:2}@media(max-width:860px){.nav-ham{display:flex}}
+
+/* UNIVERSAL MOBILE FIXES */
+@media(max-width:860px){
+  html,body{overflow-x:hidden}
+  .nav-logo img{height:24px}
+  .lang-sel{display:none}
+  .nav-social{display:none}
+  .sh2{font-size:clamp(1.7rem,5vw,2.4rem)}
+}
+</style>
+<style id="a11y-skip-style">
+.a11y-skip{position:absolute;left:-9999px;top:0;background:#02F3C5;color:#0e1235;padding:12px 20px;font-weight:700;z-index:99999;text-decoration:none;border-radius:0 0 4px 0}
+.a11y-skip:focus{left:0;top:0}
+</style>
+</head>
+<body>
+<a href="#main-content" class="a11y-skip">Salta al contingut principal</a>
+<div class="grain" id="main-content"></div>
+<canvas id="globalParticles"></canvas>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA_white.png" alt="SABDA"></a>
+    <ul class="nav-links">
+    <li><a href="/ca/classes/" class="active">Clases</a></li>
+    <li><a href="/ca/preus/">Precios</a></li>
+    <li><a href="/ca/lloguer/">Alquilar</a></li>
+    <li><a href="/ca/esdeveniments/">Eventos</a></li>
+  </ul>
+  <a href="/ca/classes/?pack=443935" class="nav-cta" target="_blank">3 Clases, 50€</a>
+<button class="nav-ham" onclick="document.getElementById('mobMenu').classList.add('open')" aria-label="Menú"><span></span><span></span><span></span></button></nav>
+<div class="mob-menu" id="mobMenu"><button class="mob-close" onclick="this.parentElement.classList.remove('open')"><svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12"/></svg></button><a href="/ca/classes/">Clases</a><a href="/ca/preus/">Precios</a><a href="/ca/lloguer/">Alquilar</a><a href="/ca/esdeveniments/">Eventos</a><a href="/ca/sobre/">Sobre</a><a href="/ca/#contacto">Contacte</a></div>
+
+<!-- HERO BANNER — swap src with your rectangular hero image -->
+<div class="hero-banner">
+  <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/breathwork.jpg" alt="Estudio inmersivo SABDA">
+  <div class="hero-overlay">
+    <h1>Nuestros <span class="cyan">Horarios</span></h1>
+    <p>Explora las clases, filtra por tipo o profesor y reserva tu plaza en tiempo real.</p>
+  </div>
+</div>
+
+<!-- MOMENCE LIVE WIDGET (reskinned) — "Teachers" wording via i18n -->
+<div id="momence-plugin-host-schedule"></div>
+<script src="https://momence.com/plugin/host-schedule/host-schedule.js"
+  host_id="54278"
+  locale="es"
+  i18n='{"TEACHER_SELECT_PLACEHOLDER":"Profesores","TEACHER":"Profesor","SUBSTITUTES_FOR_SHORT":"Sustituye a"}'>
+</script>
+<script>
+/* ═══════════════════════════════════════════════════════
+   MOMENCE WIDGET CUSTOMIZATION
+   1. Force dark theme CSS variables
+   2. Move day selector into first row (between "Classes" and "Week/Month")
+   3. Rename "Practitioners" → "Teachers"
+   4. Hide price, pagination, location
+═══════════════════════════════════════════════════════ */
+(function(){
+  const el=document.getElementById('momence-plugin-host-schedule');
+  if(!el)return;
+
+  /* ── Dark theme variables ── */
+  const vars={
+    '--momence-background':'#0e1235','--momence-white':'#131842',
+    '--momence-primary-color':'#f0efe9',
+    '--momence-secondary-color':'rgba(240,239,233,.6)',
+    '--momence-tertiary-color':'rgba(240,239,233,.38)',
+    '--momence-primary-500':'#02F3C5','--momence-primary-400':'rgba(2,243,197,.55)',
+    '--momence-primary-600':'#00d4ac','--momence-primary-050':'rgba(2,243,197,.04)',
+    '--momence-primary-100':'rgba(2,243,197,.08)',
+    '--momence-black-500':'#f0efe9','--momence-black-400':'rgba(240,239,233,.8)',
+    '--momence-black-300':'rgba(240,239,233,.65)',
+    '--momence-black-200':'rgba(240,239,233,.5)',
+    '--momence-black-100':'rgba(240,239,233,.35)',
+    '--momence-grey-200':'rgba(240,239,233,.08)',
+    '--momence-grey-100':'rgba(240,239,233,.05)',
+    '--momence-grey-050':'rgba(240,239,233,.03)',
+    '--momence-session-separator-color':'rgba(240,239,233,.06)',
+  };
+  function applyVars(){
+    const root=document.documentElement;
+    for(const[k,v]of Object.entries(vars))root.style.setProperty(k,v,'important');
+  }
+  applyVars();
+  const obs=new MutationObserver(()=>applyVars());
+  obs.observe(document.head,{childList:true,subtree:true});
+  let vc=0;const vi=setInterval(()=>{applyVars();if(++vc>25)clearInterval(vi)},200);
+
+  /* ── Move day selector between "Classes" and "Week/Month" ── */
+  let moved=false;
+  function moveDaySelector(){
+    if(moved)return;
+    const firstRow=el.querySelector('.momence-host_schedule-first_row');
+    const daySelection=el.querySelector('.momence-day_selection');
+    if(!firstRow||!daySelection)return;
+
+    /* Insert day selector as the second child of first row */
+    const viewToggle=firstRow.querySelector('.momence-view-toggle');
+    if(viewToggle&&viewToggle.parentElement){
+      firstRow.insertBefore(daySelection,viewToggle.parentElement);
+    }else{
+      firstRow.appendChild(daySelection);
+    }
+
+    /* Make first row wrap properly */
+    firstRow.style.cssText='display:flex;flex-wrap:wrap;align-items:center;gap:16px;margin-bottom:16px';
+    daySelection.style.cssText='flex:1;min-width:200px;order:1';
+
+    /* Event type (Classes label) */
+    const eventType=firstRow.querySelector('.momence-event_type_select');
+    if(eventType)eventType.style.cssText='order:0;flex-shrink:0';
+
+    /* View toggle container */
+    if(viewToggle&&viewToggle.parentElement){
+      viewToggle.parentElement.style.cssText='order:2;flex-shrink:0;margin-left:auto';
+    }
+
+    moved=true;
+  }
+
+  /* ── Rename Practitioners → Teachers ── */
+  function patchText(){
+    el.querySelectorAll('button,span').forEach(b=>{
+      b.childNodes.forEach(n=>{
+        if(n.nodeType===3){
+          if(n.textContent.includes('Practitioners'))n.textContent=n.textContent.replace(/Practitioners/g,'Profesores');
+          if(n.textContent.includes('Practitioner'))n.textContent=n.textContent.replace(/Practitioner/g,'Profesor');
+        }
+      });
+    });
+  }
+
+  /* ── Watch for widget render, apply all patches ── */
+  const widgetObs=new MutationObserver(()=>{
+    moveDaySelector();
+    patchText();
+  });
+  widgetObs.observe(el,{childList:true,subtree:true,characterData:true});
+
+  /* Fallback timers */
+  [500,1000,1500,2500,4000].forEach(ms=>setTimeout(()=>{moveDaySelector();patchText()},ms));
+})();
+</script>
+
+<!-- PRICING — optimized for new customer conversion -->
+<!-- Psychology: Left-to-right buyer journey (Try → Best Value → Commit → Unlimited)
+     3-Pack is hero offer: 1.4x higher repeat conversion, 2.4x expected value vs trial.
+     Anchoring: single class prices first make €18/class look like a steal.
+     Center-stage: hero column gets visual emphasis (border + badge). -->
+<section class="pricing">
+  <div class="pricing-hdr">
+    <h2>Precios</h2>
+    <p>¿Primera vez? Empieza con una oferta de introducción.<br>¿Listo para comprometerte? Elige un pack o ilimitado.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="pricing-col">
+      <h3>Primera Visita</h3>
+      <a href="/ca/classes/?pack=443934">Clase de Prueba 18€</a>
+      <a href="/ca/classes/#days">Clase Suelta 22€</a>
+    </div>
+    <div class="pricing-col hero-col">
+      <div class="pricing-badge">Más Popular</div>
+      <h3>Mejor Valor</h3>
+      <a href="/ca/classes/?pack=443935">Pack de 3 · 50€</a>
+      <a href="/ca/classes/#days">Semana Ilimitada 50€</a>
+    </div>
+    <div class="pricing-col">
+      <h3>Packs de Clases</h3>
+      <a href="/ca/classes/#days">Pack de 5 · 85€</a>
+      <a href="/ca/classes/#days">Pack de 10 · 149€<span class="per-class">14,90€ / clase</span></a>
+    </div>
+    <div class="pricing-col">
+      <h3>Membresías</h3>
+      <a href="/ca/classes/#days">Flex 99€/mes</a>
+      <a href="/ca/classes/#days">Ritual 109€/mes</a>
+      <a href="/ca/classes/?pack=431216">Immerse 130€/mes</a>
+      <a href="/ca/classes/?pack=445600">Immerse 3 Mesos 330€</a>
+    </div>
+  </div>
+</section>
+
+<!-- GIFT CARDS -->
+<section class="giftcards">
+  <div class="giftcards-hdr">
+    <h2>Tarjetas Regalo</h2>
+    <p>Regala inmersión.<br>Elige un importe o pon el tuyo.</p>
+  </div>
+  <div class="gc-grid">
+    <a href="/ca/classes/#days">20€</a>
+    <a href="/ca/classes/#days">40€</a>
+    <a href="/ca/classes/#days">60€</a>
+    <a href="/ca/classes/#days">80€</a>
+    <a href="/ca/classes/#days">100€</a>
+    <a href="/ca/classes/#days" class="custom">A medida</a>
+  </div>
+</section>
+
+
+<!-- REVIEW NUDGE -->
+<div class="review-nudge rv">
+  <div class="rn-ticker">
+    <div class="rn-quote active"><q>Una clase de breathwork potentísima. L'espai de SABDA no té rival.</q><cite>Sophie · Breathwork</cite></div>
+    <div class="rn-quote"><q>SABDA es mi sitio de yoga de referencia desde hace año y medio. Los profesores me han ayudado muchísimo. Los visuales son épicos.</q><cite>Jack · Vinyasa Yoga</cite></div>
+    <div class="rn-quote"><q>Hice una clase de pilates de visita en Barcelona y me dejó sin palabras. Los visuales la hicieron inolvidable.</q><cite>Alexis · Pilates</cite></div>
+    <div class="rn-quote"><q>Vine a power pilates y todo, desde entrar al espacio hasta salir, fue absolutamente fantástico.</q><cite>Veronika · Power Pilates</cite></div>
+    <div class="rn-quote"><q>Cristina es simplemente una maestra en lo suyo. Els professors de SABDA són els millors.</q><cite>Marina · Hatha Vinyasa</cite></div>
+    <div class="rn-quote"><q>Toda la experiencia es única. Se la recomiendo totalmente a cualquiera que quiera practicar yoga en Barcelona.</q><cite>Andili · Yoga</cite></div>
+    <div class="rn-quote"><q>Me encantan las clases de vinyasa de aquí. SABDA es uno de los mejores momentos de mi estancia en Barcelona.</q><cite>Clara · Vinyasa</cite></div>
+  </div>
+  <div class="rn-inner">
+    <div class="rn-stars"><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg></div>
+    <div class="rn-scoreline"><span class="rn-score">4.8</span><span class="rn-count">Más de 350 reseñas</span></div>
+    <div style="border-top:1px solid rgba(240,239,233,.08);margin:36px 0;width:100%"></div>
+    <p class="rn-text">Comparteix l'<em>Amor.</em></p>
+    <p class="rn-sub">Deja una reseña rápida y <span>te invitamos a un ginger shot</span> en tu próxima visita.</p>
+    <a href="https://g.page/r/CZeZ4gZgrjR3EAE/review" target="_blank" class="rn-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>Deja una reseña en Google</a>
+  </div>
+</div>
+</div>
+<!-- FOOTER -->
+<footer style="border-top:1px solid rgba(240,239,233,.07)">
+  <div class="ft-in">
+    <div class="ft-brand">
+      <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA_white.png" alt="SABDA">
+      <div class="ft-pillars"><span class="fp-art">Arte</span><span>·</span><span class="fp-tech">Tech</span><span>·</span><span class="fp-well">Bienestar</span></div>
+    </div>
+    <div class="ft-col"><h4 style="color:var(--cyan)">Explora</h4><ul>
+      <li><a href="/ca/classes/">Clases</a></li><li><a href="/ca/esdeveniments/">Eventos</a></li>
+      <li><a href="/ca/preus/">Precios</a></li><li><a href="/ca/lloguer/">Alquilar</a></li>
+      <li><a href="/ca/sobre/">Sobre</a></li><li><a href="/ca/#faq">FAQ</a></li>
+      <li><a href="/ca/#contacto">Contacte</a></li>
+    </ul></div>
+    <div class="ft-col"><h4 style="color:var(--salmon)">Conecta</h4><ul>
+      <li><a href="https://instagram.com/sabda_studio" target="_blank">Instagram</a></li>
+      <li><a href="https://www.tiktok.com/@sabda_studio" target="_blank">TikTok</a></li>
+      <li><a href="/ca/#contacto">Newsletter</a></li>
+    </ul></div>
+        <div class="ft-col"><h4 style="color:var(--white)">Contacte</h4><ul>
+      <li><a href="mailto:info@sabdastudio.com">info@sabdastudio.com</a></li>
+      <li><a href="tel:+34625449878">+34 625 44 98 78</a></li>
+      <li><a href="https://maps.google.com/?q=SABDA+Studio,+Barcelona" target="_blank" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3);padding-bottom:2px;transition:border-color .25s">Com arribar-hi →</a></li>
+    </ul></div>
+  </div>
+  <div class="ft-bot">
+    <span>© 2026 SABDA STUDIO S.L.</span>
+    <div class="ft-legal"><a href="/ca/legal/politica-privacitat.html">Privacidad</a><a href="/ca/legal/termes.html">Términos</a><a href="/ca/legal/cookies.html">Cookies</a></div>
+  </div>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════════════════
+   GLOBAL PARTICLE FIELD
+═══════════════════════════════════════════════════════ */
+(function(){
+  const canvas=document.getElementById('globalParticles');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  let W,H,mouseX=-9999,mouseY=-9999;
+  function resize(){W=window.innerWidth;H=window.innerHeight;canvas.width=W*devicePixelRatio;canvas.height=H*devicePixelRatio;ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0)}
+  resize();window.addEventListener('resize',resize);
+  document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY});
+  const COUNT=672;
+  const particles=Array.from({length:COUNT},()=>({
+    x:Math.random()*3000,y:Math.random(),vx:0.008+Math.random()*0.06,vy:(Math.random()-0.5)*0.003,
+    fx:0,fy:0,size:0.3+Math.random()*1.5,glow:4+Math.random()*16,
+    color:(()=>{const c=Math.random();return c<0.38?[2,243,197]:c<0.72?[248,166,163]:[32,57,153]})(),
+    opacity:0.025+Math.random()*0.12,phase:Math.random()*Math.PI*2,
+    waveAmp:0.01+Math.random()*0.04,waveFreq:0.0001+Math.random()*0.0005
+  }));
+  let t=0;
+  function draw(){
+    t++;ctx.clearRect(0,0,W,H);
+    particles.forEach(p=>{
+      p.x+=p.vx;p.y+=p.vy;
+      const waveY=p.waveAmp*Math.sin(p.phase+t*p.waveFreq);
+      let drawX=p.x+p.fx,drawY=(p.y+waveY)*H+p.fy;
+      const dx=drawX-mouseX,dy=drawY-mouseY,dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<120&&dist>0){const force=(1-dist/120)*2.5;p.fx+=(dx/dist)*force;p.fy+=(dy/dist)*force}
+      p.fx*=0.94;p.fy*=0.94;
+      drawX=p.x+p.fx;drawY=(p.y+waveY)*H+p.fy;
+      if(p.x>W+60){p.x=-50;p.y=Math.random();p.fx=0;p.fy=0}
+      if(p.y<-0.05)p.y=1.05;if(p.y>1.05)p.y=-0.05;
+      const pulse=0.4+0.6*Math.sin(p.phase+t*0.001),op=p.opacity*pulse;
+      if(op<0.002)return;
+      const g=ctx.createRadialGradient(drawX,drawY,0,drawX,drawY,p.glow);
+      g.addColorStop(0,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.7})`);
+      g.addColorStop(0.3,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.28})`);
+      g.addColorStop(0.7,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.04})`);
+      g.addColorStop(1,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},0)`);
+      ctx.fillStyle=g;ctx.beginPath();ctx.arc(drawX,drawY,p.glow,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.arc(drawX,drawY,p.size*0.5,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${Math.min(0.6,op*2)})`;ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+})();
+
+/* ── Quote ticker ── */
+(function(){
+  const quotes=document.querySelectorAll('.rn-quote');
+  if(!quotes.length)return;
+  let cur=0;
+  setInterval(()=>{
+    quotes[cur].classList.remove('active');
+    cur=(cur+1)%quotes.length;
+    quotes[cur].classList.add('active');
+  },4000);
+})();
+</script>
+</body>
+</html>

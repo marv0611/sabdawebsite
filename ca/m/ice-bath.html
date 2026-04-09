@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0e1235">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,700;1,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<title>Ice Bath | SABDA</title>
+<link rel="canonical" href="https://sabdastudio.com/ca/classes/ice-bath/">
+<link rel="alternate" hreflang="en" href="https://sabdastudio.com/classes/ice-bath/">
+<link rel="alternate" hreflang="es" href="https://sabdastudio.com/es/clases/ice-bath/">
+<link rel="alternate" hreflang="ca" href="https://sabdastudio.com/ca/classes/ice-bath/">
+<link rel="alternate" hreflang="x-default" href="https://sabdastudio.com/classes/ice-bath/">
+<style>
+:root{--navy:#0e1235;--navy95:rgba(14,18,53,.95);--salmon:#F8A6A3;--cyan:#02F3C5;--white:#f0efe9;--w80:rgba(240,239,233,.8);--w60:rgba(240,239,233,.6);--w38:rgba(240,239,233,.38);--w20:rgba(240,239,233,.2);--w10:rgba(240,239,233,.1);--w06:rgba(240,239,233,.06);--w03:rgba(240,239,233,.03);--r:16px;--safe-b:env(safe-area-inset-bottom,0px);--safe-t:env(safe-area-inset-top,0px)}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{overflow-x:hidden;-webkit-text-size-adjust:100%}
+body{background:var(--navy);color:var(--white);font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;padding-top:calc(52px + var(--safe-t));padding-bottom:calc(84px + var(--safe-b));overflow-x:hidden;line-height:1.55}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{font-family:inherit;border:none;background:none;cursor:pointer;color:inherit}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:150px}
+.touch{transition:transform .15s cubic-bezier(.2,.8,.4,1),opacity .15s}.touch:active{transform:scale(.97);opacity:.85}
+.hdr{position:fixed;top:0;left:0;right:0;z-index:100;height:calc(52px + var(--safe-t));padding-top:var(--safe-t);display:flex;align-items:center;justify-content:space-between;padding-left:20px;padding-right:16px;background:var(--navy95);backdrop-filter:saturate(1.4) blur(24px);-webkit-backdrop-filter:saturate(1.4) blur(24px);border-bottom:1px solid var(--w06)}
+.hdr img{height:18px;width:auto;opacity:.9}
+.hdr-pill{padding:7px 16px;background:var(--cyan);color:var(--navy);border-radius:100px;font-size:.68rem;font-weight:700;letter-spacing:.02em;line-height:1;box-shadow:0 2px 12px rgba(2,243,197,.2)}
+.hdr-back{display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--w60);font-weight:500}
+.hdr-back svg{width:16px;height:16px;stroke:var(--w60);fill:none;stroke-width:2}
+.pg{padding:24px 24px 16px}
+.pg-t{font-family:'PT Serif',serif;font-size:1.5rem;font-weight:700;letter-spacing:-.02em}
+.pg-t em{font-style:italic;color:var(--salmon)}
+.pg-s{font-size:.78rem;color:var(--w60);margin-top:4px;line-height:1.55}
+.sec{padding:24px 24px}
+.sl{font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:var(--cyan);font-weight:700;margin-bottom:8px;display:block}
+.sh{font-family:'PT Serif',serif;font-size:1.3rem;font-weight:700;line-height:1.15;letter-spacing:-.01em;margin-bottom:12px}
+.sh em{font-style:italic;color:var(--salmon)}
+.sp{font-size:.82rem;color:var(--w60);line-height:1.65;margin-bottom:12px}
+.divider{height:1px;background:var(--w06);margin:0 24px}
+.cta-strip{padding:20px 24px;border-top:1px solid var(--w06)}
+.cta-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px;background:var(--cyan);color:var(--navy);border-radius:100px;font-size:.84rem;font-weight:700;box-shadow:0 4px 20px rgba(2,243,197,.2)}
+.cta-btn svg{width:14px;height:14px;stroke:var(--navy);stroke-width:2.5;fill:none}
+
+
+
+.tabs{position:fixed;bottom:0;left:0;right:0;z-index:100;display:flex;align-items:flex-end;justify-content:space-around;height:calc(72px + var(--safe-b));padding-bottom:var(--safe-b);background:var(--navy95);backdrop-filter:saturate(1.4) blur(24px);-webkit-backdrop-filter:saturate(1.4) blur(24px);border-top:1px solid var(--w06)}
+.tab{display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 0 6px;flex:1;color:var(--w38);transition:color .2s}
+.tab.on{color:var(--cyan)}
+.tab svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tab span{font-size:.5rem;letter-spacing:.04em;font-weight:600}
+.tab-bk{position:relative}
+.tab-bk-o{width:56px;height:56px;border-radius:50%;background:var(--cyan);display:flex;align-items:center;justify-content:center;position:relative;top:-10px;box-shadow:0 4px 24px rgba(2,243,197,.28)}
+.tab-bk-o svg{stroke:var(--navy);width:22px;height:22px;stroke-width:2.5}
+.tab-bk span{position:relative;top:-6px}
+
+.fi{opacity:0;transform:translateY(16px);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1)}
+.fi.vis{opacity:1;transform:none}
+.hero-img{width:100%;height:240px;object-fit:cover;display:block}
+.intro-block{padding:28px 24px 8px}
+.intro-p{font-size:.92rem;color:var(--w80);line-height:1.68;margin-bottom:16px}
+.intro-p:last-child{margin-bottom:0}
+.intro-p a{color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)}
+.types-sec{padding:28px 0 16px;border-top:1px solid var(--w06);margin-top:8px}
+.types-lab{display:block;padding:0 24px 14px;font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:var(--cyan);font-weight:700}
+.ct{padding:18px 24px;display:flex;gap:16px;align-items:flex-start}
+.ct + .ct{border-top:1px solid var(--w06)}
+.ct-num{width:30px;height:30px;border-radius:50%;background:rgba(2,243,197,.06);border:1px solid rgba(2,243,197,.16);display:flex;align-items:center;justify-content:center;font-size:.64rem;font-weight:700;color:var(--cyan);flex-shrink:0;margin-top:2px}
+.ct-body{flex:1;min-width:0}
+.ct-name{font-family:'PT Serif',serif;font-size:1rem;font-weight:700;margin-bottom:6px;line-height:1.3}
+.ct-desc{font-size:.8rem;color:var(--w60);line-height:1.6}
+.ct-desc a{color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)}
+.faq-sec{padding:40px 24px 28px;border-top:1px solid var(--w06);margin-top:12px}
+.faq-h{font-family:'PT Serif',serif;font-size:1.4rem;font-weight:700;line-height:1.15;margin-bottom:20px;margin-top:10px}
+.faq-h em{font-style:italic;color:var(--salmon)}
+.faq-it{border-bottom:1px solid var(--w06)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;width:100%;padding:18px 0;text-align:left;font-size:.86rem;font-weight:600;color:var(--white);line-height:1.4;gap:14px}
+.faq-q svg{width:18px;height:18px;stroke:var(--cyan);fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0;transition:transform .25s}
+.faq-it.open .faq-q svg{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.16,1,.3,1)}
+.faq-it.open .faq-a{max-height:800px}
+.faq-a p{padding:0 0 18px;font-size:.8rem;color:var(--w60);line-height:1.68}
+.faq-a a{color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)}
+.pt-sec{padding:40px 24px 28px;border-top:1px solid var(--w06);margin-top:12px}
+.pt-h{font-family:'PT Serif',serif;font-size:1.4rem;font-weight:700;line-height:1.15;margin-bottom:20px;margin-top:10px}
+.pt-h em{font-style:italic;color:var(--salmon)}
+.pt-card-m{display:flex;align-items:center;justify-content:space-between;padding:18px;background:var(--w03);border:1px solid var(--w06);border-radius:14px;margin-bottom:10px;gap:14px}
+.pt-card-l{flex:1;min-width:0}
+.pt-card-lbl{font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;color:var(--w38);font-weight:700;margin-bottom:6px}
+.pt-card-note{font-size:.72rem;color:var(--w60);line-height:1.5}
+.pt-card-price{font-family:'PT Serif',serif;font-size:1.5rem;font-weight:700;color:var(--white);white-space:nowrap}
+.pt-more{font-size:.78rem;color:var(--cyan);font-weight:600;border-bottom:1px solid rgba(2,243,197,.3);padding-bottom:2px}
+.reopen-banner{text-align:center;padding:16px 24px 0}
+.reopen-banner span{display:inline-block;padding:9px 20px;background:rgba(2,243,197,.1);border:1px solid rgba(2,243,197,.28);border-radius:100px;font-size:.74rem;color:var(--cyan);font-weight:700;letter-spacing:.04em}
+.hero-wrap{position:relative}
+.hero-pill{position:absolute;left:20px;bottom:20px;display:inline-block;padding:9px 18px;background:rgba(14,18,53,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(2,243,197,.4);border-radius:100px;font-size:.72rem;color:var(--cyan);font-weight:700;letter-spacing:.04em;z-index:2;box-shadow:0 4px 16px rgba(0,0,0,.4)}
+.faq-h em{font-style:italic;color:var(--salmon)}
+.faq-q svg{width:18px;height:18px;stroke:var(--cyan);fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0;transition:transform .25s}
+.faq-it.open .faq-q svg{transform:rotate(45deg)}
+.faq-it.open .faq-a{max-height:600px}
+.pt-h em{font-style:italic;color:var(--salmon)}
+
+.ct-book{display:inline-flex;padding:8px 18px;background:rgba(2,243,197,.1);border:1px solid rgba(2,243,197,.2);border-radius:100px;font-size:.6rem;font-weight:700;color:var(--cyan);letter-spacing:.04em;margin-top:10px;margin-right:8px}
+
+/* MORE MENU — iOS Settings style */
+.more{position:fixed;inset:0;z-index:200;background:var(--navy);display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .25s}
+.more.on{opacity:1;pointer-events:auto}
+.more-hdr{height:calc(52px + var(--safe-t));padding-top:var(--safe-t);display:flex;align-items:center;padding-left:12px;padding-right:16px;border-bottom:1px solid var(--w06)}
+.more-done{font-size:.82rem;color:var(--cyan);font-weight:600;padding:8px 12px;display:flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;font-family:inherit;text-decoration:none}
+.more-done svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.more-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none}
+.more-body::-webkit-scrollbar{display:none;width:0;height:0}
+.more-group{padding:18px 24px 6px;text-align:center}
+.more-group:first-child{padding-top:14px}
+.more-group-t{font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:var(--w38);font-weight:600;margin-bottom:6px}
+.lang-row{display:flex;gap:8px;padding:2px 24px 8px;justify-content:center}
+.lang-btn{flex:0 0 auto;min-width:88px;padding:11px 16px;background:var(--w03);border:1px solid var(--w10);border-radius:100px;color:var(--w80);font-size:.74rem;font-weight:600;letter-spacing:.02em;font-family:inherit;cursor:pointer;transition:all .2s;-webkit-tap-highlight-color:transparent}
+.lang-btn.on{background:var(--cyan);color:var(--navy);border-color:var(--cyan);box-shadow:0 2px 12px rgba(2,243,197,.18)}
+.lang-btn:active{transform:scale(.97)}
+.more-row{display:flex;align-items:center;gap:14px;padding:14px 24px;border-bottom:1px solid var(--w06);text-decoration:none;-webkit-tap-highlight-color:transparent}
+.more-row:active{background:var(--w03)}
+.more-row-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.more-row-icon svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.more-row-txt{flex:1;font-size:.84rem;font-weight:500;color:var(--white)}
+.more-row-chev{width:12px;height:12px;stroke:var(--w20);fill:none;stroke-width:2}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+<header class="hdr">
+  <a href="classes.html" class="hdr-back"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>Clases</a>
+  <a href="schedule.html" class="hdr-pill touch">Reservar Clase</a>
+</header>
+
+
+<div class="hero-wrap"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/classes/ice-bath/hero.jpg" alt="Ice Bath en SABDA" class="hero-img" loading="lazy"><span class="hero-pill">Reabrimos el 1 de mayo</span></div>
+
+<div class="pg fi">
+
+  <div class="pg-t">Ice Bath en <em>SABDA</em></div>
+
+  <div class="pg-s">Ice bath en terraza privada. Agua entre 3°C y 8°C. Combínalo con breathwork o sound healing.</div>
+
+</div>
+
+<div class="intro-block">
+  <p class="intro-p fi">El ice bath en SABDA ocurre en nuestra terraza privada del Eixample de Barcelona. Ya lo llames ice bath o cold plunge, aquí la experiencia es de uso libre, a tu propio ritmo, y sorprendentemente adictiva.</p>
+  <p class="intro-p fi">Sumérgete en agua entre 3°C y 8°C, quédate el tiempo que quieras y caliéntate entre rondas. Mucha gente combina su ice bath con una clase de <a href="breathwork.html" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">breathwork</a> o de <a href="yoga.html" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">yoga</a> antes, para preparar el cuerpo. Menos inflamación, mejor circulación, mejor estado de ánimo y un reset del sistema nervioso que dura horas.</p>
+</div>
+<div class="types-sec">
+  <span class="types-lab">Combo popular</span>
+  <div class="ct fi"><div class="ct-num">1</div><div class="ct-body"><div class="ct-name">Breathwork + Ice Bath</div><div class="ct-desc">La combinación más popular en SABDA. Una <a href="breathwork.html" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">clase completa de breathwork</a> dentro de la sala inmersiva 360° seguida de un cold plunge en la terraza. La respiración prepara tu cuerpo para el frío. El frío sella la calma.</div></div></div>
+  <div class="ct fi"><div class="ct-num">2</div><div class="ct-body"><div class="ct-name">Sound Healing + Ice Bath</div><div class="ct-desc">Restauración profunda se encuentra con frío profundo. Empieza con una <a href="sound-healing.html" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">sesión de sound healing</a> en audio espacial Dolby Atmos, luego sal a la terraza para la inmersión. El contraste entre la relajación total y el subidón del agua fría es algo que sientes durante el resto del día.</div></div></div>
+  <div class="ct fi"><div class="ct-num">3</div><div class="ct-body"><div class="ct-name">Qué traer</div><div class="ct-desc">Bañador obligatorio. Toalla incluida en cada sesión. Trae ropa de abrigo para antes y después.</div></div></div>
+</div>
+
+<div class="pt-sec fi">
+  <span class="sl">Precios</span>
+  <div class="pt-h">Precios de <em>ice bath.</em></div>
+  <div class="pt-card-m"><div class="pt-card-l"><div class="pt-card-lbl">Sesión Individual</div><div class="pt-card-note">Una sesión de ice bath<br>Toalla incluida</div></div><div class="pt-card-price">€12</div></div>
+  <div class="pt-card-m"><div class="pt-card-l"><div class="pt-card-lbl">Pack de 3</div><div class="pt-card-note">10€ por sesión · Toalla incluida<br>Válido 2 meses</div></div><div class="pt-card-price">€30</div></div>
+  <div class="pt-card-m"><div class="pt-card-l"><div class="pt-card-lbl">Pack de 5</div><div class="pt-card-note">8€ por sesión · Toalla incluida<br>Válido 2 meses</div></div><div class="pt-card-price">€40</div></div>
+  <div class="pt-card-m"><div class="pt-card-l"><div class="pt-card-lbl">Combo</div><div class="pt-card-note">Clase suelta + Ice Bath<br>Toalla incluida</div></div><div class="pt-card-price">€28</div></div>
+  <div class="pt-card-m"><div class="pt-card-l"><div class="pt-card-lbl">Combo</div><div class="pt-card-note">Clase de prueba + Ice Bath<br>Toalla incluida</div></div><div class="pt-card-price">€24</div></div>
+  <div style="text-align:center;margin-top:18px"><a href="pricing.html" class="pt-more">Ver todas las ofertas &rarr;</a></div>
+</div>
+
+<div class="faq-sec fi">
+  <span class="sl">FAQ</span>
+  <div class="faq-h">Preguntes <em>freqüents.</em></div>
+  <div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">¿Es seguro el ice bath o la crioterapia?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Las sesiones de ice bath y cold plunge son seguras para la mayoría de adultos sanos. En SABDA el ice bath en nuestro patio privado del Eixample de Barcelona es de uso libre, así que tú controlas tu propia duración y ritmo. Te recomendamos combinarlo con una clase de <a href="breathwork.html" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">breathwork</a> para obtener el máximo beneficio. No lo recomendamos si tienes condiciones cardiovasculares, enfermedad de Raynaud o estás embarazada. Si tienes dudas, consulta primero con tu médico.</p></div></div>
+  <div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">¿Cómo de fría está el agua y cuánto tiempo me quedo dentro?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Entre 3°C y 8°C según la sesión en SABDA Barcelona. Quédate el tiempo que quieras, con períodos para calentarte entre rondas. La mayoría de la gente hace de 2 a 5 minutos por inmersión. Es de uso libre, así que vas a tu propio ritmo. <a href="classes.html" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">Ver los horarios</a>.</p></div></div>
+  <div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">¿El ice bath es guiado o de uso libre?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>El ice bath en SABDA es de uso libre. No hay un programa estructurado ni método guiado. Te sumerges a tu propio ritmo, el tiempo que estés cómoda. El personal está disponible si necesitas algo, pero la experiencia la diriges tú. Mucha gente lo combina con una clase de <a href="breathwork.html" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">breathwork</a> o de <a href="yoga.html" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">yoga</a> antes o después.</p></div></div>
+  <div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">¿Puedo combinar ice bath con otras clases en SABDA?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Sí. Mucha gente combina <a href="yoga.html" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">yoga</a> o <a href="breathwork.html" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">breathwork</a> con un ice bath. Breathwork seguido de cold plunge es nuestra combinación más popular. Consulta los horarios para ver sesiones seguidas en nuestro estudio del Eixample. <a href="pricing.html" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)">Clases desde 18€. Ver todas las ofertas</a>.</p></div></div>
+  <div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">¿Qué debo llevar a una sesión de ice bath?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Bañador (obligatorio para la inmersión), ropa de abrigo para antes y después, y una mente abierta. Toalla incluida en cada sesión.</p></div></div>
+</div>
+
+<div class="cta-strip fi"><span class="cta-btn" style="opacity:.75;cursor:default;background:rgba(2,243,197,.12);color:var(--cyan);box-shadow:none;border:1px solid rgba(2,243,197,.3)">Reabrimos el 1 de mayo</span></div>
+
+<nav class="tabs">
+  <a href="classes.html" class="tab on"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Clases</span></a>
+  <a href="schedule.html" class="tab "><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span>Horarios</span></a>
+  <a href="schedule.html" class="tab tab-bk"><div class="tab-bk-o"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><span>Reserva ara</span></a>
+  <a href="pricing.html" class="tab "><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Precios</span></a>
+  <button class="tab" id="moreBtn2" type="button" aria-label="Menú adicional"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.5" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="12" cy="19" r="1.5" fill="currentColor" stroke="none"/></svg><span>Más</span></button>
+</nav>
+<!-- MORE MENU — iOS Settings style -->
+<div class="more" id="more">
+  <div class="more-hdr"><a class="more-done" id="moreX" href="index.html" aria-label="Volver al inicio"><svg viewBox="0 0 24 24"><path d="M9 18l-6-6 6-6"/></svg>Inicio</a></div>
+  <div class="more-body">
+    <div class="more-group"><div class="more-group-t">Idioma</div></div>
+    <div class="lang-row">
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')" type="button">English</button>
+      <button class="lang-btn on" data-lang="es" onclick="setLang('es')" type="button">Espa&ntilde;ol</button>
+      <button class="lang-btn" data-lang="ca" onclick="setLang('ca')" type="button">Catal&agrave;</button>
+    </div>
+    <div class="more-group"><div class="more-group-t">Explora</div></div>
+    <a href="index.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div class="more-row-txt">Inicio</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="classes.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><div class="more-row-txt">Clases</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="schedule.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div class="more-row-txt">Horarios</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="pricing.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div class="more-row-txt">Precios</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="hire.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div><div class="more-row-txt">Alquila el Espacio</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="events.html" class="more-row"><div class="more-row-icon" style="background:rgba(248,166,163,.08);color:var(--salmon)"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="more-row-txt">Eventos</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="about.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div><div class="more-row-txt">Sobre</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <div class="more-group"><div class="more-group-t">Ayuda</div></div>
+    <a href="faq.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><div class="more-row-txt">FAQ</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="contact.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="more-row-txt">Contacte</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <div class="more-group"><div class="more-group-t">Conecta</div></div>
+    <a href="https://instagram.com/sabda_studio" target="_blank" rel="noopener" class="more-row"><div class="more-row-icon" style="background:rgba(248,166,163,.08);color:var(--salmon)"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg></div><div class="more-row-txt">Instagram</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="https://www.tiktok.com/@sabda_studio" target="_blank" rel="noopener" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></div><div class="more-row-txt">TikTok</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="https://www.linkedin.com/company/sabdastudio" target="_blank" rel="noopener" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div><div class="more-row-txt">LinkedIn</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <div class="more-group"><div class="more-group-t">Legal</div></div>
+    <a href="/ca/legal/avis-legal.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="more-row-txt">Avís Legal</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="/ca/legal/politica-privacitat.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="more-row-txt">Política de Privacitat</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="/ca/legal/termes.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><div class="more-row-txt">Termes i Condicions</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="/ca/legal/cookies.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/><path d="M11 17v.01"/><path d="M7 14v.01"/></svg></div><div class="more-row-txt">Política de Cookies</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+  </div>
+</div>
+
+
+<script>
+function toggleFaq(btn){var it=btn.parentElement;it.classList.toggle('open');btn.setAttribute('aria-expanded',it.classList.contains('open'))}
+var fis=document.querySelectorAll('.fi');
+var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{threshold:.01});
+fis.forEach(function(el){io.observe(el)});
+setTimeout(function(){fis.forEach(function(el){el.classList.add('vis')})},800);
+
+function toggleMore(){var el=document.getElementById('more');if(el)el.classList.toggle('on')}
+var mb2=document.getElementById('moreBtn2');if(mb2)mb2.addEventListener('click',function(){document.getElementById('more').classList.add('on')});
+var mx=document.getElementById('moreX');if(mx)mx.addEventListener('click',function(){document.getElementById('more').classList.remove('on')});
+function setLang(c){try{localStorage.setItem('sabda_lang',c)}catch(e){}document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===c)});if(c==='es'){window.location.href='/es/m/ice-bath.html';return;}if(c==='en'){window.location.href='/m/ice-bath.html';return;}}
+try{var sl=localStorage.getItem('sabda_lang')||'es';document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===sl)})}catch(e){}
+</script>
+<script defer src="/cookies.js"></script>
+<script src="/cookie-consent.js"></script>
+</body>
+</html>
