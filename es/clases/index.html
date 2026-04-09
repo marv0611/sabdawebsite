@@ -945,7 +945,7 @@ function showMfaStep(mfaToken){stepChange();
     +'<input class="bk-input" id="bk-mfa" aria-label="Código de verificación" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="000000" style="text-align:center;font-size:1.4rem;letter-spacing:.3em" />'
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-mfa-btn" onclick="doMfaVerify()">Verificar y continuar</button>'
-    +'<div class="bk-link" onclick="showLoginStep()">\u2190 Back</div>'
+    +'<div class="bk-link" onclick="showLoginStep()">\u2190 Atrás</div>'
     +'</div>';
   document.getElementById('bk-mfa').focus();
   document.getElementById('bk-mfa').addEventListener('keydown',function(e){if(e.key==='Enter')doMfaVerify();});
@@ -1148,10 +1148,10 @@ function showNoMembership(){stepChange();
     +userLine
     +'<p style="font-size:.85rem;color:var(--white60);text-align:center;margin-bottom:20px;line-height:1.5">Elige cómo quieres reservar esta clase</p>'
     +'<div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);font-weight:600;margin-bottom:10px">New to SABDA?</div>'
-    +'<div class="bk-pkg feat" onclick="selectPack(\'pack\',50,443935,\'Pack Intro de 3\',\'3 clases \u00B7 \u20AC16.67 each \u00B7 30 days\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
+    +'<div class="bk-pkg feat" onclick="selectPack(\'pack\',50,443935,\'Pack Intro de 3\',\'3 clases \u00B7 16,67€/clase \u00B7 30 días\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">Pack Intro de 3</div><div style="font-size:.75rem;color:var(--white60)">3 clases \u00B7 \u20AC16.67 each</div></div>'
     +'<div style="font-family:PT Serif,serif;font-weight:700">\u20AC50</div></div>'
-    +'<div class="bk-pkg" onclick="selectPack(\'pack\',18,443934,\'Clase de Prueba\',\'1 class \u00B7 Solo para nuevos estudiantes\')" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center">'
+    +'<div class="bk-pkg" onclick="selectPack(\'pack\',18,443934,\'Clase de Prueba\',\'1 clase \u00B7 Solo para nuevos estudiantes\')" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">Clase de Prueba</div><div style="font-size:.75rem;color:var(--white60)">Solo para nuevos estudiantes</div></div>'
     +'<div style="font-family:PT Serif,serif;font-weight:700">\u20AC18</div></div>'
     +'<div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--salmon);font-weight:600;margin-bottom:10px">Suscripciones</div>'
@@ -1168,13 +1168,13 @@ function showNoMembership(){stepChange();
     +'<div><div style="font-weight:600">Immerse 3 Meses</div><div style="font-size:.75rem;color:var(--white60)">110€/mes \u00B7 Clases ilimitadas</div></div>'
     +'<div style="font-family:PT Serif,serif;font-weight:700">\u20AC330</div></div>'
     +'<div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--white38);font-weight:600;margin:0 0 10px">Packs de Clases</div>'
-    +'<div class="bk-pkg" onclick="selectPack(\'pack\',85,443937,\'5 Pack\',\'5 clases \u00B7 \u20AC17 each \u00B7 2 months\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
+    +'<div class="bk-pkg" onclick="selectPack(\'pack\',85,443937,\'5 Pack\',\'5 clases \u00B7 17€/clase \u00B7 2 meses\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">5 Pack</div><div style="font-size:.75rem;color:var(--white60)">5 clases \u00B7 \u20AC17 each</div></div>'
     +'<div style="font-family:PT Serif,serif;font-weight:700">\u20AC85</div></div>'
     +'<div class="bk-pkg" onclick="selectPack(\'pack\',149,443939,\'10 Pack\',\'10 clases \u00B7 14,90€/clase \u00B7 3 meses\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">10 Pack</div><div style="font-size:.75rem;color:var(--white60)">10 clases \u00B7 14,90€/clase</div></div>'
     +'<div style="font-family:PT Serif,serif;font-weight:700">\u20AC149</div></div>'
-    +'<div class="bk-pkg" onclick="selectPack(\'single\',22,445630,\'Drop-in\',\'1 class \u00B7 No commitment\')" style="display:flex;justify-content:space-between;align-items:center">'
+    +'<div class="bk-pkg" onclick="selectPack(\'single\',22,445630,\'Drop-in\',\'1 clase \u00B7 Sin compromiso\')" style="display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">Drop-in</div><div style="font-size:.75rem;color:var(--white60)">One class, no commitment</div></div>'
     +'<div style="font-family:PT Serif,serif;font-weight:700">\u20AC22</div></div>'
     +'<div class="bk-link" onclick="closeMo()">\u2190 Volver al horario</div>'
@@ -1512,16 +1512,16 @@ init();
 
 // ── URL param: ?pack=ID opens modal with pre-selected product ──
 var PACK_MAP={
-  '443934':{type:'pack',price:18,id:443934,name:'Clase de Prueba',desc:'1 class \u00B7 Solo para nuevos estudiantes'},
-  '443935':{type:'pack',price:50,id:443935,name:'Pack Intro de 3',desc:'3 clases \u00B7 \u20AC16.67 each \u00B7 30 days'},
+  '443934':{type:'pack',price:18,id:443934,name:'Clase de Prueba',desc:'1 clase \u00B7 Solo para nuevos estudiantes'},
+  '443935':{type:'pack',price:50,id:443935,name:'Pack Intro de 3',desc:'3 clases \u00B7 16,67€/clase \u00B7 30 días'},
   '443641':{type:'pack',price:50,id:443641,name:'Semana Residentes BCN',desc:'Ilimitado \u00B7 7 días \u00B7 Justificante de residencia requerido'},
   '431216':{type:'membership',price:130,id:431216,name:'Immerse',desc:'Clases ilimitadas \u00B7 Cancela cuando quieras'},
   '445600':{type:'membership',price:330,id:445600,name:'Immerse 3 Meses',desc:'Clases ilimitadas \u00B7 Compromiso 3 meses'},
   '709976':{type:'membership',price:109,id:709976,name:'Ritual',desc:'8 clases/mes \u00B7 Cancela cuando quieras'},
   '706876':{type:'membership',price:99,id:706876,name:'Flex',desc:'4 clases/mes \u00B7 Cancela cuando quieras'},
-  '443937':{type:'pack',price:85,id:443937,name:'5 Pack',desc:'5 clases \u00B7 \u20AC17 each \u00B7 2 months'},
+  '443937':{type:'pack',price:85,id:443937,name:'5 Pack',desc:'5 clases \u00B7 17€/clase \u00B7 2 meses'},
   '443939':{type:'pack',price:149,id:443939,name:'10 Pack',desc:'10 clases \u00B7 14,90€/clase \u00B7 3 meses'},
-  '445630':{type:'single',price:22,id:445630,name:'Drop-in',desc:'1 class \u00B7 No commitment'}
+  '445630':{type:'single',price:22,id:445630,name:'Drop-in',desc:'1 clase \u00B7 Sin compromiso'}
 };
 (function checkUrlPack(){
   var params=new URLSearchParams(window.location.search);

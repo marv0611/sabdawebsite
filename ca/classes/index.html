@@ -886,7 +886,7 @@ function showGuestStep(){stepChange();
     +'<input class="bk-input" id="bk-email" type="email" aria-label="Correo electrónico" placeholder="tu@email.com" />'
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">Continuar</button>'
-    +'<div class="bk-link" onclick="showLoginStep()">¿Ya tienes cuenta? Inicia sesión</div>'
+    +'<div class="bk-link" onclick="showLoginStep()">Ja tens compte? Inicia sessió</div>'
     +'<div class="bk-link" onclick="pendingPack=null;showNoMembership()">\u2190 Cambiar selección</div>'
     +'</div>';
   document.getElementById('bk-fn').focus();
@@ -928,7 +928,7 @@ window.doLogin=function(){if(isProcessing)return;
     if(d.hasUsableMembership&&d.suscripciones.length>0){showConfirmStep(d.suscripciones[0]);}
     else{showNoMembership();}
   }).catch(function(){
-    err.textContent='Error de connexió. Inténtalo de nuevo.';
+    err.textContent='Error de connexió. Torna-ho a intentar.';
     isProcessing=false;btn.textContent='Inicia sessió i reserva';btn.disabled=false;
     showFallback();
   });
@@ -941,11 +941,11 @@ function showMfaStep(mfaToken){stepChange();
   bd.innerHTML=classBlockHtml()
     +'<div class="bk-login">'
     +'<p style="font-size:.85rem;color:var(--white60);text-align:center;margin-bottom:20px;line-height:1.5">Enter the 6-digit code from your authenticator app</p>'
-    +'<div class="bk-label">Código de verificación</div>'
-    +'<input class="bk-input" id="bk-mfa" aria-label="Código de verificación" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="000000" style="text-align:center;font-size:1.4rem;letter-spacing:.3em" />'
+    +'<div class="bk-label">Codi de verificació</div>'
+    +'<input class="bk-input" id="bk-mfa" aria-label="Codi de verificació" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="000000" style="text-align:center;font-size:1.4rem;letter-spacing:.3em" />'
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-mfa-btn" onclick="doMfaVerify()">Verificar y continuar</button>'
-    +'<div class="bk-link" onclick="showLoginStep()">\u2190 Back</div>'
+    +'<div class="bk-link" onclick="showLoginStep()">\u2190 Tornar</div>'
     +'</div>';
   document.getElementById('bk-mfa').focus();
   document.getElementById('bk-mfa').addEventListener('keydown',function(e){if(e.key==='Enter')doMfaVerify();});
@@ -956,7 +956,7 @@ window.doMfaVerify=function(){if(isProcessing)return;
   var code=document.getElementById('bk-mfa').value.trim();
   var err=document.getElementById('bk-err');
   var btn=document.getElementById('bk-mfa-btn');
-  if(!code||code.length<6){err.textContent='Introduce el código de 6 dígitos';return;}
+  if(!code||code.length<6){err.textContent='Introdueix el codi de 6 dígits';return;}
   err.textContent='';isProcessing=true;btn.textContent='Verificando...';btn.disabled=true;
 
   fetch(PROXY+'/sabda-api/mfa-verify',{
@@ -979,7 +979,7 @@ window.doMfaVerify=function(){if(isProcessing)return;
     if(d.hasUsableMembership&&d.suscripciones.length>0){showConfirmStep(d.suscripciones[0]);}
     else{showNoMembership();}
   }).catch(function(){
-    err.textContent='Error de connexió. Inténtalo de nuevo.';
+    err.textContent='Error de connexió. Torna-ho a intentar.';
     isProcessing=false;btn.textContent='Verificar y continuar';btn.disabled=false;
     showFallback();
   });
@@ -1036,7 +1036,7 @@ function customerFieldsHTML(){
     +'<input class="bk-input" id="bk-cc" type="text" aria-label="Prefijo de país" value="+34" style="width:68px;flex-shrink:0;text-align:center;font-weight:600" />'
     +'<input class="bk-input" id="bk-phone" type="tel" placeholder="612 345 678" style="flex:1"  aria-label="Número de teléfono"/>'
     +'</div>'
-    +'<div class="bk-label">Idioma preferido</div>'
+    +'<div class="bk-label">Idioma preferit</div>'
     +'<select class="bk-input" id="bk-lang" aria-label="Idioma preferido" style="appearance:auto;cursor:pointer">'
     +'<option value="">Seleccionar</option>'
     +'<option value="English">English</option>'
@@ -1122,14 +1122,14 @@ window.doBookWithMembership=function(){if(isProcessing)return;
   .then(function(r){
     if(r.ok&&r.data.success){showSuccess();}
     else{
-      var msg=(r.data&&(r.data.error||r.data.message))||'Error en reservar. Inténtalo de nuevo.';
+      var msg=(r.data&&(r.data.error||r.data.message))||'Error en reservar. Torna-ho a intentar.';
       if(document.getElementById('bk-err')) document.getElementById('bk-err').textContent=msg;
       showFallback();
       isProcessing=false;
       var b=document.getElementById('bk-confirm-btn');if(b){b.textContent='Confirmar reserva';b.disabled=false;}
     }
   }).catch(function(){
-    var e=document.getElementById('bk-err');if(e)e.textContent='Error de connexió. Inténtalo de nuevo.';
+    var e=document.getElementById('bk-err');if(e)e.textContent='Error de connexió. Torna-ho a intentar.';
     showFallback();
     isProcessing=false;var b=document.getElementById('bk-confirm-btn');if(b){b.textContent='Confirmar reserva';b.disabled=false;}
   });
@@ -1168,13 +1168,13 @@ function showNoMembership(){stepChange();
     +'<div><div style="font-weight:600">Immerse 3 Mesos</div><div style="font-size:.75rem;color:var(--white60)">110€/mes \u00B7 Classes il·limitades</div></div>'
     +'<div style="font-family:PT Serif,serif;font-weight:700">\u20AC330</div></div>'
     +'<div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--white38);font-weight:600;margin:0 0 10px">Packs de Clases</div>'
-    +'<div class="bk-pkg" onclick="selectPack(\'pack\',85,443937,\'5 Pack\',\'5 clases \u00B7 \u20AC17 each \u00B7 2 months\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
+    +'<div class="bk-pkg" onclick="selectPack(\'pack\',85,443937,\'5 Pack\',\'5 classes \u00B7 17€/classe \u00B7 2 mesos\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">5 Pack</div><div style="font-size:.75rem;color:var(--white60)">5 clases \u00B7 \u20AC17 each</div></div>'
     +'<div style="font-family:PT Serif,serif;font-weight:700">\u20AC85</div></div>'
     +'<div class="bk-pkg" onclick="selectPack(\'pack\',149,443939,\'10 Pack\',\'10 classes \u00B7 14,90€/classe \u00B7 3 mesos\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">10 Pack</div><div style="font-size:.75rem;color:var(--white60)">10 classes \u00B7 14,90€/classe</div></div>'
     +'<div style="font-family:PT Serif,serif;font-weight:700">\u20AC149</div></div>'
-    +'<div class="bk-pkg" onclick="selectPack(\'single\',22,445630,\'Drop-in\',\'1 class \u00B7 No commitment\')" style="display:flex;justify-content:space-between;align-items:center">'
+    +'<div class="bk-pkg" onclick="selectPack(\'single\',22,445630,\'Drop-in\',\'1 classe \u00B7 Sense compromís\')" style="display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">Drop-in</div><div style="font-size:.75rem;color:var(--white60)">One class, no commitment</div></div>'
     +'<div style="font-family:PT Serif,serif;font-weight:700">\u20AC22</div></div>'
     +'<div class="bk-link" onclick="closeMo()">\u2190 Volver al horario</div>'
@@ -1194,7 +1194,7 @@ window.applyPromo=function(type,origPrice,productId){
   var okEl=document.getElementById('bk-promo-ok');
   var errEl=document.getElementById('bk-promo-err');
   var btn=document.getElementById('bk-promo-btn');
-  if(!code){errEl.textContent='Introduce un código';errEl.style.display='block';okEl.style.display='none';return;}
+  if(!code){errEl.textContent='Introdueix un codi';errEl.style.display='block';okEl.style.display='none';return;}
   btn.textContent='...';btn.disabled=true;errEl.style.display='none';okEl.style.display='none';
 
   var body={code:code,hostId:54278,price:origPrice};
@@ -1209,7 +1209,7 @@ window.applyPromo=function(type,origPrice,productId){
   .then(function(r){
     btn.textContent='Aplicar';btn.disabled=false;
     if(!r.ok||r.data.error){
-      errEl.textContent=r.data.error||'Código promocional no válido';errEl.style.display='block';
+      errEl.textContent=r.data.error||'Codi promocional no vàlid';errEl.style.display='block';
       activePromo=null;discountedPrice=null;
       return;
     }
@@ -1228,7 +1228,7 @@ window.applyPromo=function(type,origPrice,productId){
         var payDiv=document.getElementById('bk-pay-divider');if(payDiv)payDiv.style.display='none';
         var payReqEl=document.getElementById('bk-pay-request');if(payReqEl)payReqEl.style.display='none';
       } else {
-        payBtn.textContent='Pagar \u20AC'+discountedPrice.toFixed(2)+' y reservar clase';
+        payBtn.textContent='Pagar \u20AC'+discountedPrice.toFixed(2)+' i reservar classe';
       }
     }
     document.getElementById('bk-promo-fields').style.display='none';
@@ -1236,7 +1236,7 @@ window.applyPromo=function(type,origPrice,productId){
     if(activePayReq){try{activePayReq.update({total:{label:'SABDA Studio'+(activePayName?' \u2014 '+activePayName:''),amount:Math.round(discountedPrice*100)}});}catch(e){}}
   }).catch(function(){
     btn.textContent='Aplicar';btn.disabled=false;
-    errEl.textContent='No se pudo validar el código. Inténtalo de nuevo.';errEl.style.display='block';
+    errEl.textContent='No s\'ha pogut validar el codi. Torna-ho a intentar.';errEl.style.display='block';
   });
 };
 
@@ -1248,7 +1248,7 @@ window.removePromo=function(origPrice){
   document.getElementById('bk-promo').value='';
   document.getElementById('bk-total').textContent='\u20AC'+origPrice;
   var payBtn=document.getElementById('bk-pay-btn');
-  if(payBtn) payBtn.textContent='Pagar \u20AC'+origPrice+' y reservar clase';
+  if(payBtn) payBtn.textContent='Pagar \u20AC'+origPrice+' i reservar classe';
   var cardWrap=document.getElementById('bk-card');if(cardWrap)cardWrap.parentElement.style.display='';
   var cardLabel=document.getElementById('bk-card-label');if(cardLabel)cardLabel.style.display='';
   if(activePayReq){try{activePayReq.update({total:{label:'SABDA Studio'+(activePayName?' \u2014 '+activePayName:''),amount:Math.round(origPrice*100)}});}catch(e){}}
@@ -1278,11 +1278,11 @@ window.showPayForm=function(type,price,productId,name,desc){stepChange();
     +customerFieldsHTML()
     +'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'
     +'<div id="bk-pay-divider" class="bk-divider" style="display:none">o paga con tarjeta</div>'
-    +'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Datos de la tarjeta</div>'
+    +'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Dades de la targeta</div>'
     +'<div class="bk-card-wrap" id="bk-card"></div>'
     +'<div class="bk-err" id="bk-err"></div>'
     +(curSession.id?'<label style="display:flex;align-items:center;gap:8px;margin:12px 0 16px;cursor:pointer;font-size:.78rem;color:var(--white60)"><input type="checkbox" id="bk-autoenroll" checked style="accent-color:var(--cyan);width:16px;height:16px;cursor:pointer"> Inscríbeme automáticamente en <strong style="color:var(--white)">'+esc(curSession.title)+'</strong></label>':'')
-    +'<button class="bk-primary" id="bk-pay-btn" onclick="doPayAndBook(\''+type+'\','+price+','+productId+')">Pagar \u20AC'+price+(type==='single'?' y reservar':' y reservar clase')+'</button>'
+    +'<button class="bk-primary" id="bk-pay-btn" onclick="doPayAndBook(\''+type+'\','+price+','+productId+')">Pagar \u20AC'+price+(type==='single'?' i reservar':' i reservar classe')+'</button>'
     +'<div class="bk-link" onclick="showNoMembership()">\u2190 Cambiar plan</div>'
     +'</div>';
 
@@ -1342,7 +1342,7 @@ window.showPayForm=function(type,price,productId,name,desc){stepChange();
         } else {
           ev.complete('fail');
           var errEl=document.getElementById('bk-err');
-          if(errEl) errEl.textContent=r.data.error||'Error en el pago.';
+          if(errEl) errEl.textContent=r.data.error||'Error en el pagament.';
           showFallback();isProcessing=false;
         }
       }).catch(function(){ev.complete('fail');isProcessing=false;});
@@ -1397,7 +1397,7 @@ window.doPayAndBook=function(type,price,productId){if(isProcessing)return;
   }}).then(function(result){
     if(result.error){
       err.textContent=result.error.message;showFallback();
-      isProcessing=false;btn.textContent='Pagar y reservar';btn.disabled=false;
+      isProcessing=false;btn.textContent='Pagar i reservar';btn.disabled=false;
       return;
     }
     return fetch(PROXY+'/sabda-api/pay',{
@@ -1417,17 +1417,17 @@ window.doPayAndBook=function(type,price,productId){if(isProcessing)return;
       if(r.data.success){showSuccess();}
       else if(r.data.clientSecret){
         return stripeInstance.confirmCardPayment(r.data.clientSecret).then(function(conf){
-          if(conf.error){err.textContent=conf.error.message;showFallback();isProcessing=false;btn.textContent='Pagar y reservar';btn.disabled=false;}
+          if(conf.error){err.textContent=conf.error.message;showFallback();isProcessing=false;btn.textContent='Pagar i reservar';btn.disabled=false;}
           else{showSuccess();}
         });
       } else {
-        err.textContent=r.data.error||'Error en el pago. Inténtalo de nuevo.';showFallback();
-        isProcessing=false;btn.textContent='Pagar y reservar';btn.disabled=false;
+        err.textContent=r.data.error||'Error en el pagament. Torna-ho a intentar.';showFallback();
+        isProcessing=false;btn.textContent='Pagar i reservar';btn.disabled=false;
       }
     });
   }).catch(function(){
-    err.textContent='Error de connexió. Inténtalo de nuevo.';
-    isProcessing=false;btn.textContent='Pagar y reservar';btn.disabled=false;showFallback();
+    err.textContent='Error de connexió. Torna-ho a intentar.';
+    isProcessing=false;btn.textContent='Pagar i reservar';btn.disabled=false;showFallback();
   });
 };
 
@@ -1514,14 +1514,14 @@ init();
 var PACK_MAP={
   '443934':{type:'pack',price:18,id:443934,name:'Clase de Prueba',desc:'1 class \u00B7 Solo para nuevos estudiantes'},
   '443935':{type:'pack',price:50,id:443935,name:'Pack Intro 3 Classes',desc:'3 clases \u00B7 \u20AC16.67 each \u00B7 30 days'},
-  '443641':{type:'pack',price:50,id:443641,name:'Semana Residentes BCN',desc:'Ilimitado \u00B7 7 días \u00B7 Justificante de residencia requerido'},
+  '443641':{type:'pack',price:50,id:443641,name:'Semana Residentes BCN',desc:'Il·limitat \u00B7 7 dies \u00B7 Justificant de residència requerit'},
   '431216':{type:'membership',price:130,id:431216,name:'Immerse',desc:'Classes il·limitades \u00B7 Cancel·la quan vulguis'},
   '445600':{type:'membership',price:330,id:445600,name:'Immerse 3 Mesos',desc:'Classes il·limitades \u00B7 3 mesos de compromís'},
   '709976':{type:'membership',price:109,id:709976,name:'Ritual',desc:'8 classes/mes \u00B7 Cancel·la quan vulguis'},
   '706876':{type:'membership',price:99,id:706876,name:'Flex',desc:'4 classes/mes \u00B7 Cancel·la quan vulguis'},
-  '443937':{type:'pack',price:85,id:443937,name:'5 Pack',desc:'5 clases \u00B7 \u20AC17 each \u00B7 2 months'},
+  '443937':{type:'pack',price:85,id:443937,name:'5 Pack',desc:'5 classes \u00B7 17€/classe \u00B7 2 mesos'},
   '443939':{type:'pack',price:149,id:443939,name:'10 Pack',desc:'10 classes \u00B7 14,90€/classe \u00B7 3 mesos'},
-  '445630':{type:'single',price:22,id:445630,name:'Drop-in',desc:'1 class \u00B7 No commitment'}
+  '445630':{type:'single',price:22,id:445630,name:'Drop-in',desc:'1 classe \u00B7 Sense compromís'}
 };
 (function checkUrlPack(){
   var params=new URLSearchParams(window.location.search);
