@@ -255,7 +255,7 @@ select.bk-input{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http:/
     <div class="mo-head">
       <button class="mo-back" id="mo-back" type="button" aria-label="Volver al paso anterior" onclick="goBack()"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>Atrás</button>
       <div class="mo-head-t"><div class="mo-t" id="mo-t">Reservar Clase</div><div class="mo-c" id="mo-c"></div></div>
-      <button class="mo-x" id="mo-x" type="button" aria-label="Close booking" onclick="closeMo()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Close</button>
+      <button class="mo-x" id="mo-x" type="button" aria-label="Cerrar reserva" onclick="closeMo()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Cerrar</button>
     </div>
     <div class="mo-bd" id="mo-bd"></div>
     <div class="mo-ft"><div class="mo-sec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Reserva segura vía SABDA</div></div>
@@ -604,7 +604,7 @@ function showGuestStep(){stepChange();
     +'<input class="bk-input" id="bk-email" type="email" inputmode="email" autocomplete="email" placeholder="tu@email.com" aria-label="Dirección de email" />'
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">Continuar</button>'
-    +'<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.12);border-radius:8px;padding:12px;margin-top:16px;font-size:.75rem;color:var(--white60);line-height:1.5;text-align:center">Booked with us before? <span onclick="showLoginStep()" style="color:var(--cyan);cursor:pointer;text-decoration:underline">Log in instead</span> to keep your history and credits together.</div>'
+    +'<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.12);border-radius:8px;padding:12px;margin-top:16px;font-size:.75rem;color:var(--white60);line-height:1.5;text-align:center">¿Ya has reservado antes con nosotros? <span onclick="showLoginStep()" style="color:var(--cyan);cursor:pointer;text-decoration:underline">Inicia sesión</span> para mantener tu historial y créditos juntos.</div>'
     +'<div class="bk-link" onclick="showLoginStep()">¿Ya tienes cuenta? Inicia sesión</div>'
     +'</div>';
   document.getElementById('bk-fn').focus();

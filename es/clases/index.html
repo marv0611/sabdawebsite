@@ -394,7 +394,7 @@ select.bk-input option{background:var(--navy-light);color:var(--white)}
       <a href="https://www.tiktok.com/@sabda_studio" target="_blank" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0 1 13.8 3h-3v12.4a2.6 2.6 0 0 1-2.6 2.6 2.6 2.6 0 0 1-2.6-2.6A2.6 2.6 0 0 1 8.2 12.8c.28 0 .56.04.82.12V9.84A5.6 5.6 0 0 0 2.6 15.4a5.6 5.6 0 0 0 5.6 5.6 5.6 5.6 0 0 0 5.6-5.6V9.72a7.3 7.3 0 0 0 4.2 1.32V8.02a4.28 4.28 0 0 1-1.4-2.2z"/></svg></a>
     </div>
     <div class="nav-login">
-      <a href="https://momence.com/sign-in" target="_blank"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Log In</a>
+      <a href="https://momence.com/sign-in" target="_blank"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Iniciar sesión</a>
     </div>
   </div>
 <button class="nav-ham" onclick="document.getElementById('mobMenu').classList.add('open')" aria-label="Menú"><span></span><span></span><span></span></button></nav>
@@ -863,8 +863,8 @@ function showLoginStep(){stepChange();
     +'<input class="bk-input" id="bk-pass" type="password" aria-label="Contraseña" placeholder="Contraseña" />'
     +'<div style="text-align:right;margin:-10px 0 12px"><a href="https://momence.com/forgot-password" target="_blank" style="font-size:.75rem;color:var(--white38);text-decoration:none;border-bottom:1px solid var(--white12)">¿Olvidaste tu contraseña?</a></div>'
     +'<div class="bk-err" id="bk-err"></div>'
-    +'<button class="bk-primary" id="bk-login-btn" onclick="doLogin()">Log in & Book</button>'
-    +'<div class="bk-link" onclick="showGuestStep()">New here? Book as guest</div>'
+    +'<button class="bk-primary" id="bk-login-btn" onclick="doLogin()">Iniciar sesión y reservar</button>'
+    +'<div class="bk-link" onclick="showGuestStep()">¿Primera vez? Reserva como invitado</div>'
     +'</div>';
   document.getElementById('bk-email').focus();
   document.getElementById('bk-pass').addEventListener('keydown',function(e){if(e.key==='Enter')doLogin();});
@@ -904,7 +904,7 @@ window.doLogin=function(){if(isProcessing)return;
   if(!email||!validateEmail(email)){emailEl.classList.add('bk-field-err');ok=false;}
   if(!pass){passEl.classList.add('bk-field-err');ok=false;}
   if(!ok){err.textContent='Rellena los campos resaltados';return;}
-  err.textContent='';isProcessing=true;btn.textContent='Signing in...';btn.disabled=true;
+  err.textContent='';isProcessing=true;btn.textContent='Iniciando sesión...';btn.disabled=true;
 
   fetch(PROXY+'/sabda-api/login',{
     method:'POST',
@@ -914,7 +914,7 @@ window.doLogin=function(){if(isProcessing)return;
   .then(function(r){
     if(!r.ok||r.data.error){
       err.innerHTML='Email o contraseña incorrectos. <a href="'+curSession.link+'" target="_blank" style="color:var(--cyan);text-decoration:underline">Reservar en Momence \u2192</a>';
-      isProcessing=false;btn.textContent='Log in & Book';btn.disabled=false;
+      isProcessing=false;btn.textContent='Iniciar sesión y reservar';btn.disabled=false;
       return;
     }
     if(r.data.mfaRequired){showMfaStep(r.data.mfaToken);return;}
@@ -928,7 +928,7 @@ window.doLogin=function(){if(isProcessing)return;
     else{showNoMembership();}
   }).catch(function(){
     err.textContent='Error de conexión. Inténtalo de nuevo.';
-    isProcessing=false;btn.textContent='Log in & Book';btn.disabled=false;
+    isProcessing=false;btn.textContent='Iniciar sesión y reservar';btn.disabled=false;
     showFallback();
   });
 };
@@ -1014,11 +1014,11 @@ window.doGuestCheck=function(){
       bd.innerHTML=classBlockHtml()
         +'<div class="bk-confirm" style="text-align:center">'
         +'<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.15);border-radius:10px;padding:20px;margin-bottom:20px">'
-        +'<div style="font-size:.9rem;font-weight:600;color:var(--salmon);margin-bottom:6px">Account found</div>'
+        +'<div style="font-size:.9rem;font-weight:600;color:var(--salmon);margin-bottom:6px">Cuenta encontrada</div>'
         +'<div style="font-size:.82rem;color:var(--white60);line-height:1.5">Este email ya está registrado. Inicia sesión para mantener tu historial de reservas y créditos juntos.</div>'
         +'</div>'
-        +'<button class="bk-primary" onclick="showLoginStep()">Log in</button>'
-        +'<div class="bk-link" style="margin-top:12px"><a href="https://momence.com/forgot-password" target="_blank" style="color:var(--white38);font-size:.78rem;text-decoration:underline">Forgot your password?</a></div>'
+        +'<button class="bk-primary" onclick="showLoginStep()">Iniciar sesión</button>'
+        +'<div class="bk-link" style="margin-top:12px"><a href="https://momence.com/forgot-password" target="_blank" style="color:var(--white38);font-size:.78rem;text-decoration:underline">¿Olvidaste tu contraseña?</a></div>'
         +'</div>';
     } else {
       showNoMembership();
