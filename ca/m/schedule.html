@@ -233,7 +233,7 @@ select.bk-input{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http:/
 
 <header class="hdr">
   <a href="index.html" class="hdr-logo-link"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA" style="height:18px;width:auto;opacity:.9;display:block"></a>
-  <button onclick="document.querySelector('.day-btn.active').scrollIntoView({behavior:'smooth'})" class="hdr-pill touch" style="border:none;cursor:pointer">Reservar Clase</button>
+  <button onclick="document.querySelector('.day-btn.active').scrollIntoView({behavior:'smooth'})" class="hdr-pill touch" style="border:none;cursor:pointer">Reservar Classe</button>
 </header>
 
 <!-- DAYS -->
@@ -255,7 +255,7 @@ select.bk-input{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http:/
   <div class="mo-box">
     <div class="mo-head">
       <button class="mo-back" id="mo-back" type="button" aria-label="Volver al paso anterior" onclick="goBack()"><svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>Atrás</button>
-      <div class="mo-head-t"><div class="mo-t" id="mo-t">Reservar Clase</div><div class="mo-c" id="mo-c"></div></div>
+      <div class="mo-head-t"><div class="mo-t" id="mo-t">Reservar Classe</div><div class="mo-c" id="mo-c"></div></div>
       <button class="mo-x" id="mo-x" type="button" aria-label="Cerrar reserva" onclick="closeMo()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Cerrar</button>
     </div>
     <div class="mo-bd" id="mo-bd"></div>
@@ -422,7 +422,7 @@ function showFallback(){
   if(!curSession||!curSession.link) return;
   var err=document.getElementById('bk-err');
   if(err&&err.textContent){
-    err.innerHTML=err.textContent+'<br><a href="'+curSession.link+'" target="_blank">Reservar en Momence →</a>';
+    err.innerHTML=err.textContent+'<br><a href="'+curSession.link+'" target="_blank">Reservar a Momence →</a>';
   }
 }
 
@@ -443,7 +443,7 @@ function showError(msg, opts){
 
   // Append fallback link if requested
   if(opts.fallback!==false && curSession && curSession.link){
-    err.innerHTML=err.innerHTML+'<br><a href="'+curSession.link+'" target="_blank">Reservar en Momence →</a>';
+    err.innerHTML=err.innerHTML+'<br><a href="'+curSession.link+'" target="_blank">Reservar a Momence →</a>';
   }
 
   // Show recovery panel for rate limit
@@ -458,7 +458,7 @@ function showError(msg, opts){
     rec.classList.add('show');
     rec.innerHTML='<strong>No se pudo procesar la tarjeta</strong>'
       +'Puede haber un problema de configuración con el procesador de pagos. Reserva directamente en Momence — el enlace funciona.'
-      +(curSession&&curSession.link?'<button onclick="window.open(\''+curSession.link+'\',\'_blank\')">Reservar en Momence</button>':'');
+      +(curSession&&curSession.link?'<button onclick="window.open(\''+curSession.link+'\',\'_blank\')">Reservar a Momence</button>':'');
   }
 
   try{console.log('[SABDA] showError:',msg,'rateLimit=',isRateLimit,'pmErr=',isPaymentMethodErr);}catch(e){}
@@ -576,7 +576,7 @@ function showLoginStep(){stepChange();
     +'<input class="bk-input" id="bk-pass" type="password" autocomplete="current-password" placeholder="Contraseña" aria-label="Contraseña" />'
     +'<div style="text-align:right;margin:-10px 0 12px"><a href="https://momence.com/forgot-password" target="_blank" style="font-size:.75rem;color:var(--white38);text-decoration:none;border-bottom:1px solid var(--white12)">¿Olvidaste tu contraseña?</a></div>'
     +'<div class="bk-err" id="bk-err"></div>'
-    +'<button class="bk-primary" id="bk-login-btn" onclick="doLogin()">Iniciar sesión y reservar</button>'
+    +'<button class="bk-primary" id="bk-login-btn" onclick="doLogin()">Inicia sessió i reserva</button>'
     +'<div class="bk-link" onclick="showGuestStep()">¿Nueva aquí? Reservar como invitada</div>'
     +'</div>';
   document.getElementById('bk-email').focus();
@@ -632,8 +632,8 @@ function doLogin(){if(isProcessing)return;
   }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
   .then(function(r){
     if(!r.ok||r.data.error){
-      err.innerHTML='Email o contraseña incorrectos. <a href="'+curSession.link+'" target="_blank" style="color:var(--cyan);text-decoration:underline">Reservar en Momence →</a>';
-      isProcessing=false;btn.textContent='Iniciar sesión y reservar';btn.disabled=false;
+      err.innerHTML='Correu o contrasenya incorrectes. <a href="'+curSession.link+'" target="_blank" style="color:var(--cyan);text-decoration:underline">Reservar a Momence →</a>';
+      isProcessing=false;btn.textContent='Inicia sessió i reserva';btn.disabled=false;
       return;
     }
     // MFA required — show code input
@@ -659,8 +659,8 @@ function doLogin(){if(isProcessing)return;
       showNoMembership();
     }
   }).catch(function(){
-    err.textContent='Error de conexión. Inténtalo de nuevo.';
-    isProcessing=false;btn.textContent='Iniciar sesión y reservar';btn.disabled=false;
+    err.textContent='Error de connexió. Inténtalo de nuevo.';
+    isProcessing=false;btn.textContent='Inicia sessió i reserva';btn.disabled=false;
     showFallback();
   });
 }
@@ -725,7 +725,7 @@ function doMfaVerify(){if(isProcessing)return;
       showNoMembership();
     }
   }).catch(function(){
-    err.textContent='Error de conexión. Inténtalo de nuevo.';
+    err.textContent='Error de connexió. Inténtalo de nuevo.';
     isProcessing=false;btn.textContent='Verificar y continuar';btn.disabled=false;
     showFallback();
   });
@@ -771,7 +771,7 @@ function doGuestCheck(){
         +'<div style="font-size:.9rem;font-weight:600;color:var(--salmon);margin-bottom:6px">Cuenta encontrada</div>'
         +'<div style="font-size:.82rem;color:var(--white60);line-height:1.5">Este email ya está registrado. Inicia sesión para mantener tu historial de reservas y créditos juntos.</div>'
         +'</div>'
-        +'<button class="bk-primary" onclick="showLoginStep()">Iniciar sesión</button>'
+        +'<button class="bk-primary" onclick="showLoginStep()">Inicia sessió</button>'
         +'<div class="bk-link" style="margin-top:12px"><a href="https://momence.com/forgot-password" target="_blank" style="color:var(--white38);font-size:.78rem;text-decoration:underline">¿Has olvidado tu contraseña?</a></div>'
         +'</div>';
     } else {
@@ -903,7 +903,7 @@ function doBookWithMembership(){if(isProcessing)return;
       var b=document.getElementById('bk-confirm-btn');if(b){b.textContent='Confirmar reserva';b.disabled=false;}
     }
   }).catch(function(){
-    var e=document.getElementById('bk-err');if(e)e.textContent='Error de conexión. Inténtalo de nuevo.';
+    var e=document.getElementById('bk-err');if(e)e.textContent='Error de connexió. Inténtalo de nuevo.';
     showFallback();
     isProcessing=false;var b=document.getElementById('bk-confirm-btn');if(b){b.textContent='Confirmar reserva';b.disabled=false;}
   });
@@ -1031,11 +1031,11 @@ function showNoMembership(){stepChange();
     +'</div></div>'
     +'<div class="bk-confirm">'
     +'<div class="bk-user">Reservando como <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>'
-    +'<p style="font-size:.85rem;color:var(--white60);text-align:center;margin-bottom:18px;line-height:1.5">Elige cómo quieres reservar esta clase</p>'
+    +'<p style="font-size:.85rem;color:var(--white60);text-align:center;margin-bottom:18px;line-height:1.5">Tria com vols reservar aquesta classe</p>'
     // Intro offers first
     +'<div class="bk-pkg-grp" style="color:var(--cyan)">¿Nueva en SABDA?</div>'
     +row('feat','pack',50,443935,'Pack Intro 3 Classes','3 classes, vàlid 30 dies','50€')
-    +row('','pack',18,443934,'Clase de prueba','Solo primera vez','18€')
+    +row('','pack',18,443934,'Classe de prova','Solo primera vez','18€')
     // Memberships
     +'<div class="bk-pkg-grp" style="color:var(--salmon)">Membresías</div>'
     +row('','membership',130,431216,'Immerse','Classes il·limitades, cancel·la quan vulguis','130€<small>/mes</small>')
@@ -1302,7 +1302,7 @@ function doPayAndBook(type,price,productId){if(isProcessing)return;
     .then(function(r){
       if(r.data.success){showSuccess();}
       else{showError(r.data.error||'No se ha podido completar la reserva.');resetBtn();}
-    }).catch(function(){showError('Error de conexión.');resetBtn();});
+    }).catch(function(){showError('Error de connexió.');resetBtn();});
     return;
   }
 
@@ -1360,7 +1360,7 @@ function doPayAndBook(type,price,productId){if(isProcessing)return;
     });
   }).catch(function(e){
     try{console.error('[SABDA] doPayAndBook caught error:',e);}catch(e2){}
-    showError('Error de conexión. Inténtalo de nuevo.');
+    showError('Error de connexió. Inténtalo de nuevo.');
     resetBtn();
   });
 }
@@ -1407,7 +1407,7 @@ async function init(){
 
 // ── PACKAGE PURCHASE MODE — opens modal directly without class selection ──
 var PACKAGES = {
-  '443934': {name:'Clase de prueba', price:18, type:'pack', desc:'1 clase · Solo primera vez'},
+  '443934': {name:'Classe de prova', price:18, type:'pack', desc:'1 clase · Solo primera vez'},
   '445630': {name:'Clase suelta', price:22, type:'pack', desc:'1 clase · Cualquier momento'},
   '443935': {name:'Pack Intro 3 Classes', price:50, type:'pack', desc:'3 classes · 16,67€ cada una · 30 dies'},
   '443641': {name:'Semana Residente BCN', price:50, type:'pack', desc:'Ilimitado · 7 días · Necesaria prueba de residencia'},
@@ -1416,7 +1416,7 @@ var PACKAGES = {
   '706876': {name:'Flex', price:99, type:'membership', desc:'4 classes al mes · Cancel·la quan vulguis'},
   '709976': {name:'Ritual', price:109, type:'membership', desc:'8 classes al mes · Cancel·la quan vulguis'},
   '431216': {name:'Immerse', price:130, type:'membership', desc:'Classes il·limitades · Cancel·la quan vulguis'},
-  '445600': {name:'Immerse 3 Mesos', price:330, type:'membership', desc:'110€/mes · Ilimitado · Compromiso de 3 meses'}
+  '445600': {name:'Immerse 3 Mesos', price:330, type:'membership', desc:'110€/mes · Ilimitado · Compromiso de 3 mesos'}
 };
 
 function openPackagePurchase(productId) {
