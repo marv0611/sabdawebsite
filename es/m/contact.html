@@ -213,7 +213,7 @@ function handleMobileContact(e){
   var err=document.getElementById('mc-err');
   err.textContent='';
   btn.disabled=true;
-  btn.innerHTML='Sending...';
+  btn.innerHTML='Enviando...';
   var data=new FormData(f);
   var payload={
     name:data.get('name'),
@@ -233,12 +233,12 @@ function handleMobileContact(e){
       window.scrollTo({top:0,behavior:'smooth'});
     } else {
       btn.disabled=false;
-      btn.innerHTML='Send Message <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>';
+      btn.innerHTML='Enviar mensaje <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>';
       err.textContent='Algo salió mal. Escribe a info@sabdastudio.com directly.';
     }
   }).catch(function(){
     btn.disabled=false;
-    btn.innerHTML='Send Message <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>';
+    btn.innerHTML='Enviar mensaje <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>';
     err.textContent='Error de conexión. Escribe directamente a info@sabdastudio.com.';
   });
   return false;

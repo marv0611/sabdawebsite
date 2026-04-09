@@ -956,7 +956,7 @@ window.doMfaVerify=function(){if(isProcessing)return;
   var err=document.getElementById('bk-err');
   var btn=document.getElementById('bk-mfa-btn');
   if(!code||code.length<6){err.textContent='Introduce el código de 6 dígitos';return;}
-  err.textContent='';isProcessing=true;btn.textContent='Verifying...';btn.disabled=true;
+  err.textContent='';isProcessing=true;btn.textContent='Verificando...';btn.disabled=true;
 
   fetch(PROXY+'/sabda-api/mfa-verify',{
     method:'POST',
@@ -1080,7 +1080,7 @@ function showConfirmStep(membership){stepChange();
 
   bd.innerHTML=classBlockHtml()
     +'<div class="bk-confirm">'
-    +'<div class="bk-user">Booking as <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>'
+    +'<div class="bk-user">Reservando como <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>'
     +'<div class="bk-membership">'
     +'<div class="bk-membership-name">'+mName+'</div>'
     +'<div class="bk-membership-detail">'+detail+'</div>'
@@ -1098,7 +1098,7 @@ window.doBookWithMembership=function(){if(isProcessing)return;
   var err=document.getElementById('bk-err');
   var vErr=validateCustomerFields();
   if(vErr){err.textContent=vErr;return;}
-  isProcessing=true;btn.textContent='Booking...';btn.disabled=true;err.textContent='';
+  isProcessing=true;btn.textContent='Reservando...';btn.disabled=true;err.textContent='';
 
   var m=curMembership||{};
   var cf=getCustomerFields();
@@ -1140,7 +1140,7 @@ function showNoMembership(){stepChange();
   // If user already picked a pack and just finished login/guest → go straight to payment
   if(pendingPack&&curUser){var p=pendingPack;pendingPack=null;showPayForm(p.type,p.price,p.id,p.name,p.desc);return;}
   var bd=document.getElementById('mo-bd');
-  var userLine=curUser?'<div class="bk-user">Booking as <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>':'';
+  var userLine=curUser?'<div class="bk-user">Reservando como <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>':'';
 
   bd.innerHTML=classBlockHtml()
     +'<div class="bk-confirm">'
@@ -1193,7 +1193,7 @@ window.applyPromo=function(type,origPrice,productId){
   var okEl=document.getElementById('bk-promo-ok');
   var errEl=document.getElementById('bk-promo-err');
   var btn=document.getElementById('bk-promo-btn');
-  if(!code){errEl.textContent='Enter a code';errEl.style.display='block';okEl.style.display='none';return;}
+  if(!code){errEl.textContent='Introduce un código';errEl.style.display='block';okEl.style.display='none';return;}
   btn.textContent='...';btn.disabled=true;errEl.style.display='none';okEl.style.display='none';
 
   var body={code:code,hostId:54278,price:origPrice};
@@ -1206,7 +1206,7 @@ window.applyPromo=function(type,origPrice,productId){
     body:JSON.stringify(body)
   }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
   .then(function(r){
-    btn.textContent='Apply';btn.disabled=false;
+    btn.textContent='Aplicar';btn.disabled=false;
     if(!r.ok||r.data.error){
       errEl.textContent=r.data.error||'Invalid promo code';errEl.style.display='block';
       activePromo=null;discountedPrice=null;
@@ -1227,14 +1227,14 @@ window.applyPromo=function(type,origPrice,productId){
         var payDiv=document.getElementById('bk-pay-divider');if(payDiv)payDiv.style.display='none';
         var payReqEl=document.getElementById('bk-pay-request');if(payReqEl)payReqEl.style.display='none';
       } else {
-        payBtn.textContent='Pay \u20AC'+discountedPrice.toFixed(2)+' & Book Class';
+        payBtn.textContent='Pagar \u20AC'+discountedPrice.toFixed(2)+' y reservar clase';
       }
     }
     document.getElementById('bk-promo-fields').style.display='none';
     document.getElementById('bk-promo-toggle').style.display='none';
     if(activePayReq){try{activePayReq.update({total:{label:'SABDA Studio'+(activePayName?' \u2014 '+activePayName:''),amount:Math.round(discountedPrice*100)}});}catch(e){}}
   }).catch(function(){
-    btn.textContent='Apply';btn.disabled=false;
+    btn.textContent='Aplicar';btn.disabled=false;
     errEl.textContent='No se pudo validar el código. Inténtalo de nuevo.';errEl.style.display='block';
   });
 };
@@ -1247,7 +1247,7 @@ window.removePromo=function(origPrice){
   document.getElementById('bk-promo').value='';
   document.getElementById('bk-total').textContent='\u20AC'+origPrice;
   var payBtn=document.getElementById('bk-pay-btn');
-  if(payBtn) payBtn.textContent='Pay \u20AC'+origPrice+' & Book Class';
+  if(payBtn) payBtn.textContent='Pagar \u20AC'+origPrice+' y reservar clase';
   var cardWrap=document.getElementById('bk-card');if(cardWrap)cardWrap.parentElement.style.display='';
   var cardLabel=document.getElementById('bk-card-label');if(cardLabel)cardLabel.style.display='';
   if(activePayReq){try{activePayReq.update({total:{label:'SABDA Studio'+(activePayName?' \u2014 '+activePayName:''),amount:Math.round(origPrice*100)}});}catch(e){}}
@@ -1258,36 +1258,36 @@ window.showPayForm=function(type,price,productId,name,desc){stepChange();
   var bd=document.getElementById('mo-bd');
   bd.innerHTML=classBlockHtml()
     +'<div class="bk-confirm">'
-    +'<div class="bk-user">Booking as <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>'
+    +'<div class="bk-user">Reservando como <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>'
     +'<div class="bk-membership">'
     +'<div class="bk-membership-name">'+name+'</div>'
-    +'<div class="bk-membership-detail">'+desc+(type==='membership'&&price<200?' \u00B7 Billed monthly':'')+'</div>'
+    +'<div class="bk-membership-detail">'+desc+(type==='membership'&&price<200?' \u00B7 Facturación mensual':'')+'</div>'
     +'</div>'
     +'<div class="bk-pay-total" id="bk-total">\u20AC'+price+'</div>'
-    +'<div class="bk-pay-desc" id="bk-pay-desc">'+(type==='membership'&&price<200?'First month, renews monthly':type==='membership'?'Billed once':'One-time payment')+'</div>'
+    +'<div class="bk-pay-desc" id="bk-pay-desc">'+(type==='membership'&&price<200?'Primer mes, se renueva cada mes':type==='membership'?'Cobro único':'Pago único')+'</div>'
     +'<div id="bk-promo-wrap" style="margin-bottom:16px">'
-    +'<div class="bk-link" id="bk-promo-toggle" onclick="document.getElementById(\'bk-promo-fields\').style.display=\'flex\';this.style.display=\'none\'" style="margin:0;font-size:.8rem;text-align:left;color:var(--cyan)">Apply promo code \u2192</div>'
+    +'<div class="bk-link" id="bk-promo-toggle" onclick="document.getElementById(\'bk-promo-fields\').style.display=\'flex\';this.style.display=\'none\'" style="margin:0;font-size:.8rem;text-align:left;color:var(--cyan)">Añadir código promocional \u2192</div>'
     +'<div id="bk-promo-fields" style="display:none;gap:8px;align-items:flex-start">'
-    +'<input class="bk-input" id="bk-promo" type="text" placeholder="Code" style="flex:1;margin-bottom:0;text-transform:uppercase"  aria-label="Promo code"/>'
-    +'<button class="bk-primary" id="bk-promo-btn" onclick="applyPromo(\''+type+'\','+price+','+productId+')" style="width:auto;padding:12px 20px;flex-shrink:0;font-size:.8rem">Apply</button>'
+    +'<input class="bk-input" id="bk-promo" type="text" placeholder="Código" style="flex:1;margin-bottom:0;text-transform:uppercase"  aria-label="Código promocional"/>'
+    +'<button class="bk-primary" id="bk-promo-btn" onclick="applyPromo(\''+type+'\','+price+','+productId+')" style="width:auto;padding:12px 20px;flex-shrink:0;font-size:.8rem">Aplicar</button>'
     +'</div>'
     +'<div id="bk-promo-ok" style="display:none;font-size:.78rem;color:var(--cyan);margin-top:6px"></div>'
     +'<div id="bk-promo-err" style="display:none;font-size:.78rem;color:var(--salmon);margin-top:6px"></div>'
     +'</div>'
     +customerFieldsHTML()
     +'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'
-    +'<div id="bk-pay-divider" class="bk-divider" style="display:none">or pay with card</div>'
-    +'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Card Details</div>'
+    +'<div id="bk-pay-divider" class="bk-divider" style="display:none">o paga con tarjeta</div>'
+    +'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Datos de la tarjeta</div>'
     +'<div class="bk-card-wrap" id="bk-card"></div>'
     +'<div class="bk-err" id="bk-err"></div>'
-    +(curSession.id?'<label style="display:flex;align-items:center;gap:8px;margin:12px 0 16px;cursor:pointer;font-size:.78rem;color:var(--white60)"><input type="checkbox" id="bk-autoenroll" checked style="accent-color:var(--cyan);width:16px;height:16px;cursor:pointer"> Auto-enroll me in <strong style="color:var(--white)">'+esc(curSession.title)+'</strong></label>':'')
-    +'<button class="bk-primary" id="bk-pay-btn" onclick="doPayAndBook(\''+type+'\','+price+','+productId+')">Pay \u20AC'+price+(type==='single'?' & Book':' & Book Class')+'</button>'
-    +'<div class="bk-link" onclick="showNoMembership()">\u2190 Change plan</div>'
+    +(curSession.id?'<label style="display:flex;align-items:center;gap:8px;margin:12px 0 16px;cursor:pointer;font-size:.78rem;color:var(--white60)"><input type="checkbox" id="bk-autoenroll" checked style="accent-color:var(--cyan);width:16px;height:16px;cursor:pointer"> Inscríbeme automáticamente en <strong style="color:var(--white)">'+esc(curSession.title)+'</strong></label>':'')
+    +'<button class="bk-primary" id="bk-pay-btn" onclick="doPayAndBook(\''+type+'\','+price+','+productId+')">Pagar \u20AC'+price+(type==='single'?' y reservar':' y reservar clase')+'</button>'
+    +'<div class="bk-link" onclick="showNoMembership()">\u2190 Cambiar plan</div>'
     +'</div>';
 
   if(cardElement){try{cardElement.destroy();}catch(e){}cardElement=null;}
   if(typeof Stripe==='undefined'){
-    document.getElementById('bk-err').textContent='Payment form could not load. Please disable ad blockers and refresh.';
+    document.getElementById('bk-err').textContent='No se pudo cargar el formulario de pago. Desactiva los bloqueadores de anuncios y recarga la página.';
     return;
   }
   if(!stripeInstance){
@@ -1364,7 +1364,7 @@ window.doPayAndBook=function(type,price,productId){if(isProcessing)return;
   var err=document.getElementById('bk-err');
   var vErr=validateCustomerFields();
   if(vErr){err.textContent=vErr;return;}
-  isProcessing=true;btn.textContent='Processing...';btn.disabled=true;err.textContent='';
+  isProcessing=true;btn.textContent='Procesando...';btn.disabled=true;err.textContent='';
 
   var cf=getCustomerFields();
   var finalPrice=(discountedPrice!==null)?discountedPrice:price;
@@ -1396,7 +1396,7 @@ window.doPayAndBook=function(type,price,productId){if(isProcessing)return;
   }}).then(function(result){
     if(result.error){
       err.textContent=result.error.message;showFallback();
-      isProcessing=false;btn.textContent='Pay & Book';btn.disabled=false;
+      isProcessing=false;btn.textContent='Pagar y reservar';btn.disabled=false;
       return;
     }
     return fetch(PROXY+'/sabda-api/pay',{
@@ -1416,17 +1416,17 @@ window.doPayAndBook=function(type,price,productId){if(isProcessing)return;
       if(r.data.success){showSuccess();}
       else if(r.data.clientSecret){
         return stripeInstance.confirmCardPayment(r.data.clientSecret).then(function(conf){
-          if(conf.error){err.textContent=conf.error.message;showFallback();isProcessing=false;btn.textContent='Pay & Book';btn.disabled=false;}
+          if(conf.error){err.textContent=conf.error.message;showFallback();isProcessing=false;btn.textContent='Pagar y reservar';btn.disabled=false;}
           else{showSuccess();}
         });
       } else {
         err.textContent=r.data.error||'Error en el pago. Inténtalo de nuevo.';showFallback();
-        isProcessing=false;btn.textContent='Pay & Book';btn.disabled=false;
+        isProcessing=false;btn.textContent='Pagar y reservar';btn.disabled=false;
       }
     });
   }).catch(function(){
     err.textContent='Error de conexión. Inténtalo de nuevo.';
-    isProcessing=false;btn.textContent='Pay & Book';btn.disabled=false;showFallback();
+    isProcessing=false;btn.textContent='Pagar y reservar';btn.disabled=false;showFallback();
   });
 };
 
@@ -1442,7 +1442,7 @@ function showSuccess(){stepChange();
     +'<h3>¡Reserva confirmada!</h3>'
     +'<p>'+esc(curSession.title)+'<br>'+curSession.time+(curSession.teacher?' with '+esc(curSession.teacher):'')+'</p>'
     +'<p style="margin-top:16px;font-size:.78rem;color:var(--white38)">Revisa tu correo para la confirmación. Nos vemos en la esterilla.</p>'
-    +'<button class="bk-primary" style="margin-top:20px" onclick="closeMo()">Done</button>'
+    +'<button class="bk-primary" style="margin-top:20px" onclick="closeMo()">Hecho</button>'
     +'</div>';
   isProcessing=false;
 }

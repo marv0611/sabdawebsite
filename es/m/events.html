@@ -308,7 +308,7 @@ function handleEventInquiry(e){
   var err=document.getElementById('iq-err');
   err.textContent='';
   btn.disabled=true;
-  btn.innerHTML='Sending...';
+  btn.innerHTML='Enviando...';
   var data=new FormData(f);
   var msg='Company: '+(data.get('company')||'N/A')+'\nEvent Type: '+data.get('event_type')+'\nGuests: '+(data.get('guests')||'TBD')+'\nDate: '+(data.get('date')||'Flexible')+'\n\n'+(data.get('message')||'');
   var payload={name:data.get('name'),email:data.get('email'),phone:'',topic:'events',message:msg};
@@ -321,12 +321,12 @@ function handleEventInquiry(e){
       document.getElementById('iq-ok').scrollIntoView({behavior:'smooth',block:'center'});
     } else {
       btn.disabled=false;
-      btn.innerHTML='Send Inquiry <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>';
+      btn.innerHTML='Enviar consulta <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>';
       err.textContent='Algo salió mal. Escribe a connect@sabdastudio.com directly.';
     }
   }).catch(function(){
     btn.disabled=false;
-    btn.innerHTML='Send Inquiry <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>';
+    btn.innerHTML='Enviar consulta <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>';
     err.textContent='Error de conexión. Escribe directamente a connect@sabdastudio.com.';
   });
   return false;
