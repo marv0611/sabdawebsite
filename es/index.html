@@ -124,13 +124,6 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   background-size:200px;
 }
 
-/* ── CURSOR ── */
-.cursor{position:fixed;width:28px;height:28px;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:opacity .2s,width .25s var(--ease-expo),height .25s var(--ease-expo);will-change:transform;
-  background:url('https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20symbol%20pink.png') center/contain no-repeat;
-  opacity:.7;filter:drop-shadow(0 0 6px rgba(248,166,163,.4))}
-.cursor-ring{position:fixed;width:48px;height:48px;border-radius:50%;border:1px solid rgba(248,166,163,.25);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:opacity .2s,width .4s var(--ease-expo),height .4s var(--ease-expo),border-color .3s;will-change:transform}
-.cursor.hov{width:18px;height:18px;opacity:1}.cursor-ring.hov{width:60px;height:60px;border-color:rgba(2,243,197,.35)}
-
 /* ── LOADER ── */
 #loader{position:fixed;inset:0;background:var(--navy);z-index:10000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:36px;transition:opacity 1.4s var(--ease-expo),visibility 1.4s}
 #loader.out{opacity:0;visibility:hidden}
@@ -539,9 +532,6 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 
 <div class="grain"></div>
 <canvas id="globalParticles"></canvas>
-<div class="cursor" id="C"></div>
-<div class="cursor-ring" id="CR"></div>
-
 <!-- LOADER -->
 <div id="loader">
   <div class="ld-symbol">
@@ -682,7 +672,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   <div class="cls-row-wrap">
     <div class="cls-row scroll-right">
       <a href="/es/clases/ice-bath/" class="cls-item">
-        <img src="classes/ice-bath/hero-people.jpg" alt="Ice bath en el patio privado del estudio de bienestar SABDA en el Eixample de Barcelona" loading="lazy">
+        <img src="/classes/ice-bath/hero-people.jpg" alt="Ice bath en el patio privado del estudio de bienestar SABDA en el Eixample de Barcelona" loading="lazy">
         <div class="cls-item-ov"></div>
         <div class="cls-item-label"><div class="cls-item-name">Ice Bath</div><div class="cls-item-tag">Uso libre · Terraza privada</div></div>
       </a>
@@ -698,7 +688,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       </a>
       <!-- duplicate set for seamless loop -->
       <a href="/es/clases/ice-bath/" class="cls-item">
-        <img src="classes/ice-bath/hero-people.jpg" alt="Ice bath en el patio privado del estudio de bienestar SABDA en el Eixample de Barcelona" loading="lazy">
+        <img src="/classes/ice-bath/hero-people.jpg" alt="Ice bath en el patio privado del estudio de bienestar SABDA en el Eixample de Barcelona" loading="lazy">
         <div class="cls-item-ov"></div>
         <div class="cls-item-label"><div class="cls-item-name">Ice Bath</div><div class="cls-item-tag">Uso libre · Terraza privada</div></div>
       </a>
@@ -949,19 +939,8 @@ document.addEventListener('DOMContentLoaded',()=>{
 });
 
 /* ═══════════════════════════════════════════════════════
-   CURSOR
+   CURSOR — removed
 ═══════════════════════════════════════════════════════ */
-const CUR=document.getElementById('C'),RING=document.getElementById('CR');
-let cx=-200,cy=-200,rx=-200,ry=-200;
-document.addEventListener('mousemove',e=>{
-  cx=e.clientX;cy=e.clientY;
-  CUR.style.transform=`translate(${cx}px,${cy}px) translate(-50%,-50%)`;
-});
-(function rl(){rx+=(cx-rx)*.1;ry+=(cy-ry)*.1;RING.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;requestAnimationFrame(rl)})();
-document.querySelectorAll('a,button,.sg-arr,.press-card').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{CUR.classList.add('hov');RING.classList.add('hov')});
-  el.addEventListener('mouseleave',()=>{CUR.classList.remove('hov');RING.classList.remove('hov')});
-});
 
 /* ═══════════════════════════════════════════════════════
    NAV

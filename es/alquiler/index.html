@@ -108,13 +108,6 @@ img{display:block;max-width:100%}
   background-size:200px;
 }
 
-/* ── CURSOR ── */
-.cursor{position:fixed;width:28px;height:28px;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:opacity .2s,width .25s var(--ease-expo),height .25s var(--ease-expo);will-change:transform;
-  background:url('https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20symbol%20pink.png') center/contain no-repeat;
-  opacity:.7;filter:drop-shadow(0 0 6px rgba(248,166,163,.4))}
-.cursor-ring{position:fixed;width:48px;height:48px;border-radius:50%;border:1px solid rgba(248,166,163,.25);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:opacity .2s,width .4s var(--ease-expo),height .4s var(--ease-expo),border-color .3s;will-change:transform}
-.cursor.hov{width:18px;height:18px;opacity:1}.cursor-ring.hov{width:60px;height:60px;border-color:rgba(2,243,197,.35)}
-
 /* ── PARTICLES ── */
 #globalParticles{position:fixed;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
 
@@ -408,9 +401,6 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 
 <div class="grain" id="main-content"></div>
 <canvas id="globalParticles"></canvas>
-<div class="cursor" id="C"></div>
-<div class="cursor-ring" id="CR"></div>
-
 <!-- NAV -->
 <nav id="nav">
   <a href="/" class="nav-logo">
@@ -787,21 +777,6 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 </div>
 
 <script>
-/* ═══════════════════════════════════════════════════════
-   CUSTOM CURSOR
-═══════════════════════════════════════════════════════ */
-const CUR=document.getElementById('C'),RING=document.getElementById('CR');
-let cx=0,cy=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{
-  cx=e.clientX;cy=e.clientY;
-  CUR.style.transform=`translate(${cx}px,${cy}px) translate(-50%,-50%)`;
-});
-(function rl(){rx+=(cx-rx)*.1;ry+=(cy-ry)*.1;RING.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;requestAnimationFrame(rl)})();
-document.querySelectorAll('a,button,.uc-card,.addon,.sg-arr').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{CUR.classList.add('hov');RING.classList.add('hov')});
-  el.addEventListener('mouseleave',()=>{CUR.classList.remove('hov');RING.classList.remove('hov')});
-});
-
 /* ═══════════════════════════════════════════════════════
    NAV — transparent-to-solid on scroll
 ═══════════════════════════════════════════════════════ */
