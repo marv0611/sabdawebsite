@@ -940,7 +940,7 @@ function showMfaStep(mfaToken){stepChange();
   bd.innerHTML=classBlockHtml()
     +'<div class="bk-login">'
     +'<p style="font-size:.85rem;color:var(--white60);text-align:center;margin-bottom:20px;line-height:1.5">Enter the 6-digit code from your authenticator app</p>'
-    +'<div class="bk-label">Verification Code</div>'
+    +'<div class="bk-label">Código de verificación</div>'
     +'<input class="bk-input" id="bk-mfa" aria-label="Código de verificación" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="000000" style="text-align:center;font-size:1.4rem;letter-spacing:.3em" />'
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-mfa-btn" onclick="doMfaVerify()">Verificar y continuar</button>'
@@ -1504,7 +1504,7 @@ async function init(){
     document.getElementById('sk').style.display='none';
     document.getElementById('sched').style.display='block';
   }catch(err){
-    document.getElementById('sk').innerHTML='<div class="empty">Could not load schedule. Please try again.</div>';
+    document.getElementById('sk').innerHTML='<div class="empty">No se pudo cargar el horario. Inténtalo de nuevo.</div>';
   }
 }
 init();
