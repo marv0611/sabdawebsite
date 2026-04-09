@@ -448,14 +448,14 @@ function showError(msg, opts){
   // Show recovery panel for rate limit
   if(isRateLimit && rec){
     rec.classList.add('show');
-    rec.innerHTML='<strong>Account temporarily blocked</strong>'
-      +'Momence has paused this email after several failed payment attempts. You can:'
-      +'<br>• Wait 15-30 minutes and try again'
-      +'<br>• Or start over with a different email below'
-      +'<button onclick="resetCustomerAndStartOver()">Try with a different email</button>';
+    rec.innerHTML='<strong>Cuenta bloqueada temporalmente</strong>'
+      +'Momence ha pausado este email tras varios intentos de pago fallidos. Puedes:'
+      +'<br>• Espera 15-30 minutos e inténtalo de nuevo'
+      +'<br>• O empieza de cero con otro email abajo'
+      +'<button onclick="resetCustomerAndStartOver()">Probar con otro email</button>';
   } else if(isPaymentMethodErr && rec){
     rec.classList.add('show');
-    rec.innerHTML='<strong>Card couldn\'t be processed</strong>'
+    rec.innerHTML='<strong>No se pudo procesar la tarjeta</strong>'
       +'Puede haber un problema de configuración con el procesador de pagos. Reserva directamente en Momence — el enlace funciona.'
       +(curSession&&curSession.link?'<button onclick="window.open(\''+curSession.link+'\',\'_blank\')">Reservar en Momence</button>':'');
   }
@@ -570,7 +570,7 @@ function showLoginStep(){stepChange();
   bd.innerHTML=classBlock
     +'<div class="bk-login">'
     +'<div class="bk-label">Email</div>'
-    +'<input class="bk-input" id="bk-email" type="email" inputmode="email" autocomplete="email" placeholder="your@email.com" aria-label="Dirección de email" />'
+    +'<input class="bk-input" id="bk-email" type="email" inputmode="email" autocomplete="email" placeholder="tu@email.com" aria-label="Dirección de email" />'
     +'<div class="bk-label">Contraseña</div>'
     +'<input class="bk-input" id="bk-pass" type="password" autocomplete="current-password" placeholder="Contraseña" aria-label="Contraseña" />'
     +'<div style="text-align:right;margin:-10px 0 12px"><a href="https://momence.com/forgot-password" target="_blank" style="font-size:.75rem;color:var(--white38);text-decoration:none;border-bottom:1px solid var(--white12)">¿Olvidaste tu contraseña?</a></div>'
@@ -601,7 +601,7 @@ function showGuestStep(){stepChange();
     +'<div class="bk-label">Apellido</div>'
     +'<input class="bk-input" id="bk-ln" type="text" autocomplete="family-name" placeholder="Apellido" aria-label="Apellido" />'
     +'<div class="bk-label">Email</div>'
-    +'<input class="bk-input" id="bk-email" type="email" inputmode="email" autocomplete="email" placeholder="your@email.com" aria-label="Dirección de email" />'
+    +'<input class="bk-input" id="bk-email" type="email" inputmode="email" autocomplete="email" placeholder="tu@email.com" aria-label="Dirección de email" />'
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">Continuar</button>'
     +'<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.12);border-radius:8px;padding:12px;margin-top:16px;font-size:.75rem;color:var(--white60);line-height:1.5;text-align:center">Booked with us before? <span onclick="showLoginStep()" style="color:var(--cyan);cursor:pointer;text-decoration:underline">Log in instead</span> to keep your history and credits together.</div>'
@@ -678,7 +678,7 @@ function showMfaStep(mfaToken){stepChange();
     +'<div class="bk-login">'
     +'<p style="font-size:.85rem;color:var(--white60);text-align:center;margin-bottom:20px;line-height:1.5">Enter the 6-digit code from your authenticator app</p>'
     +'<div class="bk-label">Verification Code</div>'
-    +'<input class="bk-input" id="bk-mfa" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="one-time-code" placeholder="000000" aria-label="6-digit verification code" style="text-align:center;font-size:1.4rem;letter-spacing:.3em" />'
+    +'<input class="bk-input" id="bk-mfa" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" autocomplete="one-time-code" placeholder="000000" aria-label="Código de verificación de 6 dígitos" style="text-align:center;font-size:1.4rem;letter-spacing:.3em" />'
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-mfa-btn" onclick="doMfaVerify()">Verificar y continuar</button>'
     +'<div class="bk-link" onclick="showLoginStep()">← Back</div>'
@@ -703,7 +703,7 @@ function doMfaVerify(){if(isProcessing)return;
   .then(function(r){
     if(!r.ok||r.data.error){
       err.innerHTML='Código no válido. <a href="'+curSession.link+'" target="_blank" style="color:var(--cyan);text-decoration:underline">Reservar en Momence →</a>';
-      isProcessing=false;btn.textContent='Verify & Continue';btn.disabled=false;
+      isProcessing=false;btn.textContent='Verificar y continuar';btn.disabled=false;
       return;
     }
     var d=r.data;
@@ -725,7 +725,7 @@ function doMfaVerify(){if(isProcessing)return;
     }
   }).catch(function(){
     err.textContent='Error de conexión. Inténtalo de nuevo.';
-    isProcessing=false;btn.textContent='Verify & Continue';btn.disabled=false;
+    isProcessing=false;btn.textContent='Verificar y continuar';btn.disabled=false;
     showFallback();
   });
 }
@@ -899,12 +899,12 @@ function doBookWithMembership(){if(isProcessing)return;
       if(document.getElementById('bk-err')) document.getElementById('bk-err').textContent=msg;
       showFallback();
       isProcessing=false;
-      var b=document.getElementById('bk-confirm-btn');if(b){b.textContent='Confirm Booking';b.disabled=false;}
+      var b=document.getElementById('bk-confirm-btn');if(b){b.textContent='Confirmar reserva';b.disabled=false;}
     }
   }).catch(function(){
     var e=document.getElementById('bk-err');if(e)e.textContent='Error de conexión. Inténtalo de nuevo.';
     showFallback();
-    isProcessing=false;var b=document.getElementById('bk-confirm-btn');if(b){b.textContent='Confirm Booking';b.disabled=false;}
+    isProcessing=false;var b=document.getElementById('bk-confirm-btn');if(b){b.textContent='Confirmar reserva';b.disabled=false;}
   });
 }
 
@@ -1112,7 +1112,7 @@ function showPayForm(type,price,productId,name,desc){stepChange();
       try{console.log('[SABDA] Stripe initialized with stripeAccount acct_1RUWnoBf6nsynAht');}catch(e){}
     } catch(e){
       try{console.error('[SABDA] Stripe init FAILED:',e);}catch(e2){}
-      document.getElementById('bk-err').textContent='Payment system unavailable. Please use the Momence link below.';
+      document.getElementById('bk-err').textContent='Sistema de pago no disponible. Usa el enlace de Momence abajo.';
       showFallback();
       return;
     }
@@ -1139,7 +1139,7 @@ function showPayForm(type,price,productId,name,desc){stepChange();
         document.getElementById('bk-pay-divider').style.display='flex';
         prButton.mount('#bk-pay-request');
       } else {
-        try{console.log('[SABDA] Apple/Google Pay hidden. Most common cause: domain not registered in Stripe Dashboard → Settings → Payment Methods → Apple Pay → Add new domain → sabdastudio.com');}catch(e){}
+        try{console.log('[SABDA] Apple/Google Pay oculto. Causa más común: dominio no registrado en Stripe Dashboard → Settings → Payment Methods → Apple Pay → Add new domain → sabdastudio.com');}catch(e){}
       }
     }).catch(function(e){try{console.warn('[SABDA] canMakePayment error:',e);}catch(e2){}});
     activePayReq.on('paymentmethod',function(ev){
@@ -1186,7 +1186,7 @@ function showPayForm(type,price,productId,name,desc){stepChange();
       }).catch(function(){ev.complete('fail');isProcessing=false;});
     });
   }catch(e){
-    try{console.warn('[SABDA] Payment Request setup failed (Apple/Google Pay disabled):',e);}catch(e2){}
+    try{console.warn('[SABDA] Configuración de Payment Request fallida (Apple/Google Pay deshabilitado):',e);}catch(e2){}
   }
 
   // ── SPLIT CARD ELEMENTS ──
@@ -1225,7 +1225,7 @@ function showPayForm(type,price,productId,name,desc){stepChange();
           st.innerHTML='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg><span>Card ready</span>';
         } else {
           st.className='bk-card-status';
-          st.innerHTML='<span>Enter your card details to continue</span>';
+          st.innerHTML='<span>Introduce los datos de tu tarjeta para continuar</span>';
         }
       }
     }
@@ -1259,7 +1259,7 @@ function showPayForm(type,price,productId,name,desc){stepChange();
 
   } catch(e) {
     try{console.error('[SABDA] Card element creation FAILED:',e);}catch(e2){}
-    document.getElementById('bk-err').textContent='Card form failed to load. Please use the Momence link below.';
+    document.getElementById('bk-err').textContent='No se pudo cargar el formulario de pago. Usa el enlace de Momence abajo.';
     showFallback();
   }
 }
@@ -1460,11 +1460,11 @@ function showPackageGuestStep() {
     + '</div>'
     + '<div class="bk-login">'
     + '<div class="bk-label">Nombre</div>'
-    + '<input class="bk-input" id="bk-fn" type="text" placeholder="First name" autocomplete="given-name" aria-label="First name" />'
+    + '<input class="bk-input" id="bk-fn" type="text" placeholder="Nombre" autocomplete="given-name" aria-label="Nombre" />'
     + '<div class="bk-label">Apellido</div>'
-    + '<input class="bk-input" id="bk-ln" type="text" placeholder="Last name" autocomplete="family-name" aria-label="Last name" />'
+    + '<input class="bk-input" id="bk-ln" type="text" placeholder="Apellido" autocomplete="family-name" aria-label="Apellido" />'
     + '<div class="bk-label">Email</div>'
-    + '<input class="bk-input" id="bk-email" type="email" inputmode="email" placeholder="your@email.com" autocomplete="email" aria-label="Dirección de email" />'
+    + '<input class="bk-input" id="bk-email" type="email" inputmode="email" placeholder="tu@email.com" autocomplete="email" aria-label="Dirección de email" />'
     + '<div class="bk-err" id="bk-err"></div>'
     + '<button class="bk-primary" id="bk-guest-btn" onclick="doPackageGuestCheck()">Continuar al pago</button>'
     + '<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.12);border-radius:8px;padding:12px;margin-top:16px;font-size:.75rem;color:var(--white60);line-height:1.5;text-align:center">¿Ya eres cliente? <span onclick="showLoginStep()" style="color:var(--cyan);cursor:pointer;text-decoration:underline">Inicia sesión</span></div>'

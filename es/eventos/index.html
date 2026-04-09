@@ -797,7 +797,7 @@ function handleSignup(e){
   e.preventDefault();
   const form=e.target;
   const email=form.querySelector('input').value;
-  window.location.href='mailto:info@sabdastudio.com?subject='+encodeURIComponent('Event Signup: '+email)+'&body='+encodeURIComponent('Please add '+email+' to the SABDA events mailing list.');
+  window.location.href='mailto:info@sabdastudio.com?subject='+encodeURIComponent('Suscripción a eventos: '+email)+'&body='+encodeURIComponent('Por favor añade '+email+' a la lista de eventos de SABDA.');
   form.innerHTML='<p style="color:var(--cyan);font-size:.95rem;font-weight:600">You\u2019re on the list. We\u2019ll be in touch.</p>';
 }
 

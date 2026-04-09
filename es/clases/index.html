@@ -903,7 +903,7 @@ window.doLogin=function(){if(isProcessing)return;
   emailEl.classList.remove('bk-field-err');passEl.classList.remove('bk-field-err');
   if(!email||!validateEmail(email)){emailEl.classList.add('bk-field-err');ok=false;}
   if(!pass){passEl.classList.add('bk-field-err');ok=false;}
-  if(!ok){err.textContent='Please fill in the highlighted fields';return;}
+  if(!ok){err.textContent='Rellena los campos resaltados';return;}
   err.textContent='';isProcessing=true;btn.textContent='Signing in...';btn.disabled=true;
 
   fetch(PROXY+'/sabda-api/login',{
@@ -943,7 +943,7 @@ function showMfaStep(mfaToken){stepChange();
     +'<div class="bk-label">Verification Code</div>'
     +'<input class="bk-input" id="bk-mfa" aria-label="Código de verificación" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="000000" style="text-align:center;font-size:1.4rem;letter-spacing:.3em" />'
     +'<div class="bk-err" id="bk-err"></div>'
-    +'<button class="bk-primary" id="bk-mfa-btn" onclick="doMfaVerify()">Verify & Continue</button>'
+    +'<button class="bk-primary" id="bk-mfa-btn" onclick="doMfaVerify()">Verificar y continuar</button>'
     +'<div class="bk-link" onclick="showLoginStep()">\u2190 Back</div>'
     +'</div>';
   document.getElementById('bk-mfa').focus();
@@ -966,7 +966,7 @@ window.doMfaVerify=function(){if(isProcessing)return;
   .then(function(r){
     if(!r.ok||r.data.error){
       err.innerHTML='Código no válido. <a href="'+curSession.link+'" target="_blank" style="color:var(--cyan);text-decoration:underline">Reservar en Momence \u2192</a>';
-      isProcessing=false;btn.textContent='Verify & Continue';btn.disabled=false;
+      isProcessing=false;btn.textContent='Verificar y continuar';btn.disabled=false;
       return;
     }
     var d=r.data;
@@ -979,7 +979,7 @@ window.doMfaVerify=function(){if(isProcessing)return;
     else{showNoMembership();}
   }).catch(function(){
     err.textContent='Error de conexión. Inténtalo de nuevo.';
-    isProcessing=false;btn.textContent='Verify & Continue';btn.disabled=false;
+    isProcessing=false;btn.textContent='Verificar y continuar';btn.disabled=false;
     showFallback();
   });
 };
@@ -998,7 +998,7 @@ window.doGuestCheck=function(){
   if(!fn){fnEl.classList.add('bk-field-err');ok=false;}
   if(!ln){lnEl.classList.add('bk-field-err');ok=false;}
   if(!email||!validateEmail(email)){emailEl.classList.add('bk-field-err');ok=false;}
-  if(!ok){err.textContent='Please fill in the highlighted fields';return;}
+  if(!ok){err.textContent='Rellena los campos resaltados';return;}
 
   curUser={id:null,email:email,firstName:fn,lastName:ln,memberId:null,isGuest:true};
 
@@ -1030,19 +1030,19 @@ window.doGuestCheck=function(){
 
 // ── CUSTOMER FIELDS ──
 function customerFieldsHTML(){
-  return '<div class="bk-label" style="margin-top:16px">Phone number / N\u00FAmero de tel\u00E9fono</div>'
+  return '<div class="bk-label" style="margin-top:16px">N\u00FAmero de tel\u00E9fono</div>'
     +'<div style="display:flex;gap:8px">'
-    +'<input class="bk-input" id="bk-cc" type="text" aria-label="Country code" value="+34" style="width:68px;flex-shrink:0;text-align:center;font-weight:600" />'
-    +'<input class="bk-input" id="bk-phone" type="tel" placeholder="612 345 678" style="flex:1"  aria-label="Phone number"/>'
+    +'<input class="bk-input" id="bk-cc" type="text" aria-label="Prefijo de país" value="+34" style="width:68px;flex-shrink:0;text-align:center;font-weight:600" />'
+    +'<input class="bk-input" id="bk-phone" type="tel" placeholder="612 345 678" style="flex:1"  aria-label="Número de teléfono"/>'
     +'</div>'
-    +'<div class="bk-label">Preferred language / Idioma preferido</div>'
-    +'<select class="bk-input" id="bk-lang" aria-label="Preferred language" style="appearance:auto;cursor:pointer">'
-    +'<option value="">Select / Seleccionar</option>'
+    +'<div class="bk-label">Idioma preferido</div>'
+    +'<select class="bk-input" id="bk-lang" aria-label="Idioma preferido" style="appearance:auto;cursor:pointer">'
+    +'<option value="">Seleccionar</option>'
     +'<option value="English">English</option>'
     +'<option value="Castellano">Castellano</option>'
     +'</select>'
-    +'<div class="bk-label">City of residence / Ciudad de residencia</div>'
-    +'<input class="bk-input" id="bk-city" type="text" aria-label="City" placeholder="Barcelona" />';
+    +'<div class="bk-label">Ciudad de residencia</div>'
+    +'<input class="bk-input" id="bk-city" type="text" aria-label="Ciudad" placeholder="Barcelona" />';
 }
 function getCustomerFields(){
   var cc=(document.getElementById('bk-cc')||{}).value||'+34';
@@ -1067,7 +1067,7 @@ function validateCustomerFields(){
     if(!f.test(el.value)){el.classList.add('bk-field-err');ok=false;}
     else{el.classList.remove('bk-field-err');}
   });
-  return ok?null:'Please fill in the highlighted fields';
+  return ok?null:'Rellena los campos resaltados';
 }
 
 // ── STEP 3A: CONFIRM (has credits) ──
@@ -1075,7 +1075,7 @@ function showConfirmStep(membership){stepChange();
   var bd=document.getElementById('mo-bd');
   var mName=membership.name||membership.membershipName||membership.planName||'Membership';
   var credits=membership.remainingCredits||membership.eventsRemaining||membership.creditsRemaining||membership.remainingEvents||'';
-  var detail=credits?(Number(credits)===1?'1 class remaining':credits+' classes remaining'):'Active membership';
+  var detail=credits?(Number(credits)===1?'1 clase restante':credits+' clases restantes'):'Suscripción activa';
   curMembership=membership;
 
   bd.innerHTML=classBlockHtml()
@@ -1087,7 +1087,7 @@ function showConfirmStep(membership){stepChange();
     +'</div>'
     +customerFieldsHTML()
     +'<div class="bk-err" id="bk-err"></div>'
-    +'<button class="bk-primary" id="bk-confirm-btn" onclick="doBookWithMembership()">Confirm Booking</button>'
+    +'<button class="bk-primary" id="bk-confirm-btn" onclick="doBookWithMembership()">Confirmar reserva</button>'
     +'<div class="bk-link" onclick="switchAccount()">Switch account</div>'
     +'<div class="bk-link" style="margin-top:8px" onclick="closeMo()">\u2190 Back to schedule</div>'
     +'</div>';
@@ -1125,12 +1125,12 @@ window.doBookWithMembership=function(){if(isProcessing)return;
       if(document.getElementById('bk-err')) document.getElementById('bk-err').textContent=msg;
       showFallback();
       isProcessing=false;
-      var b=document.getElementById('bk-confirm-btn');if(b){b.textContent='Confirm Booking';b.disabled=false;}
+      var b=document.getElementById('bk-confirm-btn');if(b){b.textContent='Confirmar reserva';b.disabled=false;}
     }
   }).catch(function(){
     var e=document.getElementById('bk-err');if(e)e.textContent='Error de conexión. Inténtalo de nuevo.';
     showFallback();
-    isProcessing=false;var b=document.getElementById('bk-confirm-btn');if(b){b.textContent='Confirm Booking';b.disabled=false;}
+    isProcessing=false;var b=document.getElementById('bk-confirm-btn');if(b){b.textContent='Confirmar reserva';b.disabled=false;}
   });
 };
 
@@ -1221,7 +1221,7 @@ window.applyPromo=function(type,origPrice,productId){
     var payBtn=document.getElementById('bk-pay-btn');
     if(payBtn){
       if(discountedPrice===0){
-        payBtn.textContent='Book Free Class';
+        payBtn.textContent='Reservar clase gratuita';
         var cardWrap=document.getElementById('bk-card');if(cardWrap)cardWrap.parentElement.style.display='none';
         var cardLabel=document.getElementById('bk-card-label');if(cardLabel)cardLabel.style.display='none';
         var payDiv=document.getElementById('bk-pay-divider');if(payDiv)payDiv.style.display='none';
@@ -1341,7 +1341,7 @@ window.showPayForm=function(type,price,productId,name,desc){stepChange();
         } else {
           ev.complete('fail');
           var errEl=document.getElementById('bk-err');
-          if(errEl) errEl.textContent=r.data.error||'Payment failed.';
+          if(errEl) errEl.textContent=r.data.error||'Error en el pago.';
           showFallback();isProcessing=false;
         }
       }).catch(function(){ev.complete('fail');isProcessing=false;});
@@ -1385,8 +1385,8 @@ window.doPayAndBook=function(type,price,productId){if(isProcessing)return;
     }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
     .then(function(r){
       if(r.data.success){showSuccess();}
-      else{err.textContent=r.data.error||'Booking failed.';showFallback();isProcessing=false;btn.textContent='Book Free Class';btn.disabled=false;}
-    }).catch(function(){err.textContent='Connection error.';isProcessing=false;btn.textContent='Book Free Class';btn.disabled=false;showFallback();});
+      else{err.textContent=r.data.error||'Error al reservar.';showFallback();isProcessing=false;btn.textContent='Reservar clase gratuita';btn.disabled=false;}
+    }).catch(function(){err.textContent='Error de conexión.';isProcessing=false;btn.textContent='Reservar clase gratuita';btn.disabled=false;showFallback();});
     return;
   }
 
@@ -1420,7 +1420,7 @@ window.doPayAndBook=function(type,price,productId){if(isProcessing)return;
           else{showSuccess();}
         });
       } else {
-        err.textContent=r.data.error||'Payment failed. Please try again.';showFallback();
+        err.textContent=r.data.error||'Error en el pago. Inténtalo de nuevo.';showFallback();
         isProcessing=false;btn.textContent='Pay & Book';btn.disabled=false;
       }
     });
