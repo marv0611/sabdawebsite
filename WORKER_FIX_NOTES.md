@@ -1,6 +1,12 @@
 # SABDA Worker — Payment Endpoint Fix Notes
-**Date:** April 7, 2026
-**Status:** Critical bug — needs Worker rewrite before launch
+**Date written:** April 7, 2026
+**Status:** ✅ HISTORICAL — the bugs described below were fixed in commits `98c81da` (April 7) and `c4ad872` (April 8). This document is retained for archaeology.
+
+> **Reader: do not act on this document.** The Worker at `cloudflare-worker-checkout-proxy.js` already implements the fixes recommended below. Verify by reading `handleCheckEmail` (line 424) and `handlePay` (line 812) directly. Both use the correct Momence endpoints. `STRIPE_ACCOUNT_ID = 38966` is hardcoded as a number on line 843. Real end-to-end payment testing with a live card is the only thing still pending — see `NEXT_CHAT_HANDOFF.md` for current status.
+
+---
+
+## Original diagnosis (April 7, 2026 — pre-fix)
 
 ## The Problem
 
