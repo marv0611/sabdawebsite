@@ -337,7 +337,7 @@ function renderDays(){
   c.innerHTML=days.map((d,i)=>{
     const ds=getMadridDate(d);
     const madridDay=new Date(d.toLocaleString('en-US',{timeZone:'Europe/Madrid'}));
-    return`<button class="day-btn${i===0?' active':''}" data-d="${ds}" onclick="selDay(this,'${ds}')"><span class="day-name">${i===0?'Today':nm[madridDay.getDay()]}</span><span class="day-num">${madridDay.getDate()}</span></button>`;
+    return`<button class="day-btn${i===0?' active':''}" data-d="${ds}" onclick="selDay(this,'${ds}')"><span class="day-name">${i===0?'Hoy':nm[madridDay.getDay()]}</span><span class="day-num">${madridDay.getDate()}</span></button>`;
   }).join('');
   selDate=getMadridDate(days[0]);
 }
@@ -456,7 +456,7 @@ function showError(msg, opts){
   } else if(isPaymentMethodErr && rec){
     rec.classList.add('show');
     rec.innerHTML='<strong>Card couldn\'t be processed</strong>'
-      +'There may be a configuration issue with the payment processor. Please book directly through Momence — the link works.'
+      +'Puede haber un problema de configuración con el procesador de pagos. Reserva directamente en Momence — el enlace funciona.'
       +(curSession&&curSession.link?'<button onclick="window.open(\''+curSession.link+'\',\'_blank\')">Reservar en Momence</button>':'');
   }
 
@@ -572,8 +572,8 @@ function showLoginStep(){stepChange();
     +'<div class="bk-label">Email</div>'
     +'<input class="bk-input" id="bk-email" type="email" inputmode="email" autocomplete="email" placeholder="your@email.com" aria-label="Dirección de email" />'
     +'<div class="bk-label">Contraseña</div>'
-    +'<input class="bk-input" id="bk-pass" type="password" autocomplete="current-password" placeholder="Password" aria-label="Password" />'
-    +'<div style="text-align:right;margin:-10px 0 12px"><a href="https://momence.com/forgot-password" target="_blank" style="font-size:.75rem;color:var(--white38);text-decoration:none;border-bottom:1px solid var(--white12)">Forgot password?</a></div>'
+    +'<input class="bk-input" id="bk-pass" type="password" autocomplete="current-password" placeholder="Contraseña" aria-label="Contraseña" />'
+    +'<div style="text-align:right;margin:-10px 0 12px"><a href="https://momence.com/forgot-password" target="_blank" style="font-size:.75rem;color:var(--white38);text-decoration:none;border-bottom:1px solid var(--white12)">¿Olvidaste tu contraseña?</a></div>'
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-login-btn" onclick="doLogin()">Iniciar sesión y reservar</button>'
     +'<div class="bk-link" onclick="showGuestStep()">¿Nueva aquí? Reservar como invitada</div>'
@@ -596,16 +596,16 @@ function showGuestStep(){stepChange();
   var bd=document.getElementById('mo-bd');
   bd.innerHTML=classBlock
     +'<div class="bk-login">'
-    +'<div class="bk-label">First Name</div>'
+    +'<div class="bk-label">Nombre</div>'
     +'<input class="bk-input" id="bk-fn" type="text" autocomplete="given-name" placeholder="Nombre" aria-label="Nombre" />'
-    +'<div class="bk-label">Last Name</div>'
+    +'<div class="bk-label">Apellido</div>'
     +'<input class="bk-input" id="bk-ln" type="text" autocomplete="family-name" placeholder="Apellido" aria-label="Apellido" />'
     +'<div class="bk-label">Email</div>'
     +'<input class="bk-input" id="bk-email" type="email" inputmode="email" autocomplete="email" placeholder="your@email.com" aria-label="Dirección de email" />'
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">Continuar</button>'
     +'<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.12);border-radius:8px;padding:12px;margin-top:16px;font-size:.75rem;color:var(--white60);line-height:1.5;text-align:center">Booked with us before? <span onclick="showLoginStep()" style="color:var(--cyan);cursor:pointer;text-decoration:underline">Log in instead</span> to keep your history and credits together.</div>'
-    +'<div class="bk-link" onclick="showLoginStep()">Have an account? Log in</div>'
+    +'<div class="bk-link" onclick="showLoginStep()">¿Ya tienes cuenta? Inicia sesión</div>'
     +'</div>';
   document.getElementById('bk-fn').focus();
 }
@@ -692,7 +692,7 @@ function doMfaVerify(){if(isProcessing)return;
   var code=document.getElementById('bk-mfa').value.trim();
   var err=document.getElementById('bk-err');
   var btn=document.getElementById('bk-mfa-btn');
-  if(!code||code.length<6){err.textContent='Please enter the 6-digit code';return;}
+  if(!code||code.length<6){err.textContent='Introduce el código de 6 dígitos';return;}
   err.textContent='';isProcessing=true;btn.textContent='Verificando...';btn.disabled=true;
 
   fetch(PROXY+'/sabda-api/mfa-verify',{
@@ -902,7 +902,7 @@ function doBookWithMembership(){if(isProcessing)return;
       var b=document.getElementById('bk-confirm-btn');if(b){b.textContent='Confirm Booking';b.disabled=false;}
     }
   }).catch(function(){
-    var e=document.getElementById('bk-err');if(e)e.textContent='Connection error. Please try again.';
+    var e=document.getElementById('bk-err');if(e)e.textContent='Error de conexión. Inténtalo de nuevo.';
     showFallback();
     isProcessing=false;var b=document.getElementById('bk-confirm-btn');if(b){b.textContent='Confirm Booking';b.disabled=false;}
   });

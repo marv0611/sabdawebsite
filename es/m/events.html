@@ -322,12 +322,12 @@ function handleEventInquiry(e){
     } else {
       btn.disabled=false;
       btn.innerHTML='Send Inquiry <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>';
-      err.textContent='Something went wrong. Please email connect@sabdastudio.com directly.';
+      err.textContent='Algo salió mal. Escribe a connect@sabdastudio.com directly.';
     }
   }).catch(function(){
     btn.disabled=false;
     btn.innerHTML='Send Inquiry <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>';
-    err.textContent='Connection error. Please email connect@sabdastudio.com directly.';
+    err.textContent='Error de conexión. Escribe directamente a connect@sabdastudio.com.';
   });
   return false;
 }

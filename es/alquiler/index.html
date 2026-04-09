@@ -404,7 +404,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 </style>
 </head>
 <body>
-<a href="#main-content" class="a11y-skip">Skip to main content</a>
+<a href="#main-content" class="a11y-skip">Saltar al contenido principal</a>
 
 <div class="grain" id="main-content"></div>
 <canvas id="globalParticles"></canvas>
@@ -435,14 +435,14 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       Log In
     </a>
   </div>
-<button class="nav-ham" onclick="document.getElementById('mobMenu').classList.add('open')" aria-label="Menu"><span></span><span></span><span></span></button></nav>
+<button class="nav-ham" onclick="document.getElementById('mobMenu').classList.add('open')" aria-label="Menú"><span></span><span></span><span></span></button></nav>
 <div class="mob-menu" id="mobMenu"><button class="mob-close" onclick="this.parentElement.classList.remove('open')"><svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12"/></svg></button><a href="classes.html">Clases</a><a href="pricing.html">Precios</a><a href="/es/alquiler/">Alquilar</a><a href="events.html">Eventos</a><a href="about.html">Sobre Nosotros</a><a href="contact/">Contacto</a><div style="width:60px;height:1px;background:rgba(240,239,233,.12);margin:4px 0"></div><a href="legal-notice.html" style="font-size:.9rem;font-weight:500;opacity:.6">Aviso Legal</a><a href="privacy-policy.html" style="font-size:.9rem;font-weight:500;opacity:.6">Política de Privacidad</a><a href="terms.html" style="font-size:.9rem;font-weight:500;opacity:.6">Terms &amp; Conditions</a><a href="cookies.html" style="font-size:.9rem;font-weight:500;opacity:.6">Cookies</a></div>
 
 <!-- ═══════════════════════════════════════════════════════
      HERO
 ═══════════════════════════════════════════════════════ -->
 <section class="hero" id="hero">
-  <img class="hero-img" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Copy_of_Sabda2-167__1_.jpg" alt="Silhouettes in SABDA's 360° immersive room during an event" loading="eager">
+  <img class="hero-img" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Copy_of_Sabda2-167__1_.jpg" alt="Siluetas en la sala inmersiva 360° de SABDA durante un evento" loading="eager">
   <div class="hero-grad"></div>
   <div class="hero-content">
     <div class="hero-overtitle">Eventos y Alquiler</div>
@@ -945,7 +945,7 @@ document.querySelectorAll('.cs-media video').forEach(v=>vidObs.observe(v));
     setTimeout(()=>{
       sgName.innerHTML=slides[idx].name;
       sgDesc.innerHTML=slides[idx].desc;
-      sgNum.textContent=slides[idx].num+' | THE VENUE';
+      sgNum.textContent=slides[idx].num+' | EL ESPACIO';
       sgCounter.textContent=slides[idx].num;
       sgInfo.style.opacity='1';sgInfo.style.transform='none';
     },300);
@@ -1009,10 +1009,10 @@ function handleEnviar(e){
     method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)
   }).then(function(r){return r.json()}).then(function(r){
     if(r.ok){var sib=f.parentElement.children;for(var i=0;i<sib.length;i++){if(sib[i].id!=='inqSuccess')sib[i].style.display='none';}document.getElementById('inqSuccess').classList.add('show')}
-    else{btn.textContent='Enviar Consulta';btn.disabled=false;alert('Something went wrong. Please email connect@sabdastudio.com directly.')}
+    else{btn.textContent='Enviar Consulta';btn.disabled=false;alert('Algo salió mal. Escribe a connect@sabdastudio.com directly.')}
   }).catch(function(){
     btn.textContent='Enviar Consulta';btn.disabled=false;
-    alert('Connection error. Please email connect@sabdastudio.com directly.');
+    alert('Error de conexión. Escribe directamente a connect@sabdastudio.com.');
   });
   return false;
 }
