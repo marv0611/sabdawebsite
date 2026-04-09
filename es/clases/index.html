@@ -614,9 +614,9 @@ var pendingPack=null;
 
 // ── Utilities ──
 function clean(t){return t.replace(/\s*\[.*?\]\s*/,'').trim();}
-function fmtHora(iso){
+function fmtTime(iso){
   var d=new Date(iso);
-  return d.toLocaleHoraString('en-GB',{hour:'2-digit',minute:'2-digit',hour12:false,timeZone:'Europe/Madrid'});
+  return d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',hour12:false,timeZone:'Europe/Madrid'});
 }
 function validateEmail(email){return/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);}
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
@@ -641,7 +641,7 @@ function get7d(offset){
 function getMadridDate(d){return d.toLocaleDateString('en-CA',{timeZone:'Europe/Madrid'});}
 var weekOffset=0;
 
-function renderDías(){
+function renderDays(){
   var c=document.getElementById('days');
   var days=get7d(weekOffset);
   var nm=['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
@@ -653,23 +653,23 @@ function renderDías(){
   html+='<div class="days-inner">';
   html+=days.map(function(d,i){
     var ds=getMadridDate(d);
-    var madridDía=new Date(d.toLocaleString('en-US',{timeZone:'Europe/Madrid'}));
-    var isHoy=ds===today;
+    var madridDate=new Date(d.toLocaleString('en-US',{timeZone:'Europe/Madrid'}));
+    var isToday=ds===today;
     var isActive=ds===selDate;
-    var label=isHoy?'Hoy':nm[madridDía.getDía()];
-    return '<button class="day-btn'+(isActive?' active':'')+'" data-d="'+ds+'" onclick="selDía(this,\''+ds+'\')">'
+    var label=isToday?'Hoy':nm[madridDate.getDay()];
+    return '<button class="day-btn'+(isActive?' active':'')+'" data-d="'+ds+'" onclick="selDay(this,\''+ds+'\')">'
       +'<span class="day-name">'+label+'</span>'
-      +'<span class="day-num">'+madridDía.getDate()+'</span></button>';
+      +'<span class="day-num">'+madridDate.getDate()+'</span></button>';
   }).join('');
   html+='</div>';
   html+='<button class="day-arr" onclick="nextWeek()">'+rightSvg+'</button>';
   c.innerHTML=html;
 }
 
-function prevWeek(){if(weekOffset>0){weekOffset--;renderDías();renderSched();}}
-function nextWeek(){weekOffset++;renderDías();renderSched();}
+function prevWeek(){if(weekOffset>0){weekOffset--;renderDays();renderSched();}}
+function nextWeek(){weekOffset++;renderDays();renderSched();}
 
-function selDía(b,ds){
+function selDay(b,ds){
   document.querySelectorAll('.day-btn').forEach(function(x){x.classList.remove('active');});
   b.classList.add('active');selDate=ds;renderSched();
 }
@@ -732,18 +732,18 @@ function toggleInfo(el){
 function renderSched(){
   var c=document.getElementById('sched');
   var f=allE.filter(function(e){
-    var ed=new Date(e.dateHora).toLocaleDateString('en-CA',{timeZone:'Europe/Madrid'});
+    var ed=new Date(e.dateTime).toLocaleDateString('en-CA',{timeZone:'Europe/Madrid'});
     return ed===selDate&&!e.isCancelled&&!e.isDeleted;
   });
   if(actF!=='All')f=f.filter(function(e){return getCat(e.title)===actF;});
   if(actProfesor!=='All')f=f.filter(function(e){return(e.teacher||'').split(' ')[0]===actProfesor;});
-  f=f.filter(function(e){return new Date(e.dateHora)>=new Date();});
-  f.sort(function(a,b){return new Date(a.dateHora)-new Date(b.dateHora);});
+  f=f.filter(function(e){return new Date(e.dateTime)>=new Date();});
+  f.sort(function(a,b){return new Date(a.dateTime)-new Date(b.dateTime);});
 
   if(!f.length){c.innerHTML='<div class="empty">No hay clases programadas'+(actF!=='All'||actProfesor!=='All'?' para este filtro':'')+'.</div>';return;}
 
   c.innerHTML=f.map(function(e,i){
-    var time=fmtHora(e.dateHora);var parts=time.split(':');var h=parts[0];var m=parts[1];
+    var time=fmtTime(e.dateTime);var parts=time.split(':');var h=parts[0];var m=parts[1];
     var title=clean(e.title);var lang=getLang(e.title);
     var sp=e.spotsRemaining;var full=sp===0;
     var fn=(e.teacher||'').split(' ')[0]||'';
@@ -755,7 +755,7 @@ function renderSched(){
       +(e.desc?'<div class="ci-more" onclick="toggleInfo(this)">More info <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="ci-desc"><p>'+esc(e.desc).replace(/\n/g,'<br>').replace(/---ES---/g,'</p><p class="ci-lang-sep"><span class="ci-lg">ES</span></p><p>').replace(/---CA---/g,'</p><p class="ci-lang-sep"><span class="ci-lg">CA</span></p><p>')+'</p></div>':'')
       +'</div>'
       +'<div class="ca">'
-      +(full?(e.allowLista de espera?'<button class="bb wl" onclick="openMo('+sid+')">Lista de espera</button>':'<button class="bb fu">Lleno</button>')
+      +(full?(e.allowWaitlist?'<button class="bb wl" onclick="openMo('+sid+')">Lista de espera</button>':'<button class="bb fu">Lleno</button>')
         :'<button class="bb" onclick="openMo('+sid+')">Reservar</button>')
       +'</div></div>';
   }).join('');
@@ -779,7 +779,7 @@ function showFallback(){
 }
 function getSpotsHtml(){
   var sp=curSession?curSession.spots:null;
-  if(sp===0) return curSession.isLista de espera?'<div class="bk-spots lo">Lista de espera</div>':'<div class="bk-spots lo">Lleno</div>';
+  if(sp===0) return curSession.isWaitlist?'<div class="bk-spots lo">Lista de espera</div>':'<div class="bk-spots lo">Lleno</div>';
   if(sp!==null&&sp<=5) return '<div class="bk-spots lo">'+sp+(sp===1?' spot left':' plazas restantes')+'</div>';
   return '';
 }
@@ -796,7 +796,7 @@ function openMo(sessionId){
   if(!proxyAlive){window.open(sess.link||('https://momence.com/s/'+sessionId),'_blank');return;}
 
   var title=clean(sess.title);
-  var time=fmtHora(sess.dateHora);
+  var time=fmtTime(sess.dateTime);
   var teacher=(sess.teacher||'').split(' ')[0]||'';
 
   curSession={
@@ -807,7 +807,7 @@ function openMo(sessionId){
     link:sess.link||('https://momence.com/s/'+sess.id),
     spots:sess.spotsRemaining,
     duration:sess.duration,
-    isLista de espera:sess.spotsRemaining===0&&sess.allowLista de espera
+    isWaitlist:sess.spotsRemaining===0&&sess.allowWaitlist
   };
 
   document.getElementById('mo-t').textContent=curSession.title;
@@ -1208,14 +1208,14 @@ window.applyPromo=function(type,origPrice,productId){
   .then(function(r){
     btn.textContent='Aplicar';btn.disabled=false;
     if(!r.ok||r.data.error){
-      errEl.textContent=r.data.error||'Invalid promo code';errEl.style.display='block';
+      errEl.textContent=r.data.error||'Código promocional no válido';errEl.style.display='block';
       activePromo=null;discountedPrice=null;
       return;
     }
     activePromo=r.data.code;
     discountedPrice=r.data.newPrice;
     var desc=r.data.type==='percentage'?r.data.appliedDiscount+'% off':'\u20AC'+r.data.appliedDiscount+' off';
-    okEl.innerHTML='<strong>'+activePromo+'</strong> applied \u2014 '+desc+' <span onclick="removePromo('+origPrice+')" style="cursor:pointer;text-decoration:underline;margin-left:8px">Remove</span>';
+    okEl.innerHTML='<strong>'+activePromo+'</strong> aplicado \u2014 '+desc+' <span onclick="removePromo('+origPrice+')" style="cursor:pointer;text-decoration:underline;margin-left:8px">Quitar</span>';
     okEl.style.display='block';
     document.getElementById('bk-total').innerHTML='<span style="text-decoration:line-through;color:var(--white38);font-size:1rem;margin-right:8px">\u20AC'+origPrice+'</span> \u20AC'+discountedPrice.toFixed(2);
     var payBtn=document.getElementById('bk-pay-btn');
@@ -1451,11 +1451,11 @@ function showSuccess(){stepChange();
 function buildApiUrl(){
   var now=new Date();
   var from=now.toISOString();
-  var to=new Date(now.getHora()+28*86400000).toISOString();
+  var to=new Date(now.getTime()+28*86400000).toISOString();
   return SCHEDULE_API+'?fromDate='+encodeURIComponent(from)+'&toDate='+encodeURIComponent(to)+'&pageSize=500&page=0';
 }
 async function init(){
-  renderDías();
+  renderDays();
   try{
     var r=await fetch(buildApiUrl());var d=await r.json();
     var raw=d.payload||d.data||d;
@@ -1465,14 +1465,14 @@ async function init(){
       return{
         id:e.id,
         title:e.sessionName||e.title||'',
-        dateHora:e.startsAt||e.dateHora||'',
+        dateTime:e.startsAt||e.dateTime||'',
         teacher:e.teacher||'',
         duration:e.durationMinutes||e.duration||0,
         spotsRemaining:(e.capacity!=null&&e.ticketsSold!=null)?e.capacity-e.ticketsSold:(e.spotsRemaining!=null?e.spotsRemaining:99),
         link:e.link||('https://momence.com/s/'+e.id),
         isCancelled:e.isCancelled||false,
         isDeleted:false,
-        allowLista de espera:e.allowLista de espera||false,
+        allowWaitlist:e.allowWaitlist||false,
         capacity:e.capacity||30,
         desc:(function(){
           var raw=(e.level||'').trim();
@@ -1513,7 +1513,7 @@ init();
 var PACK_MAP={
   '443934':{type:'pack',price:18,id:443934,name:'Clase de Prueba',desc:'1 class \u00B7 Solo para nuevos estudiantes'},
   '443935':{type:'pack',price:50,id:443935,name:'Pack Intro de 3',desc:'3 clases \u00B7 \u20AC16.67 each \u00B7 30 days'},
-  '443641':{type:'pack',price:50,id:443641,name:'BCN Resident Week',desc:'Unlimited \u00B7 7 days \u00B7 Proof of residency required'},
+  '443641':{type:'pack',price:50,id:443641,name:'Semana Residentes BCN',desc:'Ilimitado \u00B7 7 días \u00B7 Justificante de residencia requerido'},
   '431216':{type:'membership',price:130,id:431216,name:'Immerse',desc:'Clases ilimitadas \u00B7 Cancela cuando quieras'},
   '445600':{type:'membership',price:330,id:445600,name:'Immerse 3-Lunth',desc:'Clases ilimitadas \u00B7 3 month commitment'},
   '709976':{type:'membership',price:109,id:709976,name:'Ritual',desc:'8 clases/mes \u00B7 Cancela cuando quieras'},
@@ -1528,7 +1528,7 @@ var PACK_MAP={
   if(packId&&PACK_MAP[packId]){
     var p=PACK_MAP[packId];
     // Set a dummy session so the modal can open (no specific class context)
-    curSession={id:null,title:'Choose a class after checkout',time:'',teacher:'',link:'',spots:99,duration:0,isLista de espera:false};
+    curSession={id:null,title:'Elige una clase después del checkout',time:'',teacher:'',link:'',spots:99,duration:0,isWaitlist:false};
     document.getElementById('mo-t').textContent=p.name;
     document.getElementById('mo-c').textContent=p.desc;
     pendingPack={type:p.type,price:p.price,id:p.id,name:p.name,desc:p.desc};
@@ -1547,7 +1547,7 @@ window.showGuestStep=showGuestStep;
 window.showNoMembership=showNoMembership;
 window.openMo=openMo;
 window.switchAccount=function(){curUser=null;curSessionToken=null;showLoginStep();};
-window.selDía=selDía;
+window.selDay=selDay;
 window.setF=setF;
 window.setProfesor=setProfesor;
 window.prevWeek=prevWeek;
