@@ -703,7 +703,7 @@ function doMfaVerify(){if(isProcessing)return;
   }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
   .then(function(r){
     if(!r.ok||r.data.error){
-      err.innerHTML='Código no válido. <a href="'+curSession.link+'" target="_blank" style="color:var(--cyan);text-decoration:underline">Reservar en Momence →</a>';
+      err.innerHTML='Codi no vàlid. <a href="'+curSession.link+'" target="_blank" style="color:var(--cyan);text-decoration:underline">Reserva a Momence →</a>';
       isProcessing=false;btn.textContent='Verificar y continuar';btn.disabled=false;
       return;
     }
@@ -845,7 +845,7 @@ function showConfirmStep(membership){stepChange();
   var bd=document.getElementById('mo-bd');
   var mName=membership.name||membership.membershipName||membership.planName||'Membresía';
   var credits=membership.remainingCredits||membership.eventsRemaining||membership.creditsRemaining||membership.remainingEvents||'';
-  var detail=credits?(Number(credits)===1?'1 clase restante':credits+' clases restantes'):'Membresía activa';
+  var detail=credits?(Number(credits)===1?'1 classe restant':credits+' classes restants'):'Membresía activa';
   curMembership=membership;
 
   bd.innerHTML='<div class="bk-class">'
@@ -1034,18 +1034,18 @@ function showNoMembership(){stepChange();
     +'<p style="font-size:.85rem;color:var(--white60);text-align:center;margin-bottom:18px;line-height:1.5">Elige cómo quieres reservar esta clase</p>'
     // Intro offers first
     +'<div class="bk-pkg-grp" style="color:var(--cyan)">¿Nueva en SABDA?</div>'
-    +row('feat','pack',50,443935,'Pack Intro 3 Classes','3 clases, válido 30 días','50€')
+    +row('feat','pack',50,443935,'Pack Intro 3 Classes','3 classes, vàlid 30 dies','50€')
     +row('','pack',18,443934,'Clase de prueba','Solo primera vez','18€')
     // Memberships
     +'<div class="bk-pkg-grp" style="color:var(--salmon)">Membresías</div>'
     +row('','membership',130,431216,'Immerse','Classes il·limitades, cancel·la quan vulguis','130€<small>/mes</small>')
-    +row('','membership',109,709976,'Ritual','8 clases al mes','109€<small>/mes</small>')
-    +row('','membership',99,706876,'Flex','4 clases al mes','99€<small>/mes</small>')
-    +row('','membership',330,445600,'Immerse 3 Mesos','110€/mes, clases ilimitadas','330€')
+    +row('','membership',109,709976,'Ritual','8 classes al mes','109€<small>/mes</small>')
+    +row('','membership',99,706876,'Flex','4 classes al mes','99€<small>/mes</small>')
+    +row('','membership',330,445600,'Immerse 3 Mesos','110€/mes, classes il·limitades','330€')
     // Class packs
     +'<div class="bk-pkg-grp" style="color:var(--white38)">Packs de clases</div>'
-    +row('','pack',85,443937,'Pack de 5','5 clases, válido 2 meses','85€')
-    +row('','pack',149,443939,'Pack de 10','10 clases, válido 3 meses','149€')
+    +row('','pack',85,443937,'Pack de 5','5 classes, vàlid 2 mesos','85€')
+    +row('','pack',149,443939,'Pack de 10','10 classes, vàlid 3 mesos','149€')
     +row('','single',22,445630,'Clase suelta','Una clase, sin compromiso','22€')
     +'</div>';
 }
@@ -1409,12 +1409,12 @@ async function init(){
 var PACKAGES = {
   '443934': {name:'Clase de prueba', price:18, type:'pack', desc:'1 clase · Solo primera vez'},
   '445630': {name:'Clase suelta', price:22, type:'pack', desc:'1 clase · Cualquier momento'},
-  '443935': {name:'Pack Intro 3 Classes', price:50, type:'pack', desc:'3 clases · 16,67€ cada una · 30 días'},
+  '443935': {name:'Pack Intro 3 Classes', price:50, type:'pack', desc:'3 classes · 16,67€ cada una · 30 dies'},
   '443641': {name:'Semana Residente BCN', price:50, type:'pack', desc:'Ilimitado · 7 días · Necesaria prueba de residencia'},
-  '443937': {name:'Pack de 5', price:85, type:'pack', desc:'5 clases · 17€ cada una · 60 días'},
-  '443939': {name:'Pack de 10', price:149, type:'pack', desc:'10 clases · 14,90€ cada una · 90 días'},
-  '706876': {name:'Flex', price:99, type:'membership', desc:'4 clases al mes · Cancel·la quan vulguis'},
-  '709976': {name:'Ritual', price:109, type:'membership', desc:'8 clases al mes · Cancel·la quan vulguis'},
+  '443937': {name:'Pack de 5', price:85, type:'pack', desc:'5 classes · 17€ cada una · 60 dies'},
+  '443939': {name:'Pack de 10', price:149, type:'pack', desc:'10 classes · 14,90€ cada una · 90 dies'},
+  '706876': {name:'Flex', price:99, type:'membership', desc:'4 classes al mes · Cancel·la quan vulguis'},
+  '709976': {name:'Ritual', price:109, type:'membership', desc:'8 classes al mes · Cancel·la quan vulguis'},
   '431216': {name:'Immerse', price:130, type:'membership', desc:'Classes il·limitades · Cancel·la quan vulguis'},
   '445600': {name:'Immerse 3 Mesos', price:330, type:'membership', desc:'110€/mes · Ilimitado · Compromiso de 3 meses'}
 };
