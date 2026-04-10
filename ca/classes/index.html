@@ -670,6 +670,30 @@ function _fbTrackLead(){
   fbq('track','Lead');
 }
 
+// ── META PIXEL ADVANCED MATCHING ──
+function _fbInitWithUser(email, firstName, lastName, phone){
+  if(typeof fbq==='undefined') return;
+  // SHA-256 hash via SubtleCrypto (async, best-effort)
+  async function h(s){
+    if(!s) return '';
+    try{
+      var buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s.trim().toLowerCase()));
+      return Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
+    }catch(e){return '';}
+  }
+  Promise.all([h(email),h(firstName),h(lastName),h(phone)]).then(function(hashes){
+    var userData={};
+    if(hashes[0]) userData.em=hashes[0];
+    if(hashes[1]) userData.fn=hashes[1];
+    if(hashes[2]) userData.ln=hashes[2];
+    if(hashes[3]) userData.ph=hashes[3];
+    if(Object.keys(userData).length>0){
+      fbq('init','567636669734630',userData);
+    }
+  }).catch(function(){});
+}
+
+
 var proxyAlive=true;
 var curMfaToken=null;
 var stripeInstance=null, cardElement=null;
@@ -1670,6 +1694,7 @@ function showSuccess(){stepChange();
   var _purchName=pendingPack?pendingPack.name:(curSession?curSession.title:'');
   var _purchEid=_fbTrackPurchase(_purchPrice,_purchName);
   if(curUser&&curUser.isGuest){_fbTrackLead();}
+  if(curUser){_fbInitWithUser(curUser.email,curUser.firstName,curUser.lastName,'');}
   // Pass to CAPI via server (event_id stored for deduplication)
   window._lastPurchaseEventId=_purchEid;
   window._lastPurchaseAmount=_purchPrice;

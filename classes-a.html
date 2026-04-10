@@ -1353,6 +1353,7 @@ function showSuccess(){stepChange();
   var _purchName=pendingPack?pendingPack.name:(curSession?curSession.title:'');
   var _purchEid=_fbTrackPurchase(_purchPrice,_purchName);
   if(curUser&&curUser.isGuest){_fbTrackLead();}
+  if(curUser){_fbInitWithUser(curUser.email,curUser.firstName,curUser.lastName,'');}
   // Pass to CAPI via server (event_id stored for deduplication)
   window._lastPurchaseEventId=_purchEid;
   window._lastPurchaseAmount=_purchPrice;
