@@ -1148,6 +1148,24 @@ window.doGuestPackPay=function(){
   isProcessing=true;if(btn){btn.textContent='Processing...';btn.disabled=true;}err.textContent='';
   var cf=getCustomerFields();
   var finalPrice=(discountedPrice!==null)?discountedPrice:pendingPack.price;
+  // Free booking path (100% promo)
+  if(finalPrice===0){
+    fetch(PROXY+'/sabda-api/pay',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        stripePaymentMethodId:'free',
+        firstName:curUser.firstName,lastName:curUser.lastName,email:curUser.email,
+        type:pendingPack.type,productId:pendingPack.id,
+        actualPrice:0,password:npv||undefined,
+        phoneNumber:cf.phoneNumber,customerFields:cf.customerFields
+      })
+    }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};})})
+    .then(function(r){
+      if(r.data.success){showSuccess();}
+      else{err.textContent=r.data.error||'Booking failed.';isProcessing=false;if(btn){btn.textContent='Book Free';btn.disabled=false;}showFallback();}
+    }).catch(function(){err.textContent='Connection error.';isProcessing=false;if(btn){btn.textContent='Book Free';btn.disabled=false;}});
+    return;
+  }
   stripeInstance.createPaymentMethod({type:'card',card:cardElement,billing_details:{
     name:curUser.firstName+' '+curUser.lastName,email:curUser.email
   }}).then(function(result){
@@ -1397,7 +1415,17 @@ window.applyPromo=function(type,origPrice,productId){
     }
     document.getElementById('bk-promo-fields').style.display='none';
     document.getElementById('bk-promo-toggle').style.display='none';
-    if(activePayReq){try{activePayReq.update({total:{label:'SABDA Studio'+(activePayName?' \u2014 '+activePayName:''),amount:Math.round(discountedPrice*100)}});}catch(e){}}
+    if(activePayReq){
+      try{
+        if(discountedPrice===0){
+          // Hide Apple Pay for free bookings
+          var prEl=document.getElementById('bk-pay-request');if(prEl)prEl.style.display='none';
+          var prDiv=document.getElementById('bk-pay-divider');if(prDiv)prDiv.style.display='none';
+        } else {
+          activePayReq.update({total:{label:'SABDA Studio'+(activePayName?' \u2014 '+activePayName:''),amount:Math.round(discountedPrice*100)}});
+        }
+      }catch(e){}
+    }
   }).catch(function(){
     btn.textContent='Apply';btn.disabled=false;
     errEl.textContent='Could not validate code. Try again.';errEl.style.display='block';
@@ -1415,7 +1443,13 @@ window.removePromo=function(origPrice){
   if(payBtn) payBtn.textContent='Pay \u20AC'+origPrice+' & Book Class';
   var cardWrap=document.getElementById('bk-card');if(cardWrap)cardWrap.style.display='';var cardWrapLabel=document.getElementById('bk-card-label');if(cardWrapLabel)cardWrapLabel.style.display='';
   var cardLabel=document.getElementById('bk-card-label');if(cardLabel)cardLabel.style.display='';
-  if(activePayReq){try{activePayReq.update({total:{label:'SABDA Studio'+(activePayName?' \u2014 '+activePayName:''),amount:Math.round(origPrice*100)}});}catch(e){}}
+  if(activePayReq){
+    try{
+      activePayReq.update({total:{label:'SABDA Studio'+(activePayName?' \u2014 '+activePayName:''),amount:Math.round(origPrice*100)}});
+      // Restore Apple Pay visibility
+      var prEl=document.getElementById('bk-pay-request');if(prEl&&prEl.dataset.wasVisible)prEl.style.display='block';
+    }catch(e){}
+  }
 };
 
 // ── STEP 3C: PAYMENT FORM ──

@@ -1399,7 +1399,17 @@ window.applyPromo=function(type,origPrice,productId){
     }
     document.getElementById('bk-promo-fields').style.display='none';
     document.getElementById('bk-promo-toggle').style.display='none';
-    if(activePayReq){try{activePayReq.update({total:{label:'SABDA Studio'+(activePayName?' \u2014 '+activePayName:''),amount:Math.round(discountedPrice*100)}});}catch(e){}}
+    if(activePayReq){
+      try{
+        if(discountedPrice===0){
+          // Hide Apple Pay for free bookings
+          var prEl=document.getElementById('bk-pay-request');if(prEl)prEl.style.display='none';
+          var prDiv=document.getElementById('bk-pay-divider');if(prDiv)prDiv.style.display='none';
+        } else {
+          activePayReq.update({total:{label:'SABDA Studio'+(activePayName?' \u2014 '+activePayName:''),amount:Math.round(discountedPrice*100)}});
+        }
+      }catch(e){}
+    }
   }).catch(function(){
     btn.textContent='Aplicar';btn.disabled=false;
     errEl.textContent='No s\'ha pogut validar el codi. Torna-ho a intentar.';errEl.style.display='block';
@@ -1417,7 +1427,13 @@ window.removePromo=function(origPrice){
   if(payBtn) payBtn.textContent='Pagar \u20AC'+origPrice+' i reservar classe';
   var cardWrap=document.getElementById('bk-card');if(cardWrap)cardWrap.style.display='';var cardWrapLabel=document.getElementById('bk-card-label');if(cardWrapLabel)cardWrapLabel.style.display='';
   var cardLabel=document.getElementById('bk-card-label');if(cardLabel)cardLabel.style.display='';
-  if(activePayReq){try{activePayReq.update({total:{label:'SABDA Studio'+(activePayName?' \u2014 '+activePayName:''),amount:Math.round(origPrice*100)}});}catch(e){}}
+  if(activePayReq){
+    try{
+      activePayReq.update({total:{label:'SABDA Studio'+(activePayName?' \u2014 '+activePayName:''),amount:Math.round(origPrice*100)}});
+      // Restore Apple Pay visibility
+      var prEl=document.getElementById('bk-pay-request');if(prEl&&prEl.dataset.wasVisible)prEl.style.display='block';
+    }catch(e){}
+  }
 };
 
 // ── STEP 3C: PAYMENT FORM ──

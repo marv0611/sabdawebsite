@@ -815,6 +815,24 @@ window.doGuestPackPay=function(){
   isProcessing=true;if(btn){btn.textContent='Processing...';btn.disabled=true;}err.textContent='';
   var cf=getCustomerFields();
   var finalPrice=(discountedPrice!==null)?discountedPrice:pendingPack.price;
+  // Free booking path (100% promo)
+  if(finalPrice===0){
+    fetch(PROXY+'/sabda-api/pay',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        stripePaymentMethodId:'free',
+        firstName:curUser.firstName,lastName:curUser.lastName,email:curUser.email,
+        type:pendingPack.type,productId:pendingPack.id,
+        actualPrice:0,password:npv||undefined,
+        phoneNumber:cf.phoneNumber,customerFields:cf.customerFields
+      })
+    }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};})})
+    .then(function(r){
+      if(r.data.success){showSuccess();}
+      else{err.textContent=r.data.error||'Booking failed.';isProcessing=false;if(btn){btn.textContent='Book Free';btn.disabled=false;}showFallback();}
+    }).catch(function(){err.textContent='Connection error.';isProcessing=false;if(btn){btn.textContent='Book Free';btn.disabled=false;}});
+    return;
+  }
   stripeInstance.createPaymentMethod({type:'card',card:cardElement,billing_details:{
     name:curUser.firstName+' '+curUser.lastName,email:curUser.email
   }}).then(function(result){
