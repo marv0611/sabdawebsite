@@ -898,7 +898,13 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
       <a href="https://maps.google.com/?q=SABDA+Studio,+Barcelona" target="_blank" rel="noopener noreferrer" class="loc-link rv" style="transition-delay:.24s">Com arribar-hi <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M2 6.5h9M7.5 3l3 3.5-3 3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
     </div>
     <div class="loc-map rv" style="transition-delay:.1s">
-      <div id="sabdaMap"></div>
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2993.5!2d2.156725!3d41.389050!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12a4a28c9f7f0001%3A0x7774ae2006e29997!2sSABDA!5e0!3m2!1sen!2ses!4v1710000000000"
+        width="100%" height="100%" style="border:0;width:100%;height:100%"
+        allowfullscreen loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="SABDA Studio — C/Muntaner 83B, Barcelona"
+        aria-label="Mapa de ubicación de SABDA Studio en Barcelona Eixample"></iframe>
     </div>
   </div>
 </section>
@@ -1176,69 +1182,8 @@ window.addEventListener('scroll',()=>{
 })();
 </script>
 <script>
-function initMap(){
-  const sabda={lat:41.3879,lng:2.1578};
-  const map=new google.maps.Map(document.getElementById('sabdaMap'),{
-    center:sabda,zoom:16,
-    disableDefaultUI:true,
-    zoomControl:true,
-    zoomControlOptions:{position:google.maps.ControlPosition.RIGHT_CENTER},
-    gestureHandling:'cooperative',
-    styles:[
-      {elementType:'geometry',stylers:[{color:'#0e1235'}]},
-      {elementType:'labels.text.stroke',stylers:[{color:'#0e1235'}]},
-      {elementType:'labels.text.fill',stylers:[{color:'#4a5080'}]},
-      {featureType:'administrative.locality',elementType:'labels.text.fill',stylers:[{color:'#7a82b0'}]},
-      {featureType:'road',elementType:'geometry',stylers:[{color:'#161b45'}]},
-      {featureType:'road',elementType:'geometry.stroke',stylers:[{color:'#1a2050'}]},
-      {featureType:'road.highway',elementType:'geometry',stylers:[{color:'#1c2258'}]},
-      {featureType:'road.highway',elementType:'geometry.stroke',stylers:[{color:'#203999'}]},
-      {featureType:'road',elementType:'labels.text.fill',stylers:[{color:'#5a6290'}]},
-      {featureType:'water',elementType:'geometry',stylers:[{color:'#090c26'}]},
-      {featureType:'water',elementType:'labels.text.fill',stylers:[{color:'#203999'}]},
-      {featureType:'poi',elementType:'geometry',stylers:[{color:'#121840'}]},
-      {featureType:'poi',elementType:'labels.text.fill',stylers:[{color:'#4a5080'}]},
-      {featureType:'poi.park',elementType:'geometry',stylers:[{color:'#0f1538'}]},
-      {featureType:'poi.park',elementType:'labels.text.fill',stylers:[{color:'#2a5a4a'}]},
-      {featureType:'transit',elementType:'geometry',stylers:[{color:'#141a42'}]},
-      {featureType:'transit.station',elementType:'labels.text.fill',stylers:[{color:'#5a6290'}]},
-      {featureType:'poi.business',stylers:[{visibility:'off'}]},
-      {featureType:'poi.government',stylers:[{visibility:'off'}]},
-      {featureType:'poi.school',stylers:[{visibility:'off'}]},
-      {featureType:'poi.sports_complex',stylers:[{visibility:'off'}]},
-    ]
-  });
-  const marker=new google.maps.Marker({
-    position:sabda,map:map,
-    icon:{
-      url:'data:image/svg+xml,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6" fill="#02F3C5"/><circle cx="12" cy="12" r="11" fill="none" stroke="#02F3C5" stroke-width="1.5" opacity="0.4"/></svg>'),
-      scaledSize:new google.maps.Size(24,24),
-      anchor:new google.maps.Point(12,12),
-    },
-    title:'SABDA Studio'
-  });
-  /* Pulsing glow ring */
-  let pulseRadius=30;
-  let pulseGrowing=true;
-  const pulse=new google.maps.Circle({
-    center:sabda,map:map,radius:pulseRadius,
-    fillColor:'#02F3C5',fillOpacity:.06,
-    strokeColor:'#02F3C5',strokeWeight:1.5,strokeOpacity:.25,
-    clickable:false
-  });
-  setInterval(()=>{
-    pulseRadius+=pulseGrowing?0.4:-0.4;
-    if(pulseRadius>45)pulseGrowing=false;
-    if(pulseRadius<30)pulseGrowing=true;
-    pulse.setRadius(pulseRadius);
-    pulse.setOptions({strokeOpacity:0.1+0.15*(1-(pulseRadius-30)/15),fillOpacity:0.03+0.04*(1-(pulseRadius-30)/15)});
-  },50);
-  marker.addListener('click',()=>{
-    window.open('https://maps.google.com/?q=SABDA+Studio,+Barcelona','_blank');
-  });
 }
 </script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAc0QxK5ORtPCkZr19fik4hYChFHGA5Ys0&callback=initMap"></script>
 <script defer src="/cookies.js"></script>
 <script src="/cookie-consent.js"></script>
 </body>
