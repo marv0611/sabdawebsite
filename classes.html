@@ -899,6 +899,7 @@ function showGuestStep(){stepChange();
     +'<input class="bk-input" id="bk-ln" type="text" aria-label="Last name" placeholder="Last name" />'
     +'<div class="bk-label">Email</div>'
     +'<input class="bk-input" id="bk-email" type="email" aria-label="Email address" placeholder="your@email.com" />'
+    +(pendingPack&&pendingPack.type!=='single'?'<div class="bk-label" style="margin-top:8px">Create a password</div>'+'<input class="bk-input" id="bk-new-pass" type="password" placeholder="Min. 8 characters" aria-label="Create a password" autocomplete="new-password" />'+'<div class="bk-label" style="margin-top:8px">Confirm password</div>'+'<input class="bk-input" id="bk-new-pass2" type="password" placeholder="Repeat password" aria-label="Confirm password" autocomplete="new-password" />':'')
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">Continue</button>'
     +'<div class="bk-link" onclick="showLoginStep()">Have an account? Log in</div>'
@@ -1298,8 +1299,7 @@ window.showPayForm=function(type,price,productId,name,desc){stepChange();
     +'<div id="bk-promo-err" style="display:none;font-size:.78rem;color:var(--salmon);margin-top:6px"></div>'
     +'</div>'
     +customerFieldsHTML()
-    +(curUser.isGuest&&type!=='single'?'<div class="bk-label" style="margin-top:16px">Create a password</div>'+'<input class="bk-input" id="bk-new-pass" type="password" placeholder="Min. 8 characters" aria-label="Create password" autocomplete="new-password" />'+'<div class="bk-label" style="margin-top:8px">Confirm password</div>'+'<input class="bk-input" id="bk-new-pass2" type="password" placeholder="Repeat password" aria-label="Confirm password" autocomplete="new-password" />':'')
-    +'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'
+        +'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'
     +'<div id="bk-pay-divider" class="bk-divider" style="display:none">or pay with card</div>'
     +'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Card Details</div>'
     +'<div class="bk-card-wrap" id="bk-card"></div>'

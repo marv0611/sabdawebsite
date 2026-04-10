@@ -617,6 +617,7 @@ function showGuestStep(){stepChange();
     +'<input class="bk-input" id="bk-ln" type="text" autocomplete="family-name" placeholder="Last name" aria-label="Last name" />'
     +'<div class="bk-label">Email</div>'
     +'<input class="bk-input" id="bk-email" type="email" inputmode="email" autocomplete="email" placeholder="your@email.com" aria-label="Email address" />'
+    +(pendingPack&&pendingPack.type!=='single'?'<div class="bk-label" style="margin-top:8px">Create a password</div>'+'<input class="bk-input" id="bk-new-pass" type="password" placeholder="Min. 8 characters" aria-label="Create a password" autocomplete="new-password" />'+'<div class="bk-label" style="margin-top:8px">Confirm password</div>'+'<input class="bk-input" id="bk-new-pass2" type="password" placeholder="Repeat password" aria-label="Confirm password" autocomplete="new-password" />':'')
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">Continue</button>'
     +'<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.12);border-radius:8px;padding:12px;margin-top:16px;font-size:.75rem;color:var(--white60);line-height:1.5;text-align:center">Booked with us before? <span onclick="showLoginStep()" style="color:var(--cyan);cursor:pointer;text-decoration:underline">Log in instead</span> to keep your history and credits together.</div>'
@@ -1097,8 +1098,7 @@ function showPayForm(type,price,productId,name,desc){stepChange();
     +'<div id="bk-promo-err" style="display:none;font-size:.78rem;color:var(--salmon);margin-top:6px"></div>'
     +'</div>'
     +customerFieldsHTML()
-    +(curUser.isGuest&&type!=='single'?'<div class="bk-label" style="margin-top:16px">Create a password</div>'+'<input class="bk-input" id="bk-new-pass" type="password" placeholder="Min. 8 characters" aria-label="Create password" autocomplete="new-password" />'+'<div class="bk-label" style="margin-top:8px">Confirm password</div>'+'<input class="bk-input" id="bk-new-pass2" type="password" placeholder="Repeat password" aria-label="Confirm password" autocomplete="new-password" />':'')
-    +'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'
+        +'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'
     +'<div id="bk-pay-divider" class="bk-divider" style="display:none">or pay with card</div>'
     +'<div id="bk-card-section">'
     +'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Card Details</div>'

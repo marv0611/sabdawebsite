@@ -896,14 +896,15 @@ function showGuestStep(){stepChange();
     +packNote
     +'<div class="bk-label">Nom</div>'
     +'<input class="bk-input" id="bk-fn" type="text" aria-label="Nom" placeholder="Nom" />'
-    +'<div class="bk-label">Apellido</div>'
-    +'<input class="bk-input" id="bk-ln" type="text" aria-label="Apellido" placeholder="Apellido" />'
+    +'<div class="bk-label">Cognom</div>'
+    +'<input class="bk-input" id="bk-ln" type="text" aria-label="Cognom" placeholder="Cognom" />'
     +'<div class="bk-label">Email</div>'
     +'<input class="bk-input" id="bk-email" type="email" aria-label="Correu electrònic" placeholder="tu@email.com" />'
+    +(pendingPack&&pendingPack.type!=='single'?'<div class="bk-label" style="margin-top:8px">Crea una contrasenya</div>'+'<input class="bk-input" id="bk-new-pass" type="password" placeholder="Mín. 8 caràcters" aria-label="Crea una contrasenya" autocomplete="new-password" />'+'<div class="bk-label" style="margin-top:8px">Confirma la contrasenya</div>'+'<input class="bk-input" id="bk-new-pass2" type="password" placeholder="Repeteix la contrasenya" aria-label="Confirma la contrasenya" autocomplete="new-password" />':'')
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">Continuar</button>'
     +'<div class="bk-link" onclick="showLoginStep()">Ja tens compte? Inicia sessió</div>'
-    +'<div class="bk-link" onclick="pendingPack=null;showNoMembership()">\u2190 Cambiar selección</div>'
+    +'<div class="bk-link" onclick="pendingPack=null;showNoMembership()">\u2190 Canviar la selecció</div>'
     +'</div>';
   document.getElementById('bk-fn').focus();
 }
@@ -1299,8 +1300,7 @@ window.showPayForm=function(type,price,productId,name,desc){stepChange();
     +'<div id="bk-promo-err" style="display:none;font-size:.78rem;color:var(--salmon);margin-top:6px"></div>'
     +'</div>'
     +customerFieldsHTML()
-    +(curUser.isGuest&&type!=='single'?'<div class="bk-label" style="margin-top:16px">Create a password</div>'+'<input class="bk-input" id="bk-new-pass" type="password" placeholder="Min. 8 characters" aria-label="Create password" autocomplete="new-password" />'+'<div class="bk-label" style="margin-top:8px">Confirm password</div>'+'<input class="bk-input" id="bk-new-pass2" type="password" placeholder="Repeat password" aria-label="Confirm password" autocomplete="new-password" />':'')
-    +'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'
+        +'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'
     +'<div id="bk-pay-divider" class="bk-divider" style="display:none">o paga con tarjeta</div>'
     +'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Dades de la targeta</div>'
     +'<div class="bk-card-wrap" id="bk-card"></div>'
