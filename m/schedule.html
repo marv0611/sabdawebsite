@@ -1192,7 +1192,7 @@ function showPayForm(type,price,productId,name,desc){stepChange();
           ev.complete('success');
           showSuccess();
         } else if(r.data.clientSecret){
-          stripeInstance.confirmCardPayment(r.data.clientSecret).then(function(conf){
+          stripeInstance.confirmCardPayment(r.data.clientSecret,{payment_method:ev.paymentMethod.id}).then(function(conf){
             if(conf.error){ev.complete('fail');isProcessing=false;}
             else{ev.complete('success');showSuccess();}
           });
@@ -1203,7 +1203,7 @@ function showPayForm(type,price,productId,name,desc){stepChange();
           showFallback();
           isProcessing=false;
         }
-      }).catch(function(){ev.complete('fail');isProcessing=false;});
+      }).catch(function(e){ev.complete('fail');isProcessing=false;try{var errEl=document.getElementById('bk-err');if(errEl)errEl.textContent='Connection error. Please try again.';}catch(e2){}});
     });
   }catch(e){
     try{console.warn('[SABDA] Payment Request setup failed (Apple/Google Pay disabled):',e);}catch(e2){}
