@@ -879,6 +879,7 @@ function showLoginStep(){stepChange();
     +'<div class="bk-label">Contraseña</div>'
     +'<input class="bk-input" id="bk-pass" type="password" aria-label="Contraseña" placeholder="Contraseña" />'
     +'<div style="text-align:right;margin:-10px 0 12px"><a href="https://momence.com/forgot-password" target="_blank" rel="noopener noreferrer" style="font-size:.75rem;color:var(--white38);text-decoration:none;border-bottom:1px solid var(--white12)">Olvidaste tu contraseña?</a></div>'
+    +(pendingPack&&pendingPack.type!=='single'?'<div class="bk-divider" style="margin:16px 0"></div>'+'<div id="bk-pack-customer">'+customerFieldsHTML()+'</div>'+'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'+'<div id="bk-pay-divider" class="bk-divider" style="display:none">or pay with card</div>'+'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Card Details</div>'+'<div class="bk-card-wrap" id="bk-card"></div>':'')
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-login-btn" onclick="doLogin()">Iniciar sesión y reservar</button>'
     +'<div class="bk-link" onclick="showGuestStep()">Primera vez? Reserva como invitado</div>'
@@ -1039,10 +1040,153 @@ window.doGuestCheck=function(){
         +'<div class="bk-link" style="margin-top:12px"><a href="https://momence.com/forgot-password" target="_blank" rel="noopener noreferrer" style="color:var(--white38);font-size:.78rem;text-decoration:underline">Olvidaste tu contraseña?</a></div>'
         +'</div>';
     } else {
-      showNoMembership();
+      if(pendingPack&&pendingPack.type!=='single'){
+        // New user + pack purchase: mount card on already-visible form
+        mountCardForGuest();
+      } else {
+        showNoMembership();
+      }
     }
   }).catch(function(){
-    showNoMembership();
+    if(pendingPack&&pendingPack.type!=='single'){mountCardForGuest();}else{showNoMembership();}
+  });
+};
+
+// ── MOUNT CARD FOR GUEST PACK PURCHASE (one-screen checkout) ──
+function mountCardForGuest(){
+  if(typeof Stripe==='undefined'){
+    var errEl=document.getElementById('bk-err');
+    if(errEl)errEl.textContent='Payment form could not load. Please disable ad blockers and refresh.';
+    return;
+  }
+  if(!stripeInstance){
+    stripeInstance=Stripe('pk_live_RoPa2iuvwBbqEISUd2LYTmKF',{stripeAccount:'acct_1RUWnoBf6nsynAht'});
+  }
+  if(cardElement){try{cardElement.destroy();}catch(e){}cardElement=null;}
+  var elements=stripeInstance.elements();
+  cardElement=elements.create('card',{
+    style:{
+      base:{color:'#f0efe9',fontSize:'16px',fontFamily:'DM Sans, sans-serif','::placeholder':{color:'rgba(240,239,233,0.38)'}},
+      invalid:{color:'#F8A6A3'}
+    }
+  });
+  var cardWrap=document.getElementById('bk-card');
+  if(cardWrap)cardElement.mount('#bk-card');
+  // Update pay button to trigger payment
+  var btn=document.getElementById('bk-guest-btn');
+  if(btn){
+    btn.onclick=function(){doGuestPackPay();};
+    btn.textContent='Pay \u20AC'+(pendingPack?pendingPack.price:0);
+  }
+  // Apple/Google Pay
+  try{
+    activePayName=pendingPack?pendingPack.name:'';
+    activePayReq=stripeInstance.paymentRequest({
+      country:'ES',currency:'eur',
+      total:{label:'SABDA Studio \u2014 '+(pendingPack?pendingPack.name:''),amount:Math.round((pendingPack?pendingPack.price:0)*100)},
+      requestPayerName:true,requestPayerEmail:true
+    });
+    var prButton=stripeInstance.elements().create('paymentRequestButton',{
+      paymentRequest:activePayReq,
+      style:{paymentRequestButton:{type:'default',theme:'light-outline',height:'48px'}}
+    });
+    activePayReq.canMakePayment().then(function(result){
+      if(result){
+        var prEl=document.getElementById('bk-pay-request');
+        var prDiv=document.getElementById('bk-pay-divider');
+        if(prEl)prEl.style.display='block';
+        if(prDiv)prDiv.style.display='flex';
+        prButton.mount('#bk-pay-request');
+      }
+    });
+    activePayReq.on('paymentmethod',function(ev){
+      if(isProcessing){ev.complete('fail');return;}
+      var vErr=validateCustomerFields();
+      if(vErr){ev.complete('fail');return;}
+      isProcessing=true;
+      var cf=getCustomerFields();
+      var np=document.getElementById('bk-new-pass');
+      var pass=np?np.value.trim():undefined;
+      fetch(PROXY+'/sabda-api/pay',{
+        method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({
+          stripePaymentMethodId:ev.paymentMethod.id,
+          firstName:curUser.firstName,lastName:curUser.lastName,email:curUser.email,
+          type:pendingPack.type,productId:pendingPack.id,
+          actualPrice:(discountedPrice!==null)?discountedPrice:pendingPack.price,
+          password:pass||undefined,
+          phoneNumber:cf.phoneNumber,customerFields:cf.customerFields
+        })
+      }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};})})
+      .then(function(r){
+        if(r.data.success){ev.complete('success');showSuccess();}
+        else if(r.data.clientSecret){
+          stripeInstance.confirmCardPayment(r.data.clientSecret,{payment_method:ev.paymentMethod.id}).then(function(conf){
+            if(conf.error){ev.complete('fail');isProcessing=false;}
+            else{ev.complete('success');showSuccess();}
+          });
+        } else {
+          ev.complete('fail');
+          var errEl=document.getElementById('bk-err');
+          if(errEl)errEl.textContent=r.data.error||'Payment failed.';
+          isProcessing=false;
+        }
+      }).catch(function(e){ev.complete('fail');isProcessing=false;});
+    });
+  }catch(e){}
+}
+
+// ── GUEST PACK PAYMENT (called when card is mounted in one-screen flow) ──
+window.doGuestPackPay=function(){
+  if(isProcessing)return;
+  var btn=document.getElementById('bk-guest-btn');
+  var err=document.getElementById('bk-err');
+  var vErr=validateCustomerFields();
+  if(vErr){err.textContent=vErr;return;}
+  var np=document.getElementById('bk-new-pass');
+  var np2=document.getElementById('bk-new-pass2');
+  var npv=np?np.value.trim():'';
+  var npv2=np2?np2.value.trim():'';
+  if(!npv||npv.length<8){err.textContent='Password must be at least 8 characters.';if(np)np.classList.add('bk-field-err');return;}
+  if(npv!==npv2){err.textContent='Passwords do not match.';if(np2)np2.classList.add('bk-field-err');return;}
+  isProcessing=true;if(btn){btn.textContent='Processing...';btn.disabled=true;}err.textContent='';
+  var cf=getCustomerFields();
+  var finalPrice=(discountedPrice!==null)?discountedPrice:pendingPack.price;
+  stripeInstance.createPaymentMethod({type:'card',card:cardElement,billing_details:{
+    name:curUser.firstName+' '+curUser.lastName,email:curUser.email
+  }}).then(function(result){
+    if(result.error){
+      err.textContent=result.error.message;
+      isProcessing=false;if(btn){btn.textContent='Pay \u20AC'+pendingPack.price;btn.disabled=false;}
+      return;
+    }
+    fetch(PROXY+'/sabda-api/pay',{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        stripePaymentMethodId:result.paymentMethod.id,
+        firstName:curUser.firstName,lastName:curUser.lastName,email:curUser.email,
+        type:pendingPack.type,productId:pendingPack.id,
+        actualPrice:finalPrice,
+        password:npv||undefined,
+        phoneNumber:cf.phoneNumber,customerFields:cf.customerFields
+      })
+    }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};})})
+    .then(function(r){
+      if(r.data.success){showSuccess();}
+      else if(r.data.clientSecret){
+        return stripeInstance.confirmCardPayment(r.data.clientSecret).then(function(conf){
+          if(conf.error){err.textContent=conf.error.message;isProcessing=false;if(btn){btn.textContent='Pay \u20AC'+pendingPack.price;btn.disabled=false;}}
+          else{showSuccess();}
+        });
+      } else {
+        err.textContent=r.data.error||'Payment failed. Please try again.';
+        isProcessing=false;if(btn){btn.textContent='Pay \u20AC'+pendingPack.price;btn.disabled=false;}
+        showFallback();
+      }
+    }).catch(function(){
+      err.textContent='Connection error. Please try again.';
+      isProcessing=false;if(btn){btn.textContent='Pay \u20AC'+pendingPack.price;btn.disabled=false;}
+    });
   });
 };
 
