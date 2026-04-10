@@ -968,6 +968,7 @@ function showGuestStep(){stepChange();
   bd.innerHTML=classBlockHtml()
     +'<div class="bk-login">'
     +packNote
+    +(curUser?'':'<div style="text-align:right;margin-bottom:4px"><span style="font-size:.74rem;color:var(--white38);cursor:pointer;border-bottom:1px solid var(--white12);padding-bottom:1px" onclick="showLoginStep()">Have an account? Log in</span></div>')
     +'<div class="bk-label">First Name</div>'
     +'<input class="bk-input" id="bk-fn" type="text" aria-label="First name" placeholder="First name" />'
     +'<div class="bk-label">Last Name</div>'
@@ -978,7 +979,6 @@ function showGuestStep(){stepChange();
     +(pendingPack&&pendingPack.type!=='single'?'<div class="bk-label" style="margin-top:8px">Create a password</div>'+'<input class="bk-input" id="bk-new-pass" type="password" placeholder="Min. 8 characters" aria-label="Create a password" autocomplete="new-password" />'+'<div class="bk-label" style="margin-top:8px">Confirm password</div>'+'<input class="bk-input" id="bk-new-pass2" type="password" placeholder="Repeat password" aria-label="Confirm password" autocomplete="new-password" />':'')
     +(pendingPack&&pendingPack.type!=='single'?'<div class="bk-divider" style="margin:16px 0"></div>'+'<div id="bk-pack-customer">'+customerFieldsHTML()+'</div>'+'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'+'<div id="bk-pay-divider" class="bk-divider" style="display:none">or pay with card</div>'+'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Card Details</div>'+'<div class="bk-card-wrap" id="bk-card"></div>':'')+'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">'+(pendingPack&&pendingPack.type!=='single'?'Pay \u20AC'+(pendingPack?pendingPack.price:0):'Continue')+'</button>'
-    +'<div class="bk-link" onclick="showLoginStep()">Have an account? Log in</div>'
     +'<div class="bk-link" onclick="pendingPack=null;showNoMembership()">\u2190 Change selection</div>'
     +'</div>';
   document.getElementById('bk-fn').focus();

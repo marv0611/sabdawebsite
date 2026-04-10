@@ -629,6 +629,7 @@ function showGuestStep(){stepChange();
   var bd=document.getElementById('mo-bd');
   bd.innerHTML=classBlock
     +'<div class="bk-login">'
+    +(curUser?'':'<div style="text-align:right;margin-bottom:4px"><span style="font-size:.74rem;color:var(--white38);cursor:pointer;border-bottom:1px solid var(--white12);padding-bottom:1px" onclick="showLoginStep()">Have an account? Log in</span></div>')
     +'<div class="bk-label">First Name</div>'
     +'<input class="bk-input" id="bk-fn" type="text" autocomplete="given-name" placeholder="First name" aria-label="First name" />'
     +'<div class="bk-label">Last Name</div>'

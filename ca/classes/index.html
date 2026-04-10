@@ -969,6 +969,7 @@ function showGuestStep(){stepChange();
   bd.innerHTML=classBlockHtml()
     +'<div class="bk-login">'
     +packNote
+    +(curUser?'':'<div style="text-align:right;margin-bottom:4px"><span style="font-size:.74rem;color:var(--white38);cursor:pointer;border-bottom:1px solid var(--white12);padding-bottom:1px" onclick="showLoginStep()">Ja tens compte? Inicia sessió</span></div>')
     +'<div class="bk-label">Nom</div>'
     +'<input class="bk-input" id="bk-fn" type="text" aria-label="Nom" placeholder="Nom" />'
     +'<div class="bk-label">Cognom</div>'
@@ -980,7 +981,6 @@ function showGuestStep(){stepChange();
     +(pendingPack&&pendingPack.type!=='single'?'<div class="bk-label" style="margin-top:8px">Crea una contrasenya</div>'+'<input class="bk-input" id="bk-new-pass" type="password" placeholder="Mín. 8 caràcters" aria-label="Crea una contrasenya" autocomplete="new-password" />'+'<div class="bk-label" style="margin-top:8px">Confirma la contrasenya</div>'+'<input class="bk-input" id="bk-new-pass2" type="password" placeholder="Repeteix la contrasenya" aria-label="Confirma la contrasenya" autocomplete="new-password" />':'')
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">Continuar</button>'
-    +'<div class="bk-link" onclick="showLoginStep()">Ja tens compte? Inicia sessió</div>'
     +'<div class="bk-link" onclick="pendingPack=null;showNoMembership()">\u2190 Canviar la selecció</div>'
     +'</div>';
   document.getElementById('bk-fn').focus();
