@@ -561,7 +561,6 @@ function showGuestStep(){stepChange();
     +(pendingPack&&pendingPack.type!=='single'?'<div class="bk-divider" style="margin:16px 0"></div>'+'<div id="bk-pack-customer">'+customerFieldsHTML()+'</div>'+'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'+'<div id="bk-pay-divider" class="bk-divider" style="display:none">or pay with card</div>'+'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Card Details</div>'+'<div class="bk-card-wrap" id="bk-card"></div>':'')+'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">'+(pendingPack&&pendingPack.type!=='single'?'Pay \u20AC'+(pendingPack?pendingPack.price:0):'Continue')+'</button>'
     +'<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.12);border-radius:8px;padding:12px;margin-top:16px;font-size:.75rem;color:var(--white60);line-height:1.5;text-align:center">Booked with us before? <span onclick="showLoginStep()" style="color:var(--cyan);cursor:pointer;text-decoration:underline">Log in instead</span> to keep your history and credits together.</div>'
-    +'<div class="bk-link" onclick="showLoginStep()">Have an account? Log in</div>'
     +'</div>';
   document.getElementById('bk-fn').focus();
 }

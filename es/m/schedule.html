@@ -630,6 +630,7 @@ function showGuestStep(){stepChange();
   var bd=document.getElementById('mo-bd');
   bd.innerHTML=classBlock
     +'<div class="bk-login">'
+    +(curUser?'':'<div style="text-align:right;margin-bottom:12px"><span style="font-size:.75rem;color:var(--white38);cursor:pointer;border-bottom:1px solid var(--white12);padding-bottom:1px" onclick="showLoginStep()">Ya tienes cuenta? Inicia sesión</span></div>')
     +'<div class="bk-label">Nombre</div>'
     +'<input class="bk-input" id="bk-fn" type="text" autocomplete="given-name" placeholder="Nombre" aria-label="Nombre" />'
     +'<div class="bk-label">Apellido</div>'
@@ -644,7 +645,6 @@ function showGuestStep(){stepChange();
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">Continuar</button>'
     +'<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.12);border-radius:8px;padding:12px;margin-top:16px;font-size:.75rem;color:var(--white60);line-height:1.5;text-align:center">Ya has reservado antes con nosotros? <span onclick="showLoginStep()" style="color:var(--cyan);cursor:pointer;text-decoration:underline">Inicia sesión</span> para mantener tu historial y créditos juntos.</div>'
-    +'<div class="bk-link" onclick="showLoginStep()">Ya tienes cuenta? Inicia sesión</div>'
     +'</div>';
   document.getElementById('bk-fn').focus();
 }

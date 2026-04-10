@@ -631,6 +631,7 @@ function showGuestStep(){stepChange();
   var bd=document.getElementById('mo-bd');
   bd.innerHTML=classBlock
     +'<div class="bk-login">'
+    +(curUser?'':'<div style="text-align:right;margin-bottom:12px"><span style="font-size:.75rem;color:var(--white38);cursor:pointer;border-bottom:1px solid var(--white12);padding-bottom:1px" onclick="showLoginStep()">Ja tens compte? Inicia sessió</span></div>')
     +'<div class="bk-label">Nom</div>'
     +'<input class="bk-input" id="bk-fn" type="text" autocomplete="given-name" placeholder="Nom" aria-label="Nom" />'
     +'<div class="bk-label">Cognom</div>'
