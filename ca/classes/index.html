@@ -10,7 +10,7 @@
 <meta name="robots" content="index,follow">
 <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20symbol%20multi-colored%20%281%29.png">
 <title>Classes i Horaris | Yoga, Pilates, Sound Healing | SABDA Barcelona</title>
-<meta name="description" content="Descubre clases inmersivas a Barcelona. Yoga, pilates, sound healing, breathwork y más en projeccions 360° con Dolby Atmos. Reserva tu plaza desde 18€.">
+<meta name="description" content="Descubre clases inmersivas a Barcelona. Yoga, pilates, sound healing, breathwork i més en projeccions 360° con Dolby Atmos. Reserva tu plaza desde 18€.">
 <link rel="canonical" href="https://sabdastudio.com/ca/classes/">
 <link rel="alternate" hreflang="en" href="https://sabdastudio.com/classes/">
 <link rel="alternate" hreflang="es" href="https://sabdastudio.com/es/clases/">
@@ -531,7 +531,7 @@ select.bk-input option{background:var(--navy-light);color:var(--white)}
     <div class="ft-legal"><a href="/ca/legal/avis-legal.html">Avís Legal</a><a href="/ca/legal/politica-privacitat.html">Política de Privacitat</a><a href="/ca/legal/termes.html">Termes i Condicions</a><a href="/ca/legal/cookies.html">Cookies</a></div>
   </div>
 <div class="kit-digital-bar" aria-label="Financiado por el Programa Kit Digital">
-  <img src="/logos-kit-digital.jpg" alt="Financiado por la Unión Europea NextGenerationEU · Gobierno de España · Plan de Recuperación, Transformación y Resiliencia · Kit Digital" loading="lazy" width="800" height="100">
+  <img src="/logos-kit-digital.jpg" alt="Financiado por la Unión Europea NextGenerationEU · Gobierno de España · Plan de Recuperación, Transformació i Resiliència · Kit Digital" loading="lazy" width="800" height="100">
 </div>
 </footer>
 
@@ -960,7 +960,7 @@ function showMfaStep(mfaToken){stepChange();
     +'<div class="bk-label">Codi de verificació</div>'
     +'<input class="bk-input" id="bk-mfa" aria-label="Codi de verificació" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6" placeholder="000000" style="text-align:center;font-size:1.4rem;letter-spacing:.3em" />'
     +'<div class="bk-err" id="bk-err"></div>'
-    +'<button class="bk-primary" id="bk-mfa-btn" onclick="doMfaVerify()">Verificar y continuar</button>'
+    +'<button class="bk-primary" id="bk-mfa-btn" onclick="doMfaVerify()">Verificar i continuar</button>'
     +'<div class="bk-link" onclick="showLoginStep()">\u2190 Tornar</div>'
     +'</div>';
   document.getElementById('bk-mfa').focus();
@@ -983,7 +983,7 @@ window.doMfaVerify=function(){if(isProcessing)return;
   .then(function(r){
     if(!r.ok||r.data.error){
       err.innerHTML='Codi no vàlid. <a href="'+curSession.link+'" target="_blank" rel="noopener noreferrer" style="color:var(--cyan);text-decoration:underline">Reservar a Momence \u2192</a>';
-      isProcessing=false;btn.textContent='Verificar y continuar';btn.disabled=false;
+      isProcessing=false;btn.textContent='Verificar i continuar';btn.disabled=false;
       return;
     }
     var d=r.data;
@@ -996,7 +996,7 @@ window.doMfaVerify=function(){if(isProcessing)return;
     else{showNoMembership();}
   }).catch(function(){
     err.textContent='Error de connexió. Torna-ho a intentar.';
-    isProcessing=false;btn.textContent='Verificar y continuar';btn.disabled=false;
+    isProcessing=false;btn.textContent='Verificar i continuar';btn.disabled=false;
     showFallback();
   });
 };
