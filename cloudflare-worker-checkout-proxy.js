@@ -567,7 +567,35 @@ async function handleMfaVerify(request, origin) {
             || (m.remainingEvents > 0) || (m.unlimited === true)
             || (m.type === 'subscription' && m.status === 'active');
         });
-        if (memberships.length === 0 && rawList.length > 0) {
+        // Fallback: if session-compatible returned nothing but member has active subscriptions,
+        // fetch all member memberships directly — catches subscriptions with 0 credits this period
+        if (memberships.length === 0 && memberId) {
+          try {
+            const allMRes = await fetch(
+              MOMENCE + '/_api/primary/plugin/members/' + memberId + '/memberships',
+              { headers: momenceHeaders({ 'Cookie': cookieStr }) }
+            );
+            const allMData = await allMRes.json().catch(() => ({}));
+            const allList = Array.isArray(allMData) ? allMData
+              : (allMData.message || allMData.memberships || allMData.data || []);
+            // Only include active subscriptions (not depleted packs)
+            const activeSubs = allList.filter(m =>
+              (m.status === 'active' || m.membershipStatus === 'active')
+              && (m.type === 'subscription' || m.membershipType === 'subscription'
+                  || m.unlimited === true || m.isUnlimited === true)
+            );
+            if (activeSubs.length > 0) {
+              memberships = activeSubs;
+              console.log('[MEMBERSHIPS] session-compatible empty, found ' + activeSubs.length + ' active sub(s) via member endpoint');
+            } else if (rawList.length > 0) {
+              memberships = rawList.map(m => ({ ...m, _unverified: true }));
+            }
+          } catch (e2) {
+            if (rawList.length > 0) {
+              memberships = rawList.map(m => ({ ...m, _unverified: true }));
+            }
+          }
+        } else if (memberships.length === 0 && rawList.length > 0) {
           memberships = rawList.map(m => ({ ...m, _unverified: true }));
         }
       } catch (e) {}
@@ -687,10 +715,33 @@ async function handleLogin(request, origin) {
           return hasCredits;
         });
 
-        // If filtering removed everything, try the raw list but mark as unverified
-        // Some memberships may use different field names
-        if (memberships.length === 0 && rawList.length > 0) {
-          // Log the raw data so we can see the actual structure
+        // Fallback: fetch all member memberships — catches active subscriptions with 0 credits this period
+        if (memberships.length === 0 && memberId) {
+          try {
+            const allMRes = await fetch(
+              MOMENCE + '/_api/primary/plugin/members/' + memberId + '/memberships',
+              { headers: momenceHeaders({ 'Cookie': cookieStr }) }
+            );
+            const allMData = await allMRes.json().catch(() => ({}));
+            const allList = Array.isArray(allMData) ? allMData
+              : (allMData.message || allMData.memberships || allMData.data || []);
+            const activeSubs = allList.filter(m =>
+              (m.status === 'active' || m.membershipStatus === 'active')
+              && (m.type === 'subscription' || m.membershipType === 'subscription'
+                  || m.unlimited === true || m.isUnlimited === true)
+            );
+            if (activeSubs.length > 0) {
+              memberships = activeSubs;
+              console.log('[MEMBERSHIPS-MFA] found ' + activeSubs.length + ' active sub(s) via member endpoint');
+            } else if (rawList.length > 0) {
+              memberships = rawList.map(m => ({ ...m, _unverified: true }));
+            }
+          } catch (e2) {
+            if (rawList.length > 0) {
+              memberships = rawList.map(m => ({ ...m, _unverified: true }));
+            }
+          }
+        } else if (memberships.length === 0 && rawList.length > 0) {
           memberships = rawList.map(m => ({ ...m, _unverified: true }));
         }
       } catch (e) {}
