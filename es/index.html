@@ -360,7 +360,7 @@ a.cls-item{display:block;color:inherit;text-decoration:none}
 .rn-sub span{color:var(--salmon);font-weight:600}
 .rn-link{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--navy);background:var(--cyan);padding:15px 32px;border-radius:4px;border:none;transition:background .25s,transform .2s,box-shadow .3s;white-space:nowrap}
 .rn-link:hover{background:#33f5d1;transform:translateY(-2px);box-shadow:0 8px 28px rgba(2,243,197,.25)}
-.rn-link svg{width:18px;height:18px;opacity:.9}
+.rn-link svg{width:15px;height:15px;opacity:.9;flex-shrink:0}
 .rn-ticker{position:relative;max-width:1200px;margin:0 auto 32px;overflow:hidden}
 .rn-ticker::before,.rn-ticker::after{content:'';position:absolute;top:0;bottom:0;width:140px;z-index:3;pointer-events:none}
 .rn-ticker::before{left:0;background:linear-gradient(to right,var(--navy),transparent)}
@@ -382,7 +382,7 @@ a.cls-item{display:block;color:inherit;text-decoration:none}
 .loc-dir span{color:var(--cyan)}
 .loc-link{display:inline-flex;align-items:center;gap:8px;color:var(--cyan);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;border-bottom:1px solid rgba(2,243,197,.28);padding-bottom:3px;transition:gap .25s,border-color .25s}
 .loc-link:hover{gap:14px;border-color:var(--cyan)}
-.loc-map{border-radius:6px;overflow:hidden;height:400px;border:1px solid rgba(240,239,233,.08);position:relative}
+.loc-map{border-radius:6px;overflow:hidden;position:relative;height:400px;border:1px solid rgba(240,239,233,.08);position:relative}
 .loc-map #sabdaMap{width:100%;height:100%}
 
 /* ── FOOTER ── */
@@ -904,7 +904,8 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
         allowfullscreen loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"
         title="SABDA Studio — C/Muntaner 83B, Barcelona"
-        aria-label="Mapa de ubicación de SABDA Studio en Barcelona Eixample"></iframe>
+        aria-label="SABDA Studio map — C/Muntaner 83B, Barcelona"></iframe>
+      <a href="https://maps.google.com/?q=SABDA+Studio,+C/Muntaner+83B,+Barcelona" target="_blank" rel="noopener noreferrer" style="position:absolute;inset:0;z-index:2;display:block" aria-label="Open SABDA Studio in Google Maps"></a>
     </div>
   </div>
 </section>
