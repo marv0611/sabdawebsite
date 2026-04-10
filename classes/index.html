@@ -907,6 +907,8 @@ function showGuestStep(){stepChange();
     +'<div class="bk-link" onclick="pendingPack=null;showNoMembership()">\u2190 Change selection</div>'
     +'</div>';
   document.getElementById('bk-fn').focus();
+  // Mount card immediately for pack checkout (don't wait for email check)
+  if(pendingPack&&pendingPack.type!=='single'){mountCardForGuest();}
 }
 
 // ── LOGIN HANDLER ──
@@ -1040,14 +1042,15 @@ window.doGuestCheck=function(){
         +'</div>';
     } else {
       if(pendingPack&&pendingPack.type!=='single'){
-        // New user + pack purchase: mount card on already-visible form
-        mountCardForGuest();
+        // Card already mounted — proceed directly to payment
+        doGuestPackPay();
       } else {
         showNoMembership();
       }
     }
   }).catch(function(){
-    if(pendingPack&&pendingPack.type!=='single'){mountCardForGuest();}else{showNoMembership();}
+    // On network error, proceed anyway (card already mounted)
+    if(pendingPack&&pendingPack.type!=='single'){doGuestPackPay();}else{showNoMembership();}
   });
 };
 
@@ -1071,12 +1074,7 @@ function mountCardForGuest(){
   });
   var cardWrap=document.getElementById('bk-card');
   if(cardWrap)cardElement.mount('#bk-card');
-  // Update pay button to trigger payment
-  var btn=document.getElementById('bk-guest-btn');
-  if(btn){
-    btn.onclick=function(){doGuestPackPay();};
-    btn.textContent='Pay \u20AC'+(pendingPack?pendingPack.price:0);
-  }
+  // Button already set to doGuestCheck which handles email check + payment
   // Apple/Google Pay
   try{
     activePayName=pendingPack?pendingPack.name:'';
