@@ -272,11 +272,11 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
 <!-- INQUIRY FORM -->
 <div class="iq-wrap fi" id="iq-wrap">
   <span class="sl">Hablemos</span>
-  <div class="iq-h">Explica'ns <em>tu evento</em></div>
+  <div class="iq-h">Explica'ns <em>el teu esdeveniment</em></div>
   <div class="iq-sub">Cada esdeveniment a SABDA és a mida. Explica'ns els detalls bàsics i la Katrina, del nostre equip d'esdeveniments, et responderá lo antes posible.</div>
   <form id="iqForm" onsubmit="return handleHireInquiry(event)">
-    <label class="iq-lab" for="iq-name">Tu nombre</label>
-    <input class="iq-inp" type="text" id="iq-name" name="name" placeholder="Nom completo" required autocomplete="name">
+    <label class="iq-lab" for="iq-name">El teu nombre</label>
+    <input class="iq-inp" type="text" id="iq-name" name="name" placeholder="Nom complet" required autocomplete="name">
     <label class="iq-lab" for="iq-company">Empresa (opcional)</label>
     <input class="iq-inp" type="text" id="iq-company" name="company" placeholder="Nom de empresa o marca" autocomplete="organization">
     <label class="iq-lab" for="iq-email">Email</label>
@@ -305,8 +305,8 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
     <label class="iq-lab" for="iq-date">Fecha preferida</label>
     <input class="iq-inp" type="text" id="iq-date" name="date" placeholder="p. ej. 15 junio 2026 o flexible">
     <label class="iq-lab" for="iq-message">Explica'ns-ho més</label>
-    <textarea class="iq-txt" id="iq-message" name="message" placeholder="Breve descripción de tu evento, requisitos específicos o preguntas que tengas..."></textarea>
-    <button type="submit" class="iq-submit touch" id="iq-btn">Enviar consulta <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+    <textarea class="iq-txt" id="iq-message" name="message" placeholder="Breve descripción de el teu esdeveniment, requisitos específicos o preguntas que tengas..."></textarea>
+    <button type="submit" class="iq-submit touch" id="iq-btn">Enviar Sol·licitud <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
     <div class="iq-err" id="iq-err"></div>
   </form>
   <div class="iq-ok" id="iq-ok">
@@ -381,12 +381,12 @@ function handleHireInquiry(e){
       document.getElementById('iq-ok').scrollIntoView({behavior:'smooth',block:'center'});
     } else {
       btn.disabled=false;
-      btn.innerHTML='Enviar consulta <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>';
+      btn.innerHTML='Enviar Sol·licitud <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>';
       err.textContent='Algo salió mal. Escribe a connect@sabdastudio.com directly.';
     }
   }).catch(function(){
     btn.disabled=false;
-    btn.innerHTML='Enviar consulta <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>';
+    btn.innerHTML='Enviar Sol·licitud <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg>';
     err.textContent='Error de connexió. Escribe directamente a connect@sabdastudio.com.';
   });
   return false;

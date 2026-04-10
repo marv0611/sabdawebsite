@@ -574,10 +574,10 @@ function showLoginStep(){stepChange();
     +'<input class="bk-input" id="bk-email" type="email" inputmode="email" autocomplete="email" placeholder="tu@email.com" aria-label="Dirección de email" />'
     +'<div class="bk-label">Contraseña</div>'
     +'<input class="bk-input" id="bk-pass" type="password" autocomplete="current-password" placeholder="Contraseña" aria-label="Contraseña" />'
-    +'<div style="text-align:right;margin:-10px 0 12px"><a href="https://momence.com/forgot-password" target="_blank" style="font-size:.75rem;color:var(--white38);text-decoration:none;border-bottom:1px solid var(--white12)">¿Olvidaste tu contraseña?</a></div>'
+    +'<div style="text-align:right;margin:-10px 0 12px"><a href="https://momence.com/forgot-password" target="_blank" style="font-size:.75rem;color:var(--white38);text-decoration:none;border-bottom:1px solid var(--white12)">Olvidaste tu contraseña?</a></div>'
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-login-btn" onclick="doLogin()">Inicia sessió i reserva</button>'
-    +'<div class="bk-link" onclick="showGuestStep()">¿Nueva aquí? Reservar como invitada</div>'
+    +'<div class="bk-link" onclick="showGuestStep()">Nueva aquí? Reservar como invitada</div>'
     +'</div>';
   document.getElementById('bk-email').focus();
   document.getElementById('bk-pass').addEventListener('keydown',function(e){if(e.key==='Enter')doLogin();});
@@ -605,8 +605,8 @@ function showGuestStep(){stepChange();
     +'<input class="bk-input" id="bk-email" type="email" inputmode="email" autocomplete="email" placeholder="tu@email.com" aria-label="Dirección de email" />'
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">Continuar</button>'
-    +'<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.12);border-radius:8px;padding:12px;margin-top:16px;font-size:.75rem;color:var(--white60);line-height:1.5;text-align:center">¿Ya has reservado antes con nosotros? <span onclick="showLoginStep()" style="color:var(--cyan);cursor:pointer;text-decoration:underline">Inicia sesión</span> para mantener tu historial y créditos juntos.</div>'
-    +'<div class="bk-link" onclick="showLoginStep()">¿Ya tienes cuenta? Inicia sesión</div>'
+    +'<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.12);border-radius:8px;padding:12px;margin-top:16px;font-size:.75rem;color:var(--white60);line-height:1.5;text-align:center">Ya has reservado antes con nosotros? <span onclick="showLoginStep()" style="color:var(--cyan);cursor:pointer;text-decoration:underline">Inicia sesión</span> para mantener tu historial y créditos juntos.</div>'
+    +'<div class="bk-link" onclick="showLoginStep()">Ya tienes cuenta? Inicia sesión</div>'
     +'</div>';
   document.getElementById('bk-fn').focus();
 }
@@ -772,7 +772,7 @@ function doGuestCheck(){
         +'<div style="font-size:.82rem;color:var(--white60);line-height:1.5">Este email ya está registrado. Inicia sesión para mantener tu historial de reservas y créditos juntos.</div>'
         +'</div>'
         +'<button class="bk-primary" onclick="showLoginStep()">Inicia sessió</button>'
-        +'<div class="bk-link" style="margin-top:12px"><a href="https://momence.com/forgot-password" target="_blank" style="color:var(--white38);font-size:.78rem;text-decoration:underline">¿Has olvidado tu contraseña?</a></div>'
+        +'<div class="bk-link" style="margin-top:12px"><a href="https://momence.com/forgot-password" target="_blank" style="color:var(--white38);font-size:.78rem;text-decoration:underline">Has olvidado tu contraseña?</a></div>'
         +'</div>';
     } else {
       showNoMembership();
@@ -785,10 +785,10 @@ function doGuestCheck(){
 // ── CUSTOMER FIELDS HTML (phone, language, city) ──
 function customerFieldsHTML(){
   return '<div class="bk-fld">'
-    +'<div class="bk-label">Teléfono</div>'
+    +'<div class="bk-label">Telèfon</div>'
     +'<div class="bk-phone-row">'
     +'<input class="bk-input" id="bk-cc" type="text" inputmode="tel" value="+34" aria-label="Prefijo de país" style="width:72px;flex-shrink:0;text-align:center;font-weight:600" />'
-    +'<input class="bk-input" id="bk-phone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="612 345 678" aria-label="Teléfono" style="flex:1;min-width:0" />'
+    +'<input class="bk-input" id="bk-phone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="612 345 678" aria-label="Telèfon" style="flex:1;min-width:0" />'
     +'</div></div>'
     +'<div class="bk-fld">'
     +'<div class="bk-label">Idioma preferido</div>'
@@ -816,7 +816,7 @@ function validateCustomerFields(){
   var ok=true;
   var fields=[
     {id:'bk-cc',test:function(v){return v&&v.startsWith('+')&&v.length>=2;},msg:'Prefijo de país obligatorio'},
-    {id:'bk-phone',test:function(v){return v.replace(/\s/g,'').length>=6;},msg:'Teléfono obligatorio'},
+    {id:'bk-phone',test:function(v){return v.replace(/\s/g,'').length>=6;},msg:'Telèfon obligatorio'},
     {id:'bk-lang',test:function(v){return!!v;},msg:'Por favor, selecciona un idioma'},
     {id:'bk-city',test:function(v){return v.trim().length>0;},msg:'La ciudad es obligatoria'}
   ];
@@ -1033,7 +1033,7 @@ function showNoMembership(){stepChange();
     +'<div class="bk-user">Reservando como <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>'
     +'<p style="font-size:.85rem;color:var(--white60);text-align:center;margin-bottom:18px;line-height:1.5">Tria com vols reservar aquesta classe</p>'
     // Intro offers first
-    +'<div class="bk-pkg-grp" style="color:var(--cyan)">¿Nueva a SABDA?</div>'
+    +'<div class="bk-pkg-grp" style="color:var(--cyan)">Nueva a SABDA?</div>'
     +row('feat','pack',50,443935,'Pack Intro 3 Classes','3 classes, vàlid 30 dies','50€')
     +row('','pack',18,443934,'Classe de prova','Solo primera vez','18€')
     // Memberships
@@ -1468,7 +1468,7 @@ function showPackageGuestStep() {
     + '<input class="bk-input" id="bk-email" type="email" inputmode="email" placeholder="tu@email.com" autocomplete="email" aria-label="Dirección de email" />'
     + '<div class="bk-err" id="bk-err"></div>'
     + '<button class="bk-primary" id="bk-guest-btn" onclick="doPackageGuestCheck()">Continuar al pago</button>'
-    + '<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.12);border-radius:8px;padding:12px;margin-top:16px;font-size:.75rem;color:var(--white60);line-height:1.5;text-align:center">¿Ya eres cliente? <span onclick="showLoginStep()" style="color:var(--cyan);cursor:pointer;text-decoration:underline">Inicia sesión</span></div>'
+    + '<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.12);border-radius:8px;padding:12px;margin-top:16px;font-size:.75rem;color:var(--white60);line-height:1.5;text-align:center">Ya eres cliente? <span onclick="showLoginStep()" style="color:var(--cyan);cursor:pointer;text-decoration:underline">Inicia sesión</span></div>'
     + '</div>';
   document.getElementById('bk-fn').focus();
 }
