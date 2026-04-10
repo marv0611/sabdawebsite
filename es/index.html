@@ -127,21 +127,7 @@ img{display:block;width:100%;height:100%;object-fit:cover}
 }
 
 /* ── LOADER ── */
-#loader{position:fixed;inset:0;background:var(--navy);z-index:10000;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:36px;transition:opacity 1.4s var(--ease-expo),visibility 1.4s}
-#loader.out{opacity:0;visibility:hidden}
 .ld-symbol{width:140px;height:140px;position:relative;animation:ldFloat 3s ease-in-out infinite}
-.ld-ring{position:absolute;border-radius:50%;border:1px solid transparent;opacity:0;animation:ldReveal 1.8s var(--ease-expo) forwards}
-.ld-ring:nth-child(1){inset:0;border-color:rgba(2,243,197,.65);animation-delay:0s}
-.ld-ring:nth-child(2){inset:8px;border-color:rgba(248,166,163,.5);animation-delay:.08s}
-.ld-ring:nth-child(3){inset:17px;border-color:rgba(2,243,197,.4);animation-delay:.16s}
-.ld-ring:nth-child(4){inset:25px;border-color:rgba(248,166,163,.38);animation-delay:.24s}
-.ld-ring:nth-child(5){inset:32px;border-color:rgba(2,243,197,.45);animation-delay:.32s}
-.ld-ring:nth-child(6){inset:38px;border-color:rgba(248,166,163,.4);animation-delay:.4s}
-.ld-ring:nth-child(7){inset:44px;border-color:rgba(2,243,197,.5);animation-delay:.48s}
-.ld-ring:nth-child(8){inset:49px;border-color:rgba(248,166,163,.45);animation-delay:.56s}
-.ld-ring:nth-child(9){inset:53px;border-color:rgba(2,243,197,.55);animation-delay:.64s}
-@keyframes ldReveal{
-  0%{opacity:0;transform:scale(.5) rotate(-90deg)}
   60%{opacity:1;transform:scale(1.04) rotate(12deg)}
   100%{opacity:1;transform:scale(1) rotate(0deg)}
 }
@@ -150,9 +136,7 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   25%{transform:rotate(3deg) scale(1.015)}
   50%{transform:rotate(0deg) scale(.985)}
   75%{transform:rotate(-3deg) scale(1.01)}
-}
-.ld-text{font-family:'PT Serif',serif;font-size:.78rem;letter-spacing:.35em;text-transform:uppercase;color:var(--white38);opacity:0;animation:ldTextIn 1.2s var(--ease-expo) .9s forwards}
-@keyframes ldTextIn{0%{opacity:0;transform:translateY(12px);letter-spacing:.55em}100%{opacity:.7;transform:none;letter-spacing:.35em}}
+}100%{opacity:.7;transform:none;letter-spacing:.35em}}
 
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;display:flex;align-items:center;justify-content:space-between;transition:background .5s,backdrop-filter .5s,border-color .5s;border-bottom:1px solid rgba(240,239,233,.04);background:rgba(14,18,53,.45);backdrop-filter:blur(14px)}
@@ -545,10 +529,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 
 <div class="grain"></div>
 <canvas id="globalParticles"></canvas>
-<!-- LOADER -->
-<div id="loader">
-  <div class="ld-symbol">
-    <div class="ld-ring"></div><div class="ld-ring"></div><div class="ld-ring"></div>
+<!-- LOADER --><div class="ld-ring"></div><div class="ld-ring"></div>
     <div class="ld-ring"></div><div class="ld-ring"></div><div class="ld-ring"></div>
     <div class="ld-ring"></div><div class="ld-ring"></div><div class="ld-ring"></div>
   </div>
@@ -956,7 +937,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
    LOADER
 ═══════════════════════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded',()=>{
-  setTimeout(()=>document.getElementById('loader').classList.add('out'),2500);
+  
   /* Slow hero video to 0.55x for cinematic feel */
   const heroVid=document.querySelector('.hero video');
   if(heroVid)heroVid.playbackRate=0.55;
@@ -1028,7 +1009,6 @@ function triggerStats(){
   });
 }
 
-/* Wait for loader to dismiss (2.5s) then check if sections are visible */
 setTimeout(()=>{
   const trustEl=document.getElementById('trustSection');
   const statsEl=document.getElementById('statsSection');
@@ -1058,7 +1038,7 @@ setTimeout(()=>{
       sObs.observe(statsEl);
     }
   }
-},2700); /* 2500ms loader + 200ms buffer */
+},0);
 
 /* ═══════════════════════════════════════════════════════
    GLOBAL PARTICLE FIELD — entire page lives inside a nebula
