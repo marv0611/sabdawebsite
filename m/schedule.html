@@ -436,7 +436,7 @@ function showFallback(){
   if(!curSession||!curSession.link) return;
   var err=document.getElementById('bk-err');
   if(err&&err.textContent){
-    err.innerHTML=err.textContent+'<br><a href="'+curSession.link+'" target="_blank">Book on Momence instead →</a>';
+    err.innerHTML=err.textContent+'<br><a href="'+curSession.link+'" target="_blank" rel="noopener noreferrer">Book on Momence instead →</a>';
   }
 }
 
@@ -457,7 +457,7 @@ function showError(msg, opts){
 
   // Append fallback link if requested
   if(opts.fallback!==false && curSession && curSession.link){
-    err.innerHTML=err.innerHTML+'<br><a href="'+curSession.link+'" target="_blank">Book on Momence instead →</a>';
+    err.innerHTML=err.innerHTML+'<br><a href="'+curSession.link+'" target="_blank" rel="noopener noreferrer">Book on Momence instead →</a>';
   }
 
   // Show recovery panel for rate limit
@@ -588,7 +588,7 @@ function showLoginStep(){stepChange();
     +'<input class="bk-input" id="bk-email" type="email" inputmode="email" autocomplete="email" placeholder="your@email.com" aria-label="Email address" />'
     +'<div class="bk-label">Password</div>'
     +'<input class="bk-input" id="bk-pass" type="password" autocomplete="current-password" placeholder="Password" aria-label="Password" />'
-    +'<div style="text-align:right;margin:-10px 0 12px"><a href="https://momence.com/forgot-password" target="_blank" style="font-size:.75rem;color:var(--white38);text-decoration:none;border-bottom:1px solid var(--white12)">Forgot password?</a></div>'
+    +'<div style="text-align:right;margin:-10px 0 12px"><a href="https://momence.com/forgot-password" target="_blank" rel="noopener noreferrer" style="font-size:.75rem;color:var(--white38);text-decoration:none;border-bottom:1px solid var(--white12)">Forgot password?</a></div>'
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-login-btn" onclick="doLogin()">Log in & Book</button>'
     +'<div class="bk-link" onclick="showGuestStep()">New here? Book as guest</div>'
@@ -646,7 +646,7 @@ function doLogin(){if(isProcessing)return;
   }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
   .then(function(r){
     if(!r.ok||r.data.error){
-      err.innerHTML='Wrong email or password. <a href="'+curSession.link+'" target="_blank" style="color:var(--cyan);text-decoration:underline">Book on Momence →</a>';
+      err.innerHTML='Wrong email or password. <a href="'+curSession.link+'" target="_blank" rel="noopener noreferrer" style="color:var(--cyan);text-decoration:underline">Book on Momence →</a>';
       isProcessing=false;btn.textContent='Log in & Book';btn.disabled=false;
       return;
     }
@@ -717,7 +717,7 @@ function doMfaVerify(){if(isProcessing)return;
   }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
   .then(function(r){
     if(!r.ok||r.data.error){
-      err.innerHTML='Invalid code. <a href="'+curSession.link+'" target="_blank" style="color:var(--cyan);text-decoration:underline">Book on Momence instead →</a>';
+      err.innerHTML='Invalid code. <a href="'+curSession.link+'" target="_blank" rel="noopener noreferrer" style="color:var(--cyan);text-decoration:underline">Book on Momence instead →</a>';
       isProcessing=false;btn.textContent='Verify & Continue';btn.disabled=false;
       return;
     }
@@ -786,7 +786,7 @@ function doGuestCheck(){
         +'<div style="font-size:.82rem;color:var(--white60);line-height:1.5">This email is already registered. Log in to keep your booking history and credits together.</div>'
         +'</div>'
         +'<button class="bk-primary" onclick="showLoginStep()">Log in</button>'
-        +'<div class="bk-link" style="margin-top:12px"><a href="https://momence.com/forgot-password" target="_blank" style="color:var(--white38);font-size:.78rem;text-decoration:underline">Forgot your password?</a></div>'
+        +'<div class="bk-link" style="margin-top:12px"><a href="https://momence.com/forgot-password" target="_blank" rel="noopener noreferrer" style="color:var(--white38);font-size:.78rem;text-decoration:underline">Forgot your password?</a></div>'
         +'</div>';
     } else {
       showNoMembership();
