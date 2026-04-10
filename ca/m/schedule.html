@@ -271,7 +271,7 @@ select.bk-input{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http:/
       <button class="mo-x" id="mo-x" type="button" aria-label="Cerrar reserva" onclick="closeMo()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Cerrar</button>
     </div>
     <div class="mo-bd" id="mo-bd"></div>
-    <div class="mo-ft"><div class="mo-sec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Reserva segura vía SABDA</div></div>
+    <div class="mo-ft"><div class="mo-sec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Reserva segura via SABDA</div></div>
   </div>
 </div>
 
@@ -399,7 +399,7 @@ function renderSched(){
     const ttl=title.replace(/'/g,"\\'").replace(/"/g,"&quot;");
     const tfn=fn.replace(/'/g,"\\'").replace(/"/g,"&quot;");
 
-    return`<div class="cc" style="animation-delay:${i*.05}s"><div class="ct"><div class="ct-h">${h}:${m}</div><div class="ct-d">${e.duration} min</div></div><div class="ci"><div class="ci-t">${title}${lang?`<span class="ci-lg">${lang}</span>`:''}</div><div class="ci-tc">${fn}</div>${st?`<div class="ci-sp ${sc}">${st}</div>`:''}</div><div class="ca">${full?(e.allowWaitlist?`<button class="bb wl touch" onclick="openMo('${lnk}','${ttl}','${time}','${tfn}')">Lista de espera</button>`:`<button class="bb fu">Completa</button>`):`<button class="bb touch" onclick="openMo('${lnk}','${ttl}','${time}','${tfn}')">Reserva ara</button>`}</div></div>`;
+    return`<div class="cc" style="animation-delay:${i*.05}s"><div class="ct"><div class="ct-h">${h}:${m}</div><div class="ct-d">${e.duration} min</div></div><div class="ci"><div class="ci-t">${title}${lang?`<span class="ci-lg">${lang}</span>`:''}</div><div class="ci-tc">${fn}</div>${st?`<div class="ci-sp ${sc}">${st}</div>`:''}</div><div class="ca">${full?(e.allowWaitlist?`<button class="bb wl touch" onclick="openMo('${lnk}','${ttl}','${time}','${tfn}')">Llista d\u2019espera</button>`:`<button class="bb fu">Completa</button>`):`<button class="bb touch" onclick="openMo('${lnk}','${ttl}','${time}','${tfn}')">Reserva ara</button>`}</div></div>`;
   }).join('');
 }
 
@@ -589,7 +589,7 @@ function showLoginStep(){stepChange();
     +'<input class="bk-input" id="bk-email" type="email" inputmode="email" autocomplete="email" placeholder="tu@email.com" aria-label="Adreça de email" />'
     +'<div class="bk-label">Contraseña</div>'
     +'<input class="bk-input" id="bk-pass" type="password" autocomplete="current-password" placeholder="Contraseña" aria-label="Contraseña" />'
-    +'<div style="text-align:right;margin:-10px 0 12px"><a href="https://momence.com/forgot-password" target="_blank" rel="noopener noreferrer" style="font-size:.75rem;color:var(--white38);text-decoration:none;border-bottom:1px solid var(--white12)">Olvidaste tu contraseña?</a></div>'
+    +'<div style="text-align:right;margin:-10px 0 12px"><a href="https://momence.com/forgot-password" target="_blank" rel="noopener noreferrer" style="font-size:.75rem;color:var(--white38);text-decoration:none;border-bottom:1px solid var(--white12)">Has oblidat la contrasenya?</a></div>'
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-login-btn" onclick="doLogin()">Inicia sessió i reserva</button>'
     +'<div class="bk-link" onclick="showGuestStep()">Nueva aquí? Reservar como invitada</div>'
@@ -639,7 +639,7 @@ function doLogin(){if(isProcessing)return;
   if(!email||!validateEmail(email)){emailEl.classList.add('bk-field-err');ok=false;}
   if(!pass){passEl.classList.add('bk-field-err');ok=false;}
   if(!ok){err.textContent='Por favor, rellena los campos destacados';return;}
-  err.textContent='';isProcessing=true;btn.textContent='Iniciando sesión...';btn.disabled=true;
+  err.textContent='';isProcessing=true;btn.textContent='Iniciant sessió...';btn.disabled=true;
 
   fetch(PROXY+'/sabda-api/login',{
     method:'POST',
@@ -710,7 +710,7 @@ function doMfaVerify(){if(isProcessing)return;
   var err=document.getElementById('bk-err');
   var btn=document.getElementById('bk-mfa-btn');
   if(!code||code.length<6){err.textContent='Introduce el código de 6 dígitos';return;}
-  err.textContent='';isProcessing=true;btn.textContent='Verificando...';btn.disabled=true;
+  err.textContent='';isProcessing=true;btn.textContent='Verificant...';btn.disabled=true;
 
   fetch(PROXY+'/sabda-api/mfa-verify',{
     method:'POST',
@@ -784,8 +784,8 @@ function doGuestCheck(){
         +'</div>'+getSpotsHtml()+'</div>'
         +'<div class="bk-confirm" style="text-align:center">'
         +'<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.15);border-radius:10px;padding:20px;margin-bottom:20px">'
-        +'<div style="font-size:.9rem;font-weight:600;color:var(--salmon);margin-bottom:6px">Cuenta encontrada</div>'
-        +'<div style="font-size:.82rem;color:var(--white60);line-height:1.5">Este email ya está registrado. Inicia sesión para mantener tu historial de reservas y créditos juntos.</div>'
+        +'<div style="font-size:.9rem;font-weight:600;color:var(--salmon);margin-bottom:6px">Compte trobat</div>'
+        +'<div style="font-size:.82rem;color:var(--white60);line-height:1.5">Aquest correu ja està registrat. Inicia sessió per mantenir el teu historial de reserves i crèdits junts.</div>'
         +'</div>'
         +'<button class="bk-primary" onclick="showLoginStep()">Inicia sessió</button>'
         +'<div class="bk-link" style="margin-top:12px"><a href="https://momence.com/forgot-password" target="_blank" rel="noopener noreferrer" style="color:var(--white38);font-size:.78rem;text-decoration:underline">Has olvidado tu contraseña?</a></div>'
@@ -888,7 +888,7 @@ function doBookWithMembership(){if(isProcessing)return;
   var err=document.getElementById('bk-err');
   var vErr=validateCustomerFields();
   if(vErr){err.textContent=vErr;return;}
-  isProcessing=true;btn.textContent='Reservando...';btn.disabled=true;err.textContent='';
+  isProcessing=true;btn.textContent='Reservant...';btn.disabled=true;err.textContent='';
 
   var m=curMembership||{};
   var cf=getCustomerFields();
@@ -1124,7 +1124,7 @@ function showPayForm(type,price,productId,name,desc){stepChange();
   try{console.log('[SABDA] showPayForm type=',type,'price=',price,'productId=',productId,'StripeLoaded=',typeof Stripe!=='undefined');}catch(e){}
 
   if(typeof Stripe==='undefined'){
-    document.getElementById('bk-err').textContent='No se pudo cargar el formulario de pago. Desactiva los bloqueadores de anuncios y recarga la página.';
+    document.getElementById('bk-err').textContent='No s\u0027ha pogut carregar el formulari de pagament. Desactiva els bloquejadors i torna a carregar.';
     try{console.warn('[SABDA] Stripe.js not loaded — script may have been blocked or is still loading async');}catch(e){}
     return;
   }
@@ -1205,7 +1205,7 @@ function showPayForm(type,price,productId,name,desc){stepChange();
           showFallback();
           isProcessing=false;
         }
-      }).catch(function(e){ev.complete('fail');isProcessing=false;try{var errEl=document.getElementById('bk-err');if(errEl)errEl.textContent='Connection error. Please try again.';}catch(e2){}});
+      }).catch(function(e){ev.complete('fail');isProcessing=false;try{var errEl=document.getElementById('bk-err');if(errEl)errEl.textContent='Error de connexió. Torna-ho a intentar.';}catch(e2){}});
     });
   }catch(e){
     try{console.warn('[SABDA] Configuración de Payment Request fallida (Apple/Google Pay deshabilitado):',e);}catch(e2){}
@@ -1293,14 +1293,14 @@ function doPayAndBook(type,price,productId){if(isProcessing)return;
   function resetBtn(){isProcessing=false;btn.textContent=origLabel;btn.disabled=false;}
   var vErr=validateCustomerFields();
   if(vErr){showError(vErr,{fallback:false});return;}
-  isProcessing=true;btn.textContent='Procesando...';btn.disabled=true;clearError();
+  isProcessing=true;btn.textContent='Processant...';btn.disabled=true;clearError();
 
   var cf=getCustomerFields();
   if(curUser.isGuest&&type!=='single'){
     var np=document.getElementById('bk-new-pass'),np2=document.getElementById('bk-new-pass2');
     var npv=np?np.value.trim():'',npv2=np2?np2.value.trim():'';
-    if(!npv||npv.length<8){err.textContent='Password must be at least 8 characters.';if(np)np.classList.add('bk-field-err');isProcessing=false;btn.disabled=false;return;}
-    if(npv!==npv2){err.textContent='Passwords do not match.';if(np2)np2.classList.add('bk-field-err');isProcessing=false;btn.disabled=false;return;}
+    if(!npv||npv.length<8){err.textContent='La contrasenya ha de tenir almenys 8 caràcters.';if(np)np.classList.add('bk-field-err');isProcessing=false;btn.disabled=false;return;}
+    if(npv!==npv2){err.textContent='Les contrasenyes no coincideixen.';if(np2)np2.classList.add('bk-field-err');isProcessing=false;btn.disabled=false;return;}
   }
   var finalPrice=(discountedPrice!==null)?discountedPrice:price;
 
