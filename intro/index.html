@@ -161,9 +161,9 @@ a.cls-item{display:block;color:inherit;text-decoration:none}
 .booking{padding:120px 80px 64px;border-top:1px solid rgba(240,239,233,.06);position:relative;z-index:2}
 .booking-in{max-width:1140px;margin:0 auto;text-align:center}
 .booking-sub{color:var(--white38);font-size:1rem;line-height:1.72;max-width:540px;margin:18px auto 68px}
-.b-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:center}
+.b-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:center}.b-cards-2{grid-template-columns:repeat(2,1fr);max-width:720px;margin:0 auto}
 .b-card{border-radius:6px;padding:42px 34px;border:1px solid rgba(240,239,233,.1);transition:border-color .3s,transform .3s;position:relative;overflow:hidden;text-align:left;display:flex;flex-direction:column}
-.b-card:not(.pri){padding:32px 30px;transform:scale(.92);transform-origin:center top}
+.b-card:not(.pri){padding:32px 30px}
 .b-card:hover{border-color:rgba(240,239,233,.2);transform:translateY(-5px)}
 .b-card.pri{border-color:rgba(2,243,197,.24);background:linear-gradient(140deg,rgba(2,243,197,.045) 0%,transparent 55%)}
 .b-card.pri:hover{transform:translateY(-5px)}
@@ -213,7 +213,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   .how-sect{padding-top:72px;padding-bottom:72px}
   .steps{grid-template-columns:1fr;max-width:400px}
   .booking{padding-left:24px;padding-right:24px}
-  .b-cards{display:flex;gap:16px;overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;padding-bottom:8px;max-width:none}.b-card{min-width:280px;flex-shrink:0;scroll-snap-align:center;transform:none!important}.b-card.pri{transform:none!important}
+  .b-cards,.b-cards-2{display:flex;gap:16px;overflow-x:auto;-webkit-overflow-scrolling:touch;scroll-snap-type:x mandatory;padding-bottom:8px;max-width:none!important}.b-card{min-width:280px;flex-shrink:0;scroll-snap-align:center;transform:none!important}.b-card.pri{transform:none!important}
   .loc-in{grid-template-columns:1fr;gap:44px}
   .location{padding:72px 24px}
   .sbk{display:flex}
@@ -273,10 +273,9 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   <div class="hero-in">
     <div class="sl rv" id="t-label">Your First 3 Immersive Classes</div>
     <div class="hero-price rv" style="transition-delay:.08s">€50</div>
-    <div class="hero-tagline rv" style="transition-delay:.14s" id="t-tag">Your intro to immersive wellness. Any class, any time, 30 days.</div>
-    <div class="hero-details rv" style="transition-delay:.18s" id="t-det"><b>€16.67 per class</b> · Valid 30 days · No subscription</div>
-    <a href="../classes.html?pack=443935" class="cta-p rv" style="transition-delay:.24s" id="t-cta">Get Your Intro 3-Pack <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-    <a href="../classes.html?pack=443934" class="hero-alt rv" style="transition-delay:.3s" id="t-alt">Just want to try one class? <span id="t-alt-s">Single trial, €18</span></a>
+    <div class="hero-tagline rv" style="transition-delay:.14s" id="t-tag">Your intro to immersive wellness. Any class, any style, 30 days.</div>
+    <a href="/classes/?pack=443935" class="cta-p rv" style="transition-delay:.24s" id="t-cta">Get Your Intro 3-Pack <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <a href="/classes/?pack=443934" class="hero-alt rv" style="transition-delay:.3s" id="t-alt">Just want to try one class? <span id="t-alt-s">Single trial, €18</span></a>
   </div>
 </section>
 
@@ -320,10 +319,10 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     <a href="/classes/breathwork/" class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_015.jpg" alt="Breathwork" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Breathwork</div><div class="cls-item-tag">60 min · All levels</div></div></a>
   </div></div>
   <div class="cls-row-wrap"><div class="cls-row scroll-right">
-    <a href="/classes/ice-bath/" class="cls-item"><img src="../classes/ice-bath/hero-people.jpg" alt="Ice bath SABDA" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Ice Bath</div><div class="cls-item-tag">Open use · Private terrace</div></div></a>
+    <a href="/classes/ice-bath/" class="cls-item"><img src="/classes/ice-bath/hero-people.jpg" alt="Ice bath SABDA" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Ice Bath</div><div class="cls-item-tag">Open use · Private terrace</div></div></a>
     <a href="/classes/sound-healing/" class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/sound_healing.jpg" alt="Sound healing SABDA" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Sound Healing</div><div class="cls-item-tag">60 min · No experience needed</div></div></a>
     <a href="/classes/breathwork/" class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/breathwork_new.jpg" alt="Breathwork SABDA" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Alchemy Breath</div><div class="cls-item-tag">45 to 60 min · All levels</div></div></a>
-    <a href="/classes/ice-bath/" class="cls-item"><img src="../classes/ice-bath/hero-people.jpg" alt="Ice bath" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Ice Bath</div><div class="cls-item-tag">Open use · Private terrace</div></div></a>
+    <a href="/classes/ice-bath/" class="cls-item"><img src="/classes/ice-bath/hero-people.jpg" alt="Ice bath" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Ice Bath</div><div class="cls-item-tag">Open use · Private terrace</div></div></a>
     <a href="/classes/sound-healing/" class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/sound_healing.jpg" alt="Sound healing" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Sound Healing</div><div class="cls-item-tag">60 min · No experience needed</div></div></a>
     <a href="/classes/breathwork/" class="cls-item"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/breathwork_new.jpg" alt="Breathwork" loading="lazy"><div class="cls-item-ov"></div><div class="cls-item-label"><div class="cls-item-name">Alchemy Breath</div><div class="cls-item-tag">45 to 60 min · All levels</div></div></a>
   </div></div>
@@ -373,46 +372,33 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     <span class="sl rv">Get started</span>
     <h2 class="sh2 rv" style="transition-delay:.06s">Find the right rhythm<br><em>for your practice.</em></h2>
     <p class="booking-sub rv" style="transition-delay:.12s">First time? Start with an intro offer. Ready to commit? Go unlimited.</p>
-    <div class="b-cards">
+    <div class="b-cards b-cards-2">
 
       <div class="b-card rv" style="transition-delay:.15s">
-        <span class="b-lbl">Single Class</span>
+        <span class="b-lbl">Trial Class</span>
         <div class="b-price">€18</div>
-        <div class="b-price-sub">Trial class · No commitment</div>
-        <p class="b-desc">Just want to try one class? Drop in for a single session and see the room for yourself.</p>
-        <a href="../classes.html?pack=443934" class="b-btn-g">Try One Class</a>
+        <div class="b-price-sub">Single class · No commitment</div>
+        <p class="b-desc">Just want to see the room? Drop in for one session and decide from there.</p>
+        <a href="/classes/?pack=443934" class="b-btn-g">Try One Class</a>
         <ul class="b-features">
           <li>1 class, any type</li>
           <li>No commitment</li>
-          <li>Mat and towel provided</li>
+          <li>Mat and towel included</li>
         </ul>
       </div>
 
       <div class="b-card pri rv" style="transition-delay:.2s">
-        <div class="b-badge">Best Value</div>
+        <div class="b-badge">Best Start</div>
         <span class="b-lbl">Intro 3-Pack</span>
         <div class="b-price">€50</div>
-        <div class="b-price-sub">€16.67/class · Valid 30 days</div>
+        <div class="b-price-sub">3 classes · Valid 30 days</div>
         <p class="b-desc">Try any 3 classes within 30 days. Yoga, sound healing, breathwork, pilates. All in 360° immersion.</p>
-        <a href="../classes.html?pack=443935" class="b-btn-p">Get Started</a>
+        <a href="/classes/?pack=443935" class="b-btn-p">Get Started</a>
         <ul class="b-features">
           <li>3 classes, any type</li>
           <li>Valid 30 days</li>
           <li>No commitment</li>
-          <li>Mat and towel provided</li>
-        </ul>
-      </div>
-
-      <div class="b-card rv" style="transition-delay:.25s">
-        <span class="b-lbl">Immerse</span>
-        <div class="b-price">€130<span class="b-mo">/month</span></div>
-        <div class="b-price-sub">Unlimited classes · Cancel anytime</div>
-        <p class="b-desc">For those who already know. Unlimited access to every class, every week.</p>
-        <a href="../classes.html?pack=431216" class="b-btn-g">Join Now</a>
-        <ul class="b-features">
-          <li>Unlimited classes</li>
-          <li>4 ice baths / month</li>
-          <li>2 guest passes / month (new students only)</li>
+          <li>Mat and towel included</li>
         </ul>
       </div>
 
@@ -425,7 +411,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   <span class="sl rv">Ready?</span>
   <h2 class="sh2 rv" style="transition-delay:.06s" id="t-closer">Your body will<br><em>thank you.</em></h2>
   <p class="closer-sub rv" style="transition-delay:.12s">Intro 3-Pack: <b>3 Classes for €50</b></p>
-  <div class="rv" style="transition-delay:.18s"><a href="../classes.html?pack=443935" class="cta-p" style="margin:0 auto" id="t-cta2">Get Your Intro 3-Pack <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
+  <div class="rv" style="transition-delay:.18s"><a href="/classes/?pack=443935" class="cta-p" style="margin:0 auto" id="t-cta2">Get Your Intro 3-Pack <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
   <p class="closer-note rv" style="transition-delay:.24s" id="t-cn">Valid for 30 days. No membership. No commitment.</p>
 </div>
 
@@ -451,14 +437,14 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     <div class="ft-col"><h4 style="color:var(--cyan)">Explore</h4><ul><li><a href="/classes/">Classes</a></li><li><a href="/hire/">Rent</a></li><li><a href="/pricing/">Pricing</a></li><li><a href="/events/">Events</a></li><li><a href="/about/">About</a></li><li><a href="/faq/">FAQ</a></li><li><a href="/contact/">Get in touch</a></li></ul></div>
     <div class="ft-col"><h4 style="color:var(--salmon)">Connect</h4><ul><li><a href="https://instagram.com/sabda_studio" target="_blank">Instagram</a></li><li><a href="https://www.tiktok.com/@sabda_studio" target="_blank">TikTok</a></li><li><a href="https://www.linkedin.com/company/sabdastudio" target="_blank">LinkedIn</a></li></ul></div>
     <div class="ft-col"><h4 style="color:var(--white)">Contact</h4><ul><li><a href="mailto:info@sabdastudio.com">info@sabdastudio.com</a></li><li><a href="tel:+34625449878">+34 625 44 98 78</a></li><li><a href="https://maps.google.com/?q=SABDA+Studio,+Barcelona" target="_blank" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3);padding-bottom:2px">Get Directions →</a></li></ul></div>
-  </div><div class="ft-bot"><span>© 2026 SABDA STUDIO S.L. All rights reserved.</span><div class="ft-legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a></div></div>
+  </div><div class="ft-bot"><span>© 2026 SABDA STUDIO S.L. All rights reserved.</span><div class="ft-legal"><a href="/privacy-policy.html">Privacy</a><a href="/terms.html">Terms</a><a href="/cookies.html">Cookies</a></div></div>
 <div class="kit-digital-bar" aria-label="Financiado por el Programa Kit Digital">
   <img src="/logos-kit-digital.jpg" alt="Financiado por la Unión Europea NextGenerationEU · Gobierno de España · Plan de Recuperación, Transformación y Resiliencia · Kit Digital" loading="lazy">
 </div>
 </footer>
 
 <!-- STICKY -->
-<div class="sbk" id="sbk"><div class="sbk-txt">3 Classes · <span>€50</span></div><a href="../classes.html?pack=443935" class="sbk-btn" id="t-sticky">Book Now</a></div>
+<div class="sbk" id="sbk"><div class="sbk-txt">3 Classes · <span>€50</span></div><a href="/classes/?pack=443935" class="sbk-btn" id="t-sticky">Book Now</a></div>
 
 <script>
 /* Scroll reveal */
@@ -512,7 +498,7 @@ setTimeout(function(){
 },4000);
 
 /* Spanish */
-(function(){var p=new URLSearchParams(location.search);if(p.get('lang')==='es'){document.documentElement.lang='es';document.title='3 Clases Inmersivas por \u20AC50 | SABDA Barcelona';var t={'t-label':'TUS PRIMERAS 3 CLASES INMERSIVAS','t-tag':'Tu intro al wellness inmersivo. Cualquier clase, cualquier momento, 30 d\u00EDas.','t-det':'<b>\u20AC16,67 por clase</b> \u00B7 V\u00E1lido 30 d\u00EDas \u00B7 Sin suscripci\u00F3n','t-cta':'Consigue tu Pack Intro <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>','t-alt':'\u00BFSolo quieres probar una clase? <span>Clase de prueba \u2014 \u20AC18</span>','t-closer':'Tu cuerpo te lo <em>agradecer\u00E1.</em>','t-cta2':'Consigue tu Pack Intro <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>','t-cn':'V\u00E1lido 30 d\u00EDas. Sin membres\u00EDa. Sin compromiso.','t-loc':'5 min andando desde metro Hospital Cl\u00EDnic \u00B7 L5','t-sticky':'Reservar'};for(var id in t){var el=document.getElementById(id);if(el)el.innerHTML=t[id]}}})();
+(function(){var p=new URLSearchParams(location.search);if(p.get('lang')==='es'){document.documentElement.lang='es';document.title='3 Clases Inmersivas por \u20AC50 | SABDA Barcelona';var t={'t-label':'TUS PRIMERAS 3 CLASES INMERSIVAS','t-tag':'Tu intro al wellness inmersivo. Cualquier clase, cualquier momento, 30 d\u00EDas.','t-cta':'Consigue tu Pack Intro <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>','t-alt':'Solo quieres probar una clase? <span>Clase de prueba \u2014 \u20AC18</span>','t-closer':'Tu cuerpo te lo <em>agradecer\u00E1.</em>','t-cta2':'Consigue tu Pack Intro <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>','t-cn':'V\u00E1lido 30 d\u00EDas. Sin membres\u00EDa. Sin compromiso.','t-loc':'5 min andando desde metro Hospital Cl\u00EDnic \u00B7 L5','t-sticky':'Reservar'};for(var id in t){var el=document.getElementById(id);if(el)el.innerHTML=t[id]}}})();
 </script>
 </body>
 </html>
