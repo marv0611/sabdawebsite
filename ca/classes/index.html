@@ -1230,7 +1230,14 @@ window.applyPromo=function(type,origPrice,productId){
       return;
     }
     activePromo=r.data.code;
-    discountedPrice=r.data.newPrice;
+    // Momence rounds priceInCurrency to integer euros — recalculate if percentage discount
+    if(r.data.type==='percentage'&&r.data.appliedDiscount<100){
+      discountedPrice=Math.round(origPrice*(1-r.data.appliedDiscount/100)*100)/100;
+    } else {
+      discountedPrice=r.data.newPrice;
+    }
+    // Below Stripe minimum (€0.50) treat as free
+    if(discountedPrice>0&&discountedPrice<0.50){discountedPrice=0;}
     var desc=r.data.type==='percentage'?r.data.appliedDiscount+'% off':'\u20AC'+r.data.appliedDiscount+' off';
     okEl.innerHTML='<strong>'+activePromo+'</strong> aplicado \u2014 '+desc+' <span onclick="removePromo('+origPrice+')" style="cursor:pointer;text-decoration:underline;margin-left:8px">Quitar</span>';
     okEl.style.display='block';
