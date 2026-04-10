@@ -90,7 +90,7 @@ src="https://www.facebook.com/tr?id=567636669734630&ev=PageView&noscript=1"
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<script src="https://js.stripe.com/v3/"></script>
+<script src="https://js.stripe.com/v3/" async></script>
 <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
@@ -1789,8 +1789,15 @@ async function init(){
       };
     });
     renderFilters(allE);renderSched();
-    document.getElementById('sk').style.display='none';
-    document.getElementById('sched').style.display='block';
+    var skEl=document.getElementById('sk');
+    var schedEl=document.getElementById('sched');
+    schedEl.style.opacity='0';
+    schedEl.style.display='block';
+    schedEl.style.transition='opacity .3s ease';
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){schedEl.style.opacity='1';});
+    });
+    skEl.style.display='none';
   }catch(err){
     document.getElementById('sk').innerHTML='<div class="empty">Could not load schedule. Please try again.</div>';
   }
