@@ -563,9 +563,14 @@ async function handleMfaVerify(request, origin) {
         const mData = await mRes.json().catch(() => []);
         const rawList = Array.isArray(mData) ? mData : (mData.memberships || mData.message || []);
         memberships = rawList.filter(m => {
-          return (m.remainingCredits > 0) || (m.eventsRemaining > 0) || (m.creditsRemaining > 0)
-            || (m.remainingEvents > 0) || (m.unlimited === true)
-            || (m.type === 'subscription' && m.status === 'active');
+          // Real Momence API fields (verified via live API test Apr 2026):
+          // classesLeft = credits for packs (null for subscriptions)
+          // moneyLeft = money credits (null for class-based)
+          // type = "package-events" for packs, "subscription" for monthly memberships
+          const hasClassCredits = m.classesLeft !== null && m.classesLeft !== undefined && m.classesLeft > 0;
+          const hasMoneyCredits = m.moneyLeft !== null && m.moneyLeft !== undefined && m.moneyLeft > 0;
+          const isActiveSubscription = m.type === 'subscription' && m.classesLeft === null;
+          return hasClassCredits || hasMoneyCredits || isActiveSubscription;
         });
         if (memberships.length === 0 && rawList.length > 0) {
           memberships = rawList.map(m => ({ ...m, _unverified: true }));
@@ -675,16 +680,15 @@ async function handleLogin(request, origin) {
         const mData = await mRes.json().catch(() => []);
         const rawList = Array.isArray(mData) ? mData : (mData.memberships || mData.message || []);
         
-        // Filter to only memberships that actually have remaining credits
+        // Real Momence API fields (verified Apr 2026):
+        // classesLeft = credits for packs (null for subscriptions)
+        // moneyLeft = money credits (null for class-based)
+        // type = "package-events" for packs, "subscription" for monthly memberships
         memberships = rawList.filter(m => {
-          // Check various fields that indicate usable credits
-          const hasCredits = (m.remainingCredits && m.remainingCredits > 0)
-            || (m.eventsRemaining && m.eventsRemaining > 0)
-            || (m.creditsRemaining && m.creditsRemaining > 0)
-            || (m.remainingEvents && m.remainingEvents > 0)
-            || (m.unlimited === true)
-            || (m.type === 'subscription' && m.status === 'active');
-          return hasCredits;
+          const hasClassCredits = m.classesLeft !== null && m.classesLeft !== undefined && m.classesLeft > 0;
+          const hasMoneyCredits = m.moneyLeft !== null && m.moneyLeft !== undefined && m.moneyLeft > 0;
+          const isActiveSubscription = m.type === 'subscription' && m.classesLeft === null;
+          return hasClassCredits || hasMoneyCredits || isActiveSubscription;
         });
 
         if (memberships.length === 0 && rawList.length > 0) {

@@ -1019,7 +1019,7 @@ function showConfirmStep(membership){stepChange();
   setBack(showGuestStep);
   var bd=document.getElementById('mo-bd');
   var mName=membership.name||membership.membershipName||membership.planName||'Membresía';
-  var credits=membership.remainingCredits||membership.eventsRemaining||membership.creditsRemaining||membership.remainingEvents||'';
+  var credits=membership.classesLeft!==null&&membership.classesLeft!==undefined?membership.classesLeft:(membership.moneyLeft||'');
   var detail=credits?(Number(credits)===1?'1 clase restante':credits+' clases restantes'):'Membresía activa';
   curMembership=membership;
 

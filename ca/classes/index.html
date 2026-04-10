@@ -1293,7 +1293,7 @@ function validateCustomerFields(){
 function showConfirmStep(membership){stepChange();
   var bd=document.getElementById('mo-bd');
   var mName=membership.name||membership.membershipName||membership.planName||'Membership';
-  var credits=membership.remainingCredits||membership.eventsRemaining||membership.creditsRemaining||membership.remainingEvents||'';
+  var credits=membership.classesLeft!==null&&membership.classesLeft!==undefined?membership.classesLeft:(membership.moneyLeft||'');
   var detail=credits?(Number(credits)===1?'1 classe restant':credits+' classes restants'):'Subscripció activa';
   curMembership=membership;
 

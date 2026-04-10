@@ -929,8 +929,8 @@ function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').repl
 function showConfirmStep(membership){stepChange();
   var bd=document.getElementById('mo-bd');
   var mName=membership.name||membership.membershipName||membership.planName||'Membership';
-  var credits=membership.remainingCredits||membership.eventsRemaining||membership.creditsRemaining||membership.remainingEvents||'';
-  var detail=credits?(Number(credits)===1?'1 class remaining':credits+' classes remaining'):'Active membership';
+  var credits=membership.classesLeft!==null&&membership.classesLeft!==undefined?membership.classesLeft:(membership.moneyLeft||'');
+  var detail=credits!==''&&credits!==null&&credits!==undefined?(Number(credits)===1?'1 class remaining':credits+' classes remaining'):'Active membership';
   curMembership=membership;
 
   bd.innerHTML='<div class="bk-class">'
