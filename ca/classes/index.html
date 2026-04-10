@@ -901,6 +901,8 @@ function showGuestStep(){stepChange();
     +'<input class="bk-input" id="bk-ln" type="text" aria-label="Cognom" placeholder="Cognom" />'
     +'<div class="bk-label">Email</div>'
     +'<input class="bk-input" id="bk-email" type="email" aria-label="Correu electrònic" placeholder="tu@email.com" />'
+    +'<div class="bk-label" style="margin-top:8px">Confirmar correu</div>'
+    +'<input class="bk-input" id="bk-email2" type="email" placeholder="Repeteix el teu correu" autocomplete="off" />'
     +(pendingPack&&pendingPack.type!=='single'?'<div class="bk-label" style="margin-top:8px">Crea una contrasenya</div>'+'<input class="bk-input" id="bk-new-pass" type="password" placeholder="Mín. 8 caràcters" aria-label="Crea una contrasenya" autocomplete="new-password" />'+'<div class="bk-label" style="margin-top:8px">Confirma la contrasenya</div>'+'<input class="bk-input" id="bk-new-pass2" type="password" placeholder="Repeteix la contrasenya" aria-label="Confirma la contrasenya" autocomplete="new-password" />':'')
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">Continuar</button>'

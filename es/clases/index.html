@@ -901,6 +901,8 @@ function showGuestStep(){stepChange();
     +'<input class="bk-input" id="bk-ln" type="text" aria-label="Apellido" placeholder="Apellido" />'
     +'<div class="bk-label">Email</div>'
     +'<input class="bk-input" id="bk-email" type="email" aria-label="Correo electrónico" placeholder="tu@email.com" />'
+    +'<div class="bk-label" style="margin-top:8px">Confirmar Email</div>'
+    +'<input class="bk-input" id="bk-email2" type="email" placeholder="Repite tu email" autocomplete="off" />'
     +(pendingPack&&pendingPack.type!=='single'?'<div class="bk-label" style="margin-top:8px">Crear contraseña</div>'+'<input class="bk-input" id="bk-new-pass" type="password" placeholder="Mín. 8 caracteres" aria-label="Crear contraseña" autocomplete="new-password" />'+'<div class="bk-label" style="margin-top:8px">Confirmar contraseña</div>'+'<input class="bk-input" id="bk-new-pass2" type="password" placeholder="Repetir contraseña" aria-label="Confirmar contraseña" autocomplete="new-password" />':'')
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">Continuar</button>'
