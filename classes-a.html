@@ -718,8 +718,8 @@ function doGuestCheck(){
 
 function mountCardForGuest(){
   if(typeof Stripe==='undefined'){
-    var errEl=document.getElementById('bk-err');
-    if(errEl)errEl.textContent='Payment form could not load. Please disable ad blockers and refresh.';
+    // Stripe not loaded yet — retry in 600ms (handles async/defer race)
+    setTimeout(function(){if(document.getElementById('bk-card'))mountCardForGuest();},600);
     return;
   }
   if(!stripeInstance){
