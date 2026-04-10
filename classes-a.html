@@ -879,7 +879,7 @@ function applyPromo(type,origPrice,productId){
       if(discountedPrice===0){
         payBtn.textContent='Book Free Class';
         // Hide card and Apple Pay — no payment needed
-        var cardWrap=document.getElementById('bk-card');if(cardWrap)cardWrap.parentElement.style.display='none';
+        var cardWrap=document.getElementById('bk-card');if(cardWrap)cardWrap.style.display='none';var cardWrapLabel=document.getElementById('bk-card-label');if(cardWrapLabel)cardWrapLabel.style.display='none';
         var cardLabel=document.getElementById('bk-card-label');if(cardLabel)cardLabel.style.display='none';
         var payDiv=document.getElementById('bk-pay-divider');if(payDiv)payDiv.style.display='none';
         var payReqEl=document.getElementById('bk-pay-request');if(payReqEl)payReqEl.style.display='none';
@@ -908,7 +908,7 @@ function removePromo(origPrice){
   var payBtn=document.getElementById('bk-pay-btn');
   if(payBtn) payBtn.textContent='Pay €'+origPrice+' & Book Class';
   // Restore card fields in case they were hidden by a €0 promo
-  var cardWrap=document.getElementById('bk-card');if(cardWrap)cardWrap.parentElement.style.display='';
+  var cardWrap=document.getElementById('bk-card');if(cardWrap)cardWrap.style.display='';var cardWrapLabel=document.getElementById('bk-card-label');if(cardWrapLabel)cardWrapLabel.style.display='';
   var cardLabel=document.getElementById('bk-card-label');if(cardLabel)cardLabel.style.display='';
   if(activePayReq){try{activePayReq.update({total:{label:'SABDA Studio'+(activePayName?' — '+activePayName:''),amount:Math.round(origPrice*100)}});}catch(e){}}
 }
