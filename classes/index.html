@@ -875,7 +875,8 @@ function showLoginStep(){stepChange();
   bd.innerHTML=classBlockHtml()
     +'<div class="bk-login">'
     +'<div class="bk-label">Email</div>'
-    +'<input class="bk-input" id="bk-email" type="email" aria-label="Email address" placeholder="your@email.com" />'
+    +'<input class="bk-input" id="bk-email" type="email" aria-label="Email address" placeholder="your@email.com" autocomplete="email" />'
+    +(pendingPack&&pendingPack.type!=='single'?'<div class="bk-label" style="margin-top:8px">Confirm Email</div>'+'<input class="bk-input" id="bk-email2" type="email" placeholder="Repeat your email" autocomplete="off" />':'')
     +'<div class="bk-label">Password</div>'
     +'<input class="bk-input" id="bk-pass" type="password" aria-label="Password" placeholder="Password" />'
     +'<div style="text-align:right;margin:-10px 0 12px"><a href="https://momence.com/forgot-password" target="_blank" rel="noopener noreferrer" style="font-size:.75rem;color:var(--white38);text-decoration:none;border-bottom:1px solid var(--white12)">Forgot password?</a></div>'
@@ -899,7 +900,8 @@ function showGuestStep(){stepChange();
     +'<div class="bk-label">Last Name</div>'
     +'<input class="bk-input" id="bk-ln" type="text" aria-label="Last name" placeholder="Last name" />'
     +'<div class="bk-label">Email</div>'
-    +'<input class="bk-input" id="bk-email" type="email" aria-label="Email address" placeholder="your@email.com" />'
+    +'<input class="bk-input" id="bk-email" type="email" aria-label="Email address" placeholder="your@email.com" autocomplete="email" />'
+    +(pendingPack&&pendingPack.type!=='single'?'<div class="bk-label" style="margin-top:8px">Confirm Email</div>'+'<input class="bk-input" id="bk-email2" type="email" placeholder="Repeat your email" autocomplete="off" />':'')
     +(pendingPack&&pendingPack.type!=='single'?'<div class="bk-label" style="margin-top:8px">Create a password</div>'+'<input class="bk-input" id="bk-new-pass" type="password" placeholder="Min. 8 characters" aria-label="Create a password" autocomplete="new-password" />'+'<div class="bk-label" style="margin-top:8px">Confirm password</div>'+'<input class="bk-input" id="bk-new-pass2" type="password" placeholder="Repeat password" aria-label="Confirm password" autocomplete="new-password" />':'')
     +(pendingPack&&pendingPack.type!=='single'?'<div class="bk-divider" style="margin:16px 0"></div>'+'<div id="bk-pack-customer">'+customerFieldsHTML()+'</div>'+'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'+'<div id="bk-pay-divider" class="bk-divider" style="display:none">or pay with card</div>'+'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Card Details</div>'+'<div class="bk-card-wrap" id="bk-card"></div>':'')+'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">'+(pendingPack&&pendingPack.type!=='single'?'Pay \u20AC'+(pendingPack?pendingPack.price:0):'Continue')+'</button>'
@@ -1009,49 +1011,30 @@ window.doGuestCheck=function(){
   var fnEl=document.getElementById('bk-fn');
   var lnEl=document.getElementById('bk-ln');
   var emailEl=document.getElementById('bk-email');
+  var email2El=document.getElementById('bk-email2');
   var fn=fnEl.value.trim();
   var ln=lnEl.value.trim();
   var email=emailEl.value.trim();
   var err=document.getElementById('bk-err');
   var ok=true;
-  fnEl.classList.remove('bk-field-err');lnEl.classList.remove('bk-field-err');emailEl.classList.remove('bk-field-err');
+  fnEl.classList.remove('bk-field-err');
+  lnEl.classList.remove('bk-field-err');
+  emailEl.classList.remove('bk-field-err');
+  if(email2El)email2El.classList.remove('bk-field-err');
   if(!fn){fnEl.classList.add('bk-field-err');ok=false;}
   if(!ln){lnEl.classList.add('bk-field-err');ok=false;}
   if(!email||!validateEmail(email)){emailEl.classList.add('bk-field-err');ok=false;}
   if(!ok){err.textContent='Please fill in the highlighted fields';return;}
-
-  curUser={id:null,email:email,firstName:fn,lastName:ln,memberId:null,isGuest:true};
-
-  fetch(PROXY+'/sabda-api/check-email',{
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:email})
-  }).then(function(r){return r.json();})
-  .then(function(d){
-    if(d.exists){
-      stepChange();
-      var bd=document.getElementById('mo-bd');
-      bd.innerHTML=classBlockHtml()
-        +'<div class="bk-confirm" style="text-align:center">'
-        +'<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.15);border-radius:10px;padding:20px;margin-bottom:20px">'
-        +'<div style="font-size:.9rem;font-weight:600;color:var(--salmon);margin-bottom:6px">Account found</div>'
-        +'<div style="font-size:.82rem;color:var(--white60);line-height:1.5">This email is already registered. Log in to keep your booking history and credits together.</div>'
-        +'</div>'
-        +'<button class="bk-primary" onclick="showLoginStep()">Log in</button>'
-        +'<div class="bk-link" style="margin-top:12px"><a href="https://momence.com/forgot-password" target="_blank" rel="noopener noreferrer" style="color:var(--white38);font-size:.78rem;text-decoration:underline">Forgot your password?</a></div>'
-        +'</div>';
-    } else {
-      if(pendingPack&&pendingPack.type!=='single'){
-        // Card already mounted — proceed directly to payment
-        doGuestPackPay();
-      } else {
-        showNoMembership();
-      }
+  if(email2El){
+    var email2=email2El.value.trim();
+    if(!email2||email2.toLowerCase()!==email.toLowerCase()){
+      email2El.classList.add('bk-field-err');
+      err.textContent='Emails do not match';
+      return;
     }
-  }).catch(function(){
-    // On network error, proceed anyway (card already mounted)
-    if(pendingPack&&pendingPack.type!=='single'){doGuestPackPay();}else{showNoMembership();}
-  });
+  }
+  curUser={id:null,email:email,firstName:fn,lastName:ln,memberId:null,isGuest:true};
+  if(pendingPack&&pendingPack.type!=='single'){doGuestPackPay();}else{showNoMembership();}
 };
 
 // ── MOUNT CARD FOR GUEST PACK PURCHASE (one-screen checkout) ──

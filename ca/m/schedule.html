@@ -753,56 +753,30 @@ function doGuestCheck(){
   var fnEl=document.getElementById('bk-fn');
   var lnEl=document.getElementById('bk-ln');
   var emailEl=document.getElementById('bk-email');
+  var email2El=document.getElementById('bk-email2');
   var fn=fnEl.value.trim();
   var ln=lnEl.value.trim();
   var email=emailEl.value.trim();
   var err=document.getElementById('bk-err');
-  var btn=document.getElementById('bk-guest-btn');
   var ok=true;
-  fnEl.classList.remove('bk-field-err');lnEl.classList.remove('bk-field-err');emailEl.classList.remove('bk-field-err');
+  fnEl.classList.remove('bk-field-err');
+  lnEl.classList.remove('bk-field-err');
+  emailEl.classList.remove('bk-field-err');
+  if(email2El)email2El.classList.remove('bk-field-err');
   if(!fn){fnEl.classList.add('bk-field-err');ok=false;}
   if(!ln){lnEl.classList.add('bk-field-err');ok=false;}
   if(!email||!validateEmail(email)){emailEl.classList.add('bk-field-err');ok=false;}
-  if(!ok){err.textContent='Por favor, rellena los campos destacados';return;}
-
-  curUser={id:null,email:email,firstName:fn,lastName:ln,memberId:null,isGuest:true};
-
-  // Check if email already exists in Momence
-  fetch(PROXY+'/sabda-api/check-email',{
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({email:email})
-  }).then(function(r){return r.json();})
-  .then(function(d){
-    if(d.exists){
-      stepChange();
-      setBack(showGuestStep);
-      var bd=document.getElementById('mo-bd');
-      bd.innerHTML='<div class="bk-class">'
-        +'<div class="bk-class-name">'+esc(curSession.title)+'</div>'
-        +'<div class="bk-class-meta">'
-        +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+esc(curSession.time)+'</span>'
-        +'</div>'+getSpotsHtml()+'</div>'
-        +'<div class="bk-confirm" style="text-align:center">'
-        +'<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.15);border-radius:10px;padding:20px;margin-bottom:20px">'
-        +'<div style="font-size:.9rem;font-weight:600;color:var(--salmon);margin-bottom:6px">Compte trobat</div>'
-        +'<div style="font-size:.82rem;color:var(--white60);line-height:1.5">Aquest correu ja està registrat. Inicia sessió per mantenir el teu historial de reserves i crèdits junts.</div>'
-        +'</div>'
-        +'<button class="bk-primary" onclick="showLoginStep()">Inicia sessió</button>'
-        +'<div class="bk-link" style="margin-top:12px"><a href="https://momence.com/forgot-password" target="_blank" rel="noopener noreferrer" style="color:var(--white38);font-size:.78rem;text-decoration:underline">Has olvidado tu contraseña?</a></div>'
-        +'</div>';
-    } else {
-      if(pendingPack&&pendingPack.type!=='single'){
-        // Card already mounted — proceed directly to payment
-        doGuestPackPay();
-      } else {
-        showNoMembership();
-      }
+  if(!ok){err.textContent='Omple els camps destacats';return;}
+  if(email2El){
+    var email2=email2El.value.trim();
+    if(!email2||email2.toLowerCase()!==email.toLowerCase()){
+      email2El.classList.add('bk-field-err');
+      err.textContent='Els correus no coincideixen';
+      return;
     }
-  }).catch(function(){
-    // On network error, proceed anyway (card already mounted)
-    if(pendingPack&&pendingPack.type!=='single'){doGuestPackPay();}else{showNoMembership();}
-  });
+  }
+  curUser={id:null,email:email,firstName:fn,lastName:ln,memberId:null,isGuest:true};
+  if(pendingPack&&pendingPack.type!=='single'){doGuestPackPay();}else{showNoMembership();}
 }
 
 function mountCardForGuest(){
