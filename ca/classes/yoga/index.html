@@ -220,9 +220,9 @@ nav.scrolled{background:rgba(14,18,53,.92);backdrop-filter:blur(18px);-webkit-ba
 .rn-text em{font-style:italic;color:var(--salmon)}
 .rn-sub{font-size:.9rem;color:var(--white60);margin-bottom:28px;line-height:1.6}
 .rn-sub span{color:var(--cyan);font-weight:500}
-.rn-link{display:inline-flex;align-items:center;gap:10px;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--navy);background:var(--cyan);padding:18px 44px;border-radius:4px;border:none;transition:background .25s,transform .2s,box-shadow .3s}
+.rn-link{display:inline-flex;align-items:center;justify-content:center;gap:12px;font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:var(--navy);background:var(--cyan);padding:16px 36px;border-radius:4px;border:none;transition:background .25s,transform .2s,box-shadow .3s;white-space:nowrap}
 .rn-link:hover{background:#33f5d1;transform:translateY(-2px);box-shadow:0 8px 28px rgba(2,243,197,.25)}
-.rn-link svg{width:18px;height:18px}
+.rn-link svg{width:18px;height:18px;flex-shrink:0}
 .rn-ticker{position:relative;max-width:600px;margin:0 auto 24px;text-align:center;min-height:120px;display:flex;align-items:center;justify-content:center}
 .rn-quote{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;transition:opacity .6s}
 .rn-quote.active{opacity:1}
@@ -301,7 +301,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   <ul class="nav-links">
     <li><a href="/ca/classes/">Classes</a></li>
     <li><a href="/ca/preus/">Preus</a></li>
-    <li><a href="/ca/lloguer/">Alquiler</a></li>
+    <li><a href="/ca/lloguer/">Llogar</a></li>
     <li><a href="/ca/lloguer/">Esdeveniments</a></li>
   </ul>
   <div class="nav-right">
@@ -314,7 +314,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     </div>
   </div>
 <button class="nav-ham" onclick="document.getElementById('mobMenú').classList.add('open')" aria-label="Menú"><span></span><span></span><span></span></button></nav>
-<div class="mob-menu" id="mobMenú"><button class="mob-close" onclick="this.parentElement.classList.remove('open')"><svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12"/></svg></button><a href="/ca/classes/">Classes</a><a href="/ca/preus/">Preus</a><a href="/ca/lloguer/">Alquiler</a><a href="/ca/lloguer/">Esdeveniments</a><a href="/ca/sobre/">Sobre nosaltres</a><a href="/ca/sobre/">Contacte</a><div style="width:60px;height:1px;background:rgba(240,239,233,.12);margin:4px 0"></div><a href="/ca/legal/avis-legal.html" style="font-size:.9rem;font-weight:500;opacity:.6">Avís Legal</a><a href="/ca/legal/politica-privacitat.html" style="font-size:.9rem;font-weight:500;opacity:.6">Política de Privacitat</a><a href="/ca/legal/termes.html" style="font-size:.9rem;font-weight:500;opacity:.6">Termes i Condicions</a><a href="/ca/legal/cookies.html" style="font-size:.9rem;font-weight:500;opacity:.6">Cookies</a></div>
+<div class="mob-menu" id="mobMenú"><button class="mob-close" onclick="this.parentElement.classList.remove('open')"><svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12"/></svg></button><a href="/ca/classes/">Classes</a><a href="/ca/preus/">Preus</a><a href="/ca/lloguer/">Llogar</a><a href="/ca/lloguer/">Esdeveniments</a><a href="/ca/sobre/">Sobre nosaltres</a><a href="/ca/sobre/">Contacte</a><div style="width:60px;height:1px;background:rgba(240,239,233,.12);margin:4px 0"></div><a href="/ca/legal/avis-legal.html" style="font-size:.9rem;font-weight:500;opacity:.6">Avís Legal</a><a href="/ca/legal/politica-privacitat.html" style="font-size:.9rem;font-weight:500;opacity:.6">Política de Privacitat</a><a href="/ca/legal/termes.html" style="font-size:.9rem;font-weight:500;opacity:.6">Termes i Condicions</a><a href="/ca/legal/cookies.html" style="font-size:.9rem;font-weight:500;opacity:.6">Cookies</a></div>
 
 <!-- HERO -->
 <div class="hero">
@@ -429,11 +429,11 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   </div>
   <div class="rn-inner">
     <div class="rn-stars"><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg><svg viewBox="0 0 14 14"><path d="M7 1l1.5 3.5L12 5l-2.5 2.5.7 3.5L7 9.5 3.8 11l.7-3.5L2 5l3.5-.5z"/></svg></div>
-    <div class="rn-scoreline"><span class="rn-score">4.8</span><span class="rn-count">Más de 350 reseñas</span></div>
+    <div class="rn-scoreline"><span class="rn-score">4.8</span><span class="rn-count">Més de 350 ressenyes</span></div>
     <div style="border-top:1px solid rgba(240,239,233,.08);margin:36px 0;width:100%"></div>
     <p class="rn-text">Comparte el <em>cariño.</em></p>
-    <p class="rn-sub">Deja una reseña rápida y <span>te invitamos a un ginger shot</span> en tu próxima visita.</p>
-    <a href="https://g.page/r/CZeZ4gZgrjR3EAE/review" target="_blank" class="rn-link" aria-label="Deja tu reseña en Google"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>Deja una reseña en Google</a>
+    <p class="rn-sub">Deixa una ressenya ràpida i <span>t'invitem a un ginger shot</span> a la teva propera visita.</p>
+    <a href="https://g.page/r/CZeZ4gZgrjR3EAE/review" target="_blank" class="rn-link" aria-label="Deja tu reseña en Google"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>Deixa una ressenya a Google</a>
   </div>
 </div>
 </div>
@@ -442,11 +442,11 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
   <div class="ft-in">
     <div class="ft-brand">
       <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA">
-      <div class="ft-pillars"><span class="fp-art">Arte</span><span>·</span><span class="fp-tech">Tech</span><span>·</span><span class="fp-well">Bienestar</span></div>
+      <div class="ft-pillars"><span class="fp-art">Art</span><span>·</span><span class="fp-tech">Tech</span><span>·</span><span class="fp-well">Benestar</span></div>
       <img class="ft-symbol" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20symbol%20multi-colored%20(1).png" alt="SABDA symbol">
     </div>
     <div class="ft-col"><h4 style="color:var(--cyan)">Explora</h4><ul>
-      <li><a href="/ca/classes/">Classes</a></li><li><a href="/ca/lloguer/">Alquiler</a></li><li><a href="/ca/preus/">Preus</a></li><li><a href="/ca/lloguer/">Esdeveniments</a></li><li><a href="/ca/sobre/">Sobre nosaltres</a></li><li><a href="/ca/classes/">FAQ</a></li><li><a href="/ca/sobre/">Contacte</a></li>
+      <li><a href="/ca/classes/">Classes</a></li><li><a href="/ca/lloguer/">Llogar</a></li><li><a href="/ca/preus/">Preus</a></li><li><a href="/ca/lloguer/">Esdeveniments</a></li><li><a href="/ca/sobre/">Sobre nosaltres</a></li><li><a href="/ca/classes/">FAQ</a></li><li><a href="/ca/sobre/">Contacte</a></li>
     </ul></div>
     <div class="ft-col"><h4 style="color:var(--salmon)">Connecta</h4><ul>
       <li><a href="https://instagram.com/sabda_studio" target="_blank">Instagram</a></li>
