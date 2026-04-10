@@ -62,11 +62,11 @@
 {
   "@context": "https://schema.org", "@type": "FAQPage",
   "mainEntity": [
-    {"@type": "Question", "name": "¿Cómo reservo una clase en SABDA?", "acceptedAnswer": {"@type": "Answer", "text": "Reserva online en la página de horarios vía Momence. También disponible en ClassPass, Urban Sports Club y Wellhub."}},
-    {"@type": "Question", "name": "¿Qué clases ofrece SABDA?", "acceptedAnswer": {"@type": "Answer", "text": "Yoga, pilates, sound healing, breathwork e ice bath dentro de una sala de proyección 360° con Dolby Atmos en el Eixample de Barcelona."}},
-    {"@type": "Question", "name": "¿Necesito experiencia previa?", "acceptedAnswer": {"@type": "Answer", "text": "No. Todas las clases están abiertas a cualquier nivel y ofrecemos modificaciones."}},
-    {"@type": "Question", "name": "¿Qué debo traer?", "acceptedAnswer": {"@type": "Answer", "text": "Ropa cómoda. Ponemos esterillas, props, mantas y cojines. Trae una toalla para la ducha (también se puede alquilar). Si lo prefieres, puedes traer tu propia esterilla."}},
-    {"@type": "Question", "name": "¿Las clases son en inglés o en español?", "acceptedAnswer": {"@type": "Answer", "text": "La mayoría en inglés con indicaciones en español. Algunas son totalmente bilingües."}}
+    {"@type": "Question", "name": "Cómo reservo una clase en SABDA?", "acceptedAnswer": {"@type": "Answer", "text": "Reserva online en la página de horarios vía Momence. También disponible en ClassPass, Urban Sports Club y Wellhub."}},
+    {"@type": "Question", "name": "Qué clases ofrece SABDA?", "acceptedAnswer": {"@type": "Answer", "text": "Yoga, pilates, sound healing, breathwork e ice bath dentro de una sala de proyección 360° con Dolby Atmos en el Eixample de Barcelona."}},
+    {"@type": "Question", "name": "Necesito experiencia previa?", "acceptedAnswer": {"@type": "Answer", "text": "No. Todas las clases están abiertas a cualquier nivel y ofrecemos modificaciones."}},
+    {"@type": "Question", "name": "Qué debo traer?", "acceptedAnswer": {"@type": "Answer", "text": "Ropa cómoda. Ponemos esterillas, props, mantas y cojines. Trae una toalla para la ducha (también se puede alquilar). Si lo prefieres, puedes traer tu propia esterilla."}},
+    {"@type": "Question", "name": "Las clases son en inglés o en español?", "acceptedAnswer": {"@type": "Answer", "text": "La mayoría en inglés con indicaciones en español. Algunas son totalmente bilingües."}}
   ]
 }
 </script>
@@ -863,10 +863,10 @@ function showLoginStep(){stepChange();
     +'<input class="bk-input" id="bk-email" type="email" aria-label="Correo electrónico" placeholder="tu@email.com" />'
     +'<div class="bk-label">Contraseña</div>'
     +'<input class="bk-input" id="bk-pass" type="password" aria-label="Contraseña" placeholder="Contraseña" />'
-    +'<div style="text-align:right;margin:-10px 0 12px"><a href="https://momence.com/forgot-password" target="_blank" style="font-size:.75rem;color:var(--white38);text-decoration:none;border-bottom:1px solid var(--white12)">¿Olvidaste tu contraseña?</a></div>'
+    +'<div style="text-align:right;margin:-10px 0 12px"><a href="https://momence.com/forgot-password" target="_blank" style="font-size:.75rem;color:var(--white38);text-decoration:none;border-bottom:1px solid var(--white12)">Olvidaste tu contraseña?</a></div>'
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-login-btn" onclick="doLogin()">Iniciar sesión y reservar</button>'
-    +'<div class="bk-link" onclick="showGuestStep()">¿Primera vez? Reserva como invitado</div>'
+    +'<div class="bk-link" onclick="showGuestStep()">Primera vez? Reserva como invitado</div>'
     +'</div>';
   document.getElementById('bk-email').focus();
   document.getElementById('bk-pass').addEventListener('keydown',function(e){if(e.key==='Enter')doLogin();});
@@ -887,7 +887,7 @@ function showGuestStep(){stepChange();
     +'<input class="bk-input" id="bk-email" type="email" aria-label="Correo electrónico" placeholder="tu@email.com" />'
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">Continuar</button>'
-    +'<div class="bk-link" onclick="showLoginStep()">¿Ya tienes cuenta? Inicia sesión</div>'
+    +'<div class="bk-link" onclick="showLoginStep()">Ya tienes cuenta? Inicia sesión</div>'
     +'<div class="bk-link" onclick="pendingPack=null;showNoMembership()">\u2190 Cambiar selección</div>'
     +'</div>';
   document.getElementById('bk-fn').focus();
@@ -1020,7 +1020,7 @@ window.doGuestCheck=function(){
         +'<div style="font-size:.82rem;color:var(--white60);line-height:1.5">Este email ya está registrado. Inicia sesión para mantener tu historial de reservas y créditos juntos.</div>'
         +'</div>'
         +'<button class="bk-primary" onclick="showLoginStep()">Iniciar sesión</button>'
-        +'<div class="bk-link" style="margin-top:12px"><a href="https://momence.com/forgot-password" target="_blank" style="color:var(--white38);font-size:.78rem;text-decoration:underline">¿Olvidaste tu contraseña?</a></div>'
+        +'<div class="bk-link" style="margin-top:12px"><a href="https://momence.com/forgot-password" target="_blank" style="color:var(--white38);font-size:.78rem;text-decoration:underline">Olvidaste tu contraseña?</a></div>'
         +'</div>';
     } else {
       showNoMembership();
