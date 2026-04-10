@@ -799,6 +799,64 @@ async function handleBook(request, origin) {
   }
 }
 
+
+// ── META CAPI HELPERS ──
+async function sha256hex(str) {
+  if (!str) return '';
+  const encoder = new TextEncoder();
+  const data = encoder.encode(str.trim().toLowerCase());
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+async function sendCAPIEvent(eventName, eventId, email, firstName, lastName, value, currency, eventSourceUrl, clientIp, clientUserAgent, fbp, fbc, env) {
+  const CAPI_TOKEN = (env && env.CAPI_ACCESS_TOKEN) || '';
+  if (!CAPI_TOKEN) {
+    console.log('[CAPI] Skipping — CAPI_ACCESS_TOKEN not set');
+    return;
+  }
+  const PIXEL_ID = '567636669734630';
+  try {
+    const [emHash, fnHash, lnHash] = await Promise.all([
+      sha256hex(email),
+      sha256hex(firstName),
+      sha256hex(lastName),
+    ]);
+    const eventData = {
+      event_name: eventName,
+      event_time: Math.floor(Date.now() / 1000),
+      event_id: eventId || (eventName + '_' + Date.now()),
+      event_source_url: eventSourceUrl || 'https://sabdastudio.com/classes/',
+      action_source: 'website',
+      user_data: {
+        em: emHash ? [emHash] : [],
+        fn: fnHash ? [fnHash] : [],
+        ln: lnHash ? [lnHash] : [],
+        ...(clientIp ? { client_ip_address: clientIp } : {}),
+        ...(clientUserAgent ? { client_user_agent: clientUserAgent } : {}),
+        ...(fbp ? { fbp } : {}),
+        ...(fbc ? { fbc } : {}),
+      },
+      custom_data: {
+        currency: currency || 'EUR',
+        value: Number(value) || 0,
+      },
+    };
+    const capiRes = await fetch(
+      `https://graph.facebook.com/v21.0/${PIXEL_ID}/events`,
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ data: [eventData], access_token: CAPI_TOKEN }),
+      }
+    );
+    const capiData = await capiRes.json().catch(() => ({}));
+    console.log('[CAPI]', eventName, 'status:', capiRes.status, 'events_received:', capiData.events_received);
+  } catch (e) {
+    console.log('[CAPI] Error:', e.message);
+  }
+}
+
 // ── SERVER-SIDE PAYMENT: pay via Momence /checkout/cart endpoints ──
 // Two-step flow:
 //   1. POST /checkout/cart/recalculate to get signature + numeric stripeConnectedAccountId
@@ -811,7 +869,7 @@ async function handleBook(request, origin) {
 // stripeConnectedAccountId is NUMERIC (38966), discovered from /load-stripe-connected-account.
 async function handlePay(request, origin) {
   try {
-    const { sessionId, sessionToken, stripePaymentMethodId, firstName, lastName, email, password, phoneNumber, customerFields, type, productId, discountCode, discountCodeId, actualPrice } = await request.json();
+    const { sessionId, sessionToken, stripePaymentMethodId, firstName, lastName, email, password, phoneNumber, customerFields, type, productId, discountCode, discountCodeId, actualPrice, fbEventId, fbp, fbc, clientIp, clientUserAgent } = await request.json();
 
     if (!firstName || !lastName || !email) {
       return new Response(JSON.stringify({ error: 'Missing customer details' }), {
@@ -1014,13 +1072,24 @@ async function handlePay(request, origin) {
     console.log('[PAY] ← status', payRes.status, 'body:', JSON.stringify(payData).slice(0, 1500));
 
     if (payRes.ok) {
-      // 3D Secure check
+      // 3D Secure check — CAPI fires after 3DS confirmation (client-side)
       if (payData.payload && payData.payload.clientSecret) {
         return new Response(JSON.stringify({
           clientSecret: payData.payload.clientSecret,
           newMemberId: payData.payload.newMemberId,
         }), { status: 200, headers: corsHeaders(origin) });
       }
+      // Fire CAPI Purchase event (non-3DS success)
+      const priceForCAPI = (actualPrice !== undefined && actualPrice !== null) ? actualPrice
+        : (productId ? (PRODUCT_PRICES[Number(productId)] || 0) : 0);
+      sendCAPIEvent(
+        'Purchase', fbEventId, email, firstName, lastName,
+        priceForCAPI, 'EUR',
+        'https://sabdastudio.com/classes/',
+        clientIp || request.headers.get('CF-Connecting-IP') || '',
+        clientUserAgent || request.headers.get('User-Agent') || '',
+        fbp, fbc, env
+      ).catch(() => {});
       return new Response(JSON.stringify({ success: true, data: payData }), {
         status: 200, headers: corsHeaders(origin),
       });
