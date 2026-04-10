@@ -879,7 +879,7 @@ function showLoginStep(){stepChange();
     +'<div class="bk-label">Contraseña</div>'
     +'<input class="bk-input" id="bk-pass" type="password" aria-label="Contraseña" placeholder="Contraseña" />'
     +'<div style="text-align:right;margin:-10px 0 12px"><a href="https://momence.com/forgot-password" target="_blank" rel="noopener noreferrer" style="font-size:.75rem;color:var(--white38);text-decoration:none;border-bottom:1px solid var(--white12)">Has oblidat la contrasenya?</a></div>'
-    +(pendingPack&&pendingPack.type!=='single'?'<div class="bk-divider" style="margin:16px 0"></div>'+'<div id="bk-pack-customer">'+customerFieldsHTML()+'</div>'+'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'+'<div id="bk-pay-divider" class="bk-divider" style="display:none">or pay with card</div>'+'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Card Details</div>'+'<div class="bk-card-wrap" id="bk-card"></div>':'')
+    +(pendingPack&&pendingPack.type!=='single'?'<div class="bk-divider" style="margin:16px 0"></div>'+'<div id="bk-pack-customer">'+customerFieldsHTML()+'</div>'+'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'+'<div id="bk-pay-divider" class="bk-divider" style="display:none">or pay with card</div>'+'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Dades de la targeta</div>'+'<div class="bk-card-wrap" id="bk-card"></div>':'')
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-login-btn" onclick="doLogin()">Inicia sessió i reserva</button>'
     +'<div class="bk-link" onclick="showGuestStep()">Primera vez? Reserva como invitado</div>'
@@ -1149,7 +1149,7 @@ window.doGuestPackPay=function(){
   var npv2=np2?np2.value.trim():'';
   if(!npv||npv.length<8){err.textContent='Password must be at least 8 characters.';if(np)np.classList.add('bk-field-err');return;}
   if(npv!==npv2){err.textContent='Passwords do not match.';if(np2)np2.classList.add('bk-field-err');return;}
-  isProcessing=true;if(btn){btn.textContent='Processing...';btn.disabled=true;}err.textContent='';
+  isProcessing=true;if(btn){btn.textContent='Processant...';btn.disabled=true;}err.textContent='';
   var cf=getCustomerFields();
   var finalPrice=(discountedPrice!==null)?discountedPrice:pendingPack.price;
   stripeInstance.createPaymentMethod({type:'card',card:cardElement,billing_details:{
@@ -1184,7 +1184,7 @@ window.doGuestPackPay=function(){
         showFallback();
       }
     }).catch(function(){
-      err.textContent='Connection error. Please try again.';
+      err.textContent='Error de connexió. Torna-ho a intentar.';
       isProcessing=false;if(btn){btn.textContent='Pay \u20AC'+pendingPack.price;btn.disabled=false;}
     });
   });
@@ -1242,7 +1242,7 @@ function showConfirmStep(membership){stepChange();
 
   bd.innerHTML=classBlockHtml()
     +'<div class="bk-confirm">'
-    +'<div class="bk-user">Reservando como <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>'
+    +'<div class="bk-user">Reservant com a <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>'
     +'<div class="bk-membership">'
     +'<div class="bk-membership-name">'+mName+'</div>'
     +'<div class="bk-membership-detail">'+detail+'</div>'
@@ -1302,7 +1302,7 @@ function showNoMembership(){stepChange();
   // If user already picked a pack and just finished login/guest → go straight to payment
   if(pendingPack&&curUser){var p=pendingPack;pendingPack=null;showPayForm(p.type,p.price,p.id,p.name,p.desc);return;}
   var bd=document.getElementById('mo-bd');
-  var userLine=curUser?'<div class="bk-user">Reservando como <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>':'';
+  var userLine=curUser?'<div class="bk-user">Reservant com a <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>':'';
 
   bd.innerHTML=classBlockHtml()
     +'<div class="bk-confirm">'
@@ -1427,7 +1427,7 @@ window.showPayForm=function(type,price,productId,name,desc){stepChange();
   var bd=document.getElementById('mo-bd');
   bd.innerHTML=classBlockHtml()
     +'<div class="bk-confirm">'
-    +'<div class="bk-user">Reservando como <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>'
+    +'<div class="bk-user">Reservant com a <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>'
     +'<div class="bk-membership">'
     +'<div class="bk-membership-name">'+name+'</div>'
     +'<div class="bk-membership-detail">'+desc+(type==='membership'&&price<200?' \u00B7 Facturació mensual':'')+'</div>'
