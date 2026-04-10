@@ -240,7 +240,7 @@ setTimeout(function(){fis.forEach(function(el){el.classList.add('vis')})},800);
 function toggleMore(){var el=document.getElementById('more');if(el)el.classList.toggle('on')}
 var mb2=document.getElementById('moreBtn2');if(mb2)mb2.addEventListener('click',function(){document.getElementById('more').classList.add('on')});
 var mx=document.getElementById('moreX');if(mx)mx.addEventListener('click',function(){document.getElementById('more').classList.remove('on')});
-function setLang(c){try{localStorage.setItem('sabda_lang',c)}catch(e){}document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===c)});if(c==='es'){window.location.href='/es/m/ice-bath.html';return;}if(c==='en'){window.location.href='/m/ice-bath.html';return;}}
+function setLang(c){try{localStorage.setItem('sabda_lang',c)}catch(e){}document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===c)});if(c==='en'){window.location.href='/m/ice-bath.html';return;}if(c==='es'){window.location.href='/es/m/ice-bath.html';return;}if(c==='ca'){window.location.href='/ca/m/ice-bath.html';return;}}
 try{var sl=localStorage.getItem('sabda_lang')||'en';document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===sl)})}catch(e){}
 </script>
 <script defer src="../cookies.js"></script>
