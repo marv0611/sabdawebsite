@@ -54,12 +54,23 @@ nav.scrolled{background:rgba(14,18,53,.92);border-color:rgba(240,239,233,.06)}
 .hero{position:relative;width:100%;min-height:100vh;min-height:100svh;display:flex;align-items:center;justify-content:center;overflow:hidden}
 .hero-bg{position:absolute;inset:0;background:url('https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_009.jpg') center 40%/cover no-repeat;filter:brightness(.32) contrast(1.1) saturate(1.2)}
 .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,18,53,.2) 0%,rgba(14,18,53,.05) 30%,rgba(14,18,53,.45) 65%,var(--navy) 100%)}
-.hero-in{position:relative;z-index:3;text-align:center;padding:0 28px;max-width:480px}
-.hero-price{font-family:'PT Serif',serif;font-size:clamp(4.5rem,16vw,7rem);font-weight:700;line-height:.85;letter-spacing:-.04em;margin-bottom:14px}
-.hero-tagline{font-family:'PT Serif',serif;font-size:clamp(1rem,2.8vw,1.25rem);font-weight:400;font-style:italic;color:var(--salmon);line-height:1.4;margin-bottom:20px}
-.hero-details{font-size:.82rem;color:var(--white60);margin-bottom:40px}.hero-details b{color:var(--white);font-weight:600}
+.hero-in{position:relative;z-index:3;text-align:center;padding:0 28px;max-width:600px}
+.hero-tagline{font-family:'PT Serif',serif;font-size:clamp(.95rem,2.4vw,1.1rem);font-weight:400;font-style:italic;color:var(--salmon);line-height:1.4;margin-bottom:32px}
+.hero-offers{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%}
+.h-offer{border-radius:6px;padding:28px 24px;border:1px solid rgba(240,239,233,.12);text-align:center;transition:border-color .3s,transform .2s;text-decoration:none;display:block}
+.h-offer:hover{border-color:rgba(240,239,233,.28);transform:translateY(-3px)}
+.h-offer.featured{border-color:rgba(2,243,197,.3);background:rgba(2,243,197,.04)}
+.h-offer.featured:hover{border-color:rgba(2,243,197,.55)}
+.h-offer-tag{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--white38);margin-bottom:10px;display:block}
+.h-offer.featured .h-offer-tag{color:var(--cyan)}
+.h-offer-price{font-family:'PT Serif',serif;font-size:clamp(3rem,9vw,4rem);font-weight:700;line-height:1;letter-spacing:-.03em;color:var(--white);margin-bottom:6px}
+.h-offer.featured .h-offer-price{color:var(--cyan)}
+.h-offer-sub{font-size:.74rem;color:var(--white38);margin-bottom:22px;line-height:1.5}
+.h-offer-btn{display:block;padding:12px 20px;border-radius:3px;font-size:.76rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;transition:background .2s}
+.h-offer.featured .h-offer-btn{background:var(--cyan);color:var(--navy)}.h-offer.featured .h-offer-btn:hover{background:#18ffda}
+.h-offer:not(.featured) .h-offer-btn{border:1px solid rgba(240,239,233,.2);color:var(--white60)}.h-offer:not(.featured) .h-offer-btn:hover{border-color:var(--white);color:var(--white)}
 .cta-p{display:block;width:100%;max-width:320px;margin:0 auto;padding:16px 28px;background:var(--cyan);color:var(--navy);font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:.05em;border-radius:3px;text-align:center;transition:background .2s,transform .15s,box-shadow .2s}.cta-p:hover{background:#18ffda;transform:translateY(-2px);box-shadow:0 14px 36px rgba(2,243,197,.22)}.cta-p svg{display:inline;vertical-align:middle;margin-left:6px}
-.hero-alt{display:block;margin-top:22px;font-size:.78rem;color:var(--white38)}.hero-alt span{color:var(--white60);border-bottom:1px solid rgba(240,239,233,.1);padding-bottom:1px;transition:color .2s,border-color .2s}.hero-alt:hover span{color:var(--white);border-color:rgba(240,239,233,.3)}
+@media(max-width:520px){.hero-offers{grid-template-columns:1fr;max-width:320px;margin:0 auto}}
 
 /* TRUST */
 .trust{padding:72px 80px;border-top:1px solid rgba(240,239,233,.06);border-bottom:1px solid rgba(240,239,233,.06);position:relative;z-index:2}
@@ -271,11 +282,22 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 <section class="hero" role="main" id="hero">
   <div class="hero-bg"></div>
   <div class="hero-in">
-    <div class="sl rv" id="t-label">Your First 3 Immersive Classes</div>
-    <div class="hero-price rv" style="transition-delay:.08s">€50</div>
-    <div class="hero-tagline rv" style="transition-delay:.14s" id="t-tag">Your intro to immersive wellness. Any class, any style, 30 days.</div>
-    <a href="/classes/?pack=443935" class="cta-p rv" style="transition-delay:.24s" id="t-cta">Get Your Intro 3-Pack <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-    <a href="/classes/?pack=443934" class="hero-alt rv" style="transition-delay:.3s" id="t-alt">Just want to try one class? <span id="t-alt-s">Single trial, €18</span></a>
+    <div class="sl rv" id="t-label">Your First Immersive Class</div>
+    <div class="hero-tagline rv" style="transition-delay:.1s" id="t-tag">Step into 360° projections and Dolby Atmos sound. Choose your offer.</div>
+    <div class="hero-offers rv" style="transition-delay:.18s" id="t-offers">
+      <a href="/classes/?pack=443934" class="h-offer" id="t-offer1">
+        <span class="h-offer-tag">Trial Class</span>
+        <div class="h-offer-price">€18</div>
+        <div class="h-offer-sub">1 class · Any style<br>No commitment</div>
+        <span class="h-offer-btn" id="t-btn1">Try One Class</span>
+      </a>
+      <a href="/classes/?pack=443935" class="h-offer featured" id="t-offer2">
+        <span class="h-offer-tag">Intro 3-Pack</span>
+        <div class="h-offer-price">€50</div>
+        <div class="h-offer-sub">3 classes · 30 days<br>Any style, any order</div>
+        <span class="h-offer-btn" id="t-btn2">Get Started</span>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -498,7 +520,7 @@ setTimeout(function(){
 },4000);
 
 /* Spanish */
-(function(){var p=new URLSearchParams(location.search);if(p.get('lang')==='es'){document.documentElement.lang='es';document.title='3 Clases Inmersivas por \u20AC50 | SABDA Barcelona';var t={'t-label':'TUS PRIMERAS 3 CLASES INMERSIVAS','t-tag':'Tu intro al wellness inmersivo. Cualquier clase, cualquier momento, 30 d\u00EDas.','t-cta':'Consigue tu Pack Intro <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>','t-alt':'Solo quieres probar una clase? <span>Clase de prueba \u2014 \u20AC18</span>','t-closer':'Tu cuerpo te lo <em>agradecer\u00E1.</em>','t-cta2':'Consigue tu Pack Intro <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>','t-cn':'V\u00E1lido 30 d\u00EDas. Sin membres\u00EDa. Sin compromiso.','t-loc':'5 min andando desde metro Hospital Cl\u00EDnic \u00B7 L5','t-sticky':'Reservar'};for(var id in t){var el=document.getElementById(id);if(el)el.innerHTML=t[id]}}})();
+(function(){var p=new URLSearchParams(location.search);if(p.get('lang')==='es'){document.documentElement.lang='es';document.title='3 Clases Inmersivas por \u20AC50 | SABDA Barcelona';var t={'t-label':'TU PRIMERA CLASE INMERSIVA','t-tag':'Entra en la sala de proyecci\u00F3n 360\u00B0 y sonido Dolby Atmos. Elige tu oferta.','t-btn1':'Probar una Clase','t-btn2':'Empezar Ahora','t-cta':'Consigue tu Pack Intro <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>','t-alt':'Solo quieres probar una clase? <span>Clase de prueba \u2014 \u20AC18</span>','t-closer':'Tu cuerpo te lo <em>agradecer\u00E1.</em>','t-cta2':'Consigue tu Pack Intro <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>','t-cn':'V\u00E1lido 30 d\u00EDas. Sin membres\u00EDa. Sin compromiso.','t-loc':'5 min andando desde metro Hospital Cl\u00EDnic \u00B7 L5','t-sticky':'Reservar'};for(var id in t){var el=document.getElementById(id);if(el)el.innerHTML=t[id]}}})();
 </script>
 </body>
 </html>
