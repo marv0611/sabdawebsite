@@ -765,10 +765,9 @@ async function handleBook(request, origin) {
       loadDate,
     };
     if (memberId) body.memberId = memberId;
-    if (memberMembershipId) {
-      body.memberMembershipId = memberMembershipId;
-    }
-    body.boughtMembershipIds = [];
+    // Verified via live API test: memberMembershipId goes in boughtMembershipIds array
+    // Sending it as top-level memberMembershipId causes "Expected type never" error
+    body.boughtMembershipIds = memberMembershipId ? [Number(memberMembershipId)] : [];
     if (phoneNumber) body.phoneNumber = phoneNumber;
     if (customerFields) body.customerFields = customerFields;
 
