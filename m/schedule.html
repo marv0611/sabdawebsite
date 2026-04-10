@@ -1587,8 +1587,15 @@ async function init(){
     const now=new Date();
     allE=d.filter(e=>new Date(e.dateTime)>new Date(now.getTime()-3600000)&&!e.isDeleted);
     renderFilters(allE);renderSched();
-    document.getElementById('sk').style.display='none';
-    document.getElementById('sched').style.display='block';
+    var skEl=document.getElementById('sk');
+    var schedEl=document.getElementById('sched');
+    schedEl.style.opacity='0';
+    schedEl.style.display='block';
+    schedEl.style.transition='opacity .3s ease';
+    requestAnimationFrame(function(){
+      requestAnimationFrame(function(){schedEl.style.opacity='1';});
+    });
+    skEl.style.display='none';
     
     // Handle ?buy=PRODUCT_ID deep link — opens modal in package purchase mode
     var params = new URLSearchParams(window.location.search);

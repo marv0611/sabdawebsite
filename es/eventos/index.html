@@ -666,7 +666,12 @@ window.addEventListener('scroll',()=>nav.classList.toggle('on',scrollY>60),{pass
 const rvObs=new IntersectionObserver(es=>es.forEach(e=>{
   if(e.isIntersecting){e.target.classList.add('vis');rvObs.unobserve(e.target)}
 }),{threshold:.07});
-document.querySelectorAll('.rv').forEach(el=>rvObs.observe(el));
+// Mark above-fold rv elements visible immediately to prevent flash
+document.querySelectorAll('.rv').forEach(el=>{
+  var r=el.getBoundingClientRect();
+  if(r.top<window.innerHeight){el.classList.add('vis');}
+  else{rvObs.observe(el);}
+});
 
 /* ═══════════════════════════════════════════════════════
    HORIZONTAL RULE ANIMATIONS
