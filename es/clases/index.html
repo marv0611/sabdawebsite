@@ -1323,8 +1323,13 @@ function showConfirmStep(membership){stepChange();
     +'<div class="bk-confirm">'
     +'<div class="bk-user">Reservando como <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>'
     +'<div class="bk-membership">'
+    +'<div style="display:flex;justify-content:space-between;align-items:center">'
     +'<div class="bk-membership-name">'+mName+'</div>'
-    +'<div class="bk-membership-detail">'+detail+'</div>'
+    +(credits!==''&&credits!==null&&credits!==undefined&&membership.type!=='subscription'?'<div style="background:rgba(2,243,197,.12);border:1px solid rgba(2,243,197,.3);border-radius:20px;padding:3px 10px;font-size:.72rem;font-weight:700;color:var(--cyan);white-space:nowrap">'
+    +credits+' left</div>':'<div style="background:rgba(2,243,197,.12);border:1px solid rgba(2,243,197,.3);border-radius:20px;padding:3px 10px;font-size:.72rem;font-weight:700;color:var(--cyan)">∞</div>')
+    +'</div>'
+    +'<div class="bk-membership-detail" style="margin-top:4px">'+detail+'</div>'
+    +(credits!==''&&credits!==null&&credits!==undefined&&membership.type!=='subscription'&&Number(credits)>0?'<div style="font-size:.72rem;color:var(--white38);margin-top:6px">Después de esta reserva: <strong style="color:var(--white60)">'+(Number(credits)-1)+' clases restantes'+(Number(credits)-1)===1?' ✓':''+'</strong></div>':'')
     +'</div>'
     +customerFieldsHTML()
     +'<div class="bk-err" id="bk-err"></div>'
