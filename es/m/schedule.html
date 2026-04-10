@@ -1097,6 +1097,8 @@ function showPayForm(type,price,productId,name,desc){stepChange();
     +'<div id="bk-promo-err" style="display:none;font-size:.78rem;color:var(--salmon);margin-top:6px"></div>'
     +'</div>'
     +customerFieldsHTML()
+    +(curUser.isGuest?'<div class="bk-label" style="margin-top:16px">Create a password <span style="color:var(--white38);font-weight:400">(optional — lets you log in next time)</span></div>'
+    +'<input class="bk-input" id="bk-new-pass" type="password" placeholder="Min. 8 characters" aria-label="Create password" autocomplete="new-password" />':'')
     +'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'
     +'<div id="bk-pay-divider" class="bk-divider" style="display:none">o paga con tarjeta</div>'
     +'<div id="bk-card-section">'

@@ -1299,6 +1299,8 @@ window.showPayForm=function(type,price,productId,name,desc){stepChange();
     +'<div id="bk-promo-err" style="display:none;font-size:.78rem;color:var(--salmon);margin-top:6px"></div>'
     +'</div>'
     +customerFieldsHTML()
+    +(curUser.isGuest?'<div class="bk-label" style="margin-top:16px">Create a password <span style="color:var(--white38);font-weight:400">(optional — lets you log in next time)</span></div>'
+    +'<input class="bk-input" id="bk-new-pass" type="password" placeholder="Min. 8 characters" aria-label="Create password" autocomplete="new-password" />':'')
     +'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'
     +'<div id="bk-pay-divider" class="bk-divider" style="display:none">o paga con tarjeta</div>'
     +'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Dades de la targeta</div>'
@@ -1352,6 +1354,7 @@ window.showPayForm=function(type,price,productId,name,desc){stepChange();
           type:type,productId:productId,
           discountCode:activePromo||undefined,
           actualPrice:(discountedPrice!==null)?discountedPrice:price,
+          password:(curUser.isGuest&&document.getElementById('bk-new-pass'))?(document.getElementById('bk-new-pass').value.trim()||undefined):undefined,
           phoneNumber:cf.phoneNumber,customerFields:cf.customerFields
         })
       }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
@@ -1433,6 +1436,7 @@ window.doPayAndBook=function(type,price,productId){if(isProcessing)return;
         type:type,productId:productId,
         discountCode:activePromo||undefined,
         actualPrice:(discountedPrice!==null)?discountedPrice:price,
+        password:(curUser.isGuest&&document.getElementById('bk-new-pass'))?(document.getElementById('bk-new-pass').value.trim()||undefined):undefined,
         phoneNumber:cf.phoneNumber,customerFields:cf.customerFields
       })
     }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
