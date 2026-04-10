@@ -126,18 +126,6 @@ img{display:block;width:100%;height:100%;object-fit:cover}
   background-size:200px;
 }
 
-/* ── LOADER ── */
-.ld-symbol{width:140px;height:140px;position:relative;animation:ldFloat 3s ease-in-out infinite}
-  60%{opacity:1;transform:scale(1.04) rotate(12deg)}
-  100%{opacity:1;transform:scale(1) rotate(0deg)}
-}
-@keyframes ldFloat{
-  0%,100%{transform:rotate(0deg) scale(1)}
-  25%{transform:rotate(3deg) scale(1.015)}
-  50%{transform:rotate(0deg) scale(.985)}
-  75%{transform:rotate(-3deg) scale(1.01)}
-}100%{opacity:.7;transform:none;letter-spacing:.35em}}
-
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;display:flex;align-items:center;justify-content:space-between;transition:background .5s,backdrop-filter .5s,border-color .5s;border-bottom:1px solid rgba(240,239,233,.04);background:rgba(14,18,53,.45);backdrop-filter:blur(14px)}
 nav.on{background:rgba(14,18,53,.88);backdrop-filter:blur(22px);border-bottom-color:rgba(240,239,233,.07)}
@@ -529,11 +517,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 
 <div class="grain"></div>
 <canvas id="globalParticles"></canvas>
-<!-- LOADER --><div class="ld-ring"></div><div class="ld-ring"></div>
-    <div class="ld-ring"></div><div class="ld-ring"></div><div class="ld-ring"></div>
-    <div class="ld-ring"></div><div class="ld-ring"></div><div class="ld-ring"></div>
   </div>
-  <span class="ld-text">Entra al Portal</span>
 </div>
 
 <!-- NAV -->
@@ -933,11 +917,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 </div>
 
 <script>
-/* ═══════════════════════════════════════════════════════
-   LOADER
-═══════════════════════════════════════════════════════ */
 document.addEventListener('DOMContentLoaded',()=>{
-  
   /* Slow hero video to 0.55x for cinematic feel */
   const heroVid=document.querySelector('.hero video');
   if(heroVid)heroVid.playbackRate=0.55;
