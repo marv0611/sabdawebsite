@@ -982,13 +982,13 @@ function showGuestStep(){stepChange();
     +'<input class="bk-input" id="bk-email" type="email" aria-label="Email address" placeholder="your@email.com" autocomplete="email" />'
     +'<div class="bk-label" style="margin-top:8px">Confirm Email</div>'+'<input class="bk-input" id="bk-email2" type="email" placeholder="Repeat your email" autocomplete="off" />'
     +(pendingPack&&pendingPack.type!=='single'?'<div class="bk-label" style="margin-top:8px">Create a password</div>'+'<input class="bk-input" id="bk-new-pass" type="password" placeholder="Min. 8 characters" aria-label="Create a password" autocomplete="new-password" />'+'<div class="bk-label" style="margin-top:8px">Confirm password</div>'+'<input class="bk-input" id="bk-new-pass2" type="password" placeholder="Repeat password" aria-label="Confirm password" autocomplete="new-password" />':'')
-    +(pendingPack&&pendingPack.type!=='single'?'<div class="bk-divider" style="margin:16px 0"></div>'+'<div id="bk-pack-customer">'+customerFieldsHTML()+'</div>'+'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'+'<div id="bk-pay-divider" class="bk-divider" style="display:none">or pay with card</div>'+'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Card Details</div>'+'<div class="bk-card-wrap" id="bk-card"></div>':'')+'<div class="bk-err" id="bk-err"></div>'
-    +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">'+(pendingPack&&pendingPack.type!=='single'?'Pay \u20AC'+(pendingPack?pendingPack.price:0):'Continue')+'</button>'
+    +(pendingPack?'<div class="bk-divider" style="margin:16px 0"></div>'+'<div id="bk-pack-customer">'+customerFieldsHTML()+'</div>'+'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'+'<div id="bk-pay-divider" class="bk-divider" style="display:none">or pay with card</div>'+'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Card Details</div>'+'<div class="bk-card-wrap" id="bk-card"></div>':'')+'<div class="bk-err" id="bk-err"></div>'
+    +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">'+(pendingPack?'Pay \u20AC'+pendingPack.price:'Continue')+'</button>'
     +'<div class="bk-link" onclick="pendingPack=null;showNoMembership()">\u2190 Change selection</div>'
     +'</div>';
   document.getElementById('bk-fn').focus();
   // Mount card immediately for pack checkout (don't wait for email check)
-  if(pendingPack&&pendingPack.type!=='single'){mountCardForGuest();}
+  if(pendingPack){mountCardForGuest();}
 }
 
 // ── LOGIN HANDLER ──
@@ -1113,7 +1113,7 @@ window.doGuestCheck=function(){
     }
   }
   curUser={id:null,email:email,firstName:fn,lastName:ln,memberId:null,isGuest:true};
-  if(pendingPack&&pendingPack.type!=='single'){doGuestPackPay();}else{showNoMembership();}
+  if(pendingPack){doGuestPackPay();}else{showNoMembership();}
 };
 
 // ── MOUNT CARD FOR GUEST PACK PURCHASE (one-screen checkout) ──
@@ -1206,8 +1206,10 @@ window.doGuestPackPay=function(){
   var np2=document.getElementById('bk-new-pass2');
   var npv=np?np.value.trim():'';
   var npv2=np2?np2.value.trim():'';
-  if(!npv||npv.length<8){err.textContent='Password must be at least 8 characters.';if(np)np.classList.add('bk-field-err');return;}
-  if(npv!==npv2){err.textContent='Passwords do not match.';if(np2)np2.classList.add('bk-field-err');return;}
+  if(pendingPack&&pendingPack.type!=='single'){
+    if(!npv||npv.length<8){err.textContent='Password must be at least 8 characters.';if(np)np.classList.add('bk-field-err');return;}
+    if(npv!==npv2){err.textContent='Passwords do not match.';if(np2)np2.classList.add('bk-field-err');return;}
+  }
   isProcessing=true;if(btn){btn.textContent='Processing...';btn.disabled=true;}err.textContent='';
   var cf=getCustomerFields();
   var finalPrice=(discountedPrice!==null)?discountedPrice:pendingPack.price;

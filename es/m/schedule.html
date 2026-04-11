@@ -620,7 +620,7 @@ function showLoginStep(){stepChange();
     +'<div class="bk-label">Contraseña</div>'
     +'<input class="bk-input" id="bk-pass" type="password" autocomplete="current-password" placeholder="Contraseña" aria-label="Contraseña" />'
     +'<div style="text-align:right;margin:-10px 0 12px"><a href="https://momence.com/forgot-password" target="_blank" rel="noopener noreferrer" style="font-size:.75rem;color:var(--white38);text-decoration:none;border-bottom:1px solid var(--white12)">Olvidaste tu contraseña?</a></div>'
-    +(pendingPack&&pendingPack.type!=='single'?'<div class="bk-divider" style="margin:16px 0"></div>'+'<div id="bk-pack-customer">'+customerFieldsHTML()+'</div>'+'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'+'<div id="bk-pay-divider" class="bk-divider" style="display:none">o paga con tarjeta</div>'+'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Datos de la tarjeta</div>'+'<div class="bk-card-wrap" id="bk-card"></div>':'')
+    +(pendingPack?'<div class="bk-divider" style="margin:16px 0"></div>'+'<div id="bk-pack-customer">'+customerFieldsHTML()+'</div>'+'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'+'<div id="bk-pay-divider" class="bk-divider" style="display:none">o paga con tarjeta</div>'+'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Datos de la tarjeta</div>'+'<div class="bk-card-wrap" id="bk-card"></div>':'')
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-login-btn" onclick="doLogin()">Iniciar sesión y reservar</button>'
     +'<div class="bk-link" onclick="showGuestStep()">Nueva aquí? Reservar como invitada</div>'
@@ -811,7 +811,7 @@ function doGuestCheck(){
     }
   }
   curUser={id:null,email:email,firstName:fn,lastName:ln,memberId:null,isGuest:true};
-  if(pendingPack&&pendingPack.type!=='single'){doGuestPackPay();}else{showNoMembership();}
+  if(pendingPack){doGuestPackPay();}else{showNoMembership();}
 }
 
 function mountCardForGuest(){

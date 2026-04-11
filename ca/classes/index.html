@@ -959,7 +959,7 @@ function showLoginStep(){stepChange();
     +'<div class="bk-label">Contraseña</div>'
     +'<input class="bk-input" id="bk-pass" type="password" aria-label="Contraseña" placeholder="Contraseña" />'
     +'<div style="text-align:right;margin:-10px 0 12px"><a href="https://momence.com/forgot-password" target="_blank" rel="noopener noreferrer" style="font-size:.75rem;color:var(--white38);text-decoration:none;border-bottom:1px solid var(--white12)">Has oblidat la contrasenya?</a></div>'
-    +(pendingPack&&pendingPack.type!=='single'?'<div class="bk-divider" style="margin:16px 0"></div>'+'<div id="bk-pack-customer">'+customerFieldsHTML()+'</div>'+'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'+'<div id="bk-pay-divider" class="bk-divider" style="display:none">o paga amb targeta</div>'+'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Dades de la targeta</div>'+'<div class="bk-card-wrap" id="bk-card"></div>':'')
+    +(pendingPack?'<div class="bk-divider" style="margin:16px 0"></div>'+'<div id="bk-pack-customer">'+customerFieldsHTML()+'</div>'+'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'+'<div id="bk-pay-divider" class="bk-divider" style="display:none">o paga amb targeta</div>'+'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Dades de la targeta</div>'+'<div class="bk-card-wrap" id="bk-card"></div>':'')
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-login-btn" onclick="doLogin()">Inicia sessió i reserva</button>'
     +'<div class="bk-link" onclick="showGuestStep()">Primera vez? Reserva como invitado</div>'
@@ -991,7 +991,7 @@ function showGuestStep(){stepChange();
     +'</div>';
   document.getElementById('bk-fn').focus();
   // Mount card immediately for pack checkout (don't wait for email check)
-  if(pendingPack&&pendingPack.type!=='single'){mountCardForGuest();}
+  if(pendingPack){mountCardForGuest();}
 }
 
 // ── LOGIN HANDLER ──
@@ -1115,7 +1115,7 @@ window.doGuestCheck=function(){
     }
   }
   curUser={id:null,email:email,firstName:fn,lastName:ln,memberId:null,isGuest:true};
-  if(pendingPack&&pendingPack.type!=='single'){doGuestPackPay();}else{showNoMembership();}
+  if(pendingPack){doGuestPackPay();}else{showNoMembership();}
 };
 
 // ── MOUNT CARD FOR GUEST PACK PURCHASE (one-screen checkout) ──
