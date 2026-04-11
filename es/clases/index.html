@@ -1432,7 +1432,7 @@ function showNoMembership(){stepChange();
 
 // ── PACK SELECTION ROUTER ──
 function selectPack(type,price,id,name,desc){
-  try{ if(typeof fbq==='function'){ fbq('track','AddToCart',{value:Number(price)||0,currency:'EUR',content_name:String(name||''),content_ids:[String(id||'')],content_type:'product'}); fbq('track','InitiateCheckout',{value:Number(price)||0,currency:'EUR',content_name:String(name||''),content_ids:[String(id||'')],content_type:'product'}); } }catch(e){}
+  try{ var __pid=String(id||''); if((__pid==='443934'||__pid==='443935') && typeof fbq==='function'){ var __pl={value:Number(price)||0,currency:'EUR',content_name:String(name||''),content_ids:[__pid],content_type:'product'}; fbq('track','ViewContent',__pl); fbq('track','AddToCart',__pl); fbq('track','InitiateCheckout',__pl); } }catch(e){}
   if(curUser){showPayForm(type,price,id,name,desc);return;}
   pendingPack={type:type,price:price,id:id,name:name,desc:desc};
   showGuestStep();
