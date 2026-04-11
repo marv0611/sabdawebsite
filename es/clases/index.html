@@ -1240,7 +1240,7 @@ window.doGuestPackPay=function(){
   }}).then(function(result){
     if(result.error){
       err.textContent=result.error.message;
-      isProcessing=false;if(btn){btn.textContent='Pagar \u20AC'+pendingPack.price;btn.disabled=false;}
+      isProcessing=false;if(btn){btn.textContent='Pagar \u20AC'+((typeof discountedPrice!=='undefined'&&discountedPrice!==null)?discountedPrice:pendingPack.price);btn.disabled=false;}
       return;
     }
     fetch(PROXY+'/sabda-api/pay',{
@@ -1261,17 +1261,17 @@ window.doGuestPackPay=function(){
       if(r.data.success){showSuccess();}
       else if(r.data.clientSecret){
         return stripeInstance.confirmCardPayment(r.data.clientSecret).then(function(conf){
-          if(conf.error){err.textContent=conf.error.message;isProcessing=false;if(btn){btn.textContent='Pagar \u20AC'+pendingPack.price;btn.disabled=false;}}
+          if(conf.error){err.textContent=conf.error.message;isProcessing=false;if(btn){btn.textContent='Pagar \u20AC'+((typeof discountedPrice!=='undefined'&&discountedPrice!==null)?discountedPrice:pendingPack.price);btn.disabled=false;}}
           else{showSuccess();}
         });
       } else {
         err.textContent=r.data.error||'Payment failed. Please try again.';
-        isProcessing=false;if(btn){btn.textContent='Pagar \u20AC'+pendingPack.price;btn.disabled=false;}
+        isProcessing=false;if(btn){btn.textContent='Pagar \u20AC'+((typeof discountedPrice!=='undefined'&&discountedPrice!==null)?discountedPrice:pendingPack.price);btn.disabled=false;}
         showFallback();
       }
     }).catch(function(){
       err.textContent='Connection error. Please try again.';
-      isProcessing=false;if(btn){btn.textContent='Pagar \u20AC'+pendingPack.price;btn.disabled=false;}
+      isProcessing=false;if(btn){btn.textContent='Pagar \u20AC'+((typeof discountedPrice!=='undefined'&&discountedPrice!==null)?discountedPrice:pendingPack.price);btn.disabled=false;}
     });
   });
 };
