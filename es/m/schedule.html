@@ -414,11 +414,11 @@ function renderSched(){
     if(full){sc='fu';st='Completa';}
     else if(sp!=null && sp<=5){sc='lo';st=sp+(sp===1?' plaza restante':' plazas restantes');}
     const fn=(e.teacher||'').split(' ')[0]||'';
-    const lnk=(e.link||'').replace(/'/g,"\\'").replace(/"/g,"&quot;");
-    const ttl=title.replace(/'/g,"\\'").replace(/"/g,"&quot;");
-    const tfn=fn.replace(/'/g,"\\'").replace(/"/g,"&quot;");
+    const lnk=(e.link||'').replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");
+    const ttl=title.replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");
+    const tfn=fn.replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");
 
-    return`<div class="cc" style="animation-delay:${i*.05}s"><div class="ct"><div class="ct-h">${h}:${m}</div><div class="ct-d">${e.duration} min</div></div><div class="ci"><div class="ci-t">${title}${lang?`<span class="ci-lg">${lang}</span>`:''}</div><div class="ci-tc">${fn}</div>${st?`<div class="ci-sp ${sc}">${st}</div>`:''}</div><div class="ca">${full?(e.allowWaitlist?`<button class="bb wl touch" onclick="openMo('${lnk}','${ttl}','${time}','${tfn}')">Lista de espera</button>`:`<button class="bb fu">Completa</button>`):`<button class="bb touch" onclick="openMo('${lnk}','${ttl}','${time}','${tfn}')">Reservar</button>`}</div></div>`;
+    return`<div class="cc" style="animation-delay:${i*.05}s"><div class="ct"><div class="ct-h">${h}:${m}</div><div class="ct-d">${e.duration} min</div></div><div class="ci"><div class="ci-t">${title}${lang?`<span class="ci-lg">${lang}</span>`:''}</div><div class="ci-tc">${fn}</div>${st?`<div class="ci-sp ${sc}">${st}</div>`:''}</div><div class="ca">${full?(e.allowWaitlist?`<button class="bb wl touch js-book" data-link="${lnk}" data-title="${ttl}" data-time="${time}" data-teacher="${tfn}">Lista de espera</button>`:`<button class="bb fu">Completa</button>`):`<button class="bb touch js-book" data-link="${lnk}" data-title="${ttl}" data-time="${time}" data-teacher="${tfn}">Reservar</button>`}</div></div>`;
   }).join('');
 }
 
@@ -1589,6 +1589,14 @@ function showSuccess(){stepChange();
     +'</div>';
   isProcessing=false;
 }
+
+// Delegated click handler for Book/Waitlist buttons (bulletproof against escaping bugs)
+document.addEventListener('click',function(ev){
+  var btn=ev.target.closest('.js-book');
+  if(!btn) return;
+  ev.preventDefault();
+  openMo(btn.dataset.link,btn.dataset.title,btn.dataset.time,btn.dataset.teacher);
+});
 
 async function init(){
   renderDays();
