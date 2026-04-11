@@ -1836,6 +1836,7 @@ var PACK_MAP={
     document.getElementById('mo-t').textContent=p.name;
     document.getElementById('mo-c').textContent=p.desc;
     pendingPack={type:p.type,price:p.price,id:p.id,name:p.name,desc:p.desc};
+    try{ var __pid=String(p.id||''); if((__pid==='443934'||__pid==='443935') && typeof fbq==='function'){ var __pl={value:Number(p.price)||0,currency:'EUR',content_name:String(p.name||''),content_ids:[__pid],content_type:'product'}; fbq('track','ViewContent',__pl); fbq('track','AddToCart',__pl); fbq('track','InitiateCheckout',__pl); } }catch(e){}
     showGuestStep();
     document.getElementById('mo').classList.add('open');
     document.getElementById('mo').style.display='flex';
