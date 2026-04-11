@@ -578,9 +578,8 @@ function openMo(link,title,time,teacher){
     }
     try { history.pushState({modal:true}, ''); } catch(e){}
     if (typeof _fbTrackViewContent === 'function') { try { _fbTrackViewContent(title); } catch(e){} }
-    // Fire InitiateCheckout the moment user taps Book — Momence doesn't fire IC reliably,
-    // so we fire it ourselves at the point of intent. Default class price €22 (drop-in).
-    try { _fbTrackInitiateCheckout(curSession && curSession.spots !== null ? 22 : 22); } catch(e){}
+    // Direct fbq call — bypasses helper, no eventID so Pixel Helper always shows it
+    try { if(typeof fbq==='function') fbq('track','InitiateCheckout',{value:22,currency:'EUR',content_name:String(title||'')}); } catch(e){}
   } catch (err) {
     console.error('[openMo] EXCEPTION', err);
     // Even on exception, try to show the modal

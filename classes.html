@@ -909,7 +909,7 @@ function openMo(sessionId){
   document.body.style.overflow='hidden';
   history.pushState({modal:true},'');
   _fbTrackViewContent(title);
-  try{ _fbTrackInitiateCheckout(22); }catch(e){}
+  try{ if(typeof fbq==='function') fbq('track','InitiateCheckout',{value:22,currency:'EUR',content_name:String(title||'')}); }catch(e){}
 }
 
 function closeMo(){
