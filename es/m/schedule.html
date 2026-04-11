@@ -409,7 +409,7 @@ function renderSched(){
     const sp=e.spotsRemaining;const full=sp===0;
     let sc='',st='';
     if(full){sc='fu';st='Completa';}
-    else if(sp!=null && sp<=5){sc='lo';st=sp+(sp===1?' spot left':' spots left');}
+    else if(sp!=null && sp<=5){sc='lo';st=sp+(sp===1?' plaza restante':' plazas restantes');}
     const fn=(e.teacher||'').split(' ')[0]||'';
     const lnk=(e.link||'').replace(/'/g,"\\'").replace(/"/g,"&quot;");
     const ttl=title.replace(/'/g,"\\'").replace(/"/g,"&quot;");
@@ -583,7 +583,7 @@ document.addEventListener('change',function(e){if(e.target.classList)e.target.cl
 function getSpotsHtml(){
   var sp=curSession?curSession.spots:null;
   if(sp===0) return curSession.isWaitlist?'<div class="bk-spots lo">Waitlist</div>':'<div class="bk-spots lo">Full</div>';
-  if(sp!==null && sp<=5) return '<div class="bk-spots lo">'+sp+(sp===1?' spot left':' spots left')+'</div>';
+  if(sp!==null && sp<=5) return '<div class="bk-spots lo">'+sp+(sp===1?' plaza restante':' plazas restantes')+'</div>';
   return '';
   return '';
 }
@@ -607,7 +607,7 @@ function showLoginStep(){stepChange();
     +'<div class="bk-label">Contraseña</div>'
     +'<input class="bk-input" id="bk-pass" type="password" autocomplete="current-password" placeholder="Contraseña" aria-label="Contraseña" />'
     +'<div style="text-align:right;margin:-10px 0 12px"><a href="https://momence.com/forgot-password" target="_blank" rel="noopener noreferrer" style="font-size:.75rem;color:var(--white38);text-decoration:none;border-bottom:1px solid var(--white12)">Olvidaste tu contraseña?</a></div>'
-    +(pendingPack&&pendingPack.type!=='single'?'<div class="bk-divider" style="margin:16px 0"></div>'+'<div id="bk-pack-customer">'+customerFieldsHTML()+'</div>'+'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'+'<div id="bk-pay-divider" class="bk-divider" style="display:none">or pay with card</div>'+'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Card Details</div>'+'<div class="bk-card-wrap" id="bk-card"></div>':'')
+    +(pendingPack&&pendingPack.type!=='single'?'<div class="bk-divider" style="margin:16px 0"></div>'+'<div id="bk-pack-customer">'+customerFieldsHTML()+'</div>'+'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'+'<div id="bk-pay-divider" class="bk-divider" style="display:none">o paga con tarjeta</div>'+'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Datos de la tarjeta</div>'+'<div class="bk-card-wrap" id="bk-card"></div>':'')
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-login-btn" onclick="doLogin()">Iniciar sesión y reservar</button>'
     +'<div class="bk-link" onclick="showGuestStep()">Nueva aquí? Reservar como invitada</div>'
@@ -630,7 +630,6 @@ function showGuestStep(){stepChange();
   var bd=document.getElementById('mo-bd');
   bd.innerHTML=classBlock
     +'<div class="bk-login">'
-    +(curUser?'':'<div style="text-align:right;margin-bottom:12px"><span style="font-size:.75rem;color:var(--white38);cursor:pointer;border-bottom:1px solid var(--white12);padding-bottom:1px" onclick="showLoginStep()">Ya tienes cuenta? Inicia sesión</span></div>')
     +'<div class="bk-label">Nombre</div>'
     +'<input class="bk-input" id="bk-fn" type="text" autocomplete="given-name" placeholder="Nombre" aria-label="Nombre" />'
     +'<div class="bk-label">Apellido</div>'
@@ -870,7 +869,7 @@ function mountCardForGuest(){
         } else {
           ev.complete('fail');
           var errEl=document.getElementById('bk-err');
-          if(errEl)errEl.textContent=r.data.error||'Payment failed.';
+          if(errEl)errEl.textContent=r.data.error||'El pago ha fallado.';
           isProcessing=false;
         }
       }).catch(function(e){ev.complete('fail');isProcessing=false;});
@@ -889,9 +888,9 @@ window.doGuestPackPay=function(){
   var np2=document.getElementById('bk-new-pass2');
   var npv=np?np.value.trim():'';
   var npv2=np2?np2.value.trim():'';
-  if(!npv||npv.length<8){err.textContent='Password must be at least 8 characters.';if(np)np.classList.add('bk-field-err');return;}
-  if(npv!==npv2){err.textContent='Passwords do not match.';if(np2)np2.classList.add('bk-field-err');return;}
-  isProcessing=true;if(btn){btn.textContent='Processing...';btn.disabled=true;}err.textContent='';
+  if(!npv||npv.length<8){err.textContent='La contraseña debe tener al menos 8 caracteres.';if(np)np.classList.add('bk-field-err');return;}
+  if(npv!==npv2){err.textContent='Las contraseñas no coinciden.';if(np2)np2.classList.add('bk-field-err');return;}
+  isProcessing=true;if(btn){btn.textContent='Procesando...';btn.disabled=true;}err.textContent='';
   var cf=getCustomerFields();
   var finalPrice=(discountedPrice!==null)?discountedPrice:pendingPack.price;
   _fbTrackInitiateCheckout(finalPrice);
@@ -912,8 +911,8 @@ window.doGuestPackPay=function(){
     }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};})})
     .then(function(r){
       if(r.data.success){showSuccess();}
-      else{err.textContent=r.data.error||'Booking failed.';isProcessing=false;if(btn){btn.textContent='Book Free';btn.disabled=false;}showFallback();}
-    }).catch(function(){err.textContent='Connection error.';isProcessing=false;if(btn){btn.textContent='Book Free';btn.disabled=false;}});
+      else{err.textContent=r.data.error||'No se pudo reservar.';isProcessing=false;if(btn){btn.textContent='Reservar gratis';btn.disabled=false;}showFallback();}
+    }).catch(function(){err.textContent='Error de conexión.';isProcessing=false;if(btn){btn.textContent='Reservar gratis';btn.disabled=false;}});
     return;
   }
   stripeInstance.createPaymentMethod({type:'card',card:cardElement,billing_details:{
@@ -921,7 +920,7 @@ window.doGuestPackPay=function(){
   }}).then(function(result){
     if(result.error){
       err.textContent=result.error.message;
-      isProcessing=false;if(btn){btn.textContent='Pay \u20AC'+pendingPack.price;btn.disabled=false;}
+      isProcessing=false;if(btn){btn.textContent='Pagar \u20AC'+pendingPack.price;btn.disabled=false;}
       return;
     }
     fetch(PROXY+'/sabda-api/pay',{
@@ -942,17 +941,17 @@ window.doGuestPackPay=function(){
       if(r.data.success){showSuccess();}
       else if(r.data.clientSecret){
         return stripeInstance.confirmCardPayment(r.data.clientSecret).then(function(conf){
-          if(conf.error){err.textContent=conf.error.message;isProcessing=false;if(btn){btn.textContent='Pay \u20AC'+pendingPack.price;btn.disabled=false;}}
+          if(conf.error){err.textContent=conf.error.message;isProcessing=false;if(btn){btn.textContent='Pagar \u20AC'+pendingPack.price;btn.disabled=false;}}
           else{showSuccess();}
         });
       } else {
         err.textContent=r.data.error||'Payment failed. Please try again.';
-        isProcessing=false;if(btn){btn.textContent='Pay \u20AC'+pendingPack.price;btn.disabled=false;}
+        isProcessing=false;if(btn){btn.textContent='Pagar \u20AC'+pendingPack.price;btn.disabled=false;}
         showFallback();
       }
     }).catch(function(){
       err.textContent='Connection error. Please try again.';
-      isProcessing=false;if(btn){btn.textContent='Pay \u20AC'+pendingPack.price;btn.disabled=false;}
+      isProcessing=false;if(btn){btn.textContent='Pagar \u20AC'+pendingPack.price;btn.disabled=false;}
     });
   });
 };
@@ -1038,12 +1037,12 @@ function showConfirmStep(membership){stepChange();
     +credits+' left</div>':'<div style="background:rgba(2,243,197,.12);border:1px solid rgba(2,243,197,.3);border-radius:20px;padding:3px 10px;font-size:.72rem;font-weight:700;color:var(--cyan)">∞</div>')
     +'</div>'
     +'<div class="bk-membership-detail" style="margin-top:4px">'+detail+'</div>'
-    +(credits!==''&&credits!==null&&credits!==undefined&&membership.type!=='subscription'&&Number(credits)>0?'<div style="font-size:.72rem;color:var(--white38);margin-top:6px">Después de esta reserva: <strong style="color:var(--white60)">'+(Number(credits)-1)+' clases restantes'+(Number(credits)-1)===1?' ✓':''+'</strong></div>':'')
+    +(credits!==''&&credits!==null&&credits!==undefined&&membership.type!=='subscription'&&Number(credits)>0?'<div style="font-size:.72rem;color:var(--white38);margin-top:6px">Después de esta reserva: <strong style="color:var(--white60)">'+(Number(credits)-1===1?'1 clase restante':((Number(credits)-1)+' clases restantes'))+'</strong></div>':'')
     +'</div>'
     +customerFieldsHTML()
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-confirm-btn" onclick="doBookWithMembership()">Confirmar Reserva</button>'
-    +'<div class="bk-link-row"><div class="bk-link" onclick="curUser=null;curSessionToken=null;showLoginStep()">Switch account</div></div>'
+    +'<div class="bk-link-row"><div class="bk-link" onclick="curUser=null;curSessionToken=null;showLoginStep()">Cambiar de cuenta</div></div>'
     +'</div>';
 }
 
@@ -1464,8 +1463,8 @@ function doPayAndBook(type,price,productId){if(isProcessing)return;
   if(curUser.isGuest&&type!=='single'){
     var np=document.getElementById('bk-new-pass'),np2=document.getElementById('bk-new-pass2');
     var npv=np?np.value.trim():'',npv2=np2?np2.value.trim():'';
-    if(!npv||npv.length<8){err.textContent='Password must be at least 8 characters.';if(np)np.classList.add('bk-field-err');isProcessing=false;btn.disabled=false;return;}
-    if(npv!==npv2){err.textContent='Passwords do not match.';if(np2)np2.classList.add('bk-field-err');isProcessing=false;btn.disabled=false;return;}
+    if(!npv||npv.length<8){err.textContent='La contraseña debe tener al menos 8 caracteres.';if(np)np.classList.add('bk-field-err');isProcessing=false;btn.disabled=false;return;}
+    if(npv!==npv2){err.textContent='Las contraseñas no coinciden.';if(np2)np2.classList.add('bk-field-err');isProcessing=false;btn.disabled=false;return;}
   }
   var finalPrice=(discountedPrice!==null)?discountedPrice:price;
 

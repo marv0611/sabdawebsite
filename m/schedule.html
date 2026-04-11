@@ -1037,7 +1037,7 @@ function showConfirmStep(membership){stepChange();
     +credits+' left</div>':'<div style="background:rgba(2,243,197,.12);border:1px solid rgba(2,243,197,.3);border-radius:20px;padding:3px 10px;font-size:.72rem;font-weight:700;color:var(--cyan)">∞</div>')
     +'</div>'
     +'<div class="bk-membership-detail" style="margin-top:4px">'+detail+'</div>'
-    +(credits!==''&&credits!==null&&credits!==undefined&&membership.type!=='subscription'&&Number(credits)>0?'<div style="font-size:.72rem;color:var(--white38);margin-top:6px">After this booking: <strong style="color:var(--white60)">'+(Number(credits)-1)+' classes left'+(Number(credits)-1)===1?' ✓':''+'</strong></div>':'')
+    +(credits!==''&&credits!==null&&credits!==undefined&&membership.type!=='subscription'&&Number(credits)>0?'<div style="font-size:.72rem;color:var(--white38);margin-top:6px">After this booking: <strong style="color:var(--white60)">'+(Number(credits)-1===1?'1 class left':((Number(credits)-1)+' classes left'))+'</strong></div>':'')
     +'</div>'
     +customerFieldsHTML()
     +'<div class="bk-err" id="bk-err"></div>'

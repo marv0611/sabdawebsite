@@ -904,7 +904,7 @@ async function handlePay(request, origin) {
 
     // Hardcoded prices (Cloudflare Workers can't reach Momence's authenticated /memberships endpoint)
     const PRODUCT_PRICES = {
-      443934: 18, 443935: 50, 445630: 22, 443937: 85, 443939: 149,
+      443934: 18, 443935: 50, 443641: 50, 445630: 22, 443937: 85, 443939: 149,
       706876: 99, 709976: 109, 431216: 130, 445600: 330,
       507726: 12, 507728: 30, 507729: 40,
     };

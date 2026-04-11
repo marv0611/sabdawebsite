@@ -963,7 +963,6 @@ function showLoginStep(){stepChange();
 // ── STEP 1B: GUEST ──
 function showGuestStep(){stepChange();
   var bd=document.getElementById('mo-bd');
-    +(curUser?'':'<div style="text-align:right;margin-bottom:12px"><span style="font-size:.75rem;color:var(--white38);cursor:pointer;border-bottom:1px solid var(--white12);padding-bottom:1px" onclick="showLoginStep()">Have an account? Log in</span></div>')
   var packNote=pendingPack?'<div style="background:rgba(2,243,197,.05);border:1px solid rgba(2,243,197,.12);border-radius:8px;padding:12px 16px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center"><div style="font-size:.82rem;color:var(--white60)">'+esc(pendingPack.name)+'</div><div style="font-family:PT Serif,serif;font-weight:700;color:var(--cyan)">\u20AC'+pendingPack.price+'</div></div>':'';
   bd.innerHTML=classBlockHtml()
     +'<div class="bk-login">'
@@ -1329,7 +1328,7 @@ function showConfirmStep(membership){stepChange();
     +credits+' left</div>':'<div style="background:rgba(2,243,197,.12);border:1px solid rgba(2,243,197,.3);border-radius:20px;padding:3px 10px;font-size:.72rem;font-weight:700;color:var(--cyan)">∞</div>')
     +'</div>'
     +'<div class="bk-membership-detail" style="margin-top:4px">'+detail+'</div>'
-    +(credits!==''&&credits!==null&&credits!==undefined&&membership.type!=='subscription'&&Number(credits)>0?'<div style="font-size:.72rem;color:var(--white38);margin-top:6px">After this booking: <strong style="color:var(--white60)">'+(Number(credits)-1)+' classes left'+(Number(credits)-1)===1?' ✓':''+'</strong></div>':'')
+    +(credits!==''&&credits!==null&&credits!==undefined&&membership.type!=='subscription'&&Number(credits)>0?'<div style="font-size:.72rem;color:var(--white38);margin-top:6px">After this booking: <strong style="color:var(--white60)">'+(Number(credits)-1===1?'1 class left':((Number(credits)-1)+' classes left'))+'</strong></div>':'')
     +'</div>'
     +customerFieldsHTML()
     +'<div class="bk-err" id="bk-err"></div>'
