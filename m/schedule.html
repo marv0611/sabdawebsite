@@ -528,50 +528,55 @@ function resetCustomerAndStartOver(){
 }
 
 function openMo(link,title,time,teacher){
-  // BULLETPROOF: never return without doing something, never block the user
   console.log('[openMo] called',{link:link,title:title,time:time,teacher:teacher});
+  // ALWAYS open the modal. No early exits, no Momence redirect from this function.
+  // If something inside throws, the catch at the bottom logs it and we still keep
+  // the modal opened with whatever data we have. The modal itself handles errors.
+  try { isProcessing = false; } catch(e){}
   try {
-  // Force-reset processing state — if a previous click left it true, unblock
-  if(isProcessing){console.warn('[openMo] isProcessing was true, force-resetting');isProcessing=false;}
-
-  if(!link){console.error('[openMo] no link, abort');return;}
-
-  // Layer 1: if proxy is down, go straight to Momence
-  if(typeof proxyAlive==='undefined'||!proxyAlive){console.warn('[openMo] proxy not alive, opening Momence');window.open(link,'_blank');return;}
-
-  // Extract session ID from link
-  var sid=link.match(/\/s\/(\d+)/);
-  if(sid) sid=sid[1]; else { var m2=link.match(/\/(\d+)$/); sid=m2?m2[1]:null; }
-  if(!sid){console.warn('[openMo] no session id in link, opening Momence');window.open(link,'_blank');return;}
-
-  // Find session data — tolerate missing allE
-  var sess=null;
-  if(typeof allE!=='undefined'&&allE&&allE.find){
-    sess=allE.find(function(e){return String(e.id)===sid;});
-  }
-  curSession={id:sid,title:(typeof clean==='function'?clean(title):title),time:time,teacher:teacher,link:link,
-    spots:sess?sess.spotsRemaining:null,duration:sess?sess.duration:null,
-    isWaitlist:sess?sess.spotsRemaining===0:false};
-
-  var moT=document.getElementById('mo-t');
-  var moC=document.getElementById('mo-c');
-  var mo=document.getElementById('mo');
-  if(!moT||!moC||!mo){console.error('[openMo] modal DOM missing, opening Momence');window.open(link,'_blank');return;}
-  moT.textContent=curSession.title;
-  moC.textContent=time+(teacher?' · '+teacher:'');
-
-  // Always show login step — server handles session
-  if(typeof showGuestStep==='function'){showGuestStep();}
-  mo.classList.add('open');
-  mo.style.display='flex';
-  document.body.style.overflow='hidden';
-  // Fix #9: push history state so browser back closes modal
-  try{history.pushState({modal:true},'');}catch(e){}
-  if(typeof _fbTrackViewContent==='function'){try{_fbTrackViewContent(title);}catch(e){}}
-  console.log('[openMo] modal opened OK');
-  } catch(err){
-    console.error('[openMo] EXCEPTION, falling back to Momence:',err);
-    if(link) window.open(link,'_blank');
+    var sid = null;
+    if (link) {
+      var m1 = link.match(/\/s\/(\d+)/);
+      if (m1) sid = m1[1];
+      else { var m2 = link.match(/\/(\d+)$/); sid = m2 ? m2[1] : null; }
+    }
+    var sess = null;
+    if (typeof allE !== 'undefined' && allE && allE.find && sid) {
+      sess = allE.find(function(e){return String(e.id)===sid;});
+    }
+    curSession = {
+      id: sid,
+      title: (typeof clean === 'function' ? clean(title) : title),
+      time: time,
+      teacher: teacher,
+      link: link,
+      spots: sess ? sess.spotsRemaining : null,
+      duration: sess ? sess.duration : null,
+      isWaitlist: sess ? sess.spotsRemaining === 0 : false
+    };
+    var moT = document.getElementById('mo-t');
+    var moC = document.getElementById('mo-c');
+    var mo  = document.getElementById('mo');
+    if (moT) moT.textContent = curSession.title || 'Book Class';
+    if (moC) moC.textContent = (time || '') + (teacher ? ' · ' + teacher : '');
+    if (typeof showGuestStep === 'function') { try { showGuestStep(); } catch(e){ console.error('[openMo] showGuestStep failed',e); } }
+    if (mo) {
+      mo.classList.add('open');
+      mo.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+      console.log('[openMo] modal opened OK');
+    } else {
+      console.error('[openMo] CRITICAL: #mo element not found in DOM');
+    }
+    try { history.pushState({modal:true}, ''); } catch(e){}
+    if (typeof _fbTrackViewContent === 'function') { try { _fbTrackViewContent(title); } catch(e){} }
+  } catch (err) {
+    console.error('[openMo] EXCEPTION', err);
+    // Even on exception, try to show the modal
+    try {
+      var mo2 = document.getElementById('mo');
+      if (mo2) { mo2.classList.add('open'); mo2.style.display = 'flex'; }
+    } catch(e){}
   }
 }
 
@@ -1636,6 +1641,17 @@ async function init(){
     var params = new URLSearchParams(window.location.search);
     var buyId = params.get('buy');
     if (buyId) openPackagePurchase(buyId);
+    // Handle ?cat=Yoga|Pilates|... — pre-filter the schedule to that category
+    var catParam = params.get('cat');
+    if (catParam) {
+      actF = catParam;
+      var fb = document.querySelector('.fbtn[data-cat="'+catParam+'"]');
+      if (fb) {
+        document.querySelectorAll('.fbtn').forEach(function(x){x.classList.remove('on');});
+        fb.classList.add('on');
+      }
+      renderSched();
+    }
   }catch(err){
     document.getElementById('sk').innerHTML='<div class="no-classes">Could not load schedule. Please try again.</div>';
   }
