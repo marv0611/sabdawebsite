@@ -528,6 +528,7 @@ function resetCustomerAndStartOver(){
 }
 
 function openMo(link,title,time,teacher){
+  try {
   if(isProcessing) return;
 
   // Layer 1: if proxy is down, go straight to Momence
@@ -554,6 +555,10 @@ function openMo(link,title,time,teacher){
   // Fix #9: push history state so browser back closes modal
   history.pushState({modal:true},'');
   _fbTrackViewContent(title);
+  } catch(err){
+    console.error('openMo failed, falling back to Momence:',err);
+    if(link) window.open(link,'_blank');
+  }
 }
 
 function closeMo(){
