@@ -867,12 +867,12 @@ function mountCardForGuest(){
       fetch(PROXY+'/sabda-api/pay',{
         method:'POST',headers:{'Content-Type':'application/json'},
         body:JSON.stringify({
-          stripePaymentMethodId:ev.paymentMethod.id,
+          stripePaymentMethodId:ev.paymentMethod.id,sessionId:curSession&&curSession.id,sessionToken:curSessionToken,
           firstName:curUser.firstName,lastName:curUser.lastName,email:curUser.email,
           type:pendingPack.type,productId:pendingPack.id,
           actualPrice:(discountedPrice!==null)?discountedPrice:pendingPack.price,
           password:pass||undefined,
-          phoneNumber:cf.phoneNumber,customerFields:cf.customerFields
+          phoneNumber:cf.phoneNumber,customerFields:cf.customerFields,fbEventId:(typeof _fbEventId!=='undefined'&&_fbEventId)||undefined,fbp:(typeof _fbGetCookie==='function'&&_fbGetCookie('_fbp'))||undefined,fbc:(typeof _fbGetCookie==='function'&&_fbGetCookie('_fbc'))||undefined
         })
       }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};})})
       .then(function(r){
@@ -920,7 +920,7 @@ window.doGuestPackPay=function(){
     fetch(PROXY+'/sabda-api/pay',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
-        stripePaymentMethodId:result.paymentMethod.id,
+        stripePaymentMethodId:result.paymentMethod.id,sessionId:curSession&&curSession.id,sessionToken:curSessionToken,
         firstName:curUser.firstName,lastName:curUser.lastName,email:curUser.email,
         type:pendingPack.type,productId:pendingPack.id,
         actualPrice:finalPrice,
@@ -1348,7 +1348,7 @@ function showPayForm(type,price,productId,name,desc){stepChange();
           discountCodeId:activeDiscountCodeId||undefined,
           actualPrice:(discountedPrice!==null)?discountedPrice:price,
           phoneNumber:cf.phoneNumber,
-          customerFields:cf.customerFields
+          customerFields:cf.customerFields,fbEventId:(typeof _fbEventId!=='undefined'&&_fbEventId)||undefined,fbp:(typeof _fbGetCookie==='function'&&_fbGetCookie('_fbp'))||undefined,fbc:(typeof _fbGetCookie==='function'&&_fbGetCookie('_fbc'))||undefined
         })
       }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
       .then(function(r){
@@ -1486,7 +1486,7 @@ function doPayAndBook(type,price,productId){if(isProcessing)return;
         discountCodeId:activeDiscountCodeId||undefined,
         actualPrice:0,
         phoneNumber:cf.phoneNumber,
-        customerFields:cf.customerFields
+        customerFields:cf.customerFields,fbEventId:(typeof _fbEventId!=='undefined'&&_fbEventId)||undefined,fbp:(typeof _fbGetCookie==='function'&&_fbGetCookie('_fbp'))||undefined,fbc:(typeof _fbGetCookie==='function'&&_fbGetCookie('_fbc'))||undefined
       })
     }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
     .then(function(r){
@@ -1526,7 +1526,7 @@ function doPayAndBook(type,price,productId){if(isProcessing)return;
         discountCodeId:activeDiscountCodeId||undefined,
         actualPrice:(discountedPrice!==null)?discountedPrice:price,
         phoneNumber:cf.phoneNumber,
-        customerFields:cf.customerFields
+        customerFields:cf.customerFields,fbEventId:(typeof _fbEventId!=='undefined'&&_fbEventId)||undefined,fbp:(typeof _fbGetCookie==='function'&&_fbGetCookie('_fbp'))||undefined,fbc:(typeof _fbGetCookie==='function'&&_fbGetCookie('_fbc'))||undefined
       })
     }).then(function(r){return r.json().then(function(d){return{ok:r.ok,status:r.status,data:d}});})
     .then(function(r){
