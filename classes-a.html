@@ -38,7 +38,7 @@ a{color:inherit;text-decoration:none}
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 clamp(24px,4vw,56px);height:72px;display:flex;align-items:center;justify-content:space-between;background:rgba(14,18,53,.92);backdrop-filter:blur(22px);border-bottom:1px solid rgba(240,239,233,.06)}
-.nav-logo img{height:34px}
+.nav-logo img{height:34px;width:auto}
 .nl{display:flex;gap:36px;list-style:none;font-size:.8rem;letter-spacing:.09em;text-transform:uppercase;font-weight:500}
 .nl a{color:rgba(240,239,233,.92);opacity:1;transition:opacity .25s;position:relative}
 .nl a::after{content:'';position:absolute;bottom:-2px;left:0;right:100%;height:1px;background:var(--cyan);transition:right .3s var(--ease)}
@@ -244,7 +244,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 /* UNIVERSAL MOBILE FIXES */
 @media(max-width:860px){
   html,body{overflow-x:hidden}
-  .nav-logo img{height:24px}
+  .nav-logo img{height:24px;width:auto}
   .lang-sel{display:none}
   .nav-social{display:none}
   .sh2{font-size:clamp(1.7rem,5vw,2.4rem)}
