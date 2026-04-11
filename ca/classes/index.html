@@ -971,7 +971,7 @@ function showGuestStep(){stepChange();
   bd.innerHTML=classBlockHtml()
     +'<div class="bk-login">'
     +packNote
-    +(curUser?'':'<div style="text-align:right;margin-bottom:4px"><span style="font-size:.74rem;color:var(--white38);cursor:pointer;border-bottom:1px solid var(--white12);padding-bottom:1px" onclick="showLoginStep()">Ja tens compte? Inicia sessió</span></div>')
+    +(curUser?'':'<div onclick="showLoginStep()" style="border:1.5px solid var(--white12);border-radius:10px;padding:14px;margin-bottom:16px;font-size:.82rem;color:var(--white60);text-align:center;cursor:pointer;transition:border-color .2s">Tens un pack o subscripció? <span style="color:var(--cyan);font-weight:600">Inicia sessió aquí &rarr;</span></div>')
     +'<div class="bk-label">Nom</div>'
     +'<input class="bk-input" id="bk-fn" type="text" aria-label="Nom" placeholder="Nom" />'
     +'<div class="bk-label">Cognom</div>'

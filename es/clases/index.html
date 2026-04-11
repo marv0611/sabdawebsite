@@ -971,7 +971,7 @@ function showGuestStep(){stepChange();
   bd.innerHTML=classBlockHtml()
     +'<div class="bk-login">'
     +packNote
-    +(curUser?'':'<div style="text-align:right;margin-bottom:4px"><span style="font-size:.74rem;color:var(--white38);cursor:pointer;border-bottom:1px solid var(--white12);padding-bottom:1px" onclick="showLoginStep()">¿Tienes cuenta? Inicia sesión</span></div>')
+    +(curUser?'':'<div onclick="showLoginStep()" style="border:1.5px solid var(--white12);border-radius:10px;padding:14px;margin-bottom:16px;font-size:.82rem;color:var(--white60);text-align:center;cursor:pointer;transition:border-color .2s">Tienes un pack o suscripci\u00F3n? <span style="color:var(--cyan);font-weight:600">Inicia sesi\u00F3n aqu\u00ED &rarr;</span></div>')
     +'<div class="bk-label">Nombre</div>'
     +'<input class="bk-input" id="bk-fn" type="text" aria-label="Nombre" placeholder="Nombre" />'
     +'<div class="bk-label">Apellido</div>'
@@ -983,7 +983,6 @@ function showGuestStep(){stepChange();
     +(pendingPack&&pendingPack.type!=='single'?'<div class="bk-label" style="margin-top:8px">Crear contraseña</div>'+'<input class="bk-input" id="bk-new-pass" type="password" placeholder="Mín. 8 caracteres" aria-label="Crear contraseña" autocomplete="new-password" />'+'<div class="bk-label" style="margin-top:8px">Confirmar contraseña</div>'+'<input class="bk-input" id="bk-new-pass2" type="password" placeholder="Repetir contraseña" aria-label="Confirmar contraseña" autocomplete="new-password" />':'')
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">Continuar</button>'
-    +'<div class="bk-link" onclick="showLoginStep()">Ya tienes cuenta? Inicia sesión</div>'
     +'<div class="bk-link" onclick="pendingPack=null;showNoMembership()">\u2190 Cambiar selección</div>'
     +'</div>';
   document.getElementById('bk-fn').focus();

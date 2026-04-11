@@ -671,7 +671,7 @@ function showGuestStep(){console.log('[showGuestStep] start');try{stepChange();
   if(!bd){console.error('[showGuestStep] no #mo-bd element');return;}
   bd.innerHTML=classBlock
     +'<div class="bk-login">'
-    +(curUser?'':'<div style="text-align:right;margin-bottom:4px"><span style="font-size:.74rem;color:var(--white38);cursor:pointer;border-bottom:1px solid var(--white12);padding-bottom:1px" onclick="showLoginStep()">Have an account? Log in</span></div>')
+    +(curUser?'':'<div onclick="showLoginStep()" style="border:1.5px solid var(--white12);border-radius:10px;padding:14px;margin-bottom:16px;font-size:.82rem;color:var(--white60);text-align:center;cursor:pointer;transition:border-color .2s">Do you have a pack/subscription? <span style="color:var(--cyan);font-weight:600">Sign in here &rarr;</span></div>')
     +'<div class="bk-label">First Name</div>'
     +'<input class="bk-input" id="bk-fn" type="text" autocomplete="given-name" placeholder="First name" aria-label="First name" />'
     +'<div class="bk-label">Last Name</div>'
@@ -683,7 +683,6 @@ function showGuestStep(){console.log('[showGuestStep] start');try{stepChange();
     +(pendingPack&&pendingPack.type!=='single'?'<div class="bk-label" style="margin-top:8px">Create a password</div>'+'<input class="bk-input" id="bk-new-pass" type="password" placeholder="Min. 8 characters" aria-label="Create a password" autocomplete="new-password" />'+'<div class="bk-label" style="margin-top:8px">Confirm password</div>'+'<input class="bk-input" id="bk-new-pass2" type="password" placeholder="Repeat password" aria-label="Confirm password" autocomplete="new-password" />':'')
     +(pendingPack&&pendingPack.type!=='single'?'<div class="bk-divider" style="margin:16px 0"></div>'+'<div id="bk-pack-customer">'+safeCustomer()+'</div>'+'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'+'<div id="bk-pay-divider" class="bk-divider" style="display:none">or pay with card</div>'+'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Card Details</div>'+'<div class="bk-card-wrap" id="bk-card"></div>':'')+'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">'+(pendingPack&&pendingPack.type!=='single'?'Pay \u20AC'+(pendingPack?pendingPack.price:0):'Continue')+'</button>'
-    +'<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.12);border-radius:8px;padding:12px;margin-top:16px;font-size:.75rem;color:var(--white60);line-height:1.5;text-align:center">Booked with us before? <span onclick="showLoginStep()" style="color:var(--cyan);cursor:pointer;text-decoration:underline">Log in instead</span> to keep your history and credits together.</div>'
     +'</div>';
   console.log('[showGuestStep] body populated');
   try{var fnEl=document.getElementById('bk-fn');if(fnEl)fnEl.focus();}catch(e){}
@@ -1741,7 +1740,6 @@ function showPackageGuestStep() {
     + '<input class="bk-input" id="bk-email" type="email" inputmode="email" placeholder="your@email.com" autocomplete="email" aria-label="Email address" />'
     + '<div class="bk-err" id="bk-err"></div>'
     + '<button class="bk-primary" id="bk-guest-btn" onclick="doPackageGuestCheck()">Continue to payment</button>'
-    + '<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.12);border-radius:8px;padding:12px;margin-top:16px;font-size:.75rem;color:var(--white60);line-height:1.5;text-align:center">Already a customer? <span onclick="showLoginStep()" style="color:var(--cyan);cursor:pointer;text-decoration:underline">Log in instead</span></div>'
     + '</div>';
   document.getElementById('bk-fn').focus();
 }

@@ -647,6 +647,7 @@ function showGuestStep(){console.log('[showGuestStep] start');try{stepChange();
   var bd=document.getElementById('mo-bd');
   bd.innerHTML=classBlock
     +'<div class="bk-login">'
+    +'<div onclick="showLoginStep()" style="border:1.5px solid var(--white12);border-radius:10px;padding:14px;margin-bottom:16px;font-size:.82rem;color:var(--white60);text-align:center;cursor:pointer;transition:border-color .2s">Tens un pack o subscripci\u00F3? <span style="color:var(--cyan);font-weight:600">Inicia sessi\u00F3 aqu\u00ED &rarr;</span></div>'
     +'<div class="bk-label">Nom</div>'
     +'<input class="bk-input" id="bk-fn" type="text" autocomplete="given-name" placeholder="Nom" aria-label="Nom" />'
     +'<div class="bk-label">Cognom</div>'
@@ -658,8 +659,6 @@ function showGuestStep(){console.log('[showGuestStep] start');try{stepChange();
     +(pendingPack&&pendingPack.type!=='single'?'<div class="bk-label" style="margin-top:8px">Crea una contrasenya</div>'+'<input class="bk-input" id="bk-new-pass" type="password" placeholder="Mín. 8 caràcters" aria-label="Crea una contrasenya" autocomplete="new-password" />'+'<div class="bk-label" style="margin-top:8px">Confirma la contrasenya</div>'+'<input class="bk-input" id="bk-new-pass2" type="password" placeholder="Repeteix la contrasenya" aria-label="Confirma la contrasenya" autocomplete="new-password" />':'')
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">Continuar</button>'
-    +'<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.12);border-radius:8px;padding:12px;margin-top:16px;font-size:.75rem;color:var(--white60);line-height:1.5;text-align:center">Ya has reservado antes con nosotros? <span onclick="showLoginStep()" style="color:var(--cyan);cursor:pointer;text-decoration:underline">Inicia sesión</span> para mantener tu historial y créditos juntos.</div>'
-    +'<div class="bk-link" onclick="showLoginStep()">Ya tienes cuenta? Inicia sesión</div>'
     +'</div>';
   try{var fnEl=document.getElementById('bk-fn');if(fnEl)fnEl.focus();}catch(e){}
 }catch(err){console.error('[showGuestStep] EXCEPTION',err);var bd2=document.getElementById('mo-bd');if(bd2&&!bd2.innerHTML){bd2.innerHTML='<div style="padding:24px;text-align:center;color:var(--white60)"><p style="margin-bottom:16px">Could not load booking form.</p>'+(curSession&&curSession.link?'<a href="'+curSession.link+'" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:14px 28px;background:var(--cyan);color:var(--navy);border-radius:100px;font-weight:700;text-decoration:none">Book on Momence</a>':'')+'</div>';}}
