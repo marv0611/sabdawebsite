@@ -186,7 +186,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 .ci{min-width:0}
 .ci-t{font-family:'PT Serif',serif;font-size:1.1rem;font-weight:700;margin-bottom:4px;letter-spacing:-.01em}
 .ci-tc{font-size:.82rem;color:var(--white60)}
-.ci-sp{display:inline-block;margin-top:6px;padding:3px 9px;border-radius:10px;font-size:.68rem;letter-spacing:.06em;font-weight:600;text-transform:uppercase}
+.ci-sp{display:block;width:fit-content;margin-top:6px;margin-bottom:2px;padding:3px 9px;border-radius:10px;font-size:.68rem;letter-spacing:.06em;font-weight:600;text-transform:uppercase}
 .ci-sp.lo{background:rgba(248,166,163,.14);color:var(--salmon)}
 .ci-sp.fu{background:rgba(255,255,255,.08);color:var(--white60)}
 .ci-more{font-size:.72rem;color:var(--cyan);cursor:pointer;margin-top:6px;display:inline-flex;align-items:center;gap:4px;opacity:.7;transition:opacity .2s}
@@ -1398,12 +1398,12 @@ function showNoMembership(){stepChange();
     +'<div class="bk-confirm">'
     +userLine
     +'<p style="font-size:.85rem;color:var(--white60);text-align:center;margin-bottom:20px;line-height:1.5">Choose how you want to book this class</p>'
-    +'<div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--salmon);font-weight:600;margin-bottom:10px">Book this class</div>'
+    +'<div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--salmon);font-weight:600;margin-bottom:10px">Single class</div>'
     +'<div class="bk-pkg feat" onclick="selectPack(\'single\',22,445630,\'Drop-in\',\'1 class \u00B7 No commitment\')" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">Drop-in</div><div style="font-size:.75rem;color:var(--white60)">One class, no commitment</div></div>'
     +'<div style="font-family:PT Serif,serif;font-weight:700">\u20AC22</div></div>'
     +'<div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);font-weight:600;margin-bottom:10px">New to SABDA?</div>'
-    +'<div class="bk-pkg feat" onclick="selectPack(\'pack\',50,443935,\'Intro 3-Pack\',\'3 classes \u00B7 \u20AC16.67 each \u00B7 30 days\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
+    +'<div class="bk-pkg" onclick="selectPack(\'pack\',50,443935,\'Intro 3-Pack\',\'3 classes \u00B7 \u20AC16.67 each \u00B7 30 days\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">Intro 3-Pack</div><div style="font-size:.75rem;color:var(--white60)">3 classes \u00B7 \u20AC16.67 each</div></div>'
     +'<div style="font-family:PT Serif,serif;font-weight:700">\u20AC50</div></div>'
     +'<div class="bk-pkg" onclick="selectPack(\'pack\',18,443934,\'Trial Class\',\'1 class \u00B7 First-timers only\')" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center">'
@@ -1429,6 +1429,10 @@ function showNoMembership(){stepChange();
     +'<div class="bk-pkg" onclick="selectPack(\'pack\',149,443939,\'10 Pack\',\'10 classes \u00B7 \u20AC14.90 each \u00B7 3 months\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">10 Pack</div><div style="font-size:.75rem;color:var(--white60)">10 classes \u00B7 \u20AC14.90 each</div></div>'
     +'<div style="font-family:PT Serif,serif;font-weight:700">\u20AC149</div></div>'
+    +'<div class="bk-pkg" onclick="selectPack(\'pack\',50,443641,\'BCN Resident Week\',\'Unlimited \u00B7 7 days \u00B7 ID required\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
+    +'<div><div style="font-weight:600">BCN Resident Week</div><div style="font-size:.75rem;color:var(--white60)">Unlimited \u00B7 7 days \u00B7 ID required</div></div>'
+    +'<div style="font-family:PT Serif,serif;font-weight:700">\u20AC50</div></div>'
+    
     +'<div class="bk-link" onclick="closeMo()">\u2190 Back to schedule</div>'
     +'</div>';
 }
