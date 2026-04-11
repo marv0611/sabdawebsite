@@ -909,6 +909,7 @@ function openMo(sessionId){
   document.body.style.overflow='hidden';
   history.pushState({modal:true},'');
   _fbTrackViewContent(title);
+  try{ _fbTrackInitiateCheckout(22); }catch(e){}
 }
 
 function closeMo(){
