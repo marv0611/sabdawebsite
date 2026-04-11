@@ -563,7 +563,6 @@ function openMo(link,title,time,teacher){
   // Fix #9: push history state so browser back closes modal
   history.pushState({modal:true},'');
   _fbTrackViewContent(title);
-  try{ if(typeof fbq==='function') fbq('track','InitiateCheckout',{value:22,currency:'EUR',content_name:String(title||'')}); }catch(e){}
   } catch(err){console.error("openMo failed, falling back to Momence:",err);if(link)window.open(link,"_blank");}
 }
 
@@ -1254,6 +1253,7 @@ function showNoMembership(){stepChange();
 
 // ── STEP 3C: PAYMENT FORM (after selecting an option) ──
 function showPayForm(type,price,productId,name,desc){stepChange();
+  try{ if(typeof fbq==='function'){ fbq('track','AddToCart',{value:Number(price)||0,currency:'EUR',content_name:String(name||''),content_ids:[String(productId||'')],content_type:'product'}); fbq('track','InitiateCheckout',{value:Number(price)||0,currency:'EUR',content_name:String(name||''),content_ids:[String(productId||'')],content_type:'product'}); } }catch(e){}
   setBack(curSession && curSession.isPackagePurchase ? showPackageGuestStep : showNoMembership);
   var bd=document.getElementById('mo-bd');
   bd.innerHTML='<div class="bk-class">'

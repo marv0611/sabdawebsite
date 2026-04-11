@@ -1281,6 +1281,7 @@ function showNoMembership(){stepChange();
 
 // ── STEP 3C: PAYMENT FORM (after selecting an option) ──
 function showPayForm(type,price,productId,name,desc){stepChange();
+  try{ if(typeof fbq==='function'){ fbq('track','AddToCart',{value:Number(price)||0,currency:'EUR',content_name:String(name||''),content_ids:[String(productId||'')],content_type:'product'}); fbq('track','InitiateCheckout',{value:Number(price)||0,currency:'EUR',content_name:String(name||''),content_ids:[String(productId||'')],content_type:'product'}); } }catch(e){}
   setBack(curSession && curSession.isPackagePurchase ? showPackageGuestStep : showNoMembership);
   var bd=document.getElementById('mo-bd');
   bd.innerHTML='<div class="bk-class">'

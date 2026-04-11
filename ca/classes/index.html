@@ -910,7 +910,6 @@ function openMo(sessionId){
   document.body.style.overflow='hidden';
   history.pushState({modal:true},'');
   _fbTrackViewContent(title);
-  try{ if(typeof fbq==='function') fbq('track','InitiateCheckout',{value:22,currency:'EUR',content_name:String(title||'')}); }catch(e){}
 }
 
 function closeMo(){
@@ -1410,6 +1409,7 @@ function showNoMembership(){stepChange();
 
 // ── PACK SELECTION ROUTER ──
 function selectPack(type,price,id,name,desc){
+  try{ if(typeof fbq==='function'){ fbq('track','AddToCart',{value:Number(price)||0,currency:'EUR',content_name:String(name||''),content_ids:[String(id||'')],content_type:'product'}); fbq('track','InitiateCheckout',{value:Number(price)||0,currency:'EUR',content_name:String(name||''),content_ids:[String(id||'')],content_type:'product'}); } }catch(e){}
   if(curUser){showPayForm(type,price,id,name,desc);return;}
   pendingPack={type:type,price:price,id:id,name:name,desc:desc};
   showGuestStep();
