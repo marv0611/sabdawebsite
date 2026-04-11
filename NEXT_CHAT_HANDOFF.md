@@ -274,3 +274,173 @@ cloudflare-worker-checkout-proxy.js — Cloudflare Worker source
 
 6. **Real credit consumed** — Used Marvyn's real Trial Drop In credit for API testing. Should have asked for a throwaway test account first. Credit needs manual restore.
 
+
+---
+
+# SESSION UPDATE — April 12, 2026 (01:30 AM)
+
+## What shipped this session
+
+9 commits between `7ddf684..e377da5` + 1 Worker deploy. Commit-by-commit:
+
+| Commit | Change |
+|---|---|
+| `5551590` | Pixel gating: ViewContent/AddToCart/InitiateCheckout only fire for Trial (443934) and 3-Pack (443935) in `selectPack` (4 desktop files) and `showPayForm` (3 mobile files). 5-Pack/10-Pack/Drop-in/Flex/Ritual/Immerse now silent. |
+| `5b20188` | Removed "Enter your card details to continue" text on mobile pay screen (EN/ES/CA). `bk-card-status` div kept for error/validation messages. |
+| `1c9ee3d` | Replaced "Have an account? Log in" style top-right links with prominent bordered rectangle: "Do you have a pack/subscription? Sign in here →" on guest step. Applied to EN/ES/CA × desktop/mobile (6 files). Removed duplicate bottom "Booked with us before?" login boxes. Fixed duplicate "Confirmar Email" field in `es/m/schedule.html`. |
+| `fe020b0` | Fixed Pixel events not firing when ad traffic lands on `/classes/?pack=443935` from `/intro/`. Added gated fbq block inside `checkUrlPack()` in all 4 desktop class files. Root cause: `checkUrlPack` jumped straight to `showGuestStep()`, bypassing `selectPack()` where Pixel events lived. Intro page's click handler fired but browser navigated away before events could send. |
+| `e377da5` | Added small "Book without membership" cyan link below "Confirm Booking" button on `showConfirmStep` across all 7 files. Routes to `showNoMembership`. |
+
+**Worker deploy (not a git commit):** removed the broken membership re-filter in `sabda-checkout-proxy`. Previously the Worker called Momence's `session-compatible-memberships` endpoint, which already filters for compatibility, and then re-filtered results with hardcoded field checks (`remainingCredits > 0 || eventsRemaining > 0 || creditsRemaining > 0 || remainingEvents > 0 || unlimited === true || type==="subscription" && status==="active"`). Momence uses different field names, so the re-filter dropped valid credits, marked them `_unverified`, and `hasUsableMembership` returned false. Fix: trust Momence's compatibility response directly. `memberships = rawList`, drop the `_unverified` concept. User's Trial credit now correctly routes to `showConfirmStep` instead of pay screen.
+
+## Tokens used this session (rotate ASAP)
+
+- GitHub PAT `github_pat_11B6KC5DQ0... [REDACTED — rotate immediately]` — EXPOSED in chat transcript
+- Cloudflare API token `cfut_Hzy3t3pFkn... [REDACTED — rotate immediately]` — EXPOSED in chat transcript
+
+Both need to be revoked at https://github.com/settings/tokens and https://dash.cloudflare.com/profile/api-tokens. Regenerate with scoped permissions (Contents Read/Write for GitHub on `marv0611/sabdawebsite` only; Workers Scripts Edit for Cloudflare on account `ac63756828d402343fc988ec9f161f56` only). 7-day TTL.
+
+## NEXT SESSION'S TASK — Collapse pack list + pay form into one screen
+
+**Current flow (two screens):**
+1. `showNoMembership` — scrollable list of 8+ packs/memberships, user picks one
+2. `showPayForm` — card form + pay button for selected pack
+
+**New flow (one screen):** default pack pre-selected, accordion for alternatives, card form visible from first render.
+
+### Target design
+
+```
+┌─────────────────────────────────────┐
+│  Power Vinyasa · 08:00 · Cristina   │
+├─────────────────────────────────────┤
+│  Drop-in                      €22   │  ← default selection (highlighted card)
+│  One class · No commitment          │
+│                                     │
+│  Other options ▾                    │  ← collapsed accordion
+│                                     │
+│  ─────── Payment ───────            │
+│  [Apple Pay / Link buttons]         │
+│  ─── or pay with card ───           │
+│  [Stripe card field]                │  ← mounted on first render
+│  [ Pay €22 & Book Class ]           │  ← text/price updates on pack switch
+│  ← Back                             │
+└─────────────────────────────────────┘
+```
+
+Tapping "Other options ▾" expands inline:
+- **New to SABDA:** Trial Class €18, Intro 3-Pack €50
+- **Packs:** 5-Pack €85, 10-Pack €149
+- **Memberships:** Flex €99/mo, Ritual €109/mo, Immerse €130/mo, Immerse 3-Month €330
+
+Selecting a pack collapses accordion, swaps top card, updates pay button. **Stripe card element stays mounted.** Apple Pay payment request updates its amount via `.update({total: {label, amount}})`.
+
+### Why Drop-in as default
+
+Population on this screen: returning customers with no usable credit, OR guests who clicked Book on a single class without entering via `/intro/` ads. Ad traffic bypasses this screen (`/intro/?pack=443935` → guest step direct).
+
+- Trial (443934) is **first-timers only** in Momence — rejected for most returnees. Wrong default.
+- 3-Pack (443935) commits to 3 classes when user clicked one class. Wrong default for returners.
+- Drop-in (445630, €22, `type='single'`) matches the action: one click, one class. Works for everyone.
+
+Pixel benefit: default = silent (correct — Meta shouldn't train on Drop-in buyers per Frank's brief). Events fire only if user manually picks Trial or 3-Pack from the accordion.
+
+### Files to modify (6)
+
+Always `grep -n "function showNoMembership\|function showPayForm" FILE` first — line numbers drift.
+
+| File | Desktop/Mobile | Language |
+|---|---|---|
+| `classes.html` | Desktop | EN |
+| `classes/index.html` | Desktop | EN |
+| `es/clases/index.html` | Desktop | ES |
+| `ca/classes/index.html` | Desktop | CA |
+| `m/schedule.html` | Mobile | EN |
+| `es/m/schedule.html` | Mobile | ES |
+| `ca/m/schedule.html` | Mobile | CA |
+
+### Product IDs (authoritative)
+
+| Product | ID | Price | Type | Notes |
+|---|---|---|---|---|
+| Trial Class | 443934 | €18 | pack | first-timers only |
+| Drop-in | 445630 | €22 | **single** | no password, no auto-enroll |
+| Intro 3-Pack | 443935 | €50 | pack | Pixel-tracked |
+| 5-Pack | 443937 | €85 | pack | |
+| 10-Pack | 443939 | €149 | pack | |
+| Flex | 706876 | €99/mo | membership | |
+| Ritual | 709976 | €109/mo | membership | |
+| Immerse | 431216 | €130/mo | membership | |
+| Immerse 3-Month | 445600 | €330 | membership | 3-month commitment |
+
+BCN Resident Week (443641) — ignore for this redesign, it's not in all PACK_MAPs.
+
+### The type='single' gotcha (READ)
+
+`showPayForm` branches on `type`:
+- `type==='pack'` or `type==='membership'` → password field on guest step, auto-enroll checkbox, `/pay` routes to `/_api/primary/plugin/memberships/{id}/pay`
+- `type==='single'` → no password field, no auto-enroll, `/pay` routes to `/_api/primary/plugin/sessions/{sessionId}/pay`
+
+Because Drop-in is `type='single'` and is now the default, the merged screen must:
+- Render `single` variant correctly on first paint (no auto-enroll visible)
+- Re-show auto-enroll when user switches to pack/membership
+- Compute `/pay` endpoint path at submission time based on currently selected `type`, not render time
+
+### Pixel gating — don't regress
+
+Existing gated fbq pattern (reuse exactly):
+```js
+try{ var __pid=String(id||''); if((__pid==='443934'||__pid==='443935') && typeof fbq==='function'){ var __pl={value:Number(price)||0,currency:'EUR',content_name:String(name||''),content_ids:[__pid],content_type:'product'}; fbq('track','ViewContent',__pl); fbq('track','AddToCart',__pl); fbq('track','InitiateCheckout',__pl); } }catch(e){}
+```
+
+**Don't** fire on initial render. **Don't** fire on accordion open/close. **Do** fire when user clicks a pack option inside the accordion (effectively the new `selectPack` hook).
+
+### Stripe Elements lifecycle (CRITICAL)
+
+- **Mount card element once on first render.** Never unmount/remount on pack switch — destroys card state, breaks Apple Pay.
+- **Apple Pay / Payment Request** has an `.update()` method:
+  ```js
+  paymentRequest.update({
+    total: { label: 'SABDA ' + pack.name, amount: Math.round(pack.price * 100) }
+  });
+  ```
+  Use it on pack switch. Don't recreate the payment request.
+- **`paymentMethod` in `/pay` body** must be nested object `{paymentMethod: {id: "pm_..."}}` — not `{paymentMethod: "pm_..."}`. This is per Worker contract documented in project memory.
+- **`stripeConnectedAccountId` must be numeric** `38966`, not string.
+- **`customerFields` mapping:** `{"164360": "lang", "164361": "city"}` — preserve in submission payload.
+
+### Test checklist (gate before calling it done)
+
+1. [ ] Logged-in user with no credit lands on merged screen → sees Drop-in default, card form visible, no password field.
+2. [ ] Tap "Other options ▾" → accordion expands with all 8 alternatives.
+3. [ ] Pick Trial Class → top card swaps to Trial, pay button says "Pay €18 & Book Class", Apple Pay updates to €18. ViewContent+AddToCart+IC fire in Pixel Helper.
+4. [ ] Pick 3-Pack → same flow at €50. Events fire.
+5. [ ] Pick 5-Pack → top card swaps, pay button "€85". Events silent (Pixel Helper shows nothing).
+6. [ ] Pick Immerse (membership) → auto-enroll checkbox appears. Events silent.
+7. [ ] Switch back to Drop-in → auto-enroll gone, card still mounted (type into it — doesn't lose state).
+8. [ ] **Real end-to-end Stripe charge with Drop-in.** First real payment test ever per project memory. Verify: Stripe dashboard shows €22 charge, Momence shows booking, confirmation email arrives.
+9. [ ] Real charge with 3-Pack — verify pack is added to user's Momence account, subsequent `session-compatible-memberships` returns it.
+10. [ ] Apple Pay test on iPhone Safari (assumes domain verification done by Mark/Mica — per project memory this is pending).
+11. [ ] Promo code with 100% discount — must skip card form submission.
+12. [ ] `node --check` all 7 files' inline scripts. `grep` for any remaining "Enter your card details" or other regressions.
+13. [ ] Cache-bust verification: `curl ...?v=N` on live URL shows new code on all 7 files.
+
+### How to start next session
+
+1. `git pull --quiet` and `git log --oneline -10` — confirm HEAD is `e377da5` or descendant.
+2. Read this file end-to-end.
+3. Read `SABDA_Website_Build_Manual.md` if exists (project knowledge).
+4. Confirm to Marvyn with a one-line summary of understanding.
+5. Ask for a test Momence account (not Marvyn's real one) for payment testing. Project memory notes his real Trial credit was burned for API testing in the previous session and needs Mica to restore.
+6. Ship the merged screen in one commit per file, or one commit for all 6 if changes parallelize cleanly. Verify each deploy before moving on.
+7. Don't touch anything else until the test checklist is green.
+
+### Don't-do list (previous session scars)
+
+- Don't re-filter Momence's membership response — trust it.
+- Don't regenerate GitHub or Cloudflare tokens without explicit approval; use what's in environment.
+- Don't re-mount Stripe card element on state change.
+- Don't inject anything inside Momence widget DOM — React re-renders destroy it.
+- Don't use smart/curly quotes anywhere in JS — silent page crash.
+- Don't trust audit scripts' bug reports without manual verification — they produced 13 false positives this session.
+- Don't push a commit containing API keys — GitHub's push-protection will reject silently-ish.
