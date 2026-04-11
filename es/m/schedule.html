@@ -423,7 +423,15 @@ function renderSched(){
 }
 
 const PROXY='https://sabda-checkout-proxy.sabda.workers.dev';
-let curSession=null, curUser=null, curMembership=null, curSessionToken=null;
+let curSession=null, curUser=null, curMembership=null, curSessionToken=null, pendingPack=null;
+
+// Meta Pixel helpers — defensive, never throw
+function _fbTrackViewContent(title){
+  try{ if(typeof fbq==='function') fbq('track','ViewContent',{content_name:String(title||''),content_category:'class',content_type:'product'}); }catch(e){}
+}
+function _fbTrackInitiateCheckout(value){
+  try{ if(typeof fbq==='function') fbq('track','InitiateCheckout',{value:Number(value)||0,currency:'EUR',content_type:'product'}); }catch(e){}
+}
 let isProcessing=false;
 // Auto-generate a strong password for new account creation (user can reset later via email)
 function genPassword(){var c='ABCDEFGHJKMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789!@#$';var p='';for(var i=0;i<14;i++)p+=c.charAt(Math.floor(Math.random()*c.length));return p;}

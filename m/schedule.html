@@ -423,7 +423,15 @@ function renderSched(){
 }
 
 const PROXY='https://sabda-checkout-proxy.sabda.workers.dev';
-let curSession=null, curUser=null, curMembership=null, curSessionToken=null;
+let curSession=null, curUser=null, curMembership=null, curSessionToken=null, pendingPack=null;
+
+// Meta Pixel helpers — defensive, never throw
+function _fbTrackViewContent(title){
+  try{ if(typeof fbq==='function') fbq('track','ViewContent',{content_name:String(title||''),content_category:'class',content_type:'product'}); }catch(e){}
+}
+function _fbTrackInitiateCheckout(value){
+  try{ if(typeof fbq==='function') fbq('track','InitiateCheckout',{value:Number(value)||0,currency:'EUR',content_type:'product'}); }catch(e){}
+}
 let isProcessing=false;
 // Auto-generate a strong password for new account creation (user can reset later via email)
 function genPassword(){var c='ABCDEFGHJKMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789!@#$';var p='';for(var i=0;i<14;i++)p+=c.charAt(Math.floor(Math.random()*c.length));return p;}
@@ -570,6 +578,9 @@ function openMo(link,title,time,teacher){
     }
     try { history.pushState({modal:true}, ''); } catch(e){}
     if (typeof _fbTrackViewContent === 'function') { try { _fbTrackViewContent(title); } catch(e){} }
+    // Fire InitiateCheckout the moment user taps Book — Momence doesn't fire IC reliably,
+    // so we fire it ourselves at the point of intent. Default class price €22 (drop-in).
+    try { _fbTrackInitiateCheckout(curSession && curSession.spots !== null ? 22 : 22); } catch(e){}
   } catch (err) {
     console.error('[openMo] EXCEPTION', err);
     // Even on exception, try to show the modal
