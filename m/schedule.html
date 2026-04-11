@@ -643,17 +643,22 @@ function showLoginStep(){stepChange();
 }
 
 // ── STEP 1B: GUEST ──
-function showGuestStep(){stepChange();
+function showGuestStep(){console.log('[showGuestStep] start');try{stepChange();
   setBack(null);
+  if(!curSession){console.error('[showGuestStep] no curSession');curSession={title:'Book Class',time:'',teacher:'',duration:null};}
+  var safeEsc=function(s){try{return esc(s||'');}catch(e){return String(s||'').replace(/[<>"&]/g,'');}};
+  var safeSpots=function(){try{return getSpotsHtml();}catch(e){console.error('[showGuestStep] getSpotsHtml failed',e);return '';}};
+  var safeCustomer=function(){try{return customerFieldsHTML();}catch(e){console.error('[showGuestStep] customerFieldsHTML failed',e);return '';}};
   var classBlock='<div class="bk-class">'
-    +'<div class="bk-class-name">'+esc(curSession.title)+'</div>'
+    +'<div class="bk-class-name">'+safeEsc(curSession.title)+'</div>'
     +'<div class="bk-class-meta">'
-    +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+esc(curSession.time)+'</span>'
+    +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+safeEsc(curSession.time)+'</span>'
     +(curSession.duration?'<span>'+curSession.duration+' min</span>':'')
-    +(curSession.teacher?'<span>'+esc(curSession.teacher)+'</span>':'')
-    +'</div>'+getSpotsHtml()+'</div>';
+    +(curSession.teacher?'<span>'+safeEsc(curSession.teacher)+'</span>':'')
+    +'</div>'+safeSpots()+'</div>';
 
   var bd=document.getElementById('mo-bd');
+  if(!bd){console.error('[showGuestStep] no #mo-bd element');return;}
   bd.innerHTML=classBlock
     +'<div class="bk-login">'
     +(curUser?'':'<div style="text-align:right;margin-bottom:4px"><span style="font-size:.74rem;color:var(--white38);cursor:pointer;border-bottom:1px solid var(--white12);padding-bottom:1px" onclick="showLoginStep()">Have an account? Log in</span></div>')
@@ -665,14 +670,17 @@ function showGuestStep(){stepChange();
     +'<input class="bk-input" id="bk-email" type="email" inputmode="email" autocomplete="email" placeholder="your@email.com" aria-label="Email address" />'
     +'<div class="bk-label" style="margin-top:8px">Confirm Email</div>'
     +'<input class="bk-input" id="bk-email2" type="email" inputmode="email" placeholder="Repeat your email" autocomplete="off" />'
-    +'<div class="bk-label" style="margin-top:8px">Confirm Email</div>'
-    +'<input class="bk-input" id="bk-email2" type="email" placeholder="Repeat your email" autocomplete="off" />'
     +(pendingPack&&pendingPack.type!=='single'?'<div class="bk-label" style="margin-top:8px">Create a password</div>'+'<input class="bk-input" id="bk-new-pass" type="password" placeholder="Min. 8 characters" aria-label="Create a password" autocomplete="new-password" />'+'<div class="bk-label" style="margin-top:8px">Confirm password</div>'+'<input class="bk-input" id="bk-new-pass2" type="password" placeholder="Repeat password" aria-label="Confirm password" autocomplete="new-password" />':'')
-    +(pendingPack&&pendingPack.type!=='single'?'<div class="bk-divider" style="margin:16px 0"></div>'+'<div id="bk-pack-customer">'+customerFieldsHTML()+'</div>'+'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'+'<div id="bk-pay-divider" class="bk-divider" style="display:none">or pay with card</div>'+'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Card Details</div>'+'<div class="bk-card-wrap" id="bk-card"></div>':'')+'<div class="bk-err" id="bk-err"></div>'
+    +(pendingPack&&pendingPack.type!=='single'?'<div class="bk-divider" style="margin:16px 0"></div>'+'<div id="bk-pack-customer">'+safeCustomer()+'</div>'+'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'+'<div id="bk-pay-divider" class="bk-divider" style="display:none">or pay with card</div>'+'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Card Details</div>'+'<div class="bk-card-wrap" id="bk-card"></div>':'')+'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">'+(pendingPack&&pendingPack.type!=='single'?'Pay \u20AC'+(pendingPack?pendingPack.price:0):'Continue')+'</button>'
     +'<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.12);border-radius:8px;padding:12px;margin-top:16px;font-size:.75rem;color:var(--white60);line-height:1.5;text-align:center">Booked with us before? <span onclick="showLoginStep()" style="color:var(--cyan);cursor:pointer;text-decoration:underline">Log in instead</span> to keep your history and credits together.</div>'
     +'</div>';
-  document.getElementById('bk-fn').focus();
+  console.log('[showGuestStep] body populated');
+  try{var fnEl=document.getElementById('bk-fn');if(fnEl)fnEl.focus();}catch(e){}
+  }catch(err){console.error('[showGuestStep] EXCEPTION',err);
+    var bd2=document.getElementById('mo-bd');
+    if(bd2&&!bd2.innerHTML){bd2.innerHTML='<div style="padding:24px;text-align:center;color:var(--white60)"><p style="margin-bottom:16px">Could not load booking form.</p>'+(curSession&&curSession.link?'<a href="'+curSession.link+'" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:14px 28px;background:var(--cyan);color:var(--navy);border-radius:100px;font-weight:700;text-decoration:none">Book on Momence</a>':'')+'</div>';}
+  }
 }
 
 function doLogin(){if(isProcessing)return;
