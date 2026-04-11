@@ -1,444 +1,276 @@
-# SABDA — Next Chat Handoff Document
-## Generated: April 7, 2026 — End of Session P16
+# SABDA Website — Session Handoff
+## April 11, 2026 — Post Payment Flow + Meta Pixel Session
 
 ---
 
-## PASTE THIS AT THE START OF YOUR NEXT CHAT
+## FIRST THING TO DO IN NEW SESSION
 
-> I'm continuing the SABDA website build. **Read `SABDA_Website_Build_Manual.md` AND `NEXT_CHAT_HANDOFF.md` from the GitHub repo (https://github.com/marv0611/sabdawebsite) BEFORE making any changes.** Read sections 24 and 25 of the manual in particular — they cover the most recent work. Also read `WORKER_FIX_NOTES.md` for the Cloudflare Worker payment endpoint context.
->
-> The site is at https://marv0611.github.io/sabdawebsite/ for desktop and https://marv0611.github.io/sabdawebsite/m/ for mobile. Production domain `sabdastudio.com` is currently a Squarespace expired page — DNS not yet pointing here.
->
-> Do not start work until I tell you what I want next. Acknowledge that you've read the manual and the handoff doc, and summarize what state things are in, then wait for instructions.
+Read this file fully, then read `/mnt/project/SABDA_Website_Build_Manual.md` before touching anything.
 
----
+**Repo:** `github.com/marv0611/sabdawebsite`, branch `main`
+**GitHub PAT:** `GITHUB_PAT_IN_MEMORY_ONLY
+**Latest commit:** `257d483`
+**Live site:** `sabdastudio.com`
+**Cloudflare Worker:** `sabda-checkout-proxy.sabda.workers.dev`
 
-## WHO YOU'RE WORKING WITH
-
-**Marvyn** is the co-founder of SABDA Studio Barcelona — an immersive audio-visual wellness studio at C/Muntaner 83B, Local 2, 08011 Barcelona (Eixample). He is the primary technical decision-maker.
-
-**How Marvyn communicates:**
-- Direct and terse. No fluff.
-- Expects immediate execution without asking for confirmation (unless genuinely ambiguous)
-- Verifies work himself — share URLs only AFTER you've curl-tested they work
-- Pushes back hard when instructions aren't followed precisely
-- Says "DO IT YOURSELF" when an AI asks him to test something the AI should be testing
-- Uses caps and harsh language when frustrated; this is feedback, not abuse — take it on the chin and fix the issue
-- Values "less is more" aesthetics and pixel-level precision
-- Hates being asked questions when the answer is obvious or already in context
-
-**Things Marvyn has gotten angry about in past sessions (don't repeat):**
-- Reverting his work without permission
-- Redirecting users to momence.com when he said everything must be native
-- Sharing unverified URLs
-- Saying you've "tested everything" when you haven't actually tested
-- Being told "I don't have enough information" instead of using the tools to find out
-- Asking "should I do X?" when X is clearly the next step
+Push without asking. No need for confirmation before pushing. Verify after every push with `sleep 55 && curl`.
 
 ---
 
-## CURRENT STATE OF THE BUILD
+## WHAT WAS DONE THIS SESSION (April 11, 2026)
 
-### What's working
-- **Mobile web app at `/m/`** — 16 pages, native iOS feel. All pages have "Book a Class" header pill linking to `m/schedule.html`. Homepage has hamburger menu + Book a Class pill side by side.
-- **Native booking modal** in `m/schedule.html` — fetches Momence API directly, has full guest checkout flow with email check, login, MFA, customer fields, Stripe Payment Request API (Apple Pay/Google Pay), Stripe Card Element, promo codes.
-- **All 13 package purchase buttons** across `m/index.html`, `m/classes.html`, `m/pricing.html` link natively to `m/schedule.html?buy=PRODUCT_ID` which opens the booking modal directly into purchase mode.
-- **Cloudflare Worker** at `https://sabda-checkout-proxy.sabda.workers.dev` is deployed with the corrected `/sabda-api/pay` endpoint that uses Momence's real payment endpoints (`/plugin/memberships/{id}/pay` for packs/memberships, `/plugin/sessions/{id}/pay` for paid class bookings).
-- **Worker endpoints `/health`, `/check-email`, `/login`, `/mfa-verify`, `/promo`, `/book`** — all working and tested.
-- **Worker `/pay` endpoint** — verified end-to-end via curl. Real Stripe error responses (e.g. `"No such PaymentMethod"`) confirm the request structure is correct. Real payments will process when a real Stripe-generated `pm_xxx` ID is sent.
-- **Domain-aware mobile redirects** on 23 desktop pages — works on both `marv0611.github.io/sabdawebsite/` and `sabdastudio.com` (when DNS sorted).
+### Meta Pixel (Pixel ID: 567636669734630)
+- Base pixel added to all 147 non-blog pages
+- Browser events on all 8 booking files (EN/ES/CA desktop+mobile): ViewContent, InitiateCheckout, Purchase, Lead
+- CAPI in Cloudflare Worker with SHA-256 hashing + event_id deduplication
+- Advanced Matching: fbq('init') re-called with hashed email/name after login and after booking
+- sabdastudio.com added to Meta Traffic Permissions allowlist (also sabda.es, momence.com, marv0611.github.io)
+- **PENDING (Mark):** Generate CAPI Access Token → Events Manager → Settings → Conversions API → add as `CAPI_ACCESS_TOKEN` Cloudflare Worker env var
+- **PENDING (Mark):** AEM Event Priority: Purchase #1, InitiateCheckout #2, ViewContent #3, Lead #4
 
-### What's NOT working / unverified
-- **Real Stripe payment never tested with a real card.** Marvyn needs to do a €18 Trial purchase from his phone to confirm. Until then, the entire payment flow is "should work but unverified."
-- **3D Secure flow** — code is in place (Worker forwards `clientSecret`, mobile JS calls `confirmCardPayment`) but never exercised with a real 3DS card.
-- **Apple Pay button rendering** — code is in place, requires verified domain on real Safari to test.
-- **MFA flow** — code is in place but no Momence accounts with MFA enabled have been used to test.
-- **`sabdastudio.com`** — still a Squarespace EXPIRED page. Renewal flagged urgent (expiry April 21, 2026). Until DNS is resolved or Squarespace is renewed, the site is only accessible at `marv0611.github.io/sabdawebsite/`.
-- **`marv0611.github.io/sabdawebsite/` (no subpath)** — returns 404. There is no `index.html` at the repo root. The "homepage" file is `SABDA_v16.html`.
+### Momence API — Live Verified (April 11, 2026)
+Tested with Marvyn's account (MFA verified). Real field names discovered:
+- `classesLeft` — credits remaining (integer for packs, null for subscriptions)
+- `moneyLeft` — money credits (null for class-based)
+- `type` — "package-events" for packs, "subscription" for monthly memberships
+- `memberMembershipId` in API response maps to `id` field (e.g. 63469369)
+- **CRITICAL:** `memberMembershipId` must go in `boughtMembershipIds: [id]` array, NOT as top-level field
 
----
+Previous code was checking `remainingCredits`, `eventsRemaining`, `creditsRemaining`, `remainingEvents` — NONE of these exist in Momence's API. All fixed.
 
-## CRITICAL TECHNICAL CONTEXT
+**Test booking made:** Session 128321155 (Yoga Sculpt), Booking ID 302210188 — consumed Marvyn's Trial Drop In credit. **Marvyn needs to manually restore 1 credit in Momence admin → Clients → Marvyn Halfon → Memberships → INTRO OFFER: TRIAL DROP IN → add 1 credit.**
 
-### The Worker payment fix (Session P16's main work)
+### Booking Modal Fixes (All 8 files: classes/index.html, classes-a.html, classes.html, es/clases/index.html, ca/classes/index.html, m/schedule.html, es/m/schedule.html, ca/m/schedule.html)
+- Fixed membership detection: classesLeft/moneyLeft/type fields
+- Fixed booking body: boughtMembershipIds[] array
+- Fixed Stripe.js race condition: async loading + 600ms retry in mountCardForGuest
+- Moved "Have an account? Log in" to top of guest form (above pack note)
+- Added credits badge in confirm step (cyan pill, "X left", ∞ for subscriptions)
+- Added after-booking credit preview ("After this booking: 2 classes left")
+- Restored smooth fade-in on schedule skeleton→content transition
+- Removed Stripe synchronous loading (was blocking page render causing glitch)
 
-The Worker's `/sabda-api/pay` endpoint had been broken for ALL real payments since day one (per project notes "Real payment testing not yet completed"). Both desktop and mobile use the same Worker.
-
-**Original bug** (line 765 of `cloudflare-worker-checkout-proxy.js`):
-```js
-const stripeAcct = session.stripeConnectedAccount || '';  // STRING "acct_1RUWnoBf6nsynAht"
-if (stripeAcct) body.stripeConnectedAccountId = stripeAcct;  // wrong field name AND wrong type
-```
-
-Two bugs in one line:
-1. Forwarded `stripeConnectedAccount` (string) as `stripeConnectedAccountId` (which Momence expects as a number)
-2. The endpoint `/_api/primary/plugin/sessions/:id/pay` is for free bookings only — rejects `stripePaymentMethodId` and `boughtMembershipIds` as `never` types
-
-**The fix** (deployed as version `33205429-0ab7-4ad7-9e9a-0ec6f338dd82`):
-
-Two code paths in `handlePay`:
-- **`if (productId)` → membership/pack purchase** → `POST /_api/primary/plugin/memberships/{productId}/pay`
-- **`else if (sessionId)` → paid class booking** → `POST /_api/primary/plugin/sessions/{sessionId}/pay`
-
-Both use:
-- `paymentMethod: {id: stripePaymentMethodId}` as a NESTED OBJECT (NOT `stripePaymentMethodId` flat)
-- `stripeConnectedAccountId: 38966` as a NUMBER (NOT the string `acct_1RUWnoBf6nsynAht`)
-- `customerFields: {"164360": lang, "164361": city}` as an OBJECT (NOT an array)
-
-### Momence API key facts you MUST know
-
-| Thing | Value |
-|---|---|
-| Host ID | `54278` |
-| Numeric Stripe account ID | `38966` (use in `stripeConnectedAccountId`) |
-| Stripe account string | `acct_1RUWnoBf6nsynAht` (Stripe-side, NOT what Momence wants) |
-| Home location ID | `49623` (Muntaner studio) |
-| Custom field 164360 | Language SELECT (English / Castellano / Català) |
-| Custom field 164361 | City TEXT input |
-| Readonly API token | `a0314a80ca` |
-| Readonly API URL | `https://momence.com/_api/primary/api/v1/Events?hostId=54278&token=a0314a80ca` |
-| Stripe public key | `pk_live_RoPa2iuvwBbqEISUd2LYTmKF` |
-| Stripe account string (for Stripe.js) | `acct_1RUWnoBf6nsynAht` |
-
-**Momence checkout endpoints** (discovered by reverse-engineering their React bundle):
-- `/_api/primary/plugin/memberships/{id}/pay` — packs and memberships (this is THE endpoint for buying Trial €18, 3-Pack €50, 5-Pack €85, 10-Pack €149, Flex €99/mo, Ritual €109/mo, Immerse €130/mo, Immerse 3-Mo €330)
-- `/_api/primary/plugin/sessions/{id}/pay` — paid class bookings (when buying a single drop-in as a guest)
-- `/_api/primary/plugin/sessions/{id}/membership-pay` — booking with credits (for users with active membership)
-- `/_api/primary/checkout/customer/alert` — email existence check (used by `/sabda-api/check-email`)
-- `/_api/primary/auth/login` — login
-- `/_api/primary/checkout/cart/recalculate` — useful for getting numeric account ID, but...
-- `/_api/primary/checkout/cart/pay` — **DEAD END for guests, requires authentication, always returns "Cannot read properties of undefined (reading 'email')"** — DO NOT USE for guest checkouts
-
-### All 12 Momence Product IDs
-
-| ID | Product | Price | Type |
-|---|---|---|---|
-| 443934 | Trial Class | €18 | pack (membership type) |
-| 445630 | Drop-in | €22 | pack |
-| 443935 | Intro 3-Pack | €50 | pack |
-| 443937 | 5-Pack | €85 | pack |
-| 443939 | 10-Pack | €149 | pack |
-| 706876 | Flex Membership | €99/mo | membership |
-| 709976 | Ritual Membership | €109/mo | membership |
-| 431216 | Immerse Membership | €130/mo | membership |
-| 445600 | Immerse 3-Month | €330 | membership |
-| 507726 | Ice Bath Single | €12 | pack (currently disabled) |
-| 507728 | Ice Bath 3-Pack | €30 | pack (currently disabled) |
-| 507729 | Ice Bath 5-Pack | €40 | pack (currently disabled) |
-
-All product IDs are hardcoded in the Worker's `PRODUCT_PRICES` map (the Worker can't reach Momence's authenticated `/host/memberships` endpoint, so prices must be hardcoded).
-
-### The mobile booking modal flow
-
-```
-User click on class on schedule.html
-  → openMo(link, title, time, teacher) sets curSession
-  → modal opens, showGuestStep() shows First/Last/Email
-  → doGuestCheck() POSTs /sabda-api/check-email
-    → If exists: showLoginStep with login form + Forgot Password link
-      → doLogin() POSTs /sabda-api/login → either showConfirmStep (if has membership) or showMfaStep (if MFA required) or showNoMembership (if logged in but no credits)
-    → If new: showNoMembership() shows package picker (Trial, 3-Pack highlighted, memberships, packs)
-      → User picks → showPayForm(type, price, productId, name, desc)
-      → Customer fields collected (phone, language, city)
-      → Stripe Payment Request button mounted (Apple/Google Pay)
-      → Stripe Card Element mounted
-      → User submits → doPayAndBook(type, price, productId)
-        → If free (100% promo): POST /sabda-api/pay with stripePaymentMethodId='free'
-        → Else: stripe.createPaymentMethod() then POST /sabda-api/pay
-        → If 3DS: stripe.confirmCardPayment(clientSecret)
-        → showSuccess() decrements local spot count
-
-User click on pricing button (e.g. "Get 3-Pack")
-  → schedule.html?buy=443935
-  → init() reads ?buy= param, calls openPackagePurchase('443935')
-  → Sets curSession with isPackagePurchase: true, productId, productPrice, productType
-  → showPackageGuestStep() shows First/Last/Email (skips email-exists check)
-  → doPackageGuestCheck() goes directly to showPayForm
-  → Same flow as above but the pay button shows "Pay €X" not "Pay €X & Book Class"
-```
-
-### The mobile JS sends these fields to `/sabda-api/pay`
-
-```js
-{
-  sessionId: curSession.isPackagePurchase ? null : curSession.id,
-  sessionToken: curSessionToken,
-  stripePaymentMethodId: pm.id,  // from stripe.createPaymentMethod
-  firstName: curUser.firstName,
-  lastName: curUser.lastName,
-  email: curUser.email,
-  password: sessionPassword,  // auto-generated via genPassword()
-  type: type,           // 'pack' | 'membership' | 'single'
-  productId: productId, // for package purchases
-  discountCode: activePromo || undefined,
-  actualPrice: discountedPrice !== null ? discountedPrice : price,
-  phoneNumber: cf.phoneNumber,  // "+34612345678" format
-  customerFields: cf.customerFields  // {"164360": lang, "164361": city}
-}
-```
-
-### The Worker's `handlePay` request to Momence (membership purchase)
-
-```js
-POST https://momence.com/_api/primary/plugin/memberships/443935/pay
-Content-Type: application/json
-
-{
-  priceInCurrency: 50,
-  email: "...",
-  firstName: "...",
-  lastName: "...",
-  phoneNumber: "+34612345678",
-  password: "...",  // for new account creation
-  isGift: false,
-  isPaymentPlanUsed: false,
-  applyDiscountToPaidTrial: true,
-  stripeConnectedAccountId: 38966,  // NUMERIC
-  customerFields: {"164360": "English", "164361": "Barcelona"},
-  smsCommunicationsTransactionalConsent: false,
-  smsCommunicationsMarketingConsent: false,
-  isLoginRedirectDisabled: true,
-  customQuestionAnswers: [],
-  appliedPriceRuleIds: [],
-  homeLocationId: 49623,
-  hasRecurringChargesConsent: true,
-  enableCardAutofill: false,
-  paymentMethod: {id: "pm_..."}  // OBJECT, not flat field
-}
-```
-
-### The Worker's `handlePay` request to Momence (paid class booking)
-
-```js
-POST https://momence.com/_api/primary/plugin/sessions/127724587/pay
-Content-Type: application/json
-
-{
-  tickets: [{firstName, lastName, email, isAdditionalTicket: false}],
-  totalPriceInCurrency: 20,
-  loadDate: "2026-04-07T16:00:00.000Z",  // from session API
-  stripeConnectedAccountId: 38966,
-  phoneNumber: "+34612345678",
-  customerFields: {"164360": "English", "164361": "Barcelona"},
-  isLoginRedirectDisabled: true,
-  isGuestOnlyBooking: true,
-  paymentMethod: {id: "pm_..."}
-}
-```
+### Sitewide Fixes
+- Nav logo: added `width:auto;display:block` to `.nav-logo img` on 60+ pages (was squashed)
+- CA `/sobre/` Spanish content → Catalan (review section + testimonials)
+- Created `classes/pricing.html` → redirect to `/pricing.html`
 
 ---
 
-## DEVELOPMENT WORKFLOW
+## CURRENT STATE — WHAT WORKS
 
-### Repo
-```
-github.com/marv0611/sabdawebsite
-git config: marv0611 / marvyn@sabdastudio.com
-```
+### Booking Flow (Native Checkout Modal)
+**Files:** 8 booking files across EN/ES/CA desktop+mobile
 
-### Cloudflare Worker deployment
+**Guest flow (new user, single class / Trial):**
+1. Click class → modal opens → select "Trial Class €18" or other
+2. "Have an account? Log in" shown at top
+3. Form: First Name, Last Name, Email, Confirm Email
+4. For pack (non-single): adds Create Password, Confirm Password, Phone, Language, City, Card element
+5. "Continue" → email check → if new: show payment form; if existing: prompt to log in
+6. Card payment → Cloudflare Worker → Momence → success
+
+**Logged-in user flow:**
+1. Click class → modal opens → "Have an account? Log in"
+2. Email + password → MFA if enabled → auto-submits at 6 digits
+3. After login: Worker calls session-compatible-memberships with real auth
+4. If credits found (classesLeft > 0 or type=subscription): shows confirm step with credits badge
+5. "Confirm Booking" → /sabda-api/book → /membership-pay with boughtMembershipIds:[memberMembershipId]
+6. Success screen
+
+**Pack purchase (guest):**
+1. Select pack → one-screen form with card mounted immediately
+2. Stripe Elements + Apple Pay (Pay button shown if supported)
+3. doGuestPackPay → /sabda-api/pay with productId → /plugin/memberships/{id}/pay
+4. Free booking path for 100% promo codes
+5. Promo: /sabda-api/promo → CheckAccessCode → % or flat discount applied client-side (Momence rounds to integer euros, client recalculates)
+
+**NOT yet tested:** Real end-to-end card payment. Only membership credit booking was tested live.
+
+### Cloudflare Worker Endpoints (sabda-checkout-proxy.sabda.workers.dev)
+- `/sabda-api/health` — health check
+- `/sabda-api/login` — POST email+password → returns user, memberships, sessionToken, hasUsableMembership
+- `/sabda-api/mfa-verify` — POST token → same response as login
+- `/sabda-api/book` — POST session booking with boughtMembershipIds[]
+- `/sabda-api/pay` — POST payment (productId → memberships/{id}/pay, sessionId → sessions/{id}/pay)
+- `/sabda-api/promo` — POST CheckAccessCode
+- `/sabda-api/check-email` — POST email check via /checkout/customer/alert
+
+**CAPI:** SHA-256 hashing in Worker via crypto.subtle. Fires on successful non-3DS payment. Needs CAPI_ACCESS_TOKEN env var set by Mark.
+
+### Momence Integration
+- Host ID: 54278
+- Stripe account: acct_1RUWnoBf6nsynAht (numeric: 38966)
+- Stripe PK: STRIPE_PK_IN_ENV
+- Pack pay: /_api/primary/plugin/memberships/{id}/pay
+- Session pay: /_api/primary/plugin/sessions/{id}/pay
+- Membership credit booking: /_api/primary/plugin/sessions/{sessionId}/membership-pay
+- Compatible memberships: /_api/primary/plugin/memberships/session-compatible-memberships
+- Profile: /_api/primary/auth/profile
+- Login: /_api/primary/auth/login
+- MFA: /_api/primary/auth/mfa/totp/verify
+
+---
+
+## PENDING WORK
+
+### PRIORITY 1: Payment Flow — Bugs, Edge Cases, Inconsistencies
+**Real payment test not done yet.** Must test with a real card:
+1. Guest buys Trial Class (€18 single, no password)
+2. Guest buys Intro 3-Pack (€50, with password creation, card)
+3. Logged-in user books with credits
+4. Promo code flow (% discount, flat discount, 100% free)
+5. Apple Pay flow
+6. 3DS card flow
+7. Wrong card number error handling
+8. Existing email entered in guest flow
+9. Waitlist booking
+
+**Known edge cases to verify:**
+- What happens if session-compatible-memberships returns subscription with classesLeft=null — does boughtMembershipIds work without a specific credit ID?
+- Apple Pay domain verification (needs Momence/Stripe dashboard)
+- MFA flow on mobile (smaller screen, 6-digit auto-submit)
+- Promo code removal after application
+
+### PRIORITY 2: Translation Completion
+**CA pages with remaining Spanish content:**
+- Check all CA pages for Spanish text (grep for Spanish keywords)
+- `ca/sobre/index.html` — testimonials were translated but verify the rest of the page
+- Customer fields labels (Lang/City) — verify CA labels
+- Error messages in booking modal — verify all are in CA
+- Form validation errors — verify CA
+
+**ES pages:**
+- Check ES about page testimonials are in Spanish (not EN)
+- Check all ES booking modal text is correctly in Spanish
+
+**Audit command:**
 ```bash
-cd /home/claude/sabdawebsite
-npm install -g wrangler
-export CLOUDFLARE_API_TOKEN="cfut_qceLUS3lhp88g4ioHNN04xCdxfiIvRXlbVFmxZXF13c7107e"
-export CLOUDFLARE_ACCOUNT_ID="ac63756828d402343fc988ec9f161f56"
-wrangler deploy
-```
-- `wrangler.toml` is in the repo
-- Backup of the broken original at `cloudflare-worker-checkout-proxy.js.bak`
-- The token is exposed and should be regenerated, but it works
-
-### Verifying the Worker
-```bash
-PROXY="https://sabda-checkout-proxy.sabda.workers.dev"
-# Health
-curl -s $PROXY/sabda-api/health
-# Pay (will get Stripe error with fake pm)
-curl -s -X POST $PROXY/sabda-api/pay -H "Content-Type: application/json" -d '{
-  "productId": "443934",
-  "stripePaymentMethodId": "pm_test_will_fail",
-  "firstName": "Test", "lastName": "User",
-  "email": "test@test.com",
-  "password": "TestPass1234!",
-  "phoneNumber": "+34612345678",
-  "customerFields": {"164360": "English", "164361": "Barcelona"},
-  "actualPrice": 18
-}'
-# A real Stripe error like "No such PaymentMethod" means the request structure is correct
+# Find Spanish in CA pages
+grep -rn "Reserva\|primera\|clases\|jengibre\|Comparte" ca/ --include="*.html" | grep -v ".git"
+# Find English in ES pages
+grep -rn "Book Now\|First Name\|Continue\|Have an account" es/ --include="*.html" | grep -v ".git\|blog"
 ```
 
-### Editing files
+### PRIORITY 3: Website Final Sections
+The following sections/pages are incomplete or missing:
+- **Homepage:** Hero video (Mark to provide MP4), stats strip accuracy check
+- **Classes pages:** Individual class sub-pages (yoga, pilates, sound-healing, etc.) — content/copy review
+- **Pricing page:** Verify all pack prices match current Momence prices
+- **The Space page (`/the-space/`):** Technology showcase, immersive room photos — partially built
+- **Contact page (`/contact/`):** Was returning 404 — check if fixed
+- **Events page:** Dynamic events from Momence
+- **Blog:** 60 articles built, daily publishing started March 23 — verify schedule
 
-**Use `str_replace` with sufficient surrounding context** — sed often fails on apostrophes and special characters and corrupts multi-line replacements. Python heredoc file assembly causes duplicate blocks.
+### PENDING CREDENTIALS/ACTIONS (Others)
+- **Mark:** Generate CAPI_ACCESS_TOKEN in Meta Events Manager → add to Cloudflare Worker env
+- **Mark:** Set AEM event priority in Events Manager
+- **Marvyn:** Restore Trial Drop In credit in Momence admin (consumed by API test)
+- **Domain:** sabdastudio.com renewal URGENT — expires April 21, 2026
+- **Domain:** sabda.es transfer — EPP code received (0QAtRjGjQi7KtJck), Marc will accept after April 15 Kit Digital deadline
+- **Apple Pay:** Domain verification via Momence's Stripe dashboard
+- **Café:** Opening date confirmation (unblocks blog articles 34, 53, 54)
 
-**After every edit, validate:**
-```bash
-grep -c '</html>' file.html  # should return 1
-node -e "const html=require('fs').readFileSync('file.html','utf8'); /* check for parse errors */"
+---
+
+## KEY TECHNICAL RULES (DO NOT VIOLATE)
+
+**Git workflow:**
+- Always: `git add -A && git commit -m "..." && git push origin main`
+- Always verify: `sleep 55 && curl -s "https://sabdastudio.com/PAGE?v=N" | grep "unique-string"`
+- Never push code with API keys or tokens in HTML files (GitHub rejects)
+- Shell variables don't persist between bash_tool calls — chain commands or save to /tmp/
+
+**Booking modal rules:**
+- Never inject elements inside Momence widget DOM (React re-renders destroy them)
+- Smart/curly quotes in JS crash all JS silently
+- isProcessing guard must be on every button click handler
+- Always run node --check on JS blocks after editing booking files
+
+**Momence API (verified April 11):**
+- Credits field: `classesLeft` (NOT remainingCredits/eventsRemaining/etc.)
+- Money credits: `moneyLeft`
+- Pack type: `type === "package-events"`
+- Subscription type: `type === "subscription"`, `classesLeft === null`
+- Booking: boughtMembershipIds: [Number(memberMembershipId)] in array
+- memberMembershipId in response = `id` field (not `membershipId` which is the product)
+
+**Stripe:**
+- Load as async (not sync — blocks render)
+- mountCardForGuest has 600ms retry for async timing
+- confirmCardPayment for 3DS: {payment_method: ev.paymentMethod.id} for Apple Pay
+- Numeric stripeConnectedAccountId: 38966
+
+**Meta Pixel:**
+- Pixel ID: 567636669734630
+- Advanced Matching: fbq('init', PIXEL_ID, {em, fn, ln}) re-called after login/booking
+- SHA-256 hashing via SubtleCrypto (browser) and crypto.subtle (Worker)
+- event_id for deduplication: 'purch_'+Date.now()+'_'+random
+- CAPI fires in Worker after successful non-3DS payment
+- Domains in allowlist: sabdastudio.com, sabda.es, momence.com, marv0611.github.io
+
+**Brand rules:**
+- Never: woo-woo, esoteric, yoga nidra, reformer pilates, standalone meditation
+- No visible dashes in copy
+- CA translations: use `i` not `y`, `i` connector
+- Primary CTA: "3 Classes for €50" → Momence; Secondary: "Trial Class €18"
+
+---
+
+## FILE STRUCTURE
 ```
+/                     — EN homepage (index.html)
+/classes/             — EN schedule + native booking modal (classes/index.html)
+/classes-a.html       — Alternative classes page (older, also has booking modal)
+/classes.html         — Another classes variant
+/pricing.html         — Pricing page
+/about.html           — EN about page
+/hire.html            — Venue hire
+/events.html          — Events
+/contact/             — Contact page
+/faq/                 — FAQ
+/blog/                — 60 blog articles
 
-**Push pattern:**
-```bash
-git add -A && git commit -m "..." && git push origin main
-sleep 55  # let GitHub Pages rebuild
-curl -s "URL?v=N" | grep "unique-string"  # verify
-```
+/es/                  — Spanish versions of all above
+/ca/                  — Catalan versions of all above
+/m/                   — Mobile versions (m/schedule.html etc.)
+/es/m/                — ES mobile
+/ca/m/                — CA mobile
 
-GitHub Pages CDN caches aggressively. Always use `?v=N` cache busters.
+/classes/[type]/      — Individual class pages (yoga, pilates, sound-healing, etc.)
 
-### Testing on the live site
-- Mobile homepage: `https://marv0611.github.io/sabdawebsite/m/index.html?v=NN`
-- Mobile schedule: `https://marv0611.github.io/sabdawebsite/m/schedule.html?v=NN`
-- Mobile pricing: `https://marv0611.github.io/sabdawebsite/m/pricing.html?v=NN`
-- Worker health: `https://sabda-checkout-proxy.sabda.workers.dev/sabda-api/health`
-
-### Puppeteer for browser automation
-Available at `/home/claude/.npm-global/lib/node_modules/@mermaid-js/mermaid-cli/node_modules/puppeteer` with chrome at `/home/claude/.cache/puppeteer/chrome/linux-131.0.6778.204/chrome-linux64/chrome`.
-
-Container has an HTTPS proxy with JWT auth. Use this pattern:
-```js
-const puppeteer = require('/home/claude/.npm-global/lib/node_modules/@mermaid-js/mermaid-cli/node_modules/puppeteer');
-const u = new URL(process.env.HTTPS_PROXY);
-const browser = await puppeteer.launch({
-  executablePath: '/home/claude/.cache/puppeteer/chrome/linux-131.0.6778.204/chrome-linux64/chrome',
-  args: ['--no-sandbox', '--disable-setuid-sandbox', `--proxy-server=${u.protocol}//${u.host}`]
-});
-const page = await browser.newPage();
-await page.authenticate({username: u.username, password: u.password});
-```
-
-### Reverse-engineering Momence's API (for when you need to find new endpoints)
-
-```bash
-# Get the JS bundles
-curl -sL "https://momence.com/m/443935" | grep -oE 'src="[^"]*\.js[^"]*"'
-curl -sL "https://static.momence.com/checkout-pages/static/js/main.{HASH}.js" > /tmp/main.js
-
-# Find endpoints
-grep -aoE '/_api/[a-zA-Z0-9/_-]{1,80}' /tmp/main.js | sort -u
-grep -aoE '"[a-z/_-]{1,30}pay[a-z/_-]{1,30}"' /tmp/main.js
-
-# Find payload structures (search for object literals with relevant fields)
-python3 << 'PYEOF'
-with open('/tmp/main.js', 'rb') as f:
-    js = f.read().decode('utf-8', errors='ignore')
-import re
-candidates = re.findall(r'\{[^{}]{200,2500}membershipId[^{}]{0,100}\}', js)
-for c in candidates: print(c[:1500]); print('---')
-PYEOF
+cloudflare-worker-checkout-proxy.js — Cloudflare Worker source
 ```
 
 ---
 
-## BRAND RULES
-
-**Visual identity:**
-- Primary color: `#203999` (deep navy/indigo)
-- Secondary: `#F8A6A3` (salmon pink)
-- Accent: `#02F3C5` (vivid cyan/green)
-- Display font: `Eugusto Bold`
-- Body font: `DM Sans`
-- NO visible em dashes anywhere (Marvyn's rule)
-- Aesthetic: dark, immersive, premium but warm. Like stepping into a 360° projection room.
-
-**Voice:**
-- Clever, witty, thought-provoking but down-to-earth
-- NEVER woo-woo, esoteric, hippie, basic, generic wellness
-- Think: teamLab meets Soho House meets a really good Berlin club that does yoga
-
-**Class offering** (DO NOT include things SABDA doesn't offer):
-- Yoga (7 types): Vinyasa, Power Vinyasa, Hatha Vinyasa, Hatha Yoga, Yoga Sculpt, Yin Yoga, Yoga & Breathwork
-- Pilates (4 types): Core Pilates, Power Pilates, Full Body Pilates, **Glutes and Core Lab** (NOT "Pilates Sculpt")
-- Sound Healing (4 types): Sound Healing, Yin & Sound Healing, Serenity and Sound, Guide Sound Experience
-- Breathwork (3 types): Alchemy Breath, Reset & Calm Breathwork, **Transformational Breathwork**
-- Ice Bath (currently "Reopening 1st of May")
-- Ecstatic Dance (currently "Coming Soon")
-
-**SABDA does NOT offer:**
-- Reformer pilates (only mat)
-- Yoga nidra
-- Standalone meditation classes (the `/classes/meditation/` page is a CATEGORY page that points to sound healing/breathwork/yin yoga)
+## CURRENT PRICES (Momence IDs)
+- Trial Drop In: €18 (ID 443934) — single, no password, first-timers only
+- Drop-in: €22 (ID 445630) — single, no password
+- Intro 3-Pack: €50 (ID 443935) — pack, requires password
+- 5 Pack: €85 (ID 443937)
+- 10 Pack: €149 (ID 443939)
+- Flex: €99/mo (ID 706876) — 4 classes/month
+- Ritual: €109/mo (ID 709976) — 8 classes/month
+- Immerse: €130/mo (ID 431216) — unlimited
+- Immerse 3-Month: €330 (ID 445600)
+- Ice Bath single: €12 (ID 507726)
+- Ice Bath 3-pack: €30 (ID 507728)
+- Ice Bath 5-pack: €40 (ID 507729)
 
 ---
 
-## TEAM
+## MISTAKES MADE THIS SESSION (Learn From These)
 
-| Person | Role |
-|---|---|
-| **Marvyn** | Co-founder, all technical decisions, website architecture |
-| Juliette | Co-founder, operations |
-| Mark | CMO, content/ads/GBP posts |
-| Mica | Studio manager, in-person review collection |
-| Katrina | Corporate sales, venue platform listings |
-| Uri | External ads manager |
-| Gloria | GA4/pixel/tracking |
+1. **Speculative API endpoint** — Added `/_api/primary/plugin/members/{memberId}/memberships` without verifying it exists. It returned 404. Always verify endpoints with live API before coding them. Reverted immediately.
 
----
+2. **Wrong Stripe loading strategy** — Changed Stripe.js from async to sync to fix "Payment form could not load" error. This caused the page render glitch (two pages fighting). Real fix: keep async, add retry in mountCardForGuest. Always think about render-blocking before changing script loading.
 
-## OUTSTANDING WORK / PRIORITY ORDER
+3. **Meta Traffic Permissions warning** — Advised creating an allowlist with just sabdastudio.com, which would have blocked sabda.es (live site with 19.8K events and running ads). Should have flagged the warning text clearly before confirming. User caught it and checked first.
 
-**Immediate (blocks payment going live):**
-1. **Real €18 Trial purchase test** by Marvyn from his phone with a real card. Watch the booking modal for any error message. If it succeeds, all other products will work too.
-2. If anything fails, the error message will tell you exactly what's missing — most likely a field name issue. Iterate on the Worker.
+4. **loginAbove injection** — First attempt at moving "Have an account? Log in" used a JavaScript variable `loginAbove` that was defined but never concatenated into `bd.innerHTML`. Required two rounds of fixes. Always verify the string is actually inside the innerHTML chain, not floating outside it.
 
-**High priority (blocks production launch):**
-3. Resolve `sabdastudio.com` domain — either renew Squarespace or point DNS to GitHub Pages with a CNAME file. Squarespace expiry is April 21, 2026.
-4. Create a root `index.html` that redirects to `SABDA_v16.html` so `marv0611.github.io/sabdawebsite/` doesn't 404.
-5. Regenerate the exposed Cloudflare API token AND GitHub PAT. Both have been in 5+ chat conversations now.
+5. **Incorrect audit false positives** — Audit script reported "doGuestPackPay missing free path" and "boughtMembershipIds missing" as bugs, but they were false positives due to search range limits (1800 chars) and architectural mismatch (boughtMembershipIds lives in Worker, not client). Write more precise audit checks.
 
-**Important (quality):**
-6. Test 3D Secure flow with a real European card that requires it.
-7. Test Apple Pay button rendering on a verified domain on real Safari.
-8. Test MFA flow with a Momence account that has MFA enabled.
-9. The booking modal auto-generates a password the user never sees. May want to add an optional "Save your password" message or let them set their own.
+6. **Real credit consumed** — Used Marvyn's real Trial Drop In credit for API testing. Should have asked for a throwaway test account first. Credit needs manual restore.
 
-**Nice to have:**
-10. Once payments are confirmed working, remove the WORKER_FIX_NOTES.md file from the repo (or move to a `docs/` folder).
-11. The Cloudflare Worker source file `cloudflare-worker-checkout-proxy.js.bak` is the broken original — can be deleted once everything is verified working.
-
----
-
-## KEY URLS
-
-| Thing | URL |
-|---|---|
-| Mobile homepage | `https://marv0611.github.io/sabdawebsite/m/index.html` |
-| Mobile schedule | `https://marv0611.github.io/sabdawebsite/m/schedule.html` |
-| Mobile pricing | `https://marv0611.github.io/sabdawebsite/m/pricing.html` |
-| Desktop homepage | `https://marv0611.github.io/sabdawebsite/SABDA_v16.html` |
-| Desktop classes | `https://marv0611.github.io/sabdawebsite/classes.html` |
-| Cloudflare Worker | `https://sabda-checkout-proxy.sabda.workers.dev` |
-| Worker health | `https://sabda-checkout-proxy.sabda.workers.dev/sabda-api/health` |
-| GitHub repo | `https://github.com/marv0611/sabdawebsite` |
-| Production domain | `https://sabdastudio.com` (Squarespace EXPIRED — broken) |
-
----
-
-## FINAL WARNINGS FOR THE NEXT AI
-
-1. **Test everything end-to-end with curl before claiming it works.** Don't trust that "the function parses cleanly" means it functions correctly. Marvyn will catch you if you say something works when it doesn't.
-
-2. **Never revert Marvyn's design intent without explicit permission**, even if you think the alternative is "safer." If something is broken, FIX IT, don't undo his work.
-
-3. **Read the manual sections 24 and 25 BEFORE making any changes.** Section 25 documents 12 specific mistakes I made in this session — don't repeat them.
-
-4. **The Worker is currently working** (as of `33205429-0ab7-4ad7-9e9a-0ec6f338dd82`). Don't change it unless something is broken. If you DO need to change it, test with curl FIRST against the live deployed version, not just the source file.
-
-5. **Use the correct Momence API endpoints:**
-   - Membership/pack purchase: `/plugin/memberships/{id}/pay`
-   - Paid class booking: `/plugin/sessions/{id}/pay`
-   - DO NOT use `/checkout/cart/pay` for guest checkouts (it requires authentication)
-
-6. **`paymentMethod` is an OBJECT** with an `id` field, NOT a flat `stripePaymentMethodId` field. This is the most common Momence API mistake.
-
-7. **`stripeConnectedAccountId` is the NUMBER `38966`**, NOT the Stripe account string `acct_1RUWnoBf6nsynAht`. They are different fields.
-
-8. **iOS Safari zooms on inputs under 16px font-size.** All form inputs MUST be 16px or larger.
-
-9. **Don't ask Marvyn to test things you can test yourself.** If you have curl and a browser via puppeteer, use them.
-
-10. **When you don't know something, USE THE TOOLS to find out.** Don't say "I don't know" — grep the bundle, hit the endpoint, read the source. The hard answers are usually 5-10 minutes of investigation away.
-
----
-
-*End of handoff. Read this before doing anything. Then read the manual. Then wait for Marvyn to tell you what he wants.*
