@@ -528,35 +528,49 @@ function resetCustomerAndStartOver(){
 }
 
 function openMo(link,title,time,teacher){
+  // BULLETPROOF: never return without doing something, never block the user
+  console.log('[openMo] called',{link:link,title:title,time:time,teacher:teacher});
   try {
-  if(isProcessing) return;
+  // Force-reset processing state — if a previous click left it true, unblock
+  if(isProcessing){console.warn('[openMo] isProcessing was true, force-resetting');isProcessing=false;}
+
+  if(!link){console.error('[openMo] no link, abort');return;}
 
   // Layer 1: if proxy is down, go straight to Momence
-  if(!proxyAlive){window.open(link,'_blank');return;}
+  if(typeof proxyAlive==='undefined'||!proxyAlive){console.warn('[openMo] proxy not alive, opening Momence');window.open(link,'_blank');return;}
+
   // Extract session ID from link
   var sid=link.match(/\/s\/(\d+)/);
-  if(sid) sid=sid[1]; else { sid=link.match(/\/(\d+)$/); sid=sid?sid[1]:null; }
-  if(!sid){window.open(link,'_blank');return;}
+  if(sid) sid=sid[1]; else { var m2=link.match(/\/(\d+)$/); sid=m2?m2[1]:null; }
+  if(!sid){console.warn('[openMo] no session id in link, opening Momence');window.open(link,'_blank');return;}
 
-  // Find session data
-  var sess=allE.find(function(e){return String(e.id)===sid;});
-  curSession={id:sid,title:clean(title),time:time,teacher:teacher,link:link,
+  // Find session data — tolerate missing allE
+  var sess=null;
+  if(typeof allE!=='undefined'&&allE&&allE.find){
+    sess=allE.find(function(e){return String(e.id)===sid;});
+  }
+  curSession={id:sid,title:(typeof clean==='function'?clean(title):title),time:time,teacher:teacher,link:link,
     spots:sess?sess.spotsRemaining:null,duration:sess?sess.duration:null,
     isWaitlist:sess?sess.spotsRemaining===0:false};
 
-  document.getElementById('mo-t').textContent=curSession.title;
-  document.getElementById('mo-c').textContent=time+(teacher?' · '+teacher:'');
+  var moT=document.getElementById('mo-t');
+  var moC=document.getElementById('mo-c');
+  var mo=document.getElementById('mo');
+  if(!moT||!moC||!mo){console.error('[openMo] modal DOM missing, opening Momence');window.open(link,'_blank');return;}
+  moT.textContent=curSession.title;
+  moC.textContent=time+(teacher?' · '+teacher:'');
 
   // Always show login step — server handles session
-  showGuestStep();
-  document.getElementById('mo').classList.add('open');
-  document.getElementById('mo').style.display='flex';
+  if(typeof showGuestStep==='function'){showGuestStep();}
+  mo.classList.add('open');
+  mo.style.display='flex';
   document.body.style.overflow='hidden';
   // Fix #9: push history state so browser back closes modal
-  history.pushState({modal:true},'');
-  _fbTrackViewContent(title);
+  try{history.pushState({modal:true},'');}catch(e){}
+  if(typeof _fbTrackViewContent==='function'){try{_fbTrackViewContent(title);}catch(e){}}
+  console.log('[openMo] modal opened OK');
   } catch(err){
-    console.error('openMo failed, falling back to Momence:',err);
+    console.error('[openMo] EXCEPTION, falling back to Momence:',err);
     if(link) window.open(link,'_blank');
   }
 }
