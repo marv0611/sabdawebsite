@@ -10,3 +10,4 @@ Disallow: /programming.html
 Disallow: /SABDA_v15.html
 
 Sitemap: https://sabdastudio.com/sitemap.xml
+Sitemap: https://sabdastudio.com/image-sitemap.xml

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://sabdastudio.com/</loc>
+    <image:image>
+      <image:loc>https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Copy_of_Sabda2-167__1_.jpg</image:loc>
+      <image:title>SABDA immersive wellness studio Barcelona</image:title>
+      <image:caption>immersive yoga studio Barcelona with 360 degree laser projections and Dolby Atmos</image:caption>
+      <image:geo_location>Barcelona, Spain</image:geo_location>
+      <image:license>https://sabdastudio.com/legal-notice.html</image:license>
+    </image:image>
+    <image:image>
+      <image:loc>https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_016.jpg</image:loc>
+      <image:title>Yoga class at SABDA</image:title>
+      <image:caption>vinyasa yoga class inside SABDA 360 projection room Barcelona Eixample</image:caption>
+      <image:geo_location>Barcelona, Spain</image:geo_location>
+      <image:license>https://sabdastudio.com/legal-notice.html</image:license>
+    </image:image>
+    <image:image>
+      <image:loc>https://raw.githubusercontent.com/marv0611/sabdawebsite/main/pilates_new.jpg</image:loc>
+      <image:title>Pilates class at SABDA</image:title>
+      <image:caption>mat pilates class Barcelona Eixample inside immersive studio</image:caption>
+      <image:geo_location>Barcelona, Spain</image:geo_location>
+      <image:license>https://sabdastudio.com/legal-notice.html</image:license>
+    </image:image>
+    <image:image>
+      <image:loc>https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_015.jpg</image:loc>
+      <image:title>Breathwork at SABDA</image:title>
+      <image:caption>breathwork session inside SABDA Dolby Atmos wellness studio Barcelona</image:caption>
+      <image:geo_location>Barcelona, Spain</image:geo_location>
+      <image:license>https://sabdastudio.com/legal-notice.html</image:license>
+    </image:image>
+    <image:image>
+      <image:loc>https://raw.githubusercontent.com/marv0611/sabdawebsite/main/hero-people.jpg</image:loc>
+      <image:title>Ice bath at SABDA</image:title>
+      <image:caption>ice bath cold plunge on private patio at SABDA Barcelona Eixample</image:caption>
+      <image:geo_location>Barcelona, Spain</image:geo_location>
+      <image:license>https://sabdastudio.com/legal-notice.html</image:license>
+    </image:image>
+    <image:image>
+      <image:loc>https://raw.githubusercontent.com/marv0611/sabdawebsite/main/sound_healing.jpg</image:loc>
+      <image:title>Sound healing at SABDA</image:title>
+      <image:caption>crystal bowls sound bath with Dolby Atmos spatial audio Barcelona</image:caption>
+      <image:geo_location>Barcelona, Spain</image:geo_location>
+      <image:license>https://sabdastudio.com/legal-notice.html</image:license>
+    </image:image>
+    <image:image>
+      <image:loc>https://raw.githubusercontent.com/marv0611/sabdawebsite/main/breathwork_new.jpg</image:loc>
+      <image:title>Breathwork class at SABDA</image:title>
+      <image:caption>guided breathwork class inside 360 projection room Barcelona Eixample</image:caption>
+      <image:geo_location>Barcelona, Spain</image:geo_location>
+      <image:license>https://sabdastudio.com/legal-notice.html</image:license>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://sabdastudio.com/classes/yoga/</loc>
+    <image:image>
+      <image:loc>https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_016.jpg</image:loc>
+      <image:title>Vinyasa yoga Barcelona</image:title>
+      <image:caption>vinyasa yoga class Barcelona immersive studio with 360 projections</image:caption>
+      <image:geo_location>Barcelona, Spain</image:geo_location>
+      <image:license>https://sabdastudio.com/legal-notice.html</image:license>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://sabdastudio.com/classes/pilates/</loc>
+    <image:image>
+      <image:loc>https://raw.githubusercontent.com/marv0611/sabdawebsite/main/pilates_new.jpg</image:loc>
+      <image:title>Core pilates Barcelona Eixample</image:title>
+      <image:caption>core pilates class Barcelona Eixample with immersive projections</image:caption>
+      <image:geo_location>Barcelona, Spain</image:geo_location>
+      <image:license>https://sabdastudio.com/legal-notice.html</image:license>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://sabdastudio.com/classes/sound-healing/</loc>
+    <image:image>
+      <image:loc>https://raw.githubusercontent.com/marv0611/sabdawebsite/main/sound_healing.jpg</image:loc>
+      <image:title>Sound healing Barcelona</image:title>
+      <image:caption>crystal bowls sound bath Barcelona with Dolby Atmos spatial audio</image:caption>
+      <image:geo_location>Barcelona, Spain</image:geo_location>
+      <image:license>https://sabdastudio.com/legal-notice.html</image:license>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://sabdastudio.com/classes/breathwork/</loc>
+    <image:image>
+      <image:loc>https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_015.jpg</image:loc>
+      <image:title>Breathwork Barcelona Eixample</image:title>
+      <image:caption>alchemy breath breathwork class Barcelona Eixample</image:caption>
+      <image:geo_location>Barcelona, Spain</image:geo_location>
+      <image:license>https://sabdastudio.com/legal-notice.html</image:license>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://sabdastudio.com/classes/ice-bath/</loc>
+    <image:image>
+      <image:loc>https://raw.githubusercontent.com/marv0611/sabdawebsite/main/hero.jpg</image:loc>
+      <image:title>Ice bath Barcelona</image:title>
+      <image:caption>cold plunge ice bath on outdoor patio at SABDA Barcelona Eixample</image:caption>
+      <image:geo_location>Barcelona, Spain</image:geo_location>
+      <image:license>https://sabdastudio.com/legal-notice.html</image:license>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://sabdastudio.com/classes/ecstatic-dance/</loc>
+    <image:image>
+      <image:loc>https://raw.githubusercontent.com/marv0611/sabdawebsite/main/ecstatic_dance.jpg</image:loc>
+      <image:title>Ecstatic dance Barcelona</image:title>
+      <image:caption>ecstatic dance free movement class Barcelona 360 projection room</image:caption>
+      <image:geo_location>Barcelona, Spain</image:geo_location>
+      <image:license>https://sabdastudio.com/legal-notice.html</image:license>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://sabdastudio.com/hire/</loc>
+    <image:image>
+      <image:loc>https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Copy_of_Sabda2-167__1_.jpg</image:loc>
+      <image:title>SABDA venue hire Barcelona</image:title>
+      <image:caption>brand activation event venue Barcelona immersive room with Dolby Atmos</image:caption>
+      <image:geo_location>Barcelona, Spain</image:geo_location>
+      <image:license>https://sabdastudio.com/legal-notice.html</image:license>
+    </image:image>
+    <image:image>
+      <image:loc>https://raw.githubusercontent.com/marv0611/sabdawebsite/main/astral_workshop.jpg</image:loc>
+      <image:title>Private event venue Barcelona</image:title>
+      <image:caption>private event at SABDA Barcelona with 360 projections and spatial audio</image:caption>
+      <image:geo_location>Barcelona, Spain</image:geo_location>
+      <image:license>https://sabdastudio.com/legal-notice.html</image:license>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://sabdastudio.com/events/</loc>
+    <image:image>
+      <image:loc>https://raw.githubusercontent.com/marv0611/sabdawebsite/main/events_hero_hq.jpg</image:loc>
+      <image:title>Events at SABDA Barcelona</image:title>
+      <image:caption>sound bath listening session at SABDA Barcelona Eixample immersive room</image:caption>
+      <image:geo_location>Barcelona, Spain</image:geo_location>
+      <image:license>https://sabdastudio.com/legal-notice.html</image:license>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://sabdastudio.com/pricing/</loc>
+    <image:image>
+      <image:loc>https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_010.jpg</image:loc>
+      <image:title>SABDA pricing Barcelona</image:title>
+      <image:caption>yoga and pilates immersive studio Barcelona with moon projection</image:caption>
+      <image:geo_location>Barcelona, Spain</image:geo_location>
+      <image:license>https://sabdastudio.com/legal-notice.html</image:license>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://sabdastudio.com/contact/</loc>
+    <image:image>
+      <image:loc>https://raw.githubusercontent.com/marv0611/sabdawebsite/main/contact-hero.jpg</image:loc>
+      <image:title>SABDA Studio contact Barcelona</image:title>
+      <image:caption>SABDA Studio reception and entrance Muntaner 83B Barcelona Eixample</image:caption>
+      <image:geo_location>Barcelona, Spain</image:geo_location>
+      <image:license>https://sabdastudio.com/legal-notice.html</image:license>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://sabdastudio.com/team-building/</loc>
+    <image:image>
+      <image:loc>https://raw.githubusercontent.com/marv0611/sabdawebsite/main/FOCagenda_2026_eu_clarissamenna-74.jpg</image:loc>
+      <image:title>Corporate team building Barcelona</image:title>
+      <image:caption>corporate team building wellness experience Barcelona immersive studio</image:caption>
+      <image:geo_location>Barcelona, Spain</image:geo_location>
+      <image:license>https://sabdastudio.com/legal-notice.html</image:license>
+    </image:image>
+  </url>
+</urlset>

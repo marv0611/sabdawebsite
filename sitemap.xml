@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://sabdastudio.com/</loc><lastmod>2026-04-11</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://sabdastudio.com/reviews/</loc><lastmod>2026-04-11</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sabdastudio.com/classes/</loc><lastmod>2026-04-11</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://sabdastudio.com/pricing/</loc><lastmod>2026-04-11</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
   <url><loc>https://sabdastudio.com/schedule.html</loc><lastmod>2026-04-11</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
@@ -24,12 +25,12 @@
   <url><loc>https://sabdastudio.com/es/legal/terminos.html</loc><lastmod>2026-04-11</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
   <url><loc>https://sabdastudio.com/es/legal/cookies.html</loc><lastmod>2026-04-11</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
   <url><loc>https://sabdastudio.com/es/legal/aviso-legal.html</loc><lastmod>2026-04-11</lastmod><changefreq>monthly</changefreq><priority>0.4</priority></url>
-  <url><loc>https://sabdastudio.com/es/clases/yoga/</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://sabdastudio.com/es/clases/pilates/</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://sabdastudio.com/es/clases/sound-healing/</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://sabdastudio.com/es/clases/breathwork/</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://sabdastudio.com/es/clases/ecstatic-dance/</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://sabdastudio.com/es/clases/ice-bath/</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sabdastudio.com/es/clases/yoga/</loc><lastmod>2026-04-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sabdastudio.com/es/clases/pilates/</loc><lastmod>2026-04-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sabdastudio.com/es/clases/sound-healing/</loc><lastmod>2026-04-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sabdastudio.com/es/clases/breathwork/</loc><lastmod>2026-04-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sabdastudio.com/es/clases/ecstatic-dance/</loc><lastmod>2026-04-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sabdastudio.com/es/clases/ice-bath/</loc><lastmod>2026-04-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sabdastudio.com/contact/</loc><lastmod>2026-04-11</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://sabdastudio.com/faq/</loc><lastmod>2026-04-11</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://sabdastudio.com/blog/</loc><lastmod>2026-04-11</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
@@ -57,10 +58,10 @@
   <url><loc>https://sabdastudio.com/privacy-policy.html</loc><lastmod>2026-04-11</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://sabdastudio.com/terms.html</loc><lastmod>2026-04-11</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://sabdastudio.com/cookies.html</loc><lastmod>2026-04-11</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
-  <url><loc>https://sabdastudio.com/es/schedule.html</loc><lastmod>2026-04-09</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://sabdastudio.com/es/eventos/</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://sabdastudio.com/es/contacto/</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://sabdastudio.com/es/faq/</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://sabdastudio.com/es/team-building/</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://sabdastudio.com/es/experiencia-inmersiva/</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sabdastudio.com/es/schedule.html</loc><lastmod>2026-04-11</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://sabdastudio.com/es/eventos/</loc><lastmod>2026-04-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sabdastudio.com/es/contacto/</loc><lastmod>2026-04-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sabdastudio.com/es/faq/</loc><lastmod>2026-04-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://sabdastudio.com/es/team-building/</loc><lastmod>2026-04-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sabdastudio.com/es/experiencia-inmersiva/</loc><lastmod>2026-04-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
 </urlset>
