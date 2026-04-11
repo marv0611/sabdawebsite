@@ -1233,8 +1233,10 @@ function showNoMembership(){stepChange();
     +'<div class="bk-user">Reservando como <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>'
     +'<p style="font-size:.85rem;color:var(--white60);text-align:center;margin-bottom:18px;line-height:1.5">Elige cómo quieres reservar esta clase</p>'
     // Intro offers first
+    +'<div class="bk-pkg-grp" style="color:var(--salmon)">Reserva esta clase</div>'
+    +row('feat','single',22,445630,'Drop-in','Una clase, sin compromiso','€22')
     +'<div class="bk-pkg-grp" style="color:var(--cyan)">Nueva en SABDA?</div>'
-    +row('feat','pack',50,443935,'Pack Intro de 3','3 clases, válido 30 días','50€')
+    +row('','pack',50,443935,'Pack Intro de 3','3 clases, válido 30 días','50€')
     +row('','pack',18,443934,'Clase de prueba','Solo primera vez','18€')
     // Membresías
     +'<div class="bk-pkg-grp" style="color:var(--salmon)">Membresías</div>'

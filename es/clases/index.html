@@ -187,6 +187,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 .ci{min-width:0}
 .ci-t{font-family:'PT Serif',serif;font-size:1.1rem;font-weight:700;margin-bottom:4px;letter-spacing:-.01em}
 .ci-tc{font-size:.82rem;color:var(--white60)}
+.ci-sp{display:inline-block;margin-top:6px;padding:3px 9px;border-radius:10px;font-size:.68rem;letter-spacing:.06em;font-weight:600;text-transform:uppercase}
+.ci-sp.lo{background:rgba(248,166,163,.14);color:var(--salmon)}
+.ci-sp.fu{background:rgba(255,255,255,.08);color:var(--white60)}
 .ci-more{font-size:.72rem;color:var(--cyan);cursor:pointer;margin-top:6px;display:inline-flex;align-items:center;gap:4px;opacity:.7;transition:opacity .2s}
 .ci-more:hover{opacity:1}
 .ci-more svg{width:10px;height:10px;transition:transform .25s}
@@ -844,6 +847,7 @@ function renderSched(){
       +'<div class="ct"><div class="ct-h">'+h+':'+m+'</div><div class="ct-d">'+e.duration+' min</div></div>'
       +'<div class="ci"><div class="ci-t">'+esc(title)+(lang?'<span class="ci-lg">'+lang+'</span>':'')+'</div>'
       +'<div class="ci-tc">'+esc(fn)+'</div>'
+      +(full?'<div class="ci-sp fu">Completo</div>':(sp!=null&&sp<=5?'<div class="ci-sp lo">'+sp+' '+(sp===1?'plaza libre':'plazas libres')+'</div>':''))
       +(e.desc?'<div class="ci-more" onclick="toggleInfo(this)">Más info <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="ci-desc"><p>'+esc(e.desc).replace(/\n/g,'<br>').replace(/---ES---/g,'</p><p class="ci-lang-sep"><span class="ci-lg">ES</span></p><p>').replace(/---CA---/g,'</p><p class="ci-lang-sep"><span class="ci-lg">CA</span></p><p>')+'</p></div>':'')
       +'</div>'
       +'<div class="ca">'
@@ -1427,9 +1431,6 @@ function showNoMembership(){stepChange();
     +'<div class="bk-pkg" onclick="selectPack(\'pack\',149,443939,\'10 Pack\',\'10 clases \u00B7 14,90€/clase \u00B7 3 meses\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">10 Pack</div><div style="font-size:.75rem;color:var(--white60)">10 clases \u00B7 14,90€/clase</div></div>'
     +'<div style="font-family:PT Serif,serif;font-weight:700">\u20AC149</div></div>'
-    +'<div class="bk-pkg" onclick="selectPack(\'single\',22,445630,\'Drop-in\',\'1 clase \u00B7 Sin compromiso\')" style="display:flex;justify-content:space-between;align-items:center">'
-    +'<div><div style="font-weight:600">Drop-in</div><div style="font-size:.75rem;color:var(--white60)">One class, sin compromiso</div></div>'
-    +'<div style="font-family:PT Serif,serif;font-weight:700">\u20AC22</div></div>'
     +'<div class="bk-link" onclick="closeMo()">\u2190 Volver al horario</div>'
     +'</div>';
 }
