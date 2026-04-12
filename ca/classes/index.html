@@ -1321,19 +1321,19 @@ window.doGuestPackPay=function(){
 
 // ── CUSTOMER FIELDS ──
 function customerFieldsHTML(){
-  return '<div class="bk-label" style="margin-top:16px">N\u00FAmero de tel\u00E9fono</div>'
+  return '<div class="bk-label" style="margin-top:16px">N\u00FAmero de tel\u00E8fon</div>'
     +'<div style="display:flex;gap:8px">'
-    +'<input class="bk-input" id="bk-cc" type="text" aria-label="Prefijo de país" value="+34" style="width:68px;flex-shrink:0;text-align:center;font-weight:600" />'
+    +'<input class="bk-input" id="bk-cc" type="text" aria-label="Prefix de país" value="+34" style="width:68px;flex-shrink:0;text-align:center;font-weight:600" />'
     +'<input class="bk-input" id="bk-phone" type="tel" placeholder="612 345 678" style="flex:1"  aria-label="Número de telèfon"/>'
     +'</div>'
     +'<div class="bk-label">Idioma preferit</div>'
-    +'<select class="bk-input" id="bk-lang" aria-label="Idioma preferido" style="appearance:auto;cursor:pointer">'
+    +'<select class="bk-input" id="bk-lang" aria-label="Idioma preferit" style="appearance:auto;cursor:pointer">'
     +'<option value="">Seleccionar</option>'
     +'<option value="English">English</option>'
     +'<option value="Castellano">Castellano</option>'
     +'</select>'
-    +'<div class="bk-label">Ciudad de residencia</div>'
-    +'<input class="bk-input" id="bk-city" type="text" aria-label="Ciudad" placeholder="Barcelona" />';
+    +'<div class="bk-label">Ciutat de resid\u00E8ncia</div>'
+    +'<input class="bk-input" id="bk-city" type="text" aria-label="Ciutat" placeholder="Barcelona" />';
 }
 function getCustomerFields(){
   var cc=(document.getElementById('bk-cc')||{}).value||'+34';

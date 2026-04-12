@@ -1066,20 +1066,20 @@ function customerFieldsHTML(){
   return '<div class="bk-fld">'
     +'<div class="bk-label">Telèfon</div>'
     +'<div class="bk-phone-row">'
-    +'<input class="bk-input" id="bk-cc" type="text" inputmode="tel" value="+34" aria-label="Prefijo de país" style="width:72px;flex-shrink:0;text-align:center;font-weight:600" />'
+    +'<input class="bk-input" id="bk-cc" type="text" inputmode="tel" value="+34" aria-label="Prefix de país" style="width:72px;flex-shrink:0;text-align:center;font-weight:600" />'
     +'<input class="bk-input" id="bk-phone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="612 345 678" aria-label="Telèfon" style="flex:1;min-width:0" />'
     +'</div></div>'
     +'<div class="bk-fld">'
-    +'<div class="bk-label">Idioma preferido</div>'
-    +'<select class="bk-input" id="bk-lang" aria-label="Idioma preferido">'
+    +'<div class="bk-label">Idioma preferit</div>'
+    +'<select class="bk-input" id="bk-lang" aria-label="Idioma preferit">'
     +'<option value="">Selecciona un idioma</option>'
     +'<option value="English">English</option>'
     +'<option value="Castellano">Castellano</option>'
     +'<option value="Catala">Catal&agrave;</option>'
     +'</select></div>'
     +'<div class="bk-fld">'
-    +'<div class="bk-label">Ciudad de residencia</div>'
-    +'<input class="bk-input" id="bk-city" type="text" autocomplete="address-level2" placeholder="Barcelona" aria-label="Ciudad de residencia" />'
+    +'<div class="bk-label">Ciutat de resid\u00E8ncia</div>'
+    +'<input class="bk-input" id="bk-city" type="text" autocomplete="address-level2" placeholder="Barcelona" aria-label="Ciutat de residència" />'
     +'</div>';
 }
 function getCustomerFields(){
@@ -1094,7 +1094,7 @@ function getCustomerFields(){
 function validateCustomerFields(){
   var ok=true;
   var fields=[
-    {id:'bk-cc',test:function(v){return v&&v.startsWith('+')&&v.length>=2;},msg:'Prefijo de país obligatorio'},
+    {id:'bk-cc',test:function(v){return v&&v.startsWith('+')&&v.length>=2;},msg:'Prefix de país obligatori'},
     {id:'bk-phone',test:function(v){return v.replace(/\s/g,'').length>=6;},msg:'Telèfon obligatorio'},
     {id:'bk-lang',test:function(v){return!!v;},msg:'Por favor, selecciona un idioma'},
     {id:'bk-city',test:function(v){return v.trim().length>0;},msg:'La ciudad es obligatoria'}
