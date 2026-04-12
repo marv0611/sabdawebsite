@@ -279,14 +279,6 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 .faq-a p{font-size:.9rem;color:var(--white60);line-height:1.7}
 @media(max-width:768px){.faq{padding:72px 24px}}
 
-/* intro pricing — demote Trial card (non-.pri) to match hero's secondary card */
-.b-cards-2 .b-card:not(.pri){padding:28px 34px;border-color:rgba(240,239,233,.08);opacity:.88;max-width:420px;margin:0 auto;width:100%}
-.b-cards-2 .b-card:not(.pri) .b-price{font-size:2.2rem}
-.b-cards-2 .b-card:not(.pri) .b-lbl{opacity:.7}
-.b-cards-2 .b-card:not(.pri) .b-desc{font-size:.85rem;margin-bottom:20px}
-.b-cards-2 .b-card:not(.pri) .b-btn-g{padding:12px 20px;font-size:.82rem}
-.b-cards-2 .b-card:not(.pri) .b-features{font-size:.82rem;opacity:.85}
-.b-cards-2 .b-card.pri{max-width:520px;margin:0 auto;width:100%}
 
 </style>
 <!-- Google tag (gtag.js) -->
@@ -454,36 +446,28 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     <span class="sl rv">Get started</span>
     <h2 class="sh2 rv" style="transition-delay:.06s">Find the right rhythm<br><em>for your practice.</em></h2>
     <p class="booking-sub rv" style="transition-delay:.12s">First time? Start with an intro offer. Ready to commit? Go unlimited.</p>
-    <div class="b-cards b-cards-2">
-
-      <div class="b-card pri rv" style="transition-delay:.2s">
-        <div class="b-badge">Millor inici</div>
-        <span class="b-lbl">Intro 3-Pack</span>
-        <div class="b-price">€50</div>
-        <div class="b-price-sub">3 classes · Vàlid 30 dies</div>
-        <p class="b-desc">Try any 3 classes within 30 days. Yoga, sound healing, breathwork, pilates. All in 360° immersion.</p>
-        <a href="/classes/?pack=443935" class="b-btn-p">Comença</a>
-        <ul class="b-features">
-          <li>3 classes, any type</li>
-          <li>Vàlid 30 dies</li>
-          <li>No commitment</li>
-          <li>Mat and towel included</li>
-        </ul>
-      </div>
-
-      <div class="b-card rv" style="transition-delay:.15s">
-        <span class="b-lbl">Classe de prova</span>
-        <div class="b-price">€18</div>
-        <div class="b-price-sub">Individual class · No commitment</div>
-        <p class="b-desc">Just want to see the room? Drop in for one session and decide from there.</p>
-        <a href="/classes/?pack=443934" class="b-btn-g">Prova una classe</a>
-        <ul class="b-features">
-          <li>1 class, any type</li>
-          <li>No commitment</li>
-          <li>Mat and towel included</li>
-        </ul>
-      </div>
-
+    <div class="hero-offers rv" style="transition-delay:.2s;margin-top:48px">
+      <a href="/classes/?pack=443935" class="h-offer featured">
+        <span class="h-offer-badge">Millor inici</span>
+        <div class="h-offer-row">
+          <div>
+            <span class="h-offer-tag">Pack d'introducció</span>
+            <div class="h-offer-name">3 classes</div>
+          </div>
+          <div class="h-offer-price">€50</div>
+        </div>
+        <div class="h-offer-sub">Qualsevol classe · Sense compromís</div>
+        <span class="h-offer-btn">Comença <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+      </a>
+      <a href="/classes/?pack=443934" class="h-offer">
+        <div class="h-offer-row-sm">
+          <div>
+            <span class="h-offer-tag">Individual</span>
+            <div class="h-offer-name">Classe de prova · €18</div>
+          </div>
+          <span class="h-offer-btn">Prova <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span>
+        </div>
+      </a>
     </div>
   </div>
 </section>
