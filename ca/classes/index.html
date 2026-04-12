@@ -5,6 +5,7 @@
 
 
 <meta charset="UTF-8">
+<meta name="facebook-domain-verification" content="6vs8q2dkkemv5umuqn9irqnpippo3u">
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -748,7 +749,7 @@ function _fbInitWithUser(email, firstName, lastName, phone){
     if(Object.keys(userData).length>0){
       fbq('init','567636669734630',userData);
     }
-  }).catch(function(){});
+  }).catch(function(e){console.error("[catch]",e);});
 }
 
 
@@ -910,7 +911,7 @@ function renderSched(){
 }
 
 // ── Health check ──
-fetch(PROXY+'/sabda-api/health',{method:'GET'}).then(function(r){proxyAlive=r.ok;}).catch(function(){proxyAlive=false;});
+fetch(PROXY+'/sabda-api/health',{method:'GET'}).then(function(r){proxyAlive=r.ok;}).catch(function(e){console.error("[catch]",e);proxyAlive=false;});
 
 // ── Modal helpers ──
 function stepChange(){
@@ -1084,7 +1085,7 @@ window.doLogin=function(){if(isProcessing)return;
 
     if(d.hasUsableMembership&&d.memberships.length>0){showConfirmStep(d.memberships[0]);}
     else{showNoMembership();}
-  }).catch(function(){
+  }).catch(function(e){console.error("[catch]",e);
     err.textContent='Error de connexió. Torna-ho a intentar.';err.classList.add('show');
     isProcessing=false;btn.textContent='Inicia sessió i reserva';btn.disabled=false;
     showFallback();
@@ -1137,7 +1138,7 @@ window.doMfaVerify=function(){if(isProcessing)return;
 
     if(d.hasUsableMembership&&d.memberships.length>0){showConfirmStep(d.memberships[0]);}
     else{showNoMembership();}
-  }).catch(function(){
+  }).catch(function(e){console.error("[catch]",e);
     err.textContent='Error de connexió. Torna-ho a intentar.';err.classList.add('show');
     isProcessing=false;btn.textContent='Verificar i continuar';btn.disabled=false;
     showFallback();
@@ -1311,7 +1312,7 @@ window.doGuestPackPay=function(){
         isProcessing=false;if(btn){btn.textContent='Pagar \u20AC'+((typeof discountedPrice!=='undefined'&&discountedPrice!==null)?discountedPrice:pendingPack.price);btn.disabled=false;}
         showFallback();
       }
-    }).catch(function(){
+    }).catch(function(e){console.error("[catch]",e);
       err.textContent='Error de connexió. Torna-ho a intentar.';err.classList.add('show');
       isProcessing=false;if(btn){btn.textContent='Pagar \u20AC'+((typeof discountedPrice!=='undefined'&&discountedPrice!==null)?discountedPrice:pendingPack.price);btn.disabled=false;}
     });
@@ -1424,7 +1425,7 @@ window.doBookWithMembership=function(){if(isProcessing)return;
       isProcessing=false;
       var b=document.getElementById('bk-confirm-btn');if(b){b.textContent='Confirmar reserva';b.disabled=false;}
     }
-  }).catch(function(){
+  }).catch(function(e){console.error("[catch]",e);
     var e=document.getElementById('bk-err');if(e)e.textContent='Error de connexió. Torna-ho a intentar.';
     showFallback();
     isProcessing=false;var b=document.getElementById('bk-confirm-btn');if(b){b.textContent='Confirmar reserva';b.disabled=false;}
@@ -1557,7 +1558,7 @@ window.applyPromo=function(type,origPrice,productId){
         }
       }catch(e){}
     }
-  }).catch(function(){
+  }).catch(function(e){console.error("[catch]",e);
     btn.textContent='Aplicar';btn.disabled=false;
     errEl.textContent='No s\'ha pogut validar el codi. Torna-ho a intentar.';errEl.style.display='block';
   });
@@ -1728,7 +1729,7 @@ window.doPayAndBook=function(type,price,productId){if(isProcessing)return;
     .then(function(r){
       if(r.data.success){showSuccess();}
       else{err.textContent=r.data.error||'Error en reservar.';showFallback();isProcessing=false;btn.textContent='Reservar classe gratuïta';btn.disabled=false;}
-    }).catch(function(){err.textContent='Error de connexió.';err.classList.add('show');isProcessing=false;btn.textContent='Reservar classe gratuïta';btn.disabled=false;showFallback();});
+    }).catch(function(e){console.error("[catch]",e);err.textContent='Error de connexió.';err.classList.add('show');isProcessing=false;btn.textContent='Reservar classe gratuïta';btn.disabled=false;showFallback();});
     return;
   }
 
@@ -1770,7 +1771,7 @@ window.doPayAndBook=function(type,price,productId){if(isProcessing)return;
         isProcessing=false;btn.textContent='Pagar i reservar';btn.disabled=false;
       }
     });
-  }).catch(function(){
+  }).catch(function(e){console.error("[catch]",e);
     err.textContent='Error de connexió. Torna-ho a intentar.';err.classList.add('show');
     isProcessing=false;btn.textContent='Pagar i reservar';btn.disabled=false;showFallback();
   });
@@ -1957,7 +1958,7 @@ window.sabdaFirstTimeOnlyCheck = function(){
         if(errEl && errEl.textContent.indexOf('new students only') >= 0) errEl.textContent = '';
         if(btn){ btn.disabled = false; btn.style.opacity = ''; }
       }
-    }).catch(function(){});
+    }).catch(function(e){console.error("[catch]",e);});
   }catch(e){}
 };
 document.addEventListener('blur', function(e){

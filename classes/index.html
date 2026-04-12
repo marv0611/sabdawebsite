@@ -5,6 +5,7 @@
 
 
 <meta charset="UTF-8">
+<meta name="facebook-domain-verification" content="6vs8q2dkkemv5umuqn9irqnpippo3u">
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -747,7 +748,7 @@ function _fbInitWithUser(email, firstName, lastName, phone){
     if(Object.keys(userData).length>0){
       fbq('init','567636669734630',userData);
     }
-  }).catch(function(){});
+  }).catch(function(e){console.error("[catch]",e);});
 }
 
 
@@ -909,7 +910,7 @@ function renderSched(){
 }
 
 // ── Health check ──
-fetch(PROXY+'/sabda-api/health',{method:'GET'}).then(function(r){proxyAlive=r.ok;}).catch(function(){proxyAlive=false;});
+fetch(PROXY+'/sabda-api/health',{method:'GET'}).then(function(r){proxyAlive=r.ok;}).catch(function(e){console.error("[catch]",e);proxyAlive=false;});
 
 // ── Modal helpers ──
 function stepChange(){
@@ -1439,7 +1440,7 @@ window.doBookWithMembership=function(){if(isProcessing)return;
       isProcessing=false;
       var b=document.getElementById('bk-confirm-btn');if(b){b.textContent='Confirm Booking';b.disabled=false;}
     }
-  }).catch(function(){
+  }).catch(function(e){console.error("[catch]",e);
     var e=document.getElementById('bk-err');if(e)e.textContent='Connection error. Please try again.';
     showFallback();
     isProcessing=false;var b=document.getElementById('bk-confirm-btn');if(b){b.textContent='Confirm Booking';b.disabled=false;}
@@ -1574,7 +1575,7 @@ window.applyPromo=function(type,origPrice,productId){
         }
       }catch(e){}
     }
-  }).catch(function(){
+  }).catch(function(e){console.error("[catch]",e);
     btn.textContent='Apply';btn.disabled=false;
     errEl.textContent='Could not validate code. Try again.';errEl.style.display='block';
   });
@@ -1974,7 +1975,7 @@ window.sabdaFirstTimeOnlyCheck = function(){
         if(errEl && errEl.textContent.indexOf('new students only') >= 0) errEl.textContent = '';
         if(btn){ btn.disabled = false; btn.style.opacity = ''; }
       }
-    }).catch(function(){});
+    }).catch(function(e){console.error("[catch]",e);});
   }catch(e){}
 };
 document.addEventListener('blur', function(e){

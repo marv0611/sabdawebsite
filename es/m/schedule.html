@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="facebook-domain-verification" content="6vs8q2dkkemv5umuqn9irqnpippo3u">
 <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
@@ -477,7 +478,7 @@ function _fbInitWithUser(email, firstName, lastName, phone){
     if(Object.keys(userData).length>0){
       fbq('init','567636669734630',userData);
     }
-  }).catch(function(){});
+  }).catch(function(e){console.error("[catch]",e);});
 }
 
 /*SABDA-ADV-MATCH-v1*/
@@ -531,7 +532,7 @@ var sessionPassword=genPassword();
 let proxyAlive=true;
 
 // Health check — if Worker is down, fall back to Momence for all bookings
-fetch(PROXY+'/sabda-api/health',{method:'GET'}).then(function(r){proxyAlive=r.ok;}).catch(function(){proxyAlive=false;});
+fetch(PROXY+'/sabda-api/health',{method:'GET'}).then(function(r){proxyAlive=r.ok;}).catch(function(e){console.error("[catch]",e);proxyAlive=false;});
 
 // Fix #5: scroll modal to top on every step change
 function stepChange(){
@@ -812,7 +813,7 @@ function doLogin(){if(isProcessing)return;
     } else {
       showNoMembership();
     }
-  }).catch(function(){
+  }).catch(function(e){console.error("[catch]",e);
     err.textContent='Error de conexión. Inténtalo de nuevo.';err.classList.add('show');
     isProcessing=false;btn.textContent='Iniciar sesión y reservar';btn.disabled=false;
     showFallback();
@@ -879,7 +880,7 @@ function doMfaVerify(){if(isProcessing)return;
     } else {
       showNoMembership();
     }
-  }).catch(function(){
+  }).catch(function(e){console.error("[catch]",e);
     err.textContent='Error de conexión. Inténtalo de nuevo.';err.classList.add('show');
     isProcessing=false;btn.textContent='Verificar y continuar';btn.disabled=false;
     showFallback();
@@ -1037,7 +1038,7 @@ window.doGuestPackPay=function(){
     .then(function(r){
       if(r.data.success){showSuccess();}
       else{err.textContent=r.data.error||'No se pudo reservar.';isProcessing=false;if(btn){btn.textContent='Reservar gratis';btn.disabled=false;}showFallback();}
-    }).catch(function(){err.textContent='Error de conexión.';err.classList.add('show');isProcessing=false;if(btn){btn.textContent='Reservar gratis';btn.disabled=false;}});
+    }).catch(function(e){console.error("[catch]",e);err.textContent='Error de conexión.';err.classList.add('show');isProcessing=false;if(btn){btn.textContent='Reservar gratis';btn.disabled=false;}});
     return;
   }
   stripeInstance.createPaymentMethod({type:'card',card:cardElement,billing_details:{
@@ -1208,7 +1209,7 @@ function doBookWithMembership(){if(isProcessing)return;
       isProcessing=false;
       var b=document.getElementById('bk-confirm-btn');if(b){b.textContent='Confirmar reserva';b.disabled=false;}
     }
-  }).catch(function(){
+  }).catch(function(e){console.error("[catch]",e);
     var e=document.getElementById('bk-err');if(e)e.textContent='Error de conexión. Inténtalo de nuevo.';
     showFallback();
     isProcessing=false;var b=document.getElementById('bk-confirm-btn');if(b){b.textContent='Confirmar reserva';b.disabled=false;}
@@ -1287,7 +1288,7 @@ function applyPromo(type,origPrice,productId){
     document.getElementById('bk-promo-toggle').style.display='none';
     // Update Apple/Google Pay amount if active
     if(activePayReq){try{activePayReq.update({total:{label:'SABDA Studio'+(activePayName?' · '+activePayName:''),amount:Math.round(discountedPrice*100)}});}catch(e){}}
-  }).catch(function(){
+  }).catch(function(e){console.error("[catch]",e);
     btn.textContent='Aplicar';btn.disabled=false;
     errEl.textContent='No se ha podido validar el código. Inténtalo de nuevo.';errEl.style.display='block';
   });
@@ -1629,7 +1630,7 @@ function doPayAndBook(type,price,productId){if(isProcessing)return;
     .then(function(r){
       if(r.data.success){showSuccess();}
       else{showError(r.data.error||'No se ha podido completar la reserva.');resetBtn();}
-    }).catch(function(){showError('Error de conexión.');resetBtn();});
+    }).catch(function(e){console.error("[catch]",e);showError('Error de conexión.');resetBtn();});
     return;
   }
 
@@ -1880,7 +1881,7 @@ window.sabdaFirstTimeOnlyCheck = function(){
         if(errEl && errEl.textContent.indexOf('new students only') >= 0) errEl.textContent = '';
         if(btn){ btn.disabled = false; btn.style.opacity = ''; }
       }
-    }).catch(function(){});
+    }).catch(function(e){console.error("[catch]",e);});
   }catch(e){}
 };
 document.addEventListener('blur', function(e){
