@@ -166,4 +166,4 @@ After fixing the Worker source:
 wrangler deploy cloudflare-worker-checkout-proxy.js
 ```
 
-The Cloudflare API token in project memory (`cfut_qceLUS3lhp88g4ioHNN04xCdxfiIvRXlbVFmxZXF13c7107e`) was flagged as exposed and needs regeneration before any CLI deployment.
+The Cloudflare API token in project memory (`<CLOUDFLARE_TOKEN_REDACTED_ROTATE>`) was flagged as exposed and needs regeneration before any CLI deployment.

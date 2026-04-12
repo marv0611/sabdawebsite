@@ -1507,7 +1507,7 @@ Even with this, React Hook Form's `mode: "all"` validation may still show the fo
 ### Wrangler Deployment — How To
 
 The Cloudflare API token in project memory works:
-- Token: `cfut_qceLUS3lhp88g4ioHNN04xCdxfiIvRXlbVFmxZXF13c7107e`
+- Token: `<CLOUDFLARE_TOKEN_REDACTED_ROTATE>`
 - Account ID: `ac63756828d402343fc988ec9f161f56`
 - Email associated: `marvyn@sabdastudio.com`
 
