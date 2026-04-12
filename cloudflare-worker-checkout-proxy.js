@@ -1396,6 +1396,30 @@ Return JSON: {"category":"...","summary":"one sentence summary of what they want
   return JSON.parse(clean);
 }
 
+
+// ── Topic-based recipient routing ──
+// Routes contact form submissions to the right inbox based on user-selected topic.
+// Maps the form's topic values (classes/events/corporate/press/partnership/general)
+// to the appropriate email aliases on sabdastudio.com. 'connect@' is silently CC'd
+// on all routes EXCEPT where it's already primary, so nothing falls through the
+// cracks if a primary recipient is OOO.
+function resolveRecipients(topic) {
+  const routing = {
+    'classes':     ['manager@sabdastudio.com'],
+    'events':      ['connect@sabdastudio.com'],
+    'corporate':   ['connect@sabdastudio.com'],
+    'partnership': ['connect@sabdastudio.com'],
+    'press':       ['marketing@sabdastudio.com'],
+    'general':     ['manager@sabdastudio.com', 'info@sabdastudio.com'],
+  };
+  const recipients = routing[topic] || routing['general'];
+  // Silent-CC connect@ on all non-connect routes so Katrina has sight of everything
+  if (!recipients.includes('connect@sabdastudio.com')) {
+    recipients.push('connect@sabdastudio.com');
+  }
+  return recipients;
+}
+
 async function sendEmailViaResend(apiKey, data) {
   const { name, email, phone, topic, message, classification } = data;
 
@@ -1436,7 +1460,7 @@ ${phone ? `<tr><td style="color:#888;vertical-align:top;padding:4px 0">Phone</td
     },
     body: JSON.stringify({
       from: 'SABDA Website <noreply@sabdastudio.com>',
-      to: ['connect@sabdastudio.com', 'marvyn@sabdastudio.com'],
+      to: resolveRecipients(topic),
       reply_to: email,
       subject: `New Lead: ${categoryLabels[classification.category] || 'Inquiry'} from ${name}`,
       html: emailBody,
