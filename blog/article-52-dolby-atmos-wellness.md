@@ -2,6 +2,8 @@
 
 **Last updated: March 2026**
 
+**noindex: true**
+
 **Meta description:** What happens when you do sound healing in cinema-grade Dolby Atmos? The science of spatial audio and why the room matters more than the instructor. (151 chars)
 
 **Slug:** `/blog/dolby-atmos-wellness/`

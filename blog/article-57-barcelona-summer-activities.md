@@ -6,8 +6,8 @@
 
 **Slug:** `/blog/barcelona-summer-activities/`
 
-**Primary keyword:** things to do in barcelona
-**Secondary keywords:** barcelona summer, activities barcelona summer, what to do barcelona july august
+**Primary keyword:** barcelona summer activities
+**Secondary keywords:** things to do in barcelona in summer, barcelona july, barcelona august, what to do barcelona summer, barcelona summer guide
 
 ---
 
@@ -16,6 +16,8 @@ Barcelona summers are glorious until they're not. When it hits 35°C and the bea
 ---
 
 ## Cool indoor experiences
+
+For year-round options, see [the full guide to things to do in Barcelona](/blog/things-to-do-in-barcelona/), this article focuses specifically on summer.
 
 **1. SABDA. Air-conditioned immersive wellness.** The 360° projection room is dark, cool, and the opposite of a hot beach. Yoga, sound healing, breathwork, or pilates inside an immersive visual world. [From €18/class](https://momence.com/m/443935). The perfect summer plan: cool room, Dolby Atmos audio, and 60 minutes where the heat doesn't exist.
 

@@ -2,7 +2,9 @@
 
 **Last updated: March 2026**
 
-**Meta description:** The best experience gifts in Barcelona: immersive wellness, food tours, sailing, spa days and more. SABDA gift cards from €50. (129 chars)
+**noindex: true**
+
+**Meta description:** The best experience gifts in Barcelona: immersive wellness at SABDA, sailing, cooking classes, spa, flamenco, and more. SABDA gift cards from €50 (€18/class).
 
 **Slug:** `/blog/gift-experiences-barcelona/`
 

@@ -2,6 +2,8 @@
 
 **Last updated: March 2026**
 
+**noindex: true**
+
 **Meta description:** Everything you need to know before your first class at SABDA: what to wear, when to arrive, and what it's actually like inside a 360° projection room. (155 chars)
 
 **Slug:** `/blog/first-time-sabda/`

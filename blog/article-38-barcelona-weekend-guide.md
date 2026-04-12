@@ -6,8 +6,8 @@
 
 **Slug:** `/blog/barcelona-weekend-guide/`
 
-**Primary keyword:** what to do in barcelona for 3 days
-**Secondary keywords:** barcelona weekend, 48 hours in barcelona, barcelona itinerary 2 days, what to do in barcelona on a sunday, weekend in barcelona
+**Primary keyword:** barcelona weekend
+**Secondary keywords:** barcelona weekend guide, 48 hours in barcelona, weekend in barcelona, barcelona itinerary 2 days, what to do in barcelona on a sunday
 
 ---
 
