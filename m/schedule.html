@@ -660,7 +660,7 @@ function showLoginStep(){stepChange();
 
 // ── STEP 1B: GUEST ──
 function showGuestStep(){console.log('[showGuestStep] start');try{stepChange();
-  setBack(null);
+  setBack(pendingPack?showNoMembership:null);
   if(!curSession){console.error('[showGuestStep] no curSession');curSession={title:'Book Class',time:'',teacher:'',duration:null};}
   var safeEsc=function(s){try{return esc(s||'');}catch(e){return String(s||'').replace(/[<>"&]/g,'');}};
   var safeSpots=function(){try{return getSpotsHtml();}catch(e){console.error('[showGuestStep] getSpotsHtml failed',e);return '';}};
@@ -691,7 +691,6 @@ function showGuestStep(){console.log('[showGuestStep] start');try{stepChange();
     +(curSession&&curSession.id&&pendingPack&&pendingPack.type!=='single'&&!curSession.isWaitlist?'<label style="display:flex;align-items:center;gap:8px;margin:12px 0 16px;cursor:pointer;font-size:.78rem;color:var(--white60)">'+'<input type="checkbox" id="bk-autoenroll" style="accent-color:var(--cyan);width:16px;height:16px;cursor:pointer;flex-shrink:0">'+'<span>Auto-enroll me in <strong style="color:var(--white)">'+esc(curSession.title)+'</strong></span>'+'</label>':'')
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">'+(pendingPack?'Pay \u20AC'+pendingPack.price:'Continue')+'</button>'
-    +'<div class="bk-link" onclick="pendingPack=null;showNoMembership()">← Change selection</div>'
     +'</div>';
   console.log('[showGuestStep] body populated');
   try{var fnEl=document.getElementById('bk-fn');if(fnEl)fnEl.focus();}catch(e){}

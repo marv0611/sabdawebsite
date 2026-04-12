@@ -666,7 +666,6 @@ function showGuestStep(){console.log('[showGuestStep] start');try{stepChange();
     +(curSession&&curSession.id&&pendingPack&&pendingPack.type!=='single'&&!curSession.isWaitlist?'<label style="display:flex;align-items:center;gap:8px;margin:12px 0 16px;cursor:pointer;font-size:.78rem;color:var(--white60)">'+'<input type="checkbox" id="bk-autoenroll" style="accent-color:var(--cyan);width:16px;height:16px;cursor:pointer;flex-shrink:0">'+'<span>Inscriu-me automàticament a <strong style="color:var(--white)">'+esc(curSession.title)+'</strong></span>'+'</label>':'')
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">'+(pendingPack?'Pagar \u20AC'+pendingPack.price:'Continuar')+'</button>'
-    +'<div class="bk-link" onclick="pendingPack=null;showNoMembership()">← Canvia selecció</div>'
     +'</div>';
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">Continuar</button>'

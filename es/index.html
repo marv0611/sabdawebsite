@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<link rel="preload" as="image" href="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/hero-landing.jpg" fetchpriority="high">
 <script>(function(){document.documentElement.style.visibility="hidden";try{var ua=navigator.userAgent||"";var isMobUA=/Mobi|Android|iPhone|iPad|iPod/i.test(ua);var smallScreen=(screen&&screen.width)?screen.width<=900:false;var touch=(navigator.maxTouchPoints||0)>1;var iPadOS=touch&&/Mac/i.test(ua)&&smallScreen;if(isMobUA||smallScreen||iPadOS){var p=window.location.pathname;var base=p.indexOf("/sabdawebsite/")===0?"/sabdawebsite":"";window.location.replace(base+"/es/m/index.html"+window.location.search);return;}}catch(e){}document.documentElement.style.visibility="";})()</script>
 
 
@@ -165,7 +166,7 @@ nav.on{background:rgba(14,18,53,.88);backdrop-filter:blur(22px);border-bottom-co
 
 /* ── HERO ── */
 .hero{position:relative;height:100vh;min-height:700px;overflow:hidden;display:flex;align-items:flex-end;z-index:2}
-.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:contrast(1.12) saturate(1.15) brightness(1.03);image-rendering:high-quality}
+.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:contrast(1.12) saturate(1.15) brightness(1.03);image-rendering:high-quality}
 .hero-grad{position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 70% 55%,rgba(2,243,197,.04) 0%,transparent 65%),radial-gradient(ellipse 50% 55% at 25% 40%,rgba(248,166,163,.035) 0%,transparent 60%),linear-gradient(to bottom,rgba(14,18,53,.12) 0%,rgba(14,18,53,.08) 30%,rgba(14,18,53,.35) 58%,rgba(14,18,53,.82) 76%,rgba(14,18,53,.97) 91%,var(--navy) 100%)}
 .hero-content{position:relative;z-index:2;padding:0 80px 90px;max-width:860px}
 .hero-label{display:flex;align-items:center;gap:22px;font-size:1.4rem;letter-spacing:.24em;text-transform:uppercase;font-weight:500;margin-bottom:30px;opacity:.8}
@@ -286,7 +287,7 @@ a.cls-item{display:block;color:inherit;text-decoration:none}
 .intro-txt p{font-size:1.05rem;line-height:1.75;color:var(--white60);margin-bottom:24px}
 .intro-txt p:last-child{margin-bottom:0}
 .intro-img{position:relative;border-radius:6px;overflow:hidden;aspect-ratio:4/5}
-.intro-img img{width:100%;height:100%;object-fit:cover;filter:brightness(.85) contrast(1.05) saturate(1.1)}
+.intro-img img{width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(.85) contrast(1.05) saturate(1.1)}
 
 /* ── BOOKING ── */
 .booking{padding:120px 80px 64px;border-bottom:1px solid rgba(240,239,233,.06)}
@@ -566,7 +567,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 
 <!-- HERO -->
 <section class="hero" role="main" id="hero">
-  <video autoplay muted loop aria-hidden="true" playsinline preload="auto" poster="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Sabda_20240118_009.jpg">
+  <video autoplay muted loop aria-hidden="true" playsinline preload="auto" fetchpriority="high" poster="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/hero-landing.jpg">
     <source src="https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/0312.mp4" type="video/mp4">
   </video>
   <div class="hero-grad"></div>
