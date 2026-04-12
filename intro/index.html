@@ -124,7 +124,7 @@ a.cls-item{display:block;color:inherit;text-decoration:none}
 .cls-item-tag{font-size:.56rem;letter-spacing:.18em;text-transform:uppercase;color:var(--white60);margin-top:5px}
 
 /* PRESS */
-.press{padding:100px 80px;border-top:1px solid rgba(240,239,233,.06);border-bottom:1px solid rgba(240,239,233,.06);position:relative;z-index:2}
+.press{padding:60px 80px;border-top:1px solid rgba(240,239,233,.06);border-bottom:1px solid rgba(240,239,233,.06);position:relative;z-index:2}
 .press-hdr{text-align:center;margin-bottom:64px}
 .press-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:48px;max-width:1100px;margin:0 auto}
 .press-card{text-align:center;position:relative;overflow:hidden}
@@ -150,7 +150,7 @@ a.cls-item{display:block;color:inherit;text-decoration:none}
 .rn-count{font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(240,239,233,.6)}
 
 /* HOW IT WORKS */
-.how-sect{padding:72px 80px;border-top:1px solid rgba(240,239,233,.06);position:relative;z-index:2}
+.how-sect{padding:56px 80px;border-top:1px solid rgba(240,239,233,.06);position:relative;z-index:2}
 .how-in{max-width:860px;margin:0 auto}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;margin-top:48px}
 .step-card{border:1px solid rgba(240,239,233,.08);border-radius:8px;padding:36px 28px;position:relative;transition:border-color .3s,background .3s}
@@ -203,7 +203,7 @@ a.cls-item{display:block;color:inherit;text-decoration:none}
 .b-features li::before{content:'';position:absolute;left:0;top:6px;width:6px;height:6px;border-radius:50%;background:var(--cyan);opacity:.5}
 
 /* CLOSER */
-.closer{padding:72px 80px;text-align:center;position:relative;z-index:2;border-top:1px solid rgba(240,239,233,.06);background:radial-gradient(ellipse 70% 50% at 50% 60%,rgba(2,243,197,.03) 0%,transparent 70%)}
+.closer{padding:56px 80px;text-align:center;position:relative;z-index:2;border-top:1px solid rgba(240,239,233,.06);background:radial-gradient(ellipse 70% 50% at 50% 60%,rgba(2,243,197,.03) 0%,transparent 70%)}
 .closer-sub{font-size:.92rem;color:var(--white60);margin:12px 0 36px}.closer-sub b{color:var(--white);font-weight:700}
 .closer-note{font-size:.75rem;color:var(--white38);margin-top:18px}
 
@@ -267,7 +267,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 .ft-bot{color:rgba(240,239,233,.65)}
 
 /* ── FAQ ── */
-.faq{padding:100px 80px;border-top:1px solid rgba(240,239,233,.06);position:relative;z-index:2}
+.faq{padding:60px 80px;border-top:1px solid rgba(240,239,233,.06);position:relative;z-index:2}
 .faq-inner{max-width:680px;margin:0 auto}
 .faq-heading{text-align:center;margin-bottom:48px}
 .faq-item{border-bottom:1px solid rgba(240,239,233,.07)}
@@ -438,19 +438,6 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
     <p class="booking-sub rv" style="transition-delay:.12s">First time? Start with an intro offer. Ready to commit? Go unlimited.</p>
     <div class="b-cards b-cards-2">
 
-      <div class="b-card rv" style="transition-delay:.15s">
-        <span class="b-lbl">Trial Class</span>
-        <div class="b-price">€18</div>
-        <div class="b-price-sub">Single class · No commitment</div>
-        <p class="b-desc">Just want to see the room? Drop in for one session and decide from there.</p>
-        <a href="/classes/?pack=443934" class="b-btn-g">Try One Class</a>
-        <ul class="b-features">
-          <li>1 class, any type</li>
-          <li>No commitment</li>
-          <li>Mat and towel included</li>
-        </ul>
-      </div>
-
       <div class="b-card pri rv" style="transition-delay:.2s">
         <div class="b-badge">Best Start</div>
         <span class="b-lbl">Intro 3-Pack</span>
@@ -468,6 +455,18 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 
     </div>
   </div>
+      <div class="b-card rv" style="transition-delay:.15s">
+        <span class="b-lbl">Trial Class</span>
+        <div class="b-price">€18</div>
+        <div class="b-price-sub">Single class · No commitment</div>
+        <p class="b-desc">Just want to see the room? Drop in for one session and decide from there.</p>
+        <a href="/classes/?pack=443934" class="b-btn-g">Try One Class</a>
+        <ul class="b-features">
+          <li>1 class, any type</li>
+          <li>No commitment</li>
+          <li>Mat and towel included</li>
+        </ul>
+      </div>
 </section>
 
 <section class="faq" id="faq">
@@ -492,7 +491,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 <div class="closer">
   <span class="sl rv">Ready?</span>
   <h2 class="sh2 rv" style="transition-delay:.06s" id="t-closer">Your body will<br><em>thank you.</em></h2>
-  <p class="closer-sub rv" style="transition-delay:.12s">Intro 3-Pack: <b>3 Classes for €50</b></p>
+  
   <div class="rv" style="transition-delay:.18s"><a href="/classes/?pack=443935" class="cta-p" style="margin:0 auto" id="t-cta2">Get Your Intro 3-Pack <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
   <p class="closer-note rv" style="transition-delay:.24s" id="t-cn">Valid for 30 days. No membership. No commitment.</p>
 </div>
