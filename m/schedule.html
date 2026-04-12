@@ -1181,19 +1181,6 @@ function applyPromo(type,origPrice,productId){
       activePromo=null;discountedPrice=null;activeDiscountCodeId=null;
       return;
     }
-    // Reject 100% discounts that drop the price to exactly €0.
-    // Momence's /plugin/{memberships|sessions}/{id}/pay endpoint does not
-    // accept priceInCurrency:0 — it routes through Stripe and rejects with
-    // a generic error that increments the failed-retry counter and locks
-    // out the customer/IP. Free claims must use a separate Momence flow
-    // we don't have access to from the proxy.
-    if(r.data.newPrice===0){
-      errEl.textContent='This code makes the booking free, which we can\'t process here. Please use the Momence link to claim it directly.';
-      errEl.style.display='block';
-      activePromo=null;discountedPrice=null;activeDiscountCodeId=null;
-      try{console.warn('[SABDA] Refusing €0 discount — would route through wrong Momence endpoint');}catch(e){}
-      return;
-    }
     activePromo=r.data.code;
     if(r.data.type==='percentage'&&r.data.appliedDiscount<100){
       discountedPrice=Math.round(origPrice*(1-r.data.appliedDiscount/100)*100)/100;
