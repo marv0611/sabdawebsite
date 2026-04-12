@@ -683,8 +683,8 @@ function doLogin(){if(isProcessing)return;
   emailEl.classList.remove('bk-field-err');passEl.classList.remove('bk-field-err');
   if(!email||!validateEmail(email)){emailEl.classList.add('bk-field-err');ok=false;}
   if(!pass){passEl.classList.add('bk-field-err');ok=false;}
-  if(!ok){err.textContent='Por favor, rellena los campos destacados';return;}
-  err.textContent='';isProcessing=true;btn.textContent='Iniciant sessió...';btn.disabled=true;
+  if(!ok){err.textContent='Por favor, rellena los campos destacados';err.classList.add('show');return;}
+  err.textContent='';err.classList.remove('show');isProcessing=true;btn.textContent='Iniciant sessió...';btn.disabled=true;
 
   fetch(PROXY+'/sabda-api/login',{
     method:'POST',
@@ -720,7 +720,7 @@ function doLogin(){if(isProcessing)return;
       showNoMembership();
     }
   }).catch(function(){
-    err.textContent='Error de connexió. Torna-ho a intentar.';
+    err.textContent='Error de connexió. Torna-ho a intentar.';err.classList.add('show');
     isProcessing=false;btn.textContent='Inicia sessió i reserva';btn.disabled=false;
     showFallback();
   });
@@ -754,8 +754,8 @@ function doMfaVerify(){if(isProcessing)return;
   var code=document.getElementById('bk-mfa').value.trim();
   var err=document.getElementById('bk-err');
   var btn=document.getElementById('bk-mfa-btn');
-  if(!code||code.length<6){err.textContent='Introduce el código de 6 dígitos';return;}
-  err.textContent='';isProcessing=true;btn.textContent='Verificant...';btn.disabled=true;
+  if(!code||code.length<6){err.textContent='Introduce el código de 6 dígitos';err.classList.add('show');return;}
+  err.textContent='';err.classList.remove('show');isProcessing=true;btn.textContent='Verificant...';btn.disabled=true;
 
   fetch(PROXY+'/sabda-api/mfa-verify',{
     method:'POST',
@@ -786,7 +786,7 @@ function doMfaVerify(){if(isProcessing)return;
       showNoMembership();
     }
   }).catch(function(){
-    err.textContent='Error de connexió. Torna-ho a intentar.';
+    err.textContent='Error de connexió. Torna-ho a intentar.';err.classList.add('show');
     isProcessing=false;btn.textContent='Verificar y continuar';btn.disabled=false;
     showFallback();
   });
@@ -810,12 +810,12 @@ function doGuestCheck(){
   if(!fn){fnEl.classList.add('bk-field-err');ok=false;}
   if(!ln){lnEl.classList.add('bk-field-err');ok=false;}
   if(!email||!validateEmail(email)){emailEl.classList.add('bk-field-err');ok=false;}
-  if(!ok){err.textContent='Omple els camps destacats';return;}
+  if(!ok){err.textContent='Omple els camps destacats';err.classList.add('show');return;}
   if(email2El){
     var email2=email2El.value.trim();
     if(!email2||email2.toLowerCase()!==email.toLowerCase()){
       email2El.classList.add('bk-field-err');
-      err.textContent='Els correus no coincideixen';
+      err.textContent='Els correus no coincideixen';err.classList.add('show');
       return;
     }
   }
@@ -919,9 +919,9 @@ window.doGuestPackPay=function(){
   var np2=document.getElementById('bk-new-pass2');
   var npv=np?np.value.trim():'';
   var npv2=np2?np2.value.trim():'';
-  if(!npv||npv.length<8){err.textContent='La contrasenya ha de tenir almenys 8 car\u00E0cters.';if(np)np.classList.add('bk-field-err');return;}
-  if(npv!==npv2){err.textContent='Les contrasenyes no coincideixen.';if(np2)np2.classList.add('bk-field-err');return;}
-  isProcessing=true;if(btn){btn.textContent='Processant...';btn.disabled=true;}err.textContent='';
+  if(!npv||npv.length<8){err.textContent='La contrasenya ha de tenir almenys 8 car\u00E0cters.';err.classList.add('show');if(np)np.classList.add('bk-field-err');return;}
+  if(npv!==npv2){err.textContent='Les contrasenyes no coincideixen.';err.classList.add('show');if(np2)np2.classList.add('bk-field-err');return;}
+  isProcessing=true;if(btn){btn.textContent='Processant...';btn.disabled=true;}err.textContent='';err.classList.remove('show');
   var cf=getCustomerFields();
   var finalPrice=(discountedPrice!==null)?discountedPrice:pendingPack.price;
   stripeInstance.createPaymentMethod({type:'card',card:cardElement,billing_details:{
@@ -959,7 +959,7 @@ window.doGuestPackPay=function(){
         showFallback();
       }
     }).catch(function(){
-      err.textContent='Error de connexió. Torna-ho a intentar.';
+      err.textContent='Error de connexió. Torna-ho a intentar.';err.classList.add('show');
       isProcessing=false;if(btn){btn.textContent='Pagar \u20AC'+((typeof discountedPrice!=='undefined'&&discountedPrice!==null)?discountedPrice:pendingPack.price);btn.disabled=false;}
     });
   });
@@ -1062,7 +1062,7 @@ function doBookWithMembership(){if(isProcessing)return;
   var err=document.getElementById('bk-err');
   var vErr=validateCustomerFields();
   if(vErr){err.textContent=vErr;return;}
-  isProcessing=true;btn.textContent='Reservant...';btn.disabled=true;err.textContent='';
+  isProcessing=true;btn.textContent='Reservant...';btn.disabled=true;err.textContent='';err.classList.remove('show');
 
   var m=curMembership||{};
   var cf=getCustomerFields();
@@ -1483,8 +1483,8 @@ function doPayAndBook(type,price,productId){if(isProcessing)return;
   if(curUser.isGuest&&type!=='single'){
     var np=document.getElementById('bk-new-pass'),np2=document.getElementById('bk-new-pass2');
     var npv=np?np.value.trim():'',npv2=np2?np2.value.trim():'';
-    if(!npv||npv.length<8){err.textContent='La contrasenya ha de tenir almenys 8 caràcters.';if(np)np.classList.add('bk-field-err');isProcessing=false;btn.disabled=false;return;}
-    if(npv!==npv2){err.textContent='Les contrasenyes no coincideixen.';if(np2)np2.classList.add('bk-field-err');isProcessing=false;btn.disabled=false;return;}
+    if(!npv||npv.length<8){err.textContent='La contrasenya ha de tenir almenys 8 caràcters.';err.classList.add('show');if(np)np.classList.add('bk-field-err');isProcessing=false;btn.disabled=false;return;}
+    if(npv!==npv2){err.textContent='Les contrasenyes no coincideixen.';err.classList.add('show');if(np2)np2.classList.add('bk-field-err');isProcessing=false;btn.disabled=false;return;}
   }
   var finalPrice=(discountedPrice!==null)?discountedPrice:price;
 
