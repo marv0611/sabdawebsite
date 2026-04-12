@@ -1226,12 +1226,12 @@ function removePromo(origPrice){
 }
 
 function showNoMembership(){stepChange();
-  setBack(showGuestStep);
+  setBack(curUser?showGuestStep:null);
   activePromo=null;discountedPrice=null;activeDiscountCodeId=null;
   var bd=document.getElementById('mo-bd');
 
   function row(cls,type,price,id,name,desc,priceLabel){
-    return '<div class="bk-pkg '+cls+'" onclick="showPayForm(\''+type+'\','+price+','+id+',\''+name.replace(/'/g,"\\'")+'\',\''+desc.replace(/'/g,"\\'")+'\')">'
+    return '<div class="bk-pkg '+cls+'" onclick="mobileSelectPack(\''+type+'\','+price+','+id+',\''+name.replace(/'/g,"\\'")+'\',\''+desc.replace(/'/g,"\\'")+'\')">'
       +'<div class="bk-pkg-l"><div class="bk-pkg-name">'+name+'</div><div class="bk-pkg-desc">'+desc+'</div></div>'
       +'<div class="bk-pkg-r"><div class="bk-pkg-price">'+priceLabel+'</div>'
       +'<svg class="bk-pkg-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></div></div>';
@@ -1268,6 +1268,19 @@ function showNoMembership(){stepChange();
 }
 
 // ── STEP 3C: PAYMENT FORM (after selecting an option) ──
+
+// ── Mobile selectPack router: guests route to showGuestStep with pendingPack, logged-in go direct to showPayForm ──
+window.mobileSelectPack = function(type, price, id, name, desc){
+  try{
+    if(typeof curUser !== 'undefined' && curUser){
+      showPayForm(type, price, id, name, desc);
+    } else {
+      pendingPack = {type:type, price:price, id:id, name:name, desc:desc};
+      showGuestStep();
+    }
+  }catch(e){console.error('[mobileSelectPack]',e);}
+};
+
 function showPayForm(type,price,productId,name,desc){stepChange();
   try{ var __pid=String(productId||''); if((__pid==='443934'||__pid==='443935') && typeof fbq==='function'){ var __pl={value:Number(price)||0,currency:'EUR',content_name:String(name||''),content_ids:[__pid],content_type:'product'}; fbq('track','ViewContent',__pl); fbq('track','AddToCart',__pl); fbq('track','InitiateCheckout',__pl); } }catch(e){}
   setBack(curSession && curSession.isPackagePurchase ? showPackageGuestStep : showNoMembership);
