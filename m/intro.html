@@ -61,11 +61,29 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
 .hero h1{font-family:'PT Serif',serif;font-size:2.6rem;font-weight:700;line-height:1;letter-spacing:-.03em;margin-bottom:14px}
 .hero h1 em{font-style:italic;color:var(--salmon)}
-.hero-sub{font-size:.88rem;color:var(--w60);margin-bottom:32px;line-height:1.6;max-width:320px}
+.hero-sub{font-size:.88rem;color:var(--w60);margin-bottom:22px;line-height:1.55;max-width:340px}
 .hero-btns{display:flex;gap:10px}
 .btn-cy{display:flex;align-items:center;justify-content:center;gap:7px;padding:14px 24px;background:var(--cyan);color:var(--navy);border-radius:100px;font-size:.84rem;font-weight:700;box-shadow:0 4px 20px rgba(2,243,197,.2);flex:1}
 .btn-cy svg{width:14px;height:14px;stroke:var(--navy);stroke-width:2.5;fill:none}
 .btn-gl{padding:14px 20px;border:1px solid var(--w20);border-radius:100px;font-size:.82rem;color:var(--w80);font-weight:500}
+/* OFFER CARDS */
+.offers{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+.offer{position:relative;display:block;background:rgba(14,18,53,.55);border:1px solid var(--w20);border-radius:14px;padding:18px 18px 16px;backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2);transition:transform .2s var(--ease),border-color .2s}
+.offer:active{transform:scale(.98)}
+.offer.pri{background:linear-gradient(135deg,rgba(2,243,197,.14) 0%,rgba(2,243,197,.06) 100%);border-color:rgba(2,243,197,.55);box-shadow:0 8px 32px rgba(2,243,197,.15),inset 0 1px 0 rgba(2,243,197,.3)}
+.offer-badge{position:absolute;top:-9px;left:16px;background:var(--cyan);color:var(--navy);font-size:.58rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:100px;line-height:1.2}
+.offer-row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:6px}
+.offer-lbl{display:block;font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--w60);margin-bottom:3px}
+.offer.pri .offer-lbl{color:var(--cyan)}
+.offer-name{font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;line-height:1.1;letter-spacing:-.01em}
+.offer-price{font-family:'PT Serif',serif;font-size:1.9rem;font-weight:700;line-height:1;flex-shrink:0;letter-spacing:-.02em}
+.offer-sub{font-size:.76rem;color:var(--w60);margin-bottom:14px;line-height:1.45}
+.offer-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:13px;border-radius:100px;font-size:.85rem;font-weight:700;letter-spacing:.01em}
+.offer:not(.pri) .offer-cta{background:var(--w10);color:var(--white);border:1px solid var(--w20)}
+.offer.pri .offer-cta{background:var(--cyan);color:var(--navy);box-shadow:0 4px 18px rgba(2,243,197,.35)}
+.offer-cta svg{width:14px;height:14px;fill:none;stroke-width:2.5}
+.offer:not(.pri) .offer-cta svg{stroke:var(--white)}
+.offer.pri .offer-cta svg{stroke:var(--navy)}
 
 /* PROOF BAR */
 .proof{display:flex;align-items:center;justify-content:center;gap:16px;padding:14px 20px;border-bottom:1px solid var(--w06)}
@@ -273,9 +291,24 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
   <div class="hero-c">
     <h1>Step into<br>360° <em>immersion</em></h1>
     <p class="hero-sub">Yoga, pilates, sound healing and breathwork in our 360° projection room with Dolby Atmos sound.</p>
-    <div class="hero-btns">
-      <a href="/classes/?pack=443935" class="btn-cy touch">Get 3 Classes &middot; €50</a>
-      <a href="/classes/?pack=443934" class="btn-gl touch">Trial Class &middot; €18</a>
+    <div class="offers">
+      <a href="/classes/?pack=443935" class="offer pri touch">
+        <span class="offer-badge">Best Start</span>
+        <div class="offer-row">
+          <div><span class="offer-lbl">Intro Pack</span><div class="offer-name">3 Classes</div></div>
+          <div class="offer-price">€50</div>
+        </div>
+        <div class="offer-sub">Valid 30 days &middot; Any of our classes</div>
+        <div class="offer-cta">Get Started <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+      </a>
+      <a href="/classes/?pack=443934" class="offer touch">
+        <div class="offer-row">
+          <div><span class="offer-lbl">Single</span><div class="offer-name">Trial Class</div></div>
+          <div class="offer-price">€18</div>
+        </div>
+        <div class="offer-sub">Just want to try one? Any class on the schedule</div>
+        <div class="offer-cta">Try One Class <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+      </a>
     </div>
   </div>
 </section>
