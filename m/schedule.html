@@ -1088,6 +1088,7 @@ function showConfirmStep(membership){stepChange();
     +(curSession.teacher?'<span>'+esc(curSession.teacher)+'</span>':'')
     +'</div></div>'
     +'<div class="bk-confirm">'
+    +(curSession&&curSession.isWaitlist?'<div style="background:rgba(248,166,163,.1);border:1px solid rgba(248,166,163,.3);border-radius:10px;padding:14px;margin-bottom:16px">'+'<div style="color:var(--salmon);font-weight:600;font-size:.88rem;margin-bottom:4px">You\u2019re joining the waitlist</div>'+'<div style="color:var(--white60);font-size:.78rem;line-height:1.4">You won\u2019t be charged unless you get off the waitlist</div>'+'</div>':'')
     +(curUser?'<div class="bk-user">Booking as <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>':'')
     +'<div class="bk-membership">'
     +'<div style="display:flex;justify-content:space-between;align-items:center">'
@@ -1264,6 +1265,7 @@ function showNoMembership(){stepChange();
     +(curSession.teacher?'<span>'+esc(curSession.teacher)+'</span>':'')
     +'</div></div>'
     +'<div class="bk-confirm">'
+    +(curSession&&curSession.isWaitlist?'<div style="background:rgba(248,166,163,.1);border:1px solid rgba(248,166,163,.3);border-radius:10px;padding:14px;margin-bottom:16px">'+'<div style="color:var(--salmon);font-weight:600;font-size:.88rem;margin-bottom:4px">You\u2019re joining the waitlist</div>'+'<div style="color:var(--white60);font-size:.78rem;line-height:1.4">You won\u2019t be charged unless you get off the waitlist</div>'+'</div>':'')
     +(curUser?'<div class="bk-user">Booking as <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>':'')
     +(curUser?'':'<div onclick="showLoginStep()" style="border:1.5px solid var(--white12);border-radius:10px;padding:14px;margin-bottom:18px;font-size:.82rem;color:var(--white60);text-align:center;cursor:pointer;transition:border-color .2s">Do you have a pack/subscription? <span style="color:var(--cyan);font-weight:600">Sign in here \u2192</span></div>')
     // Intro offers first
@@ -1311,6 +1313,7 @@ function showPayForm(type,price,productId,name,desc){stepChange();
     +(curSession.teacher?'<span>'+esc(curSession.teacher)+'</span>':'')
     +'</div></div>'
     +'<div class="bk-confirm">'
+    +(curSession&&curSession.isWaitlist?'<div style="background:rgba(248,166,163,.1);border:1px solid rgba(248,166,163,.3);border-radius:10px;padding:14px;margin-bottom:16px">'+'<div style="color:var(--salmon);font-weight:600;font-size:.88rem;margin-bottom:4px">You\u2019re joining the waitlist</div>'+'<div style="color:var(--white60);font-size:.78rem;line-height:1.4">You won\u2019t be charged unless you get off the waitlist</div>'+'</div>':'')
     +(curUser?'<div class="bk-user">Booking as <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>':'')
     +'<div class="bk-membership">'
     +'<div class="bk-membership-name">'+name+'</div>'
