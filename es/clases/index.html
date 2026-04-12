@@ -1951,6 +1951,33 @@ window.sabdaRelocatePromo = function(){
     mo.observe(target, {childList:true, subtree:true});
   }catch(e){}
 })();
+
+// ── Waitlist button text override: rewrites Pay buttons when session is waitlist ──
+window.sabdaWaitlistButtonText = function(){
+  try{
+    if(!curSession || !curSession.isWaitlist) return;
+    ['bk-pay-btn','bk-guest-btn'].forEach(function(id){
+      var btn = document.getElementById(id);
+      if(!btn) return;
+      var t = btn.textContent || '';
+      // Match €<number> pattern and replace prefix with waitlist-specific label
+      var m = t.match(/\u20AC\s*([0-9]+(?:[.,][0-9]+)?)/);
+      if(!m) return;
+      // Don't re-apply if already waitlist-labeled
+      if(t.indexOf('Unirme a lista de espera \u20AC'.slice(0,6)) === 0) return;
+      btn.textContent = 'Unirme a lista de espera \u20AC' + m[1];
+    });
+  }catch(e){}
+};
+// Attach to existing mo-bd MutationObserver — or create one if missing
+(function(){
+  try{
+    var target = document.getElementById('mo-bd');
+    if(!target || !window.MutationObserver) return;
+    var mo = new MutationObserver(function(){ if(window.sabdaWaitlistButtonText) window.sabdaWaitlistButtonText(); });
+    mo.observe(target, {childList:true, subtree:true, characterData:true});
+  }catch(e){}
+})();
 </script>
 </body>
 </html>
