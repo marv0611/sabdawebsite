@@ -961,7 +961,7 @@ function showLoginStep(){stepChange();
     +'<div style="text-align:right;margin:-10px 0 12px"><a href="https://momence.com/forgot-password" target="_blank" rel="noopener noreferrer" style="font-size:.75rem;color:var(--white38);text-decoration:none;border-bottom:1px solid var(--white12)">Forgot password?</a></div>'
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-login-btn" onclick="doLogin()">Log in & Book</button>'
-    +'<div class="bk-link" onclick="showGuestStep()">New here? Book as guest</div>'
+    +'<div class="bk-link" onclick="showNoMembership()">New here? Book as a new user</div>'
     +'</div>';
   document.getElementById('bk-email').focus();
   document.getElementById('bk-pass').addEventListener('keydown',function(e){if(e.key==='Enter')doLogin();});
