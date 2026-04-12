@@ -1747,6 +1747,38 @@ function setLang(c){try{localStorage.setItem('sabda_lang',c)}catch(e){}document.
 try{var sl=localStorage.getItem('sabda_lang')||'es';document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===sl)})}catch(e){}
 </script>
 <script defer src="/cookies.js"></script>
-<script src="/cookie-consent.js"></script>
+<script src="/cookie-consent.js">
+// ── First-time-only pre-check on email (blur) ──
+// Prevents returning customers from filling the whole form only to hit the
+// 'This offer is for new students only' error at Pay-click time.
+window.sabdaFirstTimeOnlyCheck = function(){
+  try{
+    var pp = (typeof pendingPack !== 'undefined') ? pendingPack : null;
+    if(!pp || (pp.id !== 443934 && pp.id !== 443935)) return;
+    var emailEl = document.getElementById('bk-email');
+    if(!emailEl) return;
+    var email = (emailEl.value || '').trim();
+    if(!email || email.indexOf('@') < 0) return;
+    var errEl = document.getElementById('bk-err');
+    var btn = document.getElementById('bk-guest-btn') || document.getElementById('bk-pay-btn');
+    fetch('https://sabda-checkout-proxy.sabda.workers.dev/sabda-api/check-email', {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ email: email })
+    }).then(function(r){return r.json();}).then(function(d){
+      if(d && d.exists){
+        if(errEl) errEl.textContent = 'This offer is for new students only. Sign in above, or pick a Drop-in, 5-Pack, 10-Pack, or membership.';
+        if(btn){ btn.disabled = true; btn.style.opacity = '0.5'; }
+      } else {
+        if(errEl && errEl.textContent.indexOf('new students only') >= 0) errEl.textContent = '';
+        if(btn){ btn.disabled = false; btn.style.opacity = ''; }
+      }
+    }).catch(function(){});
+  }catch(e){}
+};
+document.addEventListener('blur', function(e){
+  if(e.target && e.target.id === 'bk-email') window.sabdaFirstTimeOnlyCheck();
+}, true);
+
+</script>
 </body>
 </html>

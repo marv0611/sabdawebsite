@@ -900,6 +900,32 @@ async function handlePay(request, origin, env) {
       });
     }
 
+    // ── First-time-only products: block repeat purchases at server edge ──
+    // Trial (443934) and Intro 3-Pack (443935) are new-customer-only offers.
+    // Momence would reject with 'You have already bought a membership with SABDA'
+    // AFTER the user fills out payment. Catch it earlier for better UX.
+    const FIRST_TIME_ONLY_IDS = new Set([443934, 443935]);
+    if (productId && FIRST_TIME_ONLY_IDS.has(Number(productId)) && email) {
+      try {
+        const alertRes = await fetch(MOMENCE + '/_api/primary/checkout/customer/alert', {
+          method: 'POST',
+          headers: momenceHeaders({ 'Content-Type': 'application/json' }),
+          body: JSON.stringify({ email, hostId: 54278 }),
+        });
+        const alertData = await alertRes.json().catch(() => ({}));
+        if (alertData && alertData.memberId) {
+          console.log('[PAY] BLOCKED — first-time-only offer attempted by existing customer:', email);
+          return new Response(JSON.stringify({
+            error: 'This offer is for new students only. It looks like you\'ve visited SABDA before — sign in to see options available to you, or choose a Drop-in, 5-Pack, 10-Pack, or membership.',
+            code: 'first_time_only_ineligible',
+          }), { status: 400, headers: corsHeaders(origin) });
+        }
+      } catch (e) {
+        // If check fails, proceed — Momence will still reject, better than false-blocking
+        console.warn('[PAY] customer/alert pre-check failed, proceeding:', e && e.message);
+      }
+    }
+
     const cookieStr = sessionToken ? atob(sessionToken) : '';
     const STRIPE_ACCOUNT_ID = 38966; // SABDA's numeric Momence-side account ID
     const HOME_LOCATION_ID = 49623;  // Studio location ID
