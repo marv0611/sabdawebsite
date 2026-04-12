@@ -1,6 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+(function(){
+  try{
+    if(sessionStorage.getItem('sabda_lang_checked'))return;
+    if(localStorage.getItem('sabda_lang'))return;
+    if(location.search.indexOf('nolang=1')!==-1){sessionStorage.setItem('sabda_lang_checked','1');return;}
+    sessionStorage.setItem('sabda_lang_checked','1');
+    var langs=(navigator.languages||[navigator.language||'en']).map(function(l){return (l||'').toLowerCase();});
+    var target=null;
+    for(var i=0;i<langs.length;i++){
+      var l=langs[i];
+      if(l.indexOf('ca')===0){target='ca';break;}
+      if(l.indexOf('es')===0){target='es';break;}
+      if(l.indexOf('en')===0){target='en';break;}
+    }
+    if(!target||target==='en')return;
+    var path=location.pathname;
+    var mapping={"es":"/es/m/intro.html","ca":"/ca/m/intro.html"};
+    if(mapping[target]){location.replace(mapping[target]+location.search);}
+  }catch(e){}
+})();
+</script>
+
 
 <meta charset="UTF-8">
 <!-- Meta Pixel Code -->
