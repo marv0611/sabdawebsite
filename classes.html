@@ -332,6 +332,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 .mo-ft{padding:14px 24px;border-top:1px solid var(--white06);text-align:center;position:sticky;bottom:0;background:var(--navy-light)}
 .mo-sec{font-size:.68rem;color:var(--white38);display:flex;align-items:center;justify-content:center;gap:6px}
 .mo-sec svg{width:12px;height:12px;opacity:.5}
+.mo-fb{margin-top:8px;font-size:.68rem;text-align:center}.mo-fb a{color:var(--white60);text-decoration:none;transition:color .2s}.mo-fb a:hover{color:var(--cyan)}.mo-fb strong{color:var(--cyan);font-weight:600}
 .bk-class{text-align:center;padding-bottom:20px;border-bottom:1px solid var(--white06);margin-bottom:20px}
 .bk-class-name{font-family:'PT Serif',serif;font-size:1.3rem;font-weight:700;margin-bottom:6px}
 .bk-class-meta{font-size:.85rem;color:var(--white60);display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
@@ -633,7 +634,7 @@ document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',(
       <button class="mo-x" type="button" aria-label="Close booking modal" onclick="closeMo()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
     </div>
     <div class="mo-bd" id="mo-bd"></div>
-    <div class="mo-ft"><div class="mo-sec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Secure booking via SABDA</div></div>
+    <div class="mo-ft"><div class="mo-sec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Secure booking via SABDA</div><div class="mo-fb"><a id="mo-fb-link" href="https://momence.com/u/sabda" target="_blank" rel="noopener noreferrer">Having trouble? <strong>Book on Momence</strong> →</a></div></div>
   </div>
 </div>
 <script>
@@ -886,6 +887,10 @@ function getSpotsHtml(){
 }
 
 // ── Open modal from session ID ──
+
+/*SABDA-FALLBACK-HELPER-v1*/
+function showFallback(errEl,msg){if(!errEl)return;var sid=(typeof curSession!=="undefined"&&curSession&&curSession.id)?curSession.id:null;var url=sid?("https://momence.com/s/"+sid):"https://momence.com/u/sabda";var txt=(msg||"Something broke on our end.");errEl.innerHTML=txt+" <a href=\""+url+"\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color:var(--cyan);text-decoration:underline;font-weight:600\">Book on Momence →</a>";errEl.classList.add("show");}
+
 function openMo(sessionId){
   if(isProcessing) return;
   var sess=allE.find(function(e){return String(e.id)===String(sessionId);});
@@ -912,6 +917,7 @@ function openMo(sessionId){
   };
 
   document.getElementById('mo-t').textContent=curSession.title;
+  /*FALLBACK_URL_UPDATE*/var _fbl=document.getElementById('mo-fb-link');if(_fbl)_fbl.href=curSession.id?('https://momence.com/s/'+curSession.id):'https://momence.com/u/sabda';
   document.getElementById('mo-c').textContent=time+(teacher?' \u00B7 '+teacher:'');
   showNoMembership();
   document.getElementById('mo').classList.add('open');

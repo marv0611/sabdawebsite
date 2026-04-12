@@ -107,6 +107,8 @@ body.mo-open{overflow:hidden;position:fixed;width:100%;height:100%}
 .mo-bd{padding:24px 20px}
 .mo-ft{padding:12px 20px max(12px,env(safe-area-inset-bottom,12px));border-top:1px solid var(--white06);text-align:center;position:sticky;bottom:0;background:var(--navy-light)}
 .mo-sec{font-size:.62rem;color:var(--white38);display:flex;align-items:center;justify-content:center;gap:6px}
+
+.mo-fb{margin-top:8px;font-size:.68rem;text-align:center}.mo-fb a{color:var(--white60);text-decoration:none;transition:color .2s}.mo-fb a:hover{color:var(--cyan)}.mo-fb strong{color:var(--cyan);font-weight:600}
 .mo-sec svg{width:12px;height:12px;opacity:.5}
 
 /* BOOKING FLOW */
@@ -293,7 +295,7 @@ select.bk-input{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http:/
       <button class="mo-x" id="mo-x" type="button" aria-label="Cerrar reserva" onclick="closeMo()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>Cerrar</button>
     </div>
     <div class="mo-bd" id="mo-bd"></div>
-    <div class="mo-ft"><div class="mo-sec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Reserva segura vía SABDA</div></div>
+    <div class="mo-ft"><div class="mo-sec"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>Reserva segura vía SABDA</div><div class="mo-fb"><a id="mo-fb-link" href="https://momence.com/u/sabda" target="_blank" rel="noopener noreferrer">Problemas? <strong>Reserva en Momence</strong> →</a></div></div>
   </div>
 </div>
 
@@ -541,6 +543,10 @@ function resetCustomerAndStartOver(){
   }
 }
 
+
+/*SABDA-FALLBACK-HELPER-v1*/
+function showFallback(errEl,msg){if(!errEl)return;var sid=(typeof curSession!=="undefined"&&curSession&&curSession.id)?curSession.id:null;var url=sid?("https://momence.com/s/"+sid):"https://momence.com/u/sabda";var txt=(msg||"Algo falló por nuestra parte.");errEl.innerHTML=txt+" <a href=\""+url+"\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color:var(--cyan);text-decoration:underline;font-weight:600\">Reserva en Momence →</a>";errEl.classList.add("show");}
+
 function openMo(link,title,time,teacher){
   try {
   if(isProcessing) return;
@@ -559,6 +565,7 @@ function openMo(link,title,time,teacher){
     isWaitlist:sess?sess.spotsRemaining===0:false};
 
   document.getElementById('mo-t').textContent=curSession.title;
+  /*FALLBACK_URL_UPDATE*/var _fbl=document.getElementById('mo-fb-link');if(_fbl)_fbl.href=curSession.id?('https://momence.com/s/'+curSession.id):'https://momence.com/u/sabda';
   document.getElementById('mo-c').textContent=time+(teacher?' · '+teacher:'');
 
   // Go to pack list first, matching desktop flow
