@@ -610,6 +610,8 @@ function openMo(link,title,time,teacher){
   }
 }
 
+var autoOpenedFromPack=false;
+/*PACK_AUTO_OPEN_RETURN_v1*/
 function closeMo(){
   document.getElementById('mo').classList.remove('open');
   document.body.style.overflow='';
@@ -626,6 +628,8 @@ function closeMo(){
   if(cardExpiryEl){try{cardExpiryEl.destroy();}catch(e){}cardExpiryEl=null;}
   if(cardCvcEl){try{cardCvcEl.destroy();}catch(e){}cardCvcEl=null;}
   cardCompleteState={cardNumber:false,cardExpiry:false,cardCvc:false};
+
+  /*PACK_AUTO_OPEN_RETURN_v1*/if(autoOpenedFromPack){autoOpenedFromPack=false;try{var ref=document.referrer;if(ref&&ref.indexOf(window.location.origin)===0&&ref!==window.location.href){setTimeout(function(){window.location.href=ref;},50);return;}}catch(e){}}
 }
 document.getElementById('mo').addEventListener('click',function(e){if(e.target===this)closeMo();});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMo();});
