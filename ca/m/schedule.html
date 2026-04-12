@@ -1750,7 +1750,7 @@ window.sabdaFirstTimeOnlyCheck = function(){
       body: JSON.stringify({ email: email })
     }).then(function(r){return r.json();}).then(function(d){
       if(d && d.exists){
-        if(errEl) errEl.textContent = 'This offer is for new students only. Sign in above, or pick a Drop-in, 5-Pack, 10-Pack, or membership.';
+        if(errEl) errEl.textContent = 'This offer is for first-time students. Try a Drop-in, Pack, or membership instead.';
         if(btn){ btn.disabled = true; btn.style.opacity = '0.5'; }
       } else {
         if(errEl && errEl.textContent.indexOf('new students only') >= 0) errEl.textContent = '';
@@ -1763,6 +1763,28 @@ document.addEventListener('blur', function(e){
   if(e.target && e.target.id === 'bk-email') window.sabdaFirstTimeOnlyCheck();
 }, true);
 
+
+// ── DOM-level promo relocation: move promo-wrap to directly above card-details ──
+// Runs after innerHTML mount. Pure DOM shuffle, no string edits, safe and reversible.
+window.sabdaRelocatePromo = function(){
+  try{
+    var promo = document.getElementById('bk-promo-wrap');
+    var cardLabel = document.getElementById('bk-card-label');
+    if(!promo || !cardLabel) return;
+    if(promo.nextElementSibling === cardLabel) return; // already positioned
+    cardLabel.parentNode.insertBefore(promo, cardLabel);
+  }catch(e){}
+};
+
+// ── One-time observer: relocate promo whenever modal body re-renders ──
+(function(){
+  try{
+    var target = document.getElementById('mo-bd');
+    if(!target || !window.MutationObserver) return;
+    var mo = new MutationObserver(function(){ if(window.sabdaRelocatePromo) window.sabdaRelocatePromo(); });
+    mo.observe(target, {childList:true, subtree:true});
+  }catch(e){}
+})();
 </script>
 </body>
 </html>

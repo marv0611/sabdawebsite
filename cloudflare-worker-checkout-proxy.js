@@ -916,7 +916,7 @@ async function handlePay(request, origin, env) {
         if (alertData && alertData.memberId) {
           console.log('[PAY] BLOCKED — first-time-only offer attempted by existing customer:', email);
           return new Response(JSON.stringify({
-            error: 'This offer is for new students only. It looks like you\'ve visited SABDA before — sign in to see options available to you, or choose a Drop-in, 5-Pack, 10-Pack, or membership.',
+            error: 'This offer is for first-time students. Try a Drop-in, Pack, or membership instead.',
             code: 'first_time_only_ineligible',
           }), { status: 400, headers: corsHeaders(origin) });
         }
