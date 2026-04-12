@@ -48,6 +48,24 @@ for p in BOOKING:
         if count > 1:
             issues.append(f'[DUPLICATE_FN]  {p}: {fn_match} declared {count}×')
 
+
+    # 4b. showLoginStep must NOT contain pendingPack logic or customerFieldsHTML()
+    # These belong exclusively in showGuestStep. If they leak into the login step,
+    # the login button gets pushed below the viewport and the flow breaks (ES/CA bug 2026-04-13).
+    import re as _re
+    m = _re.search(r'function showLoginStep\(\)\{[\s\S]*?\n\}', s)
+    if m:
+        login_body = m.group(0)
+        if 'pendingPack' in login_body:
+            issues.append(f'[LOGIN_LEAK]    {p}: showLoginStep contains pendingPack logic — must only be in showGuestStep')
+        if 'customerFieldsHTML' in login_body:
+            issues.append(f'[LOGIN_LEAK]    {p}: showLoginStep calls customerFieldsHTML() — must only be in showGuestStep')
+        if 'bk-pack-customer' in login_body:
+            issues.append(f'[LOGIN_LEAK]    {p}: showLoginStep references bk-pack-customer — must only be in showGuestStep')
+        if 'bk-card' in login_body and 'mountCardForGuest' not in login_body:
+            # mountCardForGuest is legit in other contexts; bare bk-card in login = leak
+            issues.append(f'[LOGIN_LEAK]    {p}: showLoginStep renders bk-card element — must only be in showGuestStep/showNoMembership')
+
 # ═══════════════════════════════════════════════════════════════════
 # SITE-WIDE CHECKS
 # ═══════════════════════════════════════════════════════════════════
