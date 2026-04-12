@@ -621,11 +621,6 @@ function showLoginStep(){stepChange();
     +'<div class="bk-label">Contraseña</div>'
     +'<input class="bk-input" id="bk-pass" type="password" autocomplete="current-password" placeholder="Contraseña" aria-label="Contraseña" />'
     +'<div style="text-align:right;margin:-10px 0 12px"><a href="https://momence.com/forgot-password" target="_blank" rel="noopener noreferrer" style="font-size:.75rem;color:var(--white38);text-decoration:none;border-bottom:1px solid var(--white12)">Has oblidat la contrasenya?</a></div>'
-    +(pendingPack?'<div class="bk-divider" style="margin:16px 0"></div>'+'<div id="bk-pack-customer">'+customerFieldsHTML()+'</div>'+'<div id="bk-promo-wrap" style="margin-bottom:16px;margin-top:16px">'+'<div class="bk-link" id="bk-promo-toggle" onclick="document.getElementById(\'bk-promo-fields\').style.display=\'flex\';this.style.display=\'none\'" style="margin:0;font-size:.8rem;text-align:left;color:var(--cyan)">Aplicar codi promocional \u2192</div>'+'<div id="bk-promo-fields" style="display:none;gap:8px;align-items:flex-start">'+'<input class="bk-input" id="bk-promo" type="text" placeholder="Code" style="flex:1;margin-bottom:0;text-transform:uppercase"/>'+'<button class="bk-primary" id="bk-promo-btn" onclick="applyPromo(\''+(pendingPack?pendingPack.type:'')+'\','+(pendingPack?pendingPack.price:0)+','+(pendingPack?pendingPack.id:0)+')" style="width:auto;padding:12px 20px;flex-shrink:0;font-size:.8rem">Aplicar</button>'+'</div>'+'<div id="bk-promo-ok" style="display:none;font-size:.78rem;color:var(--cyan);margin-top:6px"></div>'+'<div id="bk-promo-err" style="display:none;font-size:.78rem;color:var(--salmon);margin-top:6px"></div>'+'</div>'+'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'+'<div id="bk-pay-divider" class="bk-divider" style="display:none">o paga amb targeta</div>'+'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Dades de la targeta</div>'+'<div class="bk-card-wrap" id="bk-card"></div>':'')
-    +'<div class="bk-err" id="bk-err"></div>'
-    +'<button class="bk-primary" id="bk-login-btn" onclick="doLogin()">Inicia sessió i reserva</button>'
-    +'<div class="bk-link" onclick="showGuestStep()">Nueva aquí? Reservar como invitada</div>'
-    +'</div>';
   document.getElementById('bk-email').focus();
   document.getElementById('bk-pass').addEventListener('keydown',function(e){if(e.key==='Enter')doLogin();});
 }
@@ -1263,6 +1258,10 @@ function showPayForm(type,price,productId,name,desc){stepChange();
     +'</div>'
     +'<div class="bk-pay-total" id="bk-total">€'+price+'</div>'
     +'<div class="bk-pay-desc" id="bk-pay-desc">'+(type==='membership'&&price<200?'Primer mes, se renueva cada mes':type==='membership'?'Cobro único':'Pago único')+'</div>'
+    +customerFieldsHTML()
+        +'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'
+    +'<div id="bk-pay-divider" class="bk-divider" style="display:none">o paga con tarjeta</div>'
+    +'<div id="bk-card-section">'
     +'<div id="bk-promo-wrap" style="margin-bottom:16px">'
     +'<div class="bk-link" id="bk-promo-toggle" onclick="document.getElementById(\'bk-promo-fields\').style.display=\'flex\';this.style.display=\'none\'" style="margin:0;font-size:.8rem;text-align:left;color:var(--cyan)">Aplicar código promocional →</div>'
     +'<div id="bk-promo-fields" style="display:none;gap:8px;align-items:flex-start">'
@@ -1272,10 +1271,11 @@ function showPayForm(type,price,productId,name,desc){stepChange();
     +'<div id="bk-promo-ok" style="display:none;font-size:.78rem;color:var(--cyan);margin-top:6px"></div>'
     +'<div id="bk-promo-err" style="display:none;font-size:.78rem;color:var(--salmon);margin-top:6px"></div>'
     +'</div>'
-    +customerFieldsHTML()
-        +'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'
-    +'<div id="bk-pay-divider" class="bk-divider" style="display:none">o paga con tarjeta</div>'
-    +'<div id="bk-card-section">'
+    +(pendingPack?'<div class="bk-divider" style="margin:16px 0"></div>'+'<div id="bk-pack-customer">'+customerFieldsHTML()+'</div>'+'<div id="bk-promo-wrap" style="margin-bottom:16px;margin-top:16px">'+'<div class="bk-link" id="bk-promo-toggle" onclick="document.getElementById(\'bk-promo-fields\').style.display=\'flex\';this.style.display=\'none\'" style="margin:0;font-size:.8rem;text-align:left;color:var(--cyan)">Aplicar codi promocional \u2192</div>'+'<div id="bk-promo-fields" style="display:none;gap:8px;align-items:flex-start">'+'<input class="bk-input" id="bk-promo" type="text" placeholder="Code" style="flex:1;margin-bottom:0;text-transform:uppercase"/>'+'<button class="bk-primary" id="bk-promo-btn" onclick="applyPromo(\''+(pendingPack?pendingPack.type:'')+'\','+(pendingPack?pendingPack.price:0)+','+(pendingPack?pendingPack.id:0)+')" style="width:auto;padding:12px 20px;flex-shrink:0;font-size:.8rem">Aplicar</button>'+'</div>'+'<div id="bk-promo-ok" style="display:none;font-size:.78rem;color:var(--cyan);margin-top:6px"></div>'+'<div id="bk-promo-err" style="display:none;font-size:.78rem;color:var(--salmon);margin-top:6px"></div>'+'</div>'+'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'+'<div id="bk-pay-divider" class="bk-divider" style="display:none">o paga amb targeta</div>'+'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Dades de la targeta</div>'+'<div class="bk-card-wrap" id="bk-card"></div>':'')
+    +'<div class="bk-err" id="bk-err"></div>'
+    +'<button class="bk-primary" id="bk-login-btn" onclick="doLogin()">Inicia sessió i reserva</button>'
+    +'<div class="bk-link" onclick="showGuestStep()">Nueva aquí? Reservar como invitada</div>'
+    +'</div>';
     +'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Datos de la tarjeta</div>'
     +'<div class="bk-card-wrap" id="bk-card-number"></div>'
     +'<div class="bk-card-row">'
