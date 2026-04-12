@@ -52,7 +52,7 @@ nav.scrolled{background:rgba(14,18,53,.92);border-color:rgba(240,239,233,.06)}
 
 /* HERO */
 .hero{position:relative;width:100%;min-height:100vh;min-height:100svh;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:url('https://raw.githubusercontent.com/marv0611/sabdawebsite/main/intro-hero-desktop.jpg') center 40%/cover no-repeat;filter:brightness(.32) contrast(1.1) saturate(1.2)}
+.hero-bg{position:absolute;inset:0;background:url('https://raw.githubusercontent.com/marv0611/sabdawebsite/main/intro-hero-desktop.jpg') center 40%/cover no-repeat;filter:brightness(.28) contrast(1.15) saturate(1.35)}
 .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,18,53,.2) 0%,rgba(14,18,53,.05) 30%,rgba(14,18,53,.45) 65%,var(--navy) 100%)}
 .hero-in{position:relative;z-index:3;text-align:center;padding:0 28px;max-width:600px}
 .hero-tagline{font-family:'PT Serif',serif;font-size:clamp(.95rem,2.4vw,1.1rem);font-weight:400;font-style:italic;color:var(--salmon);line-height:1.4;margin-bottom:32px}
@@ -265,6 +265,19 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 .rn-ct{color:rgba(240,239,233,.70) !important}
 .nav-links a{color:rgba(240,239,233,.75)}
 .ft-bot{color:rgba(240,239,233,.65)}
+
+/* ── FAQ ── */
+.faq{padding:100px 80px;border-top:1px solid rgba(240,239,233,.06);position:relative;z-index:2}
+.faq-inner{max-width:680px;margin:0 auto}
+.faq-heading{text-align:center;margin-bottom:48px}
+.faq-item{border-bottom:1px solid rgba(240,239,233,.07)}
+.faq-q{width:100%;padding:22px 0;background:none;border:none;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:500;text-align:left;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq-q svg{width:16px;height:16px;flex-shrink:0;transition:transform .35s var(--ease-expo);color:rgba(240,239,233,.65)}
+.faq-item.open .faq-q svg{transform:rotate(45deg);color:var(--cyan)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .45s var(--ease-expo),padding .35s}
+.faq-item.open .faq-a{max-height:600px;padding-bottom:22px}
+.faq-a p{font-size:.9rem;color:var(--white60);line-height:1.7}
+@media(max-width:768px){.faq{padding:72px 24px}}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1E1WXTZWQD"></script>
@@ -490,6 +503,18 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 </section>
 
 <!-- FOOTER — exact homepage -->
+
+<section class="faq" id="faq">
+  <div class="faq-inner">
+    <div class="faq-heading rv"><span class="sl">FAQ</span><h2 class="sh2">Common <em>questions.</em></h2></div>
+    <div class="faq-item rv"><button class="faq-q" aria-expanded="false">What does an immersive environment actually mean?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Every class at SABDA takes place inside a fully enclosed 360&deg; room with floor-to-ceiling projection mapping and Dolby Atmos spatial audio. The visuals and sound transform the space into a different world for every session. Your senses are fully engaged, your phone is away, and for 60 minutes the outside world genuinely disappears.</p></div></div>
+    <div class="faq-item rv"><button class="faq-q" aria-expanded="false">I've never done yoga / pilates / sound healing before. Can I still come?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Absolutely. All classes are open to all levels. If you're brand new, we recommend starting with Vinyasa, Hatha Vinyasa, or Core Pilates before moving into more intense formats like Power Pilates or Yoga Sculpt. Any sound healing or yoga with sound healing class is completely accessible from day one.</p></div></div>
+    <div class="faq-item rv"><button class="faq-q" aria-expanded="false">I'm not very fit / flexible. Will I feel out of place?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>No. SABDA isn't about performance. It's about the experience. You'll find people at every level in every class. Nobody's watching you.</p></div></div>
+    <div class="faq-item rv"><button class="faq-q" aria-expanded="false">What should I bring?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Just bring your good energy. Mats, props, blankets, and cushions are all provided. For movement classes, a fitness towel is recommended. Grippy socks are optional for pilates. Wear comfortable clothes you can move in, bring a towel if you want to use the showers, and avoid heavy perfume. Water bottles are welcome.</p></div></div>
+    <div class="faq-item rv"><button class="faq-q" aria-expanded="false">Can I cancel or reschedule?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Yes. Reschedule up to 6 hours before the class starts, free of charge. Late cancels are non-refundable, so we can offer the spot to someone else on the waitlist.</p></div></div>
+  </div>
+</section>
+
 <footer><div class="ft-in">
     <div class="ft-brand"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA" width="400" height="127"><div class="ft-pillars"><span class="fp-art">Art</span><span>·</span><span class="fp-tech">Tech</span><span>·</span><span class="fp-well">Wellness</span></div><img class="ft-symbol" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20symbol%20multi-colored%20(1).png" alt="SABDA symbol"></div>
     <div class="ft-col"><h3 style="color:var(--cyan)">Explore</h3><ul><li><a href="/classes/">Classes</a></li><li><a href="/hire/">Rent</a></li><li><a href="/pricing/">Pricing</a></li><li><a href="/events/">Events</a></li><li><a href="/about/">About</a></li><li><a href="/faq/">FAQ</a></li><li><a href="/contact/">Get in touch</a></li></ul></div>
@@ -557,6 +582,10 @@ setTimeout(function(){
 
 /* Spanish */
 (function(){var p=new URLSearchParams(location.search);if(p.get('lang')==='es'){document.documentElement.lang='es';document.title='3 Clases Inmersivas por \u20AC50 | SABDA Barcelona';var t={'t-label':'TU PRIMERA CLASE INMERSIVA','t-tag':'Entra en la sala de proyecci\u00F3n 360\u00B0 y sonido Dolby Atmos. Elige tu oferta.','t-btn1':'Probar una Clase','t-btn2':'Empezar Ahora','t-cta':'Consigue tu Pack Intro <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>','t-alt':'Solo quieres probar una clase? <span>Clase de prueba \u2014 \u20AC18</span>','t-closer':'Tu cuerpo te lo <em>agradecer\u00E1.</em>','t-cta2':'Consigue tu Pack Intro <svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>','t-cn':'V\u00E1lido 30 d\u00EDas. Sin membres\u00EDa. Sin compromiso.','t-loc':'5 min andando desde metro Hospital Cl\u00EDnic \u00B7 L5','t-sticky':'Reservar'};for(var id in t){var el=document.getElementById(id);if(el)el.innerHTML=t[id]}}})();
+</script>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(function(b){b.addEventListener('click',function(){var it=b.parentElement;var op=it.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(function(o){o.classList.remove('open');o.querySelector('.faq-q').setAttribute('aria-expanded','false');});if(!op){it.classList.add('open');b.setAttribute('aria-expanded','true');}});});
 </script>
 </body>
 </html>
