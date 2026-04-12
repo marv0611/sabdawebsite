@@ -19,7 +19,7 @@
     }
     if(!target||target==='en')return;
     var path=location.pathname;
-    var mapping={{"es":"/es/intro/","ca":"/ca/intro/"}};
+    var mapping={"es":"/es/intro/","ca":"/ca/intro/"};
     if(mapping[target]){location.replace(mapping[target]+location.search);}
   }catch(e){}
 })();
