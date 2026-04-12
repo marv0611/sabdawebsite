@@ -1416,8 +1416,10 @@ function resolveRecipients(topic) {
     'general':     ['manager@sabdastudio.com', 'info@sabdastudio.com'],
   };
   const recipients = routing[topic] || routing['general'];
-  // Silent-CC connect@ on all non-connect routes so Katrina has sight of everything
-  if (!recipients.includes('connect@sabdastudio.com')) {
+  // Silent-CC connect@ on all non-connect routes (except press) so Katrina has sight
+  // of everything that's sales-relevant. Press is handled by co-founders + marketing,
+  // and doesn't need sales-ops visibility.
+  if (topic !== 'press' && !recipients.includes('connect@sabdastudio.com')) {
     recipients.push('connect@sabdastudio.com');
   }
   return recipients;
