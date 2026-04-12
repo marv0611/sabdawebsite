@@ -569,7 +569,7 @@ function openMo(link,title,time,teacher){
     var mo  = document.getElementById('mo');
     if (moT) moT.textContent = curSession.title || 'Book Class';
     if (moC) moC.textContent = (time || '') + (teacher ? ' · ' + teacher : '');
-    if (typeof showGuestStep === 'function') { try { showGuestStep(); } catch(e){ console.error('[openMo] showGuestStep failed',e); } }
+    if (typeof showNoMembership === 'function') { try { showNoMembership(); } catch(e){ console.error('[openMo] showNoMembership failed',e); } }
     if (mo) {
       mo.classList.add('open');
       mo.style.display = 'flex';

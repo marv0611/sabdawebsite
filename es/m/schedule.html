@@ -557,8 +557,8 @@ function openMo(link,title,time,teacher){
   document.getElementById('mo-t').textContent=curSession.title;
   document.getElementById('mo-c').textContent=time+(teacher?' · '+teacher:'');
 
-  // Always show login step — server handles session
-  showGuestStep();
+  // Go to pack list first, matching desktop flow
+  showNoMembership();
   document.getElementById('mo').classList.add('open');
   document.getElementById('mo').style.display='flex';
   document.body.style.overflow='hidden';
