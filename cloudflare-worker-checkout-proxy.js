@@ -869,7 +869,7 @@ async function sendCAPIEvent(eventName, eventId, email, firstName, lastName, val
 // stripeConnectedAccountId is NUMERIC (38966), discovered from /load-stripe-connected-account.
 async function handlePay(request, origin, env) {
   try {
-    const { sessionId, sessionToken, stripePaymentMethodId, firstName, lastName, email, password, phoneNumber, customerFields, type, productId, discountCode, discountCodeId, actualPrice, fbEventId, fbp, fbc, clientIp, clientUserAgent } = await request.json();
+    const { sessionId, sessionToken, stripePaymentMethodId, firstName, lastName, email, password, phoneNumber, customerFields, type, productId, discountCode, discountCodeId, actualPrice, fbEventId, fbp, fbc, clientIp, clientUserAgent, autoEnroll } = await request.json();
 
     if (!firstName || !lastName || !email) {
       return new Response(JSON.stringify({ error: 'Missing customer details' }), {
@@ -1108,6 +1108,49 @@ async function handlePay(request, origin, env) {
           newMemberId: payData.payload.newMemberId,
         }), { status: 200, headers: corsHeaders(origin) });
       }
+      // Auto-enroll: if the client requested auto-enrollment and we just bought a pack/membership,
+      // fire a follow-up session-pay call to book the class using the newly-acquired credit.
+      // Best-effort — failures don't block the purchase success.
+      if (autoEnroll && sessionId && productId && !stripePaymentMethodId) {
+        // skip — shouldn't happen, defensive
+      } else if (autoEnroll && sessionId && productId) {
+        try {
+          // The pay response often returns a setCookie / session we can reuse; simplest: forward
+          // a /sessions/{id}/pay call with actualPrice=0 so Momence uses the just-acquired credit.
+          const enrollUrl = MOMENCE + '/_api/primary/plugin/sessions/' + sessionId + '/pay';
+          const sessFetch = await fetch(
+            MOMENCE + '/_api/readonly/plugin/sessions/' + sessionId + '?hostId=' + HOST_ID,
+            { headers: momenceHeaders(null, request) }
+          ).then(r => r.json()).catch(() => ({}));
+          const loadDate = (sessFetch.message && sessFetch.message.loadDate) || new Date().toISOString();
+          const enrollBody = {
+            tickets: [{ firstName, lastName, email, isAdditionalTicket: false }],
+            totalPriceInCurrency: 0,
+            loadDate: loadDate,
+            stripeConnectedAccountId: STRIPE_ACCOUNT_ID,
+            phoneNumber: phoneNumber || undefined,
+            customerFields: customerFields || {},
+            appliedPriceRuleIds: [],
+            isLoginRedirectDisabled: true,
+            isGuestOnlyBooking: true,
+          };
+          Object.keys(enrollBody).forEach(k => enrollBody[k] === undefined && delete enrollBody[k]);
+          const enrollRes = await fetch(enrollUrl, {
+            method: 'POST',
+            headers: momenceHeaders({ 'Content-Type': 'application/json' }, request),
+            body: JSON.stringify(enrollBody),
+          });
+          const enrollData = await enrollRes.json().catch(() => ({}));
+          if (!enrollRes.ok || enrollData.error) {
+            console.warn('[PAY] auto-enroll failed (non-fatal):', enrollData.error || enrollRes.status);
+          } else {
+            console.log('[PAY] auto-enroll success for session', sessionId);
+          }
+        } catch (e) {
+          console.warn('[PAY] auto-enroll exception (non-fatal):', e && e.message);
+        }
+      }
+
       // Fire CAPI Purchase event (non-3DS success)
       const priceForCAPI = (actualPrice !== undefined && actualPrice !== null) ? actualPrice
         : (productId ? (PRODUCT_PRICES[Number(productId)] || 0) : 0);

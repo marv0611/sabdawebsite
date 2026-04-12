@@ -1182,7 +1182,7 @@ function mountCardForGuest(){
           type:pendingPack.type,productId:pendingPack.id,
           actualPrice:(discountedPrice!==null)?discountedPrice:pendingPack.price,
           password:pass||undefined,
-          phoneNumber:cf.phoneNumber,customerFields:cf.customerFields,fbEventId:(typeof _fbEventId!=='undefined'&&_fbEventId)||undefined,fbp:(typeof _fbGetCookie==='function'&&_fbGetCookie('_fbp'))||undefined,fbc:(typeof _fbGetCookie==='function'&&_fbGetCookie('_fbc'))||undefined
+          phoneNumber:cf.phoneNumber,customerFields:cf.customerFields,autoEnroll:!!(document.getElementById('bk-autoenroll')&&document.getElementById('bk-autoenroll').checked),fbEventId:(typeof _fbEventId!=='undefined'&&_fbEventId)||undefined,fbp:(typeof _fbGetCookie==='function'&&_fbGetCookie('_fbp'))||undefined,fbc:(typeof _fbGetCookie==='function'&&_fbGetCookie('_fbc'))||undefined
         })
       }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};})})
       .then(function(r){
@@ -1552,7 +1552,7 @@ window.showPayForm=function(type,price,productId,name,desc){stepChange();
     +'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Dades de la targeta</div>'
     +'<div class="bk-card-wrap" id="bk-card"></div>'
     +'<div class="bk-err" id="bk-err"></div>'
-    +(curSession.id?'<label style="display:flex;align-items:center;gap:8px;margin:12px 0 16px;cursor:pointer;font-size:.78rem;color:var(--white60)"><input type="checkbox" id="bk-autoenroll" checked style="accent-color:var(--cyan);width:16px;height:16px;cursor:pointer"> Inscríbeme automáticamente en <strong style="color:var(--white)">'+esc(curSession.title)+'</strong></label>':'')
+    +(curSession.id?'<label style="display:flex;align-items:center;gap:8px;margin:12px 0 16px;cursor:pointer;font-size:.78rem;color:var(--white60)"><input type="checkbox" id="bk-autoenroll" style="accent-color:var(--cyan);width:16px;height:16px;cursor:pointer"><span>Inscríbeme automáticamente en <strong style="color:var(--white)">'+esc(curSession.title)+'</strong></span></label>':'')
     +'<button class="bk-primary" id="bk-pay-btn" onclick="doPayAndBook(\''+type+'\','+price+','+productId+')">Pagar \u20AC'+price+(type==='single'?' i reservar':' i reservar classe')+'</button>'
     +'<div class="bk-link" onclick="showNoMembership()">\u2190 Cambiar plan</div>'
     +'</div>';
@@ -1601,7 +1601,7 @@ window.showPayForm=function(type,price,productId,name,desc){stepChange();
           discountCode:activePromo||undefined,
           actualPrice:(discountedPrice!==null)?discountedPrice:price,
           password:(curUser.isGuest&&document.getElementById('bk-new-pass'))?(document.getElementById('bk-new-pass').value.trim()||undefined):undefined,
-          phoneNumber:cf.phoneNumber,customerFields:cf.customerFields,fbEventId:(typeof _fbEventId!=='undefined'&&_fbEventId)||undefined,fbp:(typeof _fbGetCookie==='function'&&_fbGetCookie('_fbp'))||undefined,fbc:(typeof _fbGetCookie==='function'&&_fbGetCookie('_fbc'))||undefined
+          phoneNumber:cf.phoneNumber,customerFields:cf.customerFields,autoEnroll:!!(document.getElementById('bk-autoenroll')&&document.getElementById('bk-autoenroll').checked),fbEventId:(typeof _fbEventId!=='undefined'&&_fbEventId)||undefined,fbp:(typeof _fbGetCookie==='function'&&_fbGetCookie('_fbp'))||undefined,fbc:(typeof _fbGetCookie==='function'&&_fbGetCookie('_fbc'))||undefined
         })
       }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
       .then(function(r){
