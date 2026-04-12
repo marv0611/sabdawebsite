@@ -52,7 +52,7 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
 .hdr-pill{padding:7px 16px;background:var(--cyan);color:var(--navy);border-radius:100px;font-size:.68rem;font-weight:700;letter-spacing:.02em;line-height:1;box-shadow:0 2px 12px rgba(2,243,197,.2)}
 
 /* HERO */
-.hero{position:relative;min-height:70svh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 24px 32px;overflow:hidden}
+.hero{position:relative;min-height:82svh;display:flex;flex-direction:column;justify-content:flex-end;padding:calc(72px + var(--safe-t)) 24px 32px;overflow:hidden}
 .hero-bg{position:absolute;inset:0;background:url('https://raw.githubusercontent.com/marv0611/sabdawebsite/main/intro-hero-mobile.jpg') center 35%/cover;filter:brightness(.40) contrast(1.1) saturate(1.45)}
 .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,18,53,.1) 0%,transparent 25%,rgba(14,18,53,.35) 60%,rgba(14,18,53,.92) 82%,var(--navy) 100%)}
 .hero-c{position:relative;z-index:2}
@@ -71,6 +71,12 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
 .offer{position:relative;display:block;background:rgba(14,18,53,.55);border:1px solid var(--w20);border-radius:14px;padding:18px 18px 16px;backdrop-filter:blur(16px) saturate(1.2);-webkit-backdrop-filter:blur(16px) saturate(1.2);transition:transform .2s var(--ease),border-color .2s}
 .offer:active{transform:scale(.98)}
 .offer.pri{background:linear-gradient(135deg,rgba(2,243,197,.14) 0%,rgba(2,243,197,.06) 100%);border-color:rgba(2,243,197,.55);box-shadow:0 8px 32px rgba(2,243,197,.15),inset 0 1px 0 rgba(2,243,197,.3)}
+.offer:not(.pri){padding:14px 16px 12px;opacity:.92}
+.offer:not(.pri) .offer-name{font-size:.98rem}
+.offer:not(.pri) .offer-price{font-size:1.55rem}
+.offer:not(.pri) .offer-sub{font-size:.72rem;margin-bottom:10px}
+.offer:not(.pri) .offer-cta{padding:10px;font-size:.78rem}
+.offer:not(.pri) .offer-lbl{font-size:.58rem}
 .offer-badge{position:absolute;top:-9px;left:16px;background:var(--cyan);color:var(--navy);font-size:.58rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:100px;line-height:1.2}
 .offer-row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:6px}
 .offer-lbl{display:block;font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--w60);margin-bottom:3px}
@@ -366,16 +372,6 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
 </section>
 
 
-<!-- FAQ -->
-<section class="faq-m fi">
-  <div class="faq-m-hdr"><span class="sl">FAQ</span><h2>Common <em>questions.</em></h2></div>
-  <div class="faq-m-i"><button class="faq-m-q" aria-expanded="false">What does an immersive environment actually mean?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-m-a"><p>Every class at SABDA takes place inside a fully enclosed 360&deg; room with floor-to-ceiling projection mapping and Dolby Atmos spatial audio. The visuals and sound transform the space into a different world for every session.</p></div></div>
-  <div class="faq-m-i"><button class="faq-m-q" aria-expanded="false">I've never done yoga / pilates / sound healing. Can I come?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-m-a"><p>Absolutely. All classes are open to all levels. If you're brand new, we recommend starting with Vinyasa, Hatha Vinyasa, or Core Pilates. Sound healing is accessible from day one.</p></div></div>
-  <div class="faq-m-i"><button class="faq-m-q" aria-expanded="false">I'm not very fit. Will I feel out of place?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-m-a"><p>No. SABDA isn't about performance. It's about the experience. You'll find people at every level in every class. Nobody's watching you.</p></div></div>
-  <div class="faq-m-i"><button class="faq-m-q" aria-expanded="false">What should I bring?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-m-a"><p>Just your good energy. Mats, props, blankets, and cushions are all provided. Wear comfortable clothes you can move in. Showers available.</p></div></div>
-  <div class="faq-m-i"><button class="faq-m-q" aria-expanded="false">Can I cancel or reschedule?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-m-a"><p>Yes. Reschedule up to 6 hours before the class starts, free of charge. Late cancels are non-refundable.</p></div></div>
-</section>
-
 <!-- BOOK CTA -->
 <section class="book fi" style="border-top:1px solid var(--w06)">
   <span class="sl" style="text-align:center">Get Started</span>
@@ -391,6 +387,16 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
   <div class="faq-m-i"><button class="faq-m-q" aria-expanded="false">What language are classes in?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-m-a"><p>English, Spanish, or both. It's listed on each class in the schedule. Catalan is available for private sessions.</p></div></div>
   <div class="faq-m-i"><button class="faq-m-q" aria-expanded="false">What should I eat before class?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-m-a"><p>Try not to eat a full meal within 90 minutes, especially for breathwork. A light snack is fine. Hydrate beforehand.</p></div></div>
   <div class="faq-m-i"><button class="faq-m-q" aria-expanded="false">Can I bring a friend or come as a group?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-m-a"><p>Yes. Book individual spots. For groups of 8 or more, email us directly.</p></div></div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-m fi">
+  <div class="faq-m-hdr"><span class="sl">FAQ</span><h2>Common <em>questions.</em></h2></div>
+  <div class="faq-m-i"><button class="faq-m-q" aria-expanded="false">What does an immersive environment actually mean?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-m-a"><p>Every class at SABDA takes place inside a fully enclosed 360&deg; room with floor-to-ceiling projection mapping and Dolby Atmos spatial audio. The visuals and sound transform the space into a different world for every session.</p></div></div>
+  <div class="faq-m-i"><button class="faq-m-q" aria-expanded="false">I've never done yoga / pilates / sound healing. Can I come?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-m-a"><p>Absolutely. All classes are open to all levels. If you're brand new, we recommend starting with Vinyasa, Hatha Vinyasa, or Core Pilates. Sound healing is accessible from day one.</p></div></div>
+  <div class="faq-m-i"><button class="faq-m-q" aria-expanded="false">I'm not very fit. Will I feel out of place?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-m-a"><p>No. SABDA isn't about performance. It's about the experience. You'll find people at every level in every class. Nobody's watching you.</p></div></div>
+  <div class="faq-m-i"><button class="faq-m-q" aria-expanded="false">What should I bring?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-m-a"><p>Just your good energy. Mats, props, blankets, and cushions are all provided. Wear comfortable clothes you can move in. Showers available.</p></div></div>
+  <div class="faq-m-i"><button class="faq-m-q" aria-expanded="false">Can I cancel or reschedule?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-m-a"><p>Yes. Reschedule up to 6 hours before the class starts, free of charge. Late cancels are non-refundable.</p></div></div>
 </section>
 
 <!-- LOCATION -->
