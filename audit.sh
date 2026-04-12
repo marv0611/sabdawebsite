@@ -195,7 +195,9 @@ import glob as _glob
 _EN_PATHS = ['/classes/','/pricing/','/schedule/','/about/','/contact/','/events/','/hire/','/faq/']
 for p in _glob.glob('ca/**/*.html', recursive=True) + _glob.glob('es/**/*.html', recursive=True):
     s_f = open(p).read()
-    for m in re.finditer(r'<a\b[^>]*\bhref="(/(?:classes|pricing|schedule|about|contact|events|hire|faq)(?:/[^"]*)?)"', s_f, re.IGNORECASE):
+    for m in re.finditer(r'<a\b[^>]*\bhref="(/(?:classes|pricing|schedule|about|contact|events|hire|faq|m)(?:/[^"]*)?)"[^>]*>([^<]*)</a>', s_f, re.IGNORECASE):
+        inner = m.group(2).strip()
+        if inner in ('EN','ES','CA','English','Español','Català','Catalan','Spanish'): continue
         locale = 'ca' if p.startswith('ca/') else 'es'
         issues.append(f'[CROSS_LOCALE]  {p} — <a href="{m.group(1)}"> leaks to EN path on {locale.upper()} page')
         break
