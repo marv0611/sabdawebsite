@@ -660,6 +660,8 @@ function showGuestStep(){console.log('[showGuestStep] start');try{stepChange();
     +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">Continuar</button>'
     +'</div>';
   try{var fnEl=document.getElementById('bk-fn');if(fnEl)fnEl.focus();}catch(e){}
+  // Mount Stripe card inline so guest checkout is one screen (pack or single)
+  if(pendingPack){try{mountCardForGuest();}catch(e){console.error('[showGuestStep] mountCardForGuest failed',e);}}
 }catch(err){console.error('[showGuestStep] EXCEPTION',err);var bd2=document.getElementById('mo-bd');if(bd2&&!bd2.innerHTML){bd2.innerHTML='<div style="padding:24px;text-align:center;color:var(--white60)"><p style="margin-bottom:16px">Could not load booking form.</p>'+(curSession&&curSession.link?'<a href="'+curSession.link+'" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:14px 28px;background:var(--cyan);color:var(--navy);border-radius:100px;font-weight:700;text-decoration:none">Book on Momence</a>':'')+'</div>';}}
 }
 
