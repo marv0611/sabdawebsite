@@ -15,7 +15,7 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '567636669734630');
+fbq('init', '567636669734630', {});
 fbq('track', 'PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
@@ -1050,7 +1050,7 @@ window.doLogin=function(){if(isProcessing)return;
     if(r.data.mfaRequired){showMfaStep(r.data.mfaToken);return;}
     var d=r.data;
     if(!curSession) return;
-    curUser={id:d.user.id,email:d.user.email||email,firstName:d.user.firstName||email.split('@')[0],lastName:d.user.lastName||'',memberId:d.user.memberId};
+    curUser={id:d.user.id,email:d.user.email||email,firstName:d.user.firstName||email.split('@')[0],lastName:d.user.lastName||'',memberId:d.user.memberId};fbqAdvancedMatch();
     curSessionToken=d.sessionToken;
     curSession.price=d.sessionPrice||22;
 
@@ -1102,7 +1102,7 @@ window.doMfaVerify=function(){if(isProcessing)return;
     }
     var d=r.data;
     if(!curSession) return;
-    curUser={id:d.user.id,email:d.user.email,firstName:d.user.firstName||d.user.email.split('@')[0],lastName:d.user.lastName||'',memberId:d.user.memberId};
+    curUser={id:d.user.id,email:d.user.email,firstName:d.user.firstName||d.user.email.split('@')[0],lastName:d.user.lastName||'',memberId:d.user.memberId};fbqAdvancedMatch();
     curSessionToken=d.sessionToken;
     curSession.price=d.sessionPrice||22;
 
@@ -1142,7 +1142,7 @@ window.doGuestCheck=function(){
       return;
     }
   }
-  curUser={id:null,email:email,firstName:fn,lastName:ln,memberId:null,isGuest:true};
+  curUser={id:null,email:email,firstName:fn,lastName:ln,memberId:null,isGuest:true};fbqAdvancedMatch();
   if(pendingPack){doGuestPackPay();}else{showNoMembership();}
 };
 
@@ -1984,6 +1984,7 @@ window.sabdaWaitlistButtonText = function(){
     mo.observe(target, {childList:true, subtree:true, characterData:true});
   }catch(e){}
 })();
+function fbqAdvancedMatch(){if(typeof fbq!=='function'||!curUser||!curUser.email)return;try{var nameP=(curUser.firstName||'').trim().toLowerCase();var nameL=(curUser.lastName||'').trim().toLowerCase();fbq('init','567636669734630',{em:(curUser.email||'').trim().toLowerCase(),fn:nameP,ln:nameL});}catch(e){}}
 </script>
 </body>
 </html>
