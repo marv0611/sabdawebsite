@@ -22,29 +22,29 @@
 :root{--navy:#0e1235;--salmon:#F8A6A3;--cyan:#02F3C5;--white:#f0efe9;--white60:rgba(240,239,233,.72);--white38:rgba(240,239,233,.55);--ease-expo:cubic-bezier(.16,1,.3,1)}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;overflow-x:hidden}
-body{background:var(--navy);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased;padding-bottom:84px}
+body{background:var(--navy);color:var(--white);font-family:'DM Sans',sans-serif;font-weight:400;line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased;padding-bottom:100px}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 
 /* Hero */
-.hero{position:relative;min-height:85vh;display:flex;align-items:flex-end;padding:24px 20px 36px;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:url('https://raw.githubusercontent.com/marv0611/sabdawebsite/main/intro-hero-mobile.jpg') center/cover no-repeat;filter:brightness(.36) contrast(1.1) saturate(1.15)}
-.hero-grad{position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,18,53,.3) 0%,rgba(14,18,53,.1) 40%,rgba(14,18,53,.85) 100%)}
-.hero-in{position:relative;z-index:2;width:100%}
-.sl{display:inline-block;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);font-weight:600;margin-bottom:14px;padding:6px 12px;border:1px solid rgba(2,243,197,.35);border-radius:100px}
-.hero-tagline{font-family:'PT Serif',serif;font-size:1.9rem;line-height:1.2;font-weight:400;margin-bottom:26px;letter-spacing:-.01em}
+.hero{position:relative;width:100%;min-height:100vh;min-height:100svh;display:flex;align-items:center;justify-content:center;overflow:hidden;padding:100px 20px 40px}
+.hero-bg{position:absolute;inset:0;background:url('https://raw.githubusercontent.com/marv0611/sabdawebsite/main/intro-hero-mobile.jpg') center 35%/cover no-repeat;filter:brightness(.45) contrast(1.08) saturate(1.15)}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,18,53,.25) 0%,rgba(14,18,53,.05) 30%,rgba(14,18,53,.55) 70%,var(--navy) 100%);pointer-events:none}
+.hero-in{position:relative;z-index:3;width:100%;text-align:center}
+.sl{display:inline-block;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);font-weight:600;margin-bottom:18px;padding:6px 14px;border:1px solid rgba(2,243,197,.4);border-radius:100px;background:rgba(14,18,53,.35);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.hero-tagline{font-family:'PT Serif',serif;font-size:1.85rem;line-height:1.15;font-weight:400;margin-bottom:28px;letter-spacing:-.015em;text-shadow:0 2px 20px rgba(14,18,53,.5)}
 .hero-tagline em{font-style:italic;color:var(--salmon)}
 
 /* Offer cards */
-.h-offers{display:flex;flex-direction:column;gap:10px}
-.h-offer{display:block;background:rgba(240,239,233,.06);border:1px solid rgba(240,239,233,.14);border-radius:14px;padding:18px 18px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);transition:border-color .25s,background .25s}
-.h-offer.featured{background:rgba(2,243,197,.08);border-color:rgba(2,243,197,.4)}
-.h-offer-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
-.h-offer-tag{font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--white60);font-weight:600}
+.h-offers{display:flex;flex-direction:column;gap:12px;text-align:left}
+.h-offer{display:block;background:rgba(14,18,53,.55);border:1px solid rgba(240,239,233,.16);border-radius:12px;padding:18px 20px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);transition:border-color .25s,background .25s}
+.h-offer.featured{background:rgba(2,243,197,.1);border-color:rgba(2,243,197,.5)}
+.h-offer-row{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px}
+.h-offer-tag{font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:var(--white60);font-weight:600}
 .h-offer.featured .h-offer-tag{color:var(--cyan)}
-.h-offer-price{font-family:'PT Serif',serif;font-size:1.7rem;font-weight:700}
-.h-offer-sub{font-size:.82rem;color:var(--white60);line-height:1.4;margin-bottom:12px}
-.h-offer-btn{display:block;text-align:center;padding:13px;border-radius:100px;background:var(--white);color:var(--navy);font-weight:600;font-size:.92rem}
+.h-offer-price{font-family:'PT Serif',serif;font-size:1.55rem;font-weight:700;line-height:1}
+.h-offer-sub{font-size:.78rem;color:var(--white60);line-height:1.4;margin-bottom:14px}
+.h-offer-btn{display:block;text-align:center;padding:12px;border-radius:100px;background:var(--white);color:var(--navy);font-weight:600;font-size:.9rem}
 .h-offer.featured .h-offer-btn{background:var(--cyan)}
 
 /* Sections */
