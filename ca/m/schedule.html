@@ -1211,7 +1211,7 @@ function showNoMembership(){stepChange();
     +'</div></div>'
     +'<div class="bk-confirm">'
     +(curUser?'<div class="bk-user">Reservant com a <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>':'')
-    +'<p style="font-size:.85rem;color:var(--white60);text-align:center;margin-bottom:18px;line-height:1.5">Tria com vols reservar aquesta classe</p>'
+    +(curUser?'':'<div onclick="showLoginStep()" style="border:1.5px solid var(--white12);border-radius:10px;padding:14px;margin-bottom:18px;font-size:.82rem;color:var(--white60);text-align:center;cursor:pointer;transition:border-color .2s">Tens un pack o subscripció? <span style="color:var(--cyan);font-weight:600">Inicia sessió aquí \u2192</span></div>')
     // Intro offers first
     +'<div class="bk-pkg-grp" style="color:var(--salmon)">Classe solta</div>'
     +row('feat','single',22,445630,'Drop-in','Una classe, sense compromís','€22')

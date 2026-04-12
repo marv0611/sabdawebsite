@@ -1232,7 +1232,7 @@ function showNoMembership(){stepChange();
     +'</div></div>'
     +'<div class="bk-confirm">'
     +(curUser?'<div class="bk-user">Reservando como <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>':'')
-    +'<p style="font-size:.85rem;color:var(--white60);text-align:center;margin-bottom:18px;line-height:1.5">Elige cómo quieres reservar esta clase</p>'
+    +(curUser?'':'<div onclick="showLoginStep()" style="border:1.5px solid var(--white12);border-radius:10px;padding:14px;margin-bottom:18px;font-size:.82rem;color:var(--white60);text-align:center;cursor:pointer;transition:border-color .2s">¿Tienes un pack o suscripción? <span style="color:var(--cyan);font-weight:600">Inicia sesión aquí \u2192</span></div>')
     // Intro offers first
     +'<div class="bk-pkg-grp" style="color:var(--salmon)">Clase suelta</div>'
     +row('feat','single',22,445630,'Drop-in','Una clase, sin compromiso','€22')
