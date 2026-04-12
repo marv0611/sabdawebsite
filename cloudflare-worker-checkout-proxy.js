@@ -140,7 +140,7 @@ export default {
       return handleBook(request, reqOrigin);
     }
     if (url.pathname === '/sabda-api/pay') {
-      return handlePay(request, reqOrigin);
+      return handlePay(request, reqOrigin, env);
     }
 
     if (url.pathname === '/sabda-api/contact') {
@@ -867,7 +867,7 @@ async function sendCAPIEvent(eventName, eventId, email, firstName, lastName, val
 //   2. sessionId only   → /plugin/sessions/{id}/pay     (paid class booking)
 // Both use paymentMethod:{id:stripePaymentMethodId} format, NOT stripePaymentMethodId at top level.
 // stripeConnectedAccountId is NUMERIC (38966), discovered from /load-stripe-connected-account.
-async function handlePay(request, origin) {
+async function handlePay(request, origin, env) {
   try {
     const { sessionId, sessionToken, stripePaymentMethodId, firstName, lastName, email, password, phoneNumber, customerFields, type, productId, discountCode, discountCodeId, actualPrice, fbEventId, fbp, fbc, clientIp, clientUserAgent } = await request.json();
 
