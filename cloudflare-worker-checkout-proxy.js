@@ -1095,6 +1095,15 @@ async function handlePay(request, origin, env) {
       body: JSON.stringify(body),
     });
 
+    // Capture Set-Cookie headers from pack-pay response for auto-enroll follow-up.
+    // Momence's session-pay endpoint authenticates the booking via these cookies to
+    // associate the seat with the just-created/charged customer.
+    let payRespCookies = '';
+    try {
+      const sc = payRes.headers.get('set-cookie') || '';
+      // Collect cookie name=value pairs; drop attributes like Path, Expires, Secure, HttpOnly
+      payRespCookies = sc.split(/,(?=[^;]+=)/).map(c => c.split(';')[0].trim()).filter(Boolean).join('; ');
+    } catch (e) {}
     const payData = await payRes.json().catch(() => ({}));
 
     // Log Momence response (status + first 1500 chars of body)
@@ -1115,14 +1124,13 @@ async function handlePay(request, origin, env) {
         // skip — shouldn't happen, defensive
       } else if (autoEnroll && sessionId && productId) {
         try {
-          // The pay response often returns a setCookie / session we can reuse; simplest: forward
-          // a /sessions/{id}/pay call with actualPrice=0 so Momence uses the just-acquired credit.
           const enrollUrl = MOMENCE + '/_api/primary/plugin/sessions/' + sessionId + '/pay';
+          // Fetch session metadata for loadDate
           const sessFetch = await fetch(
             MOMENCE + '/_api/readonly/plugin/sessions/' + sessionId + '?hostId=' + HOST_ID,
             { headers: momenceHeaders(null, request) }
           ).then(r => r.json()).catch(() => ({}));
-          const loadDate = (sessFetch.message && sessFetch.message.loadDate) || new Date().toISOString();
+          const loadDate = (sessFetch.message && sessFetch.message.loadDate) || (sessFetch.loadDate) || new Date().toISOString();
           const enrollBody = {
             tickets: [{ firstName, lastName, email, isAdditionalTicket: false }],
             totalPriceInCurrency: 0,
@@ -1132,19 +1140,22 @@ async function handlePay(request, origin, env) {
             customerFields: customerFields || {},
             appliedPriceRuleIds: [],
             isLoginRedirectDisabled: true,
-            isGuestOnlyBooking: true,
           };
           Object.keys(enrollBody).forEach(k => enrollBody[k] === undefined && delete enrollBody[k]);
+          // Build headers: inherit Momence standard headers, override Cookie with pack-pay session cookies
+          // to authenticate the newly-created/charged member for this booking.
+          const enrollHeaders = momenceHeaders({ 'Content-Type': 'application/json' }, request);
+          if (payRespCookies) enrollHeaders['Cookie'] = payRespCookies;
           const enrollRes = await fetch(enrollUrl, {
             method: 'POST',
-            headers: momenceHeaders({ 'Content-Type': 'application/json' }, request),
+            headers: enrollHeaders,
             body: JSON.stringify(enrollBody),
           });
           const enrollData = await enrollRes.json().catch(() => ({}));
           if (!enrollRes.ok || enrollData.error) {
-            console.warn('[PAY] auto-enroll failed (non-fatal):', enrollData.error || enrollRes.status);
+            console.warn('[PAY] auto-enroll failed (non-fatal). status=', enrollRes.status, 'err=', enrollData.error, 'cookies_forwarded=', !!payRespCookies);
           } else {
-            console.log('[PAY] auto-enroll success for session', sessionId);
+            console.log('[PAY] auto-enroll success for session', sessionId, '(cookies_forwarded=' + !!payRespCookies + ')');
           }
         } catch (e) {
           console.warn('[PAY] auto-enroll exception (non-fatal):', e && e.message);
