@@ -871,6 +871,7 @@ function showFallback(){
   var err=document.getElementById('bk-err');
   if(err&&err.textContent){
     err.innerHTML=err.textContent+'<br><a href="'+curSession.link+'" target="_blank" rel="noopener noreferrer" style="color:var(--cyan);text-decoration:underline;font-size:.78rem">Reservar a Momence \u2192</a>';
+    err.classList.add('show');
   }
 }
 function getSpotsHtml(){
@@ -1018,6 +1019,7 @@ window.doLogin=function(){if(isProcessing)return;
   .then(function(r){
     if(!r.ok||r.data.error){
       err.innerHTML='Correu o contrasenya incorrectes. <a href="'+curSession.link+'" target="_blank" rel="noopener noreferrer" style="color:var(--cyan);text-decoration:underline">Reservar a Momence \u2192</a>';
+      err.classList.add('show');
       isProcessing=false;btn.textContent='Inicia sessió i reserva';btn.disabled=false;
       return;
     }
@@ -1070,6 +1072,7 @@ window.doMfaVerify=function(){if(isProcessing)return;
   .then(function(r){
     if(!r.ok||r.data.error){
       err.innerHTML='Codi no vàlid. <a href="'+curSession.link+'" target="_blank" rel="noopener noreferrer" style="color:var(--cyan);text-decoration:underline">Reservar a Momence \u2192</a>';
+      err.classList.add('show');
       isProcessing=false;btn.textContent='Verificar i continuar';btn.disabled=false;
       return;
     }

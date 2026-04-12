@@ -467,6 +467,7 @@ function showFallback(){
   var err=document.getElementById('bk-err');
   if(err&&err.textContent){
     err.innerHTML=err.textContent+'<br><a href="'+curSession.link+'" target="_blank" rel="noopener noreferrer">Book on Momence instead →</a>';
+    err.classList.add('show');
   }
 }
 
@@ -488,6 +489,7 @@ function showError(msg, opts){
   // Append fallback link if requested
   if(opts.fallback!==false && curSession && curSession.link){
     err.innerHTML=err.innerHTML+'<br><a href="'+curSession.link+'" target="_blank" rel="noopener noreferrer">Book on Momence instead →</a>';
+    err.classList.add('show');
   }
 
   // Show recovery panel for rate limit
@@ -513,6 +515,7 @@ function clearError(){
   var err=document.getElementById('bk-err');
   var rec=document.getElementById('bk-recover');
   if(err){err.classList.remove('show');err.innerHTML='';}
+  err.classList.add('show');
   if(rec){rec.classList.remove('show');rec.innerHTML='';}
 }
 
@@ -721,6 +724,7 @@ function doLogin(){if(isProcessing)return;
   .then(function(r){
     if(!r.ok||r.data.error){
       err.innerHTML='Wrong email or password. <a href="'+curSession.link+'" target="_blank" rel="noopener noreferrer" style="color:var(--cyan);text-decoration:underline">Book on Momence →</a>';
+      err.classList.add('show');
       isProcessing=false;btn.textContent='Log in & Book';btn.disabled=false;
       return;
     }
@@ -792,6 +796,7 @@ function doMfaVerify(){if(isProcessing)return;
   .then(function(r){
     if(!r.ok||r.data.error){
       err.innerHTML='Invalid code. <a href="'+curSession.link+'" target="_blank" rel="noopener noreferrer" style="color:var(--cyan);text-decoration:underline">Book on Momence instead →</a>';
+      err.classList.add('show');
       isProcessing=false;btn.textContent='Verify & Continue';btn.disabled=false;
       return;
     }

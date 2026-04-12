@@ -871,6 +871,7 @@ function showFallback(){
   var err=document.getElementById('bk-err');
   if(err&&err.textContent){
     err.innerHTML=err.textContent+'<br><a href="'+curSession.link+'" target="_blank" rel="noopener noreferrer" style="color:var(--cyan);text-decoration:underline;font-size:.78rem">Book on Momence instead \u2192</a>';
+    err.classList.add('show');
   }
 }
 function getSpotsHtml(){
@@ -1015,6 +1016,7 @@ window.doLogin=function(){if(isProcessing)return;
   .then(function(r){
     if(!r.ok||r.data.error){
       err.innerHTML='Wrong email or password. <a href="'+curSession.link+'" target="_blank" rel="noopener noreferrer" style="color:var(--cyan);text-decoration:underline">Book on Momence \u2192</a>';
+      err.classList.add('show');
       isProcessing=false;btn.textContent='Log in & Book';btn.disabled=false;
       return;
     }
@@ -1068,6 +1070,7 @@ window.doMfaVerify=function(){if(isProcessing)return;
   .then(function(r){
     if(!r.ok||r.data.error){
       err.innerHTML='Invalid code. <a href="'+curSession.link+'" target="_blank" rel="noopener noreferrer" style="color:var(--cyan);text-decoration:underline">Book on Momence instead \u2192</a>';
+      err.classList.add('show');
       isProcessing=false;btn.textContent='Verify & Continue';btn.disabled=false;
       return;
     }
