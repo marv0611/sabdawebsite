@@ -151,6 +151,18 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
 .rv-bn{font-family:'PT Serif',serif;font-size:.88rem;font-weight:700}
 .rv-bt{font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--w38)}
 
+/* HOW IT WORKS */
+.steps-m{padding:48px 20px 24px;border-top:1px solid var(--w06)}
+.steps-m-hdr{margin-bottom:28px}
+.steps-m-hdr .sl{display:block;margin-bottom:8px}
+.steps-m-hdr h2{font-family:'PT Serif',serif;font-size:1.8rem;font-weight:700;line-height:1.1;letter-spacing:-.02em}
+.steps-m-hdr h2 em{font-style:italic;color:var(--salmon)}
+.step-m{display:flex;gap:14px;padding:18px 0;border-bottom:1px solid var(--w06)}
+.step-m:last-child{border-bottom:none}
+.step-m-n{flex-shrink:0;width:34px;height:34px;border-radius:50%;border:1px solid rgba(2,243,197,.35);color:var(--cyan);display:flex;align-items:center;justify-content:center;font-family:'PT Serif',serif;font-size:.95rem;font-weight:700}
+.step-m-t h3{font-family:'PT Serif',serif;font-size:1.05rem;font-weight:700;margin-bottom:4px;letter-spacing:-.01em}
+.step-m-t p{font-size:.82rem;color:var(--w60);line-height:1.55}
+
 /* BOOK CTA */
 .book{padding:36px 24px;text-align:center;position:relative;overflow:hidden}
 .book::before{content:'';position:absolute;bottom:-40%;left:50%;transform:translateX(-50%);width:200%;height:100%;background:radial-gradient(ellipse 50% 60% at 50% 100%,rgba(2,243,197,.05) 0%,transparent 70%);pointer-events:none}
@@ -327,6 +339,17 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
 <a href="/m/classes.html" class="fi" style="display:block;text-align:center;font-size:.72rem;color:var(--white);padding:8px 0 16px;font-weight:500">More classes &rarr;</a>
 
 </div>
+
+<!-- HOW IT WORKS -->
+<section class="steps-m fi">
+  <div class="steps-m-hdr">
+    <span class="sl">How it works</span>
+    <h2>Three steps.<br><em>That's it.</em></h2>
+  </div>
+  <div class="step-m"><div class="step-m-n">1</div><div class="step-m-t"><h3>Choose your class</h3><p>Yoga, pilates, sound healing, or breathwork. Over 40 classes a week. Every level welcome.</p></div></div>
+  <div class="step-m"><div class="step-m-n">2</div><div class="step-m-t"><h3>Arrive 10 minutes early</h3><p>Mats, towels, and props are here. Showers and changing room available.</p></div></div>
+  <div class="step-m"><div class="step-m-n">3</div><div class="step-m-t"><h3>Experience the space</h3><p>Every class comes with its own visual and sound, designed to match the practice. Step inside Spain's most unique wellness studio.</p></div></div>
+</section>
 
 <!-- BOOK CTA -->
 <section class="book fi" style="border-top:1px solid var(--w06)">
