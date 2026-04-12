@@ -1669,7 +1669,8 @@ function openPackagePurchase(productId) {
   document.getElementById('mo-t').textContent = 'Comprar ' + pkg.name;
   document.getElementById('mo-c').textContent = '€' + pkg.price + ' · ' + pkg.desc;
   
-  showPackageGuestStep();
+  pendingPack = { type: pkg.type, price: pkg.price, id: productId, name: pkg.name, desc: pkg.desc };
+  showGuestStep();
   document.getElementById('mo').classList.add('open');
   document.getElementById('mo').style.display = 'flex';
   document.body.style.overflow = 'hidden';

@@ -1731,7 +1731,11 @@ function openPackagePurchase(productId) {
   document.getElementById('mo-t').textContent = 'Buy ' + pkg.name;
   document.getElementById('mo-c').textContent = '€' + pkg.price + ' · ' + pkg.desc;
   
-  showPackageGuestStep();
+  // Merged one-screen checkout: pre-set pendingPack and route to showGuestStep
+  // (showGuestStep renders card form + Apple Pay + promo + customer fields inline
+  //  whenever pendingPack is set, matching desktop behavior)
+  pendingPack = { type: pkg.type, price: pkg.price, id: productId, name: pkg.name, desc: pkg.desc };
+  showGuestStep();
   document.getElementById('mo').classList.add('open');
   document.getElementById('mo').style.display = 'flex';
   document.body.style.overflow = 'hidden';
