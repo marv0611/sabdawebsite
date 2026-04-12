@@ -351,6 +351,22 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 .rn-ct{color:rgba(240,239,233,.70) !important}
 .nav-links a{color:rgba(240,239,233,.75)}
 .ft-bot{color:rgba(240,239,233,.65)}
+
+/* INQUIRY FORM (from hire/) */
+.inquiry{padding:120px 80px;z-index:2;position:relative;border-top:1px solid rgba(240,239,233,.06)}
+.inq-inner{max-width:680px;margin:0 auto}
+.inq-form{margin-top:48px}
+.inq-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.inq-row.full{grid-template-columns:1fr}
+.inq-field{display:flex;flex-direction:column;gap:6px}
+.inq-submit{display:inline-flex;align-items:center;gap:10px;background:var(--cyan);color:var(--navy);padding:15px 36px;border-radius:3px;font-size:.9rem;font-weight:700;letter-spacing:.05em;border:none;cursor:pointer;transition:background .2s,transform .2s,box-shadow .2s;margin-top:8px;font-family:'DM Sans',sans-serif}
+.inq-submit:hover{background:#18ffda;transform:translateY(-2px);box-shadow:0 14px 36px rgba(2,243,197,.22)}
+.inq-note{font-size:.74rem;color:var(--white38);margin-top:16px;line-height:1.6}
+.inq-success{display:none;text-align:center;padding:48px 0}
+.inq-success.show{display:block}
+.inq-success-icon{font-size:2.4rem;margin-bottom:16px}
+.inq-row{grid-template-columns:1fr}
+.inquiry{padding:80px 24px}
 </style>
 <style id="a11y-skip-style">
 .a11y-skip{position:absolute;left:-9999px;top:0;background:#02F3C5;color:#0e1235;padding:12px 20px;font-weight:700;z-index:99999;text-decoration:none;border-radius:0 0 4px 0}
@@ -586,18 +602,82 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 </section>
 
 <!-- ═══════════════════════════════════════════════════════
-     EMAIL SIGNUP
+     INQUIRY FORM
 ═══════════════════════════════════════════════════════ -->
-<div class="signup-cta" id="signup">
-  <div class="signup-inner rv">
-    <p class="signup-text">Want to keep in touch for our <em>next event?</em></p>
-    <p class="signup-sub">We don&#8217;t do events often, but when we do, they sell out. Drop your email and we&#8217;ll let you know before anyone else.</p>
-    <form class="signup-form" onsubmit="handleSignup(event)">
-      <input type="email" placeholder="Your email" aria-label="Email address for newsletter" required>
-      <button type="submit">Notify Me</button>
+<section class="inquiry" id="inquiry">
+  <div class="inq-inner">
+    <span class="sl rv">Let's Talk</span>
+    <h2 class="sh2 rv" style="transition-delay:.07s">Tell Us About<br><em>Your Event</em></h2>
+    <p class="rv" style="transition-delay:.14s;color:var(--white38);font-size:.95rem;line-height:1.72;margin-top:18px">Every event at SABDA is custom. Share the basics and our team will get back to you as soon as possible with ideas, availability, and a tailored proposal.</p>
+
+    <form class="inq-form rv" style="transition-delay:.2s" id="inquiryForm" onsubmit="return handleSubmit(event)">
+      <div class="inq-row">
+        <div class="inq-field">
+          <label for="inq-name">Your Name</label>
+          <input type="text" id="inq-name" name="name" placeholder="Full name" required>
+        </div>
+        <div class="inq-field">
+          <label for="inq-company">Company</label>
+          <input type="text" id="inq-company" name="company" placeholder="Company or brand name">
+        </div>
+      </div>
+      <div class="inq-row full">
+        <div class="inq-field">
+          <label for="inq-email">Email</label>
+          <input type="email" id="inq-email" name="email" placeholder="your@email.com" required>
+        </div>
+      </div>
+      <div class="inq-row">
+        <div class="inq-field">
+          <label for="inq-type">Event Type</label>
+          <select id="inq-type" name="event_type" required>
+            <option value="" disabled selected>Select event type</option>
+            <option value="product-launch">Product Launch</option>
+            <option value="brand-activation">Brand Activation</option>
+            <option value="workshop">Workshop / Presentation</option>
+            <option value="production">Film / Photo Production</option>
+            <option value="corporate-wellness">Corporate Wellness</option>
+            <option value="private-event">Private Event / Party</option>
+            <option value="immersive-dinner">Immersive Dinner</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div class="inq-field">
+          <label for="inq-guests">Expected Guests</label>
+          <select id="inq-guests" name="guests">
+            <option value="" disabled selected>Number of guests</option>
+            <option value="10-30">10 to 30</option>
+            <option value="30-50">30 to 50</option>
+            <option value="50-80">50 to 80</option>
+            <option value="80-120">80 to 120</option>
+            <option value="120-200">120 to 200</option>
+          </select>
+        </div>
+      </div>
+      <div class="inq-row full">
+        <div class="inq-field">
+          <label for="inq-date">Preferred Date(s)</label>
+          <input type="text" id="inq-date" name="date" placeholder="e.g. June 15, 2026 or flexible">
+        </div>
+      </div>
+      <div class="inq-row full">
+        <div class="inq-field">
+          <label for="inq-message">Tell Us More</label>
+          <textarea id="inq-message" name="message" placeholder="Brief description of your event, any specific requirements, or questions you have..."></textarea>
+        </div>
+      </div>
+      <button type="submit" class="inq-submit">Send Inquiry
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      
     </form>
+    <div class="inq-success" id="inqSuccess">
+      <div class="inq-success-icon">✓</div>
+      <h3>Thank You</h3>
+      <p>We will get back to you as soon as possible.</p>
+    </div>
   </div>
-</div>
+</section>
 
 <!-- REVIEW NUDGE -->
 <!-- FAQ -->
@@ -847,13 +927,7 @@ document.querySelectorAll('.cs-media video').forEach(v=>vidObs.observe(v));
 /* ═══════════════════════════════════════════════════════
    EMAIL SIGNUP
 ═══════════════════════════════════════════════════════ */
-function handleSignup(e){
-  e.preventDefault();
-  const form=e.target;
-  const email=form.querySelector('input').value;
-  window.location.href='mailto:info@sabdastudio.com?subject='+encodeURIComponent('Event Signup: '+email)+'&body='+encodeURIComponent('Please add '+email+' to the SABDA events mailing list.');
-  form.innerHTML='<p style="color:var(--cyan);font-size:.95rem;font-weight:600">You\u2019re on the list. We\u2019ll be in touch.</p>';
-}
+
 
 /* ═══════════════════════════════════════════════════════
    MOBILE STICKY
@@ -870,5 +944,25 @@ document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',(
 </script>
 <script defer src="/cookies.js"></script>
 <script src="/cookie-consent.js"></script>
+<script>
+function handleSubmit(e){
+  e.preventDefault();
+  var f=document.getElementById('inquiryForm');
+  var btn=f.querySelector('.inq-submit');
+  btn.textContent='Sending...';btn.disabled=true;
+  var data=new FormData(f);
+  var payload={name:data.get('name'),email:data.get('email'),phone:'',topic:'events',message:'Company: '+(data.get('company')||'N/A')+'\nEvent Type: '+data.get('event_type')+'\nGuests: '+(data.get('guests')||'TBD')+'\nDate: '+(data.get('date')||'Flexible')+'\n\n'+(data.get('message')||'')};
+  fetch('https://sabda-checkout-proxy.sabda.workers.dev/sabda-api/contact',{
+    method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)
+  }).then(function(r){return r.json()}).then(function(r){
+    if(r.ok){var sib=f.parentElement.children;for(var i=0;i<sib.length;i++){if(sib[i].id!=='inqSuccess')sib[i].style.display='none';}document.getElementById('inqSuccess').classList.add('show')}
+    else{btn.textContent='Send Inquiry';btn.disabled=false;alert('Something went wrong. Please email connect@sabdastudio.com directly.')}
+  }).catch(function(){
+    btn.textContent='Send Inquiry';btn.disabled=false;
+    alert('Connection error. Please email connect@sabdastudio.com directly.');
+  });
+  return false;
+}
+</script>
 </body>
 </html>

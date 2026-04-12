@@ -344,6 +344,22 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 .rn-ct{color:rgba(240,239,233,.70) !important}
 .nav-links a{color:rgba(240,239,233,.75)}
 .ft-bot{color:rgba(240,239,233,.65)}
+
+/* INQUIRY FORM */
+.inquiry{padding:120px 80px;z-index:2;position:relative;border-top:1px solid rgba(240,239,233,.06)}
+.inq-inner{max-width:680px;margin:0 auto}
+.inq-form{margin-top:48px}
+.inq-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.inq-row.full{grid-template-columns:1fr}
+.inq-field{display:flex;flex-direction:column;gap:6px}
+.inq-submit{display:inline-flex;align-items:center;gap:10px;background:var(--cyan);color:var(--navy);padding:15px 36px;border-radius:3px;font-size:.9rem;font-weight:700;letter-spacing:.05em;border:none;cursor:pointer;transition:background .2s,transform .2s,box-shadow .2s;margin-top:8px;font-family:'DM Sans',sans-serif}
+.inq-submit:hover{background:#18ffda;transform:translateY(-2px);box-shadow:0 14px 36px rgba(2,243,197,.22)}
+.inq-note{font-size:.74rem;color:var(--white38);margin-top:16px;line-height:1.6}
+.inq-success{display:none;text-align:center;padding:48px 0}
+.inq-success.show{display:block}
+.inq-success-icon{font-size:2.4rem;margin-bottom:16px}
+.inq-row{grid-template-columns:1fr}
+.inquiry{padding:80px 24px}
 </style>
 <style id="a11y-skip-style">
 .a11y-skip{position:absolute;left:-9999px;top:0;background:#02F3C5;color:#0e1235;padding:12px 20px;font-weight:700;z-index:99999;text-decoration:none;border-radius:0 0 4px 0}
@@ -579,16 +595,81 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 <!-- ═══════════════════════════════════════════════════════
      EMAIL SIGNUP
 ═══════════════════════════════════════════════════════ -->
-<div class="signup-cta" id="signup">
-  <div class="signup-inner rv">
-    <p class="signup-text">Vols estar al dia del nostre <em>próximo evento?</em></p>
-    <p class="signup-sub">No fem esdeveniments sovint, però quan en fem, s'esgoten. Deixa'ns el teu email i t'avisem abans que ningú.</p>
-    <form class="signup-form" onsubmit="handleSignup(event)">
-      <input type="email" placeholder="El teu email" aria-label="Correu electrònic per al newsletter" required>
-      <button type="submit">Avísame</button>
+<!-- INQUIRY FORM -->
+<section class="inquiry" id="inquiry">
+  <div class="inq-inner">
+    <span class="sl rv">Hablemos</span>
+    <h2 class="sh2 rv" style="transition-delay:.07s">Explica'ns el Teu<br><em>Esdeveniment</em></h2>
+    <p class="rv" style="transition-delay:.14s;color:var(--white38);font-size:.95rem;line-height:1.72;margin-top:18px">Cada esdeveniment a SABDA és a mida. Explica'ns els detalls bàsics i el nostre equip et respondrà el més aviat possible amb idees, disponibilitat i una proposta personalitzada.</p>
+
+    <form class="inq-form rv" style="transition-delay:.2s" id="inquiryForm" onsubmit="return handleEnviar(event)">
+      <div class="inq-row">
+        <div class="inq-field">
+          <label for="inq-name">El teu nom</label>
+          <input type="text" id="inq-name" name="name" placeholder="Nom complet" required>
+        </div>
+        <div class="inq-field">
+          <label for="inq-company">Empresa</label>
+          <input type="text" id="inq-company" name="company" placeholder="Nom de empresa o marca">
+        </div>
+      </div>
+      <div class="inq-row full">
+        <div class="inq-field">
+          <label for="inq-email">Email</label>
+          <input type="email" id="inq-email" name="email" placeholder="tu@email.com" required>
+        </div>
+      </div>
+      <div class="inq-row">
+        <div class="inq-field">
+          <label for="inq-type">Tipus d'Esdeveniment</label>
+          <select id="inq-type" name="event_type" required>
+            <option value="" disabled selected>Selecciona el tipus d'esdeveniment</option>
+            <option value="product-launch">Lanzamiento de producto</option>
+            <option value="brand-activation">Activació de Marca</option>
+            <option value="workshop">Taller / Presentación</option>
+            <option value="production">Producción de cine / fotografía</option>
+            <option value="corporate-wellness">Benestar corporatiu</option>
+            <option value="private-event">Evento Privado / Fiesta</option>
+            <option value="immersive-dinner">Sopar Immersiu</option>
+            <option value="other">Altre</option>
+          </select>
+        </div>
+        <div class="inq-field">
+          <label for="inq-invitados">Invitados estimados</label>
+          <select id="inq-invitados" name="invitados">
+            <option value="" disabled selected>Número de invitados</option>
+            <option value="10-30">10 a 30</option>
+            <option value="30-50">30 a 50</option>
+            <option value="50-80">50 a 80</option>
+            <option value="80-120">80 a 120</option>
+            <option value="120-200">120 a 200</option>
+          </select>
+        </div>
+      </div>
+      <div class="inq-row full">
+        <div class="inq-field">
+          <label for="inq-date">Fecha(s) preferida(s)</label>
+          <input type="text" id="inq-date" name="date" placeholder="p. ej. 15 de junio de 2026 o fechas flexibles">
+        </div>
+      </div>
+      <div class="inq-row full">
+        <div class="inq-field">
+          <label for="inq-message">Explica'ns-ho més</label>
+          <textarea id="inq-message" name="message" placeholder="Breve descripción de el teu esdeveniment, requisitos específicos o qualsevol duda que tengas..."></textarea>
+        </div>
+      </div>
+      <button type="submit" class="inq-submit">Enviar Sol·licitud
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      
     </form>
+    <div class="inq-success" id="inqSuccess">
+      <div class="inq-success-icon">✓</div>
+      <h3>Gràcies</h3>
+      <p>Et respondrem el més aviat possible.</p>
+    </div>
   </div>
-</div>
+</section>
 
 <!-- REVIEW NUDGE -->
 <!-- FAQ -->
@@ -823,13 +904,7 @@ document.querySelectorAll('.cs-media video').forEach(v=>vidObs.observe(v));
 /* ═══════════════════════════════════════════════════════
    EMAIL SIGNUP
 ═══════════════════════════════════════════════════════ */
-function handleSignup(e){
-  e.preventDefault();
-  const form=e.target;
-  const email=form.querySelector('input').value;
-  window.location.href='mailto:info@sabdastudio.com?subject='+encodeURIComponent('Suscripción a eventos: '+email)+'&body='+encodeURIComponent('Por favor añade '+email+' a la lista de eventos de SABDA.');
-  form.innerHTML='<p style="color:var(--cyan);font-size:.95rem;font-weight:600">You\u2019re on the list. We\u2019ll be in touch.</p>';
-}
+
 
 /* ═══════════════════════════════════════════════════════
    MOBILE STICKY
