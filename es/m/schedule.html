@@ -440,6 +440,46 @@ let curSession=null, curUser=null, curMembership=null, curSessionToken=null, pen
 
 // Meta Pixel helpers — defensive, never throw
 
+/*SABDA-FB-HELPERS-PORT-v1*/
+function _fbTrackPurchase(price, productName){
+  if(typeof fbq==='undefined') return;
+  var eid='purch_'+Date.now()+'_'+Math.random().toString(36).substr(2,9);
+  _sabdaTrack('Purchase',{value:price,currency:'EUR',content_name:productName||''},eid);
+  return eid;
+}
+
+function _fbGetCookie(name){
+  var v=document.cookie.match('(^|;)\\s*'+name+'\\s*=\\s*([^;]+)');
+  return v?v.pop():'';
+}
+
+function _fbTrackLead(){
+  if(typeof fbq==='undefined') return;
+  fbq('track','Lead');
+}
+
+function _fbInitWithUser(email, firstName, lastName, phone){
+  if(typeof fbq==='undefined') return;
+  // SHA-256 hash via SubtleCrypto (async, best-effort)
+  async function h(s){
+    if(!s) return '';
+    try{
+      var buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s.trim().toLowerCase()));
+      return Array.from(new Uint8Array(buf)).map(function(b){return b.toString(16).padStart(2,'0')}).join('');
+    }catch(e){return '';}
+  }
+  Promise.all([h(email),h(firstName),h(lastName),h(phone)]).then(function(hashes){
+    var userData={};
+    if(hashes[0]) userData.em=hashes[0];
+    if(hashes[1]) userData.fn=hashes[1];
+    if(hashes[2]) userData.ln=hashes[2];
+    if(hashes[3]) userData.ph=hashes[3];
+    if(Object.keys(userData).length>0){
+      fbq('init','567636669734630',userData);
+    }
+  }).catch(function(){});
+}
+
 /*SABDA-ADV-MATCH-v1*/
 async function _sabdaHash(v){
   if(!v) return undefined;
