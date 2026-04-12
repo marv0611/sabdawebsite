@@ -924,7 +924,7 @@ function closeMo(){
     document.getElementById('mo-bd').innerHTML='';
   },300);
   curSession=null;curMembership=null;isProcessing=false;
-  activePromo=null;discountedPrice=null;
+  activePromo=null;discountedPrice=null;activeDiscountCodeId=null;
   activePayReq=null;activePayName=null;
   pendingPack=null;
 
@@ -1219,7 +1219,7 @@ window.doGuestPackPay=function(){
     fetch(PROXY+'/sabda-api/pay',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
-        stripePaymentMethodId:'free',sessionId:curSession&&curSession.id,sessionToken:curSessionToken,
+        stripePaymentMethodId:'free',sessionId:curSession&&curSession.id,sessionToken:curSessionToken,discountCode:activePromo||undefined,discountCodeId:activeDiscountCodeId||undefined,
         firstName:curUser.firstName,lastName:curUser.lastName,email:curUser.email,
         type:pendingPack.type,productId:pendingPack.id,
         actualPrice:0,password:npv||undefined,
@@ -1390,7 +1390,7 @@ window.doBookWithMembership=function(){if(isProcessing)return;
 
 // ── STEP 3B: NO MEMBERSHIP — PRICING ──
 function showNoMembership(){stepChange();
-  activePromo=null;discountedPrice=null;
+  activePromo=null;discountedPrice=null;activeDiscountCodeId=null;
   // If user already picked a pack and just finished login/guest → go straight to payment
   if(pendingPack&&curUser){var p=pendingPack;pendingPack=null;showPayForm(p.type,p.price,p.id,p.name,p.desc);return;}
   var bd=document.getElementById('mo-bd');
@@ -1469,10 +1469,10 @@ window.applyPromo=function(type,origPrice,productId){
     btn.textContent='Aplicar';btn.disabled=false;
     if(!r.ok||r.data.error){
       errEl.textContent=r.data.error||'Código promocional no válido';errEl.style.display='block';
-      activePromo=null;discountedPrice=null;
+      activePromo=null;discountedPrice=null;activeDiscountCodeId=null;
       return;
     }
-    activePromo=r.data.code;
+    activePromo=r.data.code;activeDiscountCodeId=r.data.discountCodeId||null;
     // Momence rounds priceInCurrency to integer euros — recalculate if percentage discount
     if(r.data.type==='percentage'&&r.data.appliedDiscount<100){
       discountedPrice=Math.round(origPrice*(1-r.data.appliedDiscount/100)*100)/100;
@@ -1481,6 +1481,7 @@ window.applyPromo=function(type,origPrice,productId){
     }
     // Below Stripe minimum (€0.50) treat as free
     if(discountedPrice>0&&discountedPrice<0.50){discountedPrice=0;}
+    if(discountedPrice===0){var cw=document.getElementById('bk-card');if(cw)cw.style.display='none';var cwl=document.getElementById('bk-card-label');if(cwl)cwl.style.display='none';var pd=document.getElementById('bk-pay-divider');if(pd)pd.style.display='none';var prq=document.getElementById('bk-pay-request');if(prq)prq.style.display='none';}else{var cw2=document.getElementById('bk-card');if(cw2)cw2.style.display='';var cwl2=document.getElementById('bk-card-label');if(cwl2)cwl2.style.display='';}
     var desc=r.data.type==='percentage'?r.data.appliedDiscount+'% off':'\u20AC'+r.data.appliedDiscount+' off';
     okEl.innerHTML='<strong>'+activePromo+'</strong> aplicado \u2014 '+desc+' <span onclick="removePromo('+origPrice+')" style="cursor:pointer;text-decoration:underline;margin-left:8px">Quitar</span>';
     okEl.style.display='block';
@@ -1519,7 +1520,7 @@ window.applyPromo=function(type,origPrice,productId){
 };
 
 window.removePromo=function(origPrice){
-  activePromo=null;discountedPrice=null;
+  activePromo=null;discountedPrice=null;activeDiscountCodeId=null;
   document.getElementById('bk-promo-ok').style.display='none';
   document.getElementById('bk-promo-toggle').style.display='block';
   document.getElementById('bk-promo-fields').style.display='none';
@@ -1669,7 +1670,7 @@ window.doPayAndBook=function(type,price,productId){if(isProcessing)return;
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
         sessionId:curSession.id,sessionToken:curSessionToken,
-        stripePaymentMethodId:'free',sessionId:curSession&&curSession.id,sessionToken:curSessionToken,
+        stripePaymentMethodId:'free',sessionId:curSession&&curSession.id,sessionToken:curSessionToken,discountCode:activePromo||undefined,discountCodeId:activeDiscountCodeId||undefined,
         firstName:curUser.firstName,lastName:curUser.lastName,email:curUser.email,
         type:type,productId:productId,
         discountCode:activePromo||undefined,actualPrice:0,

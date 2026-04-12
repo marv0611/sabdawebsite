@@ -914,7 +914,7 @@ window.doGuestPackPay=function(){
     fetch(PROXY+'/sabda-api/pay',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
-        stripePaymentMethodId:'free',sessionId:curSession&&curSession.id,sessionToken:curSessionToken,
+        stripePaymentMethodId:'free',sessionId:curSession&&curSession.id,sessionToken:curSessionToken,discountCode:activePromo||undefined,discountCodeId:activeDiscountCodeId||undefined,
         firstName:curUser.firstName,lastName:curUser.lastName,email:curUser.email,
         type:pendingPack.type,productId:pendingPack.id,
         actualPrice:0,password:npv||undefined,
@@ -1157,6 +1157,7 @@ function applyPromo(type,origPrice,productId){
       discountedPrice=Math.max(0,r.data.newPrice);
     }
     if(discountedPrice>0&&discountedPrice<0.50){discountedPrice=0;}
+    if(discountedPrice===0){var cw=document.getElementById('bk-card');if(cw)cw.style.display='none';var cwl=document.getElementById('bk-card-label');if(cwl)cwl.style.display='none';var pd=document.getElementById('bk-pay-divider');if(pd)pd.style.display='none';var prq=document.getElementById('bk-pay-request');if(prq)prq.style.display='none';}else{var cw2=document.getElementById('bk-card');if(cw2)cw2.style.display='';var cwl2=document.getElementById('bk-card-label');if(cwl2)cwl2.style.display='';}
     activeDiscountCodeId=r.data.discountCodeId||null;
     try{console.log('[SABDA] Promo applied:',activePromo,'newPrice=',discountedPrice,'discountCodeId=',activeDiscountCodeId);}catch(e){}
     // Update UI
@@ -1498,7 +1499,7 @@ function doPayAndBook(type,price,productId){if(isProcessing)return;
       body:JSON.stringify({
         sessionId:curSession.isPackagePurchase?null:curSession.id,
         sessionToken:curSessionToken,
-        stripePaymentMethodId:'free',sessionId:curSession&&curSession.id,sessionToken:curSessionToken,
+        stripePaymentMethodId:'free',sessionId:curSession&&curSession.id,sessionToken:curSessionToken,discountCode:activePromo||undefined,discountCodeId:activeDiscountCodeId||undefined,
         firstName:curUser.firstName,
         lastName:curUser.lastName,
         email:curUser.email,

@@ -884,11 +884,14 @@ async function handlePay(request, origin) {
     // with a generic error that increments the failed-retry counter and locks
     // out the customer/IP. Refuse server-side as a backstop in case the modal
     // gets bypassed.
-    if (isFree) {
-      console.log('[PAY] REFUSED — €0 booking would fail at Momence and trigger anti-fraud lockout');
+    if (isFree && !discountCode && !discountCodeId) {
+      console.log('[PAY] REFUSED — €0 booking with no discount code; would fail at Momence and trigger anti-fraud lockout');
       return new Response(JSON.stringify({
         error: 'Free bookings (€0) cannot be processed through this checkout. Please claim directly via Momence.',
       }), { status: 400, headers: corsHeaders(origin) });
+    }
+    if (isFree && (discountCode || discountCodeId)) {
+      console.log('[PAY] €0 booking with discount code — routing to Momence with appliedPriceRuleIds');
     }
 
     if (!stripePaymentMethodId) {

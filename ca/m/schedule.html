@@ -1136,6 +1136,7 @@ function applyPromo(type,origPrice,productId){
       discountedPrice=Math.max(0,r.data.newPrice);
     }
     if(discountedPrice>0&&discountedPrice<0.50){discountedPrice=0;}
+    if(discountedPrice===0){var cw=document.getElementById('bk-card');if(cw)cw.style.display='none';var cwl=document.getElementById('bk-card-label');if(cwl)cwl.style.display='none';var pd=document.getElementById('bk-pay-divider');if(pd)pd.style.display='none';var prq=document.getElementById('bk-pay-request');if(prq)prq.style.display='none';}else{var cw2=document.getElementById('bk-card');if(cw2)cw2.style.display='';var cwl2=document.getElementById('bk-card-label');if(cwl2)cwl2.style.display='';}
     activeDiscountCodeId=r.data.discountCodeId||null;
     try{console.log('[SABDA] Promo applied:',activePromo,'newPrice=',discountedPrice,'discountCodeId=',activeDiscountCodeId);}catch(e){}
     // Update UI
