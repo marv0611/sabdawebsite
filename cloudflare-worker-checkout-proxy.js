@@ -1323,9 +1323,12 @@ async function handleContact(request, origin, env) {
     let notionLogged = false;
     let notionError = null;
     try {
-      if (env.Notion && env.NOTION_DATABASE_ID) {
+      // Notion log only for sales-relevant topics (Marvyn's spec 2026-04-12)
+      const NOTION_TOPICS = ['events','corporate','partnership','rental'];
+      const shouldLogToNotion = NOTION_TOPICS.includes(topic);
+      if (env.Notion && env.NOTION_DATABASE_ID && shouldLogToNotion) {
         notionLogged = await logToNotion(env.Notion, env.NOTION_DATABASE_ID, { name, email, phone, topic, message, classification });
-      } else { notionError = 'missing_key:Notion=' + !!env.Notion + ',DB=' + !!env.NOTION_DATABASE_ID; }
+      } else if (!shouldLogToNotion) { notionError = 'skipped:topic_not_sales_relevant'; } else { notionError = 'missing_key:Notion=' + !!env.Notion + ',DB=' + !!env.NOTION_DATABASE_ID; }
     } catch (e) {
       notionError = e.message;
     }
@@ -1409,7 +1412,7 @@ function resolveRecipients(topic) {
     'events':      ['connect@sabdastudio.com'],
     'corporate':   ['connect@sabdastudio.com'],
     'partnership': ['connect@sabdastudio.com'],
-    'press':       ['marketing@sabdastudio.com'],
+    'press':       ['marketing@sabdastudio.com', 'marvyn@sabdastudio.com', 'juliet@sabdastudio.com'],
     'general':     ['manager@sabdastudio.com', 'info@sabdastudio.com'],
   };
   const recipients = routing[topic] || routing['general'];
