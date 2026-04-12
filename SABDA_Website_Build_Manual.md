@@ -2205,3 +2205,323 @@ When you (the next AI) take over, do these in order before making any changes:
 ---
 
 *End of Session P17 update. Last updated April 8, 2026.*
+
+---
+
+# P18 — SESSION UPDATE APRIL 12, 2026 (extended production debugging + hardening)
+
+Author: Claude (anthropic) via Marvyn. Session range: commits `3ffbfb8` → `6e47d43` (~65 commits across one extended session).
+
+This section consolidates all knowledge from the April 12 debugging session for the next AI or human dev to take over.
+
+---
+
+## P18.1 — META PIXEL + CAPI ARCHITECTURE (definitive)
+
+### Overview
+
+SABDA uses a hybrid browser + server-side Meta Pixel setup to capture conversions with maximum match quality. Every successful booking fires BOTH a browser Pixel event AND a Conversions API (CAPI) event from the Cloudflare Worker, deduplicated server-side by a shared `eventID`/`fbEventId`.
+
+### Infrastructure
+
+- **Pixel ID:** `567636669734630` (single pixel for whole site, all locales, mobile + desktop)
+- **CAPI Endpoint:** `https://graph.facebook.com/v21.0/{PIXEL_ID}/events`
+- **CAPI Access Token:** stored as Worker secret `CAPI_ACCESS_TOKEN`
+- **Domain verification meta tag:** `<meta name="facebook-domain-verification" content="6vs8q2dkkemv5umuqn9irqnpippo3u">` injected in every `<head>` across all 156 HTML files
+
+### Pixel firing matrix (deliberate architecture)
+
+| Event | Trial €18 (443934) | 3-Pack €50 (443935) | Other packs/subs | Single €22 |
+|---|---|---|---|---|
+| PageView (browser) | ✅ | ✅ | ✅ | ✅ |
+| ViewContent (pack click) | ✅ | ✅ | ❌ (gated) | ViewContent only for class pages |
+| AddToCart (pack click) | ✅ | ✅ | ❌ (gated) | ❌ |
+| InitiateCheckout | ✅ | ✅ | ✅ | ✅ |
+| **Purchase (browser + CAPI)** | ✅ | ✅ | ✅ | ✅ |
+| Lead (guest purchase) | ✅ | ✅ | ✅ | ✅ |
+
+**Design rationale — this is intentional, don't change it:**
+- Upstream funnel signals (VC/ATC) gated to intro packs → feeds Meta's learning phase ONLY with products ads are driving toward. Keeps optimization clean.
+- Purchase broad → preserves full attribution signal across all conversions. Don't narrow this.
+- Future optimization narrowing happens via Meta Events Manager Custom Conversions filtering by `value=18`/`value=50`, not via client-side code changes.
+
+### Code locations
+
+**Helpers (defined in all 7 booking files):**
+- `_fbTrackInitiateCheckout(price)` — fires InitiateCheckout with eventID
+- `_fbTrackPurchase(price, productName)` — returns the eventID for CAPI dedup
+- `_fbTrackViewContent(className)` — single session class page view
+- `_fbTrackLead()` — guest purchase lead signal
+- `_fbInitWithUser(email, firstName, lastName, phone)` — hashed Advanced Matching on identified users
+- `_fbGetCookie(name)` — reads `_fbp` and `_fbc` for CAPI dedup
+- `fbqAdvancedMatch()` — re-init pixel with curUser hashed fields
+
+**Mobile originally missing 4 of these** (`_fbTrackPurchase`, `_fbGetCookie`, `_fbTrackLead`, `_fbInitWithUser`) — they were called from m/schedule.html et al but never defined, causing silent ReferenceError on free-pack confirm + Purchase paths. Ported from `classes.html` in commit `5e65ea1`. Sentinel: `/*SABDA-FB-HELPERS-PORT-v1*/`.
+
+**Pack-gated firings (exact lines — for future reference):**
+- `classes.html:1503` — pack click (ViewContent + AddToCart + InitiateCheckout)
+- `classes.html:1915` — URL auto-open (`?pack=443935`)
+- `m/schedule.html:1401` — mobile pack click
+- `m/schedule.html:1050` — mobile IC on pack confirm
+
+Gate pattern:
+```js
+var __pid=String(id||'');
+if((__pid==='443934'||__pid==='443935') && typeof fbq==='function'){
+  var __pl={value:Number(price)||0,currency:'EUR',content_name:String(name||''),content_ids:[__pid],content_type:'product'};
+  fbq('track','ViewContent',__pl);
+  _sabdaTrack('AddToCart',__pl);
+  fbq('track','InitiateCheckout',__pl);
+}
+```
+
+**Purchase firings (unconditional, fire for ALL products):**
+- `classes.html:1801` — `showSuccess()` → `_fbTrackPurchase()`
+- `m/schedule.html:1729` — mobile same
+
+### Hashed Advanced Matching (SABDA-ADV-MATCH-v1)
+
+Added commit `eb29837`. Reads `bk-email`, `bk-phone`, `bk-firstname`, `bk-lastname` form field values at event-fire time, SHA-256 hashes lowercase+trimmed client-side via SubtleCrypto, attaches as Meta Advanced Matching via `fbq('init', PIXEL_ID, {em,ph,fn,ln})` just before each `fbq('track', ...)` call.
+
+**Key property:** skips any field that's empty rather than sending empty strings. Empty strings LOWER match quality; omission doesn't.
+
+**Helper names:** `_sabdaHash`, `_sabdaAdvMatch`, `_sabdaTrack`. Sentinel: `/*SABDA-ADV-MATCH-v1*/`.
+
+On pages where user hasn't typed anything (e.g. `/intro/` pre-form-fill), `_sabdaAdvMatch()` returns `undefined` and no init fires — baseline browser-cookie matching only. That's correct behavior.
+
+### Server-side CAPI (`sendCAPIEvent`)
+
+Defined in `cloudflare-worker-checkout-proxy.js` line 812. Fires from `/sabda-api/pay` handler line 1168 AFTER Momence confirms the booking. Payload:
+- `event_name: 'Purchase'`
+- `event_id: fbEventId` (same as browser — dedup key)
+- `event_time: now`
+- `action_source: 'website'`
+- `user_data`: hashed em/ph/fn/ln + `_fbp` + `_fbc` + IP + user_agent
+- `custom_data`: value, currency, content_name
+
+**Only one CAPI sender exists.** No Momence-to-Meta direct integration, no CAPI Gateway demo parallel. Grepping confirmed Worker has 8 routes (`/health`, `/login`, `/mfa-verify`, `/book`, `/pay`, `/promo`, `/check-email`, `/contact`) — none are Momence-inbound webhooks. Zero duplicate firing risk.
+
+### CAPI-only non-obvious gotcha
+
+3DS Stripe payments have slightly different CAPI flow — fires client-side AFTER 3DS confirmation instead of server-side after Stripe confirm. Both paths still fire with matching event IDs so dedup works. Line 1113 in Worker.
+
+---
+
+## P18.2 — CONTACT FORM SYSTEM (topic-based routing)
+
+### Infrastructure
+- Frontend: 3 contact pages (`/contact/`, `/es/contacto/`, `/ca/contacte/`) + mobile `/m/contact.html` equivalents + 3 events pages with inquiry forms
+- Backend: Worker `/sabda-api/contact` endpoint (cloudflare-worker-checkout-proxy.js line 1291+)
+- Email: Resend API (`env.Resend`)
+- Classification: Claude Haiku via `env.Claude` — returns `category`, `action`, `confidence`, `summary`, `send_brochure`
+- Audit log: Notion Deals database via `env.Notion` + `env.NOTION_DATABASE_ID`
+
+### Topic → Email mapping (Marvyn's spec 2026-04-12)
+
+Function: `resolveRecipients(topic)` at worker.js line ~1406.
+
+| Form topic value | Recipients | Notion logged? |
+|---|---|---|
+| `classes` | manager@ + connect@ (silent CC) | ❌ |
+| `events` | connect@ | ✅ |
+| `corporate` | connect@ | ✅ |
+| `partnership` | connect@ | ✅ |
+| `press` | marketing@ + marvyn@ + juliet@ | ❌ |
+| `general` | manager@ + info@ + connect@ (silent CC) | ❌ |
+
+**Critical behaviors:**
+- `reply_to: email` on every send → team replies go direct to the lead
+- `manager@sabdastudio.com` = Mica's Gmail (Gmail forwarding, NOT a real alias on sabdastudio.com domain)
+- Other aliases (`connect@`, `info@`, `marketing@`, `marvyn@`, `juliet@`, `noreply@`) are real domain aliases
+- Silent CC to `connect@` fires on all non-connect routes EXCEPT press (Marvyn's spec)
+- Notion logging scoped to sales-relevant topics only (events/corporate/partnership/rental) to keep the Deals pipeline clean
+- AI classification runs for analytics + Notion categorization; ROUTING uses form topic (more predictable than AI)
+
+### Topic options visible to users (form `<select>`)
+```
+classes / events / corporate / press / partnership / general
+```
+
+---
+
+## P18.3 — INQUIRY FORM CSS REBUILD (hire vs events)
+
+The 3 events pages (`/events/`, `/es/eventos/`, `/ca/esdeveniments/`) forms render identically to their `/hire/` counterparts. In April 2026, the events-page inquiry CSS broke — inputs rendered as browser-default white boxes.
+
+**Root cause:** earlier automated CSS extraction used regex `r'\.(inq|inquiry)[^{]*\{...\}'` which only matched single-selector rules like `.inq-form{...}`. Multi-selector rules (`.inq-field input, .inq-field select, .inq-field textarea`) and descendant selectors were skipped.
+
+**Fix pattern (commit `3206209`):**
+```python
+# Correct extraction: match any rule whose selector portion contains .inq or .inquiry
+for m in re.finditer(r'([^{}]*(?:\.inq[a-z-]*|\.inquiry)[^{}]*)\{([^}]*)\}', src):
+    rules.append(m.group(0).strip())
+# Plus @media queries containing .inq/.inquiry
+```
+
+Result: 25 CSS rules + 1 media query per events page (up from 1 rule previously). Forms now render correctly with dark styling, proper padding, cyan focus borders, styled dropdowns.
+
+---
+
+## P18.4 — LOGIN BUG POSTMORTEM (the "Connection error" mystery)
+
+Symptom: user gets "Connection error. Please try again." on `/classes.html?pack=443935` login, even with correct password. Persisted across devices, browsers, and incognito.
+
+### What we proved
+- Worker `/sabda-api/login` is healthy (200/401 responses with correct CORS)
+- Not a browser extension issue (reproduced on phone + incognito)
+- Not a network issue (fetch succeeds, 401 JSON comes back)
+
+### What fixed it (commit `81da2b2`)
+
+Three defensive hardenings applied to `doLogin`, `doMfaVerify`, and related .then chains:
+
+1. **Malformed-response guard** before accessing `d.user.id`:
+   ```js
+   if(!d || !d.user){
+     console.error('[doLogin] malformed response:', d);
+     err.textContent='Login response malformed. Please try again.';
+     err.classList.add('show'); isProcessing=false; btn.textContent='Log in & Book'; btn.disabled=false;
+     showFallback(); return;
+   }
+   ```
+
+2. **Wrap pixel helpers in try/catch** so they can't break the critical path:
+   ```js
+   try{fbqAdvancedMatch();}catch(e){console.error("[fbqAdvancedMatch]",e);}
+   try{_fbInitWithUser(...);}catch(e){console.error("[_fbInitWithUser]",e);}
+   ```
+
+3. **Every bare `.catch(function(){})` rewritten** to capture and log the error:
+   ```js
+   .catch(function(e){console.error("[catch]",e); /* original body */})
+   ```
+   54 instances across 7 booking files. This was the single most impactful change — it eliminates the class of bug where a sync-throw in `.then` falls into `.catch` and masquerades as a generic "Connection error" with zero diagnostic info.
+
+### Lesson for next time
+
+**When a `.catch` is involved in a mystery: look for synchronous throws in the `.then`, not just fetch failures.** Promise `.catch` captures both. The user-visible "Connection error" frequently means a TypeError somewhere upstream that was swallowed.
+
+**New rule enforced by audit hook:** no `.catch(function(){})` without `e` and `console.error`.
+
+---
+
+## P18.5 — DUPLICATE `showFallback` BUG (commit `3453f00`)
+
+Two `function showFallback()` declarations with different signatures:
+- Original: `function showFallback()` (no args, pulls `#bk-err`)
+- Layer B helper: `function showFallback(errEl, msg)` (explicit args)
+
+Both hoisted; second overwrote first. All pre-existing callers used `showFallback()` with zero args, which hit the newer `(errEl, msg)` version with `errEl=undefined` → immediate early return → fallback link never rendered.
+
+**Unified signature now handles both call patterns:**
+```js
+function showFallback(errEl, msg){
+  var err = errEl || document.getElementById('bk-err');
+  if(!err) return;
+  var sid = (typeof curSession!=='undefined' && curSession && curSession.id) ? curSession.id : null;
+  var link = (typeof curSession!=='undefined' && curSession && curSession.link) ? curSession.link : (sid ? ('https://momence.com/s/'+sid) : 'https://momence.com/u/sabda');
+  var existing = msg || err.textContent || '';
+  err.innerHTML = existing + (existing ? '<br>' : '') + '<a href="' + link + '" target="_blank" rel="noopener noreferrer" style="color:var(--cyan);text-decoration:underline;font-size:.78rem">Book on Momence →</a>';
+  err.classList.add('show');
+}
+```
+
+Audit hook now blocks any duplicate function declaration (except `showFallback` which is intentionally whitelisted).
+
+---
+
+## P18.6 — PRE-PUSH AUDIT HOOK (`audit.sh` + `.git/hooks/pre-push`)
+
+Installed commit `6e47d43`. Runs on every `git push` in ~3–5 seconds. Bypass with `git push --no-verify` for emergencies only.
+
+### 9 Blockers (fail push)
+
+| Tag | Catches |
+|---|---|
+| `[SYNTAX]` | JS syntax errors in inline scripts or Worker |
+| `[UNDEFINED_FN]` | Calls to `_fb*`/`_sabda*`/`fbqAdvancedMatch` without definitions |
+| `[BARE_CATCH]` | `.catch(function(){})` without error capture |
+| `[DUPLICATE_FN]` | Functions declared multiple times (showFallback excluded) |
+| `[CURLY_QUOTE]` | Smart quotes inside `<script>` (silently crashes JS) |
+| `[SECRET_LEAK]` | GitHub PAT, Cloudflare `cfut_`, Stripe `sk_live_`, AWS `AKIA...`, Slack `xoxb-...` |
+| `[MISSING_TAG]` | GA4 `G-1E1WXTZWQD`, FB Pixel `567636669734630`, Clarity `waoyd1cczc`, `facebook-domain-verification` missing from entry pages |
+| `[HTML_STRUCT]` | Unbalanced `</html>`, `</body>`, `</head>`, `<script>` tags |
+| `[WORKER_HOST]` | `fetch(MOMENCE+...)` without `Host` header or `momenceHeaders()` wrapper |
+
+### 2 Warnings (non-blocking, informational)
+
+| Tag | Catches |
+|---|---|
+| `[EM_DASH]` | Em-dashes in visible body copy (brand rules violation) |
+| `[BROKEN_LANG]` | Language-switcher links pointing to `#` (dead) |
+
+### When next AI makes changes to booking flow:
+1. Run `bash audit.sh` BEFORE attempting to push
+2. If audit fails, fix before pushing (don't bypass unless production is actively broken)
+3. When adding new `.catch` blocks, always include `e` parameter and `console.error("[where]", e)`
+4. When adding new `_fb*` helper calls, verify the function is defined in the same file
+
+---
+
+## P18.7 — EXPOSED CREDENTIALS TONIGHT (rotate all)
+
+Scrubbed from repo (commits `6e47d43`):
+- `SABDA_Website_Build_Manual.md` — contained `cfut_0JjL6ta...` AND `cfut_qceLUS3...` (two different Cloudflare tokens)
+- `WORKER_FIX_NOTES.md` — same tokens
+
+Replaced with placeholder `<CLOUDFLARE_TOKEN_REDACTED_ROTATE>`.
+
+**Tokens that must be rotated (git history retains them):**
+- GitHub PAT `github_pat_11B6KC5DQ0...` — exposed in ~60 commit messages and chat transcripts
+- Cloudflare token `cfut_0JjL6taQD9BP...` — exposed throughout session
+- Cloudflare token `cfut_qceLUS3lhp88g4io...` — found in markdown docs
+
+Treat all as fully compromised. Rotate in GitHub Developer Settings + Cloudflare API Tokens dashboard. Update any automation that used them.
+
+**Tokens NOT exposed (safe):**
+- Worker secrets via `env.Resend`, `env.Notion`, `env.Claude`, `env.CAPI_ACCESS_TOKEN` — these live in Worker's encrypted secret store, never in git
+- Stripe `pk_live_...` publishable key — safe to expose
+- GA4 measurement ID `G-1E1WXTZWQD` — safe
+- Meta Pixel ID `567636669734630` — safe
+
+---
+
+## P18.8 — DOMAIN + DNS STATE
+
+- **Apex `sabdastudio.com`** → HTTP 200, serves the site (canonical)
+- **www `www.sabdastudio.com`** → HTTP 301 → `https://sabdastudio.com/` (correct)
+- No attribution splitting. Already configured correctly by Squarespace.
+- `sabda.es` transfer in progress (CDMON/Top Imatge side) — when complete, add 301 to sabdastudio.com.
+
+---
+
+## P18.9 — UI/COPY CHANGES TONIGHT
+
+**Intro pages** (`intro/`, `es/intro/`, `ca/intro/`) — commit `c065e25`:
+- Removed: "First time? Start with an intro offer. Ready to commit? Go unlimited." subhead
+- Kept: "GET STARTED" overline + "Find the right rhythm for your practice" heading
+- Section padding: 120px top → 56px (removed dead space above heading)
+- `.booking .b-cards { margin-top: 40px }` — keeps breathing room without subhead
+- Sentinel: `/* SABDA-BOOKING-TIGHTEN-v1 */`
+
+**Homepages** (`index.html`, `es/index.html`, `ca/index.html`) — same padding/margin tighten applied, but KEPT their original "Choose from flexible plans..." subhead.
+
+---
+
+## P18.10 — CHECKLIST FOR NEXT SESSION
+
+Additions to P17.10:
+
+11. **Run `bash audit.sh` before any push touching booking files.** The pre-push hook runs it automatically but manual check is fastest feedback.
+12. **Never add `.catch(function(){})`.** Always `.catch(function(e){console.error("[where]",e); ...})`.
+13. **Pixel event changes require the audit to pass.** Specifically don't remove `_fb*` helper definitions if any caller still uses them.
+14. **`manager@sabdastudio.com` is Mica's Gmail** (forward alias), not a real mailbox on the domain. Don't send test emails to it expecting to see them in a domain inbox.
+15. **Topic-based routing is driven by form `topic` value, not AI classification.** If you change form option values, update `resolveRecipients()` in the Worker to match.
+16. **Meta domain verification meta tag is in all 156 HTML files.** If you ever regenerate HTML from a template script, make sure the template includes it.
+17. **CAPI Purchase fires from Worker `/pay` handler, not from the browser.** Browser Pixel Purchase + CAPI Purchase share `eventID` for dedup. Don't move CAPI firing somewhere else without understanding this.
+18. **Pack-gated events (ViewContent/AddToCart) are intentionally narrow.** Purchase is intentionally broad. Document says don't change either.
+19. **Before diagnosing a fetch-related user error:** look for sync throws in the `.then` chain first. 90% of "Connection error" type bugs are TypeError upstream, not actual network failures.
+
+---
+
+*End of Session P18 update. Last updated April 12, 2026, ~22:30 UTC. Commit range: `3ffbfb8` → `6e47d43` (~65 commits).*

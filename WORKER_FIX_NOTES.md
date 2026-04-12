@@ -1,3 +1,22 @@
+# WORKER_FIX_NOTES.md — STATUS: HISTORICAL ARCHIVE
+
+**This file is a historical snapshot of pre-April 2026 Worker debugging.**
+
+**For current Worker architecture, see: `SABDA_Website_Build_Manual.md` section P18.**
+
+Specifically:
+- P18.1 for Meta Pixel + CAPI architecture (including `sendCAPIEvent` + dedup via `eventID`)
+- P18.2 for contact form topic-based routing (`resolveRecipients()` function)
+- P18.4 for the login bug postmortem (the "Connection error" mystery)
+- P18.6 for the pre-push audit hook that now gates all deploys
+
+Worker deployed version as of April 12, 2026: `4612af89-7232-40f6-893c-0d59fefe938d`.
+Worker secrets configured: `Resend`, `Notion`, `NOTION_DATABASE_ID`, `Claude`, `CAPI_ACCESS_TOKEN`.
+
+The content below is retained for reference but should not be treated as current architecture.
+
+---
+
 # SABDA Worker — Payment Endpoint Fix Notes
 **Date written:** April 7, 2026
 **Status:** ✅ HISTORICAL — the bugs described below were fixed in commits `98c81da` (April 7) and `c4ad872` (April 8). This document is retained for archaeology.
