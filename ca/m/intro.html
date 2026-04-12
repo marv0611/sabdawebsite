@@ -474,11 +474,6 @@ function setLang(code){
   if(code==='es'){window.location.href='/es/m/intro.html';return;}
   if(code==='ca'){window.location.href='/ca/m/intro.html';return;}
 }
-  document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===code);});
-  if(code==='en'){window.location.href='/m/index.html';return;}
-  if(code==='es'){window.location.href='/es/m/index.html';return;}
-  if(code==='ca'){window.location.href='/ca/m/index.html';return;}
-}
 try{var saved=localStorage.getItem('sabda_lang')||'en';document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===saved);});}catch(e){}
 </script>
 
