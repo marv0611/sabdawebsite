@@ -918,14 +918,7 @@ function stepChange(){
   var box=document.querySelector('.mo-box');
   if(box) box.scrollTop=0;
 }
-function showFallback(){
-  if(!curSession||!curSession.link) return;
-  var err=document.getElementById('bk-err');
-  if(err&&err.textContent){
-    err.innerHTML=err.textContent+'<br><a href="'+curSession.link+'" target="_blank" rel="noopener noreferrer" style="color:var(--cyan);text-decoration:underline;font-size:.78rem">Reservar a Momence \u2192</a>';
-    err.classList.add('show');
-  }
-}
+function showFallback(errEl, msg){var err=errEl||document.getElementById('bk-err');if(!err)return;var sid=(typeof curSession!=='undefined'&&curSession&&curSession.id)?curSession.id:null;var link=(typeof curSession!=='undefined'&&curSession&&curSession.link)?curSession.link:(sid?('https://momence.com/s/'+sid):'https://momence.com/u/sabda');var existing=msg||err.textContent||'';err.innerHTML=existing+(existing?'<br>':'')+'<a href="'+link+'" target="_blank" rel="noopener noreferrer" style="color:var(--cyan);text-decoration:underline;font-size:.78rem">Book on Momence →</a>';err.classList.add('show');}
 function getSpotsHtml(){
   var sp=curSession?curSession.spots:null;
   if(sp===0) return curSession.isWaitlist?'<div class="bk-spots lo">Lista de espera</div>':'<div class="bk-spots lo">Lleno</div>';
@@ -934,9 +927,6 @@ function getSpotsHtml(){
 }
 
 // ── Open modal from session ID ──
-
-/*SABDA-FALLBACK-HELPER-v1*/
-function showFallback(errEl,msg){if(!errEl)return;var sid=(typeof curSession!=="undefined"&&curSession&&curSession.id)?curSession.id:null;var url=sid?("https://momence.com/s/"+sid):"https://momence.com/u/sabda";var txt=(msg||"Alguna cosa ha fallat al nostre costat.");errEl.innerHTML=txt+" <a href=\""+url+"\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color:var(--cyan);text-decoration:underline;font-weight:600\">Reserva a Momence →</a>";errEl.classList.add("show");}
 
 function openMo(sessionId){
   if(isProcessing) return;

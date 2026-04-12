@@ -513,14 +513,7 @@ function setBack(fn){
 function goBack(){
   if(typeof prevStep==='function') prevStep();
 }
-function showFallback(){
-  if(!curSession||!curSession.link) return;
-  var err=document.getElementById('bk-err');
-  if(err&&err.textContent){
-    err.innerHTML=err.textContent+'<br><a href="'+curSession.link+'" target="_blank" rel="noopener noreferrer">Reservar a Momence →</a>';
-    err.classList.add('show');
-  }
-}
+function showFallback(errEl, msg){var err=errEl||document.getElementById('bk-err');if(!err)return;var sid=(typeof curSession!=='undefined'&&curSession&&curSession.id)?curSession.id:null;var link=(typeof curSession!=='undefined'&&curSession&&curSession.link)?curSession.link:(sid?('https://momence.com/s/'+sid):'https://momence.com/u/sabda');var existing=msg||err.textContent||'';err.innerHTML=existing+(existing?'<br>':'')+'<a href="'+link+'" target="_blank" rel="noopener noreferrer" style="color:var(--cyan);text-decoration:underline;font-size:.78rem">Book on Momence →</a>';err.classList.add('show');}
 
 // ── Display an error in the modal with smart recovery for known cases ──
 // Detects Momence rate-limit and shows a recovery UI with "use a different email"
@@ -591,9 +584,6 @@ function resetCustomerAndStartOver(){
   }
 }
 
-
-/*SABDA-FALLBACK-HELPER-v1*/
-function showFallback(errEl,msg){if(!errEl)return;var sid=(typeof curSession!=="undefined"&&curSession&&curSession.id)?curSession.id:null;var url=sid?("https://momence.com/s/"+sid):"https://momence.com/u/sabda";var txt=(msg||"Alguna cosa ha fallat al nostre costat.");errEl.innerHTML=txt+" <a href=\""+url+"\" target=\"_blank\" rel=\"noopener noreferrer\" style=\"color:var(--cyan);text-decoration:underline;font-weight:600\">Reserva a Momence →</a>";errEl.classList.add("show");}
 
 function openMo(link,title,time,teacher){
   try {
