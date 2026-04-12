@@ -1413,8 +1413,8 @@ function showNoMembership(){stepChange();
     +'<div><div style="font-weight:600">Drop-in</div><div style="font-size:.75rem;color:var(--white60)">Una clase, sin compromiso</div></div>'
     +'<div style="font-family:PT Serif,serif;font-weight:700">\u20AC22</div></div>'
     +'<div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);font-weight:600;margin-bottom:10px">Nuevo en SABDA?</div>'
-    +'<div class="bk-pkg" onclick="selectPack(\'pack\',50,443935,\'Pack Intro de 3\',\'3 clases \u00B7 16,67€/clase \u00B7 30 días\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
-    +'<div><div style="font-weight:600">Pack Intro de 3</div><div style="font-size:.75rem;color:var(--white60)">3 clases \u00B7 \u20AC16,67 cada una</div></div>'
+    +'<div class="bk-pkg" onclick="selectPack(\'pack\',50,443935,\'Pack Intro de 3\',\'3 clases \u00B7 30 días\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
+    +'<div><div style="font-weight:600">Pack Intro de 3</div><div style="font-size:.75rem;color:var(--white60)">3 clases</div></div>'
     +'<div style="font-family:PT Serif,serif;font-weight:700">\u20AC50</div></div>'
     +'<div class="bk-pkg" onclick="selectPack(\'pack\',18,443934,\'Clase de Prueba\',\'1 clase \u00B7 Solo para nuevos estudiantes\')" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">Clase de Prueba</div><div style="font-size:.75rem;color:var(--white60)">Solo para nuevos estudiantes</div></div>'
@@ -1838,7 +1838,7 @@ init();
 // ── URL param: ?pack=ID opens modal with pre-selected product ──
 var PACK_MAP={
   '443934':{type:'pack',price:18,id:443934,name:'Clase de Prueba',desc:'1 clase \u00B7 Solo para nuevos estudiantes'},
-  '443935':{type:'pack',price:50,id:443935,name:'Pack Intro de 3',desc:'3 clases \u00B7 16,67€/clase \u00B7 30 días'},
+  '443935':{type:'pack',price:50,id:443935,name:'Pack Intro de 3',desc:'3 clases \u00B7 30 días'},
   '443641':{type:'pack',price:50,id:443641,name:'Semana Residentes BCN',desc:'Ilimitado \u00B7 7 días \u00B7 Justificante de residencia requerido'},
   '431216':{type:'membership',price:130,id:431216,name:'Immerse',desc:'Clases ilimitadas \u00B7 Cancela cuando quieras'},
   '445600':{type:'membership',price:330,id:445600,name:'Immerse 3 Meses',desc:'Clases ilimitadas \u00B7 Compromiso 3 meses'},
