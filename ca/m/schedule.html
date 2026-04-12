@@ -1681,6 +1681,7 @@ var PACKAGES = {
 };
 
 function openPackagePurchase(productId) {
+  autoOpenedFromPack=true;
   if (isProcessing) return;
   var pkg = PACKAGES[productId];
   if (!pkg) return;
