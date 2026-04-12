@@ -1405,7 +1405,7 @@ function showNoMembership(){stepChange();
   bd.innerHTML=classBlockHtml()
     +'<div class="bk-confirm">'
     +userLine
-    +'<p style="font-size:.85rem;color:var(--white60);text-align:center;margin-bottom:20px;line-height:1.5">Choose how you want to book this class</p>'
+    +(curUser?'':'<div onclick="showLoginStep()" style="border:1.5px solid var(--white12);border-radius:10px;padding:14px;margin-bottom:20px;font-size:.82rem;color:var(--white60);text-align:center;cursor:pointer;transition:border-color .2s">Do you have a pack/subscription? <span style="color:var(--cyan);font-weight:600">Sign in here \u2192</span></div>')
     +'<div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--salmon);font-weight:600;margin-bottom:10px">Single class</div>'
     +'<div class="bk-pkg feat" onclick="selectPack(\'single\',22,445630,\'Drop-in\',\'1 class \u00B7 No commitment\')" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">Drop-in</div><div style="font-size:.75rem;color:var(--white60)">One class, no commitment</div></div>'
