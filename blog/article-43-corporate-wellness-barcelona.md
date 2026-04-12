@@ -17,6 +17,8 @@ None of that works. Here's what does. And why doing it in Barcelona, in the righ
 
 ---
 
+Research published by the [World Health Organization](https://www.who.int/news-room/fact-sheets/detail/mental-health-at-work) shows that for every $1 invested in employee mental health, there is a $4 return in improved productivity.
+
 ## Why most corporate wellness fails
 
 It fails because it's bolted on. A wellness session squeezed between a quarterly review and a Slack notification is not wellness, it's another to-do. The environment matters as much as the activity. A conference room with the chairs pushed back is still a conference room. Your team's nervous system knows it.

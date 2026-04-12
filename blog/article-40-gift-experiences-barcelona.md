@@ -17,6 +17,8 @@ Here are 15 ideas across every budget, from €20 to €200.
 
 ---
 
+According to [Barcelona Tourism](https://www.barcelonaturisme.com/), the city welcomes over 27 million visitors yearly, making it a top destination for gift experiences.
+
 ## The best gift experiences in Barcelona
 
 ### 1. Immersive sound healing at SABDA
