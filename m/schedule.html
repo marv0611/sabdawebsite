@@ -846,11 +846,15 @@ function doGuestCheck(){
 }
 
 function mountCardForGuest(){
+  if(window.__sabdaMounting){return;}
+  window.__sabdaMountAttempts=(window.__sabdaMountAttempts||0)+1;
   if(typeof Stripe==='undefined'){
-    // Stripe not loaded yet — retry in 600ms (handles async/defer race)
+    if(window.__sabdaMountAttempts>10){console.error('[SABDA] Stripe.js failed to load after 10 retries'); return;}
     setTimeout(function(){if(document.getElementById('bk-card'))mountCardForGuest();},600);
     return;
   }
+  window.__sabdaMountAttempts=0;
+  window.__sabdaMounting=true;
   if(!stripeInstance){
     stripeInstance=Stripe('pk_live_RoPa2iuvwBbqEISUd2LYTmKF',{stripeAccount:'acct_1RUWnoBf6nsynAht'});
   }
@@ -864,6 +868,7 @@ function mountCardForGuest(){
   });
   var cardWrap=document.getElementById('bk-card');
   if(cardWrap)cardElement.mount('#bk-card');
+  window.__sabdaMounting=false;
   // Button already set to doGuestCheck which handles email check + payment
   // Apple/Google Pay
   try{
@@ -941,7 +946,7 @@ window.doGuestPackPay=function(){
   isProcessing=true;if(btn){btn.textContent='Processing...';btn.disabled=true;}err.textContent='';
   var cf=getCustomerFields();
   var finalPrice=(discountedPrice!==null)?discountedPrice:pendingPack.price;
-  _fbTrackInitiateCheckout(finalPrice);
+  try{var __pid=pendingPack?String(pendingPack.id||''):'';if((__pid==='443934'||__pid==='443935') && typeof _fbTrackInitiateCheckout==='function'){_fbTrackInitiateCheckout(finalPrice);}}catch(e){}
   // Free booking path (100% promo)
   if(finalPrice===0){
     fetch(PROXY+'/sabda-api/pay',{

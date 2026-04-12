@@ -1119,11 +1119,15 @@ window.doGuestCheck=function(){
 
 // ── MOUNT CARD FOR GUEST PACK PURCHASE (one-screen checkout) ──
 function mountCardForGuest(){
+  if(window.__sabdaMounting){return;}
+  window.__sabdaMountAttempts=(window.__sabdaMountAttempts||0)+1;
   if(typeof Stripe==='undefined'){
-    // Stripe not loaded yet — retry in 600ms (handles async/defer race)
+    if(window.__sabdaMountAttempts>10){console.error('[SABDA] Stripe.js failed to load after 10 retries'); return;}
     setTimeout(function(){if(document.getElementById('bk-card'))mountCardForGuest();},600);
     return;
   }
+  window.__sabdaMountAttempts=0;
+  window.__sabdaMounting=true;
   if(!stripeInstance){
     stripeInstance=Stripe('pk_live_RoPa2iuvwBbqEISUd2LYTmKF',{stripeAccount:'acct_1RUWnoBf6nsynAht'});
   }
@@ -1137,6 +1141,7 @@ function mountCardForGuest(){
   });
   var cardWrap=document.getElementById('bk-card');
   if(cardWrap)cardElement.mount('#bk-card');
+  window.__sabdaMounting=false;
   // Button already set to doGuestCheck which handles email check + payment
   // Apple/Google Pay
   try{
