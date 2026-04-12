@@ -189,6 +189,17 @@ if os.path.exists('cloudflare-worker-checkout-proxy.js'):
             ln = ws[:m.start()].count('\n') + 1
             issues.append(f'[WORKER_HOST]   worker:{ln} — fetch(MOMENCE+...) without Host header or momenceHeaders()')
 
+
+# 13. Cross-locale link leaks: <a> tags in /es/ or /ca/ pages pointing to EN paths
+import glob as _glob
+_EN_PATHS = ['/classes/','/pricing/','/schedule/','/about/','/contact/','/events/','/hire/','/faq/']
+for p in _glob.glob('ca/**/*.html', recursive=True) + _glob.glob('es/**/*.html', recursive=True):
+    s_f = open(p).read()
+    for m in re.finditer(r'<a\b[^>]*\bhref="(/(?:classes|pricing|schedule|about|contact|events|hire|faq)(?:/[^"]*)?)"', s_f, re.IGNORECASE):
+        locale = 'ca' if p.startswith('ca/') else 'es'
+        issues.append(f'[CROSS_LOCALE]  {p} — <a href="{m.group(1)}"> leaks to EN path on {locale.upper()} page')
+        break
+
 # ═══════════════════════════════════════════════════════════════════
 # RESULT — split blockers (fail push) from warnings (info only)
 # ═══════════════════════════════════════════════════════════════════
