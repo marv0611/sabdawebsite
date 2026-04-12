@@ -1148,6 +1148,7 @@ function applyPromo(type,origPrice,productId){
     if(payBtn){
       if(discountedPrice===0){
         payBtn.textContent='Reservar clase gratis';
+        var guestBtnF=document.getElementById('bk-guest-btn'); if(guestBtnF) guestBtnF.textContent='Reservar clase gratis';
         payBtn.disabled=false; // override card-validation gate — no card needed
         // Hide card section and Apple Pay — no payment needed
         var cardSec=document.getElementById('bk-card-section');if(cardSec)cardSec.style.display='none';
@@ -1155,6 +1156,7 @@ function applyPromo(type,origPrice,productId){
         var payReqEl=document.getElementById('bk-pay-request');if(payReqEl)payReqEl.style.display='none';
       } else {
         payBtn.textContent='Pagar '+discountedPrice.toFixed(2)+'€ y reservar clase';
+        var guestBtn=document.getElementById('bk-guest-btn'); if(guestBtn) guestBtn.textContent='Pagar €'+discountedPrice.toFixed(2);
         // Re-evaluate card-validation gate (button stays disabled if card incomplete)
         var allDone=cardCompleteState.cardNumber && cardCompleteState.cardExpiry && cardCompleteState.cardCvc;
         payBtn.disabled=!allDone;
