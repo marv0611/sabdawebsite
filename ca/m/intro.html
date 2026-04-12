@@ -421,9 +421,9 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
   <div class="more-body">
     <div class="more-group"><div class="more-group-t">Language</div></div>
     <div class="lang-row">
-      <button class="lang-btn on" data-lang="en" onclick="setLang('en')" type="button">English</button>
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')" type="button">English</button>
       <button class="lang-btn" data-lang="es" onclick="setLang('es')" type="button">Espa&ntilde;ol</button>
-      <button class="lang-btn" data-lang="ca" onclick="setLang('ca')" type="button">Catal&agrave;</button>
+      <button class="lang-btn on" data-lang="ca" onclick="setLang('ca')" type="button">Catal&agrave;</button>
     </div>
     <div class="more-group"><div class="more-group-t">Explore</div></div>
     <a href="/m/classes.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><div class="more-row-txt">Classes</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
@@ -469,6 +469,11 @@ setTimeout(function(){fis.forEach(function(el){el.classList.add('vis')})},800);
 /* Language switcher — persists selection; translations coming soon */
 function setLang(code){
   try{localStorage.setItem('sabda_lang',code);}catch(e){}
+  document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===code);});
+  if(code==='en'){window.location.href='/m/intro.html';return;}
+  if(code==='es'){window.location.href='/es/m/intro.html';return;}
+  if(code==='ca'){window.location.href='/ca/m/intro.html';return;}
+}
   document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===code);});
   if(code==='en'){window.location.href='/m/index.html';return;}
   if(code==='es'){window.location.href='/es/m/index.html';return;}

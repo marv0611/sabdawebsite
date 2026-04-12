@@ -1,6 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+(function(){
+  try{
+    // Don't redirect if already visited, if user explicitly chose a lang, or if URL has a no-redirect param
+    if(sessionStorage.getItem('sabda_lang_checked'))return;
+    if(localStorage.getItem('sabda_lang'))return;
+    if(location.search.indexOf('nolang=1')!==-1){sessionStorage.setItem('sabda_lang_checked','1');return;}
+    sessionStorage.setItem('sabda_lang_checked','1');
+    var langs=(navigator.languages||[navigator.language||'en']).map(function(l){return (l||'').toLowerCase();});
+    var target=null;
+    for(var i=0;i<langs.length;i++){
+      var l=langs[i];
+      if(l.indexOf('ca')===0){target='ca';break;}
+      if(l.indexOf('es')===0){target='es';break;}
+      if(l.indexOf('en')===0){target='en';break;}
+    }
+    if(!target||target==='en')return;
+    var path=location.pathname;
+    var mapping={{"es":"/es/","ca":"/ca/"}};
+    if(mapping[target]){location.replace(mapping[target]+location.search);}
+  }catch(e){}
+})();
+</script>
+
 <script>(function(){document.documentElement.style.visibility="hidden";try{var ua=navigator.userAgent||"";var isMobUA=/Mobi|Android|iPhone|iPad|iPod/i.test(ua);var smallScreen=(screen&&screen.width)?screen.width<=900:false;var touch=(navigator.maxTouchPoints||0)>1;var iPadOS=touch&&/Mac/i.test(ua)&&smallScreen;if(isMobUA||smallScreen||iPadOS){var p=window.location.pathname;var base=p.indexOf("/sabdawebsite/")===0?"/sabdawebsite":"";window.location.replace(base+"/m/index.html"+window.location.search);return;}}catch(e){}document.documentElement.style.visibility="";})()</script>
 
 
