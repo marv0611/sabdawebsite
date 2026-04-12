@@ -830,7 +830,9 @@ function mountCardForGuest(){
   if(!stripeInstance){
     stripeInstance=Stripe('pk_live_RoPa2iuvwBbqEISUd2LYTmKF',{stripeAccount:'acct_1RUWnoBf6nsynAht'});
   }
-  if(cardElement){try{cardElement.destroy();}catch(e){}cardElement=null;}
+  if(window._mcfgMounting)return;
+  window._mcfgMounting=true;
+  try{if(cardElement){try{cardElement.destroy();}catch(e){}cardElement=null;}}finally{setTimeout(function(){window._mcfgMounting=false;},200);}
   var elements=stripeInstance.elements();
   cardElement=elements.create('card',{
     style:{
