@@ -1194,7 +1194,7 @@ function applyPromo(type,origPrice,productId){
     var desc=r.data.type==='percentage'?r.data.appliedDiscount+'% off':'€'+r.data.appliedDiscount+' off';
     okEl.innerHTML='<strong>'+activePromo+'</strong> applied · '+desc+' <span onclick="removePromo('+origPrice+')" style="cursor:pointer;text-decoration:underline;margin-left:8px">Remove</span>';
     okEl.style.display='block';
-    document.getElementById('bk-total').innerHTML='<span style="text-decoration:line-through;color:var(--white38);font-size:1rem;margin-right:8px">€'+origPrice+'</span> €'+discountedPrice.toFixed(2);
+    var totalEl=document.getElementById('bk-total'); if(totalEl) totalEl.innerHTML='<span style="text-decoration:line-through;color:var(--white38);font-size:1rem;margin-right:8px">€'+origPrice+'</span> €'+discountedPrice.toFixed(2);
     // Update pay button
     var payBtn=document.getElementById('bk-pay-btn');
     if(payBtn){
@@ -1229,7 +1229,7 @@ function removePromo(origPrice){
   document.getElementById('bk-promo-toggle').style.display='block';
   document.getElementById('bk-promo-fields').style.display='none';
   document.getElementById('bk-promo').value='';
-  document.getElementById('bk-total').textContent='€'+origPrice;
+  var totalEl2=document.getElementById('bk-total'); if(totalEl2) totalEl2.textContent='€'+origPrice;
   var payBtn=document.getElementById('bk-pay-btn');
   if(payBtn){
     payBtn.textContent='Pay €'+origPrice+' & Book Class';

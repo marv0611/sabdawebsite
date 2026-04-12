@@ -1484,7 +1484,7 @@ window.applyPromo=function(type,origPrice,productId){
     var desc=r.data.type==='percentage'?r.data.appliedDiscount+'% off':'\u20AC'+r.data.appliedDiscount+' off';
     okEl.innerHTML='<strong>'+activePromo+'</strong> applied \u2014 '+desc+' <span onclick="removePromo('+origPrice+')" style="cursor:pointer;text-decoration:underline;margin-left:8px">Remove</span>';
     okEl.style.display='block';
-    document.getElementById('bk-total').innerHTML='<span style="text-decoration:line-through;color:var(--white38);font-size:1rem;margin-right:8px">\u20AC'+origPrice+'</span> \u20AC'+discountedPrice.toFixed(2);
+    var totalEl=document.getElementById('bk-total'); if(totalEl) totalEl.innerHTML='<span style="text-decoration:line-through;color:var(--white38);font-size:1rem;margin-right:8px">\u20AC'+origPrice+'</span> \u20AC'+discountedPrice.toFixed(2);
     var payBtn=document.getElementById('bk-pay-btn');
     if(payBtn){
       if(discountedPrice===0){
@@ -1496,6 +1496,10 @@ window.applyPromo=function(type,origPrice,productId){
       } else {
         payBtn.textContent='Pay \u20AC'+discountedPrice.toFixed(2)+' & Book Class';
       }
+    }
+    var guestBtn=document.getElementById('bk-guest-btn');
+    if(guestBtn){
+      guestBtn.textContent = discountedPrice===0 ? 'Book Free Class' : 'Pay \u20AC'+discountedPrice.toFixed(2);
     }
     document.getElementById('bk-promo-fields').style.display='none';
     document.getElementById('bk-promo-toggle').style.display='none';
@@ -1522,7 +1526,7 @@ window.removePromo=function(origPrice){
   document.getElementById('bk-promo-toggle').style.display='block';
   document.getElementById('bk-promo-fields').style.display='none';
   document.getElementById('bk-promo').value='';
-  document.getElementById('bk-total').textContent='\u20AC'+origPrice;
+  var totalEl2=document.getElementById('bk-total'); if(totalEl2) totalEl2.textContent='\u20AC'+origPrice;
   var payBtn=document.getElementById('bk-pay-btn');
   if(payBtn) payBtn.textContent='Pay \u20AC'+origPrice+' & Book Class';
   var cardWrap=document.getElementById('bk-card');if(cardWrap)cardWrap.style.display='';var cardWrapLabel=document.getElementById('bk-card-label');if(cardWrapLabel)cardWrapLabel.style.display='';
