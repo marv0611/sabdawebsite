@@ -17,9 +17,9 @@
 
 ## Qué es cada uno (en 30 segundos)
 
-**Pilates mat:** Ejercicios en el suelo con tu propio peso corporal. A veces con accesorios (bandas, pelotas, aros). Es el pilates original — Joseph Pilates diseñó el método como trabajo de suelo.
+**Pilates mat:** Ejercicios en el suelo con tu propio peso corporal. A veces con accesorios (bandas, pelotas, aros). Es el pilates original. Joseph Pilates diseñó el método como trabajo de suelo.
 
-**Pilates reformer:** Ejercicios en una máquina con muelles, correas, y una plataforma deslizante. Los muelles proporcionan resistencia variable — puedes hacer el movimiento más fácil o más difícil ajustando la carga.
+**Pilates reformer:** Ejercicios en una máquina con muelles, correas, y una plataforma deslizante. Los muelles proporcionan resistencia variable. Puedes hacer el movimiento más fácil o más difícil ajustando la carga.
 
 ---
 
@@ -29,10 +29,10 @@
 |---|---|---|
 | **Equipamiento** | Esterilla (+ accesorios opcionales) | Máquina con muelles |
 | **Resistencia** | Tu peso corporal | Muelles (ajustable) |
-| **Core** | Máximo — sin asistencia | Alto — con feedback de muelles |
-| **Feedback** | Bajo — tú sientes si lo haces bien | Alto — los muelles te dicen |
+| **Core** | Máximo. Sin asistencia | Alto. Con feedback de muelles |
+| **Feedback** | Bajo. Tú sientes si lo haces bien | Alto, los muelles te dicen |
 | **Variedad** | Moderada (~50 ejercicios base) | Alta (100+ variaciones) |
-| **Rehabilitación** | Posible pero limitada | Excelente — control preciso |
+| **Rehabilitación** | Posible pero limitada | Excelente, control preciso |
 | **Precio Barcelona** | €12-20/clase grupo | €22-40/clase grupo |
 | **Clase individual** | €40-60 | €50-80 |
 
@@ -46,7 +46,7 @@
 
 **Quieres entender tu cuerpo.** Sin máquina, no hay muleta. Aprendes a controlar tu cuerpo con tu propio peso, lo cual traduce mejor a la vida real.
 
-**Te interesa la experiencia inmersiva.** [SABDA](https://sabdastudio.com/classes/pilates/) ofrece pilates mat dentro de una sala de 360° con Dolby Atmos — proyecciones inmersivas y audio espacial que amplifican la concentración de una forma que ni el mejor estudio convencional consigue. Formatos: Core Pilates, Power Pilates, Pilates Sculpt, Full Body Pilates. Desde €18/clase con el [pack de 3 por €50.(https://momence.com/m/443935).
+**Te interesa la experiencia inmersiva.** [SABDA](https://sabdastudio.com/classes/pilates/) ofrece pilates mat dentro de una sala de 360° con Dolby Atmos. Proyecciones inmersivas y audio espacial que amplifican la concentración de una forma que ni el mejor estudio convencional consigue. Formatos: Core Pilates, Power Pilates, Pilates Sculpt, Full Body Pilates. Desde €18/clase con el [pack de 3 por €50.(https://momence.com/m/443935).
 
 ---
 
@@ -62,7 +62,7 @@
 
 ---
 
-## Precios en Barcelona — la comparación real
+## Precios en Barcelona, la comparación real
 
 | Formato | Mat | Reformer |
 |---------|-----|----------|
@@ -86,7 +86,7 @@ La mayoría de la gente piensa que la decisión es mat vs reformer. Pero hay una
 
 Un ejercicio de core hecho mientras tu cerebro planifica la cena es menos efectivo que el mismo ejercicio hecho con atención plena. La concentración es el multiplicador.
 
-[SABDA](https://sabdastudio.com/classes/pilates/) resuelve esto por diseño. Las clases de pilates mat suceden dentro de proyecciones 360° con audio espacial Dolby Atmos. El entorno inmersivo captura tu atención de una forma que un estudio convencional — con sus espejos, su música de fondo, y la persona de al lado mirando el móvil — simplemente no puede.
+[SABDA](https://sabdastudio.com/classes/pilates/) resuelve esto por diseño. Las clases de pilates mat suceden dentro de proyecciones 360° con audio espacial Dolby Atmos. El entorno inmersivo captura tu atención de una forma que un estudio convencional. Con sus espejos, su música de fondo, y la persona de al lado mirando el móvil, simplemente no puede.
 
 El resultado: cada repetición tiene más calidad porque tu mente está donde tu cuerpo está. Es pilates mat con la concentración del reformer individual, al precio de una clase de grupo.
 

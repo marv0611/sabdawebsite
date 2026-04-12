@@ -11,13 +11,13 @@
 
 ---
 
-Mindfulness suena a algo que deberías hacer pero que no sabes por dónde empezar. O ya lo has intentado con Headspace durante tres días y lo dejaste porque tu cerebro no paraba. Ambas cosas son normales. Aquí va lo que realmente necesitas saber sobre mindfulness en Barcelona — sin la jerga, sin las promesas exageradas, y con opciones reales donde practicarlo.
+Mindfulness suena a algo que deberías hacer pero que no sabes por dónde empezar. O ya lo has intentado con Headspace durante tres días y lo dejaste porque tu cerebro no paraba. Ambas cosas son normales. Aquí va lo que realmente necesitas saber sobre mindfulness en Barcelona. Sin la jerga, sin las promesas exageradas, y con opciones reales donde practicarlo.
 
 ---
 
 ## Qué es mindfulness (versión corta)
 
-Prestar atención a lo que está pasando ahora — en tu cuerpo, en tu mente, a tu alrededor — sin juzgarlo. Eso es todo. No es "dejar la mente en blanco" (imposible) ni "relajarte" (a veces es incómodo). Es practicar la habilidad de notar sin reaccionar.
+Prestar atención a lo que está pasando ahora, en tu cuerpo, en tu mente, a tu alrededor, sin juzgarlo. Eso es todo. No es "dejar la mente en blanco" (imposible) ni "relajarte" (a veces es incómodo). Es practicar la habilidad de notar sin reaccionar.
 
 La ciencia detrás del mindfulness es sólida: décadas de estudios muestran reducciones medibles en estrés, ansiedad, y reactividad emocional. Cambios estructurales en el cerebro (aumento de materia gris en la corteza prefrontal, reducción de la amígdala) aparecen después de 8 semanas de práctica regular. No es magia. Es entrenamiento atencional con efectos neurológicos documentados.
 
@@ -27,7 +27,7 @@ La ciencia detrás del mindfulness es sólida: décadas de estudios muestran red
 
 Barcelona combina tres cosas que hacen la práctica de mindfulness más accesible: un ritmo de vida que alterna intensidad con calma (la ciudad tiene un metabolismo natural de actividad y pausa), espacios físicos donde el entorno facilita la atención (desde parques hasta salas inmersivas), y una comunidad multicultural donde el wellness no está atrapado en una sola tradición.
 
-La ciudad también tiene suficiente ruido, pantallas, y estímulos como para que necesites mindfulness de verdad — no como concepto abstracto, sino como herramienta práctica para funcionar sin quemarte.
+La ciudad también tiene suficiente ruido, pantallas, y estímulos como para que necesites mindfulness de verdad, no como concepto abstracto, sino como herramienta práctica para funcionar sin quemarte.
 
 ---
 
@@ -35,26 +35,26 @@ La ciudad también tiene suficiente ruido, pantallas, y estímulos como para que
 
 ### Sound healing y breathwork como práctica de mindfulness
 
-**SABDA — Sound Healing, Serenity and Sound, y Guide Sound Experience**
-Las sesiones de sound healing y breathwork en [SABDA](https://sabdastudio.com/classes/sound-healing/) suceden dentro de una sala de 360° con Dolby Atmos. Proyecciones inmersivas — paisajes abstractos, geometría orgánica, cielos que se mueven lentamente — crean un entorno que facilita la atención de una forma que una sala vacía con los ojos cerrados no consigue. El audio espacial guía: la voz del facilitador llega desde todas las direcciones, la música envuelve. Es un mini retiro en el corazón de la ciudad.
+**SABDA. Sound Healing, Serenity and Sound, y Guide Sound Experience**
+Las sesiones de sound healing y breathwork en [SABDA](https://sabdastudio.com/classes/sound-healing/) suceden dentro de una sala de 360° con Dolby Atmos. Proyecciones inmersivas. Paisajes abstractos, geometría orgánica, cielos que se mueven lentamente. Crean un entorno que facilita la atención de una forma que una sala vacía con los ojos cerrados no consigue. El audio espacial guía: la voz del facilitador llega desde todas las direcciones, la música envuelve. Es un mini retiro en el corazón de la ciudad.
 
 Esto no es meditación para expertos. Es meditación guiada para gente que no sabe meditar. El entorno hace el trabajo que normalmente tienes que hacer tú: mantener la atención, evitar que tu mente se escape a la lista de tareas.
 
-**Precio:** Desde €18. [3 clases por €50](https://momence.com/m/443935) — combina sound healing con breathwork o yin yoga.
+**Precio:** Desde €18. [3 clases por €50](https://momence.com/m/443935). Combina sound healing con breathwork o yin yoga.
 **Dónde:** C/Muntaner 83B, Eixample.
 
 **Otros espacios con meditación regular:**
-- **Shanga Barcelona** — Meditación zen y mindfulness. Clases regulares en el Eixample.
-- **Centre de Meditació Kadampa** — Tradición budista Kadampa. Clases de meditación guiada para principiantes.
-- **Yoga studios** — La mayoría de estudios de yoga en Barcelona (Frizzant, Soma, Yoga One) incluyen sesiones de sound healing y breathwork o yoga nidra en su programación.
+- **Shanga Barcelona**. Meditación zen y mindfulness. Clases regulares en el Eixample.
+- **Centre de Meditació Kadampa**, Tradición budista Kadampa. Clases de meditación guiada para principiantes.
+- **Yoga studios**. La mayoría de estudios de yoga en Barcelona (Frizzant, Soma, Yoga One) incluyen sesiones de sound healing y breathwork o yoga nidra en su programación.
 
 ### Cursos de mindfulness (8 semanas)
 
 El formato estándar para aprender mindfulness de forma estructurada es el programa MBSR (Mindfulness-Based Stress Reduction) de 8 semanas, desarrollado por Jon Kabat-Zinn. En Barcelona:
 
-- **Institut Gestalt** — Programas MBSR en español con instructores certificados.
-- **Centre d'Estudis de Mindfulness** — Cursos MBSR y MBCT (Mindfulness-Based Cognitive Therapy).
-- **Hospital Clínic** — Programas de mindfulness dentro del contexto hospitalario para pacientes con estrés o dolor crónico.
+- **Institut Gestalt**. Programas MBSR en español con instructores certificados.
+- **Centre d'Estudis de Mindfulness**. Cursos MBSR y MBCT (Mindfulness-Based Cognitive Therapy).
+- **Hospital Clínic**. Programas de mindfulness dentro del contexto hospitalario para pacientes con estrés o dolor crónico.
 
 Precio: €200-400 por el curso completo de 8 semanas (8 sesiones + material + retiro de un día).
 
@@ -62,9 +62,9 @@ Precio: €200-400 por el curso completo de 8 semanas (8 sesiones + material + r
 
 No necesitas irte a una montaña para hacer un retiro. Barcelona y sus alrededores ofrecen opciones de un día o un fin de semana:
 
-- **Retiros de un día** — Algunos centros de meditación organizan jornadas intensivas de 6-8 horas con meditación guiada, silencio, y comida consciente. Busca en Shanga Barcelona e Institut Gestalt.
-- **Montserrat** — A una hora de Barcelona, el monasterio de Montserrat y los alrededores son el lugar más popular para retiros de fin de semana. Varios operadores organizan retiros de yoga y meditación con alojamiento.
-- **Costa Brava** — Retiros de fin de semana en masías entre viñedos, a 1-2 horas de Barcelona. Más caro pero con el componente naturaleza.
+- **Retiros de un día**. Algunos centros de meditación organizan jornadas intensivas de 6-8 horas con meditación guiada, silencio, y comida consciente. Busca en Shanga Barcelona e Institut Gestalt.
+- **Montserrat**. A una hora de Barcelona, el monasterio de Montserrat y los alrededores son el lugar más popular para retiros de fin de semana. Varios operadores organizan retiros de yoga y meditación con alojamiento.
+- **Costa Brava**. Retiros de fin de semana en masías entre viñedos, a 1-2 horas de Barcelona. Más caro pero con el componente naturaleza.
 
 ---
 
@@ -86,15 +86,15 @@ Las apps son perfectas para mantener una práctica diaria de 10 minutos. Un espa
 
 **Si trabajas en pantallas todo el día:** Tu cerebro lleva 8+ horas procesando información visual y tomando microdecisiones. El mindfulness es el contrapeso: 30-60 minutos de no producir nada, no decidir nada, no consumir nada.
 
-**Si te cuesta meditar:** Eso no significa que no sea para ti. Significa que necesitas más apoyo — un espacio inmersivo, una guía de voz, un grupo. Las sesiones de sound healing y breathwork en [SABDA](https://sabdastudio.com/classes/sound-healing/) están diseñadas exactamente para esto.
+**Si te cuesta meditar:** Eso no significa que no sea para ti. Significa que necesitas más apoyo, un espacio inmersivo, una guía de voz, un grupo. Las sesiones de sound healing y breathwork en [SABDA](https://sabdastudio.com/classes/sound-healing/) están diseñadas exactamente para esto.
 
 ---
 
 ## Antes de empezar
 
-El mindfulness no requiere creer en nada. No requiere flexibilidad, ni ropa especial, ni silenciar tu mente. Requiere presentarse y practicar. La mente va a divagar — eso no es un fracaso, es literalmente el ejercicio. Notar que la mente se ha ido y traerla de vuelta es el equivalente de una repetición en el gimnasio.
+El mindfulness no requiere creer en nada. No requiere flexibilidad, ni ropa especial, ni silenciar tu mente. Requiere presentarse y practicar. La mente va a divagar. Eso no es un fracaso, es literalmente el ejercicio. Notar que la mente se ha ido y traerla de vuelta es el equivalente de una repetición en el gimnasio.
 
-Si quieres probar en un entorno que facilita la práctica: [sound healing y breathwork en SABDA](https://sabdastudio.com/classes/sound-healing/) desde €18. [3 clases por €50](https://momence.com/m/443935) — combina sound healing con breathwork para la experiencia completa.
+Si quieres probar en un entorno que facilita la práctica: [sound healing y breathwork en SABDA](https://sabdastudio.com/classes/sound-healing/) desde €18. [3 clases por €50](https://momence.com/m/443935). Combina sound healing con breathwork para la experiencia completa.
 
 **Relacionado:** [What Is Sound Healing?](/blog/what-is-sound-healing/) | [Yoga en Barcelona: Guía definitiva](/blog/yoga-barcelona-guia/) | [Cursos de mindfulness](/blog/curso-mindfulness-barcelona/) | [Meditación guiada](/blog/meditacion-guiada-barcelona/)
 

@@ -11,7 +11,7 @@
 
 ---
 
-Barcelona es una de las ciudades europeas más demandadas para eventos corporativos — buen clima, buena comida, buenas conexiones aéreas, y una oferta de espacios que va desde hoteles de cinco estrellas hasta salas inmersivas con proyecciones 360°. El reto no es encontrar un espacio. Es elegir el formato que haga que tu equipo recuerde el evento más de 48 horas.
+Barcelona es una de las ciudades europeas más demandadas para eventos corporativos. Buen clima, buena comida, buenas conexiones aéreas, y una oferta de espacios que va desde hoteles de cinco estrellas hasta salas inmersivas con proyecciones 360°. El reto no es encontrar un espacio. Es elegir el formato que haga que tu equipo recuerde el evento más de 48 horas.
 
 ---
 
@@ -23,7 +23,7 @@ No cooking classes genéricas ni escape rooms que todos han hecho. Los formatos 
 [SABDA](https://sabdastudio.com/hire/) ofrece sesiones de breathwork + sound healing en la sala inmersiva de 360° con Dolby Atmos, seguidas de ice bath en el patio. FC Barcelona, Alpro, y Decathlon han usado este formato. Desde €350/sesión. [connect@sabdastudio.com](mailto:connect@sabdastudio.com).
 
 ### Brand activations
-Para lanzamientos de producto o experiencias de marca, la sala inmersiva de SABDA permite proyectar contenido personalizado en 360° con audio espacial. Tu marca, tus colores, tu mundo — literalmente rodeando a los asistentes. Capacidad: hasta 200 personas.
+Para lanzamientos de producto o experiencias de marca, la sala inmersiva de SABDA permite proyectar contenido personalizado en 360° con audio espacial. Tu marca, tus colores, tu mundo. Literalmente rodeando a los asistentes. Capacidad: hasta 200 personas.
 
 ### Conferencias y presentaciones
 Hoteles como W Barcelona, Hotel Arts, y Mandarin Oriental tienen salas equipadas para conferencias formales. Precio: desde €1,000/medio día.
@@ -90,6 +90,6 @@ Los mejores eventos corporativos barcelona son los que nadie espera. Para algo q
 | Cena de empresa | €40-80 | Restaurante privatizado |
 | Retiro de equipo (1 día) | €80-150 | SABDA + almuerzo + actividad |
 
-El presupuesto más inteligente para un evento corporativo en Barcelona no es el más alto — es el que produce la mayor conexión entre los asistentes por euro gastado.
+El presupuesto más inteligente para un evento corporativo en Barcelona no es el más alto. Es el que produce la mayor conexión entre los asistentes por euro gastado.
 
 Para team building inmersivo: [SABDA team building →](https://sabdastudio.com/team-building/)

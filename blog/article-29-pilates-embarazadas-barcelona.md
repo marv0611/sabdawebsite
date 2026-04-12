@@ -11,7 +11,7 @@
 
 ---
 
-El pilates es una de las actividades más recomendadas durante el embarazo — y con razón. Fortalece el suelo pélvico (fundamental para el parto y la recuperación), mejora la postura (que el peso del bebé está destruyendo), trabaja el core profundo (transverso abdominal, no los abdominales superficiales), y enseña el control de la respiración que necesitarás durante el parto.
+El pilates es una de las actividades más recomendadas durante el embarazo, y con razón. Fortalece el suelo pélvico (fundamental para el parto y la recuperación), mejora la postura (que el peso del bebé está destruyendo), trabaja el core profundo (transverso abdominal, no los abdominales superficiales), y enseña el control de la respiración que necesitarás durante el parto.
 
 Pero "pilates" es un término amplio, y no todas las clases son iguales cuando hay un bebé de por medio.
 
@@ -31,7 +31,7 @@ Pero "pilates" es un término amplio, y no todas las clases son iguales cuando h
 Puedes mantener tu práctica habitual con ajustes menores. Evita ejercicios que generen presión intra-abdominal excesiva (crunches, teasers). Si sientes náuseas o fatiga intensa, reduce la intensidad.
 
 ### Segundo trimestre
-Elimina ejercicios boca arriba prolongados (la vena cava). Evita las flexiones abdominales clásicas — céntrate en trabajo de transverso y suelo pélvico. En reformer, ajusta muelles a resistencia más ligera.
+Elimina ejercicios boca arriba prolongados (la vena cava). Evita las flexiones abdominales clásicas, céntrate en trabajo de transverso y suelo pélvico. En reformer, ajusta muelles a resistencia más ligera.
 
 ### Tercer trimestre
 Reduce la intensidad general. Enfócate en suelo pélvico, respiración, y movilidad de cadera. Evita cualquier ejercicio que se sienta inestable. El reformer en posición lateral y de pie es particularmente útil en este trimestre.
@@ -45,7 +45,7 @@ Reduce la intensidad general. Enfócate en suelo pélvico, respiración, y movil
 - Conoce las contraindicaciones por trimestre sin tener que consultarlas
 - Trabaja el suelo pélvico y el transverso en cada sesión
 - Enseña técnicas de respiración que transferir al parto
-- No te dice "simplemente haz menos" — te da una alternativa igual de estructurada
+- No te dice "simplemente haz menos", te da una alternativa igual de estructurada
 
 ---
 
@@ -92,6 +92,6 @@ Consulta siempre con tu ginecólogo o matrona antes de empezar cualquier activid
 
 Si solo haces una cosa durante el embarazo en términos de ejercicio, que sea trabajar el suelo pélvico. Los músculos del suelo pélvico sostienen el útero, la vejiga, y el intestino. Durante el embarazo, el peso creciente del bebé los estira y debilita. Un suelo pélvico fuerte facilita el parto (mejor control durante el expulsivo), acelera la recuperación postparto, y previene la incontinencia (que afecta al 30-50% de las mujeres después del parto).
 
-El pilates es particularmente bueno para esto porque integra el suelo pélvico en cada ejercicio — no como un add-on de "aprieta ahí," sino como parte del control central que el método enseña.
+El pilates es particularmente bueno para esto porque integra el suelo pélvico en cada ejercicio, no como un add-on de "aprieta ahí," sino como parte del control central que el método enseña.
 
 **Ejercicio básico:** Kegel con respiración. Exhala y contrae el suelo pélvico (imagina que cierras una cremallera de pubis a ombligo). Inhala y suelta. 10 repeticiones, 3 series al día. Parece poco. Es suficiente si lo haces consistentemente.

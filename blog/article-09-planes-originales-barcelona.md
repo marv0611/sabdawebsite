@@ -11,7 +11,7 @@
 
 ---
 
-Las guías de Barcelona llevan diez años recomendando lo mismo. La Boqueria, el Gótico, Park Güell con entrada anticipada. Todo correcto, todo bonito, todo predecible. Si llevas aquí un tiempo — o simplemente eres de los que prefiere no hacer lo que hace todo el mundo — necesitas otra lista.
+Las guías de Barcelona llevan diez años recomendando lo mismo. La Boqueria, el Gótico, Park Güell con entrada anticipada. Todo correcto, todo bonito, todo predecible. Si llevas aquí un tiempo. O simplemente eres de los que prefiere no hacer lo que hace todo el mundo, necesitas otra lista.
 
 Estos son 15 planes originales en Barcelona para gente que ya ha hecho lo obvio y busca experiencias que no están en la primera página de Google.
 
@@ -19,7 +19,7 @@ Estos son 15 planes originales en Barcelona para gente que ya ha hecho lo obvio 
 
 ### 1. Wellness inmersivo en una sala de 360°
 
-[SABDA](https://sabdastudio.com/classes/) tiene una sala de proyecciones 360° con Dolby Atmos en el Eixample donde se hacen clases de yoga, sound healing, breathwork, pilates, y danza extática. Los visuals cambian cada clase — un día fluyes entre nebulosas abstractas, al siguiente te tumbas mientras geometría viva se mueve con el sonido de los gongs. No es un museo. No es un gimnasio. Es otra cosa. 3 clases por €50. [Reservar →](https://momence.com/m/443935)
+[SABDA](https://sabdastudio.com/classes/) tiene una sala de proyecciones 360° con Dolby Atmos en el Eixample donde se hacen clases de yoga, sound healing, breathwork, pilates, y danza extática. Los visuals cambian cada clase. Un día fluyes entre nebulosas abstractas, al siguiente te tumbas mientras geometría viva se mueve con el sonido de los gongs. No es un museo. No es un gimnasio. Es otra cosa. 3 clases por €50. [Reservar →](https://momence.com/m/443935)
 
 ### 2. Cementiri de Montjuïc
 
@@ -31,7 +31,7 @@ No los Bunkers del Carmel (que ya conoce medio mundo). El refugio antiaéreo del
 
 ### 4. Piscinas olímpicas de Montjuïc (abiertas al público)
 
-Las piscinas del 92 siguen funcionando. Nadar con la ciudad a tus pies y el Mediterráneo al fondo cuesta unos €7. No es un spa de lujo — es una piscina municipal con una vista absurda. Lleva gorro obligatorio.
+Las piscinas del 92 siguen funcionando. Nadar con la ciudad a tus pies y el Mediterráneo al fondo cuesta unos €7. No es un spa de lujo. Es una piscina municipal con una vista absurda. Lleva gorro obligatorio.
 
 ### 5. Bar Marsella (abierto desde 1820)
 
@@ -51,7 +51,7 @@ Mientras todo el mundo hace cola para la Sagrada Familia y Park Güell, el Palau
 
 ### 9. Danza extática (sin coreografía, sin hablar)
 
-Sin pasos, sin profesor, sin zapatos, sin móviles. Solo música y movimiento libre. [SABDA organiza sesiones de ecstatic dance](https://sabdastudio.com/classes/ecstatic-dance/) dentro de la sala inmersiva — las proyecciones y el audio espacial convierten la experiencia en algo que ningún otro espacio puede replicar. También hay sesiones regulares en otros espacios de la ciudad. No es un concierto. No es una clase de baile. Es algo entre los dos.
+Sin pasos, sin profesor, sin zapatos, sin móviles. Solo música y movimiento libre. [SABDA organiza sesiones de ecstatic dance](https://sabdastudio.com/classes/ecstatic-dance/) dentro de la sala inmersiva. Las proyecciones y el audio espacial convierten la experiencia en algo que ningún otro espacio puede replicar. También hay sesiones regulares en otros espacios de la ciudad. No es un concierto. No es una clase de baile. Es algo entre los dos.
 
 ### 10. Ruta de bodegas por Sants
 
@@ -59,7 +59,7 @@ Sants es un barrio obrero que los turistas ignoran completamente. Y es exactamen
 
 ### 11. Primavera Sound (si coincide)
 
-Si tu visita cae en junio 2026, comprueba el cartel de Primavera Sound. The Cure, Massive Attack, The xx, Gorillaz, Bicep — tres días en el Fòrum Park. El miércoles de apertura suele ser gratuito.
+Si tu visita cae en junio 2026, comprueba el cartel de Primavera Sound. The Cure, Massive Attack, The xx, Gorillaz, Bicep. Tres días en el Fòrum Park. El miércoles de apertura suele ser gratuito.
 
 ### 12. Taller de cerámica en Poblenou
 
@@ -67,7 +67,7 @@ Poblenou tiene varios estudios de cerámica que ofrecen talleres de 2 horas dond
 
 ### 13. Concierto en el Palau de la Música (por menos de €20)
 
-El interior del Palau es una de las cosas más bonitas de Barcelona. Pero la mayoría de la gente lo ve en un tour guiado de día. Verlo lleno de música y gente es incomparablemente mejor. Muchos conciertos tienen entradas desde €15. Consulta la programación — hay clásica, jazz, flamenco, y coral.
+El interior del Palau es una de las cosas más bonitas de Barcelona. Pero la mayoría de la gente lo ve en un tour guiado de día. Verlo lleno de música y gente es incomparablemente mejor. Muchos conciertos tienen entradas desde €15. Consulta la programación, hay clásica, jazz, flamenco, y coral.
 
 ### 14. Refugi antiaeri de la Plaça del Diamant
 
@@ -75,7 +75,7 @@ Otro refugio de la Guerra Civil, este debajo de una plaza de Gràcia. Las visita
 
 ### 15. Atardecer desde las terrazas del MNAC
 
-El Museo Nacional d'Art de Catalunya tiene unas terrazas exteriores (acceso gratuito) con vistas de Plaça Espanya, la fuente mágica, y toda Barcelona hasta el mar. Al atardecer, es uno de los mejores miradores de la ciudad — y casi nadie sube.
+El Museo Nacional d'Art de Catalunya tiene unas terrazas exteriores (acceso gratuito) con vistas de Plaça Espanya, la fuente mágica, y toda Barcelona hasta el mar. Al atardecer, es uno de los mejores miradores de la ciudad, y casi nadie sube.
 
 ---
 

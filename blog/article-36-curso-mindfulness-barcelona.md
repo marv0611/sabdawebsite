@@ -11,20 +11,20 @@
 
 ---
 
-El mindfulness tiene un problema de packaging. La palabra se usa para vender apps, retiros de lujo, y cursos que cuestan lo que un vuelo a Bali. Pero en su esencia, es una habilidad mental que se entrena — como ir al gimnasio, pero para la atención. Y en Barcelona hay formas de practicarlo que van desde €0 hasta €500, dependiendo de cuánta estructura necesites.
+El mindfulness tiene un problema de packaging. La palabra se usa para vender apps, retiros de lujo, y cursos que cuestan lo que un vuelo a Bali. Pero en su esencia, es una habilidad mental que se entrena, como ir al gimnasio, pero para la atención. Y en Barcelona hay formas de practicarlo que van desde €0 hasta €500, dependiendo de cuánta estructura necesites.
 
 ---
 
-## MBSR (Mindfulness-Based Stress Reduction) — 8 semanas
+## MBSR (Mindfulness-Based Stress Reduction), 8 semanas
 
 El formato gold standard. Desarrollado por Jon Kabat-Zinn en los años 80, es un programa de 8 semanas con una sesión grupal semanal de 2.5h + práctica diaria en casa + un retiro de un día. Está respaldado por décadas de investigación clínica.
 
 **En Barcelona:**
-- **Institut Gestalt** — Programas MBSR en español con instructores certificados. ~€300-500 el programa completo.
-- **Centre d'Estudis de Mindfulness** — MBSR y MBCT (Mindfulness-Based Cognitive Therapy, enfocado a depresión recurrente).
-- **Hospital Clínic** — Programas dentro del contexto hospitalario para pacientes con estrés crónico o dolor.
+- **Institut Gestalt**. Programas MBSR en español con instructores certificados. ~€300-500 el programa completo.
+- **Centre d'Estudis de Mindfulness**. MBSR y MBCT (Mindfulness-Based Cognitive Therapy, enfocado a depresión recurrente).
+- **Hospital Clínic**. Programas dentro del contexto hospitalario para pacientes con estrés crónico o dolor.
 
-**Para quién:** Gente que quiere un cambio real y sostenido. El compromiso de 8 semanas es lo que lo hace funcionar — no es un taller de un día.
+**Para quién:** Gente que quiere un cambio real y sostenido. El compromiso de 8 semanas es lo que lo hace funcionar. No es un taller de un día.
 
 ---
 
@@ -40,8 +40,8 @@ Jornadas de inmersión de 6-8 horas: meditación guiada, prácticas de atención
 
 Sin compromiso de 8 semanas. Vas cuando puedes, pagas por sesión.
 
-### SABDA — Sound healing y breathwork inmersivo
-[SABDA](https://sabdastudio.com/classes/sound-healing/) ofrece sesiones de sound healing y breathwork varias veces por semana dentro de la sala de 360° con Dolby Atmos. No es un curso estructurado — es una clase drop-in que puedes integrar en tu rutina semanal. El entorno inmersivo hace el trabajo que normalmente tienes que hacer tú: mantener la atención. Las proyecciones lentas y el audio espacial anclan tu mente sin esfuerzo.
+### SABDA. Sound healing y breathwork inmersivo
+[SABDA](https://sabdastudio.com/classes/sound-healing/) ofrece sesiones de sound healing y breathwork varias veces por semana dentro de la sala de 360° con Dolby Atmos. No es un curso estructurado. Es una clase drop-in que puedes integrar en tu rutina semanal. El entorno inmersivo hace el trabajo que normalmente tienes que hacer tú: mantener la atención. Las proyecciones lentas y el audio espacial anclan tu mente sin esfuerzo.
 
 Desde €18/sesión. [3 clases por €50](https://momence.com/m/443935).
 
@@ -57,7 +57,7 @@ Meditación zen y mindfulness. Sesiones regulares en el Eixample.
 
 Varias organizaciones ofrecen programas de mindfulness corporativo: sesiones semanales en la oficina, talleres de un día para equipos, o retiros de equipo fuera de la ciudad.
 
-[SABDA](https://sabdastudio.com/hire/) ofrece wellness corporativo inmersivo — sesiones de breathwork y sound healing para equipos dentro de la sala de 360°. Es mindfulness para empresas en un formato que nadie ha experimentado antes. Contacto: [connect@sabdastudio.com](mailto:connect@sabdastudio.com).
+[SABDA](https://sabdastudio.com/hire/) ofrece wellness corporativo inmersivo. Sesiones de breathwork y sound healing para equipos dentro de la sala de 360°. Es mindfulness para empresas en un formato que nadie ha experimentado antes. Contacto: [connect@sabdastudio.com](mailto:connect@sabdastudio.com).
 
 ---
 
@@ -84,7 +84,7 @@ El programa MBSR de 8 semanas sigue una estructura probada:
 
 **Semana 1-2:** Body scan. Aprendes a dirigir atención a partes del cuerpo sistemáticamente. 45 minutos diarios de práctica en casa.
 
-**Semana 3-4:** Meditación sentada. Respiración como ancla. Los pensamientos vienen y van — aprendes a observarlos sin engancharte.
+**Semana 3-4:** Meditación sentada. Respiración como ancla. Los pensamientos vienen y van. Aprendes a observarlos sin engancharte.
 
 **Semana 5-6:** Movimiento consciente. Yoga suave, caminar con atención. La práctica se extiende más allá del cojín.
 
@@ -94,7 +94,7 @@ El programa MBSR de 8 semanas sigue una estructura probada:
 
 El compromiso es real: 2.5 horas semanales de clase + 45 minutos diarios en casa. Es el equivalente a entrenar para una media maratón, pero para tu mente. La mayoría de la gente que lo completa dice que fue una de las mejores inversiones de tiempo que ha hecho.
 
-## Mindfulness vs meditación — la diferencia
+## Mindfulness vs meditación, la diferencia
 
 Mindfulness es la habilidad. Meditación es el ejercicio.
 

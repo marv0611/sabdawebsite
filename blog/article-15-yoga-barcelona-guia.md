@@ -18,34 +18,34 @@ Barcelona tiene tantos estudios de yoga que elegir uno puede ser más estresante
 ## Estilos de yoga explicados (para humanos)
 
 ### Vinyasa
-Movimiento continuo enlazado con respiración. Cada clase es diferente — el profesor construye una secuencia que sube de intensidad, llega a un pico, y baja. Es el estilo más popular en Barcelona — dinámico, físicamente exigente, y lo suficientemente variable como para no aburrirte. Si quieres sudar y moverte, empieza aquí. Una clase típica dura 60 minutos. Llegarás a usar músculos que no sabías que tenías. En SABDA, las clases de vinyasa incluyen Vinyasa Flow, Hatha Vinyasa (más lento, más alineación), y Power Vinyasa (ritmo alto, fuerza).
+Movimiento continuo enlazado con respiración. Cada clase es diferente, el profesor construye una secuencia que sube de intensidad, llega a un pico, y baja. Es el estilo más popular en Barcelona, dinámico, físicamente exigente, y lo suficientemente variable como para no aburrirte. Si quieres sudar y moverte, empieza aquí. Una clase típica dura 60 minutos. Llegarás a usar músculos que no sabías que tenías. En SABDA, las clases de vinyasa incluyen Vinyasa Flow, Hatha Vinyasa (más lento, más alineación), y Power Vinyasa (ritmo alto, fuerza).
 
 ### Hatha
-Posturas estáticas que se mantienen durante varias respiraciones. Ritmo más lento que vinyasa, más tiempo en cada postura, más explicación técnica. El hatha yoga en Barcelona es popular entre principiantes que quieren entender la mecánica antes de fluir, pero también entre practicantes avanzados que buscan profundizar en la alineación. Muchas clases de hatha yoga en Barcelona son bilingües (español/inglés). Si tu objetivo es aprender a hacer bien las posturas — no solo pasar por ellas — hatha es tu estilo.
+Posturas estáticas que se mantienen durante varias respiraciones. Ritmo más lento que vinyasa, más tiempo en cada postura, más explicación técnica. El hatha yoga en Barcelona es popular entre principiantes que quieren entender la mecánica antes de fluir, pero también entre practicantes avanzados que buscan profundizar en la alineación. Muchas clases de hatha yoga en Barcelona son bilingües (español/inglés). Si tu objetivo es aprender a hacer bien las posturas. No solo pasar por ellas, hatha es tu estilo.
 
 ### Yin yoga
 Posturas pasivas mantenidas 3-5 minutos. Trabaja tejido conectivo (fascia, ligamentos, articulaciones), no músculo. Parece fácil. No lo es. Los primeros 90 segundos de cada postura son cómodos; los siguientes 180 son un ejercicio de paciencia y rendición. Yin yoga en Barcelona ha crecido mucho en los últimos años, especialmente entre gente que corre, hace CrossFit, o vive en tensión crónica. Es el complemento perfecto para cualquier actividad de alto impacto. Las clases suelen ser de 60-75 minutos, en sala tibia, con música ambiental.
 
 ### Power Yoga / Power Vinyasa
-Vinyasa intensificado. Más fuerza, más velocidad, menos meditación. Si vienes del gimnasio y quieres que el yoga se sienta como un entrenamiento, esta es tu entrada. Power vinyasa en SABDA añade el factor inmersivo — las proyecciones 360° y el audio espacial convierten una clase exigente en algo que se siente más como una experiencia que como un workout. Clases de 50-60 minutos. Espera planks, chaturangas, y sentadillas con un ritmo que no te deja pensar en la lista de tareas.
+Vinyasa intensificado. Más fuerza, más velocidad, menos meditación. Si vienes del gimnasio y quieres que el yoga se sienta como un entrenamiento, esta es tu entrada. Power vinyasa en SABDA añade el factor inmersivo. Las proyecciones 360° y el audio espacial convierten una clase exigente en algo que se siente más como una experiencia que como un workout. Clases de 50-60 minutos. Espera planks, chaturangas, y sentadillas con un ritmo que no te deja pensar en la lista de tareas.
 
-### Yin Yoga — el formato más restaurativo de SABDA, con posturas largas y visuals inmersivos lentos
-"Yoga del sueño." Te tumbas y el profesor te guía por una relajación progresiva durante 30-45 minutos. No hay movimiento. No hay posturas. Es una técnica de relajación profunda que induce un estado entre la vigilia y el sueño — algo parecido a lo que sientes justo antes de dormirte, pero mantenido de forma consciente. La ciencia es interesante: 30 minutos de yoga nidra pueden equivaler a 2-3 horas de sueño en términos de recuperación del sistema nervioso. Funciona incluso si no crees en ella. Especialmente útil para insomnio, ansiedad, y agotamiento. Varios estudios de yoga en Barcelona ofrecen sesiones regulares.
+### Yin Yoga. El formato más restaurativo de SABDA, con posturas largas y visuals inmersivos lentos
+"Yoga del sueño." Te tumbas y el profesor te guía por una relajación progresiva durante 30-45 minutos. No hay movimiento. No hay posturas. Es una técnica de relajación profunda que induce un estado entre la vigilia y el sueño. Algo parecido a lo que sientes justo antes de dormirte, pero mantenido de forma consciente. La ciencia es interesante: 30 minutos de yoga nidra pueden equivaler a 2-3 horas de sueño en términos de recuperación del sistema nervioso. Funciona incluso si no crees en ella. Especialmente útil para insomnio, ansiedad, y agotamiento. Varios estudios de yoga en Barcelona ofrecen sesiones regulares.
 
 ### Yoga Restaurativo
 Posturas muy suaves con apoyos (mantas, bloques, bolsters). Todo está diseñado para que no hagas absolutamente nada. Suena inútil hasta que lo pruebas después de una semana estresante y descubres que no hacer nada es sorprendentemente difícil y sorprendentemente necesario. La diferencia con yin: en restaurativo, los apoyos sostienen tu cuerpo para que no haya ningún esfuerzo. En yin, mantienes la postura activamente. Restaurativo es pura rendición. Si tu sistema nervioso necesita un reset, es esto.
 
 ### Yoga Sculpt
-Un híbrido entre yoga y entrenamiento funcional: secuencias de vinyasa combinadas con ejercicios de fuerza (pesas ligeras, bandas, trabajo de core). SABDA ofrece Yoga Sculpt dentro de la sala inmersiva — la combinación de movimiento intenso con proyecciones 360° y música espacial produce una sesión que no se parece a ningún otro formato. Es la opción para quien quiere los beneficios del yoga con la intensidad de un entrenamiento de fuerza.
+Un híbrido entre yoga y entrenamiento funcional: secuencias de vinyasa combinadas con ejercicios de fuerza (pesas ligeras, bandas, trabajo de core). SABDA ofrece Yoga Sculpt dentro de la sala inmersiva. La combinación de movimiento intenso con proyecciones 360° y música espacial produce una sesión que no se parece a ningún otro formato. Es la opción para quien quiere los beneficios del yoga con la intensidad de un entrenamiento de fuerza.
 
 ---
 
 ## Mejores estudios de yoga en Barcelona
 
 ### SABDA (Eixample)
-No es un estudio de yoga convencional. [SABDA](https://sabdastudio.com/classes/yoga/) es una sala de 360° con Dolby Atmos donde las clases de yoga suceden dentro de proyecciones inmersivas — nebulosas abstractas, paisajes geométricos, visuals que cambian con el ritmo de la clase. El audio espacial envuelve. Es yoga reimaginado: mismo rigor físico, entorno radicalmente distinto.
+No es un estudio de yoga convencional. [SABDA](https://sabdastudio.com/classes/yoga/) es una sala de 360° con Dolby Atmos donde las clases de yoga suceden dentro de proyecciones inmersivas. Nebulosas abstractas, paisajes geométricos, visuals que cambian con el ritmo de la clase. El audio espacial envuelve. Es yoga reimaginado: mismo rigor físico, entorno radicalmente distinto.
 
-Formatos de yoga en SABDA: Vinyasa Flow, Hatha Vinyasa, Power Vinyasa, Yoga Sculpt, y Yin. Cada formato tiene su propio diseño visual y musical — una clase de yin tiene tonos graves y geometría lenta, una de power vinyasa tiene ritmo alto y paisajes que se aceleran contigo.
+Formatos de yoga en SABDA: Vinyasa Flow, Hatha Vinyasa, Power Vinyasa, Yoga Sculpt, y Yin. Cada formato tiene su propio diseño visual y musical. Una clase de yin tiene tonos graves y geometría lenta, una de power vinyasa tiene ritmo alto y paisajes que se aceleran contigo.
 
 Más allá del yoga, SABDA ofrece sound healing, breathwork, pilates y ecstatic dance, todo en la sala inmersiva.
 
@@ -96,15 +96,15 @@ Lo que no necesitas: ropa de marca, experiencia previa, flexibilidad, o la capac
 
 ## Yoga en el Eixample
 
-Si vives o te alojas en el Eixample, tienes acceso a la mayor concentración de estudios de yoga de Barcelona. SABDA (Muntaner 83B, metro Universitat), Yoga One (varias sedes en Eixample, metro Passeig de Gràcia y Diagonal), y Moonlight Yoga están todos en el barrio. La ventaja del Eixample es que puedes ir a clase, salir, y tener diez cafeterías buenas en un radio de tres manzanas. El yoga eixample más original lo encontrarás en SABDA — la sala inmersiva no existe en ningún otro estudio del barrio ni de la ciudad.
+Si vives o te alojas en el Eixample, tienes acceso a la mayor concentración de estudios de yoga de Barcelona. SABDA (Muntaner 83B, metro Universitat), Yoga One (varias sedes en Eixample, metro Passeig de Gràcia y Diagonal), y Moonlight Yoga están todos en el barrio. La ventaja del Eixample es que puedes ir a clase, salir, y tener diez cafeterías buenas en un radio de tres manzanas. El yoga eixample más original lo encontrarás en SABDA, la sala inmersiva no existe en ningún otro estudio del barrio ni de la ciudad.
 
 ---
 
 ## Yoga para embarazadas en Barcelona
 
-El yoga prenatal es una de las prácticas más recomendadas durante el embarazo — fortalece suelo pélvico, mejora postura, alivia dolor lumbar, y prepara el cuerpo para el parto. Pero no todas las clases de yoga son aptas durante el embarazo.
+El yoga prenatal es una de las prácticas más recomendadas durante el embarazo, fortalece suelo pélvico, mejora postura, alivia dolor lumbar, y prepara el cuerpo para el parto. Pero no todas las clases de yoga son aptas durante el embarazo.
 
-Lo que buscar: clases específicas etiquetadas como "yoga prenatal" o "yoga embarazadas" con profesores formados en trabajo perinatal. Evita clases genéricas de vinyasa o power yoga donde el profesor simplemente te dice "sáltate esta postura." Las inversiones, las torsiones profundas, y las posturas boca abajo se modifican o eliminan en clases prenatales — necesitas un profesor que sepa exactamente cómo.
+Lo que buscar: clases específicas etiquetadas como "yoga prenatal" o "yoga embarazadas" con profesores formados en trabajo perinatal. Evita clases genéricas de vinyasa o power yoga donde el profesor simplemente te dice "sáltate esta postura." Las inversiones, las torsiones profundas, y las posturas boca abajo se modifican o eliminan en clases prenatales. Necesitas un profesor que sepa exactamente cómo.
 
 Opciones en Barcelona: Yoga One tiene clases prenatales en algunas sedes. Frizzant ofrece talleres específicos. Para sesiones individuales adaptadas, busca profesores con certificación en yoga prenatal (200h mínimo). Consulta siempre con tu matrona o ginecólogo antes de empezar, especialmente en el primer trimestre.
 
@@ -112,7 +112,7 @@ Opciones en Barcelona: Yoga One tiene clases prenatales en algunas sedes. Frizza
 
 ## Yoga en inglés
 
-La mayoría de estudios de yoga en Barcelona ofrecen clases en inglés, español, o bilingüe. SABDA, Frizzant, y Yoga One tienen profesores que enseñan en inglés de forma nativa. Soma Yoga y la mayoría de estudios del Born también. No es un problema encontrar clases en inglés — Barcelona tiene suficientes expats y profesores internacionales como para que la barrera del idioma no exista en el mundo del yoga.
+La mayoría de estudios de yoga en Barcelona ofrecen clases en inglés, español, o bilingüe. SABDA, Frizzant, y Yoga One tienen profesores que enseñan en inglés de forma nativa. Soma Yoga y la mayoría de estudios del Born también. No es un problema encontrar clases en inglés. Barcelona tiene suficientes expats y profesores internacionales como para que la barrera del idioma no exista en el mundo del yoga.
 
 ---
 

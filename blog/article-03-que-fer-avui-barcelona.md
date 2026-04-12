@@ -1,4 +1,4 @@
-# Els Millors Plans a Barcelona — Activitats i Experiències 2026
+# Els Millors Plans a Barcelona. Activitats i Experiències 2026
 
 **Última actualització: març 2026**
 
@@ -11,7 +11,7 @@
 
 ---
 
-Busques plans a Barcelona? Aquí no trobaràs la Sagrada Familia ni la Boqueria. Això ja ho saps. El que trobaràs són activitats que realment valen la pena — provades i recomanades per gent que viu aquí de debò.
+Busques plans a Barcelona? Aquí no trobaràs la Sagrada Familia ni la Boqueria. Això ja ho saps. El que trobaràs són activitats que realment valen la pena. Provades i recomanades per gent que viu aquí de debò.
 
 Opcions per a tots els gustos i pressupostos. Cultura, gastronomia, aire lliure, wellness, i vida nocturna.
 
@@ -19,13 +19,13 @@ Opcions per a tots els gustos i pressupostos. Cultura, gastronomia, aire lliure,
 
 ## Activitats culturals
 
-### 1. CCCB — l'espai que sempre sorprèn
+### 1. CCCB, l'espai que sempre sorprèn
 
 El Centre de Cultura Contemporània de Barcelona rota exposicions que van de la fotografia a la ciència ficció passant per l'urbanisme. Mai saps què hi trobaràs, i gairebé sempre surt millor del que esperaves. Al Raval, a tocar del MACBA. Entrada: ~€6. Gairebé mai hi ha cua.
 
 ### 2. Palau de la Música Catalana
 
-L'interior modernista de Domènech i Montaner és d'aquelles coses que et fan preguntar per què hem deixat de construir així. Però el Palau no és només bonic — té una programació seria: clàssica, flamenc, jazz, coral. Algunes entrades des de €15. Veure'l ple de música i 2.000 persones és incomparablement millor que la visita guiada.
+L'interior modernista de Domènech i Montaner és d'aquelles coses que et fan preguntar per què hem deixat de construir així. Però el Palau no és només bonic, té una programació seria: clàssica, flamenc, jazz, coral. Algunes entrades des de €15. Veure'l ple de música i 2.000 persones és incomparablement millor que la visita guiada.
 
 ### 3. CaixaForum
 
@@ -41,13 +41,13 @@ A la falda de Montjuïc, CaixaForum porta exposicions que competeixen amb qualse
 
 ### 5. Vermut a Morro Fi
 
-El ritual del vermut a Barcelona és sagrat (en el bon sentit). Morro Fi (Consell de Cent, 171, Eixample) és on va començar el renaixement del vermut a la ciutat. Espai minúscul, sempre ple de locals. Vermut de grifo a €3, llaunes d'anxoves, musclos, olives, i una estona que sempre s'allarga més del previst. Demana el "vermutillo" — un bol de patates amb anxoves, musclos i salsa espinaler que converteix qualsevol dimarts en dissabte. Millor entre les 12:30 i les 14:00 en cap de setmana.
+El ritual del vermut a Barcelona és sagrat (en el bon sentit). Morro Fi (Consell de Cent, 171, Eixample) és on va començar el renaixement del vermut a la ciutat. Espai minúscul, sempre ple de locals. Vermut de grifo a €3, llaunes d'anxoves, musclos, olives, i una estona que sempre s'allarga més del previst. Demana el "vermutillo". Un bol de patates amb anxoves, musclos i salsa espinaler que converteix qualsevol dimarts en dissabte. Millor entre les 12:30 i les 14:00 en cap de setmana.
 
 Si Morro Fi està impossible (sol estar-ho), Senyor Vermut (Provença, 85) està a cinc minuts i té 40 varietats de vermut. Terrassa assolellada i una barreja de hipsters i famílies que d'alguna manera funciona.
 
 ### 6. Mercat de Sant Antoni
 
-El mercat del barri renovat el 2018, amb producte fresc de debò, un bar interior on pots esmorzar per menys de €5, i el mercat de llibres i monedes dels diumenges al voltant del perímetre. L'edifici és ferro i vidre del segle XIX — una cosa que hauries de veure només per l'arquitectura, però que resulta que també té el millor peix del barri. Compra una mica de Manchego i fuet, pren un cafè al bar, i asseu-te al sol al carrer de Comte d'Urgell. Res de turístic. Tot de barri. Una de les millors coses per fer a Barcelona un diumenge al matí.
+El mercat del barri renovat el 2018, amb producte fresc de debò, un bar interior on pots esmorzar per menys de €5, i el mercat de llibres i monedes dels diumenges al voltant del perímetre. L'edifici és ferro i vidre del segle XIX. Una cosa que hauries de veure només per l'arquitectura, però que resulta que també té el millor peix del barri. Compra una mica de Manchego i fuet, pren un cafè al bar, i asseu-te al sol al carrer de Comte d'Urgell. Res de turístic. Tot de barri. Una de les millors coses per fer a Barcelona un diumenge al matí.
 
 ### 7. El Xampanyet
 
@@ -59,7 +59,7 @@ Rajoles blaves, cava de barril, conserves que costen més del que penses i valen
 
 ### 8. Búnquers del Carmel
 
-La millor vista gratuïta de Barcelona. Panoràmica de 360 graus amb la Sagrada Familia al mig i el Mediterrani al fons. Arriba 45 minuts abans de la posta de sol. Porta begudes. El 80% de la gent és local. Arribar-hi des del metro Alfons X són uns 20 minuts a peu — l'última part puja.
+La millor vista gratuïta de Barcelona. Panoràmica de 360 graus amb la Sagrada Familia al mig i el Mediterrani al fons. Arriba 45 minuts abans de la posta de sol. Porta begudes. El 80% de la gent és local. Arribar-hi des del metro Alfons X són uns 20 minuts a peu, l'última part puja.
 
 ### 9. Passejada de Barceloneta al Fòrum
 
@@ -67,7 +67,7 @@ La millor vista gratuïta de Barcelona. Panoràmica de 360 graus amb la Sagrada 
 
 ### 10. Piscines de Montjuïc
 
-Les piscines olímpiques del 92 segueixen obertes al públic. Nedar amb la ciutat als teus peus i el mar al fons costa uns €7. L'ambient és únic — cap spa privat el pot replicar.
+Les piscines olímpiques del 92 segueixen obertes al públic. Nedar amb la ciutat als teus peus i el mar al fons costa uns €7. L'ambient és únic, cap spa privat el pot replicar.
 
 ---
 
@@ -75,7 +75,7 @@ Les piscines olímpiques del 92 segueixen obertes al públic. Nedar amb la ciuta
 
 ### 11. Una classe immersiva a SABDA
 
-Una experiència immersiva de wellness al cor de l'Eixample. [SABDA](https://sabdastudio.com/classes/) és una sala de projeccions 360° amb Dolby Atmos que ofereix ioga, pilates, teràpia de so, breathwork, dansa extàtica, meditació i bany de gel. No és un museu — ets dins de l'art, movent-te en ell. Els visuals canvien a cada classe. L'àudio espacial fa alguna cosa que un altaveu Bluetooth no pot replicar.
+Una experiència immersiva de wellness al cor de l'Eixample. [SABDA](https://sabdastudio.com/classes/) és una sala de projeccions 360° amb Dolby Atmos que ofereix ioga, pilates, teràpia de so, breathwork, dansa extàtica, meditació i bany de gel. No és un museu. Ets dins de l'art, movent-te en ell. Els visuals canvien a cada classe. L'àudio espacial fa alguna cosa que un altaveu Bluetooth no pot replicar.
 
 Classes des de €18. [3 classes per €50.(https://momence.com/m/443935).
 
@@ -99,15 +99,15 @@ Carrer del Parlament i voltants. Vermut a Bar Calders, vi natural a Bar Brutal, 
 
 ### 15. El Raval de nit
 
-Bar Marsella porta obert des del 1820 — fusta, daurat, miralls, i absenta si t'atreveixes. Hemingway hi va beure. Picasso també. L'ambient no ha canviat tant com podries pensar. 23 Robadors, uns carrers més enllà, té música en viu i una clientela que va d'artistes a gent que simplement volia una cervesa i va acabar quedant-se tres hores. El Raval de nit no és polit ni previsible, i per això és el millor barri de Barcelona per sortir si estàs cansat dels llocs que surten a les guies.
+Bar Marsella porta obert des del 1820. Fusta, daurat, miralls, i absenta si t'atreveixes. Hemingway hi va beure. Picasso també. L'ambient no ha canviat tant com podries pensar. 23 Robadors, uns carrers més enllà, té música en viu i una clientela que va d'artistes a gent que simplement volia una cervesa i va acabar quedant-se tres hores. El Raval de nit no és polit ni previsible, i per això és el millor barri de Barcelona per sortir si estàs cansat dels llocs que surten a les guies.
 
 ---
 
 ## Plans originals
 
-### 16. Poblenou — el barri que ningú et recomana
+### 16. Poblenou, el barri que ningú et recomana
 
-Fàbriques tèxtils convertides en estudis i coworkings, cafeteries sense pretensions que fan millor cafè que el 90% dels llocs del centre, art de carrer que diu alguna cosa de veritat, i una rambla amb àvies en bancs en lloc de botigues de records. Poblenou s'està convertint silenciosament en el barri més interessant de Barcelona, i la majoria de visitants no hi posen un peu. Comença al Palo Alto Market (primer cap de setmana del mes — disseny, menjar, música en directe), passeja per les galeries de Carrer de Pujades, café a Nomad Coffee, i acaba a la platja — que, a diferència de Barceloneta, té espai per posar la tovallola sense tocar el veí.
+Fàbriques tèxtils convertides en estudis i coworkings, cafeteries sense pretensions que fan millor cafè que el 90% dels llocs del centre, art de carrer que diu alguna cosa de veritat, i una rambla amb àvies en bancs en lloc de botigues de records. Poblenou s'està convertint silenciosament en el barri més interessant de Barcelona, i la majoria de visitants no hi posen un peu. Comença al Palo Alto Market (primer cap de setmana del mes. Disseny, menjar, música en directe), passeja per les galeries de Carrer de Pujades, café a Nomad Coffee, i acaba a la platja, que, a diferència de Barceloneta, té espai per posar la tovallola sense tocar el veí.
 
 ### 17. Cementiri de Montjuïc
 
@@ -115,13 +115,13 @@ Escultures monumentals, criptes art nouveau, i vistes sobre el port. Un museu a 
 
 ### 18. Kayak a Barceloneta
 
-Lloguer de kayak o paddle surf per uns €15-20/hora. Veure Barcelona des de l'aigua — la línia de costa, Montjuïc al fons, el port — és una perspectiva que gairebé ningú busca.
+Lloguer de kayak o paddle surf per uns €15-20/hora. Veure Barcelona des de l'aigua. La línia de costa, Montjuïc al fons, el port. És una perspectiva que gairebé ningú busca.
 
 ---
 
 ## Abans de marxar
 
-Les millors activitats barcelona passen quan deixes de seguir la ruta marcada. La Sagrada Familia és increïble — ves-hi. Però el que recordaràs són els moments entre els monuments: un vermut al migdia, uns búnquers a la posta de sol, una sessió de sound healing que no tenies prevista.
+Les millors activitats barcelona passen quan deixes de seguir la ruta marcada. La Sagrada Familia és increïble, ves-hi. Però el que recordaràs són els moments entre els monuments: un vermut al migdia, uns búnquers a la posta de sol, una sessió de sound healing que no tenies prevista.
 
 Si busques alguna cosa diferent, el [pack de 3 classes de SABDA per €50.(https://momence.com/m/443935) val molt la pena. Ioga, breathwork, teràpia de so o dansa extàtica dins d'una sala de projeccions 360°. És el tipus d'experiència que Barcelona ofereix i que no trobaràs a cap altra ciutat.
 

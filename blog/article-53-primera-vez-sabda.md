@@ -11,13 +11,13 @@
 
 ---
 
-Vas a ir a SABDA por primera vez. No sabes exactamente qué esperar, y eso es parte del punto — la primera vez que entras en la sala es un momento que la gente recuerda. Pero aquí va lo práctico para que llegues tranquilo.
+Vas a ir a SABDA por primera vez. No sabes exactamente qué esperar, y eso es parte del punto. La primera vez que entras en la sala es un momento que la gente recuerda. Pero aquí va lo práctico para que llegues tranquilo.
 
 ---
 
 ## Antes de ir
 
-**Reserva online.** Todas las clases se reservan a través de [Momence](https://momence.com/m/443935). Elige la clase que te interesa, selecciona fecha y hora, y completa la reserva. El [pack de 3 clases por €50](https://momence.com/m/443935) (€18/clase) es la mejor forma de empezar — te permite probar distintas clases.
+**Reserva online.** Todas las clases se reservan a través de [Momence](https://momence.com/m/443935). Elige la clase que te interesa, selecciona fecha y hora, y completa la reserva. El [pack de 3 clases por €50](https://momence.com/m/443935) (€18/clase) es la mejor forma de empezar. Te permite probar distintas clases.
 
 **Qué llevar:** Ropa cómoda que te permita moverte. Nada más. SABDA proporciona esterillas, mantas, y todo lo que necesites. Para pilates, grip socks son recomendados (los puedes comprar en recepción si no tienes).
 
@@ -29,13 +29,13 @@ Vas a ir a SABDA por primera vez. No sabes exactamente qué esperar, y eso es pa
 
 Recibirás a Mica o al equipo de recepción. Hay un área para dejar bolsas y zapatos (las clases son descalzas o con calcetines). Vestuarios con duchas disponibles si vienes de trabajar o vas a algún sitio después.
 
-Te indicarán la sala. Y cuando entras...
+Te indicarán la sala. Y cuando entras..
 
 ---
 
 ## Dentro de la sala
 
-La primera impresión es lo que la gente recuerda. La sala es oscura. Las proyecciones ya están activas — colores lentos, geometrías orgánicas moviéndose en las paredes y el techo. El audio espacial llena el espacio con algo que se siente más como un ambiente que como música. No es ruidoso. Es envolvente.
+La primera impresión es lo que la gente recuerda. La sala es oscura. Las proyecciones ya están activas. Colores lentos, geometrías orgánicas moviéndose en las paredes y el techo. El audio espacial llena el espacio con algo que se siente más como un ambiente que como música. No es ruidoso. Es envolvente.
 
 Coges tu esterilla, te colocas, y esperas a que empiece la clase. No hay espejos. No hay ventanas. El mundo exterior desaparece. Es intencionado.
 
@@ -43,13 +43,13 @@ Coges tu esterilla, te colocas, y esperas a que empiece la clase. No hay espejos
 
 ## Durante la clase
 
-El profesor guía la sesión. Las proyecciones cambian con las fases de la clase — más dinámicas durante la parte activa, más lentas durante la relajación. El audio espacial hace que las instrucciones del profesor y la música lleguen desde todas las direcciones.
+El profesor guía la sesión. Las proyecciones cambian con las fases de la clase. Más dinámicas durante la parte activa, más lentas durante la relajación. El audio espacial hace que las instrucciones del profesor y la música lleguen desde todas las direcciones.
 
 **Si es yoga o pilates:** Sigues las instrucciones del profesor. Todos los niveles bienvenidos. Si una postura no te va, descansa. Nadie te mira (la sala es oscura).
 
 **Si es sound healing:** Te tumbas, cierras los ojos, y el sonido hace el trabajo. No tienes que hacer nada.
 
-**Si es breathwork:** Sigues el patrón de respiración que indica el facilitador. Puede ser intenso — lee el artículo de breathwork antes si quieres saber qué esperar.
+**Si es breathwork:** Sigues el patrón de respiración que indica el facilitador. Puede ser intenso. Lee el artículo de breathwork antes si quieres saber qué esperar.
 
 **Teléfono:** Apagado o en silencio. No hay fotos durante la clase.
 
@@ -66,7 +66,7 @@ Duchas disponibles. Recepción puede ayudarte a reservar tu próxima clase o a u
 ## Cómo llegar
 
 **Dirección:** C/Muntaner 83B, Local 2, 08011 Barcelona.
-**Metro:** Universitat (L1, L2) — 10 minutos a pie por Muntaner.
+**Metro:** Universitat (L1, L2), 10 minutos a pie por Muntaner.
 **A pie desde Passeig de Gràcia:** 12 minutos.
 **En bici:** Estación Bicing en Muntaner/Consell de Cent.
 
@@ -85,7 +85,7 @@ Duchas disponibles. Recepción puede ayudarte a reservar tu próxima clase o a u
 
 ## Preguntas de primera vez
 
-**¿Necesito ser flexible/estar en forma?** No. Todas las clases son para todos los niveles. Los profesores dan modificaciones. Nadie te juzga — la sala está oscura.
+**¿Necesito ser flexible/estar en forma?** No. Todas las clases son para todos los niveles. Los profesores dan modificaciones. Nadie te juzga, la sala está oscura.
 
 **¿Y si no puedo seguir el ritmo?** Descansa cuando quieras. Postura del niño en yoga, tumbarte en breathwork, quedarte quieto en ecstatic dance. Nadie mira.
 
@@ -99,6 +99,6 @@ Duchas disponibles. Recepción puede ayudarte a reservar tu próxima clase o a u
 
 ## Después de tu primera clase
 
-La mayoría de gente sale de su primera clase en SABDA ligeramente aturdida, profundamente relajada, y preguntándose por qué tardó tanto en probar. La segunda clase es donde empiezas a entender la diferencia que hace el entorno inmersivo — entras en foco más rápido porque sabes qué esperar. Para la tercera, la mayoría ha encontrado su formato favorito y está considerando una membresía.
+La mayoría de gente sale de su primera clase en SABDA ligeramente aturdida, profundamente relajada, y preguntándose por qué tardó tanto en probar. La segunda clase es donde empiezas a entender la diferencia que hace el entorno inmersivo. Entras en foco más rápido porque sabes qué esperar. Para la tercera, la mayoría ha encontrado su formato favorito y está considerando una membresía.
 
 Ese es el diseño del [pack de 3 clases por €50](https://momence.com/m/443935): probar lo suficiente para encontrar lo que te resuena.

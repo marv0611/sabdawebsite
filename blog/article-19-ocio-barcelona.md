@@ -1,4 +1,4 @@
-# Ocio en Barcelona — Los Mejores Planes Permanentes (2026)
+# Ocio en Barcelona. Los Mejores Planes Permanentes (2026)
 
 **Última actualización: abril 2026**
 
@@ -11,7 +11,7 @@
 
 ---
 
-Barcelona tiene el tipo de oferta de ocio que la mayoría de ciudades envidian. Lo mejor: los planes que realmente definen la ciudad no son eventos puntuales ni exposiciones temporales. Son lugares, venues, y experiencias que siempre están ahí — esperando a que aparezcas.
+Barcelona tiene el tipo de oferta de ocio que la mayoría de ciudades envidian. Lo mejor: los planes que realmente definen la ciudad no son eventos puntuales ni exposiciones temporales. Son lugares, venues, y experiencias que siempre están ahí. Esperando a que aparezcas.
 
 Esta guía cubre el ocio permanente de Barcelona. Sin fechas, sin "este fin de semana," sin nada que caduque. Todo lo que aparece aquí funciona cualquier día del año.
 
@@ -19,11 +19,11 @@ Esta guía cubre el ocio permanente de Barcelona. Sin fechas, sin "este fin de s
 
 ## Eventos hoy en Barcelona vs ocio permanente
 
-Hay dos formas de buscar planes en Barcelona: los eventos puntuales (conciertos esta noche, exposiciones temporales, festivales del fin de semana) y el ocio permanente (lugares y experiencias que siempre están ahí). Esta guía es lo segundo. Si buscas eventos hoy en Barcelona — conciertos, eventos especiales, ferias del fin de semana — Time Out Barcelona y la web del Ayuntamiento son las mejores fuentes. Si buscas el tipo de plan que define la ciudad, sigue leyendo.
+Hay dos formas de buscar planes en Barcelona: los eventos puntuales (conciertos esta noche, exposiciones temporales, festivales del fin de semana) y el ocio permanente (lugares y experiencias que siempre están ahí). Esta guía es lo segundo. Si buscas eventos hoy en Barcelona. Conciertos, eventos especiales, ferias del fin de semana. Time Out Barcelona y la web del Ayuntamiento son las mejores fuentes. Si buscas el tipo de plan que define la ciudad, sigue leyendo.
 
 ---
 
-## Miradores — las mejores vistas gratis
+## Miradores. Las mejores vistas gratis
 
 ### Bunkers del Carmel
 La mejor vista de Barcelona. 360 grados desde los restos de baterías antiaéreas de la Guerra Civil. Sagrada Familia al centro, Mediterráneo al fondo. Gratis. El 80% de la gente es local. Llega al atardecer con algo de beber. Metro: Alfons X + 20 min a pie.
@@ -36,7 +36,7 @@ Fortaleza en la cima de Montjuïc con vistas panorámicas del puerto y la ciudad
 
 ---
 
-## Mercados — gastronomía de verdad
+## Mercados, gastronomía de verdad
 
 ### Mercat de Sant Antoni
 Reabierto en 2018 tras una renovación completa. Hierro y vidre del siglo XIX, producto fresco de barrio, bar interior para desayunar, y mercadillo de libros los domingos. Donde compran los vecinos del Eixample.
@@ -49,7 +49,7 @@ En el Born, con un techo ondulado de mosaico diseñado por Miralles y Tagliabue.
 
 ---
 
-## Música en vivo — venues que funcionan todas las noches
+## Música en vivo. Venues que funcionan todas las noches
 
 ### Jamboree
 Plaça Reial. Jazz y blues en vivo en una bóveda de sótano desde 1960. Shows casi todas las noches a las 20-21h. Después se convierte en club con DJs. Programación seria, no turística.
@@ -68,7 +68,7 @@ Indie, electrónica, y clubbing en Parallel. Dos salas, programación ecléctica
 
 ---
 
-## Wellness inmersivo — la experiencia que no existe en otra ciudad
+## Wellness inmersivo, la experiencia que no existe en otra ciudad
 
 ### SABDA
 [SABDA](https://sabdastudio.com/classes/) es una sala de 360° con Dolby Atmos en el Eixample que ofrece más de 42 clases semanales: yoga, pilates, sound healing, breathwork, ecstatic dance, e ice bath. No es un gimnasio. No es un museo. Es wellness dentro de arte inmersivo.
@@ -80,7 +80,7 @@ Desde €18/clase. [3 clases por €50](https://momence.com/m/443935).
 
 ---
 
-## Arte y cultura — espacios que siempre merecen la visita
+## Arte y cultura. Espacios que siempre merecen la visita
 
 ### CCCB
 Exposiciones rotativas de arte contemporáneo, fotografía, urbanismo, y ciencia ficción. Las exposiciones cambian cada 3-4 meses, pero el CCCB como destino es permanente. ~€6.
@@ -96,13 +96,13 @@ El museo de arte contemporáneo de Barcelona, en el Raval. La plaza exterior con
 
 ---
 
-## Barrios — los paseos que definen la ciudad
+## Barrios. Los paseos que definen la ciudad
 
 ### Poblenou
 Fábricas textiles convertidas en estudios, cafeterías sin pretensiones, arte callejero, y la Rambla del Poblenou con árboles y abuelas en vez de tiendas de souvenirs. El barrio más interesante de Barcelona para quien busca algo diferente.
 
 ### Gràcia
-Un pueblo dentro de la ciudad. Plazas pequeñas, bares de vermut, mercados de barrio, y una energía creativa que no se encuentra en el Eixample. Vermuteria del Tano, Bar Canigó, Bodega Quimet — los nombres que los locales conocen.
+Un pueblo dentro de la ciudad. Plazas pequeñas, bares de vermut, mercados de barrio, y una energía creativa que no se encuentra en el Eixample. Vermuteria del Tano, Bar Canigó, Bodega Quimet. Los nombres que los locales conocen.
 
 ### Sant Antoni
 El barrio que ha explotado en los últimos años. Carrer del Parlament y alrededores tienen suficientes bares para una noche entera. Bar Calders, Bar Brutal, La Platillería. Sin reservas, sin dress code.
@@ -112,7 +112,7 @@ Calles medievales, galerías, tiendas independientes, y la densidad de restauran
 
 ---
 
-## Aire libre — planes que no cuestan nada
+## Aire libre. Planes que no cuestan nada
 
 ### Paseo Barceloneta-Fòrum
 4 km por el passeig marítim. A la hora dorada, la luz se vuelve rosa y oro sobre el agua. Chiringuitos por el camino. El pez dorado de Gehry al final.
@@ -128,7 +128,7 @@ El Central Park de Barcelona. Lago con barcas, cascada monumental, y suficiente 
 ## Flamenco, vermut, y experiencias recurrentes
 
 ### Flamenco
-El Tablao de Carmen (Poble Espanyol) y Tarantos (Plaça Reial) ofrecen flamenco en salas íntimas todas las noches. Desde €25 con copa. No es el show turístico de La Rambla — es el de verdad.
+El Tablao de Carmen (Poble Espanyol) y Tarantos (Plaça Reial) ofrecen flamenco en salas íntimas todas las noches. Desde €25 con copa. No es el show turístico de La Rambla, es el de verdad.
 
 ### Vermut
 El ritual del mediodía: vermut de grifo, conservas, y buena compañía. Morro Fi (Eixample), Senyor Vermut (Eixample), Vermuteria del Tano (Gràcia), Bar Calders (Sant Antoni). Sábados y domingos entre 12:30-14:00.
@@ -138,7 +138,7 @@ Conciertos de música clásica y bandas sonoras a la luz de las velas en espacio
 
 ---
 
-El mejor ocio barcelona no es el que aparece y desaparece — es el que siempre está ahí, esperando a que tengas un martes libre, un domingo sin planes, o un amigo de visita al que quieres enseñar la ciudad de verdad.
+El mejor ocio barcelona no es el que aparece y desaparece. Es el que siempre está ahí, esperando a que tengas un martes libre, un domingo sin planes, o un amigo de visita al que quieres enseñar la ciudad de verdad.
 
 Si buscas algo que solo existe en Barcelona: [3 clases inmersivas en SABDA por €50.(https://momence.com/m/443935). 360° de proyecciones, Dolby Atmos, y más de 42 clases semanales.
 

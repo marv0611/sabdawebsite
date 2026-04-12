@@ -11,7 +11,7 @@
 
 ---
 
-If the hen party involves a stretch limo, a plastic tiara, and someone blowing a whistle, this list isn't for you. If you want something the bride will actually talk about afterwards — something worth the flights — keep reading.
+If the hen party involves a stretch limo, a plastic tiara, and someone blowing a whistle, this list isn't for you. If you want something the bride will actually talk about afterwards. Something worth the flights, keep reading.
 
 ---
 
@@ -51,9 +51,9 @@ Rent a terrace in Eixample or Gràcia via Airbnb or Giggster (€200-400). Your 
 
 ## The perfect hen party combo
 
-**Option A — Wellness + food:** Morning: private SABDA session → Midday: brunch in Eixample → Afternoon: vermouth crawl in Gràcia.
+**Option A. Wellness + food:** Morning: private SABDA session → Midday: brunch in Eixample → Afternoon: vermouth crawl in Gràcia.
 
-**Option B — Adventure + party:** Morning: sailing with cava → Afternoon: cooking class → Evening: dinner + Sant Antoni bars.
+**Option B. Adventure + party:** Morning: sailing with cava → Afternoon: cooking class → Evening: dinner + Sant Antoni bars.
 
 Either comes in under €150/person for a full day the bride will remember far longer than a limo ride.
 
@@ -82,11 +82,11 @@ For SABDA group bookings: [connect@sabdastudio.com](mailto:connect@sabdastudio.c
 
 **Weather backup:** If your plan includes outdoor elements (sailboat, Bunkers), have an indoor backup. SABDA works rain or shine. Museums work rain or shine. The vermouth crawl works in any weather (most bars have indoor seating).
 
-**Airport logistics:** If you're flying in from the UK, Barcelona El Prat to city centre is 35-45 minutes by Aerobus (€7.75) or taxi (~€40). Don't plan major activities for arrival day — settle in, explore the neighbourhood, and save the big plans for day two.
+**Airport logistics:** If you're flying in from the UK, Barcelona El Prat to city centre is 35-45 minutes by Aerobus (€7.75) or taxi (~€40). Don't plan major activities for arrival day. Settle in, explore the neighbourhood, and save the big plans for day two.
 
 ## What NOT to do
 
-**Don't book a boat party through a random promoter.** The cheap "party boat" offers (€25/person) are floating nightclubs with 200 strangers, bad music, and warm sangria. Private sailboats cost more but they're private — your group, your music, your pace.
+**Don't book a boat party through a random promoter.** The cheap "party boat" offers (€25/person) are floating nightclubs with 200 strangers, bad music, and warm sangria. Private sailboats cost more but they're private, your group, your music, your pace.
 
 **Don't go to La Rambla for dinner.** Or any restaurant with photos of the food on the menu. Walk two blocks in any direction and the quality doubles while the price halves.
 

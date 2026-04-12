@@ -11,7 +11,7 @@
 
 ---
 
-El yoga durante el embarazo es una de las actividades más recomendadas por matronas y ginecólogos — fortalece suelo pélvico, mejora postura, alivia dolor lumbar, prepara la respiración para el parto, y reduce ansiedad. Pero no todas las clases de yoga son seguras durante el embarazo, y la diferencia entre un profesor formado en perinatal y uno que improvisa modificaciones importa.
+El yoga durante el embarazo es una de las actividades más recomendadas por matronas y ginecólogos, fortalece suelo pélvico, mejora postura, alivia dolor lumbar, prepara la respiración para el parto, y reduce ansiedad. Pero no todas las clases de yoga son seguras durante el embarazo, y la diferencia entre un profesor formado en perinatal y uno que improvisa modificaciones importa.
 
 ---
 
@@ -23,14 +23,14 @@ El yoga durante el embarazo es una de las actividades más recomendadas por matr
 **Nota:** Muchas mujeres se sienten cansadas y con náuseas. Si tu cuerpo dice no, escúchalo. El yoga restaurativo y el yin yoga son opciones seguras y reconfortantes.
 
 ### Segundo trimestre (semanas 13-26)
-**Sí:** Hatha (el mejor estilo para este trimestre — tiempo para alinear y usar apoyos), yin con modificaciones, yin yoga. Enfoque en apertura de cadera, fortalecimiento de piernas, y trabajo de respiración.
+**Sí:** Hatha (el mejor estilo para este trimestre. Tiempo para alinear y usar apoyos), yin con modificaciones, yin yoga. Enfoque en apertura de cadera, fortalecimiento de piernas, y trabajo de respiración.
 **Evita:** Posturas boca abajo (sarvangasana, sirsasana), abdominales clásicos, posturas que compriman el abdomen, torsiones cerradas. A partir de la semana 16, evita estar tumbada boca arriba durante períodos largos (la vena cava).
-**Consejo:** Usa apoyos generosamente. Bloques, mantas, bolsters — todo lo que te permita estar cómoda sin forzar.
+**Consejo:** Usa apoyos generosamente. Bloques, mantas, bolsters, todo lo que te permita estar cómoda sin forzar.
 
 ### Tercer trimestre (semanas 27-40)
 **Sí:** Yin yoga (posturas sentadas con apoyos), restaurativo, yin yoga, trabajo de suelo pélvico, y técnicas de respiración para el parto.
 **Evita:** Cualquier postura que se sienta inestable, equilibrios avanzados, flexiones profundas hacia adelante, cualquier cosa que genere presión abdominal.
-**Enfoque:** Respiración (aprende a exhalar largo y controlado — es la respiración del parto), movilidad de cadera (la postura de mariposa con apoyos es tu mejor amiga), y relajación profunda (yin yoga).
+**Enfoque:** Respiración (aprende a exhalar largo y controlado. Es la respiración del parto), movilidad de cadera (la postura de mariposa con apoyos es tu mejor amiga), y relajación profunda (yin yoga).
 
 ---
 
@@ -45,12 +45,12 @@ Las señales de un profesor formado en perinatal: pregunta semanas de gestación
 ## Dónde practicar yoga prenatal en Barcelona
 
 **Clases específicas de yoga prenatal:**
-- **Yoga One** — Tiene clases prenatales en algunas sedes. Profesores con formación perinatal. Grupos reducidos.
-- **Frizzant** — Talleres específicos de yoga embarazadas periódicamente.
-- **Centros de maternidad** — Varios centros de preparación al parto en Barcelona (Centre Maternalia, Espai de la Mama) incluyen yoga prenatal en sus programas.
+- **Yoga One**. Tiene clases prenatales en algunas sedes. Profesores con formación perinatal. Grupos reducidos.
+- **Frizzant**. Talleres específicos de yoga embarazadas periódicamente.
+- **Centros de maternidad**. Varios centros de preparación al parto en Barcelona (Centre Maternalia, Espai de la Mama) incluyen yoga prenatal en sus programas.
 
 **Estudios con profesores que adaptan:**
-- [**SABDA**](https://sabdastudio.com/classes/) — Las clases de yoga (hatha vinyasa, yin) son "all levels" y los profesores ofrecen modificaciones para embarazadas. No es una clase prenatal específica, pero si ya practicabas yoga, el entorno inmersivo añade una dimensión de relajación que complementa la práctica. El audio espacial y las proyecciones lentas de las clases de yin son particularmente indicadas para embarazadas.
+- [**SABDA**](https://sabdastudio.com/classes/). Las clases de yoga (hatha vinyasa, yin) son "all levels" y los profesores ofrecen modificaciones para embarazadas. No es una clase prenatal específica, pero si ya practicabas yoga, el entorno inmersivo añade una dimensión de relajación que complementa la práctica. El audio espacial y las proyecciones lentas de las clases de yin son particularmente indicadas para embarazadas.
 
 **Sesiones individuales:**
 Varios profesores en Barcelona ofrecen yoga prenatal individual (€40-60/sesión). Busca certificación en yoga perinatal (mínimo 80h de formación específica).
@@ -61,7 +61,7 @@ Varios profesores en Barcelona ofrecen yoga prenatal individual (€40-60/sesió
 
 **Empezar:** Puedes empezar yoga prenatal en cualquier momento del embarazo, pero el segundo trimestre es el momento más cómodo para iniciar si nunca has practicado. Si ya hacías yoga, puedes continuar desde el primer día con modificaciones.
 
-**Parar:** No hay un momento fijo para parar — depende de cómo te sientas. Muchas mujeres practican hasta la semana 38-39. Escucha a tu cuerpo y consulta con tu matrona.
+**Parar:** No hay un momento fijo para parar. Depende de cómo te sientas. Muchas mujeres practican hasta la semana 38-39. Escucha a tu cuerpo y consulta con tu matrona.
 
 **Después del parto:** Espera al menos 6 semanas (8 si fue cesárea) antes de volver a yoga. Empieza con postnatal específico o restaurativo. El suelo pélvico necesita recuperarse antes de volver a trabajo activo.
 
@@ -79,18 +79,18 @@ El yoga embarazadas barcelona más accesible lo encontrarás en estudios con pro
 
 ## La respiración como preparación al parto
 
-Una de las cosas más útiles que el yoga prenatal enseña no es una postura — es una respiración. La exhalación larga y controlada (inhalar 4 tiempos, exhalar 8 tiempos) es la base de las técnicas de respiración para el parto.
+Una de las cosas más útiles que el yoga prenatal enseña no es una postura, es una respiración. La exhalación larga y controlada (inhalar 4 tiempos, exhalar 8 tiempos) es la base de las técnicas de respiración para el parto.
 
 Durante las contracciones, tu instinto es tensar todo y contener la respiración. Eso aumenta el dolor y dificulta la dilatación. La exhalación larga hace lo opuesto: relaja el suelo pélvico, reduce la percepción de dolor, y facilita el proceso.
 
 Si solo aprendes una cosa del yoga prenatal, que sea esto: exhalar el doble de lo que inhalas, especialmente bajo presión. Práctica 10 minutos al día durante el tercer trimestre. Tu matrona te lo agradecerá.
 
-## Yoga postnatal — cuándo y cómo volver
+## Yoga postnatal, cuándo y cómo volver
 
 **6 semanas postparto (parto vaginal):** Puedes empezar con yoga restaurativo y suelo pélvico. Nada activo. Tu cuerpo necesita reconstruir la base antes de volver a cargar.
 
 **8 semanas postparto (cesárea):** Consulta con tu ginecólogo. La cicatriz necesita tiempo. Empieza con respiración y suelo pélvico, sin flexiones abdominales.
 
-**3-4 meses postparto:** Vuelta gradual a hatha y vinyasa suave. Comprueba si tienes diástasis abdominal (separación de los rectos) antes de volver a trabajo de core — un fisioterapeuta pélvico puede evaluarte.
+**3-4 meses postparto:** Vuelta gradual a hatha y vinyasa suave. Comprueba si tienes diástasis abdominal (separación de los rectos) antes de volver a trabajo de core, un fisioterapeuta pélvico puede evaluarte.
 
-**6+ meses:** Vuelta a la práctica normal con consciencia. El cuerpo postparto es diferente al pre-embarazo — acepta donde estás.
+**6+ meses:** Vuelta a la práctica normal con consciencia. El cuerpo postparto es diferente al pre-embarazo, acepta donde estás.

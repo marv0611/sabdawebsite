@@ -11,9 +11,9 @@
 
 ---
 
-Barcelona tiene más planes en pareja que sentarse a cenar. No me malinterpretes — la ciudad tiene restaurantes increíbles, y una cena en un sitio nuevo siempre es un buen plan. Pero si llevas aquí más de un mes, has cenado fuera más veces de las que puedes contar, y estás buscando algo que no sea "vamos a ese sitio nuevo de Eixample." O si acabáis de llegar y queréis descubrir la ciudad de una forma que no aparece en las guías turísticas.
+Barcelona tiene más planes en pareja que sentarse a cenar. No me malinterpretes. La ciudad tiene restaurantes increíbles, y una cena en un sitio nuevo siempre es un buen plan. Pero si llevas aquí más de un mes, has cenado fuera más veces de las que puedes contar, y estás buscando algo que no sea "vamos a ese sitio nuevo de Eixample." O si acabáis de llegar y queréis descubrir la ciudad de una forma que no aparece en las guías turísticas.
 
-Aquí van 12 planes en pareja en Barcelona que realmente merecen la pena — algunos gratis, algunos no, todos distintos a lo que ya habéis hecho.
+Aquí van 12 planes en pareja en Barcelona que realmente merecen la pena. Algunos gratis, algunos no, todos distintos a lo que ya habéis hecho.
 
 ---
 
@@ -27,7 +27,7 @@ Esto necesita una aclaración primero: no es lo que parece. No hay incienso. No 
 
 ### 2. La Pedrera de noche
 
-Tour nocturno por la azotea de Gaudí con las chimeneas guerreras iluminadas, una proyección audiovisual sobre las superficies ondulantes del tejado, y una copa de cava incluida. Todo termina sobre las 22:30, lo que te deja tiempo para seguir la noche en cualquiera de los bares de Passeig de Gràcia. ~€35 por persona. Reserva online con antelación — se agota constantemente.
+Tour nocturno por la azotea de Gaudí con las chimeneas guerreras iluminadas, una proyección audiovisual sobre las superficies ondulantes del tejado, y una copa de cava incluida. Todo termina sobre las 22:30, lo que te deja tiempo para seguir la noche en cualquiera de los bares de Passeig de Gràcia. ~€35 por persona. Reserva online con antelación, se agota constantemente.
 
 ### 3. Jazz en Jamboree + cena tardía
 
@@ -43,7 +43,7 @@ El plan de dos actos: primera parada, jazz en vivo en el sótano de Jamboree (Pl
 
 ### 5. Bunkers del Carmel al atardecer
 
-La mejor vista gratuita de Barcelona. 360 grados de ciudad desde los restos de las baterías antiaéreas de la Guerra Civil. Llega 45 minutos antes de la puesta de sol con algo de beber y algo sobre lo que sentarse. El ambiente es 80% local — parejas, amigos con cervezas, alguien tocando la guitarra. Es uno de esos lugares secretos en Barcelona para ir en pareja que ya no es tan secreto, pero sigue mereciendo la pena.
+La mejor vista gratuita de Barcelona. 360 grados de ciudad desde los restos de las baterías antiaéreas de la Guerra Civil. Llega 45 minutos antes de la puesta de sol con algo de beber y algo sobre lo que sentarse. El ambiente es 80% local. Parejas, amigos con cervezas, alguien tocando la guitarra. Es uno de esos lugares secretos en Barcelona para ir en pareja que ya no es tan secreto, pero sigue mereciendo la pena.
 
 ### 6. Paseo Barceloneta-Fòrum a la hora dorada
 
@@ -55,7 +55,7 @@ El Mercat de Sant Antoni tiene un mercadillo de libros, cómics y monedas cada d
 
 ### 8. Perderse por Poblenou
 
-Sin mapa, sin plan, sin destino. Fábricas textiles convertidas en galerías, cafeteries que hacen mejor café que el centro, arte callejero que vale la pena fotografiar, y la Rambla del Poblenou donde nadie os intentará vender una sangría. Acabaréis en la playa, que a diferencia de Barceloneta, tiene espacio. Planes divertidos en pareja en Barcelona no necesitan presupuesto — a veces solo necesitan un barrio que no conocéis.
+Sin mapa, sin plan, sin destino. Fábricas textiles convertidas en galerías, cafeteries que hacen mejor café que el centro, arte callejero que vale la pena fotografiar, y la Rambla del Poblenou donde nadie os intentará vender una sangría. Acabaréis en la playa, que a diferencia de Barceloneta, tiene espacio. Planes divertidos en pareja en Barcelona no necesitan presupuesto. A veces solo necesitan un barrio que no conocéis.
 
 ---
 
@@ -79,7 +79,7 @@ Un velero para 2-6 personas, dos horas navegando frente a la costa de Barcelona 
 
 ### 12. Tarjeta regalo SABDA para regalar la experiencia
 
-Si tu pareja nunca ha hecho sound healing, breathwork, o yoga inmersivo, la [tarjeta regalo de SABDA](https://sabdastudio.com/pricing/) (desde €20, digital, entrega inmediata) es un regalo que no espera. El [pack de 3 clases por €50](https://momence.com/m/443935) permite elegir entre distintas clases — así probáis varias cosas juntos. El tipo de regalo que alguien recuerda mucho más que una cena.
+Si tu pareja nunca ha hecho sound healing, breathwork, o yoga inmersivo, la [tarjeta regalo de SABDA](https://sabdastudio.com/pricing/) (desde €20, digital, entrega inmediata) es un regalo que no espera. El [pack de 3 clases por €50](https://momence.com/m/443935) permite elegir entre distintas clases. Así probáis varias cosas juntos. El tipo de regalo que alguien recuerda mucho más que una cena.
 
 ---
 

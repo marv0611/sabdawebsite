@@ -19,9 +19,9 @@ Here's what it actually is, what happens in a session, and why the space you do 
 
 ## What sound healing is (without the woo)
 
-Sound healing is a practice where acoustic instruments — Tibetan singing bowls (cuencos tibetanos), crystal bowls, gongs, tuning forks, chimes — are played in a way designed to shift your nervous system state. You lie down, close your eyes, and the sound does the work. There's no guided meditation you have to follow. No mantras. No affirmations. You just listen.
+Sound healing is a practice where acoustic instruments. Tibetan singing bowls (cuencos tibetanos), crystal bowls, gongs, tuning forks, chimes. Are played in a way designed to shift your nervous system state. You lie down, close your eyes, and the sound does the work. There's no guided meditation you have to follow. No mantras. No affirmations. You just listen.
 
-The instruments produce sustained tones and overtones that overlap, creating interference patterns — beats and textures that your brain can't quite track or predict. That unpredictability is the point. Your brain stops trying to organise what it's hearing and relaxes its grip.
+The instruments produce sustained tones and overtones that overlap, creating interference patterns. Beats and textures that your brain can't quite track or predict. That unpredictability is the point. Your brain stops trying to organise what it's hearing and relaxes its grip.
 
 A session typically lasts 60 minutes. You lie on a mat with a blanket. Most people fall into a state somewhere between deep relaxation and sleep. Some people see colours or patterns behind their eyelids. Some people just feel very, very still.
 
@@ -31,7 +31,7 @@ A session typically lasts 60 minutes. You lie on a mat with a blanket. Most peop
 
 Sound healing isn't fully mapped by research yet, but what exists is interesting:
 
-Certain frequencies and rhythmic patterns measurably affect brainwave activity. A 2020 study in the Journal of Evidence-Based Integrative Medicine found that singing bowl sessions produced significant reductions in tension, anger, fatigue, and depressed mood. Participants' heart rate variability — a marker of parasympathetic nervous system activation — improved during sessions.
+Certain frequencies and rhythmic patterns measurably affect brainwave activity. A 2020 study in the Journal of Evidence-Based Integrative Medicine found that singing bowl sessions produced significant reductions in tension, anger, fatigue, and depressed mood. Participants' heart rate variability. A marker of parasympathetic nervous system activation, improved during sessions.
 
 The mechanism isn't magic. Low-frequency vibrations stimulate the vagus nerve, which runs from the brainstem to the abdomen and controls the body's rest-and-digest response. When the vagus nerve is activated, cortisol drops, heart rate slows, and your body shifts out of fight-or-flight.
 
@@ -45,7 +45,7 @@ This isn't a cure for anything. It's a reliable way to downregulate your nervous
 
 **Crystal singing bowls:** Made from quartz crystal. They produce pure, clear tones that sustain for a long time. The sound is bright, almost electronic-sounding.
 
-**Gongs:** Produce complex, layered sound with long sustain. A gong wash — when the practitioner gradually builds the volume — can be the most physically intense part of a session. You feel it in your chest.
+**Gongs:** Produce complex, layered sound with long sustain. A gong wash. When the practitioner gradually builds the volume. Can be the most physically intense part of a session. You feel it in your chest.
 
 **Tuning forks:** Produce very specific, clean frequencies. Sometimes placed near the body (not on it) to create localised vibration.
 
@@ -59,7 +59,7 @@ Most practitioners use a combination. The layering of different timbres and freq
 
 You arrive. You lie down on a mat. Someone gives you a blanket and maybe an eye mask. The practitioner introduces the session (usually 2-3 minutes), and then the sound starts.
 
-For the first 5 minutes, you might feel restless. Your brain is still in "doing" mode. Then the layers build and your thinking slows down. Some people describe it as "melting." Others say it feels like floating. The sensation of time distorts — an hour feels like 25 minutes.
+For the first 5 minutes, you might feel restless. Your brain is still in "doing" mode. Then the layers build and your thinking slows down. Some people describe it as "melting." Others say it feels like floating. The sensation of time distorts. An hour feels like 25 minutes.
 
 Physically, you might feel warm, tingly, or emotionally tender afterwards. Some people feel deeply rested. Some feel slightly spacey for 20 minutes. Drink water. Don't drive aggressively.
 
@@ -69,7 +69,7 @@ Nothing is required of you during the session. You don't need to meditate. You d
 
 ## Sound healing vs meditation
 
-They're related but different. Meditation asks you to direct your attention — to your breath, a mantra, a body scan. Sound healing gives your attention something to follow without effort. The sound does the anchoring work that meditation asks your mind to do.
+They're related but different. Meditation asks you to direct your attention, to your breath, a mantra, a body scan. Sound healing gives your attention something to follow without effort. The sound does the anchoring work that meditation asks your mind to do.
 
 For people who find meditation difficult because their brain won't stop generating thoughts, sound healing can be a useful entry point. The sound gives the brain enough stimulus to stay engaged but not enough structure to trigger the planning/analysing modes.
 
@@ -79,9 +79,9 @@ For people who find meditation difficult because their brain won't stop generati
 
 Here's where it gets specific. Most sound healing sessions use acoustic instruments in a normal room. The sound bounces off walls, reflects, and reaches your ears from the direction of the practitioner. It's nice.
 
-But at [SABDA in Barcelona](https://sabdastudio.com/classes/sound-healing/), sound healing happens inside a 360° projection room with Dolby Atmos spatial audio — cinema-grade speakers built into every wall and the ceiling, with subwoofers underneath. The practitioner's instruments are captured and distributed through the spatial audio system so that sound moves around you, above you, through you.
+But at [SABDA in Barcelona](https://sabdastudio.com/classes/sound-healing/), sound healing happens inside a 360° projection room with Dolby Atmos spatial audio. Cinema-grade speakers built into every wall and the ceiling, with subwoofers underneath. The practitioner's instruments are captured and distributed through the spatial audio system so that sound moves around you, above you, through you.
 
-The difference is hard to overstate. In a normal room, you hear the bowl from one direction. In SABDA's room, the bowl tone orbits your body. Frequencies arrive from different angles simultaneously. The 360° visuals — slowly shifting geometries, organic patterns, abstract landscapes — create a world behind your closed eyelids that complements the sound.
+The difference is hard to overstate. In a normal room, you hear the bowl from one direction. In SABDA's room, the bowl tone orbits your body. Frequencies arrive from different angles simultaneously. The 360° visuals. Slowly shifting geometries, organic patterns, abstract landscapes. Create a world behind your closed eyelids that complements the sound.
 
 It turns a good session into something genuinely altered-state. People who've done sound healing before often say SABDA is the first time they actually understood what the practice could be.
 
@@ -101,7 +101,7 @@ It's explicitly not for people seeking a spiritual experience they need to belie
 
 [SABDA's sound healing sessions](https://sabdastudio.com/classes/sound-healing/) run multiple times per week in the Eixample (C/Muntaner 83B, 10 min from Universitat metro). No experience needed. Blankets provided.
 
-[3 classes for €50](https://momence.com/m/443935) — try sound healing alongside breathwork or yoga to see what resonates.
+[3 classes for €50](https://momence.com/m/443935). Try sound healing alongside breathwork or yoga to see what resonates.
 
 **Related:** [What Is Breathwork?](/blog/what-is-breathwork/) | [Classes at SABDA](/classes/)
 

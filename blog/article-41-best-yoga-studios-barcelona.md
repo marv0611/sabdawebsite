@@ -15,8 +15,8 @@ Barcelona has more yoga studios than you can visit in a month. Some are excellen
 
 ---
 
-## 1. SABDA — The immersive one
-[SABDA](https://sabdastudio.com/classes/yoga/) isn't a yoga studio in any conventional sense. It's a 360° projection room with Dolby Atmos spatial audio in the Eixample where yoga classes happen inside custom-designed visual worlds. Vinyasa Flow, Hatha Vinyasa, Power Vinyasa, Yoga Sculpt, Yin — each format has its own visual and musical design.
+## 1. SABDA, The immersive one
+[SABDA](https://sabdastudio.com/classes/yoga/) isn't a yoga studio in any conventional sense. It's a 360° projection room with Dolby Atmos spatial audio in the Eixample where yoga classes happen inside custom-designed visual worlds. Vinyasa Flow, Hatha Vinyasa, Power Vinyasa, Yoga Sculpt, Yin. Each format has its own visual and musical design.
 
 **Vibe:** Dark, immersive, premium. Like stepping into another dimension and doing yoga there.
 **Styles:** Vinyasa, Hatha, Power, Sculpt, Yin
@@ -25,15 +25,15 @@ Barcelona has more yoga studios than you can visit in a month. Some are excellen
 **Location:** C/Muntaner 83B, Eixample (metro Universitat)
 **Best for:** Anyone who wants yoga to feel like an experience, not just exercise.
 
-## 2. Yoga One — The reliable chain
-Multiple locations across Barcelona (Eixample, Poblenou, Sarrià). Consistent quality, wide variety of styles (vinyasa, hatha, yin, ashtanga, hot yoga at some locations). Professional teachers. The Starbucks of yoga — you know what you're getting.
+## 2. Yoga One, The reliable chain
+Multiple locations across Barcelona (Eixample, Poblenou, Sarrià). Consistent quality, wide variety of styles (vinyasa, hatha, yin, ashtanga, hot yoga at some locations). Professional teachers. The Starbucks of yoga. You know what you're getting.
 
 **Vibe:** Clean, professional, slightly corporate
 **Price:** ~€15-20/class, memberships from ~€90/mo
 **Language:** English and Spanish
 **Best for:** People who want variety and convenience across multiple locations.
 
-## 3. Frizzant — The creative one
+## 3. Frizzant, The creative one
 Boutique studio with a creative edge: yoga combined with live music, themed workshops, and community events. Young crowd, good energy.
 
 **Vibe:** Hip, community-focused, slightly Instagrammable
@@ -41,49 +41,49 @@ Boutique studio with a creative edge: yoga combined with live music, themed work
 **Language:** English and Spanish
 **Best for:** Social yogis who want community as much as practice.
 
-## 4. Soma Yoga — The intimate one
+## 4. Soma Yoga, The intimate one
 Small studio in the Born with a focus on community. Small group classes (max 12-15), primarily vinyasa and yin. The teachers know your name after two visits.
 
 **Vibe:** Warm, personal, neighbourhood feel
 **Price:** ~€14-16/class
 **Best for:** People who want a "my studio" feeling.
 
-## 5. Moonlight Yoga — The technical one
+## 5. Moonlight Yoga, The technical one
 Eixample studio specialising in ashtanga, mysore, and vinyasa. If you care about alignment and technical precision more than aesthetics, Moonlight delivers.
 
 **Vibe:** Focused, no-frills, rigorous
 **Price:** ~€14-17/class
 **Best for:** Serious practitioners who want depth over decoration.
 
-## 6. Hot Yoga Barcelona — The sweaty one
+## 6. Hot Yoga Barcelona, The sweaty one
 Bikram and hot vinyasa in heated rooms (38-40°C). If you want to sweat profusely and feel like you've done something, this is the place.
 
 **Vibe:** Intense, detox-focused
 **Price:** ~€18-22/class
 **Best for:** People who want yoga to feel like a workout. And sweating.
 
-## 7. Casa del Moviment — The Poblenou one
+## 7. Casa del Moviment, The Poblenou one
 In the heart of Barcelona's creative district. Combines yoga with dance, movement, and bodywork. The space reflects Poblenou's converted-factory aesthetic.
 
 **Vibe:** Artistic, movement-focused, Poblenou cool
 **Price:** ~€14-18/class
 **Best for:** People who want to explore movement beyond traditional yoga.
 
-## 8. Nestra Center — The expat-friendly one
+## 8. Nestra Center, The expat-friendly one
 Gràcia studio popular with the international community. Classes in English, teacher training programmes, and a café attached. Good for meeting people.
 
 **Vibe:** International, social, welcoming
 **Price:** ~€15-18/class
 **Best for:** Expats looking for community and classes in English.
 
-## 9. El Club de Yoga — The neighbourhood one
+## 9. El Club de Yoga, The neighbourhood one
 Unpretentious studio in the Eixample. Hatha, vinyasa, and yin in a no-frills space. Good teachers, fair prices, zero marketing.
 
 **Vibe:** Low-key, local, zero Instagram
 **Price:** ~€12-15/class
 **Best for:** People who just want good yoga at a fair price.
 
-## 10. Espacio Yoga — The Gràcia gem
+## 10. Espacio Yoga, The Gràcia gem
 Small studio in Gràcia with hatha, vinyasa, and meditation. Intimate classes, experienced teachers, and a neighbourhood feel.
 
 **Vibe:** Calm, personal, Gràcia character

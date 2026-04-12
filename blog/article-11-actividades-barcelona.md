@@ -13,13 +13,13 @@
 
 Si estás buscando actividades en Barcelona, probablemente estés en una de estas situaciones: acabas de llegar y quieres saber qué hacer, llevas aquí un tiempo y necesitas ideas nuevas, o simplemente buscas algo distinto a lo de siempre. Esta guía cubre las tres.
 
-Si buscas actividades en Barcelona para hoy mismo, este fin de semana, gratis o de pago — todo está aquí. Sin fechas. Sin "este sábado." Las 25 actividades funcionan cualquier día del año.
+Si buscas actividades en Barcelona para hoy mismo, este fin de semana, gratis o de pago, todo está aquí. Sin fechas. Sin "este sábado." Las 25 actividades funcionan cualquier día del año.
 
 Actividades gratis y de pago, para adultos, parejas y grupos. Planes permanentes que siempre funcionan.
 
 ---
 
-## Planes rápidos — sin reserva necesaria
+## Planes rápidos, sin reserva necesaria
 
 ### 1. Vermut en Morro Fi o Senyor Vermut
 El ritual del vermut antes de comer. Morro Fi (Consell de Cent, 171) es el referente, Senyor Vermut (Provença, 85) tiene 40 variedades. Ambos en Eixample. Vermut a €3. Mejor entre 12:30-14:00.
@@ -57,7 +57,7 @@ A una hora en tren: bodegas de cava, catas, y la opción de embotellar tu propia
 
 ---
 
-## Actividades barcelona gratis — planes que no cuestan nada
+## Actividades barcelona gratis. Planes que no cuestan nada
 
 ### 11. Bunkers del Carmel
 Ya mencionado, pero es la actividad gratis número uno de la ciudad. Vistas de 360°, atardecer, sin entrada.
@@ -72,7 +72,7 @@ Esculturas, criptas art nouveau, vistas del puerto. Un museo al aire libre que c
 Acceso gratuito a las terrazas exteriores del Museo Nacional, con vistas de Plaça Espanya y toda Barcelona.
 
 ### 15. Fuente mágica de Montjuïc
-Show de agua, luz y música gratuito. Jueves a sábado por la noche (horarios varían por temporada). Llega con tiempo — se llena.
+Show de agua, luz y música gratuito. Jueves a sábado por la noche (horarios varían por temporada). Llega con tiempo, se llena.
 
 ### 16. Barri Gòtic sin mapa
 Piérdete por las calles del barrio medieval. Catedral de Barcelona, Plaça del Rei, Plaça Sant Jaume, y ruinas romanas entre tiendas de discos y bares. Gratis, obvio.
@@ -82,7 +82,7 @@ El Central Park de Barcelona. Lago con barcas (~€6, no gratis), pero pasear, s
 
 ---
 
-## Actividades barcelona adultos — planes para mayores de 25
+## Actividades barcelona adultos. Planes para mayores de 25
 
 ### 18. Sound healing como cita
 Tumbados en la sala oscura de [SABDA](https://sabdastudio.com/classes/sound-healing/), 60 minutos de bols tibetanos y gongs en audio espacial. Profundamente relajante, inesperadamente íntimo. Desde €18/persona.
@@ -101,7 +101,7 @@ Combina un vermut en Bar Calders con una visita a cualquiera de las galerías de
 
 ---
 
-## Actividades originales — lo que no sale en otras listas
+## Actividades originales. Lo que no sale en otras listas
 
 ### 23. Danza extática en SABDA
 Sin coreografía, sin hablar, sin zapatos. Movimiento libre dentro de una sala de [proyecciones 360°](https://sabdastudio.com/classes/ecstatic-dance/) con audio espacial. No es un concierto ni una clase de baile. Es algo entre los dos.
@@ -116,11 +116,11 @@ Barcelona iluminada desde el agua. ~€25-35/persona. De mayo a octubre. Una per
 
 ## Dónde buscar actividades en Barcelona
 
-- [SABDA — horario semanal de clases](https://sabdastudio.com/classes/)
-- [Time Out Barcelona](https://www.timeout.com/barcelona) — lo que pasa en la ciudad
-- [meet.barcelona](https://www.meet.barcelona/en/main-events) — agenda oficial del Ajuntament
-- [Razzmatazz](https://www.salarazzmatazz.com) — conciertos y clubbing
-- [Palau de la Música](https://www.palaumusica.cat) — conciertos
+- [SABDA. Horario semanal de clases](https://sabdastudio.com/classes/)
+- [Time Out Barcelona](https://www.timeout.com/barcelona), lo que pasa en la ciudad
+- [meet.barcelona](https://www.meet.barcelona/en/main-events), agenda oficial del Ajuntament
+- [Razzmatazz](https://www.salarazzmatazz.com), conciertos y clubbing
+- [Palau de la Música](https://www.palaumusica.cat), conciertos
 
 ---
 

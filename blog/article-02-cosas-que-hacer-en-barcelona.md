@@ -1,4 +1,4 @@
-# Qué Hacer en Barcelona Este Fin de Semana — 20 Planes Permanentes (2026)
+# Qué Hacer en Barcelona Este Fin de Semana, 20 Planes Permanentes (2026)
 
 **Última actualización: abril 2026**
 
@@ -11,7 +11,7 @@
 
 ---
 
-¿Buscando qué hacer en Barcelona este fin de semana? ¿O cualquier día de la semana? Esta guía es evergreen — los 20 planes que aparecen aquí funcionan siempre, sin fechas, sin caducidad. Ni eventos puntuales ni exposiciones temporales. Sólo planes permanentes que merecen la pena: experiencias inmersivas, gastronomía, cultura, aire libre, y actividades que recomendarías a un amigo.
+¿Buscando qué hacer en Barcelona este fin de semana? ¿O cualquier día de la semana? Esta guía es evergreen. Los 20 planes que aparecen aquí funcionan siempre, sin fechas, sin caducidad. Ni eventos puntuales ni exposiciones temporales. Sólo planes permanentes que merecen la pena: experiencias inmersivas, gastronomía, cultura, aire libre, y actividades que recomendarías a un amigo.
 
 ---
 
@@ -21,7 +21,7 @@ Si has llegado a esta página un martes a las 16:00 buscando algo para hacer en 
 
 ---
 
-## Planes rápidos — sin reserva necesaria
+## Planes rápidos, sin reserva necesaria
 
 ### 1. Vermut en Morro Fi
 
@@ -29,7 +29,7 @@ El ritual es sencillo: vermut de grifo, una lata de anchoas, una caña, y una ho
 
 ### 2. Paseo por el Poblenou
 
-Mientras todo el mundo da vueltas por el Gótico, Poblenou se está convirtiendo silenciosamente en el barrio más interesante de Barcelona. Fábricas textiles convertidas en estudios y coworkings, cafeterías sin pretensiones, arte callejero que dice algo, y una rambla con abuelas sentadas en bancos en vez de tiendas de souvenirs. La Rambla del Poblenou es lo que La Rambla del centro debería ser. Empieza en el Palo Alto Market (primer fin de semana del mes), pasea por las galerías de Carrer de Pujades, tómate un café en Nomad Coffee, y acaba en la playa — que, a diferencia de Barceloneta, tiene espacio para poner la toalla sin tocar a tu vecino.
+Mientras todo el mundo da vueltas por el Gótico, Poblenou se está convirtiendo silenciosamente en el barrio más interesante de Barcelona. Fábricas textiles convertidas en estudios y coworkings, cafeterías sin pretensiones, arte callejero que dice algo, y una rambla con abuelas sentadas en bancos en vez de tiendas de souvenirs. La Rambla del Poblenou es lo que La Rambla del centro debería ser. Empieza en el Palo Alto Market (primer fin de semana del mes), pasea por las galerías de Carrer de Pujades, tómate un café en Nomad Coffee, y acaba en la playa, que, a diferencia de Barceloneta, tiene espacio para poner la toalla sin tocar a tu vecino.
 
 ### 3. Mercat de Sant Antoni
 
@@ -53,7 +53,7 @@ La experiencia nocturna de La Pedrera es otra cosa. Tour por la azotea con las c
 
 ### 7. Yoga, sound healing o breathwork en 360°
 
-Esto es lo que pasa cuando combinas wellness con tecnología: una sala de proyecciones 360° con audio espacial Dolby Atmos en el Eixample. [SABDA](https://sabdastudio.com/classes/) ofrece más de 42 clases a la semana — yoga, pilates, sound healing, breathwork, danza extática, e ice bath. No es un museo por el que caminas. Estás dentro del arte, moviéndote en él. Los visuales cambian cada clase. El sonido envolvente hace algo que no puedes replicar con un altavoz Bluetooth.
+Esto es lo que pasa cuando combinas wellness con tecnología: una sala de proyecciones 360° con audio espacial Dolby Atmos en el Eixample. [SABDA](https://sabdastudio.com/classes/) ofrece más de 42 clases a la semana. Yoga, pilates, sound healing, breathwork, danza extática, e ice bath. No es un museo por el que caminas. Estás dentro del arte, moviéndote en él. Los visuales cambian cada clase. El sonido envolvente hace algo que no puedes replicar con un altavoz Bluetooth.
 
 3 clases por €50 (€18 cada una). [Reserva aquí](https://momence.com/m/443935).
 
@@ -69,7 +69,7 @@ Carrer del Parlament y las calles alrededor del mercado de Sant Antoni tienen su
 
 ### 10. Calcotada (febrero-abril)
 
-Si estás en Barcelona entre febrero y abril, la calcotada es obligatoria. Calçots (cebollas tiernas asadas a la brasa) mojados en salsa romesco, comidos con las manos, y manchándote la camiseta sin pudor. El ritual incluye cantidades irresponsables de vino tinto y una sobremesa que puede durar horas. Hay restaurantes en el Eixample y Gràcia que los sirven, pero lo auténtico es ir a una masía fuera de la ciudad. Valls, a una hora en tren, es la capital del calçot — busca opciones con menú completo que incluya carne a la brasa después. Plan perfecto de sábado para grupos. Presupuesto: €30-40 por persona con vino incluido.
+Si estás en Barcelona entre febrero y abril, la calcotada es obligatoria. Calçots (cebollas tiernas asadas a la brasa) mojados en salsa romesco, comidos con las manos, y manchándote la camiseta sin pudor. El ritual incluye cantidades irresponsables de vino tinto y una sobremesa que puede durar horas. Hay restaurantes en el Eixample y Gràcia que los sirven, pero lo auténtico es ir a una masía fuera de la ciudad. Valls, a una hora en tren, es la capital del calçot. Busca opciones con menú completo que incluya carne a la brasa después. Plan perfecto de sábado para grupos. Presupuesto: €30-40 por persona con vino incluido.
 
 ---
 
@@ -77,7 +77,7 @@ Si estás en Barcelona entre febrero y abril, la calcotada es obligatoria. Calç
 
 ### 11. Jazz en Jamboree
 
-Jamboree lleva en Plaça Reial desde 1960. La bóveda del sótano tiene jazz y blues en vivo casi todas las noches, y la programación es de verdad — no "jazz para turistas." Los shows empiezan sobre las 20:00 o 21:00. Después, el espacio se convierte en club con DJs, y la entrada del concierto suele cubrir ambas cosas.
+Jamboree lleva en Plaça Reial desde 1960. La bóveda del sótano tiene jazz y blues en vivo casi todas las noches, y la programación es de verdad, no "jazz para turistas." Los shows empiezan sobre las 20:00 o 21:00. Después, el espacio se convierte en club con DJs, y la entrada del concierto suele cubrir ambas cosas.
 
 ### 12. Terraza con vistas al atardecer
 
@@ -85,15 +85,15 @@ Jamboree lleva en Plaça Reial desde 1960. La bóveda del sótano tiene jazz y b
 
 ### 13. El Raval después de las 22:00
 
-El Raval de noche tiene una energía que ningún otro barrio de Barcelona replica. Bar Marsella lleva abierto desde 1820 — madera, dorado, espejos, y absenta si te atreves. 23 Robadors tiene música en vivo y una clientela que va desde artistas hasta gente que simplemente quería una cerveza y acabó quedándose tres horas. No es pulido. Eso es lo bueno.
+El Raval de noche tiene una energía que ningún otro barrio de Barcelona replica. Bar Marsella lleva abierto desde 1820. Madera, dorado, espejos, y absenta si te atreves. 23 Robadors tiene música en vivo y una clientela que va desde artistas hasta gente que simplemente quería una cerveza y acabó quedándose tres horas. No es pulido. Eso es lo bueno.
 
 ### 14. Danza extática
 
-Sin coreografía, sin hablar, sin zapatos, sin móviles. Solo tú, la música, y una sala que se mueve contigo. [SABDA organiza sesiones de ecstatic dance](https://sabdastudio.com/classes/ecstatic-dance/) dentro de la sala inmersiva de 360° con audio espacial — las proyecciones responden a la energía colectiva. Es liberador de una manera que no esperas. Consulta el [calendario de eventos](https://sabdastudio.com/events/) para la próxima sesión.
+Sin coreografía, sin hablar, sin zapatos, sin móviles. Solo tú, la música, y una sala que se mueve contigo. [SABDA organiza sesiones de ecstatic dance](https://sabdastudio.com/classes/ecstatic-dance/) dentro de la sala inmersiva de 360° con audio espacial. Las proyecciones responden a la energía colectiva. Es liberador de una manera que no esperas. Consulta el [calendario de eventos](https://sabdastudio.com/events/) para la próxima sesión.
 
 ---
 
-## Planes originales — lo que no sale en las guías
+## Planes originales. Lo que no sale en las guías
 
 ### 15. Cementiri de Montjuïc
 
@@ -105,11 +105,11 @@ Azulejos azules, cava de barril, latas de conservas que cuestan más de lo que p
 
 ### 17. Kayak o paddle surf en Barceloneta
 
-La playa de Barceloneta entre semana es otra cosa: menos gente, más espacio, y la posibilidad de alquilar un kayak o un paddle surf por unos €15-20/hora. Ver Barcelona desde el agua — la línea de costa, Montjuïc al fondo, el puerto — es una perspectiva que casi nadie se molesta en buscar.
+La playa de Barceloneta entre semana es otra cosa: menos gente, más espacio, y la posibilidad de alquilar un kayak o un paddle surf por unos €15-20/hora. Ver Barcelona desde el agua. La línea de costa, Montjuïc al fondo, el puerto. Es una perspectiva que casi nadie se molesta en buscar.
 
 ### 18. Gaudí Year 2026
 
-2026 es el centenario de la muerte de Antoni Gaudí, y Barcelona ha sido nombrada Capital Mundial de la Arquitectura por la UNESCO. Hay más de 1.500 eventos programados hasta diciembre: jornadas de puertas abiertas en edificios normalmente cerrados al público, la nueva exposición "Beyond the Façade" en Casa Batlló Contemporary, rutas arquitectónicas guiadas por barrios que nunca habías explorado, y aperturas nocturnas especiales. Cada primer domingo del mes, el Pabellón Mies van der Rohe abre sus puertas gratuitamente. Si te interesa la arquitectura aunque sea un poco, 2026 es el año para estar en Barcelona. Consulta [meet.barcelona](https://www.meet.barcelona/en/main-events) para ver que hacer mañana en Barcelona — hay algo casi cada día.
+2026 es el centenario de la muerte de Antoni Gaudí, y Barcelona ha sido nombrada Capital Mundial de la Arquitectura por la UNESCO. Hay más de 1.500 eventos programados hasta diciembre: jornadas de puertas abiertas en edificios normalmente cerrados al público, la nueva exposición "Beyond the Façade" en Casa Batlló Contemporary, rutas arquitectónicas guiadas por barrios que nunca habías explorado, y aperturas nocturnas especiales. Cada primer domingo del mes, el Pabellón Mies van der Rohe abre sus puertas gratuitamente. Si te interesa la arquitectura aunque sea un poco, 2026 es el año para estar en Barcelona. Consulta [meet.barcelona](https://www.meet.barcelona/en/main-events) para ver que hacer mañana en Barcelona, hay algo casi cada día.
 
 ### 19. Piscinas de Montjuïc
 
@@ -117,13 +117,13 @@ Las piscinas olímpicas de 1992 en Montjuïc siguen abiertas al público. Nadar 
 
 ### 20. Primavera Sound (junio)
 
-Si tu fin de semana coincide con Primavera Sound (junio 2026), tienes suerte. The Cure, Massive Attack, The xx, Gorillaz, Bicep — tres días de conciertos en el Fòrum Park con la mejor música independiente del mundo. El miércoles de apertura es gratuito.
+Si tu fin de semana coincide con Primavera Sound (junio 2026), tienes suerte. The Cure, Massive Attack, The xx, Gorillaz, Bicep. Tres días de conciertos en el Fòrum Park con la mejor música independiente del mundo. El miércoles de apertura es gratuito.
 
 ---
 
 ## Antes de irte
 
-Barcelona premia a los que se salen un poco de la ruta marcada. La Sagrada Familia es genuinamente increíble — ve a verla. Pero los mejores planes en Barcelona suelen pasar en los espacios entre los monumentos: un vermut al mediodía, una azotea al atardecer, una sesión de sound healing que no tenías planeada.
+Barcelona premia a los que se salen un poco de la ruta marcada. La Sagrada Familia es genuinamente increíble, ve a verla. Pero los mejores planes en Barcelona suelen pasar en los espacios entre los monumentos: un vermut al mediodía, una azotea al atardecer, una sesión de sound healing que no tenías planeada.
 
 La ciudad tiene una forma particular de sorprenderte cuando dejas de buscar lo que esperabas encontrar. El barrio que no estaba en tu itinerario, la terraza que no aparecía en ninguna lista, el bar que descubriste porque estaba lloviendo y era lo primero que tenía un toldo.
 

@@ -20,7 +20,7 @@ Barcelona tiene varios espacios inmersivos (IDEAL, Moco Museum, IKONO), pero sol
 ## Cómo funciona la tecnología
 
 ### Proyecciones 360° LCD láser
-Proyectores láser LCD cubren todas las superficies de la sala con imagen continua. A diferencia de las pantallas planas, no hay bordes ni marcos — la imagen fluye de pared a pared, de suelo a techo. Los contenidos se generan en tiempo real o se reproducen desde archivos de altísima resolución.
+Proyectores láser LCD cubren todas las superficies de la sala con imagen continua. A diferencia de las pantallas planas, no hay bordes ni marcos. La imagen fluye de pared a pared, de suelo a techo. Los contenidos se generan en tiempo real o se reproducen desde archivos de altísima resolución.
 
 ### Dolby Atmos (audio espacial)
 Altavoces invisibles integrados en todas las paredes y el techo, más subwoofers en el suelo. Dolby Atmos es audio basado en objetos: el sonido se coloca en posiciones específicas del espacio 3D. Un tono de cuenco tibetano puede orbitar tu cuerpo. La voz de un facilitador puede llegar desde todas las direcciones simultáneamente. El bajo vibra a través del suelo directamente en tu espalda cuando estás tumbado.
@@ -84,4 +84,4 @@ La única sala inmersiva barcelona de wellness está en [SABDA](https://sabdastu
 
 La tendencia es clara: los estudios de wellness convencionales compiten en profesores, horarios, y decoración. Los espacios inmersivos compiten en tecnología y experiencia. SABDA es el primer studio en Barcelona (y uno de los primeros en Europa) que trata el entorno como un componente tan importante como la clase misma.
 
-La pregunta no es si más estudios adoptarán tecnología inmersiva — es cuánto tardarán. Mientras tanto, SABDA es el único lugar donde puedes experimentar wellness inmersivo en Barcelona. [3 clases por €50](https://momence.com/m/443935).
+La pregunta no es si más estudios adoptarán tecnología inmersiva, es cuánto tardarán. Mientras tanto, SABDA es el único lugar donde puedes experimentar wellness inmersivo en Barcelona. [3 clases por €50](https://momence.com/m/443935).

@@ -11,7 +11,7 @@
 
 ---
 
-Buying someone a gift in Barcelona usually means wine, chocolate, or a fancy dinner. All fine. All forgettable within a week. If you want to give something the person will actually remember — and talk about — give them an experience they'd never buy themselves.
+Buying someone a gift in Barcelona usually means wine, chocolate, or a fancy dinner. All fine. All forgettable within a week. If you want to give something the person will actually remember. And talk about. Give them an experience they'd never buy themselves.
 
 Here are 15 ideas across every budget, from €20 to €200.
 
@@ -20,7 +20,7 @@ Here are 15 ideas across every budget, from €20 to €200.
 ## The best gift experiences in Barcelona
 
 ### 1. Immersive sound healing at SABDA
-[SABDA gift cards](https://sabdastudio.com/pricing/) start at €20 (digital delivery, instant). The €50 option (3 classes) is the sweet spot — lets the recipient try sound healing, breathwork, yoga, or any combination inside a 360° projection room with Dolby Atmos. It's the kind of gift that makes someone say "I never would have done this myself, and I'm so glad I did." [Buy gift card →](https://sabdastudio.com/pricing/)
+[SABDA gift cards](https://sabdastudio.com/pricing/) start at €20 (digital delivery, instant). The €50 option (3 classes) is the sweet spot. Lets the recipient try sound healing, breathwork, yoga, or any combination inside a 360° projection room with Dolby Atmos. It's the kind of gift that makes someone say "I never would have done this myself, and I'm so glad I did." [Buy gift card →](https://sabdastudio.com/pricing/)
 
 ### 2. Sailing at sunset
 Private sailboat for 2-6 people along the Barcelona coastline. Cava on board, option to swim. From ~€60/person. Best at golden hour.
@@ -29,10 +29,10 @@ Private sailboat for 2-6 people along the Barcelona coastline. Cava on board, op
 Clara and Sara teach paella in a secret garden with rooftop views. Wine while you cook. Recipe to take home. ~€60/person.
 
 ### 4. Vermouth crawl in Gràcia
-Not buyable on a website — you gift it by planning it. 3-4 stops: Vermuteria del Tano, La Vermu, Bodega Quimet. Print a "voucher" with directions. ~€40 for two. More personal than any Amazon card.
+Not buyable on a website. You gift it by planning it. 3-4 stops: Vermuteria del Tano, La Vermu, Bodega Quimet. Print a "voucher" with directions. ~€40 for two. More personal than any Amazon card.
 
 ### 5. La Pedrera night tour
-Gaudí's rooftop lit up, audiovisual projections on the warrior chimneys, and a glass of cava. ~€35. Buy the tickets in advance — "a voucher for whenever" is a worse gift than actual booked tickets.
+Gaudí's rooftop lit up, audiovisual projections on the warrior chimneys, and a glass of cava. ~€35. Buy the tickets in advance, "a voucher for whenever" is a worse gift than actual booked tickets.
 
 ### 6. Helicopter flight (6 minutes)
 Sounds excessive. Costs €79. The perspective of Barcelona from above is unlike anything at ground level.
@@ -56,12 +56,12 @@ Stone vaults, candles, thermal pools in the Born. Spa + massage circuit: ~€80-
 CaixaForum, CCCB, Fundació Miró. A single entry costs €6-15. Gift a "pass" of 3-4 entries for ~€40. Perfect for art lovers.
 
 ### 13. Flamenco in an intimate tablao
-Tarantos (Plaça Reial) or Tablao de Carmen (Poble Espanyol). Not the tourist show on La Rambla — small rooms where you feel the footwork. From €25 with a drink.
+Tarantos (Plaça Reial) or Tablao de Carmen (Poble Espanyol). Not the tourist show on La Rambla. Small rooms where you feel the footwork. From €25 with a drink.
 
 ### 14. Chocolate workshop
 Chök or ChocoMuseum. Make your own bars, truffles, or bonbons. From €25/person. You leave with chocolate and a story.
 
-### 15. SABDA gift card — the last-minute save
+### 15. SABDA gift card, the last-minute save
 It's midnight and the birthday is tomorrow. [SABDA gift cards](https://sabdastudio.com/pricing/) are digital and instant. From €20 to custom amounts. The €50 (3 classes) is the most popular. Works for yoga, pilates, sound healing, breathwork, ecstatic dance, or ice bath.
 
 ---

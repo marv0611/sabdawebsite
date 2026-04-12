@@ -11,15 +11,15 @@
 
 ---
 
-Organizar un evento en Barcelona significa elegir entre cientos de espacios — hoteles, lofts industriales, terrazas, salas de conferencias, y opciones que no encajan en ninguna categoría. El problema no es encontrar un espacio. Es encontrar el que transforma tu evento de "otro acto corporativo" a algo que la gente recuerde.
+Organizar un evento en Barcelona significa elegir entre cientos de espacios. Hoteles, lofts industriales, terrazas, salas de conferencias, y opciones que no encajan en ninguna categoría. El problema no es encontrar un espacio. Es encontrar el que transforma tu evento de "otro acto corporativo" a algo que la gente recuerde.
 
 Esta guía organiza las opciones por tipo, con precios reales y lo que cada espacio ofrece (y no ofrece).
 
 ---
 
-## Salas con tecnología — la nueva generación
+## Salas con tecnología, la nueva generación
 
-### SABDA — Sala inmersiva 360° con Dolby Atmos
+### SABDA. Sala inmersiva 360° con Dolby Atmos
 
 [SABDA](https://sabdastudio.com/hire/) es una sala de proyecciones 360° con audio espacial Dolby Atmos en el Eixample. Proyecciones láser LCD en todas las superficies, altavoces invisibles en paredes y techo, subwoofers en el suelo. Es el único espacio en Barcelona que combina tecnología inmersiva con capacidad para eventos.
 
@@ -32,7 +32,7 @@ Esta guía organiza las opciones por tipo, con precios reales y lo que cada espa
 
 ---
 
-## Hoteles — el clásico corporativo
+## Hoteles, el clásico corporativo
 
 ### W Barcelona
 Icono de la Barceloneta. Salas de eventos con vistas al mar. Ideal para conferencias grandes y galas. Catering interno. Precio: desde €2,000/medio día para salas medianas.
@@ -50,13 +50,13 @@ Hotel modernista en Passeig de Gràcia. El Café Vienés es un espacio de evento
 
 ---
 
-## Lofts industriales — Poblenou y más
+## Lofts industriales, Poblenou y más
 
 Poblenou tiene decenas de espacios industriales reconvertidos: techos altos, ladrillo visto, luz natural, y la estética "Barcelona creativa" que ningún hotel puede replicar.
 
 **Qué buscar:** Plataformas como Spathios, El Patio, y Finca Events listan espacios por zona, capacidad, y precio. Rango: €500-2,000/medio día dependiendo del tamaño y servicios.
 
-**Ventaja:** Estética única, flexibilidad total. **Desventaja:** Sin catering ni AV incluido — todo es extra.
+**Ventaja:** Estética única, flexibilidad total. **Desventaja:** Sin catering ni AV incluido, todo es extra.
 
 ---
 
@@ -100,10 +100,10 @@ Naves góticas del siglo XIII. Espacio monumental para eventos grandes (hasta 1,
 
 ## Cómo elegir
 
-**Quieres tecnología y wow-factor:** [SABDA](https://sabdastudio.com/hire/) — proyecciones 360°, Dolby Atmos, contenido de marca personalizable.
-**Quieres todo resuelto:** Hotel — catering, AV, y coordinación incluidos.
-**Quieres estética industrial:** Loft en Poblenou — espacio en blanco para personalizar.
-**Quieres un escenario irrepetible:** Espacio histórico — Casa Batlló, Palau de la Música.
+**Quieres tecnología y wow-factor:** [SABDA](https://sabdastudio.com/hire/). Proyecciones 360°, Dolby Atmos, contenido de marca personalizable.
+**Quieres todo resuelto:** Hotel. Catering, AV, y coordinación incluidos.
+**Quieres estética industrial:** Loft en Poblenou, espacio en blanco para personalizar.
+**Quieres un escenario irrepetible:** Espacio histórico, Casa Batlló, Palau de la Música.
 
 ---
 
@@ -133,7 +133,7 @@ La decisión del espacio debería seguir al objetivo, no al revés:
 
 ## Checklist antes de reservar
 
-- Capacidad real (no la que dice la web — ve a verlo)
+- Capacidad real (no la que dice la web, ve a verlo)
 - AV incluido o extra (proyector, micro, pantalla)
 - Catering in-house o externo
 - Acceso: ¿hay ascensor? ¿parking? ¿metro cerca?

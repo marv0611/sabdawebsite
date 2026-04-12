@@ -11,7 +11,7 @@
 
 ---
 
-El team building de tu empresa lleva años siendo lo mismo: un cooking class, un escape room, o una cata de vinos donde la mitad del equipo mira el reloj. No es que esas cosas estén mal — es que ya no generan nada nuevo. Si estás organizando eventos corporativos en Barcelona y necesitas algo que realmente mueva al equipo, aquí van 10 ideas que funcionan.
+El team building de tu empresa lleva años siendo lo mismo: un cooking class, un escape room, o una cata de vinos donde la mitad del equipo mira el reloj. No es que esas cosas estén mal. Es que ya no generan nada nuevo. Si estás organizando eventos corporativos en Barcelona y necesitas algo que realmente mueva al equipo, aquí van 10 ideas que funcionan.
 
 Todas están probadas con grupos reales. Todas se pueden organizar en Barcelona. Ninguna involucra dinámicas con post-its.
 
@@ -28,15 +28,15 @@ FC Barcelona, Alpro y Decathlon ya han confiado en SABDA para experiencias de eq
 
 ### 2. Regata de veleros en la costa
 
-El equipo se divide en tripulaciones de 4-6 por barco. Lección rápida de navegación y después carrera por la costa de Barcelona. Nadie necesita experiencia — los patrones llevan el barco, pero cada tripulación tiene que colaborar en timing, dirección, y estrategia. Es físico, competitivo, y genuinamente divertido. Operadores como Fun Events Barcelona organizan regatas corporativas. Presupuesto: ~€60-80 por persona para un evento de 3 horas.
+El equipo se divide en tripulaciones de 4-6 por barco. Lección rápida de navegación y después carrera por la costa de Barcelona. Nadie necesita experiencia. Los patrones llevan el barco, pero cada tripulación tiene que colaborar en timing, dirección, y estrategia. Es físico, competitivo, y genuinamente divertido. Operadores como Fun Events Barcelona organizan regatas corporativas. Presupuesto: ~€60-80 por persona para un evento de 3 horas.
 
 ### 3. Tour gastronómico + competición de cocina
 
-No otra clase de cocina — una competición. El grupo se divide en equipos, cada uno recibe un presupuesto y va al Mercat de Sant Antoni a comprar ingredientes. De vuelta en la cocina, cada equipo prepara un plato que juzga un chef local. El elemento competitivo transforma la energía de "actividad agradable" a "vamos a ganar esto." ~€70-90 por persona incluyendo comida, vino y cocina privada. Funciona para grupos de 10-40.
+No otra clase de cocina, una competición. El grupo se divide en equipos, cada uno recibe un presupuesto y va al Mercat de Sant Antoni a comprar ingredientes. De vuelta en la cocina, cada equipo prepara un plato que juzga un chef local. El elemento competitivo transforma la energía de "actividad agradable" a "vamos a ganar esto." ~€70-90 por persona incluyendo comida, vino y cocina privada. Funciona para grupos de 10-40.
 
 ### 4. Taller de graffiti en Poblenou
 
-Un artista callejero local lleva al grupo a una pared en Poblenou. Clase rápida de técnica, y después el equipo crea un mural colaborativo. La pared se queda — el equipo puede volver a verla. 2-3 horas, grupos de 10-30. ~€40-50 por persona. Ideal para equipos creativos o departamentos de marketing.
+Un artista callejero local lleva al grupo a una pared en Poblenou. Clase rápida de técnica, y después el equipo crea un mural colaborativo. La pared se queda, el equipo puede volver a verla. 2-3 horas, grupos de 10-30. ~€40-50 por persona. Ideal para equipos creativos o departamentos de marketing.
 
 ### 5. Ruta arquitectónica (edición Año Gaudí)
 
@@ -56,11 +56,11 @@ Práctico, enfocado, y sorprendentemente meditativo. Varios estudios en el Góti
 
 ### 9. Torneo de beach volleyball en Barceloneta
 
-Varias empresas de eventos organizan torneos corporativos de volleyball en Barceloneta con árbitro, cuadro, y premios. Simple, físico, y equilibrador — la habilidad en volleyball no se correlaciona con la antigüedad en la empresa. De mayo a octubre. ~€20-30 por persona.
+Varias empresas de eventos organizan torneos corporativos de volleyball en Barceloneta con árbitro, cuadro, y premios. Simple, físico, y equilibrador, la habilidad en volleyball no se correlaciona con la antigüedad en la empresa. De mayo a octubre. ~€20-30 por persona.
 
 ### 10. Breathwork + ice bath privado en SABDA
 
-Para equipos que quieren algo más intenso: una sesión de breathwork guiada (45-60 min) dentro de la sala 360°, seguida de inmersión en agua fría en el patio. El ice bath es donde ocurre todo — la combinación de control de respiración y frío extremo atraviesa cualquier fachada profesional y crea conexión genuina. Los equipos que hacen esto juntos hablan de ello durante meses.
+Para equipos que quieren algo más intenso: una sesión de breathwork guiada (45-60 min) dentro de la sala 360°, seguida de inmersión en agua fría en el patio. El ice bath es donde ocurre todo, la combinación de control de respiración y frío extremo atraviesa cualquier fachada profesional y crea conexión genuina. Los equipos que hacen esto juntos hablan de ello durante meses.
 
 [SABDA](https://sabdastudio.com/hire/) puede escalar desde retiros de liderazgo (10-20 personas) hasta eventos de empresa completos (hasta 200 personas).
 
@@ -80,7 +80,7 @@ Para un equipo que visita Barcelona por primera vez: tour arquitectónico (espec
 
 ## Antes de reservar
 
-Las mejores actividades para empresas en Barcelona son las que no parecen team building. Nadie conecta con preguntas rompehielos. La gente conecta haciendo algo real juntos — navegar, respirar en agua fría, o discutir sobre cuánto azafrán lleva una paella.
+Las mejores actividades para empresas en Barcelona son las que no parecen team building. Nadie conecta con preguntas rompehielos. La gente conecta haciendo algo real juntos, navegar, respirar en agua fría, o discutir sobre cuánto azafrán lleva una paella.
 
 Un consejo práctico: para grupos de más de 20 personas, reserva con al menos 3-4 semanas de antelación, especialmente si venís durante el MWC (febrero), Primavera Sound (junio), o cualquier semana de congresos. Barcelona organiza miles de eventos corporativos y los mejores espacios se llenan rápido.
 

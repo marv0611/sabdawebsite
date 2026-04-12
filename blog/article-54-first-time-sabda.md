@@ -11,13 +11,13 @@
 
 ---
 
-You're going to SABDA for the first time. You don't know exactly what to expect, and that's part of the point — the first time you walk into the room is a moment people remember. But here's the practical stuff so you arrive relaxed.
+You're going to SABDA for the first time. You don't know exactly what to expect, and that's part of the point. The first time you walk into the room is a moment people remember. But here's the practical stuff so you arrive relaxed.
 
 ---
 
 ## Before you go
 
-**Book online.** All classes are booked through [Momence](https://momence.com/m/443935). Pick a class, select a time, and book. The [3-class intro pack (€50. €18/class)](https://momence.com/m/443935) is the best way to start — lets you try different classes.
+**Book online.** All classes are booked through [Momence](https://momence.com/m/443935). Pick a class, select a time, and book. The [3-class intro pack (€50. €18/class)](https://momence.com/m/443935) is the best way to start. Lets you try different classes.
 
 **What to bring:** Comfortable clothes you can move in. That's it. SABDA provides mats, blankets, and everything else. For pilates, grip socks are recommended (available at reception).
 
@@ -29,13 +29,13 @@ You're going to SABDA for the first time. You don't know exactly what to expect,
 
 Reception will greet you. There's an area for bags and shoes (classes are barefoot or socks). Changing rooms with showers are available.
 
-You'll be directed to the room. And when you walk in...
+You'll be directed to the room. And when you walk in..
 
 ---
 
 ## Inside the room
 
-The first impression is what people remember. The room is dark. The projections are already running — slow colours, organic geometries moving across walls and ceiling. Spatial audio fills the space with something that feels more like an environment than music. Not loud. Enveloping.
+The first impression is what people remember. The room is dark. The projections are already running. Slow colours, organic geometries moving across walls and ceiling. Spatial audio fills the space with something that feels more like an environment than music. Not loud. Enveloping.
 
 You grab your mat, find a spot, and wait for class to begin. No mirrors. No windows. The outside world disappears. That's intentional.
 
@@ -43,13 +43,13 @@ You grab your mat, find a spot, and wait for class to begin. No mirrors. No wind
 
 ## During class
 
-The teacher guides the session. Projections change with the phases — more dynamic during active parts, slower during relaxation. Spatial audio means the teacher's cues and the music arrive from every direction.
+The teacher guides the session. Projections change with the phases. More dynamic during active parts, slower during relaxation. Spatial audio means the teacher's cues and the music arrive from every direction.
 
 **Yoga or pilates:** Follow the teacher. All levels welcome. If a pose doesn't work, rest. Nobody's watching (the room is dark).
 
 **Sound healing:** Lie down, close your eyes, let the sound work. You don't have to do anything.
 
-**Breathwork:** Follow the breathing pattern the facilitator indicates. It can be intense — read the breathwork article first if you want to know what to expect.
+**Breathwork:** Follow the breathing pattern the facilitator indicates. It can be intense, read the breathwork article first if you want to know what to expect.
 
 **Phone:** Off or silent. No photos during class.
 
@@ -66,7 +66,7 @@ Showers are available. Reception can help you book your next class or use the re
 ## How to get there
 
 **Address:** C/Muntaner 83B, Local 2, 08011 Barcelona.
-**Metro:** Universitat (L1, L2) — 10-minute walk up Muntaner.
+**Metro:** Universitat (L1, L2), 10-minute walk up Muntaner.
 **Walking from Passeig de Gràcia:** 12 minutes.
 
 ---
@@ -84,17 +84,17 @@ Showers are available. Reception can help you book your next class or use the re
 
 ## Common first-timer questions
 
-**Do I need to be flexible/fit/experienced?** No. All classes are all-levels. Teachers offer modifications. Nobody cares what you look like — the room is dark.
+**Do I need to be flexible/fit/experienced?** No. All classes are all-levels. Teachers offer modifications. Nobody cares what you look like, the room is dark.
 
 **What if I can't keep up?** Rest anytime. Child's pose in yoga, lying down in breathwork, stillness in ecstatic dance. Nobody judges. The dark room means nobody even notices.
 
-**Is it weird doing it alone?** No. Most people come alone. The classes are individual experiences in a shared space — you're not paired with anyone or expected to interact.
+**Is it weird doing it alone?** No. Most people come alone. The classes are individual experiences in a shared space. You're not paired with anyone or expected to interact.
 
 **What's the best first class?** Sound healing if you want to relax (you literally just lie there). Vinyasa yoga if you want movement. Breathwork if you want something intense. Pilates if you want something physical and structured.
 
 **Can I shower after?** Yes. Changing rooms with showers are available.
 
-**What about the ice bath?** It's on the patio, combined with breathwork preparation in the immersive room. Intense but safe — the facilitator guides you through. Not recommended as your absolute first class unless you specifically want it.
+**What about the ice bath?** It's on the patio, combined with breathwork preparation in the immersive room. Intense but safe. The facilitator guides you through. Not recommended as your absolute first class unless you specifically want it.
 
 **Is it in English?** Most classes are taught in English, Spanish, or bilingual. Check the schedule for language.
 
@@ -102,6 +102,6 @@ Showers are available. Reception can help you book your next class or use the re
 
 ## After your first class
 
-Most people leave their first SABDA class slightly dazed, deeply relaxed, and wondering why it took them so long to try it. The second class is where you start to understand the difference the immersive environment makes — you drop into focus faster because you know what to expect. By the third class, most people have found their format and are considering a membership.
+Most people leave their first SABDA class slightly dazed, deeply relaxed, and wondering why it took them so long to try it. The second class is where you start to understand the difference the immersive environment makes. You drop into focus faster because you know what to expect. By the third class, most people have found their format and are considering a membership.
 
 That's the design of the [3-class intro pack (€50)](https://momence.com/m/443935): try enough to find what resonates.

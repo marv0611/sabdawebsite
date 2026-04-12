@@ -11,7 +11,7 @@
 
 ---
 
-Barcelona se ha convertido en una de las ciudades europeas con más opciones de experiencias inmersivas. Proyecciones de 360°, audio espacial, instalaciones interactivas, y espacios donde no miras el arte — estás dentro de él. Pero no todas las experiencias inmersivas son lo mismo, y la diferencia entre unas y otras es mayor de lo que parece.
+Barcelona se ha convertido en una de las ciudades europeas con más opciones de experiencias inmersivas. Proyecciones de 360°, audio espacial, instalaciones interactivas, y espacios donde no miras el arte, estás dentro de él. Pero no todas las experiencias inmersivas son lo mismo, y la diferencia entre unas y otras es mayor de lo que parece.
 
 Esta guía compara los principales espacios, explica qué esperar de cada uno, y te ayuda a elegir según lo que realmente buscas.
 
@@ -19,7 +19,7 @@ Esta guía compara los principales espacios, explica qué esperar de cada uno, y
 
 ## Qué significa "inmersivo"
 
-Una experiencia inmersiva es cualquier actividad donde el entorno te rodea y tú formas parte de él — en vez de observar algo desde fuera. En la práctica, esto incluye desde exposiciones con proyecciones a gran escala hasta espacios donde participas activamente moviéndote, respirando, o bailando dentro del arte.
+Una experiencia inmersiva es cualquier actividad donde el entorno te rodea y tú formas parte de él, en vez de observar algo desde fuera. En la práctica, esto incluye desde exposiciones con proyecciones a gran escala hasta espacios donde participas activamente moviéndote, respirando, o bailando dentro del arte.
 
 La diferencia clave es entre experiencias **pasivas** (caminas, miras, te rodea) y **participativas** (te mueves, respiras, actúas dentro del espacio). Ambas son inmersivas. Solo una te transforma.
 
@@ -27,11 +27,11 @@ La diferencia clave es entre experiencias **pasivas** (caminas, miras, te rodea)
 
 ## Los principales espacios inmersivos en Barcelona
 
-### SABDA — Wellness inmersivo participativo
+### SABDA. Wellness inmersivo participativo
 
 [SABDA](https://sabdastudio.com/classes/) es el único espacio en Barcelona donde wellness y tecnología inmersiva convergen. Una sala de 360° con proyecciones láser LCD y audio espacial Dolby Atmos (altavoces invisibles en paredes y techo, subwoofers en el suelo) donde se hacen clases de yoga, pilates, sound healing, breathwork, danza extática y ice bath.
 
-**Lo que lo diferencia:** No miras — te mueves, respiras, y participas dentro del arte. Los visuals se diseñan específicamente para cada clase. Una sesión de vinyasa tiene paisajes abstractos que fluyen con el ritmo. Una sesión de sound healing tiene geometría viva que pulsa con los bols tibetanos. El audio espacial envuelve: el sonido viene de todas las direcciones, creando una sensación de inmersión total.
+**Lo que lo diferencia:** No miras. Te mueves, respiras, y participas dentro del arte. Los visuals se diseñan específicamente para cada clase. Una sesión de vinyasa tiene paisajes abstractos que fluyen con el ritmo. Una sesión de sound healing tiene geometría viva que pulsa con los bols tibetanos. El audio espacial envuelve: el sonido viene de todas las direcciones, creando una sensación de inmersión total.
 
 **Para quién es:** Gente que quiere sentir algo, no solo ver algo bonito. Personas interesadas en wellness que buscan algo más allá del estudio convencional. Parejas que quieren una experiencia compartida. Cualquiera que tenga curiosidad por la intersección entre arte, tecnología y bienestar.
 
@@ -39,11 +39,11 @@ La diferencia clave es entre experiencias **pasivas** (caminas, miras, te rodea)
 **Frecuencia:** Más de 42 clases semanales + eventos especiales.
 **Dónde:** C/Muntaner 83B, Eixample.
 
-### IDEAL — Centre d'Arts Digitals
+### IDEAL, Centre d'Arts Digitals
 
 El gran espacio de exposiciones inmersivas de Barcelona. Ubicado en una antigua nave industrial en Poblenou, IDEAL proyecta obras de artistas clásicos (Klimt, Monet, Frida Kahlo han tenido exposiciones) sobre paredes, suelo y techo a gran escala. El espacio es enorme y las proyecciones son visualmente impresionantes.
 
-**Lo que es:** Una exposición audiovisual a gran escala. Caminas, te sientas, miras. Es pasivo — tú observas, el arte te rodea.
+**Lo que es:** Una exposición audiovisual a gran escala. Caminas, te sientas, miras. Es pasivo. Tú observas, el arte te rodea.
 
 **Para quién es:** Familias, turistas, y gente que quiere una experiencia visual espectacular sin participación activa.
 
@@ -74,7 +74,7 @@ Espacio de experiencias sensoriales diseñado principalmente para fotos. Salas t
 
 ### Candlelight Concerts (Fever)
 
-Conciertos de música clásica y bandas sonoras a la luz de las velas en espacios como Casa Batlló o iglesias del Gótico. El formato es "inmersivo" en el sentido ambiental — el entorno contribuye a la experiencia — pero no hay proyecciones ni tecnología. Es un concierto con buena iluminación.
+Conciertos de música clásica y bandas sonoras a la luz de las velas en espacios como Casa Batlló o iglesias del Gótico. El formato es "inmersivo" en el sentido ambiental. El entorno contribuye a la experiencia. Pero no hay proyecciones ni tecnología. Es un concierto con buena iluminación.
 
 **Lo que es:** Concierto acústico en un espacio atmosférico. Música en directo, velas, arquitectura.
 
@@ -122,7 +122,7 @@ Las actividades inmersivas en Barcelona están creciendo rápidamente (+200% YoY
 
 Si solo tienes tiempo para una experiencia inmersiva en Barcelona, elige según lo que quieres llevarte: una foto, un recuerdo visual, o una transformación física. Las tres opciones existen. Solo una te cambia cómo te sientes cuando sales.
 
-[3 clases inmersivas en SABDA por €50.(https://momence.com/m/443935) — yoga, sound healing, breathwork, o ecstatic dance dentro de 360° de proyecciones y audio espacial.
+[3 clases inmersivas en SABDA por €50.(https://momence.com/m/443935). Yoga, sound healing, breathwork, o ecstatic dance dentro de 360° de proyecciones y audio espacial.
 
 **Relacionado:** [Espectáculos en Barcelona](/blog/espectaculos-barcelona/) | [Exposiciones inmersivas](/blog/exposiciones-inmersivas-barcelona/) | [Sala inmersiva Barcelona](/blog/sala-inmersiva-barcelona/) | [Cosas que hacer en Barcelona](/blog/cosas-que-hacer-en-barcelona/)
 

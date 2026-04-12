@@ -11,7 +11,7 @@
 
 ---
 
-Barcelona has become one of Europe's top cities for immersive experiences. 360° projections, spatial audio, interactive installations, and spaces where you don't watch the art — you're inside it. But not all immersive experiences are the same, and the gap between them is bigger than you'd think.
+Barcelona has become one of Europe's top cities for immersive experiences. 360° projections, spatial audio, interactive installations, and spaces where you don't watch the art, you're inside it. But not all immersive experiences are the same, and the gap between them is bigger than you'd think.
 
 This guide compares every major option, explains what to expect from each, and helps you pick based on what you're actually looking for.
 
@@ -19,7 +19,7 @@ This guide compares every major option, explains what to expect from each, and h
 
 ## What "immersive" means
 
-An immersive experience is anything where the environment surrounds you and you're part of it — instead of observing from outside. In practice, this ranges from large-scale projection exhibitions (passive — you walk, look, absorb) to spaces where you actively move, breathe, or dance inside the art (participatory).
+An immersive experience is anything where the environment surrounds you and you're part of it. Instead of observing from outside. In practice, this ranges from large-scale projection exhibitions (passive. You walk, look, absorb) to spaces where you actively move, breathe, or dance inside the art (participatory).
 
 The key difference: passive immersion is impressive. Participatory immersion is transformative.
 
@@ -27,11 +27,11 @@ The key difference: passive immersion is impressive. Participatory immersion is 
 
 ## The major immersive spaces in Barcelona
 
-### SABDA — Participatory immersive wellness
+### SABDA. Participatory immersive wellness
 
 [SABDA](https://sabdastudio.com/classes/) is the only space in Barcelona where wellness and immersive technology converge. A 360° projection room with Dolby Atmos spatial audio (cinema-grade speakers built into every wall and ceiling, subwoofers underneath) where classes run in yoga, pilates, sound healing, breathwork, ecstatic dance, and ice bath.
 
-**What makes it different:** You don't watch — you move, breathe, and participate inside the art. Visuals are custom-designed for each class. A vinyasa session has abstract landscapes that flow with the rhythm. A sound healing session has living geometry that pulses with Tibetan singing bowls. Spatial audio wraps around you from every direction.
+**What makes it different:** You don't watch, you move, breathe, and participate inside the art. Visuals are custom-designed for each class. A vinyasa session has abstract landscapes that flow with the rhythm. A sound healing session has living geometry that pulses with Tibetan singing bowls. Spatial audio wraps around you from every direction.
 
 **Best for:** People who want to feel something, not just see something pretty. Anyone curious about the intersection of art, technology, and wellness.
 
@@ -39,9 +39,9 @@ The key difference: passive immersion is impressive. Participatory immersion is 
 **Frequency:** 42+ classes per week + special events.
 **Where:** C/Muntaner 83B, Eixample.
 
-### IDEAL — Centre d'Arts Digitals
+### IDEAL, Centre d'Arts Digitals
 
-Barcelona's large-scale immersive exhibition space. Housed in a former industrial warehouse in Poblenou, IDEAL projects artwork across walls, floor, and ceiling. Exhibitions rotate every 6-12 months — check the current programme. It's passive — you walk, sit, look, and let it surround you.
+Barcelona's large-scale immersive exhibition space. Housed in a former industrial warehouse in Poblenou, IDEAL projects artwork across walls, floor, and ceiling. Exhibitions rotate every 6-12 months, check the current programme. It's passive, you walk, sit, look, and let it surround you.
 
 **Best for:** Families, tourists, anyone who wants a spectacular visual experience without active participation.
 
@@ -68,7 +68,7 @@ A sensory experience space designed primarily for photos. Themed rooms with diff
 
 ### Candlelight Concerts (Fever)
 
-Classical music and soundtrack concerts by candlelight in atmospheric venues like churches and historic buildings. The format is "immersive" in the atmospheric sense — the environment contributes to the experience — but there's no projection technology or spatial audio.
+Classical music and soundtrack concerts by candlelight in atmospheric venues like churches and historic buildings. The format is "immersive" in the atmospheric sense. The environment contributes to the experience, but there's no projection technology or spatial audio.
 
 **Best for:** Couples, date nights, anyone who wants a lovely evening without complexity.
 
@@ -106,7 +106,7 @@ Classical music and soundtrack concerts by candlelight in atmospheric venues lik
 
 If you only have time for one immersive experience in Barcelona, choose based on what you want to take away: a photo, a visual memory, or a physical transformation. All three options exist. Only one changes how you feel when you leave.
 
-[3 immersive classes at SABDA for €50.(https://momence.com/m/443935) — yoga, sound healing, breathwork, or ecstatic dance inside 360° projections with Dolby Atmos spatial audio.
+[3 immersive classes at SABDA for €50.(https://momence.com/m/443935). Yoga, sound healing, breathwork, or ecstatic dance inside 360° projections with Dolby Atmos spatial audio.
 
 **Related:** [Things to Do in Barcelona](/blog/things-to-do-in-barcelona/) | [Experiencias inmersivas en Barcelona (ES)](/blog/experiencias-inmersivas-barcelona/)
 

@@ -11,7 +11,7 @@
 
 ---
 
-Barcelona tiene una escena de espectáculos que va mucho más allá de los shows de flamenco para turistas en La Rambla. Teatro independiente, música en salas íntimas, experiencias inmersivas, danza contemporánea, y conciertos en edificios que son espectáculos en sí mismos. Esta guía cubre lo mejor de 2026 — actualizada cada mes para que siempre tengas algo que ver.
+Barcelona tiene una escena de espectáculos que va mucho más allá de los shows de flamenco para turistas en La Rambla. Teatro independiente, música en salas íntimas, experiencias inmersivas, danza contemporánea, y conciertos en edificios que son espectáculos en sí mismos. Esta guía cubre lo mejor de 2026. Actualizada cada mes para que siempre tengas algo que ver.
 
 ---
 
@@ -23,7 +23,7 @@ El teatro público más importante de Barcelona. Programación arriesgada, direc
 
 ### Teatre Nacional de Catalunya (TNC)
 
-El gran teatro institucional catalán, diseñado por Ricardo Bofill. Tres salas con programación que va del clásico (Shakespeare, Lorca) a estrenos contemporáneos. Los jueves suele haber precios reducidos. El vestíbulo con sus columnas de vidrio es espectacular — llega con tiempo.
+El gran teatro institucional catalán, diseñado por Ricardo Bofill. Tres salas con programación que va del clásico (Shakespeare, Lorca) a estrenos contemporáneos. Los jueves suele haber precios reducidos. El vestíbulo con sus columnas de vidrio es espectacular, llega con tiempo.
 
 ### Sala Beckett
 
@@ -43,11 +43,11 @@ El interior modernista más impresionante de Barcelona, y un espacio donde la m�
 
 ### Razzmatazz
 
-Cinco salas en una antigua fábrica de Poblenou. Conciertos de indie, electrónica, rock, hip-hop — y después las salas se convierten en club. Es el venue de referencia para música en directo en Barcelona. Karavana, Tame Impala, y decenas de bandas emergentes pasan por aquí cada temporada.
+Cinco salas en una antigua fábrica de Poblenou. Conciertos de indie, electrónica, rock, hip-hop. Y después las salas se convierten en club. Es el venue de referencia para música en directo en Barcelona. Karavana, Tame Impala, y decenas de bandas emergentes pasan por aquí cada temporada.
 
 ### Jamboree
 
-Jazz y blues en una bóveda de sótano en Plaça Reial. Desde 1960. Shows casi todas las noches a las 20-21h, después DJ y club. La programación es seria — músicos de verdad, no jazz de fondo.
+Jazz y blues en una bóveda de sótano en Plaça Reial. Desde 1960. Shows casi todas las noches a las 20-21h, después DJ y club. La programación es seria. Músicos de verdad, no jazz de fondo.
 
 ### L'Auditori
 
@@ -55,7 +55,7 @@ La sala sinfónica de Barcelona. Sede de la OBC (Orquestra Simfònica de Barcelo
 
 ### Pedralbes Festival (verano)
 
-Los jardines del Palau de Pedralbes se convierten en un escenario al aire libre cada verano con artistas nacionales e internacionales. El formato es íntimo para ser un festival — jardines del siglo XIV, copas de vino, y un artista a pocos metros. Consulta cartel del año en curso.
+Los jardines del Palau de Pedralbes se convierten en un escenario al aire libre cada verano con artistas nacionales e internacionales. El formato es íntimo para ser un festival. Jardines del siglo XIV, copas de vino, y un artista a pocos metros. Consulta cartel del año en curso.
 
 ### Primavera Sound (junio)
 
@@ -65,13 +65,13 @@ Tres días de los mejores conciertos independientes del mundo en el Fòrum Park 
 
 ## Experiencias inmersivas
 
-### SABDA — Wellness inmersivo
+### SABDA, Wellness inmersivo
 
-No es un espectáculo en el sentido tradicional, pero es una experiencia audiovisual completa. [SABDA](https://sabdastudio.com/classes/) es una sala de 360° con Dolby Atmos en el Eixample donde se hacen clases de yoga, sound healing, breathwork, y danza extática dentro de proyecciones en tiempo real. Las sesiones de [ecstatic dance](https://sabdastudio.com/classes/ecstatic-dance/) y los [eventos especiales](https://sabdastudio.com/events/) como Listening Sessions son particularmente "espectaculares" — el sonido y las visuals responden a la energía colectiva del grupo. Desde €18/clase. [Ver programación →](https://sabdastudio.com/classes/)
+No es un espectáculo en el sentido tradicional, pero es una experiencia audiovisual completa. [SABDA](https://sabdastudio.com/classes/) es una sala de 360° con Dolby Atmos en el Eixample donde se hacen clases de yoga, sound healing, breathwork, y danza extática dentro de proyecciones en tiempo real. Las sesiones de [ecstatic dance](https://sabdastudio.com/classes/ecstatic-dance/) y los [eventos especiales](https://sabdastudio.com/events/) como Listening Sessions son particularmente "espectaculares". El sonido y las visuals responden a la energía colectiva del grupo. Desde €18/clase. [Ver programación →](https://sabdastudio.com/classes/)
 
-### IDEAL — Centre d'Arts Digitals
+### IDEAL, Centre d'Arts Digitals
 
-El gran espacio de exposiciones inmersivas de Barcelona. Proyecciones a gran escala sobre paredes y suelos de una antigua nave industrial en Poblenou. Las exposiciones rotan cada 6-12 meses — consulta la programación actual. Es pasivo — caminas, miras, y te dejas envolver. Bueno para una visita, pero sin la participación activa ni el audio espacial de espacios como SABDA. ~€15-18.
+El gran espacio de exposiciones inmersivas de Barcelona. Proyecciones a gran escala sobre paredes y suelos de una antigua nave industrial en Poblenou. Las exposiciones rotan cada 6-12 meses, consulta la programación actual. Es pasivo. Caminas, miras, y te dejas envolver. Bueno para una visita, pero sin la participación activa ni el audio espacial de espacios como SABDA. ~€15-18.
 
 ### Moco Museum
 
@@ -91,11 +91,11 @@ El centro de danza y artes del movimiento de Barcelona, en Montjuïc. Compañía
 
 ### Flamenco (el de verdad)
 
-El Tablao de Carmen en Poble Espanyol y Tarantos en Plaça Reial ofrecen flamenco en salas pequeñas donde sientes la vibración del zapateado en el suelo. Desde €25 con copa. Es el tipo de espectáculo que pone la piel de gallina — y que no se parece a nada del show de La Rambla.
+El Tablao de Carmen en Poble Espanyol y Tarantos en Plaça Reial ofrecen flamenco en salas pequeñas donde sientes la vibración del zapateado en el suelo. Desde €25 con copa. Es el tipo de espectáculo que pone la piel de gallina, y que no se parece a nada del show de La Rambla.
 
 ---
 
-## Espectáculos barcelona hoy — dónde mirar
+## Espectáculos barcelona hoy, dónde mirar
 
 La programación cambia constantemente. Estas son las fuentes fiables:
 
@@ -106,7 +106,7 @@ La programación cambia constantemente. Estas son las fuentes fiables:
 
 ---
 
-## Espectáculos barcelona 2026 — lo que no te puedes perder
+## Espectáculos barcelona 2026. Lo que no te puedes perder
 
 Barcelona es una ciudad con una escena cultural que no para. Cada año trae festivales de primer nivel (Primavera Sound, Sónar, Pedralbes, Grec), temporadas de teatro y danza de referencia europea, y una escena de música en vivo que funciona todas las noches del año.
 
@@ -116,13 +116,13 @@ Fuera de los grandes festivales: el Palau de la Música tiene una de las program
 
 ---
 
-Si buscas una experiencia inmersiva que va más allá de sentarte a mirar: [SABDA ofrece 3 clases por €50](https://momence.com/m/443935) — yoga, sound healing, breathwork, o danza extática dentro de proyecciones 360° con Dolby Atmos. Es el tipo de espectáculo donde tú eres parte de lo que ocurre.
+Si buscas una experiencia inmersiva que va más allá de sentarte a mirar: [SABDA ofrece 3 clases por €50](https://momence.com/m/443935). Yoga, sound healing, breathwork, o danza extática dentro de proyecciones 360° con Dolby Atmos. Es el tipo de espectáculo donde tú eres parte de lo que ocurre.
 
 ---
 
 ## Antes de ir
 
-Los mejores espectáculos en Barcelona no son siempre los más publicitados. El show de flamenco en un sótano, el concierto de jazz a las 21h en Jamboree, la sesión de ecstatic dance un viernes por la noche — son experiencias que no aparecen en las marquesinas pero que recordarás mucho más que el espectáculo con asientos numerados.
+Los mejores espectáculos en Barcelona no son siempre los más publicitados. El show de flamenco en un sótano, el concierto de jazz a las 21h en Jamboree, la sesión de ecstatic dance un viernes por la noche. Son experiencias que no aparecen en las marquesinas pero que recordarás mucho más que el espectáculo con asientos numerados.
 
 **Relacionado:** [Cosas que hacer en Barcelona](/blog/cosas-que-hacer-en-barcelona/) | [Ecstatic dance en Barcelona](/blog/ecstatic-dance-que-es/)
 

@@ -11,7 +11,7 @@
 
 ---
 
-"¿Hatha o vinyasa?" es la primera pregunta que se hace todo el mundo que empieza yoga. La respuesta no es "uno es mejor" — es "depende de lo que busques." Aquí va la comparación real, sin la jerga que nadie entiende.
+"¿Hatha o vinyasa?" es la primera pregunta que se hace todo el mundo que empieza yoga. La respuesta no es "uno es mejor". Es "depende de lo que busques." Aquí va la comparación real, sin la jerga que nadie entiende.
 
 ---
 
@@ -23,7 +23,7 @@
 
 ---
 
-## Hatha yoga — en detalle
+## Hatha yoga, en detalle
 
 Hatha es el formato clásico. Cada postura (asana) se mantiene durante 5-10 respiraciones antes de pasar a la siguiente. Entre posturas hay una pausa donde el profesor explica la siguiente posición, corrige alineación, y da opciones para diferentes niveles.
 
@@ -35,15 +35,15 @@ El hatha yoga en Barcelona se enseña en prácticamente todos los estudios. En [
 
 ---
 
-## Vinyasa yoga — en detalle
+## Vinyasa yoga, en detalle
 
-Vinyasa es movimiento continuo. Cada inhalación y exhalación se vincula a un movimiento. No hay pausa — fluyes de una postura a la siguiente en una secuencia que el profesor construye en tiempo real.
+Vinyasa es movimiento continuo. Cada inhalación y exhalación se vincula a un movimiento. No hay pausa. Fluyes de una postura a la siguiente en una secuencia que el profesor construye en tiempo real.
 
-**Ritmo:** Moderado a rápido. No piensas mucho — sigues.
+**Ritmo:** Moderado a rápido. No piensas mucho, sigues.
 **Intensidad:** Moderada a alta. Es cardio. Vas a sudar.
 **Mejor para:** Gente que busca un workout, personas que se aburren con ritmos lentos, quien quiere movimiento meditativo (la concentración necesaria para seguir el flujo silencia el pensamiento).
 
-El vinyasa yoga en Barcelona es el estilo más popular. En SABDA, las clases de Vinyasa Flow y Power Vinyasa suceden dentro de proyecciones 360° que se mueven con el ritmo de la clase — cuando la secuencia se intensifica, los visuals se aceleran.
+El vinyasa yoga en Barcelona es el estilo más popular. En SABDA, las clases de Vinyasa Flow y Power Vinyasa suceden dentro de proyecciones 360° que se mueven con el ritmo de la clase. Cuando la secuencia se intensifica, los visuals se aceleran.
 
 ---
 
@@ -51,14 +51,14 @@ El vinyasa yoga en Barcelona es el estilo más popular. En SABDA, las clases de 
 
 | | Hatha | Vinyasa |
 |---|---|---|
-| Ritmo | Lento — pausas entre posturas | Fluido — sin pausas |
+| Ritmo | Lento. Pausas entre posturas | Fluido, sin pausas |
 | Sudor | Poco | Sí |
-| Explicación técnica | Alta — el profesor detalla cada postura | Baja — sigues el movimiento |
+| Explicación técnica | Alta. El profesor detalla cada postura | Baja, sigues el movimiento |
 | Cardio | Bajo | Moderado-alto |
 | Fuerza | Isométrica (mantener) | Dinámica (movimiento) |
 | Flexibilidad | Alta (más tiempo en cada postura) | Moderada |
 | Nivel mental | Analítico (entiendes la mecánica) | Meditativo (sigues el flujo) |
-| Mejor para principiantes | Sí — tiempo para aprender | Depende — puede ser abrumador |
+| Mejor para principiantes | Sí, tiempo para aprender | Depende, puede ser abrumador |
 | Calorías (~60 min) | 200-300 | 300-500 |
 
 ---
@@ -77,9 +77,9 @@ El vinyasa yoga en Barcelona es el estilo más popular. En SABDA, las clases de 
 
 ---
 
-## Yoga para principiantes en Barcelona — por dónde empezar
+## Yoga para principiantes en Barcelona, por dónde empezar
 
-Si nunca has hecho yoga: empieza con hatha. 2-3 clases para entender las posturas básicas, y después prueba vinyasa. No necesitas "prepararte" — solo necesitas ir.
+Si nunca has hecho yoga: empieza con hatha. 2-3 clases para entender las posturas básicas, y después prueba vinyasa. No necesitas "prepararte", solo necesitas ir.
 
 Lo que necesitas: ropa cómoda, nada más. Todos los estudios proporcionan esterilla.
 
@@ -89,7 +89,7 @@ Lo que no necesitas: flexibilidad, experiencia, o la capacidad de tocar tus pies
 
 ## Antes de ir
 
-Tanto el hatha como el vinyasa están disponibles en [SABDA](https://sabdastudio.com/classes/) dentro de la sala de 360° con Dolby Atmos. Los visuals y el audio se adaptan al estilo — hatha tiene proyecciones más lentas y estables, vinyasa tiene movimiento y ritmo. [3 clases por €50](https://momence.com/m/443935).
+Tanto el hatha como el vinyasa están disponibles en [SABDA](https://sabdastudio.com/classes/) dentro de la sala de 360° con Dolby Atmos. Los visuals y el audio se adaptan al estilo. Hatha tiene proyecciones más lentas y estables, vinyasa tiene movimiento y ritmo. [3 clases por €50](https://momence.com/m/443935).
 
 **Relacionado:** [Yin Yoga en Barcelona](/blog/yin-yoga-barcelona/) | [Yoga en Barcelona: guía completa](/blog/yoga-barcelona-guia/)
 

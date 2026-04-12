@@ -11,7 +11,7 @@
 
 ---
 
-Barcelona has more date-night potential than almost any city in Europe. The problem is that most couples default to "let's try that new restaurant" — which is fine, but eventually you need something that isn't dinner.
+Barcelona has more date-night potential than almost any city in Europe. The problem is that most couples default to "let's try that new restaurant". Which is fine, but eventually you need something that isn't dinner.
 
 Here are 12 things to do together that range from free to €60, and none of them involve a table reservation.
 
@@ -20,7 +20,7 @@ Here are 12 things to do together that range from free to €60, and none of the
 ## The 12 best couples activities
 
 ### 1. Sound healing as a date
-Lie down in a dark room, close your eyes, and for 60 minutes Tibetan singing bowls, crystal bowls, and gongs fill the space through Dolby Atmos spatial audio. [SABDA's sound healing](https://sabdastudio.com/classes/sound-healing/) happens in the 360° projection room — slowly shifting visuals while sound moves through you. Profoundly relaxing, unexpectedly intimate. From €18/person. [3 classes for €50](https://momence.com/m/443935).
+Lie down in a dark room, close your eyes, and for 60 minutes Tibetan singing bowls, crystal bowls, and gongs fill the space through Dolby Atmos spatial audio. [SABDA's sound healing](https://sabdastudio.com/classes/sound-healing/) happens in the 360° projection room. Slowly shifting visuals while sound moves through you. Profoundly relaxing, unexpectedly intimate. From €18/person. [3 classes for €50](https://momence.com/m/443935).
 
 ### 2. Bunkers del Carmel at sunset
 Best free viewpoint in Barcelona. 360° panorama. Bring drinks. Arrive 45 minutes before sunset.
@@ -53,7 +53,7 @@ Learn to make paella from local cooks. Wine flows while you stir. ~€60/person.
 83.3 Terrace Bar, Passeig de Gràcia. Sagrada Familia one way, sea the other. Reserve for sunset in high season.
 
 ### 12. Gift each other a SABDA 3-pack
-[€50 for 3 classes](https://momence.com/m/443935) — try sound healing, breathwork, and yoga together over three dates. It's the gift that keeps becoming plans.
+[€50 for 3 classes](https://momence.com/m/443935). Try sound healing, breathwork, and yoga together over three dates. It's the gift that keeps becoming plans.
 
 ---
 
@@ -80,12 +80,12 @@ Barcelona has more free date potential than most cities charge for:
 
 **Barceloneta at dawn.** Set an alarm. The beach at 7am is empty, the water is calm, and the light is perfect. Swim, dry off, get coffee. You'll feel like you've stolen time from the rest of the day.
 
-**Parc de la Ciutadella.** Rent a rowboat on the lake (€6 for 30 min — technically not free). Watch the parrots in the palm trees. Lie on the grass. Simple and perfect.
+**Parc de la Ciutadella.** Rent a rowboat on the lake (€6 for 30 min, technically not free). Watch the parrots in the palm trees. Lie on the grass. Simple and perfect.
 
-The best dates in Barcelona don't cost much. They cost attention — showing up, noticing things, and being somewhere together without checking your phone. The city makes that easy if you let it.
+The best dates in Barcelona don't cost much. They cost attention. Showing up, noticing things, and being somewhere together without checking your phone. The city makes that easy if you let it.
 
 ## When to go
 
-Barcelona's rhythm changes with the seasons, and so should your dates. Summer evenings (sunset at 9:30pm) are perfect for rooftop drinks and seafront walks. Winter afternoons (sunset at 5:30pm) call for museum visits and early hammam sessions. Spring and autumn are ideal for everything — mild temperatures, fewer tourists, and a city that feels like it's performing just for you.
+Barcelona's rhythm changes with the seasons, and so should your dates. Summer evenings (sunset at 9:30pm) are perfect for rooftop drinks and seafront walks. Winter afternoons (sunset at 5:30pm) call for museum visits and early hammam sessions. Spring and autumn are ideal for everything. Mild temperatures, fewer tourists, and a city that feels like it's performing just for you.
 
 The best time of day for couples activities: late morning to early afternoon (markets, vermouth, SABDA), or golden hour onwards (rooftops, Bunkers, Barceloneta walk, jazz).

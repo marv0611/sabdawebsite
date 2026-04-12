@@ -19,9 +19,9 @@ El wellness inmersivo suena a marketing. Proyecciones 360°, Dolby Atmos, "exper
 
 Tu cerebro tiene una red neuronal llamada Default Mode Network (DMN) que se activa cuando no estás concentrado en nada externo: cuando tu mente vaga, planifica, se preocupa, o revive recuerdos. Es la red del "piloto automático." Y en la mayoría de las personas, está hiperactiva.
 
-Una DMN hiperactiva se correlaciona con rumiación, ansiedad, y la sensación de que tu cerebro nunca para. Las prácticas de mindfulness y meditación funcionan en parte porque reducen la actividad del DMN — le dan a tu cerebro algo externo en lo que enfocarse.
+Una DMN hiperactiva se correlaciona con rumiación, ansiedad, y la sensación de que tu cerebro nunca para. Las prácticas de mindfulness y meditación funcionan en parte porque reducen la actividad del DMN, le dan a tu cerebro algo externo en lo que enfocarse.
 
-Aquí es donde la inmersión importa: un entorno de 360° con visuals y audio espacial captura tu atención de una forma que una sala vacía no consigue. La DMN se desactiva más rápido y más completamente porque tu cerebro tiene estímulos sensoriales ricos que procesar — pero estímulos que no requieren respuesta (no necesitas "hacer" nada con las proyecciones).
+Aquí es donde la inmersión importa: un entorno de 360° con visuals y audio espacial captura tu atención de una forma que una sala vacía no consigue. La DMN se desactiva más rápido y más completamente porque tu cerebro tiene estímulos sensoriales ricos que procesar. Pero estímulos que no requieren respuesta (no necesitas "hacer" nada con las proyecciones).
 
 ---
 
@@ -37,7 +37,7 @@ El audio espacial Dolby Atmos añade otra capa: cuando el sonido llega desde tod
 
 ## Inmersión visual y estados de flujo
 
-Los estados de flujo — esos momentos donde estás completamente absorbido en una actividad y el tiempo desaparece — requieren un nivel óptimo de estimulación: suficiente para mantener la atención, no tanto como para generar estrés.
+Los estados de flujo. Esos momentos donde estás completamente absorbido en una actividad y el tiempo desaparece, requieren un nivel óptimo de estimulación: suficiente para mantener la atención, no tanto como para generar estrés.
 
 Las proyecciones 360° con movimiento lento y patrones orgánicos (geometrías que se transforman, colores que transitan, formas que respiran) se sitúan exactamente en ese punto óptimo. No exigen atención activa (no tienes que "seguir" nada), pero proporcionan suficiente estímulo visual para que tu mente no se escape a la lista de tareas.
 
@@ -69,6 +69,6 @@ La investigación sobre wellness inmersivo es joven. La mayoría de estudios sob
 
 Lo que podemos decir con confianza: los mecanismos individuales están bien documentados (efecto del nervio vago, reducción de DMN, estados de flujo). La hipótesis de que un entorno inmersivo amplifica estos mecanismos es plausible y consistente con lo que los usuarios reportan. Pero no hay ensayos controlados específicos sobre "wellness inmersivo" aún.
 
-Esto no significa que no funcione. Significa que la ciencia necesita tiempo para alcanzar a la experiencia. Y mientras tanto, la experiencia habla por sí misma: la gente que prueba una clase en [SABDA](https://sabdastudio.com/classes/) y la compara con una clase equivalente en un estudio convencional nota la diferencia inmediatamente. Esa diferencia es medible en HRV (variabilidad de frecuencia cardíaca) y estados de ánimo — los datos anecdóticos son consistentes con la teoría neurológica.
+Esto no significa que no funcione. Significa que la ciencia necesita tiempo para alcanzar a la experiencia. Y mientras tanto, la experiencia habla por sí misma: la gente que prueba una clase en [SABDA](https://sabdastudio.com/classes/) y la compara con una clase equivalente en un estudio convencional nota la diferencia inmediatamente. Esa diferencia es medible en HRV (variabilidad de frecuencia cardíaca) y estados de ánimo. Los datos anecdóticos son consistentes con la teoría neurológica.
 
-La ciencia del bienestar inmersivo está en su infancia. Pero los ladrillos — neurociencia del sonido, psicología de la inmersión, fisiología del nervio vago — son sólidos. Lo que falta es el edificio completo. Y alguien tiene que construirlo.
+La ciencia del bienestar inmersivo está en su infancia. Pero los ladrillos, neurociencia del sonido, psicología de la inmersión, fisiología del nervio vago, son sólidos. Lo que falta es el edificio completo. Y alguien tiene que construirlo.

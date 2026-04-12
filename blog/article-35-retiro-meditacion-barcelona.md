@@ -39,13 +39,13 @@ Precio: €50-100/día completo.
 
 ---
 
-## El mini retiro urbano — SABDA
+## El mini retiro urbano, SABDA
 
 No todo el mundo tiene un fin de semana libre. A veces lo que necesitas es una hora que se sienta como un retiro.
 
 Las sesiones de sound healing y breathwork en [SABDA](https://sabdastudio.com/classes/sound-healing/) funcionan exactamente así. 60 minutos dentro de una sala de 360° con Dolby Atmos: proyecciones lentas, audio espacial envolvente, guía de voz que llega desde todas las direcciones. Sales con la sensación de haber estado fuera de la ciudad durante medio día.
 
-Es el equivalente urbano de un retiro — sin el desplazamiento, sin el fin de semana bloqueado, sin la maleta. Desde €18/sesión. [3 clases por €50](https://momence.com/m/443935).
+Es el equivalente urbano de un retiro, sin el desplazamiento, sin el fin de semana bloqueado, sin la maleta. Desde €18/sesión. [3 clases por €50](https://momence.com/m/443935).
 
 C/Muntaner 83B, Eixample. Sesiones varias veces por semana.
 
@@ -72,13 +72,13 @@ C/Muntaner 83B, Eixample. Sesiones varias veces por semana.
 
 No todos los retiros son iguales. Algunos son genuinamente transformadores. Otros son un hotel con una clase de yoga por la mañana y un precio inflado. Antes de reservar:
 
-**Facilitador:** ¿Quién dirige las sesiones? Busca facilitadores con formación seria (MBSR certificado, profesores de meditación con años de práctica, psicólogos con especialización en mindfulness). Un retiro dirigido por alguien con un curso de fin de semana y un feed de Instagram no es un retiro — es una experiencia de lifestyle con meditación de fondo.
+**Facilitador:** ¿Quién dirige las sesiones? Busca facilitadores con formación seria (MBSR certificado, profesores de meditación con años de práctica, psicólogos con especialización en mindfulness). Un retiro dirigido por alguien con un curso de fin de semana y un feed de Instagram no es un retiro. Es una experiencia de lifestyle con meditación de fondo.
 
 **Estructura:** Un buen retiro tiene estructura clara: sesiones guiadas por la mañana, períodos de silencio, comida consciente, sesiones de la tarde, y tiempo libre. Si el programa es vago ("actividades wellness varias"), probablemente está improvisado.
 
-**Silencio:** Los retiros con períodos de silencio son significativamente más efectivos que los que no los tienen. El silencio no es castigo — es el espacio donde la práctica se profundiza. Si nunca has hecho silencio, un retiro de un día con silencio parcial es un buen comienzo.
+**Silencio:** Los retiros con períodos de silencio son significativamente más efectivos que los que no los tienen. El silencio no es castigo. Es el espacio donde la práctica se profundiza. Si nunca has hecho silencio, un retiro de un día con silencio parcial es un buen comienzo.
 
-**Comida:** La comida en un retiro importa más de lo que piensas. Comer conscientemente — sin móvil, sin conversación, prestando atención a cada bocado — es una práctica en sí misma. Los mejores retiros incluyen comida preparada con intención.
+**Comida:** La comida en un retiro importa más de lo que piensas. Comer conscientemente. Sin móvil, sin conversación, prestando atención a cada bocado. Es una práctica en sí misma. Los mejores retiros incluyen comida preparada con intención.
 
 **Precio:** Desconfía de los extremos. Un retiro de fin de semana por €100 probablemente recorta en facilitadores o alojamiento. Uno por €800 probablemente infla el precio con "experiencia premium." El rango razonable para un fin de semana cerca de Barcelona con alojamiento, comida, y sesiones: €200-450.
 
