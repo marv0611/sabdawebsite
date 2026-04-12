@@ -143,6 +143,7 @@ body.mo-open{overflow:hidden;position:fixed;width:100%;height:100%}
 .bk-recover strong{color:var(--cyan);display:block;margin-bottom:6px;font-size:.82rem}
 .bk-recover button{display:block;width:100%;margin-top:12px;padding:12px;background:transparent;border:1px solid var(--cyan);color:var(--cyan);border-radius:8px;font-size:.82rem;font-weight:600;cursor:pointer;font-family:inherit}
 .bk-recover button:active{background:rgba(2,243,197,.1)}
+#bk-pay-btn,#bk-guest-btn{margin-top:20px}
 .bk-primary{width:100%;padding:16px;background:var(--cyan);color:var(--navy);border:none;border-radius:10px;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;transition:background .25s,transform .2s;-webkit-appearance:none}
 .bk-primary:hover{background:#33f5d1}
 .bk-primary:disabled{opacity:.5;cursor:default}
@@ -176,6 +177,7 @@ body.mo-open{overflow:hidden;position:fixed;width:100%;height:100%}
 .bk-pkg-grp:first-child{margin-top:8px}
 /* CONTACT FIELD GROUPS — clear separation between phone / language / city */
 .bk-fld{margin-bottom:20px}
+.bk-card-status+.bk-primary,.bk-card-wrap+.bk-primary,.bk-card-row+.bk-primary{margin-top:20px}
 .bk-card-wrap{width:100%;padding:16px;background:rgba(240,239,233,.04);border:1px solid var(--white12);border-radius:10px;min-height:54px;box-sizing:border-box;transition:border-color .25s;pointer-events:auto;touch-action:auto}
 .bk-card-wrap.StripeElement--focus{border-color:var(--cyan)}
 .bk-card-wrap.StripeElement--invalid{border-color:var(--salmon)}
@@ -1292,11 +1294,6 @@ function showPayForm(type,price,productId,name,desc){stepChange();
     +'<div id="bk-promo-ok" style="display:none;font-size:.78rem;color:var(--cyan);margin-top:6px"></div>'
     +'<div id="bk-promo-err" style="display:none;font-size:.78rem;color:var(--salmon);margin-top:6px"></div>'
     +'</div>'
-    +(pendingPack?'<div class="bk-divider" style="margin:16px 0"></div>'+'<div id="bk-pack-customer">'+customerFieldsHTML()+'</div>'+'<div id="bk-promo-wrap" style="margin-bottom:16px;margin-top:16px">'+'<div class="bk-link" id="bk-promo-toggle" onclick="document.getElementById(\'bk-promo-fields\').style.display=\'flex\';this.style.display=\'none\'" style="margin:0;font-size:.8rem;text-align:left;color:var(--cyan)">Aplicar código promocional \u2192</div>'+'<div id="bk-promo-fields" style="display:none;gap:8px;align-items:flex-start">'+'<input class="bk-input" id="bk-promo" type="text" placeholder="Code" style="flex:1;margin-bottom:0;text-transform:uppercase"/>'+'<button class="bk-primary" id="bk-promo-btn" onclick="applyPromo(\''+(pendingPack?pendingPack.type:'')+'\','+(pendingPack?pendingPack.price:0)+','+(pendingPack?pendingPack.id:0)+')" style="width:auto;padding:12px 20px;flex-shrink:0;font-size:.8rem">Aplicar</button>'+'</div>'+'<div id="bk-promo-ok" style="display:none;font-size:.78rem;color:var(--cyan);margin-top:6px"></div>'+'<div id="bk-promo-err" style="display:none;font-size:.78rem;color:var(--salmon);margin-top:6px"></div>'+'</div>'+'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'+'<div id="bk-pay-divider" class="bk-divider" style="display:none">o paga con tarjeta</div>'+'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Datos de la tarjeta</div>'+'<div class="bk-card-wrap" id="bk-card"></div>':'')
-    +'<div class="bk-err" id="bk-err"></div>'
-    +'<button class="bk-primary" id="bk-login-btn" onclick="doLogin()">Iniciar sesión y reservar</button>'
-    +'<div class="bk-link" onclick="showGuestStep()">Nueva aquí? Reservar como invitada</div>'
-    +'</div>';
     +'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Datos de la tarjeta</div>'
     +'<div class="bk-card-wrap" id="bk-card-number"></div>'
     +'<div class="bk-card-row">'
