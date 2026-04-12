@@ -1077,6 +1077,7 @@ window.doLogin=function(){if(isProcessing)return;
     if(r.data.mfaRequired){showMfaStep(r.data.mfaToken);return;}
     var d=r.data;
     if(!curSession) return;
+    if(!d||!d.user){console.error('[doLogin] malformed response (no d.user):',d);err.textContent='Login response malformed. Please try again.';err.classList.add('show');isProcessing=false;btn.textContent='Log in & Book';btn.disabled=false;showFallback();return;}
     curUser={id:d.user.id,email:d.user.email||email,firstName:d.user.firstName||email.split('@')[0],lastName:d.user.lastName||'',memberId:d.user.memberId};
     curSessionToken=d.sessionToken;
     curSession.price=d.sessionPrice||22;
@@ -1129,6 +1130,7 @@ window.doMfaVerify=function(){if(isProcessing)return;
     }
     var d=r.data;
     if(!curSession) return;
+    if(!d||!d.user){console.error('[mfa] malformed response:',d);err.textContent='Verification response malformed.';err.classList.add('show');isProcessing=false;btn.textContent='Verify & Continue';btn.disabled=false;showFallback();return;}
     curUser={id:d.user.id,email:d.user.email,firstName:d.user.firstName||d.user.email.split('@')[0],lastName:d.user.lastName||'',memberId:d.user.memberId};
     curSessionToken=d.sessionToken;
     curSession.price=d.sessionPrice||22;

@@ -1072,10 +1072,11 @@ window.doLogin=function(){if(isProcessing)return;
     if(r.data.mfaRequired){showMfaStep(r.data.mfaToken);return;}
     var d=r.data;
     if(!curSession) return;
-    curUser={id:d.user.id,email:d.user.email||email,firstName:d.user.firstName||email.split('@')[0],lastName:d.user.lastName||'',memberId:d.user.memberId};fbqAdvancedMatch();
+    if(!d||!d.user){console.error('[doLogin] malformed response (no d.user):',d);err.textContent='Login response malformed. Please try again.';err.classList.add('show');isProcessing=false;btn.textContent='Log in & Book';btn.disabled=false;showFallback();return;}
+    curUser={id:d.user.id,email:d.user.email||email,firstName:d.user.firstName||email.split('@')[0],lastName:d.user.lastName||'',memberId:d.user.memberId};try{fbqAdvancedMatch();}catch(e){console.error("[fbqAdvancedMatch]",e);}
     curSessionToken=d.sessionToken;
     curSession.price=d.sessionPrice||22;
-    _fbInitWithUser(curUser.email,curUser.firstName,curUser.lastName,'');
+    try{_fbInitWithUser(curUser.email,curUser.firstName,curUser.lastName,'');}catch(e){console.error("[_fbInitWithUser]",e);}
 
     if(d.hasUsableMembership&&d.memberships.length>0){showConfirmStep(d.memberships[0]);}
     else{showNoMembership();}
@@ -1121,7 +1122,8 @@ window.doMfaVerify=function(){if(isProcessing)return;
     }
     var d=r.data;
     if(!curSession) return;
-    curUser={id:d.user.id,email:d.user.email,firstName:d.user.firstName||d.user.email.split('@')[0],lastName:d.user.lastName||'',memberId:d.user.memberId};fbqAdvancedMatch();
+    if(!d||!d.user){console.error('[mfa] malformed response:',d);err.textContent='Verification response malformed.';err.classList.add('show');isProcessing=false;btn.textContent='Verify & Continue';btn.disabled=false;showFallback();return;}
+    curUser={id:d.user.id,email:d.user.email,firstName:d.user.firstName||d.user.email.split('@')[0],lastName:d.user.lastName||'',memberId:d.user.memberId};try{fbqAdvancedMatch();}catch(e){console.error("[fbqAdvancedMatch]",e);}
     curSessionToken=d.sessionToken;
     curSession.price=d.sessionPrice||22;
 
@@ -1161,7 +1163,7 @@ window.doGuestCheck=function(){
       return;
     }
   }
-  curUser={id:null,email:email,firstName:fn,lastName:ln,memberId:null,isGuest:true};fbqAdvancedMatch();
+  curUser={id:null,email:email,firstName:fn,lastName:ln,memberId:null,isGuest:true};try{fbqAdvancedMatch();}catch(e){console.error("[fbqAdvancedMatch]",e);}
   if(pendingPack){doGuestPackPay();}else{showNoMembership();}
 };
 
