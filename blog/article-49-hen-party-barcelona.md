@@ -15,6 +15,8 @@ If the hen party involves a stretch limo, a plastic tiara, and someone blowing a
 
 ---
 
+For a private immersive experience for your hen party, [check our breathwork classes](/classes/breathwork/) or [book a private session](/pricing/).
+
 ## The 10 best hen party ideas in Barcelona
 
 ### 1. Private immersive session at SABDA
