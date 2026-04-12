@@ -137,7 +137,8 @@ body.mo-open{overflow:hidden;position:fixed;width:100%;height:100%}
 .bk-input.bk-field-err+.bk-field-msg{display:block}
 .bk-err{color:var(--salmon);font-size:.78rem;line-height:1.5;min-height:0;margin:8px 0;text-align:left;padding:0;display:none}
 .bk-err.show{display:block;padding:14px 16px;background:rgba(248,166,163,.08);border:1px solid rgba(248,166,163,.18);border-radius:10px}
-.bk-err a{color:var(--cyan);text-decoration:underline}
+.bk-err a{color:var(--cyan);text-decoration:underline;display:inline-block;margin-top:6px}
+[data-bk-apply]{align-self:stretch !important;line-height:1 !important;padding-top:0 !important;padding-bottom:0 !important}
 .bk-recover{display:none;margin:12px 0;padding:14px 16px;background:rgba(2,243,197,.06);border:1px solid rgba(2,243,197,.18);border-radius:10px;font-size:.78rem;color:var(--white60);line-height:1.5}
 .bk-recover.show{display:block}
 .bk-recover strong{color:var(--cyan);display:block;margin-bottom:6px;font-size:.82rem}
@@ -686,7 +687,7 @@ function showGuestStep(){console.log('[showGuestStep] start');try{stepChange();
     +'<div class="bk-label" style="margin-top:8px">Confirm Email</div>'
     +'<input class="bk-input" id="bk-email2" type="email" inputmode="email" placeholder="Repeat your email" autocomplete="off" />'
     +(pendingPack&&pendingPack.type!=='single'?'<div class="bk-label" style="margin-top:8px">Create a password</div>'+'<input class="bk-input" id="bk-new-pass" type="password" placeholder="Min. 8 characters" aria-label="Create a password" autocomplete="new-password" />'+'<div class="bk-label" style="margin-top:8px">Confirm password</div>'+'<input class="bk-input" id="bk-new-pass2" type="password" placeholder="Repeat password" aria-label="Confirm password" autocomplete="new-password" />':'')
-    +(pendingPack?'<div class="bk-divider" style="margin:16px 0"></div>'+'<div id="bk-pack-customer">'+customerFieldsHTML()+'</div>'+'<div id="bk-promo-wrap" style="margin-bottom:16px;margin-top:16px">'+'<div class="bk-link" id="bk-promo-toggle" onclick="document.getElementById(\'bk-promo-fields\').style.display=\'flex\';this.style.display=\'none\'" style="margin:0;font-size:.8rem;text-align:left;color:var(--cyan)">Apply promo code \u2192</div>'+'<div id="bk-promo-fields" style="display:none;gap:8px;align-items:flex-start">'+'<input class="bk-input" id="bk-promo" type="text" placeholder="Code" style="flex:1;margin-bottom:0;text-transform:uppercase"/>'+'<button class="bk-primary" id="bk-promo-btn" onclick="applyPromo(\''+(pendingPack?pendingPack.type:'')+'\','+(pendingPack?pendingPack.price:0)+','+(pendingPack?pendingPack.id:0)+')" style="width:auto;padding:12px 20px;flex-shrink:0;font-size:.8rem">Apply</button>'+'</div>'+'<div id="bk-promo-ok" style="display:none;font-size:.78rem;color:var(--cyan);margin-top:6px"></div>'+'<div id="bk-promo-err" style="display:none;font-size:.78rem;color:var(--salmon);margin-top:6px"></div>'+'</div>'+'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'+'<div id="bk-pay-divider" class="bk-divider" style="display:none">or pay with card</div>'+'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Card Details</div>'+'<div class="bk-card-wrap" id="bk-card"></div>':'')
+    +(pendingPack?'<div class="bk-divider" style="margin:16px 0"></div>'+'<div id="bk-pack-customer">'+customerFieldsHTML()+'</div>'+'<div id="bk-promo-wrap" style="margin-bottom:16px;margin-top:16px">'+'<div class="bk-link" id="bk-promo-toggle" onclick="document.getElementById(\'bk-promo-fields\').style.display=\'flex\';this.style.display=\'none\'" style="margin:0;font-size:.8rem;text-align:left;color:var(--cyan)">Apply promo code \u2192</div>'+'<div id="bk-promo-fields" style="display:none;gap:8px;align-items:stretch">'+'<input class="bk-input" id="bk-promo" type="text" placeholder="Code" style="flex:1;margin-bottom:0;text-transform:uppercase"/>'+'<button class="bk-primary" id="bk-promo-btn" data-bk-apply onclick="applyPromo(\''+(pendingPack?pendingPack.type:'')+'\','+(pendingPack?pendingPack.price:0)+','+(pendingPack?pendingPack.id:0)+')" style="width:auto;padding:12px 20px;flex-shrink:0;font-size:.8rem">Apply</button>'+'</div>'+'<div id="bk-promo-ok" style="display:none;font-size:.78rem;color:var(--cyan);margin-top:6px"></div>'+'<div id="bk-promo-err" style="display:none;font-size:.78rem;color:var(--salmon);margin-top:6px"></div>'+'</div>'+'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'+'<div id="bk-pay-divider" class="bk-divider" style="display:none">or pay with card</div>'+'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Card Details</div>'+'<div class="bk-card-wrap" id="bk-card"></div>':'')
     +(curSession&&curSession.id&&pendingPack&&pendingPack.type!=='single'&&!curSession.isWaitlist?'<label style="display:flex;align-items:center;gap:8px;margin:12px 0 16px;cursor:pointer;font-size:.78rem;color:var(--white60)">'+'<input type="checkbox" id="bk-autoenroll" style="accent-color:var(--cyan);width:16px;height:16px;cursor:pointer;flex-shrink:0">'+'<span>Auto-enroll me in <strong style="color:var(--white)">'+esc(curSession.title)+'</strong></span>'+'</label>':'')
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">'+(pendingPack?'Pay \u20AC'+pendingPack.price:'Continue')+'</button>'
@@ -1188,7 +1189,7 @@ function applyPromo(type,origPrice,productId){
       activePromo=null;discountedPrice=null;activeDiscountCodeId=null;
       return;
     }
-    activePromo=r.data.code;
+    errEl.textContent='';errEl.style.display='none';activePromo=r.data.code;
     if(r.data.type==='percentage'&&r.data.appliedDiscount<100){
       discountedPrice=Math.round(origPrice*(1-r.data.appliedDiscount/100)*100)/100;
     } else {
@@ -1333,9 +1334,9 @@ function showPayForm(type,price,productId,name,desc){stepChange();
     +'<div id="bk-card-section">'
     +'<div id="bk-promo-wrap" style="margin-bottom:16px">'
     +'<div class="bk-link" id="bk-promo-toggle" onclick="document.getElementById(\'bk-promo-fields\').style.display=\'flex\';this.style.display=\'none\'" style="margin:0;font-size:.8rem;text-align:left;color:var(--cyan)">Apply promo code →</div>'
-    +'<div id="bk-promo-fields" style="display:none;gap:8px;align-items:flex-start">'
+    +'<div id="bk-promo-fields" style="display:none;gap:8px;align-items:stretch">'
     +'<input class="bk-input" id="bk-promo" type="text" autocomplete="off" autocapitalize="characters" placeholder="Code" aria-label="Promo code" style="flex:1;margin-bottom:0;text-transform:uppercase" />'
-    +'<button class="bk-primary" id="bk-promo-btn" onclick="applyPromo(\''+type+'\','+price+','+productId+')" style="width:auto;padding:12px 20px;flex-shrink:0;font-size:.8rem">Apply</button>'
+    +'<button class="bk-primary" id="bk-promo-btn" data-bk-apply onclick="applyPromo(\''+type+'\','+price+','+productId+')" style="width:auto;padding:12px 20px;flex-shrink:0;font-size:.8rem">Apply</button>'
     +'</div>'
     +'<div id="bk-promo-ok" style="display:none;font-size:.78rem;color:var(--cyan);margin-top:6px"></div>'
     +'<div id="bk-promo-err" style="display:none;font-size:.78rem;color:var(--salmon);margin-top:6px"></div>'
