@@ -1079,11 +1079,7 @@ window.doLogin=function(){if(isProcessing)return;
 
     if(d.hasUsableMembership&&d.memberships.length>0){showConfirmStep(d.memberships[0]);}
     else{showNoMembership();}
-  }).catch(function(){
-    err.textContent='Connection error. Please try again.';err.classList.add('show');
-    isProcessing=false;btn.textContent='Log in & Book';btn.disabled=false;
-    showFallback();
-  });
+  }).catch(function(e){console.error('[doLogin] fetch failed:',e);err.textContent='Connection error ('+(e&&e.message||'unknown')+'). Please try again.';err.classList.add('show');isProcessing=false;btn.textContent='Log in & Book';btn.disabled=false;showFallback();});
 };
 
 // ── MFA STEP ──
