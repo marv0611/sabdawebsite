@@ -622,6 +622,10 @@ function showLoginStep(){stepChange();
     +'<div class="bk-label">Contraseña</div>'
     +'<input class="bk-input" id="bk-pass" type="password" autocomplete="current-password" placeholder="Contraseña" aria-label="Contraseña" />'
     +'<div style="text-align:right;margin:-10px 0 12px"><a href="https://momence.com/forgot-password" target="_blank" rel="noopener noreferrer" style="font-size:.75rem;color:var(--white38);text-decoration:none;border-bottom:1px solid var(--white12)">Olvidaste tu contraseña?</a></div>'
+    +'<div class="bk-err" id="bk-err"></div>'
+    +'<button class="bk-primary" id="bk-login-btn" onclick="doLogin()">Iniciar sesión y reservar</button>'
+    +'<div class="bk-link" onclick="showGuestStep()">¿Primera vez? Reservar como invitado</div>'
+    +'</div>';
   document.getElementById('bk-email').focus();
   document.getElementById('bk-pass').addEventListener('keydown',function(e){if(e.key==='Enter')doLogin();});
 }
