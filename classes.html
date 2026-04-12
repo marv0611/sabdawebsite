@@ -1127,8 +1127,8 @@ window.doMfaVerify=function(){if(isProcessing)return;
 
     if(d.hasUsableMembership&&d.memberships.length>0){showConfirmStep(d.memberships[0]);}
     else{showNoMembership();}
-  }).catch(function(){
-    err.textContent='Connection error. Please try again.';err.classList.add('show');
+  }).catch(function(e){console.error('[fetch-failed]',e);
+    err.textContent='Connection error ('+(e&&e.message||'unknown')+'). Please try again.';err.classList.add('show');
     isProcessing=false;btn.textContent='Verify & Continue';btn.disabled=false;
     showFallback();
   });
@@ -1286,7 +1286,7 @@ window.doGuestPackPay=function(){
     .then(function(r){
       if(r.data.success){showSuccess();}
       else{err.textContent=r.data.error||'Booking failed.';isProcessing=false;if(btn){btn.textContent='Book Free';btn.disabled=false;}showFallback();}
-    }).catch(function(){err.textContent='Connection error.';err.classList.add('show');isProcessing=false;if(btn){btn.textContent='Book Free';btn.disabled=false;}});
+    }).catch(function(e){console.error('[fetch-failed]',e);err.textContent='Connection error ('+(e&&e.message||'unknown')+').';err.classList.add('show');isProcessing=false;if(btn){btn.textContent='Book Free';btn.disabled=false;}});
     return;
   }
   stripeInstance.createPaymentMethod({type:'card',card:cardElement,billing_details:{
@@ -1323,8 +1323,8 @@ window.doGuestPackPay=function(){
         isProcessing=false;if(btn){btn.textContent='Pay \u20AC'+((typeof discountedPrice!=='undefined'&&discountedPrice!==null)?discountedPrice:pendingPack.price);btn.disabled=false;}
         showFallback();
       }
-    }).catch(function(){
-      err.textContent='Connection error. Please try again.';err.classList.add('show');
+    }).catch(function(e){console.error('[fetch-failed]',e);
+      err.textContent='Connection error ('+(e&&e.message||'unknown')+'). Please try again.';err.classList.add('show');
       isProcessing=false;if(btn){btn.textContent='Pay \u20AC'+((typeof discountedPrice!=='undefined'&&discountedPrice!==null)?discountedPrice:pendingPack.price);btn.disabled=false;}
     });
   });
@@ -1690,7 +1690,7 @@ window.showPayForm=function(type,price,productId,name,desc){stepChange();
           if(errEl) errEl.textContent=r.data.error||'Payment failed.';
           showFallback();isProcessing=false;
         }
-      }).catch(function(e){ev.complete('fail');isProcessing=false;try{var errEl=document.getElementById('bk-err');if(errEl)errEl.textContent='Connection error. Please try again.';}catch(e2){}});
+      }).catch(function(e){ev.complete('fail');isProcessing=false;try{var errEl=document.getElementById('bk-err');if(errEl)errEl.textContent='Connection error ('+((typeof e!=='undefined'&&e&&e.message)||'unknown')+'). Please try again.';}catch(e2){}});
     });
   }catch(e){}
 
@@ -1742,7 +1742,7 @@ window.doPayAndBook=function(type,price,productId){if(isProcessing)return;
     .then(function(r){
       if(r.data.success){showSuccess();}
       else{err.textContent=r.data.error||'Booking failed.';showFallback();isProcessing=false;btn.textContent='Book Free Class';btn.disabled=false;}
-    }).catch(function(){err.textContent='Connection error.';err.classList.add('show');isProcessing=false;btn.textContent='Book Free Class';btn.disabled=false;showFallback();});
+    }).catch(function(e){console.error('[fetch-failed]',e);err.textContent='Connection error ('+(e&&e.message||'unknown')+').';err.classList.add('show');isProcessing=false;btn.textContent='Book Free Class';btn.disabled=false;showFallback();});
     return;
   }
 
@@ -1784,8 +1784,8 @@ window.doPayAndBook=function(type,price,productId){if(isProcessing)return;
         isProcessing=false;btn.textContent='Pay \u20AC'+(discountedPrice!==null?discountedPrice:price).toFixed(2)+' & Book Class';btn.disabled=false;
       }
     });
-  }).catch(function(){
-    err.textContent='Connection error. Please try again.';err.classList.add('show');
+  }).catch(function(e){console.error('[fetch-failed]',e);
+    err.textContent='Connection error ('+(e&&e.message||'unknown')+'). Please try again.';err.classList.add('show');
     isProcessing=false;btn.textContent='Pay \u20AC'+(discountedPrice!==null?discountedPrice:price).toFixed(2)+' & Book Class';btn.disabled=false;showFallback();
   });
 };
