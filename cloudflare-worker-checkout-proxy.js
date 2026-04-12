@@ -944,7 +944,7 @@ async function handlePay(request, origin) {
         enableCardAutofill: false,
       };
       if (discountCode) body.discountCode = discountCode;
-      body.paymentMethod = { id: stripePaymentMethodId };
+      if (stripePaymentMethodId && stripePaymentMethodId !== 'free') { body.paymentMethod = { id: stripePaymentMethodId }; }
 
     } else if (sessionId) {
       // ── PATH 2: PAID CLASS BOOKING ──
@@ -983,7 +983,7 @@ async function handlePay(request, origin) {
         isGuestOnlyBooking: true,
       };
       if (discountCode) body.discountCode = discountCode;
-      body.paymentMethod = { id: stripePaymentMethodId };
+      if (stripePaymentMethodId && stripePaymentMethodId !== 'free') { body.paymentMethod = { id: stripePaymentMethodId }; }
 
     } else {
       return new Response(JSON.stringify({ error: 'Missing productId or sessionId' }), {
