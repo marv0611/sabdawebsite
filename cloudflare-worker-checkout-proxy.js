@@ -938,7 +938,7 @@ async function handlePay(request, origin) {
         smsCommunicationsMarketingConsent: false,
         isLoginRedirectDisabled: true,
         customQuestionAnswers: [],
-        appliedPriceRuleIds: [], // discountCodeId from CheckAccessCode is NOT a priceRuleId; use string discountCode below
+        appliedPriceRuleIds: discountCodeId ? [Number(discountCodeId)] : [],
         homeLocationId: HOME_LOCATION_ID,
         hasRecurringChargesConsent: true,
         enableCardAutofill: false,
@@ -978,7 +978,7 @@ async function handlePay(request, origin) {
         stripeConnectedAccountId: STRIPE_ACCOUNT_ID,
         phoneNumber: phoneNumber || undefined,
         customerFields: customerFields || {},
-        appliedPriceRuleIds: [], // discountCodeId from CheckAccessCode is NOT a priceRuleId; use string discountCode below
+        appliedPriceRuleIds: discountCodeId ? [Number(discountCodeId)] : [],
         isLoginRedirectDisabled: true,
         isGuestOnlyBooking: true,
       };
