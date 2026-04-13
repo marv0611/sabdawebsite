@@ -1070,13 +1070,13 @@ window.doLogin=function(){if(isProcessing)return;
     if(!r.ok||r.data.error){
       err.innerHTML='Wrong email or password. <a href="'+curSession.link+'" target="_blank" rel="noopener noreferrer" style="color:var(--cyan);text-decoration:underline">Book on Momence \u2192</a>';
       err.classList.add('show');
-      isProcessing=false;btn.textContent='Log in & Book';btn.disabled=false;
+      isProcessing=false;btn.textContent='Confirm booking';btn.disabled=false;
       return;
     }
     if(r.data.mfaRequired){showMfaStep(r.data.mfaToken);return;}
     var d=r.data;
     if(!curSession) return;
-    if(!d||!d.user){console.error('[doLogin] malformed response (no d.user):',d);err.textContent='Login response malformed. Please try again.';err.classList.add('show');isProcessing=false;btn.textContent='Log in & Book';btn.disabled=false;showFallback();return;}
+    if(!d||!d.user){console.error('[doLogin] malformed response (no d.user):',d);err.textContent='Login response malformed. Please try again.';err.classList.add('show');isProcessing=false;btn.textContent='Confirm booking';btn.disabled=false;showFallback();return;}
     curUser={id:d.user.id,email:d.user.email||email,firstName:d.user.firstName||email.split('@')[0],lastName:d.user.lastName||'',memberId:d.user.memberId};try{fbqAdvancedMatch();}catch(e){console.error("[fbqAdvancedMatch]",e);}
     curSessionToken=d.sessionToken;
     curSession.price=d.sessionPrice||22;
@@ -1084,7 +1084,7 @@ window.doLogin=function(){if(isProcessing)return;
 
     if(d.hasUsableMembership&&d.memberships.length>0){showConfirmStep(d.memberships);}
     else{showNoMembership();}
-  }).catch(function(e){console.error('[doLogin] fetch failed:',e);err.textContent='Connection error ('+(e&&e.message||'unknown')+'). Please try again.';err.classList.add('show');isProcessing=false;btn.textContent='Log in & Book';btn.disabled=false;showFallback();});
+  }).catch(function(e){console.error('[doLogin] fetch failed:',e);err.textContent='Connection error ('+(e&&e.message||'unknown')+'). Please try again.';err.classList.add('show');isProcessing=false;btn.textContent='Confirm booking';btn.disabled=false;showFallback();});
 };
 
 // ── MFA STEP ──
@@ -1291,8 +1291,8 @@ window.doGuestPackPay=function(){
     }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};})})
     .then(function(r){
       if(r.data.success){showSuccess();}
-      else{err.textContent=r.data.error||'Booking failed.';isProcessing=false;if(btn){btn.textContent='Book Free';btn.disabled=false;}showFallback();}
-    }).catch(function(e){console.error('[fetch-failed]',e);err.textContent='Connection error ('+(e&&e.message||'unknown')+').';err.classList.add('show');isProcessing=false;if(btn){btn.textContent='Book Free';btn.disabled=false;}});
+      else{err.textContent=r.data.error||'Booking failed.';isProcessing=false;if(btn){btn.textContent='Confirm booking';btn.disabled=false;}showFallback();}
+    }).catch(function(e){console.error('[fetch-failed]',e);err.textContent='Connection error ('+(e&&e.message||'unknown')+').';err.classList.add('show');isProcessing=false;if(btn){btn.textContent='Confirm booking';btn.disabled=false;}});
     return;
   }
   stripeInstance.createPaymentMethod({type:'card',card:cardElement,billing_details:{
@@ -1300,7 +1300,7 @@ window.doGuestPackPay=function(){
   }}).then(function(result){
     if(result.error){
       err.textContent=result.error.message;err.classList.add('show');
-      isProcessing=false;if(btn){btn.textContent='Pay \u20AC'+((typeof discountedPrice!=='undefined'&&discountedPrice!==null)?discountedPrice:pendingPack.price);btn.disabled=false;}
+      isProcessing=false;if(btn){btn.textContent='Confirm booking';btn.disabled=false;}
       return;
     }
     fetch(PROXY+'/sabda-api/pay',{
@@ -1321,17 +1321,17 @@ window.doGuestPackPay=function(){
       if(r.data.success){showSuccess();}
       else if(r.data.clientSecret){
         return stripeInstance.confirmCardPayment(r.data.clientSecret).then(function(conf){
-          if(conf.error){err.textContent=conf.error.message;err.classList.add('show');isProcessing=false;if(btn){btn.textContent='Pay \u20AC'+((typeof discountedPrice!=='undefined'&&discountedPrice!==null)?discountedPrice:pendingPack.price);btn.disabled=false;}}
+          if(conf.error){err.textContent=conf.error.message;err.classList.add('show');isProcessing=false;if(btn){btn.textContent='Confirm booking';btn.disabled=false;}}
           else{showSuccess();}
         });
       } else {
         err.textContent=r.data.error||'Payment failed. Please try again.';
-        isProcessing=false;if(btn){btn.textContent='Pay \u20AC'+((typeof discountedPrice!=='undefined'&&discountedPrice!==null)?discountedPrice:pendingPack.price);btn.disabled=false;}
+        isProcessing=false;if(btn){btn.textContent='Confirm booking';btn.disabled=false;}
         showFallback();
       }
     }).catch(function(e){console.error('[fetch-failed]',e);
       err.textContent='Connection error ('+(e&&e.message||'unknown')+'). Please try again.';err.classList.add('show');
-      isProcessing=false;if(btn){btn.textContent='Pay \u20AC'+((typeof discountedPrice!=='undefined'&&discountedPrice!==null)?discountedPrice:pendingPack.price);btn.disabled=false;}
+      isProcessing=false;if(btn){btn.textContent='Confirm booking';btn.disabled=false;}
     });
   });
 };
@@ -1615,18 +1615,18 @@ window.applyPromo=function(type,origPrice,productId){
     var payBtn=document.getElementById('bk-pay-btn');
     if(payBtn){
       if(discountedPrice===0){
-        payBtn.textContent=(pendingPack&&pendingPack.name)?('Get '+pendingPack.name+' free'):'Book free class';
+        payBtn.textContent='Confirm booking';
         var cardWrap=document.getElementById('bk-card');if(cardWrap)cardWrap.style.display='none';var cardWrapLabel=document.getElementById('bk-card-label');if(cardWrapLabel)cardWrapLabel.style.display='none';
         var cardLabel=document.getElementById('bk-card-label');if(cardLabel)cardLabel.style.display='none';
         var payDiv=document.getElementById('bk-pay-divider');if(payDiv)payDiv.style.display='none';
         var payReqEl=document.getElementById('bk-pay-request');if(payReqEl)payReqEl.style.display='none';
       } else {
-        payBtn.textContent='Pay \u20AC'+discountedPrice.toFixed(2)+' & Book Class';
+        payBtn.textContent='Confirm booking';
       }
     }
     var guestBtn=document.getElementById('bk-guest-btn');
     if(guestBtn){
-      guestBtn.textContent = discountedPrice===0 ? ((pendingPack&&pendingPack.name)?('Get '+pendingPack.name+' free'):'Book free class') : 'Pay \u20AC'+discountedPrice.toFixed(2);
+      guestBtn.textContent='Confirm booking';
     }
     document.getElementById('bk-promo-fields').style.display='none';
     document.getElementById('bk-promo-toggle').style.display='none';
@@ -1655,7 +1655,7 @@ window.removePromo=function(origPrice){
   document.getElementById('bk-promo').value='';
   var totalEl2=document.getElementById('bk-total'); if(totalEl2) totalEl2.textContent='\u20AC'+origPrice;
   var payBtn=document.getElementById('bk-pay-btn');
-  if(payBtn) payBtn.textContent='Pay \u20AC'+origPrice+' & Book Class';
+  if(payBtn) payBtn.textContent='Confirm booking';
   var cardWrap=document.getElementById('bk-card');if(cardWrap)cardWrap.style.display='';var cardWrapLabel=document.getElementById('bk-card-label');if(cardWrapLabel)cardWrapLabel.style.display='';
   var cardLabel=document.getElementById('bk-card-label');if(cardLabel)cardLabel.style.display='';
   if(activePayReq){
@@ -1696,7 +1696,7 @@ window.showPayForm=function(type,price,productId,name,desc){stepChange();
     +'<div class="bk-card-wrap" id="bk-card"></div>'
     +'<div class="bk-err" id="bk-err"></div>'
     +(curSession.id?'<label style="display:flex;align-items:center;gap:8px;margin:12px 0 16px;cursor:pointer;font-size:.78rem;color:var(--white60)"><input type="checkbox" id="bk-autoenroll" style="accent-color:var(--cyan);width:16px;height:16px;cursor:pointer"><span>Auto-enroll me in <strong style="color:var(--white)">'+esc(curSession.title)+'</strong></span></label>':'')
-    +'<button class="bk-primary" id="bk-pay-btn" onclick="doPayAndBook(\''+type+'\','+price+','+productId+')">Pay \u20AC'+price+(type==='single'?' & Book':' & Book Class')+'</button>'
+    +'<button class="bk-primary" id="bk-pay-btn" onclick="doPayAndBook(\''+type+'\','+price+','+productId+')">Confirm booking</button>'
     +'<div class="bk-link" onclick="showNoMembership()">\u2190 Change plan</div>'
     +'</div>';
 
@@ -1811,8 +1811,8 @@ window.doPayAndBook=function(type,price,productId){if(isProcessing)return;
     }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
     .then(function(r){
       if(r.data.success){showSuccess();}
-      else{err.textContent=r.data.error||'Booking failed.';showFallback();isProcessing=false;btn.textContent='Book Free Class';btn.disabled=false;}
-    }).catch(function(e){console.error('[fetch-failed]',e);err.textContent='Connection error ('+(e&&e.message||'unknown')+').';err.classList.add('show');isProcessing=false;btn.textContent='Book Free Class';btn.disabled=false;showFallback();});
+      else{err.textContent=r.data.error||'Booking failed.';showFallback();isProcessing=false;btn.textContent='Confirm booking';btn.disabled=false;}
+    }).catch(function(e){console.error('[fetch-failed]',e);err.textContent='Connection error ('+(e&&e.message||'unknown')+').';err.classList.add('show');isProcessing=false;btn.textContent='Confirm booking';btn.disabled=false;showFallback();});
     return;
   }
 
@@ -1822,7 +1822,7 @@ window.doPayAndBook=function(type,price,productId){if(isProcessing)return;
   }}).then(function(result){
     if(result.error){
       err.textContent=result.error.message;err.classList.add('show');showFallback();
-      isProcessing=false;btn.textContent='Pay \u20AC'+(discountedPrice!==null?discountedPrice:price).toFixed(2)+' & Book Class';btn.disabled=false;
+      isProcessing=false;btn.textContent='Confirm booking';btn.disabled=false;
       return;
     }
     return fetch(PROXY+'/sabda-api/pay',{
@@ -1846,17 +1846,17 @@ window.doPayAndBook=function(type,price,productId){if(isProcessing)return;
       if(r.data.success){showSuccess();}
       else if(r.data.clientSecret){
         return stripeInstance.confirmCardPayment(r.data.clientSecret).then(function(conf){
-          if(conf.error){err.textContent=conf.error.message;err.classList.add('show');showFallback();isProcessing=false;btn.textContent='Pay \u20AC'+(discountedPrice!==null?discountedPrice:price).toFixed(2)+' & Book Class';btn.disabled=false;}
+          if(conf.error){err.textContent=conf.error.message;err.classList.add('show');showFallback();isProcessing=false;btn.textContent='Confirm booking';btn.disabled=false;}
           else{showSuccess();}
         });
       } else {
         err.textContent=r.data.error||'Payment failed. Please try again.';showFallback();
-        isProcessing=false;btn.textContent='Pay \u20AC'+(discountedPrice!==null?discountedPrice:price).toFixed(2)+' & Book Class';btn.disabled=false;
+        isProcessing=false;btn.textContent='Confirm booking';btn.disabled=false;
       }
     });
   }).catch(function(e){console.error('[fetch-failed]',e);
     err.textContent='Connection error ('+(e&&e.message||'unknown')+'). Please try again.';err.classList.add('show');
-    isProcessing=false;btn.textContent='Pay \u20AC'+(discountedPrice!==null?discountedPrice:price).toFixed(2)+' & Book Class';btn.disabled=false;showFallback();
+    isProcessing=false;btn.textContent='Confirm booking';btn.disabled=false;showFallback();
   });
 };
 

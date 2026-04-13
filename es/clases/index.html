@@ -1074,13 +1074,13 @@ window.doLogin=function(){if(isProcessing)return;
     if(!r.ok||r.data.error){
       err.innerHTML='Email o contraseña incorrectos. <a href="'+curSession.link+'" target="_blank" rel="noopener noreferrer" style="color:var(--cyan);text-decoration:underline">Reservar en Momence \u2192</a>';
       err.classList.add('show');
-      isProcessing=false;btn.textContent='Iniciar sesión y reservar';btn.disabled=false;
+      isProcessing=false;btn.textContent='Confirmar reserva';btn.disabled=false;
       return;
     }
     if(r.data.mfaRequired){showMfaStep(r.data.mfaToken);return;}
     var d=r.data;
     if(!curSession) return;
-    if(!d||!d.user){console.error('[doLogin] malformed response (no d.user):',d);err.textContent='Login response malformed. Please try again.';err.classList.add('show');isProcessing=false;btn.textContent='Log in & Book';btn.disabled=false;showFallback();return;}
+    if(!d||!d.user){console.error('[doLogin] malformed response (no d.user):',d);err.textContent='Login response malformed. Please try again.';err.classList.add('show');isProcessing=false;btn.textContent='Confirmar reserva';btn.disabled=false;showFallback();return;}
     curUser={id:d.user.id,email:d.user.email||email,firstName:d.user.firstName||email.split('@')[0],lastName:d.user.lastName||'',memberId:d.user.memberId};
     curSessionToken=d.sessionToken;
     curSession.price=d.sessionPrice||22;
@@ -1089,7 +1089,7 @@ window.doLogin=function(){if(isProcessing)return;
     else{showNoMembership();}
   }).catch(function(e){console.error("[catch]",e);
     err.textContent='Error de conexión. Inténtalo de nuevo.';err.classList.add('show');
-    isProcessing=false;btn.textContent='Iniciar sesión y reservar';btn.disabled=false;
+    isProcessing=false;btn.textContent='Confirmar reserva';btn.disabled=false;
     showFallback();
   });
 };
@@ -1298,8 +1298,8 @@ window.doGuestPackPay=function(){
     }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};})})
     .then(function(r){
       if(r.data.success){showSuccess();}
-      else{err.textContent=r.data.error||'No se pudo reservar.';isProcessing=false;if(btn){btn.textContent='Reservar gratis';btn.disabled=false;}showFallback();}
-    }).catch(function(e){console.error("[catch]",e);err.textContent='Error de conexión.';err.classList.add('show');isProcessing=false;if(btn){btn.textContent='Reservar gratis';btn.disabled=false;}});
+      else{err.textContent=r.data.error||'No se pudo reservar.';isProcessing=false;if(btn){btn.textContent='Confirmar reserva';btn.disabled=false;}showFallback();}
+    }).catch(function(e){console.error("[catch]",e);err.textContent='Error de conexión.';err.classList.add('show');isProcessing=false;if(btn){btn.textContent='Confirmar reserva';btn.disabled=false;}});
     return;
   }
   stripeInstance.createPaymentMethod({type:'card',card:cardElement,billing_details:{
@@ -1307,7 +1307,7 @@ window.doGuestPackPay=function(){
   }}).then(function(result){
     if(result.error){
       err.textContent=result.error.message;err.classList.add('show');
-      isProcessing=false;if(btn){btn.textContent='Pagar \u20AC'+((typeof discountedPrice!=='undefined'&&discountedPrice!==null)?discountedPrice:pendingPack.price);btn.disabled=false;}
+      isProcessing=false;if(btn){btn.textContent='Confirmar reserva';btn.disabled=false;}
       return;
     }
     fetch(PROXY+'/sabda-api/pay',{
@@ -1328,17 +1328,17 @@ window.doGuestPackPay=function(){
       if(r.data.success){showSuccess();}
       else if(r.data.clientSecret){
         return stripeInstance.confirmCardPayment(r.data.clientSecret).then(function(conf){
-          if(conf.error){err.textContent=conf.error.message;err.classList.add('show');isProcessing=false;if(btn){btn.textContent='Pagar \u20AC'+((typeof discountedPrice!=='undefined'&&discountedPrice!==null)?discountedPrice:pendingPack.price);btn.disabled=false;}}
+          if(conf.error){err.textContent=conf.error.message;err.classList.add('show');isProcessing=false;if(btn){btn.textContent='Confirmar reserva';btn.disabled=false;}}
           else{showSuccess();}
         });
       } else {
         err.textContent=r.data.error||'Payment failed. Please try again.';
-        isProcessing=false;if(btn){btn.textContent='Pagar \u20AC'+((typeof discountedPrice!=='undefined'&&discountedPrice!==null)?discountedPrice:pendingPack.price);btn.disabled=false;}
+        isProcessing=false;if(btn){btn.textContent='Confirmar reserva';btn.disabled=false;}
         showFallback();
       }
     }).catch(function(e){console.error('[fetch-failed]',e);
       err.textContent='Connection error ('+(e&&e.message||'unknown')+'). Please try again.';err.classList.add('show');
-      isProcessing=false;if(btn){btn.textContent='Pagar \u20AC'+((typeof discountedPrice!=='undefined'&&discountedPrice!==null)?discountedPrice:pendingPack.price);btn.disabled=false;}
+      isProcessing=false;if(btn){btn.textContent='Confirmar reserva';btn.disabled=false;}
     });
   });
 };
@@ -1622,17 +1622,17 @@ window.applyPromo=function(type,origPrice,productId){
     var payBtn=document.getElementById('bk-pay-btn');
     if(payBtn){
       if(discountedPrice===0){
-        payBtn.textContent=(pendingPack&&pendingPack.name)?('Conseguir '+pendingPack.name+' gratis'):'Reservar clase gratuita';
+        payBtn.textContent='Confirmar reserva';
         var cardWrap=document.getElementById('bk-card');if(cardWrap)cardWrap.style.display='none';var cardWrapLabel=document.getElementById('bk-card-label');if(cardWrapLabel)cardWrapLabel.style.display='none';
         var cardLabel=document.getElementById('bk-card-label');if(cardLabel)cardLabel.style.display='none';
         var payDiv=document.getElementById('bk-pay-divider');if(payDiv)payDiv.style.display='none';
         var payReqEl=document.getElementById('bk-pay-request');if(payReqEl)payReqEl.style.display='none';
       } else {
-        payBtn.textContent='Pagar \u20AC'+discountedPrice.toFixed(2)+' y reservar clase';
+        payBtn.textContent='Confirmar reserva';
       }
     }
     var guestBtn=document.getElementById('bk-guest-btn');
-    if(guestBtn){ guestBtn.textContent = discountedPrice===0 ? ((pendingPack&&pendingPack.name)?('Conseguir '+pendingPack.name+' gratis'):'Reservar clase gratuita') : 'Pagar €'+discountedPrice.toFixed(2); }
+    if(guestBtn){ guestBtn.textContent='Confirmar reserva'; }
     document.getElementById('bk-promo-fields').style.display='none';
     document.getElementById('bk-promo-toggle').style.display='none';
     if(activePayReq){
@@ -1660,7 +1660,7 @@ window.removePromo=function(origPrice){
   document.getElementById('bk-promo').value='';
   var totalEl2=document.getElementById('bk-total'); if(totalEl2) totalEl2.textContent='\u20AC'+origPrice;
   var payBtn=document.getElementById('bk-pay-btn');
-  if(payBtn) payBtn.textContent='Pagar \u20AC'+origPrice+' y reservar clase';
+  if(payBtn) payBtn.textContent='Confirmar reserva';
   var cardWrap=document.getElementById('bk-card');if(cardWrap)cardWrap.style.display='';var cardWrapLabel=document.getElementById('bk-card-label');if(cardWrapLabel)cardWrapLabel.style.display='';
   var cardLabel=document.getElementById('bk-card-label');if(cardLabel)cardLabel.style.display='';
   if(activePayReq){
@@ -1701,7 +1701,7 @@ window.showPayForm=function(type,price,productId,name,desc){stepChange();
     +'<div class="bk-card-wrap" id="bk-card"></div>'
     +'<div class="bk-err" id="bk-err"></div>'
     +(curSession.id?'<label style="display:flex;align-items:center;gap:8px;margin:12px 0 16px;cursor:pointer;font-size:.78rem;color:var(--white60)"><input type="checkbox" id="bk-autoenroll" style="accent-color:var(--cyan);width:16px;height:16px;cursor:pointer"><span>Inscríbeme automáticamente en <strong style="color:var(--white)">'+esc(curSession.title)+'</strong></span></label>':'')
-    +'<button class="bk-primary" id="bk-pay-btn" onclick="doPayAndBook(\''+type+'\','+price+','+productId+')">Pagar \u20AC'+price+(type==='single'?' y reservar':' y reservar clase')+'</button>'
+    +'<button class="bk-primary" id="bk-pay-btn" onclick="doPayAndBook(\''+type+'\','+price+','+productId+')">Confirmar reserva</button>'
     +'<div class="bk-link" onclick="showNoMembership()">\u2190 Cambiar plan</div>'
     +'</div>';
 
@@ -1816,8 +1816,8 @@ window.doPayAndBook=function(type,price,productId){if(isProcessing)return;
     }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
     .then(function(r){
       if(r.data.success){showSuccess();}
-      else{err.textContent=r.data.error||'Error al reservar.';showFallback();isProcessing=false;btn.textContent='Reservar clase gratuita';btn.disabled=false;}
-    }).catch(function(e){console.error("[catch]",e);err.textContent='Error de conexión.';err.classList.add('show');isProcessing=false;btn.textContent='Reservar clase gratuita';btn.disabled=false;showFallback();});
+      else{err.textContent=r.data.error||'Error al reservar.';showFallback();isProcessing=false;btn.textContent='Confirmar reserva';btn.disabled=false;}
+    }).catch(function(e){console.error("[catch]",e);err.textContent='Error de conexión.';err.classList.add('show');isProcessing=false;btn.textContent='Confirmar reserva';btn.disabled=false;showFallback();});
     return;
   }
 
@@ -1827,7 +1827,7 @@ window.doPayAndBook=function(type,price,productId){if(isProcessing)return;
   }}).then(function(result){
     if(result.error){
       err.textContent=result.error.message;err.classList.add('show');showFallback();
-      isProcessing=false;btn.textContent='Pagar y reservar';btn.disabled=false;
+      isProcessing=false;btn.textContent='Confirmar reserva';btn.disabled=false;
       return;
     }
     return fetch(PROXY+'/sabda-api/pay',{
@@ -1851,17 +1851,17 @@ window.doPayAndBook=function(type,price,productId){if(isProcessing)return;
       if(r.data.success){showSuccess();}
       else if(r.data.clientSecret){
         return stripeInstance.confirmCardPayment(r.data.clientSecret).then(function(conf){
-          if(conf.error){err.textContent=conf.error.message;err.classList.add('show');showFallback();isProcessing=false;btn.textContent='Pagar y reservar';btn.disabled=false;}
+          if(conf.error){err.textContent=conf.error.message;err.classList.add('show');showFallback();isProcessing=false;btn.textContent='Confirmar reserva';btn.disabled=false;}
           else{showSuccess();}
         });
       } else {
         err.textContent=r.data.error||'Error en el pago. Inténtalo de nuevo.';showFallback();
-        isProcessing=false;btn.textContent='Pagar y reservar';btn.disabled=false;
+        isProcessing=false;btn.textContent='Confirmar reserva';btn.disabled=false;
       }
     });
   }).catch(function(e){console.error("[catch]",e);
     err.textContent='Error de conexión. Inténtalo de nuevo.';err.classList.add('show');
-    isProcessing=false;btn.textContent='Pagar y reservar';btn.disabled=false;showFallback();
+    isProcessing=false;btn.textContent='Confirmar reserva';btn.disabled=false;showFallback();
   });
 };
 
