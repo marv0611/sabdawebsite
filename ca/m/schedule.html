@@ -652,7 +652,32 @@ function openMo(link,title,time,teacher){
   document.getElementById('mo-c').textContent=time+(teacher?' · '+teacher:'');
 
   // Go to pack list first, matching desktop flow
-  showNoMembership();
+  /*SABDA-MEMBERSHIPS-V3 RECHECK — if user already logged in from prior booking, refresh memberships for this new session before showing pack picker. */
+  if(curUser&&curUser.email&&curSessionToken&&!curUser.isGuest){
+    fetch(PROXY+'/sabda-api/check-memberships',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:curUser.email,sessionId:curSession.id,sessionToken:curSessionToken})
+    }).then(function(r){return r.json().then(function(d){return{ok:r.ok,status:r.status,data:d}});})
+    .then(function(r){
+      if(!r.ok){
+        // Session expired or other error — clear stale auth, fall back to anonymous flow
+        if(r.status===401||(r.data&&r.data.code==='session_expired')){
+          curUser=null;curSessionToken=null;curMembership=null;
+        }
+        showNoMembership();
+        return;
+      }
+      if(r.data.sessionPrice) curSession.price=r.data.sessionPrice;
+      if(r.data.hasUsableMembership&&r.data.memberships&&r.data.memberships.length>0){
+        showConfirmStep(r.data.memberships);
+      } else {
+        showNoMembership();
+      }
+    }).catch(function(e){console.warn('[recheck-memberships] failed, falling back:',e);showNoMembership();});
+  } else {
+    showNoMembership();
+  }
   document.getElementById('mo').classList.add('open');
   document.getElementById('mo').style.display='flex';
   document.body.style.overflow='hidden';
@@ -1758,7 +1783,7 @@ function showSuccess(){stepChange();
   /* SABDA-CREDIT-FIX-v1 — differentiate atomic-book vs credit-purchase. */
   if(curSession&&curSession.id){
     bd.innerHTML='<div class="bk-success">'
-    +'<div class="bk-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>'
+    +'<div class="bk-check" style="width:88px;height:88px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px"><img src="/assets/success-cymatic-360.png" alt="" style="width:88px;height:88px;display:block" /></div>'
     +'<h3>Reserva confirmada!</h3>'
     +'<p>'+esc(curSession.title)+'<br>'+esc(curSession.time)+(curSession.teacher?' amb '+esc(curSession.teacher):'')+'</p>'
     +'<p style="margin-top:16px;font-size:.78rem;color:var(--white38)">Revisa el teu correu per a la confirmació. Ens veiem a la classe.</p>'
@@ -1766,7 +1791,7 @@ function showSuccess(){stepChange();
     +'</div>';
   } else {
     bd.innerHTML='<div class="bk-success">'
-    +'<div class="bk-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>'
+    +'<div class="bk-check" style="width:88px;height:88px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px"><img src="/assets/success-cymatic-360.png" alt="" style="width:88px;height:88px;display:block" /></div>'
     +'<h3>Crèdit afegit al teu compte</h3>'
     +'<p>'+(_purchName||'La teva compra')+' està llest. Ara tria la classe a la qual vols assistir.</p>'
     +'<p style="margin-top:16px;font-size:.78rem;color:var(--white38)">Revisa el teu correu per al rebut. Ens veiem a la classe.</p>'

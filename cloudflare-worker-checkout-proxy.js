@@ -130,6 +130,9 @@ export default {
     if (url.pathname === '/sabda-api/check-email') {
       return handleCheckEmail(request, reqOrigin);
     }
+    if (url.pathname === '/sabda-api/check-memberships') {
+      return handleCheckMemberships(request, reqOrigin);
+    }
     if (url.pathname === '/sabda-api/login') {
       return handleLogin(request, reqOrigin);
     }
@@ -615,6 +618,64 @@ async function handleMfaVerify(request, origin) {
 }
 
 // ── SERVER-SIDE LOGIN: login + fetch profile + check memberships ──
+// ── SABDA-MEMBERSHIPS-V3: re-check memberships for already-logged-in user ──
+// Used when modal re-opens for a different session after a prior booking.
+// curUser + curSessionToken still valid, but memberships may have changed
+// (one credit consumed by the prior booking). Re-query with the saved cookie.
+async function handleCheckMemberships(request, origin) {
+  try {
+    const { email, sessionId, sessionToken } = await request.json();
+    if (!email || !sessionId || !sessionToken) {
+      return new Response(JSON.stringify({ error: 'Missing required fields' }), {
+        status: 400, headers: corsHeaders(origin),
+      });
+    }
+
+    const cookieStr = atob(sessionToken);
+
+    const mRes = await fetch(
+      MOMENCE + '/_api/primary/plugin/memberships/session-compatible-memberships?sessionId=' + sessionId + '&email=' + encodeURIComponent(email) + '&tickets=1&isGuestOnlyBooking=false',
+      { headers: momenceHeaders({ 'Cookie': cookieStr }) }
+    );
+
+    if (mRes.status === 401 || mRes.status === 403) {
+      // Session expired — caller should fall back to fresh login
+      return new Response(JSON.stringify({ error: 'Session expired', code: 'session_expired' }), {
+        status: 401, headers: corsHeaders(origin),
+      });
+    }
+
+    const mData = await mRes.json().catch(() => []);
+    const rawList = Array.isArray(mData) ? mData : (mData.memberships || mData.message || []);
+    const memberships = rawList.filter(m => {
+      const hasClassCredits = m.classesLeft !== null && m.classesLeft !== undefined && m.classesLeft > 0;
+      const hasMoneyCredits = m.moneyLeft !== null && m.moneyLeft !== undefined && m.moneyLeft > 0;
+      const isActiveSubscription = m.type === 'subscription' && m.classesLeft === null;
+      const isPendingActivation = m.type === 'subscription' && (m.activatedAt === null || m.activatedAt === undefined || m.activatesOnFirstUsage === true);
+      return hasClassCredits || hasMoneyCredits || isActiveSubscription || isPendingActivation;
+    });
+
+    // Also fetch session price for the new session
+    let sessionPrice = 0;
+    try {
+      const sRes = await fetch(MOMENCE + '/_api/readonly/plugin/sessions/' + sessionId + '?hostId=54278', { headers: momenceHeaders() });
+      const sData = await sRes.json();
+      if (sData.message) sessionPrice = sData.message.fixedTicketPrice || 0;
+    } catch (e) {}
+
+    return new Response(JSON.stringify({
+      memberships,
+      hasUsableMembership: memberships.length > 0,
+      sessionPrice,
+    }), { status: 200, headers: corsHeaders(origin) });
+
+  } catch (e) {
+    return new Response(JSON.stringify({ error: 'Server error: ' + e.message }), {
+      status: 500, headers: corsHeaders(origin),
+    });
+  }
+}
+
 async function handleLogin(request, origin) {
   try {
     const { email, password, sessionId } = await request.json();
