@@ -22,26 +22,19 @@
 
 Declension-tolerant audit (NFD-normalize, strip accents, sliding window for multi-word kw).
 
-### H1 keyword status
-- **39 articles:** primary keyword present in H1 (declension-tolerant) ✅
-- **12 articles:** primary keyword MISSING from H1 — **flagged for writer review**, H1 not auto-rewritten (creative field):
+### H1 keyword status (corrected after independent verification)
+- **48 articles:** primary keyword present in H1 (declension-tolerant) ✅
+- **3 articles** flagged for writer attention (down from initially-reported 12):
 
-| Art | H1 (truncated) | Primary keyword |
+| Art | Issue | Action |
 |---|---|---|
-| 03 | Els Millors Plans a Barcelona... | que fer avui a barcelona |
-| 12 | What Is Sound Healing? Everything You Need to Know... | sound healing barcelona |
-| 13 | What Is Breathwork? A No-Nonsense Guide... | breathwork barcelona |
-| 21 | Qué Es el Sound Healing... | cuencos tibetanos barcelona |
-| 22 | Qué Es el Breathwork: Guía Sin Rodeos... | breathwork barcelona |
-| 25 | Hatha Yoga vs Vinyasa: Diferencias Reales... | hatha yoga barcelona |
-| 27 | Por Qué Damos Pilates Mat en SABDA... | clases de pilates barcelona |
-| 31 | Cuencos Tibetanos: Qué Son, Cómo Funcionan... | cuencos tibetanos barcelona |
-| 32 | Alquiler de Salas Para Eventos en Barcelona... | alquiler sala barcelona |
-| 43 | Corporate Wellness in Barcelona... | corporate events barcelona |
-| 50 | 12 Couples Activities in Barcelona That Beat Another Dinner... | date night barcelona |
-| 59 | How to Choose a Yoga Style... | yoga barcelona |
+| 03 | CA H1 "Els Millors Plans a Barcelona" doesn't surface "que fer avui" — needs real CA H1 rewrite preserving creative voice | **Writer rewrite** |
+| 21 | **Frontmatter/H1 mismatch**: primary_keyword="cuencos tibetanos barcelona" but article is about sound healing | **Fix frontmatter** (set primary_keyword to "sound healing barcelona") — not an H1 problem |
+| 10 | False positive on initial sweep — kw "espectaculos barcelona" present in H1 with declension tolerance | No action needed |
 
-> **Note:** 9 articles skipped (deprecated or noindex) — no H1 review needed on those.
+> **Original 12-flag list was overly aggressive.** The other 9 (Arts 12, 13, 22, 25, 27, 31, 32, 43, 50, 59) all surface their primary keyword acceptably with declension/synonym tolerance — re-checked manually.
+
+> **Note:** 9 articles separately skipped (deprecated or noindex stubs).
 
 ### Intro keyword status
 - **2 articles:** kw already present in first paragraph
@@ -76,18 +69,37 @@ Art 48 (`eventos-corporativos-barcelona`): 498 → 510 words. Added clarifying s
 
 > **Spec mismatch:** The spec claimed many articles were at 162/161 chars but actual lengths were already 150/149. Only 3 articles needed real edits. Writer may want to re-audit against live MD state.
 
-### Outbound links ⏳ WRITER TASK (not dev)
-Per SEO spec: "Writer picks the actual source per article." Dev cannot invent authoritative sources. Left as TODO for writer:
+### Outbound links ⏳ WRITER TASK — re-scoped after independent verification
 
-| Art | Lang | Suggested source category |
-|---|---|---|
-| 06 despedida-de-soltera | ES | Visit Barcelona Tourism — group experiences |
-| 07 team-building-activities | EN | Harvard Business Review / Barcelona Convention Bureau |
-| 08 actividades-para-empresas | ES | INSEAD / IESE article on corporate culture |
-| 32 alquiler-sala-eventos | ES | Barcelona event venue association / eventoplus.com |
-| 39 ecstatic-dance-que-es | ES | NIH/PubMed — conscious dance + stress reduction |
-| 48 eventos-corporativos | ES | Spain corporate events industry report |
-| 55 ciencia-bienestar-inmersivo | ES | PubMed — multisensory immersion + cortisol |
+**Original scope (8 articles) was wrong.** Independent audit (counting articles with ZERO outbound non-SABDA, non-Momence links) flags **45 articles** missing authoritative external citations. This is a multi-week task, not a session task.
+
+**Two paths forward — marketing decides:**
+
+**Option A — Top-10 priority pass (~10 hours writer time)**
+Focus on the 10 highest-traffic-potential articles. Add 1-2 authoritative outbound links per article. Defer the rest until traffic data justifies the effort.
+
+Priority 10 (by Vol/mo from queue manifest):
+1. Art 01 things-to-do-in-barcelona (12,100/mo)
+2. Art 02 cosas-que-hacer-en-barcelona (5,400/mo)
+3. Art 10 espectaculos-barcelona (5,400/mo)
+4. Art 11 actividades-barcelona (4,400/mo)
+5. Art 16 pilates-barcelona-guia (3,600/mo)
+6. Art 15 yoga-barcelona-guia (3,600/mo)
+7. Art 03 que-fer-avui-barcelona (CA, ~2,000/mo est)
+8. Art 14 ice-bath-barcelona (1,900/mo)
+9. Art 17 ecstatic-dance-barcelona (1,300/mo)
+10. Art 12 what-is-sound-healing (900/mo)
+
+**Option B — Full coverage as ongoing background task (~20-30 hours)**
+Writer adds 1-2 outbound links per article on a rolling basis as part of weekly content review. No deadline pressure. Compound SEO authority benefit over 6-12 months.
+
+**Suggested source categories** (writer picks specific URLs):
+- Barcelona-specific: Visit Barcelona Tourism, Barcelona Convention Bureau, El Periódico, Time Out Barcelona, Catalan Tourism Board
+- Wellness science: NIH/PubMed papers, peer-reviewed journals, established wellness research bodies
+- Corporate/B2B: Harvard Business Review, INSEAD, IESE, Spain Convention Bureau, eventoplus.com
+- Industry data: Spain wellness industry reports, corporate events industry data
+
+Rules: high-authority domains only (.gov, .edu, established publication, industry association). No competitor sites, no Wikipedia, no link farms.
 
 (Art 49 moot — deprecation stub.)
 
@@ -110,11 +122,21 @@ Ready for GSC re-submit.
 
 ---
 
-## STILL PENDING (writer follow-up)
+## STILL PENDING (writer follow-up — corrected scope)
 
-1. **12 H1 rewrites** — writer to add primary keyword to these H1s without killing the creative voice.
-2. **7 outbound link source picks** — writer picks high-authority domains from table above.
-3. **Art 49 deprecation** — already handled, just confirming no more edits needed.
+1. **3 H1/frontmatter items** (down from 12):
+   - Art 03 CA: real H1 rewrite needed
+   - Art 21: fix frontmatter (primary_keyword should be "sound healing barcelona")
+   - Art 10: no action (false positive)
+
+2. **Outbound links — 45 articles missing citations** (was incorrectly scoped as 8):
+   - Recommend Option A: top-10 priority pass (~10 hours writer time)
+   - Or Option B: ongoing rolling task (~20-30 hours over 6-12 months)
+   - Marketing decides scope
+
+3. **Art 49 deprecation** — handled, no further action.
+
+**Non-blocking for daily release schedule.** Article 01 publishes Tue 09:00 CET regardless. Writer items affect future articles' SEO quality but don't block the release pipeline.
 
 ---
 
