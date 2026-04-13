@@ -1273,8 +1273,8 @@ function applyPromo(type,origPrice,productId){
     var payBtn=document.getElementById('bk-pay-btn');
     if(payBtn){
       if(discountedPrice===0){
-        payBtn.textContent='Reservar clase gratis';
-        var guestBtnF=document.getElementById('bk-guest-btn'); if(guestBtnF) guestBtnF.textContent='Reservar clase gratis';
+        payBtn.textContent=(pendingPack&&pendingPack.name)?('Conseguir '+pendingPack.name+' gratis'):'Reservar clase gratis';
+        var guestBtnF=document.getElementById('bk-guest-btn'); if(guestBtnF) guestBtnF.textContent=(pendingPack&&pendingPack.name)?('Conseguir '+pendingPack.name+' gratis'):'Reservar clase gratis';
         payBtn.disabled=false; // override card-validation gate — no card needed
         // Hide card section and Apple Pay — no payment needed
         var cardSec=document.getElementById('bk-card-section');if(cardSec)cardSec.style.display='none';
@@ -1732,7 +1732,7 @@ function showSuccess(){stepChange();
     +'<h3>Crédito añadido a tu cuenta</h3>'
     +'<p>'+(_purchName||'Tu compra')+' está listo. Ahora elige la clase a la que quieres asistir.</p>'
     +'<p style="margin-top:16px;font-size:.78rem;color:var(--white38)">Revisa tu email para el recibo. Nos vemos en la esterilla.</p>'
-    +'<button class="bk-primary" style="margin-top:20px" onclick="closeMo();renderSched()">Reservar clase \u2192</button>'
+    +'<button class="bk-primary" style="margin-top:20px" onclick="closeMo();renderSched();window.scrollTo({top:document.querySelector(\'.sch-day-tabs\')?.offsetTop||0,behavior:\'smooth\'})">Reservar clase \u2192</button>'
     +'</div>';
   }
   isProcessing=false;

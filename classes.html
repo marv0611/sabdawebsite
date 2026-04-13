@@ -1552,7 +1552,7 @@ window.applyPromo=function(type,origPrice,productId){
     var payBtn=document.getElementById('bk-pay-btn');
     if(payBtn){
       if(discountedPrice===0){
-        payBtn.textContent='Book Free Class';
+        payBtn.textContent=(pendingPack&&pendingPack.name)?('Get '+pendingPack.name+' free'):'Book free class';
         var cardWrap=document.getElementById('bk-card');if(cardWrap)cardWrap.style.display='none';var cardWrapLabel=document.getElementById('bk-card-label');if(cardWrapLabel)cardWrapLabel.style.display='none';
         var cardLabel=document.getElementById('bk-card-label');if(cardLabel)cardLabel.style.display='none';
         var payDiv=document.getElementById('bk-pay-divider');if(payDiv)payDiv.style.display='none';
@@ -1563,7 +1563,7 @@ window.applyPromo=function(type,origPrice,productId){
     }
     var guestBtn=document.getElementById('bk-guest-btn');
     if(guestBtn){
-      guestBtn.textContent = discountedPrice===0 ? 'Book Free Class' : 'Pay \u20AC'+discountedPrice.toFixed(2);
+      guestBtn.textContent = discountedPrice===0 ? ((pendingPack&&pendingPack.name)?('Get '+pendingPack.name+' free'):'Book free class') : 'Pay \u20AC'+discountedPrice.toFixed(2);
     }
     document.getElementById('bk-promo-fields').style.display='none';
     document.getElementById('bk-promo-toggle').style.display='none';
@@ -1829,7 +1829,7 @@ function showSuccess(){stepChange();
     +'<h3>Credit added to your account</h3>'
     +'<p>'+(_purchName||'Your purchase')+' is ready. Now choose the class you want to attend.</p>'
     +'<p style="margin-top:16px;font-size:.78rem;color:var(--white38)">Check your email for the receipt. We\'ll see you on the mat.</p>'
-    +'<button class="bk-primary" style="margin-top:20px" onclick="closeMo()">Book a class \u2192</button>'
+    +'<button class="bk-primary" style="margin-top:20px" onclick="window.location.href=\'/classes/#days\'">Book a class \u2192</button>'
     +'</div>';
   }
   isProcessing=false;

@@ -1252,7 +1252,7 @@ function applyPromo(type,origPrice,productId){
     var payBtn=document.getElementById('bk-pay-btn');
     if(payBtn){
       if(discountedPrice===0){
-        payBtn.textContent='Reservar clase gratis';
+        payBtn.textContent=(pendingPack&&pendingPack.name)?('Aconsegueix '+pendingPack.name+' gratis'):'Reservar classe gratis';
         var guestBtnF=document.getElementById('bk-guest-btn'); if(guestBtnF) guestBtnF.textContent='Reservar clase gratis';
         payBtn.disabled=false; // override card-validation gate — no card needed
         // Hide card section and Apple Pay — no payment needed
@@ -1260,7 +1260,7 @@ function applyPromo(type,origPrice,productId){
         var payDiv=document.getElementById('bk-pay-divider');if(payDiv)payDiv.style.display='none';
         var payReqEl=document.getElementById('bk-pay-request');if(payReqEl)payReqEl.style.display='none';
       } else {
-        payBtn.textContent='Pagar '+discountedPrice.toFixed(2)+'€ y reservar clase';
+        payBtn.textContent='Pagar '+discountedPrice.toFixed(2)+'€ i reservar classe';
         var guestBtn=document.getElementById('bk-guest-btn'); if(guestBtn) guestBtn.textContent='Pagar €'+discountedPrice.toFixed(2);
         // Re-evaluate card-validation gate (button stays disabled if card incomplete)
         var allDone=cardCompleteState.cardNumber && cardCompleteState.cardExpiry && cardCompleteState.cardCvc;
@@ -1287,7 +1287,7 @@ function removePromo(origPrice){
   var totalEl2=document.getElementById('bk-total'); if(totalEl2) totalEl2.textContent='€'+origPrice;
   var payBtn=document.getElementById('bk-pay-btn');
   if(payBtn){
-    payBtn.textContent='Pagar '+origPrice+'€ y reservar clase';
+    payBtn.textContent='Pagar '+origPrice+'€ i reservar classe';
     // Re-apply card-validation gate
     var allDone=cardCompleteState.cardNumber && cardCompleteState.cardExpiry && cardCompleteState.cardCvc;
     payBtn.disabled=!allDone;
@@ -1711,7 +1711,7 @@ function showSuccess(){stepChange();
     +'<h3>Crèdit afegit al teu compte</h3>'
     +'<p>'+(_purchName||'La teva compra')+' està llest. Ara tria la classe a la qual vols assistir.</p>'
     +'<p style="margin-top:16px;font-size:.78rem;color:var(--white38)">Revisa el teu correu per al rebut. Ens veiem a la classe.</p>'
-    +'<button class="bk-primary" style="margin-top:20px" onclick="closeMo();renderSched()">Reservar classe \u2192</button>'
+    +'<button class="bk-primary" style="margin-top:20px" onclick="closeMo();renderSched();window.scrollTo({top:document.querySelector(\'.sch-day-tabs\')?.offsetTop||0,behavior:\'smooth\'})">Reservar classe \u2192</button>'
     +'</div>';
   }
   isProcessing=false;

@@ -1559,7 +1559,7 @@ window.applyPromo=function(type,origPrice,productId){
     var payBtn=document.getElementById('bk-pay-btn');
     if(payBtn){
       if(discountedPrice===0){
-        payBtn.textContent='Reservar clase gratuita';
+        payBtn.textContent=(pendingPack&&pendingPack.name)?('Conseguir '+pendingPack.name+' gratis'):'Reservar clase gratuita';
         var cardWrap=document.getElementById('bk-card');if(cardWrap)cardWrap.style.display='none';var cardWrapLabel=document.getElementById('bk-card-label');if(cardWrapLabel)cardWrapLabel.style.display='none';
         var cardLabel=document.getElementById('bk-card-label');if(cardLabel)cardLabel.style.display='none';
         var payDiv=document.getElementById('bk-pay-divider');if(payDiv)payDiv.style.display='none';
@@ -1569,7 +1569,7 @@ window.applyPromo=function(type,origPrice,productId){
       }
     }
     var guestBtn=document.getElementById('bk-guest-btn');
-    if(guestBtn){ guestBtn.textContent = discountedPrice===0 ? 'Reservar clase gratuita' : 'Pagar €'+discountedPrice.toFixed(2); }
+    if(guestBtn){ guestBtn.textContent = discountedPrice===0 ? ((pendingPack&&pendingPack.name)?('Conseguir '+pendingPack.name+' gratis'):'Reservar clase gratuita') : 'Pagar €'+discountedPrice.toFixed(2); }
     document.getElementById('bk-promo-fields').style.display='none';
     document.getElementById('bk-promo-toggle').style.display='none';
     if(activePayReq){
@@ -1834,7 +1834,7 @@ function showSuccess(){stepChange();
     +'<h3>Crédito añadido a tu cuenta</h3>'
     +'<p>'+(_purchName||'Tu compra')+' está listo. Ahora elige la clase a la que quieres asistir.</p>'
     +'<p style="margin-top:16px;font-size:.78rem;color:var(--white38)">Revisa tu correo para el recibo. Nos vemos en la esterilla.</p>'
-    +'<button class="bk-primary" style="margin-top:20px" onclick="closeMo()">Reservar clase \u2192</button>'
+    +'<button class="bk-primary" style="margin-top:20px" onclick="window.location.href=\'/es/clases/#days\'">Reservar clase \u2192</button>'
     +'</div>';
   }
   isProcessing=false;

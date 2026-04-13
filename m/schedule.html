@@ -1301,8 +1301,8 @@ function applyPromo(type,origPrice,productId){
     var payBtn=document.getElementById('bk-pay-btn');
     if(payBtn){
       if(discountedPrice===0){
-        payBtn.textContent='Book Free Class';
-        var guestBtnF=document.getElementById('bk-guest-btn'); if(guestBtnF) guestBtnF.textContent='Book Free Class';
+        payBtn.textContent=(pendingPack&&pendingPack.name)?('Get '+pendingPack.name+' free'):'Book free class';
+        var guestBtnF=document.getElementById('bk-guest-btn'); if(guestBtnF) guestBtnF.textContent=(pendingPack&&pendingPack.name)?('Get '+pendingPack.name+' free'):'Book free class';
         payBtn.disabled=false; // override card-validation gate — no card needed
         // Hide card section and Apple Pay — no payment needed
         var cardSec=document.getElementById('bk-card-section');if(cardSec)cardSec.style.display='none';
@@ -1760,7 +1760,7 @@ function showSuccess(){stepChange();
     +'<h3>Credit added to your account</h3>'
     +'<p>'+(_purchName||'Your purchase')+' is ready. Now choose the class you want to attend.</p>'
     +'<p style="margin-top:16px;font-size:.78rem;color:var(--white38)">Check your email for the receipt. We\'ll see you on the mat.</p>'
-    +'<button class="bk-primary" style="margin-top:20px" onclick="closeMo();renderSched()">Book a class \u2192</button>'
+    +'<button class="bk-primary" style="margin-top:20px" onclick="closeMo();renderSched();window.scrollTo({top:document.querySelector(\'.sch-day-tabs\')?.offsetTop||0,behavior:\'smooth\'})">Book a class \u2192</button>'
     +'</div>';
   }
   isProcessing=false;
