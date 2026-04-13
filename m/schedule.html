@@ -839,7 +839,7 @@ function doLogin(){if(isProcessing)return;
     curSession.price=d.sessionPrice||22;
 
     if(d.hasUsableMembership&&d.memberships.length>0){
-      showConfirmStep(d.memberships[0]);
+      showConfirmStep(d.memberships);
     } else {
       showNoMembership();
     }
@@ -906,7 +906,7 @@ function doMfaVerify(){if(isProcessing)return;
     curSession.price=d.sessionPrice||22;
 
     if(d.hasUsableMembership&&d.memberships.length>0){
-      showConfirmStep(d.memberships[0]);
+      showConfirmStep(d.memberships);
     } else {
       showNoMembership();
     }
@@ -1171,38 +1171,96 @@ function validateEmail(email){
 }
 function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 
-// ── STEP 3A: CONFIRM WITH MEMBERSHIP ──
-function showConfirmStep(membership){stepChange();
-  setBack(showGuestStep);
-  var bd=document.getElementById('mo-bd');
-  var mName=membership.name||membership.membershipName||membership.planName||'Membership';
-  var credits=membership.classesLeft!==null&&membership.classesLeft!==undefined?membership.classesLeft:(membership.moneyLeft||'');
-  var detail=credits!==''&&credits!==null&&credits!==undefined?(Number(credits)===1?'1 class remaining':credits+' classes remaining'):'Active membership';
-  curMembership=membership;
+// ── STEP 3A: CONFIRM (has credits) ── SABDA-MEMBERSHIPS-V2 (Marvyn 2026-04-13)
+function showConfirmStep(membershipOrList){stepChange();
+  // Accept either a single membership (legacy) or an array (new).
+  var list = Array.isArray(membershipOrList) ? membershipOrList.slice() : [membershipOrList];
+  if(!list.length){ console.error('[showConfirmStep] empty list'); return; }
+  var primary = list[0];
 
-  bd.innerHTML='<div class="bk-class">'
-    +'<div class="bk-class-name">'+esc(curSession.title)+'</div>'
-    +'<div class="bk-class-meta">'
-    +'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+esc(curSession.time)+'</span>'
-    +(curSession.teacher?'<span>'+esc(curSession.teacher)+'</span>':'')
-    +'</div></div>'
+  // Sum credits across same-name+same-type passes (both DROP IN entries become 1 bucket).
+  // "Same" = exact name match AND type match (avoid summing pack+subscription).
+  function sameKind(a,b){
+    return (a.name||a.membershipName||'') === (b.name||b.membershipName||'') &&
+           (a.type||'') === (b.type||'');
+  }
+  var sameKindOthers = list.slice(1).filter(function(o){return sameKind(o, primary);});
+  var differentOthers = list.slice(1).filter(function(o){return !sameKind(o, primary);});
+
+  // Sum credits for primary's bucket
+  var primaryCredits = (primary.classesLeft != null) ? Number(primary.classesLeft) : null;
+  var summedCredits = primaryCredits;
+  if(primaryCredits !== null){
+    sameKindOthers.forEach(function(o){
+      if(o.classesLeft != null) summedCredits += Number(o.classesLeft);
+    });
+  }
+
+  var bd=document.getElementById('mo-bd');
+  var mName=primary.name||primary.membershipName||primary.planName||'Membership';
+  var isSubscription = primary.type === 'subscription';
+  var detail;
+  if(isSubscription || summedCredits === null){
+    detail = 'Active membership';
+  } else if(Number(summedCredits) === 1){
+    detail = '1 class remaining';
+  } else {
+    detail = summedCredits + ' classes remaining';
+  }
+  curMembership=primary;
+
+  // "You also have" copy for differentOthers
+  var alsoHaveHTML = '';
+  if(differentOthers.length > 0){
+    var items = differentOthers.map(function(o){
+      var nm = o.name||o.membershipName||'Membership';
+      if(o.type === 'subscription') return '1 ' + nm + ' membership';
+      var c = (o.classesLeft != null) ? Number(o.classesLeft) : 0;
+      return c + ' ' + nm + ' ' + (c === 1 ? 'credit' : 'credits');
+    });
+    alsoHaveHTML = '<div style="font-size:.72rem;color:var(--white60);margin-top:10px;padding-top:10px;border-top:1px solid rgba(240,239,233,.07)">'
+                 + 'You also have: ' + items.join(' &middot; ')
+                 + '</div>';
+  }
+
+  // Right-side badge (top of card)
+  var badgeHTML;
+  if(isSubscription){
+    badgeHTML = '<div style="background:rgba(2,243,197,.12);border:1px solid rgba(2,243,197,.3);border-radius:20px;padding:3px 10px;font-size:.72rem;font-weight:700;color:var(--cyan)">\u221E</div>';
+  } else if(summedCredits !== null){
+    badgeHTML = '<div style="background:rgba(2,243,197,.12);border:1px solid rgba(2,243,197,.3);border-radius:20px;padding:3px 10px;font-size:.72rem;font-weight:700;color:var(--cyan);white-space:nowrap">'
+              + summedCredits + ' left</div>';
+  } else {
+    badgeHTML = '';
+  }
+
+  // After-this-booking line (only for credit-based, when at least 1 credit will be used)
+  var afterHTML = '';
+  if(!isSubscription && summedCredits !== null && summedCredits > 0){
+    var after = summedCredits - 1;
+    var afterLabel = after === 1 ? '1 class left' : (after + ' classes left');
+    afterHTML = '<div style="font-size:.72rem;color:var(--white38);margin-top:6px">After this booking: <strong style="color:var(--white60)">'+afterLabel+'</strong></div>';
+  }
+
+  bd.innerHTML=classBlockHtml()
     +'<div class="bk-confirm">'
     +(curSession&&curSession.isWaitlist?'<div style="background:rgba(248,166,163,.1);border:1px solid rgba(248,166,163,.3);border-radius:10px;padding:14px;margin-bottom:16px">'+'<div style="color:var(--salmon);font-weight:600;font-size:.88rem;margin-bottom:4px">You\u2019re joining the waitlist</div>'+'<div style="color:var(--white60);font-size:.78rem;line-height:1.4">You won\u2019t be charged unless you get off the waitlist</div>'+'</div>':'')
-    +(curUser?'<div class="bk-user">Booking as <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>':'')
+    +'<div class="bk-user">Booking as <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>'
     +'<div class="bk-membership">'
     +'<div style="display:flex;justify-content:space-between;align-items:center">'
     +'<div class="bk-membership-name">'+mName+'</div>'
-    +(credits!==''&&credits!==null&&credits!==undefined&&membership.type!=='subscription'?'<div style="background:rgba(2,243,197,.12);border:1px solid rgba(2,243,197,.3);border-radius:20px;padding:3px 10px;font-size:.72rem;font-weight:700;color:var(--cyan);white-space:nowrap">'
-    +credits+' left</div>':'<div style="background:rgba(2,243,197,.12);border:1px solid rgba(2,243,197,.3);border-radius:20px;padding:3px 10px;font-size:.72rem;font-weight:700;color:var(--cyan)">∞</div>')
+    +badgeHTML
     +'</div>'
     +'<div class="bk-membership-detail" style="margin-top:4px">'+detail+'</div>'
-    +(credits!==''&&credits!==null&&credits!==undefined&&membership.type!=='subscription'&&Number(credits)>0?'<div style="font-size:.72rem;color:var(--white38);margin-top:6px">After this booking: <strong style="color:var(--white60)">'+(Number(credits)-1===1?'1 class left':((Number(credits)-1)+' classes left'))+'</strong></div>':'')
+    +afterHTML
+    +alsoHaveHTML
     +'</div>'
     +customerFieldsHTML()
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-confirm-btn" onclick="doBookWithMembership()">Confirm Booking</button>'
     +'<div style="text-align:center;margin-top:14px"><span onclick="showNoMembership()" style="font-size:.8rem;color:var(--cyan);cursor:pointer;border-bottom:1px solid rgba(2,243,197,.3);padding-bottom:1px">Book without membership</span></div>'
-    +'<div class="bk-link-row"><div class="bk-link" onclick="curUser=null;curSessionToken=null;showLoginStep()">Switch account</div></div>'
+    +'<div class="bk-link" onclick="switchAccount()">Switch account</div>'
+    +'<div class="bk-link" style="margin-top:8px" onclick="closeMo()">\u2190 Back to schedule</div>'
     +'</div>';
 }
 

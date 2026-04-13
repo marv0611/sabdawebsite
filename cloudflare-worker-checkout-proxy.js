@@ -567,10 +567,14 @@ async function handleMfaVerify(request, origin) {
           // classesLeft = credits for packs (null for subscriptions)
           // moneyLeft = money credits (null for class-based)
           // type = "package-events" for packs, "subscription" for monthly memberships
+          // SABDA-MEMBERSHIPS-V2: also accept not-yet-activated subscriptions
+          // (e.g. IMMERSE with "Activates on first usage" — booking will activate it).
           const hasClassCredits = m.classesLeft !== null && m.classesLeft !== undefined && m.classesLeft > 0;
           const hasMoneyCredits = m.moneyLeft !== null && m.moneyLeft !== undefined && m.moneyLeft > 0;
           const isActiveSubscription = m.type === 'subscription' && m.classesLeft === null;
-          return hasClassCredits || hasMoneyCredits || isActiveSubscription;
+          // Accept un-activated subscriptions: type=subscription AND (activatedAt is null/undefined OR activates-on-first-use flag)
+          const isPendingActivation = m.type === 'subscription' && (m.activatedAt === null || m.activatedAt === undefined || m.activatesOnFirstUsage === true);
+          return hasClassCredits || hasMoneyCredits || isActiveSubscription || isPendingActivation;
         });
         if (memberships.length === 0 && rawList.length > 0) {
           memberships = rawList.map(m => ({ ...m, _unverified: true }));
