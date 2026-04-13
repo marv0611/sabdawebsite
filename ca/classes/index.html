@@ -508,8 +508,8 @@ select.bk-input option{background:var(--navy-light);color:var(--white)}
 
 <!-- EXPLORE IMMERSIVE WELLNESS -->
 <section style="padding:60px 80px;border-top:1px solid rgba(240,239,233,.06);text-align:center">
-  <h2 style="font-family:'PT Serif',serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;letter-spacing:-.02em;margin-bottom:20px">Explora la Nostra Gamma Completa de <em style="font-style:italic;color:#F8A6A3">Classes Inmersivas</em></h2>
-  <p style="font-size:1.02rem;line-height:1.8;color:rgba(240,239,233,.6);max-width:720px;margin:0 auto">Des de <a href="/ca/classes/yoga/" style="color:#4ff8d6;border-bottom:1px solid rgba(2,243,197,.5)">vinyasa yoga</a> y <a href="/ca/classes/pilates/" style="color:#4ff8d6;border-bottom:1px solid rgba(2,243,197,.5)">pilates</a> hasta <a href="/ca/classes/sound-healing/" style="color:#4ff8d6;border-bottom:1px solid rgba(2,243,197,.5)">sound healing</a> y <a href="/ca/classes/breathwork/" style="color:#4ff8d6;border-bottom:1px solid rgba(2,243,197,.5)">breathwork</a>, cada sessió ocurre dins de la nostra sala de projecció 360° amb so espacial. Tanto si eres principiante com practicante dedicado, hi ha una classe per a tu.</p>
+  <h2 style="font-family:'PT Serif',serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:700;letter-spacing:-.02em;margin-bottom:20px">Explora la Nostra Gamma Completa de <em style="font-style:italic;color:#F8A6A3">Classes Immersives</em></h2>
+  <p style="font-size:1.02rem;line-height:1.8;color:rgba(240,239,233,.6);max-width:720px;margin:0 auto">Des de <a href="/ca/classes/yoga/" style="color:#4ff8d6;border-bottom:1px solid rgba(2,243,197,.5)">vinyasa yoga</a> i <a href="/ca/classes/pilates/" style="color:#4ff8d6;border-bottom:1px solid rgba(2,243,197,.5)">pilates</a> fins a <a href="/ca/classes/sound-healing/" style="color:#4ff8d6;border-bottom:1px solid rgba(2,243,197,.5)">sound healing</a> i <a href="/ca/classes/breathwork/" style="color:#4ff8d6;border-bottom:1px solid rgba(2,243,197,.5)">breathwork</a>, cada sessió passa dins de la nostra sala de projecció 360° amb so espacial. Tant si ets principiant com si tens experiència, hi ha una classe per a tu.</p>
 </section>
 
 <!-- ICE BATH -->
@@ -904,7 +904,7 @@ function renderSched(){
       +(e.desc?'<div class="ci-more" onclick="toggleInfo(this)">Més informació <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></div><div class="ci-desc"><p>'+esc(e.desc).replace(/\n/g,'<br>').replace(/---ES---/g,'</p><p class="ci-lang-sep"><span class="ci-lg">ES</span></p><p>').replace(/---CA---/g,'</p><p class="ci-lang-sep"><span class="ci-lg">CA</span></p><p>')+'</p></div>':'')
       +'</div>'
       +'<div class="ca">'
-      +(full?(e.allowWaitlist?'<button class="bb wl" onclick="openMo('+sid+')">Llista d\u2019espera</button>':'<button class="bb fu">Lleno</button>')
+      +(full?(e.allowWaitlist?'<button class="bb wl" onclick="openMo('+sid+')">Llista d\u2019espera</button>':'<button class="bb fu">Complet</button>')
         :'<button class="bb" onclick="openMo('+sid+')">Reserva ara</button>')
       +'</div></div>';
   }).join('');
@@ -922,7 +922,7 @@ function stepChange(){
 function showFallback(errEl, msg){var err=errEl||document.getElementById('bk-err');if(!err)return;var sid=(typeof curSession!=='undefined'&&curSession&&curSession.id)?curSession.id:null;var link=(typeof curSession!=='undefined'&&curSession&&curSession.link)?curSession.link:(sid?('https://momence.com/s/'+sid):'https://momence.com/u/sabda');var existing=msg||err.textContent||'';err.innerHTML=existing+(existing?'<br>':'')+'<a href="'+link+'" target="_blank" rel="noopener noreferrer" style="color:var(--cyan);text-decoration:underline;font-size:.78rem">Book on Momence →</a>';err.classList.add('show');}
 function getSpotsHtml(){
   var sp=curSession?curSession.spots:null;
-  if(sp===0) return curSession.isWaitlist?'<div class="bk-spots lo">Lista de espera</div>':'<div class="bk-spots lo">Lleno</div>';
+  if(sp===0) return curSession.isWaitlist?'<div class="bk-spots lo">Llista d\u2019espera</div>':'<div class="bk-spots lo">Complet</div>';
   if(sp!==null&&sp<=5) return '<div class="bk-spots lo">'+sp+(sp===1?' pla\u00E7a restant':' places restants')+'</div>';
   return '';
 }
@@ -1466,7 +1466,7 @@ function showNoMembership(){stepChange();
     +'<div><div style="font-weight:600">Ritual</div><div style="font-size:.75rem;color:var(--white60)">8 classes/mes</div></div>'
     +'<div style="font-family:PT Serif,serif;font-weight:700">\u20AC109<span style="font-size:.75rem;font-weight:400;color:var(--white60)">/mo</span></div></div>'
     +'<div class="bk-pkg" onclick="selectPack(\'membership\',99,706876,\'Flex\',\'4 classes/mes \u00B7 Cancel·la quan vulguis\')" style="margin-bottom:8px;display:flex;justify-content:space-between;align-items:center">'
-    +'<div><div style="font-weight:600">Flex</div><div style="font-size:.75rem;color:var(--white60)">4 classes/mes</div></div>'
+    +'<div><div style="font-weight:600">Flex</div><div style="font-size:.75rem;color:var(--white60)">Il&middot;limitat hores vall</div></div>'
     +'<div style="font-family:PT Serif,serif;font-weight:700">\u20AC99<span style="font-size:.75rem;font-weight:400;color:var(--white60)">/mo</span></div></div>'
     +'<div class="bk-pkg" onclick="selectPack(\'membership\',330,445600,\'Immerse 3 Mesos\',\'Classes il·limitades \u00B7 3 mesos de compromís\')" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">Immerse 3 Mesos</div><div style="font-size:.75rem;color:var(--white60)">110€/mes \u00B7 Classes il·limitades</div></div>'
