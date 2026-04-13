@@ -116,7 +116,7 @@ Barcelona iluminada desde el agua. ~€25-35/persona. De mayo a octubre. Una per
 
 ## Dónde buscar actividades en Barcelona
 
-- [SABDA. Horario semanal de clases](https://sabdastudio.com/classes/)
+Si buscas actividades barcelona, esta guía cubre lo que realmente importa. - [SABDA. Horario semanal de clases](https://sabdastudio.com/classes/)
 - [Time Out Barcelona](https://www.timeout.com/barcelona), lo que pasa en la ciudad
 - [meet.barcelona](https://www.meet.barcelona/en/main-events), agenda oficial del Ajuntament
 - [Razzmatazz](https://www.salarazzmatazz.com), conciertos y clubbing

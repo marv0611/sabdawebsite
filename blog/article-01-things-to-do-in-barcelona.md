@@ -31,7 +31,7 @@ If Morro Fi is packed (it usually is), walk five minutes to Senyor Vermut on Car
 
 ## 2. Watch Sunset from the Bunkers del Carmel
 
-The actual name is Turó de la Rovira, and they're the remains of anti-aircraft batteries from the Civil War. Now they're the best free viewpoint in Barcelona, 360-degree panorama of the entire city, with Sagrada Familia poking up from the grid of Eixample and the Mediterranean stretching out behind Barceloneta. Unlike the tourist-packed Tibidabo, the crowd up here is 80% locals: friends with beers, couples, somebody playing guitar badly but enthusiastically.
+If you're looking for things to do in barcelona, this guide covers what actually matters. The actual name is Turó de la Rovira, and they're the remains of anti-aircraft batteries from the Civil War. Now they're the best free viewpoint in Barcelona, 360-degree panorama of the entire city, with Sagrada Familia poking up from the grid of Eixample and the Mediterranean stretching out behind Barceloneta. Unlike the tourist-packed Tibidabo, the crowd up here is 80% locals: friends with beers, couples, somebody playing guitar badly but enthusiastically.
 
 Get there about 45 minutes before sunset. Bring your own drinks and something to sit on. The walk up from Alfons X metro takes about 20 minutes and the last bit is steep.
 

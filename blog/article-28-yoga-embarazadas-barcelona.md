@@ -36,7 +36,7 @@ El yoga durante el embarazo es una de las actividades más recomendadas por matr
 
 ## Qué decirle a tu profesor
 
-Antes de tu primera clase, informa al profesor de que estás embarazada y en qué semana estás. Un buen profesor sabrá qué modificaciones aplicar. Si el profesor no pregunta o no sabe adaptar, busca otro.
+Si buscas yoga embarazadas barcelona, esta guía cubre lo que realmente importa. Antes de tu primera clase, informa al profesor de que estás embarazada y en qué semana estás. Un buen profesor sabrá qué modificaciones aplicar. Si el profesor no pregunta o no sabe adaptar, busca otro.
 
 Las señales de un profesor formado en perinatal: pregunta semanas de gestación, ofrece modificaciones antes de que las pidas, no usa las frases "haz lo que puedas" o "sáltate esta" (eso no es una modificación, es abandono), y conoce las contraindicaciones por trimestre.
 

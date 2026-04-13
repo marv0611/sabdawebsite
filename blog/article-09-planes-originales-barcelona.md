@@ -2,7 +2,7 @@
 
 **Última actualización: marzo 2026**
 
-**Meta description:** Planes originales en Barcelona: wellness inmersivo, rincones secretos y actividades que no encontrarás en ninguna guía.
+**Meta description:** Planes originales en Barcelona: wellness inmersivo, rincones secretos y actividades que no encontrarás en ninguna guía Planes originales, sin postureo. (151 chars)
 
 **Slug:** `/blog/planes-originales-barcelona/`
 

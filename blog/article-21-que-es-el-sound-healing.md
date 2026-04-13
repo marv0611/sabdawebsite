@@ -29,7 +29,7 @@ Una sesión típica. A veces llamada baño de sonido, dura 60 minutos. Te tumbas
 
 ## Los cuencos tibetanos, qué son y cómo funcionan
 
-Los cuencos tibetanos son el instrumento más asociado con el sound healing. Técnicamente, la mayoría no son tibetanos, provienen de Nepal, Bután, e India. Son cuencos de aleación metálica (bronce, cobre, estaño, y a veces hasta 7 metales) que se tocan con un mazo o se frotan con un palo forrado en cuero.
+Si buscas cuencos tibetanos barcelona, esta guía cubre lo que realmente importa. Los cuencos tibetanos son el instrumento más asociado con el sound healing. Técnicamente, la mayoría no son tibetanos, provienen de Nepal, Bután, e India. Son cuencos de aleación metálica (bronce, cobre, estaño, y a veces hasta 7 metales) que se tocan con un mazo o se frotan con un palo forrado en cuero.
 
 Cada cuenco tiene un tono fundamental más armónicos (overtones). Los cuencos más grandes producen tonos graves y resonantes que puedes sentir físicamente en el cuerpo. Los pequeños producen tonos agudos y brillantes. Cuando un practicante toca varios cuencos simultáneamente, las frecuencias se combinan y crean un paisaje sonoro complejo.
 

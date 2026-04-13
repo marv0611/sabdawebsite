@@ -25,7 +25,7 @@ Si has llegado a esta página un martes a las 16:00 buscando algo para hacer en 
 
 ### 1. Vermut en Morro Fi
 
-El ritual es sencillo: vermut de grifo, una lata de anchoas, una caña, y una hora que se convierte en dos. Morro Fi (Consell de Cent, 171, Eixample) es el bar que más o menos empezó el renacimiento del vermut en Barcelona. El espacio es minúsculo y está siempre lleno. Ve antes de las 13:00 o espera de pie. Vermut a €3. Si está imposible, Senyor Vermut (Provença, 85) está a cinco minutos y tiene 40 variedades.
+Si buscas que hacer en barcelona este fin de semana, esta guía cubre lo que realmente importa. El ritual es sencillo: vermut de grifo, una lata de anchoas, una caña, y una hora que se convierte en dos. Morro Fi (Consell de Cent, 171, Eixample) es el bar que más o menos empezó el renacimiento del vermut en Barcelona. El espacio es minúsculo y está siempre lleno. Ve antes de las 13:00 o espera de pie. Vermut a €3. Si está imposible, Senyor Vermut (Provença, 85) está a cinco minutos y tiene 40 variedades.
 
 ### 2. Paseo por el Poblenou
 

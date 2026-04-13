@@ -27,7 +27,7 @@ Here's the decision tree. Pick based on what you actually want.
 
 ## Want flexibility? → Yin Yoga
 
-Passive postures held 3-5 minutes each. Targets connective tissue (fascia, ligaments), not muscles. Looks easy. Isn't. The last 2 minutes of each hold are where the real work happens. Staying with discomfort without reacting.
+If you're looking for yoga barcelona, this guide covers what actually matters. Passive postures held 3-5 minutes each. Targets connective tissue (fascia, ligaments), not muscles. Looks easy. Isn't. The last 2 minutes of each hold are where the real work happens. Staying with discomfort without reacting.
 
 Perfect for: runners, cyclists, desk workers, anyone whose body is tight from repetitive motion.
 

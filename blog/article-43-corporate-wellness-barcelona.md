@@ -42,7 +42,7 @@ For teams that want something intense: guided breathwork inside the immersive ro
 
 ## SABDA. The corporate wellness space in Barcelona
 
-[SABDA](https://sabdastudio.com/hire/) hosts corporate wellness experiences in a 360° projection room with Dolby Atmos spatial audio in the Eixample.
+If you're looking for corporate events barcelona, this guide covers what actually matters. [SABDA](https://sabdastudio.com/hire/) hosts corporate wellness experiences in a 360° projection room with Dolby Atmos spatial audio in the Eixample.
 
 **What's available:**
 - Guided breathwork sessions (45-60 min) inside the immersive room

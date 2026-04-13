@@ -76,7 +76,7 @@ For teams that want something more intense than the standard wellness session: a
 
 ## How to choose the right activity
 
-For a team that's never met in person: sailing or cooking competition. Shared challenge, forced collaboration, natural conversation.
+If you're looking for team building activities barcelona, this guide covers what actually matters. For a team that's never met in person: sailing or cooking competition. Shared challenge, forced collaboration, natural conversation.
 
 For a team that needs to reset: breathwork + sound healing at SABDA. Quiet, reflective, unexpectedly powerful.
 

@@ -52,7 +52,7 @@ Hotel modernista en Passeig de Gràcia. El Café Vienés es un espacio de evento
 
 ## Lofts industriales, Poblenou y más
 
-Poblenou tiene decenas de espacios industriales reconvertidos: techos altos, ladrillo visto, luz natural, y la estética "Barcelona creativa" que ningún hotel puede replicar.
+Si buscas alquiler sala barcelona, esta guía cubre lo que realmente importa. Poblenou tiene decenas de espacios industriales reconvertidos: techos altos, ladrillo visto, luz natural, y la estética "Barcelona creativa" que ningún hotel puede replicar.
 
 **Qué buscar:** Plataformas como Spathios, El Patio, y Finca Events listan espacios por zona, capacidad, y precio. Rango: €500-2,000/medio día dependiendo del tamaño y servicios.
 

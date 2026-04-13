@@ -41,7 +41,7 @@ No es una rave. No es una clase de baile. No es una performance. Es algo entre l
 
 ## Qué se siente
 
-Los primeros 10 minutos son incómodos. Estás ahí parado, apenas moviéndote, hiperconsciente de todo el mundo. Tu cerebro narra: "esto es raro, parezco ridículo, qué hago aquí."
+Si buscas ecstatic dance barcelona, esta guía cubre lo que realmente importa. Los primeros 10 minutos son incómodos. Estás ahí parado, apenas moviéndote, hiperconsciente de todo el mundo. Tu cerebro narra: "esto es raro, parezco ridículo, qué hago aquí."
 
 Alrededor del minuto 15, la música construye lo suficiente como para que tu cuerpo empiece a responder antes de que tu cerebro pueda objetar. Encuentras un ritmo. Los ojos se cierran. Dejas de pensar en cómo te ves y empiezas a sentir cómo te sientes.
 

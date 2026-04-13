@@ -39,7 +39,7 @@ Si buscas fuerza funcional y core: mat. Si buscas rehabilitación o variedad de 
 ### SABDA (Eixample), Pilates mat inmersivo
 [SABDA](https://sabdastudio.com/classes/pilates/) no es un centro de pilates convencional. Las clases de pilates mat suceden dentro de una sala de proyecciones 360° con Dolby Atmos. Visuals que cambian con el ritmo de la clase, audio espacial que envuelve. El resultado: un nivel de concentración que los estudios normales no consiguen. Cuando el entorno te sumerge, tu atención se queda en el movimiento en vez de en la lista de cosas pendientes.
 
-Formatos de pilates en SABDA: Core Pilates (enfoque en centro, estabilización profunda), Power Pilates (ritmo alto, cardio + fuerza), Pilates Sculpt (trabajo con bandas y accesorios), y Full Body Pilates (sesión completa de pies a cabeza). Cada formato tiene su propio diseño visual y musical. Una clase de core tiene visuales lentos y enfocados, una de power tiene ritmo que te empuja.
+Si buscas pilates barcelona, esta guía cubre lo que realmente importa. Formatos de pilates en SABDA: Core Pilates (enfoque en centro, estabilización profunda), Power Pilates (ritmo alto, cardio + fuerza), Pilates Sculpt (trabajo con bandas y accesorios), y Full Body Pilates (sesión completa de pies a cabeza). Cada formato tiene su propio diseño visual y musical. Una clase de core tiene visuales lentos y enfocados, una de power tiene ritmo que te empuja.
 
 Clases de pilates mat varios días a la semana. Todos los niveles. Esterilla proporcionada. Grip socks recomendados.
 

@@ -29,7 +29,7 @@ Un cuenco tibetano es un cuenco de aleación metálica (bronce, cobre, estaño. 
 
 ## Cómo funcionan (la física)
 
-Cuando golpeas un cuenco, el metal vibra. Esa vibración produce ondas sonoras a múltiples frecuencias simultáneas. El tono fundamental (la nota que reconoces) más armónicos que suenan más agudo y sutil. Los cuencos grandes producen frecuencias más graves que puedes sentir físicamente en el cuerpo. Los pequeños producen tonos brillantes y penetrantes.
+Si buscas cuencos tibetanos barcelona, esta guía cubre lo que realmente importa. Cuando golpeas un cuenco, el metal vibra. Esa vibración produce ondas sonoras a múltiples frecuencias simultáneas. El tono fundamental (la nota que reconoces) más armónicos que suenan más agudo y sutil. Los cuencos grandes producen frecuencias más graves que puedes sentir físicamente en el cuerpo. Los pequeños producen tonos brillantes y penetrantes.
 
 Cuando un practicante toca varios cuencos simultáneamente, las frecuencias interactúan. Donde dos frecuencias se superponen, crean "batidos". Pulsaciones regulares que el cerebro percibe como un ritmo. Esos batidos son la base del efecto: el cerebro intenta sincronizarse con ellos (un fenómeno llamado "entrainment"), lo que puede ralentizar las ondas cerebrales desde beta (vigilia activa) hacia alpha (relajación) y theta (pre-sueño).
 

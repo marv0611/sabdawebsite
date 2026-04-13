@@ -40,7 +40,7 @@ Reduce la intensidad general. Enfócate en suelo pélvico, respiración, y movil
 
 ## Lo que un buen profesor de pilates prenatal hace
 
-- Pregunta en qué semana estás (cada semana es diferente)
+Si buscas pilates embarazadas barcelona, esta guía cubre lo que realmente importa. - Pregunta en qué semana estás (cada semana es diferente)
 - Ofrece modificaciones proactivamente, no espera a que tú las pidas
 - Conoce las contraindicaciones por trimestre sin tener que consultarlas
 - Trabaja el suelo pélvico y el transverso en cada sesión

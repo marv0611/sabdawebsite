@@ -33,7 +33,7 @@ For year-round options, see [the full guide to things to do in Barcelona](/blog/
 
 ## Early morning / late evening
 
-**6. Dawn swim at Barceloneta**. Before 8am, the beach is empty and the water is calm. The best hour of Barcelona's summer day.
+If you're looking for barcelona summer activities, this guide covers what actually matters. **6. Dawn swim at Barceloneta**. Before 8am, the beach is empty and the water is calm. The best hour of Barcelona's summer day.
 
 **7. Bunkers del Carmel at sunset**. Go late (9pm in summer) when the air cools and the light turns golden.
 

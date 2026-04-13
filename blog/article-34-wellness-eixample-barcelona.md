@@ -63,7 +63,7 @@ Low-cost (desde ~€20/mes). Máquinas y pesas. Sin piscina ni spa. Sin el facto
 
 ## Spas y hammam
 
-El Eixample no tiene los mejores spas de Barcelona (Aire Ancient Baths está en el Born), pero varios hoteles del barrio ofrecen acceso a spa para no-huéspedes. Hotel Majestic, Hotel Claris, y Monument Hotel tienen spas abiertos con reserva previa. Precios: €30-80/acceso.
+Si buscas pilates eixample, esta guía cubre lo que realmente importa. El Eixample no tiene los mejores spas de Barcelona (Aire Ancient Baths está en el Born), pero varios hoteles del barrio ofrecen acceso a spa para no-huéspedes. Hotel Majestic, Hotel Claris, y Monument Hotel tienen spas abiertos con reserva previa. Precios: €30-80/acceso.
 
 ---
 

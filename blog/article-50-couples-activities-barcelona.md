@@ -57,7 +57,7 @@ Learn to make paella from local cooks. Wine flows while you stir. ~€60/person.
 
 ---
 
-The best couples activities in Barcelona are the ones that break the pattern. An immersive sound bath instead of dinner. A rooftop instead of a restaurant. A 360° projection room instead of a cinema.
+If you're looking for date night barcelona, this guide covers what actually matters. The best couples activities in Barcelona are the ones that break the pattern. An immersive sound bath instead of dinner. A rooftop instead of a restaurant. A 360° projection room instead of a cinema.
 
 **Related:** [Planes en pareja en Barcelona (ES)](/blog/planes-en-pareja-barcelona/) | [Gift Experiences in Barcelona](/blog/gift-experiences-barcelona/)
 

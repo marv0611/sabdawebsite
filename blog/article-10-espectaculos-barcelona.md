@@ -39,7 +39,7 @@ Artes escénicas experimentales en el Born. Magia, circo, poesía visual, y cosa
 
 ### Palau de la Música Catalana
 
-El interior modernista más impresionante de Barcelona, y un espacio donde la música suena distinto. Programación ecléctica: clásica, jazz, flamenco, coral, world music. Algunas entradas desde €15. En 2026, el Palau tiene una programación especial por el Año Gaudí con conciertos temáticos y colaboraciones interdisciplinares.
+Si buscas espectaculos barcelona, esta guía cubre lo que realmente importa. El interior modernista más impresionante de Barcelona, y un espacio donde la música suena distinto. Programación ecléctica: clásica, jazz, flamenco, coral, world music. Algunas entradas desde €15. En 2026, el Palau tiene una programación especial por el Año Gaudí con conciertos temáticos y colaboraciones interdisciplinares.
 
 ### Razzmatazz
 

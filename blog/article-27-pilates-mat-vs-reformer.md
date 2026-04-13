@@ -27,7 +27,7 @@ SABDA es mat-only. Core Pilates, Power Pilates, Full Body Pilates, y Pilates Scu
 
 ## Comparación directa
 
-| | Mat | Reformer |
+Si buscas clases de pilates barcelona, esta guía cubre lo que realmente importa. | | Mat | Reformer |
 |---|---|---|
 | **Equipamiento** | Esterilla (+ accesorios opcionales) | Máquina con muelles |
 | **Resistencia** | Tu peso corporal | Muelles (ajustable) |

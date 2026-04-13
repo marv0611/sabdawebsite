@@ -39,7 +39,7 @@ Una clase típica tiene 8-12 posturas. La mayoría se hacen en el suelo con apoy
 
 ## Qué esperar en una clase
 
-Los primeros 90 segundos de cada postura son cómodos. Los siguientes 180 son donde pasa todo. La sensación no es dolor (si duele, has ido demasiado lejos), sino un estiramiento profundo y sostenido que tu cerebro quiere que pares.
+Si buscas yin yoga barcelona, esta guía cubre lo que realmente importa. Los primeros 90 segundos de cada postura son cómodos. Los siguientes 180 son donde pasa todo. La sensación no es dolor (si duele, has ido demasiado lejos), sino un estiramiento profundo y sostenido que tu cerebro quiere que pares.
 
 No vas a parar. Ese es el punto. La práctica del yin es tanto mental como física, aprender a estar con la incomodidad sin reaccionar.
 

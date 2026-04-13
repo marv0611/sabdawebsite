@@ -68,7 +68,7 @@ Para equipos que quieren algo más intenso: una sesión de breathwork guiada (45
 
 ## Cómo elegir la actividad correcta
 
-Para un equipo que se reúne por primera vez en persona: regata o competición de cocina. Reto compartido, colaboración natural.
+Si buscas actividades para empresas barcelona, esta guía cubre lo que realmente importa. Para un equipo que se reúne por primera vez en persona: regata o competición de cocina. Reto compartido, colaboración natural.
 
 Para un equipo que necesita un reset: breathwork + sound healing en SABDA. Silencioso, reflexivo, inesperadamente potente.
 

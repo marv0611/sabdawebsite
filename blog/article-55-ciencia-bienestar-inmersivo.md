@@ -27,7 +27,7 @@ Aquí es donde la inmersión importa: un entorno de 360° con visuals y audio es
 
 ## Audio espacial y el nervio vago
 
-El nervio vago es el nervio craneal más largo del cuerpo. Conecta el tronco encefálico con el corazón, los pulmones, y el intestino. Su activación (tono vagal alto) se asocia con calma, recuperación, y regulación emocional.
+Si buscas exposicion inmersiva barcelona, esta guía cubre lo que realmente importa. El nervio vago es el nervio craneal más largo del cuerpo. Conecta el tronco encefálico con el corazón, los pulmones, y el intestino. Su activación (tono vagal alto) se asocia con calma, recuperación, y regulación emocional.
 
 Las frecuencias graves (50-150 Hz) estimulan el nervio vago directamente a través de vibración mecánica. En un sistema de audio con subwoofers en el suelo (como el de [SABDA](https://sabdastudio.com/classes/)), cuando estás tumbado sobre la esterilla durante un sound healing, las frecuencias graves llegan a tu cuerpo por dos vías: a través del aire (oídos) y a través del suelo (contacto directo). La estimulación dual es más efectiva que solo el sonido aéreo.
 

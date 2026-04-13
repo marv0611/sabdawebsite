@@ -37,7 +37,7 @@ The best bar neighbourhood in Barcelona. Start with vermouth at Bar Calders (~12
 ### Morning (10:00-11:30). The experience most visitors miss
 This is the part that changes your weekend from "nice trip" to "I need to come back."
 
-Book a class at [SABDA](https://sabdastudio.com/classes/). Yoga, sound healing, breathwork, or pilates inside a 360° projection room with Dolby Atmos spatial audio. Sunday morning classes are particularly good: the city is quiet, the room is immersive, and you start the day in a state that coffee alone can't produce.
+If you're looking for barcelona weekend, this guide covers what actually matters. Book a class at [SABDA](https://sabdastudio.com/classes/). Yoga, sound healing, breathwork, or pilates inside a 360° projection room with Dolby Atmos spatial audio. Sunday morning classes are particularly good: the city is quiet, the room is immersive, and you start the day in a state that coffee alone can't produce.
 
 The visuals change every class. The sound wraps around you. It's 60 minutes that feel like 25. You'll walk out into the Eixample sunshine with a specific kind of calm that lasts the rest of the day.
 

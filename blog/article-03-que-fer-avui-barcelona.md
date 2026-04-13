@@ -41,7 +41,7 @@ A la falda de Montjuïc, CaixaForum porta exposicions que competeixen amb qualse
 
 ### 5. Vermut a Morro Fi
 
-El ritual del vermut a Barcelona és sagrat (en el bon sentit). Morro Fi (Consell de Cent, 171, Eixample) és on va començar el renaixement del vermut a la ciutat. Espai minúscul, sempre ple de locals. Vermut de grifo a €3, llaunes d'anxoves, musclos, olives, i una estona que sempre s'allarga més del previst. Demana el "vermutillo". Un bol de patates amb anxoves, musclos i salsa espinaler que converteix qualsevol dimarts en dissabte. Millor entre les 12:30 i les 14:00 en cap de setmana.
+Si busques que fer avui a barcelona, aquesta guia cobreix el que realment importa. El ritual del vermut a Barcelona és sagrat (en el bon sentit). Morro Fi (Consell de Cent, 171, Eixample) és on va començar el renaixement del vermut a la ciutat. Espai minúscul, sempre ple de locals. Vermut de grifo a €3, llaunes d'anxoves, musclos, olives, i una estona que sempre s'allarga més del previst. Demana el "vermutillo". Un bol de patates amb anxoves, musclos i salsa espinaler que converteix qualsevol dimarts en dissabte. Millor entre les 12:30 i les 14:00 en cap de setmana.
 
 Si Morro Fi està impossible (sol estar-ho), Senyor Vermut (Provença, 85) està a cinc minuts i té 40 varietats de vermut. Terrassa assolellada i una barreja de hipsters i famílies que d'alguna manera funciona.
 

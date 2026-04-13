@@ -27,7 +27,7 @@ A diferencia de la meditación sentada (donde tú diriges la atención), en yoga
 
 ## La ciencia (brainwaves y descanso)
 
-Durante yoga nidra, tu cerebro transita entre diferentes estados de ondas cerebrales:
+Si buscas yoga nidra barcelona, esta guía cubre lo que realmente importa. Durante yoga nidra, tu cerebro transita entre diferentes estados de ondas cerebrales:
 
 **Beta (vigilia normal)** → **Alpha (relajación consciente)** → **Theta (estado pre-sueño)** → ocasionalmente **Delta (sueño profundo)**, todo mientras mantienes un hilo de conciencia.
 

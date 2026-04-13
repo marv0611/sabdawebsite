@@ -38,13 +38,13 @@ Fuera de la ciudad: masías en el Penedès (vino + mindfulness), Montseny (natur
 
 ## Mejores espacios por formato
 
-| Formato | Espacio recomendado | Precio desde |
+Si buscas eventos corporativos barcelona, esta guía cubre lo que realmente importa. | Formato | Espacio recomendado | Precio desde |
 |---------|-------------------|-------------|
 | Wellness / team experience | SABDA | €350 |
 | Brand activation / producción | SABDA | €350 |
 | Conferencia formal | W Barcelona / Hotel Arts | €1,000 |
 | Cena de empresa | El Nacional / restaurantes privados | €50/persona |
-| Retiro outdoor | Masía Penedès / Montseny | €150/persona |
+| Retiro outdoor | Masía Penedès / Montseny | €150/persona | Cada esdeveniment, des de tallers a celebracions, troba aquí el seu format.
 
 ---
 

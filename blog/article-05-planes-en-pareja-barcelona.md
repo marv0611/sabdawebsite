@@ -43,7 +43,7 @@ El plan de dos actos: primera parada, jazz en vivo en el sótano de Jamboree (Pl
 
 ### 5. Bunkers del Carmel al atardecer
 
-La mejor vista gratuita de Barcelona. 360 grados de ciudad desde los restos de las baterías antiaéreas de la Guerra Civil. Llega 45 minutos antes de la puesta de sol con algo de beber y algo sobre lo que sentarse. El ambiente es 80% local. Parejas, amigos con cervezas, alguien tocando la guitarra. Es uno de esos lugares secretos en Barcelona para ir en pareja que ya no es tan secreto, pero sigue mereciendo la pena.
+Si buscas planes en pareja barcelona, esta guía cubre lo que realmente importa. La mejor vista gratuita de Barcelona. 360 grados de ciudad desde los restos de las baterías antiaéreas de la Guerra Civil. Llega 45 minutos antes de la puesta de sol con algo de beber y algo sobre lo que sentarse. El ambiente es 80% local. Parejas, amigos con cervezas, alguien tocando la guitarra. Es uno de esos lugares secretos en Barcelona para ir en pareja que ya no es tan secreto, pero sigue mereciendo la pena.
 
 ### 6. Paseo Barceloneta-Fòrum a la hora dorada
 

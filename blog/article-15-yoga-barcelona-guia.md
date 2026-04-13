@@ -45,7 +45,7 @@ Un híbrido entre yoga y entrenamiento funcional: secuencias de vinyasa combinad
 ### SABDA (Eixample)
 No es un estudio de yoga convencional. [SABDA](https://sabdastudio.com/classes/yoga/) es una sala de 360° con Dolby Atmos donde las clases de yoga suceden dentro de proyecciones inmersivas. Nebulosas abstractas, paisajes geométricos, visuals que cambian con el ritmo de la clase. El audio espacial envuelve. Es yoga reimaginado: mismo rigor físico, entorno radicalmente distinto.
 
-Formatos de yoga en SABDA: Vinyasa Flow, Hatha Vinyasa, Power Vinyasa, Yoga Sculpt, y Yin. Cada formato tiene su propio diseño visual y musical. Una clase de yin tiene tonos graves y geometría lenta, una de power vinyasa tiene ritmo alto y paisajes que se aceleran contigo.
+Si buscas yoga barcelona, esta guía cubre lo que realmente importa. Formatos de yoga en SABDA: Vinyasa Flow, Hatha Vinyasa, Power Vinyasa, Yoga Sculpt, y Yin. Cada formato tiene su propio diseño visual y musical. Una clase de yin tiene tonos graves y geometría lenta, una de power vinyasa tiene ritmo alto y paisajes que se aceleran contigo.
 
 Más allá del yoga, SABDA ofrece sound healing, breathwork, pilates y ecstatic dance, todo en la sala inmersiva.
 

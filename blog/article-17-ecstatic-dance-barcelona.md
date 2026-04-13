@@ -29,7 +29,7 @@ It is not a rave. It is not a dance class. It is not a performance. It's closer 
 
 ## The rules
 
-Every ecstatic dance session has some version of these:
+If you're looking for ecstatic dance barcelona, this guide covers what actually matters. Every ecstatic dance session has some version of these:
 
 **No talking on the dance floor.** This is the most important one. The silence removes the social performance layer. You're not making conversation, you're not explaining yourself, you're just moving. It's surprisingly liberating.
 

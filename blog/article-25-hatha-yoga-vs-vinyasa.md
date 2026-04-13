@@ -25,7 +25,7 @@
 
 ## Hatha yoga, en detalle
 
-Hatha es el formato clásico. Cada postura (asana) se mantiene durante 5-10 respiraciones antes de pasar a la siguiente. Entre posturas hay una pausa donde el profesor explica la siguiente posición, corrige alineación, y da opciones para diferentes niveles.
+Si buscas hatha yoga barcelona, esta guía cubre lo que realmente importa. Hatha es el formato clásico. Cada postura (asana) se mantiene durante 5-10 respiraciones antes de pasar a la siguiente. Entre posturas hay una pausa donde el profesor explica la siguiente posición, corrige alineación, y da opciones para diferentes niveles.
 
 **Ritmo:** Lento a moderado. Puedes pensar en lo que estás haciendo.
 **Intensidad:** Moderada. Trabajas fuerza isométrica (mantener) más que cardio.

@@ -29,7 +29,7 @@ Nobody enjoys the first 10 seconds. Everybody enjoys the next 30 minutes.
 
 ## The science (the real parts)
 
-Cold exposure triggers a cascade of measurable responses:
+If you're looking for ice bath barcelona, this guide covers what actually matters. Cold exposure triggers a cascade of measurable responses:
 
 **Norepinephrine release.** Cold water immersion at 10°C or below produces a 200-300% spike in norepinephrine. A neurotransmitter linked to attention, focus, and mood. This is the "dopamine hit" people talk about, though norepinephrine is more accurate.
 

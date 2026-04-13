@@ -27,7 +27,7 @@ Barcelona té plans per a tothom. El problema és que la majoria de guies recoma
 
 ## Gastronomia i vermut
 
-**4. Vermut a Morro Fi**, Consell de Cent, 171. El bar que va iniciar el renaixement del vermut a Barcelona. Vermut €3. Sempre ple.
+Si busques activitats barcelona, aquesta guia cobreix el que realment importa. **4. Vermut a Morro Fi**, Consell de Cent, 171. El bar que va iniciar el renaixement del vermut a Barcelona. Vermut €3. Sempre ple.
 
 **5. Mercat de Sant Antoni**. Producte fresc, bar interior, i mercadillo de llibres els diumenges.
 

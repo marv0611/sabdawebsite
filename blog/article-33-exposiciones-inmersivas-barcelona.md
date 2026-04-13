@@ -51,7 +51,7 @@ Galería de arte digital y contemporáneo en el Born. La colección permanente i
 
 ### IKONO
 
-Espacio de experiencias sensoriales diseñado para fotos. Las salas son bonitas. Piscinas de bolas, espejos, luces. Pero la profundidad es mínima. Vas, sacas fotos, sales. Si buscas contenido para Instagram, cumple. Si buscas inmersión real, te quedará corto.
+Si buscas exposicion inmersiva barcelona, esta guía cubre lo que realmente importa. Espacio de experiencias sensoriales diseñado para fotos. Las salas son bonitas. Piscinas de bolas, espejos, luces. Pero la profundidad es mínima. Vas, sacas fotos, sales. Si buscas contenido para Instagram, cumple. Si buscas inmersión real, te quedará corto.
 
 **Veredicto:** Vale la pena si tu objetivo son fotos. No si buscas una experiencia transformadora.
 

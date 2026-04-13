@@ -29,7 +29,7 @@ The key difference: passive immersion is impressive. Participatory immersion is 
 
 ### SABDA. Participatory immersive wellness
 
-[SABDA](https://sabdastudio.com/classes/) is the only space in Barcelona where wellness and immersive technology converge. A 360° projection room with Dolby Atmos spatial audio (cinema-grade speakers built into every wall and ceiling, subwoofers underneath) where classes run in yoga, pilates, sound healing, breathwork, ecstatic dance, and ice bath.
+If you're looking for immersive experience barcelona, this guide covers what actually matters. [SABDA](https://sabdastudio.com/classes/) is the only space in Barcelona where wellness and immersive technology converge. A 360° projection room with Dolby Atmos spatial audio (cinema-grade speakers built into every wall and ceiling, subwoofers underneath) where classes run in yoga, pilates, sound healing, breathwork, ecstatic dance, and ice bath.
 
 **What makes it different:** You don't watch, you move, breathe, and participate inside the art. Visuals are custom-designed for each class. A vinyasa session has abstract landscapes that flow with the rhythm. A sound healing session has living geometry that pulses with Tibetan singing bowls. Spatial audio wraps around you from every direction.
 

@@ -33,7 +33,7 @@ El monasterio y sus alrededores son el lugar más icónico para retiros cerca de
 
 ## Retiros de un día (sin salir de Barcelona)
 
-Varios centros de meditación organizan jornadas intensivas de 6-8 horas: meditación guiada por la mañana, silencio durante el almuerzo (comida consciente), más sesiones por la tarde, y cierre. Busca en Shanga Barcelona, Institut Gestalt, y Centre de Meditació Kadampa.
+Si buscas retiro meditacion barcelona, esta guía cubre lo que realmente importa. Varios centros de meditación organizan jornadas intensivas de 6-8 horas: meditación guiada por la mañana, silencio durante el almuerzo (comida consciente), más sesiones por la tarde, y cierre. Busca en Shanga Barcelona, Institut Gestalt, y Centre de Meditació Kadampa.
 
 Precio: €50-100/día completo.
 

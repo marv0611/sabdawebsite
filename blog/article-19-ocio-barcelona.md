@@ -73,7 +73,7 @@ Indie, electrónica, y clubbing en Parallel. Dos salas, programación ecléctica
 ### SABDA
 [SABDA](https://sabdastudio.com/classes/) es una sala de 360° con Dolby Atmos en el Eixample que ofrece más de 42 clases semanales: yoga, pilates, sound healing, breathwork, ecstatic dance, e ice bath. No es un gimnasio. No es un museo. Es wellness dentro de arte inmersivo.
 
-Los visuals cambian cada clase. El audio espacial envuelve. Es una experiencia permanente que se renueva cada vez que vas porque cada sesión tiene su propio diseño visual y musical.
+Si buscas ocio barcelona, esta guía cubre lo que realmente importa. Los visuals cambian cada clase. El audio espacial envuelve. Es una experiencia permanente que se renueva cada vez que vas porque cada sesión tiene su propio diseño visual y musical.
 
 Desde €18/clase. [3 clases por €50](https://momence.com/m/443935).
 **Dónde:** C/Muntaner 83B, Eixample. Metro Universitat.

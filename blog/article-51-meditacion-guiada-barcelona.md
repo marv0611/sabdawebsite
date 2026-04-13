@@ -25,7 +25,7 @@ En meditación guiada, la voz del facilitador ancla tu atención. Cuando tu ment
 
 ## Qué esperar en una sesión
 
-Duración: 30-60 minutos. Posición: sentado o tumbado (en SABDA, tumbado). El facilitador te guía por un body scan (atención a cada parte del cuerpo), respiración consciente, y posiblemente visualización o mantras.
+Si buscas meditacion guiada barcelona, esta guía cubre lo que realmente importa. Duración: 30-60 minutos. Posición: sentado o tumbado (en SABDA, tumbado). El facilitador te guía por un body scan (atención a cada parte del cuerpo), respiración consciente, y posiblemente visualización o mantras.
 
 Los primeros 5 minutos tu mente protestará. A los 10, empezará a cooperar. A los 20, estarás en un estado que tu cerebro normalmente solo alcanza justo antes de dormir, pero despierto.
 

@@ -39,7 +39,7 @@ Esto no se compra en una web de experiencias, se regala organizándolo tú. Tres
 
 ### 4. Paseo en velero por la costa
 
-Un barco de vela privado para 2-6 personas, navegando por la costa de Barcelona con la skyline al fondo. Dos horas, con posibilidad de nadar en mar abierto y brindar con cava. Desde unos €60 por persona. Hay varias empresas. Barcelona Sailboats y Sailing Barcelona son dos buenas opciones. El mejor momento es al atardecer.
+Si buscas regalo experiencia barcelona, esta guía cubre lo que realmente importa. Un barco de vela privado para 2-6 personas, navegando por la costa de Barcelona con la skyline al fondo. Dos horas, con posibilidad de nadar en mar abierto y brindar con cava. Desde unos €60 por persona. Hay varias empresas. Barcelona Sailboats y Sailing Barcelona son dos buenas opciones. El mejor momento es al atardecer.
 
 ### 5. Vuelo en helicóptero (6 minutos que valen la pena)
 

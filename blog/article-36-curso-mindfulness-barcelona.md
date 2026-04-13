@@ -30,7 +30,7 @@ El formato gold standard. Desarrollado por Jon Kabat-Zinn en los años 80, es un
 
 ## Talleres intensivos (1-2 días)
 
-Jornadas de inmersión de 6-8 horas: meditación guiada, prácticas de atención, movimiento consciente, y discusión en grupo. Son buenos como introducción o como refuerzo periódico.
+Si buscas curso mindfulness barcelona, esta guía cubre lo que realmente importa. Jornadas de inmersión de 6-8 horas: meditación guiada, prácticas de atención, movimiento consciente, y discusión en grupo. Son buenos como introducción o como refuerzo periódico.
 
 **Dónde:** Shanga Barcelona, Institut Gestalt, y varios centros de meditación organizan talleres periódicamente. Precio: €50-150/día.
 

@@ -35,7 +35,7 @@ Most sessions at studios like [SABDA](https://sabdastudio.com/classes/breathwork
 
 ## The science (skip if you don't care)
 
-The core mechanism is the vagus nerve. The longest cranial nerve, running from brainstem to abdomen, controlling the body's rest-and-digest response. Extended exhales stimulate the vagus nerve directly. This is measurable: heart rate variability (HRV) increases, cortisol drops, blood pressure stabilises.
+If you're looking for breathwork barcelona, this guide covers what actually matters. The core mechanism is the vagus nerve. The longest cranial nerve, running from brainstem to abdomen, controlling the body's rest-and-digest response. Extended exhales stimulate the vagus nerve directly. This is measurable: heart rate variability (HRV) increases, cortisol drops, blood pressure stabilises.
 
 For activating breathwork, the mechanism is different. Rapid breathing alters blood CO2 levels. When CO2 drops, blood pH rises (respiratory alkalosis), which can cause tingling, temperature changes, and shifts in perception. This isn't dangerous for healthy people. It's a temporary, self-limiting biochemical state that resolves as soon as you return to normal breathing.
 

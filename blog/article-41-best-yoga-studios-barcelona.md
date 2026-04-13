@@ -94,7 +94,7 @@ Small studio in Gràcia with hatha, vinyasa, and meditation. Intimate classes, e
 
 ## Quick comparison
 
-| Studio | Price/class | Styles | Language | Vibe |
+If you're looking for best yoga studio barcelona, this guide covers what actually matters. | Studio | Price/class | Styles | Language | Vibe |
 |--------|-----------|--------|----------|------|
 | SABDA | From €18 | Vinyasa, Hatha, Yin, Sculpt | EN/ES | Immersive, premium |
 | Yoga One | €15-20 | All major styles | EN/ES | Professional chain |

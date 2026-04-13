@@ -55,7 +55,7 @@ Reformer-focused studio with structured programmes and small groups. Clean, func
 
 ## Price comparison
 
-| Studio | Mat group | Reformer group | Individual |
+If you're looking for pilates studios barcelona, this guide covers what actually matters. | Studio | Mat group | Reformer group | Individual |
 |--------|----------|---------------|-----------|
 | SABDA (immersive) | From €18 |, | , |
 | Dona10 | ~€18 | ~€25-35 | ~€45-60 |
