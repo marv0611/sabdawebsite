@@ -658,6 +658,22 @@ document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',(
 
 var SCHEDULE_API='https://readonly-api.momence.com/host-plugins/host/54278/host-schedule/sessions';
 var PROXY='https://sabda-checkout-proxy.sabda.workers.dev';
+
+// 3DS CAPI bridge: fires server-side CAPI Purchase after Stripe 3DS confirms.
+// Without this, 3DS purchases never get the rich em/ph/fn/ln/external_id user_data.
+window._fbCapiAfter3DS = function(payload) {
+  try {
+    return fetch(PROXY + '/sabda-api/capi-purchase', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(payload)
+    }).catch(function(e){ console.warn('[capi-3ds] non-fatal:', e); });
+  } catch(e) {
+    console.warn('[capi-3ds] exception (non-fatal):', e);
+    return Promise.resolve();
+  }
+};
+
 var allE=[],selDate=null,actF='All',actTeacher='All';
 var curSession=null, curUser=null, curMembership=null, curSessionToken=null;
 
@@ -1267,7 +1283,7 @@ function mountCardForGuest(){
         else if(r.data.clientSecret){
           stripeInstance.confirmCardPayment(r.data.clientSecret,{payment_method:ev.paymentMethod.id}).then(function(conf){
             if(conf.error){ev.complete('fail');isProcessing=false;}
-            else{ev.complete('success');showSuccess();}
+            else{ev.complete('success');window._fbCapiAfter3DS({email:(curUser&&curUser.email)||email||undefined,firstName:(curUser&&curUser.firstName)||firstName||undefined,lastName:(curUser&&curUser.lastName)||lastName||undefined,phoneNumber:(typeof cf!=='undefined'&&cf.phoneNumber)||(typeof phoneNumber!=='undefined'?phoneNumber:undefined),value:(typeof finalPrice!=='undefined'?finalPrice:(typeof actualPrice!=='undefined'?actualPrice:(typeof origPrice!=='undefined'?origPrice:0))),currency:'EUR',externalId:(r.data&&r.data.newMemberId)||undefined,fbp:_fbGetCookie('_fbp')||undefined,fbc:_fbGetCookie('_fbc')||undefined,fbEventId:(typeof _fbEventId!=='undefined'?_fbEventId:undefined),clientUserAgent:navigator.userAgent,eventSourceUrl:window.location.href});showSuccess();}
           });
         } else {
           ev.complete('fail');
@@ -1347,7 +1363,7 @@ window.doGuestPackPay=function(){
       else if(r.data.clientSecret){
         return stripeInstance.confirmCardPayment(r.data.clientSecret).then(function(conf){
           if(conf.error){err.textContent=conf.error.message;err.classList.add('show');isProcessing=false;if(btn){btn.textContent='Confirm booking';btn.disabled=false;}}
-          else{showSuccess();}
+          else{window._fbCapiAfter3DS({email:(curUser&&curUser.email)||email||undefined,firstName:(curUser&&curUser.firstName)||firstName||undefined,lastName:(curUser&&curUser.lastName)||lastName||undefined,phoneNumber:(typeof cf!=='undefined'&&cf.phoneNumber)||(typeof phoneNumber!=='undefined'?phoneNumber:undefined),value:(typeof finalPrice!=='undefined'?finalPrice:(typeof actualPrice!=='undefined'?actualPrice:(typeof origPrice!=='undefined'?origPrice:0))),currency:'EUR',externalId:(r.data&&r.data.newMemberId)||undefined,fbp:_fbGetCookie('_fbp')||undefined,fbc:_fbGetCookie('_fbc')||undefined,fbEventId:(typeof _fbEventId!=='undefined'?_fbEventId:undefined),clientUserAgent:navigator.userAgent,eventSourceUrl:window.location.href});showSuccess();}
         });
       } else {
         err.textContent=r.data.error||'Payment failed. Please try again.';
@@ -1777,7 +1793,7 @@ window.showPayForm=function(type,price,productId,name,desc){stepChange();
         else if(r.data.clientSecret){
           stripeInstance.confirmCardPayment(r.data.clientSecret,{payment_method:ev.paymentMethod.id}).then(function(conf){
             if(conf.error){ev.complete('fail');isProcessing=false;}
-            else{ev.complete('success');showSuccess();}
+            else{ev.complete('success');window._fbCapiAfter3DS({email:(curUser&&curUser.email)||email||undefined,firstName:(curUser&&curUser.firstName)||firstName||undefined,lastName:(curUser&&curUser.lastName)||lastName||undefined,phoneNumber:(typeof cf!=='undefined'&&cf.phoneNumber)||(typeof phoneNumber!=='undefined'?phoneNumber:undefined),value:(typeof finalPrice!=='undefined'?finalPrice:(typeof actualPrice!=='undefined'?actualPrice:(typeof origPrice!=='undefined'?origPrice:0))),currency:'EUR',externalId:(r.data&&r.data.newMemberId)||undefined,fbp:_fbGetCookie('_fbp')||undefined,fbc:_fbGetCookie('_fbc')||undefined,fbEventId:(typeof _fbEventId!=='undefined'?_fbEventId:undefined),clientUserAgent:navigator.userAgent,eventSourceUrl:window.location.href});showSuccess();}
           });
         } else {
           ev.complete('fail');
@@ -1872,7 +1888,7 @@ window.doPayAndBook=function(type,price,productId){if(isProcessing)return;
       else if(r.data.clientSecret){
         return stripeInstance.confirmCardPayment(r.data.clientSecret).then(function(conf){
           if(conf.error){err.textContent=conf.error.message;err.classList.add('show');showFallback();isProcessing=false;btn.textContent='Confirm booking';btn.disabled=false;}
-          else{showSuccess();}
+          else{window._fbCapiAfter3DS({email:(curUser&&curUser.email)||email||undefined,firstName:(curUser&&curUser.firstName)||firstName||undefined,lastName:(curUser&&curUser.lastName)||lastName||undefined,phoneNumber:(typeof cf!=='undefined'&&cf.phoneNumber)||(typeof phoneNumber!=='undefined'?phoneNumber:undefined),value:(typeof finalPrice!=='undefined'?finalPrice:(typeof actualPrice!=='undefined'?actualPrice:(typeof origPrice!=='undefined'?origPrice:0))),currency:'EUR',externalId:(r.data&&r.data.newMemberId)||undefined,fbp:_fbGetCookie('_fbp')||undefined,fbc:_fbGetCookie('_fbc')||undefined,fbEventId:(typeof _fbEventId!=='undefined'?_fbEventId:undefined),clientUserAgent:navigator.userAgent,eventSourceUrl:window.location.href});showSuccess();}
         });
       } else {
         err.textContent=r.data.error||'Payment failed. Please try again.';showFallback();

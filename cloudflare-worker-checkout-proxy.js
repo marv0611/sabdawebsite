@@ -142,6 +142,9 @@ export default {
     if (url.pathname === '/sabda-api/book') {
       return handleBook(request, reqOrigin);
     }
+    if (url.pathname === '/sabda-api/capi-purchase') {
+      return handleCapiPurchase(request, reqOrigin, env);
+    }
     if (url.pathname === '/sabda-api/pay') {
       return handlePay(request, reqOrigin, env);
     }
@@ -874,7 +877,37 @@ async function sha256hex(str) {
   return Array.from(new Uint8Array(hashBuffer)).map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
-async function sendCAPIEvent(eventName, eventId, email, firstName, lastName, value, currency, eventSourceUrl, clientIp, clientUserAgent, fbp, fbc, env) {
+// Normalize a phone string to E.164 for CAPI hashing.
+// Strips spaces, dashes, parentheses, leading zeros after country code.
+// If no country code present, defaults to +34 (Spain — primary SABDA market).
+// Returns empty string if input doesn't look like a phone.
+function normalizePhoneE164(raw) {
+  if (!raw) return '';
+  let p = String(raw).replace(/[\s\-()._]/g, '');
+  if (!p) return '';
+  // Already has + → trust it (but strip non-digits after +)
+  if (p.startsWith('+')) {
+    p = '+' + p.slice(1).replace(/\D/g, '');
+  } else if (p.startsWith('00')) {
+    // 00xx... → +xx...
+    p = '+' + p.slice(2).replace(/\D/g, '');
+  } else {
+    // No country code: assume Spain (+34). Strip leading zeros.
+    const digits = p.replace(/\D/g, '').replace(/^0+/, '');
+    if (!digits) return '';
+    // If digits already start with 34 and length looks like Spain mobile (11), trust
+    if (digits.startsWith('34') && digits.length >= 11) {
+      p = '+' + digits;
+    } else {
+      p = '+34' + digits;
+    }
+  }
+  // Sanity: must be at least +CCN (5 chars) and at most 16
+  if (p.length < 5 || p.length > 16) return '';
+  return p;
+}
+
+async function sendCAPIEvent(eventName, eventId, email, firstName, lastName, value, currency, eventSourceUrl, clientIp, clientUserAgent, fbp, fbc, env, phone, externalId) {
   const CAPI_TOKEN = (env && env.CAPI_ACCESS_TOKEN) || '';
   if (!CAPI_TOKEN) {
     console.log('[CAPI] Skipping — CAPI_ACCESS_TOKEN not set');
@@ -882,26 +915,43 @@ async function sendCAPIEvent(eventName, eventId, email, firstName, lastName, val
   }
   const PIXEL_ID = '567636669734630';
   try {
-    const [emHash, fnHash, lnHash] = await Promise.all([
+    // Normalize phone to E.164 BEFORE hashing
+    const phoneE164 = normalizePhoneE164(phone);
+    // External ID: hash if it looks like a stable identifier; pass empty otherwise
+    const extIdStr = externalId ? String(externalId).trim() : '';
+
+    const [emHash, fnHash, lnHash, phHash, extIdHash] = await Promise.all([
       sha256hex(email),
       sha256hex(firstName),
       sha256hex(lastName),
+      // Phone: hash WITHOUT the leading +, per Meta CAPI spec
+      phoneE164 ? sha256hex(phoneE164.replace(/^\+/, '')) : Promise.resolve(''),
+      extIdStr ? sha256hex(extIdStr) : Promise.resolve(''),
     ]);
+
+    // Build user_data with conditional inclusion — Meta penalizes empty values
+    // (e.g., em:[""] or em:[]). Only include keys with actual data.
+    const user_data = {};
+    if (emHash)  user_data.em  = [emHash];
+    if (phHash)  user_data.ph  = [phHash];
+    if (fnHash)  user_data.fn  = [fnHash];
+    if (lnHash)  user_data.ln  = [lnHash];
+    if (extIdHash) user_data.external_id = [extIdHash];
+    if (clientIp) user_data.client_ip_address = clientIp;
+    if (clientUserAgent) user_data.client_user_agent = clientUserAgent;
+    if (fbp) user_data.fbp = fbp;
+    if (fbc) user_data.fbc = fbc;
+
+    // Diagnostic: count which fields we're sending (for matching-quality debug)
+    const fieldsSent = Object.keys(user_data).join(',');
+
     const eventData = {
       event_name: eventName,
       event_time: Math.floor(Date.now() / 1000),
       event_id: eventId || (eventName + '_' + Date.now()),
       event_source_url: eventSourceUrl || 'https://sabdastudio.com/classes/',
       action_source: 'website',
-      user_data: {
-        em: emHash ? [emHash] : [],
-        fn: fnHash ? [fnHash] : [],
-        ln: lnHash ? [lnHash] : [],
-        ...(clientIp ? { client_ip_address: clientIp } : {}),
-        ...(clientUserAgent ? { client_user_agent: clientUserAgent } : {}),
-        ...(fbp ? { fbp } : {}),
-        ...(fbc ? { fbc } : {}),
-      },
+      user_data: user_data,
       custom_data: {
         currency: currency || 'EUR',
         value: Number(value) || 0,
@@ -916,7 +966,7 @@ async function sendCAPIEvent(eventName, eventId, email, firstName, lastName, val
       }
     );
     const capiData = await capiRes.json().catch(() => ({}));
-    console.log('[CAPI]', eventName, 'status:', capiRes.status, 'events_received:', capiData.events_received);
+    console.log('[CAPI]', eventName, 'status:', capiRes.status, 'events_received:', capiData.events_received, 'fields_sent:', fieldsSent);
   } catch (e) {
     console.log('[CAPI] Error:', e.message);
   }
@@ -932,6 +982,52 @@ async function sendCAPIEvent(eventName, eventId, email, firstName, lastName, val
 //   2. sessionId only   → /plugin/sessions/{id}/pay     (paid class booking)
 // Both use paymentMethod:{id:stripePaymentMethodId} format, NOT stripePaymentMethodId at top level.
 // stripeConnectedAccountId is NUMERIC (38966), discovered from /load-stripe-connected-account.
+// ── 3DS CAPI bridge: frontend calls this AFTER stripeInstance.confirmCardPayment
+//   succeeds for 3D Secure purchases. The server-side /sabda-api/pay branch
+//   that returns clientSecret can't fire CAPI yet (purchase not confirmed).
+//   This endpoint fires the same rich user_data block as the non-3DS path.
+async function handleCapiPurchase(request, origin, env) {
+  try {
+    const {
+      eventName, fbEventId, email, firstName, lastName, phoneNumber,
+      value, currency, externalId, fbp, fbc, clientUserAgent, eventSourceUrl,
+    } = await request.json();
+    
+    if (!email) {
+      return new Response(JSON.stringify({ error: 'Missing email' }), {
+        status: 400, headers: corsHeaders(origin),
+      });
+    }
+    
+    await sendCAPIEvent(
+      eventName || 'Purchase',
+      fbEventId,
+      email,
+      firstName || '',
+      lastName || '',
+      Number(value) || 0,
+      currency || 'EUR',
+      eventSourceUrl || 'https://sabdastudio.com/classes/',
+      request.headers.get('CF-Connecting-IP') || '',
+      clientUserAgent || request.headers.get('User-Agent') || '',
+      fbp || '',
+      fbc || '',
+      env,
+      phoneNumber || '',
+      externalId || ''
+    );
+    
+    return new Response(JSON.stringify({ success: true }), {
+      status: 200, headers: corsHeaders(origin),
+    });
+  } catch (e) {
+    console.log('[CAPI-PURCHASE] EXCEPTION:', e.message);
+    return new Response(JSON.stringify({ error: 'Server error: ' + e.message }), {
+      status: 500, headers: corsHeaders(origin),
+    });
+  }
+}
+
 async function handlePay(request, origin, env) {
   try {
     const { sessionId, sessionToken, stripePaymentMethodId, firstName, lastName, email, password, phoneNumber, customerFields, type, productId, discountCode, discountCodeId, actualPrice, fbEventId, fbp, fbc, clientIp, clientUserAgent, autoEnroll } = await request.json();
@@ -1230,13 +1326,21 @@ async function handlePay(request, origin, env) {
       // Fire CAPI Purchase event (non-3DS success)
       const priceForCAPI = (actualPrice !== undefined && actualPrice !== null) ? actualPrice
         : (productId ? (PRODUCT_PRICES[Number(productId)] || 0) : 0);
+      // Pull Momence customer ID from pay response for external_id matching
+      // payData.payload.newMemberId is the Momence-side customer key — stable per
+      // customer across sessions, so it's safe to use as Meta external_id.
+      const momenceCustomerId =
+        (payData && payData.payload && payData.payload.newMemberId) ||
+        (payData && payData.payload && payData.payload.memberId) ||
+        '';
       sendCAPIEvent(
         'Purchase', fbEventId, email, firstName, lastName,
         priceForCAPI, 'EUR',
         'https://sabdastudio.com/classes/',
         clientIp || request.headers.get('CF-Connecting-IP') || '',
         clientUserAgent || request.headers.get('User-Agent') || '',
-        fbp, fbc, env
+        fbp, fbc, env,
+        phoneNumber, momenceCustomerId
       ).catch(() => {});
       return new Response(JSON.stringify({ success: true, data: payData }), {
         status: 200, headers: corsHeaders(origin),
