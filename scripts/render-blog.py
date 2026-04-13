@@ -457,7 +457,7 @@ footer{{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgr
  <img class="ft-symbol" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20symbol%20multi-colored%20(1).png" alt="SABDA symbol">
  </div>
  <div class="ft-col"><h3 style="color:var(--cyan)">{nl['classes']}</h3><ul>
- <li><a href="{np['classes']}">{nl['classes']}</a></li><li><a href="{np['hire']}">{nl['hire']}</a></li><li><a href="{np['pricing']}">{nl['pricing']}</a></li><li><a href="{np['events']}">{nl['events']}</a></li><li><a href="{np['about']}">{nl['about']}</a></li>
+ <li><a href="{np['classes']}">{nl['classes']}</a></li><li><a href="{np['hire']}">{nl['hire']}</a></li><li><a href="{np['pricing']}">{nl['pricing']}</a></li><li><a href="{np['events']}">{nl['events']}</a></li><li><a href="{np['about']}">{nl['about']}</a></li><li><a href="/blog/">Blog</a></li>
  </ul></div>
  <div class="ft-col"><h3 style="color:var(--salmon)">Connect</h3><ul>
  <li><a href="https://instagram.com/sabda_studio" target="_blank" rel="noopener noreferrer">Instagram</a></li>
