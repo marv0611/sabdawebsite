@@ -46,3 +46,24 @@ Expression:
 Action: Static redirect
 Target: https://sabdastudio.com/blog/pilates-barcelona-guia/#pilates-espalda
 Status: 301. Preserve query string: Yes.
+
+## 301 Redirect: agenda-barcelona → ocio-barcelona
+
+**Source URL pattern:** `https://sabdastudio.com/blog/agenda-barcelona/*`
+**Destination URL:** `https://sabdastudio.com/blog/ocio-barcelona/`
+**Status:** 301
+**Reason:** Ghost directory removed from repo (Tuesday session). Was thin orphan HTML
+that hurt site quality. /blog/ocio-barcelona/ is the canonical replacement.
+
+To configure (Cloudflare Dashboard → Rules → Redirect Rules):
+- Field: URI Path
+- Operator: starts with
+- Value: /blog/agenda-barcelona/
+- Static URL redirect: https://sabdastudio.com/blog/ocio-barcelona/
+- Status: 301
+- Preserve query string: Yes
+
+> **API attempted, requires manual:** The Page Rules API token doesn't have
+> Rulesets:Edit scope. Marvyn needs to add this rule manually via Dashboard:
+> Cloudflare → sabdastudio.com → Rules → Redirect Rules → Create rule.
+> Free plan allows ~10 dynamic redirects (separate from the 3 Page Rules quota).
