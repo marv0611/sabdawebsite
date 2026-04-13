@@ -1814,13 +1814,24 @@ function showSuccess(){stepChange();
     var sess=allE.find(function(e){return String(e.id)===String(curSession.id);});
     if(sess&&sess.spotsRemaining>0) sess.spotsRemaining--;
   }
-  bd.innerHTML='<div class="bk-success">'
+  /* SABDA-CREDIT-FIX-v1 — differentiate atomic-book vs credit-purchase confirmation. Drop-in/pack/membership purchases buy credit but don't auto-book a session; old "You're booked!" message was misleading and matched Mark's bug report 2026-04-13. */
+  if(curSession&&curSession.id){
+    bd.innerHTML='<div class="bk-success">'
     +'<div class="bk-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>'
     +'<h3>You\'re booked!</h3>'
     +'<p>'+esc(curSession.title)+'<br>'+curSession.time+(curSession.teacher?' with '+esc(curSession.teacher):'')+'</p>'
     +'<p style="margin-top:16px;font-size:.78rem;color:var(--white38)">Check your email for confirmation. See you on the mat.</p>'
     +'<button class="bk-primary" style="margin-top:20px" onclick="closeMo()">Done</button>'
     +'</div>';
+  } else {
+    bd.innerHTML='<div class="bk-success">'
+    +'<div class="bk-check"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>'
+    +'<h3>Credit added to your account</h3>'
+    +'<p>'+(_purchName||'Your purchase')+' is ready. Now choose the class you want to attend.</p>'
+    +'<p style="margin-top:16px;font-size:.78rem;color:var(--white38)">Check your email for the receipt. We\'ll see you on the mat.</p>'
+    +'<button class="bk-primary" style="margin-top:20px" onclick="closeMo()">Book a class \u2192</button>'
+    +'</div>';
+  }
   isProcessing=false;
 }
 
