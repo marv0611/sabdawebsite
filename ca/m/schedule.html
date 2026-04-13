@@ -1795,7 +1795,7 @@ function showSuccess(){stepChange();
     +'<h3>Crèdit afegit al teu compte</h3>'
     +'<p>'+(_purchName||'La teva compra')+' està llest. Ara tria la classe a la qual vols assistir.</p>'
     +'<p style="margin-top:16px;font-size:.78rem;color:var(--white38)">Revisa el teu correu per al rebut. Ens veiem a la classe.</p>'
-    +'<button class="bk-primary" style="margin-top:20px" onclick="closeMo();renderSched();window.scrollTo({top:document.querySelector(\'.sch-day-tabs\')?.offsetTop||0,behavior:\'smooth\'})">Reservar classe \u2192</button>'
+    +'<button class="bk-primary" style="margin-top:20px" onclick="autoOpenedFromPack=false;closeMo();renderSched();window.scrollTo({top:document.querySelector(\'.sch-day-tabs\')?.offsetTop||0,behavior:\'smooth\'})">Reservar classe \u2192</button>'
     +'</div>';
   }
   isProcessing=false;

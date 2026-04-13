@@ -1843,7 +1843,7 @@ function showSuccess(){stepChange();
     +'<h3>Credit added to your account</h3>'
     +'<p>'+(_purchName||'Your purchase')+' is ready. Now choose the class you want to attend.</p>'
     +'<p style="margin-top:16px;font-size:.78rem;color:var(--white38)">Check your email for the receipt. We\'ll see you on the mat.</p>'
-    +'<button class="bk-primary" style="margin-top:20px" onclick="closeMo();renderSched();window.scrollTo({top:document.querySelector(\'.sch-day-tabs\')?.offsetTop||0,behavior:\'smooth\'})">Book a class \u2192</button>'
+    +'<button class="bk-primary" style="margin-top:20px" onclick="autoOpenedFromPack=false;closeMo();renderSched();window.scrollTo({top:document.querySelector(\'.sch-day-tabs\')?.offsetTop||0,behavior:\'smooth\'})">Book a class \u2192</button>'
     +'</div>';
   }
   isProcessing=false;
