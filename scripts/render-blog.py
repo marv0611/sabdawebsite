@@ -220,6 +220,14 @@ def render_html(md_path, dry_run=False):
     # Detect noindex flag (from frontmatter or [DEPRECATED] marker)
     is_noindex = bool(fields.get('noindex')) or '[DEPRECATED]' in h1
     
+    # ─── Strip editorial annotations that should never render ───
+    # Author breadcrumbs like *[hreflang: ...]*, *[Schema: ...]*, *[Images needed: ...]*,
+    # *[CTA routes to ...]*, *[All images require alt text...]*, *[Deprecated: ...]*.
+    # Pattern: a whole line that's italic-wrapped (asterisk) brackets. All 122 instances
+    # across 60 MDs are editorial — none are content. Hreflang `<link>` tags + JSON-LD
+    # schema are emitted programmatically below.
+    body = re.sub(r'^\s*\*\[[^\]]+\]\*?\s*$\n?', '', body, flags=re.MULTILINE)
+    
     # ─── Markdown → HTML ───
     md = markdown.Markdown(extensions=['extra','sane_lists','attr_list'])
     body_html = md.convert(body)
