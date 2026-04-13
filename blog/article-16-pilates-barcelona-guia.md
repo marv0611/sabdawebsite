@@ -7,6 +7,7 @@
 **Slug:** `/blog/pilates-barcelona-guia/`
 
 **Primary keyword:** pilates barcelona
+**publish: true**
 **Secondary keywords:** pilates eixample, pilates reformer barcelona, pilates embarazadas barcelona, centros de pilates barcelona, pilates mat barcelona
 
 ---

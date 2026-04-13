@@ -291,7 +291,16 @@ def render_html(md_path, dry_run=False):
     }
     
     # ─── Robots meta ───
-    robots_meta = '<meta name="robots" content="noindex,follow">' if is_noindex else '<meta name="robots" content="index,follow,max-image-preview:large">'
+    # SAFE DEFAULT: noindex unless MD explicitly opts in via **publish: true**
+    # This prevents accidentally pushing all articles live at once.
+    is_published = bool(fields.get('publish', False))
+    if is_noindex:
+        robots_meta = '<meta name="robots" content="noindex,follow">'
+    elif is_published:
+        robots_meta = '<meta name="robots" content="index,follow,max-image-preview:large">'
+    else:
+        # Default: not yet released
+        robots_meta = '<meta name="robots" content="noindex,follow">'
     
     # ─── Title (with " | SABDA" suffix) ───
     title_full = f'{h1_clean} | SABDA'

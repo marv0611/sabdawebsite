@@ -7,6 +7,7 @@
 **Slug:** `/blog/mindfulness-barcelona/`
 
 **Primary keyword:** mindfulness barcelona
+**publish: true**
 **Secondary keywords:** curso mindfulness barcelona, meditación guiada barcelona, retiro meditación barcelona, clases meditación barcelona
 
 ---

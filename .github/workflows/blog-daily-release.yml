@@ -1,0 +1,57 @@
+name: Blog Daily Release
+
+# Releases one queued blog article per weekday at 09:00 CET (07:00 UTC summer / 08:00 UTC winter)
+# Reads blog-release-queue.json, finds article with today's release_date, flips it from noindex
+# to index, adds it back to sitemap, commits + pushes.
+
+on:
+  schedule:
+    # 07:00 UTC = 09:00 CEST (summer DST). For winter, GitHub Actions cron is UTC-only,
+    # so winter releases will fire at 08:00 CET. Acceptable drift.
+    - cron: '0 7 * * 1-5'
+  workflow_dispatch:
+    inputs:
+      force_slug:
+        description: 'Force-release a specific slug (e.g. /blog/yoga-barcelona-guia/), bypassing date check'
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run release script
+        env:
+          FORCE_SLUG: ${{ github.event.inputs.force_slug }}
+        run: python3 scripts/blog-release.py
+
+      - name: Commit and push
+        run: |
+          if git diff --quiet; then
+            echo "No changes — nothing to release today"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          # Read the slug from a marker file written by the script
+          if [ -f /tmp/released_slug.txt ]; then
+            SLUG=$(cat /tmp/released_slug.txt)
+            git commit -m "Release blog article: $SLUG" -m "Automated daily release. Flipped noindex→index, added to sitemap."
+          else
+            git commit -m "Daily blog release"
+          fi
+          git push

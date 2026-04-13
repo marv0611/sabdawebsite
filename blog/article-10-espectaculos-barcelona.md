@@ -7,6 +7,7 @@
 **Slug:** `/blog/espectaculos-barcelona/`
 
 **Primary keyword:** espectaculos barcelona
+**publish: true**
 **Secondary keywords:** mejores espectáculos barcelona, espectáculos barcelona hoy, espectáculos barcelona 2026
 
 ---

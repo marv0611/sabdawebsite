@@ -7,6 +7,7 @@
 **Slug:** `/blog/what-is-breathwork/`
 
 **Primary keyword:** breathwork barcelona
+**publish: true**
 **Secondary keywords:** what is breathwork, breathwork benefits, breathwork techniques
 
 ---
