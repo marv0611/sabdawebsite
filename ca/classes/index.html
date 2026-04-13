@@ -1431,7 +1431,7 @@ function showConfirmStep(membershipOrList){stepChange();
   if(!isSubscription && summedCredits !== null && summedCredits > 0){
     var after = summedCredits - 1;
     var afterLabel = after === 1 ? '1 classe' : (after + ' classes');
-    afterHTML = '<div style="font-size:.72rem;color:var(--white38);margin-top:6px">Després d’aquesta reserva: <strong style="color:var(--white60)">'+afterLabel+'</strong></div>';
+    afterHTML = '<div style="font-size:.72rem;color:var(--white38);margin-top:6px">Després d\u2019aquesta reserva: <strong style="color:var(--white60)">'+afterLabel+'</strong></div>';
   }
 
   bd.innerHTML=classBlockHtml()
