@@ -50,6 +50,11 @@ jobs:
                   'blog/hen-party-barcelona',          # Art 49: deprecated, 301 -> Art 06
                   'blog/dolby-atmos-wellness',         # Art 52: PR/backlink bait, non-SEO
                   'blog/first-time-sabda',             # Art 54: branded conversion content
+                  'blog/primera-vez-sabda',            # Art 53: branded conversion content (ES)
+                  'blog/barcelona-invierno-planes',    # Art 58: time-dependent, removed from index
+                  'blog/planes-barcelona-gratis',      # Art 45: deprecated, 301 -> Art 02 #planes-gratis
+                  'blog/que-hacer-barcelona-lluvia',   # Art 47: deprecated, 301 -> Art 02 #planes-lluvia
+                  'blog/pilates-dolor-espalda',        # Art 56: deprecated, 301 -> Art 16 #pilates-espalda
               }
               if item['slug'] in PERMANENT_NOINDEX_SLUGS:
                   print(f"  SKIP {item['slug']}: permanent noindex (audit-flagged)")

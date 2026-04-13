@@ -2,6 +2,8 @@
 
 **Última actualización: marzo 2026**
 
+**noindex: true**
+
 **Meta description:** Todo lo que necesitas saber antes de tu primera clase en SABDA: qué llevar, cuándo llegar, qué esperar, y cómo funciona la sala inmersiva. (143 chars)
 
 **Slug:** `/blog/primera-vez-sabda/`

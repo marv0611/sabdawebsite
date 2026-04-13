@@ -1,17 +1,17 @@
-# Ecstatic Dance en Barcelona: Qué Es, Dónde Ir, y Qué Esperar
+# Ecstatic Dance en Barcelona: qué es y dónde practicarlo
 
-**Última actualización: marzo 2026**
+**Última actualización: abril 2026**
 
-**Meta description:** Ecstatic dance en Barcelona explicado: sin coreografía, sin juicio, solo movimiento. Dónde encontrar sesiones y qué pasa realmente. (134 chars)
+**Meta description:** Ecstatic dance barcelona explicado: qué es, las reglas, qué se siente, y dónde encontrar sesiones (incluida la versión inmersiva de SABDA).
 
 **Slug:** `/blog/ecstatic-dance-que-es/`
 
-**Primary keyword:** danza extatica barcelona
-**Secondary keywords:** danza extática barcelona, ecstatic dance qué es, ecstatic dance barcelona hoy
+**Primary keyword:** ecstatic dance barcelona
+**Secondary keywords:** que es ecstatic dance, ecstatic dance sabda, clases ecstatic dance barcelona, danza extática barcelona
 
 ---
 
-La danza extática es una de esas cosas que suenan increíbles u horribles dependiendo de tu relación con bailar en público. Si alguna vez has querido moverte al ritmo de la música sin que nadie te mire, te juzgue, o espere que sepas una coreografía, esto es literalmente eso.
+El ecstatic dance es una de esas cosas que suenan increíbles u horribles dependiendo de tu relación con bailar en público. Si alguna vez has querido moverte al ritmo de la música sin que nadie te mire, te juzgue, o espere que sepas una coreografía, esto es literalmente eso. En Barcelona hay varias opciones para probarlo, y este artículo explica qué es el ecstatic dance, qué reglas tiene, qué vas a sentir, y dónde encontrar clases de ecstatic dance barcelona (incluida la versión inmersiva en sala de 360° que damos en SABDA).
 
 ---
 

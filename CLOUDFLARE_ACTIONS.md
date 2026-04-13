@@ -19,3 +19,30 @@ After 301 is live: remove `<meta http-equiv="refresh">` from Art 49 stub. Keep t
 ## Noindex HTML emission — Art 40, 49, 52, 54
 
 The workflow `PERMANENT_NOINDEX_SLUGS` guard prevents the scheduled publisher from stripping noindex during auto-publish. When HTML is generated for these articles, the generator MUST emit `<meta name="robots" content="noindex,follow">` in the `<head>`. The `follow` directive preserves link equity to /classes/ and /pricing/.
+
+## Phase 2A: Art 45 Planes Gratis -> Art 02 #planes-gratis (301)
+
+Expression:
+(http.host eq "sabdastudio.com" and http.request.uri.path eq "/blog/planes-barcelona-gratis/") or (http.host eq "sabdastudio.com" and http.request.uri.path eq "/blog/planes-barcelona-gratis")
+
+Action: Static redirect
+Target: https://sabdastudio.com/blog/cosas-que-hacer-en-barcelona/#planes-gratis
+Status: 301. Preserve query string: Yes.
+
+## Phase 2A: Art 47 Lluvia -> Art 02 #planes-lluvia (301)
+
+Expression:
+(http.host eq "sabdastudio.com" and http.request.uri.path eq "/blog/que-hacer-barcelona-lluvia/") or (http.host eq "sabdastudio.com" and http.request.uri.path eq "/blog/que-hacer-barcelona-lluvia")
+
+Action: Static redirect
+Target: https://sabdastudio.com/blog/cosas-que-hacer-en-barcelona/#planes-lluvia
+Status: 301. Preserve query string: Yes.
+
+## Phase 2A: Art 56 Pilates Espalda -> Art 16 #pilates-espalda (301)
+
+Expression:
+(http.host eq "sabdastudio.com" and http.request.uri.path eq "/blog/pilates-dolor-espalda/") or (http.host eq "sabdastudio.com" and http.request.uri.path eq "/blog/pilates-dolor-espalda")
+
+Action: Static redirect
+Target: https://sabdastudio.com/blog/pilates-barcelona-guia/#pilates-espalda
+Status: 301. Preserve query string: Yes.

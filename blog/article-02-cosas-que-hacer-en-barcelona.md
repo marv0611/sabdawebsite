@@ -73,6 +73,31 @@ Si estás en Barcelona entre febrero y abril, la calcotada es obligatoria. Calç
 
 ---
 
+
+---
+
+<a id="planes-gratis"></a>
+
+## Planes gratis en Barcelona {#planes-gratis}
+
+Barcelona es cara si dejas que te la vendan, y muy asequible si sabes dónde mirar. Estos son los mejores planes que no cuestan absolutamente nada, complementarios a los 20 de arriba.
+
+**Terrazas del MNAC.** Acceso libre a las terrazas exteriores del Museo Nacional de Arte de Cataluña. Vistas de Plaça Espanya, las Torres Venecianas, y media ciudad. Súbete antes del atardecer y quédate hasta que se encienda la Fuente Mágica (jueves a sábado, horarios variables por temporada). Show de agua, luz y música incluido en el precio: cero euros.
+
+**Castillo de Montjuïc.** Entrada gratuita los domingos a partir de las 15:00. Las murallas dan al puerto y al Mediterráneo por un lado, y a toda la ciudad por el otro. Combinable con un paseo por los jardines de Montjuïc, que son gratis siempre.
+
+**Pabellón Mies van der Rohe.** Una de las obras maestras del modernismo del siglo XX abre gratuitamente el primer domingo de cada mes. Cualquier estudiante de arquitectura mataría por estar dentro. Tú entras gratis si eliges el día.
+
+**MACBA los sábados por la tarde.** El Museo de Arte Contemporáneo de Barcelona tiene franjas de acceso gratuito (consulta su web por temporada). Y la plaza exterior, con skaters de toda Europa haciendo trucos contra el muro blanco, es un espectáculo en sí mismo. Gratis siempre.
+
+**Galerías del Born y Poblenou.** Decenas de galerías pequeñas con entrada libre. Pasea, mira, sal sin culpa. Carrer de Pujades en Poblenou concentra varias en cinco minutos andando. Cero presión de compra, arte contemporáneo de verdad.
+
+**Castellers en plaza.** Las torres humanas catalanas se ensayan en plazas de Gràcia, Sants, y otros barrios casi cada fin de semana. Espectáculo gratuito, profundamente local, y una de las pocas tradiciones donde puedes acercarte y hablar con la gente que lo hace.
+
+**Las playas del norte.** Bogatell y Mar Bella tienen más espacio que Barceloneta y menos turistas. Son gratis (obviamente), y en invierno ofrecen un paseo por el passeig marítim que vale más que muchas excursiones de pago.
+
+---
+
 ## Planes nocturnos en Barcelona
 
 ### 11. Jazz en Jamboree
@@ -86,6 +111,33 @@ Jamboree lleva en Plaça Reial desde 1960. La bóveda del sótano tiene jazz y b
 ### 13. El Raval después de las 22:00
 
 El Raval de noche tiene una energía que ningún otro barrio de Barcelona replica. Bar Marsella lleva abierto desde 1820. Madera, dorado, espejos, y absenta si te atreves. 23 Robadors tiene música en vivo y una clientela que va desde artistas hasta gente que simplemente quería una cerveza y acabó quedándose tres horas. No es pulido. Eso es lo bueno.
+
+
+---
+
+<a id="planes-lluvia"></a>
+
+## Planes para días de lluvia {#planes-lluvia}
+
+Llueve en Barcelona más de lo que los folletos turísticos admiten. Unos 55-60 días al año, sobre todo en octubre-noviembre y marzo-abril. Los chubascos suelen ser intensos pero cortos, rara vez llueve todo el día. Cuando cae, estos son los planes que merecen la pena bajo techo.
+
+**Wellness inmersivo en SABDA.** El plan perfecto para días grises. Una sala cerrada de 360° con audio Dolby Atmos donde haces yoga, sound healing, breathwork, o pilates dentro de proyecciones envolventes. La oscuridad de la sala y el contraste con el exterior gris hacen el sound healing especialmente potente cuando llueve. Desde €18/clase, [3 clases por €50](https://momence.com/m/443935).
+
+**IDEAL Centre d'Arts Digitals.** Exposiciones inmersivas a gran escala en Poblenou. Caminas, miras, te sientas, te dejas envolver. Las salas son enormes y la programación rota cada pocos meses. Entrada ~€15-18.
+
+**Aire Ancient Baths.** Bóvedas de piedra del Born convertidas en circuito termal. Piscinas a distintas temperaturas, vapor, velas, silencio obligatorio. Es el spa más bonito de la ciudad. Circuito básico ~€40-50.
+
+**Filmoteca de Catalunya.** Cine de autor y clásicos restaurados en el Raval. €4 la entrada. Una doble sesión de tarde con un café en medio convierte un día perdido en uno memorable.
+
+**Talleres con las manos.** Cerámica en Poblenou (~€35 por dos horas en el torno), chocolate en Chök (~€25), o una clase de cocina catalana en cocina privada (~€60-90). Todos te sacan del móvil y te ponen en algo concreto durante un par de horas.
+
+**Librerías con café.** La Central en el Raval es la más grande. Laie en el Eixample tiene restaurante arriba. +Bernat en el Born es pequeña y tiene personalidad. Un día de lluvia con un libro y un café no necesita más.
+
+**Mercados cubiertos.** Sant Antoni, Santa Caterina, y La Boqueria (con menos turistas cuando llueve) son planes de dos o tres horas: pasear, mirar, comprar algo, sentarse al bar interior, repetir.
+
+El día de lluvia ideal: sound healing en SABDA por la mañana, vermut en Morro Fi al mediodía, Filmoteca por la tarde. Mejor que muchos días soleados.
+
+---
 
 ### 14. Danza extática
 

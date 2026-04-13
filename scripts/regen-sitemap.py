@@ -64,7 +64,9 @@ with open('sitemap.xml') as f:
 
 url_pattern = re.compile(
   r'<url>\s*<loc>([^<]+)</loc>\s*<lastmod>[^<]+</lastmod>'
-  r'\s*<changefreq>([^<]+)</changefreq>\s*<priority>([^<]+)</priority>\s*</url>',
+  r'\s*<changefreq>([^<]+)</changefreq>\s*<priority>([^<]+)</priority>'
+  r'(?:\s*<xhtml:link[^>]*/>)*'  # tolerate any number of pre-existing hreflang links
+  r'\s*</url>',
   re.IGNORECASE)
 
 entries = [{'loc':m.group(1), 'changefreq':m.group(2), 'priority':m.group(3)}

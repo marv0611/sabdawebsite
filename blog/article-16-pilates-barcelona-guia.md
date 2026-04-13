@@ -99,15 +99,27 @@ Lo que necesitas: ropa ajustada (el profesor necesita ver tu alineación). Grip 
 
 ---
 
-## Pilates para espalda
+<a id="pilates-espalda"></a>
 
-Una de las razones más comunes por las que la gente empieza pilates en Barcelona es el dolor de espalda. Lumbar, cervical, o ambos. Y no es casualidad. Pilates fortalece los músculos profundos que estabilizan la columna (transverso abdominal, multífidos, suelo pélvico) de una forma que el gimnasio convencional no consigue. El enfoque no es "más fuerza" sino "mejor control."
+## Pilates para dolor de espalda {#pilates-espalda}
 
-Si tu motivo principal es la espalda, reformer suele ser más efectivo que mat al principio. Los muelles proporcionan asistencia y resistencia controlada que permite trabajar sin sobrecargar. Las sesiones individuales (al menos 3-5 al inicio) permiten que un profesional evalúe tu postura, identifique patrones de compensación, y diseñe un programa específico.
+El dolor de espalda es la razón más común por la que la gente empieza pilates en Barcelona. Lumbar, cervical, o ambos. Y no es casualidad: pilates fortalece los músculos profundos que estabilizan la columna (transverso abdominal, multífidos, suelo pélvico) de una forma que el gimnasio convencional no consigue. El enfoque no es "más fuerza" sino "mejor control."
 
-Un apunte importante: si tienes una lesión diagnosticada (hernia discal, estenosis, escoliosis), busca un fisioterapeuta que haga pilates clínico, no un instructor de pilates genérico. La diferencia importa. Dona10 y Pilat3s tienen profesionales con formación en trabajo terapéutico.
+### Lo que dice la evidencia
 
----
+Múltiples revisiones sistemáticas concluyen que el pilates es efectivo para el dolor lumbar crónico. Un meta-análisis de 2019 publicado en Medicine encontró reducciones significativas en dolor e incapacidad funcional comparado con ejercicio mínimo. La diferencia con otros tipos de ejercicio: pilates es más estructurado, más enfocado en el core profundo, y más fácil de adaptar a distintos niveles de dolor.
+
+### Por qué funciona, la mecánica
+
+El dolor de espalda crónico (no agudo, si te duele intensamente ahora ve al médico primero) suele ser un problema de estabilización, no de fuerza. Los estabilizadores profundos se "apagan" cuando hay dolor crónico. Tu cuerpo compensa con músculos superficiales que no están diseñados para estabilizar y acaban sobrecargados. Pilates reactiva los profundos. Es trabajo lento, sutil, y aparentemente aburrido. Es lo que funciona.
+
+### Mat o algo más asistido
+
+Si tienes una lesión diagnosticada (hernia discal, estenosis, escoliosis severa), empieza con un fisioterapeuta especializado en pilates clínico, no con una clase de grupo. Para dolor inespecífico o como prevención, el pilates mat funciona bien una vez tienes una base. En SABDA ofrecemos exclusivamente pilates mat (Core Pilates, Full Body Pilates, Pilates Sculpt) en un entorno inmersivo de 360° donde la concentración amplificada del entorno sube la calidad de cada repetición. Cuando tu mente está donde tu cuerpo está, los estabilizadores profundos trabajan mejor.
+
+### Cuántas sesiones antes de notar resultados
+
+La mayoría de estudios muestran mejoras a partir de 6-8 semanas practicando 2 veces por semana. Es decir, 12-16 sesiones antes de que el dolor cambie de verdad. No es rápido, pero es sostenible. Pilates no enmascara el dolor, cambia la mecánica que lo produce.
 
 ## Pilates en el Eixample
 
@@ -123,7 +135,7 @@ El mejor centro de pilates en Barcelona es el que te hace ir dos veces por seman
 
 Si quieres pilates mat en un entorno que no se parece a ningún otro estudio: [SABDA](https://sabdastudio.com/classes/). 360° de proyecciones, audio espacial, y la concentración que viene de estar inmerso. [3 clases por €50](https://momence.com/m/443935).
 
-**Relacionado:** [Yoga en Barcelona: Guía definitiva](/blog/yoga-barcelona-guia/) | [Pilates para dolor de espalda](/blog/pilates-dolor-espalda/)
+**Relacionado:** [Yoga en Barcelona: Guía definitiva](/blog/yoga-barcelona-guia/) | [Pilates para dolor de espalda](/blog/pilates-barcelona-guia/#pilates-espalda)
 
 ---
 

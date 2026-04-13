@@ -2,6 +2,8 @@
 
 **Última actualización: marzo 2026**
 
+**noindex: true**
+
 **Meta description:** Planes de invierno en Barcelona: experiencias inmersivas, caldos, mercados navideños, cultura, hammam y actividades para días cortos y fríos. (145 chars)
 
 **Slug:** `/blog/barcelona-invierno-planes/`
