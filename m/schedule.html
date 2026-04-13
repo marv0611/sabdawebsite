@@ -1173,6 +1173,7 @@ function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').repl
 
 // ── STEP 3A: CONFIRM (has credits) ── SABDA-MEMBERSHIPS-V2 (Marvyn 2026-04-13)
 function showConfirmStep(membershipOrList){stepChange();
+  setBack(showGuestStep);
   // Accept either a single membership (legacy) or an array (new).
   var list = Array.isArray(membershipOrList) ? membershipOrList.slice() : [membershipOrList];
   if(!list.length){ console.error('[showConfirmStep] empty list'); return; }
@@ -1242,7 +1243,7 @@ function showConfirmStep(membershipOrList){stepChange();
     afterHTML = '<div style="font-size:.72rem;color:var(--white38);margin-top:6px">After this booking: <strong style="color:var(--white60)">'+afterLabel+'</strong></div>';
   }
 
-  bd.innerHTML=classBlockHtml()
+  bd.innerHTML='<div class="bk-class">'+'<div class="bk-class-name">'+esc(curSession.title)+'</div>'+'<div class="bk-class-meta">'+'<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'+esc(curSession.time)+'</span>'+(curSession.teacher?'<span>'+esc(curSession.teacher)+'</span>':'')+'</div></div>'
     +'<div class="bk-confirm">'
     +(curSession&&curSession.isWaitlist?'<div style="background:rgba(248,166,163,.1);border:1px solid rgba(248,166,163,.3);border-radius:10px;padding:14px;margin-bottom:16px">'+'<div style="color:var(--salmon);font-weight:600;font-size:.88rem;margin-bottom:4px">You\u2019re joining the waitlist</div>'+'<div style="color:var(--white60);font-size:.78rem;line-height:1.4">You won\u2019t be charged unless you get off the waitlist</div>'+'</div>':'')
     +'<div class="bk-user">Booking as <strong>'+esc(curUser.firstName)+' '+esc(curUser.lastName)+'</strong></div>'
@@ -1259,8 +1260,8 @@ function showConfirmStep(membershipOrList){stepChange();
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-confirm-btn" onclick="doBookWithMembership()">Confirm Booking</button>'
     +'<div style="text-align:center;margin-top:14px"><span onclick="showNoMembership()" style="font-size:.8rem;color:var(--cyan);cursor:pointer;border-bottom:1px solid rgba(2,243,197,.3);padding-bottom:1px">Book without membership</span></div>'
-    +'<div class="bk-link" onclick="switchAccount()">Switch account</div>'
-    +'<div class="bk-link" style="margin-top:8px" onclick="closeMo()">\u2190 Back to schedule</div>'
+    +'<div class="bk-link" onclick="curUser=null;curSessionToken=null;showLoginStep()">Switch account</div>'
+    
     +'</div>';
 }
 

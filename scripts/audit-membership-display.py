@@ -267,6 +267,91 @@ else:
     else:
         ok('Logic simulation: all 9 scenarios pass')
 
+
+# ─────────── PART D: HELPER FUNCTION DEPENDENCY AUDIT ───────────
+# Catches the mobile classBlockHtml bug: showConfirmStep references functions
+# that may not exist in the file. Extract every function call inside
+# showConfirmStep, verify each is defined in the same file (or is a globally
+# safe browser API like document.getElementById).
+print('\n[D] HELPER FUNCTION DEPENDENCY AUDIT — every called function must exist in file\n')
+
+# Globally-safe references that don't need to be defined locally
+GLOBALS_OK = {
+    'document', 'window', 'console', 'Array', 'Number', 'String', 'Boolean',
+    'Object', 'Math', 'JSON', 'parseInt', 'parseFloat', 'isNaN', 'fetch',
+    'setTimeout', 'setInterval', 'encodeURIComponent', 'decodeURIComponent',
+    'btoa', 'atob', 'localStorage', 'sessionStorage',
+}
+
+for locale, files in LOCALES.items():
+    for f in files:
+        if not Path(f).exists(): continue
+        s = Path(f).read_text()
+
+        # Extract showConfirmStep body
+        m = re.search(r'function showConfirmStep\([^)]*\)\{([\s\S]*?)\n\}', s)
+        if not m:
+            fail(f'{f}: cannot extract showConfirmStep body for dep audit')
+            continue
+        body = m.group(1)
+
+        # Strip string literals + comments to avoid matching identifiers inside
+        # HTML/CSS strings (e.g. "rgba(" inside an inline style attribute).
+        def strip_strings_and_comments(code):
+            out = []
+            i = 0; in_str = None; in_lc = False; in_bc = False
+            while i < len(code):
+                c = code[i]
+                if in_bc:
+                    if c == '*' and i+1 < len(code) and code[i+1] == '/':
+                        in_bc = False; i += 2; continue
+                    i += 1; continue
+                if in_lc:
+                    if c == '\n': in_lc = False; out.append(' ')
+                    i += 1; continue
+                if in_str:
+                    if c == '\\' and i+1 < len(code): i += 2; continue
+                    if c == in_str: in_str = None; out.append(' ')
+                    i += 1; continue
+                if c == '/' and i+1 < len(code):
+                    if code[i+1] == '/': in_lc = True; i += 2; continue
+                    if code[i+1] == '*': in_bc = True; i += 2; continue
+                if c in ("'", '"', '`'):
+                    in_str = c; out.append(' '); i += 1; continue
+                out.append(c); i += 1
+            return ''.join(out)
+
+        body_clean = strip_strings_and_comments(body)
+        # Find all function calls in the cleaned code. Pattern: word followed by (
+        # but NOT preceded by '.' (those are method calls on objects, fine)
+        calls = set(re.findall(r'(?<![.\w])([a-zA-Z_$][\w$]*)\s*\(', body_clean))
+
+        # Filter: keep only identifiers that look like helper functions
+        # (skip JS keywords, control flow, declarations)
+        JS_KEYWORDS = {'if','for','while','switch','function','return','typeof',
+                       'instanceof','new','var','let','const','catch','throw',
+                       'do','try','else','case','break','continue','delete'}
+        helpers = calls - JS_KEYWORDS - GLOBALS_OK
+
+        # For each helper, check it's defined somewhere in the file
+        # (function NAME, var NAME =, NAME = function, window.NAME =)
+        missing = []
+        for name in helpers:
+            patterns = [
+                rf'function\s+{re.escape(name)}\s*\(',
+                rf'(?:var|let|const)\s+{re.escape(name)}\s*=',
+                rf'window\.{re.escape(name)}\s*=',
+                # Some are passed as args to setBack etc — accept any reference as definition
+                # but only if they appear as definition not just usage
+            ]
+            if not any(re.search(p, s) for p in patterns):
+                missing.append(name)
+
+        if missing:
+            fail(f'{f}: showConfirmStep calls undefined function(s): {missing}')
+        else:
+            ok(f'{f}: all {len(helpers)} called helpers are defined')
+
 # ─────────── SUMMARY ───────────
 print('\n' + '='*60)
 print(f'AUDIT SUMMARY')
