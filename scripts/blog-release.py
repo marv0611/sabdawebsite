@@ -171,7 +171,7 @@ def regenerate_blog_index():
             read_min = 5
         
         released.append({
-            'href': href, 'h1': h1, 'meta_desc': meta_desc,
+            'href': href, 'href_abs': '/blog/' + slug_dir + '/', 'h1': h1, 'meta_desc': meta_desc,
             'lang': lang, 'pub_date': pub_date, 'read_min': read_min,
         })
     
@@ -237,6 +237,62 @@ document.querySelectorAll('.blog-filter').forEach(btn => {
     else:
         s = re.sub(r'<div class="blog-list">[\s\S]*?</div>', new_block, s, count=1)
     
+
+    # ─── Also regenerate 3 mobile blog files (m/blog, es/m/blog, ca/m/blog) ───
+    MOBILE_FILES = {
+        'm/blog.html':    {'lang':'en', 'empty':'New articles dropping <em>weekday mornings</em>. Check back tomorrow.'},
+        'es/m/blog.html': {'lang':'es', 'empty':'Nuevos artículos cada <em>mañana entre semana</em>. Vuelve mañana.'},
+        'ca/m/blog.html': {'lang':'ca', 'empty':'Nous articles cada <em>matí entre setmana</em>. Torna demà.'},
+    }
+    
+    for mob_path, mob_cfg in MOBILE_FILES.items():
+        if not os.path.exists(mob_path): continue
+        ms = open(mob_path).read()
+        
+        matching = [a for a in released if a['lang'] == mob_cfg['lang']]
+        
+        if matching:
+            mcards = []
+            for i, a in enumerate(matching, 1):
+                mcards.append(
+                    f'<a href="{a["href_abs"]}" class="ct fi" style="text-decoration:none;color:inherit;display:block">'
+                    f'<div class="ct-num">{i}</div>'
+                    f'<div class="ct-body">'
+                    f'<div class="ct-name">{a["h1"]}</div>'
+                    f'<div class="ct-desc">{a["meta_desc"]}</div>'
+                    f'</div></a>'
+                )
+            cards_html = '\n'.join(mcards)
+        else:
+            cards_html = (
+                f'<div class="ct fi" style="text-align:center;padding:32px 20px">'
+                f'<div class="ct-body" style="grid-column:1/-1">'
+                f'<div class="ct-desc" style="font-size:.95rem;line-height:1.5;color:var(--w80)">'
+                f'{mob_cfg["empty"]}</div></div></div>'
+            )
+        
+        # Replace existing card block. The mobile structure is:
+        #   <div class="pg fi"> ... </div>
+        #   [CARD BLOCK]
+        #   <div class="sec fi"> ... </div>   ← read-all-articles button
+        # Anchor: end of .pg block to start of .sec block.
+        # We need to handle that the .pg block has nested divs, so use a non-greedy
+        # match for everything up to the FIRST occurrence of <div class="sec fi">.
+        # The marker we look for is the closing of pg-s sub-div, then everything
+        # up to <div class="sec fi">.
+        pattern = re.compile(
+            r'(<div class="pg-s">[^<]*</div>\s*</div>)([\s\S]*?)(<div class="sec fi")',
+            re.MULTILINE
+        )
+        mm = pattern.search(ms)
+        if not mm:
+            print(f'  ⚠ {mob_path}: could not find pg-s/sec-fi anchor, skipping')
+            continue
+        ms_new = ms[:mm.end(1)] + '\n' + cards_html + '\n' + ms[mm.start(3):]
+        
+        open(mob_path, 'w').write(ms_new)
+        print(f'  ✓ {mob_path} regenerated with {len(matching)} cards')
+
     open(blog_index_path, 'w').write(s)
     print(f'  ✓ blog/index.html regenerated with {len(released)} cards')
 
