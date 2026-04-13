@@ -7,7 +7,6 @@
 **Slug:** `/blog/ecstatic-dance-barcelona/`
 
 **Primary keyword:** ecstatic dance barcelona
-**publish: true**
 **Secondary keywords:** ecstatic dance barcelona hoy, ecstatic dance barcelona sabado
 
 ---

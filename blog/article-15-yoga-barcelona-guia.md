@@ -7,7 +7,6 @@
 **Slug:** `/blog/yoga-barcelona-guia/`
 
 **Primary keyword:** yoga barcelona
-**publish: true**
 **Secondary keywords:** clases de yoga barcelona, yoga eixample, yoga para principiantes barcelona, yin yoga barcelona, hatha yoga barcelona
 
 ---

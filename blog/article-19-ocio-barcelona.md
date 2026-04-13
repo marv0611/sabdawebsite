@@ -7,7 +7,6 @@
 **Slug:** `/blog/ocio-barcelona/`
 
 **Primary keyword:** ocio barcelona
-**publish: true**
 **Secondary keywords:** planes barcelona, actividades barcelona, eventos hoy en barcelona, que hacer este domingo en barcelona, planes permanentes barcelona, ocio nocturno barcelona
 
 ---

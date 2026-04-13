@@ -7,7 +7,6 @@
 **Slug:** `/blog/planes-en-pareja-barcelona/`
 
 **Primary keyword:** planes en pareja barcelona
-**publish: true**
 **Secondary keywords:** planes en pareja barcelona gratis, 10 lugares secretos en barcelona para ir en pareja, planes divertidos en pareja barcelona
 
 ---

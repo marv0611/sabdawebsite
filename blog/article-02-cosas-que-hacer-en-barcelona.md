@@ -7,7 +7,6 @@
 **Slug:** `/blog/cosas-que-hacer-en-barcelona/`
 
 **Primary keyword:** que hacer en barcelona este fin de semana
-**publish: true**
 **Secondary keywords:** cosas que hacer en barcelona, que hacer en barcelona hoy, que hacer este domingo en barcelona, planes barcelona fin de semana, eventos hoy en barcelona
 
 ---

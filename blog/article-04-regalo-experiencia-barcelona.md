@@ -7,7 +7,6 @@
 **Slug:** `/blog/regalo-experiencia-barcelona/`
 
 **Primary keyword:** regalo experiencia barcelona
-**publish: true**
 **Secondary keywords:** regalos originales barcelona, regalo original barcelona, experiencias para regalar en pareja barcelona, regalo aniversario barcelona, regalo cumpleaños barcelona
 
 ---

@@ -7,7 +7,6 @@
 **Slug:** `/blog/planes-originales-barcelona/`
 
 **Primary keyword:** planes originales barcelona
-**publish: true**
 **Secondary keywords:** planes divertidos barcelona gratis, actividades divertidas para adultos barcelona, experiencias barcelona
 
 ---

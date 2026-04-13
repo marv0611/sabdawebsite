@@ -72,6 +72,19 @@ def main():
         open(html_path, 'w').write(s_new)
         print(f'  ✓ Flipped {html_path}: {current} → {new}')
     
+    # Also write publish:true to the MD source so future re-renders preserve indexability
+    md_path = target['md_file']
+    if os.path.exists(md_path):
+        md_content = open(md_path).read()
+        if '**publish: true**' not in md_content:
+            # Insert after Primary keyword line
+            if '**Primary keyword:**' in md_content:
+                md_content = re.sub(r'(\*\*Primary keyword:\*\*[^\n]+\n)', r'\1**publish: true**\n', md_content, count=1)
+            elif '**Slug:**' in md_content:
+                md_content = re.sub(r'(\*\*Slug:\*\*[^\n]+\n)', r'\1**publish: true**\n', md_content, count=1)
+            open(md_path, 'w').write(md_content)
+            print(f'  ✓ Marked MD {md_path} as publish:true (preserves indexable on re-render)')
+    
     # ─── 2. Add URL to sitemap ───
     slug = target['slug']
     full_url = f'https://sabdastudio.com{slug}'
@@ -113,10 +126,120 @@ def main():
     open(QUEUE_PATH, 'w').write(json.dumps(queue_data, indent=2))
     print(f'  ✓ Queue updated: {slug} marked released')
     
-    # ─── 4. Write marker for commit message ───
+    # ─── 4. Regenerate /blog/index.html article list ───
+    regenerate_blog_index()
+    
+    # ─── 5. Write marker for commit message ───
     open('/tmp/released_slug.txt', 'w').write(slug)
     
     print(f'\nRelease complete: {slug}')
+
+
+def regenerate_blog_index():
+    """After releasing an article, regenerate /blog/index.html article list
+    from currently-indexable blog articles. Called by main() after release."""
+    import re, glob
+    from datetime import datetime
+    
+    released = []
+    for f in sorted(glob.glob('blog/*/index.html')):
+        s = open(f).read()
+        m = re.search(r'<meta name="robots" content="([^"]+)">', s)
+        if not m or 'noindex' in m.group(1): continue
+        
+        slug_dir = f.replace('blog/','').replace('/index.html','')
+        href = slug_dir + '/'
+        
+        h1m = re.search(r'<h1>([^<]+)</h1>', s)
+        h1 = h1m.group(1).strip() if h1m else slug_dir
+        
+        md_m = re.search(r'<meta name="description" content="([^"]+)">', s)
+        meta_desc = md_m.group(1) if md_m else ''
+        
+        lang_m = re.search(r'<html lang="([a-z]{2})"', s)
+        lang = lang_m.group(1) if lang_m else 'en'
+        
+        date_m = re.search(r'"datePublished":\s*"(\d{4}-\d{2}-\d{2})"', s)
+        pub_date = date_m.group(1) if date_m else ''
+        
+        body_m = re.search(r'<article class="article">([\s\S]*?)</article>', s)
+        if body_m:
+            text = re.sub(r'<[^>]+>',' ', body_m.group(1))
+            words = len(text.split())
+            read_min = max(2, round(words / 220))
+        else:
+            read_min = 5
+        
+        released.append({
+            'href': href, 'h1': h1, 'meta_desc': meta_desc,
+            'lang': lang, 'pub_date': pub_date, 'read_min': read_min,
+        })
+    
+    released.sort(key=lambda x: x['pub_date'], reverse=True)
+    
+    if not released:
+        cards_html = '<div class="blog-coming"><p>New articles dropping <em>weekday mornings</em>.<br>Check back tomorrow.</p></div>'
+    else:
+        def fmt_date(d):
+            try:
+                return datetime.strptime(d, '%Y-%m-%d').strftime('%B %-d, %Y')
+            except: return d
+        
+        cards = []
+        for i, a in enumerate(released):
+            cards.append(
+              f'<a href="{a["href"]}" class="blog-card rv" data-lang="{a["lang"]}">'
+              f'<div class="blog-card-meta" style="margin-bottom:10px"><span style="text-transform:uppercase;font-weight:600;color:var(--cyan)">{a["lang"]}</span> &middot; {a["read_min"]} min read</div>'
+              f'<h2>{a["h1"]}</h2><p>{a["meta_desc"]}</p>'
+              f'<div class="blog-card-meta" style="margin-top:12px">{fmt_date(a["pub_date"])}</div></a>'
+            )
+        cards_html = '\n'.join(cards)
+    
+    # Filter buttons (only show if multiple langs)
+    langs = sorted(set(a['lang'] for a in released))
+    filter_html = ''
+    if len(langs) > 1:
+        btns = '<button class="blog-filter on" data-filter="all" style="padding:8px 16px;border:1px solid rgba(2,243,197,.3);background:rgba(2,243,197,.08);color:var(--cyan);border-radius:20px;font-size:.74rem;font-weight:600;letter-spacing:.06em;cursor:pointer;transition:all .2s">All</button>'
+        for lg in langs:
+            btns += f'<button class="blog-filter" data-filter="{lg}" style="padding:8px 16px;border:1px solid rgba(240,239,233,.12);background:transparent;color:var(--white60);border-radius:20px;font-size:.74rem;font-weight:600;letter-spacing:.06em;cursor:pointer;transition:all .2s">{lg.upper()}</button>'
+        filter_html = f'<div class="blog-filters" style="display:flex;gap:8px;margin-bottom:32px">{btns}</div>'
+    
+    filter_js = """
+<script>
+document.querySelectorAll('.blog-filter').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.blog-filter').forEach(b => {
+      b.classList.remove('on');
+      b.style.background = 'transparent';
+      b.style.color = 'var(--white60)';
+      b.style.borderColor = 'rgba(240,239,233,.12)';
+    });
+    btn.classList.add('on');
+    btn.style.background = 'rgba(2,243,197,.08)';
+    btn.style.color = 'var(--cyan)';
+    btn.style.borderColor = 'rgba(2,243,197,.3)';
+    document.querySelectorAll('.blog-card').forEach(card => {
+      card.style.display = (filter === 'all' || card.dataset.lang === filter) ? 'block' : 'none';
+    });
+  });
+});
+</script>
+"""
+    
+    blog_index_path = 'blog/index.html'
+    s = open(blog_index_path).read()
+    new_block = f'<div class="blog-list-wrap">{filter_html}<div class="blog-list">{cards_html}</div></div>{filter_js}'
+    
+    # Replace existing blog-list-wrap or blog-list
+    if '<div class="blog-list-wrap">' in s:
+        s = re.sub(r'<div class="blog-list-wrap">[\s\S]*?</div></div>(?:\s*<script>[\s\S]*?</script>)?', new_block, s, count=1)
+    else:
+        s = re.sub(r'<div class="blog-list">[\s\S]*?</div>', new_block, s, count=1)
+    
+    open(blog_index_path, 'w').write(s)
+    print(f'  ✓ blog/index.html regenerated with {len(released)} cards')
+
 
 if __name__ == '__main__':
     main()

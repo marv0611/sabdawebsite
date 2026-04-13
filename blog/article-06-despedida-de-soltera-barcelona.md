@@ -7,7 +7,6 @@
 **Slug:** `/blog/despedida-de-soltera-barcelona/`
 
 **Primary keyword:** despedida de soltera barcelona
-**publish: true**
 **Secondary keywords:** pack despedida de soltera barcelona, despedidas de soltera originales, spa despedida de soltera barcelona
 
 ---

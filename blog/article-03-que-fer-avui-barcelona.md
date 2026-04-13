@@ -7,7 +7,6 @@
 **Slug:** `/blog/que-fer-avui-barcelona/`
 
 **Primary keyword:** que fer avui a barcelona
-**publish: true**
 **Secondary keywords:** activitats barcelona, plans barcelona, coses per fer a barcelona
 
 ---
