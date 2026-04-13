@@ -1212,7 +1212,8 @@ function applyPromo(type,origPrice,productId){
   btn.textContent='...';btn.disabled=true;errEl.style.display='none';okEl.style.display='none';
 
   var body={code:code,hostId:54278,price:origPrice};
-  body.sessionId=curSession.id;
+  /* SABDA-PROMO-FIX-v1 — only include sessionId if real session. curSession is a placeholder with id:null during pack/?pack= flow, which made Momence reject every promo code ("Invalid"). Fixed 2026-04-13. */
+  if(curSession&&curSession.id) body.sessionId=curSession.id;
   if(productId) body.membershipId=productId;
 
   fetch(PROXY+'/sabda-api/promo',{
