@@ -479,7 +479,6 @@ try{var saved=localStorage.getItem('sabda_lang')||'en';document.querySelectorAll
 </script>
 
 <script defer src="/cookies.js"></script>
-<script src="/cookie-consent.js"></script>
 <script>
 document.querySelectorAll('a[href*="buy=443935"],a[href*="buy=443934"]').forEach(function(b){b.addEventListener('click',function(){if(typeof fbq!=='function')return;var is3pack=b.href.indexOf('443935')!==-1;var name=is3pack?'Intro 3-Pack':'Classe de prova';var price=is3pack?50:18;var id=is3pack?'443935':'443934';try{fbq('track','AddToCart',{value:price,currency:'EUR',content_name:name,content_ids:[id],content_type:'product'});fbq('track','InitiateCheckout',{value:price,currency:'EUR',content_name:name,content_ids:[id],content_type:'product'});}catch(e){}})});
 </script>
