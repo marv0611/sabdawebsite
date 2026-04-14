@@ -932,7 +932,7 @@ function normalizePhoneE164(raw) {
   return p;
 }
 
-async function sendCAPIEvent(eventName, eventId, email, firstName, lastName, value, currency, eventSourceUrl, clientIp, clientUserAgent, fbp, fbc, env, phone, externalId, testEventCode) {
+async function sendCAPIEvent(eventName, eventId, email, firstName, lastName, value, currency, eventSourceUrl, clientIp, clientUserAgent, fbp, fbc, env, phone, externalId, testEventCode, city, country) {
   const CAPI_TOKEN = (env && env.CAPI_ACCESS_TOKEN) || '';
   if (!CAPI_TOKEN) {
     console.log('[CAPI] Skipping — CAPI_ACCESS_TOKEN not set');
@@ -944,14 +944,21 @@ async function sendCAPIEvent(eventName, eventId, email, firstName, lastName, val
     const phoneE164 = normalizePhoneE164(phone);
     // External ID: hash if it looks like a stable identifier; pass empty otherwise
     const extIdStr = externalId ? String(externalId).trim() : '';
+    // Normalize city and country per Meta spec before hashing:
+    // - ct: lowercase, no spaces, no punctuation
+    // - country: 2-letter ISO lowercase
+    const ctNorm = city ? String(city).trim().toLowerCase().replace(/[^a-z]/g, '') : '';
+    const countryNorm = country ? String(country).trim().toLowerCase().slice(0, 2) : '';
 
-    const [emHash, fnHash, lnHash, phHash, extIdHash] = await Promise.all([
+    const [emHash, fnHash, lnHash, phHash, extIdHash, ctHash, countryHash] = await Promise.all([
       sha256hex(email),
       sha256hex(firstName),
       sha256hex(lastName),
       // Phone: hash WITHOUT the leading +, per Meta CAPI spec
       phoneE164 ? sha256hex(phoneE164.replace(/^\+/, '')) : Promise.resolve(''),
       extIdStr ? sha256hex(extIdStr) : Promise.resolve(''),
+      ctNorm ? sha256hex(ctNorm) : Promise.resolve(''),
+      countryNorm ? sha256hex(countryNorm) : Promise.resolve(''),
     ]);
 
     // Build user_data with conditional inclusion — Meta penalizes empty values
@@ -961,6 +968,8 @@ async function sendCAPIEvent(eventName, eventId, email, firstName, lastName, val
     if (phHash)  user_data.ph  = [phHash];
     if (fnHash)  user_data.fn  = [fnHash];
     if (lnHash)  user_data.ln  = [lnHash];
+    if (ctHash)  user_data.ct  = [ctHash];
+    if (countryHash) user_data.country = [countryHash];
     if (extIdHash) user_data.external_id = [extIdHash];
     if (clientIp) user_data.client_ip_address = clientIp;
     if (clientUserAgent) user_data.client_user_agent = clientUserAgent;
@@ -969,6 +978,14 @@ async function sendCAPIEvent(eventName, eventId, email, firstName, lastName, val
 
     // Diagnostic: count which fields we're sending (for matching-quality debug)
     const fieldsSent = Object.keys(user_data).join(',');
+    // EMQ attribution analytics: track how many purchases carry each optional
+    // high-signal field. fbc presence ≈ user arrived from a Meta ad click.
+    // city presence = user went through checkout (vs API-only fires).
+    // Use this log (grep '[CAPI-EMQ]') to measure ad-driven vs organic split
+    // and city-coverage over time via Cloudflare Workers Logs.
+    if (eventName === 'Purchase') {
+      console.log('[CAPI-EMQ] fbc_present:', !!fbc, 'ct_present:', !!ctHash, 'country_present:', !!countryHash, 'extid_present:', !!extIdHash);
+    }
 
     const eventData = {
       event_name: eventName,
@@ -1024,7 +1041,7 @@ async function handleCapiPurchase(request, origin, env, ctx) {
     const {
       eventName, fbEventId, email, firstName, lastName, phoneNumber,
       value, currency, externalId, fbp, fbc, clientUserAgent, eventSourceUrl,
-      test_event_code,
+      test_event_code, city, country,
     } = await request.json();
     
     if (!email) {
@@ -1032,6 +1049,12 @@ async function handleCapiPurchase(request, origin, env, ctx) {
         status: 400, headers: corsHeaders(origin),
       });
     }
+    
+    // Same defaults as handlePay: email as stable per-customer external_id
+    // fallback, country=es for SABDA's single Spanish location.
+    const externalIdForCAPI = externalId || email || '';
+    const cityForCAPI = city || '';
+    const countryForCAPI = country || 'es';
     
     // Use waitUntil so the CAPI fetch isn't terminated when we send the response.
     // Without this, Cloudflare Workers kill the isolate the instant the client
@@ -1052,8 +1075,10 @@ async function handleCapiPurchase(request, origin, env, ctx) {
       fbc || '',
       env,
       phoneNumber || '',
-      externalId || '',
-      test_event_code || ''
+      externalIdForCAPI,
+      test_event_code || '',
+      cityForCAPI,
+      countryForCAPI
     );
     if (ctx && ctx.waitUntil) {
       ctx.waitUntil(capiPromise);
@@ -1370,13 +1395,17 @@ async function handlePay(request, origin, env, ctx) {
       // Fire CAPI Purchase event (non-3DS success)
       const priceForCAPI = (actualPrice !== undefined && actualPrice !== null) ? actualPrice
         : (productId ? (PRODUCT_PRICES[Number(productId)] || 0) : 0);
-      // Pull Momence customer ID from pay response for external_id matching
-      // payData.payload.newMemberId is the Momence-side customer key — stable per
-      // customer across sessions, so it's safe to use as Meta external_id.
-      const momenceCustomerId =
-        (payData && payData.payload && payData.payload.newMemberId) ||
-        (payData && payData.payload && payData.payload.memberId) ||
-        '';
+      // External_id: use email as stable per-customer pseudonymous ID.
+      // Momence's /pay response returns boughtMembershipId (the purchase
+      // record, NEW every time) — NOT a customer ID, so useless for matching.
+      // Email IS stable per customer and is Meta's recommended fallback when
+      // a user_id isn't available. Hashed independently of `em` by Meta.
+      const externalIdForCAPI = email || '';
+      // City: pulled from checkout modal's customerFields.164361 ("CITY OF RESIDENCE"
+      // field). Typed by customer, always 'Barcelona' in practice but use actual value.
+      const cityForCAPI = (customerFields && customerFields['164361']) ? customerFields['164361'] : '';
+      // Country: SABDA operates only in Spain, hardcode 'es' per Meta 2-char ISO spec.
+      const countryForCAPI = 'es';
       // waitUntil keeps the Meta fetch alive past the client response. Without
       // this, the Worker isolate is killed the moment we return, and the fetch
       // to graph.facebook.com is aborted before Meta's response arrives —
@@ -1388,7 +1417,8 @@ async function handlePay(request, origin, env, ctx) {
         clientIp || request.headers.get('CF-Connecting-IP') || '',
         clientUserAgent || request.headers.get('User-Agent') || '',
         fbp, fbc, env,
-        phoneNumber, momenceCustomerId
+        phoneNumber, externalIdForCAPI, '',
+        cityForCAPI, countryForCAPI
       ).catch((e) => console.log('[CAPI] fire-and-forget error:', e && e.message));
       if (ctx && ctx.waitUntil) {
         ctx.waitUntil(capiPromise);
