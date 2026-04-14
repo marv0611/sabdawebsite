@@ -239,9 +239,13 @@ document.querySelectorAll('.blog-filter').forEach(btn => {
     s = open(blog_index_path).read()
     new_block = f'<div class="blog-list-wrap">{filter_html}<div class="blog-list">{cards_html}</div></div>{filter_js}'
     
-    # Replace existing blog-list-wrap or blog-list
+    # Replace existing blog-list-wrap. The empty-state block nests 3 divs
+    # (wrap > list > blog-coming), the cards-state block nests 2 (wrap > list >
+    # <a> cards). The optional `(\s*</div>)?` consumes the 3rd close when present
+    # so the empty→cards transition doesn't leave a stray </div>. Replacement
+    # always emits 2 structural divs; cards_html supplies its own internal balance.
     if '<div class="blog-list-wrap">' in s:
-        s = re.sub(r'<div class="blog-list-wrap">[\s\S]*?</div></div>(?:\s*<script>[\s\S]*?</script>)?', new_block, s, count=1)
+        s = re.sub(r'<div class="blog-list-wrap">[\s\S]*?</div></div>(\s*</div>)?(?:\s*<script>[\s\S]*?</script>)?', new_block, s, count=1)
     else:
         s = re.sub(r'<div class="blog-list">[\s\S]*?</div>', new_block, s, count=1)
     
