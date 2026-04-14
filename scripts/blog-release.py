@@ -252,9 +252,9 @@ document.querySelectorAll('.blog-filter').forEach(btn => {
 
     # ─── Also regenerate 3 mobile blog files (m/blog, es/m/blog, ca/m/blog) ───
     MOBILE_FILES = {
-        'm/blog.html':    {'lang':'en', 'empty':'New articles dropping <em>weekday mornings</em>. Check back tomorrow.'},
-        'es/m/blog.html': {'lang':'es', 'empty':'Nuevos artículos cada <em>mañana entre semana</em>. Vuelve mañana.'},
-        'ca/m/blog.html': {'lang':'ca', 'empty':'Nous articles cada <em>matí entre setmana</em>. Torna demà.'},
+        'm/blog.html':    {'lang':'en'},
+        'es/m/blog.html': {'lang':'es'},
+        'ca/m/blog.html': {'lang':'ca'},
     }
     
     for mob_path, mob_cfg in MOBILE_FILES.items():
@@ -276,31 +276,26 @@ document.querySelectorAll('.blog-filter').forEach(btn => {
                 )
             cards_html = '\n'.join(mcards)
         else:
-            cards_html = (
-                f'<div class="ct fi" style="text-align:center;padding:32px 20px">'
-                f'<div class="ct-body" style="grid-column:1/-1">'
-                f'<div class="ct-desc" style="font-size:.95rem;line-height:1.5;color:var(--w80)">'
-                f'{mob_cfg["empty"]}</div></div></div>'
-            )
+            # Per Marvyn's mobile redesign: hero subtitle conveys the "new articles
+            # weekly" message — empty-state body text is intentionally blank.
+            cards_html = ''
         
-        # Replace existing card block. The mobile structure is:
-        #   <div class="pg fi"> ... </div>
-        #   [CARD BLOCK]
-        #   <div class="sec fi"> ... </div>   ← read-all-articles button
-        # Anchor: end of .pg block to start of .sec block.
-        # We need to handle that the .pg block has nested divs, so use a non-greedy
-        # match for everything up to the FIRST occurrence of <div class="sec fi">.
-        # The marker we look for is the closing of pg-s sub-div, then everything
-        # up to <div class="sec fi">.
+        # Replace the .ct fi placeholder block (single empty div between </section>
+        # hero and <nav class="tabs">). Anchor pair after redesign:
+        #   <section class="blog-hero">...</section>
+        #   <div class="ct fi">...</div>     ← what we regenerate
+        #   <nav class="tabs">...
         pattern = re.compile(
-            r'(<div class="pg-s">[^<]*</div>\s*</div>)([\s\S]*?)(<div class="sec fi")',
+            r'(</section>)([\s\S]*?)(<nav class="tabs">)',
             re.MULTILINE
         )
         mm = pattern.search(ms)
         if not mm:
-            print(f'  ⚠ {mob_path}: could not find pg-s/sec-fi anchor, skipping')
+            print(f'  ⚠ {mob_path}: could not find hero/tabs anchor, skipping')
             continue
-        ms_new = ms[:mm.end(1)] + '\n' + cards_html + '\n' + ms[mm.start(3):]
+        # Wrap cards in a single .ct fi container so future regenerations re-anchor cleanly
+        replacement = f'\n<div class="ct fi">{cards_html}</div>\n'
+        ms_new = ms[:mm.end(1)] + replacement + ms[mm.start(3):]
         
         open(mob_path, 'w').write(ms_new)
         print(f'  ✓ {mob_path} regenerated with {len(matching)} cards')

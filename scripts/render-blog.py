@@ -40,47 +40,60 @@ def detect_lang(article_num):
 # Cluster blog articles that are translations of each other.
 # Each cluster is {lang: slug}. Articles not in any cluster are monolingual.
 HREFLANG_CLUSTERS = [
-    # Things to do in Barcelona
-    {'en': '/blog/things-to-do-in-barcelona/',
-     'es': '/blog/cosas-que-hacer-en-barcelona/',
-     'ca': '/blog/que-fer-avui-barcelona/'},
+    # NOTE: Only group articles here if they're TRUE TRANSLATIONS (same content,
+    # different language). Grouping non-translations causes Google to canonicalize
+    # them onto each other and de-index alternates. When in doubt, keep solo.
+    
+    # ── Things to do / weekend plans / today's plans ──
+    # NOT translations: each targets a different keyword + scope (generic / weekend / today).
+    # Different titles, counts, and word counts. Kept as 3 independent articles.
+    {'en': '/blog/things-to-do-in-barcelona/'},
+    {'es': '/blog/cosas-que-hacer-en-barcelona/'},
+    {'ca': '/blog/que-fer-avui-barcelona/'},
     # Pilates Barcelona guide
     {'es': '/blog/pilates-barcelona-guia/'},
     # Yoga Barcelona guide
     {'es': '/blog/yoga-barcelona-guia/'},
     # Ice bath
     {'en': '/blog/ice-bath-barcelona/'},
-    # Sound healing
+    # Sound healing — true translation (same "What is..." pattern, near-identical scope)
     {'en': '/blog/what-is-sound-healing/',
      'es': '/blog/que-es-el-sound-healing/'},
-    # Breathwork
+    # Breathwork — true translation
     {'en': '/blog/what-is-breathwork/',
      'es': '/blog/que-es-el-breathwork/'},
-    # Ecstatic dance
+    # Ecstatic dance — true translation
     {'en': '/blog/ecstatic-dance-barcelona/',
      'es': '/blog/ecstatic-dance-que-es/'},
-    # Mindfulness
-    {'en': '/blog/mindfulness-barcelona/',
-     'es': '/blog/curso-mindfulness-barcelona/'},
-    # Immersive experiences
-    {'en': '/blog/immersive-experiences-barcelona/',
-     'es': '/blog/ciencia-bienestar-inmersivo/',
-     'ca': '/blog/benestar-immersiu-barcelona/'},
-    # Originals
+    # ── Mindfulness ──
+    # NOT translations: EN = generic ("Classes, Retreats, Where to Practice"),
+    # ES = specifically courses ("Cursos: Formats, Prices, Where to Start").
+    # Different KWs (mindfulness barcelona vs curso mindfulness barcelona).
+    {'en': '/blog/mindfulness-barcelona/'},
+    {'es': '/blog/curso-mindfulness-barcelona/'},
+    # ── Immersive experiences ──
+    # NOT translations: EN = "Best Immersive Experiences guide", ES = "Immersive
+    # Exhibitions: The Science of Wellness per Neuroscience", CA = "Immersive
+    # Wellness: Yoga, Pilates, Sound and Art in 360°". Three different topics
+    # entirely. Different KWs each.
+    {'en': '/blog/immersive-experiences-barcelona/'},
+    {'es': '/blog/ciencia-bienestar-inmersivo/'},
+    {'ca': '/blog/benestar-immersiu-barcelona/'},
+    # Originals — true translation pair (ES↔CA, both "Original plans/activities not in any guide")
     {'es': '/blog/planes-originales-barcelona/',
      'ca': '/blog/activitats-originals-barcelona/'},
-    # Couples
+    # Couples — true translation
     {'en': '/blog/couples-activities-barcelona/',
      'es': '/blog/planes-en-pareja-barcelona/'},
-    # Gift experiences
+    # Gift experiences — true translation
     {'en': '/blog/gift-experiences-barcelona/',
      'es': '/blog/regalo-experiencia-barcelona/'},
     # Hen party / Despedida (deprecated EN, ES live)
     {'es': '/blog/despedida-de-soltera-barcelona/'},
-    # Team building / corporate
+    # Team building / corporate — true translation
     {'en': '/blog/team-building-activities-barcelona/',
      'es': '/blog/actividades-para-empresas-barcelona/'},
-    # First time
+    # First time — true translation
     {'en': '/blog/first-time-sabda/',
      'es': '/blog/primera-vez-sabda/'},
 ]
