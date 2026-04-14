@@ -1747,7 +1747,7 @@ function doPayAndBook(type,price,productId){if(isProcessing)return;
       resetBtn();
       return;
     }
-    return _fbInitPurchaseEventId(); fetch(PROXY+'/sabda-api/pay',{
+    _fbInitPurchaseEventId(); return fetch(PROXY+'/sabda-api/pay',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({

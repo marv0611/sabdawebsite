@@ -1882,7 +1882,7 @@ window.doPayAndBook=function(type,price,productId){if(isProcessing)return;
       isProcessing=false;btn.textContent='Confirm booking';btn.disabled=false;
       return;
     }
-    return _fbInitPurchaseEventId(); fetch(PROXY+'/sabda-api/pay',{
+    _fbInitPurchaseEventId(); return fetch(PROXY+'/sabda-api/pay',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
