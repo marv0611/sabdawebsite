@@ -38,10 +38,18 @@ def main():
             print(f'No queued article matches force_slug={force_slug}')
             sys.exit(0)
     else:
+        # Catch-up logic: pick EARLIEST queued article whose release_date <= today.
+        # The queue is already sorted by order/release_date, so iterating in queue
+        # order naturally returns the oldest-overdue first. If GH Actions misses a
+        # day (outage, rate limit), the next successful run releases the missed
+        # article instead of skipping it forever.
         for q in queue:
-            if q['release_date'] == today and q['status'] == 'queued':
+            if q['release_date'] <= today and q['status'] == 'queued':
                 target = q
-                print(f'Today release ({today}): {q["slug"]}')
+                if q['release_date'] == today:
+                    print(f'Today release ({today}): {q["slug"]}')
+                else:
+                    print(f'Catch-up release (scheduled {q["release_date"]}, today {today}): {q["slug"]}')
                 break
         if not target:
             print(f'No article scheduled for {today}')
