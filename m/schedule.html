@@ -462,9 +462,20 @@ let curSession=null, curUser=null, curMembership=null, curSessionToken=null, pen
 // Meta Pixel helpers — defensive, never throw
 
 /*SABDA-FB-HELPERS-PORT-v1*/
+var _fbEventId=null;
+function _fbInitPurchaseEventId(){
+  // Generate the Purchase dedup ID BEFORE the /sabda-api/pay POST so both
+  // the server-side CAPI call and the browser Pixel fire (on showSuccess)
+  // use the same eventID. Without this, Meta sees 2 separate Purchase
+  // events per transaction and can't dedupe.
+  if(!_fbEventId){
+    _fbEventId='purch_'+Date.now()+'_'+Math.random().toString(36).substr(2,9);
+  }
+  return _fbEventId;
+}
 function _fbTrackPurchase(price, productName){
   if(typeof fbq==='undefined') return;
-  var eid='purch_'+Date.now()+'_'+Math.random().toString(36).substr(2,9);
+  var eid=_fbInitPurchaseEventId();
   _sabdaTrack('Purchase',{value:price,currency:'EUR',content_name:productName||''},eid);
   return eid;
 }
@@ -1045,6 +1056,7 @@ function mountCardForGuest(){
       var cf=getCustomerFields();
       var np=document.getElementById('bk-new-pass');
       var pass=np?np.value.trim():undefined;
+      _fbInitPurchaseEventId();
       fetch(PROXY+'/sabda-api/pay',{
         method:'POST',headers:{'Content-Type':'application/json'},
         body:JSON.stringify({
@@ -1095,6 +1107,7 @@ window.doGuestPackPay=function(){
   try{var __pid=pendingPack?String(pendingPack.id||''):'';if((__pid==='443934'||__pid==='443935') && typeof _fbTrackInitiateCheckout==='function'){_fbTrackInitiateCheckout(finalPrice);}}catch(e){}
   // Free booking path (100% promo)
   if(finalPrice===0){
+    _fbInitPurchaseEventId();
     fetch(PROXY+'/sabda-api/pay',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
@@ -1122,6 +1135,7 @@ window.doGuestPackPay=function(){
       isProcessing=false;if(btn){btn.textContent='Confirm booking';btn.disabled=false;}
       return;
     }
+    _fbInitPurchaseEventId();
     fetch(PROXY+'/sabda-api/pay',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
@@ -1602,6 +1616,7 @@ function showPayForm(type,price,productId,name,desc){stepChange();
       if(vErr){ev.complete('fail');return;}
       isProcessing=true;
       var cf=getCustomerFields();
+      _fbInitPurchaseEventId();
       fetch(PROXY+'/sabda-api/pay',{
         method:'POST',
         headers:{'Content-Type':'application/json'},
@@ -1740,6 +1755,7 @@ function doPayAndBook(type,price,productId){if(isProcessing)return;
 
   // Free booking (100% promo) — skip Stripe entirely
   if(finalPrice===0){
+    _fbInitPurchaseEventId();
     fetch(PROXY+'/sabda-api/pay',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
@@ -1780,7 +1796,7 @@ function doPayAndBook(type,price,productId){if(isProcessing)return;
       resetBtn();
       return;
     }
-    return fetch(PROXY+'/sabda-api/pay',{
+    return _fbInitPurchaseEventId(); fetch(PROXY+'/sabda-api/pay',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({

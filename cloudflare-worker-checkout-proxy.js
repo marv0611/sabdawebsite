@@ -932,7 +932,7 @@ function normalizePhoneE164(raw) {
   return p;
 }
 
-async function sendCAPIEvent(eventName, eventId, email, firstName, lastName, value, currency, eventSourceUrl, clientIp, clientUserAgent, fbp, fbc, env, phone, externalId) {
+async function sendCAPIEvent(eventName, eventId, email, firstName, lastName, value, currency, eventSourceUrl, clientIp, clientUserAgent, fbp, fbc, env, phone, externalId, testEventCode) {
   const CAPI_TOKEN = (env && env.CAPI_ACCESS_TOKEN) || '';
   if (!CAPI_TOKEN) {
     console.log('[CAPI] Skipping — CAPI_ACCESS_TOKEN not set');
@@ -987,7 +987,11 @@ async function sendCAPIEvent(eventName, eventId, email, firstName, lastName, val
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ data: [eventData], access_token: CAPI_TOKEN }),
+        body: JSON.stringify(
+          testEventCode
+            ? { data: [eventData], access_token: CAPI_TOKEN, test_event_code: testEventCode }
+            : { data: [eventData], access_token: CAPI_TOKEN }
+        ),
       }
     );
     const capiData = await capiRes.json().catch(() => ({}));
@@ -1016,6 +1020,7 @@ async function handleCapiPurchase(request, origin, env) {
     const {
       eventName, fbEventId, email, firstName, lastName, phoneNumber,
       value, currency, externalId, fbp, fbc, clientUserAgent, eventSourceUrl,
+      test_event_code,
     } = await request.json();
     
     if (!email) {
@@ -1039,7 +1044,8 @@ async function handleCapiPurchase(request, origin, env) {
       fbc || '',
       env,
       phoneNumber || '',
-      externalId || ''
+      externalId || '',
+      test_event_code || ''
     );
     
     return new Response(JSON.stringify({ success: true }), {
