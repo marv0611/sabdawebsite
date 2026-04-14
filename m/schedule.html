@@ -463,6 +463,16 @@ let curSession=null, curUser=null, curMembership=null, curSessionToken=null, pen
 
 /*SABDA-FB-HELPERS-PORT-v1*/
 var _fbEventId=null;
+var _fbIcEventId = null;
+function _fbInitIcEventId(){
+  // InitiateCheckout event ID — separate from Purchase. Shared between
+  // browser Pixel fire and server-side CAPI fire for dedup. Cleared by
+  // modal close so each checkout attempt gets a fresh ID.
+  if(!_fbIcEventId){
+    _fbIcEventId='ic_'+Date.now()+'_'+Math.random().toString(36).substr(2,9);
+  }
+  return _fbIcEventId;
+}
 function _fbInitPurchaseEventId(){
   // Generate the Purchase dedup ID BEFORE the /sabda-api/pay POST so both
   // the server-side CAPI call and the browser Pixel fire (on showSuccess)
@@ -555,7 +565,7 @@ async function _sabdaTrack(eventName, params, eventID){
 function _fbTrackViewContent(title){
   try{ if(typeof fbq==='function') fbq('track','ViewContent',{content_name:String(title||''),content_category:'class',content_type:'product'}); }catch(e){}
 }
-function _fbTrackInitiateCheckout(value){try{_sabdaTrack('InitiateCheckout',{value:Number(value)||0,currency:'EUR',content_type:'product'});}catch(e){}}
+function _fbTrackInitiateCheckout(value){try{var eid=_fbInitIcEventId();_sabdaTrack('InitiateCheckout',{value:Number(value)||0,currency:'EUR',content_type:'product'},eid);}catch(e){}}
 let isProcessing=false;
 // Auto-generate a strong password for new account creation (user can reset later via email)
 function genPassword(){var c='ABCDEFGHJKMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789!@#$';var p='';for(var i=0;i<14;i++)p+=c.charAt(Math.floor(Math.random()*c.length));return p;}
@@ -1116,7 +1126,7 @@ window.doGuestPackPay=function(){
         type:pendingPack.type,productId:pendingPack.id,
         actualPrice:0,password:npv||undefined,
         phoneNumber:cf.phoneNumber,customerFields:cf.customerFields,
-        fbEventId:_fbEventId||undefined,
+        fbEventId:_fbEventId||undefined,fbIcEventId:_fbIcEventId||undefined,
         fbp:_fbGetCookie('_fbp')||undefined,
         fbc:_fbGetCookie('_fbc')||undefined
       })
@@ -1145,7 +1155,7 @@ window.doGuestPackPay=function(){
         actualPrice:finalPrice,
         password:npv||undefined,
         phoneNumber:cf.phoneNumber,customerFields:cf.customerFields,
-        fbEventId:_fbEventId||undefined,
+        fbEventId:_fbEventId||undefined,fbIcEventId:_fbIcEventId||undefined,
         fbp:_fbGetCookie('_fbp')||undefined,
         fbc:_fbGetCookie('_fbc')||undefined
       })

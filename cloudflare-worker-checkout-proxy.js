@@ -1099,12 +1099,37 @@ async function handleCapiPurchase(request, origin, env, ctx) {
 
 async function handlePay(request, origin, env, ctx) {
   try {
-    const { sessionId, sessionToken, stripePaymentMethodId, firstName, lastName, email, password, phoneNumber, customerFields, type, productId, discountCode, discountCodeId, actualPrice, fbEventId, fbp, fbc, clientIp, clientUserAgent, autoEnroll } = await request.json();
+    const { sessionId, sessionToken, stripePaymentMethodId, firstName, lastName, email, password, phoneNumber, customerFields, type, productId, discountCode, discountCodeId, actualPrice, fbEventId, fbIcEventId, fbp, fbc, clientIp, clientUserAgent, autoEnroll } = await request.json();
 
     if (!firstName || !lastName || !email) {
       return new Response(JSON.stringify({ error: 'Missing customer details' }), {
         status: 400, headers: corsHeaders(origin),
       });
+    }
+
+    // ── FIRE CAPI InitiateCheckout at request entry ──
+    // Browser Pixel fires 'InitiateCheckout' right before POSTing to /sabda-api/pay.
+    // Server-side mirror fires here with matching event_id (fbIcEventId) for dedup.
+    // Rich user_data block — same fields as Purchase (em/ph/fn/ln/ct/country/external_id
+    // + IP/UA/fbp/fbc) — lifts IC EMQ score ≈ 6.0 → 7.5 and unblocks Meta's
+    // 'Improve CAPI coverage for InitiateCheckout' diagnostic warning. Fires even
+    // if the payment ultimately fails, which is correct: IC = intent, not success.
+    // Uses waitUntil so the fetch to graph.facebook.com survives beyond the pay response.
+    if (fbIcEventId) {
+      const icPrice = (actualPrice !== undefined && actualPrice !== null) ? actualPrice
+        : (productId ? (PRODUCT_PRICES[Number(productId)] || 0) : 0);
+      const icCity = (customerFields && customerFields['164361']) ? customerFields['164361'] : '';
+      const icPromise = sendCAPIEvent(
+        'InitiateCheckout', fbIcEventId, email, firstName, lastName,
+        icPrice, 'EUR',
+        'https://sabdastudio.com/classes/',
+        clientIp || request.headers.get('CF-Connecting-IP') || '',
+        clientUserAgent || request.headers.get('User-Agent') || '',
+        fbp || '', fbc || '', env,
+        phoneNumber || '', email || '', '',
+        icCity, 'es'
+      ).catch((e) => console.log('[CAPI-IC] fire-and-forget error:', e && e.message));
+      if (ctx && ctx.waitUntil) ctx.waitUntil(icPromise);
     }
 
     const isFree = stripePaymentMethodId === 'free' || actualPrice === 0;

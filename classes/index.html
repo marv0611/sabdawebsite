@@ -682,6 +682,7 @@ var isProcessing=false;
 
 // ── META PIXEL EVENT HELPERS ──
 var _fbEventId = null;
+var _fbIcEventId = null;
 function _fbHash(str){
   // SHA-256 is done server-side; client sends plain (hashed server-side via CAPI)
   return str ? str.trim().toLowerCase() : '';
@@ -731,7 +732,16 @@ async function _sabdaTrack(eventName, params, eventID){
   fbq('track', eventName, params || {}, opts);
 }
 
-function _fbTrackInitiateCheckout(price){if(typeof fbq==='undefined')return;_sabdaTrack('InitiateCheckout',{value:price,currency:'EUR'},_fbEventId);}
+function _fbTrackInitiateCheckout(price){if(typeof fbq==='undefined')return;var eid=_fbInitIcEventId();_sabdaTrack('InitiateCheckout',{value:price,currency:'EUR'},eid);}
+function _fbInitIcEventId(){
+  // InitiateCheckout event ID — separate from Purchase. Shared between
+  // browser Pixel fire and server-side CAPI fire for dedup. Cleared by
+  // modal close so each checkout attempt gets a fresh ID.
+  if(!_fbIcEventId){
+    _fbIcEventId='ic_'+Date.now()+'_'+Math.random().toString(36).substr(2,9);
+  }
+  return _fbIcEventId;
+}
 function _fbInitPurchaseEventId(){
   // Generate the Purchase dedup ID BEFORE the /sabda-api/pay POST so both
   // the server-side CAPI call and the browser Pixel fire (on showSuccess)
@@ -1338,7 +1348,7 @@ window.doGuestPackPay=function(){
         type:pendingPack.type,productId:pendingPack.id,
         actualPrice:0,password:npv||undefined,
         phoneNumber:cf.phoneNumber,customerFields:cf.customerFields,
-        fbEventId:_fbEventId||undefined,
+        fbEventId:_fbEventId||undefined,fbIcEventId:_fbIcEventId||undefined,
         fbp:_fbGetCookie('_fbp')||undefined,
         fbc:_fbGetCookie('_fbc')||undefined
       })
@@ -1367,7 +1377,7 @@ window.doGuestPackPay=function(){
         actualPrice:finalPrice,
         password:npv||undefined,
         phoneNumber:cf.phoneNumber,customerFields:cf.customerFields,
-        fbEventId:_fbEventId||undefined,
+        fbEventId:_fbEventId||undefined,fbIcEventId:_fbIcEventId||undefined,
         fbp:_fbGetCookie('_fbp')||undefined,
         fbc:_fbGetCookie('_fbc')||undefined
       })
@@ -1861,7 +1871,7 @@ window.doPayAndBook=function(type,price,productId){if(isProcessing)return;
         type:type,productId:productId,
         discountCode:activePromo||undefined,actualPrice:0,
         phoneNumber:cf.phoneNumber,customerFields:cf.customerFields,
-        fbEventId:_fbEventId||undefined,
+        fbEventId:_fbEventId||undefined,fbIcEventId:_fbIcEventId||undefined,
         fbp:_fbGetCookie('_fbp')||undefined,
         fbc:_fbGetCookie('_fbc')||undefined
       })
@@ -1894,7 +1904,7 @@ window.doPayAndBook=function(type,price,productId){if(isProcessing)return;
         actualPrice:(discountedPrice!==null)?discountedPrice:price,
         password:(curUser.isGuest&&document.getElementById('bk-new-pass'))?(document.getElementById('bk-new-pass').value.trim()||undefined):undefined,
         phoneNumber:cf.phoneNumber,customerFields:cf.customerFields,
-        fbEventId:_fbEventId||undefined,
+        fbEventId:_fbEventId||undefined,fbIcEventId:_fbIcEventId||undefined,
         fbp:_fbGetCookie('_fbp')||undefined,
         fbc:_fbGetCookie('_fbc')||undefined
       })
