@@ -101,7 +101,7 @@ function captureCookies(res) {
 }
 
 export default {
-  async fetch(request, env) {
+  async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
     // ── STARTUP-TIME ASSERTION ──
@@ -168,10 +168,10 @@ export default {
       return handleBook(request, reqOrigin);
     }
     if (url.pathname === '/sabda-api/capi-purchase') {
-      return handleCapiPurchase(request, reqOrigin, env);
+      return handleCapiPurchase(request, reqOrigin, env, ctx);
     }
     if (url.pathname === '/sabda-api/pay') {
-      return handlePay(request, reqOrigin, env);
+      return handlePay(request, reqOrigin, env, ctx);
     }
 
     if (url.pathname === '/sabda-api/contact') {
@@ -996,6 +996,10 @@ async function sendCAPIEvent(eventName, eventId, email, firstName, lastName, val
     );
     const capiData = await capiRes.json().catch(() => ({}));
     console.log('[CAPI]', eventName, 'status:', capiRes.status, 'events_received:', capiData.events_received, 'fields_sent:', fieldsSent);
+    // Diagnostic: log full response body when test_event_code is present (for debugging Test Events tab routing)
+    if (testEventCode) {
+      console.log('[CAPI-DEBUG] test_event_code=' + testEventCode + ' full_response=' + JSON.stringify(capiData));
+    }
   } catch (e) {
     console.log('[CAPI] Error:', e.message);
   }
@@ -1015,7 +1019,7 @@ async function sendCAPIEvent(eventName, eventId, email, firstName, lastName, val
 //   succeeds for 3D Secure purchases. The server-side /sabda-api/pay branch
 //   that returns clientSecret can't fire CAPI yet (purchase not confirmed).
 //   This endpoint fires the same rich user_data block as the non-3DS path.
-async function handleCapiPurchase(request, origin, env) {
+async function handleCapiPurchase(request, origin, env, ctx) {
   try {
     const {
       eventName, fbEventId, email, firstName, lastName, phoneNumber,
@@ -1029,7 +1033,11 @@ async function handleCapiPurchase(request, origin, env) {
       });
     }
     
-    await sendCAPIEvent(
+    // Use waitUntil so the CAPI fetch isn't terminated when we send the response.
+    // Without this, Cloudflare Workers kill the isolate the instant the client
+    // receives its response, and the async fetch to graph.facebook.com gets cut
+    // off before Meta responds — no log line, event may or may not land.
+    const capiPromise = sendCAPIEvent(
       eventName || 'Purchase',
       fbEventId,
       email,
@@ -1047,6 +1055,11 @@ async function handleCapiPurchase(request, origin, env) {
       externalId || '',
       test_event_code || ''
     );
+    if (ctx && ctx.waitUntil) {
+      ctx.waitUntil(capiPromise);
+    } else {
+      await capiPromise;
+    }
     
     return new Response(JSON.stringify({ success: true }), {
       status: 200, headers: corsHeaders(origin),
@@ -1059,7 +1072,7 @@ async function handleCapiPurchase(request, origin, env) {
   }
 }
 
-async function handlePay(request, origin, env) {
+async function handlePay(request, origin, env, ctx) {
   try {
     const { sessionId, sessionToken, stripePaymentMethodId, firstName, lastName, email, password, phoneNumber, customerFields, type, productId, discountCode, discountCodeId, actualPrice, fbEventId, fbp, fbc, clientIp, clientUserAgent, autoEnroll } = await request.json();
 
@@ -1364,7 +1377,11 @@ async function handlePay(request, origin, env) {
         (payData && payData.payload && payData.payload.newMemberId) ||
         (payData && payData.payload && payData.payload.memberId) ||
         '';
-      sendCAPIEvent(
+      // waitUntil keeps the Meta fetch alive past the client response. Without
+      // this, the Worker isolate is killed the moment we return, and the fetch
+      // to graph.facebook.com is aborted before Meta's response arrives —
+      // no [CAPI] log line ever appears.
+      const capiPromise = sendCAPIEvent(
         'Purchase', fbEventId, email, firstName, lastName,
         priceForCAPI, 'EUR',
         'https://sabdastudio.com/classes/',
@@ -1372,7 +1389,10 @@ async function handlePay(request, origin, env) {
         clientUserAgent || request.headers.get('User-Agent') || '',
         fbp, fbc, env,
         phoneNumber, momenceCustomerId
-      ).catch(() => {});
+      ).catch((e) => console.log('[CAPI] fire-and-forget error:', e && e.message));
+      if (ctx && ctx.waitUntil) {
+        ctx.waitUntil(capiPromise);
+      }
       return new Response(JSON.stringify({ success: true, data: payData }), {
         status: 200, headers: corsHeaders(origin),
       });
