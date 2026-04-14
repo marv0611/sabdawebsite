@@ -104,6 +104,15 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
+    // ── STARTUP-TIME ASSERTION ──
+    // Workers don't have true bootstrap (every fetch is independent), so we
+    // log on every invocation if the secret is missing. Logging once per
+    // invocation is fine — Cloudflare deduplicates identical lines in the
+    // dashboard, and the cost is one string concat.
+    if (!env.CAPI_ACCESS_TOKEN) {
+      console.error('[FATAL] CAPI_ACCESS_TOKEN not set on Worker — CAPI will silently no-op');
+    }
+
     const reqOrigin = request.headers.get('Origin') || '*';
 
     if (request.method === 'OPTIONS') {
@@ -122,6 +131,22 @@ export default {
     if (url.pathname === '/sabda-api/health') {
       return new Response(JSON.stringify({ ok: true }), {
         status: 200, headers: corsHeaders(reqOrigin),
+      });
+    }
+    // ── DIAGNOSTIC: report whether CAPI_ACCESS_TOKEN is configured ──
+    // Returns boolean only, never the value. Lets us verify the secret is
+    // live with a single curl, without waiting for a real Purchase to surface
+    // in Meta Events Manager (10–20 min lag) or doing test card transactions.
+    if (url.pathname === '/sabda-api/capi-status') {
+      const tokenSet = !!(env && env.CAPI_ACCESS_TOKEN);
+      return new Response(JSON.stringify({
+        capi_token_set: tokenSet,
+        pixel_id: '567636669734630',
+        capi_endpoint: '/sabda-api/capi-purchase',
+        message: tokenSet ? 'CAPI ready' : 'CAPI WILL SILENTLY NO-OP — set CAPI_ACCESS_TOKEN secret on Worker',
+      }), {
+        status: tokenSet ? 200 : 503,
+        headers: corsHeaders(reqOrigin),
       });
     }
     if (url.pathname === '/sabda-api/promo') {
