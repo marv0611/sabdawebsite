@@ -753,6 +753,14 @@ async function handleLogin(request, origin) {
       headers: momenceHeaders({ 'Cookie': cookieStr }),
     });
     const profile = profileRes.ok ? await profileRes.json().catch(() => ({})) : {};
+    // DIAGNOSTIC (temporary): log what fields Momence's profile actually returns
+    // so we can see if firstName/lastName are present, and what other fields might
+    // contain the customer's real name. Will remove after investigation.
+    console.log('[LOGIN-DIAG] profile keys:', Object.keys(profile).join(','),
+      'firstName:', profile.firstName ? 'present' : 'EMPTY',
+      'lastName:', profile.lastName ? 'present' : 'EMPTY',
+      'name:', profile.name ? 'present' : 'EMPTY',
+      'fullName:', profile.fullName ? 'present' : 'EMPTY');
 
     // Extract memberId from profile
     let memberId = null;
@@ -949,7 +957,6 @@ async function sendCAPIEvent(eventName, eventId, email, firstName, lastName, val
     // - country: 2-letter ISO lowercase
     const ctNorm = city ? String(city).trim().toLowerCase().replace(/[^a-z]/g, '') : '';
     const countryNorm = country ? String(country).trim().toLowerCase().slice(0, 2) : '';
-
     const [emHash, fnHash, lnHash, phHash, extIdHash, ctHash, countryHash] = await Promise.all([
       sha256hex(email),
       sha256hex(firstName),
