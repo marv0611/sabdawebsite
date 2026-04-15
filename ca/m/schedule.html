@@ -1988,7 +1988,7 @@ window.sabdaFirstTimeOnlyCheck = function(){
     var emailEl = document.getElementById('bk-email');
     if(!emailEl) return;
     var email = (emailEl.value || '').trim();
-    if(!email || email.indexOf('@') < 0) return;
+    if(!email || !validateEmail(email)) return;
     var errEl = document.getElementById('bk-err');
     var btn = document.getElementById('bk-guest-btn') || document.getElementById('bk-pay-btn');
     fetch('https://sabda-checkout-proxy.sabda.workers.dev/sabda-api/check-email', {

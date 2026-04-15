@@ -1452,9 +1452,17 @@ async function handlePay(request, origin, env, ctx) {
         status: 200, headers: corsHeaders(origin),
       });
     } else {
-      // Surface Momence's full error structure to the client for debugging
+      // Translate known Momence validation errors into clean user-facing messages.
+      // Momence uses a superstruct-style validator that returns raw debug strings
+      // like: "At path: email -- Expected a value of type `email`, but received: ..."
+      // These are unhelpful and confusing to end users — they leak internal type
+      // names ('email', 'string') and surface the user's invalid input verbatim
+      // (which can be embarrassing or alarming if the input was malformed).
+      // Map them to short, actionable messages instead.
+      const rawErr = payData.message || payData.error || 'Payment failed';
+      const cleanErr = humanizeMomenceError(rawErr);
       return new Response(JSON.stringify({
-        error: payData.message || payData.error || 'Payment failed',
+        error: cleanErr,
         momenceStatus: payRes.status,
         momenceData: payData,
       }), { status: payRes.status, headers: corsHeaders(origin) });
@@ -1466,6 +1474,28 @@ async function handlePay(request, origin, env, ctx) {
       status: 500, headers: corsHeaders(origin),
     });
   }
+}
+
+// Translate Momence/superstruct validation errors into clean user messages.
+// Momence's API returns raw debug strings that are unhelpful for end users:
+//   "At path: email -- Expected a value of type `email`, but received: ..."
+//   "At path: phoneNumber -- Expected a value of type `phone`, but received: ..."
+// Pattern: "At path: <field> -- Expected a value of type `<type>`, but received: <value>"
+// Map field names to short user-facing messages. Falls back to original if no match.
+function humanizeMomenceError(raw) {
+  if (!raw || typeof raw !== 'string') return raw;
+  const m = raw.match(/At path:\s*(\w+)\s*--\s*Expected a value of type/i);
+  if (!m) return raw;
+  const field = m[1].toLowerCase();
+  const map = {
+    email: 'Invalid email address',
+    phonenumber: 'Invalid phone number',
+    phone: 'Invalid phone number',
+    firstname: 'First name is invalid',
+    lastname: 'Last name is invalid',
+    password: 'Password is invalid',
+  };
+  return map[field] || ('Invalid ' + m[1]);
 }
 
 // ── CUSTOM SIGN-IN PAGE (served when /sign-in is hit on proxy) ──
