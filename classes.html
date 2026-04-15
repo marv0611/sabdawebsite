@@ -349,6 +349,19 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 @keyframes bkIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .bk-label{display:block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--white38);font-weight:600;margin-bottom:6px}
 .bk-input{width:100%;padding:12px 14px;background:rgba(240,239,233,.04);border:1px solid var(--white12);border-radius:8px;color:var(--white);font-family:'DM Sans',sans-serif;font-size:.9rem;outline:none;transition:border-color .25s;margin-bottom:16px;box-sizing:border-box}
+/* Override Chrome/Safari/Link autofill yellow background + dark text — keeps the
+   modal's dark theme legible. Without this, autofilled inputs render with
+   light-yellow backgrounds and the white text becomes invisible. The inset
+   box-shadow trick is the standard cross-browser way to suppress autofill paint. */
+.bk-input:-webkit-autofill,
+.bk-input:-webkit-autofill:hover,
+.bk-input:-webkit-autofill:focus,
+.bk-input:-webkit-autofill:active{
+  -webkit-text-fill-color: var(--white) !important;
+  -webkit-box-shadow: 0 0 0 1000px rgba(11,18,49,1) inset !important;
+  caret-color: var(--white);
+  transition: background-color 5000s ease-in-out 0s;
+}
 .bk-input:focus{border-color:rgba(2,243,197,.4)}
 .bk-input::placeholder{color:rgba(240,239,233,.65)}
 .bk-input.bk-field-err{border-color:var(--salmon);background:rgba(248,166,163,.04)}
