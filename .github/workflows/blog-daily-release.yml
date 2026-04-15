@@ -8,7 +8,13 @@ on:
   schedule:
     # 07:00 UTC = 09:00 CEST (summer DST). For winter, GitHub Actions cron is UTC-only,
     # so winter releases will fire at 08:00 CET. Acceptable drift.
+    # SECOND CRON at :15 past the hour is a backup: GitHub Actions deprioritizes
+    # workflows scheduled at HH:00 due to cron-fan-out load (thundering herd).
+    # If the :00 run gets silently dropped, the :15 catches it. The release
+    # script is idempotent — it only flips articles dated today and skips
+    # already-released ones, so a successful :00 run makes :15 a no-op.
     - cron: '0 7 * * 1-5'
+    - cron: '15 7 * * 1-5'
   workflow_dispatch:
     inputs:
       force_slug:
