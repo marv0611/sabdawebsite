@@ -7,6 +7,7 @@
 **Slug:** `/blog/things-to-do-in-barcelona/`
 
 **Primary keyword:** things to do in barcelona
+**publish: true**
 **Secondary keywords:** what to do in barcelona, best things to do in barcelona, top 10 things to do in barcelona, what to do in barcelona for 3 days, unique things to do barcelona
 
 ---

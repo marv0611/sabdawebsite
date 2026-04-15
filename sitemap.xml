@@ -581,4 +581,10 @@
     <xhtml:link rel="alternate" hreflang="ca" href="https://sabdastudio.com/ca/legal/avis-legal.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sabdastudio.com/legal-notice.html"/>
   </url>
+  <url>
+    <loc>https://sabdastudio.com/blog/things-to-do-in-barcelona/</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

@@ -154,7 +154,28 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 </div>
 
 <div class="blog-page">
-    <div class="blog-list-wrap"><div class="blog-list"><div class="blog-coming"><p>New articles dropping <em>weekday mornings</em>.<br>Check back tomorrow.</p></div></div></div>
+    <div class="blog-list-wrap"><div class="blog-list"><a href="things-to-do-in-barcelona/" class="blog-card rv" data-lang="en"><div class="blog-card-meta" style="margin-bottom:10px"><span style="text-transform:uppercase;font-weight:600;color:var(--cyan)">en</span> &middot; 9 min read</div><h2>15 Unique Things to Do in Barcelona That Aren&#x27;t on Every Tourist List (2026)</h2><p>Things to do in Barcelona beyond the tourist lists: 15 unique experiences locals love, including immersive wellness, hidden rooftops, and vermouth bars.</p><div class="blog-card-meta" style="margin-top:12px">March 19, 2026</div></a></div></div>
+<script>
+document.querySelectorAll('.blog-filter').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('.blog-filter').forEach(b => {
+      b.classList.remove('on');
+      b.style.background = 'transparent';
+      b.style.color = 'var(--white60)';
+      b.style.borderColor = 'rgba(240,239,233,.12)';
+    });
+    btn.classList.add('on');
+    btn.style.background = 'rgba(2,243,197,.08)';
+    btn.style.color = 'var(--cyan)';
+    btn.style.borderColor = 'rgba(2,243,197,.3)';
+    document.querySelectorAll('.blog-card').forEach(card => {
+      card.style.display = (filter === 'all' || card.dataset.lang === filter) ? 'block' : 'none';
+    });
+  });
+});
+</script>
+
 
 
 

@@ -6,7 +6,12 @@
     "release_workflow": ".github/workflows/blog-daily-release.yml",
     "notes": "Sorted by DataForSEO Vol/mo DESC, tiebroken by article number ASC. Articles with primary keyword not in master universe \u2192 vol=0, release at end.",
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
-    "regenerated": "2026-04-13"
+    "regenerated": "2026-04-13",
+    "last_release": {
+      "date": "2026-04-15",
+      "slug": "/blog/things-to-do-in-barcelona/",
+      "order": 1
+    }
   },
   "queue": [
     {
@@ -18,8 +23,9 @@
       "release_date": "2026-04-15",
       "md_file": "blog/article-01-things-to-do-in-barcelona.md",
       "html_file": "blog/things-to-do-in-barcelona/index.html",
-      "status": "queued",
-      "volume": 12100
+      "status": "released",
+      "volume": 12100,
+      "released_at": "2026-04-15"
     },
     {
       "order": 2,
