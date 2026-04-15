@@ -981,7 +981,42 @@ async function sendCAPIEvent(eventName, eventId, email, firstName, lastName, val
     if (clientIp) user_data.client_ip_address = clientIp;
     if (clientUserAgent) user_data.client_user_agent = clientUserAgent;
     if (fbp) user_data.fbp = fbp;
-    if (fbc) user_data.fbc = fbc;
+
+    // fbc handling:
+    //  Primary:  browser-sent _fbc cookie value (passed verbatim, never modified)
+    //  Fallback: construct from attribution.fbclid if cookie is missing
+    //
+    // WHY THE FALLBACK EXISTS:
+    // Safari ITP deletes the _fbc cookie after 24 hours when the URL contained
+    // tracking parameters. For returning users who bought >24h after clicking
+    // an ad, _fbc is gone → we'd send no fbc → Meta loses click attribution.
+    //
+    // Our attribution system captures fbclid at landing and stores it in
+    // localStorage for 30 days, surviving Safari's cookie purge. When _fbc is
+    // empty but attribution has a real fbclid, we build spec-compliant fbc:
+    //   fb.1.{timestamp_ms}.{fbclid}
+    //
+    // This is explicitly allowed by Meta's CAPI spec (see Everflow, dataally.ai
+    // 2026 guides). We only FILL the gap — never overwrite an existing cookie
+    // value, so Meta's "modified fbclid" diagnostic cannot be triggered.
+    //
+    // fbc_source tag in [CAPI-EMQ] log lets us measure cookie-vs-fallback split
+    // and quantify recovered Safari-ITP attribution over time.
+    let fbcFinal = fbc || '';
+    let fbcSource = fbc ? 'cookie' : 'none';
+    if (!fbcFinal && attribution && typeof attribution === 'object' && attribution.fbclid) {
+      // Use attribution capture timestamp (stored at landing), not current time.
+      // This matches the actual click moment more accurately for Meta's model.
+      const ts = Number(attribution.ts) || Date.now();
+      const cleanFbclid = String(attribution.fbclid).trim();
+      // Sanity: fbclid must be non-empty, reasonable length (real fbclids are
+      // 40-200+ chars), and not contain whitespace/semicolons
+      if (cleanFbclid.length >= 10 && cleanFbclid.length <= 500 && !/[\s;,]/.test(cleanFbclid)) {
+        fbcFinal = 'fb.1.' + ts + '.' + cleanFbclid;
+        fbcSource = 'constructed';
+      }
+    }
+    if (fbcFinal) user_data.fbc = fbcFinal;
 
     // Diagnostic: count which fields we're sending (for matching-quality debug)
     const fieldsSent = Object.keys(user_data).join(',');
@@ -991,7 +1026,7 @@ async function sendCAPIEvent(eventName, eventId, email, firstName, lastName, val
     // Use this log (grep '[CAPI-EMQ]') to measure ad-driven vs organic split
     // and city-coverage over time via Cloudflare Workers Logs.
     if (eventName === 'Purchase') {
-      console.log('[CAPI-EMQ] fbc_present:', !!fbc, 'ct_present:', !!ctHash, 'country_present:', !!countryHash, 'extid_present:', !!extIdHash);
+      console.log('[CAPI-EMQ] fbc_present:', !!fbcFinal, 'fbc_source:', fbcSource, 'ct_present:', !!ctHash, 'country_present:', !!countryHash, 'extid_present:', !!extIdHash);
     }
 
     const eventData = {
