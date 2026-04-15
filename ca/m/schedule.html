@@ -22,6 +22,9 @@ src="https://www.facebook.com/tr?id=567636669734630&ev=PageView&noscript=1"
 <!-- End Meta Pixel Code -->
 <meta name="generator" content="Custom HTML/CSS/JS v1.0.0">
 <meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<script>/* SABDA attribution: capture UTMs+clickIDs at landing (30d TTL); _sabdaGetAttribution() reads */
+(function(){try{var K='_sabda_attr',T=2592000000,n=Date.now(),qs=window.location.search||'',params={};if(qs){var sp=new URLSearchParams(qs);['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid','gclid','ttclid','msclkid','li_fat_id'].forEach(function(k){var v=sp.get(k);if(v)params[k]=v.slice(0,200);});}if(Object.keys(params).length>0){var attr={ts:n,landing_url:window.location.href.slice(0,500),landing_path:window.location.pathname,referrer:(document.referrer||'').slice(0,300)};Object.keys(params).forEach(function(k){attr[k]=params[k];});try{localStorage.setItem(K,JSON.stringify(attr));}catch(e){}}window._sabdaGetAttribution=function(){try{var r=localStorage.getItem(K);if(!r)return null;var p=JSON.parse(r);if(!p||!p.ts)return null;if((Date.now()-p.ts)>=T){try{localStorage.removeItem(K);}catch(e){}return null;}return p;}catch(e){return null;}};}catch(e){try{window._sabdaGetAttribution=function(){return null;};}catch(e2){}}})();
+</script>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#0e1235">
 <title>Horaris | SABDA</title>
@@ -1068,7 +1071,7 @@ function mountCardForGuest(){
           type:pendingPack.type,productId:pendingPack.id,
           actualPrice:(discountedPrice!==null)?discountedPrice:pendingPack.price,
           password:pass||undefined,
-          phoneNumber:cf.phoneNumber,customerFields:cf.customerFields,autoEnroll:!!(document.getElementById('bk-autoenroll')&&document.getElementById('bk-autoenroll').checked),fbEventId:(typeof _fbEventId!=='undefined'&&_fbEventId)||undefined,fbp:(typeof _fbGetCookie==='function'&&_fbGetCookie('_fbp'))||undefined,fbc:(typeof _fbGetCookie==='function'&&_fbGetCookie('_fbc'))||undefined
+          phoneNumber:cf.phoneNumber,customerFields:cf.customerFields,autoEnroll:!!(document.getElementById('bk-autoenroll')&&document.getElementById('bk-autoenroll').checked),fbEventId:(typeof _fbEventId!=='undefined'&&_fbEventId)||undefined,fbp:(typeof _fbGetCookie==='function'&&_fbGetCookie('_fbp'))||undefined,fbc:(typeof _fbGetCookie==='function'&&_fbGetCookie('_fbc'))||undefined,attribution:(window._sabdaGetAttribution&&window._sabdaGetAttribution())||null
         })
       }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};})})
       .then(function(r){
@@ -1076,7 +1079,7 @@ function mountCardForGuest(){
         else if(r.data.clientSecret){
           stripeInstance.confirmCardPayment(r.data.clientSecret,{payment_method:ev.paymentMethod.id}).then(function(conf){
             if(conf.error){ev.complete('fail');isProcessing=false;}
-            else{ev.complete('success');window._fbCapiAfter3DS({email:(curUser&&curUser.email)||email||undefined,firstName:(curUser&&curUser.firstName)||firstName||undefined,lastName:(curUser&&curUser.lastName)||lastName||undefined,phoneNumber:(typeof cf!=='undefined'&&cf.phoneNumber)||(typeof phoneNumber!=='undefined'?phoneNumber:undefined),value:(typeof finalPrice!=='undefined'?finalPrice:(typeof actualPrice!=='undefined'?actualPrice:(typeof origPrice!=='undefined'?origPrice:0))),currency:'EUR',externalId:(r.data&&r.data.newMemberId)||undefined,fbp:_fbGetCookie('_fbp')||undefined,fbc:_fbGetCookie('_fbc')||undefined,fbEventId:(typeof _fbEventId!=='undefined'?_fbEventId:undefined),clientUserAgent:navigator.userAgent,eventSourceUrl:window.location.href});showSuccess();}
+            else{ev.complete('success');window._fbCapiAfter3DS({email:(curUser&&curUser.email)||email||undefined,firstName:(curUser&&curUser.firstName)||firstName||undefined,lastName:(curUser&&curUser.lastName)||lastName||undefined,phoneNumber:(typeof cf!=='undefined'&&cf.phoneNumber)||(typeof phoneNumber!=='undefined'?phoneNumber:undefined),value:(typeof finalPrice!=='undefined'?finalPrice:(typeof actualPrice!=='undefined'?actualPrice:(typeof origPrice!=='undefined'?origPrice:0))),currency:'EUR',externalId:(r.data&&r.data.newMemberId)||undefined,fbp:_fbGetCookie('_fbp')||undefined,fbc:_fbGetCookie('_fbc')||undefined,attribution:(window._sabdaGetAttribution&&window._sabdaGetAttribution())||null,fbEventId:(typeof _fbEventId!=='undefined'?_fbEventId:undefined),clientUserAgent:navigator.userAgent,eventSourceUrl:window.location.href});showSuccess();}
           });
         } else {
           ev.complete('fail');
@@ -1125,7 +1128,7 @@ window.doGuestPackPay=function(){
         phoneNumber:cf.phoneNumber,customerFields:cf.customerFields,
         fbEventId:_fbEventId||undefined,fbIcEventId:_fbIcEventId||undefined,
         fbp:_fbGetCookie('_fbp')||undefined,
-        fbc:_fbGetCookie('_fbc')||undefined
+        fbc:_fbGetCookie('_fbc')||undefined,attribution:(window._sabdaGetAttribution&&window._sabdaGetAttribution())||null
       })
     }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};})})
     .then(function(r){
@@ -1133,7 +1136,7 @@ window.doGuestPackPay=function(){
       else if(r.data.clientSecret){
         return stripeInstance.confirmCardPayment(r.data.clientSecret).then(function(conf){
           if(conf.error){err.textContent=conf.error.message;err.classList.add('show');isProcessing=false;if(btn){btn.textContent='Confirmar reserva';btn.disabled=false;}}
-          else{window._fbCapiAfter3DS({email:(curUser&&curUser.email)||email||undefined,firstName:(curUser&&curUser.firstName)||firstName||undefined,lastName:(curUser&&curUser.lastName)||lastName||undefined,phoneNumber:(typeof cf!=='undefined'&&cf.phoneNumber)||(typeof phoneNumber!=='undefined'?phoneNumber:undefined),value:(typeof finalPrice!=='undefined'?finalPrice:(typeof actualPrice!=='undefined'?actualPrice:(typeof origPrice!=='undefined'?origPrice:0))),currency:'EUR',externalId:(r.data&&r.data.newMemberId)||undefined,fbp:_fbGetCookie('_fbp')||undefined,fbc:_fbGetCookie('_fbc')||undefined,fbEventId:(typeof _fbEventId!=='undefined'?_fbEventId:undefined),clientUserAgent:navigator.userAgent,eventSourceUrl:window.location.href});showSuccess();}
+          else{window._fbCapiAfter3DS({email:(curUser&&curUser.email)||email||undefined,firstName:(curUser&&curUser.firstName)||firstName||undefined,lastName:(curUser&&curUser.lastName)||lastName||undefined,phoneNumber:(typeof cf!=='undefined'&&cf.phoneNumber)||(typeof phoneNumber!=='undefined'?phoneNumber:undefined),value:(typeof finalPrice!=='undefined'?finalPrice:(typeof actualPrice!=='undefined'?actualPrice:(typeof origPrice!=='undefined'?origPrice:0))),currency:'EUR',externalId:(r.data&&r.data.newMemberId)||undefined,fbp:_fbGetCookie('_fbp')||undefined,fbc:_fbGetCookie('_fbc')||undefined,attribution:(window._sabdaGetAttribution&&window._sabdaGetAttribution())||null,fbEventId:(typeof _fbEventId!=='undefined'?_fbEventId:undefined),clientUserAgent:navigator.userAgent,eventSourceUrl:window.location.href});showSuccess();}
         });
       } else {
         err.textContent=r.data.error||'Payment failed. Please try again.';
@@ -1612,7 +1615,7 @@ function showPayForm(type,price,productId,name,desc){stepChange();
           discountCodeId:activeDiscountCodeId||undefined,
           actualPrice:(discountedPrice!==null)?discountedPrice:price,
           phoneNumber:cf.phoneNumber,
-          customerFields:cf.customerFields,autoEnroll:!!(document.getElementById('bk-autoenroll')&&document.getElementById('bk-autoenroll').checked),fbEventId:(typeof _fbEventId!=='undefined'&&_fbEventId)||undefined,fbp:(typeof _fbGetCookie==='function'&&_fbGetCookie('_fbp'))||undefined,fbc:(typeof _fbGetCookie==='function'&&_fbGetCookie('_fbc'))||undefined
+          customerFields:cf.customerFields,autoEnroll:!!(document.getElementById('bk-autoenroll')&&document.getElementById('bk-autoenroll').checked),fbEventId:(typeof _fbEventId!=='undefined'&&_fbEventId)||undefined,fbp:(typeof _fbGetCookie==='function'&&_fbGetCookie('_fbp'))||undefined,fbc:(typeof _fbGetCookie==='function'&&_fbGetCookie('_fbc'))||undefined,attribution:(window._sabdaGetAttribution&&window._sabdaGetAttribution())||null
         })
       }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
       .then(function(r){
@@ -1622,7 +1625,7 @@ function showPayForm(type,price,productId,name,desc){stepChange();
         } else if(r.data.clientSecret){
           stripeInstance.confirmCardPayment(r.data.clientSecret,{payment_method:ev.paymentMethod.id}).then(function(conf){
             if(conf.error){ev.complete('fail');isProcessing=false;}
-            else{ev.complete('success');window._fbCapiAfter3DS({email:(curUser&&curUser.email)||email||undefined,firstName:(curUser&&curUser.firstName)||firstName||undefined,lastName:(curUser&&curUser.lastName)||lastName||undefined,phoneNumber:(typeof cf!=='undefined'&&cf.phoneNumber)||(typeof phoneNumber!=='undefined'?phoneNumber:undefined),value:(typeof finalPrice!=='undefined'?finalPrice:(typeof actualPrice!=='undefined'?actualPrice:(typeof origPrice!=='undefined'?origPrice:0))),currency:'EUR',externalId:(r.data&&r.data.newMemberId)||undefined,fbp:_fbGetCookie('_fbp')||undefined,fbc:_fbGetCookie('_fbc')||undefined,fbEventId:(typeof _fbEventId!=='undefined'?_fbEventId:undefined),clientUserAgent:navigator.userAgent,eventSourceUrl:window.location.href});showSuccess();}
+            else{ev.complete('success');window._fbCapiAfter3DS({email:(curUser&&curUser.email)||email||undefined,firstName:(curUser&&curUser.firstName)||firstName||undefined,lastName:(curUser&&curUser.lastName)||lastName||undefined,phoneNumber:(typeof cf!=='undefined'&&cf.phoneNumber)||(typeof phoneNumber!=='undefined'?phoneNumber:undefined),value:(typeof finalPrice!=='undefined'?finalPrice:(typeof actualPrice!=='undefined'?actualPrice:(typeof origPrice!=='undefined'?origPrice:0))),currency:'EUR',externalId:(r.data&&r.data.newMemberId)||undefined,fbp:_fbGetCookie('_fbp')||undefined,fbc:_fbGetCookie('_fbc')||undefined,attribution:(window._sabdaGetAttribution&&window._sabdaGetAttribution())||null,fbEventId:(typeof _fbEventId!=='undefined'?_fbEventId:undefined),clientUserAgent:navigator.userAgent,eventSourceUrl:window.location.href});showSuccess();}
           });
         } else {
           ev.complete('fail');
@@ -1751,7 +1754,7 @@ function doPayAndBook(type,price,productId){if(isProcessing)return;
         discountCodeId:activeDiscountCodeId||undefined,
         actualPrice:0,
         phoneNumber:cf.phoneNumber,
-        customerFields:cf.customerFields,autoEnroll:!!(document.getElementById('bk-autoenroll')&&document.getElementById('bk-autoenroll').checked),fbEventId:(typeof _fbEventId!=='undefined'&&_fbEventId)||undefined,fbp:(typeof _fbGetCookie==='function'&&_fbGetCookie('_fbp'))||undefined,fbc:(typeof _fbGetCookie==='function'&&_fbGetCookie('_fbc'))||undefined
+        customerFields:cf.customerFields,autoEnroll:!!(document.getElementById('bk-autoenroll')&&document.getElementById('bk-autoenroll').checked),fbEventId:(typeof _fbEventId!=='undefined'&&_fbEventId)||undefined,fbp:(typeof _fbGetCookie==='function'&&_fbGetCookie('_fbp'))||undefined,fbc:(typeof _fbGetCookie==='function'&&_fbGetCookie('_fbc'))||undefined,attribution:(window._sabdaGetAttribution&&window._sabdaGetAttribution())||null
       })
     }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
     .then(function(r){
@@ -1791,7 +1794,7 @@ function doPayAndBook(type,price,productId){if(isProcessing)return;
         discountCodeId:activeDiscountCodeId||undefined,
         actualPrice:(discountedPrice!==null)?discountedPrice:price,
         phoneNumber:cf.phoneNumber,
-        customerFields:cf.customerFields,autoEnroll:!!(document.getElementById('bk-autoenroll')&&document.getElementById('bk-autoenroll').checked),fbEventId:(typeof _fbEventId!=='undefined'&&_fbEventId)||undefined,fbp:(typeof _fbGetCookie==='function'&&_fbGetCookie('_fbp'))||undefined,fbc:(typeof _fbGetCookie==='function'&&_fbGetCookie('_fbc'))||undefined
+        customerFields:cf.customerFields,autoEnroll:!!(document.getElementById('bk-autoenroll')&&document.getElementById('bk-autoenroll').checked),fbEventId:(typeof _fbEventId!=='undefined'&&_fbEventId)||undefined,fbp:(typeof _fbGetCookie==='function'&&_fbGetCookie('_fbp'))||undefined,fbc:(typeof _fbGetCookie==='function'&&_fbGetCookie('_fbc'))||undefined,attribution:(window._sabdaGetAttribution&&window._sabdaGetAttribution())||null
       })
     }).then(function(r){return r.json().then(function(d){return{ok:r.ok,status:r.status,data:d}});})
     .then(function(r){
@@ -1805,7 +1808,7 @@ function doPayAndBook(type,price,productId){if(isProcessing)return;
             showError(conf.error.message);
             resetBtn();
           } else {
-            window._fbCapiAfter3DS({email:(curUser&&curUser.email)||email||undefined,firstName:(curUser&&curUser.firstName)||firstName||undefined,lastName:(curUser&&curUser.lastName)||lastName||undefined,phoneNumber:(typeof cf!=='undefined'&&cf.phoneNumber)||(typeof phoneNumber!=='undefined'?phoneNumber:undefined),value:(typeof finalPrice!=='undefined'?finalPrice:(typeof actualPrice!=='undefined'?actualPrice:(typeof origPrice!=='undefined'?origPrice:0))),currency:'EUR',externalId:(r.data&&r.data.newMemberId)||undefined,fbp:_fbGetCookie('_fbp')||undefined,fbc:_fbGetCookie('_fbc')||undefined,fbEventId:(typeof _fbEventId!=='undefined'?_fbEventId:undefined),clientUserAgent:navigator.userAgent,eventSourceUrl:window.location.href});showSuccess();
+            window._fbCapiAfter3DS({email:(curUser&&curUser.email)||email||undefined,firstName:(curUser&&curUser.firstName)||firstName||undefined,lastName:(curUser&&curUser.lastName)||lastName||undefined,phoneNumber:(typeof cf!=='undefined'&&cf.phoneNumber)||(typeof phoneNumber!=='undefined'?phoneNumber:undefined),value:(typeof finalPrice!=='undefined'?finalPrice:(typeof actualPrice!=='undefined'?actualPrice:(typeof origPrice!=='undefined'?origPrice:0))),currency:'EUR',externalId:(r.data&&r.data.newMemberId)||undefined,fbp:_fbGetCookie('_fbp')||undefined,fbc:_fbGetCookie('_fbc')||undefined,attribution:(window._sabdaGetAttribution&&window._sabdaGetAttribution())||null,fbEventId:(typeof _fbEventId!=='undefined'?_fbEventId:undefined),clientUserAgent:navigator.userAgent,eventSourceUrl:window.location.href});showSuccess();
           }
         });
       } else {

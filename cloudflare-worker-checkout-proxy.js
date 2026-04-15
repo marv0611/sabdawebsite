@@ -940,7 +940,7 @@ function normalizePhoneE164(raw) {
   return p;
 }
 
-async function sendCAPIEvent(eventName, eventId, email, firstName, lastName, value, currency, eventSourceUrl, clientIp, clientUserAgent, fbp, fbc, env, phone, externalId, testEventCode, city, country) {
+async function sendCAPIEvent(eventName, eventId, email, firstName, lastName, value, currency, eventSourceUrl, clientIp, clientUserAgent, fbp, fbc, env, phone, externalId, testEventCode, city, country, attribution) {
   const CAPI_TOKEN = (env && env.CAPI_ACCESS_TOKEN) || '';
   if (!CAPI_TOKEN) {
     console.log('[CAPI] Skipping — CAPI_ACCESS_TOKEN not set');
@@ -1006,6 +1006,19 @@ async function sendCAPIEvent(eventName, eventId, email, firstName, lastName, val
         value: Number(value) || 0,
       },
     };
+    // Append attribution UTMs/click IDs to custom_data. Meta surfaces these
+    // in Events Manager → Test Events / Event Details, letting you compare
+    // ground-truth campaign attribution against Meta's own attribution model.
+    // Custom_data accepts arbitrary key-value fields; values must be strings,
+    // numbers, or booleans (no nested objects). We slice values to 200 chars
+    // per Meta's recommendation.
+    if (attribution && typeof attribution === 'object') {
+      ['utm_source','utm_medium','utm_campaign','utm_content','utm_term',
+       'fbclid','gclid','ttclid','msclkid','li_fat_id'].forEach((k) => {
+        if (attribution[k]) eventData.custom_data[k] = String(attribution[k]).slice(0, 200);
+      });
+      if (attribution.landing_path) eventData.custom_data.landing_path = String(attribution.landing_path).slice(0, 200);
+    }
     const capiRes = await fetch(
       `https://graph.facebook.com/v21.0/${PIXEL_ID}/events`,
       {
@@ -1048,7 +1061,7 @@ async function handleCapiPurchase(request, origin, env, ctx) {
     const {
       eventName, fbEventId, email, firstName, lastName, phoneNumber,
       value, currency, externalId, fbp, fbc, clientUserAgent, eventSourceUrl,
-      test_event_code, city, country,
+      test_event_code, city, country, attribution,
     } = await request.json();
     
     if (!email) {
@@ -1062,6 +1075,18 @@ async function handleCapiPurchase(request, origin, env, ctx) {
     const externalIdForCAPI = externalId || email || '';
     const cityForCAPI = city || '';
     const countryForCAPI = country || 'es';
+    
+    // Attribution log for Purchase events too — same format as handlePay so
+    // observability queries find both /pay and /capi-purchase invocations.
+    if (attribution && typeof attribution === 'object') {
+      const attrFields = ['email=' + email, 'event=' + (eventName || 'Purchase')];
+      ['utm_source','utm_medium','utm_campaign','utm_content','utm_term',
+       'fbclid','gclid','ttclid','msclkid','li_fat_id'].forEach((k) => {
+        if (attribution[k]) attrFields.push(k + '=' + String(attribution[k]).slice(0,100));
+      });
+      if (attribution.landing_path) attrFields.push('landing=' + String(attribution.landing_path).slice(0,80));
+      console.log('[ATTR] ' + attrFields.join(' '));
+    }
     
     // Use waitUntil so the CAPI fetch isn't terminated when we send the response.
     // Without this, Cloudflare Workers kill the isolate the instant the client
@@ -1085,7 +1110,8 @@ async function handleCapiPurchase(request, origin, env, ctx) {
       externalIdForCAPI,
       test_event_code || '',
       cityForCAPI,
-      countryForCAPI
+      countryForCAPI,
+      attribution
     );
     if (ctx && ctx.waitUntil) {
       ctx.waitUntil(capiPromise);
@@ -1106,12 +1132,36 @@ async function handleCapiPurchase(request, origin, env, ctx) {
 
 async function handlePay(request, origin, env, ctx) {
   try {
-    const { sessionId, sessionToken, stripePaymentMethodId, firstName, lastName, email, password, phoneNumber, customerFields, type, productId, discountCode, discountCodeId, actualPrice, fbEventId, fbIcEventId, fbp, fbc, clientIp, clientUserAgent, autoEnroll } = await request.json();
+    const { sessionId, sessionToken, stripePaymentMethodId, firstName, lastName, email, password, phoneNumber, customerFields, type, productId, discountCode, discountCodeId, actualPrice, fbEventId, fbIcEventId, fbp, fbc, clientIp, clientUserAgent, autoEnroll, attribution } = await request.json();
 
     if (!firstName || !lastName || !email) {
       return new Response(JSON.stringify({ error: 'Missing customer details' }), {
         status: 400, headers: corsHeaders(origin),
       });
+    }
+
+    // ── Attribution log: structured single-line per /pay invocation ──
+    // Forwarded by frontend from window._sabdaGetAttribution() — captured
+    // at landing from URL params (utm_*/fbclid/gclid/etc) and persisted in
+    // localStorage 30 days. Logged here so we can correlate purchases back
+    // to specific ad creatives via Cloudflare Workers Logs query:
+    //   $.message ~ "[ATTR]" AND $.message ~ "EMAIL_OF_INTEREST"
+    // Even if Momence loses attribution downstream (it doesn't accept
+    // arbitrary metadata), we keep ground truth here forever.
+    if (attribution && typeof attribution === 'object') {
+      const attrFields = [];
+      attrFields.push('email=' + email);
+      ['utm_source','utm_medium','utm_campaign','utm_content','utm_term',
+       'fbclid','gclid','ttclid','msclkid','li_fat_id'].forEach((k) => {
+        if (attribution[k]) attrFields.push(k + '=' + String(attribution[k]).slice(0,100));
+      });
+      if (attribution.landing_path) attrFields.push('landing=' + String(attribution.landing_path).slice(0,80));
+      if (attribution.referrer) attrFields.push('ref=' + String(attribution.referrer).slice(0,80));
+      console.log('[ATTR] ' + attrFields.join(' '));
+    } else {
+      // No attribution = direct/organic visit. Still log for completeness so
+      // we can compute "% of purchases with attribution data" over time.
+      console.log('[ATTR] email=' + email + ' direct=true');
     }
 
     // ── FIRE CAPI InitiateCheckout at request entry ──
@@ -1134,7 +1184,7 @@ async function handlePay(request, origin, env, ctx) {
         clientUserAgent || request.headers.get('User-Agent') || '',
         fbp || '', fbc || '', env,
         phoneNumber || '', email || '', '',
-        icCity, 'es'
+        icCity, 'es', attribution
       ).catch((e) => console.log('[CAPI-IC] fire-and-forget error:', e && e.message));
       if (ctx && ctx.waitUntil) ctx.waitUntil(icPromise);
     }
@@ -1450,7 +1500,7 @@ async function handlePay(request, origin, env, ctx) {
         clientUserAgent || request.headers.get('User-Agent') || '',
         fbp, fbc, env,
         phoneNumber, externalIdForCAPI, '',
-        cityForCAPI, countryForCAPI
+        cityForCAPI, countryForCAPI, attribution
       ).catch((e) => console.log('[CAPI] fire-and-forget error:', e && e.message));
       if (ctx && ctx.waitUntil) {
         ctx.waitUntil(capiPromise);
@@ -1483,26 +1533,68 @@ async function handlePay(request, origin, env, ctx) {
   }
 }
 
-// Translate Momence/superstruct validation errors into clean user messages.
-// Momence's API returns raw debug strings that are unhelpful for end users:
-//   "At path: email -- Expected a value of type `email`, but received: ..."
-//   "At path: phoneNumber -- Expected a value of type `phone`, but received: ..."
-// Pattern: "At path: <field> -- Expected a value of type `<type>`, but received: <value>"
-// Map field names to short user-facing messages. Falls back to original if no match.
+// Translate Momence/superstruct/Stripe validation errors into clean user messages.
+// Three categories caught:
+//   1. Momence superstruct validators ("At path: email -- Expected ...")
+//   2. Stripe errors that pass through Momence verbatim (No such PaymentMethod,
+//      card_declined, insufficient_funds, etc.)
+//   3. Common Momence business-logic errors (already a member, full class, etc.)
+// Falls back to the raw message if nothing matches — no regression risk.
 function humanizeMomenceError(raw) {
   if (!raw || typeof raw !== 'string') return raw;
-  const m = raw.match(/At path:\s*(\w+)\s*--\s*Expected a value of type/i);
-  if (!m) return raw;
-  const field = m[1].toLowerCase();
-  const map = {
-    email: 'Invalid email address',
-    phonenumber: 'Invalid phone number',
-    phone: 'Invalid phone number',
-    firstname: 'First name is invalid',
-    lastname: 'Last name is invalid',
-    password: 'Password is invalid',
-  };
-  return map[field] || ('Invalid ' + m[1]);
+
+  // Category 1: superstruct field validation errors
+  const fieldMatch = raw.match(/At path:\s*(\w+)\s*--\s*Expected a value of type/i);
+  if (fieldMatch) {
+    const field = fieldMatch[1].toLowerCase();
+    const map = {
+      email: 'Invalid email address',
+      phonenumber: 'Invalid phone number',
+      phone: 'Invalid phone number',
+      firstname: 'First name is invalid',
+      lastname: 'Last name is invalid',
+      password: 'Password is invalid',
+    };
+    return map[field] || ('Invalid ' + fieldMatch[1]);
+  }
+
+  // Category 2: Stripe errors passed through Momence
+  const lower = raw.toLowerCase();
+  // "No such PaymentMethod: 'pm_xxx'" — happens when card token expires before submit,
+  // or when card is re-tried after a previous attempt's pm was already consumed.
+  // This is a likely cause of repeated card declines on mobile (slow networks let
+  // the pm expire before submit completes).
+  if (lower.includes('no such paymentmethod') || lower.includes('no such payment_method')) {
+    return 'Your card session expired. Please re-enter your card details and try again.';
+  }
+  if (lower.includes('card was declined') || lower.includes('card_declined')) {
+    return 'Your card was declined by your bank. Please try a different card or contact your bank.';
+  }
+  if (lower.includes('insufficient_funds') || lower.includes('insufficient funds')) {
+    return 'Your card has insufficient funds. Please try a different card.';
+  }
+  if (lower.includes('expired_card') || lower.includes('card has expired') || lower.includes('expired card')) {
+    return 'Your card has expired. Please use a different card.';
+  }
+  if (lower.includes('incorrect_cvc') || (lower.includes('cvc') && lower.includes('incorrect'))) {
+    return 'The security code (CVC) is incorrect. Please check the back of your card.';
+  }
+  if (lower.includes('processing_error') || (lower.includes('error processing') && lower.includes('card'))) {
+    return 'There was a problem processing your card. Please wait a moment and try again.';
+  }
+  if (lower.includes('authentication_required') || lower.includes('3d secure') || lower.includes('3ds')) {
+    return 'Your bank requires extra verification. Please complete 3D Secure and try again.';
+  }
+
+  // Category 3: Momence business-logic errors
+  if (lower.includes('already bought') || lower.includes('already a member') || lower.includes('already purchased')) {
+    return 'This first-timer offer is for new customers only. Please choose a different package.';
+  }
+  if (lower.includes('session is full') || lower.includes('no spots') || lower.includes('class is full')) {
+    return 'This class is full. Please choose a different time or join the waitlist.';
+  }
+
+  return raw;
 }
 
 // ── CUSTOM SIGN-IN PAGE (served when /sign-in is hit on proxy) ──
