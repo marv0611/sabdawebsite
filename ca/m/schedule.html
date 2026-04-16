@@ -2006,6 +2006,8 @@ function openPackagePurchase(productId) {
   document.getElementById('mo-c').textContent = '€' + pkg.price + ' · ' + pkg.desc;
   
   pendingPack = { type: pkg.type, price: pkg.price, id: productId, name: pkg.name, desc: pkg.desc };
+  // Fire VC+ATC+IC on modal open so Meta optimizer gets mid-funnel signal. Previously only fired on form submit, but most ad traffic bounces before that.
+  try{ var __pid=String(productId||''); if((__pid==='443934'||__pid==='443935') && typeof fbq==='function'){ var __pl={value:Number(pkg.price)||0,currency:'EUR',content_name:String(pkg.name||''),content_ids:[__pid],content_type:'product'}; var __vcEid='vc_'+Date.now()+'_'+Math.random().toString(36).substr(2,9); var __atcEid='atc_'+Date.now()+'_'+Math.random().toString(36).substr(2,9); var __icEid=_fbInitIcEventId(); _sabdaTrack('ViewContent',__pl,__vcEid); window._fbCapiSend('ViewContent',__vcEid,__pl); _sabdaTrack('AddToCart',__pl,__atcEid); window._fbCapiSend('AddToCart',__atcEid,__pl); _sabdaTrack('InitiateCheckout',__pl,__icEid); window._fbCapiSend('InitiateCheckout',__icEid,__pl); } }catch(e){}
   showGuestStep();
   document.getElementById('mo').classList.add('open');
   document.getElementById('mo').style.display = 'flex';
