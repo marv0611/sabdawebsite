@@ -1736,18 +1736,88 @@ async function handleWebhookPurchase(request, origin, env, ctx) {
       return new Response(null, { status: 204, headers: corsHeaders(origin) });
     }
 
-    // Accept from Zapier or any webhook source. Flexible field mapping.
     const body = await request.json();
-    const email = body.email || body.customer_email || body.Email || '';
-    const firstName = body.firstName || body.first_name || body.FirstName || '';
-    const lastName = body.lastName || body.last_name || body.LastName || '';
-    const phone = body.phone || body.phoneNumber || body.Phone || '';
-    const amount = Number(body.amount || body.price || body.value || body.Amount || 0);
-    const productName = body.productName || body.product_name || body.item || body.ProductName || 'Momence Purchase';
-    const transactionId = body.transactionId || body.transaction_id || body.id || ('momence_' + Date.now());
+
+    // ── DETECT SOURCE: Stripe webhook vs Zapier/manual ──
+    // Stripe webhooks always have body.type (e.g., 'payment_intent.succeeded',
+    // 'checkout.session.completed', 'charge.succeeded') and body.data.object.
+    // Zapier/manual webhooks have top-level {email, amount, ...}.
+    let email = '';
+    let firstName = '';
+    let lastName = '';
+    let phone = '';
+    let amount = 0;
+    let productName = 'Purchase';
+    let transactionId = '';
+    let source = 'manual';
+
+    if (body.type && body.data && body.data.object) {
+      // ── STRIPE WEBHOOK ──
+      source = 'stripe';
+      const obj = body.data.object;
+
+      // Extract email: varies by event type
+      // payment_intent.succeeded → charges.data[0].billing_details.email OR receipt_email
+      // checkout.session.completed → customer_email OR customer_details.email
+      // charge.succeeded → billing_details.email OR receipt_email
+      if (body.type === 'checkout.session.completed') {
+        email = obj.customer_email || (obj.customer_details && obj.customer_details.email) || '';
+        const custName = (obj.customer_details && obj.customer_details.name) || '';
+        const parts = custName.split(/\s+/);
+        firstName = parts[0] || '';
+        lastName = parts.slice(1).join(' ') || '';
+        phone = (obj.customer_details && obj.customer_details.phone) || '';
+        amount = (obj.amount_total || 0) / 100; // Stripe sends cents
+        transactionId = obj.id || body.id || '';
+      } else if (body.type === 'payment_intent.succeeded') {
+        // PaymentIntent — get billing details from the first charge
+        const charges = (obj.charges && obj.charges.data) || [];
+        const charge = charges[0] || {};
+        const billing = charge.billing_details || {};
+        email = billing.email || obj.receipt_email || '';
+        const billingName = billing.name || '';
+        const parts = billingName.split(/\s+/);
+        firstName = parts[0] || '';
+        lastName = parts.slice(1).join(' ') || '';
+        phone = billing.phone || '';
+        amount = (obj.amount || 0) / 100; // Stripe sends cents
+        productName = (obj.description || obj.statement_descriptor || 'Momence Purchase');
+        transactionId = obj.id || body.id || '';
+      } else if (body.type === 'charge.succeeded') {
+        const billing = obj.billing_details || {};
+        email = billing.email || obj.receipt_email || '';
+        const billingName = billing.name || '';
+        const parts = billingName.split(/\s+/);
+        firstName = parts[0] || '';
+        lastName = parts.slice(1).join(' ') || '';
+        phone = billing.phone || '';
+        amount = (obj.amount || 0) / 100;
+        productName = (obj.description || obj.statement_descriptor || 'Momence Purchase');
+        transactionId = obj.id || body.id || '';
+      } else {
+        // Unhandled Stripe event type — log and accept
+        console.log('[WEBHOOK] Unhandled Stripe event type:', body.type);
+        return new Response(JSON.stringify({ received: true, skipped: body.type }), {
+          status: 200, headers: corsHeaders(origin),
+        });
+      }
+
+      console.log('[WEBHOOK] Stripe ' + body.type + ' email=' + (email ? email.slice(0, 3) + '***' : 'NONE') + ' amount=' + amount + ' txn=' + (transactionId || '-').slice(0, 20));
+    } else {
+      // ── ZAPIER / MANUAL WEBHOOK ──
+      source = 'zapier';
+      email = body.email || body.customer_email || body.Email || '';
+      firstName = body.firstName || body.first_name || body.FirstName || '';
+      lastName = body.lastName || body.last_name || body.LastName || '';
+      phone = body.phone || body.phoneNumber || body.Phone || '';
+      amount = Number(body.amount || body.price || body.value || body.Amount || 0);
+      productName = body.productName || body.product_name || body.item || body.ProductName || 'Momence Purchase';
+      transactionId = body.transactionId || body.transaction_id || body.id || ('momence_' + Date.now());
+    }
 
     if (!email) {
-      return new Response(JSON.stringify({ error: 'Missing email' }), {
+      console.log('[WEBHOOK] No email found in ' + source + ' payload — keys: ' + Object.keys(body).slice(0, 10).join(','));
+      return new Response(JSON.stringify({ error: 'Missing email', source: source }), {
         status: 400, headers: corsHeaders(origin),
       });
     }
@@ -1780,9 +1850,9 @@ async function handleWebhookPurchase(request, origin, env, ctx) {
     // Fire CAPI Purchase with whatever we have
     const eventId = 'wh_' + Date.now() + '_' + uuid().slice(0, 8);
     const clientIp = request.headers.get('CF-Connecting-IP') || '';
-    const clientUA = request.headers.get('User-Agent') || 'Zapier-Webhook/1.0';
+    const clientUA = request.headers.get('User-Agent') || (source === 'stripe' ? 'Stripe-Webhook/1.0' : 'Zapier-Webhook/1.0');
 
-    console.log('[WEBHOOK] Purchase email=' + email.slice(0, 3) + '*** amount=' + amount + ' product=' + productName + ' fbc=' + (fbcFromAttribution ? 'constructed' : 'none'));
+    console.log('[WEBHOOK] Purchase source=' + source + ' email=' + email.slice(0, 3) + '*** amount=' + amount + ' product=' + productName + ' fbc=' + (fbcFromAttribution ? 'constructed' : 'none'));
 
     const capiPromise = sendCAPIEvent(
       'Purchase', eventId, email, firstName, lastName,
