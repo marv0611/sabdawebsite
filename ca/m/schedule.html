@@ -513,11 +513,23 @@ window._fbCapiSend = function(eventName, fbEventId, payload) {
       contentIds: payload.content_ids,
       contentType: payload.content_type
     };
-    return fetch(PROXY + '/sabda-api/capi-event', {
+    var __capiUrl = PROXY + '/sabda-api/capi-event';
+    var __capiBody = JSON.stringify(body);
+    return fetch(__capiUrl, {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
-      body: JSON.stringify(body)
-    }).catch(function(err){ /* silent — best-effort */ });
+      body: __capiBody,
+      keepalive: true
+    }).catch(function(err){
+      // Primary fetch failed (Instagram IAB throttling, network flake, navigation abort).
+      // navigator.sendBeacon is designed for unreliable-delivery scenarios and works in
+      // restricted webviews where fetch gets blocked. Fire-and-forget, no response needed.
+      try {
+        if (typeof navigator !== 'undefined' && typeof navigator.sendBeacon === 'function') {
+          navigator.sendBeacon(__capiUrl, new Blob([__capiBody], {type:'application/json'}));
+        }
+      } catch(e2) {}
+    });
   } catch(err) {
     return Promise.resolve();
   }
@@ -1566,7 +1578,7 @@ window.mobileSelectPack = function(type, price, id, name, desc){
 };
 
 function showPayForm(type,price,productId,name,desc){stepChange();
-  try{ var __pid=String(productId||''); if((__pid==='443934'||__pid==='443935') && typeof fbq==='function'){ var __pl={value:Number(price)||0,currency:'EUR',content_name:String(name||''),content_ids:[__pid],content_type:'product'}; var __vcEid='vc_'+Date.now()+'_'+Math.random().toString(36).substr(2,9); var __atcEid='atc_'+Date.now()+'_'+Math.random().toString(36).substr(2,9); var __icEid=_fbInitIcEventId(); _sabdaTrack('ViewContent',__pl,__vcEid); window._fbCapiSend('ViewContent',__vcEid,__pl); _sabdaTrack('AddToCart',__pl,__atcEid); window._fbCapiSend('AddToCart',__atcEid,__pl); _sabdaTrack('InitiateCheckout',__pl,__icEid); window._fbCapiSend('InitiateCheckout',__icEid,__pl); } }catch(e){}
+  try{ var __pid=String(productId||''); if(__pid==='443934'||__pid==='443935'){ var __pl={value:Number(price)||0,currency:'EUR',content_name:String(name||''),content_ids:[__pid],content_type:'product'}; var __vcEid='vc_'+Date.now()+'_'+Math.random().toString(36).substr(2,9); var __atcEid='atc_'+Date.now()+'_'+Math.random().toString(36).substr(2,9); var __icEid=_fbInitIcEventId(); /* CAPI first - fires independent of fbq so IAB/Pixel failures never block server-side tracking */ try{window._fbCapiSend('ViewContent',__vcEid,__pl);}catch(e){} try{window._fbCapiSend('AddToCart',__atcEid,__pl);}catch(e){} try{window._fbCapiSend('InitiateCheckout',__icEid,__pl);}catch(e){} /* Pixel second - _sabdaTrack self-guards on undefined fbq (safe when fbevents.js is blocked by IAB) */ try{_sabdaTrack('ViewContent',__pl,__vcEid);}catch(e){} try{_sabdaTrack('AddToCart',__pl,__atcEid);}catch(e){} try{_sabdaTrack('InitiateCheckout',__pl,__icEid);}catch(e){} } }catch(e){}
   setBack(curSession && curSession.isPackagePurchase ? showPackageGuestStep : showNoMembership);
   var bd=document.getElementById('mo-bd');
   bd.innerHTML='<div class="bk-class">'
@@ -2007,7 +2019,7 @@ function openPackagePurchase(productId) {
   
   pendingPack = { type: pkg.type, price: pkg.price, id: productId, name: pkg.name, desc: pkg.desc };
   // Fire VC+ATC+IC on modal open so Meta optimizer gets mid-funnel signal. Previously only fired on form submit, but most ad traffic bounces before that.
-  try{ var __pid=String(productId||''); if((__pid==='443934'||__pid==='443935') && typeof fbq==='function'){ var __pl={value:Number(pkg.price)||0,currency:'EUR',content_name:String(pkg.name||''),content_ids:[__pid],content_type:'product'}; var __vcEid='vc_'+Date.now()+'_'+Math.random().toString(36).substr(2,9); var __atcEid='atc_'+Date.now()+'_'+Math.random().toString(36).substr(2,9); var __icEid=_fbInitIcEventId(); _sabdaTrack('ViewContent',__pl,__vcEid); window._fbCapiSend('ViewContent',__vcEid,__pl); _sabdaTrack('AddToCart',__pl,__atcEid); window._fbCapiSend('AddToCart',__atcEid,__pl); _sabdaTrack('InitiateCheckout',__pl,__icEid); window._fbCapiSend('InitiateCheckout',__icEid,__pl); } }catch(e){}
+  try{ var __pid=String(productId||''); if(__pid==='443934'||__pid==='443935'){ var __pl={value:Number(pkg.price)||0,currency:'EUR',content_name:String(pkg.name||''),content_ids:[__pid],content_type:'product'}; var __vcEid='vc_'+Date.now()+'_'+Math.random().toString(36).substr(2,9); var __atcEid='atc_'+Date.now()+'_'+Math.random().toString(36).substr(2,9); var __icEid=_fbInitIcEventId(); /* CAPI first - fires independent of fbq so IAB/Pixel failures never block server-side tracking */ try{window._fbCapiSend('ViewContent',__vcEid,__pl);}catch(e){} try{window._fbCapiSend('AddToCart',__atcEid,__pl);}catch(e){} try{window._fbCapiSend('InitiateCheckout',__icEid,__pl);}catch(e){} /* Pixel second - _sabdaTrack self-guards on undefined fbq (safe when fbevents.js is blocked by IAB) */ try{_sabdaTrack('ViewContent',__pl,__vcEid);}catch(e){} try{_sabdaTrack('AddToCart',__pl,__atcEid);}catch(e){} try{_sabdaTrack('InitiateCheckout',__pl,__icEid);}catch(e){} } }catch(e){}
   showGuestStep();
   document.getElementById('mo').classList.add('open');
   document.getElementById('mo').style.display = 'flex';

@@ -404,6 +404,60 @@ if os.path.exists('cloudflare-worker-checkout-proxy.js'):
                     issues.append(f'[WORKER_SIG]    sendCAPIEvent missing \'{required}\' parameter — would break CAPI features')
 
 
+# ═══════════════════════════════════════════════════════════════════
+# 18. CAPI KEEPALIVE — _fbCapiSend fetch must use keepalive:true
+# ═══════════════════════════════════════════════════════════════════
+# HISTORY: 2026-04-16 — fetch without keepalive got aborted by Instagram
+# in-app browser on page navigation, silently dropping CAPI events.
+# keepalive:true + sendBeacon fallback makes CAPI survive any client env.
+for p in BOOKING:
+    if not os.path.exists(p): continue
+    s = open(p).read()
+    # Find _fbCapiSend definition body and check it contains keepalive
+    capi_def = re.search(r'window\._fbCapiSend\s*=\s*function[\s\S]*?(?=\nlet\s|;?\n(?:var|let|const|function|window\.))', s)
+    if capi_def:
+        body = capi_def.group(0)
+        if 'keepalive' not in body:
+            issues.append(f'[CAPI_KEEPALIVE] {p} — _fbCapiSend fetch missing keepalive:true (breaks in Instagram IAB)')
+        if 'sendBeacon' not in body:
+            issues.append(f'[CAPI_KEEPALIVE] {p} — _fbCapiSend missing sendBeacon fallback (breaks when fetch is blocked)')
+
+# ═══════════════════════════════════════════════════════════════════
+# 19. CAPI/FBQ DECOUPLING — _fbCapiSend must never be gated on fbq
+# ═══════════════════════════════════════════════════════════════════
+# HISTORY: 2026-04-16 — all 10 trifecta fire sites had CAPI gated inside
+# `if(... && typeof fbq==='function')`, so any fbq failure also killed CAPI.
+# CAPI is server-side and must fire independently.
+for p in BOOKING:
+    if not os.path.exists(p): continue
+    for ln, line in enumerate(open(p).read().split('\n'), 1):
+        if '_fbCapiSend' in line and "typeof fbq==='function'" in line:
+            issues.append(f'[CAPI_FBQ_GUARD] {p}:{ln} — _fbCapiSend is gated on typeof fbq. CAPI must fire independently of Pixel.')
+
+# ═══════════════════════════════════════════════════════════════════
+# 20. MODAL TRACKING — conversion-critical modal openers must fire IC
+# ═══════════════════════════════════════════════════════════════════
+# HISTORY: 2026-04-16 — openPackagePurchase() opened checkout modal with
+# zero tracking. 53 ad clicks, 0 InitiateCheckout fires, 0 purchases.
+# Any function that opens a purchase modal for a deep-link must fire IC.
+MODAL_OPENERS = ['openPackagePurchase', 'checkUrlPack']
+for p in BOOKING:
+    if not os.path.exists(p): continue
+    s = open(p).read()
+    for opener in MODAL_OPENERS:
+        # Find function body (simple: from 'function opener(' to next 'function ' at same indent)
+        fn_start = s.find(f'function {opener}(')
+        if fn_start == -1:
+            fn_start = s.find(f'{opener} = function(')
+        if fn_start == -1: continue
+        # Extract ~200 lines or until next top-level function
+        fn_body = s[fn_start:fn_start+8000]
+        # Check it contains an IC fire (either _fbCapiSend('InitiateCheckout' or _fbTrackInitiateCheckout)
+        has_ic = ('InitiateCheckout' in fn_body[:4000])
+        if not has_ic:
+            issues.append(f'[MODAL_TRACKING] {p} — {opener}() opens checkout modal but never fires InitiateCheckout. Meta optimizer blind.')
+
+
 WARN_TAGS = ['[EM_DASH]', '[BROKEN_LANG]']
 blockers = [i for i in issues if not any(t in i for t in WARN_TAGS)]
 warnings = [i for i in issues if any(t in i for t in WARN_TAGS)]
