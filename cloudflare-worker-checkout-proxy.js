@@ -1736,7 +1736,49 @@ async function handleWebhookPurchase(request, origin, env, ctx) {
       return new Response(null, { status: 204, headers: corsHeaders(origin) });
     }
 
-    const body = await request.json();
+    // Read raw body for Stripe signature verification
+    const rawBody = await request.text();
+    let body;
+    try { body = JSON.parse(rawBody); } catch (e) {
+      return new Response(JSON.stringify({ error: 'Invalid JSON' }), { status: 400, headers: corsHeaders(origin) });
+    }
+
+    // ── STRIPE SIGNATURE VERIFICATION ──
+    // If the request has a Stripe-Signature header and we have the webhook
+    // secret, verify the signature. This prevents anyone from POSTing fake
+    // purchase events to fire fraudulent CAPI conversions.
+    const stripeSig = request.headers.get('stripe-signature');
+    const webhookSecret = (env && env.STRIPE_WEBHOOK_SECRET) || '';
+    if (stripeSig && webhookSecret) {
+      const parts = {};
+      stripeSig.split(',').forEach(p => {
+        const [k, v] = p.split('=');
+        if (k && v) parts[k.trim()] = v.trim();
+      });
+      const timestamp = parts['t'];
+      const sig = parts['v1'];
+      if (!timestamp || !sig) {
+        console.log('[WEBHOOK] Stripe signature missing t or v1');
+        return new Response(JSON.stringify({ error: 'Invalid signature header' }), { status: 401, headers: corsHeaders(origin) });
+      }
+      // Verify: HMAC-SHA256(webhook_secret, "{timestamp}.{rawBody}") === sig
+      const encoder = new TextEncoder();
+      const key = await crypto.subtle.importKey(
+        'raw', encoder.encode(webhookSecret), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']
+      );
+      const signed = await crypto.subtle.sign('HMAC', key, encoder.encode(timestamp + '.' + rawBody));
+      const expected = Array.from(new Uint8Array(signed)).map(b => b.toString(16).padStart(2, '0')).join('');
+      if (expected !== sig) {
+        console.log('[WEBHOOK] Stripe signature mismatch — rejecting');
+        return new Response(JSON.stringify({ error: 'Signature verification failed' }), { status: 401, headers: corsHeaders(origin) });
+      }
+      // Optional: reject if timestamp is older than 5 minutes (replay protection)
+      const age = Math.abs(Math.floor(Date.now() / 1000) - Number(timestamp));
+      if (age > 300) {
+        console.log('[WEBHOOK] Stripe timestamp too old (' + age + 's) — rejecting');
+        return new Response(JSON.stringify({ error: 'Timestamp too old' }), { status: 401, headers: corsHeaders(origin) });
+      }
+    }
 
     // ── DETECT SOURCE: Stripe webhook vs Zapier/manual ──
     // Stripe webhooks always have body.type (e.g., 'payment_intent.succeeded',
