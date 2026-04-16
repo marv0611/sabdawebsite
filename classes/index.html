@@ -691,6 +691,59 @@ window._fbCapiAfter3DS = function(payload) {
   }
 };
 
+// Generic CAPI sender for Lead, InitiateCheckout, AddToCart, ViewContent.
+// Mirrors _fbCapiAfter3DS pattern: fire-and-forget, non-blocking, never throws
+// into the caller. Uses fbEventId for browser<>server dedup. Pulls user data
+// from curUser if available + fbp/fbc cookies + 30-day attribution storage.
+// Called immediately after each _sabdaTrack(...) so Meta receives both the
+// browser Pixel event and the server-side CAPI event with the same event_id.
+// Why: Pixel-only events lose ~15-30% coverage (ad blockers, Safari ITP, slow
+// loads) and carry weak match signals. CAPI provides the server-side backup
+// plus hashed email/phone/name for dramatically higher Event Match Quality.
+window._fbCapiSend = function(eventName, fbEventId, payload) {
+  try {
+    payload = payload || {};
+    var emailFromForm = '';
+    var phoneFromForm = '';
+    var firstFromForm = '';
+    var lastFromForm = '';
+    try {
+      var e = document.getElementById('bk-email'); if (e && e.value) emailFromForm = e.value.trim();
+      var p = document.getElementById('bk-phone'); if (p && p.value) phoneFromForm = p.value.trim();
+      var fn = document.getElementById('bk-firstname') || document.getElementById('bk-first-name') || document.getElementById('bk-name');
+      if (fn && fn.value) firstFromForm = fn.value.trim();
+      var ln = document.getElementById('bk-lastname') || document.getElementById('bk-last-name');
+      if (ln && ln.value) lastFromForm = ln.value.trim();
+    } catch(e) {}
+    var body = {
+      eventName: eventName,
+      fbEventId: fbEventId,
+      email: (typeof curUser!=='undefined' && curUser && curUser.email) || emailFromForm || payload.email || '',
+      firstName: (typeof curUser!=='undefined' && curUser && curUser.firstName) || firstFromForm || payload.firstName || '',
+      lastName: (typeof curUser!=='undefined' && curUser && curUser.lastName) || lastFromForm || payload.lastName || '',
+      phoneNumber: phoneFromForm || payload.phoneNumber || '',
+      externalId: (typeof curUser!=='undefined' && curUser && curUser.memberId) ? String(curUser.memberId) : undefined,
+      value: payload.value || 0,
+      currency: payload.currency || 'EUR',
+      fbp: _fbGetCookie('_fbp') || undefined,
+      fbc: _fbGetCookie('_fbc') || undefined,
+      attribution: (window._sabdaGetAttribution && window._sabdaGetAttribution()) || null,
+      clientUserAgent: navigator.userAgent,
+      eventSourceUrl: window.location.href,
+      contentName: payload.content_name,
+      contentIds: payload.content_ids,
+      contentType: payload.content_type
+    };
+    return fetch(PROXY + '/sabda-api/capi-event', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(body)
+    }).catch(function(err){ /* silent — best-effort */ });
+  } catch(err) {
+    return Promise.resolve();
+  }
+};
+
 var allE=[],selDate=null,actF='All',actTeacher='All';
 var curSession=null, curUser=null, curMembership=null, curSessionToken=null;
 
@@ -748,7 +801,12 @@ async function _sabdaTrack(eventName, params, eventID){
   fbq('track', eventName, params || {}, opts);
 }
 
-function _fbTrackInitiateCheckout(price){if(typeof fbq==='undefined')return;var eid=_fbInitIcEventId();_sabdaTrack('InitiateCheckout',{value:price,currency:'EUR'},eid);}
+function _fbTrackInitiateCheckout(price){
+  if(typeof fbq==='undefined')return;
+  var eid=_fbInitIcEventId();
+  _sabdaTrack('InitiateCheckout',{value:price,currency:'EUR'},eid);
+  window._fbCapiSend('InitiateCheckout', eid, {value:price, currency:'EUR'});
+}
 function _fbInitIcEventId(){
   // InitiateCheckout event ID — separate from Purchase. Shared between
   // browser Pixel fire and server-side CAPI fire for dedup. Cleared by
@@ -776,16 +834,16 @@ function _fbTrackPurchase(price, productName){
 }
 function _fbTrackViewContent(className){
   if(typeof fbq==='undefined') return;
-  fbq('track','ViewContent',{content_name:className||'',content_category:'Classes'});
+  var eid = 'vc_'+Date.now()+'_'+Math.random().toString(36).substr(2,9);
+  var params = {content_name:className||'',content_category:'Classes'};
+  try{ _sabdaTrack('ViewContent', params, eid); }catch(e){ fbq('track','ViewContent',params,{eventID:eid}); }
+  window._fbCapiSend('ViewContent', eid, params);
 }
 function _fbTrackLead(){
-  // Lead fires post-purchase for guest checkouts. Use _sabdaTrack wrapper
-  // so it picks up email/phone/firstName/lastName from form fields and
-  // hashes them into Pixel advanced matching — without this, Lead events
-  // ship with only IP+UA and have ~1% match rate at Meta. Lifts EMQ ~6.1
-  // → 7.5+ within 24h. Wrapped in try/catch in case _sabdaTrack throws.
   if(typeof fbq==='undefined') return;
-  try{ _sabdaTrack('Lead', {}); }catch(e){ fbq('track','Lead'); }
+  var eid = 'lead_'+Date.now()+'_'+Math.random().toString(36).substr(2,9);
+  try{ _sabdaTrack('Lead', {}, eid); }catch(e){ fbq('track','Lead',{},{eventID:eid}); }
+  window._fbCapiSend('Lead', eid, {});
 }
 
 // ── META PIXEL ADVANCED MATCHING ──
@@ -1652,7 +1710,7 @@ function showNoMembership(){stepChange();
 
 // ── PACK SELECTION ROUTER ──
 function selectPack(type,price,id,name,desc){
-  try{ var __pid=String(id||''); if((__pid==='443934'||__pid==='443935') && typeof fbq==='function'){ var __pl={value:Number(price)||0,currency:'EUR',content_name:String(name||''),content_ids:[__pid],content_type:'product'}; fbq('track','ViewContent',__pl); _sabdaTrack('AddToCart',__pl); fbq('track','InitiateCheckout',__pl); } }catch(e){}
+  try{ var __pid=String(id||''); if((__pid==='443934'||__pid==='443935') && typeof fbq==='function'){ var __pl={value:Number(price)||0,currency:'EUR',content_name:String(name||''),content_ids:[__pid],content_type:'product'}; var __vcEid='vc_'+Date.now()+'_'+Math.random().toString(36).substr(2,9); var __atcEid='atc_'+Date.now()+'_'+Math.random().toString(36).substr(2,9); var __icEid=_fbInitIcEventId(); _sabdaTrack('ViewContent',__pl,__vcEid); window._fbCapiSend('ViewContent',__vcEid,__pl); _sabdaTrack('AddToCart',__pl,__atcEid); window._fbCapiSend('AddToCart',__atcEid,__pl); _sabdaTrack('InitiateCheckout',__pl,__icEid); window._fbCapiSend('InitiateCheckout',__icEid,__pl); } }catch(e){}
   if(curUser){showPayForm(type,price,id,name,desc);return;}
   pendingPack={type:type,price:price,id:id,name:name,desc:desc};
   showGuestStep();
@@ -2078,7 +2136,7 @@ var PACK_MAP={
     document.getElementById('mo-t').textContent=p.name;
     document.getElementById('mo-c').textContent=p.desc;
     pendingPack={type:p.type,price:p.price,id:p.id,name:p.name,desc:p.desc};
-    try{ var __pid=String(p.id||''); if((__pid==='443934'||__pid==='443935') && typeof fbq==='function'){ var __pl={value:Number(p.price)||0,currency:'EUR',content_name:String(p.name||''),content_ids:[__pid],content_type:'product'}; fbq('track','ViewContent',__pl); _sabdaTrack('AddToCart',__pl); fbq('track','InitiateCheckout',__pl); } }catch(e){}
+    try{ var __pid=String(p.id||''); if((__pid==='443934'||__pid==='443935') && typeof fbq==='function'){ var __pl={value:Number(p.price)||0,currency:'EUR',content_name:String(p.name||''),content_ids:[__pid],content_type:'product'}; var __vcEid='vc_'+Date.now()+'_'+Math.random().toString(36).substr(2,9); var __atcEid='atc_'+Date.now()+'_'+Math.random().toString(36).substr(2,9); var __icEid=_fbInitIcEventId(); _sabdaTrack('ViewContent',__pl,__vcEid); window._fbCapiSend('ViewContent',__vcEid,__pl); _sabdaTrack('AddToCart',__pl,__atcEid); window._fbCapiSend('AddToCart',__atcEid,__pl); _sabdaTrack('InitiateCheckout',__pl,__icEid); window._fbCapiSend('InitiateCheckout',__icEid,__pl); } }catch(e){}
     showGuestStep();
     document.getElementById('mo').classList.add('open');
     document.getElementById('mo').style.display='flex';

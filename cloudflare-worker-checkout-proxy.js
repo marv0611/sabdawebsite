@@ -168,7 +168,16 @@ export default {
       return handleBook(request, reqOrigin);
     }
     if (url.pathname === '/sabda-api/capi-purchase') {
-      return handleCapiPurchase(request, reqOrigin, env, ctx);
+      return handleCapiEvent(request, reqOrigin, env, ctx, /* defaultEvent */ 'Purchase', /* requireEmail */ true);
+    }
+    // Generic CAPI endpoint for Lead, InitiateCheckout, AddToCart, ViewContent.
+    // Shares handleCapiEvent with /capi-purchase — difference is email is NOT
+    // required (ViewContent fires before the user submits the form). Each event
+    // sent via this endpoint still routes through sendCAPIEvent, so match-quality
+    // fields (em/ph/fn/ln/ct/country/external_id/ip/ua/fbp/fbc incl. Safari-ITP
+    // fallback) are all included when available.
+    if (url.pathname === '/sabda-api/capi-event') {
+      return handleCapiEvent(request, reqOrigin, env, ctx, /* defaultEvent */ null, /* requireEmail */ false);
     }
     if (url.pathname === '/sabda-api/pay') {
       return handlePay(request, reqOrigin, env, ctx);
@@ -940,7 +949,7 @@ function normalizePhoneE164(raw) {
   return p;
 }
 
-async function sendCAPIEvent(eventName, eventId, email, firstName, lastName, value, currency, eventSourceUrl, clientIp, clientUserAgent, fbp, fbc, env, phone, externalId, testEventCode, city, country, attribution) {
+async function sendCAPIEvent(eventName, eventId, email, firstName, lastName, value, currency, eventSourceUrl, clientIp, clientUserAgent, fbp, fbc, env, phone, externalId, testEventCode, city, country, attribution, contentMeta) {
   const CAPI_TOKEN = (env && env.CAPI_ACCESS_TOKEN) || '';
   if (!CAPI_TOKEN) {
     console.log('[CAPI] Skipping — CAPI_ACCESS_TOKEN not set');
@@ -1041,6 +1050,17 @@ async function sendCAPIEvent(eventName, eventId, email, firstName, lastName, val
         value: Number(value) || 0,
       },
     };
+    // Content metadata for ViewContent / AddToCart / InitiateCheckout events.
+    // Meta uses content_ids + content_type for catalog-based optimization
+    // (e.g., Advantage+ Shopping). content_name improves human-readability in
+    // Test Events. All three are optional and only emitted when provided.
+    if (contentMeta && typeof contentMeta === 'object') {
+      if (contentMeta.contentName) eventData.custom_data.content_name = String(contentMeta.contentName).slice(0, 200);
+      if (Array.isArray(contentMeta.contentIds) && contentMeta.contentIds.length > 0) {
+        eventData.custom_data.content_ids = contentMeta.contentIds.map((x) => String(x).slice(0, 100));
+      }
+      if (contentMeta.contentType) eventData.custom_data.content_type = String(contentMeta.contentType).slice(0, 50);
+    }
     // Append attribution UTMs/click IDs to custom_data. Meta surfaces these
     // in Events Manager → Test Events / Event Details, letting you compare
     // ground-truth campaign attribution against Meta's own attribution model.
@@ -1091,30 +1111,39 @@ async function sendCAPIEvent(eventName, eventId, email, firstName, lastName, val
 //   succeeds for 3D Secure purchases. The server-side /sabda-api/pay branch
 //   that returns clientSecret can't fire CAPI yet (purchase not confirmed).
 //   This endpoint fires the same rich user_data block as the non-3DS path.
-async function handleCapiPurchase(request, origin, env, ctx) {
+async function handleCapiEvent(request, origin, env, ctx, defaultEvent, requireEmail) {
   try {
     const {
       eventName, fbEventId, email, firstName, lastName, phoneNumber,
       value, currency, externalId, fbp, fbc, clientUserAgent, eventSourceUrl,
-      test_event_code, city, country, attribution,
+      test_event_code, city, country, attribution, contentName, contentIds, contentType,
     } = await request.json();
-    
-    if (!email) {
+
+    // Determine the event — explicit eventName in payload wins, otherwise route default
+    const effectiveEventName = eventName || defaultEvent;
+    if (!effectiveEventName) {
+      return new Response(JSON.stringify({ error: 'Missing eventName' }), {
+        status: 400, headers: corsHeaders(origin),
+      });
+    }
+
+    // Only require email for Purchase (bottom-of-funnel, always has it).
+    // Lead / InitiateCheckout / AddToCart / ViewContent may have empty email
+    // for anonymous top-of-funnel users — send the event anyway with IP/UA/
+    // fbc/fbp match signals, which still produce usable EMQ.
+    if (requireEmail && !email) {
       return new Response(JSON.stringify({ error: 'Missing email' }), {
         status: 400, headers: corsHeaders(origin),
       });
     }
-    
-    // Same defaults as handlePay: email as stable per-customer external_id
-    // fallback, country=es for SABDA's single Spanish location.
+
     const externalIdForCAPI = externalId || email || '';
     const cityForCAPI = city || '';
     const countryForCAPI = country || 'es';
-    
-    // Attribution log for Purchase events too — same format as handlePay so
-    // observability queries find both /pay and /capi-purchase invocations.
+
+    // Attribution log — same format regardless of event type for observability
     if (attribution && typeof attribution === 'object') {
-      const attrFields = ['email=' + email, 'event=' + (eventName || 'Purchase')];
+      const attrFields = ['email=' + (email || '-'), 'event=' + effectiveEventName];
       ['utm_source','utm_medium','utm_campaign','utm_content','utm_term',
        'fbclid','gclid','ttclid','msclkid','li_fat_id'].forEach((k) => {
         if (attribution[k]) attrFields.push(k + '=' + String(attribution[k]).slice(0,100));
@@ -1122,15 +1151,11 @@ async function handleCapiPurchase(request, origin, env, ctx) {
       if (attribution.landing_path) attrFields.push('landing=' + String(attribution.landing_path).slice(0,80));
       console.log('[ATTR] ' + attrFields.join(' '));
     }
-    
-    // Use waitUntil so the CAPI fetch isn't terminated when we send the response.
-    // Without this, Cloudflare Workers kill the isolate the instant the client
-    // receives its response, and the async fetch to graph.facebook.com gets cut
-    // off before Meta responds — no log line, event may or may not land.
+
     const capiPromise = sendCAPIEvent(
-      eventName || 'Purchase',
+      effectiveEventName,
       fbEventId,
-      email,
+      email || '',
       firstName || '',
       lastName || '',
       Number(value) || 0,
@@ -1146,19 +1171,20 @@ async function handleCapiPurchase(request, origin, env, ctx) {
       test_event_code || '',
       cityForCAPI,
       countryForCAPI,
-      attribution
+      attribution,
+      { contentName, contentIds, contentType }
     );
     if (ctx && ctx.waitUntil) {
       ctx.waitUntil(capiPromise);
     } else {
       await capiPromise;
     }
-    
+
     return new Response(JSON.stringify({ success: true }), {
       status: 200, headers: corsHeaders(origin),
     });
   } catch (e) {
-    console.log('[CAPI-PURCHASE] EXCEPTION:', e.message);
+    console.log('[CAPI-EVENT] EXCEPTION:', e.message);
     return new Response(JSON.stringify({ error: 'Server error: ' + e.message }), {
       status: 500, headers: corsHeaders(origin),
     });
