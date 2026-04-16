@@ -328,8 +328,21 @@ for p in INTRO_PAGES:
     s = open(p).read()
     if '_sabdaGetAttribution' not in s:
         issues.append(f'[INTRO_TRACK]   {p} — missing attribution capture script (_sabdaGetAttribution)')
-    if '_sabdaFireWithCAPI' not in s:
-        issues.append(f'[INTRO_TRACK]   {p} — missing _sabdaFireWithCAPI helper definition')
+    # Must NOT fire _sabdaFireWithCAPI BEFORE the attribution script loads.
+    # RACE CONDITION: if the CAPI fire runs first, window._sabdaGetAttribution is
+    # undefined and returns null → the event ships with no UTM/fbclid data and
+    # we can't attribute it to its Meta Ads source. This bug cost us 50+ daily
+    # ad-click attributions until caught (see git log — 2026-04-16 commit).
+    attr_line = None
+    vc_fire_line = None
+    for i, line in enumerate(s.split('\n'), 1):
+        if '_sabda_attr' in line and attr_line is None:
+            attr_line = i
+        if "_sabdaFireWithCAPI('ViewContent'" in line and vc_fire_line is None:
+            vc_fire_line = i
+    if attr_line and vc_fire_line and attr_line > vc_fire_line:
+        issues.append(f'[ATTR_RACE]     {p} — attribution script (line {attr_line}) runs AFTER _sabdaFireWithCAPI ViewContent fire (line {vc_fire_line}). Move attribution block before Pixel init.')
+
     # Check every line for raw fbq track of tracked events.
     # A line with `fbq('track','TrackedEvent')` is OK ONLY if the call site is
     # lexically INSIDE function _sabdaFireWithCAPI (not merely below its definition).
