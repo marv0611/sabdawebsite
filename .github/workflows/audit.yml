@@ -1,0 +1,37 @@
+name: Audit
+
+# Runs bash audit.sh on every push to main and every PR.
+# Blocks merges if any check fails (CAPI parity, tracker gaps, intro tracking,
+# worker routes, worker signatures, syntax, secret leaks, etc.).
+#
+# WHY: local `bash audit.sh` can be bypassed with `git push --no-verify`.
+# CI runs server-side — can't be skipped. Prevents regressions from reaching
+# production even when local hooks are bypassed in a hurry.
+#
+# SPEED: ~10s total (node + python setup + one audit run). No external deps.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node (for JS syntax checks)
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup Python (audit runner)
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Run audit
+        run: bash audit.sh

@@ -203,8 +203,194 @@ for p in _glob.glob('ca/**/*.html', recursive=True) + _glob.glob('es/**/*.html',
         break
 
 # ═══════════════════════════════════════════════════════════════════
-# RESULT — split blockers (fail push) from warnings (info only)
+# 14. CAPI PARITY — every Pixel event must have a CAPI companion
 # ═══════════════════════════════════════════════════════════════════
+# HISTORY: 2026-04-16 — shipped CAPI for Lead/IC/VC/ATC after discovering
+# these events were Pixel-only (no server-side channel). Meta EMQ stayed at
+# ~5/10 because Pixel alone can't send hashed PII server-side when cookies
+# are blocked. This check ensures we never ship raw fbq('track','X') without
+# a CAPI companion again.
+#
+# WHAT'S CHECKED:
+#   - Any fbq('track', EVENT_NAME) call for Purchase/Lead/InitiateCheckout/
+#     ViewContent/AddToCart must be within 5 lines of either:
+#       a) _sabdaFireWithCAPI('EVENT_NAME', ...) — intro pages
+#       b) _fbCapiSend('EVENT_NAME', ...)        — booking pages
+#       c) _fbCapiAfter3DS({...})                — Purchase 3DS bridge
+#     OR be inside a helper function fallback (try/catch branch)
+#   - Raw fbq() calls for tracked events trigger [CAPI_PARITY] errors.
+#
+# WHY: the gap was invisible until checked at commit time. Adding CAPI
+# per event requires touching 6+ files. Without this guard, a future
+# edit could revert coverage silently.
+TRACKED_EVENTS = ['Purchase','Lead','InitiateCheckout','ViewContent','AddToCart']
+CAPI_FUNCS = ['_sabdaFireWithCAPI','_fbCapiSend','_fbCapiAfter3DS']
+# Files where tracking fires — check parity on these
+TRACKED_FILES = [
+    'classes.html','classes/index.html',
+    'm/schedule.html','es/m/schedule.html','ca/m/schedule.html',
+    'intro/index.html','es/intro/index.html','ca/intro/index.html',
+    'm/intro.html','es/m/intro.html','ca/m/intro.html',
+]
+for p in TRACKED_FILES:
+    if not os.path.exists(p): continue
+    s = open(p).read()
+    lines = s.split('\n')
+    # Find every fbq('track','EVENT') call
+    for i, line in enumerate(lines):
+        # Skip comments
+        if line.strip().startswith('//') or line.strip().startswith('*'): continue
+        # Skip the inside of _sabdaTrack/_sabdaFireWithCAPI helpers themselves
+        # (they CONTAIN a fbq call that's the Pixel half — that's legitimate)
+        # Detect: is this line inside a function named _sabda* or _fb*?
+        # Simple heuristic: if the fbq call is preceded by a `function _sabda...` or `function _fb...`
+        # within 20 lines upward, skip it.
+        window_up = '\n'.join(lines[max(0,i-30):i])
+        in_helper = bool(re.search(r'function\s+(_sabda\w+|_fb\w+|_sabdaFireWithCAPI|_fbCapiSend|_sabdaTrack)\s*\(', window_up)) and window_up.count('{') > window_up.count('}')
+        if in_helper: continue
+        # Check for fbq('track','EVENT'
+        m = re.search(r"fbq\(\s*['\"]track['\"]\s*,\s*['\"](\w+)['\"]", line)
+        if not m: continue
+        event = m.group(1)
+        if event not in TRACKED_EVENTS: continue
+        # Check the ±5 line window for a CAPI companion or _sabdaTrack (which itself
+        # has CAPI parity enforced separately in the booking files)
+        window = '\n'.join(lines[max(0,i-5):min(len(lines),i+6)])
+        has_capi = any(fn in window for fn in CAPI_FUNCS)
+        # Also accept _sabdaTrack IF we're in a booking file (which has _fbCapiSend
+        # wired into its tracker functions). Intro pages don't have _sabdaTrack.
+        if '_sabdaTrack(' in window and p in ('classes.html','classes/index.html','m/schedule.html','es/m/schedule.html','ca/m/schedule.html'):
+            # verify the enclosing tracker function ALSO calls _fbCapiSend somewhere
+            # Simplest: just check if _fbCapiSend appears in the file at all
+            if '_fbCapiSend' in s: has_capi = True
+        if not has_capi:
+            issues.append(f'[CAPI_PARITY]   {p}:{i+1} — fbq(\'track\',\'{event}\') without CAPI companion in ±5 lines')
+
+# 15. TRACKER FUNCTION PARITY — each _fbTrack* helper in booking files must
+# fire both Pixel AND CAPI. Prevents regressions where someone "simplifies"
+# a tracker down to Pixel-only.
+BOOKING_FILES = ['classes.html','classes/index.html','m/schedule.html',
+                 'es/m/schedule.html','ca/m/schedule.html']
+def _extract_fn_body(src, fn_name):
+    """Extract function body with proper brace matching (handles try/catch/nested blocks)."""
+    m = re.search(r'function\s+' + re.escape(fn_name) + r'\s*\([^)]*\)\s*\{', src)
+    if not m: return None, None
+    start = m.end()  # position right after opening {
+    depth = 1
+    i = start
+    while i < len(src) and depth > 0:
+        c = src[i]
+        if c == '{': depth += 1
+        elif c == '}': depth -= 1
+        elif c == '/' and i+1 < len(src):
+            # Skip string literals and comments (simplified — skip // to newline and /* to */)
+            if src[i+1] == '/':
+                nl = src.find('\n', i)
+                i = nl if nl != -1 else len(src)
+                continue
+            elif src[i+1] == '*':
+                end = src.find('*/', i+2)
+                i = end + 2 if end != -1 else len(src)
+                continue
+        elif c in ('"', "'"):
+            # Skip string literal
+            end = i + 1
+            while end < len(src) and src[end] != c:
+                if src[end] == '\\': end += 2
+                else: end += 1
+            i = end + 1
+            continue
+        i += 1
+    return src[start:i-1], m.start()  # body + start-line-of-function
+
+for p in BOOKING_FILES:
+    if not os.path.exists(p): continue
+    s = open(p).read()
+    for fn_name in ['_fbTrackLead','_fbTrackInitiateCheckout','_fbTrackViewContent']:
+        body, fn_start = _extract_fn_body(s, fn_name)
+        if body is None: continue
+        has_pixel = ('fbq(' in body) or ('_sabdaTrack(' in body)
+        has_capi  = '_fbCapiSend(' in body
+        if has_pixel and not has_capi:
+            line_num = s[:fn_start].count('\n') + 1
+            issues.append(f'[TRACKER_GAP]   {p}:{line_num} — {fn_name} fires Pixel but no CAPI companion (_fbCapiSend)')
+
+
+# 16. INTRO PAGE TRACKING HEALTH — every /intro/ page must:
+#   a) have the attribution script
+#   b) have _sabdaFireWithCAPI defined
+#   c) NEVER fire raw fbq('track','X') for tracked events — only via helper
+# (Exception: fbq('track','PageView') is fine raw — no CAPI needed for it.)
+INTRO_PAGES = ['intro/index.html','es/intro/index.html','ca/intro/index.html',
+               'm/intro.html','es/m/intro.html','ca/m/intro.html']
+for p in INTRO_PAGES:
+    if not os.path.exists(p): continue
+    s = open(p).read()
+    if '_sabdaGetAttribution' not in s:
+        issues.append(f'[INTRO_TRACK]   {p} — missing attribution capture script (_sabdaGetAttribution)')
+    if '_sabdaFireWithCAPI' not in s:
+        issues.append(f'[INTRO_TRACK]   {p} — missing _sabdaFireWithCAPI helper definition')
+    # Check every line for raw fbq track of tracked events.
+    # A line with `fbq('track','TrackedEvent')` is OK ONLY if the call site is
+    # lexically INSIDE function _sabdaFireWithCAPI (not merely below its definition).
+    lines = s.split('\n')
+    # Pre-compute: for each position in source, is it inside _sabdaFireWithCAPI?
+    def _is_inside_helper(src, pos):
+        m = re.search(r'function\s+_sabdaFireWithCAPI\s*\([^)]*\)\s*\{', src)
+        if not m: return False
+        fn_body_start = m.end()
+        if pos < fn_body_start: return False
+        # Walk forward from fn_body_start counting braces to find fn body end
+        depth = 1
+        i = fn_body_start
+        while i < len(src) and depth > 0:
+            c = src[i]
+            if c == '/' and i+1 < len(src) and src[i+1] == '/':
+                nl = src.find('\n', i);  i = nl if nl != -1 else len(src); continue
+            if c == '/' and i+1 < len(src) and src[i+1] == '*':
+                end = src.find('*/', i+2); i = end+2 if end != -1 else len(src); continue
+            if c in ('"', "'"):
+                end = i + 1
+                while end < len(src) and src[end] != c:
+                    if src[end] == '\\': end += 2
+                    else: end += 1
+                i = end + 1; continue
+            if c == '{': depth += 1
+            elif c == '}': depth -= 1
+            i += 1
+        fn_body_end = i  # position after the closing brace
+        return fn_body_start <= pos < fn_body_end
+
+    for i, line in enumerate(lines):
+        if line.strip().startswith('//') or line.strip().startswith('*'): continue
+        for bad_evt in ['ViewContent','AddToCart','InitiateCheckout','Lead','Purchase']:
+            m = re.search(r"fbq\(\s*['\"]track['\"]\s*,\s*['\"]" + bad_evt + r"['\"]", line)
+            if not m: continue
+            # Compute absolute position of this match
+            line_offset = sum(len(l)+1 for l in lines[:i]) + m.start()
+            if _is_inside_helper(s, line_offset):
+                continue  # legit — Pixel half of _sabdaFireWithCAPI
+            issues.append(f'[INTRO_TRACK]   {p}:{i+1} — raw fbq(\'track\',\'{bad_evt}\') on intro page — use _sabdaFireWithCAPI instead')
+            break
+
+
+# 17. WORKER CAPI ENDPOINT HEALTH — ensure /capi-event route exists
+if os.path.exists('cloudflare-worker-checkout-proxy.js'):
+    w = open('cloudflare-worker-checkout-proxy.js').read()
+    for route, label in [('/sabda-api/capi-purchase','CAPI Purchase'),
+                          ('/sabda-api/capi-event','CAPI generic (Lead/IC/VC/ATC)')]:
+        if route not in w:
+            issues.append(f'[WORKER_ROUTE]  worker missing route {route} ({label})')
+    # sendCAPIEvent signature must accept attribution + contentMeta
+    if 'sendCAPIEvent' in w:
+        sig_match = re.search(r'async function sendCAPIEvent\(([^)]*)\)', w)
+        if sig_match:
+            sig = sig_match.group(1)
+            for required in ['attribution','contentMeta']:
+                if required not in sig:
+                    issues.append(f'[WORKER_SIG]    sendCAPIEvent missing \'{required}\' parameter — would break CAPI features')
+
+
 WARN_TAGS = ['[EM_DASH]', '[BROKEN_LANG]']
 blockers = [i for i in issues if not any(t in i for t in WARN_TAGS)]
 warnings = [i for i in issues if any(t in i for t in WARN_TAGS)]
