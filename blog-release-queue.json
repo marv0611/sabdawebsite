@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-13",
     "last_release": {
-      "date": "2026-04-15",
-      "slug": "/blog/things-to-do-in-barcelona/",
-      "order": 1
+      "date": "2026-04-16",
+      "slug": "/blog/cosas-que-hacer-en-barcelona/",
+      "order": 2
     }
   },
   "queue": [
@@ -36,8 +36,9 @@
       "release_date": "2026-04-16",
       "md_file": "blog/article-02-cosas-que-hacer-en-barcelona.md",
       "html_file": "blog/cosas-que-hacer-en-barcelona/index.html",
-      "status": "queued",
-      "volume": 5400
+      "status": "released",
+      "volume": 5400,
+      "released_at": "2026-04-16"
     },
     {
       "order": 3,
