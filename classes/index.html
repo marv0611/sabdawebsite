@@ -691,6 +691,22 @@ window._fbCapiAfter3DS = function(payload) {
   }
 };
 
+// Store email→attribution server-side so Momence-native purchases can be matched to ad clicks.
+// Called on email field blur. Fire-and-forget, never blocks UI.
+window._sabdaStoreAttribution = function(email) {
+  try {
+    if (!email || !email.trim()) return;
+    var attr = (window._sabdaGetAttribution && window._sabdaGetAttribution()) || null;
+    if (!attr) return; // No attribution to store (organic visitor)
+    fetch(PROXY + '/sabda-api/store-attribution', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ email: email.trim().toLowerCase(), attribution: attr }),
+      keepalive: true
+    }).catch(function(e) {});
+  } catch(e) {}
+};
+
 // Generic CAPI sender for Lead, InitiateCheckout, AddToCart, ViewContent.
 // Mirrors _fbCapiAfter3DS pattern: fire-and-forget, non-blocking, never throws
 // into the caller. Uses fbEventId for browser<>server dedup. Pulls user data
@@ -2223,7 +2239,7 @@ window.sabdaFirstTimeOnlyCheck = function(){
   }catch(e){}
 };
 document.addEventListener('blur', function(e){
-  if(e.target && e.target.id === 'bk-email') window.sabdaFirstTimeOnlyCheck();
+  if(e.target && e.target.id === 'bk-email') { window.sabdaFirstTimeOnlyCheck(); try{window._sabdaStoreAttribution(e.target.value);}catch(e){} }
 }, true);
 
 

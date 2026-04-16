@@ -391,7 +391,9 @@ for p in INTRO_PAGES:
 if os.path.exists('cloudflare-worker-checkout-proxy.js'):
     w = open('cloudflare-worker-checkout-proxy.js').read()
     for route, label in [('/sabda-api/capi-purchase','CAPI Purchase'),
-                          ('/sabda-api/capi-event','CAPI generic (Lead/IC/VC/ATC)')]:
+                          ('/sabda-api/capi-event','CAPI generic (Lead/IC/VC/ATC)'),
+                          ('/sabda-api/store-attribution','Attribution storage for Momence-native purchase matching'),
+                          ('/sabda-api/webhook/purchase','Purchase webhook for Momence/Zapier')]:
         if route not in w:
             issues.append(f'[WORKER_ROUTE]  worker missing route {route} ({label})')
     # sendCAPIEvent signature must accept attribution + contentMeta

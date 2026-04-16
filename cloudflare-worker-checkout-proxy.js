@@ -187,6 +187,16 @@ export default {
       return handleContact(request, reqOrigin, env);
     }
 
+    // ── ATTRIBUTION STORAGE: persist email→attribution for Momence-native purchase matching ──
+    if (url.pathname === '/sabda-api/store-attribution') {
+      return handleStoreAttribution(request, reqOrigin, env);
+    }
+
+    // ── PURCHASE WEBHOOK: Momence→Zapier→here. Fires CAPI Purchase with stored attribution ──
+    if (url.pathname === '/sabda-api/webhook/purchase') {
+      return handleWebhookPurchase(request, reqOrigin, env, ctx);
+    }
+
     // ── CUSTOM SIGN-IN PAGE: intercept /sign-in and show our form ──
     if (url.pathname === '/sign-in' || url.pathname.startsWith('/sign-in')) {
       return new Response(buildSignInPage(url.search), {
@@ -1657,6 +1667,160 @@ function humanizeMomenceError(raw) {
 
   return raw;
 }
+
+// ═══════════════════════════════════════════════════════════════════
+// ATTRIBUTION STORAGE + PURCHASE WEBHOOK
+// ═══════════════════════════════════════════════════════════════════
+// Problem: Momence-native purchases fire Meta Pixel Purchase events
+// without fbc/fbclid, dragging Purchase EMQ to ~4.6/10. Our custom
+// booking flow sends fbc, but most sales route through Momence native.
+//
+// Solution: two-part system:
+// 1. store-attribution: client POSTs {email, attribution} when user
+//    types email in our booking form. Stored in KV keyed by SHA-256
+//    of lowercase email. 30-day TTL. Captures attribution BEFORE the
+//    user potentially abandons our form and buys through Momence.
+// 2. webhook/purchase: Momence→Zapier→here on every purchase. Looks
+//    up stored attribution by email hash. Fires CAPI Purchase with
+//    full fbc/attribution so Meta can attribute to the ad click.
+//
+// Dedup: Momence fires browser-side Pixel Purchase. We fire CAPI
+// Purchase. Meta deduplicates by (pixel_id + event_name + event_id).
+// Since Momence's event_id differs from ours, Meta would double-count.
+// Fix: disable Momence's native Meta Pixel integration once this
+// CAPI path is confirmed working. Then all Purchase events come from
+// our system with full match quality.
+// ═══════════════════════════════════════════════════════════════════
+
+async function handleStoreAttribution(request, origin, env) {
+  try {
+    if (request.method === 'OPTIONS') {
+      return new Response(null, { status: 204, headers: corsHeaders(origin) });
+    }
+    const { email, attribution } = await request.json();
+    if (!email || !attribution) {
+      return new Response(JSON.stringify({ error: 'Missing email or attribution' }), {
+        status: 400, headers: corsHeaders(origin),
+      });
+    }
+    const emailHash = await sha256hex(email.toLowerCase().trim());
+    const key = 'attr:' + emailHash;
+    const value = JSON.stringify({
+      ...attribution,
+      stored_at: Date.now(),
+      email_hint: email.slice(0, 3) + '***',
+    });
+
+    if (env && env.ATTRIBUTION_KV) {
+      // KV: 30-day TTL (2592000 seconds)
+      await env.ATTRIBUTION_KV.put(key, value, { expirationTtl: 2592000 });
+      console.log('[ATTR-STORE] ' + emailHash.slice(0, 12) + ' fbclid=' + (attribution.fbclid ? 'yes' : 'no') + ' utm_source=' + (attribution.utm_source || '-'));
+    } else {
+      console.log('[ATTR-STORE] SKIPPED — ATTRIBUTION_KV not bound. Create KV namespace and bind as ATTRIBUTION_KV.');
+    }
+
+    return new Response(JSON.stringify({ stored: true }), {
+      status: 200, headers: corsHeaders(origin),
+    });
+  } catch (e) {
+    console.log('[ATTR-STORE] ERROR:', e.message);
+    return new Response(JSON.stringify({ error: 'Server error' }), {
+      status: 500, headers: corsHeaders(origin),
+    });
+  }
+}
+
+async function handleWebhookPurchase(request, origin, env, ctx) {
+  try {
+    if (request.method === 'OPTIONS') {
+      return new Response(null, { status: 204, headers: corsHeaders(origin) });
+    }
+
+    // Accept from Zapier or any webhook source. Flexible field mapping.
+    const body = await request.json();
+    const email = body.email || body.customer_email || body.Email || '';
+    const firstName = body.firstName || body.first_name || body.FirstName || '';
+    const lastName = body.lastName || body.last_name || body.LastName || '';
+    const phone = body.phone || body.phoneNumber || body.Phone || '';
+    const amount = Number(body.amount || body.price || body.value || body.Amount || 0);
+    const productName = body.productName || body.product_name || body.item || body.ProductName || 'Momence Purchase';
+    const transactionId = body.transactionId || body.transaction_id || body.id || ('momence_' + Date.now());
+
+    if (!email) {
+      return new Response(JSON.stringify({ error: 'Missing email' }), {
+        status: 400, headers: corsHeaders(origin),
+      });
+    }
+
+    // Look up stored attribution by email hash
+    let attribution = null;
+    let fbcFromAttribution = '';
+    if (env && env.ATTRIBUTION_KV) {
+      const emailHash = await sha256hex(email.toLowerCase().trim());
+      const stored = await env.ATTRIBUTION_KV.get('attr:' + emailHash);
+      if (stored) {
+        try {
+          attribution = JSON.parse(stored);
+          // Construct fbc from stored fbclid (same logic as sendCAPIEvent fallback)
+          if (attribution.fbclid) {
+            const ts = attribution.ts || Date.now();
+            fbcFromAttribution = 'fb.1.' + ts + '.' + String(attribution.fbclid).trim();
+          }
+          console.log('[WEBHOOK] attribution found: fbclid=' + (attribution.fbclid ? 'yes' : 'no') + ' utm_source=' + (attribution.utm_source || '-'));
+        } catch (e) {
+          console.log('[WEBHOOK] attribution parse error:', e.message);
+        }
+      } else {
+        console.log('[WEBHOOK] no stored attribution for ' + emailHash.slice(0, 12));
+      }
+    } else {
+      console.log('[WEBHOOK] ATTRIBUTION_KV not bound — firing CAPI without attribution');
+    }
+
+    // Fire CAPI Purchase with whatever we have
+    const eventId = 'wh_' + Date.now() + '_' + uuid().slice(0, 8);
+    const clientIp = request.headers.get('CF-Connecting-IP') || '';
+    const clientUA = request.headers.get('User-Agent') || 'Zapier-Webhook/1.0';
+
+    console.log('[WEBHOOK] Purchase email=' + email.slice(0, 3) + '*** amount=' + amount + ' product=' + productName + ' fbc=' + (fbcFromAttribution ? 'constructed' : 'none'));
+
+    const capiPromise = sendCAPIEvent(
+      'Purchase', eventId, email, firstName, lastName,
+      amount, 'EUR',
+      'https://sabdastudio.com/classes/',
+      clientIp,
+      clientUA,
+      '', // fbp — not available from webhook
+      fbcFromAttribution, // fbc — constructed from stored attribution
+      env,
+      phone,
+      '', // externalId
+      '', // testEventCode
+      '', // city
+      'es', // country
+      attribution // full attribution object
+    ).catch((e) => console.log('[WEBHOOK] CAPI error:', e && e.message));
+
+    if (ctx && ctx.waitUntil) {
+      ctx.waitUntil(capiPromise);
+    } else {
+      await capiPromise;
+    }
+
+    return new Response(JSON.stringify({
+      success: true,
+      eventId,
+      attribution_found: !!attribution,
+      fbc_constructed: !!fbcFromAttribution,
+    }), { status: 200, headers: corsHeaders(origin) });
+  } catch (e) {
+    console.log('[WEBHOOK] ERROR:', e.message);
+    return new Response(JSON.stringify({ error: 'Server error: ' + e.message }), {
+      status: 500, headers: corsHeaders(origin),
+    });
+  }
+}
+
 
 // ── CUSTOM SIGN-IN PAGE (served when /sign-in is hit on proxy) ──
 function buildSignInPage(qs) {
