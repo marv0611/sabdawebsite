@@ -808,11 +808,20 @@ function _fbTrackInitiateCheckout(price){
   window._fbCapiSend('InitiateCheckout', eid, {value:price, currency:'EUR'});
 }
 function _fbInitIcEventId(){
-  // InitiateCheckout event ID — separate from Purchase. Shared between
-  // browser Pixel fire and server-side CAPI fire for dedup. Cleared by
-  // modal close so each checkout attempt gets a fresh ID.
+  // InitiateCheckout event ID — shared between browser Pixel and CAPI for dedup.
+  // If user arrived from /intro/ where an IC was already fired, we reuse that
+  // event_id from sessionStorage so Meta dedupes both fires into ONE event.
+  // Otherwise we generate a fresh ID and persist it so if the user navigates
+  // BACK to intro and clicks again, we still dedupe.
   if(!_fbIcEventId){
-    _fbIcEventId='ic_'+Date.now()+'_'+Math.random().toString(36).substr(2,9);
+    try{
+      var stored = sessionStorage.getItem('_sabda_ic_eid');
+      if(stored){ _fbIcEventId = stored; }
+    }catch(e){}
+  }
+  if(!_fbIcEventId){
+    _fbIcEventId = 'ic_'+Date.now()+'_'+Math.random().toString(36).substr(2,9);
+    try{ sessionStorage.setItem('_sabda_ic_eid', _fbIcEventId); }catch(e){}
   }
   return _fbIcEventId;
 }

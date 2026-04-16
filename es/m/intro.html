@@ -14,7 +14,60 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '567636669734630', {});
-fbq('track', 'PageView');fbq('track','ViewContent',{content_name:'Intro Landing Page Mobile ES',content_category:'Conversion',content_type:'product_group'});
+fbq('track','PageView');
+// --- SABDA CAPI helpers (ported from booking pages) ---
+var PROXY_CAPI = 'https://sabda-checkout-proxy.sabda.workers.dev';
+function _fbGetCookie(name){
+  var v = document.cookie.match('(^|;)\s*' + name + '\s*=\s*([^;]+)');
+  return v ? v.pop() : '';
+}
+function _fbGetSharedIcEventId(){
+  try{
+    var k = '_sabda_ic_eid';
+    var existing = sessionStorage.getItem(k);
+    if(existing) return existing;
+    var eid = 'ic_' + Date.now() + '_' + Math.random().toString(36).substr(2,9);
+    sessionStorage.setItem(k, eid);
+    return eid;
+  }catch(e){
+    return 'ic_' + Date.now() + '_' + Math.random().toString(36).substr(2,9);
+  }
+}
+function _sabdaFireWithCAPI(eventName, eventId, params){
+  try{
+    params = params || {};
+    if(typeof fbq === 'function'){
+      fbq('track', eventName, params, {eventID: eventId});
+    }
+    var body = {
+      eventName: eventName,
+      fbEventId: eventId,
+      value: params.value || 0,
+      currency: params.currency || 'EUR',
+      contentName: params.content_name || undefined,
+      contentIds: params.content_ids || undefined,
+      contentType: params.content_type || undefined,
+      fbp: _fbGetCookie('_fbp') || undefined,
+      fbc: _fbGetCookie('_fbc') || undefined,
+      attribution: (window._sabdaGetAttribution && window._sabdaGetAttribution()) || null,
+      clientUserAgent: navigator.userAgent,
+      eventSourceUrl: window.location.href
+    };
+    fetch(PROXY_CAPI + '/sabda-api/capi-event', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(body)
+    }).catch(function(e){});
+  }catch(e){}
+}
+(function(){
+  var vcEid = 'vc_' + Date.now() + '_' + Math.random().toString(36).substr(2,9);
+  _sabdaFireWithCAPI('ViewContent', vcEid, {
+    content_name: 'Intro Landing Page Mobile ES',
+    content_category: 'Conversion',
+    content_type: 'product_group'
+  });
+})();
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=567636669734630&ev=PageView&noscript=1"
@@ -488,7 +541,23 @@ try{var saved=localStorage.getItem('sabda_lang')||'en';document.querySelectorAll
 
 <script defer src="/cookies.js"></script>
 <script>
-document.querySelectorAll('a[href*="buy=443935"],a[href*="buy=443934"]').forEach(function(b){b.addEventListener('click',function(){if(typeof fbq!=='function')return;var is3pack=b.href.indexOf('443935')!==-1;var name=is3pack?'Intro 3-Pack':'Clase de prueba';var price=is3pack?50:18;var id=is3pack?'443935':'443934';try{fbq('track','AddToCart',{value:price,currency:'EUR',content_name:name,content_ids:[id],content_type:'product'});fbq('track','InitiateCheckout',{value:price,currency:'EUR',content_name:name,content_ids:[id],content_type:'product'});}catch(e){}})});
+/* Pack/Trial CTA click: fire AddToCart + IC with Pixel + CAPI */
+document.querySelectorAll('a[href*="buy=443935"],a[href*="buy=443934"]').forEach(function(b){
+  b.addEventListener('click', function(){
+    if(typeof fbq !== 'function') return;
+    var is3pack = b.href.indexOf('443935') !== -1;
+    var name = is3pack ? 'Intro 3-Pack' : 'Clase de prueba';
+    var price = is3pack ? 50 : 18;
+    var id = is3pack ? '443935' : '443934';
+    var params = {value:price, currency:'EUR', content_name:name, content_ids:[id], content_type:'product'};
+    try{
+      var atcEid = 'atc_' + Date.now() + '_' + Math.random().toString(36).substr(2,9);
+      var icEid = _fbGetSharedIcEventId();
+      _sabdaFireWithCAPI('AddToCart', atcEid, params);
+      _sabdaFireWithCAPI('InitiateCheckout', icEid, params);
+    }catch(e){}
+  });
+});
 </script>
 
 <script>

@@ -25,7 +25,61 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init', '567636669734630', {});fbq('track','PageView');fbq('track','ViewContent',{content_name:'Intro Landing Page ES',content_category:'Conversion',content_type:'product_group'});</script>
+<script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init', '567636669734630', {});
+fbq('track','PageView');
+// --- SABDA CAPI helpers (ported from booking pages) ---
+var PROXY_CAPI = 'https://sabda-checkout-proxy.sabda.workers.dev';
+function _fbGetCookie(name){
+  var v = document.cookie.match('(^|;)\s*' + name + '\s*=\s*([^;]+)');
+  return v ? v.pop() : '';
+}
+function _fbGetSharedIcEventId(){
+  try{
+    var k = '_sabda_ic_eid';
+    var existing = sessionStorage.getItem(k);
+    if(existing) return existing;
+    var eid = 'ic_' + Date.now() + '_' + Math.random().toString(36).substr(2,9);
+    sessionStorage.setItem(k, eid);
+    return eid;
+  }catch(e){
+    return 'ic_' + Date.now() + '_' + Math.random().toString(36).substr(2,9);
+  }
+}
+function _sabdaFireWithCAPI(eventName, eventId, params){
+  try{
+    params = params || {};
+    if(typeof fbq === 'function'){
+      fbq('track', eventName, params, {eventID: eventId});
+    }
+    var body = {
+      eventName: eventName,
+      fbEventId: eventId,
+      value: params.value || 0,
+      currency: params.currency || 'EUR',
+      contentName: params.content_name || undefined,
+      contentIds: params.content_ids || undefined,
+      contentType: params.content_type || undefined,
+      fbp: _fbGetCookie('_fbp') || undefined,
+      fbc: _fbGetCookie('_fbc') || undefined,
+      attribution: (window._sabdaGetAttribution && window._sabdaGetAttribution()) || null,
+      clientUserAgent: navigator.userAgent,
+      eventSourceUrl: window.location.href
+    };
+    fetch(PROXY_CAPI + '/sabda-api/capi-event', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(body)
+    }).catch(function(e){});
+  }catch(e){}
+}
+(function(){
+  var vcEid = 'vc_' + Date.now() + '_' + Math.random().toString(36).substr(2,9);
+  _sabdaFireWithCAPI('ViewContent', vcEid, {
+    content_name: 'Intro Landing Page ES',
+    content_category: 'Conversion',
+    content_type: 'product_group'
+  });
+})();</script>
 <noscript><img alt="SABDA Studio" height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=567636669734630&ev=PageView&noscript=1"/></noscript>
 <style>
 :root{--navy:#0e1235;--salmon:#F8A6A3;--cyan:#02F3C5;--white:#f0efe9;--white60:rgba(240,239,233,.72);--white38:rgba(240,239,233,.55);--ease-expo:cubic-bezier(.16,1,.3,1)}
@@ -587,7 +641,23 @@ var colors=['#02F3C5','#F8A6A3'];
 });
 
 /* Pixel */
-document.querySelectorAll('a[href*="pack=443935"],a[href*="pack=443934"],a[href*="momence.com"]').forEach(function(b){b.addEventListener('click',function(){if(typeof fbq!=='function')return;var is3pack=b.href.indexOf('443935')!==-1;var name=is3pack?'Intro 3-Pack':'Clase de prueba';var price=is3pack?50:18;var id=is3pack?'443935':'443934';try{fbq('track','AddToCart',{value:price,currency:'EUR',content_name:name,content_ids:[id],content_type:'product'});fbq('track','InitiateCheckout',{value:price,currency:'EUR',content_name:name,content_ids:[id],content_type:'product'});}catch(e){}})});
+/* Pack/Trial CTA click: fire AddToCart + IC with Pixel + CAPI */
+document.querySelectorAll('a[href*="pack=443935"],a[href*="pack=443934"],a[href*="momence.com"]').forEach(function(b){
+  b.addEventListener('click', function(){
+    if(typeof fbq !== 'function') return;
+    var is3pack = b.href.indexOf('443935') !== -1;
+    var name = is3pack ? 'Intro 3-Pack' : 'Clase de prueba';
+    var price = is3pack ? 50 : 18;
+    var id = is3pack ? '443935' : '443934';
+    var params = {value:price, currency:'EUR', content_name:name, content_ids:[id], content_type:'product'};
+    try{
+      var atcEid = 'atc_' + Date.now() + '_' + Math.random().toString(36).substr(2,9);
+      var icEid = _fbGetSharedIcEventId();
+      _sabdaFireWithCAPI('AddToCart', atcEid, params);
+      _sabdaFireWithCAPI('InitiateCheckout', icEid, params);
+    }catch(e){}
+  });
+});
 
 /* Particles */
 (function(){var c=document.getElementById('gP');if(!c)return;var x=c.getContext('2d'),W,H,mx=-9999,my=-9999;function rz(){W=innerWidth;H=innerHeight;c.width=W*devicePixelRatio;c.height=H*devicePixelRatio;x.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0)}rz();addEventListener('resize',rz);document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY});var N=672,t=0,P=[];for(var i=0;i<N;i++){var r=Math.random();P.push({x:Math.random()*3e3,y:Math.random(),vx:.008+Math.random()*.06,vy:(Math.random()-.5)*.003,fx:0,fy:0,s:.3+Math.random()*1.5,g:4+Math.random()*16,c:r<.38?[2,243,197]:r<.72?[248,166,163]:[32,57,153],o:.025+Math.random()*.12,ph:Math.random()*Math.PI*2,wa:.01+Math.random()*.04,wf:1e-4+Math.random()*5e-4})}function dr(){t++;x.clearRect(0,0,W,H);for(var i=0;i<P.length;i++){var p=P[i];p.x+=p.vx;p.y+=p.vy;var wy=p.wa*Math.sin(p.ph+t*p.wf),dx2=p.x+p.fx,dy2=(p.y+wy)*H+p.fy,dx=dx2-mx,dy=dy2-my,d=Math.sqrt(dx*dx+dy*dy);if(d<120&&d>0){var f=(1-d/120)*2.5;p.fx+=dx/d*f;p.fy+=dy/d*f}p.fx*=.94;p.fy*=.94;dx2=p.x+p.fx;dy2=(p.y+wy)*H+p.fy;if(p.x>W+60){p.x=-50;p.y=Math.random();p.fx=0;p.fy=0}if(p.y<-.05)p.y=1.05;if(p.y>1.05)p.y=-.05;var pl=.4+.6*Math.sin(p.ph+t*.001),op=p.o*pl;if(op<.002)continue;var g=x.createRadialGradient(dx2,dy2,0,dx2,dy2,p.g);g.addColorStop(0,'rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+','+op*.7+')');g.addColorStop(.3,'rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+','+op*.28+')');g.addColorStop(.7,'rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+','+op*.04+')');g.addColorStop(1,'rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+',0)');x.fillStyle=g;x.beginPath();x.arc(dx2,dy2,p.g,0,Math.PI*2);x.fill();x.beginPath();x.arc(dx2,dy2,p.s*.5,0,Math.PI*2);x.fillStyle='rgba('+p.c[0]+','+p.c[1]+','+p.c[2]+','+Math.min(.6,op*2)+')';x.fill()}requestAnimationFrame(dr)}requestAnimationFrame(dr)})();
