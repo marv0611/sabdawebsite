@@ -1368,6 +1368,8 @@ function mountCardForGuest(){
   if(cardElement){try{cardElement.destroy();}catch(e){}cardElement=null;}
   var elements=stripeInstance.elements();
   cardElement=elements.create('card',{
+    disableLink:true,
+    hidePostalCode:true,
     style:{
       base:{color:'#f0efe9',fontSize:'16px',fontFamily:'DM Sans, sans-serif','::placeholder':{color:'rgba(240,239,233,0.38)'}},
       invalid:{color:'#F8A6A3'}
@@ -1479,7 +1481,12 @@ window.doGuestPackPay=function(){
   }
   stripeInstance.createPaymentMethod({type:'card',card:cardElement,billing_details:{
     name:curUser.firstName+' '+curUser.lastName,email:curUser.email
-  }}).then(function(result){
+  }}).catch(function(e){
+    console.error('[createPaymentMethod] error:',e);
+    var err=document.getElementById('bk-err');if(err){err.textContent='Card error: '+(e&&e.message||'Please check your card details.');err.classList.add('show');}
+    isProcessing=false;var btn=document.getElementById('bk-guest-btn')||document.getElementById('bk-pay-btn');if(btn){btn.textContent='Confirm booking';btn.disabled=false;}
+  }).then(function(result){
+    if(!result)return;
     if(result.error){
       err.textContent=result.error.message;err.classList.add('show');
       isProcessing=false;if(btn){btn.textContent='Confirm booking';btn.disabled=false;}
@@ -1951,6 +1958,8 @@ window.showPayForm=function(type,price,productId,name,desc){stepChange();
 
   var elements=stripeInstance.elements();
   cardElement=elements.create('card',{
+    disableLink:true,
+    hidePostalCode:true,
     style:{
       base:{color:'#f0efe9',fontSize:'16px',fontFamily:'DM Sans, sans-serif','::placeholder':{color:'rgba(240,239,233,0.38)'}},
       invalid:{color:'#F8A6A3'}
