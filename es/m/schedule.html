@@ -937,7 +937,7 @@ function showGuestStep(){console.log('[showGuestStep] start');try{stepChange();
     +(pendingPack?'<div class="bk-divider" style="margin:16px 0"></div>'+'<div id="bk-pack-customer">'+customerFieldsHTML()+'</div>'+'<div id="bk-promo-wrap" style="margin-bottom:16px;margin-top:16px">'+'<div class="bk-link" id="bk-promo-toggle" onclick="document.getElementById(\'bk-promo-fields\').style.display=\'flex\';this.style.display=\'none\'" style="margin:0;font-size:.8rem;text-align:left;color:var(--cyan)">Aplicar código promocional \u2192</div>'+'<div id="bk-promo-fields" style="display:none;gap:8px;align-items:stretch">'+'<input class="bk-input" id="bk-promo" type="text" placeholder="Code" style="flex:1;margin-bottom:0;text-transform:uppercase"/>'+'<button class="bk-primary" id="bk-promo-btn" data-bk-apply onclick="applyPromo(\''+(pendingPack?pendingPack.type:'')+'\','+(pendingPack?pendingPack.price:0)+','+(pendingPack?pendingPack.id:0)+')" style="width:auto;padding:12px 20px;flex-shrink:0;font-size:.8rem">Aplicar</button>'+'</div>'+'<div id="bk-promo-ok" style="display:none;font-size:.78rem;color:var(--cyan);margin-top:6px"></div>'+'<div id="bk-promo-err" style="display:none;font-size:.78rem;color:var(--salmon);margin-top:6px"></div>'+'</div>'+'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'+'<div id="bk-pay-divider" class="bk-divider" style="display:none">o paga con tarjeta</div>'+'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Datos de la tarjeta</div>'+'<div class="bk-card-wrap" id="bk-card"></div>':'')
     +(curSession&&curSession.id&&pendingPack&&pendingPack.type!=='single'&&!curSession.isWaitlist?'<label style="display:flex;align-items:center;gap:8px;margin:12px 0 16px;cursor:pointer;font-size:.78rem;color:var(--white60)">'+'<input type="checkbox" id="bk-autoenroll" style="accent-color:var(--cyan);width:16px;height:16px;cursor:pointer;flex-shrink:0">'+'<span>Inscríbeme automáticamente en <strong style="color:var(--white)">'+esc(curSession.title)+'</strong></span>'+'</label>':'')
     +'<div class="bk-err" id="bk-err"></div>'
-    +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">'+(pendingPack?'Pagar \u20AC'+pendingPack.price:'Continuar')+'</button>'
+    +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">'+(pendingPack?'Confirmar reserva':'Continuar')+'</button>'
     +'</div>';
     +'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">Continuar</button>'
@@ -1528,6 +1528,8 @@ function applyPromo(type,origPrice,productId){
     var desc=r.data.type==='percentage'?r.data.appliedDiscount+'% de descuento':r.data.appliedDiscount+'€ de descuento';
     okEl.innerHTML='<strong>'+activePromo+'</strong> aplicado · '+desc+' <span onclick="removePromo('+origPrice+')" style="cursor:pointer;text-decoration:underline;margin-left:8px">Quitar</span>';
     okEl.style.display='block';
+    // Update confirm button with discounted price
+    var gBtn=document.getElementById('bk-guest-btn');if(gBtn){gBtn.textContent=discountedPrice===0?'Confirm booking':'Confirm booking';gBtn.disabled=false;}
     var totalEl=document.getElementById('bk-total'); if(totalEl) totalEl.innerHTML='<span style="text-decoration:line-through;color:var(--white38);font-size:1rem;margin-right:8px">€'+origPrice+'</span> €'+discountedPrice.toFixed(2);
     // Update pay button
     var payBtn=document.getElementById('bk-pay-btn');
@@ -2074,7 +2076,7 @@ function openPackagePurchase(productId) {
     title: pkg.name,
     time: pkg.desc,
     teacher: '',
-    link: 'https://momence.com/m/' + productId,
+    link: 'https://momence.com/u/sabda',
     spots: null,
     duration: null,
     isWaitlist: false,
