@@ -1613,11 +1613,14 @@ function showNoMembership(){stepChange();
 // ── Mobile selectPack router: guests route to showGuestStep with pendingPack, logged-in go direct to showPayForm ──
 window.mobileSelectPack = function(type, price, id, name, desc){
   try{
-    if(typeof curUser !== 'undefined' && curUser){
-      showPayForm(type, price, id, name, desc);
-    } else {
-      pendingPack = {type:type, price:price, id:id, name:name, desc:desc};
-      showGuestStep();
+    var savedUser = (typeof curUser !== 'undefined' && curUser) ? {fn:curUser.firstName||'',ln:curUser.lastName||'',email:curUser.email||''} : null;
+    pendingPack = {type:type, price:price, id:id, name:name, desc:desc};
+    showGuestStep();
+    if(savedUser){
+      var f=document.getElementById('bk-fn');if(f)f.value=savedUser.fn;
+      var l=document.getElementById('bk-ln');if(l)l.value=savedUser.ln;
+      var e=document.getElementById('bk-email');if(e)e.value=savedUser.email;
+      var e2=document.getElementById('bk-email2');if(e2)e2.value=savedUser.email;
     }
   }catch(e){console.error('[mobileSelectPack]',e);}
 };
