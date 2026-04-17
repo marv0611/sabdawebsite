@@ -184,7 +184,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 56px;height:72px;d
 .td-item:hover{background:rgba(240,239,233,.06);color:var(--white)}
 .td-item.active{color:var(--cyan);background:rgba(2,243,197,.06)}
 .schedule{max-width:900px;margin:0 auto;padding:48px 80px 20px;min-height:300px}
-.cc{display:grid;grid-template-columns:64px 1fr auto;gap:24px;align-items:center;padding:24px 0;border-bottom:1px solid var(--white06);opacity:0;transform:translateY(12px);animation:ci .5s var(--ease) forwards}
+.cc{display:grid;grid-template-columns:64px 1fr auto;gap:24px;align-items:center;padding:24px 0;border-bottom:1px solid var(--white06);opacity:0;transform:translateY(12px);animation:ci .5s var(--ease) forwards;cursor:pointer;transition:background .15s}
+.cc:hover{background:rgba(2,243,197,.03)}
+.cc:active{background:rgba(2,243,197,.06)}
 .cc:first-child{border-top:1px solid var(--white06)}
 @keyframes ci{to{opacity:1;transform:none}}
 .ct{text-align:center}
@@ -2301,6 +2303,17 @@ window.sabdaWaitlistButtonText = function(){
   }catch(e){}
 })();
 function fbqAdvancedMatch(){if(typeof fbq!=='function'||!curUser||!curUser.email)return;try{var nameP=(curUser.firstName||'').trim().toLowerCase();var nameL=(curUser.lastName||'').trim().toLowerCase();fbq('init','567636669734630',{em:(curUser.email||'').trim().toLowerCase(),fn:nameP,ln:nameL});}catch(e){}}
+</script>
+
+<script>
+/* Card-level click delegation: tapping anywhere on a class row opens booking */
+document.addEventListener('click',function(ev){
+  if(ev.target.closest('.bb')) return; // Already a Book button click
+  var card=ev.target.closest('.cc');
+  if(!card) return;
+  var btn=card.querySelector('.bb:not(.fu)'); // Find Book/Waitlist button (not Full)
+  if(btn) btn.click();
+});
 </script>
 </body>
 </html>

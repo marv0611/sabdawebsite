@@ -68,7 +68,8 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
 
 /* SCHEDULE LIST */
 .schedule{padding:8px 0 0}
-.cc{display:grid;grid-template-columns:52px 1fr auto;gap:12px;align-items:center;padding:14px 20px;border-bottom:1px solid var(--white06);opacity:0;transform:translateY(8px);animation:ci .4s var(--ease) forwards}
+.cc{display:grid;grid-template-columns:52px 1fr auto;gap:12px;align-items:center;padding:14px 20px;border-bottom:1px solid var(--white06);opacity:0;transform:translateY(8px);animation:ci .4s var(--ease) forwards;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background .15s}
+.cc:active{background:rgba(2,243,197,.04)}
 @keyframes ci{to{opacity:1;transform:none}}
 .ct{text-align:center}
 .ct-h{font-family:'PT Serif',serif;font-size:.95rem;font-weight:700;line-height:1.1}
@@ -1981,9 +1982,16 @@ function showSuccess(){stepChange();
   isProcessing=false;
 }
 
-// Delegated click handler for Book/Waitlist buttons (bulletproof against escaping bugs)
+// Delegated click handler for Book/Waitlist buttons AND full card rows.
+// Clarity dead-click data showed 6.3% of sessions had dead clicks — most from
+// users tapping the class name/time/teacher area expecting the whole row to
+// open booking. Now clicking ANYWHERE on the .cc card triggers the Book action.
 document.addEventListener('click',function(ev){
   var btn=ev.target.closest('.js-book');
+  if(!btn){
+    var card=ev.target.closest('.cc');
+    if(card) btn=card.querySelector('.js-book');
+  }
   if(!btn) return;
   ev.preventDefault();
   openMo(btn.dataset.link,btn.dataset.title,btn.dataset.time,btn.dataset.teacher);
