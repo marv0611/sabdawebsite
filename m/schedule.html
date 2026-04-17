@@ -1177,18 +1177,33 @@ function mountCardForGuest(){
     });
     activePayReq.on('paymentmethod',function(ev){
       if(isProcessing){ev.complete('fail');return;}
+      // Populate curUser from form fields first, then Apple Pay data as fallback
+      var fnEl=document.getElementById('bk-fn');
+      var lnEl=document.getElementById('bk-ln');
+      var emailEl=document.getElementById('bk-email');
+      var formFn=(fnEl&&fnEl.value.trim())||'';
+      var formLn=(lnEl&&lnEl.value.trim())||'';
+      var formEmail=(emailEl&&emailEl.value.trim())||'';
+      // Apple Pay provides payer data via requestPayerName/requestPayerEmail
+      var apFn='',apLn='';
+      if(ev.payerName){var np=ev.payerName.trim().split(/\s+/);apFn=np[0]||'';apLn=np.slice(1).join(' ')||'';}
+      var apEmail=ev.payerEmail||'';
+      var finalFn=formFn||apFn;var finalLn=formLn||apLn;var finalEmail=formEmail||apEmail;
+      if(!finalFn||!finalEmail){ev.complete('fail');showError('Please enter your name and email first',{fallback:false});return;}
+      curUser={id:null,email:finalEmail,firstName:finalFn,lastName:finalLn,memberId:null,isGuest:true};
       var vErr=validateCustomerFields();
       if(vErr){ev.complete('fail');return;}
       isProcessing=true;
-      // Show processing state immediately so user sees feedback after Face ID
       var bd=document.getElementById('mo-bd');
-      if(bd)bd.innerHTML='<div style="text-align:center;padding:60px 20px"><div style="width:48px;height:48px;border:3px solid var(--white12);border-top-color:var(--cyan);border-radius:50%;margin:0 auto 20px;animation:spin .8s linear infinite"></div><p style="color:var(--white60);font-size:.88rem">Processing payment...</p></div><style>@keyframes spin{to{transform:rotate(360deg)}}</style>';
+      if(bd)bd.innerHTML='<div style="text-align:center;padding:60px 20px"><div style="width:48px;height:48px;border:3px solid var(--white12);border-top-color:var(--cyan);border-radius:50%;margin:0 auto 20px;animation:spin .8s linear infinite"></div><p style="color:var(--white60);font-size:.88rem">Confirming with Apple Pay...</p></div><style>@keyframes spin{to{transform:rotate(360deg)}}</style>';
       var cf=getCustomerFields();
       var np=document.getElementById('bk-new-pass');
       var pass=np?np.value.trim():undefined;
       _fbInitPurchaseEventId();
+      var controller=new AbortController();
+      var timeout=setTimeout(function(){controller.abort();},25000);
       fetch(PROXY+'/sabda-api/pay',{
-        method:'POST',headers:{'Content-Type':'application/json'},
+        method:'POST',headers:{'Content-Type':'application/json'},signal:controller.signal,
         body:JSON.stringify({
           stripePaymentMethodId:ev.paymentMethod.id,sessionId:curSession&&curSession.id,sessionToken:curSessionToken,
           firstName:curUser.firstName,lastName:curUser.lastName,email:curUser.email,
@@ -1199,9 +1214,9 @@ function mountCardForGuest(){
         })
       }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};})})
       .then(function(r){
+        clearTimeout(timeout);
         if(r.data.success){ev.complete('success');showSuccess();}
         else if(r.data.clientSecret){
-          // 3DS required: close Apple Pay sheet FIRST, then handle 3DS in our own UI
           ev.complete('success');
           stripeInstance.confirmCardPayment(r.data.clientSecret,{payment_method:ev.paymentMethod.id}).then(function(conf){
             if(conf.error){isProcessing=false;var errEl=document.getElementById('bk-err');if(errEl){errEl.textContent=conf.error.message||'Authentication failed.';errEl.classList.add('show');}showGuestStep();}
@@ -1212,7 +1227,7 @@ function mountCardForGuest(){
           isProcessing=false;showGuestStep();
           setTimeout(function(){var errEl=document.getElementById('bk-err');if(errEl){errEl.textContent=r.data.error||'Payment failed.';errEl.classList.add('show');}},100);
         }
-      }).catch(function(e){ev.complete('fail');isProcessing=false;showGuestStep();});
+      }).catch(function(e){clearTimeout(timeout);ev.complete('fail');isProcessing=false;showGuestStep();setTimeout(function(){var errEl=document.getElementById('bk-err');if(errEl){errEl.textContent=e&&e.name==='AbortError'?'Payment timed out. Please try again.':'Payment failed. Please try again.';errEl.classList.add('show');}},100);});
     });
   }catch(e){}
 }

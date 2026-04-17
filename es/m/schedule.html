@@ -1152,18 +1152,31 @@ function mountCardForGuest(){
     });
     activePayReq.on('paymentmethod',function(ev){
       if(isProcessing){ev.complete('fail');return;}
+      var fnEl=document.getElementById('bk-fn');
+      var lnEl=document.getElementById('bk-ln');
+      var emailEl=document.getElementById('bk-email');
+      var formFn=(fnEl&&fnEl.value.trim())||'';
+      var formLn=(lnEl&&lnEl.value.trim())||'';
+      var formEmail=(emailEl&&emailEl.value.trim())||'';
+      var apFn='',apLn='';
+      if(ev.payerName){var np2=ev.payerName.trim().split(/\s+/);apFn=np2[0]||'';apLn=np2.slice(1).join(' ')||'';}
+      var apEmail=ev.payerEmail||'';
+      var finalFn=formFn||apFn;var finalLn=formLn||apLn;var finalEmail=formEmail||apEmail;
+      if(!finalFn||!finalEmail){ev.complete('fail');showError('Please enter your name and email first',{fallback:false});return;}
+      curUser={id:null,email:finalEmail,firstName:finalFn,lastName:finalLn,memberId:null,isGuest:true};
       var vErr=validateCustomerFields();
       if(vErr){ev.complete('fail');return;}
       isProcessing=true;
-      // Show processing state immediately after Face ID
       var bd=document.getElementById('mo-bd');
-      if(bd)bd.innerHTML='<div style="text-align:center;padding:60px 20px"><div style="width:48px;height:48px;border:3px solid var(--white12);border-top-color:var(--cyan);border-radius:50%;margin:0 auto 20px;animation:spin .8s linear infinite"></div><p style="color:var(--white60);font-size:.88rem">Processing payment...</p></div><style>@keyframes spin{to{transform:rotate(360deg)}}</style>';
+      if(bd)bd.innerHTML='<div style="text-align:center;padding:60px 20px"><div style="width:48px;height:48px;border:3px solid var(--white12);border-top-color:var(--cyan);border-radius:50%;margin:0 auto 20px;animation:spin .8s linear infinite"></div><p style="color:var(--white60);font-size:.88rem">Confirming with Apple Pay...</p></div><style>@keyframes spin{to{transform:rotate(360deg)}}</style>';
       var cf=getCustomerFields();
       var np=document.getElementById('bk-new-pass');
       var pass=np?np.value.trim():undefined;
       _fbInitPurchaseEventId();
+      var controller=new AbortController();
+      var timeout=setTimeout(function(){controller.abort();},25000);
       fetch(PROXY+'/sabda-api/pay',{
-        method:'POST',headers:{'Content-Type':'application/json'},
+        method:'POST',headers:{'Content-Type':'application/json'},signal:controller.signal,
         body:JSON.stringify({
           stripePaymentMethodId:ev.paymentMethod.id,sessionId:curSession&&curSession.id,sessionToken:curSessionToken,
           firstName:curUser.firstName,lastName:curUser.lastName,email:curUser.email,
@@ -1174,6 +1187,7 @@ function mountCardForGuest(){
         })
       }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};})})
       .then(function(r){
+        clearTimeout(timeout);
         if(r.data.success){ev.complete('success');showSuccess();}
         else if(r.data.clientSecret){
           ev.complete('success');
