@@ -1222,7 +1222,7 @@ window.doGuestPackPay=function(){
   if(!npv||npv.length<8){err.textContent='La contraseña debe tener al menos 8 caracteres.';err.classList.add('show');if(np)np.classList.add('bk-field-err');return;}
   if(npv!==npv2){err.textContent='Las contraseñas no coinciden.';err.classList.add('show');if(np2)np2.classList.add('bk-field-err');return;}
   isProcessing=true;if(btn){btn.textContent='Procesando...';btn.disabled=true;}err.textContent=''
-  setTimeout(function(){if(isProcessing){isProcessing=false;if(btn){btn.textContent='Confirmar reserva';btn.disabled=false;}}},30000);;err.classList.remove('show');
+  var _safetyTimer=setTimeout(function(){if(isProcessing){isProcessing=false;if(btn){btn.textContent='Confirmar reserva';btn.disabled=false;}var _e=document.getElementById('bk-err');if(_e){_e.textContent='Taking too long. Please try again.';_e.classList.add('show');}}},20000);var _progressTimer=setTimeout(function(){if(isProcessing&&btn){btn.textContent='Almost done...';}},6000);;err.classList.remove('show');
   var cf=getCustomerFields();
   var finalPrice=(discountedPrice!==null)?discountedPrice:pendingPack.price;
   try{var __pid=pendingPack?String(pendingPack.id||''):'';if((__pid==='443934'||__pid==='443935') && typeof _fbTrackInitiateCheckout==='function'){_fbTrackInitiateCheckout(finalPrice);}}catch(e){}
