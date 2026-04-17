@@ -1216,7 +1216,7 @@ function showGuestStep(){stepChange();
     +'<div class="bk-label">Email</div>'
     +'<input class="bk-input" id="bk-email" type="email" aria-label="Email address" placeholder="your@email.com" autocomplete="email" />'
     +'<div class="bk-label" style="margin-top:8px">Confirm Email</div>'+'<input class="bk-input" id="bk-email2" type="email" placeholder="Repeat your email" autocomplete="off" />'
-    +(pendingPack&&pendingPack.type!=='single'?'<div class="bk-label" style="margin-top:8px">Create a password</div>'+'<input class="bk-input" id="bk-new-pass" type="password" placeholder="Min. 8 characters" aria-label="Create a password" autocomplete="new-password" />'+'<div class="bk-label" style="margin-top:8px">Confirm password</div>'+'<input class="bk-input" id="bk-new-pass2" type="password" placeholder="Repeat password" aria-label="Confirm password" autocomplete="new-password" />':'')
+    +'<div class="bk-label" style="margin-top:8px">Create a password</div>'+'<input class="bk-input" id="bk-new-pass" type="password" placeholder="Min. 8 characters" aria-label="Create a password" autocomplete="new-password" />'+'<div class="bk-label" style="margin-top:8px">Confirm password</div>'+'<input class="bk-input" id="bk-new-pass2" type="password" placeholder="Repeat password" aria-label="Confirm password" autocomplete="new-password" />'
     +(pendingPack?'<div class="bk-divider" style="margin:16px 0"></div>'+'<div id="bk-pack-customer">'+customerFieldsHTML()+'</div>'+'<div id="bk-promo-wrap" style="margin-bottom:16px;margin-top:16px">'+'<div class="bk-link" id="bk-promo-toggle" onclick="document.getElementById(\'bk-promo-fields\').style.display=\'flex\';this.style.display=\'none\'" style="margin:0;font-size:.8rem;text-align:left;color:var(--cyan)">Apply promo code \u2192</div>'+'<div id="bk-promo-fields" style="display:none;gap:8px;align-items:stretch">'+'<input class="bk-input" id="bk-promo" type="text" placeholder="Code" style="flex:1;margin-bottom:0;text-transform:uppercase"/>'+'<button class="bk-primary" id="bk-promo-btn" data-bk-apply onclick="applyPromo(\''+(pendingPack?pendingPack.type:'')+'\','+(pendingPack?pendingPack.price:0)+','+(pendingPack?pendingPack.id:0)+')" style="width:auto;padding:12px 20px;flex-shrink:0;font-size:.8rem">Apply</button>'+'</div>'+'<div id="bk-promo-ok" style="display:none;font-size:.78rem;color:var(--cyan);margin-top:6px"></div>'+'<div id="bk-promo-err" style="display:none;font-size:.78rem;color:var(--salmon);margin-top:6px"></div>'+'</div>'+'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'+'<div id="bk-pay-divider" class="bk-divider" style="display:none">or pay with card</div>'+'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Card Details</div>'+'<div class="bk-card-wrap" id="bk-card"></div>':'')+'<div class="bk-err" id="bk-err"></div>'
     +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">'+(pendingPack?'Confirm booking':'Continue')+'</button>'
     +'<div class="bk-link" onclick="pendingPack=null;showNoMembership()">\u2190 Change selection</div>'
@@ -1716,7 +1716,7 @@ function showNoMembership(){stepChange();
     +userLine
     +(curUser?'':'<div onclick="showLoginStep()" style="border:1.5px solid var(--white12);border-radius:10px;padding:14px;margin-bottom:20px;font-size:.82rem;color:var(--white60);text-align:center;cursor:pointer;transition:border-color .2s">Do you have a pack/subscription? <span style="color:var(--cyan);font-weight:600">Sign in here \u2192</span></div>')
     +'<div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--salmon);font-weight:600;margin-bottom:10px">Single class</div>'
-    +'<div class="bk-pkg feat" onclick="selectPack(\'single\',22,445630,\'Drop-in\',\'1 class \u00B7 No commitment\')" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center">'
+    +'<div class="bk-pkg feat" onclick="selectPack(\'pack\',22,445630,\'Drop-in\',\'1 class \u00B7 No commitment\')" style="margin-bottom:16px;display:flex;justify-content:space-between;align-items:center">'
     +'<div><div style="font-weight:600">Drop-in</div><div style="font-size:.75rem;color:var(--white60)">One class, no commitment</div></div>'
     +'<div style="font-family:PT Serif,serif;font-weight:700">\u20AC22</div></div>'
     +'<div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);font-weight:600;margin-bottom:10px">New to SABDA?</div>'
@@ -2175,7 +2175,7 @@ var PACK_MAP={
   '706876':{type:'membership',price:99,id:706876,name:'Flex',desc:'Unlimited off-peak \u00B7 Cancel anytime'},
   '443937':{type:'pack',price:85,id:443937,name:'5 Pack',desc:'5 classes \u00B7 €17/class \u00B7 2 months'},
   '443939':{type:'pack',price:149,id:443939,name:'10 Pack',desc:'10 classes \u00B7 €14.90 each \u00B7 3 months'},
-  '445630':{type:'single',price:22,id:445630,name:'Drop-in',desc:'1 class \u00B7 No commitment'}
+  '445630':{type:'pack',price:22,id:445630,name:'Drop-in',desc:'1 class \u00B7 No commitment'}
 };
 (function checkUrlPack(){
   var params=new URLSearchParams(window.location.search);

@@ -934,7 +934,7 @@ function showGuestStep(){isProcessing=false;console.log('[showGuestStep] start')
     +'<input class="bk-input" id="bk-email" type="email" inputmode="email" autocomplete="email" placeholder="tu@email.com" aria-label="Adreça de email" />'
     +'<div class="bk-label" style="margin-top:8px">Confirmar correu</div>'
     +'<input class="bk-input" id="bk-email2" type="email" placeholder="Repeteix el teu correu" autocomplete="off" />'
-    +(pendingPack&&pendingPack.type!=='single'?'<div class="bk-label" style="margin-top:8px">Crea una contrasenya</div>'+'<input class="bk-input" id="bk-new-pass" type="password" placeholder="Mín. 8 caràcters" aria-label="Crea una contrasenya" autocomplete="new-password" />'+'<div class="bk-label" style="margin-top:8px">Confirma la contrasenya</div>'+'<input class="bk-input" id="bk-new-pass2" type="password" placeholder="Repeteix la contrasenya" aria-label="Confirma la contrasenya" autocomplete="new-password" />':'')
+    +'<div class="bk-label" style="margin-top:8px">Crea una contrasenya</div>'+'<input class="bk-input" id="bk-new-pass" type="password" placeholder="Mín. 8 caràcters" aria-label="Crea una contrasenya" autocomplete="new-password" />'+'<div class="bk-label" style="margin-top:8px">Confirma la contrasenya</div>'+'<input class="bk-input" id="bk-new-pass2" type="password" placeholder="Repeteix la contrasenya" aria-label="Confirma la contrasenya" autocomplete="new-password" />'
     +(pendingPack?'<div class="bk-divider" style="margin:16px 0"></div>'+'<div id="bk-pack-customer">'+customerFieldsHTML()+'</div>'+'<div id="bk-promo-wrap" style="margin-bottom:16px;margin-top:16px">'+'<div class="bk-link" id="bk-promo-toggle" onclick="document.getElementById(\'bk-promo-fields\').style.display=\'flex\';this.style.display=\'none\'" style="margin:0;font-size:.8rem;text-align:left;color:var(--cyan)">Aplicar codi promocional \u2192</div>'+'<div id="bk-promo-fields" style="display:none;gap:8px;align-items:stretch">'+'<input class="bk-input" id="bk-promo" type="text" placeholder="Code" style="flex:1;margin-bottom:0;text-transform:uppercase"/>'+'<button class="bk-primary" id="bk-promo-btn" data-bk-apply onclick="applyPromo(\''+(pendingPack?pendingPack.type:'')+'\','+(pendingPack?pendingPack.price:0)+','+(pendingPack?pendingPack.id:0)+')" style="width:auto;padding:12px 20px;flex-shrink:0;font-size:.8rem">Aplicar</button>'+'</div>'+'<div id="bk-promo-ok" style="display:none;font-size:.78rem;color:var(--cyan);margin-top:6px"></div>'+'<div id="bk-promo-err" style="display:none;font-size:.78rem;color:var(--salmon);margin-top:6px"></div>'+'</div>'+'<div id="bk-pay-request" style="margin-top:16px;display:none"></div>'+'<div id="bk-pay-divider" class="bk-divider" style="display:none">o paga amb targeta</div>'+'<div class="bk-label" id="bk-card-label" style="margin-top:16px">Dades de la targeta</div>'+'<div class="bk-card-wrap" id="bk-card"></div>':'')
     +(curSession&&curSession.id&&pendingPack&&pendingPack.type!=='single'&&!curSession.isWaitlist?'<label style="display:flex;align-items:center;gap:8px;margin:12px 0 16px;cursor:pointer;font-size:.78rem;color:var(--white60)">'+'<input type="checkbox" id="bk-autoenroll" style="accent-color:var(--cyan);width:16px;height:16px;cursor:pointer;flex-shrink:0">'+'<span>Inscriu-me automàticament a <strong style="color:var(--white)">'+esc(curSession.title)+'</strong></span>'+'</label>':'')
     +'<div class="bk-err" id="bk-err"></div>'
@@ -1590,7 +1590,7 @@ function showNoMembership(){stepChange();
     +(curUser?'':'<div onclick="showLoginStep()" style="border:1.5px solid var(--white12);border-radius:10px;padding:14px;margin-bottom:18px;font-size:.82rem;color:var(--white60);text-align:center;cursor:pointer;transition:border-color .2s">Tens un pack o subscripció? <span style="color:var(--cyan);font-weight:600">Inicia sessió aquí \u2192</span></div>')
     // Intro offers first
     +'<div class="bk-pkg-grp" style="color:var(--salmon)">Classe solta</div>'
-    +row('feat','single',22,445630,'Drop-in','Una classe, sense compromís','€22')
+    +row('feat','pack',22,445630,'Drop-in','Una classe, sense compromís','€22')
     +'<div class="bk-pkg-grp" style="color:var(--cyan)">Nueva a SABDA?</div>'
     +row('','pack',50,443935,'Pack Intro 3 Classes','3 classes, vàlid 30 dies','50€')
     +row('','pack',18,443934,'Classe de prova','Solo primera vez','18€')
@@ -1604,7 +1604,7 @@ function showNoMembership(){stepChange();
     +'<div class="bk-pkg-grp" style="color:var(--white38)">Packs de clases</div>'
     +row('','pack',85,443937,'Pack de 5','5 classes, vàlid 2 mesos','85€')
     +row('','pack',149,443939,'Pack de 10','10 classes, vàlid 3 mesos','149€')
-    +row('','single',22,445630,'Classe individual','Una clase, sin compromiso','22€')
+    +row('','pack',22,445630,'Classe individual','Una clase, sin compromiso','22€')
     +'</div>';
 }
 
@@ -1614,6 +1614,10 @@ function showNoMembership(){stepChange();
 window.mobileSelectPack = function(type, price, id, name, desc){
   try{
     var savedUser = (typeof curUser !== 'undefined' && curUser) ? {fn:curUser.firstName||'',ln:curUser.lastName||'',email:curUser.email||''} : null;
+    var savedPass = '';
+    var savedPass2 = '';
+    try { var _np = document.getElementById('bk-new-pass'); if(_np) savedPass = _np.value; } catch(e){}
+    try { var _np2 = document.getElementById('bk-new-pass2'); if(_np2) savedPass2 = _np2.value; } catch(e){}
     pendingPack = {type:type, price:price, id:id, name:name, desc:desc};
     showGuestStep();
     if(savedUser){
@@ -1622,6 +1626,8 @@ window.mobileSelectPack = function(type, price, id, name, desc){
       var e=document.getElementById('bk-email');if(e)e.value=savedUser.email;
       var e2=document.getElementById('bk-email2');if(e2)e2.value=savedUser.email;
     }
+    if(savedPass){ var np=document.getElementById('bk-new-pass');if(np)np.value=savedPass; }
+    if(savedPass2){ var np2=document.getElementById('bk-new-pass2');if(np2)np2.value=savedPass2; }
   }catch(e){console.error('[mobileSelectPack]',e);}
 };
 
