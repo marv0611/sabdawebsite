@@ -1167,8 +1167,9 @@ function mountCardForGuest(){
       var vErr=validateCustomerFields();
       if(vErr){ev.complete('fail');return;}
       isProcessing=true;
+      ev.complete('success');
       var bd=document.getElementById('mo-bd');
-      if(bd)bd.innerHTML='<div style="text-align:center;padding:60px 20px"><div style="width:48px;height:48px;border:3px solid var(--white12);border-top-color:var(--cyan);border-radius:50%;margin:0 auto 20px;animation:spin .8s linear infinite"></div><p style="color:var(--white60);font-size:.88rem">Confirming with Apple Pay...</p></div><style>@keyframes spin{to{transform:rotate(360deg)}}</style>';
+      if(bd)bd.innerHTML='<div style="text-align:center;padding:60px 20px"><div style="width:48px;height:48px;border:3px solid var(--white12);border-top-color:var(--cyan);border-radius:50%;margin:0 auto 20px;animation:spin .8s linear infinite"></div><p style="color:var(--white60);font-size:.88rem">Completing your booking...</p></div><style>@keyframes spin{to{transform:rotate(360deg)}}</style>';
       var cf=getCustomerFields();
       var np=document.getElementById('bk-new-pass');
       var pass=np?np.value.trim():undefined;
@@ -1188,9 +1189,8 @@ function mountCardForGuest(){
       }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d};})})
       .then(function(r){
         clearTimeout(timeout);
-        if(r.data.success){ev.complete('success');showSuccess();}
+        if(r.data.success){showSuccess();}
         else if(r.data.clientSecret){
-          ev.complete('success');
           stripeInstance.confirmCardPayment(r.data.clientSecret,{payment_method:ev.paymentMethod.id}).then(function(conf){
             if(conf.error){isProcessing=false;showGuestStep();}
             else{window._fbCapiAfter3DS({email:(curUser&&curUser.email)||email||undefined,firstName:(curUser&&curUser.firstName)||firstName||undefined,lastName:(curUser&&curUser.lastName)||lastName||undefined,phoneNumber:(typeof cf!=='undefined'&&cf.phoneNumber)||(typeof phoneNumber!=='undefined'?phoneNumber:undefined),value:(typeof finalPrice!=='undefined'?finalPrice:(typeof actualPrice!=='undefined'?actualPrice:(typeof origPrice!=='undefined'?origPrice:0))),currency:'EUR',externalId:(r.data&&r.data.newMemberId)||undefined,fbp:_fbGetCookie('_fbp')||undefined,fbc:_fbGetCookie('_fbc')||undefined,attribution:(window._sabdaGetAttribution&&window._sabdaGetAttribution())||null,fbEventId:(typeof _fbEventId!=='undefined'?_fbEventId:undefined),clientUserAgent:navigator.userAgent,eventSourceUrl:window.location.href});showSuccess();}
@@ -1201,7 +1201,7 @@ function mountCardForGuest(){
           if(errEl)errEl.textContent=r.data.error||'El pago ha fallado.';
           isProcessing=false;
         }
-      }).catch(function(e){ev.complete('fail');isProcessing=false;});
+      }).catch(function(e){isProcessing=false;});
     });
   }catch(e){}
 }
@@ -1271,7 +1271,6 @@ window.doGuestPackPay=function(){
     .then(function(r){
       if(r.data.success){showSuccess();}
       else if(r.data.clientSecret){
-          ev.complete('success');
           stripeInstance.confirmCardPayment(r.data.clientSecret).then(function(conf){
           if(conf.error){err.textContent=conf.error.message;err.classList.add('show');isProcessing=false;if(btn){btn.textContent='Confirmar reserva';btn.disabled=false;}}
           else{window._fbCapiAfter3DS({email:(curUser&&curUser.email)||email||undefined,firstName:(curUser&&curUser.firstName)||firstName||undefined,lastName:(curUser&&curUser.lastName)||lastName||undefined,phoneNumber:(typeof cf!=='undefined'&&cf.phoneNumber)||(typeof phoneNumber!=='undefined'?phoneNumber:undefined),value:(typeof finalPrice!=='undefined'?finalPrice:(typeof actualPrice!=='undefined'?actualPrice:(typeof origPrice!=='undefined'?origPrice:0))),currency:'EUR',externalId:(r.data&&r.data.newMemberId)||undefined,fbp:_fbGetCookie('_fbp')||undefined,fbc:_fbGetCookie('_fbc')||undefined,attribution:(window._sabdaGetAttribution&&window._sabdaGetAttribution())||null,fbEventId:(typeof _fbEventId!=='undefined'?_fbEventId:undefined),clientUserAgent:navigator.userAgent,eventSourceUrl:window.location.href});showSuccess();}
@@ -1734,9 +1733,9 @@ function showPayForm(type,price,productId,name,desc){stepChange();
       var vErr=validateCustomerFields();
       if(vErr){ev.complete('fail');return;}
       isProcessing=true;
-      // Show processing state immediately after Face ID
+      ev.complete('success');
       var bd=document.getElementById('mo-bd');
-      if(bd)bd.innerHTML='<div style="text-align:center;padding:60px 20px"><div style="width:48px;height:48px;border:3px solid var(--white12);border-top-color:var(--cyan);border-radius:50%;margin:0 auto 20px;animation:spin .8s linear infinite"></div><p style="color:var(--white60);font-size:.88rem">Processing payment...</p></div><style>@keyframes spin{to{transform:rotate(360deg)}}</style>';
+      if(bd)bd.innerHTML='<div style="text-align:center;padding:60px 20px"><div style="width:48px;height:48px;border:3px solid var(--white12);border-top-color:var(--cyan);border-radius:50%;margin:0 auto 20px;animation:spin .8s linear infinite"></div><p style="color:var(--white60);font-size:.88rem">Completing your booking...</p></div><style>@keyframes spin{to{transform:rotate(360deg)}}</style>';
       var cf=getCustomerFields();
       _fbInitPurchaseEventId();
       fetch(PROXY+'/sabda-api/pay',{
@@ -1761,13 +1760,11 @@ function showPayForm(type,price,productId,name,desc){stepChange();
       }).then(function(r){return r.json().then(function(d){return{ok:r.ok,data:d}});})
       .then(function(r){
         if(r.data.success){
-          ev.complete('success');
           showSuccess();
         } else if(r.data.clientSecret){
-          ev.complete('success');
           stripeInstance.confirmCardPayment(r.data.clientSecret,{payment_method:ev.paymentMethod.id}).then(function(conf){
             if(conf.error){isProcessing=false;}
-            else{ev.complete('success');window._fbCapiAfter3DS({email:(curUser&&curUser.email)||email||undefined,firstName:(curUser&&curUser.firstName)||firstName||undefined,lastName:(curUser&&curUser.lastName)||lastName||undefined,phoneNumber:(typeof cf!=='undefined'&&cf.phoneNumber)||(typeof phoneNumber!=='undefined'?phoneNumber:undefined),value:(typeof finalPrice!=='undefined'?finalPrice:(typeof actualPrice!=='undefined'?actualPrice:(typeof origPrice!=='undefined'?origPrice:0))),currency:'EUR',externalId:(r.data&&r.data.newMemberId)||undefined,fbp:_fbGetCookie('_fbp')||undefined,fbc:_fbGetCookie('_fbc')||undefined,attribution:(window._sabdaGetAttribution&&window._sabdaGetAttribution())||null,fbEventId:(typeof _fbEventId!=='undefined'?_fbEventId:undefined),clientUserAgent:navigator.userAgent,eventSourceUrl:window.location.href});showSuccess();}
+            else{try{window._fbCapiAfter3DS({email:(curUser&&curUser.email)||email||undefined,firstName:(curUser&&curUser.firstName)||firstName||undefined,lastName:(curUser&&curUser.lastName)||lastName||undefined,phoneNumber:(typeof cf!=='undefined'&&cf.phoneNumber)||(typeof phoneNumber!=='undefined'?phoneNumber:undefined),value:(typeof finalPrice!=='undefined'?finalPrice:(typeof actualPrice!=='undefined'?actualPrice:(typeof origPrice!=='undefined'?origPrice:0))),currency:'EUR',externalId:(r.data&&r.data.newMemberId)||undefined,fbp:_fbGetCookie('_fbp')||undefined,fbc:_fbGetCookie('_fbc')||undefined,attribution:(window._sabdaGetAttribution&&window._sabdaGetAttribution())||null,fbEventId:(typeof _fbEventId!=='undefined'?_fbEventId:undefined),clientUserAgent:navigator.userAgent,eventSourceUrl:window.location.href});showSuccess();}
           });
         } else {
           ev.complete('fail');
@@ -1776,7 +1773,7 @@ function showPayForm(type,price,productId,name,desc){stepChange();
           showFallback();
           isProcessing=false;
         }
-      }).catch(function(e){ev.complete('fail');isProcessing=false;try{var errEl=document.getElementById('bk-err');if(errEl)errEl.textContent='Connection error ('+((typeof e!=='undefined'&&e&&e.message)||'unknown')+'). Please try again.';}catch(e2){}});
+      }).catch(function(e){isProcessing=false;try{var errEl=document.getElementById('bk-err');if(errEl)errEl.textContent='Connection error ('+((typeof e!=='undefined'&&e&&e.message)||'unknown')+'). Please try again.';}catch(e2){}});
     });
   }catch(e){
     try{console.warn('[SABDA] Configuración de Payment Request fallida (Apple/Google Pay deshabilitado):',e);}catch(e2){}
@@ -1944,7 +1941,6 @@ function doPayAndBook(type,price,productId){if(isProcessing)return;
       if(r.data.success){
         showSuccess();
       } else if(r.data.clientSecret){
-          ev.complete('success');
           stripeInstance.confirmCardPayment(r.data.clientSecret).then(function(conf){
           try{console.log('[SABDA] confirmCardPayment result:',conf.error?('ERROR: '+conf.error.message):'OK');}catch(e){}
           if(conf.error){
@@ -1967,7 +1963,7 @@ function doPayAndBook(type,price,productId){if(isProcessing)return;
 }
 
 // ── STEP 4: SUCCESS ──
-function showSuccess(){stepChange();
+function showSuccess(){try{stepChange();
   // Update modal header to confirmation state
   var moT=document.getElementById('mo-t');var moC=document.getElementById('mo-c');
   if(moT)moT.textContent='Confirmed';if(moC)moC.textContent='';
@@ -2007,6 +2003,7 @@ function showSuccess(){stepChange();
     +'</div>';
   }
   isProcessing=false;
+  }catch(err){console.error('[showSuccess] EXCEPTION',err);isProcessing=false;var bd=document.getElementById('mo-bd');if(bd)bd.innerHTML='<div class="bk-success"><h3>Payment received</h3><p style="margin-top:16px;font-size:.78rem;color:var(--white38)">Check your email for confirmation.</p><button class="bk-primary" style="margin-top:20px" onclick="closeMo()">Done</button></div>';}
 }
 
 // Delegated click handler for Book/Waitlist buttons AND full card rows.
