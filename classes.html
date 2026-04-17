@@ -2056,6 +2056,8 @@ window.doPayAndBook=function(type,price,productId){if(isProcessing)return;
 
 // ── SUCCESS ──
 function showSuccess(){stepChange();
+  var moT=document.getElementById("mo-t");var moC=document.getElementById("mo-c");
+  if(moT)moT.textContent="Confirmed";if(moC)moC.textContent="";
   // Fire Meta Pixel Purchase
   var _purchPrice=(discountedPrice!==null)?discountedPrice:(pendingPack?pendingPack.price:(curSession?curSession.price:0));
   var _purchName=pendingPack?pendingPack.name:(curSession?curSession.title:'');
