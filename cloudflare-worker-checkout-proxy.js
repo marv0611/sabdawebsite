@@ -1283,31 +1283,13 @@ async function handlePay(request, origin, env, ctx) {
       });
     }
 
-    // ── First-time-only products: block repeat purchases at server edge ──
-    // Trial (443934) and Intro 3-Pack (443935) are new-customer-only offers.
-    // Momence would reject with 'You have already bought a membership with SABDA'
-    // AFTER the user fills out payment. Catch it earlier for better UX.
-    const FIRST_TIME_ONLY_IDS = new Set([443934, 443935]);
-    if (productId && FIRST_TIME_ONLY_IDS.has(Number(productId)) && email) {
-      try {
-        const alertRes = await fetch(MOMENCE + '/_api/primary/checkout/customer/alert', {
-          method: 'POST',
-          headers: momenceHeaders({ 'Content-Type': 'application/json' }),
-          body: JSON.stringify({ email, hostId: 54278 }),
-        });
-        const alertData = await alertRes.json().catch(() => ({}));
-        if (alertData && alertData.memberId) {
-          console.log('[PAY] BLOCKED — first-time-only offer attempted by existing customer:', email);
-          return new Response(JSON.stringify({
-            error: 'This offer is for first-time students. Try a Drop-in, Pack, or membership instead.',
-            code: 'first_time_only_ineligible',
-          }), { status: 400, headers: corsHeaders(origin) });
-        }
-      } catch (e) {
-        // If check fails, proceed — Momence will still reject, better than false-blocking
-        console.warn('[PAY] customer/alert pre-check failed, proceeding:', e && e.message);
-      }
-    }
+    // ── First-time-only check REMOVED ──
+    // Previously we pre-checked customer/alert and blocked if memberId existed.
+    // But customer/alert returns memberId for ANY account holder, not just people
+    // who bought the Trial. This false-blocked new SABDA customers who had a
+    // Momence account from password creation. Momence's own /pay endpoint correctly
+    // rejects only when the user has actually purchased the specific first-timer
+    // product. Let Momence handle it — we'll show its error message if rejected.
 
     const cookieStr = sessionToken ? atob(sessionToken) : '';
     const STRIPE_ACCOUNT_ID = 38966; // SABDA's numeric Momence-side account ID

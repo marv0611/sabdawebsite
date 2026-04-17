@@ -2235,35 +2235,7 @@ document.addEventListener('click',function(e){
 <script defer src="/cookies.js"></script>
 <script src="/cookie-consent.js">
 // ── First-time-only pre-check on email (blur) ──
-// Prevents returning customers from filling the whole form only to hit the
-// 'This offer is for new students only' error at Pay-click time.
-window.sabdaFirstTimeOnlyCheck = function(){
-  try{
-    var pp = (typeof pendingPack !== 'undefined') ? pendingPack : null;
-    if(!pp || (pp.id !== 443934 && pp.id !== 443935)) return;
-    var emailEl = document.getElementById('bk-email');
-    if(!emailEl) return;
-    var email = (emailEl.value || '').trim();
-    if(!email || !validateEmail(email)) return;
-    var errEl = document.getElementById('bk-err');
-    var btn = document.getElementById('bk-guest-btn') || document.getElementById('bk-pay-btn');
-    fetch('https://sabda-checkout-proxy.sabda.workers.dev/sabda-api/check-email', {
-      method: 'POST', headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({ email: email })
-    }).then(function(r){return r.json();}).then(function(d){
-      if(d && d.exists){
-        if(errEl) errEl.textContent = 'This offer is for first-time students. Try a Drop-in, Pack, or membership instead.';
-        if(btn){ btn.disabled = true; btn.style.opacity = '0.5'; }
-      } else {
-        if(errEl && errEl.textContent.indexOf('new students only') >= 0) errEl.textContent = '';
-        if(btn){ btn.disabled = false; btn.style.opacity = ''; }
-      }
-    }).catch(function(e){console.error("[catch]",e);});
-  }catch(e){}
-};
-document.addEventListener('blur', function(e){
-  if(e.target && e.target.id === 'bk-email') { window.sabdaFirstTimeOnlyCheck(); try{window._sabdaStoreAttribution(e.target.value);}catch(e){} }
-}, true);
+// First-time-only pre-check REMOVED
 
 
 // ── DOM-level promo relocation: move promo-wrap to directly above card-details ──
