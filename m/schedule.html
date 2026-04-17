@@ -2116,26 +2116,12 @@ function openPackagePurchase(productId) {
 }
 
 function showPackageGuestStep() {
-  stepChange();
-  setBack(null);
-  var pkg = PACKAGES[curSession.productId];
-  var bd = document.getElementById('mo-bd');
-  bd.innerHTML = '<div class="bk-class">'
-    + '<div class="bk-class-name">' + esc(pkg.name) + '</div>'
-    + '<div class="bk-class-meta"><span style="font-family:PT Serif,serif;font-size:1.4rem;font-weight:700;color:var(--cyan)">€' + pkg.price + '</span></div>'
-    + '<div style="font-size:.78rem;color:var(--white60);margin-top:8px">' + esc(pkg.desc) + '</div>'
-    + '</div>'
-    + '<div class="bk-login">'
-    + '<div class="bk-label">First Name</div>'
-    + '<input class="bk-input" id="bk-fn" type="text" placeholder="First name" autocomplete="given-name" aria-label="First name" />'
-    + '<div class="bk-label">Last Name</div>'
-    + '<input class="bk-input" id="bk-ln" type="text" placeholder="Last name" autocomplete="family-name" aria-label="Last name" />'
-    + '<div class="bk-label">Email</div>'
-    + '<input class="bk-input" id="bk-email" type="email" inputmode="email" placeholder="your@email.com" autocomplete="email" aria-label="Email address" />'
-    + '<div class="bk-err" id="bk-err"></div>'
-    + '<button class="bk-primary" id="bk-guest-btn" onclick="doPackageGuestCheck()">Continue to payment</button>'
-    + '</div>';
-  document.getElementById('bk-fn').focus();
+  // Legacy two-step flow — redirect to unified one-screen checkout
+  if(curSession && curSession.isPackagePurchase && curSession.productId) {
+    var pkg = PACKAGES[curSession.productId];
+    if(pkg) { pendingPack = {type:pkg.type, price:pkg.price, id:curSession.productId, name:pkg.name, desc:pkg.desc}; }
+  }
+  showGuestStep();
 }
 
 function doPackageGuestCheck() {

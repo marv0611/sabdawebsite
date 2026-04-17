@@ -2052,27 +2052,11 @@ function openPackagePurchase(productId) {
 }
 
 function showPackageGuestStep() {
-  stepChange();
-  setBack(null);
-  var pkg = PACKAGES[curSession.productId];
-  var bd = document.getElementById('mo-bd');
-  bd.innerHTML = '<div class="bk-class">'
-    + '<div class="bk-class-name">' + esc(pkg.name) + '</div>'
-    + '<div class="bk-class-meta"><span style="font-family:PT Serif,serif;font-size:1.4rem;font-weight:700;color:var(--cyan)">€' + pkg.price + '</span></div>'
-    + '<div style="font-size:.78rem;color:var(--white60);margin-top:8px">' + esc(pkg.desc) + '</div>'
-    + '</div>'
-    + '<div class="bk-login">'
-    + '<div class="bk-label">Nom</div>'
-    + '<input class="bk-input" id="bk-fn" type="text" placeholder="Nom" autocomplete="given-name" aria-label="Nom" />'
-    + '<div class="bk-label">Cognom</div>'
-    + '<input class="bk-input" id="bk-ln" type="text" placeholder="Cognom" autocomplete="family-name" aria-label="Cognom" />'
-    + '<div class="bk-label">Email</div>'
-    + '<input class="bk-input" id="bk-email" type="email" inputmode="email" placeholder="tu@email.com" autocomplete="email" aria-label="Adreça de email" />'
-    + '<div class="bk-err" id="bk-err"></div>'
-    + '<button class="bk-primary" id="bk-guest-btn" onclick="doPackageGuestCheck()">Continuar al pago</button>'
-    + '<div style="background:rgba(248,166,163,.06);border:1px solid rgba(248,166,163,.12);border-radius:8px;padding:12px;margin-top:16px;font-size:.75rem;color:var(--white60);line-height:1.5;text-align:center">Ya eres cliente? <span onclick="showLoginStep()" style="color:var(--cyan);cursor:pointer;text-decoration:underline">Inicia sesión</span></div>'
-    + '</div>';
-  document.getElementById('bk-fn').focus();
+  if(curSession && curSession.isPackagePurchase && curSession.productId) {
+    var pkg = PACKAGES[curSession.productId];
+    if(pkg) { pendingPack = {type:pkg.type, price:pkg.price, id:curSession.productId, name:pkg.name, desc:pkg.desc}; }
+  }
+  showGuestStep();
 }
 
 function doPackageGuestCheck() {
