@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-13",
     "last_release": {
-      "date": "2026-04-16",
-      "slug": "/blog/cosas-que-hacer-en-barcelona/",
-      "order": 2
+      "date": "2026-04-17",
+      "slug": "/blog/espectaculos-barcelona/",
+      "order": 3
     }
   },
   "queue": [
@@ -49,8 +49,9 @@
       "release_date": "2026-04-17",
       "md_file": "blog/article-10-espectaculos-barcelona.md",
       "html_file": "blog/espectaculos-barcelona/index.html",
-      "status": "queued",
-      "volume": 5400
+      "status": "released",
+      "volume": 5400,
+      "released_at": "2026-04-17"
     },
     {
       "order": 4,
