@@ -1872,7 +1872,9 @@ async function handleWebhookPurchase(request, origin, env, ctx) {
     }
 
     // Fire CAPI Purchase with whatever we have
-    const eventId = 'wh_' + Date.now() + '_' + uuid().slice(0, 8);
+    // Event ID derived from Stripe event/transaction ID so retries produce
+    // the same ID and Meta deduplicates them instead of double-counting.
+    const eventId = 'swh_' + (transactionId || body.id || (Date.now() + '_' + uuid().slice(0, 8)));
     const clientIp = request.headers.get('CF-Connecting-IP') || '';
     const clientUA = request.headers.get('User-Agent') || (source === 'stripe' ? 'Stripe-Webhook/1.0' : 'Zapier-Webhook/1.0');
 
