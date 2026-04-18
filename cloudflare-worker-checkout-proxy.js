@@ -1098,6 +1098,31 @@ async function sendCAPIEvent(eventName, eventId, email, firstName, lastName, val
     );
     const capiData = await capiRes.json().catch(() => ({}));
     console.log('[CAPI]', eventName, 'status:', capiRes.status, 'events_received:', capiData.events_received, 'fields_sent:', fieldsSent);
+
+    // Alert on non-200 Purchase CAPI fires. Purchase is the only event where
+    // a silent failure directly costs money (broken attribution = wasted ad spend).
+    if (capiRes.status !== 200 && eventName === 'Purchase') {
+      console.log('[CAPI-ALERT] PURCHASE FAILED status=' + capiRes.status + ' response=' + JSON.stringify(capiData).slice(0, 500));
+      try {
+        if (env && env.Resend) {
+          await fetch('https://api.resend.com/emails', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + env.Resend },
+            body: JSON.stringify({
+              from: 'SABDA Alerts <alerts@sabdastudio.com>',
+              to: ['info@sabdastudio.com'],
+              subject: '[CAPI ALERT] Purchase event failed (status ' + capiRes.status + ')',
+              html: '<p>Meta CAPI returned non-200 for a Purchase event.</p>'
+                + '<p><strong>Status:</strong> ' + capiRes.status + '</p>'
+                + '<p><strong>Event ID:</strong> ' + (eventId || 'unknown') + '</p>'
+                + '<p><strong>Response:</strong> <code>' + JSON.stringify(capiData).slice(0, 500) + '</code></p>'
+                + '<p><strong>Fields sent:</strong> ' + fieldsSent + '</p>'
+                + '<p>Check Cloudflare Workers logs for [CAPI-ALERT] entries.</p>',
+            }),
+          }).catch(() => {});
+        }
+      } catch (alertErr) { /* non-fatal */ }
+    }
     // Diagnostic: log full response body when test_event_code is present (for debugging Test Events tab routing)
     if (testEventCode) {
       console.log('[CAPI-DEBUG] test_event_code=' + testEventCode + ' full_response=' + JSON.stringify(capiData));
