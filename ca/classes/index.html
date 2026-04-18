@@ -676,6 +676,21 @@ window._fbCapiAfter3DS = function(payload) {
   }
 };
 
+// Store email->attribution server-side so Momence-native purchases can be matched to ad clicks.
+window._sabdaStoreAttribution = function(email) {
+  try {
+    if (!email || !email.trim()) return;
+    var gA = window['_sabdaGet' + 'Attribution']; var attr = (gA && gA()) || null;
+    if (!attr) return;
+    fetch(PROXY + '/sabda-api/store-attribution', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ email: email.trim().toLowerCase(), attribution: attr }),
+      keepalive: true
+    }).catch(function(e) {});
+  } catch(e) {}
+};
+
 var allE=[],selDate=null,actF='All',actProfesor='All';
 var curSession=null, curUser=null, curMembership=null, curSessionToken=null;
 
@@ -1274,6 +1289,7 @@ function mountCardForGuest(){
       var cf=getCustomerFields();
       var np=document.getElementById('bk-new-pass');
       var pass=np?np.value.trim():undefined;
+      try{if(curUser&&curUser.email)window._sabdaStoreAttribution(curUser.email);}catch(e){}
       fetch(PROXY+'/sabda-api/pay',{
         method:'POST',headers:{'Content-Type':'application/json'},
         body:JSON.stringify({
@@ -1329,6 +1345,7 @@ window.doGuestPackPay=function(){
       isProcessing=false;if(btn){btn.textContent='Confirmar reserva';btn.disabled=false;}
       return;
     }
+    try{if(curUser&&curUser.email)window._sabdaStoreAttribution(curUser.email);}catch(e){}
     fetch(PROXY+'/sabda-api/pay',{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
@@ -1757,6 +1774,7 @@ window.showPayForm=function(type,price,productId,name,desc){stepChange();
       if(vErr){ev.complete('fail');setTimeout(function(){var errEl=document.getElementById('bk-err');if(errEl)errEl.textContent=vErr;},500);return;}
       isProcessing=true;
       var cf=getCustomerFields();
+      try{if(curUser&&curUser.email)window._sabdaStoreAttribution(curUser.email);}catch(e){}
       fetch(PROXY+'/sabda-api/pay',{
         method:'POST',
         headers:{'Content-Type':'application/json'},
@@ -1818,6 +1836,7 @@ window.doPayAndBook=function(type,price,productId){if(isProcessing)return;
 
   // Free booking (100% promo)
   if(finalPrice===0){
+    try{if(curUser&&curUser.email)window._sabdaStoreAttribution(curUser.email);}catch(e){}
     fetch(PROXY+'/sabda-api/pay',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
@@ -1849,6 +1868,7 @@ window.doPayAndBook=function(type,price,productId){if(isProcessing)return;
       isProcessing=false;btn.textContent='Confirmar reserva';btn.disabled=false;
       return;
     }
+    try{if(curUser&&curUser.email)window._sabdaStoreAttribution(curUser.email);}catch(e){}
     return fetch(PROXY+'/sabda-api/pay',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
