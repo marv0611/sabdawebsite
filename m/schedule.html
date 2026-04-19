@@ -552,6 +552,28 @@ window._fbCapiSend = function(eventName, fbEventId, payload) {
 
 let curSession=null, curUser=null, curMembership=null, curSessionToken=null, pendingPack=null;
 
+// ── DIAGNOSTIC: checkout funnel visibility ──
+// Fires lightweight beacons to /sabda-api/diag at each step.
+// Shows up in Cloudflare worker logs as [DIAG] step=... fbc=... fbp=...
+window._sabdaDiag = function(step, extra) {
+  try {
+    var fbc = (typeof _fbGetCookie==='function' ? _fbGetCookie('_fbc') : '') || '';
+    var fbp = (typeof _fbGetCookie==='function' ? _fbGetCookie('_fbp') : '') || '';
+    var attrObj = (typeof _sabdaGetAttribution==='function') ? _sabdaGetAttribution() : null;
+    var attr = attrObj ? 'yes' : 'no';
+    var fbclid = (attrObj && attrObj.fbclid) ? 'yes' : 'no';
+    var utm_src = (attrObj && attrObj.utm_source) ? attrObj.utm_source : '-';
+    var pack = (typeof pendingPack!=='undefined' && pendingPack) ? pendingPack.id : '-';
+    var emailEl = document.getElementById('bk-email');
+    var emailLen = emailEl ? emailEl.value.trim().length : 0;
+    var payload = {step:step, fbc:fbc?'present':'absent', fbp:fbp?'present':'absent', has_attr:attr, fbclid:fbclid, utm_source:utm_src, pack:String(pack), email_len:emailLen};
+    if(extra) Object.keys(extra).forEach(function(k){payload[k]=extra[k];});
+    navigator.sendBeacon(PROXY+'/sabda-api/diag', new Blob([JSON.stringify(payload)],{type:'application/json'}));
+  } catch(e){}
+};
+// Fire on page load
+try{setTimeout(function(){window._sabdaDiag('page_load');},2000);}catch(e){}
+
 // Meta Pixel helpers — defensive, never throw
 
 /*SABDA-FB-HELPERS-PORT-v1*/
@@ -848,6 +870,7 @@ function openMo(link,title,time,teacher){
       mo.style.display = 'flex';
       document.body.style.overflow = 'hidden';
       console.log('[openMo] modal opened OK');
+      try{window._sabdaDiag('modal_open');}catch(e){}
     } else {
       console.error('[openMo] CRITICAL: #mo element not found in DOM');
     }
@@ -887,6 +910,8 @@ function closeMo(){
   /*PACK_AUTO_OPEN_RETURN_v1*/if(autoOpenedFromPack){autoOpenedFromPack=false;try{var ref=document.referrer;if(ref&&ref.indexOf(window.location.origin)===0&&ref!==window.location.href){setTimeout(function(){window.location.href=ref;},50);return;}}catch(e){}}
 }
 document.getElementById('mo').addEventListener('click',function(e){if(e.target===this)closeMo();});
+// Diagnostic: track Momence fallback link clicks
+try{document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a');if(a&&a.href&&a.href.indexOf('momence.com')>-1){try{window._sabdaDiag('momence_click',{href:a.href.slice(0,80)});}catch(e){}}},true);}catch(e){}
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMo();});
 // Fix #9: browser back closes modal
 window.addEventListener('popstate',function(e){
@@ -966,6 +991,15 @@ function showGuestStep(){isProcessing=false;console.log('[showGuestStep] start')
     +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">'+(pendingPack?'Confirm booking':'Continue')+'</button>'
     +'</div>';
   console.log('[showGuestStep] body populated');
+  try{window._sabdaDiag('form_render');}catch(e){}
+  // Diagnostic: track email field interactions
+  try{
+    var _dEmail=document.getElementById('bk-email');
+    if(_dEmail){
+      _dEmail.addEventListener('focus',function(){try{window._sabdaDiag('email_focus');}catch(e){}},{once:true});
+      _dEmail.addEventListener('blur',function(){try{window._sabdaDiag('email_blur',{email_len:(_dEmail.value||'').trim().length});}catch(e){}},{once:true});
+    }
+  }catch(e){}
   try{var fnEl=document.getElementById('bk-fn');if(fnEl)fnEl.focus();}catch(e){}
   // Mount Stripe card inline so guest checkout is one screen (pack or single)
   if(pendingPack){try{mountCardForGuest();}catch(e){console.error('[showGuestStep] mountCardForGuest failed',e);}}
@@ -1100,6 +1134,7 @@ function doMfaVerify(){if(isProcessing)return;
 
 // ── GUEST CHECK ──
 function doGuestCheck(){
+  try{window._sabdaDiag('form_submit');}catch(e){}
   var fnEl=document.getElementById('bk-fn');
   var lnEl=document.getElementById('bk-ln');
   var emailEl=document.getElementById('bk-email');

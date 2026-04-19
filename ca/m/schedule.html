@@ -554,6 +554,28 @@ window._fbCapiSend = function(eventName, fbEventId, payload) {
 
 let curSession=null, curUser=null, curMembership=null, curSessionToken=null, pendingPack=null;
 
+// ── DIAGNOSTIC: checkout funnel visibility ──
+// Fires lightweight beacons to /sabda-api/diag at each step.
+// Shows up in Cloudflare worker logs as [DIAG] step=... fbc=... fbp=...
+window._sabdaDiag = function(step, extra) {
+  try {
+    var fbc = (typeof _fbGetCookie==='function' ? _fbGetCookie('_fbc') : '') || '';
+    var fbp = (typeof _fbGetCookie==='function' ? _fbGetCookie('_fbp') : '') || '';
+    var attrObj = (typeof _sabdaGetAttribution==='function') ? _sabdaGetAttribution() : null;
+    var attr = attrObj ? 'yes' : 'no';
+    var fbclid = (attrObj && attrObj.fbclid) ? 'yes' : 'no';
+    var utm_src = (attrObj && attrObj.utm_source) ? attrObj.utm_source : '-';
+    var pack = (typeof pendingPack!=='undefined' && pendingPack) ? pendingPack.id : '-';
+    var emailEl = document.getElementById('bk-email');
+    var emailLen = emailEl ? emailEl.value.trim().length : 0;
+    var payload = {step:step, fbc:fbc?'present':'absent', fbp:fbp?'present':'absent', has_attr:attr, fbclid:fbclid, utm_source:utm_src, pack:String(pack), email_len:emailLen};
+    if(extra) Object.keys(extra).forEach(function(k){payload[k]=extra[k];});
+    navigator.sendBeacon(PROXY+'/sabda-api/diag', new Blob([JSON.stringify(payload)],{type:'application/json'}));
+  } catch(e){}
+};
+// Fire on page load
+try{setTimeout(function(){window._sabdaDiag('page_load');},2000);}catch(e){}
+
 // Meta Pixel helpers — defensive, never throw
 
 /*SABDA-FB-HELPERS-PORT-v1*/
@@ -838,6 +860,7 @@ function openMo(link,title,time,teacher){
   document.getElementById('mo').classList.add('open');
   document.getElementById('mo').style.display='flex';
   document.body.style.overflow='hidden';
+  try{window._sabdaDiag('modal_open');}catch(e){}
   // Fix #9: push history state so browser back closes modal
   history.pushState({modal:true},'');
   _fbTrackViewContent(title);
@@ -866,6 +889,7 @@ function closeMo(){
   /*PACK_AUTO_OPEN_RETURN_v1*/if(autoOpenedFromPack){autoOpenedFromPack=false;try{var ref=document.referrer;if(ref&&ref.indexOf(window.location.origin)===0&&ref!==window.location.href){setTimeout(function(){window.location.href=ref;},50);return;}}catch(e){}}
 }
 document.getElementById('mo').addEventListener('click',function(e){if(e.target===this)closeMo();});
+try{document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a');if(a&&a.href&&a.href.indexOf('momence.com')>-1){try{window._sabdaDiag('momence_click',{href:a.href.slice(0,80)});}catch(e){}}},true);}catch(e){}
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMo();});
 // Fix #9: browser back closes modal
 window.addEventListener('popstate',function(e){
@@ -912,6 +936,8 @@ function showLoginStep(){stepChange();
 
 // ── STEP 1B: GUEST ──
 function showGuestStep(){isProcessing=false;console.log('[showGuestStep] start');try{stepChange();
+try{window._sabdaDiag('form_render');}catch(e){}
+try{setTimeout(function(){var _dEmail=document.getElementById('bk-email');if(_dEmail){_dEmail.addEventListener('focus',function(){try{window._sabdaDiag('email_focus');}catch(e){}},{once:true});_dEmail.addEventListener('blur',function(){try{window._sabdaDiag('email_blur',{email_len:(_dEmail.value||'').trim().length});}catch(e){}},{once:true});}},200);}catch(e){}
   var safeEsc=function(s){try{return esc(s||'');}catch(e){return String(s||'').replace(/[<>"&]/g,'');}};
   var safeSpots=function(){try{return getSpotsHtml();}catch(e){return '';}};
   var safeCustomer=function(){try{return customerFieldsHTML();}catch(e){return '';}};
@@ -1076,6 +1102,7 @@ function doMfaVerify(){if(isProcessing)return;
 
 // ── GUEST CHECK ──
 function doGuestCheck(){
+  try{window._sabdaDiag('form_submit');}catch(e){}
   var fnEl=document.getElementById('bk-fn');
   var lnEl=document.getElementById('bk-ln');
   var emailEl=document.getElementById('bk-email');

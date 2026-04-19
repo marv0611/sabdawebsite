@@ -133,6 +133,15 @@ export default {
         status: 200, headers: corsHeaders(reqOrigin),
       });
     }
+    // ── DIAGNOSTIC LOGGING: checkout funnel visibility ──
+    if (url.pathname === '/sabda-api/diag') {
+      if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: corsHeaders(reqOrigin) });
+      try {
+        const body = await request.json();
+        console.log('[DIAG] step=' + (body.step || '?') + ' fbc=' + (body.fbc || 'none') + ' fbp=' + (body.fbp || 'none') + ' fbclid=' + (body.fbclid || '?') + ' utm=' + (body.utm_source || '-') + ' attr=' + (body.has_attr || '?') + ' pack=' + (body.pack || '-') + ' email_len=' + (body.email_len || 0));
+      } catch(e) { console.log('[DIAG] parse error'); }
+      return new Response('ok', { status: 200, headers: corsHeaders(reqOrigin) });
+    }
     // ── DIAGNOSTIC: report whether CAPI_ACCESS_TOKEN is configured ──
     // Returns boolean only, never the value. Lets us verify the secret is
     // live with a single curl, without waiting for a real Purchase to surface
