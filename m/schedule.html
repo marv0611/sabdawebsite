@@ -554,7 +554,8 @@ let curSession=null, curUser=null, curMembership=null, curSessionToken=null, pen
 
 // ── DIAGNOSTIC: checkout funnel visibility ──
 // Fires lightweight beacons to /sabda-api/diag at each step.
-// Shows up in Cloudflare worker logs as [DIAG] step=... fbc=... fbp=...
+// Shows up in Cloudflare worker logs as [DIAG] step=... sid=... fbc=... fbp=...
+var _sabdaSid = Date.now().toString(36) + Math.random().toString(36).substr(2,5);
 window._sabdaDiag = function(step, extra) {
   try {
     var fbc = (typeof _fbGetCookie==='function' ? _fbGetCookie('_fbc') : '') || '';
@@ -566,7 +567,7 @@ window._sabdaDiag = function(step, extra) {
     var pack = (typeof pendingPack!=='undefined' && pendingPack) ? pendingPack.id : '-';
     var emailEl = document.getElementById('bk-email');
     var emailLen = emailEl ? emailEl.value.trim().length : 0;
-    var payload = {step:step, fbc:fbc?'present':'absent', fbp:fbp?'present':'absent', has_attr:attr, fbclid:fbclid, utm_source:utm_src, pack:String(pack), email_len:emailLen};
+    var payload = {sid:_sabdaSid, t:Date.now(), step:step, fbc:fbc?'present':'absent', fbp:fbp?'present':'absent', has_attr:attr, fbclid:fbclid, utm_source:utm_src, pack:String(pack), email_len:emailLen};
     if(extra) Object.keys(extra).forEach(function(k){payload[k]=extra[k];});
     navigator.sendBeacon(PROXY+'/sabda-api/diag', new Blob([JSON.stringify(payload)],{type:'application/json'}));
   } catch(e){}
