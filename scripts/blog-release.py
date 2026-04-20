@@ -299,9 +299,14 @@ document.querySelectorAll('.blog-filter').forEach(btn => {
                     f'font-weight:600;color:var(--cyan);font-size:.64rem;'
                     f'letter-spacing:.08em;margin-bottom:4px">{a["lang"]}</span>'
                 )
+                # Card uses .ct for padding + flex row inside (num + body side by side),
+                # .fi for fade-in. NOT wrapped in an outer .ct div — that would make
+                # the .ct flex rule stack cards horizontally. Each card is a direct
+                # sibling of the wrapper below, stacked vertically via .ct's own
+                # border-bottom rhythm.
                 mcards.append(
                     f'<a href="{a["href_abs"]}" class="ct fi" data-lang="{a["lang"]}" '
-                    f'style="text-decoration:none;color:inherit;display:block">'
+                    f'style="text-decoration:none;color:inherit">'
                     f'<div class="ct-num">{i}</div>'
                     f'<div class="ct-body">'
                     f'{lang_badge}'
@@ -334,9 +339,11 @@ document.querySelectorAll('.blog-filter').forEach(btn => {
                     f'letter-spacing:.06em;font-family:inherit;cursor:pointer;'
                     f'-webkit-tap-highlight-color:transparent">{lg.upper()}</button>'
                 )
+            # padding-top 24px gives air between hero and filter pills so the
+            # language tags don't visually touch the hero image bottom edge.
             filter_ui = (
                 '<div class="mblog-filters" style="display:flex;gap:8px;'
-                'padding:0 24px 16px;flex-wrap:wrap">' + filter_btns + '</div>'
+                'padding:24px 24px 16px;flex-wrap:wrap">' + filter_btns + '</div>'
             )
 
         filter_js = (
@@ -350,14 +357,14 @@ document.querySelectorAll('.blog-filter').forEach(btn => {
             'b.classList.add("on");b.style.background="rgba(2,243,197,.12)";'
             'b.style.color="var(--cyan)";b.style.borderColor="rgba(2,243,197,.3)";'
             'document.querySelectorAll("a.ct.fi[data-lang]").forEach(function(c){'
-            'c.style.display=(f==="all"||c.getAttribute("data-lang")===f)?"block":"none";'
+            'c.style.display=(f==="all"||c.getAttribute("data-lang")===f)?"flex":"none";'
             '});});});})();</script>'
         )
 
         # Replace the .ct fi placeholder block (single empty div between </section>
         # hero and <nav class="tabs">). Anchor pair after redesign:
         #   <section class="blog-hero">...</section>
-        #   <div class="ct fi">...</div>     ← what we regenerate
+        #   (cards list — each card is a direct child, no outer wrapper)
         #   <nav class="tabs">...
         pattern = re.compile(
             r'(</section>)([\s\S]*?)(<nav class="tabs">)',
@@ -367,8 +374,10 @@ document.querySelectorAll('.blog-filter').forEach(btn => {
         if not mm:
             print(f'  ⚠ {mob_path}: could not find hero/tabs anchor, skipping')
             continue
-        # Wrap cards in a single .ct fi container with inline filter UI above
-        replacement = f'\n{filter_ui}<div class="ct fi">{cards_html}</div>\n{filter_js}\n'
+        # Cards are direct children of document flow — no outer .ct wrapper
+        # (that would create a flex row that stacks them horizontally).
+        # filter_ui + cards + filter_js, each on its own line for readability.
+        replacement = f'\n{filter_ui}\n{cards_html}\n{filter_js}\n'
         ms_new = ms[:mm.end(1)] + replacement + ms[mm.start(3):]
 
         open(mob_path, 'w').write(ms_new)
