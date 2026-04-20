@@ -92,6 +92,24 @@ def main():
                 md_content = re.sub(r'(\*\*Slug:\*\*[^\n]+\n)', r'\1**publish: true**\n', md_content, count=1)
             open(md_path, 'w').write(md_content)
             print(f'  ✓ Marked MD {md_path} as publish:true (preserves indexable on re-render)')
+
+    # ─── 1.5 Update datePublished + dateModified to today ───
+    # Articles are authored in advance with a placeholder datePublished (e.g.
+    # 2026-03-19). On release day we stamp the actual release date so schema
+    # and blog-card visible dates match reality. Without this, Google and
+    # social previews report stale authoring dates and the "fresh content"
+    # SEO signal is lost. Fix also applies retroactively — see
+    # /tmp/backfill_dates.py (Apr 20 2026) for the 4-article backfill.
+    s2 = open(html_path).read()
+    dp_re = r'"datePublished":\s*"\d{4}-\d{2}-\d{2}"'
+    dm_re = r'"dateModified":\s*"\d{4}-\d{2}-\d{2}"'
+    if re.search(dp_re, s2):
+        s2 = re.sub(dp_re, f'"datePublished": "{today}"', s2, count=1)
+    if re.search(dm_re, s2):
+        s2 = re.sub(dm_re, f'"dateModified": "{today}"', s2, count=1)
+    if s2 != open(html_path).read():
+        open(html_path, 'w').write(s2)
+        print(f'  ✓ Stamped {html_path} datePublished={today}')
     
     # ─── 2. Add URL to sitemap ───
     slug = target['slug']
@@ -251,35 +269,91 @@ document.querySelectorAll('.blog-filter').forEach(btn => {
     
 
     # ─── Also regenerate 3 mobile blog files (m/blog, es/m/blog, ca/m/blog) ───
-    MOBILE_FILES = {
-        'm/blog.html':    {'lang':'en'},
-        'es/m/blog.html': {'lang':'es'},
-        'ca/m/blog.html': {'lang':'ca'},
-    }
-    
-    for mob_path, mob_cfg in MOBILE_FILES.items():
+    # As of Apr 20 2026: mobile now mirrors desktop behaviour — all 3 files
+    # render ALL released articles with an inline All/EN/ES/CA filter UI.
+    # Previously each file was locale-filtered (m/blog = EN only, etc.),
+    # which created confusion for users browsing mobile in one language but
+    # wanting to see content in another. Desktop has always been all-langs
+    # with a filter, so this brings mobile to parity.
+    #
+    # Canonical: all 3 mobile URLs now serve identical content. Each file's
+    # existing canonical + hreflang cluster remains untouched — the cluster
+    # itself tells Google these are cross-language equivalents.
+    MOBILE_FILES = ['m/blog.html', 'es/m/blog.html', 'ca/m/blog.html']
+
+    for mob_path in MOBILE_FILES:
         if not os.path.exists(mob_path): continue
         ms = open(mob_path).read()
-        
-        matching = [a for a in released if a['lang'] == mob_cfg['lang']]
-        
+
+        # All released articles regardless of language (desktop parity)
+        matching = released
+
         if matching:
             mcards = []
             for i, a in enumerate(matching, 1):
+                # Language badge: lowercase 2-letter + cyan — same as desktop
+                # blog card badge (see main blog-list-wrap regen above).
+                lang_badge = (
+                    f'<span class="ct-lang" data-lang="{a["lang"]}" '
+                    f'style="display:inline-block;text-transform:uppercase;'
+                    f'font-weight:600;color:var(--cyan);font-size:.64rem;'
+                    f'letter-spacing:.08em;margin-bottom:4px">{a["lang"]}</span>'
+                )
                 mcards.append(
-                    f'<a href="{a["href_abs"]}" class="ct fi" style="text-decoration:none;color:inherit;display:block">'
+                    f'<a href="{a["href_abs"]}" class="ct fi" data-lang="{a["lang"]}" '
+                    f'style="text-decoration:none;color:inherit;display:block">'
                     f'<div class="ct-num">{i}</div>'
                     f'<div class="ct-body">'
+                    f'{lang_badge}'
                     f'<div class="ct-name">{a["h1"]}</div>'
                     f'<div class="ct-desc">{a["meta_desc"]}</div>'
                     f'</div></a>'
                 )
             cards_html = '\n'.join(mcards)
         else:
-            # Per Marvyn's mobile redesign: hero subtitle conveys the "new articles
-            # weekly" message — empty-state body text is intentionally blank.
             cards_html = ''
-        
+
+        # Filter buttons — only render if we have >1 language in the set
+        present_langs = sorted(set(a['lang'] for a in matching))
+        filter_ui = ''
+        if len(present_langs) > 1:
+            filter_btns = (
+                '<button class="mblog-filter on" data-filter="all" type="button" '
+                'style="flex:0 0 auto;padding:8px 14px;background:rgba(2,243,197,.12);'
+                'border:1px solid rgba(2,243,197,.3);border-radius:100px;'
+                'color:var(--cyan);font-size:.72rem;font-weight:600;'
+                'letter-spacing:.06em;font-family:inherit;cursor:pointer;'
+                '-webkit-tap-highlight-color:transparent">All</button>'
+            )
+            for lg in present_langs:
+                filter_btns += (
+                    f'<button class="mblog-filter" data-filter="{lg}" type="button" '
+                    f'style="flex:0 0 auto;padding:8px 14px;background:transparent;'
+                    f'border:1px solid rgba(240,239,233,.15);border-radius:100px;'
+                    f'color:var(--w60);font-size:.72rem;font-weight:600;'
+                    f'letter-spacing:.06em;font-family:inherit;cursor:pointer;'
+                    f'-webkit-tap-highlight-color:transparent">{lg.upper()}</button>'
+                )
+            filter_ui = (
+                '<div class="mblog-filters" style="display:flex;gap:8px;'
+                'padding:0 24px 16px;flex-wrap:wrap">' + filter_btns + '</div>'
+            )
+
+        filter_js = (
+            '<script>(function(){var btns=document.querySelectorAll(".mblog-filter");'
+            'if(!btns.length)return;'
+            'btns.forEach(function(b){b.addEventListener("click",function(){'
+            'var f=b.getAttribute("data-filter");'
+            'btns.forEach(function(x){x.classList.remove("on");'
+            'x.style.background="transparent";x.style.color="var(--w60)";'
+            'x.style.borderColor="rgba(240,239,233,.15)";});'
+            'b.classList.add("on");b.style.background="rgba(2,243,197,.12)";'
+            'b.style.color="var(--cyan)";b.style.borderColor="rgba(2,243,197,.3)";'
+            'document.querySelectorAll("a.ct.fi[data-lang]").forEach(function(c){'
+            'c.style.display=(f==="all"||c.getAttribute("data-lang")===f)?"block":"none";'
+            '});});});})();</script>'
+        )
+
         # Replace the .ct fi placeholder block (single empty div between </section>
         # hero and <nav class="tabs">). Anchor pair after redesign:
         #   <section class="blog-hero">...</section>
@@ -293,12 +367,12 @@ document.querySelectorAll('.blog-filter').forEach(btn => {
         if not mm:
             print(f'  ⚠ {mob_path}: could not find hero/tabs anchor, skipping')
             continue
-        # Wrap cards in a single .ct fi container so future regenerations re-anchor cleanly
-        replacement = f'\n<div class="ct fi">{cards_html}</div>\n'
+        # Wrap cards in a single .ct fi container with inline filter UI above
+        replacement = f'\n{filter_ui}<div class="ct fi">{cards_html}</div>\n{filter_js}\n'
         ms_new = ms[:mm.end(1)] + replacement + ms[mm.start(3):]
-        
+
         open(mob_path, 'w').write(ms_new)
-        print(f'  ✓ {mob_path} regenerated with {len(matching)} cards')
+        print(f'  ✓ {mob_path} regenerated with {len(matching)} cards (all langs)')
 
     open(blog_index_path, 'w').write(s)
     print(f'  ✓ blog/index.html regenerated with {len(released)} cards')
