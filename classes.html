@@ -993,7 +993,9 @@ function renderFilters(ev){
   cats.sort();cats.unshift('All');
   var teachers=[];var tSet={};
   ev.forEach(function(e){
-    var t=(e.teacher||'').split(' ')[0];
+    // Build filter from originalTeacher (recurring slot owner) so substitutes
+    // don't clutter the dropdown. Subs teach but are never anyone's originalTeacher.
+    var t=(e.originalTeacher||e.teacher||'').split(' ')[0];
     if(t&&!tSet[t]){tSet[t]=true;teachers.push(t);}
   });
   teachers.sort();
@@ -1048,7 +1050,7 @@ function renderSched(){
     return ed===selDate&&!e.isCancelled&&!e.isDeleted;
   });
   if(actF!=='All')f=f.filter(function(e){return getCat(e.title)===actF;});
-  if(actTeacher!=='All')f=f.filter(function(e){return(e.teacher||'').split(' ')[0]===actTeacher;});
+  if(actTeacher!=='All')f=f.filter(function(e){return(e.originalTeacher||e.teacher||'').split(' ')[0]===actTeacher;});
   f=f.filter(function(e){return new Date(e.dateTime)>=new Date();});
   f.sort(function(a,b){return new Date(a.dateTime)-new Date(b.dateTime);});
 
@@ -2129,6 +2131,7 @@ async function init(){
         title:e.sessionName||e.title||'',
         dateTime:e.startsAt||e.dateTime||'',
         teacher:e.teacher||'',
+        originalTeacher:e.originalTeacher||e.teacher||'',
         duration:e.durationMinutes||e.duration||0,
         spotsRemaining:(e.capacity!=null&&e.ticketsSold!=null)?e.capacity-e.ticketsSold:(e.spotsRemaining!=null?e.spotsRemaining:99),
         link:e.link||('https://momence.com/s/'+e.id),
