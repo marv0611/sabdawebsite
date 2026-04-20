@@ -760,7 +760,8 @@ function _fbTrackViewContent(className){
 }
 function _fbTrackLead(){
   if(typeof fbq==='undefined') return;
-  fbq('track','Lead');
+  var eid = 'lead_'+Date.now()+'_'+Math.random().toString(36).substr(2,9);
+  try{ _sabdaTrack('Lead', {}, eid); }catch(e){ fbq('track','Lead',{},{eventID:eid}); }
 }
 
 // ── META PIXEL ADVANCED MATCHING ──

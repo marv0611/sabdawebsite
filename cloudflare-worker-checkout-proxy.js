@@ -968,7 +968,7 @@ function normalizePhoneE164(raw) {
   return p;
 }
 
-async function sendCAPIEvent(eventName, eventId, email, firstName, lastName, value, currency, eventSourceUrl, clientIp, clientUserAgent, fbp, fbc, env, phone, externalId, testEventCode, city, country, attribution, contentMeta) {
+async function sendCAPIEvent(eventName, eventId, email, firstName, lastName, value, currency, eventSourceUrl, clientIp, clientUserAgent, fbp, fbc, env, phone, externalId, testEventCode, city, country, attribution, contentMeta, state, zip) {
   const CAPI_TOKEN = (env && env.CAPI_ACCESS_TOKEN) || '';
   if (!CAPI_TOKEN) {
     console.log('[CAPI] Skipping — CAPI_ACCESS_TOKEN not set');
@@ -980,12 +980,16 @@ async function sendCAPIEvent(eventName, eventId, email, firstName, lastName, val
     const phoneE164 = normalizePhoneE164(phone);
     // External ID: hash if it looks like a stable identifier; pass empty otherwise
     const extIdStr = externalId ? String(externalId).trim() : '';
-    // Normalize city and country per Meta spec before hashing:
-    // - ct: lowercase, no spaces, no punctuation
-    // - country: 2-letter ISO lowercase
+    // Normalize per Meta CAPI spec before hashing:
+    // - ct  (city):    lowercase, no spaces, no punctuation
+    // - country:       2-letter ISO lowercase (e.g. "es", "us", "gb")
+    // - st  (state):   lowercase, no spaces, no punctuation (e.g. "ca", "catalunya")
+    // - zp  (zip):     lowercase, strip whitespace/dashes, first 10 chars
     const ctNorm = city ? String(city).trim().toLowerCase().replace(/[^a-z]/g, '') : '';
     const countryNorm = country ? String(country).trim().toLowerCase().slice(0, 2) : '';
-    const [emHash, fnHash, lnHash, phHash, extIdHash, ctHash, countryHash] = await Promise.all([
+    const stNorm = state ? String(state).trim().toLowerCase().replace(/[^a-z]/g, '') : '';
+    const zpNorm = zip ? String(zip).trim().toLowerCase().replace(/[\s-]/g, '').slice(0, 10) : '';
+    const [emHash, fnHash, lnHash, phHash, extIdHash, ctHash, countryHash, stHash, zpHash] = await Promise.all([
       sha256hex(email),
       sha256hex(firstName),
       sha256hex(lastName),
@@ -994,6 +998,8 @@ async function sendCAPIEvent(eventName, eventId, email, firstName, lastName, val
       extIdStr ? sha256hex(extIdStr) : Promise.resolve(''),
       ctNorm ? sha256hex(ctNorm) : Promise.resolve(''),
       countryNorm ? sha256hex(countryNorm) : Promise.resolve(''),
+      stNorm ? sha256hex(stNorm) : Promise.resolve(''),
+      zpNorm ? sha256hex(zpNorm) : Promise.resolve(''),
     ]);
 
     // Build user_data with conditional inclusion — Meta penalizes empty values
@@ -1004,6 +1010,8 @@ async function sendCAPIEvent(eventName, eventId, email, firstName, lastName, val
     if (fnHash)  user_data.fn  = [fnHash];
     if (lnHash)  user_data.ln  = [lnHash];
     if (ctHash)  user_data.ct  = [ctHash];
+    if (stHash)  user_data.st  = [stHash];
+    if (zpHash)  user_data.zp  = [zpHash];
     if (countryHash) user_data.country = [countryHash];
     if (extIdHash) user_data.external_id = [extIdHash];
     if (clientIp) user_data.client_ip_address = clientIp;
@@ -1160,7 +1168,7 @@ async function handleCapiEvent(request, origin, env, ctx, defaultEvent, requireE
     const {
       eventName, fbEventId, email, firstName, lastName, phoneNumber,
       value, currency, externalId, fbp, fbc, clientUserAgent, eventSourceUrl,
-      test_event_code, city, country, attribution, contentName, contentIds, contentType,
+      test_event_code, city, country, state, zip, attribution, contentName, contentIds, contentType,
     } = await request.json();
 
     // Determine the event — explicit eventName in payload wins, otherwise route default
@@ -1216,7 +1224,9 @@ async function handleCapiEvent(request, origin, env, ctx, defaultEvent, requireE
       cityForCAPI,
       countryForCAPI,
       attribution,
-      { contentName, contentIds, contentType }
+      { contentName, contentIds, contentType },
+      state || '',
+      zip || ''
     );
     if (ctx && ctx.waitUntil) {
       ctx.waitUntil(capiPromise);
@@ -1808,6 +1818,14 @@ async function handleWebhookPurchase(request, origin, env, ctx) {
     let productName = 'Purchase';
     let transactionId = '';
     let source = 'manual';
+    // Address fields — extracted from billing_details.address for Stripe events.
+    // Meta CAPI uses ct/country/st/zp to boost Event Match Quality. Stripe
+    // collects these on every charge; we previously threw them away, which
+    // capped Purchase EMQ around 5.6/10.
+    let city = '';
+    let country = '';
+    let state = '';
+    let zip = '';
 
     if (body.type && body.data && body.data.object) {
       // ── STRIPE WEBHOOK ──
@@ -1827,6 +1845,12 @@ async function handleWebhookPurchase(request, origin, env, ctx) {
         phone = (obj.customer_details && obj.customer_details.phone) || '';
         amount = (obj.amount_total || 0) / 100; // Stripe sends cents
         transactionId = obj.id || body.id || '';
+        // Address — Stripe Checkout puts it under customer_details.address
+        const addr = (obj.customer_details && obj.customer_details.address) || {};
+        city = addr.city || '';
+        country = addr.country || '';
+        state = addr.state || '';
+        zip = addr.postal_code || '';
       } else if (body.type === 'payment_intent.succeeded') {
         // PaymentIntent — get billing details from the first charge
         const charges = (obj.charges && obj.charges.data) || [];
@@ -1841,6 +1865,12 @@ async function handleWebhookPurchase(request, origin, env, ctx) {
         amount = (obj.amount || 0) / 100; // Stripe sends cents
         productName = (obj.description || obj.statement_descriptor || 'Momence Purchase');
         transactionId = obj.id || body.id || '';
+        // Address under billing_details.address
+        const addr = billing.address || {};
+        city = addr.city || '';
+        country = addr.country || '';
+        state = addr.state || '';
+        zip = addr.postal_code || '';
       } else if (body.type === 'charge.succeeded') {
         const billing = obj.billing_details || {};
         email = billing.email || obj.receipt_email || '';
@@ -1852,6 +1882,12 @@ async function handleWebhookPurchase(request, origin, env, ctx) {
         amount = (obj.amount || 0) / 100;
         productName = (obj.description || obj.statement_descriptor || 'Momence Purchase');
         transactionId = obj.id || body.id || '';
+        // Address under billing_details.address
+        const addr = billing.address || {};
+        city = addr.city || '';
+        country = addr.country || '';
+        state = addr.state || '';
+        zip = addr.postal_code || '';
       } else {
         // Unhandled Stripe event type — log and accept
         console.log('[WEBHOOK] Unhandled Stripe event type:', body.type);
@@ -1912,7 +1948,7 @@ async function handleWebhookPurchase(request, origin, env, ctx) {
     const clientIp = request.headers.get('CF-Connecting-IP') || '';
     const clientUA = request.headers.get('User-Agent') || (source === 'stripe' ? 'Stripe-Webhook/1.0' : 'Zapier-Webhook/1.0');
 
-    console.log('[WEBHOOK] Purchase source=' + source + ' email=' + email.slice(0, 3) + '*** amount=' + amount + ' product=' + productName + ' fbc=' + (fbcFromAttribution ? 'constructed' : 'none'));
+    console.log('[WEBHOOK] Purchase source=' + source + ' email=' + email.slice(0, 3) + '*** amount=' + amount + ' product=' + productName + ' fbc=' + (fbcFromAttribution ? 'constructed' : 'none') + ' addr_city=' + (city ? 'yes' : 'no') + ' addr_country=' + (country || '-') + ' addr_zp=' + (zip ? 'yes' : 'no'));
 
     const capiPromise = sendCAPIEvent(
       'Purchase', eventId, email, firstName, lastName,
@@ -1926,9 +1962,12 @@ async function handleWebhookPurchase(request, origin, env, ctx) {
       phone,
       '', // externalId
       '', // testEventCode
-      '', // city
-      'es', // country
-      attribution // full attribution object
+      city || '', // extracted from billing_details.address
+      country || 'es', // ISO-2 from billing_details.address, fallback ES (Barcelona studio)
+      attribution, // full attribution object
+      null, // contentMeta
+      state || '', // extracted from billing_details.address (e.g. "CT" for Catalunya, "AN" for Andalusia)
+      zip || '' // postal_code from billing_details.address
     ).catch((e) => console.log('[WEBHOOK] CAPI error:', e && e.message));
 
     if (ctx && ctx.waitUntil) {
