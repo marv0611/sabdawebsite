@@ -117,6 +117,25 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
+<style>
+.blog-intro-offers{padding:80px 40px;position:relative;border-top:1px solid rgba(240,239,233,.06)}
+.blog-intro-offers .section-hdr{text-align:center;margin-bottom:52px}
+.blog-intro-offers .section-hdr h2{font-family:'PT Serif',serif;font-size:2.2rem;font-weight:400;margin-bottom:10px}
+.blog-intro-offers .section-hdr p{color:var(--white38);font-size:.92rem;max-width:460px;margin:0 auto;line-height:1.7}
+.blog-intro-offers .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:780px;margin:0 auto}
+.blog-intro-offers .pricing-col{text-align:center;position:relative;padding:24px 8px 8px;border-radius:16px}
+.blog-intro-offers .pricing-col h3{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--white60);margin-bottom:20px;font-weight:500;font-family:'DM Sans',sans-serif}
+.blog-intro-offers .pricing-col a{display:block;padding:18px 12px;border-radius:40px;background:var(--cyan);color:var(--navy)!important;font-weight:700;font-size:.82rem;letter-spacing:.07em;text-transform:uppercase;margin-bottom:14px;transition:background .2s,transform .15s;text-align:center;position:relative;border-bottom:none!important}
+.blog-intro-offers .pricing-col a:hover{background:#18ffda;transform:translateY(-2px)}
+.blog-intro-offers .per-class{display:block;font-size:.68rem;font-weight:500;letter-spacing:.04em;margin-top:3px;opacity:.7;text-transform:none}
+.blog-intro-offers .hero-col{border:1px solid rgba(2,243,197,.25);background:rgba(2,243,197,.03);border-radius:16px}
+.blog-intro-offers .pricing-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--salmon);color:var(--navy);font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:5px 14px;border-radius:20px;white-space:nowrap}
+@media(max-width:780px){
+  .blog-intro-offers{padding:48px 20px}
+  .blog-intro-offers .pricing-grid{grid-template-columns:1fr;gap:14px;max-width:440px}
+  .blog-intro-offers .section-hdr h2{font-size:1.6rem}
+}
+</style>
 </head>
 <body>
 <div class="grain"></div>
@@ -188,6 +207,32 @@ document.querySelectorAll('.blog-filter').forEach(btn => {
 
 
 </div>
+<!-- INTRO OFFERS & CLASS PACKS -->
+<section class="blog-intro-offers">
+  <div class="section-hdr">
+    <h2>Intro Offers & Class Packs</h2>
+    <p>First time? Start with an intro offer.<br>Ready to go deeper? Grab a pack.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="pricing-col">
+      <h3>Single Visits</h3>
+      <a href="/classes.html?pack=443934">Trial Class €18</a>
+      <a href="/classes.html?pack=445630">Drop-in Class €22</a>
+    </div>
+    <div class="pricing-col hero-col">
+      <div class="pricing-badge">Most Popular</div>
+      <h3>Intro Offers</h3>
+      <a href="/classes.html?pack=443935">3 Pack €50<span class="per-class">Valid 30 days</span></a>
+      <a href="/classes.html?pack=443641">1 Week Unlimited €50<span class="per-class">Catalonia residents only</span></a>
+    </div>
+    <div class="pricing-col">
+      <h3>Class Packs</h3>
+      <a href="/classes.html?pack=443937">5 Pack €85<span class="per-class">€17 / class</span></a>
+      <a href="/classes.html?pack=443939">10 Pack €149<span class="per-class">€14.90 / class</span></a>
+    </div>
+  </div>
+</section>
+
 <footer style="border-top:1px solid rgba(240,239,233,.07)">
   <div class="ft-in">
     <div class="ft-brand">

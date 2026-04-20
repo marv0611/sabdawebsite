@@ -361,18 +361,23 @@ document.querySelectorAll('.blog-filter').forEach(btn => {
             '});});});})();</script>'
         )
 
-        # Replace the .ct fi placeholder block (single empty div between </section>
-        # hero and <nav class="tabs">). Anchor pair after redesign:
-        #   <section class="blog-hero">...</section>
-        #   (cards list — each card is a direct child, no outer wrapper)
-        #   <nav class="tabs">...
+        # Replace the cards block between </section> hero and the next
+        # downstream anchor. Anchor priority:
+        #   1. <section class="blog-intro-offers"> (preserves pricing CTA section)
+        #   2. <nav class="tabs"> (fallback if no pricing section)
+        # This way when blog-release runs, it only touches cards, leaving the
+        # downstream pricing CTA intact.
+        if '<section class="blog-intro-offers">' in ms:
+            end_anchor_re = r'(<section class="blog-intro-offers">)'
+        else:
+            end_anchor_re = r'(<nav class="tabs">)'
         pattern = re.compile(
-            r'(</section>)([\s\S]*?)(<nav class="tabs">)',
+            r'(</section>)([\s\S]*?)' + end_anchor_re,
             re.MULTILINE
         )
         mm = pattern.search(ms)
         if not mm:
-            print(f'  ⚠ {mob_path}: could not find hero/tabs anchor, skipping')
+            print(f'  ⚠ {mob_path}: could not find hero/end anchor, skipping')
             continue
         # Cards are direct children of document flow — no outer .ct wrapper
         # (that would create a flex row that stacks them horizontally).
