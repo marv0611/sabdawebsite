@@ -576,7 +576,6 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.06);positio
 })();
 document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));if(!wasOpen)item.classList.add('open');btn.setAttribute('aria-expanded',!wasOpen)})});
 </script>
-<script defer src="/cookies.js"></script>
 <script src="/cookie-consent.js"></script>
 </body>
 </html>

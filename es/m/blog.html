@@ -212,7 +212,6 @@ var mx=document.getElementById('moreX');if(mx)mx.addEventListener('click',functi
 function setLang(c){try{localStorage.setItem('sabda_lang',c)}catch(e){}document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===c)});if(c==='en'){window.location.href='/m/blog.html';return;}if(c==='es'){window.location.href='/es/m/blog.html';return;}if(c==='ca'){window.location.href='/ca/m/blog.html';return;}}
 try{var sl=localStorage.getItem('sabda_lang')||'es';document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===sl)})}catch(e){}
 </script>
-<script defer src="/cookies.js"></script>
 <script src="/cookie-consent.js"></script>
 </body>
 </html>
