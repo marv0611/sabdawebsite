@@ -146,7 +146,9 @@ def parse_frontmatter(md_content):
 
 # ─── GIT DATES ───
 def git_dates(filepath):
-    """Return (datePublished, dateModified) as YYYY-MM-DD."""
+    """Return (datePublished, dateModified) as YYYY-MM-DD.
+    Fallback used only if the slug is not in blog-release-queue.json.
+    """
     try:
         # First commit (added)
         r1 = subprocess.run(['git','log','--diff-filter=A','--format=%cs','--reverse','--',filepath],
@@ -160,6 +162,50 @@ def git_dates(filepath):
         added = modified = ''
     today = datetime.now().strftime('%Y-%m-%d')
     return (added or today, modified or today)
+
+
+# ─── RELEASE QUEUE DATES ───
+# render-blog.py MUST consult the release queue for datePublished, otherwise
+# re-renders clobber dates that blog-release.py has correctly stamped on
+# release day (root cause of the Apr 20 date-regression bug).
+_queue_cache = None
+def _load_queue():
+    global _queue_cache
+    if _queue_cache is not None:
+        return _queue_cache
+    try:
+        path = os.path.join(os.path.dirname(__file__), '..', 'blog-release-queue.json')
+        with open(path) as f:
+            data = json.load(f)
+        # Index by slug for O(1) lookup. Slugs in the queue are '/blog/foo/'.
+        _queue_cache = {a['slug']: a for a in data.get('queue', [])}
+    except Exception as e:
+        print(f'  ⚠ Could not load blog-release-queue.json: {e}')
+        _queue_cache = {}
+    return _queue_cache
+
+def _queue_dates_for_slug(slug):
+    """Return (datePublished, dateModified) from queue for a given slug, or
+    ('', '') if not in queue. Called from render_article() for every article.
+
+    Rules:
+    - status:released  → datePublished = released_at, dateModified = today
+    - status:queued    → datePublished = release_date (future), dateModified = today
+    - not in queue     → caller falls back to git_dates()
+
+    dateModified is always today — whenever we re-render, that counts as a
+    modification for schema purposes.
+    """
+    q = _load_queue()
+    a = q.get(slug)
+    if not a:
+        return ('', '')
+    today = datetime.now().strftime('%Y-%m-%d')
+    if a.get('status') == 'released' and a.get('released_at'):
+        return (a['released_at'], today)
+    if a.get('release_date'):
+        return (a['release_date'], today)
+    return ('', '')
 
 # ─── HTML ESCAPE ───
 def esc(s):
@@ -258,8 +304,19 @@ def render_html(md_path, dry_run=False):
     md = markdown.Markdown(extensions=['extra','sane_lists','attr_list'])
     body_html = md.convert(body)
     
-    # ─── Get git-derived dates ───
-    date_pub, date_mod = git_dates(md_path)
+    # ─── Get dates ───
+    # Priority:
+    #   1. blog-release-queue.json entry for this slug:
+    #      - status:released → use released_at (actual release date)
+    #      - status:queued   → use release_date (future scheduled date)
+    #   2. Fall back to git first-commit date (for articles not in queue)
+    # This prevents render-blog.py re-renders from clobbering dates that
+    # blog-release.py has correctly stamped on release day.
+    date_pub, date_mod = _queue_dates_for_slug(slug)
+    if not date_pub or not date_mod:
+        g_pub, g_mod = git_dates(md_path)
+        date_pub = date_pub or g_pub
+        date_mod = date_mod or g_mod
     
     # ─── Date formatting for article-meta line ───
     try:
