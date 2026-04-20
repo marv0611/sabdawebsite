@@ -7,6 +7,7 @@
 **Slug:** `/blog/actividades-barcelona/`
 
 **Primary keyword:** actividades barcelona
+**publish: true**
 **Secondary keywords:** actividades barcelona hoy, actividades barcelona gratis, actividades barcelona adultos, actividades barcelona este fin de semana
 
 ---
