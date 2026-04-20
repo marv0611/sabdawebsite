@@ -1,82 +1,142 @@
 [
   {
-    "date": "2026-03-23",
-    "slug": "blog/things-to-do-in-barcelona"
+    "date": "2026-04-24",
+    "slug": "blog/alquiler-sala-eventos-barcelona"
   },
   {
-    "date": "2026-03-24",
-    "slug": "blog/cosas-que-hacer-en-barcelona"
+    "date": "2026-04-27",
+    "slug": "blog/how-to-choose-yoga-style"
   },
   {
-    "date": "2026-03-26",
-    "slug": "blog/que-fer-avui-barcelona"
-  },
-  {
-    "date": "2026-03-27",
-    "slug": "blog/espectaculos-barcelona"
-  },
-  {
-    "date": "2026-03-30",
-    "slug": "blog/actividades-barcelona"
-  },
-  {
-    "date": "2026-03-31",
-    "slug": "blog/regalo-experiencia-barcelona"
-  },
-  {
-    "date": "2026-04-02",
-    "slug": "blog/planes-en-pareja-barcelona"
-  },
-  {
-    "date": "2026-04-03",
-    "slug": "blog/despedida-de-soltera-barcelona"
-  },
-  {
-    "date": "2026-04-06",
-    "slug": "blog/team-building-activities-barcelona"
-  },
-  {
-    "date": "2026-04-07",
-    "slug": "blog/actividades-para-empresas-barcelona"
-  },
-  {
-    "date": "2026-04-09",
-    "slug": "blog/planes-originales-barcelona"
-  },
-  {
-    "date": "2026-04-10",
-    "slug": "blog/ocio-barcelona"
-  },
-  {
-    "date": "2026-04-13",
-    "slug": "blog/pilates-barcelona-guia"
-  },
-  {
-    "date": "2026-04-14",
-    "slug": "blog/yoga-barcelona-guia"
-  },
-  {
-    "date": "2026-04-16",
-    "slug": "blog/what-is-sound-healing"
-  },
-  {
-    "date": "2026-04-17",
-    "slug": "blog/what-is-breathwork"
-  },
-  {
-    "date": "2026-04-20",
-    "slug": "blog/ice-bath-barcelona"
-  },
-  {
-    "date": "2026-04-21",
-    "slug": "blog/ecstatic-dance-barcelona"
-  },
-  {
-    "date": "2026-04-23",
+    "date": "2026-04-29",
     "slug": "blog/experiencias-inmersivas-barcelona"
   },
   {
-    "date": "2026-04-24",
+    "date": "2026-04-30",
     "slug": "blog/mindfulness-barcelona"
+  },
+  {
+    "date": "2026-05-04",
+    "slug": "blog/ice-bath-barcelona"
+  },
+  {
+    "date": "2026-05-08",
+    "slug": "blog/ecstatic-dance-barcelona"
+  },
+  {
+    "date": "2026-05-11",
+    "slug": "blog/que-es-el-breathwork"
+  },
+  {
+    "date": "2026-05-12",
+    "slug": "blog/activitats-originals-barcelona"
+  },
+  {
+    "date": "2026-05-13",
+    "slug": "blog/pilates-mat-vs-reformer"
+  },
+  {
+    "date": "2026-05-19",
+    "slug": "blog/ecstatic-dance-que-es"
+  },
+  {
+    "date": "2026-05-20",
+    "slug": "blog/que-es-el-sound-healing"
+  },
+  {
+    "date": "2026-05-22",
+    "slug": "blog/pilates-embarazadas-barcelona"
+  },
+  {
+    "date": "2026-05-25",
+    "slug": "blog/eventos-corporativos-barcelona"
+  },
+  {
+    "date": "2026-05-26",
+    "slug": "blog/cuencos-tibetanos"
+  },
+  {
+    "date": "2026-05-27",
+    "slug": "blog/barcelona-weekend-guide"
+  },
+  {
+    "date": "2026-05-28",
+    "slug": "blog/exposiciones-inmersivas-barcelona"
+  },
+  {
+    "date": "2026-05-29",
+    "slug": "blog/crioterapia-barcelona"
+  },
+  {
+    "date": "2026-06-01",
+    "slug": "blog/couples-activities-barcelona"
+  },
+  {
+    "date": "2026-06-02",
+    "slug": "blog/yin-yoga-barcelona"
+  },
+  {
+    "date": "2026-06-03",
+    "slug": "blog/corporate-wellness-barcelona"
+  },
+  {
+    "date": "2026-06-04",
+    "slug": "blog/hatha-yoga-vs-vinyasa"
+  },
+  {
+    "date": "2026-06-05",
+    "slug": "blog/barcelona-summer-activities"
+  },
+  {
+    "date": "2026-06-08",
+    "slug": "blog/ciencia-bienestar-inmersivo"
+  },
+  {
+    "date": "2026-06-09",
+    "slug": "blog/yoga-embarazadas-barcelona"
+  },
+  {
+    "date": "2026-06-10",
+    "slug": "blog/wellness-eixample-barcelona"
+  },
+  {
+    "date": "2026-06-11",
+    "slug": "blog/yoga-nidra-barcelona"
+  },
+  {
+    "date": "2026-06-12",
+    "slug": "blog/retiro-meditacion-barcelona"
+  },
+  {
+    "date": "2026-06-15",
+    "slug": "blog/curso-mindfulness-barcelona"
+  },
+  {
+    "date": "2026-06-16",
+    "slug": "blog/wim-hof-barcelona"
+  },
+  {
+    "date": "2026-06-17",
+    "slug": "blog/immersive-experiences-barcelona"
+  },
+  {
+    "date": "2026-06-18",
+    "slug": "blog/benestar-immersiu-barcelona"
+  },
+  {
+    "date": "2026-06-19",
+    "slug": "blog/meditacion-guiada-barcelona"
+  },
+  {
+    "date": "2026-06-22",
+    "slug": "blog/best-yoga-studios-barcelona"
+  },
+  {
+    "date": "2026-06-23",
+    "slug": "blog/best-pilates-studios-barcelona"
+  },
+  {
+    "date": "2026-06-24",
+    "slug": "blog/sala-inmersiva-barcelona"
   }
 ]
