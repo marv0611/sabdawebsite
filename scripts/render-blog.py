@@ -167,14 +167,14 @@ def esc(s):
 
 # ─── TEMPLATE ───
 NAV_LABELS = {
-    'en': {'classes':'Classes','pricing':'Pricing','hire':'Hire','events':'Events','about':'About','blog':'Blog','home':'Home','blog_home':'Blog'},
-    'es': {'classes':'Clases','pricing':'Precios','hire':'Alquiler','events':'Eventos','about':'Sobre','blog':'Blog','home':'Inicio','blog_home':'Blog'},
-    'ca': {'classes':'Classes','pricing':'Preus','hire':'Lloguer','events':'Esdeveniments','about':'Sobre','blog':'Blog','home':'Inici','blog_home':'Blog'},
+    'en': {'classes':'Classes','pricing':'Pricing','hire':'Hire','events':'Events','about':'About','blog':'Blog','home':'Home','blog_home':'Blog','book':'Book a Class'},
+    'es': {'classes':'Clases','pricing':'Precios','hire':'Alquiler','events':'Eventos','about':'Sobre','blog':'Blog','home':'Inicio','blog_home':'Blog','book':'Reservar'},
+    'ca': {'classes':'Classes','pricing':'Preus','hire':'Lloguer','events':'Esdeveniments','about':'Sobre','blog':'Blog','home':'Inici','blog_home':'Blog','book':'Reservar'},
 }
 NAV_PATHS = {
-    'en': {'classes':'/classes/','pricing':'/pricing/','hire':'/hire/','events':'/events/','about':'/about/','blog':'/blog/'},
-    'es': {'classes':'/es/clases/','pricing':'/es/precios/','hire':'/es/alquiler/','events':'/es/eventos/','about':'/es/sobre/','blog':'/blog/'},
-    'ca': {'classes':'/ca/classes/','pricing':'/ca/preus/','hire':'/ca/lloguer/','events':'/ca/esdeveniments/','about':'/ca/sobre/','blog':'/blog/'},
+    'en': {'classes':'/classes/','pricing':'/pricing/','hire':'/hire/','events':'/events/','about':'/about/','blog':'/blog/','book':'/m/schedule.html'},
+    'es': {'classes':'/es/clases/','pricing':'/es/precios/','hire':'/es/alquiler/','events':'/es/eventos/','about':'/es/sobre/','blog':'/blog/','book':'/es/m/schedule.html'},
+    'ca': {'classes':'/ca/classes/','pricing':'/ca/preus/','hire':'/ca/lloguer/','events':'/ca/esdeveniments/','about':'/ca/sobre/','blog':'/blog/','book':'/ca/m/schedule.html'},
 }
 LEGAL_PATHS = {
     'en': {'privacy':'/privacy-policy.html','terms':'/terms.html','cookies':'/cookies.html'},
@@ -409,6 +409,7 @@ a{{color:inherit;text-decoration:none}}img{{display:block;max-width:100%;height:
 nav{{display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:72px;position:fixed;top:0;left:0;right:0;z-index:100;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}}nav.scrolled{{background:rgba(14,18,53,.92);backdrop-filter:blur(18px);border-color:rgba(240,239,233,.06)}}
 .nav-logo img{{height:22px;width:auto;object-fit:contain}}.nav-links{{display:flex;gap:36px;list-style:none}}.nav-links a{{font-size:.82rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:var(--white60);transition:color .25s}}.nav-links a:hover{{color:var(--white)}}.nav-right{{display:flex;align-items:center;gap:18px}}.lang-sel{{display:flex;gap:2px;border-left:1px solid rgba(240,239,233,.08);padding-left:18px}}.lang-sel a{{padding:4px 7px;font-size:.68rem;font-weight:600;letter-spacing:.08em;color:var(--white38);border-radius:3px;transition:color .2s,background .2s}}.lang-sel a.active{{color:var(--cyan);opacity:1;background:rgba(2,243,197,.08)}}.nav-social{{display:flex;gap:14px;padding-left:14px;border-left:1px solid rgba(240,239,233,.08)}}.nav-social a{{display:flex}}.nav-social svg{{width:17px;height:17px;fill:rgba(240,239,233,.55);transition:fill .25s}}.nav-social a:hover svg{{fill:var(--white)}}
 .nav-login{{padding-left:14px;border-left:1px solid rgba(240,239,233,.08)}}.nav-login a{{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:500;color:var(--white60);transition:color .25s}}.nav-login a:hover{{color:var(--white)}}.nav-login svg{{width:14px;height:14px;fill:none;stroke:currentColor}}
+.nav-book{{padding:8px 18px;background:var(--cyan);color:var(--navy);border-radius:100px;font-size:.78rem;font-weight:700;letter-spacing:.02em;margin-left:14px;white-space:nowrap;transition:background .2s,transform .2s;box-shadow:0 2px 12px rgba(2,243,197,.2)}}.nav-book:hover{{background:#00ddb0;transform:translateY(-1px)}}
 .nav-ham{{display:none;flex-direction:column;gap:4px;padding:12px;cursor:pointer;z-index:101;background:none;border:none}}.nav-ham span{{width:20px;height:1.5px;background:var(--white);transition:transform .3s,opacity .3s}}
 .mob-menu{{position:fixed;inset:0;z-index:99;background:rgba(14,18,53,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;pointer-events:none;transition:opacity .35s}}.mob-menu.open{{opacity:1;pointer-events:auto}}.mob-menu a{{font-family:'PT Serif',serif;font-size:1.6rem;font-weight:700;color:var(--white);opacity:.85;transition:opacity .2s,color .2s}}.mob-menu a:hover{{opacity:1;color:var(--cyan)}}.mob-close{{position:absolute;top:24px;right:24px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:none;border:none}}.mob-close svg{{width:24px;height:24px;stroke:var(--white);stroke-width:2}}
 .hero-banner{{position:relative;width:100%;height:320px;overflow:hidden;margin-top:72px}}
@@ -430,12 +431,15 @@ nav{{display:flex;align-items:center;justify-content:space-between;padding:0 48p
 .article em{{font-style:italic}}
 .article blockquote{{border-left:3px solid var(--cyan);padding:16px 24px;margin:24px 0;background:rgba(2,243,197,.03);border-radius:0 8px 8px 0}}.article blockquote p{{margin:0;color:var(--white60)}}
 .article hr{{border:none;height:1px;background:rgba(240,239,233,.06);margin:48px 0}}
-.article-cta{{text-align:center;padding:48px 0;margin-top:48px;border-top:1px solid rgba(240,239,233,.06)}}
-.article-cta h3{{font-family:'PT Serif',serif;font-size:1.5rem;margin-bottom:12px}}
-.article-cta p{{color:var(--white60);margin-bottom:24px}}
-.btn-p{{display:inline-flex;align-items:center;gap:10px;background:var(--cyan);color:var(--navy);padding:14px 28px;border-radius:4px;font-size:.85rem;font-weight:700;letter-spacing:.04em;transition:background .25s,transform .25s;border-bottom:none!important}}.btn-p:hover{{background:#00ddb0;transform:translateY(-1px)}}
+.article-cta{{text-align:center;padding:56px 24px;margin-top:48px;position:relative;overflow:hidden;border-top:1px solid rgba(240,239,233,.06)}}
+.article-cta::before{{content:'';position:absolute;bottom:-40%;left:50%;transform:translateX(-50%);width:200%;height:100%;background:radial-gradient(ellipse 50% 60% at 50% 100%,rgba(2,243,197,.05) 0%,transparent 70%);pointer-events:none}}
+.article-cta h3{{font-family:'PT Serif',serif;font-size:1.6rem;margin-bottom:8px;position:relative}}
+.article-cta p{{color:var(--white60);margin-bottom:28px;font-size:.88rem;position:relative}}
+.btn-p{{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--cyan);color:var(--navy);padding:16px 36px;border-radius:100px;font-size:.88rem;font-weight:700;letter-spacing:.02em;transition:background .25s,transform .25s;border-bottom:none!important;box-shadow:0 6px 28px rgba(2,243,197,.22);position:relative;overflow:hidden}}.btn-p:hover{{background:#00ddb0;transform:translateY(-1px)}}
+.btn-p::after{{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.12) 50%,transparent 60%);transform:translateX(-100%);animation:shimmer 3s ease infinite 2s}}
+@keyframes shimmer{{0%{{transform:translateX(-100%)}}30%{{transform:translateX(100%)}}100%{{transform:translateX(100%)}}}}
 footer{{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);background:rgba(9,12,38,.6);position:relative;z-index:2}}.ft-in{{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;max-width:1140px;margin:0 auto}}.ft-brand img:first-child{{height:36px;width:auto;margin-bottom:16px;display:block;margin-right:auto}}.ft-pillars{{display:flex;gap:12px;margin-top:14px;font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,239,233,.65)}}.fp-art{{color:var(--salmon)}}.fp-tech{{color:var(--cyan)}}.fp-well{{color:var(--white)}}.ft-symbol{{width:200px!important;height:auto!important;margin-top:28px;opacity:.35;display:block;object-fit:contain;max-width:200px}}.ft-col h4{{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--white38);margin-bottom:18px;font-weight:600}}.ft-col ul{{list-style:none;margin:0;padding:0}}.ft-col li{{margin-bottom:10px}}.ft-col a{{font-size:.85rem;color:var(--white60);transition:color .2s;border-bottom:none}}.ft-col a:hover{{color:var(--white)}}.ft-bot{{display:flex;justify-content:space-between;align-items:center;margin-top:40px;padding-top:24px;border-top:1px solid rgba(240,239,233,.05);font-size:.72rem;color:rgba(240,239,233,.65)}}.ft-legal{{display:flex;gap:20px}}.ft-legal a{{color:var(--white38);transition:color .2s;border-bottom:none}}.ft-legal a:hover{{color:var(--white)}}
-@media(max-width:860px){{nav{{padding:0 24px}}.nav-links{{display:none}}.nav-social,.nav-login{{display:none}}.lang-sel a{{padding:4px 5px;font-size:.65rem}}.nav-ham{{display:flex}}.hero-banner{{height:240px;margin-top:64px}}.hero-overlay{{bottom:30px}}.breadcrumbs{{padding:0 24px;margin-top:18px;font-size:.7rem}}.article{{padding:24px 24px 72px}}footer{{padding-left:24px;padding-right:24px}}.ft-in{{grid-template-columns:1fr 1fr}}}}
+@media(max-width:860px){{nav{{padding:0 24px}}.nav-links{{display:none}}.nav-social,.nav-login{{display:none}}.lang-sel{{display:none}}.nav-right{{display:none}}.nav-ham{{display:flex}}.nav-book{{display:inline-flex;margin-left:auto;margin-right:12px}}.hero-banner{{height:240px;margin-top:64px}}.hero-overlay{{bottom:30px}}.breadcrumbs{{padding:0 24px;margin-top:18px;font-size:.7rem}}.article{{padding:24px 24px 72px}}footer{{padding-left:24px;padding-right:24px}}.ft-in{{grid-template-columns:1fr 1fr}}}}
 @media(max-width:520px){{.ft-in{{grid-template-columns:1fr}}.hero-banner{{height:200px}}.hero-overlay h1{{font-size:1.55rem}}.hero-overlay .hero-eyebrow{{font-size:.65rem;letter-spacing:.18em}}}}
 .kit-digital-bar{{display:flex;align-items:center;justify-content:center;gap:20px;padding:16px 24px;margin-top:4px}}
 .kit-digital-bar img{{height:36px;width:auto;opacity:.85}}
@@ -485,7 +489,8 @@ footer{{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgr
  <a href="https://momence.com/sign-in" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>{mob['login']}</a>
  </div>
  </div>
-<button class="nav-ham" onclick="document.getElementById('mobMenu').classList.add('open')" aria-label="Menu"><span></span><span></span><span></span></button></nav>
+<button class="nav-ham" onclick="document.getElementById('mobMenu').classList.add('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+<a href="{np['book']}" class="nav-book">{nl['book']}</a></nav>
 <div class="mob-menu" id="mobMenu"><button class="mob-close" type="button" aria-label="Close menu" onclick="this.parentElement.classList.remove('open')"><svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12"/></svg></button><a href="{np['classes']}">{nl['classes']}</a><a href="{np['pricing']}">{nl['pricing']}</a><a href="{np['hire']}">{nl['hire']}</a><a href="{np['events']}">{nl['events']}</a><a href="/blog/">{nl['blog']}</a><a href="{np['about']}">{nl['about']}</a><a href="{mnp['contact']}">{mob['contact']}</a><a href="https://momence.com/sign-in" target="_blank" rel="noopener noreferrer">{mob['login']}</a><div style="width:60px;height:1px;background:rgba(240,239,233,.12);margin:4px 0"></div><a href="{mnp['legal']}" style="font-size:.9rem;font-weight:500;opacity:.6">{mob['legal']}</a><a href="{lp['privacy']}" style="font-size:.9rem;font-weight:500;opacity:.6">{ll['privacy']}</a><a href="{lp['terms']}" style="font-size:.9rem;font-weight:500;opacity:.6">{ll['terms']}</a><a href="{lp['cookies']}" style="font-size:.9rem;font-weight:500;opacity:.6">{ll['cookies']}</a></div>
 
 <div class="hero-banner">
@@ -503,7 +508,7 @@ footer{{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgr
  <div class="article-cta">
  <h3>{cta['h']}</h3>
  <p>{cta['p']}</p>
- <a href="https://momence.com/m/443935" class="btn-p" target="_blank" rel="noopener noreferrer">{cta['b']}</a>
+ <a href="{np['book']}?buy=443935" class="btn-p">{cta['b']}</a>
  </div>
 </article>
 <footer style="border-top:1px solid rgba(240,239,233,.07)">
