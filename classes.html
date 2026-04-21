@@ -789,7 +789,8 @@ window._sabdaDiag = function(step, extra) {
     var pack = (typeof pendingPack!=='undefined' && pendingPack) ? pendingPack.id : '-';
     var emailEl = document.getElementById('bk-email');
     var emailLen = emailEl ? emailEl.value.trim().length : 0;
-    var payload = {sid:_sabdaSid, t:Date.now(), step:step, fbc:fbc?'present':'absent', fbp:fbp?'present':'absent', has_attr:attr, fbclid:fbclid, utm_source:utm_src, pack:String(pack), email_len:emailLen};
+    var device = /iPhone|iPad|iPod|Android|Mobile/i.test(navigator.userAgent) ? 'mobile' : 'desktop';
+    var payload = {sid:_sabdaSid, t:Date.now(), step:step, device:device, fbc:fbc?'present':'absent', fbp:fbp?'present':'absent', has_attr:attr, fbclid:fbclid, utm_source:utm_src, pack:String(pack), email_len:emailLen};
     if(extra) Object.keys(extra).forEach(function(k){payload[k]=extra[k];});
     navigator.sendBeacon(PROXY+'/sabda-api/diag', new Blob([JSON.stringify(payload)],{type:'application/json'}));
   } catch(e){}

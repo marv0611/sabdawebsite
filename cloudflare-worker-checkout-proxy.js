@@ -138,7 +138,7 @@ export default {
       if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: corsHeaders(reqOrigin) });
       try {
         const body = await request.json();
-        console.log('[DIAG] sid=' + (body.sid || '?') + ' t=' + (body.t || 0) + ' step=' + (body.step || '?') + ' fbc=' + (body.fbc || 'none') + ' fbp=' + (body.fbp || 'none') + ' fbclid=' + (body.fbclid || '?') + ' utm=' + (body.utm_source || '-') + ' attr=' + (body.has_attr || '?') + ' pack=' + (body.pack || '-') + ' email_len=' + (body.email_len || 0) + (body.href ? ' href=' + body.href : ''));
+        console.log('[DIAG] sid=' + (body.sid || '?') + ' t=' + (body.t || 0) + ' step=' + (body.step || '?') + ' device=' + (body.device || '?') + ' fbc=' + (body.fbc || 'none') + ' fbp=' + (body.fbp || 'none') + ' fbclid=' + (body.fbclid || '?') + ' utm=' + (body.utm_source || '-') + ' attr=' + (body.has_attr || '?') + ' pack=' + (body.pack || '-') + ' email_len=' + (body.email_len || 0) + (body.href ? ' href=' + body.href : ''));
       } catch(e) { console.log('[DIAG] parse error'); }
       return new Response('ok', { status: 200, headers: corsHeaders(reqOrigin) });
     }
