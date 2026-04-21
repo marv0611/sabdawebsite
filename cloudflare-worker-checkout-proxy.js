@@ -1960,7 +1960,7 @@ async function handleWebhookPurchase(request, origin, env, ctx) {
       fbcFromAttribution, // fbc — constructed from stored attribution
       env,
       phone,
-      '', // externalId
+      email || '', // externalId — fall back to email so webhook-path Purchases get the same external_id EMQ signal as /capi-event and /capi-purchase (both of which already do `externalId || email || ''`). sendCAPIEvent hashes this, so no PII leaks to Meta.
       '', // testEventCode
       city || '', // extracted from billing_details.address
       country || 'es', // ISO-2 from billing_details.address, fallback ES (Barcelona studio)
