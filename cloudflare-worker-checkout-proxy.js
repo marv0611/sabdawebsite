@@ -1165,11 +1165,18 @@ async function sendCAPIEvent(eventName, eventId, email, firstName, lastName, val
 //   This endpoint fires the same rich user_data block as the non-3DS path.
 async function handleCapiEvent(request, origin, env, ctx, defaultEvent, requireEmail) {
   try {
+    const reqBody = await request.json();
     const {
-      eventName, fbEventId, email, firstName, lastName, phoneNumber,
+      eventName, fbEventId, email, firstName, lastName,
       value, currency, externalId, fbp, fbc, clientUserAgent, eventSourceUrl,
       test_event_code, city, country, state, zip, attribution, contentName, contentIds, contentType,
-    } = await request.json();
+    } = reqBody;
+    // Accept both 'phoneNumber' (canonical, used by our frontend booking pages)
+    // and 'phone' (what the CAPI spec itself uses, and what external callers
+    // or test fixtures may send). Without this, a 'phone'-only payload silently
+    // drops the phone field at the destructure and ships the event to Meta
+    // with no ph match signal — confirmed on April 21 synthetic test.
+    const phoneNumber = reqBody.phoneNumber || reqBody.phone || '';
 
     // Determine the event — explicit eventName in payload wins, otherwise route default
     const effectiveEventName = eventName || defaultEvent;
