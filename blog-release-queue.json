@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-04-20",
-      "slug": "/blog/actividades-barcelona/",
-      "order": 4
+      "date": "2026-04-21",
+      "slug": "/blog/pilates-barcelona-guia/",
+      "order": 5
     }
   },
   "queue": [
@@ -75,8 +75,9 @@
       "release_date": "2026-04-21",
       "md_file": "blog/article-16-pilates-barcelona-guia.md",
       "html_file": "blog/pilates-barcelona-guia/index.html",
-      "status": "queued",
-      "volume": 3600
+      "status": "released",
+      "volume": 3600,
+      "released_at": "2026-04-21"
     },
     {
       "order": 6,
