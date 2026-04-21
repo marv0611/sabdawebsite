@@ -1827,6 +1827,13 @@ async function handleWebhookPurchase(request, origin, env, ctx) {
     let state = '';
     let zip = '';
 
+    // Stripe customer id — populated per event branch, used by customer-expand
+    // fallback below when billing_details is null (Momence Connect + Apple Pay
+    // strips the whole billing_details block, leaving only a placeholder
+    // receipt_email like "stripe-receipts@momence.com" — the real buyer lives
+    // on the linked customer record).
+    let stripeCustomerId = '';
+
     if (body.type && body.data && body.data.object) {
       // ── STRIPE WEBHOOK ──
       source = 'stripe';
@@ -1851,6 +1858,7 @@ async function handleWebhookPurchase(request, origin, env, ctx) {
         country = addr.country || '';
         state = addr.state || '';
         zip = addr.postal_code || '';
+        stripeCustomerId = (typeof obj.customer === 'string') ? obj.customer : '';
       } else if (body.type === 'payment_intent.succeeded') {
         // PaymentIntent — get billing details from the first charge
         const charges = (obj.charges && obj.charges.data) || [];
@@ -1871,6 +1879,7 @@ async function handleWebhookPurchase(request, origin, env, ctx) {
         country = addr.country || '';
         state = addr.state || '';
         zip = addr.postal_code || '';
+        stripeCustomerId = (typeof obj.customer === 'string') ? obj.customer : '';
       } else if (body.type === 'charge.succeeded') {
         const billing = obj.billing_details || {};
         email = billing.email || obj.receipt_email || '';
@@ -1888,12 +1897,75 @@ async function handleWebhookPurchase(request, origin, env, ctx) {
         country = addr.country || '';
         state = addr.state || '';
         zip = addr.postal_code || '';
+        stripeCustomerId = (typeof obj.customer === 'string') ? obj.customer : '';
       } else {
         // Unhandled Stripe event type — log and accept
         console.log('[WEBHOOK] Unhandled Stripe event type:', body.type);
         return new Response(JSON.stringify({ received: true, skipped: body.type }), {
           status: 200, headers: corsHeaders(origin),
         });
+      }
+
+      // ── CUSTOMER-EXPAND FALLBACK ──
+      // Momence runs a Stripe Connect platform; Apple Pay in their flow ships
+      // every billing_details field as null and sets receipt_email to the
+      // merchant placeholder "stripe-receipts@momence.com". Confirmed on
+      // ch_3TOakmBf6nsynAht1 (2026-04-21): billing_details.{email,name,phone,
+      // address} all null, receipt_email = stripe-receipts@momence.com,
+      // real buyer = sneazer42@hotmail.com on the linked customer record.
+      //
+      // Without the expand, every CAPI Purchase shipped em = hash of the
+      // merchant placeholder, not the real buyer. Meta cannot match that to
+      // anyone's Facebook identity → em signal is dead on every webhook.
+      //
+      // Strategy: if we have a customer id AND email is missing/placeholder,
+      // hit /v1/customers/{id} with the restricted STRIPE_API_KEY (scope:
+      // Customers:Read only) and backfill email/name/phone/address from the
+      // customer record. Falls through to whatever we had if the call fails
+      // or the key is not bound. Times out at 4s so the webhook never stalls.
+      const needsExpand = stripeCustomerId && (
+        !email ||
+        /^stripe-receipts@momence\.com$/i.test(email) ||
+        /@momence\.com$/i.test(email)
+      );
+      if (needsExpand && env && env.STRIPE_API_KEY) {
+        try {
+          const ac = new AbortController();
+          const to = setTimeout(() => ac.abort(), 4000);
+          const sRes = await fetch('https://api.stripe.com/v1/customers/' + encodeURIComponent(stripeCustomerId), {
+            method: 'GET',
+            headers: { 'Authorization': 'Bearer ' + env.STRIPE_API_KEY },
+            signal: ac.signal,
+          });
+          clearTimeout(to);
+          if (sRes.ok) {
+            const cust = await sRes.json();
+            const origEmail = email;
+            if (cust.email) email = cust.email;
+            if (cust.name && !firstName && !lastName) {
+              const parts = String(cust.name).split(/\s+/);
+              firstName = parts[0] || '';
+              lastName = parts.slice(1).join(' ') || '';
+            }
+            if (cust.phone && !phone) phone = cust.phone;
+            const caddr = cust.address || {};
+            if (!city && caddr.city) city = caddr.city;
+            if (!country && caddr.country) country = caddr.country;
+            if (!state && caddr.state) state = caddr.state;
+            if (!zip && caddr.postal_code) zip = caddr.postal_code;
+            console.log('[WEBHOOK] customer-expand OK cust=' + stripeCustomerId.slice(0, 12) +
+              ' email_replaced=' + (origEmail !== email ? 'yes' : 'no') +
+              ' name=' + (firstName ? 'yes' : 'no') +
+              ' phone=' + (phone ? 'yes' : 'no') +
+              ' addr_city=' + (city ? 'yes' : 'no'));
+          } else {
+            console.log('[WEBHOOK] customer-expand non-2xx status=' + sRes.status + ' cust=' + stripeCustomerId.slice(0, 12));
+          }
+        } catch (e) {
+          console.log('[WEBHOOK] customer-expand error: ' + (e && e.message ? e.message : 'unknown') + ' cust=' + stripeCustomerId.slice(0, 12));
+        }
+      } else if (needsExpand && !(env && env.STRIPE_API_KEY)) {
+        console.log('[WEBHOOK] customer-expand SKIPPED — STRIPE_API_KEY not bound, using placeholder email');
       }
 
       console.log('[WEBHOOK] Stripe ' + body.type + ' email=' + (email ? email.slice(0, 3) + '***' : 'NONE') + ' amount=' + amount + ' txn=' + (transactionId || '-').slice(0, 20));
