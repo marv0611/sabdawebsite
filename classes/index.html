@@ -774,6 +774,33 @@ window._fbCapiSend = function(eventName, fbEventId, payload) {
 var allE=[],selDate=null,actF='All',actTeacher='All';
 var curSession=null, curUser=null, curMembership=null, curSessionToken=null;
 
+// ── DIAGNOSTIC: checkout funnel visibility ──
+// Fires lightweight beacons to /sabda-api/diag at each step.
+// Shows up in Cloudflare worker logs as [DIAG] step=... sid=... fbc=... fbp=...
+// Ported from m/schedule.html so desktop traffic is visible in the same funnel.
+var _sabdaSid = Date.now().toString(36) + Math.random().toString(36).substr(2,5);
+window._sabdaDiag = function(step, extra) {
+  try {
+    var fbc = (typeof _fbGetCookie==='function' ? _fbGetCookie('_fbc') : '') || '';
+    var fbp = (typeof _fbGetCookie==='function' ? _fbGetCookie('_fbp') : '') || '';
+    var attrObj = (typeof _sabdaGetAttribution==='function') ? _sabdaGetAttribution() : null;
+    var attr = attrObj ? 'yes' : 'no';
+    var fbclid = (attrObj && attrObj.fbclid) ? 'yes' : 'no';
+    var utm_src = (attrObj && attrObj.utm_source) ? attrObj.utm_source : '-';
+    var pack = (typeof pendingPack!=='undefined' && pendingPack) ? pendingPack.id : '-';
+    var emailEl = document.getElementById('bk-email');
+    var emailLen = emailEl ? emailEl.value.trim().length : 0;
+    var payload = {sid:_sabdaSid, t:Date.now(), step:step, fbc:fbc?'present':'absent', fbp:fbp?'present':'absent', has_attr:attr, fbclid:fbclid, utm_source:utm_src, pack:String(pack), email_len:emailLen};
+    if(extra) Object.keys(extra).forEach(function(k){payload[k]=extra[k];});
+    navigator.sendBeacon(PROXY+'/sabda-api/diag', new Blob([JSON.stringify(payload)],{type:'application/json'}));
+  } catch(e){}
+};
+// Fire on page load
+try{setTimeout(function(){window._sabdaDiag('page_load');},2000);}catch(e){}
+// Global momence fallback click tracker — fires when a user bails to momence.com
+try{document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a');if(a&&a.href&&a.href.indexOf('momence.com')>-1){try{window._sabdaDiag('momence_click',{href:a.href.slice(0,80)});}catch(e){}}},true);}catch(e){}
+
+
 var isProcessing=false;
 
 // ── META PIXEL EVENT HELPERS ──
@@ -1141,6 +1168,7 @@ function openMo(sessionId){
     showNoMembership();
   }
   document.getElementById('mo').classList.add('open');
+  try{window._sabdaDiag('modal_open');}catch(e){}
   document.getElementById('mo').style.display='flex';
   document.body.style.overflow='hidden';
   history.pushState({modal:true},'');
@@ -1222,6 +1250,15 @@ function showGuestStep(){stepChange();
     +'<button class="bk-primary" id="bk-guest-btn" onclick="doGuestCheck()">'+(pendingPack?'Confirm booking':'Continue')+'</button>'
     +'<div class="bk-link" onclick="pendingPack=null;showNoMembership()">\u2190 Change selection</div>'
     +'</div>';
+  try{window._sabdaDiag('form_render');}catch(e){}
+  // Diagnostic: track email field interactions
+  try{
+    var _dEmail=document.getElementById('bk-email');
+    if(_dEmail){
+      _dEmail.addEventListener('focus',function(){try{window._sabdaDiag('email_focus');}catch(e){}},{once:true});
+      _dEmail.addEventListener('blur',function(){try{window._sabdaDiag('email_blur',{email_len:(_dEmail.value||'').trim().length});}catch(e){}},{once:true});
+    }
+  }catch(e){}
   document.getElementById('bk-fn').focus();
   // Mount card immediately for pack checkout (don't wait for email check)
   if(pendingPack){mountCardForGuest();}
@@ -1323,6 +1360,7 @@ window.doMfaVerify=function(){if(isProcessing)return;
 
 // ── GUEST CHECK (email detection) ──
 window.doGuestCheck=function(){
+  try{window._sabdaDiag('form_submit');}catch(e){}
   var fnEl=document.getElementById('bk-fn');
   var lnEl=document.getElementById('bk-ln');
   var emailEl=document.getElementById('bk-email');
@@ -2198,6 +2236,7 @@ var PACK_MAP={
     try{ var __pid=String(p.id||''); if(__pid==='443934'||__pid==='443935'){ var __pl={value:Number(p.price)||0,currency:'EUR',content_name:String(p.name||''),content_ids:[__pid],content_type:'product'}; var __vcEid='vc_'+Date.now()+'_'+Math.random().toString(36).substr(2,9); var __atcEid='atc_'+Date.now()+'_'+Math.random().toString(36).substr(2,9); var __icEid=_fbInitIcEventId(); /* CAPI first - fires independent of fbq so IAB/Pixel failures never block server-side tracking */ try{window._fbCapiSend('ViewContent',__vcEid,__pl);}catch(e){} try{window._fbCapiSend('AddToCart',__atcEid,__pl);}catch(e){} try{window._fbCapiSend('InitiateCheckout',__icEid,__pl);}catch(e){} /* Pixel second - _sabdaTrack self-guards on undefined fbq (safe when fbevents.js is blocked by IAB) */ try{_sabdaTrack('ViewContent',__pl,__vcEid);}catch(e){} try{_sabdaTrack('AddToCart',__pl,__atcEid);}catch(e){} try{_sabdaTrack('InitiateCheckout',__pl,__icEid);}catch(e){} } }catch(e){}
     showGuestStep();
     document.getElementById('mo').classList.add('open');
+    try{window._sabdaDiag('modal_open',{from:'pack_auto_open'});}catch(e){}
     document.getElementById('mo').style.display='flex';
     document.body.style.overflow='hidden';
     autoOpenedFromPack=true;
