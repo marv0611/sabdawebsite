@@ -142,6 +142,21 @@ export default {
       } catch(e) { console.log('[DIAG] parse error'); }
       return new Response('ok', { status: 200, headers: corsHeaders(reqOrigin) });
     }
+    // ── ATTR-WRITE TELEMETRY: silent-bail diagnostics for _sabdaStoreAttribution ──
+    // Frontend fires beacons here from each branch of the writer + each call site
+    // so we can finally tell whether attribution failures are curUser-not-set
+    // (call never reached the writer) or _sabdaGetAttribution()-returns-null
+    // (call reached writer but bailed at the attr check).
+    if (url.pathname === '/sabda-api/attr-trace') {
+      if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers: corsHeaders(reqOrigin) });
+      try {
+        const body = await request.json();
+        const marker = String(body.marker || 'UNKNOWN').toUpperCase();
+        const fields = Object.keys(body).filter(k => k !== 'marker').map(k => k + '=' + String(body[k]).slice(0,80)).join(' ');
+        console.log('[ATTR-WRITE-' + marker + '] ' + fields);
+      } catch(e) { console.log('[ATTR-WRITE] parse error'); }
+      return new Response('ok', { status: 200, headers: corsHeaders(reqOrigin) });
+    }
     // ── DIAGNOSTIC: report whether CAPI_ACCESS_TOKEN is configured ──
     // Returns boolean only, never the value. Lets us verify the secret is
     // live with a single curl, without waiting for a real Purchase to surface
