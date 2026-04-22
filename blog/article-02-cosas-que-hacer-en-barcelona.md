@@ -77,8 +77,6 @@ Si estás en Barcelona entre febrero y abril, la calcotada es obligatoria. Calç
 
 ---
 
-<a id="planes-gratis"></a>
-
 ## Planes gratis en Barcelona {#planes-gratis}
 
 Barcelona es cara si dejas que te la vendan, y muy asequible si sabes dónde mirar. Estos son los mejores planes que no cuestan absolutamente nada, complementarios a los 20 de arriba.
@@ -115,8 +113,6 @@ El Raval de noche tiene una energía que ningún otro barrio de Barcelona replic
 
 
 ---
-
-<a id="planes-lluvia"></a>
 
 ## Planes para días de lluvia {#planes-lluvia}
 
