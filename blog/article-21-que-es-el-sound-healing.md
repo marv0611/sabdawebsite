@@ -11,7 +11,7 @@
 
 ---
 
-Has oído hablar de "sound healing" o "baño de sonido" y tienes una de dos reacciones: curiosidad o la sospecha de que involucra cristales y alguien llamada Luna. Ambas son razonables. Pero la terapia de sonido es más simple y más interesante de lo que las peores versiones sugieren.
+Has oído hablar de "sound healing" o "baño de sonido" y tienes una de dos reacciones: curiosidad o la sospecha de que involucra cristales y alguien llamada Luna. Ambas son razonables. Pero la terapia de sonido es más simple y más interesante de lo que las peores versiones sugieren. Y si buscas sound healing en Barcelona, las opciones han crecido mucho en los últimos años.
 
 Aquí va lo que realmente es, qué pasa en una sesión, y por qué el espacio donde lo haces importa más de lo que piensas.
 
