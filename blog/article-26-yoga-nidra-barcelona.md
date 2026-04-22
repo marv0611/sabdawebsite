@@ -11,7 +11,7 @@
 
 ---
 
-Yoga nidra es la práctica de wellness más infravalorada que existe. Te tumbas, cierras los ojos, y alguien te guía por un recorrido de relajación progresiva durante 30-45 minutos. No hay movimiento. No hay esfuerzo. Y sin embargo, es una de las técnicas más potentes para el estrés, el insomnio, y el agotamiento que la ciencia ha podido medir.
+Yoga nidra es la práctica de wellness más infravalorada que existe. Te tumbas, cierras los ojos, y alguien te guía por un recorrido de relajación progresiva durante 30-45 minutos. No hay movimiento. No hay esfuerzo. Y sin embargo, es una de las técnicas más potentes para el estrés, el insomnio, y el agotamiento que [la ciencia ha podido medir](https://pubmed.ncbi.nlm.nih.gov/28437149/).
 
 El nombre significa "yoga del sueño." No duermes, pero llegas al borde.
 

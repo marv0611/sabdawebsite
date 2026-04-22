@@ -2,7 +2,7 @@
 
 **Última actualización: abril 2026**
 
-**Meta description:** Los mejores planes de ocio permanentes en Barcelona: mercados, miradores, wellness inmersivo, música y experiencias que funcionan cualquier día.
+**Meta description:** Los mejores planes de ocio permanentes en [Barcelona](https://www.barcelonaturisme.com/): mercados, miradores, wellness inmersivo, música y experiencias que funcionan cualquier día.
 
 **Slug:** `/blog/ocio-barcelona/`
 

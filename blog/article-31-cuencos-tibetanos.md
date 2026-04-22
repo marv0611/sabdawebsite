@@ -11,7 +11,7 @@
 
 ---
 
-Los cuencos tibetanos son el instrumento más asociado con el sound healing. Si los has visto en Instagram, probablemente ha sido con una vela al lado y un filtro cálido. La realidad es más interesante que la estética. Los cuencos producen sonido con propiedades físicas medibles que afectan al sistema nervioso de formas que la ciencia está empezando a mapear.
+Los cuencos tibetanos son el instrumento más asociado con el sound healing. Si los has visto en Instagram, probablemente ha sido con una vela al lado y un filtro cálido. La realidad es más interesante que la estética. Los cuencos producen sonido con propiedades físicas medibles que afectan al sistema nervioso de formas que [la ciencia está empezando a mapear](https://pubmed.ncbi.nlm.nih.gov/27694559/).
 
 Aquí va lo que realmente son, cómo funcionan, y por qué escucharlos en una sala con audio espacial Dolby Atmos es una experiencia radicalmente diferente.
 

@@ -31,7 +31,7 @@ Si buscas hatha yoga barcelona, esta guía cubre lo que realmente importa. Hatha
 **Intensidad:** Moderada. Trabajas fuerza isométrica (mantener) más que cardio.
 **Mejor para:** Principiantes (te da tiempo para entender la mecánica), gente que quiere profundidad técnica, personas con lesiones que necesitan tiempo para ajustar.
 
-El hatha yoga en Barcelona se enseña en prácticamente todos los estudios. En [SABDA](https://sabdastudio.com/classes/yoga/), las clases de Hatha Vinyasa combinan la precisión del hatha con transiciones suaves entre posturas, todo dentro de la sala inmersiva de 360°.
+El hatha yoga en Barcelona se enseña en prácticamente todos los estudios. En [SABDA](https://sabdastudio.com/classes/yoga/), las clases de Hatha Vinyasa combinan la [precisión del hatha](https://pubmed.ncbi.nlm.nih.gov/29697885/) con transiciones suaves entre posturas, todo dentro de la sala inmersiva de 360°.
 
 ---
 

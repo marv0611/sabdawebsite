@@ -11,7 +11,7 @@
 
 ---
 
-Si alguien te dice que el yin yoga es "yoga suave," no te está mintiendo del todo, pero se está dejando la parte importante. Sí, te mueves despacio. Sí, no sudas. Pero mantener una postura durante 3-5 minutos sin moverte es su propio tipo de intensidad. Una que no tiene nada que ver con los músculos y todo que ver con la paciencia.
+Si alguien te dice que el yin yoga es "yoga suave," no te está mintiendo del todo, pero se está dejando la parte importante. Sí, te mueves despacio. Sí, no sudas. Pero mantener una postura durante 3-5 minutos sin moverte es [su propio tipo de intensidad](https://pubmed.ncbi.nlm.nih.gov/28437149/). Una que no tiene nada que ver con los músculos y todo que ver con la paciencia.
 
 ---
 

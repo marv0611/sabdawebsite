@@ -31,7 +31,7 @@ Nadie disfruta los primeros 10 segundos. Todo el mundo disfruta los siguientes 3
 
 **Liberación de norepinefrina.** La inmersión en agua fría por debajo de 10°C produce un pico del 200-300% en norepinefrina, un neurotransmisor ligado a atención, enfoque y estado de ánimo.
 
-**Reducción de inflamación.** El frío contrae los vasos sanguíneos y reduce el flujo de sangre a extremidades, reduciendo la inflamación localizada. Los atletas lo usan desde hace décadas.
+**Reducción de inflamación.** El frío [contrae los vasos sanguíneos](https://pubmed.ncbi.nlm.nih.gov/39879231/) y reduce el flujo de sangre a extremidades, reduciendo la inflamación localizada. Los atletas lo usan desde hace décadas.
 
 **Mejora del tono vagal.** La exposición regular al frío parece mejorar la variabilidad de la frecuencia cardíaca (HRV) y la función del sistema nervioso parasimpático a largo plazo.
 

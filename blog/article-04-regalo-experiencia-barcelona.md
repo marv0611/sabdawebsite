@@ -2,7 +2,7 @@
 
 **Última actualización: abril 2026**
 
-**Meta description:** Regalos originales y experiencias para regalar en Barcelona: wellness inmersivo, gastronomía, aventura, arte. Tarjetas regalo SABDA desde €50.
+**Meta description:** Regalos originales y experiencias para regalar en [Barcelona](https://www.barcelonaturisme.com/): wellness inmersivo, gastronomía, aventura, arte. Tarjetas regalo SABDA desde €50.
 
 **Slug:** `/blog/regalo-experiencia-barcelona/`
 

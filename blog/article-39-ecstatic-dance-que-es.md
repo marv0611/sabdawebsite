@@ -57,7 +57,7 @@ Sales sudado, ligeramente aturdido, y extrañamente energizado. Las endorfinas d
 
 En un espacio estándar, la música viene de altavoces en dos lados. En SABDA, el sonido se mueve a tu alrededor, orbita, cambia, sube desde el suelo, cae desde el techo. Los graves vibran a través de la sala. La música se vuelve tridimensional.
 
-Las proyecciones 360° responden a la energía de la sesión. Durante la apertura lenta, los visuals son gentiles. Cuando la música construye, las proyecciones se intensifican. En el pico, estás bailando dentro de un mundo de luz y sonido que te envuelve desde todas las direcciones.
+Las proyecciones 360° [responden a la energía](https://pubmed.ncbi.nlm.nih.gov/30924435/) de la sesión. Durante la apertura lenta, los visuals son gentiles. Cuando la música construye, las proyecciones se intensifican. En el pico, estás bailando dentro de un mundo de luz y sonido que te envuelve desde todas las direcciones.
 
 ---
 

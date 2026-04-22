@@ -11,7 +11,7 @@
 
 ---
 
-El pilates es una de las actividades más recomendadas durante el embarazo, y con razón. Fortalece el suelo pélvico (fundamental para el parto y la recuperación), mejora la postura (que el peso del bebé está destruyendo), trabaja el core profundo (transverso abdominal, no los abdominales superficiales), y enseña el control de la respiración que necesitarás durante el parto.
+El pilates es una de las [actividades más recomendadas durante el embarazo](https://pubmed.ncbi.nlm.nih.gov/35722759/), y con razón. Fortalece el suelo pélvico (fundamental para el parto y la recuperación), mejora la postura (que el peso del bebé está destruyendo), trabaja el core profundo (transverso abdominal, no los abdominales superficiales), y enseña el control de la respiración que necesitarás durante el parto.
 
 Pero "pilates" es un término amplio, y no todas las clases son iguales cuando hay un bebé de por medio.
 

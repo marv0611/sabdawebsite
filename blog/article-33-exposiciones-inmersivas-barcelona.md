@@ -2,7 +2,7 @@
 
 **Última actualización: marzo 2026**
 
-**Meta description:** Las mejores exposiciones inmersivas en Barcelona: IDEAL, SABDA, Moco Museum y más. Cuáles valen la entrada y cuáles puedes saltar. (131 chars)
+**Meta description:** Las mejores exposiciones inmersivas en [Barcelona](https://www.barcelonaturisme.com/): IDEAL, SABDA, Moco Museum y más. Cuáles valen la entrada y cuáles puedes saltar. (131 chars)
 
 **Slug:** `/blog/exposiciones-inmersivas-barcelona/`
 

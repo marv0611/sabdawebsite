@@ -2,7 +2,7 @@
 
 **Última actualización: marzo 2026**
 
-**Meta description:** Yoga prenatal en Barcelona: qué estilos son seguros, qué evitar en cada trimestre, y los mejores estudios con clases adaptadas. (129 chars)
+**Meta description:** Yoga prenatal en Barcelona: [qué estilos son seguros](https://pubmed.ncbi.nlm.nih.gov/22502620/), qué evitar en cada trimestre, y los mejores estudios con clases adaptadas. (129 chars)
 
 **Slug:** `/blog/yoga-embarazadas-barcelona/`
 

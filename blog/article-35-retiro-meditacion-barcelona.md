@@ -11,7 +11,7 @@
 
 ---
 
-No necesitas irte a Bali para hacer un retiro de meditación. Barcelona y sus alrededores tienen opciones que van desde fines de semana rurales completos hasta "mini retiros urbanos" de 60 minutos que encajan en un martes cualquiera.
+No necesitas irte a Bali para hacer un [retiro de meditación](https://pmc.ncbi.nlm.nih.gov/articles/PMC4109098/). Barcelona y sus alrededores tienen opciones que van desde fines de semana rurales completos hasta "mini retiros urbanos" de 60 minutos que encajan en un martes cualquiera.
 
 ---
 

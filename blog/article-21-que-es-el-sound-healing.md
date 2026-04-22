@@ -19,7 +19,7 @@ Aquí va lo que realmente es, qué pasa en una sesión, y por qué el espacio do
 
 ## Qué es el sound healing (sin misticismo)
 
-El sound healing. O terapia de sonido. Es una práctica donde instrumentos acústicos (cuencos tibetanos, cuencos de cristal, gongs, diapasones, campanas) se tocan de una forma diseñada para cambiar el estado de tu sistema nervioso. Te tumbas, cierras los ojos, y el sonido hace el trabajo. No hay meditación guiada que seguir. No hay mantras. No hay afirmaciones. Solo escuchas.
+El sound healing. O terapia de sonido. Es una práctica donde instrumentos acústicos (cuencos tibetanos, cuencos de cristal, gongs, diapasones, campanas) se tocan de una forma diseñada para cambiar el estado de tu [sistema nervioso](https://pubmed.ncbi.nlm.nih.gov/32507429/). Te tumbas, cierras los ojos, y el sonido hace el trabajo. No hay meditación guiada que seguir. No hay mantras. No hay afirmaciones. Solo escuchas.
 
 Los instrumentos producen tonos sostenidos y armónicos que se superponen, creando patrones de interferencia. Texturas sonoras que tu cerebro no puede predecir ni organizar. Esa impredecibilidad es el punto. Tu cerebro deja de intentar clasificar lo que escucha y se relaja.
 

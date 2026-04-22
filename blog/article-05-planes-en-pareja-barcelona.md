@@ -2,7 +2,7 @@
 
 **Última actualización: marzo 2026**
 
-**Meta description:** Planes originales para parejas en Barcelona. Sonido inmersivo, yoga con proyecciones 360°, azoteas secretas, vermouth y más experiencias para dos. (153 chars)
+**Meta description:** Planes originales para parejas en [Barcelona](https://www.barcelonaturisme.com/). Sonido inmersivo, yoga con proyecciones 360°, azoteas secretas, vermouth y más experiencias para dos. (153 chars)
 
 **Slug:** `/blog/planes-en-pareja-barcelona/`
 

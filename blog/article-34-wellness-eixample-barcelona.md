@@ -11,7 +11,7 @@
 
 ---
 
-El Eixample tiene la mayor concentración de opciones de wellness de Barcelona. En un radio de 15 minutos a pie puedes encontrar yoga inmersivo, pilates reformer, gymnasios con piscina, sound healing con Dolby Atmos, y vermuterías para recuperarte después. Esta guía mapea todo lo que merece la pena.
+El Eixample tiene la mayor concentración de opciones de [wellness](https://pubmed.ncbi.nlm.nih.gov/28437149/) de Barcelona. En un radio de 15 minutos a pie puedes encontrar yoga inmersivo, pilates reformer, gymnasios con piscina, sound healing con Dolby Atmos, y vermuterías para recuperarte después. Esta guía mapea todo lo que merece la pena.
 
 ---
 

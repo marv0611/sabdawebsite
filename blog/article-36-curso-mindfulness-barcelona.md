@@ -63,7 +63,7 @@ Varias organizaciones ofrecen programas de mindfulness corporativo: sesiones sem
 
 ## Cuál elegir
 
-**Quieres resultados medibles:** MBSR de 8 semanas. Es el formato con más evidencia científica.
+**Quieres resultados medibles:** MBSR de 8 semanas. Es el formato con más [evidencia científica](https://pmc.ncbi.nlm.nih.gov/articles/PMC4109098/).
 **Quieres probar sin compromiso:** Clase drop-in en SABDA o Kadampa.
 **Quieres algo para tu equipo:** Wellness corporativo en SABDA.
 **Quieres profundizar periódicamente:** Talleres intensivos de un día.

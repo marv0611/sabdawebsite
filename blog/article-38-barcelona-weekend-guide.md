@@ -2,7 +2,7 @@
 
 **Last updated: April 2026**
 
-**Meta description:** 48 hours in Barcelona done right: what to do Saturday and Sunday, where to eat, and the immersive experience most visitors miss.
+**Meta description:** 48 hours in [Barcelona](https://www.barcelonaturisme.com/) done right: what to do Saturday and Sunday, where to eat, and the immersive experience most visitors miss.
 
 **Slug:** `/blog/barcelona-weekend-guide/`
 
