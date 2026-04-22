@@ -33,7 +33,7 @@ La mayoría de sesiones en estudios como [SABDA](https://sabdastudio.com/classes
 
 ## La ciencia
 
-Si buscas breathwork barcelona, esta guía cubre lo que realmente importa. El mecanismo central es el nervio vago. El nervio craneal más largo, que controla la respuesta de descanso y digestión. Las exhalaciones extendidas estimulan el nervio vago directamente. Esto es medible: la variabilidad de la frecuencia cardíaca (HRV) aumenta, el cortisol baja, la presión arterial se estabiliza.
+Si buscas breathwork barcelona, esta guía cubre lo que realmente importa. El mecanismo central es el [nervio vago](https://pubmed.ncbi.nlm.nih.gov/28963884/). El nervio craneal más largo, que controla la respuesta de descanso y digestión. Las exhalaciones extendidas estimulan el nervio vago directamente. Esto es medible: la variabilidad de la frecuencia cardíaca (HRV) aumenta, el cortisol baja, la presión arterial se estabiliza.
 
 Para el breathwork activante, el mecanismo es diferente. La respiración rápida altera los niveles de CO2 en sangre. Cuando el CO2 baja, el pH sanguíneo sube (alcalosis respiratoria), lo que puede causar hormigueo, cambios de temperatura, y cambios en la percepción. No es peligroso para personas sanas. Es un estado bioquímico temporal que se resuelve en cuanto vuelves a respirar normalmente.
 

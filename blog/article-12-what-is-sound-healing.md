@@ -31,7 +31,7 @@ A session typically lasts 60 minutes. You lie on a mat with a blanket. Most peop
 
 If you're looking for sound healing barcelona, this guide covers what actually matters. Sound healing isn't fully mapped by research yet, but what exists is interesting:
 
-Certain frequencies and rhythmic patterns measurably affect brainwave activity. A 2020 study in the Journal of Evidence-Based Integrative Medicine found that singing bowl sessions produced significant reductions in tension, anger, fatigue, and depressed mood. Participants' heart rate variability. A marker of parasympathetic nervous system activation, improved during sessions.
+Certain frequencies and rhythmic patterns measurably affect brainwave activity. A [2017 study published in the Journal of Evidence-Based Integrative Medicine](https://pubmed.ncbi.nlm.nih.gov/27694559/) found that singing bowl sessions produced significant reductions in tension, anger, fatigue, and depressed mood. Participants' heart rate variability. A marker of parasympathetic nervous system activation, improved during sessions.
 
 The mechanism isn't magic. Low-frequency vibrations stimulate the vagus nerve, which runs from the brainstem to the abdomen and controls the body's rest-and-digest response. When the vagus nerve is activated, cortisol drops, heart rate slows, and your body shifts out of fight-or-flight.
 
