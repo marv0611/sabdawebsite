@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-04-21",
-      "slug": "/blog/pilates-barcelona-guia/",
-      "order": 5
+      "date": "2026-04-22",
+      "slug": "/blog/que-fer-avui-barcelona/",
+      "order": 6
     }
   },
   "queue": [
@@ -88,8 +88,9 @@
       "release_date": "2026-04-22",
       "md_file": "blog/article-03-que-fer-avui-barcelona.md",
       "html_file": "blog/que-fer-avui-barcelona/index.html",
-      "status": "queued",
-      "volume": 1900
+      "status": "released",
+      "volume": 1900,
+      "released_at": "2026-04-22"
     },
     {
       "order": 7,
