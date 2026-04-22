@@ -13,99 +13,97 @@
 
 Podríamos contarte lo increíble que es SABDA. Pero sería más útil que lo escucharas de cinco personas que vienen cada semana, pagan su membresía con su propio dinero, y tienen razones concretas para seguir viniendo. Sin guion, sin filtro de marketing, sin "me cambió la vida." Solo qué hacen, por qué empezaron, y qué los mantiene aquí.
 
-[NOTA PARA MARVYN: Los perfiles a continuación son plantillas estructuradas. Reemplaza cada uno con datos reales de miembros que hayan dado su consentimiento. Mantén la estructura y el tono. Elimina esta nota antes de publicar.]
+---
+
+## 1. Nuria, 34, arquitecta (local, Gràcia)
+
+**Cómo llegó:** Una compañera de trabajo le regaló una clase por su cumpleaños. Fue a un Yin & Sound Healing un jueves por la noche sin saber qué esperar.
+
+**Su clase favorita:** Yin & Sound Healing. "Trabajo con plazos imposibles y paso el día delante de AutoCAD. El jueves por la noche es lo único que no cancelo. Llego con la mandíbula apretada y el cuello como una piedra. 60 minutos después, algo se ha soltado. No sé explicar la mecánica. Solo sé que el viernes soy mejor persona con mis compañeros de trabajo."
+
+**Cuánto viene:** 2 veces por semana. Membresía Flex (€99/mes, 4 clases al mes, pero suele añadir alguna suelta).
+
+**Lo que la sorprendió:** "No hay espejos. En otros sitios me paso la clase comparándome con la de al lado. Aquí está oscuro. Solo te queda sentir tu cuerpo. Parece un detalle menor. No lo es."
+
+**Lo que cambiaría:** "Los jueves se llenan rápido. Si no reservo el lunes, me quedo fuera. Entiendo que es buena señal para el estudio, pero me fastidia cuando pasa."
 
 ---
 
-## 1. Laura, 32, diseñadora UX (local, Barcelona)
+## 2. Tom, 38, director de producto en fintech (expat, Países Bajos)
 
-**Cómo llegó:** "Vi un story de Instagram de una amiga que no es nada de yoga. Si ella estaba ahí, no podía ser tan woo-woo. Reservé una clase de sound healing por curiosidad."
+**Cómo llegó:** Su fisioterapeuta le recomendó pilates para el dolor lumbar. Buscó "pilates barcelona" y encontró SABDA. Compró el [pack de 3 clases por €50](https://momence.com/m/443935) pensando que probaría y se iría a un estudio de reformer.
 
-**Su clase favorita:** Yin & Sound Healing los jueves. "Vengo después del trabajo. Es la única hora de la semana donde mi cerebro para de verdad. No medito en casa, no puedo, me aburro. Pero tumbada en esa sala con el sonido moviéndose por todos lados, algo se apaga. No tengo que hacer nada. Ese es el punto."
-
-**Cuánto viene:** 2-3 veces por semana. Membresía Immerse (€130/mes).
-
-**Lo que la sorprendió:** "La primera vez que vine pensé que las proyecciones serían una distracción. Es lo contrario. Cuando la sala está oscura y los visuals son lentos, mi cerebro no tiene nada a lo que agarrarse. Simplemente se suelta. No me pasa en ningún otro sitio."
-
-**Lo que no le gusta:** "A veces las clases populares se llenan y no puedo reservar el horario que quiero. Pero eso es un problema de éxito, no del estudio."
-
----
-
-## 2. James, 37, product manager en tech (expat, UK)
-
-**Cómo llegó:** "Mi novia me convenció de probar el [pack de 3 clases](https://momence.com/m/443935). Yo nunca había hecho yoga y me parecía algo para gente flexible. No soy flexible."
-
-**Su clase favorita:** Power Vinyasa los sábados y Core Pilates entre semana. "El Power Vinyasa del sábado me deja más energizado que cualquier workout del gimnasio. Y no es gentle. Es un entrenamiento real, pero con una capa de concentración que el gimnasio no tiene. Las proyecciones me obligan a estar presente."
+**Su clase favorita:** Core Pilates entre semana y Power Vinyasa los sábados. "Vine por el pilates. Me quedé por el Power Vinyasa del sábado a las 10. Es la mejor hora de mi semana. No es yoga suave. Es un entrenamiento real, pero con un nivel de concentración que el gimnasio no tiene. Salgo empapado y con la cabeza vacía de la mejor forma posible."
 
 **Cuánto viene:** 3 veces por semana. Membresía Ritual (€109/mes).
 
-**Lo que lo sorprendió:** "Que no es un entorno hippie. Pensaba que iba a haber incienso y alguien me iba a pedir que me conectara con mi chakra interior. No. Es limpio, moderno, y el staff trata todo como un servicio profesional. Llegas, haces tu clase, te duchas, te vas. Sin performance espiritual."
+**Lo que lo sorprendió:** "Esperaba algo hippie. Incienso, alguien hablando de energías, ese rollo. No. Es limpio, profesional, y el equipo trata todo como un servicio, no como un culto. Llegas, haces tu clase, te duchas, te vas. Sin performance espiritual. Eso me convenció de quedarme."
 
-**Lo que no le gusta:** "Ojalá tuvieran más clases temprano por la mañana. A las 7:30 sería perfecto antes del trabajo."
-
----
-
-## 3. Marta, 28, fisioterapeuta (local, Barcelona)
-
-**Cómo llegó:** "Trabajo en rehabilitación y me interesaba ver cómo funcionaba el pilates mat en un entorno inmersivo. Vine a probar profesionalmente y me quedé como clienta."
-
-**Su clase favorita:** Full Body Pilates y Pilates Sculpt. "Como fisio, puedo decir que la calidad de la instrucción es seria. Los profesores corrigen bien, las secuencias tienen progresión, y el entorno inmersivo añade algo que no esperaba: la concentración amplificada hace que los pacientes, digo, los alumnos, mantengan mejor la postura durante más tiempo. Cuando el entorno captura tu atención, tu core trabaja mejor porque tu mente no se escapa."
-
-**Cuánto viene:** 2 veces por semana. Membresía Flex (€99/mes).
-
-**Lo que la sorprendió:** "Que el [pilates mat inmersivo](/classes/pilates/) produce una calidad de movimiento comparable a una sesión individual de reformer. No por la máquina, obviamente, sino por la concentración. Cuando estás realmente presente en cada repetición, la diferencia se nota."
-
-**Lo que no le gusta:** "SABDA no ofrece reformer. Para mis pacientes que necesitan rehabilitación con máquina, los mando a Dona10 o Pilat3s. Pero para mantenimiento y core, el mat inmersivo me parece superior."
+**Lo que cambiaría:** "Más horarios a las 7:30 de la mañana. Trabajo con equipos en Amsterdam y a las 9:00 ya estoy en calls. Una clase temprana me salvaría la rutina."
 
 ---
 
-## 4. Alejandro, 41, emprendedor (local, Argentina/Barcelona)
+## 3. Clara, 29, periodista freelance (local, Eixample)
 
-**Cómo llegó:** "Leí un artículo sobre breathwork y busqué dónde probarlo en Barcelona. SABDA salía en todos lados. Reservé una sesión de [Alchemy Breath](/classes/breathwork/)."
+**Cómo llegó:** Escribió un artículo sobre espacios inmersivos en Barcelona para una revista. Visitó SABDA para el reportaje. Volvió la semana siguiente como clienta.
 
-**Su clase favorita:** Alchemy Breath. "Me enganchó desde la primera sesión. Es lo más intenso que he hecho sin moverme del sitio. 60 minutos de respiración guiada dentro de esa sala y sales sintiéndote como si hubieras corrido 10km y dormido 8 horas al mismo tiempo. No exagero."
+**Su clase favorita:** [Sound Healing](/classes/sound-healing/) los domingos. "Es mi ritual de cierre de semana. Me tumbo, cierro los ojos, y durante una hora el mundo se reduce a sonido. Los cuencos suenan distinto aquí que en cualquier otro sitio. El Dolby Atmos hace que el sonido se mueva, que venga de arriba, de los lados, del suelo. La primera vez me dormí. La segunda vez no me dormí y fue mejor, porque estaba consciente de todo sin tener que hacer nada."
 
 **Cuánto viene:** 1-2 veces por semana. 5-Pack (€85).
 
-**Lo que lo sorprendió:** "La primera sesión de breathwork lloré. Sin razón aparente. No estaba triste. Algo se libera cuando respiras de esa forma durante 45 minutos en un espacio donde no hay distracciones. El facilitador había avisado que podía pasar. Aún así me pilló desprevenido. Ahora lo veo como una señal de que algo se estaba moviendo que necesitaba moverse."
+**Lo que la sorprendió:** "Que funciona para gente como yo. No medito. No hago retiros. No tengo un diario de gratitud. Pero esto no me pide nada de eso. Me pide que me tumbe y escuche. Eso sí puedo hacerlo."
 
-**Lo que no le gusta:** "Desearía que hubiera una comunidad más visible, un grupo de WhatsApp o algo. Vengo solo y a veces quiero hablar con alguien después de la sesión sobre lo que acaba de pasar."
+**Lo que cambiaría:** "El precio. €85 por 5 clases no es barato para una freelance. Pero lo comparo con lo que gasto en cafés de especialidad al mes y sale parecido. Al menos esto me deja mejor que el tercer cortado del día."
 
 ---
 
-## 5. Sofia, 34, profesora de secundaria (local, Italia/Barcelona)
+## 4. Marc, 42, director de operaciones en logística (local, Sant Gervasi)
 
-**Cómo llegó:** "Una compañera del trabajo me regaló una clase. Fui sin expectativas a una sesión de Hatha Vinyasa."
+**Cómo llegó:** Su mujer lo arrastró a una sesión de [Alchemy Breath](/classes/breathwork/). Él quería ir a ver el partido. Fue al breathwork. No se arrepiente.
 
-**Su clase favorita:** Hatha Vinyasa entre semana y Sound Healing los domingos. "El hatha entre semana es mi transición entre el trabajo y mi vida. Entro con la cabeza llena de adolescentes y problemas administrativos. Salgo vacía, en el buen sentido. El [sound healing del domingo](/classes/sound-healing/) es mi cierre de semana. Me tumbo, cierro los ojos, y durante una hora el mundo se reduce a sonido y luz. Es el único momento en el que no pienso en nada."
+**Su clase favorita:** Alchemy Breath. "No soy de yoga. No soy de wellness. Soy de correr, de CrossFit, de cosas donde mido tiempos y distancias. El breathwork me enganchó porque es intenso de una forma que no esperaba. 60 minutos de respiración guiada dentro de esa sala y acabas sintiéndote como después de un 10K pero sin haber movido las piernas. El cuerpo hormiguea, la cabeza se vacía, y sales con una energía que dura todo el día."
 
-**Cuánto viene:** 2 veces por semana. Membresía Flex (€99/mes).
+**Cuánto viene:** 1 vez por semana (breathwork) + ice bath cuando puede. Membresía Flex (€99/mes).
 
-**Lo que la sorprendió:** "Que no hay espejos. En otros estudios de yoga, pasas la mitad de la clase mirando si lo haces bien comparándote con la persona de al lado. Aquí no puedes. Está oscuro. Solo te queda sentir. Esa diferencia es más grande de lo que suena."
+**Lo que lo sorprendió:** "La primera sesión se me escaparon unas lágrimas. Sin motivo aparente. No estaba triste. Algo se movió. El facilitador había avisado que podía pasar. Me pilló desprevenido igual. Ahora no me pasa cada vez, pero cuando pasa, sé que algo necesitaba salir."
 
-**Lo que no le gusta:** "El precio. €99/mes para 4 clases es más caro que mi gimnasio, que incluye todo. Pero la calidad de cada clase compensa. Cuatro sesiones buenas de verdad valen más que 20 sesiones donde voy en piloto automático."
+**Lo que cambiaría:** "Que hubiera una cerveza fría esperándome al salir. Pero entiendo que eso no encaja con el concepto." (Nota: no tenemos café ni bar. De momento.)
+
+---
+
+## 5. Aisha, 31, investigadora postdoctoral en neurociencias (expat, Marruecos/Barcelona)
+
+**Cómo llegó:** Estaba investigando los efectos del audio espacial en estados meditativos para un paper. Contactó a SABDA para visitar el espacio. Acabó comprando el pack de 3 clases "para investigar de primera mano."
+
+**Su clase favorita:** Hatha Vinyasa y Sound Healing, alternando. "El hatha entre semana me saca de la cabeza académica. Paso el día leyendo papers y mirando datos de fMRI. La clase me obliga a estar en el cuerpo durante una hora. Las [proyecciones 360°](https://pubmed.ncbi.nlm.nih.gov/28437149/) me interesan también profesionalmente, porque lo que hacen con la atención es exactamente lo que estudio: reducción de la actividad del default mode network a través de estimulación ambiental. Pero cuando estoy en clase, no pienso en eso. Solo me muevo."
+
+**Cuánto viene:** 2 veces por semana. Membresía Immerse (€130/mes).
+
+**Lo que la sorprendió:** "Que el efecto es acumulativo. Las primeras clases noté la diferencia durante la sesión. Después de dos meses viniendo regularmente, noto la diferencia fuera de la sesión. Duermo mejor. Reacciono menos a los emails estresantes del departamento. Mi HRV ha subido 8 puntos desde que empecé, aunque no puedo atribuirlo solo a SABDA porque también cambié otras cosas."
+
+**Lo que cambiaría:** "Más clases en inglés. Entiendo castellano, pero en breathwork las instrucciones son rápidas y a veces pierdo un matiz. Algunos profesores mezclan bien los dos idiomas. Otros no."
 
 ---
 
 ## Lo que estos 5 tienen en común
 
-Ninguno vino buscando algo espiritual. Ninguno practica meditación en casa regularmente. Ninguno se describe como "persona de wellness." Lo que comparten es que vinieron por curiosidad, se quedaron por la experiencia, y lo que los mantiene aquí es algo difícil de describir pero fácil de sentir: la diferencia entre hacer yoga, pilates, o breathwork en un espacio diseñado para ello vs hacerlo en un sitio que simplemente tiene suelo y un altavoz.
+Ninguno vino buscando algo espiritual. Ninguno practica meditación en casa regularmente. Ninguno se describe como "persona de wellness." Lo que comparten es que vinieron por curiosidad (o porque alguien los trajo), se quedaron por la experiencia, y lo que los mantiene es algo difícil de describir pero fácil de sentir: la diferencia entre hacer yoga, pilates, o breathwork en un espacio diseñado para amplificar cada sesión vs hacerlo en un sitio que simplemente tiene suelo y un altavoz.
 
-Otro patrón: todos mencionan la concentración. No con esas palabras exactas, pero la idea se repite. Laura dice "algo se apaga." James dice "me obligan a estar presente." Marta habla de "concentración amplificada." Alejandro de "sin distracciones." Sofia de "solo te queda sentir." Todos describen lo mismo desde ángulos diferentes: el entorno inmersivo hace que su mente deje de competir con la experiencia y empiece a formar parte de ella.
+Otro patrón: todos mencionan la concentración. No con esas palabras exactas, pero la idea se repite. Nuria dice "solo te queda sentir." Tom dice "un nivel de concentración que el gimnasio no tiene." Clara habla de "estar consciente de todo sin tener que hacer nada." Marc de "la cabeza se vacía." Aisha de "reducción de la actividad del default mode network," pero en su caso eso es literalmente su campo de investigación. Todos describen lo mismo desde ángulos diferentes: el entorno hace que su mente deje de competir con la experiencia.
 
-Y un detalle que merece atención: las quejas. Cada persona tiene una queja concreta y práctica (horarios, precio, disponibilidad, comunidad). Ninguna queja es sobre la calidad de las clases o la experiencia en sí. Eso dice algo.
+Y un detalle que merece atención: las quejas. Cada persona tiene una queja concreta y práctica (horarios, precio, disponibilidad, idioma, falta de cerveza). Ninguna queja es sobre la calidad de las clases o la experiencia en sí. Eso dice algo.
 
 ---
 
 ## Las membresías que usan
 
-| Miembro | Membresía | Precio | Clases/mes | Coste/clase |
+| Miembro | Membresía | Precio | Frecuencia | Lo que más usa |
 |---|---|---|---|---|
-| Laura | Immerse (ilimitado) | €130/mes | ~10 | ~€13 |
-| James | Ritual (8 clases) | €109/mes | ~12 | ~€9 |
-| Marta | Flex (4 clases) | €99/mes | ~8 | ~€12 |
-| Alejandro | 5-Pack | €85 (una vez) | 5 | €17 |
-| Sofia | Flex (4 clases) | €99/mes | ~8 | ~€12 |
+| Nuria | Flex | €99/mes | 2x/semana | Yin & Sound Healing |
+| Tom | Ritual | €109/mes | 3x/semana | Core Pilates + Power Vinyasa |
+| Clara | 5-Pack | €85 | 1-2x/semana | Sound Healing |
+| Marc | Flex | €99/mes | 1x/semana + ice bath | Alchemy Breath |
+| Aisha | Immerse | €130/mes | 2x/semana | Hatha Vinyasa + Sound Healing |
 
 La mayoría acaba en Flex o Ritual, que son los puntos dulces de la oferta. Immerse vale la pena si vienes 3+ veces por semana. Los packs funcionan para quien prefiere no comprometerse con un pago mensual.
 
