@@ -13,7 +13,7 @@
 
 Si la despedida implica un limobús, una tiara de plástico, y alguien con un silbato, esta lista no es para ti. Si lo que buscas es un plan de despedida de soltera en Barcelona que la novia realmente recuerde. Algo que no le dé vergüenza contar después, algo que merezca la pena haber organizado, sigue leyendo.
 
-Barcelona tiene todo lo que necesitas para despedidas de soltera originales. La clave está en mezclar experiencias que no se pueden encontrar en cualquier ciudad con el tipo de comida, bebida y ambiente que solo Barcelona ofrece. Aquí van 10 ideas, más dos packs completos para quien quiera un plan de día entero.
+[Barcelona](https://www.barcelonaturisme.com/) tiene todo lo que necesitas para despedidas de soltera originales. La clave está en mezclar experiencias que no se pueden encontrar en cualquier ciudad con el tipo de comida, bebida y ambiente que solo Barcelona ofrece. Aquí van 10 ideas, más dos packs completos para quien quiera un plan de día entero.
 
 ---
 

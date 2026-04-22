@@ -11,7 +11,7 @@
 
 ---
 
-Organizar un evento en Barcelona significa elegir entre cientos de espacios. Hoteles, lofts industriales, terrazas, salas de conferencias, y opciones que no encajan en ninguna categoría. El problema no es encontrar un espacio. Es encontrar el que transforma tu evento de "otro acto corporativo" a algo que la gente recuerde.
+Organizar un evento en [Barcelona](https://www.barcelonaconventionbureau.com/) significa elegir entre cientos de espacios. Hoteles, lofts industriales, terrazas, salas de conferencias, y opciones que no encajan en ninguna categoría. El problema no es encontrar un espacio. Es encontrar el que transforma tu evento de "otro acto corporativo" a algo que la gente recuerde.
 
 Esta guía organiza las opciones por tipo, con precios reales y lo que cada espacio ofrece (y no ofrece).
 

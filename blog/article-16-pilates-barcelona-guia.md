@@ -108,7 +108,7 @@ El dolor de espalda es la razón más común por la que la gente empieza pilates
 
 ### Lo que dice la evidencia
 
-Múltiples revisiones sistemáticas concluyen que el pilates es efectivo para el dolor lumbar crónico. Un meta-análisis de 2019 publicado en Medicine encontró reducciones significativas en dolor e incapacidad funcional comparado con ejercicio mínimo. La diferencia con otros tipos de ejercicio: pilates es más estructurado, más enfocado en el core profundo, y más fácil de adaptar a distintos niveles de dolor.
+Múltiples [revisiones sistemáticas](https://pubmed.ncbi.nlm.nih.gov/35722759/) concluyen que el pilates es efectivo para el dolor lumbar crónico. Un meta-análisis de 2019 publicado en Medicine encontró reducciones significativas en dolor e incapacidad funcional comparado con ejercicio mínimo. La diferencia con otros tipos de ejercicio: pilates es más estructurado, más enfocado en el core profundo, y más fácil de adaptar a distintos niveles de dolor.
 
 ### Por qué funciona, la mecánica
 

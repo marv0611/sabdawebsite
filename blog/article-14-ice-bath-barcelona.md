@@ -33,7 +33,7 @@ If you're looking for ice bath barcelona, this guide covers what actually matter
 
 **Norepinephrine release.** Cold water immersion at 10°C or below produces a 200-300% spike in norepinephrine. A neurotransmitter linked to attention, focus, and mood. This is the "dopamine hit" people talk about, though norepinephrine is more accurate.
 
-**Inflammation reduction.** Cold constricts blood vessels and reduces blood flow to extremities, which reduces localised inflammation. Athletes have used this for decades for recovery. The science on ice baths for general inflammation is more nuanced. It's not a cure-all, but acute anti-inflammatory effects are well-documented.
+**Inflammation reduction.** Cold constricts blood vessels and reduces blood flow to extremities, which reduces localised inflammation. Athletes have used this for decades for recovery. The [science on cold water immersion](https://pubmed.ncbi.nlm.nih.gov/39879231/) for general inflammation is more nuanced. It's not a cure-all, but acute anti-inflammatory effects are well-documented.
 
 **Vagal tone improvement.** Regular cold exposure appears to improve heart rate variability (HRV) and parasympathetic nervous system function over time. This is the long-term benefit that's most interesting.
 

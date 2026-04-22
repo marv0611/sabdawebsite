@@ -39,7 +39,7 @@ If you're looking for breathwork barcelona, this guide covers what actually matt
 
 For activating breathwork, the mechanism is different. Rapid breathing alters blood CO2 levels. When CO2 drops, blood pH rises (respiratory alkalosis), which can cause tingling, temperature changes, and shifts in perception. This isn't dangerous for healthy people. It's a temporary, self-limiting biochemical state that resolves as soon as you return to normal breathing.
 
-A 2023 Stanford study comparing breathwork to meditation found that cyclic sighing (a specific breathwork technique) produced greater improvements in mood and reduced respiratory rate than mindfulness meditation. The researchers noted that breathwork's advantage may be that it gives the mind a task (controlling breath) rather than asking it to be still.
+A [2023 Stanford study](https://pubmed.ncbi.nlm.nih.gov/36630953/) comparing breathwork to meditation found that cyclic sighing (a specific breathwork technique) produced greater improvements in mood and reduced respiratory rate than mindfulness meditation. The researchers noted that breathwork's advantage may be that it gives the mind a task (controlling breath) rather than asking it to be still.
 
 ---
 

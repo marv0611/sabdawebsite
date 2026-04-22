@@ -13,7 +13,7 @@
 
 Your team has done the cooking class. They've done the escape room. Someone suggested laser tag and nobody replied to the Slack message. Here's the thing about most team building activities in Barcelona: they're designed to fill time, not create connection. A group of people who barely talk in the office aren't going to suddenly open up because they're standing around a paella pan.
 
-If you're organising corporate events in Barcelona and you need something that actually shifts the dynamic. Not just ticks a box on the offsite agenda. Here are 12 ideas that go beyond the usual. Some are active, some reflective, some are just genuinely fun. All of them work better than trust falls.
+If you're organising [corporate events in Barcelona](https://www.barcelonaconventionbureau.com/) and you need something that actually shifts the dynamic. Not just ticks a box on the offsite agenda. Here are 12 ideas that go beyond the usual. Some are active, some reflective, some are just genuinely fun. All of them work better than trust falls.
 
 ---
 

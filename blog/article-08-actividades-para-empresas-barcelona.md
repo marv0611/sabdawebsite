@@ -11,7 +11,7 @@
 
 ---
 
-El team building de tu empresa lleva años siendo lo mismo: un cooking class, un escape room, o una cata de vinos donde la mitad del equipo mira el reloj. No es que esas cosas estén mal. Es que ya no generan nada nuevo. Si estás organizando eventos corporativos en Barcelona y necesitas algo que realmente mueva al equipo, aquí van 10 ideas que funcionan.
+El team building de tu empresa lleva años siendo lo mismo: un cooking class, un escape room, o una cata de vinos donde la mitad del equipo mira el reloj. No es que esas cosas estén mal. Es que ya no generan nada nuevo. Si estás organizando [eventos corporativos en Barcelona](https://www.eventoplus.com/) y necesitas algo que realmente mueva al equipo, aquí van 10 ideas que funcionan.
 
 Todas están probadas con grupos reales. Todas se pueden organizar en Barcelona. Ninguna involucra dinámicas con post-its.
 

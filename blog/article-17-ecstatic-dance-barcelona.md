@@ -57,7 +57,7 @@ At the peak, 30-40 minutes in. The music is full and driving, and the room has a
 
 The cool-down is when it gets interesting. The music slows, the movement becomes gentle, and you feel something that's part exhaustion, part elation, part emotional openness. People often lie on the floor for the last 5-10 minutes. Some cry. Some laugh. Most just feel very present.
 
-You leave sweaty, slightly dazed, and weirdly energised. The endorphin rush lasts a few hours.
+You leave sweaty, slightly dazed, and weirdly energised. [Research on dance and psychological health](https://pubmed.ncbi.nlm.nih.gov/30924435/) supports what regulars already know: the endorphin rush lasts a few hours.
 
 ---
 
