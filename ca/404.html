@@ -55,11 +55,11 @@ nav.on{background:rgba(14,18,53,.88);backdrop-filter:blur(22px);border-bottom-co
 
 .nav-ham{display:none;flex-direction:column;gap:4px;padding:12px;cursor:pointer;z-index:101;background:none;border:none}
 .nav-ham span{width:20px;height:1.5px;background:var(--white);transition:transform .3s,opacity .3s}
-.mob-menu{position:fixed;inset:0;z-index:99;background:rgba(14,18,53,.97);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:22px;padding:100px 24px 40px;overflow-y:auto;-webkit-overflow-scrolling:touch;opacity:0;pointer-events:none;transition:opacity .35s}
+.mob-menu{position:fixed;inset:0;z-index:200;background:rgba(14,18,53,.98);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:22px;padding:88px 24px 40px;overflow-y:auto;-webkit-overflow-scrolling:touch;opacity:0;pointer-events:none;transition:opacity .35s}
 .mob-menu.open{opacity:1;pointer-events:auto}
 .mob-menu a{font-family:'PT Serif',serif;font-size:1.6rem;font-weight:700;color:var(--white);opacity:.85;transition:opacity .2s,color .2s}
 .mob-menu a:hover{opacity:1;color:var(--cyan)}
-.mob-close{position:absolute;top:24px;right:24px;width:40px;height:40px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:none;border:none}
+.mob-close{position:absolute;top:24px;right:24px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:none;border:none;z-index:201}
 .mob-close svg{width:24px;height:24px;stroke:var(--white);stroke-width:2}
 
 /* ── HERO (immersive image as background, like homepage) ── */
@@ -116,6 +116,8 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 @media(max-width:480px){
   .num{font-size:clamp(5rem,22vw,8rem)}
 }
+
+/* MOBILE TAB BAR — revision */.tabs{display:none}@media(max-width:860px){footer{display:none}.tabs{position:fixed;bottom:0;left:0;right:0;z-index:100;display:flex;align-items:flex-end;justify-content:space-around;height:calc(72px + env(safe-area-inset-bottom,0px));padding-bottom:env(safe-area-inset-bottom,0px);background:rgba(14,18,53,.95);backdrop-filter:saturate(1.4) blur(24px);-webkit-backdrop-filter:saturate(1.4) blur(24px);border-top:1px solid rgba(240,239,233,.06)}.tab{display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 0 6px;flex:1;color:rgba(240,239,233,.65);transition:color .2s;text-decoration:none}.tab.on{color:var(--cyan)}.tab svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}.tab span{font-size:.5rem;letter-spacing:.04em;font-weight:600}.tab-bk{position:relative}.tab-bk-o{width:56px;height:56px;border-radius:50%;background:var(--cyan);display:flex;align-items:center;justify-content:center;position:relative;top:-10px;box-shadow:0 4px 24px rgba(2,243,197,.28)}.tab-bk-o svg{stroke:var(--navy);width:22px;height:22px;stroke-width:2.5}.tab-bk span{position:relative;top:-6px}body{padding-bottom:84px}}
 </style>
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1E1WXTZWQD"></script>
@@ -269,6 +271,9 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 const __nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>__nav.classList.toggle('on',scrollY>60),{passive:true});
 </script>
+
+
+<nav class="tabs"><a href="/ca/classes/" class="tab"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Classes</span></a><a href="/ca/m/schedule.html" class="tab"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span>Horari</span></a><a href="/ca/m/schedule.html" class="tab tab-bk"><div class="tab-bk-o"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><span>Reservar</span></a><a href="/ca/preus/" class="tab"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Preus</span></a><a href="/ca/" class="tab"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg><span>Inici</span></a></nav>
 
 </body>
 </html>
