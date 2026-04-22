@@ -1,10 +1,10 @@
 {
   "meta": {
     "created": "2026-04-13",
-    "total_queued": 51,
+    "total_queued": 59,
     "schedule": "Mon-Fri 09:00 CET",
     "release_workflow": ".github/workflows/blog-daily-release.yml",
-    "notes": "Reordered on 2026-04-20 from pure-volume-DESC to interleaved business intent: wellness/tourism/wellness/corporate/wellness/tourism/brand cycle (7-period). Positions 1-16 locked (released or imminent). Positions 17-51 reordered across existing 35 weekday dates. Within each category, highest-volume articles scheduled first. Original volume-DESC queue backed up to blog-release-queue.json.bak-pre-interleave.",
+    "notes": "Reordered on 2026-04-20 from pure-volume-DESC to interleaved business intent: wellness/tourism/wellness/corporate/wellness/tourism/brand cycle (7-period). Positions 1-16 locked (released or imminent). Positions 17-51 reordered across existing 35 weekday dates. Within each category, highest-volume articles scheduled first. Original volume-DESC queue backed up to blog-release-queue.json.bak-pre-interleave. Appended articles 61-68 (corporate/events + bottom-of-funnel brand content) starting 2026-06-25.",
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
@@ -631,6 +631,94 @@
       "html_file": "blog/sala-inmersiva-barcelona/index.html",
       "status": "queued",
       "volume": 70
+    },
+    {
+      "order": 52,
+      "slug": "/blog/team-building-venues-barcelona/",
+      "keyword": "team building venues barcelona",
+      "art_num": 61,
+      "lang": "en",
+      "release_date": "2026-06-25",
+      "md_file": "blog/article-61-team-building-venues-barcelona.md",
+      "html_file": "blog/team-building-venues-barcelona/index.html",
+      "status": "queued"
+    },
+    {
+      "order": 53,
+      "slug": "/blog/organizar-evento-corporativo-barcelona/",
+      "keyword": "organizar evento corporativo barcelona",
+      "art_num": 62,
+      "lang": "es",
+      "release_date": "2026-06-26",
+      "md_file": "blog/article-62-organizar-evento-corporativo-barcelona.md",
+      "html_file": "blog/organizar-evento-corporativo-barcelona/index.html",
+      "status": "queued"
+    },
+    {
+      "order": 54,
+      "slug": "/blog/private-events-barcelona/",
+      "keyword": "private events barcelona",
+      "art_num": 63,
+      "lang": "en",
+      "release_date": "2026-06-29",
+      "md_file": "blog/article-63-private-events-barcelona.md",
+      "html_file": "blog/private-events-barcelona/index.html",
+      "status": "queued"
+    },
+    {
+      "order": 55,
+      "slug": "/blog/wellness-empresas-barcelona/",
+      "keyword": "wellness empresas barcelona",
+      "art_num": 64,
+      "lang": "es",
+      "release_date": "2026-06-30",
+      "md_file": "blog/article-64-wellness-empresas-barcelona.md",
+      "html_file": "blog/wellness-empresas-barcelona/index.html",
+      "status": "queued"
+    },
+    {
+      "order": 56,
+      "slug": "/blog/lloguer-sala-esdeveniments-barcelona/",
+      "keyword": "lloguer sala esdeveniments barcelona",
+      "art_num": 65,
+      "lang": "ca",
+      "release_date": "2026-07-01",
+      "md_file": "blog/article-65-lloguer-sala-esdeveniments-barcelona.md",
+      "html_file": "blog/lloguer-sala-esdeveniments-barcelona/index.html",
+      "status": "queued"
+    },
+    {
+      "order": 57,
+      "slug": "/blog/your-first-class-at-sabda/",
+      "keyword": "sabda studio barcelona",
+      "art_num": 66,
+      "lang": "en",
+      "release_date": "2026-07-02",
+      "md_file": "blog/article-66-your-first-class-at-sabda.md",
+      "html_file": "blog/your-first-class-at-sabda/index.html",
+      "status": "queued"
+    },
+    {
+      "order": 58,
+      "slug": "/blog/sabda-vs-regular-yoga-studio/",
+      "keyword": "sabda yoga",
+      "art_num": 67,
+      "lang": "en",
+      "release_date": "2026-07-03",
+      "md_file": "blog/article-67-sabda-vs-regular-yoga-studio.md",
+      "html_file": "blog/sabda-vs-regular-yoga-studio/index.html",
+      "status": "queued"
+    },
+    {
+      "order": 59,
+      "slug": "/blog/sabda-miembros-experiencia/",
+      "keyword": "sabda barcelona opiniones",
+      "art_num": 68,
+      "lang": "es",
+      "release_date": "2026-07-06",
+      "md_file": "blog/article-68-sabda-miembros-experiencia.md",
+      "html_file": "blog/sabda-miembros-experiencia/index.html",
+      "status": "queued"
     }
   ]
 }

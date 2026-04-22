@@ -16,9 +16,24 @@ Verify: `curl -I https://sabdastudio.com/blog/hen-party-barcelona/` returns HTTP
 
 After 301 is live: remove `<meta http-equiv="refresh">` from Art 49 stub. Keep the `<link rel="canonical">`.
 
-## Noindex HTML emission — Art 40, 49, 52, 54
+## Noindex HTML emission — Art 40, 49, 52, 53, 54, 58
 
 The workflow `PERMANENT_NOINDEX_SLUGS` guard prevents the scheduled publisher from stripping noindex during auto-publish. When HTML is generated for these articles, the generator MUST emit `<meta name="robots" content="noindex,follow">` in the `<head>`. The `follow` directive preserves link equity to /classes/ and /pricing/.
+
+## Art 54 First Time SABDA -> Art 66 Your First Class at SABDA (301)
+
+**When:** Immediately. Article 66 is the rewritten/expanded replacement and is scheduled to publish organically (2026-07-02 in `blog-release-queue.json`). Art 54 stub has been rewritten to `[DEPRECATED]` with meta-refresh + canonical pointing at Art 66 — 301 is needed to hand off all existing ranking/backlink signal.
+
+Expression:
+(http.host eq "sabdastudio.com" and http.request.uri.path eq "/blog/first-time-sabda/") or (http.host eq "sabdastudio.com" and http.request.uri.path eq "/blog/first-time-sabda")
+
+Action: Static redirect
+Target: https://sabdastudio.com/blog/your-first-class-at-sabda/
+Status: 301. Preserve query string: Yes.
+
+Verify: `curl -I https://sabdastudio.com/blog/first-time-sabda/` returns HTTP/2 301 with correct Location header.
+
+After 301 is live: remove `<meta http-equiv="refresh">` from Art 54 stub. Keep the `<link rel="canonical">`.
 
 ## Phase 2A: Art 45 Planes Gratis -> Art 02 #planes-gratis (301)
 

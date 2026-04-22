@@ -1,109 +1,24 @@
-# Your First Time at SABDA: What to Expect, What to Bring, and How to Get There
+# [DEPRECATED] First Time at SABDA → Rewritten as "Your First Class at SABDA"
 
-**Last updated: March 2026**
+**Last updated: April 2026**
 
 **noindex: true**
 
-**Meta description:** Everything you need to know before your first class at SABDA: what to wear, when to arrive, and what it's actually like inside a 360° projection room. (155 chars)
+**Status:** DEPRECATED. Content rewritten and expanded as Art 66 (`/blog/your-first-class-at-sabda/`). Target article is indexed and scheduled for organic publish. This stub 301-redirects.
+
+**Redirect:** This page 301 redirects to `/blog/your-first-class-at-sabda/`
 
 **Slug:** `/blog/first-time-sabda/`
 
-**Primary keyword:** SABDA Barcelona
-**Secondary keywords:** first yoga class, what to expect yoga class, immersive yoga
+**Primary keyword:** (deprecated, rewritten as Art 66)
 
 ---
 
-You're going to SABDA for the first time. You don't know exactly what to expect, and that's part of the point. The first time you walk into the room is a moment people remember. But here's the practical stuff so you arrive relaxed.
+<meta http-equiv="refresh" content="0; url=/blog/your-first-class-at-sabda/">
+<link rel="canonical" href="https://sabdastudio.com/blog/your-first-class-at-sabda/">
+
+If you landed here, the first-time SABDA guide lives at the newer, fuller version: [Your First Class at SABDA](/blog/your-first-class-at-sabda/).
 
 ---
 
-## Before you go
-
-**Book online.** All classes are booked through [Momence](https://momence.com/m/443935). Pick a class, select a time, and book. The [3-class intro pack (€50. €18/class)](https://momence.com/m/443935) is the best way to start. Lets you try different classes.
-
-**What to bring:** Comfortable clothes you can move in. That's it. SABDA provides mats, blankets, and everything else. For pilates, grip socks are recommended (available at reception).
-
-**When to arrive:** 10 minutes before class. Time to check in, stash your things, and settle.
-
----
-
-## When you arrive
-
-Reception will greet you. There's an area for bags and shoes (classes are barefoot or socks). Changing rooms with showers are available.
-
-You'll be directed to the room. And when you walk in..
-
----
-
-## Inside the room
-
-The first impression is what people remember. The room is dark. The projections are already running. Slow colours, organic geometries moving across walls and ceiling. Spatial audio fills the space with something that feels more like an environment than music. Not loud. Enveloping.
-
-You grab your mat, find a spot, and wait for class to begin. No mirrors. No windows. The outside world disappears. That's intentional.
-
----
-
-## During class
-
-The teacher guides the session. Projections change with the phases. More dynamic during active parts, slower during relaxation. Spatial audio means the teacher's cues and the music arrive from every direction.
-
-**Yoga or pilates:** Follow the teacher. All levels welcome. If a pose doesn't work, rest. Nobody's watching (the room is dark).
-
-**Sound healing:** Lie down, close your eyes, let the sound work. You don't have to do anything.
-
-**Breathwork:** Follow the breathing pattern the facilitator indicates. It can be intense, read the breathwork article first if you want to know what to expect.
-
-**Phone:** Off or silent. No photos during class.
-
----
-
-## After
-
-Take your time. Don't jump up immediately, especially after sound healing or breathwork. Sit up slowly. Drink water (available).
-
-Showers are available. Reception can help you book your next class or use the rest of your pack.
-
----
-
-## How to get there
-
-**Address:** C/Muntaner 83B, Local 2, 08011 Barcelona.
-**Metro:** Universitat (L1, L2), 10-minute walk up Muntaner.
-**Walking from Passeig de Gràcia:** 12 minutes.
-
----
-
-[Book your first class →](https://momence.com/m/443935) | [3 classes for €50](https://momence.com/m/443935)
-
-**Related:** [Classes at SABDA](/classes/) | [Best Yoga Studios in Barcelona](/blog/best-yoga-studios-barcelona/)
-
----
-
-*[Schema: BreadcrumbList → Home > Blog > Your First Time at SABDA]*
-*[hreflang: en → this page | es → /blog/primera-vez-sabda/]*
-
----
-
-## Common first-timer questions
-
-**Do I need to be flexible/fit/experienced?** No. All classes are all-levels. Teachers offer modifications. Nobody cares what you look like, the room is dark.
-
-**What if I can't keep up?** Rest anytime. Child's pose in yoga, lying down in breathwork, stillness in ecstatic dance. Nobody judges. The dark room means nobody even notices.
-
-**Is it weird doing it alone?** No. Most people come alone. The classes are individual experiences in a shared space. You're not paired with anyone or expected to interact.
-
-**What's the best first class?** Sound healing if you want to relax (you literally just lie there). Vinyasa yoga if you want movement. Breathwork if you want something intense. Pilates if you want something physical and structured.
-
-**Can I shower after?** Yes. Changing rooms with showers are available.
-
-**What about the ice bath?** It's on the patio, combined with breathwork preparation in the immersive room. Intense but safe. The facilitator guides you through. Not recommended as your absolute first class unless you specifically want it.
-
-**Is it in English?** Most classes are taught in English, Spanish, or bilingual. Check the schedule for language.
-
-**How do I use my 3-pack?** Book each class individually through [Momence](https://momence.com/m/443935). The pack gives you 3 classes to use on any class type, any time.
-
-## After your first class
-
-Most people leave their first SABDA class slightly dazed, deeply relaxed, and wondering why it took them so long to try it. The second class is where you start to understand the difference the immersive environment makes. You drop into focus faster because you know what to expect. By the third class, most people have found their format and are considering a membership.
-
-That's the design of the [3-class intro pack (€50)](https://momence.com/m/443935): try enough to find what resonates.
+*[Deprecated: preserved as historical content.]*
