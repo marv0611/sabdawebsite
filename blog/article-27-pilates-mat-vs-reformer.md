@@ -42,7 +42,7 @@ Si buscas clases de pilates barcelona, esta guía cubre lo que realmente importa
 
 ## Cuándo elegir mat
 
-**Quieres un core de acero.** Sin la asistencia de los muelles, tu core hace todo el trabajo estabilizador. Una clase de mat bien enseñada es más exigente para el centro de lo que parece.
+**Quieres un core de acero.** Sin la asistencia de los muelles, tu core hace todo el trabajo estabilizador. Una clase de mat bien enseñada es [más exigente para el centro](https://pubmed.ncbi.nlm.nih.gov/37239690/) de lo que parece.
 
 **Buscas precio accesible.** Mat cuesta la mitad que reformer. Si planeas practicar 2-3 veces por semana, la diferencia de precio es significativa a lo largo de un año.
 

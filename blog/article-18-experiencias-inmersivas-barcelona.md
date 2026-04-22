@@ -11,7 +11,7 @@
 
 ---
 
-Barcelona se ha convertido en una de las ciudades europeas con más opciones de experiencias inmersivas. Proyecciones de 360°, audio espacial, instalaciones interactivas, y espacios donde no miras el arte, estás dentro de él. Pero no todas las experiencias inmersivas son lo mismo, y la diferencia entre unas y otras es mayor de lo que parece.
+[Barcelona](https://www.barcelonaturisme.com/) se ha convertido en una de las ciudades europeas con más opciones de experiencias inmersivas. Proyecciones de 360°, audio espacial, instalaciones interactivas, y espacios donde no miras el arte, estás dentro de él. Pero no todas las experiencias inmersivas son lo mismo, y la diferencia entre unas y otras es mayor de lo que parece.
 
 Esta guía compara los principales espacios, explica qué esperar de cada uno, y te ayuda a elegir según lo que realmente buscas.
 

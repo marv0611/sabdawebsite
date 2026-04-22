@@ -19,7 +19,7 @@ Mindfulness suena a algo que deberías hacer pero que no sabes por dónde empeza
 
 Prestar atención a lo que está pasando ahora, en tu cuerpo, en tu mente, a tu alrededor, sin juzgarlo. Eso es todo. No es "dejar la mente en blanco" (imposible) ni "relajarte" (a veces es incómodo). Es practicar la habilidad de notar sin reaccionar.
 
-La ciencia detrás del mindfulness es sólida: décadas de estudios muestran reducciones medibles en estrés, ansiedad, y reactividad emocional. Cambios estructurales en el cerebro (aumento de materia gris en la corteza prefrontal, reducción de la amígdala) aparecen después de 8 semanas de práctica regular. No es magia. Es entrenamiento atencional con efectos neurológicos documentados.
+La [ciencia detrás del mindfulness](https://pmc.ncbi.nlm.nih.gov/articles/PMC4109098/) es sólida: décadas de estudios muestran reducciones medibles en estrés, ansiedad, y reactividad emocional. Cambios estructurales en el cerebro (aumento de materia gris en la corteza prefrontal, reducción de la amígdala) aparecen después de 8 semanas de práctica regular. No es magia. Es entrenamiento atencional con efectos neurológicos documentados.
 
 ---
 

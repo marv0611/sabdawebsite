@@ -51,7 +51,7 @@ Perfect for: people who hate sitting still, meditators-in-disguise, anyone who w
 
 ## Want to sleep better? → Yoga Nidra
 
-Lie down. Close your eyes. A facilitator guides you through progressive relaxation for 30-45 minutes. No movement. No effort. The deepest rest you can get without actual sleep. Studies suggest 30 minutes of yoga nidra equals 2-4 hours of sleep for nervous system recovery.
+Lie down. Close your eyes. A facilitator guides you through progressive relaxation for 30-45 minutes. No movement. No effort. The deepest rest you can get without actual sleep. [Studies suggest](https://pubmed.ncbi.nlm.nih.gov/29697885/) 30 minutes of yoga nidra equals 2-4 hours of sleep for nervous system recovery.
 
 Perfect for: insomnia, burnout, anxiety, post-workout recovery.
 
