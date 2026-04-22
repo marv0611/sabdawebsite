@@ -74,9 +74,6 @@ Si estás en Barcelona entre febrero y abril, la calcotada es obligatoria. Calç
 
 ---
 
-
----
-
 ## Planes gratis en Barcelona {#planes-gratis}
 
 Barcelona es cara si dejas que te la vendan, y muy asequible si sabes dónde mirar. Estos son los mejores planes que no cuestan absolutamente nada, complementarios a los 20 de arriba.
