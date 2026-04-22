@@ -1,4 +1,4 @@
-# Els Millors Plans a Barcelona. Activitats i Experiències 2026
+# Què Fer Avui a Barcelona: Els Millors Plans i Activitats 2026
 
 **Última actualització: març 2026**
 

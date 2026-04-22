@@ -2,7 +2,7 @@
 
 **Última actualización: marzo 2026**
 
-**Meta description:** Actividades de team building y eventos corporativos en Barcelona. Wellness inmersivo, experiencias 360° y opciones para equipos de 10 a 200 personas. (154 chars)
+**Meta description:** Actividades de team building y eventos corporativos en Barcelona. Wellness inmersivo, experiencias 360° y opciones para equipos de 10 a 200 personas.
 
 **Slug:** `/blog/actividades-para-empresas-barcelona/`
 
@@ -17,7 +17,7 @@ Todas están probadas con grupos reales. Todas se pueden organizar en Barcelona.
 
 ---
 
-### 1. Experiencia de wellness corporativo en SABDA
+## 1. Experiencia de wellness corporativo en SABDA
 
 Una sala de proyecciones 360° con audio espacial Dolby Atmos en el Eixample. Para equipos, [SABDA](https://sabdastudio.com/hire/) ofrece sesiones guiadas de breathwork + sound healing dentro de la sala inmersiva, con la opción de terminar con ice bath en el patio. La combinación de respiración consciente y agua fría crea una vulnerabilidad que la oficina nunca produce. Gente que lleva años trabajando junta dice cosas que nunca ha dicho.
 

@@ -2,7 +2,7 @@
 
 **Last updated: March 2026**
 
-**Meta description:** Breathwork explained without the woo: what it is, how it works, what it feels like, and why more people in Barcelona are doing it. Beginner-friendly. (153 chars)
+**Meta description:** Breathwork explained without the woo: what it is, how it works, what it feels like, and why more people in Barcelona are doing it. Beginner-friendly.
 
 **Slug:** `/blog/what-is-breathwork/`
 

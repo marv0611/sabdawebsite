@@ -17,7 +17,7 @@ If you're organising corporate events in Barcelona and you need something that a
 
 ---
 
-### 1. Sailing regatta on the Mediterranean
+## 1. Sailing regatta on the Mediterranean
 
 Split the team into crews of 4-6 per boat. Brief sailing lesson, then race along the Barcelona coastline. Nobody needs experience. The skippers handle the sailing, but each crew has to work together on timing, direction, and not capsizing. It's physical, it's competitive, and it's genuinely funny to watch the CEO trying to pull a rope. Companies like Fun Events Barcelona and Barcelona Sailing Club organise corporate regattas. Budget: ~€60-80 per person for a 3-hour event.
 

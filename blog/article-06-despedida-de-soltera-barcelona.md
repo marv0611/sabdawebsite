@@ -2,7 +2,7 @@
 
 **Última actualización: marzo 2026**
 
-**Meta description:** Organiza una despedida de soltera inolvidable en Barcelona. Experiencias inmersivas, ice bath, wellness privado, brunch y opciones únicas para grupos. (155 chars)
+**Meta description:** Organiza una despedida de soltera inolvidable en Barcelona. Experiencias inmersivas, ice bath, wellness privado, brunch y opciones únicas para grupos.
 
 **Slug:** `/blog/despedida-de-soltera-barcelona/`
 
@@ -17,7 +17,7 @@ Barcelona tiene todo lo que necesitas para despedidas de soltera originales. La 
 
 ---
 
-### 1. Sesión privada inmersiva en SABDA
+## 1. Sesión privada inmersiva en SABDA
 
 Alquila la sala inmersiva de [SABDA](https://sabdastudio.com/hire/) para una sesión privada de breathwork + sound healing + ice bath en el patio. Proyecciones 360° con Dolby Atmos, visuals personalizados para el grupo, y una experiencia que absolutamente nadie en la despedida habrá hecho antes. Capacidad para 20-80 personas.
 

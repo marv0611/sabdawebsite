@@ -2,7 +2,7 @@
 
 **Última actualización: marzo 2026**
 
-**Meta description:** Every immersive experience in Barcelona compared: SABDA, IDEAL, Moco Museum, IKONO, Candlelight and more. What to expect, prices, and which to choose. (155 chars)
+**Meta description:** Every immersive experience in Barcelona compared: SABDA, IDEAL, Moco Museum, IKONO, Candlelight and more. What to expect, prices, and which to choose.
 
 **Slug:** `/blog/immersive-experiences-barcelona/`
 

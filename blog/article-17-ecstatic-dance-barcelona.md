@@ -2,7 +2,7 @@
 
 **Last updated: March 2026**
 
-**Meta description:** Ecstatic dance in Barcelona explained: no choreography, no judgement, just movement. Where to find sessions, what to wear, and what actually happens. (152 chars)
+**Meta description:** Ecstatic dance in Barcelona explained: no choreography, no judgement, just movement. Where to find sessions, what to wear, and what actually happens.
 
 **Slug:** `/blog/ecstatic-dance-barcelona/`
 
