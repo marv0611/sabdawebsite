@@ -2013,6 +2013,7 @@ async function handleWebhookPurchase(request, origin, env, ctx) {
     // Look up stored attribution by email hash
     let attribution = null;
     let fbcFromAttribution = '';
+    let fbpFromAttribution = '';
     if (env && env.ATTRIBUTION_KV) {
       const emailHash = await sha256hex(email.toLowerCase().trim());
       const stored = await env.ATTRIBUTION_KV.get('attr:' + emailHash);
@@ -2024,7 +2025,21 @@ async function handleWebhookPurchase(request, origin, env, ctx) {
             const ts = attribution.ts || Date.now();
             fbcFromAttribution = 'fb.1.' + ts + '.' + String(attribution.fbclid).trim();
           }
-          console.log('[WEBHOOK] attribution found: fbclid=' + (attribution.fbclid ? 'yes' : 'no') + ' utm_source=' + (attribution.utm_source || '-'));
+          // Fallback: if fbclid wasn't captured but the user's _fbc cookie was,
+          // use the cookie value directly. Covers cases where the ad click was
+          // in a prior session and fbclid already decayed from the URL by
+          // landing-page capture time.
+          if (!fbcFromAttribution && attribution.fbc_cookie) {
+            fbcFromAttribution = String(attribution.fbc_cookie).trim();
+          }
+          // Lift server-side fbp coverage from ~27% toward 90%+. Browser _fbp
+          // cookie captured at modal-email time is the only way to reach the
+          // webhook handler since Stripe/Zapier webhooks are server-to-server
+          // and don't carry user cookies.
+          if (attribution.fbp) {
+            fbpFromAttribution = String(attribution.fbp).trim();
+          }
+          console.log('[WEBHOOK] attribution found: fbclid=' + (attribution.fbclid ? 'yes' : 'no') + ' fbc_cookie=' + (attribution.fbc_cookie ? 'yes' : 'no') + ' fbp=' + (attribution.fbp ? 'yes' : 'no') + ' utm_source=' + (attribution.utm_source || '-'));
         } catch (e) {
           console.log('[WEBHOOK] attribution parse error:', e.message);
         }
@@ -2042,7 +2057,7 @@ async function handleWebhookPurchase(request, origin, env, ctx) {
     const clientIp = request.headers.get('CF-Connecting-IP') || '';
     const clientUA = request.headers.get('User-Agent') || (source === 'stripe' ? 'Stripe-Webhook/1.0' : 'Zapier-Webhook/1.0');
 
-    console.log('[WEBHOOK] Purchase source=' + source + ' email=' + email.slice(0, 3) + '*** amount=' + amount + ' product=' + productName + ' fbc=' + (fbcFromAttribution ? 'constructed' : 'none') + ' addr_city=' + (city ? 'yes' : 'no') + ' addr_country=' + (country || '-') + ' addr_zp=' + (zip ? 'yes' : 'no'));
+    console.log('[WEBHOOK] Purchase source=' + source + ' email=' + email.slice(0, 3) + '*** amount=' + amount + ' product=' + productName + ' fbc=' + (fbcFromAttribution ? 'constructed' : 'none') + ' fbp=' + (fbpFromAttribution ? 'stored' : 'none') + ' addr_city=' + (city ? 'yes' : 'no') + ' addr_country=' + (country || '-') + ' addr_zp=' + (zip ? 'yes' : 'no'));
 
     const capiPromise = sendCAPIEvent(
       'Purchase', eventId, email, firstName, lastName,
@@ -2050,7 +2065,7 @@ async function handleWebhookPurchase(request, origin, env, ctx) {
       'https://sabdastudio.com/classes/',
       clientIp,
       clientUA,
-      '', // fbp — not available from webhook
+      fbpFromAttribution, // fbp — from stored attribution (captured at modal-email time)
       fbcFromAttribution, // fbc — constructed from stored attribution
       env,
       phone,

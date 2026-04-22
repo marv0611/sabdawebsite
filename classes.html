@@ -705,7 +705,11 @@ window._sabdaStoreAttribution = function(email) {
     if (!email || !email.trim()) { _sabdaAttrTrace('SKIP', {reason:'no-email'}); return; }
     var attr = (window._sabdaGetAttribution && window._sabdaGetAttribution()) || null;
     if (!attr) { _sabdaAttrTrace('SKIP', {reason:'no-attr', email_hint: email.slice(0,3)+'***'}); return; }
-    _sabdaAttrTrace('FIRED', {email_hint: email.slice(0,3)+'***', has_fbclid: attr.fbclid?'yes':'no', has_utm: attr.utm_source?'yes':'no'});
+    // Enrich attribution with cookie-sourced fbp + fbc_cookie so webhook-path
+    // CAPI Purchases can lift server-side fbp coverage beyond 26.67%.
+    try { attr.fbp = (typeof _fbGetCookie === 'function' && _fbGetCookie('_fbp')) || ''; } catch(e) {}
+    try { attr.fbc_cookie = (typeof _fbGetCookie === 'function' && _fbGetCookie('_fbc')) || ''; } catch(e) {}
+    _sabdaAttrTrace('FIRED', {email_hint: email.slice(0,3)+'***', has_fbclid: attr.fbclid?'yes':'no', has_utm: attr.utm_source?'yes':'no', has_fbp: attr.fbp?'yes':'no'});
     fetch(PROXY + '/sabda-api/store-attribution', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
