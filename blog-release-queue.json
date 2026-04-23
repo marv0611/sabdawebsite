@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-04-22",
-      "slug": "/blog/que-fer-avui-barcelona/",
-      "order": 6
+      "date": "2026-04-23",
+      "slug": "/blog/yoga-barcelona-guia/",
+      "order": 7
     }
   },
   "queue": [
@@ -101,8 +101,9 @@
       "release_date": "2026-04-23",
       "md_file": "blog/article-15-yoga-barcelona-guia.md",
       "html_file": "blog/yoga-barcelona-guia/index.html",
-      "status": "queued",
-      "volume": 1600
+      "status": "released",
+      "volume": 1600,
+      "released_at": "2026-04-23"
     },
     {
       "order": 8,
