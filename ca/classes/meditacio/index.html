@@ -16,6 +16,73 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '567636669734630', {});
 fbq('track', 'PageView');
+<script>/* SABDA-MOMENCE-PASSTHROUGH-v1 */
+(function(){
+  if (window._sabdaPassthroughInstalled) return;
+  window._sabdaPassthroughInstalled = true;
+  var PRODUCTS = {
+    '443934':{name:'Trial Drop-in',value:18,ct:'trial'},
+    '443935':{name:'Intro 3-Pack',value:50,ct:'pack'},
+    '445630':{name:'Drop-in',value:22,ct:'dropin'},
+    '443937':{name:'5-Pack',value:85,ct:'pack'},
+    '443939':{name:'10-Pack',value:149,ct:'pack'},
+    '443641':{name:'BCN 1-Week Unlimited',value:50,ct:'trial'},
+    '706876':{name:'Flex',value:99,ct:'membership'},
+    '709976':{name:'Ritual',value:109,ct:'membership'},
+    '431216':{name:'Immerse',value:130,ct:'membership'},
+    '445600':{name:'Immerse 3-Month',value:330,ct:'membership'},
+    '507726':{name:'Ice Bath Drop-in',value:12,ct:'ice'},
+    '507728':{name:'Ice Bath 3-Pack',value:30,ct:'ice'},
+    '507729':{name:'Ice Bath 5-Pack',value:40,ct:'ice'}
+  };
+  var TK = ['fbclid','gclid','ttclid','msclkid','li_fat_id','utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+  function collect(){
+    var out={};
+    try {
+      var sp=new URLSearchParams(window.location.search);
+      TK.forEach(function(k){var v=sp.get(k);if(v)out[k]=v;});
+      if (typeof window._sabdaGetAttribution==='function') {
+        var st=window._sabdaGetAttribution()||{};
+        TK.forEach(function(k){if(!out[k]&&st[k])out[k]=st[k];});
+      }
+    } catch(e){}
+    return out;
+  }
+  function append(href, params){
+    try {
+      var u=new URL(href, window.location.origin);
+      Object.keys(params).forEach(function(k){
+        if (!u.searchParams.has(k)) u.searchParams.set(k, params[k]);
+      });
+      return u.toString();
+    } catch(e){ return href; }
+  }
+  function packId(href){ try{ var m=href.match(/momence\.com\/m\/(\d+)/i); return m?m[1]:null; }catch(e){return null;} }
+  document.addEventListener('click', function(ev){
+    try {
+      var a = ev.target && ev.target.closest ? ev.target.closest('a[href*="momence.com"]') : null;
+      if (!a) return;
+      var href = a.getAttribute('href');
+      if (!href) return;
+      var params = collect();
+      if (Object.keys(params).length > 0) {
+        a.setAttribute('href', append(href, params));
+      }
+      var pid = packId(href);
+      if (pid && PRODUCTS[pid] && typeof window.fbq === 'function') {
+        var p = PRODUCTS[pid];
+        try {
+          window.fbq('track','InitiateCheckout',{
+            content_ids:[pid], content_name:p.name, content_type:p.ct,
+            value:p.value, currency:'EUR'
+          });
+        } catch(e){}
+      }
+    } catch(e){}
+  }, true);
+})();
+</script>
+
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=567636669734630&ev=PageView&noscript=1"
