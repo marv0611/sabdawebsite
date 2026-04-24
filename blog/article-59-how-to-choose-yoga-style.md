@@ -7,6 +7,7 @@
 **Slug:** `/blog/how-to-choose-yoga-style/`
 
 **Primary keyword:** yoga barcelona
+**publish: true**
 **Secondary keywords:** types of yoga, yoga styles explained, which yoga is best for me
 
 ---
