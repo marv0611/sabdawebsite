@@ -385,7 +385,7 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
     <div class="sl" style="display:inline-block;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cyan);font-weight:700;margin-bottom:14px;padding:5px 12px;border:1px solid rgba(2,243,197,.4);border-radius:100px;background:rgba(14,18,53,.4);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)">La teva primera classe a SABDA</div>
     <h1 style="font-size:2.4rem;line-height:1.05;letter-spacing:-.02em;color:var(--salmon)">El primer estudi<br><em>immersiu</em><br>d'Espanya.</h1>
     <div class="offers">
-      <a href="/ca/m/schedule.html?buy=443935" class="offer pri touch">
+      <a href="https://momence.com/m/443935" class="offer pri touch" target="_blank" rel="noopener noreferrer">
         <span class="offer-badge">Millor inici</span>
         <div class="offer-row">
           <div><span class="offer-lbl">Pack d'introducció</span><div class="offer-name">3 classes</div></div>
@@ -394,7 +394,7 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
         <div class="offer-sub">Qualsevol classe &middot; Sense compromís</div>
         <div class="offer-cta">Comença <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
       </a>
-      <a href="/ca/m/schedule.html?buy=443934" class="offer touch">
+      <a href="https://momence.com/m/443934" class="offer touch" target="_blank" rel="noopener noreferrer">
         <div class="offer-row">
           <div><span class="offer-lbl">Individual</span><div class="offer-name">Classe de prova</div></div>
           <div class="offer-price">€18</div>
@@ -437,8 +437,8 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
   <div class="sh" style="text-align:center">Les teves primeres 3 classes.</div>
   <div class="book-p">&euro;50</div>
   <div class="book-m">Vàlid 30 dies</div>
-  <a href="/ca/m/schedule.html?buy=443935" class="book-btn touch">Aconsegueix el teu Pack 3 Classes <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-  <a href="/ca/m/schedule.html?buy=443934" class="book-alt">Només una classe? <b>Trial &euro;18</b></a>
+  <a href="https://momence.com/m/443935" class="book-btn touch" target="_blank" rel="noopener noreferrer">Aconsegueix el teu Pack 3 Classes <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+  <a href="https://momence.com/m/443934" class="book-alt" target="_blank" rel="noopener noreferrer">Només una classe? <b>Trial &euro;18</b></a>
 
 </section>
 
@@ -538,7 +538,7 @@ try{var saved=localStorage.getItem('sabda_lang')||'en';document.querySelectorAll
 
 <script>
 /* Pack/Trial CTA click: fire AddToCart + IC with Pixel + CAPI */
-document.querySelectorAll('a[href*="buy=443935"],a[href*="buy=443934"]').forEach(function(b){
+document.querySelectorAll('a[href*="buy=443935"],a[href*="buy=443934"],a[href*="momence.com"]').forEach(function(b){
   b.addEventListener('click', function(){
     if(typeof fbq !== 'function') return;
     var is3pack = b.href.indexOf('443935') !== -1;

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<script>/*SABDA-MOMENCE-PIVOT-REDIRECT*/(function(){try{var u=new URLSearchParams(location.search);var p=u.get('pack')||u.get('buy')||u.get('package');if(p&&/^\d+$/.test(p)){location.replace('https://momence.com/m/'+p);}}catch(e){}})();</script>
+
 <script>(function(){document.documentElement.style.visibility="hidden";try{var ua=navigator.userAgent||"";var isMobUA=/Mobi|Android|iPhone|iPad|iPod/i.test(ua);var smallScreen=(screen&&screen.width)?screen.width<=900:false;var touch=(navigator.maxTouchPoints||0)>1;var iPadOS=touch&&/Mac/i.test(ua)&&smallScreen;if(isMobUA||smallScreen||iPadOS){var p=window.location.pathname;var base=p.indexOf("/sabdawebsite/")===0?"/sabdawebsite":"";window.location.replace(base+"/es/m/schedule.html"+window.location.search);return;}}catch(e){}document.documentElement.style.visibility="";})()</script>
 
 
@@ -981,66 +983,10 @@ function getSpotsHtml(){
 // ── Open modal from session ID ──
 
 function openMo(sessionId){
-  if(isProcessing) return;
-  var sess=allE.find(function(e){return String(e.id)===String(sessionId);});
-  if(!sess){
-    // Fallback: open Momence directly
-    window.open('https://momence.com/s/'+sessionId,'_blank');
-    return;
-  }
-  if(!proxyAlive){window.open(sess.link||('https://momence.com/s/'+sessionId),'_blank');return;}
-
-  var title=clean(sess.title);
-  var time=fmtTime(sess.dateTime);
-  var teacher=(sess.teacher||'').split(' ')[0]||'';
-
-  curSession={
-    id:String(sess.id),
-    title:title,
-    time:time,
-    teacher:teacher,
-    link:sess.link||('https://momence.com/s/'+sess.id),
-    spots:sess.spotsRemaining,
-    duration:sess.duration,
-    isWaitlist:sess.spotsRemaining===0&&sess.allowWaitlist
-  };
-
-  document.getElementById('mo-t').textContent=curSession.title;
-  /*FALLBACK_URL_UPDATE*/var _fbl=document.getElementById('mo-fb-link');if(_fbl)_fbl.href=curSession.id?('https://momence.com/s/'+curSession.id):'https://momence.com/u/sabda';
-  document.getElementById('mo-c').textContent=time+(teacher?' \u00B7 '+teacher:'');
-  /*SABDA-MEMBERSHIPS-V3 RECHECK — if user already logged in from prior booking, refresh memberships for this new session before showing pack picker. */
-  if(curUser&&curUser.email&&curSessionToken&&!curUser.isGuest){
-    fetch(PROXY+'/sabda-api/check-memberships',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({email:curUser.email,sessionId:curSession.id,sessionToken:curSessionToken})
-    }).then(function(r){return r.json().then(function(d){return{ok:r.ok,status:r.status,data:d}});})
-    .then(function(r){
-      if(!r.ok){
-        // Session expired or other error — clear stale auth, fall back to anonymous flow
-        if(r.status===401||(r.data&&r.data.code==='session_expired')){
-          curUser=null;curSessionToken=null;curMembership=null;
-        }
-        showNoMembership();
-        return;
-      }
-      if(r.data.sessionPrice) curSession.price=r.data.sessionPrice;
-      if(r.data.hasUsableMembership&&r.data.memberships&&r.data.memberships.length>0){
-        showConfirmStep(r.data.memberships);
-      } else {
-        showNoMembership();
-      }
-    }).catch(function(e){console.warn('[recheck-memberships] failed, falling back:',e);showNoMembership();});
-  } else {
-    showNoMembership();
-  }
-  document.getElementById('mo').classList.add('open');
-  document.getElementById('mo').style.display='flex';
-  document.body.style.overflow='hidden';
-  history.pushState({modal:true},'');
-  _fbTrackViewContent(title);
+  /*SABDA-MOMENCE-PIVOT*/
+  try{window.open('https://momence.com/s/'+sessionId,'_blank','noopener,noreferrer');}
+  catch(e){location.href='https://momence.com/s/'+sessionId;}
 }
-
 var autoOpenedFromPack=false;
 /*PACK_AUTO_OPEN_RETURN_v1*/
 function closeMo(){

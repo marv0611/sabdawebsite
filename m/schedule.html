@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>/*SABDA-MOMENCE-PIVOT-REDIRECT*/(function(){try{var u=new URLSearchParams(location.search);var p=u.get('pack')||u.get('buy')||u.get('package');if(p&&/^\d+$/.test(p)){location.replace('https://momence.com/m/'+p);}}catch(e){}})();</script>
+
 <meta charset="UTF-8">
 <meta name="facebook-domain-verification" content="6vs8q2dkkemv5umuqn9irqnpippo3u">
 <!-- Meta Pixel Code -->
@@ -829,86 +831,16 @@ function resetCustomerAndStartOver(){
 
 
 function openMo(link,title,time,teacher){
-  console.log('[openMo] called',{link:link,title:title,time:time,teacher:teacher});
-  // ALWAYS open the modal. No early exits, no Momence redirect from this function.
-  // If something inside throws, the catch at the bottom logs it and we still keep
-  // the modal opened with whatever data we have. The modal itself handles errors.
-  try { isProcessing = false; } catch(e){}
-  try {
-    var sid = null;
-    if (link) {
-      var m1 = link.match(/\/s\/(\d+)/);
-      if (m1) sid = m1[1];
-      else { var m2 = link.match(/\/(\d+)$/); sid = m2 ? m2[1] : null; }
+  /*SABDA-MOMENCE-PIVOT*/
+  try{
+    var target=link;
+    if(!target){target='https://momence.com/u/sabda-zReajm';}
+    else if(!/^https?:/i.test(target)){
+      var m=target.match(/(\d+)/); target=m?('https://momence.com/s/'+m[1]):'https://momence.com/u/sabda-zReajm';
     }
-    var sess = null;
-    if (typeof allE !== 'undefined' && allE && allE.find && sid) {
-      sess = allE.find(function(e){return String(e.id)===sid;});
-    }
-    curSession = {
-      id: sid,
-      title: (typeof clean === 'function' ? clean(title) : title),
-      time: time,
-      teacher: teacher,
-      link: link,
-      spots: sess ? sess.spotsRemaining : null,
-      duration: sess ? sess.duration : null,
-      isWaitlist: sess ? sess.spotsRemaining === 0 : false
-    };
-    var moT = document.getElementById('mo-t');
-    var moC = document.getElementById('mo-c');
-    var mo  = document.getElementById('mo');
-    if (moT) moT.textContent = curSession.title || 'Confirm booking';
-    /*FALLBACK_URL_UPDATE*/var _fbl=document.getElementById('mo-fb-link');if(_fbl)_fbl.href=curSession.id?('https://momence.com/s/'+curSession.id):'https://momence.com/u/sabda-zReajm';
-    if (moC) moC.textContent = (time || '') + (teacher ? ' · ' + teacher : '');
-    /*SABDA-MEMBERSHIPS-V3 RECHECK — refresh memberships if user already logged in from prior booking. */
-    if(curUser&&curUser.email&&curSessionToken&&!curUser.isGuest){
-      fetch(PROXY+'/sabda-api/check-memberships',{
-        method:'POST',
-        headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({email:curUser.email,sessionId:curSession.id,sessionToken:curSessionToken})
-      }).then(function(r){return r.json().then(function(d){return{ok:r.ok,status:r.status,data:d}});})
-      .then(function(r){
-        if(!r.ok){
-          if(r.status===401||(r.data&&r.data.code==='session_expired')){
-            curUser=null;curSessionToken=null;curMembership=null;
-          }
-          showNoMembership();
-          return;
-        }
-        if(r.data.sessionPrice) curSession.price=r.data.sessionPrice;
-        if(r.data.hasUsableMembership&&r.data.memberships&&r.data.memberships.length>0){
-          showConfirmStep(r.data.memberships);
-        } else {
-          showNoMembership();
-        }
-      }).catch(function(e){console.warn('[recheck-memberships] failed, falling back:',e);showNoMembership();});
-    } else if (typeof showNoMembership === 'function') {
-      try { showNoMembership(); } catch(e){ console.error('[openMo] showNoMembership failed',e); }
-    }
-    if (mo) {
-      mo.classList.add('open');
-      mo.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-      console.log('[openMo] modal opened OK');
-      try{window._sabdaDiag('modal_open');}catch(e){}
-    } else {
-      console.error('[openMo] CRITICAL: #mo element not found in DOM');
-    }
-    try { history.pushState({modal:true}, ''); } catch(e){}
-    if (typeof _fbTrackViewContent === 'function') { try { _fbTrackViewContent(title); } catch(e){} }
-    // InitiateCheckout via tracker → fires both Pixel (advanced matching) + CAPI
-    try { if (typeof _fbTrackInitiateCheckout === 'function') _fbTrackInitiateCheckout(22); } catch(e){}
-  } catch (err) {
-    console.error('[openMo] EXCEPTION', err);
-    // Even on exception, try to show the modal
-    try {
-      var mo2 = document.getElementById('mo');
-      if (mo2) { mo2.classList.add('open'); mo2.style.display = 'flex'; }
-    } catch(e){}
-  }
+    window.open(target,'_blank','noopener,noreferrer');
+  }catch(e){location.href='https://momence.com/u/sabda-zReajm';}
 }
-
 var autoOpenedFromPack=false;
 /*PACK_AUTO_OPEN_RETURN_v1*/
 function closeMo(){
