@@ -758,43 +758,6 @@ window._fbCapiAfter3DS = function(payload) {
   }
 };
 
-// Store email→attribution server-side so Momence-native purchases can be matched to ad clicks.
-// Called from payment paths. Fire-and-forget, never blocks UI.
-// Telemetry: every branch fires a beacon to /sabda-api/attr-trace so silent
-// bails are observable in Worker logs as [ATTR-WRITE-SKIP|FIRED] lines.
-function _sabdaAttrTrace(marker, extras) {
-  try {
-    var payload = {marker: marker};
-    if (extras) for (var k in extras) if (Object.prototype.hasOwnProperty.call(extras,k)) payload[k] = extras[k];
-    navigator.sendBeacon(PROXY + '/sabda-api/attr-trace', new Blob([JSON.stringify(payload)], {type:'application/json'}));
-  } catch(e) {}
-}
-window._sabdaStoreAttribution = function(email) {
-  try {
-    if (!email || !email.trim()) { _sabdaAttrTrace('SKIP', {reason:'no-email'}); return; }
-    var attr = (window._sabdaGetAttribution && window._sabdaGetAttribution()) || null;
-    if (!attr) { _sabdaAttrTrace('SKIP', {reason:'no-attr', email_hint: email.slice(0,3)+'***'}); return; }
-    // Enrich attribution with cookie-sourced fbp + fbc_cookie so webhook-path
-    // CAPI Purchases can lift server-side fbp coverage beyond 26.67%.
-    try { attr.fbp = (typeof _fbGetCookie === 'function' && _fbGetCookie('_fbp')) || ''; } catch(e) {}
-    try { attr.fbc_cookie = (typeof _fbGetCookie === 'function' && _fbGetCookie('_fbc')) || ''; } catch(e) {}
-    _sabdaAttrTrace('FIRED', {email_hint: email.slice(0,3)+'***', has_fbclid: attr.fbclid?'yes':'no', has_utm: attr.utm_source?'yes':'no', has_fbp: attr.fbp?'yes':'no'});
-    fetch(PROXY + '/sabda-api/store-attribution', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ email: email.trim().toLowerCase(), attribution: attr }),
-      keepalive: true
-    }).catch(function(e) {});
-  } catch(e) {}
-};
-// Wrapper that captures call-site preconditions BEFORE the guard, so we can
-// distinguish curUser-not-set vs no-attribution failures in [ATTR-WRITE-CALL] logs.
-window._sabdaStoreAttributionAttempt = function(hasCurUser, hasEmail, emailVal) {
-  try { _sabdaAttrTrace('CALL', {curUser: hasCurUser?'yes':'no', email: hasEmail?'yes':'no'}); } catch(e) {}
-  if (hasCurUser && hasEmail) {
-    try { window._sabdaStoreAttribution(emailVal); } catch(e) {}
-  }
-};
 
 // Generic CAPI sender for Lead, InitiateCheckout, AddToCart, ViewContent.
 // Mirrors _fbCapiAfter3DS pattern: fire-and-forget, non-blocking, never throws
@@ -970,7 +933,6 @@ function _fbInitIcEventId(){
   }
   return _fbIcEventId;
 }
-try{window._sabdaStoreAttributionAttempt(typeof curUser!=='undefined'&&!!curUser, !!(typeof curUser!=='undefined'&&curUser&&curUser.email), (typeof curUser!=='undefined'&&curUser)?curUser.email:'');}catch(e){}
 function _fbInitPurchaseEventId(){
   // Generate the Purchase dedup ID BEFORE the /sabda-api/pay POST so both
   // the server-side CAPI call and the browser Pixel fire (on showSuccess)
@@ -983,7 +945,6 @@ function _fbInitPurchaseEventId(){
 }
 function _fbTrackPurchase(price, productName){
   if(typeof fbq==='undefined') return;
-  try{window._sabdaStoreAttributionAttempt(typeof curUser!=='undefined'&&!!curUser, !!(typeof curUser!=='undefined'&&curUser&&curUser.email), (typeof curUser!=='undefined'&&curUser)?curUser.email:'');}catch(e){}
   var eid=_fbInitPurchaseEventId();
   _sabdaTrack('Purchase',{value:price,currency:'EUR',content_name:productName||''},eid);
   return eid;
@@ -1481,7 +1442,6 @@ function mountCardForGuest(){
       var cf=getCustomerFields();
       var np=document.getElementById('bk-new-pass');
       var pass=np?np.value.trim():undefined;
-      try{window._sabdaStoreAttributionAttempt(typeof curUser!=='undefined'&&!!curUser, !!(typeof curUser!=='undefined'&&curUser&&curUser.email), (typeof curUser!=='undefined'&&curUser)?curUser.email:'');}catch(e){}
       _fbInitPurchaseEventId();
       fetch(PROXY+'/sabda-api/pay',{
         method:'POST',headers:{'Content-Type':'application/json'},
@@ -1533,7 +1493,6 @@ window.doGuestPackPay=function(){
   _fbTrackInitiateCheckout(finalPrice);
   // Free booking path (100% promo)
   if(finalPrice===0){
-    try{window._sabdaStoreAttributionAttempt(typeof curUser!=='undefined'&&!!curUser, !!(typeof curUser!=='undefined'&&curUser&&curUser.email), (typeof curUser!=='undefined'&&curUser)?curUser.email:'');}catch(e){}
     _fbInitPurchaseEventId();
     fetch(PROXY+'/sabda-api/pay',{
       method:'POST',headers:{'Content-Type':'application/json'},
@@ -1567,7 +1526,6 @@ window.doGuestPackPay=function(){
       isProcessing=false;if(btn){btn.textContent='Confirm booking';btn.disabled=false;}
       return;
     }
-    try{window._sabdaStoreAttributionAttempt(typeof curUser!=='undefined'&&!!curUser, !!(typeof curUser!=='undefined'&&curUser&&curUser.email), (typeof curUser!=='undefined'&&curUser)?curUser.email:'');}catch(e){}
     _fbInitPurchaseEventId();
     fetch(PROXY+'/sabda-api/pay',{
       method:'POST',headers:{'Content-Type':'application/json'},
@@ -2000,7 +1958,6 @@ window.showPayForm=function(type,price,productId,name,desc){stepChange();
       if(vErr){ev.complete('fail');setTimeout(function(){var errEl=document.getElementById('bk-err');if(errEl)errEl.textContent=vErr;},500);return;}
       isProcessing=true;
       var cf=getCustomerFields();
-      try{window._sabdaStoreAttributionAttempt(typeof curUser!=='undefined'&&!!curUser, !!(typeof curUser!=='undefined'&&curUser&&curUser.email), (typeof curUser!=='undefined'&&curUser)?curUser.email:'');}catch(e){}
       _fbInitPurchaseEventId();
       fetch(PROXY+'/sabda-api/pay',{
         method:'POST',
@@ -2065,7 +2022,6 @@ window.doPayAndBook=function(type,price,productId){if(isProcessing)return;
 
   // Free booking (100% promo)
   if(finalPrice===0){
-    try{window._sabdaStoreAttributionAttempt(typeof curUser!=='undefined'&&!!curUser, !!(typeof curUser!=='undefined'&&curUser&&curUser.email), (typeof curUser!=='undefined'&&curUser)?curUser.email:'');}catch(e){}
     _fbInitPurchaseEventId();
     fetch(PROXY+'/sabda-api/pay',{
       method:'POST',
@@ -2098,7 +2054,6 @@ window.doPayAndBook=function(type,price,productId){if(isProcessing)return;
       isProcessing=false;btn.textContent='Confirm booking';btn.disabled=false;
       return;
     }
-    try{window._sabdaStoreAttributionAttempt(typeof curUser!=='undefined'&&!!curUser, !!(typeof curUser!=='undefined'&&curUser&&curUser.email), (typeof curUser!=='undefined'&&curUser)?curUser.email:'');}catch(e){}
     _fbInitPurchaseEventId(); return fetch(PROXY+'/sabda-api/pay',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
