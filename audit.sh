@@ -34,6 +34,12 @@ for p in BOOKING:
     called   = set(re.findall(r'\b(_fb[A-Z]\w+|_sabda[A-Z]\w+|fbqAdvancedMatch)\s*\(', s))
     for c in called:
         if c not in defined:
+            # ALLOW guarded references: `if (typeof window.fn === 'function')` is
+            # graceful degradation, not a bug. The code falls back cleanly when
+            # the function is absent.
+            guard_pattern = r"typeof\s+window\." + re.escape(c) + r"\s*===?\s*['\"]function['\"]"
+            if re.search(guard_pattern, s):
+                continue
             issues.append(f'[UNDEFINED_FN]  {p}: {c} called but not defined')
 
     # 3. Bare .catch — swallows errors
@@ -232,6 +238,20 @@ TRACKED_FILES = [
     'intro/index.html','es/intro/index.html','ca/intro/index.html',
     'm/intro.html','es/m/intro.html','ca/m/intro.html',
 ]
+def _is_inside_v2_module(src, line_num):
+    """Returns True if line_num is inside a SABDA-MOMENCE-PASSTHROUGH-v2 IIFE block."""
+    # Find the v2 marker, then find the </script> that closes its block.
+    marker = src.find('SABDA-MOMENCE-PASSTHROUGH-v2')
+    if marker == -1: return False
+    # Find the </script> after the marker
+    script_end = src.find('</script>', marker)
+    if script_end == -1: return False
+    # Convert line_num (1-indexed) to char offset
+    lines = src.split('\n')
+    if line_num > len(lines): return False
+    char_offset = sum(len(l)+1 for l in lines[:line_num-1])
+    return marker < char_offset < script_end
+
 for p in TRACKED_FILES:
     if not os.path.exists(p): continue
     s = open(p).read()
@@ -248,6 +268,10 @@ for p in TRACKED_FILES:
         window_up = '\n'.join(lines[max(0,i-30):i])
         in_helper = bool(re.search(r'function\s+(_sabda\w+|_fb\w+|_sabdaFireWithCAPI|_fbCapiSend|_sabdaTrack)\s*\(', window_up)) and window_up.count('{') > window_up.count('}')
         if in_helper: continue
+        # POST-PIVOT (2026-04-25): v2 passthrough module fires Pixel-only IC at click time.
+        # IC inside v2 module is intentional — booking flow goes off-domain to Momence,
+        # so no server-side CAPI Purchase to need parity for.
+        if _is_inside_v2_module(s, i+1): continue
         # Check for fbq('track','EVENT'
         m = re.search(r"fbq\(\s*['\"]track['\"]\s*,\s*['\"](\w+)['\"]", line)
         if not m: continue
@@ -383,6 +407,9 @@ for p in INTRO_PAGES:
             line_offset = sum(len(l)+1 for l in lines[:i]) + m.start()
             if _is_inside_helper(s, line_offset):
                 continue  # legit — Pixel half of _sabdaFireWithCAPI
+            # POST-PIVOT: v2 module fires Pixel-only IC on intro pages too.
+            if _is_inside_v2_module(s, i+1):
+                continue
             issues.append(f'[INTRO_TRACK]   {p}:{i+1} — raw fbq(\'track\',\'{bad_evt}\') on intro page — use _sabdaFireWithCAPI instead')
             break
 
