@@ -66,6 +66,7 @@ fbq('track', 'PageView');
       if (!a) return;
       var href = a.getAttribute('href');
       if (!href) return;
+      a.setAttribute('target', '_self');  /* TEST-A v2: same-tab nav */
       var params = collect();
       if (Object.keys(params).length > 0) {
         a.setAttribute('href', append(href, params));
@@ -420,7 +421,7 @@ footer{padding:44px clamp(24px,4vw,80px) 24px;background:rgba(9,12,38,.6);positi
       <li><a href="/es/#newsletter">Newsletter</a></li>
     </ul></div><div class="ft-col"><h3 style="color:var(--white)">Contacto</h3><ul><li><a href="mailto:info@sabdastudio.com">info@sabdastudio.com</a></li><li><a href="tel:+34625449878">+34 625 44 98 78</a></li><li><a href="https://maps.google.com/?q=SABDA+Studio,+Barcelona" target="_blank" rel="noopener noreferrer" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3);padding-bottom:2px">Cómo llegar →</a></li></ul></div></div><div class="ft-bt"><span>© 2026 SABDA STUDIO S.L.</span><div class="ft-lg"><a href="/es/legal/aviso-legal.html">Aviso Legal</a><a href="/es/legal/politica-privacidad.html">Política de Privacidad</a><a href="/es/legal/terminos.html">Términos y Condiciones</a><a href="/es/legal/cookies.html">Cookies</a></div></div></footer>
 
-<div class="sbk" id="sbk"><div class="sbk-txt">3 Clases · <span>50€</span></div><a href="https://momence.com/m/443935" class="sbk-btn" target="_blank" rel="noopener noreferrer">Reservar Ahora</a></div>
+<div class="sbk" id="sbk"><div class="sbk-txt">3 Clases · <span>50€</span></div><a href="https://momence.com/m/443935" class="sbk-btn" target="_self" rel="noopener noreferrer">Reservar Ahora</a></div>
 
 <script>
 /* ============================================================

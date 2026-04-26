@@ -66,6 +66,7 @@ fbq('track', 'PageView');
       if (!a) return;
       var href = a.getAttribute('href');
       if (!href) return;
+      a.setAttribute('target', '_self');  /* TEST-A v2: same-tab nav */
       var params = collect();
       if (Object.keys(params).length > 0) {
         a.setAttribute('href', append(href, params));
@@ -532,19 +533,19 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
         <div class="pt-label">Intro 3-Pack</div>
         <div class="pt-price">€50</div>
         <div class="pt-note">New students<br>Valid for 30 days</div>
-        <a href="https://momence.com/m/443935" class="pt-btn pt-btn-ghost" target="_blank" rel="noopener noreferrer">Get Started</a>
+        <a href="https://momence.com/m/443935" class="pt-btn pt-btn-ghost" target="_self" rel="noopener noreferrer">Get Started</a>
       </div>
       <div class="pt-card featured rv" style="transition-delay:.15s">
         <div class="pt-label">Immerse</div>
         <div class="pt-price">€130<span>/mo</span></div>
         <div class="pt-note">Unlimited classes<br>Cancel anytime</div>
-        <a href="https://momence.com/m/431216" class="pt-btn pt-btn-cyan" target="_blank" rel="noopener noreferrer">Join Now</a>
+        <a href="https://momence.com/m/431216" class="pt-btn pt-btn-cyan" target="_self" rel="noopener noreferrer">Join Now</a>
       </div>
       <div class="pt-card rv" style="transition-delay:.2s">
         <div class="pt-label">Immerse 3 Month</div>
         <div class="pt-price">€330<span>/3 mo</span></div>
         <div class="pt-note">€110/month<br>Unlimited classes<br>Cancel anytime</div>
-        <a href="https://momence.com/m/445600" class="pt-btn pt-btn-ghost" target="_blank" rel="noopener noreferrer">Start Unlimited</a>
+        <a href="https://momence.com/m/445600" class="pt-btn pt-btn-ghost" target="_self" rel="noopener noreferrer">Start Unlimited</a>
       </div>
     </div>
     <p class="pt-foot rv" style="transition-delay:.2s"><a href="../../pricing.html" class="inline-link">See all our offers →</a></p>

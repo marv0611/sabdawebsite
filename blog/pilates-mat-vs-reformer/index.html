@@ -63,6 +63,7 @@ fbq('track', 'PageView');
       if (!a) return;
       var href = a.getAttribute('href');
       if (!href) return;
+      a.setAttribute('target', '_self');  /* TEST-A v2: same-tab nav */
       var params = collect();
       if (Object.keys(params).length > 0) {
         a.setAttribute('href', append(href, params));
@@ -291,7 +292,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 <p><strong>Quieres un core de acero.</strong> Sin la asistencia de los muelles, tu core hace todo el trabajo estabilizador. Una clase de mat bien enseñada es más exigente para el centro de lo que parece.</p>
 <p><strong>Buscas precio accesible.</strong> Mat cuesta la mitad que reformer. Si planeas practicar 2-3 veces por semana, la diferencia de precio es significativa a lo largo de un año.</p>
 <p><strong>Quieres entender tu cuerpo.</strong> Sin máquina, no hay muleta. Aprendes a controlar tu cuerpo con tu propio peso, lo cual traduce mejor a la vida real.</p>
-<p><strong>Te interesa la experiencia inmersiva.</strong> <a href="https://sabdastudio.com/classes/pilates/">SABDA</a> ofrece pilates mat dentro de una sala de 360° con Dolby Atmos. Proyecciones inmersivas y audio espacial que amplifican la concentración de una forma que ni el mejor estudio convencional consigue. Formatos: Core Pilates, Power Pilates, Pilates Sculpt, Full Body Pilates. Desde €18/clase con el <a href="https://momence.com/m/443935" target="_blank" rel="noopener noreferrer">pack de 3 por €50</a>.</p>
+<p><strong>Te interesa la experiencia inmersiva.</strong> <a href="https://sabdastudio.com/classes/pilates/">SABDA</a> ofrece pilates mat dentro de una sala de 360° con Dolby Atmos. Proyecciones inmersivas y audio espacial que amplifican la concentración de una forma que ni el mejor estudio convencional consigue. Formatos: Core Pilates, Power Pilates, Pilates Sculpt, Full Body Pilates. Desde €18/clase con el <a href="https://momence.com/m/443935" target="_self" rel="noopener noreferrer">pack de 3 por €50</a>.</p>
 <hr />
 <h2>Cuándo elegir reformer</h2>
 <p><strong>Vienes de una lesión.</strong> Los muelles permiten controlar la carga con precisión, lo que hace el reformer ideal para rehabilitación y trabajo post-lesión.</p>

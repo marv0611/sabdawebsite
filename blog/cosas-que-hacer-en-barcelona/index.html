@@ -63,6 +63,7 @@ fbq('track', 'PageView');
       if (!a) return;
       var href = a.getAttribute('href');
       if (!href) return;
+      a.setAttribute('target', '_self');  /* TEST-A v2: same-tab nav */
       var params = collect();
       if (Object.keys(params).length > 0) {
         a.setAttribute('href', append(href, params));
@@ -348,7 +349,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 <h2>Antes de irte</h2>
 <p>Barcelona premia a los que se salen un poco de la ruta marcada. La Sagrada Familia es genuinamente increíble, ve a verla. Pero los mejores planes en Barcelona suelen pasar en los espacios entre los monumentos: un vermut al mediodía, una azotea al atardecer, una sesión de sound healing que no tenías planeada.</p>
 <p>La ciudad tiene una forma particular de sorprenderte cuando dejas de buscar lo que esperabas encontrar. El barrio que no estaba en tu itinerario, la terraza que no aparecía en ninguna lista, el bar que descubriste porque estaba lloviendo y era lo primero que tenía un toldo.</p>
-<p>Si buscas cosas que hacer en Barcelona que nadie más está haciendo, el <a href="https://momence.com/m/443935" target="_blank" rel="noopener noreferrer">pack de 3 clases de SABDA por €50</a> merece la pena. Yoga, breathwork, sound healing o danza extática dentro de una sala de proyecciones 360° con Dolby Atmos. Es el tipo de experiencia que Barcelona ofrece y que no vas a encontrar en ninguna otra ciudad.</p>
+<p>Si buscas cosas que hacer en Barcelona que nadie más está haciendo, el <a href="https://momence.com/m/443935" target="_self" rel="noopener noreferrer">pack de 3 clases de SABDA por €50</a> merece la pena. Yoga, breathwork, sound healing o danza extática dentro de una sala de proyecciones 360° con Dolby Atmos. Es el tipo de experiencia que Barcelona ofrece y que no vas a encontrar en ninguna otra ciudad.</p>
 <p><strong>Relacionado:</strong> <a href="/blog/things-to-do-in-barcelona/">15 Unique Things to Do in Barcelona</a> | <a href="/blog/que-fer-avui-barcelona/">Què fer avui a Barcelona</a> | <a href="/blog/planes-en-pareja-barcelona/">Planes en pareja en Barcelona</a> | <a href="/blog/planes-originales-barcelona/">Planes originales</a> | <a href="/blog/barcelona-invierno-planes/">Barcelona en invierno</a> | <a href="/blog/ocio-barcelona/">Ocio en Barcelona</a></p>
 </article>
 <footer style="border-top:1px solid rgba(240,239,233,.07)">

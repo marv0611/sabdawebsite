@@ -66,6 +66,7 @@ fbq('track', 'PageView');
       if (!a) return;
       var href = a.getAttribute('href');
       if (!href) return;
+      a.setAttribute('target', '_self');  /* TEST-A v2: same-tab nav */
       var params = collect();
       if (Object.keys(params).length > 0) {
         a.setAttribute('href', append(href, params));
@@ -425,7 +426,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.06);positio
       <div class="m-price">€99<span>/mo</span></div>
       <div class="m-sub">Unlimited off-peak classes</div>
       <div class="m-hours">Mon to Fri before 17:30 and after 20:00</div>
-      <a href="https://momence.com/m/706876" target="_blank" rel="noopener noreferrer">Get Flex</a>
+      <a href="https://momence.com/m/706876" target="_self" rel="noopener noreferrer">Get Flex</a>
       <ul class="m-features">
         <li>2 ice baths / month</li>
         <li>1 guest pass / month (new students only)</li>
@@ -435,7 +436,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.06);positio
       <h3>Ritual</h3>
       <div class="m-price">€109<span>/mo</span></div>
       <div class="m-sub">8 classes per month</div>
-      <a href="https://momence.com/m/709976" target="_blank" rel="noopener noreferrer">Get Ritual</a>
+      <a href="https://momence.com/m/709976" target="_self" rel="noopener noreferrer">Get Ritual</a>
       <ul class="m-features">
         <li>2 ice baths / month</li>
         <li>1 guest pass / month (new students only)</li>
@@ -446,7 +447,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.06);positio
       <h3>Immerse</h3>
       <div class="m-price">€130<span>/mo</span></div>
       <div class="m-sub">Unlimited classes<br>Cancel anytime</div>
-      <a href="https://momence.com/m/431216" target="_blank" rel="noopener noreferrer">Get Immerse</a>
+      <a href="https://momence.com/m/431216" target="_self" rel="noopener noreferrer">Get Immerse</a>
       <ul class="m-features">
         <li>4 ice baths / month</li>
         <li>2 guest passes / month (new students only)</li>
@@ -456,7 +457,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.06);positio
       <h3>Immerse 3 Month</h3>
       <div class="m-price">€330<span>/3 mo</span></div>
       <div class="m-sub">€110/month<br>Unlimited classes<br>Cancel anytime</div>
-      <a href="https://momence.com/m/445600" target="_blank" rel="noopener noreferrer">Get 3 Month</a>
+      <a href="https://momence.com/m/445600" target="_self" rel="noopener noreferrer">Get 3 Month</a>
       <ul class="m-features">
         <li>4 ice baths / month</li>
         <li>2 guest passes / month (new students only)</li>
@@ -474,19 +475,19 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.06);positio
   <div class="pricing-grid">
     <div class="pricing-col">
       <h3>Single Visits</h3>
-      <a href="https://momence.com/m/443934" target="_blank" rel="noopener noreferrer">Trial Class €18</a>
-      <a href="https://momence.com/m/445630" target="_blank" rel="noopener noreferrer">Drop-in Class €22</a>
+      <a href="https://momence.com/m/443934" target="_self" rel="noopener noreferrer">Trial Class €18</a>
+      <a href="https://momence.com/m/445630" target="_self" rel="noopener noreferrer">Drop-in Class €22</a>
     </div>
     <div class="pricing-col hero-col">
       <div class="pricing-badge">Most Popular</div>
       <h3>Intro Offers</h3>
-      <a href="https://momence.com/m/443935" target="_blank" rel="noopener noreferrer">3 Pack €50<span class="per-class">Valid 30 days</span></a>
-      <a href="https://momence.com/m/443641" target="_blank" rel="noopener noreferrer">1 Week Unlimited €50<span class="per-class">Catalonia residents only</span></a>
+      <a href="https://momence.com/m/443935" target="_self" rel="noopener noreferrer">3 Pack €50<span class="per-class">Valid 30 days</span></a>
+      <a href="https://momence.com/m/443641" target="_self" rel="noopener noreferrer">1 Week Unlimited €50<span class="per-class">Catalonia residents only</span></a>
     </div>
     <div class="pricing-col">
       <h3>Class Packs</h3>
-      <a href="https://momence.com/m/443937" target="_blank" rel="noopener noreferrer">5 Pack €85<span class="per-class">€17 / class</span></a>
-      <a href="https://momence.com/m/443939" target="_blank" rel="noopener noreferrer">10 Pack €149<span class="per-class">€14.90 / class</span></a>
+      <a href="https://momence.com/m/443937" target="_self" rel="noopener noreferrer">5 Pack €85<span class="per-class">€17 / class</span></a>
+      <a href="https://momence.com/m/443939" target="_self" rel="noopener noreferrer">10 Pack €149<span class="per-class">€14.90 / class</span></a>
     </div>
   </div>
 </section>

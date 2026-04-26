@@ -63,6 +63,7 @@ fbq('track', 'PageView');
       if (!a) return;
       var href = a.getAttribute('href');
       if (!href) return;
+      a.setAttribute('target', '_self');  /* TEST-A v2: same-tab nav */
       var params = collect();
       if (Object.keys(params).length > 0) {
         a.setAttribute('href', append(href, params));
@@ -307,7 +308,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 <hr />
 <h2>Antes de irte</h2>
 <p>Los mejores planes en pareja en Barcelona no son los más elaborados. Son los que os sacan de la rutina: una azotea que no conocíais, un barrio por el que nunca pasáis, un sound healing que ninguno de los dos se habría apuntado solo. La ciudad está llena de rincones que funcionan mejor en dos.</p>
-<p>Y si queréis probar algo realmente distinto: <a href="https://momence.com/m/443935" target="_blank" rel="noopener noreferrer">3 clases inmersivas en SABDA por €50</a>. Yoga, breathwork, sound healing o danza extática dentro de una sala de 360°. Es lo más parecido a transportarse a otro sitio sin salir de Eixample.</p>
+<p>Y si queréis probar algo realmente distinto: <a href="https://momence.com/m/443935" target="_self" rel="noopener noreferrer">3 clases inmersivas en SABDA por €50</a>. Yoga, breathwork, sound healing o danza extática dentro de una sala de 360°. Es lo más parecido a transportarse a otro sitio sin salir de Eixample.</p>
 <p><strong>Relacionado:</strong> <a href="/blog/regalo-experiencia-barcelona/">Regalos experiencia en Barcelona</a> | <a href="/blog/cosas-que-hacer-en-barcelona/">Cosas que hacer en Barcelona</a></p>
 </article>
 <footer style="border-top:1px solid rgba(240,239,233,.07)">

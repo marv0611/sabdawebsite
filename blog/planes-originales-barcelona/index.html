@@ -63,6 +63,7 @@ fbq('track', 'PageView');
       if (!a) return;
       var href = a.getAttribute('href');
       if (!href) return;
+      a.setAttribute('target', '_self');  /* TEST-A v2: same-tab nav */
       var params = collect();
       if (Object.keys(params).length > 0) {
         a.setAttribute('href', append(href, params));
@@ -305,7 +306,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 <hr />
 <h2>La clave</h2>
 <p>Los mejores planes originales en Barcelona son los que encuentras cuando dejas de buscar "cosas que hacer" y empiezas a caminar por barrios que no estaban en tu plan. El Raval de noche, Sants un domingo, Poblenou cualquier tarde. La ciudad recompensa la curiosidad.</p>
-<p>Si buscas algo que no existe en ningún otro sitio: <a href="https://momence.com/m/443935" target="_blank" rel="noopener noreferrer">3 clases inmersivas en SABDA por €50</a>. Yoga, breathwork o sound healing dentro de una sala de 360°.</p>
+<p>Si buscas algo que no existe en ningún otro sitio: <a href="https://momence.com/m/443935" target="_self" rel="noopener noreferrer">3 clases inmersivas en SABDA por €50</a>. Yoga, breathwork o sound healing dentro de una sala de 360°.</p>
 <p><strong>Relacionado:</strong> <a href="/blog/cosas-que-hacer-en-barcelona/">Cosas que hacer en Barcelona</a> | <a href="/blog/planes-en-pareja-barcelona/">Planes en pareja en Barcelona</a></p>
 </article>
 <footer style="border-top:1px solid rgba(240,239,233,.07)">

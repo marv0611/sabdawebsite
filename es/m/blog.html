@@ -63,6 +63,7 @@ fbq('track', 'PageView');
       if (!a) return;
       var href = a.getAttribute('href');
       if (!href) return;
+      a.setAttribute('target', '_self');  /* TEST-A v2: same-tab nav */
       var params = collect();
       if (Object.keys(params).length > 0) {
         a.setAttribute('href', append(href, params));
@@ -255,19 +256,19 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
   <div class="pricing-grid">
     <div class="pricing-col">
       <h3>Visitas Sueltas</h3>
-      <a href="https://momence.com/m/443934" target="_blank" rel="noopener noreferrer">Clase de Prueba 18€</a>
-      <a href="https://momence.com/m/445630" target="_blank" rel="noopener noreferrer">Clase Suelta 22€</a>
+      <a href="https://momence.com/m/443934" target="_self" rel="noopener noreferrer">Clase de Prueba 18€</a>
+      <a href="https://momence.com/m/445630" target="_self" rel="noopener noreferrer">Clase Suelta 22€</a>
     </div>
     <div class="pricing-col hero-col">
       <div class="pricing-badge">Más Popular</div>
       <h3>Ofertas Intro</h3>
-      <a href="https://momence.com/m/443935" target="_blank" rel="noopener noreferrer">Pack de 3 · 50€<span class="per-class">Válido 30 días</span></a>
-      <a href="https://momence.com/m/443641" target="_blank" rel="noopener noreferrer">Semana Ilimitada 50€<span class="per-class">Solo residentes en Cataluña</span></a>
+      <a href="https://momence.com/m/443935" target="_self" rel="noopener noreferrer">Pack de 3 · 50€<span class="per-class">Válido 30 días</span></a>
+      <a href="https://momence.com/m/443641" target="_self" rel="noopener noreferrer">Semana Ilimitada 50€<span class="per-class">Solo residentes en Cataluña</span></a>
     </div>
     <div class="pricing-col">
       <h3>Packs de Clases</h3>
-      <a href="https://momence.com/m/443937" target="_blank" rel="noopener noreferrer">Pack de 5 · 85€<span class="per-class">17€ / clase</span></a>
-      <a href="https://momence.com/m/443939" target="_blank" rel="noopener noreferrer">Pack de 10 · 149€<span class="per-class">14,90€ / clase</span></a>
+      <a href="https://momence.com/m/443937" target="_self" rel="noopener noreferrer">Pack de 5 · 85€<span class="per-class">17€ / clase</span></a>
+      <a href="https://momence.com/m/443939" target="_self" rel="noopener noreferrer">Pack de 10 · 149€<span class="per-class">14,90€ / clase</span></a>
     </div>
   </div>
 </section>

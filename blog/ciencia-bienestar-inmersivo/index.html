@@ -63,6 +63,7 @@ fbq('track', 'PageView');
       if (!a) return;
       var href = a.getAttribute('href');
       if (!href) return;
+      a.setAttribute('target', '_self');  /* TEST-A v2: same-tab nav */
       var params = collect();
       if (Object.keys(params).length > 0) {
         a.setAttribute('href', append(href, params));
@@ -289,7 +290,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 <p>No necesitas entender la neurociencia para experimentar la diferencia. Pero si alguien te pregunta por qué una clase de yoga en una sala inmersiva "se siente diferente" a una clase normal, la respuesta tiene fundamento:</p>
 <p>El entorno 360° desactiva la DMN más rápido. El audio espacial estimula el nervio vago por vías adicionales. La estimulación visual óptima facilita estados de flujo. El resultado medible: relajación más profunda, concentración más sostenida, y la sensación de que una hora dentro de la sala vale por varias horas de práctica en un entorno convencional.</p>
 <hr />
-<p>Experimenta la diferencia: <a href="https://momence.com/m/443935" target="_blank" rel="noopener noreferrer">3 clases inmersivas en SABDA por €50</a>. Yoga, sound healing, breathwork, o yin yoga dentro de 360° de proyecciones y Dolby Atmos.</p>
+<p>Experimenta la diferencia: <a href="https://momence.com/m/443935" target="_self" rel="noopener noreferrer">3 clases inmersivas en SABDA por €50</a>. Yoga, sound healing, breathwork, o yin yoga dentro de 360° de proyecciones y Dolby Atmos.</p>
 <p><strong>Relacionado:</strong> <a href="/blog/que-es-el-sound-healing/">Qué es el sound healing</a> | <a href="/blog/dolby-atmos-wellness/">Cómo Dolby Atmos cambia el wellness (EN)</a></p>
 <h2>---</h2>
 <h2>Limitaciones y honestidad</h2>
