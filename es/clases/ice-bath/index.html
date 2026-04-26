@@ -66,6 +66,7 @@ fbq('track', 'PageView');
       if (!a) return;
       var href = a.getAttribute('href');
       if (!href) return;
+      a.setAttribute('target', '_self');  /* TEST-A: same-tab nav */
       var params = collect();
       if (Object.keys(params).length > 0) {
         a.setAttribute('href', append(href, params));
@@ -500,13 +501,13 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
         <div class="pt-label">Combo</div>
         <div class="pt-price">€28</div>
         <div class="pt-note">Clase suelta + Ice Bath<br>Toalla incluida</div>
-        <a href="https://momence.com/m/443935" class="pt-btn pt-btn-ghost" target="_blank" rel="noopener noreferrer">Reservar</a>
+        <a href="https://momence.com/m/443935" class="pt-btn pt-btn-ghost" target="_self" rel="noopener noreferrer">Reservar</a>
       </div>
       <div class="pt-card rv" style="transition-delay:.3s">
         <div class="pt-label">Combo</div>
         <div class="pt-price">€24</div>
         <div class="pt-note">Clase de prueba + Ice Bath<br>Toalla incluida</div>
-        <a href="https://momence.com/m/443935" class="pt-btn pt-btn-ghost" target="_blank" rel="noopener noreferrer">Reservar</a>
+        <a href="https://momence.com/m/443935" class="pt-btn pt-btn-ghost" target="_self" rel="noopener noreferrer">Reservar</a>
       </div>
     </div>
     <p class="pt-foot rv" style="transition-delay:.35s"><a href="/es/precios/" class="inline-link">Ver todas las ofertas →</a></p>

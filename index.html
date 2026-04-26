@@ -90,6 +90,7 @@ fbq('track', 'PageView');
       if (!a) return;
       var href = a.getAttribute('href');
       if (!href) return;
+      a.setAttribute('target', '_self');  /* TEST-A: same-tab nav */
       var params = collect();
       if (Object.keys(params).length > 0) {
         a.setAttribute('href', append(href, params));
@@ -1013,7 +1014,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
         <div class="b-price">€50</div>
         <div class="b-price-sub">New students · Valid 30 days</div>
         <p class="b-desc">Try any 3 classes within 30 days. Yoga, sound healing, breathwork, pilates. All in 360° immersion.</p>
-        <a href="https://momence.com/m/443935" class="b-btn-g" target="_blank" rel="noopener noreferrer">Get Started</a>
+        <a href="https://momence.com/m/443935" class="b-btn-g" target="_self" rel="noopener noreferrer">Get Started</a>
         <ul class="b-features">
           <li>3 classes, any type</li>
           <li>Valid 30 days</li>
@@ -1028,7 +1029,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
         <div class="b-price">€130<span class="b-mo">/month</span></div>
         <div class="b-price-sub">Unlimited classes · Cancel anytime</div>
         <p class="b-desc">Ideal balance of flexibility and commitment. Flow as much as you want, every week.</p>
-        <a href="https://momence.com/m/431216" class="b-btn-p" target="_blank" rel="noopener noreferrer">Join Now</a>
+        <a href="https://momence.com/m/431216" class="b-btn-p" target="_self" rel="noopener noreferrer">Join Now</a>
         <ul class="b-features">
           <li>Unlimited classes</li>
           <li>4 ice baths / month</li>
@@ -1041,7 +1042,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
         <div class="b-price">€330<span class="b-mo">/3 months</span></div>
         <div class="b-price-sub">€110/month · Unlimited classes · Cancel anytime</div>
         <p class="b-desc">For dedicated practitioners. Lock in the best rate and make SABDA part of your daily rhythm.</p>
-        <a href="https://momence.com/m/445600" class="b-btn-g" target="_blank" rel="noopener noreferrer">Start Unlimited</a>
+        <a href="https://momence.com/m/445600" class="b-btn-g" target="_self" rel="noopener noreferrer">Start Unlimited</a>
         <ul class="b-features">
           <li>Unlimited classes</li>
           <li>4 ice baths / month</li>

@@ -63,6 +63,7 @@ fbq('track', 'PageView');
       if (!a) return;
       var href = a.getAttribute('href');
       if (!href) return;
+      a.setAttribute('target', '_self');  /* TEST-A: same-tab nav */
       var params = collect();
       if (Object.keys(params).length > 0) {
         a.setAttribute('href', append(href, params));
@@ -310,7 +311,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 <p><strong>¿Es raro ir solo?</strong> No. La mayoría viene sola. Son experiencias individuales en un espacio compartido.</p>
 <p><strong>¿Cuál es la mejor primera clase?</strong> Sound healing si quieres relajarte (solo te tumbas). Vinyasa si quieres movimiento. Breathwork si quieres algo intenso. Pilates si quieres algo físico y estructurado.</p>
 <p><strong>¿Puedo ducharme después?</strong> Sí. Vestuarios con duchas disponibles.</p>
-<p><strong>¿Se puede reservar sin el pack?</strong> Sí, hay clases sueltas. Pero el <a href="https://momence.com/m/443935" target="_blank" rel="noopener noreferrer">pack de 3 por €50</a> (€18/clase) es mejor valor y te permite probar distintos formatos.</p>
+<p><strong>¿Se puede reservar sin el pack?</strong> Sí, hay clases sueltas. Pero el <a href="https://momence.com/m/443935" target="_self" rel="noopener noreferrer">pack de 3 por €50</a> (€18/clase) es mejor valor y te permite probar distintos formatos.</p>
 <h2>Después de tu primera clase</h2>
 <p>La mayoría de gente sale de su primera clase en SABDA ligeramente aturdida, profundamente relajada, y preguntándose por qué tardó tanto en probar. La segunda clase es donde empiezas a entender la diferencia que hace el entorno inmersivo. Entras en foco más rápido porque sabes qué esperar. Para la tercera, la mayoría ha encontrado su formato favorito y está considerando una membresía.</p>
 <p>Ese es el diseño del <a href="/es/precios/">pack de 3 clases por €50</a>: probar lo suficiente para encontrar lo que te resuena.</p>

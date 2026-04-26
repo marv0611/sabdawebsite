@@ -63,6 +63,7 @@ fbq('track', 'PageView');
       if (!a) return;
       var href = a.getAttribute('href');
       if (!href) return;
+      a.setAttribute('target', '_self');  /* TEST-A: same-tab nav */
       var params = collect();
       if (Object.keys(params).length > 0) {
         a.setAttribute('href', append(href, params));
@@ -252,7 +253,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
   <div class="feat-name">Pack Intro de 3</div>
   <div class="feat-price">€50</div>
   <div class="feat-sub">Válido 30 días</div>
-  <a href="https://momence.com/m/443935" class="feat-btn touch" target="_blank" rel="noopener noreferrer">Empezar</a>
+  <a href="https://momence.com/m/443935" class="feat-btn touch" target="_self" rel="noopener noreferrer">Empezar</a>
   <ul class="feat-list">
     <li>3 clases, cualquier tipo</li>
     <li>Yoga, pilates, sound healing, breathwork</li>
@@ -262,32 +263,32 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
 </div>
 
 <!-- TRIAL CLASS -->
-<a href="https://momence.com/m/443934" class="opt touch" target="_blank" rel="noopener noreferrer">
+<a href="https://momence.com/m/443934" class="opt touch" target="_self" rel="noopener noreferrer">
   <div class="opt-info"><div class="opt-name">Clase de Prueba</div><div class="opt-sub">Tu primera visita</div></div>
   <div class="opt-price">€18</div>
   <div class="opt-btn hi">Reservar</div>
 </a>
 <!-- DROP IN -->
-<a href="https://momence.com/m/445630" class="opt touch" target="_blank" rel="noopener noreferrer">
+<a href="https://momence.com/m/445630" class="opt touch" target="_self" rel="noopener noreferrer">
   <div class="opt-info"><div class="opt-name">Clase Suelta</div><div class="opt-sub">Una clase, cuando quieras</div></div>
   <div class="opt-price">€22</div>
   <div class="opt-btn hi">Reservar</div>
 </a>
 <!-- BCN RESIDENT WEEK -->
-<a href="https://momence.com/m/443641" class="opt touch" target="_blank" rel="noopener noreferrer">
+<a href="https://momence.com/m/443641" class="opt touch" target="_self" rel="noopener noreferrer">
   <div class="opt-info"><div class="opt-name">Semana Residente BCN</div><div class="opt-sub">Ilimitado 7 días · Residentes en Cataluña</div></div>
   <div class="opt-price">€50</div>
   <div class="opt-btn hi">Reservar</div>
 </a>
 
 <!-- PACKS -->
-<a href="https://momence.com/m/443937" class="opt touch" target="_blank" rel="noopener noreferrer">
+<a href="https://momence.com/m/443937" class="opt touch" target="_self" rel="noopener noreferrer">
   <div class="opt-info"><div class="opt-name">Pack de 5</div><div class="opt-sub">17€ por clase · Válido 60 días</div></div>
   <div class="opt-price">€85</div>
   <div class="opt-btn hi">Reservar</div>
 </a>
 
-<a href="https://momence.com/m/443939" class="opt touch" style="margin-bottom:32px" target="_blank" rel="noopener noreferrer">
+<a href="https://momence.com/m/443939" class="opt touch" style="margin-bottom:32px" target="_self" rel="noopener noreferrer">
   <div class="opt-info"><div class="opt-name">Pack de 10</div><div class="opt-sub">14,90€ por clase · Válido 90 días</div></div>
   <div class="opt-price">€149</div>
   <div class="opt-btn hi">Reservar</div>
@@ -301,14 +302,14 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
     <div class="mc-price">€99<s>/mo</s></div>
     <div class="mc-sub">4 clases al mes<br>Solo en horas valle</div>
     <ul class="mc-list"><li>4 clases al mes</li><li>Horas valle</li><li>2 ice baths al mes</li></ul>
-    <a href="https://momence.com/m/706876" class="mc-btn touch" target="_blank" rel="noopener noreferrer">Elegir Flex</a>
+    <a href="https://momence.com/m/706876" class="mc-btn touch" target="_self" rel="noopener noreferrer">Elegir Flex</a>
   </div>
   <div class="mc">
     <div class="mc-name">Ritual</div>
     <div class="mc-price">€109<s>/mo</s></div>
     <div class="mc-sub">8 clases al mes<br>Cuando quieras, cualquier clase</div>
     <ul class="mc-list"><li>8 clases, cuando quieras</li><li>2 ice baths al mes</li><li>1 invitación al mes</li></ul>
-    <a href="https://momence.com/m/709976" class="mc-btn touch" target="_blank" rel="noopener noreferrer">Elegir Ritual</a>
+    <a href="https://momence.com/m/709976" class="mc-btn touch" target="_self" rel="noopener noreferrer">Elegir Ritual</a>
   </div>
   <div class="mc pop">
     <div class="mc-badge">Más Popular</div>
@@ -316,14 +317,14 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
     <div class="mc-price">€130<s>/mo</s></div>
     <div class="mc-sub">Clases ilimitadas<br>Cancela cuando quieras</div>
     <ul class="mc-list"><li>Clases ilimitadas, cuando quieras</li><li>4 ice baths al mes</li><li>2 invitaciones al mes</li></ul>
-    <a href="https://momence.com/m/431216" class="mc-btn touch" target="_blank" rel="noopener noreferrer">Elegir Immerse</a>
+    <a href="https://momence.com/m/431216" class="mc-btn touch" target="_self" rel="noopener noreferrer">Elegir Immerse</a>
   </div>
   <div class="mc">
     <div class="mc-name">Immerse 3 Meses</div>
     <div class="mc-price">€330<s>/3 mo</s></div>
     <div class="mc-sub">110€/mes · Mejor tarifa<br>Clases ilimitadas</div>
     <ul class="mc-list"><li>Clases ilimitadas, cuando quieras</li><li>4 ice baths al mes</li><li>2 invitaciones al mes</li></ul>
-    <a href="https://momence.com/m/445600" class="mc-btn touch" target="_blank" rel="noopener noreferrer">Elegir 3 Meses</a>
+    <a href="https://momence.com/m/445600" class="mc-btn touch" target="_self" rel="noopener noreferrer">Elegir 3 Meses</a>
   </div>
 </div>
 

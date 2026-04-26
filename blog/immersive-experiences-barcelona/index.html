@@ -63,6 +63,7 @@ fbq('track', 'PageView');
       if (!a) return;
       var href = a.getAttribute('href');
       if (!href) return;
+      a.setAttribute('target', '_self');  /* TEST-A: same-tab nav */
       var params = collect();
       if (Object.keys(params).length > 0) {
         a.setAttribute('href', append(href, params));
@@ -356,7 +357,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 <hr />
 <h2>Before you go</h2>
 <p>If you only have time for one immersive experience in Barcelona, choose based on what you want to take away: a photo, a visual memory, or a physical transformation. All three options exist. Only one changes how you feel when you leave.</p>
-<p><a href="https://momence.com/m/443935" target="_blank" rel="noopener noreferrer">3 immersive classes at SABDA for €50</a>. Yoga, sound healing, breathwork, or ecstatic dance inside 360° projections with Dolby Atmos spatial audio.</p>
+<p><a href="https://momence.com/m/443935" target="_self" rel="noopener noreferrer">3 immersive classes at SABDA for €50</a>. Yoga, sound healing, breathwork, or ecstatic dance inside 360° projections with Dolby Atmos spatial audio.</p>
 <p><strong>Related:</strong> <a href="/blog/things-to-do-in-barcelona/">Things to Do in Barcelona</a> | <a href="/blog/experiencias-inmersivas-barcelona/">Experiencias inmersivas en Barcelona (ES)</a></p>
 </article>
 <footer style="border-top:1px solid rgba(240,239,233,.07)">

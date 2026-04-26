@@ -65,6 +65,7 @@ fbq('track', 'PageView');
       if (!a) return;
       var href = a.getAttribute('href');
       if (!href) return;
+      a.setAttribute('target', '_self');  /* TEST-A: same-tab nav */
       var params = collect();
       if (Object.keys(params).length > 0) {
         a.setAttribute('href', append(href, params));
@@ -858,10 +859,16 @@ function resetCustomerAndStartOver(){
 
 
 function openMo(link,title,time,teacher){
-  /*SABDA-MOMENCE-PIVOT*/
+  /*SABDA-MOMENCE-PIVOT TEST-A*/
   try{
     var target=link;
     if(!target){target='https://momence.com/u/sabda-zReajm';}
+    else if(!/^https?:/i.test(target)){
+      var m=target.match(/(\d+)/); target=m?('https://momence.com/s/'+m[1]):'https://momence.com/u/sabda-zReajm';
+    }
+    location.href=target;
+  }catch(e){location.href='https://momence.com/u/sabda-zReajm';}
+}
     else if(!/^https?:/i.test(target)){
       var m=target.match(/(\d+)/); target=m?('https://momence.com/s/'+m[1]):'https://momence.com/u/sabda-zReajm';
     }

@@ -68,6 +68,7 @@ fbq('track', 'PageView');
       if (!a) return;
       var href = a.getAttribute('href');
       if (!href) return;
+      a.setAttribute('target', '_self');  /* TEST-A: same-tab nav */
       var params = collect();
       if (Object.keys(params).length > 0) {
         a.setAttribute('href', append(href, params));
@@ -1166,9 +1167,9 @@ function getSpotsHtml(){
 // ── Open modal from session ID ──
 
 function openMo(sessionId){
-  /*SABDA-MOMENCE-PIVOT*/
-  try{window.open('https://momence.com/s/'+sessionId,'_blank','noopener,noreferrer');}
-  catch(e){location.href='https://momence.com/s/'+sessionId;}
+  /*SABDA-MOMENCE-PIVOT TEST-A*/
+  try{location.href='https://momence.com/s/'+sessionId;}
+  catch(e){window.open('https://momence.com/s/'+sessionId,'_blank','noopener,noreferrer');}
 }
 var autoOpenedFromPack=false;
 /*PACK_AUTO_OPEN_RETURN_v1*/

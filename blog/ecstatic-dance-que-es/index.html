@@ -63,6 +63,7 @@ fbq('track', 'PageView');
       if (!a) return;
       var href = a.getAttribute('href');
       if (!href) return;
+      a.setAttribute('target', '_self');  /* TEST-A: same-tab nav */
       var params = collect();
       if (Object.keys(params).length > 0) {
         a.setAttribute('href', append(href, params));
@@ -304,7 +305,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 <p><strong>Llega pronto:</strong> La mayoría de sesiones empiezan con un breve círculo o intención. 5-10 minutos antes ayuda.</p>
 <p><strong>Ve solo o acompañado:</strong> Ambos funcionan. Solo es ideal para la primera vez. No tendrás la tentación de hablar.</p>
 <hr />
-<p>¿Quieres probar más que ecstatic dance? El <a href="https://momence.com/m/443935" target="_blank" rel="noopener noreferrer">pack de 3 clases de SABDA por €50</a> te da acceso a sound healing, breathwork, yoga, y pilates en la misma sala de 360°.</p>
+<p>¿Quieres probar más que ecstatic dance? El <a href="https://momence.com/m/443935" target="_self" rel="noopener noreferrer">pack de 3 clases de SABDA por €50</a> te da acceso a sound healing, breathwork, yoga, y pilates en la misma sala de 360°.</p>
 <p><strong>Relacionado:</strong> <a href="/blog/que-es-el-sound-healing/">Qué es el sound healing</a> | <a href="/blog/ecstatic-dance-barcelona/">Ecstatic Dance in Barcelona (EN)</a></p>
 <h2>---</h2>
 <h2>Para quién es (y para quién no)</h2>
@@ -314,7 +315,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 <h2>Después de tu primera sesión</h2>
 <p>La mayoría de gente sale de su primera sesión de danza extática pensando una de tres cosas: "no puedo creer que acabo de hacer eso" (lo más común), "necesito hacer esto cada semana" (lo segundo más común), o "no es para mí" (raro, pero válido).</p>
 <p>Lo que casi nadie dice es "me arrepiento de haber ido." El peor caso es 90 minutos de ejercicio con buena música. El mejor caso es una experiencia que reconfigura tu relación con el movimiento y con tu propio cuerpo.</p>
-<p>Y si descubres que la danza extática te abre algo, el <a href="https://momence.com/m/443935" target="_blank" rel="noopener noreferrer">pack de 3 clases de SABDA por €50</a> te da acceso a sound healing, breathwork, y yoga en la misma sala de 360°. La mayoría de gente que viene por ecstatic dance acaba probando sound healing. Son dos lados de la misma moneda.</p>
+<p>Y si descubres que la danza extática te abre algo, el <a href="https://momence.com/m/443935" target="_self" rel="noopener noreferrer">pack de 3 clases de SABDA por €50</a> te da acceso a sound healing, breathwork, y yoga en la misma sala de 360°. La mayoría de gente que viene por ecstatic dance acaba probando sound healing. Son dos lados de la misma moneda.</p>
  </article>
 <footer style="border-top:1px solid rgba(240,239,233,.07)">
  <div class="ft-in">

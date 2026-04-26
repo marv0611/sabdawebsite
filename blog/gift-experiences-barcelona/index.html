@@ -63,6 +63,7 @@ fbq('track', 'PageView');
       if (!a) return;
       var href = a.getAttribute('href');
       if (!href) return;
+      a.setAttribute('target', '_self');  /* TEST-A: same-tab nav */
       var params = collect();
       if (Object.keys(params).length > 0) {
         a.setAttribute('href', append(href, params));
@@ -309,7 +310,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 <p><strong>For someone who never stops:</strong> Sound healing or breathwork at SABDA. 60 minutes of forced stillness.
 <strong>For someone who's "done everything":</strong> Helicopter or cava bottling in Penedès.
 <strong>For someone new to Barcelona:</strong> Vermouth crawl or cooking class.
-<strong>For someone who needs to disconnect:</strong> <a href="https://momence.com/m/443935" target="_blank" rel="noopener noreferrer">3 immersive classes at SABDA for €50</a>.</p>
+<strong>For someone who needs to disconnect:</strong> <a href="https://momence.com/m/443935" target="_self" rel="noopener noreferrer">3 immersive classes at SABDA for €50</a>.</p>
 <p><strong>Related:</strong> <a href="/blog/regalo-experiencia-barcelona/">Regalos experiencia en Barcelona (ES)</a> | <a href="/blog/couples-activities-barcelona/">Couples Activities in Barcelona</a></p>
 <h2>---</h2>
 <h2>When to give which gift</h2>

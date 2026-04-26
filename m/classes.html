@@ -65,6 +65,7 @@ fbq('track', 'PageView');
       if (!a) return;
       var href = a.getAttribute('href');
       if (!href) return;
+      a.setAttribute('target', '_self');  /* TEST-A: same-tab nav */
       var params = collect();
       if (Object.keys(params).length > 0) {
         a.setAttribute('href', append(href, params));
@@ -260,8 +261,8 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
 <div class="qb fi">
   <div class="qb-label">Quick book</div>
   <div class="qb-row">
-    <a href="https://momence.com/m/443934" class="qb-btn touch" target="_blank" rel="noopener noreferrer"><div class="qb-price">€18</div><div class="qb-name">Single</div></a>
-    <a href="https://momence.com/m/443935" class="qb-btn touch" style="border-color:rgba(2,243,197,.2);background:rgba(2,243,197,.04)" target="_blank" rel="noopener noreferrer"><div class="qb-price" style="color:var(--cyan)">€50</div><div class="qb-name">3-Pack</div></a>
+    <a href="https://momence.com/m/443934" class="qb-btn touch" target="_self" rel="noopener noreferrer"><div class="qb-price">€18</div><div class="qb-name">Single</div></a>
+    <a href="https://momence.com/m/443935" class="qb-btn touch" style="border-color:rgba(2,243,197,.2);background:rgba(2,243,197,.04)" target="_self" rel="noopener noreferrer"><div class="qb-price" style="color:var(--cyan)">€50</div><div class="qb-name">3-Pack</div></a>
     <a href="/m/pricing.html" class="qb-btn touch"><div class="qb-price">€130</div><div class="qb-name">Unlimited</div></a>
   </div>
 </div>
