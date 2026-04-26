@@ -1,0 +1,42 @@
+name: Daily Health Check
+
+# Runs every day at 09:00 UTC + on manual dispatch + on every push to main.
+# Probes the live site and reports on every critical user path that, if broken,
+# would cost revenue or block ad funnels.
+#
+# The check is INDEPENDENT of the audit workflow. Audit catches code-side issues
+# at push time. Health check catches infrastructure-side issues continuously,
+# including problems that audit cannot detect (CDN cache, Worker downtime,
+# Momence API outage, third-party widget regressions, JS runtime errors that
+# only manifest on real browsers).
+#
+# Failure model: GitHub auto-emails the repo owner on workflow failure.
+# Same delivery channel as the audit emails — proven to reach Marvyn.
+
+on:
+  schedule:
+    # Every day at 09:00 UTC (10:00 Madrid winter, 11:00 Madrid summer).
+    # Catches overnight breakage before the working day starts.
+    - cron: '0 9 * * *'
+  workflow_dispatch:  # manual run via GitHub UI
+  push:
+    branches: [main]  # also run after every deploy to catch immediate regressions
+
+jobs:
+  health:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (for the health check script)
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run health checks
+        env:
+          # Pass through observability for ourselves (cron job ID).
+          # If a check fails, GH job fails, owner gets email.
+          GH_RUN_ID: ${{ github.run_id }}
+        run: bash scripts/health-check.sh
