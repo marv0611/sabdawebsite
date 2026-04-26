@@ -66,7 +66,6 @@ fbq('track', 'PageView');
       if (!a) return;
       var href = a.getAttribute('href');
       if (!href) return;
-      a.setAttribute('target', '_self');  /* TEST-A: same-tab nav */
       var params = collect();
       if (Object.keys(params).length > 0) {
         a.setAttribute('href', append(href, params));
@@ -418,7 +417,7 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
     <li><a href="/ca/lloguer/">Llogar</a></li>
     <li><a href="/ca/esdeveniments/">Esdeveniments</a></li>
   </ul>
-  <a href="https://momence.com/m/443935" class="nav-cta" target="_self" rel="noopener noreferrer">3 Classes, 50€</a>
+  <a href="https://momence.com/m/443935" class="nav-cta" target="_blank" rel="noopener noreferrer">3 Classes, 50€</a>
 <button class="nav-ham" onclick="document.getElementById('mobMenú').classList.add('open')" aria-label="Menú"><span></span><span></span><span></span></button></nav>
 <div class="mob-menu" id="mobMenú"><button class="mob-close" aria-label="Close menu" onclick="this.parentElement.classList.remove('open')"><svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12"/></svg></button><a href="/ca/classes/">Classes</a><a href="/ca/preus/">Preus</a><a href="/ca/lloguer/">Llogar</a><a href="/ca/esdeveniments/">Esdeveniments</a><a href="/blog/">Blog</a><a href="/ca/sobre/">Sobre nosaltres</a><a href="/ca/contacte/">Contacte</a></div>
 
@@ -546,13 +545,13 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
   <div class="pricing-grid">
     <div class="pricing-col">
       <h3>Primera Visita</h3>
-      <a href="https://momence.com/m/443934" target="_self" rel="noopener noreferrer">Classe de Prova 18€</a>
+      <a href="https://momence.com/m/443934" target="_blank" rel="noopener noreferrer">Classe de Prova 18€</a>
       <a href="/ca/preus/">Classe Suelta 22€</a>
     </div>
     <div class="pricing-col hero-col">
       <div class="pricing-badge">Més Popular</div>
       <h3>Millor Valor</h3>
-      <a href="https://momence.com/m/443935" target="_self" rel="noopener noreferrer">Pack de 3 · 50€</a>
+      <a href="https://momence.com/m/443935" target="_blank" rel="noopener noreferrer">Pack de 3 · 50€</a>
       <a href="/ca/preus/">Setmana Ilimitada 50€</a>
     </div>
     <div class="pricing-col">
@@ -564,8 +563,8 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
       <h3>Membresías</h3>
       <a href="/ca/preus/">Flex 99€/mes</a>
       <a href="/ca/preus/">Ritual 109€/mes</a>
-      <a href="https://momence.com/m/431216" target="_self" rel="noopener noreferrer">Immerse 130€/mes</a>
-      <a href="https://momence.com/m/445600" target="_self" rel="noopener noreferrer">Immerse 3 Mesos 330€</a>
+      <a href="https://momence.com/m/431216" target="_blank" rel="noopener noreferrer">Immerse 130€/mes</a>
+      <a href="https://momence.com/m/445600" target="_blank" rel="noopener noreferrer">Immerse 3 Mesos 330€</a>
     </div>
   </div>
 </section>

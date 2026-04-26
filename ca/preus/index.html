@@ -66,7 +66,6 @@ fbq('track', 'PageView');
       if (!a) return;
       var href = a.getAttribute('href');
       if (!href) return;
-      a.setAttribute('target', '_self');  /* TEST-A: same-tab nav */
       var params = collect();
       if (Object.keys(params).length > 0) {
         a.setAttribute('href', append(href, params));
@@ -426,7 +425,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.06);positio
       <div class="m-price">99€<span>/mes</span></div>
       <div class="m-sub">Classes il·limitades en hores vall</div>
       <div class="m-hours">Dl a Dv abans de les 17:30 i després de les 20:00</div>
-      <a href="https://momence.com/m/706876" target="_self" rel="noopener noreferrer">Vull Flex</a>
+      <a href="https://momence.com/m/706876" target="_blank" rel="noopener noreferrer">Vull Flex</a>
       <ul class="m-features">
         <li>2 ice baths al mes</li>
         <li>1 invitació al mes (només primera visita)</li>
@@ -436,7 +435,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.06);positio
       <h3>Ritual</h3>
       <div class="m-price">109€<span>/mes</span></div>
       <div class="m-sub">8 classes al mes</div>
-      <a href="https://momence.com/m/709976" target="_self" rel="noopener noreferrer">Vull Ritual</a>
+      <a href="https://momence.com/m/709976" target="_blank" rel="noopener noreferrer">Vull Ritual</a>
       <ul class="m-features">
         <li>2 ice baths al mes</li>
         <li>1 invitació al mes (només primera visita)</li>
@@ -447,7 +446,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.06);positio
       <h3>Immerse</h3>
       <div class="m-price">130€<span>/mes</span></div>
       <div class="m-sub">Classes il·limitades<br>Cancel·la quan vulguis</div>
-      <a href="https://momence.com/m/431216" target="_self" rel="noopener noreferrer">Vull Immerse</a>
+      <a href="https://momence.com/m/431216" target="_blank" rel="noopener noreferrer">Vull Immerse</a>
       <ul class="m-features">
         <li>4 ice baths al mes</li>
         <li>2 invitacions al mes (només primera visita)</li>
@@ -457,7 +456,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.06);positio
       <h3>Immerse 3 Mesos</h3>
       <div class="m-price">330€<span>/3 mesos</span></div>
       <div class="m-sub">€110/mes<br>Classes il·limitades<br>Cancel·la quan vulguis</div>
-      <a href="https://momence.com/m/445600" target="_self" rel="noopener noreferrer">Vull 3 Mesos</a>
+      <a href="https://momence.com/m/445600" target="_blank" rel="noopener noreferrer">Vull 3 Mesos</a>
       <ul class="m-features">
         <li>4 ice baths al mes</li>
         <li>2 invitacions al mes (només primera visita)</li>
@@ -475,19 +474,19 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.06);positio
   <div class="pricing-grid">
     <div class="pricing-col">
       <h3>Visitas Sueltas</h3>
-      <a href="https://momence.com/m/443934" target="_self" rel="noopener noreferrer">Classe de Prova 18€</a>
-      <a href="https://momence.com/m/445630" target="_self" rel="noopener noreferrer">Classe Suelta 22€</a>
+      <a href="https://momence.com/m/443934" target="_blank" rel="noopener noreferrer">Classe de Prova 18€</a>
+      <a href="https://momence.com/m/445630" target="_blank" rel="noopener noreferrer">Classe Suelta 22€</a>
     </div>
     <div class="pricing-col hero-col">
       <div class="pricing-badge">Més Popular</div>
       <h3>Ofertes Intro</h3>
-      <a href="https://momence.com/m/443935" target="_self" rel="noopener noreferrer">Pack de 3 · 50€<span class="per-class">Vàlid 30 dies</span></a>
-      <a href="https://momence.com/m/443641" target="_self" rel="noopener noreferrer">Setmana Ilimitada 50€<span class="per-class">Solo residentes en Cataluña</span></a>
+      <a href="https://momence.com/m/443935" target="_blank" rel="noopener noreferrer">Pack de 3 · 50€<span class="per-class">Vàlid 30 dies</span></a>
+      <a href="https://momence.com/m/443641" target="_blank" rel="noopener noreferrer">Setmana Ilimitada 50€<span class="per-class">Solo residentes en Cataluña</span></a>
     </div>
     <div class="pricing-col">
       <h3>Packs de Classes</h3>
-      <a href="https://momence.com/m/443937" target="_self" rel="noopener noreferrer">Pack de 5 · 85€<span class="per-class">17€ / classe</span></a>
-      <a href="https://momence.com/m/443939" target="_self" rel="noopener noreferrer">Pack de 10 · 149€<span class="per-class">14,90€ / classe</span></a>
+      <a href="https://momence.com/m/443937" target="_blank" rel="noopener noreferrer">Pack de 5 · 85€<span class="per-class">17€ / classe</span></a>
+      <a href="https://momence.com/m/443939" target="_blank" rel="noopener noreferrer">Pack de 10 · 149€<span class="per-class">14,90€ / classe</span></a>
     </div>
   </div>
 </section>

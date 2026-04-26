@@ -64,7 +64,6 @@ fbq('track', 'PageView');
       if (!a) return;
       var href = a.getAttribute('href');
       if (!href) return;
-      a.setAttribute('target', '_self');  /* TEST-A: same-tab nav */
       var params = collect();
       if (Object.keys(params).length > 0) {
         a.setAttribute('href', append(href, params));

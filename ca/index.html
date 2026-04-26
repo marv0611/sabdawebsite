@@ -66,7 +66,6 @@ fbq('track', 'PageView');
       if (!a) return;
       var href = a.getAttribute('href');
       if (!href) return;
-      a.setAttribute('target', '_self');  /* TEST-A: same-tab nav */
       var params = collect();
       if (Object.keys(params).length > 0) {
         a.setAttribute('href', append(href, params));
@@ -843,7 +842,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
         <div class="b-price">€50</div>
         <div class="b-price-sub">Nous estudiants · Vàlid 30 dies</div>
         <p class="b-desc">Prova qualsevol 3 classes en 30 dies. Yoga, sound healing, breathwork, pilates. Tot en immersió 360°.</p>
-        <a href="https://momence.com/m/443935" class="b-btn-g" target="_self" rel="noopener noreferrer">Comença ara</a>
+        <a href="https://momence.com/m/443935" class="b-btn-g" target="_blank" rel="noopener noreferrer">Comença ara</a>
         <ul class="b-features">
           <li>3 classes, qualsevol tipus</li>
           <li>Vàlid 30 dies</li>
@@ -858,7 +857,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
         <div class="b-price">€130<span class="b-mo">/mes</span></div>
         <div class="b-price-sub">Classes il·limitades · Cancel·la quan vulguis</div>
         <p class="b-desc">L'equilibri perfecte entre flexibilitat i compromís. Flueix tant com vulguis cada setmana.</p>
-        <a href="https://momence.com/m/431216" class="b-btn-p" target="_self" rel="noopener noreferrer">Uneix-te ara</a>
+        <a href="https://momence.com/m/431216" class="b-btn-p" target="_blank" rel="noopener noreferrer">Uneix-te ara</a>
         <ul class="b-features">
           <li>Classes il·limitades</li>
           <li>4 ice baths / mes</li>
@@ -871,7 +870,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
         <div class="b-price">€330<span class="b-mo">/3 mesos</span></div>
         <div class="b-price-sub">110€/mes · Classes il·limitades · Cancel·la quan vulguis</div>
         <p class="b-desc">Per a practicants compromesos. Assegura el millor preu i fes de SABDA part del teu ritme diari.</p>
-        <a href="https://momence.com/m/445600" class="b-btn-g" target="_self" rel="noopener noreferrer">Comença il·limitat</a>
+        <a href="https://momence.com/m/445600" class="b-btn-g" target="_blank" rel="noopener noreferrer">Comença il·limitat</a>
         <ul class="b-features">
           <li>Classes il·limitades</li>
           <li>4 ice baths / mes</li>

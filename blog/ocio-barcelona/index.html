@@ -63,7 +63,6 @@ fbq('track', 'PageView');
       if (!a) return;
       var href = a.getAttribute('href');
       if (!href) return;
-      a.setAttribute('target', '_self');  /* TEST-A: same-tab nav */
       var params = collect();
       if (Object.keys(params).length > 0) {
         a.setAttribute('href', append(href, params));
@@ -347,7 +346,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 <p>Conciertos de música clásica y bandas sonoras a la luz de las velas en espacios como Casa Batlló o iglesias del Gótico. Formato recurrente mensual. Desde ~€15.</p>
 <hr />
 <p>El mejor ocio barcelona no es el que aparece y desaparece. Es el que siempre está ahí, esperando a que tengas un martes libre, un domingo sin planes, o un amigo de visita al que quieres enseñar la ciudad de verdad.</p>
-<p>Si buscas algo que solo existe en Barcelona: <a href="https://momence.com/m/443935" target="_self" rel="noopener noreferrer">3 clases inmersivas en SABDA por €50</a>. 360° de proyecciones, Dolby Atmos, y más de 42 clases semanales.</p>
+<p>Si buscas algo que solo existe en Barcelona: <a href="https://momence.com/m/443935" target="_blank" rel="noopener noreferrer">3 clases inmersivas en SABDA por €50</a>. 360° de proyecciones, Dolby Atmos, y más de 42 clases semanales.</p>
 <p><strong>Relacionado:</strong> <a href="/blog/cosas-que-hacer-en-barcelona/">Cosas que hacer en Barcelona</a> | <a href="/blog/actividades-barcelona/">Actividades en Barcelona</a> | <a href="/blog/ocio-barcelona/">Ocio en Barcelona</a></p>
 </article>
 <footer style="border-top:1px solid rgba(240,239,233,.07)">

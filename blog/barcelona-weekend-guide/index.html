@@ -63,7 +63,6 @@ fbq('track', 'PageView');
       if (!a) return;
       var href = a.getAttribute('href');
       if (!href) return;
-      a.setAttribute('target', '_self');  /* TEST-A: same-tab nav */
       var params = collect();
       if (Object.keys(params).length > 0) {
         a.setAttribute('href', append(href, params));
@@ -299,7 +298,7 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 <strong>Getting around:</strong> Metro + walking. Barcelona is flat and compact. A T-Casual card (10 trips) costs ~€11.
 <strong>What to eat:</strong> Avoid anything with photos on the menu. Ask locals. The quality floor in Barcelona is remarkably high.</p>
 <hr />
-<p><a href="https://momence.com/m/443935" target="_self" rel="noopener noreferrer">3 classes at SABDA for €50</a>. The Sunday morning that makes the weekend.</p>
+<p><a href="https://momence.com/m/443935" target="_blank" rel="noopener noreferrer">3 classes at SABDA for €50</a>. The Sunday morning that makes the weekend.</p>
 <p><strong>Related:</strong> <a href="/blog/things-to-do-in-barcelona/">15 Unique Things to Do in Barcelona</a> | <a href="/blog/barcelona-summer-activities/">Barcelona in Summer</a></p>
 <h2>---</h2>
 <h2>What most guides miss</h2>

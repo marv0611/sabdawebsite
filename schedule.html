@@ -66,7 +66,6 @@ fbq('track', 'PageView');
       if (!a) return;
       var href = a.getAttribute('href');
       if (!href) return;
-      a.setAttribute('target', '_self');  /* TEST-A: same-tab nav */
       var params = collect();
       if (Object.keys(params).length > 0) {
         a.setAttribute('href', append(href, params));
@@ -418,7 +417,7 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
     <li><a href="hire.html">Rent</a></li>
     <li><a href="events.html">Events</a></li><li><a href="/contact/">Contact</a></li>
   </ul>
-  <a href="https://momence.com/m/443935" class="nav-cta" target="_self" rel="noopener noreferrer">3 Classes, €50</a>
+  <a href="https://momence.com/m/443935" class="nav-cta" target="_blank" rel="noopener noreferrer">3 Classes, €50</a>
 <button class="nav-ham" onclick="document.getElementById('mobMenu').classList.add('open')" aria-label="Menu"><span></span><span></span><span></span></button></nav>
 <div class="mob-menu" id="mobMenu"><button class="mob-close" aria-label="Close menu" onclick="this.parentElement.classList.remove('open')"><svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12"/></svg></button><a href="classes.html">Classes</a><a href="pricing.html">Pricing</a><a href="hire.html">Rent</a><a href="events.html">Events</a><a href="/blog/">Blog</a><a href="about.html">About</a><a href="contact/">Contact</a></div>
 
@@ -546,13 +545,13 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
   <div class="pricing-grid">
     <div class="pricing-col">
       <h3>First Visit</h3>
-      <a href="https://momence.com/m/443934" target="_self" rel="noopener noreferrer">Trial Class €18</a>
+      <a href="https://momence.com/m/443934" target="_blank" rel="noopener noreferrer">Trial Class €18</a>
       <a href="/pricing/">Single Class €22</a>
     </div>
     <div class="pricing-col hero-col">
       <div class="pricing-badge">Most Popular</div>
       <h3>Best Value</h3>
-      <a href="https://momence.com/m/443935" target="_self" rel="noopener noreferrer">3 Pack €50</a>
+      <a href="https://momence.com/m/443935" target="_blank" rel="noopener noreferrer">3 Pack €50</a>
       <a href="/pricing/">1 Week Unlimited €50</a>
     </div>
     <div class="pricing-col">
@@ -564,8 +563,8 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
       <h3>Memberships</h3>
       <a href="/pricing/">Flex €99/mo</a>
       <a href="/pricing/">Ritual €109/mo</a>
-      <a href="https://momence.com/m/431216" target="_self" rel="noopener noreferrer">Immerse €130/mo</a>
-      <a href="https://momence.com/m/445600" target="_self" rel="noopener noreferrer">Immerse 3 Month €330</a>
+      <a href="https://momence.com/m/431216" target="_blank" rel="noopener noreferrer">Immerse €130/mo</a>
+      <a href="https://momence.com/m/445600" target="_blank" rel="noopener noreferrer">Immerse 3 Month €330</a>
     </div>
   </div>
 </section>
