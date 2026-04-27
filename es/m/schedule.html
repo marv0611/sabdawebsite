@@ -822,7 +822,7 @@ function showError(msg, opts){
     rec.classList.add('show');
     rec.innerHTML='<strong>No se pudo procesar la tarjeta</strong>'
       +'Puede haber un problema de configuración con el procesador de pagos. Reserva directamente en Momence — el enlace funciona.'
-      +(curSession&&curSession.link?'<button onclick="window.open(\''+curSession.link+'\',\'_blank\')">Reservar en Momence</button>':'');
+      +(curSession&&curSession.link?'<button onclick="location.href=\''+curSession.link+'\'">Reservar en Momence</button>':'');
   }
 
   try{console.log('[SABDA] showError:',msg,'rateLimit=',isRateLimit,'pmErr=',isPaymentMethodErr);}catch(e){}

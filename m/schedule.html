@@ -821,7 +821,7 @@ function showError(msg, opts){
     rec.classList.add('show');
     rec.innerHTML='<strong>Card couldn\'t be processed</strong>'
       +'There may be a configuration issue with the payment processor. Please book directly through Momence — the link works.'
-      +(curSession&&curSession.link?'<button onclick="window.open(\''+curSession.link+'\',\'_blank\')">Book on Momence</button>':'');
+      +(curSession&&curSession.link?'<button onclick="location.href=\''+curSession.link+'\'">Book on Momence</button>':'');
   }
 
   try{console.log('[SABDA] showError:',msg,'rateLimit=',isRateLimit,'pmErr=',isPaymentMethodErr);}catch(e){}
