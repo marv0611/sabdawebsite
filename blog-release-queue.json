@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-04-24",
-      "slug": "/blog/how-to-choose-yoga-style/",
-      "order": 8
+      "date": "2026-04-27",
+      "slug": "/blog/regalo-experiencia-barcelona/",
+      "order": 9
     }
   },
   "queue": [
@@ -127,8 +127,9 @@
       "release_date": "2026-04-27",
       "md_file": "blog/article-04-regalo-experiencia-barcelona.md",
       "html_file": "blog/regalo-experiencia-barcelona/index.html",
-      "status": "queued",
-      "volume": 720
+      "status": "released",
+      "volume": 720,
+      "released_at": "2026-04-27"
     },
     {
       "order": 10,
