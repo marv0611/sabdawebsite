@@ -1168,7 +1168,7 @@ function getSpotsHtml(){
 
 function openMo(sessionId){
   /*SABDA-MOMENCE-PIVOT*/
-  try{window.open('https://momence.com/s/'+sessionId,'_blank','noopener,noreferrer');}
+  try{location.href='https://momence.com/s/'+sessionId;}  /* TEST-A v2: same-tab nav */
   catch(e){location.href='https://momence.com/s/'+sessionId;}
 }
 var autoOpenedFromPack=false;

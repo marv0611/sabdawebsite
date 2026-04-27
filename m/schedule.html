@@ -866,7 +866,7 @@ function openMo(link,title,time,teacher){
     else if(!/^https?:/i.test(target)){
       var m=target.match(/(\d+)/); target=m?('https://momence.com/s/'+m[1]):'https://momence.com/u/sabda-zReajm';
     }
-    window.open(target,'_blank','noopener,noreferrer');
+    location.href = target;  /* TEST-A v2: same-tab nav */
   }catch(e){location.href='https://momence.com/u/sabda-zReajm';}
 }
 var autoOpenedFromPack=false;
