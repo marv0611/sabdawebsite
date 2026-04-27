@@ -66,6 +66,7 @@ fbq('track', 'PageView');
       var href = a.getAttribute('href');
       if (!href) return;
       a.setAttribute('target', '_self');  /* TEST-A v2: same-tab nav */
+      try{var _l=document.getElementById('sabda-loader');if(_l){_l.classList.add('on');}}catch(e){} /* SABDA-LOADER-v4 hook */
       var params = collect();
       if (Object.keys(params).length > 0) {
         a.setAttribute('href', append(href, params));
@@ -206,6 +207,15 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
 <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+<style>/* SABDA-LOADER-v4 */
+#sabda-loader{position:fixed;inset:0;background:#0e1235;z-index:2147483647;display:none;align-items:center;justify-content:center;flex-direction:column;gap:24px;-webkit-backface-visibility:hidden;backface-visibility:hidden;will-change:opacity;opacity:0;transition:opacity .12s ease}
+#sabda-loader.on{display:flex;opacity:1}
+#sabda-loader-ring{width:64px;height:64px;border-radius:50%;border:2px solid rgba(2,243,197,.18);border-top-color:#02F3C5;animation:sabda-spin .8s linear infinite}
+#sabda-loader-text{font-family:'Eugusto Bold','PT Serif',Georgia,serif;font-size:13px;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,239,233,.62);text-align:center}
+@keyframes sabda-spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){#sabda-loader-ring{animation:none;border-top-color:transparent;border-color:rgba(2,243,197,.5)}}
+</style>
 </head>
 <body>
 
@@ -323,5 +333,14 @@ function setLang(c){try{localStorage.setItem('sabda_lang',c)}catch(e){}document.
 try{var sl=localStorage.getItem('sabda_lang')||'ca';document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===sl)})}catch(e){}
 </script>
 <script src="/cookie-consent.js"></script>
+
+<!-- SABDA-LOADER-v4 -->
+<div id="sabda-loader" role="status" aria-live="polite" aria-label="Loading checkout">
+  <div id="sabda-loader-ring"></div>
+  <div id="sabda-loader-text">Opening checkout</div>
+</div>
+<script>/* SABDA-LOADER-v4 helper */
+window._sabdaShowLoader=function(){try{var el=document.getElementById('sabda-loader');if(el){el.classList.add('on');}}catch(e){}};
+</script>
 </body>
 </html>
