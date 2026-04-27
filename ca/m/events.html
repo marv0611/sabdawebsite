@@ -484,8 +484,13 @@ try{var sl=localStorage.getItem('sabda_lang')||'ca';document.querySelectorAll('.
   <div id="sabda-loader-ring"></div>
   <div id="sabda-loader-text">Opening checkout</div>
 </div>
-<script>/* SABDA-LOADER-v4 helper */
+<script>/* SABDA-LOADER-v4.1 helper */
 window._sabdaShowLoader=function(){try{var el=document.getElementById('sabda-loader');if(el){el.classList.add('on');}}catch(e){}};
+window._sabdaHideLoader=function(){try{var el=document.getElementById('sabda-loader');if(el){el.classList.remove('on');}}catch(e){}};
+/* Auto-hide on back-button restore (iOS bfcache) + tab refocus + popstate */
+window.addEventListener('pageshow',function(e){window._sabdaHideLoader();});
+window.addEventListener('popstate',function(){window._sabdaHideLoader();});
+document.addEventListener('visibilitychange',function(){if(!document.hidden)window._sabdaHideLoader();});
 </script>
 </body>
 </html>
