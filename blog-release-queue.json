@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-04-27",
-      "slug": "/blog/regalo-experiencia-barcelona/",
-      "order": 9
+      "date": "2026-04-28",
+      "slug": "/blog/planes-en-pareja-barcelona/",
+      "order": 10
     }
   },
   "queue": [
@@ -140,8 +140,9 @@
       "release_date": "2026-04-28",
       "md_file": "blog/article-05-planes-en-pareja-barcelona.md",
       "html_file": "blog/planes-en-pareja-barcelona/index.html",
-      "status": "queued",
-      "volume": 590
+      "status": "released",
+      "volume": 590,
+      "released_at": "2026-04-28"
     },
     {
       "order": 11,
