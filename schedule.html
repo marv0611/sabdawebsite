@@ -478,7 +478,7 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
           el.setAttribute('href', 'https://momence.com/s/' + next.id);
         }
       })
-      .catch(function(){});
+      .catch(function(e){console.error('[SABDA-EDB-v5] fetch failed:', e && e.message);});
   } catch(e) {}
 })();
 </script>

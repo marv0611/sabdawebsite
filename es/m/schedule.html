@@ -417,7 +417,7 @@ select.bk-input{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http:/
           el.setAttribute('href', 'https://momence.com/s/' + next.id);
         }
       })
-      .catch(function(){});
+      .catch(function(e){console.error('[SABDA-EDB-v5] fetch failed:', e && e.message);});
   } catch(e) {}
 })();
 </script>
