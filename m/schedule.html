@@ -369,25 +369,25 @@ select.bk-input{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http:/
   <button onclick="document.querySelector('.day-btn.active').scrollIntoView({behavior:'smooth'})" class="hdr-pill touch" style="border:none;cursor:pointer">Book a Class</button>
 </header>
 
-<!-- SABDA-EDB-v52: Ecstatic Dance NEW pill banner — auto-rotating link + dynamic day/time -->
+<!-- SABDA-EDB-v53: pink + initial-text-fixed banner — auto-rotating link/time -->
 <style>
-.sabda-edb52{display:none;align-items:center;gap:8px;padding:6px 13px 6px 6px;background:linear-gradient(90deg,rgba(2,243,197,.10),rgba(2,243,197,.04));border:1px solid rgba(2,243,197,.32);border-radius:100px;text-decoration:none;color:var(--white);transition:transform .15s,background .2s,border-color .2s;width:fit-content;max-width:calc(100% - 32px);margin:14px auto;-webkit-tap-highlight-color:transparent}
-.sabda-edb52.on{display:inline-flex}
-.sabda-edb52:active{transform:scale(.985)}
-.sabda-edb52-tag{flex-shrink:0;font-size:.56rem;font-weight:700;letter-spacing:.14em;color:var(--navy);background:var(--cyan);padding:4px 9px;border-radius:100px;text-transform:uppercase}
-.sabda-edb52-txt{font-size:.76rem;font-weight:500;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
-.sabda-edb52-arr{flex-shrink:0;color:var(--cyan);font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;display:inline-flex;align-items:center;gap:3px}
-.sabda-edb52-arr svg{width:10px;height:10px}
+.sabda-edb53{display:none;align-items:center;gap:8px;padding:6px 13px 6px 6px;background:linear-gradient(90deg,rgba(248,166,163,.10),rgba(248,166,163,.04));border:1px solid rgba(248,166,163,.36);border-radius:100px;text-decoration:none;color:var(--white);transition:transform .15s,background .2s,border-color .2s;width:fit-content;max-width:calc(100% - 32px);margin:28px auto 18px;-webkit-tap-highlight-color:transparent}
+.sabda-edb53.on{display:inline-flex}
+.sabda-edb53:active{transform:scale(.985)}
+.sabda-edb53-tag{flex-shrink:0;font-size:.56rem;font-weight:700;letter-spacing:.14em;color:#4a1b1a;background:var(--salmon);padding:4px 9px;border-radius:100px;text-transform:uppercase}
+.sabda-edb53-txt{font-size:.76rem;font-weight:500;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.sabda-edb53-arr{flex-shrink:0;color:var(--salmon);font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;display:inline-flex;align-items:center;gap:3px}
+.sabda-edb53-arr svg{width:10px;height:10px}
 </style>
-<div style="text-align:center"><a class="sabda-edb52" id="sabda-edb52-link" href="https://momence.com/u/sabda-zReajm" target="_self" rel="noopener noreferrer">
-  <span class="sabda-edb52-tag">New</span>
-  <span class="sabda-edb52-txt" id="sabda-edb52-txt">Ecstatic Dance · …</span>
-  <span class="sabda-edb52-arr">Book <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+<div style="text-align:center"><a class="sabda-edb53" id="sabda-edb53-link" href="https://momence.com/u/sabda-zReajm" target="_self" rel="noopener noreferrer">
+  <span class="sabda-edb53-tag">New</span>
+  <span class="sabda-edb53-txt" id="sabda-edb53-txt">Ecstatic Dance · Saturdays 19:30</span>
+  <span class="sabda-edb53-arr">Book <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
 </a></div>
-<script>/* SABDA-EDB-v52 — fetches next ecstatic session, formats day + time, rewires href */
+<script>/* SABDA-EDB-v53 — banner shows initial text immediately, JS only updates if schedule changes */
 (function(){
-  var link = document.getElementById('sabda-edb52-link');
-  var txt = document.getElementById('sabda-edb52-txt');
+  var link = document.getElementById('sabda-edb53-link');
+  var txt = document.getElementById('sabda-edb53-txt');
   if (!link || !txt) return;
   var DAYS_SHORT = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
   var DAYS_PLURAL = ["Sundays","Mondays","Tuesdays","Wednesdays","Thursdays","Fridays","Saturdays"];
@@ -395,32 +395,18 @@ select.bk-input{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http:/
   var NAME = 'Ecstatic Dance';
   var ONE = '%w';
   var TWO = '%w & %w';
-
   function pad(n){ return n < 10 ? '0' + n : '' + n; }
-
   function formatTime(date){
-    // Madrid timezone — toLocaleTimeString with timeZone option
-    try {
-      var t = date.toLocaleTimeString('en-GB', {timeZone:'Europe/Madrid', hour:'2-digit', minute:'2-digit', hour12:false});
-      return t;
-    } catch(e) {
-      return pad(date.getHours()) + ':' + pad(date.getMinutes());
-    }
+    try { return date.toLocaleTimeString('en-GB', {timeZone:'Europe/Madrid', hour:'2-digit', minute:'2-digit', hour12:false}); }
+    catch(e) { return pad(date.getHours()) + ':' + pad(date.getMinutes()); }
   }
-
   function getMadridDay(date){
-    // Return weekday index 0-6 (Sun=0) for Madrid timezone
     try {
       var w = date.toLocaleDateString('en-US', {timeZone:'Europe/Madrid', weekday:'short'});
-      var map = {Sun:0, Mon:1, Tue:2, Wed:3, Thu:4, Fri:5, Sat:6};
-      return map[w];
-    } catch(e) {
-      return date.getDay();
-    }
+      return {Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[w];
+    } catch(e) { return date.getDay(); }
   }
-
   link.classList.add('on');
-
   try {
     fetch('https://momence.com/_api/primary/api/v1/Events?hostId=54278&token=a0314a80ca', {cache:'no-store'})
       .then(function(r){ return r.ok ? r.json() : null; })
@@ -439,16 +425,11 @@ select.bk-input{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http:/
         }
         if (!ed.length) return;
         ed.sort(function(a, b){ return a.ts - b.ts; });
-
-        // Set href to next session
         var next = ed[0];
         if (next.link) link.setAttribute('href', next.link);
         else if (next.id) link.setAttribute('href', 'https://momence.com/s/' + next.id);
-
-        // Detect distinct weekdays + canonical time (use first 8 sessions to detect pattern)
         var sample = ed.slice(0, 8);
-        var dayCounts = {};
-        var times = {};
+        var dayCounts = {}, times = {};
         for (var j = 0; j < sample.length; j++) {
           var d = new Date(sample[j].ts);
           var weekday = getMadridDay(d);
@@ -456,27 +437,18 @@ select.bk-input{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http:/
           var tStr = formatTime(d);
           times[tStr] = (times[tStr] || 0) + 1;
         }
-
         var distinctDays = Object.keys(dayCounts).map(Number).sort();
-        // Most common time (assume sessions share a time)
-        var bestTime = '';
-        var bestCount = 0;
-        for (var tk in times) {
-          if (times[tk] > bestCount) { bestCount = times[tk]; bestTime = tk; }
-        }
-
+        var bestTime = '', bestCount = 0;
+        for (var tk in times) { if (times[tk] > bestCount) { bestCount = times[tk]; bestTime = tk; } }
         var label;
-        if (distinctDays.length === 1) {
-          label = ONE.replace('%w', DAYS_PLURAL[distinctDays[0]]);
-        } else if (distinctDays.length === 2) {
-          label = TWO.replace('%w', DAYS_SHORT[distinctDays[0]]).replace('%w', DAYS_SHORT[distinctDays[1]]);
-        } else {
-          label = FALLBACK;
-        }
-
-        txt.textContent = NAME + ' · ' + label + (bestTime ? ' ' + bestTime : '');
+        if (distinctDays.length === 1) label = ONE.replace('%w', DAYS_PLURAL[distinctDays[0]]);
+        else if (distinctDays.length === 2) label = TWO.replace('%w', DAYS_SHORT[distinctDays[0]]).replace('%w', DAYS_SHORT[distinctDays[1]]);
+        else label = FALLBACK;
+        var newText = NAME + ' · ' + label + (bestTime ? ' ' + bestTime : '');
+        // Only update if computed text differs from current — avoid pointless DOM mutation
+        if (txt.textContent !== newText) txt.textContent = newText;
       })
-      .catch(function(e){ console.error('[SABDA-EDB-v52] fetch failed:', e && e.message); });
+      .catch(function(e){ console.error('[SABDA-EDB-v53] fetch failed:', e && e.message); });
   } catch(e) {}
 })();</script>
 <!-- DAYS -->
