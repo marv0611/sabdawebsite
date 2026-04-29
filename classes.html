@@ -551,27 +551,59 @@ select.bk-input option{background:var(--navy-light);color:var(--white)}
 </div>
 
 
-<!-- SABDA-EDB-v5: Ecstatic Dance NEW banner — auto-rotating link to next session -->
+<!-- SABDA-EDB-v52: Ecstatic Dance NEW pill banner — auto-rotating link + dynamic day/time -->
 <style>
-.sabda-edb-d{display:none;max-width:920px;margin:0 auto 24px;padding:14px 22px;background:linear-gradient(90deg,rgba(2,243,197,.10),rgba(2,243,197,.04));border:1px solid rgba(2,243,197,.32);border-radius:14px;align-items:center;gap:14px;text-decoration:none;color:var(--white);transition:transform .15s,background .2s,border-color .2s;position:relative;z-index:2}
-.sabda-edb-d.on{display:flex}
-.sabda-edb-d:hover{background:linear-gradient(90deg,rgba(2,243,197,.14),rgba(2,243,197,.06));border-color:rgba(2,243,197,.5)}
-.sabda-edb-d-tag{flex-shrink:0;font-size:.65rem;font-weight:700;letter-spacing:.16em;color:var(--navy);background:var(--cyan);padding:5px 11px;border-radius:100px;text-transform:uppercase}
-.sabda-edb-d-txt{flex:1;font-size:.95rem;font-weight:500;color:var(--white);line-height:1.4}
-.sabda-edb-d-arr{flex-shrink:0;color:var(--cyan);font-size:.92rem;font-weight:700;letter-spacing:.05em;display:flex;align-items:center;gap:6px;text-transform:uppercase}
-.sabda-edb-d-arr svg{width:13px;height:13px}
+.sabda-edb52{display:none;align-items:center;gap:10px;padding:7px 14px 7px 7px;background:linear-gradient(90deg,rgba(2,243,197,.10),rgba(2,243,197,.04));border:1px solid rgba(2,243,197,.32);border-radius:100px;text-decoration:none;color:var(--white);transition:transform .15s,background .2s,border-color .2s;width:fit-content;max-width:calc(100% - 32px);margin:0 auto 28px}
+.sabda-edb52.on{display:inline-flex}
+.sabda-edb52:hover{background:linear-gradient(90deg,rgba(2,243,197,.14),rgba(2,243,197,.06));border-color:rgba(2,243,197,.5)}
+.sabda-edb52-tag{flex-shrink:0;font-size:.62rem;font-weight:700;letter-spacing:.14em;color:var(--navy);background:var(--cyan);padding:5px 11px;border-radius:100px;text-transform:uppercase}
+.sabda-edb52-txt{font-size:.85rem;font-weight:500;color:var(--white);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sabda-edb52-arr{flex-shrink:0;color:var(--cyan);font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;display:inline-flex;align-items:center;gap:4px}
+.sabda-edb52-arr svg{width:11px;height:11px}
+@media (max-width:640px){.sabda-edb52-txt{font-size:.78rem}}
 </style>
-<a class="sabda-edb-d" id="sabda-edb-banner" href="https://momence.com/u/sabda-zReajm" target="_self" rel="noopener noreferrer" data-banner-fallback>
-  <span class="sabda-edb-d-tag">New</span>
-  <span class="sabda-edb-d-txt">Ecstatic Dance is live · freeform movement inside 360° projections</span>
-  <span class="sabda-edb-d-arr">Book <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-</a>
-<script>
-/* SABDA-EDB-v5 — fetches next ecstatic dance session on load, rewires banner href */
+<div style="text-align:center"><a class="sabda-edb52" id="sabda-edb52-link" href="https://momence.com/u/sabda-zReajm" target="_self" rel="noopener noreferrer">
+  <span class="sabda-edb52-tag">New</span>
+  <span class="sabda-edb52-txt" id="sabda-edb52-txt">Ecstatic Dance · …</span>
+  <span class="sabda-edb52-arr">Book <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+</a></div>
+<script>/* SABDA-EDB-v52 — fetches next ecstatic session, formats day + time, rewires href */
 (function(){
-  var el = document.getElementById('sabda-edb-banner');
-  if (!el) return;
-  el.classList.add('on');
+  var link = document.getElementById('sabda-edb52-link');
+  var txt = document.getElementById('sabda-edb52-txt');
+  if (!link || !txt) return;
+  var DAYS_SHORT = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  var DAYS_PLURAL = ["Sundays","Mondays","Tuesdays","Wednesdays","Thursdays","Fridays","Saturdays"];
+  var FALLBACK = 'Multiple sessions';
+  var NAME = 'Ecstatic Dance';
+  var ONE = '%w';
+  var TWO = '%w & %w';
+
+  function pad(n){ return n < 10 ? '0' + n : '' + n; }
+
+  function formatTime(date){
+    // Madrid timezone — toLocaleTimeString with timeZone option
+    try {
+      var t = date.toLocaleTimeString('en-GB', {timeZone:'Europe/Madrid', hour:'2-digit', minute:'2-digit', hour12:false});
+      return t;
+    } catch(e) {
+      return pad(date.getHours()) + ':' + pad(date.getMinutes());
+    }
+  }
+
+  function getMadridDay(date){
+    // Return weekday index 0-6 (Sun=0) for Madrid timezone
+    try {
+      var w = date.toLocaleDateString('en-US', {timeZone:'Europe/Madrid', weekday:'short'});
+      var map = {Sun:0, Mon:1, Tue:2, Wed:3, Thu:4, Fri:5, Sat:6};
+      return map[w];
+    } catch(e) {
+      return date.getDay();
+    }
+  }
+
+  link.classList.add('on');
+
   try {
     fetch('https://momence.com/_api/primary/api/v1/Events?hostId=54278&token=a0314a80ca', {cache:'no-store'})
       .then(function(r){ return r.ok ? r.json() : null; })
@@ -579,7 +611,7 @@ select.bk-input option{background:var(--navy-light);color:var(--white)}
         if (!events || !Array.isArray(events)) return;
         var now = Date.now();
         var ed = [];
-        for (var i=0;i<events.length;i++){
+        for (var i = 0; i < events.length; i++) {
           var e = events[i];
           if (!e || e.isCancelled || e.isDeleted) continue;
           var t = (e.title || '').toLowerCase();
@@ -589,18 +621,47 @@ select.bk-input option{background:var(--navy-light);color:var(--white)}
           ed.push({ts: ts, link: e.link, id: e.id});
         }
         if (!ed.length) return;
-        ed.sort(function(a,b){ return a.ts - b.ts; });
+        ed.sort(function(a, b){ return a.ts - b.ts; });
+
+        // Set href to next session
         var next = ed[0];
-        if (next.link) {
-          el.setAttribute('href', next.link);
-        } else if (next.id) {
-          el.setAttribute('href', 'https://momence.com/s/' + next.id);
+        if (next.link) link.setAttribute('href', next.link);
+        else if (next.id) link.setAttribute('href', 'https://momence.com/s/' + next.id);
+
+        // Detect distinct weekdays + canonical time (use first 8 sessions to detect pattern)
+        var sample = ed.slice(0, 8);
+        var dayCounts = {};
+        var times = {};
+        for (var j = 0; j < sample.length; j++) {
+          var d = new Date(sample[j].ts);
+          var weekday = getMadridDay(d);
+          dayCounts[weekday] = (dayCounts[weekday] || 0) + 1;
+          var tStr = formatTime(d);
+          times[tStr] = (times[tStr] || 0) + 1;
         }
+
+        var distinctDays = Object.keys(dayCounts).map(Number).sort();
+        // Most common time (assume sessions share a time)
+        var bestTime = '';
+        var bestCount = 0;
+        for (var tk in times) {
+          if (times[tk] > bestCount) { bestCount = times[tk]; bestTime = tk; }
+        }
+
+        var label;
+        if (distinctDays.length === 1) {
+          label = ONE.replace('%w', DAYS_PLURAL[distinctDays[0]]);
+        } else if (distinctDays.length === 2) {
+          label = TWO.replace('%w', DAYS_SHORT[distinctDays[0]]).replace('%w', DAYS_SHORT[distinctDays[1]]);
+        } else {
+          label = FALLBACK;
+        }
+
+        txt.textContent = NAME + ' · ' + label + (bestTime ? ' ' + bestTime : '');
       })
-      .catch(function(e){console.error('[SABDA-EDB-v5] fetch failed:', e && e.message);});
+      .catch(function(e){ console.error('[SABDA-EDB-v52] fetch failed:', e && e.message); });
   } catch(e) {}
-})();
-</script>
+})();</script>
 <!-- NATIVE SCHEDULE -->
 <div class="days" id="days"></div>
 <div class="sched-bar" id="filters"></div>
