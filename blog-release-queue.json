@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-04-28",
-      "slug": "/blog/planes-en-pareja-barcelona/",
-      "order": 10
+      "date": "2026-04-29",
+      "slug": "/blog/despedida-de-soltera-barcelona/",
+      "order": 11
     }
   },
   "queue": [
@@ -153,8 +153,9 @@
       "release_date": "2026-04-29",
       "md_file": "blog/article-06-despedida-de-soltera-barcelona.md",
       "html_file": "blog/despedida-de-soltera-barcelona/index.html",
-      "status": "queued",
-      "volume": 590
+      "status": "released",
+      "volume": 590,
+      "released_at": "2026-04-29"
     },
     {
       "order": 12,
