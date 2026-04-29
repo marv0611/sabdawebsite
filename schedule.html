@@ -431,6 +431,57 @@ footer{padding:80px 80px 44px;border-top:1px solid rgba(240,239,233,.07);backgro
   </div>
 </div>
 
+
+<!-- SABDA-EDB-v5: Ecstatic Dance NEW banner — auto-rotating link to next session -->
+<style>
+.sabda-edb-d{display:none;max-width:920px;margin:0 auto 24px;padding:14px 22px;background:linear-gradient(90deg,rgba(2,243,197,.10),rgba(2,243,197,.04));border:1px solid rgba(2,243,197,.32);border-radius:14px;align-items:center;gap:14px;text-decoration:none;color:var(--white);transition:transform .15s,background .2s,border-color .2s;position:relative;z-index:2}
+.sabda-edb-d.on{display:flex}
+.sabda-edb-d:hover{background:linear-gradient(90deg,rgba(2,243,197,.14),rgba(2,243,197,.06));border-color:rgba(2,243,197,.5)}
+.sabda-edb-d-tag{flex-shrink:0;font-size:.65rem;font-weight:700;letter-spacing:.16em;color:var(--navy);background:var(--cyan);padding:5px 11px;border-radius:100px;text-transform:uppercase}
+.sabda-edb-d-txt{flex:1;font-size:.95rem;font-weight:500;color:var(--white);line-height:1.4}
+.sabda-edb-d-arr{flex-shrink:0;color:var(--cyan);font-size:.92rem;font-weight:700;letter-spacing:.05em;display:flex;align-items:center;gap:6px;text-transform:uppercase}
+.sabda-edb-d-arr svg{width:13px;height:13px}
+</style>
+<a class="sabda-edb-d" id="sabda-edb-banner" href="https://momence.com/u/sabda-zReajm" target="_self" rel="noopener noreferrer" data-banner-fallback>
+  <span class="sabda-edb-d-tag">New</span>
+  <span class="sabda-edb-d-txt">Ecstatic Dance is live — freeform movement inside 360° projections</span>
+  <span class="sabda-edb-d-arr">Book <svg viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+</a>
+<script>
+/* SABDA-EDB-v5 — fetches next ecstatic dance session on load, rewires banner href */
+(function(){
+  var el = document.getElementById('sabda-edb-banner');
+  if (!el) return;
+  el.classList.add('on');
+  try {
+    fetch('https://momence.com/_api/primary/api/v1/Events?hostId=54278&token=a0314a80ca', {cache:'no-store'})
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(events){
+        if (!events || !Array.isArray(events)) return;
+        var now = Date.now();
+        var ed = [];
+        for (var i=0;i<events.length;i++){
+          var e = events[i];
+          if (!e || e.isCancelled || e.isDeleted) continue;
+          var t = (e.title || '').toLowerCase();
+          if (t.indexOf('ecstatic') < 0) continue;
+          var ts = Date.parse(e.dateTime || e.startsAt || '');
+          if (!ts || ts < now) continue;
+          ed.push({ts: ts, link: e.link, id: e.id});
+        }
+        if (!ed.length) return;
+        ed.sort(function(a,b){ return a.ts - b.ts; });
+        var next = ed[0];
+        if (next.link) {
+          el.setAttribute('href', next.link);
+        } else if (next.id) {
+          el.setAttribute('href', 'https://momence.com/s/' + next.id);
+        }
+      })
+      .catch(function(){});
+  } catch(e) {}
+})();
+</script>
 <!-- MOMENCE LIVE WIDGET (reskinned) — "Teachers" wording via i18n -->
 <div id="momence-plugin-host-schedule"></div>
 <script src="https://momence.com/plugin/host-schedule/host-schedule.js"
