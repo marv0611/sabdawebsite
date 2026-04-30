@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-04-29",
-      "slug": "/blog/despedida-de-soltera-barcelona/",
-      "order": 11
+      "date": "2026-04-30",
+      "slug": "/blog/experiencias-inmersivas-barcelona/",
+      "order": 12
     }
   },
   "queue": [
@@ -166,8 +166,9 @@
       "release_date": "2026-04-30",
       "md_file": "blog/article-18-experiencias-inmersivas-barcelona.md",
       "html_file": "blog/experiencias-inmersivas-barcelona/index.html",
-      "status": "queued",
-      "volume": 590
+      "status": "released",
+      "volume": 590,
+      "released_at": "2026-04-30"
     },
     {
       "order": 13,
