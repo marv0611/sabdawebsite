@@ -7,6 +7,7 @@
 **Slug:** `/blog/activitats-originals-barcelona/`
 
 **Primary keyword:** activitats barcelona
+**publish: true**
 **Secondary keywords:** plans originals barcelona, oci barcelona, coses per fer a barcelona
 
 ---
