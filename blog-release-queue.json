@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-05-01",
-      "slug": "/blog/activitats-originals-barcelona/",
-      "order": 13
+      "date": "2026-05-04",
+      "slug": "/blog/ecstatic-dance-barcelona/",
+      "order": 14
     }
   },
   "queue": [
@@ -192,8 +192,9 @@
       "release_date": "2026-05-04",
       "md_file": "blog/article-17-ecstatic-dance-barcelona.md",
       "html_file": "blog/ecstatic-dance-barcelona/index.html",
-      "status": "queued",
-      "volume": 390
+      "status": "released",
+      "volume": 390,
+      "released_at": "2026-05-04"
     },
     {
       "order": 15,
