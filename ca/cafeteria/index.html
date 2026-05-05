@@ -32,7 +32,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 clamp(24px,4vw,56p
 .nav-ham{display:none;flex-direction:column;gap:4px;padding:12px;cursor:pointer;background:none;border:none}.nav-ham span{width:20px;height:1.5px;background:var(--white)}
 .mob-menu{position:fixed;inset:0;z-index:200;background:rgba(14,18,53,.98);backdrop-filter:blur(20px);display:flex;flex-direction:column;align-items:center;gap:22px;padding:88px 24px 40px;opacity:0;pointer-events:none;transition:opacity .35s}.mob-menu.open{opacity:1;pointer-events:auto}.mob-menu a{font-family:'PT Serif',serif;font-size:1.6rem;font-weight:700;color:var(--white);opacity:.85}.mob-close{position:absolute;top:24px;right:24px;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:none;border:none}.mob-close svg{width:24px;height:24px;stroke:var(--white);stroke-width:2}
 @media(max-width:860px){.nl{display:none}.nav-ham{display:flex}.ls,.ns{display:none}nav{height:64px;padding:0 24px}.nav-logo img{height:24px!important}}
-.hero{position:relative;width:100%;height:520px;overflow:hidden;margin-top:72px}.hero img{width:100%;height:100%;object-fit:cover;filter:brightness(.55) contrast(1.1) saturate(1.15)}.hero::after{content:'';position:absolute;left:0;right:0;bottom:0;height:60%;background:linear-gradient(to bottom,transparent 0%,rgba(14,18,53,.4) 30%,rgba(14,18,53,.75) 55%,rgba(14,18,53,.95) 80%,var(--navy) 100%)}.hero-content{position:absolute;bottom:56px;left:0;right:0;z-index:3;padding:0 80px}.hero-content h1{font-family:'PT Serif',serif;font-size:clamp(2.4rem,5vw,4rem);font-weight:700;line-height:1.05;margin-bottom:16px}.hero-content h1 em{font-style:italic;color:var(--salmon)}.hero-content .hero-sub{font-size:1.05rem;color:var(--white60);max-width:520px;line-height:1.6}
+.hero{position:relative;width:100%;height:520px;overflow:hidden;margin-top:72px}.hero img{width:100%;height:100%;object-fit:cover;filter:brightness(.55) contrast(1.1) saturate(1.15)}.hero::after{content:'';position:absolute;left:0;right:0;bottom:0;height:60%;background:linear-gradient(to bottom,transparent 0%,rgba(14,18,53,.4) 30%,rgba(14,18,53,.75) 55%,rgba(14,18,53,.95) 80%,var(--navy) 100%)}.hero-content{position:absolute;bottom:56px;left:0;right:0;z-index:3;padding:0 80px}.hero-content h1{font-family:'PT Serif',serif;font-size:clamp(3.2rem,6.5vw,6rem);font-weight:700;line-height:1.05;margin-bottom:16px}.hero-content h1 em{font-style:italic;color:var(--salmon)}.hero-content .hero-sub{font-size:1.05rem;color:var(--white60);max-width:520px;line-height:1.6}
 @media(max-width:860px){.hero{height:360px}.hero-content{padding:0 24px;bottom:36px}.hero-content h1{font-size:2rem}}
 .sec{position:relative;z-index:2;padding:60px 80px}.sec-in{max-width:960px;margin:0 auto}
 @media(max-width:860px){.sec{padding:40px 24px}}
@@ -94,7 +94,7 @@ footer{position:relative;z-index:2;padding:60px clamp(24px,4vw,56px) 36px;border
 
   <div class="photos">
     <img src="/cafe/cafe-bar.jpg" alt="SABDA Cafe bar" loading="lazy">
-    <img src="/cafe/cafe-seating.jpg" alt="SABDA Cafe seating" loading="lazy">
+    <img src="/cafe/cafe-lounge.jpg" alt="SABDA Cafe lounge" loading="lazy">
   </div>
 
   <div class="menu-wrap">
@@ -110,7 +110,8 @@ footer{position:relative;z-index:2;padding:60px clamp(24px,4vw,56px) 36px;border
   <div class="fq"><button class="fq-q" onclick="this.parentElement.classList.toggle('open')">Quin cafe feu servir?<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button><div class="fq-a"><p>Dalston Coffee.</p></div></div>
   <div class="fq"><button class="fq-q" onclick="this.parentElement.classList.toggle('open')">Teniu menjar?<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button><div class="fq-a"><p>Tenim barretes Fizzi, de proteines i plaers culpables, totes a 3,50 euros.</p></div></div>
     <div class="fq"><button class="fq-q" onclick="this.parentElement.classList.toggle('open')">La cafeteria obre els dilluns?<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button><div class="fq-a"><p>No. La cafeteria esta tancada els dilluns. L'estudi si que obre.</p></div></div>
-  <div class="fq"><button class="fq-q" onclick="this.parentElement.classList.toggle('open')">Puc demanar per emportar?<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button><div class="fq-a"><p>Si.</p></div></div>
+  <div class="fq"><button class="fq-q" onclick="this.parentElement.classList.toggle('open')">Puc fer servir credits de ClassPass a la cafeteria?<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button><div class="fq-a"><p>Si! Estem implementant-ho amb ClassPass, i a partir de la setmana que ve podras fer servir els teus credits de ClassPass per a begudes i menjar al bar.</p></div></div>
+  <div class="fq"><button class="fq-q" onclick="this.parentElement.classList.toggle('open')">Puc demanar per emportar?<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button><div class="fq-a"><p>Es clar!</p></div></div>
 
 </div></div>
 
