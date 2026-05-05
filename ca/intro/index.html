@@ -862,7 +862,7 @@ function openModal(){
   var mo = document.getElementById('tm');
   mo.style.display = 'flex';
   requestAnimationFrame(function(){ mo.classList.add('open'); });
-  document.body.style.overflow = 'hidden';
+  document.body.style.overflow = 'hidden'; document.body.style.position = 'fixed'; document.body.style.width = '100%'; document.body.style.top = '-' + window.scrollY + 'px';
   showEmailStep();
   // Fire AddToCart + InitiateCheckout
   try {
@@ -877,7 +877,7 @@ function openModal(){
 function closeModal(){
   var mo = document.getElementById('tm');
   mo.classList.remove('open');
-  document.body.style.overflow = '';
+  var _scrollY = parseInt(document.body.style.top || '0') * -1; document.body.style.overflow = ''; document.body.style.position = ''; document.body.style.width = ''; document.body.style.top = ''; window.scrollTo(0, _scrollY);
   setTimeout(function(){
     mo.style.display = 'none';
     document.getElementById('tm-bd').innerHTML = '';
@@ -991,6 +991,7 @@ function doLogin(){
       return;
     }
     var d = r.data;
+    if (!d || !d.user) { err.innerHTML = 'Unexpected response. <a href="https://momence.com/m/443934" target="_blank">Book on Momence &rarr;</a>'; err.style.display='block'; btn.textContent='Sign In & Continue'; btn.disabled=false; return; }
     loggedInUser = { email: d.user.email || email, firstName: d.user.firstName || '', lastName: d.user.lastName || '' };
     sessionToken = d.sessionToken;
     showPaymentStep(email, loggedInUser.firstName, loggedInUser.lastName, '', true);
@@ -1049,6 +1050,7 @@ function doMfa(){
       btn.disabled = false;
       return;
     }
+    if (!r.data || !r.data.user) { err.textContent = 'Verification failed. Please try again.'; btn.textContent='Verify'; btn.disabled=false; return; }
     loggedInUser = { email: r.data.user.email || email, firstName: r.data.user.firstName || '', lastName: r.data.user.lastName || '' };
     sessionToken = r.data.sessionToken;
     showPaymentStep(email, loggedInUser.firstName, loggedInUser.lastName, '', true);
@@ -1110,7 +1112,8 @@ function showPaymentStep(email, fn, ln, phone, isLoggedIn){
 // ── STRIPE ELEMENTS ──
 function mountStripe(isLoggedIn){
   if (!stripe) {
-    stripe = Stripe(STRIPE_PK, { stripeAccount: STRIPE_ACCT });
+    try { stripe = Stripe(STRIPE_PK, { stripeAccount: STRIPE_ACCT }); }
+    catch(e) { showError('Payment system unavailable. Please book on Momence.'); return; }
   }
   if (cardEl) { try { cardEl.destroy(); } catch(e){} cardEl = null; }
   var elements = stripe.elements();
@@ -1201,6 +1204,11 @@ function doRegisterPay(){
       lastName: ln,
       password: pass
     });
+  }).catch(function(e){
+    processing = false;
+    err.textContent = 'Card processing error. Please try again.';
+    btn.textContent = 'Pay \u20AC18';
+    btn.disabled = false;
   });
 }
 
@@ -1232,6 +1240,11 @@ function doLoggedInPay(){
       firstName: loggedInUser.firstName,
       lastName: loggedInUser.lastName
     });
+  }).catch(function(e){
+    processing = false;
+    err.textContent = 'Card processing error. Please try again.';
+    btn.textContent = 'Pay \u20AC18';
+    btn.disabled = false;
   });
 }
 
