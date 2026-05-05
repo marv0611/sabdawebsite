@@ -1,4 +1,6 @@
-# WORKER_FIX_NOTES.md — STATUS: HISTORICAL ARCHIVE
+# WORKER_FIX_NOTES.md — DEPRECATED
+
+> **DEPRECATED.** See `WORKER_ENV.md` for current Worker environment documentation.
 
 **This file is a historical snapshot of pre-April 2026 Worker debugging.**
 
