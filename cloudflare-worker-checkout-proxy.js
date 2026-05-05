@@ -183,13 +183,16 @@ export default {
       return handleCheckMemberships(request, reqOrigin);
     }
     if (url.pathname === '/sabda-api/login') {
-      return handleLogin(request, reqOrigin);
+      try { return await handleLogin(request, reqOrigin); }
+      catch(e) { await alertOnError(env, ctx, e, request, {handler:'login'}); return new Response(JSON.stringify({error: e.message || 'Internal error'}), {status: 500, headers: corsHeaders(reqOrigin)}); }
     }
     if (url.pathname === '/sabda-api/mfa-verify') {
-      return handleMfaVerify(request, reqOrigin);
+      try { return await handleMfaVerify(request, reqOrigin); }
+      catch(e) { await alertOnError(env, ctx, e, request, {handler:'mfa-verify'}); return new Response(JSON.stringify({error: e.message || 'Internal error'}), {status: 500, headers: corsHeaders(reqOrigin)}); }
     }
     if (url.pathname === '/sabda-api/book') {
-      return handleBook(request, reqOrigin);
+      try { return await handleBook(request, reqOrigin); }
+      catch(e) { await alertOnError(env, ctx, e, request, {handler:'book'}); return new Response(JSON.stringify({error: e.message || 'Internal error'}), {status: 500, headers: corsHeaders(reqOrigin)}); }
     }
     if (url.pathname === '/sabda-api/capi-purchase') {
       return handleCapiEvent(request, reqOrigin, env, ctx, /* defaultEvent */ 'Purchase', /* requireEmail */ true);
@@ -204,11 +207,13 @@ export default {
       return handleCapiEvent(request, reqOrigin, env, ctx, /* defaultEvent */ null, /* requireEmail */ false);
     }
     if (url.pathname === '/sabda-api/pay') {
-      return handlePay(request, reqOrigin, env, ctx);
+      try { return await handlePay(request, reqOrigin, env, ctx); }
+      catch(e) { await alertOnError(env, ctx, e, request, {handler:'pay'}); return new Response(JSON.stringify({error: e.message || 'Internal error'}), {status: 500, headers: corsHeaders(reqOrigin)}); }
     }
 
     if (url.pathname === '/sabda-api/contact') {
-      return handleContact(request, reqOrigin, env);
+      try { return await handleContact(request, reqOrigin, env); }
+      catch(e) { await alertOnError(env, ctx, e, request, {handler:'contact'}); return new Response(JSON.stringify({error: e.message || 'Internal error'}), {status: 500, headers: corsHeaders(reqOrigin)}); }
     }
 
     // ── ATTRIBUTION STORAGE: persist email→attribution for Momence-native purchase matching ──
@@ -218,7 +223,8 @@ export default {
 
     // ── PURCHASE WEBHOOK: Momence→Zapier→here. Fires CAPI Purchase with stored attribution ──
     if (url.pathname === '/sabda-api/webhook/purchase') {
-      return handleWebhookPurchase(request, reqOrigin, env, ctx);
+      try { return await handleWebhookPurchase(request, reqOrigin, env, ctx); }
+      catch(e) { await alertOnError(env, ctx, e, request, {handler:'webhook-purchase'}); return new Response(JSON.stringify({error: e.message || 'Internal error'}), {status: 500, headers: corsHeaders(reqOrigin)}); }
     }
 
     // ── CUSTOM SIGN-IN PAGE: intercept /sign-in and show our form ──
@@ -492,6 +498,39 @@ function corsHeaders(origin) {
     'Access-Control-Allow-Credentials': 'true',
     'Content-Type': 'application/json',
   };
+}
+
+// ── SLACK ERROR ALERTING ──
+// Fires on unhandled errors in critical handlers (/pay, /book, /login, /contact).
+// Rate-limited via ATTRIBUTION_KV: same error message only alerts once per 10 min.
+async function alertOnError(env, ctx, error, request, extra) {
+  try {
+    if (!env || !env.ALERT_WEBHOOK_URL) return;
+    var errKey = 'alert_' + (error && error.message || 'unknown').slice(0, 50).replace(/[^a-zA-Z0-9]/g, '_');
+    // Rate-limit: skip if same error alerted in last 10 min
+    if (env.ATTRIBUTION_KV) {
+      try {
+        var recent = await env.ATTRIBUTION_KV.get(errKey);
+        if (recent) return;
+        ctx.waitUntil(env.ATTRIBUTION_KV.put(errKey, '1', { expirationTtl: 600 }));
+      } catch(e) { /* KV failure should never block alerting */ }
+    }
+    var pathname = '/unknown';
+    try { pathname = new URL(request.url).pathname; } catch(e) {}
+    var ua = '';
+    try { ua = (request.headers.get('user-agent') || '').slice(0, 100); } catch(e) {}
+    var handler = (extra && extra.handler) || pathname;
+    var payload = {
+      text: ':rotating_light: *SABDA Worker error*\n`' + (error && error.message || 'unknown') + '`\nHandler: `' + handler + '`\nPath: `' + pathname + '`\nMethod: ' + (request.method || '?') + '\nUA: ' + ua,
+      username: 'SABDA Worker',
+      icon_emoji: ':rotating_light:'
+    };
+    ctx.waitUntil(fetch(env.ALERT_WEBHOOK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    }));
+  } catch(e) { /* never throw from the alerter */ }
 }
 
 // ── CHECK IF EMAIL HAS EXISTING ACCOUNT ──

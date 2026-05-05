@@ -19,6 +19,7 @@
 | `Resend` | secret | `sendEmailViaResend()` | Resend API key for transactional email delivery (contact form routing) | resend.com/api-keys | Marv |
 | `STRIPE_API_KEY` | secret | Stripe webhook verification, future direct charges | Stripe secret key (`sk_live_...`) | Stripe dashboard > Developers > API keys | Marv |
 | `STRIPE_WEBHOOK_SECRET` | secret | Stripe webhook signature verification | Stripe webhook signing secret (`whsec_...`) | Stripe dashboard > Developers > Webhooks > signing secret | Marv |
+| `ALERT_WEBHOOK_URL` | secret | `alertOnError()` | Slack incoming webhook for Worker error notifications (channel: #websitestatus) | sabda-hq.slack.com > Apps > Incoming Webhooks | Marv |
 
 ## KV Namespace Bindings
 
