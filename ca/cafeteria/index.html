@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="facebook-domain-verification" content="6vs8q2dkkemv5umuqn9irqnpippo3u">
 <title>SABDA Cafeteria | Cafe d'especialitat, sucs i batuts a l'Eixample</title>
-<meta name="description" content="Cafe d'especialitat Dalston, sucs naturals, batuts i barretes Fizzi. Oberta a tothom. Dim-Div 8:15-15:00, Dis-Diu 9:00-13:00. C/Muntaner 83B, Barcelona.">
+<meta name="description" content="Cafe d'especialitat Dalston, sucs naturals, batuts i barretes Fizzi. Oberta a clients de SABDA. Dim-Div 8:15-15:00, Dis-Diu 9:00-13:00. C/Muntaner 83B, Barcelona.">
 <link rel="canonical" href="https://sabdastudio.com/ca/cafeteria/">
 <link rel="alternate" hreflang="en" href="https://sabdastudio.com/cafe/">
 <link rel="alternate" hreflang="es" href="https://sabdastudio.com/es/cafeteria/">
@@ -37,13 +37,27 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 clamp(24px,4vw,56p
 .sec{position:relative;z-index:2;padding:60px 80px}.sec-in{max-width:960px;margin:0 auto}
 @media(max-width:860px){.sec{padding:40px 24px}}
 .sl{display:block;font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--cyan);font-weight:700;margin-bottom:20px}
-.info-row{display:flex;gap:24px;margin-bottom:48px}.info-card{flex:1;padding:28px 24px;border:1px solid var(--w06);border-radius:12px;background:rgba(240,239,233,.02);text-align:center}.info-lbl{font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:10px;font-weight:700}.info-val{font-size:.88rem;line-height:1.6}
+.info-row{display:flex;justify-content:center;gap:24px;margin-bottom:48px}.info-card{flex:0 1 400px;padding:28px 24px;border:1px solid var(--w06);border-radius:12px;background:rgba(240,239,233,.02);text-align:center}.info-lbl{font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan);margin-bottom:10px;font-weight:700}.info-val{font-size:.88rem;line-height:1.6}
 @media(max-width:680px){.info-row{flex-direction:column;gap:16px}}
 .photos{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:60px}.photos img{width:100%;height:300px;object-fit:cover;border-radius:12px}
 @media(max-width:680px){.photos{grid-template-columns:1fr}.photos img{height:220px}}
 .menu-wrap{text-align:center;margin-bottom:60px}.menu-wrap img{max-width:600px;width:100%;border-radius:12px;box-shadow:0 8px 40px rgba(0,0,0,.3)}
 .fq{border-top:1px solid var(--w06)}.fq:last-child{border-bottom:1px solid var(--w06)}.fq-q{display:flex;justify-content:space-between;align-items:center;gap:16px;width:100%;padding:18px 0;background:none;border:none;color:var(--white);font-size:.88rem;font-weight:600;text-align:left;cursor:pointer;font-family:inherit}.fq-q svg{width:18px;height:18px;fill:none;stroke:var(--white60);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0;transition:transform .3s}.fq-a{max-height:0;overflow:hidden;transition:max-height .3s}.fq-a p{padding:0 0 18px;font-size:.84rem;color:var(--white60);line-height:1.6}.fq.open .fq-q svg{transform:rotate(180deg)}.fq.open .fq-a{max-height:200px}
-.ft{border-top:1px solid var(--w06);padding:48px 24px 32px;text-align:center;position:relative;z-index:2}.ft-logo img{height:28px;margin-bottom:10px}.ft-pl{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--w38);margin-bottom:16px}.ft-pl .fa{color:var(--salmon)}.ft-pl .fc{color:var(--cyan)}.ft-links{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;margin-bottom:16px}.ft-links a{font-size:.78rem;color:var(--white60)}.ft-copy{font-size:.68rem;color:var(--w38)}
+/* FOOTER */
+footer{position:relative;z-index:2;padding:60px clamp(24px,4vw,56px) 36px;border-top:1px solid rgba(240,239,233,.07)}
+.ft-in{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:44px}
+.ft-brand{text-align:left}
+.ft-brand img:first-child{height:36px;width:auto;margin-bottom:16px;display:block}
+.ft-pillars{display:flex;gap:12px;margin-top:14px;font-size:.82rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(240,239,233,.65)}
+.ft-pillars .fp-art{color:var(--cyan)}.ft-pillars .fp-tech{color:var(--white)}.ft-pillars .fp-well{color:var(--salmon)}
+.ft-symbol{width:200px!important;height:auto!important;margin-top:28px;opacity:.35;display:block;object-fit:contain}
+.ft-col h3{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;font-weight:500;margin-bottom:20px}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+.ft-col a{font-size:.87rem;color:var(--w38);transition:color .2s}.ft-col a:hover{color:var(--white)}
+.ft-bot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;padding-top:30px;border-top:1px solid var(--w06);font-size:.74rem;color:var(--w38)}
+.ft-legal{display:flex;gap:24px}.ft-legal a{color:var(--w38)}
+@media(max-width:860px){.ft-in{grid-template-columns:1fr 1fr;gap:32px}.ft-symbol{display:none}}
+@media(max-width:480px){.ft-in{grid-template-columns:1fr}}
 </style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1E1WXTZWQD"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-1E1WXTZWQD",{"anonymize_ip":true});</script>
@@ -69,13 +83,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 clamp(24px,4vw,56p
   <div class="hero-content">
     <h1>SABDA <em>Cafeteria</em></h1>
     <p class="hero-sub">Cafe d'especialitat, sucs naturals i batuts dins l'estudi.</p>
+    <p class="hero-sub" style="transition-delay:.1s;color:var(--salmon);font-weight:600;font-size:.9rem">Oberta a clients de SABDA i assistents a esdeveniments.</p></p>
   </div>
 </div>
 
 <div class="sec"><div class="sec-in">
   <div class="info-row">
     <div class="info-card"><div class="info-lbl">Horari</div><div class="info-val">Dim - Div: 8:15 - 15:00<br>Dis - Diu: 9:00 - 13:00<br>Tancat els dilluns</div></div>
-    <div class="info-card"><div class="info-lbl">Cafe de</div><div class="info-val">Dalston Coffee</div></div>
   </div>
 
   <div class="photos">
@@ -89,23 +103,42 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 clamp(24px,4vw,56p
   </div>
 
   <span class="sl">FAQ</span>
-  <div class="fq"><button class="fq-q" onclick="this.parentElement.classList.toggle('open')">Necessito ser membre per visitar la cafeteria?<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button><div class="fq-a"><p>No. La cafeteria esta oberta a tothom.</p></div></div>
+  <div class="fq"><button class="fq-q" onclick="this.parentElement.classList.toggle('open')">Necessito ser membre per visitar la cafeteria?<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button><div class="fq-a"><p>Has d'assistir a una de les nostres classes o esdeveniments per poder fer servir la cafeteria.</p></div></div>
   <div class="fq"><button class="fq-q" onclick="this.parentElement.classList.toggle('open')">Quin es l'horari de la cafeteria?<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button><div class="fq-a"><p>Dimarts a divendres de 8:15 a 15:00, dissabte i diumenge de 9:00 a 13:00. Tancat els dilluns.</p></div></div>
   <div class="fq"><button class="fq-q" onclick="this.parentElement.classList.toggle('open')">Teniu llet de civada?<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button><div class="fq-a"><p>Si, llet de civada i de vaca disponibles a totes les begudes sense cost addicional.</p></div></div>
   <div class="fq"><button class="fq-q" onclick="this.parentElement.classList.toggle('open')">Teniu descafeinat?<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button><div class="fq-a"><p>Si, descafeinat disponible per a tots els cafes.</p></div></div>
   <div class="fq"><button class="fq-q" onclick="this.parentElement.classList.toggle('open')">Quin cafe feu servir?<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button><div class="fq-a"><p>Dalston Coffee.</p></div></div>
   <div class="fq"><button class="fq-q" onclick="this.parentElement.classList.toggle('open')">Teniu menjar?<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button><div class="fq-a"><p>Tenim barretes Fizzi, de proteines i plaers culpables, totes a 3,50 euros.</p></div></div>
-  <div class="fq"><button class="fq-q" onclick="this.parentElement.classList.toggle('open')">Es pot afegir proteina a un batut?<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button><div class="fq-a"><p>Si, +1,50 euros a qualsevol batut.</p></div></div>
-  <div class="fq"><button class="fq-q" onclick="this.parentElement.classList.toggle('open')">La cafeteria obre els dilluns?<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button><div class="fq-a"><p>No. La cafeteria esta tancada els dilluns. L'estudi si que obre.</p></div></div>
+    <div class="fq"><button class="fq-q" onclick="this.parentElement.classList.toggle('open')">La cafeteria obre els dilluns?<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button><div class="fq-a"><p>No. La cafeteria esta tancada els dilluns. L'estudi si que obre.</p></div></div>
   <div class="fq"><button class="fq-q" onclick="this.parentElement.classList.toggle('open')">Puc demanar per emportar?<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></button><div class="fq-a"><p>Si.</p></div></div>
 
 </div></div>
 
-<footer class="ft">
-  <div class="ft-logo"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA"></div>
-  <div class="ft-pl"><span class="fa">Art</span> &middot; <span class="fc">Tech</span> &middot; Wellness</div>
-  <div class="ft-links"><a href="/ca/classes/">Classes</a><a href="/ca/preus/">Pricing</a><a href="/ca/sobre/">About</a><a href="/ca/contacte/">Contact</a></div>
-  <div class="ft-copy">&copy; 2026 SABDA STUDIO S.L.</div>
+<footer>
+  <div class="ft-in">
+    <div class="ft-brand">
+      <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA" width="400" height="127">
+      <div class="ft-pillars"><span class="fp-art">Art</span><span>&middot;</span><span class="fp-tech">Tech</span><span>&middot;</span><span class="fp-well">Wellness</span></div>
+      <img class="ft-symbol" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20symbol%20multi-colored%20(1).png" alt="SABDA symbol">
+    </div>
+    <div class="ft-col"><h3 style="color:var(--cyan)">Explore</h3><ul>
+      <li><a href="/ca/classes/">Classes</a></li><li><a href="/ca/lloguer/">Rent</a></li><li><a href="/ca/preus/">Pricing</a></li><li><a href="/ca/esdeveniments/">Events</a></li><li><a href="/ca/sobre/">About</a></li><li><a href="/ca/faq/">FAQ</a></li><li><a href="/ca/blog/">Blog</a></li><li><a href="/ca/contacte/">Get in touch</a></li>
+    </ul></div>
+    <div class="ft-col"><h3 style="color:var(--salmon)">Connect</h3><ul>
+      <li><a href="https://instagram.com/sabda_studio" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+      <li><a href="https://www.tiktok.com/@sabda_studio" target="_blank" rel="noopener noreferrer">TikTok</a></li>
+      <li><a href="https://www.linkedin.com/company/sabdastudio" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+    </ul></div>
+    <div class="ft-col"><h3 style="color:var(--white)">Contact</h3><ul>
+      <li><a href="mailto:info@sabdastudio.com">info@sabdastudio.com</a></li>
+      <li><a href="tel:+34625449878">+34 625 44 98 78</a></li>
+      <li><a href="https://maps.google.com/?q=SABDA+Studio,+Barcelona" target="_blank" rel="noopener noreferrer" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3);padding-bottom:2px">Get Directions &rarr;</a></li>
+    </ul></div>
+  </div>
+  <div class="ft-bot">
+    <span>&copy; 2026 SABDA STUDIO S.L. All rights reserved.</span>
+    <div class="ft-legal"><a href="/ca/avis-legal.html">Legal Notice</a><a href="/ca/politica-privacitat.html">Privacy Policy</a><a href="/ca/termes.html">Terms &amp; Conditions</a><a href="/ca/cookies.html">Cookies</a></div>
+  </div>
 </footer>
 <script>
 (function(){
