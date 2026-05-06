@@ -51,10 +51,19 @@ document.head.appendChild(_s);
 // Inject HTML
 document.body.insertAdjacentHTML('beforeend', "<div class=\"tm\" id=\"tm\">\n  <div class=\"tm-box\">\n    <div class=\"tm-head\">\n      <div><div class=\"tm-t\">Trial Class</div><div class=\"tm-sub\">Your first class at SABDA</div></div>\n      <button class=\"tm-x\" type=\"button\" aria-label=\"Close\" onclick=\"SABDA_TM.close()\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"/><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"/></svg></button>\n    </div>\n    <div class=\"tm-bd\" id=\"tm-bd\"></div>\n    <div class=\"tm-ft\">\n      <div class=\"tm-sec\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"3\" y=\"11\" width=\"18\" height=\"11\" rx=\"2\"/><path d=\"M7 11V7a5 5 0 0 1 10 0v4\"/></svg>Secure checkout via SABDA</div>\n      <div class=\"tm-fb\"><a href=\"https://momence.com/m/443934\" target=\"_blank\" rel=\"noopener noreferrer\">Having trouble? <strong>Book on Momence</strong> &rarr;</a></div>\n    </div>\n  </div>\n</div>");
 
-// Load Stripe.js dynamically
+// ── Load Stripe.js dynamically (non-blocking) ──
+var _stripeReady = false;
 var _ss = document.createElement('script');
 _ss.src = 'https://js.stripe.com/v3/';
-_ss.onload = function(){
+_ss.onload = function(){ _stripeReady = true; };
+_ss.onerror = function(){ console.warn('[SABDA-TM] Stripe.js blocked'); };
+document.head.appendChild(_ss);
+
+// ═══════════════════════════════════════════════════════════
+// All modal logic below runs immediately — no dependency on Stripe.js.
+// Only mountStripe() checks _stripeReady before using the Stripe global.
+// ═══════════════════════════════════════════════════════════
+
 // ── STATE ──
 var stripe = null, cardEl = null, payReq = null;
 var processing = false;
@@ -335,6 +344,17 @@ function showPaymentStep(email, fn, ln, phone, isLoggedIn){
 
 // ── STRIPE ELEMENTS ──
 function mountStripe(isLoggedIn){
+  if (!_stripeReady || typeof Stripe === 'undefined') {
+    // Stripe.js still loading — retry in 500ms (max 10 retries = 5s)
+    if (!mountStripe._retries) mountStripe._retries = 0;
+    if (mountStripe._retries++ < 10) {
+      setTimeout(function(){ mountStripe(isLoggedIn); }, 500);
+      return;
+    }
+    showError('Payment system unavailable. Please book on Momence.');
+    return;
+  }
+  mountStripe._retries = 0;
   if (!stripe) {
     try { stripe = Stripe(STRIPE_PK, { stripeAccount: STRIPE_ACCT }); }
     catch(e) { showError('Payment system unavailable. Please book on Momence.'); return; }
@@ -630,7 +650,7 @@ function showError(msg){
   }
 }
 
-// ── PUBLIC API ──
+
 window.SABDA_TM = {
   close: closeModal,
   checkEmail: checkEmail,
@@ -642,8 +662,5 @@ window.SABDA_TM = {
   showRegisterStep: showRegisterStep,
   showLoginStep: showLoginStep
 };
-};
-_ss.onerror = function(){ console.warn('[SABDA-TM] Stripe.js blocked'); };
-document.head.appendChild(_ss);
 
 })();
