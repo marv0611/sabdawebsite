@@ -194,6 +194,10 @@ export default {
       try { return await handleBook(request, reqOrigin); }
       catch(e) { await alertOnError(env, ctx, e, request, {handler:'book'}); return new Response(JSON.stringify({error: e.message || 'Internal error'}), {status: 500, headers: corsHeaders(reqOrigin)}); }
     }
+    if (url.pathname === '/sabda-api/auto-enroll') {
+      try { return await handleAutoEnroll(request, reqOrigin, env); }
+      catch(e) { await alertOnError(env, ctx, e, request, {handler:'auto-enroll'}); return new Response(JSON.stringify({error: e.message || 'Internal error'}), {status: 500, headers: corsHeaders(reqOrigin)}); }
+    }
     if (url.pathname === '/sabda-api/capi-purchase') {
       return handleCapiEvent(request, reqOrigin, env, ctx, /* defaultEvent */ 'Purchase', /* requireEmail */ true);
     }
@@ -983,6 +987,102 @@ async function handleBook(request, origin) {
 }
 
 
+// ── AUTO-ENROLL AFTER 3DS ──
+// Called by the client after 3DS confirmation when autoEnroll was requested.
+// Retrieves stored enrollment context from KV and books the class.
+async function handleAutoEnroll(request, origin, env) {
+  try {
+    const { enrollKey } = await request.json();
+    if (!enrollKey) {
+      return new Response(JSON.stringify({ error: 'Missing enrollKey' }), {
+        status: 400, headers: corsHeaders(origin),
+      });
+    }
+    if (!env || !env.ATTRIBUTION_KV) {
+      return new Response(JSON.stringify({ error: 'KV not available' }), {
+        status: 500, headers: corsHeaders(origin),
+      });
+    }
+
+    // Retrieve and delete (one-time use)
+    const raw = await env.ATTRIBUTION_KV.get(enrollKey);
+    if (!raw) {
+      console.warn('[AUTO-ENROLL] enrollKey not found or expired:', enrollKey);
+      return new Response(JSON.stringify({ error: 'Enrollment expired or already used' }), {
+        status: 404, headers: corsHeaders(origin),
+      });
+    }
+    await env.ATTRIBUTION_KV.delete(enrollKey);
+
+    const ctx = JSON.parse(raw);
+    const { sessionId, firstName, lastName, email, phoneNumber, customerFields, payRespCookies } = ctx;
+
+    if (!sessionId) {
+      return new Response(JSON.stringify({ error: 'No sessionId in stored context' }), {
+        status: 400, headers: corsHeaders(origin),
+      });
+    }
+
+    const MOMENCE = 'https://app.momence.com';
+    const HOST_ID = 54278;
+    const STRIPE_ACCOUNT_ID = 38966;
+
+    // Fetch session metadata for loadDate
+    let loadDate = new Date().toISOString();
+    try {
+      const sessRes = await fetch(
+        MOMENCE + '/_api/readonly/plugin/sessions/' + sessionId + '?hostId=' + HOST_ID,
+        { headers: momenceHeaders(null, request) }
+      );
+      const sessData = await sessRes.json();
+      if (sessData.message && sessData.message.loadDate) loadDate = sessData.message.loadDate;
+    } catch (e) {}
+
+    const enrollBody = {
+      tickets: [{ firstName, lastName, email, isAdditionalTicket: false }],
+      totalPriceInCurrency: 0,
+      loadDate: loadDate,
+      stripeConnectedAccountId: STRIPE_ACCOUNT_ID,
+      phoneNumber: phoneNumber || undefined,
+      customerFields: customerFields || {},
+      appliedPriceRuleIds: [],
+      isLoginRedirectDisabled: true,
+      isGuestOnlyBooking: true,
+    };
+    Object.keys(enrollBody).forEach(k => enrollBody[k] === undefined && delete enrollBody[k]);
+
+    const enrollHeaders = momenceHeaders({ 'Content-Type': 'application/json' }, request);
+    if (payRespCookies) enrollHeaders['Cookie'] = payRespCookies;
+
+    const enrollRes = await fetch(
+      MOMENCE + '/_api/primary/plugin/sessions/' + sessionId + '/pay',
+      { method: 'POST', headers: enrollHeaders, body: JSON.stringify(enrollBody) }
+    );
+    const enrollData = await enrollRes.json().catch(() => ({}));
+
+    if (!enrollRes.ok || enrollData.error) {
+      console.warn('[AUTO-ENROLL] failed. status=', enrollRes.status, 'err=', enrollData.error);
+      return new Response(JSON.stringify({
+        success: false,
+        error: enrollData.error || 'Enrollment failed',
+        message: 'Your pass was purchased. Please book the class manually from the schedule.',
+      }), { status: 200, headers: corsHeaders(origin) });
+    }
+
+    console.log('[AUTO-ENROLL] success for session', sessionId);
+    return new Response(JSON.stringify({ success: true }), {
+      status: 200, headers: corsHeaders(origin),
+    });
+
+  } catch (e) {
+    console.error('[AUTO-ENROLL] exception:', e && e.message);
+    return new Response(JSON.stringify({ error: 'Server error: ' + (e.message || 'unknown') }), {
+      status: 500, headers: corsHeaders(origin),
+    });
+  }
+}
+
+
 // ── META CAPI HELPERS ──
 async function sha256hex(str) {
   if (!str) return '';
@@ -1581,14 +1681,29 @@ async function handlePay(request, origin, env, ctx) {
 
     if (payRes.ok) {
       // 3D Secure check — CAPI fires after 3DS confirmation (client-side)
-      // NOTE: If autoEnroll was requested, it does NOT run for 3DS payments.
-      // The client must call /sabda-api/book separately after 3DS confirmation.
-      // This is a KNOWN LIMITATION — see WORKER_AUTOENROLL_BUGS.md
       if (payData.payload && payData.payload.clientSecret) {
+        let enrollKey = undefined;
+        // If auto-enroll was requested, store context in KV so the client can
+        // trigger enrollment after 3DS via /sabda-api/auto-enroll
+        if (autoEnroll && sessionId && env && env.ATTRIBUTION_KV) {
+          try {
+            enrollKey = 'enroll_' + Date.now() + '_' + Math.random().toString(36).substr(2, 12);
+            const enrollCtx = JSON.stringify({
+              sessionId, firstName, lastName, email, phoneNumber,
+              customerFields: customerFields || {},
+              payRespCookies: payRespCookies || '',
+            });
+            await env.ATTRIBUTION_KV.put(enrollKey, enrollCtx, { expirationTtl: 600 }); // 10 min TTL
+            console.log('[PAY] 3DS + autoEnroll: stored enroll context as', enrollKey);
+          } catch (e) {
+            console.warn('[PAY] 3DS + autoEnroll: KV store failed:', e && e.message);
+            enrollKey = undefined;
+          }
+        }
         return new Response(JSON.stringify({
           clientSecret: payData.payload.clientSecret,
           newMemberId: payData.payload.newMemberId,
-          autoEnrollSkipped: !!(autoEnroll && sessionId),
+          enrollKey: enrollKey,
         }), { status: 200, headers: corsHeaders(origin) });
       }
       // Auto-enroll: if the client requested auto-enrollment and we just bought a pack/membership,
