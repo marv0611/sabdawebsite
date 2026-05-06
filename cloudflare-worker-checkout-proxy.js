@@ -1352,7 +1352,7 @@ async function handleCapiEvent(request, origin, env, ctx, defaultEvent, requireE
 
     const externalIdForCAPI = externalId || email || '';
     const cityForCAPI = city || '';
-    const countryForCAPI = country || 'es';
+    const countryForCAPI = country || '';
 
     // Attribution log — same format regardless of event type for observability
     if (attribution && typeof attribution === 'object') {
@@ -1460,7 +1460,7 @@ async function handlePay(request, origin, env, ctx) {
         clientUserAgent || request.headers.get('User-Agent') || '',
         fbp || '', fbc || '', env,
         phoneNumber || '', email || '', '',
-        icCity, 'es', attribution
+        icCity, '', attribution
       ).catch((e) => console.log('[CAPI-IC] fire-and-forget error:', e && e.message));
       if (ctx && ctx.waitUntil) ctx.waitUntil(icPromise);
     }
@@ -1764,8 +1764,8 @@ async function handlePay(request, origin, env, ctx) {
       // City: pulled from checkout modal's customerFields.164361 ("CITY OF RESIDENCE"
       // field). Typed by customer, always 'Barcelona' in practice but use actual value.
       const cityForCAPI = (customerFields && customerFields['164361']) ? customerFields['164361'] : '';
-      // Country: SABDA operates only in Spain, hardcode 'es' per Meta 2-char ISO spec.
-      const countryForCAPI = 'es';
+      // Country: not hardcoded — send empty if not available. Let Meta infer from IP.
+      const countryForCAPI = '';
       // waitUntil keeps the Meta fetch alive past the client response. Without
       // this, the Worker isolate is killed the moment we return, and the fetch
       // to graph.facebook.com is aborted before Meta's response arrives —
@@ -2231,7 +2231,7 @@ async function handleWebhookPurchase(request, origin, env, ctx) {
       email || '', // externalId — fall back to email so webhook-path Purchases get the same external_id EMQ signal as /capi-event and /capi-purchase (both of which already do `externalId || email || ''`). sendCAPIEvent hashes this, so no PII leaks to Meta.
       '', // testEventCode
       city || '', // extracted from billing_details.address
-      country || 'es', // ISO-2 from billing_details.address, fallback ES (Barcelona studio)
+      country || '', // ISO-2 from billing_details.address — no default, send empty if unknown
       attribution, // full attribution object
       null, // contentMeta
       state || '', // extracted from billing_details.address (e.g. "CT" for Catalunya, "AN" for Andalusia)
