@@ -972,6 +972,8 @@ function showRegisterStep(email){
     + '<input class="bk-input" id="tm-pass" type="password" placeholder="Min. 8 characters" autocomplete="new-password">'
     + '<div class="bk-label">Confirm Password</div>'
     + '<input class="bk-input" id="tm-pass2" type="password" placeholder="Repeat password" autocomplete="new-password">'
+    + '<div class="bk-label">Ciudad de Residencia</div>'
+    + '<input class="bk-input" id="tm-city" type="text" placeholder="Barcelona" autocomplete="address-level2">'
     + '<div class="tm-divider"></div>'
     + '<div id="tm-pay-request"></div>'
     + '<div id="tm-pay-divider" class="tm-divider" style="display:none">or pay with card</div>'
@@ -991,6 +993,8 @@ function showPaymentStep(email, fn, ln, phone, isLoggedIn){
   bd.innerHTML = '<div class="tm-step">'
     + '<div class="tm-pkg"><div><div class="tm-pkg-name">Trial Class</div><div class="tm-pkg-desc">One class &middot; No commitment</div></div><div class="tm-pkg-price">&euro;18</div></div>'
     + '<div style="font-size:.82rem;color:rgba(240,239,233,.6);margin-bottom:16px;text-align:center">Booking as <strong style="color:#f0efe9">' + esc(fn) + ' ' + esc(ln) + '</strong></div>'
+    + '<div class="bk-label">Ciudad de Residencia</div>'
+    + '<input class="bk-input" id="tm-city" type="text" placeholder="Barcelona" autocomplete="address-level2">'
     + '<div id="tm-pay-request"></div>'
     + '<div id="tm-pay-divider" class="tm-divider" style="display:none">or pay with card</div>'
     + '<div class="bk-label" id="tm-card-label">Card Details</div>'
@@ -1153,7 +1157,7 @@ function submitPayment(opts, applePayEvent){
     email: opts.email,
     password: opts.password || undefined,
     phoneNumber: opts.phoneNumber || undefined,
-    customerFields: {},
+    customerFields: {'164360': 'Castellano', '164361': (document.getElementById('tm-city') || {}).value || ''},
     actualPrice: PRICE,
     fbEventId: purchaseEventId,
     fbIcEventId: null,
