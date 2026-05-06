@@ -72,7 +72,7 @@ var sessionToken = null;
 var loggedInUser = null;
 
 // ── HELPERS ──
-function esc(s){ var d=document.createElement('div'); d.textContent=s; return d.innerHTML; }
+function esc(s){ var d=document.createElement('div'); d.textContent=s; return d.innerHTML.replace(/"/g,'&quot;'); }
 function validateEmail(e){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
 function getCookie(n){ var m=document.cookie.match('(^|;)\\s*'+n+'\\s*=\\s*([^;]+)'); return m?m.pop():''; }
 function getAttribution(){ return (window._sabdaGetAttribution && window._sabdaGetAttribution()) || null; }
@@ -309,7 +309,7 @@ function showRegisterStep(email){
     + '<input class="bk-input" id="tm-pass" type="password" placeholder="Min. 8 characters" autocomplete="new-password">'
     + '<div class="bk-label">Confirm Password</div>'
     + '<input class="bk-input" id="tm-pass2" type="password" placeholder="Repeat password" autocomplete="new-password">'
-    + '<div class="bk-label">' + (_pageLang==='es'?'' + (_pageLang==='es'?'Ciudad de Residencia':(_pageLang==='ca'?'' + (_pageLang==='es'?'Ciudad de Residencia':(_pageLang==='ca'?'Ciutat de Resid\u00e8ncia':'City of Residence')) + '':'City of Residence')) + '':(_pageLang==='ca'?'' + (_pageLang==='es'?'Ciudad de Residencia':(_pageLang==='ca'?'Ciutat de Resid\u00e8ncia':'City of Residence')) + '':'City of Residence')) + '</div>'
+    + '<div class="bk-label">' + (_pageLang==='es'?'Ciudad de Residencia':(_pageLang==='ca'?'Ciutat de Resid\u00e8ncia':'City of Residence')) + '</div>'
     + '<input class="bk-input" id="tm-city" type="text" placeholder="Barcelona" autocomplete="address-level2">'
     + '<div class="tm-divider"></div>'
     + '<div id="tm-pay-request"></div>'
@@ -330,7 +330,7 @@ function showPaymentStep(email, fn, ln, phone, isLoggedIn){
   bd.innerHTML = '<div class="tm-step">'
     + '<div class="tm-pkg"><div><div class="tm-pkg-name">Trial Class</div><div class="tm-pkg-desc">One class &middot; No commitment</div></div><div class="tm-pkg-price">&euro;18</div></div>'
     + '<div style="font-size:.82rem;color:rgba(240,239,233,.6);margin-bottom:16px;text-align:center">Booking as <strong style="color:#f0efe9">' + esc(fn) + ' ' + esc(ln) + '</strong></div>'
-    + '<div class="bk-label">' + (_pageLang==='es'?'' + (_pageLang==='es'?'Ciudad de Residencia':(_pageLang==='ca'?'' + (_pageLang==='es'?'Ciudad de Residencia':(_pageLang==='ca'?'Ciutat de Resid\u00e8ncia':'City of Residence')) + '':'City of Residence')) + '':(_pageLang==='ca'?'' + (_pageLang==='es'?'Ciudad de Residencia':(_pageLang==='ca'?'Ciutat de Resid\u00e8ncia':'City of Residence')) + '':'City of Residence')) + '</div>'
+    + '<div class="bk-label">' + (_pageLang==='es'?'Ciudad de Residencia':(_pageLang==='ca'?'Ciutat de Resid\u00e8ncia':'City of Residence')) + '</div>'
     + '<input class="bk-input" id="tm-city" type="text" placeholder="Barcelona" autocomplete="address-level2">'
     + '<div id="tm-pay-request"></div>'
     + '<div id="tm-pay-divider" class="tm-divider" style="display:none">or pay with card</div>'
@@ -371,7 +371,9 @@ function mountStripe(isLoggedIn){
   var wrap = document.getElementById('tm-card');
   if (wrap) cardEl.mount('#tm-card');
 
-  // Apple Pay / Google Pay
+  // Apple Pay / Google Pay — only for logged-in users
+  // New users must use card form (Apple Pay can't collect password for Momence account)
+  if (!isLoggedIn) { return; }
   try {
     payReq = stripe.paymentRequest({
       country: 'ES', currency: 'eur',
@@ -577,6 +579,8 @@ function submitPayment(opts, applePayEvent){
         }
         fireBrowserPurchase(opts.email, opts.firstName, opts.lastName);
         showSuccess();
+      }).catch(function(e){
+        showError('Verification failed. Please try again.');
       });
       return;
     }
