@@ -1581,10 +1581,14 @@ async function handlePay(request, origin, env, ctx) {
 
     if (payRes.ok) {
       // 3D Secure check — CAPI fires after 3DS confirmation (client-side)
+      // NOTE: If autoEnroll was requested, it does NOT run for 3DS payments.
+      // The client must call /sabda-api/book separately after 3DS confirmation.
+      // This is a KNOWN LIMITATION — see WORKER_AUTOENROLL_BUGS.md
       if (payData.payload && payData.payload.clientSecret) {
         return new Response(JSON.stringify({
           clientSecret: payData.payload.clientSecret,
           newMemberId: payData.payload.newMemberId,
+          autoEnrollSkipped: !!(autoEnroll && sessionId),
         }), { status: 200, headers: corsHeaders(origin) });
       }
       // Auto-enroll: if the client requested auto-enrollment and we just bought a pack/membership,
@@ -1610,6 +1614,7 @@ async function handlePay(request, origin, env, ctx) {
             customerFields: customerFields || {},
             appliedPriceRuleIds: [],
             isLoginRedirectDisabled: true,
+            isGuestOnlyBooking: true,
           };
           Object.keys(enrollBody).forEach(k => enrollBody[k] === undefined && delete enrollBody[k]);
           // Build headers: inherit Momence standard headers, override Cookie with pack-pay session cookies
