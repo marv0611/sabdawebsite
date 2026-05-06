@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-05-05",
-      "slug": "/blog/ocio-barcelona/",
-      "order": 15
+      "date": "2026-05-06",
+      "slug": "/blog/mindfulness-barcelona/",
+      "order": 16
     }
   },
   "queue": [
@@ -218,8 +218,9 @@
       "release_date": "2026-05-06",
       "md_file": "blog/article-20-mindfulness-barcelona.md",
       "html_file": "blog/mindfulness-barcelona/index.html",
-      "status": "queued",
-      "volume": 390
+      "status": "released",
+      "volume": 390,
+      "released_at": "2026-05-06"
     },
     {
       "order": 17,
