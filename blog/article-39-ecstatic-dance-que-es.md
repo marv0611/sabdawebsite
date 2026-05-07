@@ -7,6 +7,7 @@
 **Slug:** `/blog/ecstatic-dance-que-es/`
 
 **Primary keyword:** ecstatic dance barcelona
+**publish: true**
 **Secondary keywords:** que es ecstatic dance, ecstatic dance sabda, clases ecstatic dance barcelona, danza extática barcelona
 
 ---
