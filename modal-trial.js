@@ -77,6 +77,12 @@ function validateEmail(e){ return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
 function getCookie(n){ var m=document.cookie.match('(^|;)\\s*'+n+'\\s*=\\s*([^;]+)'); return m?m.pop():''; }
 function getAttribution(){ return (window._sabdaGetAttribution && window._sabdaGetAttribution()) || null; }
 
+var _cityLabel = (_pageLang==='es'?'Ciudad de Residencia':(_pageLang==='ca'?'Ciutat de Resid\u00e8ncia':'City of Residence'));
+var _signInLabel = (_pageLang==='es'?'\u00bfYa tienes una cuenta? ':(_pageLang==='ca'?'Ja tens un compte? ':'Already have an account? '));
+var _signInCta = (_pageLang==='es'?'Inicia sesi\u00f3n aqu\u00ed':(_pageLang==='ca'?'Inicia sessi\u00f3 aqu\u00ed':'Sign in here'));
+var _newUserLabel = (_pageLang==='es'?'\u00bfNuevo en SABDA? ':(_pageLang==='ca'?'Nou a SABDA? ':'New to SABDA? '));
+var _newUserCta = (_pageLang==='es'?'Reg\u00edstrate aqu\u00ed':(_pageLang==='ca'?'Registra\'t aqu\u00ed':'Register here'));
+
 // ── INTERCEPT TRIAL CLICKS ──
 document.addEventListener('click', function(e){
   var a = e.target.closest ? e.target.closest('a[href*="momence.com/m/443934"]') : null;
@@ -92,8 +98,7 @@ function openModal(){
   mo.style.display = 'flex';
   requestAnimationFrame(function(){ mo.classList.add('open'); });
   document.body.style.overflow = 'hidden'; document.body.style.position = 'fixed'; document.body.style.width = '100%'; document.body.style.top = '-' + window.scrollY + 'px';
-  showEmailStep();
-  // Fire AddToCart + InitiateCheckout
+  showGuestStep();
   try {
     var params = {value:PRICE, currency:'EUR', content_name:'Trial Class', content_ids:[PRODUCT_ID], content_type:'product'};
     var atcEid = 'atc_' + Date.now() + '_' + Math.random().toString(36).substr(2,9);
@@ -118,74 +123,58 @@ function closeModal(){
   if (cardEl) { try { cardEl.destroy(); } catch(e){} cardEl = null; }
 }
 
-// Close on overlay click / Escape
 document.getElementById('tm').addEventListener('click', function(e){ if(e.target===this) closeModal(); });
 document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
 
-// ── STEP 1: EMAIL CHECK ──
-function showEmailStep(){
+// ══════════════════════════════════════════════════════════
+// STEP 1: GUEST (default) — single page, all fields visible
+// ══════════════════════════════════════════════════════════
+function showGuestStep(){
+  var bd = document.getElementById('tm-bd');
+  bd.innerHTML = '<div class="tm-step">'
+    + '<div class="tm-pkg"><div><div class="tm-pkg-name">Trial Class</div><div class="tm-pkg-desc">One class &middot; No commitment</div></div><div class="tm-pkg-price">&euro;18</div></div>'
+    + '<div onclick="SABDA_TM.showLoginStep()" style="border:1.5px solid rgba(240,239,233,.12);border-radius:10px;padding:14px;margin-bottom:16px;font-size:.82rem;color:rgba(240,239,233,.6);text-align:center;cursor:pointer;transition:border-color .2s">' + _signInLabel + '<span style="color:#02F3C5;font-weight:600">' + _signInCta + ' &rarr;</span></div>'
+    + '<div class="bk-label">First Name</div>'
+    + '<input class="bk-input" id="tm-fn" type="text" placeholder="First name" autocomplete="given-name">'
+    + '<div class="bk-label">Last Name</div>'
+    + '<input class="bk-input" id="tm-ln" type="text" placeholder="Last name" autocomplete="family-name">'
+    + '<div class="bk-label">Email</div>'
+    + '<input class="bk-input" id="tm-email" type="email" placeholder="your@email.com" autocomplete="email">'
+    + '<div class="bk-label">Confirm Email</div>'
+    + '<input class="bk-input" id="tm-email2" type="email" placeholder="Repeat your email" autocomplete="off">'
+    + '<div class="bk-label">Create Password</div>'
+    + '<input class="bk-input" id="tm-pass" type="password" placeholder="Min. 8 characters" autocomplete="new-password">'
+    + '<div class="bk-label">Confirm Password</div>'
+    + '<input class="bk-input" id="tm-pass2" type="password" placeholder="Repeat password" autocomplete="new-password">'
+    + '<div class="bk-label">' + _cityLabel + '</div>'
+    + '<input class="bk-input" id="tm-city" type="text" placeholder="Barcelona" autocomplete="address-level2">'
+    + '<div class="tm-divider"></div>'
+    + '<div class="bk-label">Card Details</div>'
+    + '<div class="tm-card" id="tm-card"></div>'
+    + '<div class="tm-err" id="tm-err"></div>'
+    + '<button class="tm-btn" id="tm-pay-btn" onclick="SABDA_TM.doGuestPay()">Pay &euro;18</button>'
+    + '</div>';
+  document.getElementById('tm-fn').focus();
+  mountStripe();
+}
+
+// ══════════════════════════════════════════════════════════
+// STEP 2: LOGIN (returning user)
+// ══════════════════════════════════════════════════════════
+function showLoginStep(){
   var bd = document.getElementById('tm-bd');
   bd.innerHTML = '<div class="tm-step">'
     + '<div class="tm-pkg"><div><div class="tm-pkg-name">Trial Class</div><div class="tm-pkg-desc">One class &middot; No commitment</div></div><div class="tm-pkg-price">&euro;18</div></div>'
     + '<div class="bk-label">Email</div>'
     + '<input class="bk-input" id="tm-email" type="email" placeholder="your@email.com" autocomplete="email">'
-    + '<div class="tm-err" id="tm-err"></div>'
-    + '<button class="tm-btn" id="tm-email-btn" onclick="SABDA_TM.checkEmail()">Continue</button>'
-    + '</div>';
-  var inp = document.getElementById('tm-email');
-  inp.focus();
-  inp.addEventListener('keydown', function(e){ if(e.key==='Enter') SABDA_TM.checkEmail(); });
-}
-
-function checkEmail(){
-  if (processing) return;
-  var inp = document.getElementById('tm-email');
-  var email = inp.value.trim();
-  var err = document.getElementById('tm-err');
-  if (!email || !validateEmail(email)) { inp.classList.add('err'); err.textContent='Enter a valid email'; return; }
-  inp.classList.remove('err');
-  err.textContent = '';
-  processing = true;
-  document.getElementById('tm-email-btn').textContent = 'Checking...';
-  document.getElementById('tm-email-btn').disabled = true;
-
-  fetch(PROXY + '/sabda-api/check-email', {
-    method: 'POST',
-    headers: {'Content-Type':'application/json'},
-    body: JSON.stringify({ email: email })
-  })
-  .then(function(r){ return r.json(); })
-  .then(function(d){
-    processing = false;
-    if (d.exists) {
-      showLoginStep(email);
-    } else {
-      showRegisterStep(email);
-    }
-  })
-  .catch(function(e){
-    processing = false;
-    // On error, assume new user
-    showRegisterStep(email);
-  });
-}
-
-// ── STEP 2A: LOGIN (returning user) ──
-function showLoginStep(email){
-  var bd = document.getElementById('tm-bd');
-  bd.innerHTML = '<div class="tm-step">'
-    + '<div class="tm-pkg"><div><div class="tm-pkg-name">Trial Class</div><div class="tm-pkg-desc">One class &middot; No commitment</div></div><div class="tm-pkg-price">&euro;18</div></div>'
-    + '<div style="font-size:.82rem;color:rgba(240,239,233,.6);margin-bottom:16px">Welcome back! Sign in to continue.</div>'
-    + '<div class="bk-label">Email</div>'
-    + '<input class="bk-input" id="tm-email" type="email" value="' + esc(email) + '" autocomplete="email">'
     + '<div class="bk-label">Password</div>'
     + '<input class="bk-input" id="tm-pass" type="password" placeholder="Password" autocomplete="current-password">'
     + '<div style="text-align:right;margin:-10px 0 12px"><a href="https://momence.com/forgot-password" target="_blank" rel="noopener noreferrer" style="font-size:.75rem;color:rgba(240,239,233,.38);text-decoration:none;border-bottom:1px solid rgba(240,239,233,.12)">Forgot password?</a></div>'
     + '<div class="tm-err" id="tm-err"></div>'
-    + '<button class="tm-btn" id="tm-login-btn" onclick="SABDA_TM.doLogin()">Sign In &amp; Continue</button>'
-    + '<div class="tm-link" onclick="SABDA_TM.showRegisterStep(\'' + esc(email).replace(/'/g,"\\&apos;") + '\')">New to SABDA? Register here</div>'
+    + '<button class="tm-btn" id="tm-login-btn" onclick="SABDA_TM.doLogin()">Log In &amp; Book</button>'
+    + '<div class="tm-link" onclick="SABDA_TM.showGuestStep()">' + _newUserLabel + '<span style="color:#02F3C5;font-weight:600">' + _newUserCta + '</span></div>'
     + '</div>';
-  document.getElementById('tm-pass').focus();
+  document.getElementById('tm-email').focus();
   document.getElementById('tm-pass').addEventListener('keydown', function(e){ if(e.key==='Enter') SABDA_TM.doLogin(); });
 }
 
@@ -211,7 +200,7 @@ function doLogin(){
     processing = false;
     if (!r.ok || r.data.error) {
       err.innerHTML = 'Wrong email or password. <a href="https://momence.com/m/443934" target="_blank">Book on Momence &rarr;</a>';
-      btn.textContent = 'Sign In & Continue';
+      btn.textContent = 'Log In & Book';
       btn.disabled = false;
       return;
     }
@@ -220,20 +209,20 @@ function doLogin(){
       return;
     }
     var d = r.data;
-    if (!d || !d.user) { err.innerHTML = 'Unexpected response. <a href="https://momence.com/m/443934" target="_blank">Book on Momence &rarr;</a>'; err.style.display='block'; btn.textContent='Sign In & Continue'; btn.disabled=false; return; }
+    if (!d || !d.user) { err.innerHTML = 'Unexpected response. <a href="https://momence.com/m/443934" target="_blank">Book on Momence &rarr;</a>'; btn.textContent='Log In & Book'; btn.disabled=false; return; }
     loggedInUser = { email: d.user.email || email, firstName: d.user.firstName || '', lastName: d.user.lastName || '' };
     sessionToken = d.sessionToken;
-    showPaymentStep(email, loggedInUser.firstName, loggedInUser.lastName, '', true);
+    showPaymentStep();
   })
   .catch(function(e){
     processing = false;
     err.innerHTML = 'Connection error. <a href="https://momence.com/m/443934" target="_blank">Book on Momence &rarr;</a>';
-    btn.textContent = 'Sign In & Continue';
+    btn.textContent = 'Log In & Book';
     btn.disabled = false;
   });
 }
 
-// ── STEP 2B: MFA ──
+// ── MFA ──
 function showMfaStep(mfaToken, email){
   var bd = document.getElementById('tm-bd');
   bd.innerHTML = '<div class="tm-step">'
@@ -244,7 +233,6 @@ function showMfaStep(mfaToken, email){
     + '<div class="tm-err" id="tm-err"></div>'
     + '<button class="tm-btn" id="tm-mfa-btn" onclick="SABDA_TM.doMfa()">Verify</button>'
     + '</div>';
-  // Store mfaToken + email in closure
   document.getElementById('tm-mfa').dataset.token = mfaToken;
   document.getElementById('tm-mfa').dataset.email = email;
   document.getElementById('tm-mfa').focus();
@@ -279,10 +267,10 @@ function doMfa(){
       btn.disabled = false;
       return;
     }
-    if (!r.data || !r.data.user) { err.textContent = 'Verification failed. Please try again.'; btn.textContent='Verify'; btn.disabled=false; return; }
+    if (!r.data || !r.data.user) { err.textContent = 'Verification failed.'; btn.textContent='Verify'; btn.disabled=false; return; }
     loggedInUser = { email: r.data.user.email || email, firstName: r.data.user.firstName || '', lastName: r.data.user.lastName || '' };
     sessionToken = r.data.sessionToken;
-    showPaymentStep(email, loggedInUser.firstName, loggedInUser.lastName, '', true);
+    showPaymentStep();
   })
   .catch(function(e){
     processing = false;
@@ -292,63 +280,32 @@ function doMfa(){
   });
 }
 
-// ── STEP 3: REGISTER (new user) ──
-function showRegisterStep(email){
+// ══════════════════════════════════════════════════════════
+// STEP 3: PAYMENT (logged-in user — card only, single page)
+// ══════════════════════════════════════════════════════════
+function showPaymentStep(){
   var bd = document.getElementById('tm-bd');
   bd.innerHTML = '<div class="tm-step">'
     + '<div class="tm-pkg"><div><div class="tm-pkg-name">Trial Class</div><div class="tm-pkg-desc">One class &middot; No commitment</div></div><div class="tm-pkg-price">&euro;18</div></div>'
-    + '<div class="bk-label">First Name</div>'
-    + '<input class="bk-input" id="tm-fn" type="text" placeholder="First name" autocomplete="given-name">'
-    + '<div class="bk-label">Last Name</div>'
-    + '<input class="bk-input" id="tm-ln" type="text" placeholder="Last name" autocomplete="family-name">'
-    + '<div class="bk-label">Email</div>'
-    + '<input class="bk-input" id="tm-email" type="email" value="' + esc(email) + '" autocomplete="email">'
-    + '<div class="bk-label">Confirm Email</div>'
-    + '<input class="bk-input" id="tm-email2" type="email" placeholder="Repeat your email" autocomplete="off">'
-    + '<div class="bk-label">Create Password</div>'
-    + '<input class="bk-input" id="tm-pass" type="password" placeholder="Min. 8 characters" autocomplete="new-password">'
-    + '<div class="bk-label">Confirm Password</div>'
-    + '<input class="bk-input" id="tm-pass2" type="password" placeholder="Repeat password" autocomplete="new-password">'
-    + '<div class="bk-label">' + (_pageLang==='es'?'Ciudad de Residencia':(_pageLang==='ca'?'Ciutat de Resid\u00e8ncia':'City of Residence')) + '</div>'
-    + '<input class="bk-input" id="tm-city" type="text" placeholder="Barcelona" autocomplete="address-level2">'
-    + '<div class="tm-divider"></div>'
-    + '<div id="tm-pay-request"></div>'
-    + '<div id="tm-pay-divider" class="tm-divider" style="display:none">or pay with card</div>'
-    + '<div class="bk-label" id="tm-card-label">Card Details</div>'
-    + '<div class="tm-card" id="tm-card"></div>'
-    + '<div class="tm-err" id="tm-err"></div>'
-    + '<button class="tm-btn" id="tm-pay-btn" onclick="SABDA_TM.doRegisterPay()">Pay &euro;18</button>'
-    + '<div class="tm-link" onclick="SABDA_TM.showEmailStep()">&larr; Back</div>'
-    + '</div>';
-  document.getElementById('tm-fn').focus();
-  mountStripe(false);
-}
-
-// ── STEP 4: PAYMENT (logged-in user) ──
-function showPaymentStep(email, fn, ln, phone, isLoggedIn){
-  var bd = document.getElementById('tm-bd');
-  bd.innerHTML = '<div class="tm-step">'
-    + '<div class="tm-pkg"><div><div class="tm-pkg-name">Trial Class</div><div class="tm-pkg-desc">One class &middot; No commitment</div></div><div class="tm-pkg-price">&euro;18</div></div>'
-    + '<div style="font-size:.82rem;color:rgba(240,239,233,.6);margin-bottom:16px;text-align:center">Booking as <strong style="color:#f0efe9">' + esc(fn) + ' ' + esc(ln) + '</strong></div>'
-    + '<div class="bk-label">' + (_pageLang==='es'?'Ciudad de Residencia':(_pageLang==='ca'?'Ciutat de Resid\u00e8ncia':'City of Residence')) + '</div>'
+    + '<div style="font-size:.82rem;color:rgba(240,239,233,.6);margin-bottom:16px;text-align:center">Booking as <strong style="color:#f0efe9">' + esc(loggedInUser.firstName) + ' ' + esc(loggedInUser.lastName) + '</strong></div>'
+    + '<div class="bk-label">' + _cityLabel + '</div>'
     + '<input class="bk-input" id="tm-city" type="text" placeholder="Barcelona" autocomplete="address-level2">'
     + '<div id="tm-pay-request"></div>'
     + '<div id="tm-pay-divider" class="tm-divider" style="display:none">or pay with card</div>'
-    + '<div class="bk-label" id="tm-card-label">Card Details</div>'
+    + '<div class="bk-label">Card Details</div>'
     + '<div class="tm-card" id="tm-card"></div>'
     + '<div class="tm-err" id="tm-err"></div>'
     + '<button class="tm-btn" id="tm-pay-btn" onclick="SABDA_TM.doLoggedInPay()">Pay &euro;18</button>'
     + '</div>';
-  mountStripe(true);
+  mountStripe();
 }
 
 // ── STRIPE ELEMENTS ──
-function mountStripe(isLoggedIn){
+function mountStripe(){
   if (!_stripeReady || typeof Stripe === 'undefined') {
-    // Stripe.js still loading — retry in 500ms (max 10 retries = 5s)
     if (!mountStripe._retries) mountStripe._retries = 0;
     if (mountStripe._retries++ < 10) {
-      setTimeout(function(){ mountStripe(isLoggedIn); }, 500);
+      setTimeout(function(){ mountStripe(); }, 500);
       return;
     }
     showError('Payment system unavailable. Please book on Momence.');
@@ -371,16 +328,15 @@ function mountStripe(isLoggedIn){
   var wrap = document.getElementById('tm-card');
   if (wrap) cardEl.mount('#tm-card');
 
-  // Apple Pay / Google Pay — only for logged-in users
-  // New users must use card form (Apple Pay can't collect password for Momence account)
-  if (!isLoggedIn) { return; }
+  // Apple Pay / Google Pay — only for logged-in users (new users need password)
+  if (!loggedInUser) return;
   try {
     payReq = stripe.paymentRequest({
       country: 'ES', currency: 'eur',
-      total: { label: 'SABDA Studio — Trial Class', amount: PRICE * 100 },
+      total: { label: 'SABDA Studio \u2014 Trial Class', amount: PRICE * 100 },
       requestPayerEmail: true, requestPayerName: true
     });
-    var prBtn = stripe.elements().create('paymentRequestButton', { paymentRequest: payReq, style: { paymentRequestButton: { theme:'light', height:'44px' } } });
+    var prBtn = elements.create('paymentRequestButton', { paymentRequest: payReq, style: { paymentRequestButton: { theme:'light', height:'44px' } } });
     payReq.canMakePayment().then(function(result){
       if (result) {
         var prWrap = document.getElementById('tm-pay-request');
@@ -392,17 +348,19 @@ function mountStripe(isLoggedIn){
     payReq.on('paymentmethod', function(ev){
       submitPayment({
         stripePaymentMethodId: ev.paymentMethod.id,
-        email: ev.payerEmail || (loggedInUser ? loggedInUser.email : ''),
-        firstName: (ev.payerName || '').split(' ')[0] || (loggedInUser ? loggedInUser.firstName : ''),
-        lastName: (ev.payerName || '').split(' ').slice(1).join(' ') || (loggedInUser ? loggedInUser.lastName : ''),
-        isApplePay: true
+        email: ev.payerEmail || loggedInUser.email,
+        firstName: (ev.payerName || '').split(' ')[0] || loggedInUser.firstName,
+        lastName: (ev.payerName || '').split(' ').slice(1).join(' ') || loggedInUser.lastName
       }, ev);
     });
-  } catch(e){ /* Payment Request not supported */ }
+  } catch(e){}
 }
 
-// ── SUBMIT: NEW USER ──
-function doRegisterPay(){
+// ══════════════════════════════════════════════════════════
+// PAYMENT HANDLERS
+// ══════════════════════════════════════════════════════════
+
+function doGuestPay(){
   if (processing) return;
   var fn = document.getElementById('tm-fn').value.trim();
   var ln = document.getElementById('tm-ln').value.trim();
@@ -413,7 +371,6 @@ function doRegisterPay(){
   var err = document.getElementById('tm-err');
   var btn = document.getElementById('tm-pay-btn');
 
-  // Validation
   var fields = ['tm-fn','tm-ln','tm-email','tm-email2','tm-pass','tm-pass2'];
   fields.forEach(function(id){ document.getElementById(id).classList.remove('err'); });
   var ok = true;
@@ -430,10 +387,8 @@ function doRegisterPay(){
   btn.textContent = 'Processing...';
   btn.disabled = true;
 
-  // Create Stripe payment method from card element
   stripe.createPaymentMethod({
-    type: 'card',
-    card: cardEl,
+    type: 'card', card: cardEl,
     billing_details: { name: fn + ' ' + ln, email: email }
   }).then(function(result){
     if (result.error) {
@@ -445,10 +400,7 @@ function doRegisterPay(){
     }
     submitPayment({
       stripePaymentMethodId: result.paymentMethod.id,
-      email: email,
-      firstName: fn,
-      lastName: ln,
-      password: pass
+      email: email, firstName: fn, lastName: ln, password: pass
     });
   }).catch(function(e){
     processing = false;
@@ -458,7 +410,6 @@ function doRegisterPay(){
   });
 }
 
-// ── SUBMIT: LOGGED-IN USER ──
 function doLoggedInPay(){
   if (processing) return;
   var err = document.getElementById('tm-err');
@@ -469,8 +420,7 @@ function doLoggedInPay(){
   btn.disabled = true;
 
   stripe.createPaymentMethod({
-    type: 'card',
-    card: cardEl,
+    type: 'card', card: cardEl,
     billing_details: { name: loggedInUser.firstName + ' ' + loggedInUser.lastName, email: loggedInUser.email }
   }).then(function(result){
     if (result.error) {
@@ -494,9 +444,8 @@ function doLoggedInPay(){
   });
 }
 
-// ── CORE PAYMENT SUBMISSION ──
+// ── CORE PAYMENT ──
 function submitPayment(opts, applePayEvent){
-  // Generate Purchase event_id BEFORE /pay so browser + CAPI share the same ID
   purchaseEventId = 'modal_' + Date.now() + '_' + Math.random().toString(36).substr(2,9);
 
   var body = {
@@ -506,7 +455,7 @@ function submitPayment(opts, applePayEvent){
     lastName: opts.lastName,
     email: opts.email,
     password: opts.password || undefined,
-    phoneNumber: opts.phoneNumber || undefined,
+    phoneNumber: undefined,
     customerFields: {'164360': _cfLang, '164361': (document.getElementById('tm-city') || {}).value || ''},
     actualPrice: PRICE,
     fbEventId: purchaseEventId,
@@ -518,8 +467,6 @@ function submitPayment(opts, applePayEvent){
     sessionToken: sessionToken || undefined,
     attribution: getAttribution()
   };
-
-  // Clean undefined
   Object.keys(body).forEach(function(k){ if(body[k] === undefined) delete body[k]; });
 
   fetch(PROXY + '/sabda-api/pay', {
@@ -530,52 +477,31 @@ function submitPayment(opts, applePayEvent){
   .then(function(r){ return r.json().then(function(d){ return {ok:r.ok, data:d, status:r.status}; }); })
   .then(function(r){
     if (applePayEvent) {
-      if (r.ok && r.data.success) {
-        applePayEvent.complete('success');
-      } else if (r.ok && r.data.clientSecret) {
-        applePayEvent.complete('success');
-      } else {
-        applePayEvent.complete('fail');
-      }
+      if (r.ok && r.data.success) { applePayEvent.complete('success'); }
+      else if (r.ok && r.data.clientSecret) { applePayEvent.complete('success'); }
+      else { applePayEvent.complete('fail'); }
     }
 
     if (r.ok && r.data.clientSecret) {
-      // ── 3DS REQUIRED ──
       stripe.confirmCardPayment(r.data.clientSecret).then(function(conf){
-        if (conf.error) {
-          showError(conf.error.message || 'Card verification failed');
-          return;
-        }
-        // Fire CAPI Purchase after 3DS
+        if (conf.error) { showError(conf.error.message || 'Card verification failed'); return; }
         try {
           fetch(PROXY + '/sabda-api/capi-purchase', {
             method: 'POST',
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify({
-              eventName: 'Purchase',
-              fbEventId: purchaseEventId,
-              email: opts.email,
-              firstName: opts.firstName,
-              lastName: opts.lastName,
-              value: PRICE,
-              currency: 'EUR',
-              fbp: getCookie('_fbp'),
-              fbc: getCookie('_fbc'),
+              eventName: 'Purchase', fbEventId: purchaseEventId,
+              email: opts.email, firstName: opts.firstName, lastName: opts.lastName,
+              value: PRICE, currency: 'EUR',
+              fbp: getCookie('_fbp'), fbc: getCookie('_fbc'),
               clientUserAgent: navigator.userAgent,
               eventSourceUrl: window.location.href,
               attribution: getAttribution()
             })
           }).catch(function(){});
         } catch(e){}
-        // Auto-enroll after 3DS if Worker stored enrollment context
         if (r.data.enrollKey) {
-          try {
-            fetch(PROXY + '/sabda-api/auto-enroll', {
-              method: 'POST',
-              headers: {'Content-Type':'application/json'},
-              body: JSON.stringify({ enrollKey: r.data.enrollKey })
-            }).catch(function(){});
-          } catch(e){}
+          try { fetch(PROXY + '/sabda-api/auto-enroll', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({enrollKey:r.data.enrollKey}) }).catch(function(){}); } catch(e){}
         }
         fireBrowserPurchase(opts.email, opts.firstName, opts.lastName);
         showSuccess();
@@ -586,13 +512,11 @@ function submitPayment(opts, applePayEvent){
     }
 
     if (r.ok && r.data.success) {
-      // ── SUCCESS (no 3DS) ──
       fireBrowserPurchase(opts.email, opts.firstName, opts.lastName);
       showSuccess();
       return;
     }
 
-    // ── ERROR ──
     var msg = (r.data && r.data.error) || 'Payment failed';
     showError(msg);
   })
@@ -602,25 +526,18 @@ function submitPayment(opts, applePayEvent){
   });
 }
 
-// ── BROWSER PIXEL PURCHASE EVENT ──
 function fireBrowserPurchase(email, fn, ln){
   try {
-    // Browser Pixel event
     if (typeof fbq === 'function') {
       fbq('track', 'Purchase', {
-        value: PRICE, currency: 'EUR',
-        content_name: 'Trial Class',
-        content_ids: [PRODUCT_ID],
-        content_type: 'product',
+        value: PRICE, currency: 'EUR', content_name: 'Trial Class',
+        content_ids: [PRODUCT_ID], content_type: 'product',
         checkout_variant: 'modal'
       }, { eventID: purchaseEventId });
     }
-    // GA4 purchase
     if (typeof gtag === 'function') {
       gtag('event', 'purchase', {
-        transaction_id: purchaseEventId,
-        value: PRICE,
-        currency: 'EUR',
+        transaction_id: purchaseEventId, value: PRICE, currency: 'EUR',
         checkout_variant: 'modal',
         items: [{ item_name: 'Trial Class', price: PRICE, quantity: 1 }]
       });
@@ -628,7 +545,6 @@ function fireBrowserPurchase(email, fn, ln){
   } catch(e){}
 }
 
-// ── SUCCESS STATE ──
 function showSuccess(){
   processing = false;
   var bd = document.getElementById('tm-bd');
@@ -640,31 +556,24 @@ function showSuccess(){
     + '</div>';
 }
 
-// ── ERROR STATE ──
 function showError(msg){
   processing = false;
   var err = document.getElementById('tm-err');
   var btn = document.getElementById('tm-pay-btn');
-  if (err) {
-    err.innerHTML = esc(msg) + ' <a href="https://momence.com/m/443934" target="_blank">Book on Momence &rarr;</a>';
-  }
-  if (btn) {
-    btn.textContent = 'Pay \u20AC18';
-    btn.disabled = false;
-  }
+  if (err) { err.innerHTML = esc(msg) + ' <a href="https://momence.com/m/443934" target="_blank">Book on Momence &rarr;</a>'; }
+  if (btn) { btn.textContent = 'Pay \u20AC18'; btn.disabled = false; }
 }
 
 
+// ── PUBLIC API ──
 window.SABDA_TM = {
   close: closeModal,
-  checkEmail: checkEmail,
-  doLogin: doLogin,
-  doMfa: doMfa,
-  doRegisterPay: doRegisterPay,
+  showGuestStep: showGuestStep,
+  showLoginStep: showLoginStep,
+  doGuestPay: doGuestPay,
   doLoggedInPay: doLoggedInPay,
-  showEmailStep: showEmailStep,
-  showRegisterStep: showRegisterStep,
-  showLoginStep: showLoginStep
+  doLogin: doLogin,
+  doMfa: doMfa
 };
 
 })();
