@@ -146,10 +146,23 @@ function showGuestStep(){
     + '<input class="bk-input" id="tm-pass" type="password" placeholder="Min. 8 characters" autocomplete="new-password">'
     + '<div class="bk-label">Confirm Password</div>'
     + '<input class="bk-input" id="tm-pass2" type="password" placeholder="Repeat password" autocomplete="new-password">'
+    + '<div class="bk-label">' + (_pageLang==='es'?'Idioma preferido':'Preferred language') + '</div>'
+    + '<select class="bk-input" id="tm-lang" style="appearance:auto;cursor:pointer">'
+    + '<option value="">Select</option>'
+    + '<option value="English"' + (_pageLang==='en'?' selected':'') + '>English</option>'
+    + '<option value="Castellano"' + (_pageLang!=='en'?' selected':'') + '>Castellano</option>'
+    + '</select>'
+    + '<div class="bk-label">' + (_pageLang==='es'?'N\u00famero de tel\u00e9fono':'Phone number') + '</div>'
+    + '<div style="display:flex;gap:8px">'
+    + '<input class="bk-input" id="tm-cc" type="text" value="+34" style="width:68px;flex-shrink:0;text-align:center;font-weight:600" autocomplete="tel-country-code">'
+    + '<input class="bk-input" id="tm-phone" type="tel" placeholder="612 345 678" style="flex:1" autocomplete="tel-national">'
+    + '</div>'
     + '<div class="bk-label">' + _cityLabel + '</div>'
     + '<input class="bk-input" id="tm-city" type="text" placeholder="Barcelona" autocomplete="address-level2">'
     + '<div class="tm-divider"></div>'
-    + '<div class="bk-label">Card Details</div>'
+    + '<div id="tm-pay-request"></div>'
+    + '<div id="tm-pay-divider" class="tm-divider" style="display:none">or pay with card</div>'
+    + '<div class="bk-label" id="tm-card-label">Card Details</div>'
     + '<div class="tm-card" id="tm-card"></div>'
     + '<div class="tm-err" id="tm-err"></div>'
     + '<button class="tm-btn" id="tm-pay-btn" onclick="SABDA_TM.doGuestPay()">Pay &euro;18</button>'
@@ -288,6 +301,17 @@ function showPaymentStep(){
   bd.innerHTML = '<div class="tm-step">'
     + '<div class="tm-pkg"><div><div class="tm-pkg-name">Trial Class</div><div class="tm-pkg-desc">One class &middot; No commitment</div></div><div class="tm-pkg-price">&euro;18</div></div>'
     + '<div style="font-size:.82rem;color:rgba(240,239,233,.6);margin-bottom:16px;text-align:center">Booking as <strong style="color:#f0efe9">' + esc(loggedInUser.firstName) + ' ' + esc(loggedInUser.lastName) + '</strong></div>'
+    + '<div class="bk-label">' + (_pageLang==='es'?'Idioma preferido':'Preferred language') + '</div>'
+    + '<select class="bk-input" id="tm-lang" style="appearance:auto;cursor:pointer">'
+    + '<option value="">Select</option>'
+    + '<option value="English"' + (_pageLang==='en'?' selected':'') + '>English</option>'
+    + '<option value="Castellano"' + (_pageLang!=='en'?' selected':'') + '>Castellano</option>'
+    + '</select>'
+    + '<div class="bk-label">' + (_pageLang==='es'?'N\u00famero de tel\u00e9fono':'Phone number') + '</div>'
+    + '<div style="display:flex;gap:8px">'
+    + '<input class="bk-input" id="tm-cc" type="text" value="+34" style="width:68px;flex-shrink:0;text-align:center;font-weight:600" autocomplete="tel-country-code">'
+    + '<input class="bk-input" id="tm-phone" type="tel" placeholder="612 345 678" style="flex:1" autocomplete="tel-national">'
+    + '</div>'
     + '<div class="bk-label">' + _cityLabel + '</div>'
     + '<input class="bk-input" id="tm-city" type="text" placeholder="Barcelona" autocomplete="address-level2">'
     + '<div id="tm-pay-request"></div>'
@@ -328,8 +352,7 @@ function mountStripe(){
   var wrap = document.getElementById('tm-card');
   if (wrap) cardEl.mount('#tm-card');
 
-  // Apple Pay / Google Pay — only for logged-in users (new users need password)
-  if (!loggedInUser) return;
+  // Apple Pay / Google Pay
   try {
     payReq = stripe.paymentRequest({
       country: 'ES', currency: 'eur',
@@ -346,11 +369,15 @@ function mountStripe(){
       }
     });
     payReq.on('paymentmethod', function(ev){
+      // Read name/email from Apple Pay, password from form (if guest step)
+      var _fn = (ev.payerName || '').split(' ')[0] || (loggedInUser ? loggedInUser.firstName : '');
+      var _ln = (ev.payerName || '').split(' ').slice(1).join(' ') || (loggedInUser ? loggedInUser.lastName : '');
+      var _em = ev.payerEmail || (loggedInUser ? loggedInUser.email : '');
+      var _pw = (document.getElementById('tm-pass') || {}).value || undefined;
       submitPayment({
         stripePaymentMethodId: ev.paymentMethod.id,
-        email: ev.payerEmail || loggedInUser.email,
-        firstName: (ev.payerName || '').split(' ')[0] || loggedInUser.firstName,
-        lastName: (ev.payerName || '').split(' ').slice(1).join(' ') || loggedInUser.lastName
+        email: _em, firstName: _fn, lastName: _ln,
+        password: _pw
       }, ev);
     });
   } catch(e){}
@@ -455,8 +482,8 @@ function submitPayment(opts, applePayEvent){
     lastName: opts.lastName,
     email: opts.email,
     password: opts.password || undefined,
-    phoneNumber: undefined,
-    customerFields: {'164360': _cfLang, '164361': (document.getElementById('tm-city') || {}).value || ''},
+    phoneNumber: ((document.getElementById('tm-cc') || {}).value || '+34') + ((document.getElementById('tm-phone') || {}).value || '').replace(/\s/g, ''),
+    customerFields: {'164360': (document.getElementById('tm-lang') || {}).value || _cfLang, '164361': (document.getElementById('tm-city') || {}).value || ''},
     actualPrice: PRICE,
     fbEventId: purchaseEventId,
     fbIcEventId: null,
