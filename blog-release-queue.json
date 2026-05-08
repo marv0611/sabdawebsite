@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-05-07",
-      "slug": "/blog/ecstatic-dance-que-es/",
-      "order": 17
+      "date": "2026-05-08",
+      "slug": "/blog/planes-originales-barcelona/",
+      "order": 18
     }
   },
   "queue": [
@@ -244,8 +244,9 @@
       "release_date": "2026-05-08",
       "md_file": "blog/article-09-planes-originales-barcelona.md",
       "html_file": "blog/planes-originales-barcelona/index.html",
-      "status": "queued",
-      "volume": 210
+      "status": "released",
+      "volume": 210,
+      "released_at": "2026-05-08"
     },
     {
       "order": 19,
