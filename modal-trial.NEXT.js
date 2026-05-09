@@ -12,7 +12,7 @@ var PRICE = 18;
 var STRIPE_PK = 'pk_live_RoPa2iuvwBbqEISUd2LYTmKF';
 var STRIPE_ACCT = 'acct_1RUWnoBf6nsynAht';
 
-var COOKIE_NAME = 'sabda_checkout_variant';
+var COOKIE_NAME = 'sabda_checkout_variant_v2';
 var COOKIE_DAYS = 30;
 
 function getVariant(){
@@ -37,7 +37,7 @@ if (!variant) {
   }
 }
 if (variant !== 'modal') return;
-if (!document.querySelector('a[href*="momence.com/m/443934"]')) return;
+if (!document.querySelector('a[href="https://momence.com/m/443934"], a[href^="https://momence.com/m/443934?"], a[href^="https://momence.com/m/443934#"]')) return;
 
 // Auto-detect language for customerFields
 var _pageLang = (document.documentElement.lang || 'en').toLowerCase().substr(0,2);
@@ -45,11 +45,11 @@ var _cfLang = (_pageLang === 'es' || _pageLang === 'ca') ? 'Castellano' : 'Engli
 
 // Inject CSS
 var _s = document.createElement('style');
-_s.textContent = ".tm{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.75);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;opacity:0;transition:opacity .3s}\n.tm.open{display:flex;opacity:1}\n.tm-box{width:95vw;max-width:440px;max-height:90vh;background:#131842;border:1px solid rgba(240,239,233,.12);border-radius:16px;overflow-y:auto;transform:translateY(20px);transition:transform .35s cubic-bezier(.16,1,.3,1);box-shadow:0 32px 80px rgba(0,0,0,.5)}\n.tm.open .tm-box{transform:none}\n.tm-head{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid rgba(240,239,233,.06);position:sticky;top:0;background:#131842;z-index:2}\n.tm-t{font-family:'PT Serif',serif;font-size:1rem;font-weight:700;color:#f0efe9}\n.tm-sub{font-size:.78rem;color:rgba(240,239,233,.6);margin-top:2px}\n.tm-x{background:none;border:1px solid rgba(240,239,233,.12);color:rgba(240,239,233,.6);width:36px;height:36px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .25s,color .25s;flex-shrink:0}\n.tm-x:hover{border-color:rgba(240,239,233,.38);color:#f0efe9}\n.tm-x svg{width:14px;height:14px}\n.tm-bd{padding:24px}\n.tm-ft{padding:14px 24px;border-top:1px solid rgba(240,239,233,.06);text-align:center;position:sticky;bottom:0;background:#131842}\n.tm-sec{font-size:.68rem;color:rgba(240,239,233,.38);display:flex;align-items:center;justify-content:center;gap:6px}\n.tm-sec svg{width:12px;height:12px;opacity:.5}\n.tm-fb{margin-top:8px;font-size:.68rem;text-align:center}.tm-fb a{color:rgba(240,239,233,.6);text-decoration:none;transition:color .2s}.tm-fb a:hover{color:#02F3C5}.tm-fb strong{color:#02F3C5;font-weight:600}\n.tm-pkg{background:rgba(2,243,197,.05);border:1px solid rgba(2,243,197,.15);border-radius:10px;padding:14px 18px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:center}\n.tm-pkg-name{font-weight:600;font-size:.88rem;color:#f0efe9}.tm-pkg-desc{font-size:.75rem;color:rgba(240,239,233,.55);margin-top:2px}\n.tm-pkg-price{font-family:'PT Serif',serif;font-weight:700;font-size:1.1rem;color:#02F3C5}\n.tm .bk-label{display:block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(240,239,233,.38);font-weight:600;margin-bottom:6px}\n.tm .bk-input{width:100%;padding:12px 14px;background:rgba(240,239,233,.04);border:1px solid rgba(240,239,233,.12);border-radius:8px;color:#f0efe9;font-family:'DM Sans',sans-serif;font-size:1rem;outline:none;transition:border-color .25s;margin-bottom:16px;box-sizing:border-box;-webkit-appearance:none}\n.tm .bk-input:focus{border-color:rgba(2,243,197,.4)}\n.tm .bk-input::placeholder{color:rgba(240,239,233,.4)}\n.tm .bk-input.err{border-color:#F8A6A3;background:rgba(248,166,163,.04)}\n.tm .bk-input:-webkit-autofill,.tm .bk-input:-webkit-autofill:hover,.tm .bk-input:-webkit-autofill:focus,.tm .bk-input:-webkit-autofill:active{-webkit-text-fill-color:#f0efe9 !important;-webkit-box-shadow:0 0 0 1000px rgba(11,18,49,1) inset !important;caret-color:#f0efe9;transition:background-color 5000s ease-in-out 0s}\n.tm-err{color:#F8A6A3;font-size:.78rem;min-height:0;margin-bottom:10px;text-align:center;line-height:1.4}\n.tm-err:empty{display:none}\n.tm-err a{color:#02F3C5;text-decoration:underline}\n.tm-btn{width:100%;padding:14px;background:#02F3C5;color:#0e1235;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:700;letter-spacing:.02em;cursor:pointer;transition:background .25s,transform .2s}\n.tm-btn:hover{background:#33f5d1;transform:translateY(-1px)}\n.tm-btn:disabled{opacity:.5;cursor:default;transform:none}\n.tm-link{display:block;text-align:center;margin-top:14px;font-size:.82rem;color:rgba(240,239,233,.6);cursor:pointer;transition:color .25s}.tm-link:hover{color:#f0efe9}\n.tm-card{background:rgba(240,239,233,.06);border:1px solid rgba(240,239,233,.12);border-radius:8px;padding:14px;margin-bottom:16px}\n.tm-card.StripeElement--focus{border-color:rgba(2,243,197,.4)}\n.tm-card.StripeElement--invalid{border-color:#F8A6A3}\n.tm-divider{display:flex;align-items:center;gap:12px;margin:16px 0;color:rgba(240,239,233,.38);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}\n.tm-divider::before,.tm-divider::after{content:'';flex:1;height:1px;background:rgba(240,239,233,.06)}\n.tm-success{text-align:center;padding:20px 0}\n.tm-success svg{width:56px;height:56px;margin-bottom:16px}\n.tm-success h3{font-family:'PT Serif',serif;font-size:1.2rem;font-weight:700;color:#f0efe9;margin-bottom:8px}\n.tm-success p{font-size:.85rem;color:rgba(240,239,233,.6);line-height:1.5}\n.tm-step{animation:tmIn .3s cubic-bezier(.16,1,.3,1)}\n@keyframes tmIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}\n@media(max-width:860px){.tm-box{width:100vw;height:100vh;max-height:none;border-radius:0}.tm .bk-input{font-size:16px}}";
+_s.textContent = ".tm{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.75);backdrop-filter:blur(12px);display:none;align-items:center;justify-content:center;opacity:0;transition:opacity .3s}\n.tm.open{display:flex;opacity:1}\n.tm-box{width:95vw;max-width:440px;max-height:90vh;background:#131842;border:1px solid rgba(240,239,233,.12);border-radius:16px;overflow-y:auto;transform:translateY(20px);transition:transform .35s cubic-bezier(.16,1,.3,1);box-shadow:0 32px 80px rgba(0,0,0,.5)}\n.tm.open .tm-box{transform:none}\n.tm-head{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid rgba(240,239,233,.06);position:sticky;top:0;background:#131842;z-index:2}\n.tm-t{font-family:'PT Serif',serif;font-size:1rem;font-weight:700;color:#f0efe9}\n.tm-sub{font-size:.78rem;color:rgba(240,239,233,.6);margin-top:2px}\n.tm-x{background:none;border:1px solid rgba(240,239,233,.12);color:rgba(240,239,233,.6);width:36px;height:36px;border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .25s,color .25s;flex-shrink:0}\n.tm-x:hover{border-color:rgba(240,239,233,.38);color:#f0efe9}\n.tm-x svg{width:14px;height:14px}\n.tm-bd{padding:24px}\n.tm-ft{padding:14px 24px;border-top:1px solid rgba(240,239,233,.06);text-align:center;position:sticky;bottom:0;background:#131842}\n.tm-sec{font-size:.68rem;color:rgba(240,239,233,.38);display:flex;align-items:center;justify-content:center;gap:6px}\n.tm-sec svg{width:12px;height:12px;opacity:.5}\n.tm-fb{margin-top:8px;font-size:.68rem;text-align:center}.tm-fb a{color:rgba(240,239,233,.6);text-decoration:none;transition:color .2s}.tm-fb a:hover{color:#02F3C5}.tm-fb strong{color:#02F3C5;font-weight:600}\n.tm-pkg{background:rgba(2,243,197,.05);border:1px solid rgba(2,243,197,.15);border-radius:10px;padding:14px 18px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:center}\n.tm-pkg-name{font-weight:600;font-size:.88rem;color:#f0efe9}.tm-pkg-desc{font-size:.75rem;color:rgba(240,239,233,.55);margin-top:2px}\n.tm-pkg-price{font-family:'PT Serif',serif;font-weight:700;font-size:1.1rem;color:#02F3C5}\n.tm .bk-label{display:block;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(240,239,233,.38);font-weight:600;margin-bottom:6px}\n.tm .bk-input{width:100%;padding:12px 14px;background:rgba(240,239,233,.04);border:1px solid rgba(240,239,233,.12);border-radius:8px;color:#f0efe9;font-family:'DM Sans',sans-serif;font-size:1rem;outline:none;transition:border-color .25s;margin-bottom:16px;box-sizing:border-box;-webkit-appearance:none}\n.tm .bk-input:focus{border-color:rgba(2,243,197,.4)}\n.tm .bk-input::placeholder{color:rgba(240,239,233,.4)}\n.tm .bk-input.err{border-color:#F8A6A3;background:rgba(248,166,163,.04)}\n.tm .bk-input:-webkit-autofill,.tm .bk-input:-webkit-autofill:hover,.tm .bk-input:-webkit-autofill:focus,.tm .bk-input:-webkit-autofill:active{-webkit-text-fill-color:#f0efe9 !important;-webkit-box-shadow:0 0 0 1000px rgba(11,18,49,1) inset !important;caret-color:#f0efe9;transition:background-color 5000s ease-in-out 0s}\n.tm-err{color:#F8A6A3;font-size:.78rem;min-height:0;margin-bottom:10px;text-align:center;line-height:1.4}\n.tm-err:empty{display:none}\n.tm-err a{color:#02F3C5;text-decoration:underline}\n.tm-btn{width:100%;padding:14px;background:#02F3C5;color:#0e1235;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:700;letter-spacing:.02em;cursor:pointer;transition:background .25s,transform .2s}\n.tm-btn:hover{background:#33f5d1;transform:translateY(-1px)}\n.tm-btn:disabled{opacity:.5;cursor:default;transform:none}\n.tm-link{display:block;text-align:center;margin-top:14px;font-size:.82rem;color:rgba(240,239,233,.6);cursor:pointer;transition:color .25s}.tm-link:hover{color:#f0efe9}\n.tm-card{background:rgba(240,239,233,.06);border:1px solid rgba(240,239,233,.12);border-radius:8px;padding:14px;margin-bottom:16px}\n.tm-card.StripeElement--focus{border-color:rgba(2,243,197,.4)}\n.tm-card.StripeElement--invalid{border-color:#F8A6A3}\n.tm-divider{display:flex;align-items:center;gap:12px;margin:16px 0;color:rgba(240,239,233,.38);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase}\n.tm-divider::before,.tm-divider::after{content:'';flex:1;height:1px;background:rgba(240,239,233,.06)}\n.tm-success{text-align:center;padding:20px 0}\n.tm-success svg{width:56px;height:56px;margin-bottom:16px}\n.tm-success h3{font-family:'PT Serif',serif;font-size:1.2rem;font-weight:700;color:#f0efe9;margin-bottom:8px}\n.tm-success p{font-size:.85rem;color:rgba(240,239,233,.6);line-height:1.5}\n.tm-step{animation:tmIn .3s cubic-bezier(.16,1,.3,1)}\n@keyframes tmIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}\n@keyframes tmShake{0%,100%{transform:none}25%{transform:translateX(-8px)}75%{transform:translateX(8px)}}\n@media(max-width:860px){.tm-box{width:100vw;height:100vh;max-height:none;border-radius:0}.tm .bk-input{font-size:16px}}";
 document.head.appendChild(_s);
 
 // Inject HTML
-document.body.insertAdjacentHTML('beforeend', "<div class=\"tm\" id=\"tm\">\n  <div class=\"tm-box\">\n    <div class=\"tm-head\">\n      <div><div class=\"tm-t\">" + t.title + "</div><div class=\"tm-sub\">" + t.subtitle + "</div></div>\n      <button class=\"tm-x\" type=\"button\" aria-label=\"Close\" onclick=\"SABDA_TM.close()\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"/><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"/></svg></button>\n    </div>\n    <div class=\"tm-bd\" id=\"tm-bd\"></div>\n    <div class=\"tm-ft\">\n      <div class=\"tm-sec\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"3\" y=\"11\" width=\"18\" height=\"11\" rx=\"2\"/><path d=\"M7 11V7a5 5 0 0 1 10 0v4\"/></svg>" + t.secure + "</div>\n      <div class=\"tm-fb\"><a href=\"https://momence.com/m/443934\" target=\"_blank\" rel=\"noopener noreferrer\">" + t.havingTrouble + " <strong>" + t.bookOnMomence + "</strong> &rarr;</a></div>\n    </div>\n  </div>\n</div>");
+document.body.insertAdjacentHTML('beforeend', "<div class=\"tm\" id=\"tm\" role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"tm-aria-title\">\n  <div class=\"tm-box\">\n    <div class=\"tm-head\">\n      <div><div class=\"tm-t\" id=\"tm-aria-title\">" + t.title + "</div><div class=\"tm-sub\">" + t.subtitle + "</div></div>\n      <button class=\"tm-x\" type=\"button\" aria-label=\"Close\" onclick=\"SABDA_TM.close()\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"/><line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"/></svg></button>\n    </div>\n    <div class=\"tm-bd\" id=\"tm-bd\"></div>\n    <div class=\"tm-ft\">\n      <div class=\"tm-sec\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><rect x=\"3\" y=\"11\" width=\"18\" height=\"11\" rx=\"2\"/><path d=\"M7 11V7a5 5 0 0 1 10 0v4\"/></svg>" + t.secure + "</div>\n      <div class=\"tm-fb\"><a href=\"https://momence.com/m/443934\" target=\"_blank\" rel=\"noopener noreferrer\">" + t.havingTrouble + " <strong>" + t.bookOnMomence + "</strong> &rarr;</a></div>\n    </div>\n  </div>\n</div>");
 
 // ── Load Stripe.js dynamically (non-blocking) ──
 var _stripeReady = false;
@@ -238,16 +238,18 @@ function validateModalFields(){
   var phone = (document.getElementById('tm-phone')||{}).value || '';
   var lang = (document.getElementById('tm-lang')||{}).value || '';
   var city = (document.getElementById('tm-city')||{}).value || '';
-  if (!cc || !cc.startsWith('+') || cc.length < 2) fail('tm-cc', t.ccRequired);
-  if (phone.replace(/\s/g,'').length < 6) fail('tm-phone', t.phoneRequired);
+  if (!/^\+\d{1,4}$/.test(cc)) fail('tm-cc', t.ccRequired);
+  if (!/^\d{6,}$/.test(phone.replace(/[\s\-()]/g,''))) fail('tm-phone', t.phoneRequired);
   if (!lang) fail('tm-lang', t.langRequired);
-  if (!city.trim()) fail('tm-city', t.cityRequired);
+  if (city.trim().length < 2) fail('tm-city', t.cityRequired);
   return ok ? null : (msg || t.fillHighlighted);
 }
 
 // ── INTERCEPT TRIAL CLICKS ──
 document.addEventListener('click', function(e){
-  var a = e.target.closest ? e.target.closest('a[href*="momence.com/m/443934"]') : null;
+  if (!e.target.closest) return;
+  // Exact match: only intercept the Trial product (443934), not derivatives like 4439340
+  var a = e.target.closest('a[href="https://momence.com/m/443934"], a[href^="https://momence.com/m/443934?"], a[href^="https://momence.com/m/443934#"]');
   if (!a) return;
   e.preventDefault();
   e.stopPropagation();
@@ -270,7 +272,17 @@ function openModal(){
   } catch(e){}
 }
 
-function closeModal(){
+function closeModal(forceClose){
+  // Don't allow close mid-payment unless forced (success / explicit cancel)
+  if (processing && !forceClose) {
+    // Visual feedback: shake the modal
+    var box = document.querySelector('.tm-box');
+    if (box) {
+      box.style.animation = 'tmShake .4s';
+      setTimeout(function(){ box.style.animation = ''; }, 400);
+    }
+    return;
+  }
   var mo = document.getElementById('tm');
   mo.classList.remove('open');
   var _scrollY = parseInt(document.body.style.top || '0') * -1; document.body.style.overflow = ''; document.body.style.position = ''; document.body.style.width = ''; document.body.style.top = ''; window.scrollTo(0, _scrollY);
@@ -291,7 +303,27 @@ document.getElementById('tm').addEventListener('click', function(e){
   if (e.target === this && document.getElementById('tm').classList.contains('open')) closeModal();
 });
 document.addEventListener('keydown', function(e){
-  if (e.key === 'Escape' && document.getElementById('tm').classList.contains('open')) closeModal();
+  var modal = document.getElementById('tm');
+  if (!modal.classList.contains('open')) return;
+  if (e.key === 'Escape') { closeModal(); return; }
+  // Focus trap: cycle tabbable elements
+  if (e.key === 'Tab') {
+    var focusables = modal.querySelectorAll('button:not([disabled]), input:not([disabled]):not([type="hidden"]), select:not([disabled]), textarea:not([disabled]), a[href]');
+    if (!focusables.length) return;
+    var first = focusables[0];
+    var last = focusables[focusables.length - 1];
+    if (e.shiftKey) {
+      if (document.activeElement === first || !modal.contains(document.activeElement)) {
+        e.preventDefault();
+        last.focus();
+      }
+    } else {
+      if (document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  }
 });
 
 // ══════════════════════════════════════════════════════════
@@ -584,6 +616,9 @@ function mountStripe(){
 
 
 // ── EMAIL EXISTS PRE-FLIGHT (guest step) ──
+var _emailCheckCache = {};  // email → {exists, ts}
+var _emailCheckInFlight = null;
+
 function checkEmailExists(){
   var emInput = document.getElementById('tm-email');
   if (!emInput) return;
@@ -592,6 +627,7 @@ function checkEmailExists(){
   var noticeId = 'tm-email-exists-notice';
   var existing = document.getElementById(noticeId);
   if (existing) existing.remove();
+  _emailCheckInFlight = em;
   fetch(PROXY + '/sabda-api/check-email', {
     method: 'POST',
     headers: {'Content-Type':'application/json'},
@@ -599,6 +635,8 @@ function checkEmailExists(){
   })
   .then(function(r){ return r.json(); })
   .then(function(d){
+    _emailCheckInFlight = null;
+    _emailCheckCache[em] = { exists: !!(d && d.exists), ts: Date.now() };
     if (d && d.exists) {
       var prevEm = emInput.value.trim();
       if (prevEm !== em) return;
@@ -613,7 +651,15 @@ function checkEmailExists(){
       }
     }
   })
-  .catch(function(){});
+  .catch(function(){ _emailCheckInFlight = null; });
+}
+
+// Synchronous email-exists guard for doGuestPay — uses cached result.
+// If no cached result and check is in-flight, queue submit and resume after.
+function emailExistsSync(em){
+  if (!em) return null;
+  if (_emailCheckCache[em]) return _emailCheckCache[em].exists;
+  return null;  // unknown
 }
 
 function doGuestPay(){
@@ -641,6 +687,42 @@ function doGuestPay(){
   // Validate phone, language, city
   var fieldErr = validateModalFields();
   if (fieldErr) { err.textContent = fieldErr; return; }
+
+  // Re-check email-exists (guard against race: user clicked Pay before blur fetch returned)
+  var existsResult = emailExistsSync(email);
+  if (existsResult === true) {
+    // Confirmed: account exists. Surface the existing-email notice and switch to login.
+    err.textContent = '';
+    showLoginStep(email);
+    return;
+  }
+  if (existsResult === null && _emailCheckInFlight === email) {
+    // Check is in-flight; wait briefly then retry submit.
+    err.textContent = '';
+    btn.textContent = t.processing;
+    btn.disabled = true;
+    setTimeout(function(){ btn.disabled = false; doGuestPay(); }, 400);
+    return;
+  }
+  if (existsResult === null) {
+    // No check yet (user submitted before blur). Fire one synchronously, then retry.
+    btn.textContent = t.processing;
+    btn.disabled = true;
+    fetch(PROXY + '/sabda-api/check-email', {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({ email: email })
+    }).then(function(r){ return r.json(); }).then(function(d){
+      _emailCheckCache[email] = { exists: !!(d && d.exists), ts: Date.now() };
+      btn.disabled = false;
+      doGuestPay();
+    }).catch(function(){
+      // Network error on check — proceed and let Worker handle it.
+      btn.disabled = false;
+      _emailCheckCache[email] = { exists: false, ts: Date.now() };
+      doGuestPay();
+    });
+    return;
+  }
 
   err.textContent = '';
   processing = true;
@@ -824,12 +906,12 @@ function showSuccess(){
     + '<h3>' + t.successTitle + '</h3>'
     + '<p>' + t.successBody + '</p>'
     + '<button class="tm-btn" style="margin-top:20px" onclick="SABDA_TM.goSchedule()">' + t.successCta + '</button>'
-    + '<button class="tm-btn" style="margin-top:10px;background:transparent;color:rgba(240,239,233,.6);border:1px solid rgba(240,239,233,.12)" onclick="SABDA_TM.close()">' + t.successDone + '</button>'
+    + '<button class="tm-btn" style="margin-top:10px;background:transparent;color:rgba(240,239,233,.6);border:1px solid rgba(240,239,233,.12)" onclick="SABDA_TM.forceClose()">' + t.successDone + '</button>'
     + '</div>';
 }
 
 function goSchedule(){
-  closeModal();
+  closeModal(true);
   setTimeout(function(){ window.location.href = _scheduleHref; }, 100);
 }
 
@@ -845,6 +927,7 @@ function showError(msg){
 // ── PUBLIC API ──
 window.SABDA_TM = {
   close: closeModal,
+  forceClose: function(){ closeModal(true); },
   showGuestStep: showGuestStep,
   showLoginStep: showLoginStep,
   doGuestPay: doGuestPay,

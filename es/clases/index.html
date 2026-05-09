@@ -1518,10 +1518,10 @@ function getCustomerFields(){
 function validateCustomerFields(){
   var ok=true;
   var fields=[
-    {id:'bk-cc',test:function(v){return v&&v.startsWith('+')&&v.length>=2;}},
-    {id:'bk-phone',test:function(v){return v.replace(/\s/g,'').length>=6;}},
-    {id:'bk-lang',test:function(v){return!!v;}},
-    {id:'bk-city',test:function(v){return v.trim().length>0;}}
+    {id:'bk-cc',test:function(v){return /^\+\d{1,4}$/.test(v||'');}},
+    {id:'bk-phone',test:function(v){return /^\d{6,}$/.test((v||'').replace(/[\s\-()]/g,''));}},
+    {id:'bk-lang',test:function(v){return !!v;}},
+    {id:'bk-city',test:function(v){return (v||'').trim().length>=2;}}
   ];
   fields.forEach(function(f){
     var el=document.getElementById(f.id);

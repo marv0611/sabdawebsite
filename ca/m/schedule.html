@@ -1433,10 +1433,10 @@ function getCustomerFields(){
 function validateCustomerFields(){
   var ok=true;
   var fields=[
-    {id:'bk-cc',test:function(v){return v&&v.startsWith('+')&&v.length>=2;},msg:'Prefix de país obligatori'},
+    {id:'bk-cc',test:function(v){return /^\+\d{1,4}$/.test(v||'');},msg:'Prefix de país obligatori'},
     {id:'bk-phone',test:function(v){return v.replace(/\s/g,'').length>=6;},msg:'Telèfon obligatorio'},
     {id:'bk-lang',test:function(v){return!!v;},msg:'Por favor, selecciona un idioma'},
-    {id:'bk-city',test:function(v){return v.trim().length>0;},msg:'La ciudad es obligatoria'}
+    {id:'bk-city',test:function(v){return (v||'').trim().length>=2;},msg:'La ciudad es obligatoria'}
   ];
   fields.forEach(function(f){
     var el=document.getElementById(f.id);

@@ -2,3 +2,15 @@ name = "sabda-checkout-proxy"
 main = "cloudflare-worker-checkout-proxy.js"
 compatibility_date = "2024-01-01"
 account_id = "ac63756828d402343fc988ec9f161f56"
+
+# KV binding — Marvyn must fill `id` from Cloudflare dashboard:
+#   Workers & Pages → KV → find ATTRIBUTION_KV namespace → copy ID.
+# Without this, env.ATTRIBUTION_KV is undefined and:
+#   - /auto-enroll returns "KV not available"
+#   - Slack alert rate-limiting silently no-ops
+#   - 3DS auto-enroll context can't be stored
+# Code is guarded with `if (env.ATTRIBUTION_KV)` so missing KV doesn't crash payments,
+# but the features above don't work.
+[[kv_namespaces]]
+binding = "ATTRIBUTION_KV"
+id = "REPLACE_WITH_NAMESPACE_ID_FROM_DASHBOARD"
