@@ -1408,7 +1408,7 @@ async function handleCapiEvent(request, origin, env, ctx, defaultEvent, requireE
 
 async function handlePay(request, origin, env, ctx) {
   try {
-    const { sessionId, sessionToken, stripePaymentMethodId, firstName, lastName, email, password, phoneNumber, customerFields, type, productId, discountCode, discountCodeId, actualPrice, fbEventId, fbIcEventId, fbp, fbc, clientIp, clientUserAgent, autoEnroll, attribution } = await request.json();
+    let { sessionId, sessionToken, stripePaymentMethodId, firstName, lastName, email, password, phoneNumber, customerFields, type, productId, discountCode, discountCodeId, actualPrice, fbEventId, fbIcEventId, fbp, fbc, clientIp, clientUserAgent, autoEnroll, attribution } = await request.json();
 
     if (!email) {
       return new Response(JSON.stringify({ error: 'Email is required' }), {
