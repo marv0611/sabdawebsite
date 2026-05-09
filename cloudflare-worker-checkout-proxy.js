@@ -1410,11 +1410,14 @@ async function handlePay(request, origin, env, ctx) {
   try {
     const { sessionId, sessionToken, stripePaymentMethodId, firstName, lastName, email, password, phoneNumber, customerFields, type, productId, discountCode, discountCodeId, actualPrice, fbEventId, fbIcEventId, fbp, fbc, clientIp, clientUserAgent, autoEnroll, attribution } = await request.json();
 
-    if (!firstName || !lastName || !email) {
-      return new Response(JSON.stringify({ error: 'Missing customer details' }), {
+    if (!email) {
+      return new Response(JSON.stringify({ error: 'Email is required' }), {
         status: 400, headers: corsHeaders(origin),
       });
     }
+    // Fallback names from email prefix if not provided (some login APIs omit names)
+    if (!firstName) firstName = email.split('@')[0];
+    if (!lastName) lastName = '.';
 
     // ── Attribution log: structured single-line per /pay invocation ──
     // Forwarded by frontend from window._sabdaGetAttribution() — captured
@@ -1865,8 +1868,8 @@ function humanizeMomenceError(raw) {
   }
 
   // Category 3: Momence business-logic errors
-  if (lower.includes('already bought') || lower.includes('already a member') || lower.includes('already purchased')) {
-    return 'This first-timer offer is for new customers only. Please choose a different package.';
+  if (lower.includes('already bought') || lower.includes('already a member') || lower.includes('already purchased') || lower.includes('first-time') || lower.includes('first time') || lower.includes('new customer') || lower.includes('only available for new') || lower.includes('trial') && (lower.includes('already') || lower.includes('used') || lower.includes('limit'))) {
+    return 'This offer is for first-time visitors only. If you have been before, choose a different package on Momence.';
   }
   if (lower.includes('session is full') || lower.includes('no spots') || lower.includes('class is full')) {
     return 'This class is full. Please choose a different time or join the waitlist.';
