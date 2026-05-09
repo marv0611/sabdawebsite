@@ -83,6 +83,27 @@ var _signInCta = (_pageLang==='es'?'Inicia sesi\u00f3n aqu\u00ed':(_pageLang==='
 var _newUserLabel = (_pageLang==='es'?'\u00bfNuevo en SABDA? ':(_pageLang==='ca'?'Nou a SABDA? ':'New to SABDA? '));
 var _newUserCta = (_pageLang==='es'?'Reg\u00edstrate aqu\u00ed':(_pageLang==='ca'?'Registra\'t aqu\u00ed':'Register here'));
 
+
+// ── CUSTOMER FIELD VALIDATION ──
+// Phone (cc + 6+ digits), language, city must all be filled before pay.
+// Returns null if valid, or error message string.
+function validateModalFields(){
+  var ok = true;
+  var msg = '';
+  function fail(id, m){ var el=document.getElementById(id); if(el)el.classList.add('err'); if(!msg)msg=m; ok=false; }
+  function clear(id){ var el=document.getElementById(id); if(el)el.classList.remove('err'); }
+  ['tm-cc','tm-phone','tm-lang','tm-city'].forEach(clear);
+  var cc = (document.getElementById('tm-cc')||{}).value || '';
+  var phone = (document.getElementById('tm-phone')||{}).value || '';
+  var lang = (document.getElementById('tm-lang')||{}).value || '';
+  var city = (document.getElementById('tm-city')||{}).value || '';
+  if (!cc || !cc.startsWith('+') || cc.length < 2) fail('tm-cc', 'Country code required');
+  if (phone.replace(/\s/g,'').length < 6) fail('tm-phone', 'Phone number required');
+  if (!lang) fail('tm-lang', 'Please select a language');
+  if (!city.trim()) fail('tm-city', 'City is required');
+  return ok ? null : (msg || 'Please fill in the highlighted fields');
+}
+
 // ── INTERCEPT TRIAL CLICKS ──
 document.addEventListener('click', function(e){
   var a = e.target.closest ? e.target.closest('a[href*="momence.com/m/443934"]') : null;
@@ -120,11 +141,17 @@ function closeModal(){
   purchaseEventId = null;
   sessionToken = null;
   loggedInUser = null;
+  payReq = null;
+  if (mountStripe._retries) mountStripe._retries = 0;
   if (cardEl) { try { cardEl.destroy(); } catch(e){} cardEl = null; }
 }
 
-document.getElementById('tm').addEventListener('click', function(e){ if(e.target===this) closeModal(); });
-document.addEventListener('keydown', function(e){ if(e.key==='Escape') closeModal(); });
+document.getElementById('tm').addEventListener('click', function(e){
+  if (e.target === this && document.getElementById('tm').classList.contains('open')) closeModal();
+});
+document.addEventListener('keydown', function(e){
+  if (e.key === 'Escape' && document.getElementById('tm').classList.contains('open')) closeModal();
+});
 
 // ══════════════════════════════════════════════════════════
 // STEP 1: GUEST (default) — single page, all fields visible
@@ -369,15 +396,32 @@ function mountStripe(){
       }
     });
     payReq.on('paymentmethod', function(ev){
+      // Validate phone/language/city BEFORE accepting Apple Pay
+      var fieldErr = validateModalFields();
+      if (fieldErr) {
+        ev.complete('fail');
+        var errEl = document.getElementById('tm-err');
+        if (errEl) errEl.textContent = fieldErr;
+        return;
+      }
       // Read name/email from Apple Pay, password from form (if guest step)
       var _fn = (ev.payerName || '').split(' ')[0] || (loggedInUser ? loggedInUser.firstName : '');
       var _ln = (ev.payerName || '').split(' ').slice(1).join(' ') || (loggedInUser ? loggedInUser.lastName : '');
       var _em = ev.payerEmail || (loggedInUser ? loggedInUser.email : '');
-      var _pw = (document.getElementById('tm-pass') || {}).value || undefined;
+      var _pw = (document.getElementById('tm-pass') || {}).value || '';
+      // For new users (guest step), require password (account creation needs it)
+      var _isGuest = !loggedInUser;
+      if (_isGuest && (!_pw || _pw.length < 8)) {
+        ev.complete('fail');
+        var errEl2 = document.getElementById('tm-err');
+        if (errEl2) errEl2.textContent = 'Please create a password (min 8 characters) before using Apple Pay.';
+        var pe = document.getElementById('tm-pass'); if (pe) pe.classList.add('err');
+        return;
+      }
       submitPayment({
         stripePaymentMethodId: ev.paymentMethod.id,
         email: _em, firstName: _fn, lastName: _ln,
-        password: _pw
+        password: _pw || undefined
       }, ev);
     });
   } catch(e){}
@@ -408,6 +452,10 @@ function doGuestPay(){
   if (!pass || pass.length < 8) { document.getElementById('tm-pass').classList.add('err'); if(!err.textContent) err.textContent='Password must be at least 8 characters'; ok=false; }
   if (pass !== pass2) { document.getElementById('tm-pass2').classList.add('err'); err.textContent='Passwords don\u2019t match'; ok=false; }
   if (!ok) { if(!err.textContent) err.textContent='Please fill in the highlighted fields'; return; }
+
+  // Validate phone, language, city
+  var fieldErr = validateModalFields();
+  if (fieldErr) { err.textContent = fieldErr; return; }
 
   err.textContent = '';
   processing = true;
@@ -441,6 +489,11 @@ function doLoggedInPay(){
   if (processing) return;
   var err = document.getElementById('tm-err');
   var btn = document.getElementById('tm-pay-btn');
+
+  // Validate phone, language, city
+  var fieldErr = validateModalFields();
+  if (fieldErr) { err.textContent = fieldErr; return; }
+
   err.textContent = '';
   processing = true;
   btn.textContent = 'Processing...';
@@ -448,7 +501,7 @@ function doLoggedInPay(){
 
   stripe.createPaymentMethod({
     type: 'card', card: cardEl,
-    billing_details: { name: loggedInUser.firstName + ' ' + loggedInUser.lastName, email: loggedInUser.email }
+    billing_details: { name: ((loggedInUser.firstName || '') + ' ' + (loggedInUser.lastName || '')).trim() || loggedInUser.email, email: loggedInUser.email }
   }).then(function(result){
     if (result.error) {
       processing = false;
@@ -482,7 +535,13 @@ function submitPayment(opts, applePayEvent){
     lastName: opts.lastName,
     email: opts.email,
     password: opts.password || undefined,
-    phoneNumber: ((document.getElementById('tm-cc') || {}).value || '+34') + ((document.getElementById('tm-phone') || {}).value || '').replace(/\s/g, ''),
+    phoneNumber: (function(){
+      var cc = (document.getElementById('tm-cc')||{}).value || '';
+      var ph = ((document.getElementById('tm-phone')||{}).value || '').replace(/\s/g,'');
+      if (!ph || ph.length < 6) return undefined;
+      if (!cc.startsWith('+')) cc = '+' + cc;
+      return cc + ph;
+    })(),
     customerFields: {'164360': (document.getElementById('tm-lang') || {}).value || _cfLang, '164361': (document.getElementById('tm-city') || {}).value || ''},
     actualPrice: PRICE,
     fbEventId: purchaseEventId,
