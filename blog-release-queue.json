@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-05-08",
-      "slug": "/blog/planes-originales-barcelona/",
-      "order": 18
+      "date": "2026-05-11",
+      "slug": "/blog/what-is-breathwork/",
+      "order": 19
     }
   },
   "queue": [
@@ -257,8 +257,9 @@
       "release_date": "2026-05-11",
       "md_file": "blog/article-13-what-is-breathwork.md",
       "html_file": "blog/what-is-breathwork/index.html",
-      "status": "queued",
-      "volume": 170
+      "status": "released",
+      "volume": 170,
+      "released_at": "2026-05-11"
     },
     {
       "order": 20,
