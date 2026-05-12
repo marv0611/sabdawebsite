@@ -7,6 +7,7 @@
 **Slug:** `/blog/alquiler-sala-eventos-barcelona/`
 
 **Primary keyword:** alquiler sala barcelona
+**publish: true**
 **Secondary keywords:** alquiler sala eventos barcelona, espacio para eventos barcelona, alquiler local eventos barcelona
 
 ---
