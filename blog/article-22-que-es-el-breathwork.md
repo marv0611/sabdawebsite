@@ -7,6 +7,7 @@
 **Slug:** `/blog/que-es-el-breathwork/`
 
 **Primary keyword:** breathwork barcelona
+**publish: true**
 **Secondary keywords:** sesión de respiración barcelona, respiración consciente, qué es el breathwork
 
 ---

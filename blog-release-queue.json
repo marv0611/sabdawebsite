@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-05-12",
-      "slug": "/blog/alquiler-sala-eventos-barcelona/",
-      "order": 20
+      "date": "2026-05-13",
+      "slug": "/blog/que-es-el-breathwork/",
+      "order": 21
     }
   },
   "queue": [
@@ -283,8 +283,9 @@
       "release_date": "2026-05-13",
       "md_file": "blog/article-22-que-es-el-breathwork.md",
       "html_file": "blog/que-es-el-breathwork/index.html",
-      "status": "queued",
-      "volume": 170
+      "status": "released",
+      "volume": 170,
+      "released_at": "2026-05-13"
     },
     {
       "order": 22,
