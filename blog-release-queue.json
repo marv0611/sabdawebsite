@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-05-13",
-      "slug": "/blog/que-es-el-breathwork/",
-      "order": 21
+      "date": "2026-05-14",
+      "slug": "/blog/wellness-eixample-barcelona/",
+      "order": 22
     }
   },
   "queue": [
@@ -296,8 +296,9 @@
       "release_date": "2026-05-14",
       "md_file": "blog/article-34-wellness-eixample-barcelona.md",
       "html_file": "blog/wellness-eixample-barcelona/index.html",
-      "status": "queued",
-      "volume": 90
+      "status": "released",
+      "volume": 90,
+      "released_at": "2026-05-14"
     },
     {
       "order": 23,

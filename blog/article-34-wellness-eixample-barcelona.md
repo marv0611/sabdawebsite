@@ -7,6 +7,7 @@
 **Slug:** `/blog/wellness-eixample-barcelona/`
 
 **Primary keyword:** pilates eixample
+**publish: true**
 **Secondary keywords:** yoga eixample, gimnasio eixample, wellness eixample
 
 ---
