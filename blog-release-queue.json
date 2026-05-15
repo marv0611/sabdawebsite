@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-05-14",
-      "slug": "/blog/wellness-eixample-barcelona/",
-      "order": 22
+      "date": "2026-05-15",
+      "slug": "/blog/ice-bath-barcelona/",
+      "order": 23
     }
   },
   "queue": [
@@ -309,8 +309,9 @@
       "release_date": "2026-05-15",
       "md_file": "blog/article-14-ice-bath-barcelona.md",
       "html_file": "blog/ice-bath-barcelona/index.html",
-      "status": "queued",
-      "volume": 260
+      "status": "released",
+      "volume": 260,
+      "released_at": "2026-05-15"
     },
     {
       "order": 24,
