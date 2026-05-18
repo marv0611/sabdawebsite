@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-05-15",
-      "slug": "/blog/ice-bath-barcelona/",
-      "order": 23
+      "date": "2026-05-18",
+      "slug": "/blog/pilates-mat-vs-reformer/",
+      "order": 24
     }
   },
   "queue": [
@@ -322,8 +322,9 @@
       "release_date": "2026-05-18",
       "md_file": "blog/article-27-pilates-mat-vs-reformer.md",
       "html_file": "blog/pilates-mat-vs-reformer/index.html",
-      "status": "queued",
-      "volume": 170
+      "status": "released",
+      "volume": 170,
+      "released_at": "2026-05-18"
     },
     {
       "order": 25,

@@ -7,6 +7,7 @@
 **Slug:** `/blog/pilates-mat-vs-reformer/`
 
 **Primary keyword:** clases de pilates barcelona
+**publish: true**
 **Secondary keywords:** pilates mat barcelona, pilates mat vs reformer, pilates inmersivo barcelona
 
 ---
