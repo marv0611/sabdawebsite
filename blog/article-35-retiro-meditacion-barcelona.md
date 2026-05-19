@@ -7,6 +7,7 @@
 **Slug:** `/blog/retiro-meditacion-barcelona/`
 
 **Primary keyword:** retiro meditacion barcelona
+**publish: true**
 **Secondary keywords:** retiro mindfulness barcelona, retiro yoga barcelona, retiro bienestar barcelona
 
 ---

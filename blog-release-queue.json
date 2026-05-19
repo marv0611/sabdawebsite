@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-05-18",
-      "slug": "/blog/pilates-mat-vs-reformer/",
-      "order": 24
+      "date": "2026-05-19",
+      "slug": "/blog/retiro-meditacion-barcelona/",
+      "order": 25
     }
   },
   "queue": [
@@ -335,8 +335,9 @@
       "release_date": "2026-05-19",
       "md_file": "blog/article-35-retiro-meditacion-barcelona.md",
       "html_file": "blog/retiro-meditacion-barcelona/index.html",
-      "status": "queued",
-      "volume": 70
+      "status": "released",
+      "volume": 70,
+      "released_at": "2026-05-19"
     },
     {
       "order": 26,
