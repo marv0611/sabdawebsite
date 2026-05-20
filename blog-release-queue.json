@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-05-19",
-      "slug": "/blog/retiro-meditacion-barcelona/",
-      "order": 25
+      "date": "2026-05-20",
+      "slug": "/blog/what-is-sound-healing/",
+      "order": 26
     }
   },
   "queue": [
@@ -348,8 +348,9 @@
       "release_date": "2026-05-20",
       "md_file": "blog/article-12-what-is-sound-healing.md",
       "html_file": "blog/what-is-sound-healing/index.html",
-      "status": "queued",
-      "volume": 140
+      "status": "released",
+      "volume": 140,
+      "released_at": "2026-05-20"
     },
     {
       "order": 27,

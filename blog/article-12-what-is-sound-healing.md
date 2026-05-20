@@ -7,6 +7,7 @@
 **Slug:** `/blog/what-is-sound-healing/`
 
 **Primary keyword:** sound healing barcelona
+**publish: true**
 **Secondary keywords:** cuencos tibetanos barcelona, what is sound healing, sound bath, baño de sonido
 
 ---
