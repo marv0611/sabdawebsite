@@ -7,6 +7,7 @@
 **Slug:** `/blog/actividades-para-empresas-barcelona/`
 
 **Primary keyword:** actividades para empresas barcelona
+**publish: true**
 **Secondary keywords:** eventos corporativos barcelona, wellness corporativo barcelona, team building Barcelona
 
 ---
