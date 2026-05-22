@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-05-21",
-      "slug": "/blog/actividades-para-empresas-barcelona/",
-      "order": 27
+      "date": "2026-05-22",
+      "slug": "/blog/que-es-el-sound-healing/",
+      "order": 28
     }
   },
   "queue": [
@@ -374,8 +374,9 @@
       "release_date": "2026-05-22",
       "md_file": "blog/article-21-que-es-el-sound-healing.md",
       "html_file": "blog/que-es-el-sound-healing/index.html",
-      "status": "queued",
-      "volume": 140
+      "status": "released",
+      "volume": 140,
+      "released_at": "2026-05-22"
     },
     {
       "order": 29,
