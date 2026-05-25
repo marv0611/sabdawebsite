@@ -2549,15 +2549,26 @@ ${phone ? `<tr><td style="color:#888;vertical-align:top;padding:4px 0">Phone</td
 async function logToNotion(token, databaseId, data) {
   const { name, email, phone, topic, message, classification } = data;
 
-  const categoryLabels = {
-    rental_high_value: 'Rental (High Value)', rental_low_value: 'Rental (Individual)',
-    corporate_wellness: 'Corporate Wellness', class_inquiry: 'Class Inquiry',
-    press_media: 'Press & Media', partnership: 'Partnership', general: 'General',
+  // Map our internal category → Notion FIRST CONTACT "Event Type" select options
+  // (Notion select must match an existing option exactly; defaults to "Event")
+  const eventTypeMap = {
+    rental_high_value: 'Rental',
+    rental_low_value: 'Rental',
+    corporate_wellness: 'Private Class',
+    class_inquiry: 'Public Class',
+    press_media: 'Event',
+    partnership: 'Event',
+    general: 'Event',
   };
+  const eventType = eventTypeMap[classification.category] || 'Event';
 
   const today = new Date().toISOString().split('T')[0];
   const summaryText = classification.summary || '';
   const msgText = message || '';
+  const companyText = (msgText.match(/[Cc]ompany:\s*([^\n]*)/)?.[1] || '').substring(0, 200);
+  const notesText = 'Send brochure: ' + (classification.send_brochure ? 'YES' : 'No') +
+                    ' | Confidence: ' + (classification.confidence || 'n/a') +
+                    ' | Source category: ' + (classification.category || 'general');
 
   const res = await fetch('https://api.notion.com/v1/pages', {
     method: 'POST',
@@ -2569,18 +2580,16 @@ async function logToNotion(token, databaseId, data) {
     body: JSON.stringify({
       parent: { database_id: databaseId },
       properties: {
-        'Booking ref': { title: [{ text: { content: name + ' — Website Lead' } }] },
+        'Reference': { title: [{ text: { content: name + ' — Website Lead' } }] },
         'Contact Name': { rich_text: [{ text: { content: name } }] },
         'Contact Email': { email: email },
         'Contact Phone': { phone_number: phone || null },
-        'Company': { rich_text: [{ text: { content: (msgText.match(/[Cc]ompany:\s*([^\n]*)/)?.[1] || '').substring(0, 200) } }] },
-        'Type': { rich_text: [{ text: { content: categoryLabels[classification.category] || classification.category || topic || 'General' } }] },
+        'Company': { rich_text: [{ text: { content: companyText } }] },
+        'Event Type': { select: { name: eventType } },
         'AI Summary': { rich_text: [{ text: { content: summaryText.substring(0, 400) }, annotations: { bold: true } }] },
         'Message': { rich_text: [{ text: { content: msgText.substring(0, 2000) }, annotations: { italic: true } }] },
-        'Notes': { rich_text: [
-          { text: { content: 'Send brochure: ' + (classification.send_brochure ? 'YES' : 'No') + ' | Confidence: ' + (classification.confidence || 'n/a') } }
-        ] },
-        'Date': { date: { start: today } },
+        'Notes & Last contact': { rich_text: [{ text: { content: notesText } }] },
+        'Date Contacted': { date: { start: today } },
       },
     }),
   });
