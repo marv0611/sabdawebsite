@@ -2549,26 +2549,42 @@ ${phone ? `<tr><td style="color:#888;vertical-align:top;padding:4px 0">Phone</td
 async function logToNotion(token, databaseId, data) {
   const { name, email, phone, topic, message, classification } = data;
 
-  // Map our internal category → Notion FIRST CONTACT "Event Type" select options
-  // (Notion select must match an existing option exactly; defaults to "Event")
-  const eventTypeMap = {
-    rental_high_value: 'Rental',
-    rental_low_value: 'Rental',
-    corporate_wellness: 'Private Class',
-    class_inquiry: 'Public Class',
-    press_media: 'Event',
-    partnership: 'Event',
-    general: 'Event',
-  };
-  const eventType = eventTypeMap[classification.category] || 'Event';
+  // Map to Notion FIRST CONTACT "Event Type" select.
+  // PRIORITY 1: parse the form's event_type field from message text (most accurate).
+  // PRIORITY 2: AI classification.category.
+  // Notion select must match an existing option exactly.
+  const msgText = message || '';
+  const formEventType = (msgText.match(/(?:Event Type|Tipo de Evento|Tipo de evento|Tipus d['’]Esdeveniment|Tipus d['’]esdeveniment):\s*([^\n]*)/i)?.[1] || '').trim().toLowerCase();
+
+  // Form event_type → Notion Event Type (exact match to Katrina's column options)
+  let eventType;
+  if (formEventType.includes('product-launch') || formEventType.includes('brand-activation') || formEventType.includes('private-event') || formEventType.includes('immersive-dinner') || formEventType.includes('production')) {
+    eventType = 'Rental';
+  } else if (formEventType.includes('corporate-wellness') || formEventType.includes('team building') || formEventType.includes('team-building')) {
+    eventType = 'Private Class';
+  } else if (formEventType.includes('workshop') || formEventType.includes('presentation')) {
+    eventType = 'Presentation';
+  } else {
+    // Fallback to AI classification
+    const aiMap = {
+      rental_high_value: 'Rental',
+      rental_low_value: 'Rental',
+      corporate_wellness: 'Private Class',
+      class_inquiry: 'Public Class',
+      press_media: 'Event',
+      partnership: 'Event',
+      general: 'Event',
+    };
+    eventType = aiMap[classification.category] || 'Event';
+  }
 
   const today = new Date().toISOString().split('T')[0];
   const summaryText = classification.summary || '';
-  const msgText = message || '';
-  const companyText = (msgText.match(/[Cc]ompany:\s*([^\n]*)/)?.[1] || '').substring(0, 200);
-  const notesText = 'Send brochure: ' + (classification.send_brochure ? 'YES' : 'No') +
-                    ' | Confidence: ' + (classification.confidence || 'n/a') +
-                    ' | Source category: ' + (classification.category || 'general');
+  const companyText = (msgText.match(/(?:Company|Empresa):\s*([^\n]*)/i)?.[1] || '').trim().substring(0, 200);
+  const notesText = 'Source: Website ' + (topic || 'inquiry') +
+                    ' | AI category: ' + (classification.category || 'general') +
+                    ' | Send brochure: ' + (classification.send_brochure ? 'YES' : 'No') +
+                    ' | Confidence: ' + (classification.confidence || 'n/a');
 
   const res = await fetch('https://api.notion.com/v1/pages', {
     method: 'POST',
