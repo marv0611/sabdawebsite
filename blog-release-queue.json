@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-05-22",
-      "slug": "/blog/que-es-el-sound-healing/",
-      "order": 28
+      "date": "2026-05-25",
+      "slug": "/blog/curso-mindfulness-barcelona/",
+      "order": 29
     }
   },
   "queue": [
@@ -387,8 +387,9 @@
       "release_date": "2026-05-25",
       "md_file": "blog/article-36-curso-mindfulness-barcelona.md",
       "html_file": "blog/curso-mindfulness-barcelona/index.html",
-      "status": "queued",
-      "volume": 50
+      "status": "released",
+      "volume": 50,
+      "released_at": "2026-05-25"
     },
     {
       "order": 30,

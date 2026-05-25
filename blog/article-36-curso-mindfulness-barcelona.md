@@ -7,6 +7,7 @@
 **Slug:** `/blog/curso-mindfulness-barcelona/`
 
 **Primary keyword:** curso mindfulness barcelona
+**publish: true**
 **Secondary keywords:** mindfulness barcelona, mindfulness para empresas barcelona, clases meditacion barcelona
 
 ---
