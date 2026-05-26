@@ -523,6 +523,17 @@ e.preventDefault();
 .review-nudge{padding-bottom:60px !important}
 .rn{padding-bottom:60px !important}
 @media(max-width:860px){.review-nudge{padding-bottom:40px !important}.rn{padding-bottom:40px !important}}
+
+.cat-card{background:rgba(19,24,66,.65);border:1px solid rgba(240,239,233,.08);border-radius:14px;padding:32px 28px;transition:border-color .3s,transform .3s var(--ease-expo)}
+.cat-card:hover{border-color:rgba(2,243,197,.22);transform:translateY(-2px)}
+.cat-card h3{margin:0 0 12px 0}
+.cat-card-desc{font-size:.92rem;color:var(--white60);line-height:1.7;margin:0}
+.step-card{background:rgba(19,24,66,.45);border:1px solid rgba(240,239,233,.06);border-radius:14px;padding:36px 32px;transition:border-color .3s,transform .3s var(--ease-expo)}
+.step-card:hover{border-color:rgba(2,243,197,.18);transform:translateY(-2px)}
+.step-num{font-family:'PT Serif',serif;font-size:2.4rem;color:var(--cyan);line-height:1;margin-bottom:18px;font-style:italic}
+.step-name{font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;color:var(--white);margin:0 0 10px 0}
+.step-desc{font-size:.92rem;color:var(--white60);line-height:1.7;margin:0}
+@media(max-width:900px){.step-card{padding:28px 24px} .cat-card{padding:28px 24px}}
 </style>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
@@ -594,7 +605,7 @@ e.preventDefault();
   <h2 class="sh2 rv" style="transition-delay:.07s">Dins de la <em>sala.</em></h2>
   <div class="uc-grid">
     <div class="uc-card rv" style="transition-delay:.1s">
-      <div class="uc-card-bg" style="background-image:url('/images/celebrations/dj-sunset.jpg')"></div>
+      <div class="uc-card-bg" style="background-image:url('/images/celebrations/moon-dance.jpg')"></div>
       <div class="uc-card-ov"></div>
       <div class="uc-card-content">
         <span class="uc-num">01</span>
@@ -603,7 +614,7 @@ e.preventDefault();
       </div>
     </div>
     <div class="uc-card rv" style="transition-delay:.15s">
-      <div class="uc-card-bg" style="background-image:url('/images/celebrations/moon-dance.jpg')"></div>
+      <div class="uc-card-bg" style="background-image:url('/images/celebrations/celebration-hug.jpg')"></div>
       <div class="uc-card-ov"></div>
       <div class="uc-card-content">
         <span class="uc-num">02</span>
@@ -612,7 +623,7 @@ e.preventDefault();
       </div>
     </div>
     <div class="uc-card rv" style="transition-delay:.2s">
-      <div class="uc-card-bg" style="background-image:url('/images/celebrations/celebration-hug.jpg')"></div>
+      <div class="uc-card-bg" style="background-image:url('/images/celebrations/dj-sunset.jpg')"></div>
       <div class="uc-card-ov"></div>
       <div class="uc-card-content">
         <span class="uc-num">03</span>
@@ -621,12 +632,12 @@ e.preventDefault();
       </div>
     </div>
     <div class="uc-card rv" style="transition-delay:.25s">
-      <div class="uc-card-bg" style="background-image:url('/images/celebrations/dj-sunset.jpg')"></div>
+      <div class="uc-card-bg" style="background-image:url('https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Copy_of_Sabda_20240118_017.jpg')"></div>
       <div class="uc-card-ov"></div>
       <div class="uc-card-content">
         <span class="uc-num">04</span>
-        <div class="uc-name">Esdeveniments privats</div>
-        <div class="uc-desc">Aniversaris, graduacions, retrobaments. Lloguer privat complet amb visuals fets per a la teva nit.</div>
+        <div class="uc-name">Classes privades</div>
+        <div class="uc-desc">Ioga, sound healing, breathwork per al teu grup. Una experiència guiada dins de la sala.</div>
       </div>
     </div>
   </div>
@@ -655,45 +666,45 @@ e.preventDefault();
 <section class="use-cases" style="padding-top:40px">
   <span class="sl rv">Què s'inclou</span>
   <h2 class="sh2 rv" style="transition-delay:.07s">Tot l'<em>espai.</em></h2>
-  <div class="uc-grid" style="grid-template-columns:repeat(2,1fr)">
+  <div class="uc-grid" style="grid-template-columns:repeat(2,1fr);gap:20px">
     <div class="cat-card rv" style="transition-delay:.1s">
-      <h3 style="font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;color:var(--salmon);margin-bottom:12px">La sala immersiva 360°</h3>
-      <p class="cat-card-desc">Visuals a cada paret, la teva música per àudio espacial Dolby Atmos. Contingut personalitzat.</p>
+      <h3 style="font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;color:var(--salmon)">La sala immersiva 360°</h3>
+      <p class="cat-card-desc">Visuals a cada paret. Dotze altaveus, subwoofers de sostre, Dolby Atmos espacial. Contingut personalitzat.</p>
     </div>
     <div class="cat-card rv" style="transition-delay:.15s">
-      <h3 style="font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;color:var(--salmon);margin-bottom:12px">La terrassa</h3>
-      <p class="cat-card-desc">Espai exterior amb vistes, ice baths opcionals. Un altre ambient entre sets.</p>
+      <h3 style="font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;color:var(--salmon)">La terrassa</h3>
+      <p class="cat-card-desc">Espai exterior amb vistes. Ice baths opcionals. Un altre ambient entre sets.</p>
     </div>
     <div class="cat-card rv" style="transition-delay:.2s">
-      <h3 style="font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;color:var(--salmon);margin-bottom:12px">El cafè</h3>
-      <p class="cat-card-desc">Cafè, matcha, smoothies, llimonada, snacks. O cava i dolços per a comiats.</p>
+      <h3 style="font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;color:var(--salmon)">El cafè</h3>
+      <p class="cat-card-desc">Cafè, matcha, smoothies, llimonada, snacks. Cava i dolços per a comiats.</p>
     </div>
     <div class="cat-card rv" style="transition-delay:.25s">
-      <h3 style="font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;color:var(--salmon);margin-bottom:12px">Extres opcionals</h3>
-      <p class="cat-card-desc">Classes privades de ioga, sound healing o breathwork. Càtering. Visuals totalment personalitzats.</p>
+      <h3 style="font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;color:var(--salmon)">Extres opcionals</h3>
+      <p class="cat-card-desc">Ioga privat, sound healing o breathwork. Càtering. Visuals personalitzats.</p>
     </div>
   </div>
 </section>
 
 <!-- HOW IT WORKS -->
-<section class="use-cases" style="padding-top:40px;padding-bottom:60px">
+<section class="use-cases" style="padding-top:40px;padding-bottom:80px">
   <span class="sl rv">Com funciona</span>
   <h2 class="sh2 rv" style="transition-delay:.07s">Tres <em>passos.</em></h2>
-  <div class="uc-grid" style="grid-template-columns:repeat(3,1fr)">
-    <div class="cat-card rv" style="transition-delay:.1s">
-      <div style="font-family:'PT Serif',serif;font-size:2.4rem;color:var(--cyan);line-height:1;margin-bottom:12px">01</div>
-      <h3 style="font-family:'PT Serif',serif;font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:8px">Digues-nos</h3>
-      <p class="cat-card-desc">Omple el formulari amb el que planeges, la data i quants convidats.</p>
+  <div class="uc-grid" style="grid-template-columns:repeat(3,1fr);gap:20px">
+    <div class="step-card rv" style="transition-delay:.1s">
+      <div class="step-num">01</div>
+      <h3 class="step-name">Digues-nos</h3>
+      <p class="step-desc">Omple el formulari. La data, els convidats, el vibe.</p>
     </div>
-    <div class="cat-card rv" style="transition-delay:.15s">
-      <div style="font-family:'PT Serif',serif;font-size:2.4rem;color:var(--cyan);line-height:1;margin-bottom:12px">02</div>
-      <h3 style="font-family:'PT Serif',serif;font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:8px">Et responem</h3>
-      <p class="cat-card-desc">En 48 hores amb opcions, preus i el possible per a la teva data.</p>
+    <div class="step-card rv" style="transition-delay:.15s">
+      <div class="step-num">02</div>
+      <h3 class="step-name">Et responem</h3>
+      <p class="step-desc">En 48 hores. Opcions, preus, el possible.</p>
     </div>
-    <div class="cat-card rv" style="transition-delay:.2s">
-      <div style="font-family:'PT Serif',serif;font-size:2.4rem;color:var(--cyan);line-height:1;margin-bottom:12px">03</div>
-      <h3 style="font-family:'PT Serif',serif;font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:8px">Ens encarreguem de la resta</h3>
-      <p class="cat-card-desc">Confirma la teva data. Muntem visuals, àudio, extres. Tu vens i celebres.</p>
+    <div class="step-card rv" style="transition-delay:.2s">
+      <div class="step-num">03</div>
+      <h3 class="step-name">Ens encarreguem de la resta</h3>
+      <p class="step-desc">Visuals, àudio, extres. Tu vens i celebres.</p>
     </div>
   </div>
 </section>
@@ -732,6 +743,7 @@ e.preventDefault();
             <option value="birthday">Aniversari</option>
             <option value="hen-party">Comiat de soltera</option>
             <option value="kids-party">Festa infantil</option>
+            <option value="private-class">Classe privada (ioga, sound healing, breathwork)</option>
             <option value="private-event">Esdeveniment privat (aniversari, graduació, retrobament)</option>
             <option value="intimate-dinner">Sopar íntim</option>
             <option value="other">Altre</option>

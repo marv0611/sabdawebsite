@@ -523,6 +523,17 @@ e.preventDefault();
 .review-nudge{padding-bottom:60px !important}
 .rn{padding-bottom:60px !important}
 @media(max-width:860px){.review-nudge{padding-bottom:40px !important}.rn{padding-bottom:40px !important}}
+
+.cat-card{background:rgba(19,24,66,.65);border:1px solid rgba(240,239,233,.08);border-radius:14px;padding:32px 28px;transition:border-color .3s,transform .3s var(--ease-expo)}
+.cat-card:hover{border-color:rgba(2,243,197,.22);transform:translateY(-2px)}
+.cat-card h3{margin:0 0 12px 0}
+.cat-card-desc{font-size:.92rem;color:var(--white60);line-height:1.7;margin:0}
+.step-card{background:rgba(19,24,66,.45);border:1px solid rgba(240,239,233,.06);border-radius:14px;padding:36px 32px;transition:border-color .3s,transform .3s var(--ease-expo)}
+.step-card:hover{border-color:rgba(2,243,197,.18);transform:translateY(-2px)}
+.step-num{font-family:'PT Serif',serif;font-size:2.4rem;color:var(--cyan);line-height:1;margin-bottom:18px;font-style:italic}
+.step-name{font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;color:var(--white);margin:0 0 10px 0}
+.step-desc{font-size:.92rem;color:var(--white60);line-height:1.7;margin:0}
+@media(max-width:900px){.step-card{padding:28px 24px} .cat-card{padding:28px 24px}}
 </style>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
@@ -594,7 +605,7 @@ e.preventDefault();
   <h2 class="sh2 rv" style="transition-delay:.07s">Inside the <em>Room.</em></h2>
   <div class="uc-grid">
     <div class="uc-card rv" style="transition-delay:.1s">
-      <div class="uc-card-bg" style="background-image:url('/images/celebrations/dj-sunset.jpg')"></div>
+      <div class="uc-card-bg" style="background-image:url('/images/celebrations/moon-dance.jpg')"></div>
       <div class="uc-card-ov"></div>
       <div class="uc-card-content">
         <span class="uc-num">01</span>
@@ -603,30 +614,30 @@ e.preventDefault();
       </div>
     </div>
     <div class="uc-card rv" style="transition-delay:.15s">
-      <div class="uc-card-bg" style="background-image:url('/images/celebrations/moon-dance.jpg')"></div>
+      <div class="uc-card-bg" style="background-image:url('/images/celebrations/celebration-hug.jpg')"></div>
       <div class="uc-card-ov"></div>
       <div class="uc-card-content">
         <span class="uc-num">02</span>
         <div class="uc-name">Hen Parties</div>
-        <div class="uc-desc">Private yoga or sound healing. Cava and sweet treats. The terrace, the caf&eacute;, the whole space.</div>
+        <div class="uc-desc">Private class, cava, custom visuals built around the night.</div>
       </div>
     </div>
     <div class="uc-card rv" style="transition-delay:.2s">
-      <div class="uc-card-bg" style="background-image:url('/images/celebrations/celebration-hug.jpg')"></div>
+      <div class="uc-card-bg" style="background-image:url('/images/celebrations/dj-sunset.jpg')"></div>
       <div class="uc-card-ov"></div>
       <div class="uc-card-content">
         <span class="uc-num">03</span>
         <div class="uc-name">Kids&#8217; Parties</div>
-        <div class="uc-desc">Games on the walls, custom visuals, a space that turns into another world for them.</div>
+        <div class="uc-desc">Themed visuals, games on the walls, a space that turns into another world.</div>
       </div>
     </div>
     <div class="uc-card rv" style="transition-delay:.25s">
-      <div class="uc-card-bg" style="background-image:url('/images/celebrations/dj-sunset.jpg')"></div>
+      <div class="uc-card-bg" style="background-image:url('https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Copy_of_Sabda_20240118_017.jpg')"></div>
       <div class="uc-card-ov"></div>
       <div class="uc-card-content">
         <span class="uc-num">04</span>
-        <div class="uc-name">Private Events</div>
-        <div class="uc-desc">Anniversaries, graduations, reunions. Full private rental with visuals built for your night.</div>
+        <div class="uc-name">Private Classes</div>
+        <div class="uc-desc">Yoga, sound healing, breathwork for your group. A guided experience inside the room.</div>
       </div>
     </div>
   </div>
@@ -655,45 +666,45 @@ e.preventDefault();
 <section class="use-cases" style="padding-top:40px">
   <span class="sl rv">What&#8217;s Included</span>
   <h2 class="sh2 rv" style="transition-delay:.07s">The whole <em>place.</em></h2>
-  <div class="uc-grid" style="grid-template-columns:repeat(2,1fr)">
+  <div class="uc-grid" style="grid-template-columns:repeat(2,1fr);gap:20px">
     <div class="cat-card rv" style="transition-delay:.1s">
-      <h3 style="font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;color:var(--salmon);margin-bottom:12px">The 360&deg; Immersive Room</h3>
-      <p class="cat-card-desc">Visuals on every wall, your music through Dolby Atmos spatial audio. Custom content for your event.</p>
+      <h3 style="font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;color:var(--salmon)">The 360&deg; Immersive Room</h3>
+      <p class="cat-card-desc">Visuals on every wall. Twelve speakers, ceiling subwoofers, Dolby Atmos spatial audio. Custom content built around your event.</p>
     </div>
     <div class="cat-card rv" style="transition-delay:.15s">
-      <h3 style="font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;color:var(--salmon);margin-bottom:12px">The Terrace</h3>
-      <p class="cat-card-desc">Outdoor space with city views, ice baths optional. A different vibe between sets.</p>
+      <h3 style="font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;color:var(--salmon)">The Terrace</h3>
+      <p class="cat-card-desc">Outdoor space with city views. Ice baths optional. A different vibe between sets.</p>
     </div>
     <div class="cat-card rv" style="transition-delay:.2s">
-      <h3 style="font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;color:var(--salmon);margin-bottom:12px">The Caf&eacute;</h3>
-      <p class="cat-card-desc">Coffee, matcha, smoothies, lemonade, snacks. Or cava and sweet treats for hen parties.</p>
+      <h3 style="font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;color:var(--salmon)">The Caf&eacute;</h3>
+      <p class="cat-card-desc">Coffee, matcha, smoothies, lemonade, snacks. Cava and sweet treats for hen parties.</p>
     </div>
     <div class="cat-card rv" style="transition-delay:.25s">
-      <h3 style="font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;color:var(--salmon);margin-bottom:12px">Optional Add-ons</h3>
-      <p class="cat-card-desc">Private yoga, sound healing or breathwork classes. Catering. Fully custom visuals designed for your night.</p>
+      <h3 style="font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;color:var(--salmon)">Optional Add-ons</h3>
+      <p class="cat-card-desc">Private yoga, sound healing or breathwork. Catering. Custom visuals designed for your night.</p>
     </div>
   </div>
 </section>
 
 <!-- HOW IT WORKS -->
-<section class="use-cases" style="padding-top:40px;padding-bottom:60px">
+<section class="use-cases" style="padding-top:40px;padding-bottom:80px">
   <span class="sl rv">How It Works</span>
   <h2 class="sh2 rv" style="transition-delay:.07s">Three <em>steps.</em></h2>
-  <div class="uc-grid" style="grid-template-columns:repeat(3,1fr)">
-    <div class="cat-card rv" style="transition-delay:.1s">
-      <div style="font-family:'PT Serif',serif;font-size:2.4rem;color:var(--cyan);line-height:1;margin-bottom:12px">01</div>
-      <h3 style="font-family:'PT Serif',serif;font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:8px">Tell us</h3>
-      <p class="cat-card-desc">Fill in the form with what you&#8217;re planning, the date, and how many guests.</p>
+  <div class="uc-grid" style="grid-template-columns:repeat(3,1fr);gap:20px">
+    <div class="step-card rv" style="transition-delay:.1s">
+      <div class="step-num">01</div>
+      <h3 class="step-name">Tell us</h3>
+      <p class="step-desc">Fill in the form. The date, the headcount, the vibe.</p>
     </div>
-    <div class="cat-card rv" style="transition-delay:.15s">
-      <div style="font-family:'PT Serif',serif;font-size:2.4rem;color:var(--cyan);line-height:1;margin-bottom:12px">02</div>
-      <h3 style="font-family:'PT Serif',serif;font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:8px">We get back</h3>
-      <p class="cat-card-desc">Within 48 hours with options, pricing, and what&#8217;s possible for your date.</p>
+    <div class="step-card rv" style="transition-delay:.15s">
+      <div class="step-num">02</div>
+      <h3 class="step-name">We get back</h3>
+      <p class="step-desc">Within 48 hours. Options, pricing, what&#8217;s possible.</p>
     </div>
-    <div class="cat-card rv" style="transition-delay:.2s">
-      <div style="font-family:'PT Serif',serif;font-size:2.4rem;color:var(--cyan);line-height:1;margin-bottom:12px">03</div>
-      <h3 style="font-family:'PT Serif',serif;font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:8px">We handle the rest</h3>
-      <p class="cat-card-desc">Confirm your date. We set up visuals, audio, add-ons. You show up and celebrate.</p>
+    <div class="step-card rv" style="transition-delay:.2s">
+      <div class="step-num">03</div>
+      <h3 class="step-name">We handle the rest</h3>
+      <p class="step-desc">Visuals, audio, add-ons. You show up and celebrate.</p>
     </div>
   </div>
 </section>
@@ -732,6 +743,7 @@ e.preventDefault();
             <option value="birthday">Birthday</option>
             <option value="hen-party">Hen Party / Bachelorette</option>
             <option value="kids-party">Kids&#8217; Party</option>
+            <option value="private-class">Private Class (yoga, sound healing, breathwork)</option>
             <option value="private-event">Private Event (anniversary, graduation, reunion)</option>
             <option value="intimate-dinner">Intimate Dinner</option>
             <option value="other">Other</option>

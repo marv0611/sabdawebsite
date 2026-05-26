@@ -523,6 +523,17 @@ e.preventDefault();
 .review-nudge{padding-bottom:60px !important}
 .rn{padding-bottom:60px !important}
 @media(max-width:860px){.review-nudge{padding-bottom:40px !important}.rn{padding-bottom:40px !important}}
+
+.cat-card{background:rgba(19,24,66,.65);border:1px solid rgba(240,239,233,.08);border-radius:14px;padding:32px 28px;transition:border-color .3s,transform .3s var(--ease-expo)}
+.cat-card:hover{border-color:rgba(2,243,197,.22);transform:translateY(-2px)}
+.cat-card h3{margin:0 0 12px 0}
+.cat-card-desc{font-size:.92rem;color:var(--white60);line-height:1.7;margin:0}
+.step-card{background:rgba(19,24,66,.45);border:1px solid rgba(240,239,233,.06);border-radius:14px;padding:36px 32px;transition:border-color .3s,transform .3s var(--ease-expo)}
+.step-card:hover{border-color:rgba(2,243,197,.18);transform:translateY(-2px)}
+.step-num{font-family:'PT Serif',serif;font-size:2.4rem;color:var(--cyan);line-height:1;margin-bottom:18px;font-style:italic}
+.step-name{font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;color:var(--white);margin:0 0 10px 0}
+.step-desc{font-size:.92rem;color:var(--white60);line-height:1.7;margin:0}
+@media(max-width:900px){.step-card{padding:28px 24px} .cat-card{padding:28px 24px}}
 </style>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
@@ -594,7 +605,7 @@ e.preventDefault();
   <h2 class="sh2 rv" style="transition-delay:.07s">Dentro de la <em>sala.</em></h2>
   <div class="uc-grid">
     <div class="uc-card rv" style="transition-delay:.1s">
-      <div class="uc-card-bg" style="background-image:url('/images/celebrations/dj-sunset.jpg')"></div>
+      <div class="uc-card-bg" style="background-image:url('/images/celebrations/moon-dance.jpg')"></div>
       <div class="uc-card-ov"></div>
       <div class="uc-card-content">
         <span class="uc-num">01</span>
@@ -603,7 +614,7 @@ e.preventDefault();
       </div>
     </div>
     <div class="uc-card rv" style="transition-delay:.15s">
-      <div class="uc-card-bg" style="background-image:url('/images/celebrations/moon-dance.jpg')"></div>
+      <div class="uc-card-bg" style="background-image:url('/images/celebrations/celebration-hug.jpg')"></div>
       <div class="uc-card-ov"></div>
       <div class="uc-card-content">
         <span class="uc-num">02</span>
@@ -612,7 +623,7 @@ e.preventDefault();
       </div>
     </div>
     <div class="uc-card rv" style="transition-delay:.2s">
-      <div class="uc-card-bg" style="background-image:url('/images/celebrations/celebration-hug.jpg')"></div>
+      <div class="uc-card-bg" style="background-image:url('/images/celebrations/dj-sunset.jpg')"></div>
       <div class="uc-card-ov"></div>
       <div class="uc-card-content">
         <span class="uc-num">03</span>
@@ -621,12 +632,12 @@ e.preventDefault();
       </div>
     </div>
     <div class="uc-card rv" style="transition-delay:.25s">
-      <div class="uc-card-bg" style="background-image:url('/images/celebrations/dj-sunset.jpg')"></div>
+      <div class="uc-card-bg" style="background-image:url('https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Copy_of_Sabda_20240118_017.jpg')"></div>
       <div class="uc-card-ov"></div>
       <div class="uc-card-content">
         <span class="uc-num">04</span>
-        <div class="uc-name">Eventos privados</div>
-        <div class="uc-desc">Aniversarios, graduaciones, reuniones. Alquiler privado completo con visuales hechos para tu noche.</div>
+        <div class="uc-name">Clases privadas</div>
+        <div class="uc-desc">Yoga, sound healing, breathwork para tu grupo. Una experiencia guiada dentro de la sala.</div>
       </div>
     </div>
   </div>
@@ -655,45 +666,45 @@ e.preventDefault();
 <section class="use-cases" style="padding-top:40px">
   <span class="sl rv">Qué se incluye</span>
   <h2 class="sh2 rv" style="transition-delay:.07s">Todo el <em>espacio.</em></h2>
-  <div class="uc-grid" style="grid-template-columns:repeat(2,1fr)">
+  <div class="uc-grid" style="grid-template-columns:repeat(2,1fr);gap:20px">
     <div class="cat-card rv" style="transition-delay:.1s">
-      <h3 style="font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;color:var(--salmon);margin-bottom:12px">La sala inmersiva 360°</h3>
-      <p class="cat-card-desc">Visuales en cada pared, tu música por audio espacial Dolby Atmos. Contenido personalizado para tu evento.</p>
+      <h3 style="font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;color:var(--salmon)">La sala inmersiva 360°</h3>
+      <p class="cat-card-desc">Visuales en cada pared. Doce altavoces, subwoofers de techo, Dolby Atmos espacial. Contenido personalizado para tu evento.</p>
     </div>
     <div class="cat-card rv" style="transition-delay:.15s">
-      <h3 style="font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;color:var(--salmon);margin-bottom:12px">La terraza</h3>
-      <p class="cat-card-desc">Espacio exterior con vistas, ice baths opcionales. Otro ambiente entre sets.</p>
+      <h3 style="font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;color:var(--salmon)">La terraza</h3>
+      <p class="cat-card-desc">Espacio exterior con vistas. Ice baths opcionales. Otro ambiente entre sets.</p>
     </div>
     <div class="cat-card rv" style="transition-delay:.2s">
-      <h3 style="font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;color:var(--salmon);margin-bottom:12px">El café</h3>
-      <p class="cat-card-desc">Café, matcha, smoothies, limonada, snacks. O cava y dulces para despedidas.</p>
+      <h3 style="font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;color:var(--salmon)">El café</h3>
+      <p class="cat-card-desc">Café, matcha, smoothies, limonada, snacks. Cava y dulces para despedidas.</p>
     </div>
     <div class="cat-card rv" style="transition-delay:.25s">
-      <h3 style="font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;color:var(--salmon);margin-bottom:12px">Extras opcionales</h3>
-      <p class="cat-card-desc">Clases privadas de yoga, sound healing o breathwork. Catering. Visuales totalmente personalizados.</p>
+      <h3 style="font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;color:var(--salmon)">Extras opcionales</h3>
+      <p class="cat-card-desc">Yoga privado, sound healing o breathwork. Catering. Visuales personalizados.</p>
     </div>
   </div>
 </section>
 
 <!-- HOW IT WORKS -->
-<section class="use-cases" style="padding-top:40px;padding-bottom:60px">
+<section class="use-cases" style="padding-top:40px;padding-bottom:80px">
   <span class="sl rv">Cómo funciona</span>
   <h2 class="sh2 rv" style="transition-delay:.07s">Tres <em>pasos.</em></h2>
-  <div class="uc-grid" style="grid-template-columns:repeat(3,1fr)">
-    <div class="cat-card rv" style="transition-delay:.1s">
-      <div style="font-family:'PT Serif',serif;font-size:2.4rem;color:var(--cyan);line-height:1;margin-bottom:12px">01</div>
-      <h3 style="font-family:'PT Serif',serif;font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:8px">Cuéntanos</h3>
-      <p class="cat-card-desc">Rellena el formulario con lo que planeas, la fecha y cuántos invitados.</p>
+  <div class="uc-grid" style="grid-template-columns:repeat(3,1fr);gap:20px">
+    <div class="step-card rv" style="transition-delay:.1s">
+      <div class="step-num">01</div>
+      <h3 class="step-name">Cuéntanos</h3>
+      <p class="step-desc">Rellena el formulario. La fecha, los invitados, el vibe.</p>
     </div>
-    <div class="cat-card rv" style="transition-delay:.15s">
-      <div style="font-family:'PT Serif',serif;font-size:2.4rem;color:var(--cyan);line-height:1;margin-bottom:12px">02</div>
-      <h3 style="font-family:'PT Serif',serif;font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:8px">Te respondemos</h3>
-      <p class="cat-card-desc">En 48 horas con opciones, precios y lo posible para tu fecha.</p>
+    <div class="step-card rv" style="transition-delay:.15s">
+      <div class="step-num">02</div>
+      <h3 class="step-name">Te respondemos</h3>
+      <p class="step-desc">En 48 horas. Opciones, precios, lo posible.</p>
     </div>
-    <div class="cat-card rv" style="transition-delay:.2s">
-      <div style="font-family:'PT Serif',serif;font-size:2.4rem;color:var(--cyan);line-height:1;margin-bottom:12px">03</div>
-      <h3 style="font-family:'PT Serif',serif;font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:8px">Nos encargamos del resto</h3>
-      <p class="cat-card-desc">Confirma tu fecha. Montamos visuales, audio, extras. Tú llegas y celebras.</p>
+    <div class="step-card rv" style="transition-delay:.2s">
+      <div class="step-num">03</div>
+      <h3 class="step-name">Nos encargamos del resto</h3>
+      <p class="step-desc">Visuales, audio, extras. Tú llegas y celebras.</p>
     </div>
   </div>
 </section>
@@ -732,6 +743,7 @@ e.preventDefault();
             <option value="birthday">Cumpleaños</option>
             <option value="hen-party">Despedida de soltera</option>
             <option value="kids-party">Fiesta infantil</option>
+            <option value="private-class">Clase privada (yoga, sound healing, breathwork)</option>
             <option value="private-event">Evento privado (aniversario, graduación, reunión)</option>
             <option value="intimate-dinner">Cena íntima</option>
             <option value="other">Otro</option>
