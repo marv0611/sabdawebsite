@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-05-25",
-      "slug": "/blog/curso-mindfulness-barcelona/",
-      "order": 29
+      "date": "2026-05-27",
+      "slug": "/blog/exposiciones-inmersivas-barcelona/",
+      "order": 30
     }
   },
   "queue": [
@@ -400,8 +400,9 @@
       "release_date": "2026-05-26",
       "md_file": "blog/article-33-exposiciones-inmersivas-barcelona.md",
       "html_file": "blog/exposiciones-inmersivas-barcelona/index.html",
-      "status": "queued",
-      "volume": 170
+      "status": "released",
+      "volume": 170,
+      "released_at": "2026-05-27"
     },
     {
       "order": 31,

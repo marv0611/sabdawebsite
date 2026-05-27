@@ -7,6 +7,7 @@
 **Slug:** `/blog/exposiciones-inmersivas-barcelona/`
 
 **Primary keyword:** exposicion inmersiva barcelona
+**publish: true**
 **Secondary keywords:** exposiciones inmersivas barcelona, arte inmersivo barcelona
 
 ---
