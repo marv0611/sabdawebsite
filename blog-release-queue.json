@@ -9,8 +9,8 @@
     "regenerated": "2026-04-20",
     "last_release": {
       "date": "2026-05-27",
-      "slug": "/blog/exposiciones-inmersivas-barcelona/",
-      "order": 30
+      "slug": "/blog/pilates-embarazadas-barcelona/",
+      "order": 31
     }
   },
   "queue": [
@@ -413,8 +413,9 @@
       "release_date": "2026-05-27",
       "md_file": "blog/article-29-pilates-embarazadas-barcelona.md",
       "html_file": "blog/pilates-embarazadas-barcelona/index.html",
-      "status": "queued",
-      "volume": 140
+      "status": "released",
+      "volume": 140,
+      "released_at": "2026-05-27"
     },
     {
       "order": 32,

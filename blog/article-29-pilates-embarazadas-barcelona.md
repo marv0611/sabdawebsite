@@ -7,6 +7,7 @@
 **Slug:** `/blog/pilates-embarazadas-barcelona/`
 
 **Primary keyword:** pilates embarazadas barcelona
+**publish: true**
 **Secondary keywords:** pilates prenatal barcelona, pilates embarazo
 
 ---
