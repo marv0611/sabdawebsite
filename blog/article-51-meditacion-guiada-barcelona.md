@@ -7,6 +7,7 @@
 **Slug:** `/blog/meditacion-guiada-barcelona/`
 
 **Primary keyword:** meditacion guiada barcelona
+**publish: true**
 **Secondary keywords:** clases meditacion barcelona, como meditar, meditación para principiantes
 
 ---
