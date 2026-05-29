@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-05-28",
-      "slug": "/blog/meditacion-guiada-barcelona/",
-      "order": 32
+      "date": "2026-05-29",
+      "slug": "/blog/cuencos-tibetanos/",
+      "order": 33
     }
   },
   "queue": [
@@ -439,8 +439,9 @@
       "release_date": "2026-05-29",
       "md_file": "blog/article-31-cuencos-tibetanos.md",
       "html_file": "blog/cuencos-tibetanos/index.html",
-      "status": "queued",
-      "volume": 140
+      "status": "released",
+      "volume": 140,
+      "released_at": "2026-05-29"
     },
     {
       "order": 34,

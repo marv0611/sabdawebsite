@@ -7,6 +7,7 @@
 **Slug:** `/blog/cuencos-tibetanos/`
 
 **Primary keyword:** cuencos tibetanos barcelona
+**publish: true**
 **Secondary keywords:** cuencos tibetanos qué son, baño de gong barcelona, cuencos de cristal
 
 ---
