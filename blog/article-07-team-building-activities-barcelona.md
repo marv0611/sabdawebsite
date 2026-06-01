@@ -7,6 +7,7 @@
 **Slug:** `/blog/team-building-activities-barcelona/`
 
 **Primary keyword:** team building activities barcelona
+**publish: true**
 **Secondary keywords:** best team building barcelona, corporate events barcelona, unique team building
 
 ---
