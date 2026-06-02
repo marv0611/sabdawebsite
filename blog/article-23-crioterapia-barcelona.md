@@ -7,6 +7,7 @@
 **Slug:** `/blog/crioterapia-barcelona/`
 
 **Primary keyword:** crioterapia barcelona
+**publish: true**
 **Secondary keywords:** baño de hielo barcelona, ice bath barcelona, wim hof barcelona
 
 ---
