@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-06-02",
-      "slug": "/blog/crioterapia-barcelona/",
-      "order": 35
+      "date": "2026-06-03",
+      "slug": "/blog/best-yoga-studios-barcelona/",
+      "order": 36
     }
   },
   "queue": [
@@ -478,8 +478,9 @@
       "release_date": "2026-06-03",
       "md_file": "blog/article-41-best-yoga-studios-barcelona.md",
       "html_file": "blog/best-yoga-studios-barcelona/index.html",
-      "status": "queued",
-      "volume": 10
+      "status": "released",
+      "volume": 10,
+      "released_at": "2026-06-03"
     },
     {
       "order": 37,

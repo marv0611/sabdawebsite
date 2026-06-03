@@ -7,6 +7,7 @@
 **Slug:** `/blog/best-yoga-studios-barcelona/`
 
 **Primary keyword:** best yoga studio barcelona
+**publish: true**
 **Secondary keywords:** yoga studio barcelona, yoga classes barcelona, yoga in english barcelona
 
 ---
