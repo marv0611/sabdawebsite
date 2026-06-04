@@ -7,6 +7,7 @@
 **Slug:** `/blog/ciencia-bienestar-inmersivo/`
 
 **Primary keyword:** exposicion inmersiva barcelona
+**publish: true**
 **Secondary keywords:** exposiciones inmersivas barcelona, wellness inmersivo, ciencia del bienestar, neurociencia wellness
 
 ---

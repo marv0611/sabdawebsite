@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-06-03",
-      "slug": "/blog/best-yoga-studios-barcelona/",
-      "order": 36
+      "date": "2026-06-04",
+      "slug": "/blog/ciencia-bienestar-inmersivo/",
+      "order": 37
     }
   },
   "queue": [
@@ -491,8 +491,9 @@
       "release_date": "2026-06-04",
       "md_file": "blog/article-55-ciencia-bienestar-inmersivo.md",
       "html_file": "blog/ciencia-bienestar-inmersivo/index.html",
-      "status": "queued",
-      "volume": 170
+      "status": "released",
+      "volume": 170,
+      "released_at": "2026-06-04"
     },
     {
       "order": 38,
