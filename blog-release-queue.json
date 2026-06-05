@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-06-04",
-      "slug": "/blog/ciencia-bienestar-inmersivo/",
-      "order": 37
+      "date": "2026-06-05",
+      "slug": "/blog/yin-yoga-barcelona/",
+      "order": 38
     }
   },
   "queue": [
@@ -504,8 +504,9 @@
       "release_date": "2026-06-05",
       "md_file": "blog/article-24-yin-yoga-barcelona.md",
       "html_file": "blog/yin-yoga-barcelona/index.html",
-      "status": "queued",
-      "volume": 90
+      "status": "released",
+      "volume": 90,
+      "released_at": "2026-06-05"
     },
     {
       "order": 39,

@@ -7,6 +7,7 @@
 **Slug:** `/blog/yin-yoga-barcelona/`
 
 **Primary keyword:** yin yoga barcelona
+**publish: true**
 **Secondary keywords:** yin yoga qué es, yin yoga beneficios, yoga suave barcelona
 
 ---
