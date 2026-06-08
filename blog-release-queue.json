@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-06-05",
-      "slug": "/blog/yin-yoga-barcelona/",
-      "order": 38
+      "date": "2026-06-08",
+      "slug": "/blog/barcelona-weekend-guide/",
+      "order": 39
     }
   },
   "queue": [
@@ -517,8 +517,9 @@
       "release_date": "2026-06-08",
       "md_file": "blog/article-38-barcelona-weekend-guide.md",
       "html_file": "blog/barcelona-weekend-guide/index.html",
-      "status": "queued",
-      "volume": 0
+      "status": "released",
+      "volume": 0,
+      "released_at": "2026-06-08"
     },
     {
       "order": 40,
