@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-06-08",
-      "slug": "/blog/barcelona-weekend-guide/",
-      "order": 39
+      "date": "2026-06-09",
+      "slug": "/blog/hatha-yoga-vs-vinyasa/",
+      "order": 40
     }
   },
   "queue": [
@@ -530,8 +530,9 @@
       "release_date": "2026-06-09",
       "md_file": "blog/article-25-hatha-yoga-vs-vinyasa.md",
       "html_file": "blog/hatha-yoga-vs-vinyasa/index.html",
-      "status": "queued",
-      "volume": 90
+      "status": "released",
+      "volume": 90,
+      "released_at": "2026-06-09"
     },
     {
       "order": 41,

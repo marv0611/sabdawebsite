@@ -7,6 +7,7 @@
 **Slug:** `/blog/hatha-yoga-vs-vinyasa/`
 
 **Primary keyword:** hatha yoga barcelona
+**publish: true**
 **Secondary keywords:** vinyasa yoga barcelona, diferencia hatha vinyasa, yoga para principiantes barcelona
 
 ---
