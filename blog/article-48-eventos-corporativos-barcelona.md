@@ -7,6 +7,7 @@
 **Slug:** `/blog/eventos-corporativos-barcelona/`
 
 **Primary keyword:** eventos corporativos barcelona
+**publish: true**
 **Secondary keywords:** actividades para empresas barcelona, espacios para eventos corporativos barcelona
 
 ---
