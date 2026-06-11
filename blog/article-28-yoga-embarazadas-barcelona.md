@@ -7,6 +7,7 @@
 **Slug:** `/blog/yoga-embarazadas-barcelona/`
 
 **Primary keyword:** yoga embarazadas barcelona
+**publish: true**
 **Secondary keywords:** yoga prenatal barcelona, yoga embarazo, prenatal yoga barcelona
 
 ---

@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-06-10",
-      "slug": "/blog/eventos-corporativos-barcelona/",
-      "order": 41
+      "date": "2026-06-11",
+      "slug": "/blog/yoga-embarazadas-barcelona/",
+      "order": 42
     }
   },
   "queue": [
@@ -556,8 +556,9 @@
       "release_date": "2026-06-11",
       "md_file": "blog/article-28-yoga-embarazadas-barcelona.md",
       "html_file": "blog/yoga-embarazadas-barcelona/index.html",
-      "status": "queued",
-      "volume": 90
+      "status": "released",
+      "volume": 90,
+      "released_at": "2026-06-11"
     },
     {
       "order": 43,
