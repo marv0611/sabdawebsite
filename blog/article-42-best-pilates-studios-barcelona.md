@@ -7,6 +7,7 @@
 **Slug:** `/blog/best-pilates-studios-barcelona/`
 
 **Primary keyword:** pilates studios barcelona
+**publish: true**
 **Secondary keywords:** pilates classes barcelona, mat pilates barcelona, reformer pilates barcelona, best pilates barcelona, where to do pilates barcelona
 
 ---

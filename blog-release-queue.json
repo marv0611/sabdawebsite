@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-06-11",
-      "slug": "/blog/yoga-embarazadas-barcelona/",
-      "order": 42
+      "date": "2026-06-12",
+      "slug": "/blog/best-pilates-studios-barcelona/",
+      "order": 43
     }
   },
   "queue": [
@@ -569,8 +569,9 @@
       "release_date": "2026-06-12",
       "md_file": "blog/article-42-best-pilates-studios-barcelona.md",
       "html_file": "blog/best-pilates-studios-barcelona/index.html",
-      "status": "queued",
-      "volume": 0
+      "status": "released",
+      "volume": 0,
+      "released_at": "2026-06-12"
     },
     {
       "order": 44,
