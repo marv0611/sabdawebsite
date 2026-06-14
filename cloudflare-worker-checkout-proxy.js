@@ -1395,6 +1395,15 @@ async function handleCapiEvent(request, origin, env, ctx, defaultEvent, requireE
       await capiPromise;
     }
 
+    // ── Mirror the email→attribution mapping into KV ──
+    // Best-effort: lifts CAPI match quality for downstream Purchase events
+    // by ensuring the Stripe-webhook path can find fbc/fbp/fbclid when it
+    // looks up by email hash, even if the frontend's /store-attribution
+    // landing POST never landed. Silent-skip semantics — see helper.
+    if (ctx && ctx.waitUntil) {
+      ctx.waitUntil(autoStoreAttribution(env, email, fbc, fbp, attribution, 'capi-' + effectiveEventName));
+    }
+
     return new Response(JSON.stringify({ success: true }), {
       status: 200, headers: corsHeaders(origin),
     });
@@ -1483,6 +1492,15 @@ async function handlePay(request, origin, env, ctx) {
     }
     if (isFree && (discountCode || discountCodeId)) {
       console.log('[PAY] €0 booking with discount code — routing to Momence with appliedPriceRuleIds');
+    }
+
+    // ── Mirror the email→attribution mapping into KV ──
+    // Fires for every /pay invocation that reaches this point (paid + free-
+    // with-discount; the free+no-discount case already returned above). This
+    // is the highest-confidence moment to lock in attribution: user has
+    // committed to a purchase intent. Silent-skip semantics — see helper.
+    if (ctx && ctx.waitUntil) {
+      ctx.waitUntil(autoStoreAttribution(env, email, fbc, fbp, attribution, 'pay'));
     }
 
     if (!stripePaymentMethodId) {
@@ -1901,6 +1919,53 @@ function humanizeMomenceError(raw) {
 // CAPI path is confirmed working. Then all Purchase events come from
 // our system with full match quality.
 // ═══════════════════════════════════════════════════════════════════
+
+// ── autoStoreAttribution ──
+// Capture-on-event mirror of /sabda-api/store-attribution. The frontend POSTs
+// to /store-attribution at landing time to map email → attribution, but:
+//   • landing POST can fail (network, ad-blocker, CSP, race with unload)
+//   • some users hit /classes/ directly without firing the landing tracker
+//   • Stripe-webhook Purchases rely on a prior KV write to enrich fbc/fbp
+// So we *also* write the mapping every time we have email + a paid-click
+// signal — on every CAPI event and every /pay. Keyed by sha256(lowercase
+// email) at 'attr:{hash}' with 30-day TTL, identical shape to the landing
+// writer. Last-write-wins on key collisions, which is fine: the most recent
+// click-bearing visit is what we want for downstream Purchase attribution.
+//
+// Silent-skips (no throw, no log spam) when:
+//   • env.ATTRIBUTION_KV unbound — dashboard binding missing
+//   • email empty — anonymous event, nothing to key on
+//   • no paid-click signal (no fbc / fbclid / gclid / ttclid / msclkid / li_fat_id)
+//     — organic/direct visits don't need this; storing them dilutes the KV
+//     and they wouldn't help CAPI match-quality on Purchase anyway.
+async function autoStoreAttribution(env, email, fbc, fbp, attribution, eventLabel) {
+  try {
+    if (!env || !env.ATTRIBUTION_KV) return;
+    if (!email) return;
+    const attr = (attribution && typeof attribution === 'object') ? attribution : {};
+    const hasClickSignal = !!(fbc || attr.fbclid || attr.gclid || attr.ttclid || attr.msclkid || attr.li_fat_id);
+    if (!hasClickSignal) return;
+
+    const emailHash = await sha256hex(email.toLowerCase().trim());
+    const key = 'attr:' + emailHash;
+    const value = JSON.stringify({
+      ...attr,
+      fbc_cookie: fbc || '',
+      fbp: fbp || '',
+      stored_at: Date.now(),
+      stored_via: eventLabel || 'auto',
+      email_hint: email.slice(0, 3) + '***',
+    });
+    await env.ATTRIBUTION_KV.put(key, value, { expirationTtl: 2592000 });
+    console.log('[ATTR-AUTO] ' + (eventLabel || 'auto') + ' ' + emailHash.slice(0, 12) +
+      ' fbc=' + (fbc ? 'yes' : 'no') +
+      ' fbclid=' + (attr.fbclid ? 'yes' : 'no') +
+      ' utm_source=' + (attr.utm_source || '-'));
+  } catch (e) {
+    // Never throw — auto-store is best-effort. Log once and move on.
+    console.log('[ATTR-AUTO] ERROR ' + (eventLabel || 'auto') + ':', e && e.message);
+  }
+}
 
 async function handleStoreAttribution(request, origin, env) {
   try {
