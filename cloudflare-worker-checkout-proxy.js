@@ -2286,30 +2286,47 @@ async function handleWebhookPurchase(request, origin, env, ctx) {
 
     console.log('[WEBHOOK] Purchase source=' + source + ' email=' + email.slice(0, 3) + '*** amount=' + amount + ' product=' + productName + ' fbc=' + (fbcFromAttribution ? 'constructed' : 'none') + ' fbp=' + (fbpFromAttribution ? 'stored' : 'none') + ' addr_city=' + (city ? 'yes' : 'no') + ' addr_country=' + (country || '-') + ' addr_zp=' + (zip ? 'yes' : 'no'));
 
-    const capiPromise = sendCAPIEvent(
-      'Purchase', eventId, email, firstName, lastName,
-      amount, 'EUR',
-      'https://sabdastudio.com/classes/',
-      clientIp,
-      clientUA,
-      fbpFromAttribution, // fbp — from stored attribution (captured at modal-email time)
-      fbcFromAttribution, // fbc — constructed from stored attribution
-      env,
-      phone,
-      email || '', // externalId — fall back to email so webhook-path Purchases get the same external_id EMQ signal as /capi-event and /capi-purchase (both of which already do `externalId || email || ''`). sendCAPIEvent hashes this, so no PII leaks to Meta.
-      '', // testEventCode
-      city || '', // extracted from billing_details.address
-      country || '', // ISO-2 from billing_details.address — no default, send empty if unknown
-      attribution, // full attribution object
-      null, // contentMeta
-      state || '', // extracted from billing_details.address (e.g. "CT" for Catalunya, "AN" for Andalusia)
-      zip || '' // postal_code from billing_details.address
-    ).catch((e) => console.log('[WEBHOOK] CAPI error:', e && e.message));
+    // -- SHORT-TERM DEDUP FIX (2026-06-15) --
+    // Webhook Purchase send disabled to stop Meta double-counting. This
+    // event minted event_id 'swh_{txn}', which never matched any browser
+    // Purchase id, so every charge produced a second, un-dedupable Purchase
+    // (on-site already emits a deduped browser + /capi-purchase 'purch_'
+    // pair; Momence-hosted emits Momence's own browser Pixel). Momence's
+    // browser Pixel is the sole Purchase source for now. The webhook still
+    // verifies the Stripe signature, resolves the buyer, and logs the
+    // purchase for reconciliation. Flip SEND_WEBHOOK_PURCHASE to true to
+    // restore once event_id dedup (txn -> purch_) is built and Momence's
+    // native Pixel is retired.
+    const SEND_WEBHOOK_PURCHASE = false;
 
-    if (ctx && ctx.waitUntil) {
-      ctx.waitUntil(capiPromise);
+    if (SEND_WEBHOOK_PURCHASE) {
+      const capiPromise = sendCAPIEvent(
+        'Purchase', eventId, email, firstName, lastName,
+        amount, 'EUR',
+        'https://sabdastudio.com/classes/',
+        clientIp,
+        clientUA,
+        fbpFromAttribution, // fbp — from stored attribution (captured at modal-email time)
+        fbcFromAttribution, // fbc — constructed from stored attribution
+        env,
+        phone,
+        email || '', // externalId — fall back to email so webhook-path Purchases get the same external_id EMQ signal as /capi-event and /capi-purchase (both of which already do `externalId || email || ''`). sendCAPIEvent hashes this, so no PII leaks to Meta.
+        '', // testEventCode
+        city || '', // extracted from billing_details.address
+        country || '', // ISO-2 from billing_details.address — no default, send empty if unknown
+        attribution, // full attribution object
+        null, // contentMeta
+        state || '', // extracted from billing_details.address (e.g. "CT" for Catalunya, "AN" for Andalusia)
+        zip || '' // postal_code from billing_details.address
+      ).catch((e) => console.log('[WEBHOOK] CAPI error:', e && e.message));
+
+      if (ctx && ctx.waitUntil) {
+        ctx.waitUntil(capiPromise);
+      } else {
+        await capiPromise;
+      }
     } else {
-      await capiPromise;
+      console.log('[WEBHOOK] Purchase CAPI SUPPRESSED (dedup short-term) txn=' + (transactionId || '-').slice(0, 20) + ' amount=' + amount + ' attr=' + (!!attribution) + ' fbc=' + (fbcFromAttribution ? 'yes' : 'no'));
     }
 
     return new Response(JSON.stringify({
@@ -2317,6 +2334,7 @@ async function handleWebhookPurchase(request, origin, env, ctx) {
       eventId,
       attribution_found: !!attribution,
       fbc_constructed: !!fbcFromAttribution,
+      purchase_suppressed: !SEND_WEBHOOK_PURCHASE,
     }), { status: 200, headers: corsHeaders(origin) });
   } catch (e) {
     console.log('[WEBHOOK] ERROR:', e.message);
