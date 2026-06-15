@@ -3,8 +3,12 @@ main = "cloudflare-worker-checkout-proxy.js"
 compatibility_date = "2024-01-01"
 account_id = "ac63756828d402343fc988ec9f161f56"
 
-# KV binding intentionally NOT declared here — managed via Cloudflare dashboard.
-# Dashboard: Workers & Pages → sabda-checkout-proxy → Settings → Bindings
-# Binding name: ATTRIBUTION_KV
-# Wrangler deploy preserves dashboard-set bindings as long as they aren't
-# overridden here.
+# KV namespace declared explicitly. Wrangler 4.x strips any binding not
+# present in this file on deploy, regardless of what's set in the
+# dashboard — confirmed June 15, 2026 when [WEBHOOK] logs showed
+# 'ATTRIBUTION_KV not bound' immediately after a successful deploy.
+# Previous comment in this file claiming dashboard bindings were
+# preserved was outdated (true for wrangler 2.x/3.x).
+[[kv_namespaces]]
+binding = "ATTRIBUTION_KV"
+id = "f9930d6ddecd463994f3ef6b20b0b2e1"
