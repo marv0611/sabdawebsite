@@ -7,6 +7,7 @@
 **Slug:** `/blog/immersive-experiences-barcelona/`
 
 **Primary keyword:** immersive experience barcelona
+**publish: true**
 **Secondary keywords:** immersive art barcelona, 360 experience barcelona, things to do barcelona
 
 ---

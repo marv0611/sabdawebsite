@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-06-12",
-      "slug": "/blog/best-pilates-studios-barcelona/",
-      "order": 43
+      "date": "2026-06-15",
+      "slug": "/blog/immersive-experiences-barcelona/",
+      "order": 44
     }
   },
   "queue": [
@@ -582,8 +582,9 @@
       "release_date": "2026-06-15",
       "md_file": "blog/article-30-immersive-experiences-barcelona.md",
       "html_file": "blog/immersive-experiences-barcelona/index.html",
-      "status": "queued",
-      "volume": 110
+      "status": "released",
+      "volume": 110,
+      "released_at": "2026-06-15"
     },
     {
       "order": 45,
