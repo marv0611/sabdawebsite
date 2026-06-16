@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-06-15",
-      "slug": "/blog/immersive-experiences-barcelona/",
-      "order": 44
+      "date": "2026-06-16",
+      "slug": "/blog/yoga-nidra-barcelona/",
+      "order": 45
     }
   },
   "queue": [
@@ -595,8 +595,9 @@
       "release_date": "2026-06-16",
       "md_file": "blog/article-26-yoga-nidra-barcelona.md",
       "html_file": "blog/yoga-nidra-barcelona/index.html",
-      "status": "queued",
-      "volume": 70
+      "status": "released",
+      "volume": 70,
+      "released_at": "2026-06-16"
     },
     {
       "order": 46,

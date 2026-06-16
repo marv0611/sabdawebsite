@@ -7,6 +7,7 @@
 **Slug:** `/blog/yoga-nidra-barcelona/`
 
 **Primary keyword:** yoga nidra barcelona
+**publish: true**
 **Secondary keywords:** yoga nidra qué es, meditación guiada barcelona
 
 ---
