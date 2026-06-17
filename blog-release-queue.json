@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-06-16",
-      "slug": "/blog/yoga-nidra-barcelona/",
-      "order": 45
+      "date": "2026-06-17",
+      "slug": "/blog/couples-activities-barcelona/",
+      "order": 46
     }
   },
   "queue": [
@@ -608,8 +608,9 @@
       "release_date": "2026-06-17",
       "md_file": "blog/article-50-couples-activities-barcelona.md",
       "html_file": "blog/couples-activities-barcelona/index.html",
-      "status": "queued",
-      "volume": 0
+      "status": "released",
+      "volume": 0,
+      "released_at": "2026-06-17"
     },
     {
       "order": 47,

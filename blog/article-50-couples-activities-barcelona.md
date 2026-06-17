@@ -7,6 +7,7 @@
 **Slug:** `/blog/couples-activities-barcelona/`
 
 **Primary keyword:** date night barcelona
+**publish: true**
 **Secondary keywords:** romantic things to do barcelona, couples activities barcelona, romantic date ideas barcelona, things to do barcelona for couples, romantic barcelona
 
 ---
