@@ -7,6 +7,7 @@
 **Slug:** `/blog/wim-hof-barcelona/`
 
 **Primary keyword:** wim hof barcelona
+**publish: true**
 **Secondary keywords:** wim hof method, cold exposure barcelona, breathwork ice bath barcelona
 
 ---

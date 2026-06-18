@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-06-17",
-      "slug": "/blog/couples-activities-barcelona/",
-      "order": 46
+      "date": "2026-06-18",
+      "slug": "/blog/wim-hof-barcelona/",
+      "order": 47
     }
   },
   "queue": [
@@ -621,8 +621,9 @@
       "release_date": "2026-06-18",
       "md_file": "blog/article-37-wim-hof-barcelona.md",
       "html_file": "blog/wim-hof-barcelona/index.html",
-      "status": "queued",
-      "volume": 30
+      "status": "released",
+      "volume": 30,
+      "released_at": "2026-06-18"
     },
     {
       "order": 48,
