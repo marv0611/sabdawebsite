@@ -7,6 +7,7 @@
 **Slug:** `/blog/corporate-wellness-barcelona/`
 
 **Primary keyword:** corporate events barcelona
+**publish: true**
 **Secondary keywords:** corporate wellness, team wellness, company offsite barcelona
 
 ---

@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-06-18",
-      "slug": "/blog/wim-hof-barcelona/",
-      "order": 47
+      "date": "2026-06-19",
+      "slug": "/blog/corporate-wellness-barcelona/",
+      "order": 48
     }
   },
   "queue": [
@@ -634,8 +634,9 @@
       "release_date": "2026-06-19",
       "md_file": "blog/article-43-corporate-wellness-barcelona.md",
       "html_file": "blog/corporate-wellness-barcelona/index.html",
-      "status": "queued",
-      "volume": 20
+      "status": "released",
+      "volume": 20,
+      "released_at": "2026-06-19"
     },
     {
       "order": 49,
