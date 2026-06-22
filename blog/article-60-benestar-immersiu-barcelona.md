@@ -7,6 +7,7 @@
 **Slug:** `/blog/benestar-immersiu-barcelona/`
 
 **Primary keyword:** benestar barcelona
+**publish: true**
 **Secondary keywords:** experiència immersiva barcelona, centre de benestar barcelona
 
 ---
