@@ -7,6 +7,7 @@
 **Slug:** `/blog/barcelona-summer-activities/`
 
 **Primary keyword:** barcelona summer activities
+**publish: true**
 **Secondary keywords:** things to do in barcelona in summer, barcelona july, barcelona august, what to do barcelona summer, barcelona summer guide
 
 ---

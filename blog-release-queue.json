@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-06-22",
-      "slug": "/blog/benestar-immersiu-barcelona/",
-      "order": 49
+      "date": "2026-06-23",
+      "slug": "/blog/barcelona-summer-activities/",
+      "order": 50
     }
   },
   "queue": [
@@ -660,8 +660,9 @@
       "release_date": "2026-06-23",
       "md_file": "blog/article-57-barcelona-summer-activities.md",
       "html_file": "blog/barcelona-summer-activities/index.html",
-      "status": "queued",
-      "volume": 0
+      "status": "released",
+      "volume": 0,
+      "released_at": "2026-06-23"
     },
     {
       "order": 51,
