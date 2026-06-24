@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-06-23",
-      "slug": "/blog/barcelona-summer-activities/",
-      "order": 50
+      "date": "2026-06-24",
+      "slug": "/blog/sala-inmersiva-barcelona/",
+      "order": 51
     }
   },
   "queue": [
@@ -673,8 +673,9 @@
       "release_date": "2026-06-24",
       "md_file": "blog/article-44-sala-inmersiva-barcelona.md",
       "html_file": "blog/sala-inmersiva-barcelona/index.html",
-      "status": "queued",
-      "volume": 70
+      "status": "released",
+      "volume": 70,
+      "released_at": "2026-06-24"
     },
     {
       "order": 52,

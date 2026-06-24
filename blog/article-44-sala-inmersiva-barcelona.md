@@ -7,6 +7,7 @@
 **Slug:** `/blog/sala-inmersiva-barcelona/`
 
 **Primary keyword:** sala inmersiva barcelona
+**publish: true**
 **Secondary keywords:** espacio inmersivo barcelona, sala 360 barcelona, proyecciones 360
 
 ---
