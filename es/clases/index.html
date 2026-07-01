@@ -971,7 +971,15 @@ function get7d(offset){
   return days;
 }
 function getMadridDate(d){return d.toLocaleDateString('en-CA',{timeZone:'Europe/Madrid'});}
-var weekOffset=0;
+var weekOffset=0,maxWeekOffset=0;
+function computeMaxWeekOffset(){
+  if(!allE||!allE.length) return 0;
+  var today=getMadridDate(new Date());var maxM=today;
+  allE.forEach(function(e){var dd=getMadridDate(new Date(e.dateTime));if(dd>maxM)maxM=dd;});
+  var t0=new Date(today+'T00:00:00'),t1=new Date(maxM+'T00:00:00');
+  var diff=Math.floor((t1-t0)/86400000);
+  return Math.max(0,Math.min(Math.floor(diff/7),8));
+}
 
 function renderDays(){
   var c=document.getElementById('days');
@@ -994,12 +1002,12 @@ function renderDays(){
       +'<span class="day-num">'+madridDate.getDate()+'</span></button>';
   }).join('');
   html+='</div>';
-  html+='<button class="day-arr" onclick="nextWeek()">'+rightSvg+'</button>';
+  html+='<button class="day-arr" onclick="nextWeek()"'+(weekOffset>=maxWeekOffset?' disabled':'')+'>'+rightSvg+'</button>';
   c.innerHTML=html;
 }
 
 function prevWeek(){if(weekOffset>0){weekOffset--;renderDays();renderSched();}}
-function nextWeek(){weekOffset++;renderDays();renderSched();}
+function nextWeek(){if(weekOffset<maxWeekOffset){weekOffset++;renderDays();renderSched();}}
 
 function selDay(b,ds){
   document.querySelectorAll('.day-btn').forEach(function(x){x.classList.remove('active');});
@@ -2106,7 +2114,7 @@ async function init(){
         })()
       };
     });
-    renderFilters(allE);renderSched();
+    maxWeekOffset=computeMaxWeekOffset();renderDays();renderFilters(allE);renderSched();
     var skEl=document.getElementById('sk');
     var schedEl=document.getElementById('sched');
     schedEl.style.opacity='0';

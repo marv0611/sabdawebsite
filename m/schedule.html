@@ -120,8 +120,13 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
 .hdr-back svg{width:16px;height:16px;stroke:var(--white60);fill:none;stroke-width:2}
 
 /* DAYS — horizontal scroll */
-.days{display:flex;gap:6px;padding:16px 20px 0;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-.days::-webkit-scrollbar{display:none}
+.days{display:flex;align-items:center;gap:6px;padding:16px 12px 0}
+.days-inner{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;flex:1}
+.days-inner::-webkit-scrollbar{display:none}
+.day-arr{background:none;border:1px solid var(--white12);color:var(--white38);width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .25s;flex-shrink:0}
+.day-arr:hover{border-color:rgba(2,243,197,.3);color:var(--white60)}
+.day-arr:disabled{opacity:.2;cursor:default;pointer-events:none}
+.day-arr svg{width:16px;height:16px}
 .day-btn{background:none;border:1px solid var(--white12);color:var(--white60);padding:8px 14px;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.72rem;font-weight:500;cursor:pointer;transition:all .25s;min-width:64px;text-align:center;flex-shrink:0}
 .day-btn:hover{border-color:rgba(2,243,197,.3)}
 .day-btn.active{background:rgba(2,243,197,.08);border-color:var(--cyan);color:var(--cyan);font-weight:700}
@@ -553,23 +558,42 @@ function fmtTime(iso){
   return d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit',hour12:false,timeZone:'Europe/Madrid'});
 }
 
-function get7d(){
-  const days=[];const now=new Date();
-  for(let i=0;i<7;i++){const d=new Date(now);d.setDate(now.getDate()+i);days.push(d);}
+var weekOffset=0,maxWeekOffset=0;
+function get7d(offset){
+  const days=[];const now=new Date();const start=(offset||0)*7;
+  for(let i=start;i<start+7;i++){const d=new Date(now);d.setDate(now.getDate()+i);days.push(d);}
   return days;
 }
+function computeMaxWeekOffset(){
+  if(!allE||!allE.length) return 0;
+  var today=getMadridDate(new Date());var maxM=today;
+  allE.forEach(function(e){var dd=getMadridDate(new Date(e.dateTime));if(dd>maxM)maxM=dd;});
+  var t0=new Date(today+'T00:00:00'),t1=new Date(maxM+'T00:00:00');
+  var diff=Math.floor((t1-t0)/86400000);
+  return Math.max(0,Math.min(Math.floor(diff/7),8));
+}
+function prevWeek(){if(weekOffset>0){weekOffset--;selDate=getMadridDate(get7d(weekOffset)[0]);renderDays();renderSched();}}
+function nextWeek(){if(weekOffset<maxWeekOffset){weekOffset++;selDate=getMadridDate(get7d(weekOffset)[0]);renderDays();renderSched();}}
 function getMadridDate(d){return d.toLocaleDateString('en-CA',{timeZone:'Europe/Madrid'});}
 
 function renderDays(){
   const c=document.getElementById('days');
-  const days=get7d();
+  const days=get7d(weekOffset);
   const nm=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-  c.innerHTML=days.map((d,i)=>{
+  const today=getMadridDate(new Date());
+  if(!selDate) selDate=getMadridDate(days[0]);
+  const leftSvg='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>';
+  const rightSvg='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>';
+  let html='<button class="day-arr" onclick="prevWeek()"'+(weekOffset===0?' disabled':'')+'>'+leftSvg+'</button><div class="days-inner">';
+  html+=days.map((d)=>{
     const ds=getMadridDate(d);
     const madridDay=new Date(d.toLocaleString('en-US',{timeZone:'Europe/Madrid'}));
-    return`<button class="day-btn${i===0?' active':''}" data-d="${ds}" onclick="selDay(this,'${ds}')"><span class="day-name">${i===0?'Today':nm[madridDay.getDay()]}</span><span class="day-num">${madridDay.getDate()}</span></button>`;
+    const isToday=ds===today;
+    const isActive=ds===selDate;
+    return`<button class="day-btn${isActive?' active':''}" data-d="${ds}" onclick="selDay(this,'${ds}')"><span class="day-name">${isToday?'Today':nm[madridDay.getDay()]}</span><span class="day-num">${madridDay.getDate()}</span></button>`;
   }).join('');
-  selDate=getMadridDate(days[0]);
+  html+='</div><button class="day-arr" onclick="nextWeek()"'+(weekOffset>=maxWeekOffset?' disabled':'')+'>'+rightSvg+'</button>';
+  c.innerHTML=html;
 }
 
 function selDay(b,ds){
@@ -2200,6 +2224,7 @@ async function init(){
     const r=await fetch(API);const d=await r.json();
     const now=new Date();
     allE=d.filter(e=>new Date(e.dateTime)>new Date(now.getTime()-3600000)&&!e.isDeleted);
+    maxWeekOffset=computeMaxWeekOffset();renderDays();
     renderFilters(allE);renderSched();
     var skEl=document.getElementById('sk');
     var schedEl=document.getElementById('sched');
