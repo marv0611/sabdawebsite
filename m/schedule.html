@@ -97,10 +97,11 @@ src="https://www.facebook.com/tr?id=567636669734630&ev=PageView&noscript=1"
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#0e1235">
 <title>Schedule | SABDA</title>
-<link rel="canonical" href="https://sabdastudio.com/schedule.html">
-<link rel="alternate" hreflang="en" href="https://sabdastudio.com/schedule.html">
-<link rel="alternate" hreflang="es" href="https://sabdastudio.com/es/schedule.html">
-<link rel="alternate" hreflang="x-default" href="https://sabdastudio.com/schedule.html">
+<link rel="canonical" href="https://sabdastudio.com/classes/">
+<link rel="alternate" hreflang="en" href="https://sabdastudio.com/classes/">
+<link rel="alternate" hreflang="es" href="https://sabdastudio.com/es/clases/">
+<link rel="alternate" hreflang="ca" href="https://sabdastudio.com/ca/classes/">
+<link rel="alternate" hreflang="x-default" href="https://sabdastudio.com/classes/">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,700;1,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
 <script src="https://js.stripe.com/v3/" async></script>
@@ -571,6 +572,20 @@ function computeMaxWeekOffset(){
   var t0=new Date(today+'T00:00:00'),t1=new Date(maxM+'T00:00:00');
   var diff=Math.floor((t1-t0)/86400000);
   return Math.max(0,Math.min(Math.floor(diff/7),8));
+}
+function selectFirstBookableDay(){
+  if(!allE||!allE.length) return;
+  var now=new Date(),today=getMadridDate(now),best=null;
+  allE.forEach(function(e){
+    if(e.isCancelled||e.isDeleted) return;
+    var t=new Date(e.dateTime);
+    if(t>=now){var dd=getMadridDate(t);if(best===null||dd<best)best=dd;}
+  });
+  if(!best) return;
+  selDate=best;
+  var t0=new Date(today+'T00:00:00'),t1=new Date(best+'T00:00:00');
+  var diff=Math.floor((t1-t0)/86400000);
+  weekOffset=Math.max(0,Math.min(Math.floor(diff/7),maxWeekOffset));
 }
 function prevWeek(){if(weekOffset>0){weekOffset--;selDate=getMadridDate(get7d(weekOffset)[0]);renderDays();renderSched();}}
 function nextWeek(){if(weekOffset<maxWeekOffset){weekOffset++;selDate=getMadridDate(get7d(weekOffset)[0]);renderDays();renderSched();}}
@@ -2224,7 +2239,7 @@ async function init(){
     const r=await fetch(API);const d=await r.json();
     const now=new Date();
     allE=d.filter(e=>new Date(e.dateTime)>new Date(now.getTime()-3600000)&&!e.isDeleted);
-    maxWeekOffset=computeMaxWeekOffset();renderDays();
+    maxWeekOffset=computeMaxWeekOffset();selectFirstBookableDay();renderDays();
     renderFilters(allE);renderSched();
     var skEl=document.getElementById('sk');
     var schedEl=document.getElementById('sched');

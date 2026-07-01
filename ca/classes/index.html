@@ -980,11 +980,25 @@ function computeMaxWeekOffset(){
   var diff=Math.floor((t1-t0)/86400000);
   return Math.max(0,Math.min(Math.floor(diff/7),8));
 }
+function selectFirstBookableDay(){
+  if(!allE||!allE.length) return;
+  var now=new Date(),today=getMadridDate(now),best=null;
+  allE.forEach(function(e){
+    if(e.isCancelled||e.isDeleted) return;
+    var t=new Date(e.dateTime);
+    if(t>=now){var dd=getMadridDate(t);if(best===null||dd<best)best=dd;}
+  });
+  if(!best) return;
+  selDate=best;
+  var t0=new Date(today+'T00:00:00'),t1=new Date(best+'T00:00:00');
+  var diff=Math.floor((t1-t0)/86400000);
+  weekOffset=Math.max(0,Math.min(Math.floor(diff/7),maxWeekOffset));
+}
 
 function renderDays(){
   var c=document.getElementById('days');
   var days=get7d(weekOffset);
-  var nm=['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+  var nm=['Dg','Dl','Dt','Dc','Dj','Dv','Ds'];
   var today=getMadridDate(new Date());
   if(!selDate) selDate=getMadridDate(days[0]);
   var leftSvg='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>';
@@ -996,7 +1010,7 @@ function renderDays(){
     var madridDate=new Date(d.toLocaleString('en-US',{timeZone:'Europe/Madrid'}));
     var isToday=ds===today;
     var isActive=ds===selDate;
-    var label=isToday?'Hoy':nm[madridDate.getDay()];
+    var label=isToday?'Avui':nm[madridDate.getDay()];
     return '<button class="day-btn'+(isActive?' active':'')+'" data-d="'+ds+'" onclick="selDay(this,\''+ds+'\')">'
       +'<span class="day-name">'+label+'</span>'
       +'<span class="day-num">'+madridDate.getDate()+'</span></button>';
@@ -2043,7 +2057,7 @@ function showSuccess(){stepChange();
 function buildApiUrl(){
   var now=new Date();
   var from=now.toISOString();
-  var to=new Date(now.getTime()+28*86400000).toISOString();
+  var to=new Date(now.getTime()+56*86400000).toISOString();
   return SCHEDULE_API+'?fromDate='+encodeURIComponent(from)+'&toDate='+encodeURIComponent(to)+'&pageSize=500&page=0';
 }
 async function init(){
@@ -2092,7 +2106,7 @@ async function init(){
         })()
       };
     });
-    maxWeekOffset=computeMaxWeekOffset();renderDays();renderFilters(allE);renderSched();
+    maxWeekOffset=computeMaxWeekOffset();selectFirstBookableDay();renderDays();renderFilters(allE);renderSched();
     var skEl=document.getElementById('sk');
     var schedEl=document.getElementById('sched');
     schedEl.style.opacity='0';

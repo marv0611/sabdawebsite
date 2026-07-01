@@ -97,11 +97,11 @@ src="https://www.facebook.com/tr?id=567636669734630&ev=PageView&noscript=1"
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#0e1235">
 <title>Horaris | SABDA</title>
-<link rel="canonical" href="https://sabdastudio.com/ca/schedule.html">
-<link rel="alternate" hreflang="en" href="https://sabdastudio.com/schedule.html">
-<link rel="alternate" hreflang="es" href="https://sabdastudio.com/es/schedule.html">
-<link rel="alternate" hreflang="ca" href="https://sabdastudio.com/ca/schedule.html">
-<link rel="alternate" hreflang="x-default" href="https://sabdastudio.com/schedule.html">
+<link rel="canonical" href="https://sabdastudio.com/ca/classes/">
+<link rel="alternate" hreflang="en" href="https://sabdastudio.com/classes/">
+<link rel="alternate" hreflang="es" href="https://sabdastudio.com/es/clases/">
+<link rel="alternate" hreflang="ca" href="https://sabdastudio.com/ca/classes/">
+<link rel="alternate" hreflang="x-default" href="https://sabdastudio.com/classes/">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,700;1,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
 <script src="https://js.stripe.com/v3/" async></script>
@@ -574,6 +574,20 @@ function computeMaxWeekOffset(){
   var diff=Math.floor((t1-t0)/86400000);
   return Math.max(0,Math.min(Math.floor(diff/7),8));
 }
+function selectFirstBookableDay(){
+  if(!allE||!allE.length) return;
+  var now=new Date(),today=getMadridDate(now),best=null;
+  allE.forEach(function(e){
+    if(e.isCancelled||e.isDeleted) return;
+    var t=new Date(e.dateTime);
+    if(t>=now){var dd=getMadridDate(t);if(best===null||dd<best)best=dd;}
+  });
+  if(!best) return;
+  selDate=best;
+  var t0=new Date(today+'T00:00:00'),t1=new Date(best+'T00:00:00');
+  var diff=Math.floor((t1-t0)/86400000);
+  weekOffset=Math.max(0,Math.min(Math.floor(diff/7),maxWeekOffset));
+}
 function prevWeek(){if(weekOffset>0){weekOffset--;selDate=getMadridDate(get7d(weekOffset)[0]);renderDays();renderSched();}}
 function nextWeek(){if(weekOffset<maxWeekOffset){weekOffset++;selDate=getMadridDate(get7d(weekOffset)[0]);renderDays();renderSched();}}
 function getMadridDate(d){return d.toLocaleDateString('en-CA',{timeZone:'Europe/Madrid'});}
@@ -581,7 +595,7 @@ function getMadridDate(d){return d.toLocaleDateString('en-CA',{timeZone:'Europe/
 function renderDays(){
   const c=document.getElementById('days');
   const days=get7d(weekOffset);
-  const nm=['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+  const nm=['Dg','Dl','Dt','Dc','Dj','Dv','Ds'];
   const today=getMadridDate(new Date());
   if(!selDate) selDate=getMadridDate(days[0]);
   const leftSvg='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>';
@@ -592,7 +606,7 @@ function renderDays(){
     const madridDay=new Date(d.toLocaleString('en-US',{timeZone:'Europe/Madrid'}));
     const isToday=ds===today;
     const isActive=ds===selDate;
-    return`<button class="day-btn${isActive?' active':''}" data-d="${ds}" onclick="selDay(this,'${ds}')"><span class="day-name">${isToday?'Hoy':nm[madridDay.getDay()]}</span><span class="day-num">${madridDay.getDate()}</span></button>`;
+    return`<button class="day-btn${isActive?' active':''}" data-d="${ds}" onclick="selDay(this,'${ds}')"><span class="day-name">${isToday?'Avui':nm[madridDay.getDay()]}</span><span class="day-num">${madridDay.getDate()}</span></button>`;
   }).join('');
   html+='</div><button class="day-arr" onclick="nextWeek()"'+(weekOffset>=maxWeekOffset?' disabled':'')+'>'+rightSvg+'</button>';
   c.innerHTML=html;
@@ -2176,7 +2190,7 @@ async function init(){
     const r=await fetch(API);const d=await r.json();
     const now=new Date();
     allE=d.filter(e=>new Date(e.dateTime)>new Date(now.getTime()-3600000)&&!e.isDeleted);
-    maxWeekOffset=computeMaxWeekOffset();renderDays();
+    maxWeekOffset=computeMaxWeekOffset();selectFirstBookableDay();renderDays();
     renderFilters(allE);renderSched();
     var skEl=document.getElementById('sk');
     var schedEl=document.getElementById('sched');

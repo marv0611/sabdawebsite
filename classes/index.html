@@ -1124,6 +1124,20 @@ function computeMaxWeekOffset(){
   var diff=Math.floor((t1-t0)/86400000);
   return Math.max(0,Math.min(Math.floor(diff/7),8));
 }
+function selectFirstBookableDay(){
+  if(!allE||!allE.length) return;
+  var now=new Date(),today=getMadridDate(now),best=null;
+  allE.forEach(function(e){
+    if(e.isCancelled||e.isDeleted) return;
+    var t=new Date(e.dateTime);
+    if(t>=now){var dd=getMadridDate(t);if(best===null||dd<best)best=dd;}
+  });
+  if(!best) return;
+  selDate=best;
+  var t0=new Date(today+'T00:00:00'),t1=new Date(best+'T00:00:00');
+  var diff=Math.floor((t1-t0)/86400000);
+  weekOffset=Math.max(0,Math.min(Math.floor(diff/7),maxWeekOffset));
+}
 
 function renderDays(){
   var c=document.getElementById('days');
@@ -2235,7 +2249,7 @@ function showSuccess(){stepChange();
 function buildApiUrl(){
   var now=new Date();
   var from=now.toISOString();
-  var to=new Date(now.getTime()+28*86400000).toISOString();
+  var to=new Date(now.getTime()+56*86400000).toISOString();
   return SCHEDULE_API+'?fromDate='+encodeURIComponent(from)+'&toDate='+encodeURIComponent(to)+'&pageSize=500&page=0';
 }
 async function init(){
@@ -2285,7 +2299,7 @@ async function init(){
         })()
       };
     });
-    maxWeekOffset=computeMaxWeekOffset();renderDays();renderFilters(allE);renderSched();
+    maxWeekOffset=computeMaxWeekOffset();selectFirstBookableDay();renderDays();renderFilters(allE);renderSched();
     var skEl=document.getElementById('sk');
     var schedEl=document.getElementById('sched');
     schedEl.style.opacity='0';
