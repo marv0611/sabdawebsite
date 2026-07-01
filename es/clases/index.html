@@ -2080,7 +2080,7 @@ function buildApiUrl(){
   var now=new Date();
   var from=now.toISOString();
   var to=new Date(now.getTime()+56*86400000).toISOString();
-  return SCHEDULE_API+'?fromDate='+encodeURIComponent(from)+'&toDate='+encodeURIComponent(to)+'&pageSize=500&page=0';
+  return SCHEDULE_API+'?fromDate='+encodeURIComponent(from)+'&toDate='+encodeURIComponent(to)+'&pageSize=1000&page=0';
 }
 async function init(){
   renderDays();
