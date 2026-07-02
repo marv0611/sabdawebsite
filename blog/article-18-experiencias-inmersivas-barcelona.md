@@ -30,14 +30,14 @@ La diferencia clave es entre experiencias **pasivas** (caminas, miras, te rodea)
 
 ### SABDA. Wellness inmersivo participativo
 
-Si buscas experiencia inmersiva barcelona, esta guía cubre lo que realmente importa. [SABDA](https://sabdastudio.com/classes/) es el único espacio en Barcelona donde wellness y tecnología inmersiva convergen. Una sala de 360° con proyecciones láser LCD y audio espacial Dolby Atmos (altavoces invisibles en paredes y techo, subwoofers en el suelo) donde se hacen clases de yoga, pilates, sound healing, breathwork, danza extática y ice bath.
+Si buscas experiencia inmersiva barcelona, esta guía cubre lo que realmente importa. [SABDA](https://sabdastudio.com/classes/) es el único espacio en Barcelona donde wellness y tecnología inmersiva convergen. Una sala de 360° con proyecciones láser LCD y audio espacial Dolby Atmos (altavoces invisibles en paredes y techo, subwoofers en el suelo) donde se hacen clases de yoga, [pilates](/classes/pilates/), sound healing, breathwork, danza extática y ice bath.
 
 **Lo que lo diferencia:** No miras. Te mueves, respiras, y participas dentro del arte. Los visuals se diseñan específicamente para cada clase. Una sesión de vinyasa tiene paisajes abstractos que fluyen con el ritmo. Una sesión de sound healing tiene geometría viva que pulsa con los bols tibetanos. El audio espacial envuelve: el sonido viene de todas las direcciones, creando una sensación de inmersión total.
 
 **Para quién es:** Gente que quiere sentir algo, no solo ver algo bonito. Personas interesadas en wellness que buscan algo más allá del estudio convencional. Parejas que quieren una experiencia compartida. Cualquiera que tenga curiosidad por la intersección entre arte, tecnología y bienestar.
 
 **Precio:** Desde €18/clase. [3 clases por €50](https://momence.com/m/443935).
-**Frecuencia:** Más de 42 clases semanales + eventos especiales.
+**Frecuencia:** Más de 42 clases semanales + [eventos especiales](/hire/).
 **Dónde:** C/Muntaner 83B, Eixample.
 
 ### IDEAL, Centre d'Arts Digitals

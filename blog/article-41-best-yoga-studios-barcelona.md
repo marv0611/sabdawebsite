@@ -111,7 +111,7 @@ The best yoga studio in Barcelona is the one that makes you come back a second t
 
 If you want something no other city has: [SABDA](https://sabdastudio.com/classes/). 360° projections, spatial audio, yoga that feels like entering another world. [3 classes for €50](https://momence.com/m/443935).
 
-**Related:** [Yoga en Barcelona: guía completa (ES)](/blog/yoga-barcelona-guia/) | [Best Pilates Studios](/blog/best-pilates-studios-barcelona/) | [Your First Time at SABDA](/blog/first-time-sabda/) | [How to Choose a Yoga Style](/blog/how-to-choose-yoga-style/)
+**Related:** [Yoga en Barcelona: guía completa (ES)](/blog/yoga-barcelona-guia/) | [Best [Pilates](/classes/pilates/) Studios](/blog/best-pilates-studios-barcelona/) | [Your First Time at SABDA](/blog/first-time-sabda/) | [How to Choose a Yoga Style](/blog/how-to-choose-yoga-style/)
 
 ---
 

@@ -38,7 +38,7 @@ Si busques activitats barcelona, aquesta guia cobreix el que realment importa. *
 
 ## Wellness i experiències immersives
 
-**7. Una classe immersiva a SABDA**, [SABDA](https://sabdastudio.com/classes/) és una sala de 360° amb Dolby Atmos on fas ioga, pilates, teràpia de so o breathwork dins projeccions immersives. No és un museu, ets dins l'art. Classes des de €18. [3 classes per €50.(https://momence.com/m/443935).
+**7. Una classe immersiva a SABDA**, [SABDA](https://sabdastudio.com/classes/) és una sala de 360° amb Dolby Atmos on fas ioga, [pilates](/classes/pilates/), teràpia de so o breathwork dins projeccions immersives. No és un museu, ets dins l'art. Classes des de €18. [3 classes per €50.(https://momence.com/m/443935).
 
 **8. Ice bath al pati de SABDA**. Breathwork guiat dins la sala immersiva, seguit de bany de gel al pati. Intens, memorable, i l'oposat de qualsevol activitat "normal."
 

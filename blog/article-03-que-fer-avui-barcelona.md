@@ -76,7 +76,7 @@ Les piscines olímpiques del 92 segueixen obertes al públic. Nedar amb la ciuta
 
 ### 11. Una classe immersiva a SABDA
 
-Una experiència immersiva de wellness al cor de l'Eixample. [SABDA](https://sabdastudio.com/classes/) és una sala de projeccions 360° amb Dolby Atmos que ofereix ioga, pilates, teràpia de so, breathwork, dansa extàtica, meditació i bany de gel. No és un museu. Ets dins de l'art, movent-te en ell. Els visuals canvien a cada classe. L'àudio espacial fa alguna cosa que un altaveu Bluetooth no pot replicar.
+Una experiència immersiva de wellness al cor de l'Eixample. [SABDA](https://sabdastudio.com/classes/) és una sala de projeccions 360° amb Dolby Atmos que ofereix ioga, [pilates](/classes/pilates/), teràpia de so, breathwork, dansa extàtica, meditació i bany de gel. No és un museu. Ets dins de l'art, movent-te en ell. Els visuals canvien a cada classe. L'àudio espacial fa alguna cosa que un altaveu Bluetooth no pot replicar.
 
 Classes des de €18. [3 classes per €50.(https://momence.com/m/443935).
 

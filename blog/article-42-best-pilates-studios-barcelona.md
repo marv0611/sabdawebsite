@@ -1,8 +1,8 @@
-# Best Pilates Studios in Barcelona: Mat, Reformer, and Everything Between (2026)
+# 6 Best Pilates Studios in Barcelona Compared (2026)
 
 **Last updated: March 2026**
 
-**Meta description:** Barcelona's top pilates studios compared: mat vs reformer, prices, locations, and the only immersive pilates experience in the city. (134 chars)
+**Meta description:** Mat and reformer studios compared with real prices, class sizes and honest reviews. From €18/class immersive mat to €65 private reformer.
 
 **Slug:** `/blog/best-pilates-studios-barcelona/`
 

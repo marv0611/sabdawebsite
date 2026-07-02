@@ -98,6 +98,6 @@ Si quisieras probar todas las experiencias inmersivas de Barcelona:
 - Moco Museum: ~€16
 - IKONO: ~€18
 
-Total: ~€98 para el panorama completo. La diferencia: después de IDEAL, Moco, e IKONO, has terminado (una visita es suficiente). Después de SABDA, puedes volver cada semana durante un año y cada sesión es diferente. Es la experiencia inmersiva como rutina, no como evento.
+Total: ~€98 para el panorama completo. La diferencia: después de IDEAL, Moco, e IKONO, has terminado (una visita es suficiente). Después de SABDA, puedes volver cada semana durante un año y cada sesión es diferente. Es la experiencia inmersiva como rutina, no como [evento](/hire/).
 
 Si solo tienes tiempo para una experiencia inmersiva en Barcelona, la decisión se reduce a una pregunta: quieres mirar o quieres participar. Las dos son válidas. Pero solo una cambia cómo te sientes cuando sales.

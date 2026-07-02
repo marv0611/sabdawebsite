@@ -82,7 +82,7 @@ Las proyecciones 360° [responden a la energía](https://pubmed.ncbi.nlm.nih.gov
 
 ---
 
-¿Quieres probar más que ecstatic dance? El [pack de 3 clases de SABDA por €50.(https://momence.com/m/443935) te da acceso a sound healing, breathwork, yoga, y pilates en la misma sala de 360°.
+¿Quieres probar más que ecstatic dance? El [pack de 3 clases de SABDA por €50.(https://momence.com/m/443935) te da acceso a sound healing, breathwork, yoga, y [pilates](/classes/pilates/) en la misma sala de 360°.
 
 **Relacionado:** [Qué es el sound healing](/blog/que-es-el-sound-healing/) | [Ecstatic Dance in Barcelona (EN)](/blog/ecstatic-dance-barcelona/)
 

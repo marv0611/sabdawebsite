@@ -48,7 +48,7 @@ No es un estudio de yoga convencional. [SABDA](https://sabdastudio.com/classes/y
 
 Si buscas yoga barcelona, esta guía cubre lo que realmente importa. Formatos de yoga en SABDA: Vinyasa Flow, Hatha Vinyasa, Power Vinyasa, Yoga Sculpt, y Yin. Cada formato tiene su propio diseño visual y musical. Una clase de yin tiene tonos graves y geometría lenta, una de power vinyasa tiene ritmo alto y paisajes que se aceleran contigo.
 
-Más allá del yoga, SABDA ofrece sound healing, breathwork, pilates y ecstatic dance, todo en la sala inmersiva.
+Más allá del yoga, SABDA ofrece sound healing, breathwork, [pilates](/classes/pilates/) y ecstatic dance, todo en la sala inmersiva.
 
 **Precio:** Desde €18/clase con el [pack de 3 clases por €50](https://momence.com/m/443935).
 **Dónde:** C/Muntaner 83B, Eixample. Metro Universitat.

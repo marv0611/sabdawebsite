@@ -1,8 +1,8 @@
-# Best Team Building Activities in Barcelona: 12 Ideas Beyond Cooking Classes (2026)
+# 12 Team Building Activities in Barcelona (2026)
 
 **Last updated: March 2026**
 
-**Meta description:** Skip the generic team building. Immersive wellness workshops, 360° brand experiences, and unique team activities in Barcelona for groups of 10-200. (152 chars)
+**Meta description:** Skip the paella class. Immersive sound baths, 360° workshops, sailing regattas and 9 more team activities for groups of 10 to 200 in Barcelona.
 
 **Slug:** `/blog/team-building-activities-barcelona/`
 

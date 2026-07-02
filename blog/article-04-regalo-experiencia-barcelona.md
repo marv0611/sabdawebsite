@@ -22,7 +22,7 @@ Regalar una experiencia es mejor que regalar una cosa. Esto ya lo sabes. El prob
 
 Una sesión de sound healing dentro de una sala de proyecciones 360° con Dolby Atmos. Te tumbas, cierras los ojos, y durante 60 minutos los bols tibetanos, los gongs y los cuencos de cristal llenan el espacio desde todas las direcciones mientras las proyecciones crean un mundo detrás de tus párpados. Es profundamente relajante, vagamente psicodélico, y funcionalmente lo contrario de cualquier cena de pareja. No necesitas experiencia previa. No necesitas ropa especial. Solo tienes que presentarte.
 
-La [tarjeta regalo de SABDA, 3 clases por €50](https://sabdastudio.com/pricing/) (€18 cada una) permite elegir entre yoga, pilates, sound healing, breathwork o danza extática. Es entrega digital, así que funciona como regalo de última hora.
+La [tarjeta regalo de SABDA, 3 clases por €50](https://sabdastudio.com/pricing/) (€18 cada una) permite elegir entre yoga, [pilates](/classes/pilates/), sound healing, breathwork o danza extática. Es entrega digital, así que funciona como regalo de última hora.
 
 **Dónde:** C/Muntaner 83B, Eixample. [Comprar tarjeta regalo →](https://sabdastudio.com/pricing/)
 

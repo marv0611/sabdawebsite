@@ -33,7 +33,7 @@ El resultat: la teva atenció es queda on el teu cos està. Cada postura, cada r
 ### Ioga
 Vinyasa Flow, Hatha Vinyasa, Power Vinyasa, Yoga Sculpt, Yin. Cada format té projeccions i música pròpies. Una classe de yin té visuals lents i tons greus, una de power té ritme i paisatges que s'acceleren amb tu.
 
-### Pilates
+### [Pilates](/classes/pilates/)
 Core Pilates, Power Pilates, Pilates Sculpt, Full Body Pilates. Mat amb la concentració amplificada per l'entorn immersiu.
 
 ### Teràpia de so (Sound Healing)

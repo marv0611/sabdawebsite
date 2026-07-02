@@ -1,8 +1,8 @@
-# Retiros de Meditación Cerca de Barcelona: Opciones Para Todos los Niveles (2026)
+# 5 Retiros de Meditación en Barcelona y Cercanías (2026)
 
 **Última actualización: marzo 2026**
 
-**Meta description:** Retiros de meditación cerca de Barcelona: fin de semana, un día, o incluso una hora. Desde retiros rurales hasta sesiones inmersivas urbanas. (146 chars)
+**Meta description:** Retiros de un día, fin de semana y residenciales desde €18. Sound healing urbano, monasterios en Montserrat y casas rurales a una hora de Barcelona.
 
 **Slug:** `/blog/retiro-meditacion-barcelona/`
 

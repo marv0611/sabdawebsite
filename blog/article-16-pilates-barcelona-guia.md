@@ -1,8 +1,8 @@
-# Pilates en Barcelona: Mat vs Reformer, Mejores Centros y Precios (2026)
+# Pilates Barcelona: 6 Centros con Precios Reales (2026)
 
 **Última actualización: marzo 2026**
 
-**Meta description:** Guía completa de pilates en Barcelona. Mat vs reformer, mejores centros en el Eixample, precios, pilates para embarazadas y principiantes. (143 chars)
+**Meta description:** Mat o reformer, desde €18 hasta €65/clase. Comparamos SABDA, Dona10, Pilat3s y 3 centros más del Eixample y Gràcia con precios y niveles.
 
 **Slug:** `/blog/pilates-barcelona-guia/`
 
