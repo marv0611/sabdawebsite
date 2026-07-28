@@ -219,18 +219,27 @@ th{font-family:'DM Sans',sans-serif;color:var(--cyan);font-weight:700;font-size:
     </thead>
     <tbody>
       <tr><td>sabda_lang</td><td>SABDA</td><td>Stores your preferred language</td><td>Functional</td><td>Persistent (localStorage)</td></tr>
-      <tr><td>sabda_consent</td><td>SABDA</td><td>Stores your cookie consent preferences</td><td>Strictly necessary</td><td>12 months (localStorage)</td></tr>
-      <tr><td>sabda_consent_date</td><td>SABDA</td><td>Records when consent was given</td><td>Strictly necessary</td><td>12 months (localStorage)</td></tr>
+      <tr><td>sabda_lang_checked</td><td>SABDA</td><td>Records that language detection has already run during this visit</td><td>Functional</td><td>Session (sessionStorage)</td></tr>
+      <tr><td>sabda_cookie_consent</td><td>SABDA</td><td>Stores your cookie consent choices and the date they were given</td><td>Strictly necessary</td><td>Persistent (localStorage)</td></tr>
+      <tr><td>_sabda_attr</td><td>SABDA</td><td>Stores campaign and click identifiers (such as utm_source, fbclid or gclid) so a booking can be attributed to the campaign that referred you</td><td>Marketing</td><td>30 days (localStorage)</td></tr>
+      <tr><td>_sabda_ic_eid</td><td>SABDA</td><td>Temporary checkout identifier used so the same conversion is not counted twice</td><td>Marketing</td><td>Session (sessionStorage)</td></tr>
+      <tr><td>_ga, _ga_G-1E1WXTZWQD</td><td>Google LLC (Google Analytics 4)</td><td>Distinguishes visitors and measures sessions and page views</td><td>Analytics</td><td>2 years</td></tr>
+      <tr><td>_fbp</td><td>Meta Platforms, Inc. (Meta Pixel)</td><td>Measures advertising effectiveness and enables retargeting on Meta platforms</td><td>Marketing</td><td>90 days</td></tr>
+      <tr><td>_clck</td><td>Microsoft Corporation (Microsoft Clarity)</td><td>Persistent identifier used for website usage analytics and session replay</td><td>Analytics</td><td>1 year</td></tr>
+      <tr><td>_clsk</td><td>Microsoft Corporation (Microsoft Clarity)</td><td>Groups the page views of a single visit for session replay</td><td>Analytics</td><td>1 day</td></tr>
     </tbody>
   </table>
 
-  <p>If we add analytics or marketing tools in the future (such as Google Analytics 4 or Meta Pixel), these will only be loaded after you give your explicit consent through our cookie banner, and this table will be updated accordingly.</p>
+  <p>Where a technology is provided by a third party, the retention period shown is the one set by that provider. You can manage or withdraw your consent at any time using the controls in the section below, or through your browser settings.</p>
 
   <h2>Third-party cookies</h2>
   <p>Some pages of the Website embed content from third-party services (for example, our booking partner Momence). These third parties may set their own cookies when you interact with their content. We do not control these cookies — please refer to the relevant third party's privacy and cookie policies:</p>
   <ul>
     <li><strong>Momence</strong> — Booking and customer management. <a href="https://momence.com/privacy" target="_blank" rel="noopener">momence.com/privacy</a></li>
     <li><strong>Stripe</strong> — Payment processing. <a href="https://stripe.com/privacy" target="_blank" rel="noopener">stripe.com/privacy</a></li>
+    <li><strong>Google</strong> — Analytics, fonts and embedded maps. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></li>
+    <li><strong>Meta</strong> — Advertising measurement and retargeting. <a href="https://www.facebook.com/privacy/policy" target="_blank" rel="noopener">facebook.com/privacy/policy</a></li>
+    <li><strong>Microsoft</strong> — Website usage analytics and session replay (Clarity). <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener">privacy.microsoft.com/privacystatement</a></li>
   </ul>
 
   <h2>How to manage your preferences</h2>

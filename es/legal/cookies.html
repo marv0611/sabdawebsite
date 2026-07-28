@@ -219,18 +219,27 @@ th{font-family:'DM Sans',sans-serif;color:var(--cyan);font-weight:700;font-size:
     </thead>
     <tbody>
       <tr><td>sabda_lang</td><td>SABDA</td><td>Almacena tu idioma preferido</td><td>Funcional</td><td>Persistente (localStorage)</td></tr>
-      <tr><td>sabda_consent</td><td>SABDA</td><td>Almacena tus preferencias de consentimiento de cookies</td><td>Estrictamente necesaria</td><td>12 meses (localStorage)</td></tr>
-      <tr><td>sabda_consent_date</td><td>SABDA</td><td>Registra cuándo se otorgó el consentimiento</td><td>Estrictamente necesaria</td><td>12 meses (localStorage)</td></tr>
+      <tr><td>sabda_lang_checked</td><td>SABDA</td><td>Registra que la detección de idioma ya se ha ejecutado en esta visita</td><td>Funcional</td><td>Sesión (sessionStorage)</td></tr>
+      <tr><td>sabda_cookie_consent</td><td>SABDA</td><td>Almacena tus opciones de consentimiento de cookies y la fecha en que se otorgaron</td><td>Estrictamente necesaria</td><td>Persistente (localStorage)</td></tr>
+      <tr><td>_sabda_attr</td><td>SABDA</td><td>Almacena identificadores de campaña y de clic (como utm_source, fbclid o gclid) para poder atribuir una reserva a la campaña que te trajo</td><td>Marketing</td><td>30 días (localStorage)</td></tr>
+      <tr><td>_sabda_ic_eid</td><td>SABDA</td><td>Identificador temporal de pago para evitar que una misma conversión se contabilice dos veces</td><td>Marketing</td><td>Sesión (sessionStorage)</td></tr>
+      <tr><td>_ga, _ga_G-1E1WXTZWQD</td><td>Google LLC (Google Analytics 4)</td><td>Distingue a las personas visitantes y mide sesiones y páginas vistas</td><td>Análisis</td><td>2 años</td></tr>
+      <tr><td>_fbp</td><td>Meta Platforms, Inc. (Meta Pixel)</td><td>Mide la eficacia publicitaria y permite el retargeting en las plataformas de Meta</td><td>Marketing</td><td>90 días</td></tr>
+      <tr><td>_clck</td><td>Microsoft Corporation (Microsoft Clarity)</td><td>Identificador persistente para analítica de uso del sitio y repetición de sesiones</td><td>Análisis</td><td>1 año</td></tr>
+      <tr><td>_clsk</td><td>Microsoft Corporation (Microsoft Clarity)</td><td>Agrupa las páginas vistas de una misma visita para la repetición de sesiones</td><td>Análisis</td><td>1 día</td></tr>
     </tbody>
   </table>
 
-  <p>Si en el futuro añadimos herramientas de análisis o marketing (como Google Analytics 4 o Meta Pixel), estas solo se cargarán después de que des tu consentimiento explícito a través de nuestro banner de cookies, y esta tabla se actualizará en consecuencia.</p>
+  <p>Cuando una tecnología es proporcionada por un tercero, el periodo de conservación indicado es el establecido por dicho proveedor. Puedes gestionar o retirar tu consentimiento en cualquier momento mediante los controles de la sección siguiente o a través de la configuración de tu navegador.</p>
 
   <h2>Cookies de terceros</h2>
   <p>Algunas páginas del Sitio Web incluyen contenido de servicios de terceros (por ejemplo, nuestro proveedor de reservas Momence). Estos terceros pueden establecer sus propias cookies cuando interactúas con su contenido. No controlamos estas cookies; consulta las políticas de privacidad y cookies del tercero correspondiente:</p>
   <ul>
     <li><strong>Momence</strong> — Reservas y gestión de personas usuarias. <a href="https://momence.com/privacy" target="_blank" rel="noopener">momence.com/privacy</a></li>
     <li><strong>Stripe</strong> — Procesamiento de pagos. <a href="https://stripe.com/privacy" target="_blank" rel="noopener">stripe.com/privacy</a></li>
+    <li><strong>Google</strong> — Analítica, fuentes y mapas integrados. <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></li>
+    <li><strong>Meta</strong> — Medición publicitaria y retargeting. <a href="https://www.facebook.com/privacy/policy" target="_blank" rel="noopener">facebook.com/privacy/policy</a></li>
+    <li><strong>Microsoft</strong> — Analítica de uso y repetición de sesiones (Clarity). <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener">privacy.microsoft.com/privacystatement</a></li>
   </ul>
 
   <h2>Cómo gestionar tus preferencias</h2>
