@@ -37,8 +37,8 @@ fbq('track', 'PageView');
     '507726':{name:'Ice Bath Drop-in',value:12,ct:'ice'},
     '507728':{name:'Ice Bath 3-Pack',value:30,ct:'ice'},
     '507729':{name:'Ice Bath 5-Pack',value:40,ct:'ice'},
-    '761242':{name:'Trial + Ice Bath',value:25,ct:'combo'},
-    '761241':{name:'Drop-in + Ice Bath',value:29,ct:'combo'}
+    '761242':{name:'Trial + Ice Bath',value:23,ct:'combo'},
+    '761241':{name:'Drop-in + Ice Bath',value:27,ct:'combo'}
   };
   var TK = ['fbclid','gclid','ttclid','msclkid','li_fat_id','utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
   function collect(){
@@ -422,6 +422,30 @@ window.SABDAloadClarity=function(){
 <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
+<style id="ib-design">
+.ib-offer{position:relative;margin-top:40px;padding:38px 32px 30px;border:1px solid rgba(2,243,197,.28);border-radius:20px;background:linear-gradient(150deg,rgba(2,243,197,.07),rgba(248,166,163,.045))}
+.ib-offer-tag{display:inline-block;background:var(--cyan);color:var(--navy);font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:18px}
+.ib-offer-price{font-family:'PT Serif',serif;font-size:3.1rem;font-weight:700;line-height:1;margin-bottom:6px}
+.ib-offer-head{font-family:'PT Serif',serif;font-size:1.22rem;font-weight:700;margin-bottom:12px}
+.ib-offer-sub{font-size:.92rem;color:var(--white60);line-height:1.65;max-width:520px;margin:0 auto 22px}
+.ib-offer-cta{display:inline-block;background:var(--cyan);color:var(--navy);font-size:.82rem;font-weight:700;letter-spacing:.04em;padding:13px 30px;border-radius:4px;transition:background .25s,transform .25s}
+.ib-offer-cta:hover{background:#00ddb0;transform:translateY(-1px)}
+.ib-offer-member{margin:20px 0 0;font-size:.88rem;color:var(--white60);line-height:1.6}
+.ib-offer-member a{color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)}
+.ib-group{margin-top:54px}
+.ib-group-lab{display:block;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--white38);font-weight:700}
+.ib-group-note{font-size:.85rem;color:var(--white60);margin:10px auto 0;max-width:470px;line-height:1.6}
+.ib-group + .pt-cards{margin-top:26px}
+.ib-hours-h{font-family:'PT Serif',serif;font-size:1.3rem;font-weight:700;margin:58px 0 18px}
+.ib-hours{max-width:440px;margin:0 auto;text-align:left}
+.ib-hours-row{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:11px 2px;border-bottom:1px solid rgba(240,239,233,.08);font-size:.92rem}
+.ib-hours-row:last-child{border-bottom:none}
+.ib-hours-day{color:var(--white60)}
+.ib-hours-time{font-weight:600;white-space:nowrap}
+@media(max-width:520px){.ib-offer{padding:30px 20px 26px}.ib-offer-price{font-size:2.5rem}.ib-offer-head{font-size:1.08rem}.ib-hours-row{flex-direction:column;align-items:flex-start;gap:3px}.ib-hours-time{white-space:normal}}
+
+</style>
+<style id="nav-fit">@media(min-width:861px) and (max-width:1120px){.nav-links{gap:20px}}</style>
 </head>
 <body>
 <canvas id="globalParticles"></canvas>
@@ -434,7 +458,7 @@ window.SABDAloadClarity=function(){
     <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA" width="400" height="127">
   </a>
   <ul class="nav-links">
-    <li><a href="../../classes.html">Classes</a></li>
+    <li><a href="../../classes.html">Classes</a></li><li><a href="/classes/ice-bath/">Ice Bath</a></li>
     <li><a href="../../pricing.html">Pricing</a></li>
     <li><a href="../../hire.html">Rent</a></li>
     <li><a href="../../events.html">Events</a></li><li><a href="/contact/">Contact</a></li>
@@ -488,82 +512,73 @@ window.SABDAloadClarity=function(){
   </div>
 </section>
 
-<!-- ICE BATH ADD-ON + HOURS -->
-<section class="pricing-teaser" id="ice-addon">
-  <div class="pricing-teaser-in">
-    <span class="sl rv">Add-on</span>
-    <h2 class="sh2 rv" style="transition-delay:.06s">Add an ice bath to any class for <em>€5.</em></h2>
-    <p class="rv" style="transition-delay:.08s;max-width:640px;margin:0 auto 10px;text-align:center">Book any class at SABDA, whether you book direct or through ClassPass, Wellhub or Urban Sports Club, then add the cold plunge for €5. Just let us know when you arrive.</p>
-    <p class="rv" style="transition-delay:.1s;max-width:640px;margin:0 auto 30px;text-align:center"><strong>With any membership the ice bath is free and unlimited.</strong></p>
-    <div class="pt-cards">
-      <div class="pt-card featured rv" style="transition-delay:.12s">
-        <div class="pt-label">Add to any class</div>
-        <div class="pt-price">€5</div>
-        <div class="pt-note">Added to any class booking<br>Towel included</div>
-        <a href="/classes/" class="pt-btn pt-btn-cyan">Book a class</a>
-      </div>
-      <div class="pt-card rv" style="transition-delay:.16s">
-        <div class="pt-label">With membership</div>
-        <div class="pt-price">Free</div>
-        <div class="pt-note">Unlimited ice bath<br>Included with every membership</div>
-        <a href="../../pricing.html" class="pt-btn pt-btn-ghost">See memberships</a>
-      </div>
-    </div>
-    <h3 class="rv" style="transition-delay:.2s;text-align:center;margin-top:44px;margin-bottom:14px">Ice bath hours</h3>
-    <div class="rv" style="transition-delay:.22s;max-width:440px;margin:0 auto;font-size:.92rem">
-      <div style="display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid rgba(240,239,233,.08)"><span style="opacity:.75">Monday</span><span style="font-weight:600">8:30–19:30</span></div>
-      <div style="display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid rgba(240,239,233,.08)"><span style="opacity:.75">Tuesday to Thursday</span><span style="font-weight:600">8:00–19:30</span></div>
-      <div style="display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid rgba(240,239,233,.08)"><span style="opacity:.75">Friday</span><span style="font-weight:600">8:00–17:00</span></div>
-      <div style="display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid rgba(240,239,233,.08)"><span style="opacity:.75">Saturday</span><span style="font-weight:600">9:00–12:00 · 17:00–18:30</span></div>
-      <div style="display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid rgba(240,239,233,.08)"><span style="opacity:.75">Sunday</span><span style="font-weight:600">9:30–12:00 · 17:30–19:30</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- PRICING TEASER -->
+<!-- ICE BATH PRICING -->
 <section class="pricing-teaser" id="ice-pricing">
   <div class="pricing-teaser-in">
     <span class="sl rv">Pricing</span>
     <h2 class="sh2 rv" style="transition-delay:.06s">Ice Bath <em>Pricing.</em></h2>
+
+    <div class="ib-offer rv" style="transition-delay:.08s">
+      <span class="ib-offer-tag">Add-on</span>
+      <div class="ib-offer-price">€5</div>
+      <div class="ib-offer-head">Add an ice bath to any class</div>
+      <p class="ib-offer-sub">Book any class, direct or through ClassPass, Wellhub or Urban Sports Club, then add the cold plunge for €5 when you arrive. Towel included.</p>
+      <a href="/classes/" class="ib-offer-cta">Book a class</a>
+      <p class="ib-offer-member">With any membership the ice bath is <strong>free and unlimited</strong>. <a href="../../pricing.html">See memberships</a></p>
+    </div>
+
+    <div class="ib-group rv" style="transition-delay:.08s"><span class="ib-group-lab">Ice bath only</span></div>
     <div class="pt-cards">
-      <div class="pt-card rv" style="transition-delay:.1s">
+      <div class="pt-card rv" style="transition-delay:0.1s">
         <div class="pt-label">Single Session</div>
         <div class="pt-price">€12</div>
         <div class="pt-note">One ice bath session<br>Towel included</div>
         <a href="https://momence.com/m/507726" class="pt-btn pt-btn-ghost" target="_self" rel="noopener noreferrer">Book Now</a>
       </div>
-      <div class="pt-card rv" style="transition-delay:.15s">
+      <div class="pt-card rv" style="transition-delay:0.15s">
         <div class="pt-label">3 Pack</div>
         <div class="pt-price">€30</div>
         <div class="pt-note">€10 per session · Towel included</div>
         <a href="https://momence.com/m/507728" class="pt-btn pt-btn-ghost" target="_self" rel="noopener noreferrer">Book Now</a>
       </div>
-      <div class="pt-card featured rv" style="transition-delay:.2s">
+      <div class="pt-card featured rv" style="transition-delay:0.2s">
         <div class="pt-label">5 Pack</div>
         <div class="pt-price">€40</div>
         <div class="pt-note">€8 per session · Towel included</div>
         <a href="https://momence.com/m/507729" class="pt-btn pt-btn-cyan" target="_self" rel="noopener noreferrer">Book Now</a>
       </div>
     </div>
-    <div class="pt-cards" style="margin-top:24px">
-      <div class="pt-card rv" style="transition-delay:.25s">
+
+    <div class="ib-group rv" style="transition-delay:.08s"><span class="ib-group-lab">Class and ice bath together</span>
+      <p class="ib-group-note">The same price as adding the plunge on the day, paid in one go.</p>
+    </div>
+    <div class="pt-cards">
+      <div class="pt-card rv" style="transition-delay:0.1s">
         <div class="pt-label">Intro Offer</div>
-        <div class="pt-price">€25</div>
+        <div class="pt-price">€23</div>
         <div class="pt-note">Trial class + Ice Bath<br>Towel included</div>
         <a href="https://momence.com/m/761242" class="pt-btn pt-btn-ghost" target="_self" rel="noopener noreferrer">Book Now</a>
       </div>
-      <div class="pt-card rv" style="transition-delay:.3s">
+      <div class="pt-card rv" style="transition-delay:0.15s">
         <div class="pt-label">Combo</div>
-        <div class="pt-price">€29</div>
+        <div class="pt-price">€27</div>
         <div class="pt-note">Drop-in class + Ice Bath<br>Towel included</div>
         <a href="https://momence.com/m/761241" class="pt-btn pt-btn-ghost" target="_self" rel="noopener noreferrer">Book Now</a>
       </div>
     </div>
+
+    <h3 class="ib-hours-h rv" style="transition-delay:.08s">Ice bath hours</h3>
+    <div class="ib-hours rv" style="transition-delay:.1s">
+      <div class="ib-hours-row"><span class="ib-hours-day">Monday</span><span class="ib-hours-time">8:30–19:30</span></div>
+      <div class="ib-hours-row"><span class="ib-hours-day">Tuesday to Thursday</span><span class="ib-hours-time">8:00–19:30</span></div>
+      <div class="ib-hours-row"><span class="ib-hours-day">Friday</span><span class="ib-hours-time">8:00–17:00</span></div>
+      <div class="ib-hours-row"><span class="ib-hours-day">Saturday</span><span class="ib-hours-time">9:00–12:00 · 17:00–18:30</span></div>
+      <div class="ib-hours-row"><span class="ib-hours-day">Sunday</span><span class="ib-hours-time">9:30–12:00 · 17:30–19:30</span></div>
+    </div>
+
     <p class="pt-foot rv" style="transition-delay:.35s"><a href="../../pricing.html" class="inline-link">See all our offers →</a></p>
   </div>
 </section>
-
-
 
 <!-- FAQ -->
 <section class="faq">
@@ -626,7 +641,7 @@ window.SABDAloadClarity=function(){
       <img class="ft-symbol" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20symbol%20multi-colored%20(1).png" alt="SABDA symbol">
     </div>
     <div class="ft-col"><h3 style="color:var(--cyan)">Explore</h3><ul>
-      <li><a href="../../classes.html">Classes</a></li><li><a href="../../hire.html">Rent</a></li><li><a href="../../pricing.html">Pricing</a></li><li><a href="../../events.html">Events</a></li><li><a href="/celebrations/">Celebrations</a></li><li><a href="../../about.html">About</a></li><li><a href="/cafe/">Café</a></li><li><a href="../../faq/">FAQ</a></li><li><a href="/blog/">Blog</a></li></ul></div>
+      <li><a href="../../classes.html">Classes</a></li><li><a href="/classes/ice-bath/">Ice Bath</a></li><li><a href="../../hire.html">Rent</a></li><li><a href="../../pricing.html">Pricing</a></li><li><a href="../../events.html">Events</a></li><li><a href="/celebrations/">Celebrations</a></li><li><a href="../../about.html">About</a></li><li><a href="/cafe/">Café</a></li><li><a href="../../faq/">FAQ</a></li><li><a href="/blog/">Blog</a></li></ul></div>
     <div class="ft-col"><h3 style="color:var(--salmon)">Connect</h3><ul>
       <li><a href="https://instagram.com/sabda_studio" target="_blank" rel="noopener noreferrer">Instagram</a></li>
       <li><a href="https://www.tiktok.com/@sabda_studio" target="_blank" rel="noopener noreferrer">TikTok</a></li>
