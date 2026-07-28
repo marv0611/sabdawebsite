@@ -12,6 +12,7 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
+(function(){var m=false;try{var c=JSON.parse(localStorage.getItem('sabda_cookie_consent')||'null');m=!!(c&&c.marketing);}catch(e){}if(!m&&typeof fbq==='function'){fbq('consent','revoke');}})();
 fbq('init', '567636669734630', {});
 fbq('track', 'PageView');
 </script>

@@ -13,6 +13,7 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
+(function(){var m=false;try{var c=JSON.parse(localStorage.getItem('sabda_cookie_consent')||'null');m=!!(c&&c.marketing);}catch(e){}if(!m&&typeof fbq==='function'){fbq('consent','revoke');}})();
 fbq('init', '567636669734630', {});
 fbq('track', 'PageView');
 /* SABDA-MOMENCE-PASSTHROUGH-v2 */
@@ -214,14 +215,23 @@ footer{padding:52px 80px 30px;border-top:1px solid rgba(240,239,233,.07);backgro
 
 /* MOBILE TAB BAR — revision */.tabs{display:none}@media(max-width:860px){footer{display:none}.tabs{position:fixed;top:auto;bottom:0;left:0;right:0;z-index:100;display:flex;align-items:flex-end;justify-content:space-around;height:calc(72px + env(safe-area-inset-bottom,0px));padding-bottom:env(safe-area-inset-bottom,0px);background:rgba(14,18,53,.95);backdrop-filter:saturate(1.4) blur(24px);-webkit-backdrop-filter:saturate(1.4) blur(24px);border-top:1px solid rgba(240,239,233,.06)}.tab{display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 0 6px;flex:1;color:rgba(240,239,233,.65);transition:color .2s;text-decoration:none}.tab.on{color:var(--cyan)}.tab svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}.tab span{font-size:.5rem;letter-spacing:.04em;font-weight:600}.tab-bk{position:relative}.tab-bk-o{width:56px;height:56px;border-radius:50%;background:var(--cyan);display:flex;align-items:center;justify-content:center;position:relative;top:-10px;box-shadow:0 4px 24px rgba(2,243,197,.28)}.tab-bk-o svg{stroke:var(--navy);width:22px;height:22px;stroke-width:2.5}.tab-bk span{position:relative;top:-6px}body{padding-bottom:84px}}
 </style>
+<script>/* SABDA consent gate: Google Consent Mode v2 defaults, read from stored consent */
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+(function(){var a='denied',m='denied';try{var c=JSON.parse(localStorage.getItem('sabda_cookie_consent')||'null');if(c){a=c.analytics?'granted':'denied';m=c.marketing?'granted':'denied';}}catch(e){}
+gtag('consent','default',{ad_storage:m,ad_user_data:m,ad_personalization:m,analytics_storage:a,functionality_storage:'granted',security_storage:'granted',wait_for_update:500});})();</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1E1WXTZWQD"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-1E1WXTZWQD",{"anonymize_ip":true});</script>
 <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "waoyd1cczc");
+/* SABDA consent gate: Microsoft Clarity loads only with analytics consent */
+window.SABDAloadClarity=function(){
+  if(window.__sabdaClarityLoaded)return;window.__sabdaClarityLoaded=true;
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "waoyd1cczc");
+};
+(function(){try{var c=JSON.parse(localStorage.getItem('sabda_cookie_consent')||'null');if(c&&c.analytics)window.SABDAloadClarity();}catch(e){}})();
 </script>
 <link rel="alternate" hreflang="es" href="https://sabdastudio.com/blog/pilates-dolor-espalda/">
 <link rel="alternate" hreflang="x-default" href="https://sabdastudio.com/blog/pilates-dolor-espalda/">

@@ -86,9 +86,34 @@
   }
 
   function applyConsent(consent){
-    // Hook for future tracking gating. When Meta Pixel/GA4 are added,
-    // they should check window.SABDAcookies.consent before firing.
+    // Applies the choice to the tracking that is actually deployed.
+    // Page-level gates read localStorage on load; this handles live changes.
     window.SABDAcookies.consent = consent;
+    var analytics = !!(consent && consent.analytics);
+    var marketing = !!(consent && consent.marketing);
+    // Google (GA4) via Consent Mode v2
+    try{
+      if (typeof window.gtag === 'function'){
+        window.gtag('consent','update',{
+          ad_storage: marketing ? 'granted' : 'denied',
+          ad_user_data: marketing ? 'granted' : 'denied',
+          ad_personalization: marketing ? 'granted' : 'denied',
+          analytics_storage: analytics ? 'granted' : 'denied'
+        });
+      }
+    }catch(e){}
+    // Meta Pixel
+    try{
+      if (typeof window.fbq === 'function'){
+        window.fbq('consent', marketing ? 'grant' : 'revoke');
+      }
+    }catch(e){}
+    // Microsoft Clarity loads on demand, and only with analytics consent
+    try{
+      if (analytics && typeof window.SABDAloadClarity === 'function'){
+        window.SABDAloadClarity();
+      }
+    }catch(e){}
     document.dispatchEvent(new CustomEvent('sabda:consent', {detail: consent}));
   }
 
