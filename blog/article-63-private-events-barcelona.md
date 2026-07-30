@@ -7,6 +7,7 @@
 **Slug:** `/blog/private-events-barcelona/`
 
 **Primary keyword:** private events barcelona
+**publish: true**
 **Secondary keywords:** private event venues barcelona, brand activations barcelona, immersive events barcelona
 
 ---

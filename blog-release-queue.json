@@ -9,8 +9,8 @@
     "regenerated": "2026-04-20",
     "last_release": {
       "date": "2026-07-30",
-      "slug": "/blog/organizar-evento-corporativo-barcelona/",
-      "order": 53
+      "slug": "/blog/private-events-barcelona/",
+      "order": 54
     }
   },
   "queue": [
@@ -710,7 +710,8 @@
       "release_date": "2026-06-29",
       "md_file": "blog/article-63-private-events-barcelona.md",
       "html_file": "blog/private-events-barcelona/index.html",
-      "status": "queued"
+      "status": "released",
+      "released_at": "2026-07-30"
     },
     {
       "order": 55,
