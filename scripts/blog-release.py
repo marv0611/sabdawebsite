@@ -38,6 +38,18 @@ def main():
             print(f'No queued article matches force_slug={force_slug}')
             sys.exit(0)
     else:
+        # One release per calendar day.
+        # The workflow runs two crons (:00 and :15) so a dropped :00 run still ships.
+        # That was safe while this script only ever considered articles dated today,
+        # but it is not safe with the catch-up logic below: during a backlog the :00
+        # run takes the oldest overdue article and the :15 run takes the next one.
+        # That is how arts 62 and 63 both published on 2026-07-30. Guard on it so the
+        # backup cron stays a genuine no-op and the daily cadence is preserved.
+        already = [q for q in queue if q.get('released_at') == today]
+        if already:
+            print(f'Already released today ({today}): {already[0]["slug"]} - skipping, one per day')
+            sys.exit(0)
+
         # Catch-up logic: pick EARLIEST queued article whose release_date <= today.
         # The queue is already sorted by order/release_date, so iterating in queue
         # order naturally returns the oldest-overdue first. If GH Actions misses a

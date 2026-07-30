@@ -10,9 +10,11 @@ on:
     # so winter releases will fire at 08:00 CET. Acceptable drift.
     # SECOND CRON at :15 past the hour is a backup: GitHub Actions deprioritizes
     # workflows scheduled at HH:00 due to cron-fan-out load (thundering herd).
-    # If the :00 run gets silently dropped, the :15 catches it. The release
-    # script is idempotent — it only flips articles dated today and skips
-    # already-released ones, so a successful :00 run makes :15 a no-op.
+    # If the :00 run gets silently dropped, the :15 catches it.
+    # The :15 run is only a no-op because blog-release.py refuses to release twice in
+    # one calendar day. Do not remove that guard: the catch-up path selects the oldest
+    # overdue article, so without it a backlog publishes two articles per day (which is
+    # what happened on 2026-07-30 with arts 62 and 63).
     - cron: '0 7 * * 1-5'
     - cron: '15 7 * * 1-5'
   workflow_dispatch:
@@ -21,6 +23,12 @@ on:
         description: 'Force-release a specific slug (e.g. /blog/yoga-barcelona-guia/), bypassing date check'
         required: false
         type: string
+
+# Two crons 15 minutes apart plus manual dispatch means runs can overlap. Serialise
+# them so two jobs never write blog-release-queue.json at the same time.
+concurrency:
+  group: blog-daily-release
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -31,8 +39,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 2
+          fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Sync with latest main before writing
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git pull --rebase --autostash origin main
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -60,4 +74,21 @@ jobs:
           else
             git commit -m "Daily blog release"
           fi
-          git push
+          # Push, retrying once against a main that moved mid-run (e.g. someone editing
+          # the queue by hand). A queue conflict is a race, not a defect, so warn and let
+          # the next scheduled run redo the release rather than failing the build and
+          # training everyone to ignore red CI.
+          for attempt in 1 2; do
+            if git push; then
+              echo "Pushed on attempt $attempt"
+              exit 0
+            fi
+            echo "Push rejected on attempt $attempt - syncing with origin/main"
+            if ! git pull --rebase origin main; then
+              git rebase --abort || true
+              echo "::warning::blog-release-queue.json conflicted with a concurrent change. Release not pushed; the next scheduled run will retry."
+              exit 0
+            fi
+          done
+          echo "::warning::Push still rejected after retry. The next scheduled run will retry."
+          exit 0
