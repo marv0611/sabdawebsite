@@ -39,7 +39,9 @@ Fuera de la ciudad: masías en el Penedès (vino + mindfulness), Montseny (natur
 
 ## Mejores espacios por formato
 
-Si buscas eventos corporativos barcelona, esta guía cubre lo que realmente importa. | Formato | Espacio recomendado | Precio desde |
+Si buscas eventos corporativos barcelona, esta guía cubre lo que realmente importa.
+
+| Formato | Espacio recomendado | Precio desde |
 |---------|-------------------|-------------|
 | Wellness / team experience | SABDA | €350 |
 | Brand activation / producción | SABDA | €350 |
@@ -83,7 +85,9 @@ Los mejores eventos corporativos barcelona son los que nadie espera. Para algo q
 
 ## Cuánto presupuesto necesitas
 
-| Tipo de evento | Presupuesto por persona | Ejemplo |
+| Tipo de evento
+
+| Formato | Presupuesto por persona | Ejemplo |
 |---|---|---|
 | Experiencia inmersiva (SABDA) | €10-25 | Breathwork + sound healing para 40 |
 | Team building outdoor | €30-60 | Vela, kayak, o ruta gastronómica |

@@ -28,7 +28,9 @@ SABDA es mat-only. Core Pilates, Power Pilates, Full Body Pilates, y Pilates Scu
 
 ## Comparación directa
 
-Si buscas clases de pilates barcelona, esta guía cubre lo que realmente importa. | | Mat | Reformer |
+Si buscas clases de pilates barcelona, esta guía cubre lo que realmente importa.
+
+| | Mat | Reformer |
 |---|---|---|
 | **Equipamiento** | Esterilla (+ accesorios opcionales) | Máquina con muelles |
 | **Resistencia** | Tu peso corporal | Muelles (ajustable) |
@@ -67,7 +69,9 @@ Si buscas clases de pilates barcelona, esta guía cubre lo que realmente importa
 
 ## Precios en Barcelona, la comparación real
 
-| Formato | Mat | Reformer |
+| Formato
+
+| | Mat | Reformer |
 |---------|-----|----------|
 | Clase suelta | €12-20 | €22-40 |
 | Pack 5 clases | €55-90 | €100-180 |

@@ -56,13 +56,15 @@ Reformer-focused studio with structured programmes and small groups. Clean, func
 
 ## Price comparison
 
-If you're looking for pilates studios barcelona, this guide covers what actually matters. | Studio | Mat group | Reformer group | Individual |
+If you're looking for pilates studios barcelona, this guide covers what actually matters.
+
+| Studio | Mat group | Reformer group | Individual |
 |--------|----------|---------------|-----------|
-| SABDA (immersive) | From €18 |, | , |
+| SABDA (immersive) | From €18 | &ndash; | &ndash; |
 | Dona10 | ~€18 | ~€25-35 | ~€45-60 |
-| Pilat3s |, | ~€25-30 | ~€50-65 |
+| Pilat3s | &ndash; | ~€25-30 | ~€50-65 |
 | Simply Be | ~€18 | ~€20-28 | ~€40-55 |
-| Gym (DIR/Holmes) | Included (~€60-90/mo) | Varies |, |
+| Gym (DIR/Holmes) | Included (~€60-90/mo) | Varies | &ndash; |
 
 ---
 

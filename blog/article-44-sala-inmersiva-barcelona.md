@@ -49,7 +49,9 @@ Celebraciones, cenas inmersivas, presentaciones, y experiencias privadas para gr
 
 ## La diferencia entre SABDA y otros espacios inmersivos
 
-Si buscas sala inmersiva barcelona, esta guía cubre lo que realmente importa. | | SABDA | IDEAL | Moco Museum |
+Si buscas sala inmersiva barcelona, esta guía cubre lo que realmente importa.
+
+| | SABDA | IDEAL | Moco Museum |
 |---|---|---|---|
 | Tipo | Participativo | Pasivo | Galería + interactivo |
 | Actividad | Te mueves, respiras, bailas | Caminas y miras | Caminas y miras |

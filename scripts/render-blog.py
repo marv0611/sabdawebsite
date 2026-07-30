@@ -27,6 +27,9 @@ except ImportError:
 
 # ─── HARDCODED LANGUAGE MAP ───
 # Per inventory + body inspection 2026-04-13:
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import blog_enhance
+
 CA_ARTICLES = {3, 46, 60}
 
 # ─── CANONICAL TRACKING / CONSENT BLOCKS ───
@@ -326,6 +329,11 @@ def render_html(md_path, dry_run=False):
     # ─── Markdown → HTML ───
     md = markdown.Markdown(extensions=['extra','sane_lists','attr_list'])
     body_html = md.convert(body)
+    # Post-render enhancements, shared with the design-upgrade pass so rendered and
+    # already-published articles stay identical: rebuild any pipe table Markdown
+    # missed, add data-label to cells for the mobile card layout, and turn the
+    # Type/Price/Location run into chips.
+    body_html = blog_enhance.enhance(body_html)
     
     # ─── Get dates ───
     # Priority:
@@ -562,6 +570,8 @@ const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{{
         return out_path, out
     
     out_dir.mkdir(parents=True, exist_ok=True)
+    # design layer: stylesheet, desktop particle field, breadcrumb separators
+    out = blog_enhance.inject_design(out)
     out_path.write_text(out)
     return out_path, None
 

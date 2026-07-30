@@ -240,6 +240,81 @@ window.SABDAloadClarity=function(){
 <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <style id="nav-fit">@media(min-width:861px) and (max-width:1120px){.nav-links{gap:20px}}</style>
+<style id="blog-design">
+/* ─── Reading rhythm ─────────────────────────────────────────────── */
+.article{max-width:760px}
+.article-meta{font-size:.78rem;letter-spacing:.06em;margin-bottom:26px}
+.article-meta + p{font-size:1.2rem;line-height:1.68;color:rgba(240,239,233,.84);margin-bottom:30px}
+.article p{font-size:1.06rem;line-height:1.78;margin-bottom:22px}
+.article h2{font-size:clamp(1.42rem,2.6vw,1.95rem);letter-spacing:-.02em;margin:58px 0 16px}
+.article h3{font-size:1.16rem;margin:36px 0 10px}
+.article h2 + p,.article h3 + p{margin-top:0}
+.article ul,.article ol{margin:0 0 24px 22px}
+.article li{margin-bottom:9px;line-height:1.72}
+.article li::marker{color:rgba(2,243,197,.55)}
+/* an <hr> immediately followed by <h2> was stacking two 48px margins into a
+   ~100px hole between sections, which is the gap flagged in review */
+.article hr{margin:40px 0}
+.article hr + h2{margin-top:0}
+.article blockquote{margin:30px 0;border-radius:0 10px 10px 0}
+
+/* ─── Spec chips ─────────────────────────────────────────────────────
+   Was one paragraph of "Type: x | Price: y \n Location: z". The newline
+   collapsed to a space, so Price and Location ran together unseparated. */
+.article ul.spec{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0 0 26px;padding:0}
+.article ul.spec li{display:inline-flex;align-items:baseline;gap:7px;margin:0;font-size:.84rem;line-height:1.45;padding:7px 14px;border:1px solid rgba(240,239,233,.11);border-radius:100px;background:rgba(240,239,233,.028);color:var(--white60)}
+.article ul.spec li::marker{content:""}
+.article ul.spec b{font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:var(--white38);font-weight:700;white-space:nowrap}
+.article ul.spec a{border-bottom:none;color:var(--cyan);font-weight:600}
+
+/* ─── Comparison tables ──────────────────────────────────────────── */
+.article .tbl-wrap{margin:30px 0;border:1px solid rgba(240,239,233,.1);border-radius:14px;background:rgba(240,239,233,.022);overflow-x:auto;-webkit-overflow-scrolling:touch}
+.article table{width:100%;border-collapse:collapse;font-size:.94rem}
+.article thead th{text-align:left;font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--white38);padding:13px 16px;background:rgba(240,239,233,.04);border-bottom:1px solid rgba(240,239,233,.1);white-space:nowrap}
+.article tbody td{padding:13px 16px;border-bottom:1px solid rgba(240,239,233,.055);color:var(--white60);line-height:1.55;vertical-align:top}
+.article tbody tr:last-child td{border-bottom:none}
+.article tbody tr{transition:background .2s}
+.article tbody tr:hover{background:rgba(2,243,197,.022)}
+.article tbody td:first-child{color:var(--white);font-weight:600}
+.article table a{border-bottom:none;color:var(--cyan)}
+
+/* ─── Breadcrumbs: separators were bare text nodes between flex items ─── */
+.breadcrumbs{gap:9px;white-space:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.breadcrumbs::-webkit-scrollbar{display:none}
+.breadcrumbs > span:last-child{color:var(--white38);overflow:hidden;text-overflow:ellipsis}
+.bc-sep{color:rgba(240,239,233,.32)}
+
+/* ─── Particle field, desktop only, behind the copy ───────────────── */
+#globalParticles{position:fixed;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+.hero-banner{z-index:2}
+@media(max-width:860px){#globalParticles{display:none}}
+
+/* ─── Mobile ─────────────────────────────────────────────────────── */
+@media(max-width:860px){
+  .article{padding:14px 22px 78px;max-width:100%}
+  .article-meta{margin-bottom:20px}
+  .article-meta + p{font-size:1.1rem;margin-bottom:24px}
+  .article h2{margin:44px 0 13px}
+  .article h3{margin:30px 0 9px}
+  .article hr{margin:34px 0}
+  .breadcrumbs{padding:0 22px}
+}
+/* Comparison tables restack as cards instead of scrolling sideways */
+@media(max-width:600px){
+  .article .tbl-wrap{border:none;background:none;border-radius:0;overflow:visible}
+  .article table,.article tbody,.article tbody tr,.article tbody td{display:block;width:100%}
+  .article thead{display:none}
+  .article tbody tr{border:1px solid rgba(240,239,233,.11);border-radius:12px;background:rgba(240,239,233,.028);margin-bottom:12px;padding:2px 0}
+  .article tbody tr:hover{background:rgba(240,239,233,.028)}
+  .article tbody td{border-bottom:1px solid rgba(240,239,233,.05);padding:10px 15px}
+  .article tbody td:last-child{border-bottom:none}
+  .article tbody td:first-child{font-size:1.02rem;padding-top:13px}
+  .article tbody td[data-label]:not(:first-child)::before{content:attr(data-label);display:block;font-size:.58rem;letter-spacing:.13em;text-transform:uppercase;color:var(--white38);font-weight:700;margin-bottom:3px}
+  .article ul.spec{gap:6px}
+  .article ul.spec li{font-size:.79rem;padding:6px 12px;width:100%}
+}
+@media(max-width:420px){.article{padding:12px 18px 78px}.article p{font-size:1.02rem}}
+</style>
 </head>
 <body>
 <div class="grain"></div>
@@ -276,7 +351,7 @@ window.SABDAloadClarity=function(){
     <h1>Pilates Barcelona: 6 Centros con Precios Reales (2026)</h1>
   </div>
 </div>
-<nav aria-label="Breadcrumb" class="breadcrumbs"><a href="/">Inicio</a> / <a href="/blog/">Blog</a> / <span>Pilates Barcelona: 6 Centros con Precios Reales (2026)</span></nav>
+<nav aria-label="Breadcrumb" class="breadcrumbs"><a href="/">Inicio</a><span class="bc-sep">/</span><a href="/blog/">Blog</a><span class="bc-sep">/</span><span>Pilates Barcelona: 6 Centros con Precios Reales (2026)</span></nav>
 <article class="article">
  <h1>Pilates Barcelona: 6 Centros con Precios Reales (2026)</h1>
  <div class="article-meta">SABDA &middot; Abril 2026</div>
@@ -312,7 +387,7 @@ window.SABDAloadClarity=function(){
 <p>Para trabajo personalizado (post-lesión, rehabilitación, objetivos específicos), varios fisioterapeutas y entrenadores en Barcelona ofrecen pilates individual en reformer o mat. Precios: €50-80/sesión. Busca profesionales con certificación completa (Stott, BASI, o Polestar son las más reconocidas). Las sesiones individuales cuestan más, pero 5 sesiones con un buen profesor te enseñan más que 20 clases grupales.</p>
 <hr />
 <h2>Precios de pilates en Barcelona</h2>
-<table>
+<div class="tbl-wrap"><table>
 <thead>
 <tr>
 <th>Formato</th>
@@ -321,33 +396,13 @@ window.SABDAloadClarity=function(){
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>Clase suelta</td>
-<td>€12-20</td>
-<td>€22-40</td>
-</tr>
-<tr>
-<td>Pack 5 clases</td>
-<td>€55-90</td>
-<td>€100-180</td>
-</tr>
-<tr>
-<td>Pack 10 clases</td>
-<td>€100-160</td>
-<td>€180-320</td>
-</tr>
-<tr>
-<td>Mensual ilimitado</td>
-<td>€99-130</td>
-<td>€180-300</td>
-</tr>
-<tr>
-<td>Clase individual</td>
-<td>€40-60</td>
-<td>€50-80</td>
-</tr>
+<tr><td data-label="Formato">Clase suelta</td><td data-label="Mat">€12-20</td><td data-label="Reformer">€22-40</td></tr>
+<tr><td data-label="Formato">Pack 5 clases</td><td data-label="Mat">€55-90</td><td data-label="Reformer">€100-180</td></tr>
+<tr><td data-label="Formato">Pack 10 clases</td><td data-label="Mat">€100-160</td><td data-label="Reformer">€180-320</td></tr>
+<tr><td data-label="Formato">Mensual ilimitado</td><td data-label="Mat">€99-130</td><td data-label="Reformer">€180-300</td></tr>
+<tr><td data-label="Formato">Clase individual</td><td data-label="Mat">€40-60</td><td data-label="Reformer">€50-80</td></tr>
 </tbody>
-</table>
+</table></div>
 <p>El <a href="/es/precios/">pack intro de SABDA (3 clases por €50)</a> da acceso a pilates mat y a todas las demás clases del estudio. Yoga, sound healing, breathwork, etc.</p>
 <hr />
 <h2>Pilates para embarazadas en Barcelona</h2>
