@@ -233,6 +233,22 @@ window.SABDAloadClarity=function(){
   .blog-intro-offers .section-hdr h2{font-size:1.6rem}
 }
 </style>
+<style id="mblog-design">
+/* Mobile blog listing. Was flat full-bleed text rows divided by hairlines, with
+   the ranking number in cyan. Now cards, and the number is salmon to match the
+   article headings. Lives in <head> so blog-release.py, which only rewrites the
+   card block between the hero and the pricing section, cannot clobber it. */
+.blog-hero{min-height:34svh;padding-bottom:20px}
+.blog-hero-c h1{font-size:1.9rem;line-height:1.14}
+.blog-hero-c p{font-size:.84rem}
+.mblog-filters{padding:18px 16px 12px!important}
+.ct{padding:14px 15px;margin:0 16px 10px;border-bottom:none;border:1px solid rgba(240,239,233,.09);border-radius:14px;background:rgba(240,239,233,.022);transition:border-color .2s,background .2s}
+.ct:active{border-color:rgba(248,166,163,.34);background:rgba(248,166,163,.045)}
+.ct-num{width:25px;height:25px;background:rgba(248,166,163,.1);border:1px solid rgba(248,166,163,.24);color:var(--salmon);font-size:.6rem;margin-top:1px}
+.ct-name{font-size:1.02rem;line-height:1.33;margin-bottom:5px;color:var(--white)}
+.ct-desc{font-size:.775rem;line-height:1.6;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.ct-lang{color:var(--salmon)!important}
+</style>
 </head>
 <body>
 <div class="grain"></div>
