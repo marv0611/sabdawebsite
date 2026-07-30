@@ -7,6 +7,7 @@
 **Slug:** `/blog/team-building-venues-barcelona/`
 
 **Primary keyword:** team building venues barcelona
+**publish: true**
 **Secondary keywords:** corporate event spaces barcelona, team building spaces barcelona, unique venues barcelona corporate
 
 ---

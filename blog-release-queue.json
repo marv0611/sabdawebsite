@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-06-24",
-      "slug": "/blog/sala-inmersiva-barcelona/",
-      "order": 51
+      "date": "2026-07-30",
+      "slug": "/blog/team-building-venues-barcelona/",
+      "order": 52
     }
   },
   "queue": [
@@ -686,7 +686,8 @@
       "release_date": "2026-06-25",
       "md_file": "blog/article-61-team-building-venues-barcelona.md",
       "html_file": "blog/team-building-venues-barcelona/index.html",
-      "status": "queued"
+      "status": "released",
+      "released_at": "2026-07-30"
     },
     {
       "order": 53,
