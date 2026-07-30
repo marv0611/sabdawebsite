@@ -169,25 +169,25 @@ echo "━━━ Section 1: landing pages return HTTP 200 ━━━"
 check_url_200 "Homepage EN"            "$UA"        "https://sabdastudio.com/"
 check_url_200 "Homepage ES"            "$UA"        "https://sabdastudio.com/es/"
 check_url_200 "Homepage CA"            "$UA"        "https://sabdastudio.com/ca/"
-check_url_200 "Pricing EN"             "$UA"        "https://sabdastudio.com/pricing.html"
+check_url_200 "Pricing EN"             "$UA"        "https://sabdastudio.com/pricing/"
 check_url_200 "Pricing ES"             "$UA"        "https://sabdastudio.com/es/precios/"
 check_url_200 "Pricing CA"             "$UA"        "https://sabdastudio.com/ca/preus/"
 check_url_200 "Intro EN (ad landing)"  "$UA"        "https://sabdastudio.com/intro/"
 check_url_200 "Intro ES"               "$UA"        "https://sabdastudio.com/es/intro/"
 check_url_200 "Intro CA"               "$UA"        "https://sabdastudio.com/ca/intro/"
-check_url_200 "Schedule desktop"       "$UA"        "https://sabdastudio.com/schedule.html"
+check_url_200 "Schedule desktop"       "$UA"        "https://sabdastudio.com/classes/"
 check_url_200 "Schedule mobile"        "$MOBILE_UA" "https://sabdastudio.com/m/schedule.html"
 check_url_200 "Mobile homepage"        "$MOBILE_UA" "https://sabdastudio.com/m/index.html"
-check_url_200 "Classes EN"             "$UA"        "https://sabdastudio.com/classes.html"
+check_url_200 "Classes EN"             "$UA"        "https://sabdastudio.com/classes/"
 check_url_200 "Classes/yoga EN"        "$UA"        "https://sabdastudio.com/classes/yoga/"
 
 # ─── Section 2: pages contain expected critical strings ─────────────────────
 echo ""
 echo "━━━ Section 2: critical content present ━━━"
 check_contains "Homepage links to pricing"       "$UA"        "https://sabdastudio.com/"            "pricing.html"
-check_contains "Pricing has 3-pack offer"        "$UA"        "https://sabdastudio.com/pricing.html" "momence.com/m/443935"
+check_contains "Pricing has 3-pack offer"        "$UA"        "https://sabdastudio.com/pricing/" "momence.com/m/443935"
 check_contains "Intro has trial pack offer"      "$UA"        "https://sabdastudio.com/intro/"      "momence.com/m/443934"
-check_contains "Schedule loads Momence widget"   "$UA"        "https://sabdastudio.com/schedule.html" "momence-plugin-host-schedule"
+check_contains "Schedule has native day picker"  "$UA"        "https://sabdastudio.com/classes/" 'id="days"'
 check_contains "Mobile schedule has init code"   "$MOBILE_UA" "https://sabdastudio.com/m/schedule.html" "async function init"
 check_contains "v2 passthrough module present"   "$UA"        "https://sabdastudio.com/intro/"      "SABDA-MOMENCE-PASSTHROUGH-v2"
 check_contains "Pixel base code present"         "$UA"        "https://sabdastudio.com/intro/"      "567636669734630"
@@ -208,7 +208,7 @@ echo ""
 echo "━━━ Section 4: live inline-script parse validation ━━━"
 check_node_parses "Mobile schedule scripts parse" "$MOBILE_UA" "https://sabdastudio.com/m/schedule.html"
 check_node_parses "Intro page scripts parse"      "$UA"        "https://sabdastudio.com/intro/"
-check_node_parses "Pricing page scripts parse"    "$UA"        "https://sabdastudio.com/pricing.html"
+check_node_parses "Pricing page scripts parse"    "$UA"        "https://sabdastudio.com/pricing/"
 check_node_parses "Mobile homepage scripts parse" "$MOBILE_UA" "https://sabdastudio.com/m/index.html"
 check_node_parses "Classes page scripts parse"    "$UA"        "https://sabdastudio.com/classes.html"
 
@@ -222,17 +222,17 @@ check_url_200 "Momence schedule readonly API"      "$UA" "https://momence.com/_a
 # ─── Section 6: anchor target sanity (ad-flow links should match Test A state) ─
 echo ""
 echo "━━━ Section 6: anchor target attribute sanity ━━━"
-fetch_to_file "$UA" "https://sabdastudio.com/pricing.html" /tmp/_health_body.txt > /dev/null
+fetch_to_file "$UA" "https://sabdastudio.com/pricing/" /tmp/_health_body.txt > /dev/null
 SELF_COUNT=$(grep -oE 'href="https://momence\.com/m/[0-9]+"[^>]*target="_self"' /tmp/_health_body.txt | wc -l)
 BLANK_COUNT=$(grep -oE 'href="https://momence\.com/m/[0-9]+"[^>]*target="_blank"' /tmp/_health_body.txt | wc -l)
 GIFT_COUNT=$(grep -oE 'href="https://momence\.com/SABDA/gift-card[^"]*"[^>]*target="_blank"' /tmp/_health_body.txt | wc -l)
-echo "  pricing.html: pack target=_self=$SELF_COUNT  pack target=_blank=$BLANK_COUNT  gift target=_blank=$GIFT_COUNT"
+echo "  pricing: pack target=_self=$SELF_COUNT  pack target=_blank=$BLANK_COUNT  gift target=_blank=$GIFT_COUNT"
 # For now, sanity rule: as long as gift cards stay _blank=6, that's fine.
 # Pack anchors can be _self (Test A active) or _blank (post-revert) — both valid states.
 if [[ $GIFT_COUNT -eq 0 ]]; then
   echo "  ⚠️  pricing.html: gift card anchors expected target=_blank but found 0"
   WARN=$((WARN+1))
-  WARNINGS+=("pricing.html gift card target=_blank count is 0 (expected 6+) — gift card flow may be misconfigured")
+  WARNINGS+=("pricing gift card target=_blank count is 0 (expected 6+) — gift card flow may be misconfigured")
 else
   echo "  ✅ Gift card anchor target attribute sane"
   PASS=$((PASS+1))

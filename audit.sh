@@ -50,6 +50,10 @@ for p in BOOKING:
     # 4. Duplicate function decls (showFallback excluded — intentionally unified)
     for fn_match in set(re.findall(r'\bfunction\s+([_a-zA-Z]\w*)', s)):
         if fn_match == 'showFallback': continue
+        # gtag is declared twice by design: the Consent Mode v2 block must define the
+        # stub before gtag.js loads, and Google's own config snippet declares it again.
+        # Both bodies are identical (dataLayer.push(arguments)), so the redeclaration is inert.
+        if fn_match == 'gtag': continue
         count = len(re.findall(r'\bfunction\s+'+re.escape(fn_match)+r'\s*\(', s))
         if count > 1:
             issues.append(f'[DUPLICATE_FN]  {p}: {fn_match} declared {count}×')
@@ -146,6 +150,9 @@ REQUIRED = {
 for p in ENTRY:
     if not os.path.exists(p): continue
     s = open(p).read()
+    # Redirect stubs carry no tracking on purpose: they bounce before anything fires.
+    if 'location.replace' in s and 'noindex' in s:
+        continue
     for needle, label in REQUIRED.items():
         if needle not in s:
             issues.append(f'[MISSING_TAG]   {p} — {label} ({needle}) not found')
