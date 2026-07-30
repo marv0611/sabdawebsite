@@ -215,7 +215,10 @@ def inject_design(doc):
     """Add the design stylesheet and the particle field. Idempotent."""
     if 'id="blog-design"' not in doc:
         doc = doc.replace('</head>', DESIGN_CSS + '\n</head>', 1)
-    if 'globalParticles' not in doc:
+    # Guard on the canvas element, not the bare id: DESIGN_CSS also contains
+    # "#globalParticles", so a substring check on the id always matched and the
+    # field was never actually injected.
+    if '<canvas id="globalParticles"' not in doc:
         doc = doc.replace('</body>', PARTICLES + '\n</body>', 1)
     doc = fix_breadcrumb_seps(doc)
     return doc
