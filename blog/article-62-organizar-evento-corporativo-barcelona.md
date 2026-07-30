@@ -7,6 +7,7 @@
 **Slug:** `/blog/organizar-evento-corporativo-barcelona/`
 
 **Primary keyword:** organizar evento corporativo barcelona
+**publish: true**
 **Secondary keywords:** evento corporativo barcelona precio, espacios eventos corporativos barcelona, organizar evento empresa barcelona
 
 ---

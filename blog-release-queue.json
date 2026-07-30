@@ -9,8 +9,8 @@
     "regenerated": "2026-04-20",
     "last_release": {
       "date": "2026-07-30",
-      "slug": "/blog/team-building-venues-barcelona/",
-      "order": 52
+      "slug": "/blog/organizar-evento-corporativo-barcelona/",
+      "order": 53
     }
   },
   "queue": [
@@ -698,7 +698,8 @@
       "release_date": "2026-06-26",
       "md_file": "blog/article-62-organizar-evento-corporativo-barcelona.md",
       "html_file": "blog/organizar-evento-corporativo-barcelona/index.html",
-      "status": "queued"
+      "status": "released",
+      "released_at": "2026-07-30"
     },
     {
       "order": 54,
