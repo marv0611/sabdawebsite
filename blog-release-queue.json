@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-07-30",
-      "slug": "/blog/private-events-barcelona/",
-      "order": 54
+      "date": "2026-07-31",
+      "slug": "/blog/wellness-empresas-barcelona/",
+      "order": 55
     },
     "excluded": {
       "blog/dolby-atmos-wellness/index.html": "Intentionally noindex. Brand story, negligible search demand for the term. Reserve for social, newsletter or a future /technology/ page. Do not queue.",
@@ -726,7 +726,8 @@
       "release_date": "2026-06-30",
       "md_file": "blog/article-64-wellness-empresas-barcelona.md",
       "html_file": "blog/wellness-empresas-barcelona/index.html",
-      "status": "queued"
+      "status": "released",
+      "released_at": "2026-07-31"
     },
     {
       "order": 56,

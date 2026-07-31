@@ -7,6 +7,7 @@
 **Slug:** `/blog/wellness-empresas-barcelona/`
 
 **Primary keyword:** wellness empresas barcelona
+**publish: true**
 **Secondary keywords:** wellness corporativo barcelona, bienestar empresas barcelona, actividades bienestar equipo
 
 ---
