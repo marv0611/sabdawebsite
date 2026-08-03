@@ -127,7 +127,7 @@ Si buscas actividades barcelona, esta guía cubre lo que realmente importa. - [S
 
 ## Arte inmersivo: la actividad que no puedes hacer en otra ciudad
 
-Entre IDEAL, Casa Batllo, Moco y Eonarium, Barcelona concentra mas experiencias inmersivas que casi cualquier ciudad europea. A partir de septiembre de 2026 se suma una mas: [SABDA abre su programa de exposiciones de arte inmersivo](/es/exposiciones/) en el Eixample, en la misma sala 360 con Dolby Atmos donde hoy se practica yoga y sound healing dentro de las proyecciones. Precios y comparativa honesta en la [guia de experiencias inmersivas](/blog/experiencias-inmersivas-barcelona/).
+Entre IDEAL, Casa Batlló, Moco y Eonarium, Barcelona concentra más experiencias inmersivas que casi cualquier ciudad europea. A partir de septiembre de 2026 se suma una más: [SABDA abre su programa de exposiciones de arte inmersivo](/es/exposiciones/) en el Eixample, en la misma sala 360 con Dolby Atmos donde hoy se practica yoga y sound healing dentro de las proyecciones. Precios y comparativa honesta en la [guía de experiencias inmersivas](/blog/experiencias-inmersivas-barcelona/).
 
 ## Antes de ir
 

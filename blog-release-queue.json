@@ -1,7 +1,7 @@
 {
   "meta": {
     "created": "2026-04-13",
-    "total_queued": 63,
+    "total_queued": 65,
     "schedule": "Mon-Fri 09:00 CET",
     "release_workflow": ".github/workflows/blog-daily-release.yml",
     "notes": "Reordered on 2026-04-20 from pure-volume-DESC to interleaved business intent: wellness/tourism/wellness/corporate/wellness/tourism/brand cycle (7-period). Positions 1-16 locked (released or imminent). Positions 17-51 reordered across existing 35 weekday dates. Within each category, highest-volume articles scheduled first. Original volume-DESC queue backed up to blog-release-queue.json.bak-pre-interleave. Appended articles 61-68 (corporate/events + bottom-of-funnel brand content) starting 2026-06-25.",
@@ -817,6 +817,28 @@
       "md_file": "blog/article-70-ideal-moco-casa-batllo-comparativa.md",
       "html_file": "blog/ideal-moco-casa-batllo-comparativa/index.html",
       "status": "queued"
+    },
+    {
+      "slug": "/blog/teamlab-barcelona/",
+      "keyword": "teamlab barcelona",
+      "art_num": 71,
+      "lang": "en",
+      "release_date": "2026-08-06",
+      "md_file": "blog/article-71-teamlab-barcelona.md",
+      "html_file": "blog/teamlab-barcelona/index.html",
+      "status": "queued",
+      "order": 64
+    },
+    {
+      "slug": "/blog/expositions-immersives-barcelone/",
+      "keyword": "exposition immersive barcelone",
+      "art_num": 72,
+      "lang": "fr",
+      "release_date": "2026-08-07",
+      "md_file": "blog/article-72-expositions-immersives-barcelone.md",
+      "html_file": "blog/expositions-immersives-barcelone/index.html",
+      "status": "queued",
+      "order": 65
     }
   ]
 }

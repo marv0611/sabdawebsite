@@ -121,9 +121,9 @@ Si buscas una experiencia inmersiva que va más allá de sentarte a mirar: [SABD
 
 ---
 
-## Exposiciones inmersivas: el espectaculo donde tu te mueves
+## Exposiciones inmersivas: el espectáculo donde tú te mueves
 
-Si los espectaculos con butaca se te quedan cortos, Barcelona tiene una escena inmersiva potente: IDEAL en el Poblenou con su sala de proyecciones gigante, Casa Batllo con su experiencia 10D, Moco en El Born. Y desde septiembre de 2026, [SABDA estrena programa de exposiciones de arte inmersivo](/es/exposiciones/) en su sala 360 con Dolby Atmos del Eixample, el mismo espacio donde ahora se hace yoga y sound healing dentro de las proyecciones. Comparamos todas las opciones con precios reales en nuestra [guia de experiencias inmersivas](/blog/experiencias-inmersivas-barcelona/).
+Si los espectáculos con butaca se te quedan cortos, Barcelona tiene una escena inmersiva potente: IDEAL en el Poblenou con su sala de proyecciones gigante, Casa Batlló con su experiencia 10D, Moco en El Born. Y desde septiembre de 2026, [SABDA estrena programa de exposiciones de arte inmersivo](/es/exposiciones/) en su sala 360 con Dolby Atmos del Eixample, el mismo espacio donde ahora se hace yoga y sound healing dentro de las proyecciones. Comparamos todas las opciones con precios reales en nuestra [guía de experiencias inmersivas](/blog/experiencias-inmersivas-barcelona/).
 
 ## Antes de ir
 
