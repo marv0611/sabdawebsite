@@ -121,6 +121,10 @@ Si buscas una experiencia inmersiva que va más allá de sentarte a mirar: [SABD
 
 ---
 
+## Exposiciones inmersivas: el espectaculo donde tu te mueves
+
+Si los espectaculos con butaca se te quedan cortos, Barcelona tiene una escena inmersiva potente: IDEAL en el Poblenou con su sala de proyecciones gigante, Casa Batllo con su experiencia 10D, Moco en El Born. Y desde septiembre de 2026, [SABDA estrena programa de exposiciones de arte inmersivo](/es/exposiciones/) en su sala 360 con Dolby Atmos del Eixample, el mismo espacio donde ahora se hace yoga y sound healing dentro de las proyecciones. Comparamos todas las opciones con precios reales en nuestra [guia de experiencias inmersivas](/blog/experiencias-inmersivas-barcelona/).
+
 ## Antes de ir
 
 Los mejores espectáculos en Barcelona no son siempre los más publicitados. El show de flamenco en un sótano, el concierto de jazz a las 21h en Jamboree, la sesión de ecstatic dance un viernes por la noche. Son experiencias que no aparecen en las marquesinas pero que recordarás mucho más que el espectáculo con asientos numerados.

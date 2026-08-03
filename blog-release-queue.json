@@ -1,7 +1,7 @@
 {
   "meta": {
     "created": "2026-04-13",
-    "total_queued": 61,
+    "total_queued": 63,
     "schedule": "Mon-Fri 09:00 CET",
     "release_workflow": ".github/workflows/blog-daily-release.yml",
     "notes": "Reordered on 2026-04-20 from pure-volume-DESC to interleaved business intent: wellness/tourism/wellness/corporate/wellness/tourism/brand cycle (7-period). Positions 1-16 locked (released or imminent). Positions 17-51 reordered across existing 35 weekday dates. Within each category, highest-volume articles scheduled first. Original volume-DESC queue backed up to blog-release-queue.json.bak-pre-interleave. Appended articles 61-68 (corporate/events + bottom-of-funnel brand content) starting 2026-06-25.",
@@ -793,6 +793,28 @@
       "release_date": "2026-10-06",
       "md_file": "blog/article-58-barcelona-invierno-planes.md",
       "html_file": "blog/barcelona-invierno-planes/index.html",
+      "status": "queued"
+    },
+    {
+      "order": 62,
+      "slug": "/blog/best-immersive-experiences-barcelona/",
+      "keyword": "immersive experiences barcelona",
+      "art_num": 69,
+      "lang": "en",
+      "release_date": "2026-08-04",
+      "md_file": "blog/article-69-best-immersive-experiences-barcelona.md",
+      "html_file": "blog/best-immersive-experiences-barcelona/index.html",
+      "status": "queued"
+    },
+    {
+      "order": 63,
+      "slug": "/blog/ideal-moco-casa-batllo-comparativa/",
+      "keyword": "ideal barcelona opiniones",
+      "art_num": 70,
+      "lang": "es",
+      "release_date": "2026-08-05",
+      "md_file": "blog/article-70-ideal-moco-casa-batllo-comparativa.md",
+      "html_file": "blog/ideal-moco-casa-batllo-comparativa/index.html",
       "status": "queued"
     }
   ]

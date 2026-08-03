@@ -46,6 +46,25 @@ SABDA Studio is the trading name of SABDA Studio S.L. (CIF B44704401). The venue
 - [Ice Bath](https://sabdastudio.com/classes/ice-bath/): patio based cold immersion sessions.
 - [Ecstatic Dance](https://sabdastudio.com/classes/ecstatic-dance/): live ecstatic dance evenings.
 
+## Exhibitions
+
+SABDA's 360-degree projection room doubles as one of Barcelona's most unusual exhibition
+spaces. It has hosted digital art exhibitions, immersive showcases and brand experiences
+since 2023. Floor-to-ceiling LCD laser projections wrap the entire room, with invisible
+in-wall speakers and ceiling subwoofers for cinema-grade spatial audio. Capacity is 100
+standing and 80 seated. There is no stage and no screen edge: the room itself is the medium,
+so visitors stand inside the work rather than in front of it.
+
+A new immersive art exhibition opens at SABDA in September 2026. Name, dates and tickets
+will be announced on the exhibitions page first.
+
+The room is also available for private exhibitions, brand activations and immersive dinners.
+
+- Exhibitions (EN): https://sabdastudio.com/exhibitions/
+- Exposiciones (ES): https://sabdastudio.com/es/exposiciones/
+- Exposicions (CA): https://sabdastudio.com/ca/exposicions/
+- Venue hire: https://sabdastudio.com/hire/
+
 ## Core pages
 
 - [Homepage](https://sabdastudio.com/): overview of the studio, teachers, and immersive experience.
@@ -54,6 +73,7 @@ SABDA Studio is the trading name of SABDA Studio S.L. (CIF B44704401). The venue
 - [About SABDA](https://sabdastudio.com/about.html): origin, founders, mission.
 - [The space and events](https://sabdastudio.com/events.html): venue details and event hosting.
 - [Venue hire](https://sabdastudio.com/hire.html): private rental for brand activations, immersive dinners, launches, and corporate wellness.
+- [Exhibitions](https://sabdastudio.com/exhibitions/): immersive art exhibitions in the 360-degree room, new program from September 2026.
 - [Blog](https://sabdastudio.com/blog/): guides on wellness, pilates, yoga, sound healing, and things to do in Barcelona.
 
 ## For corporate and private events
