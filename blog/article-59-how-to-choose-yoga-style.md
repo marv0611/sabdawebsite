@@ -12,7 +12,7 @@
 
 ---
 
-Yoga has a naming problem. Walk into any studio and you'll see: Vinyasa, Hatha, Yin, Power, Sculpt, Nidra, Restorative, Ashtanga, Kundalini, Hot, Rocket, Jivamukti. Most people pick one based on timing or the teacher's Instagram, not understanding.
+[Yoga](/classes/yoga/) has a naming problem. Walk into any studio and you'll see: Vinyasa, Hatha, Yin, Power, Sculpt, Nidra, Restorative, Ashtanga, Kundalini, Hot, Rocket, Jivamukti. Most people pick one based on timing or the teacher's Instagram, not understanding.
 
 Here's the decision tree. Pick based on what you actually want.
 

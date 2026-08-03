@@ -54,7 +54,7 @@ Las apps son para mantenimiento. Los espacios son para profundidad.
 
 ---
 
-Las sesiones de sound healing en [SABDA](https://sabdastudio.com/classes/sound-healing/) son la mejor entrada para principiantes. El entorno hace el trabajo que normalmente tienes que hacer tú. [3 clases por €50](https://momence.com/m/443935).
+Las sesiones de [sound healing](/es/clases/sound-healing/) en [SABDA](https://sabdastudio.com/classes/sound-healing/) son la mejor entrada para principiantes. El entorno hace el trabajo que normalmente tienes que hacer tú. [3 clases por €50](https://momence.com/m/443935).
 
 **Relacionado:** [Mindfulness en Barcelona](/blog/mindfulness-barcelona/) | [Serenity and Sound en Barcelona](/blog/yoga-nidra-barcelona/)
 

@@ -1,8 +1,8 @@
-# 5 Retiros de Meditación en Barcelona y Cercanías (2026)
+# Retiros de Meditación en Barcelona y Cerca: Guía 2026
 
 **Última actualización: marzo 2026**
 
-**Meta description:** Retiros de un día, fin de semana y residenciales desde €18. Sound healing urbano, monasterios en Montserrat y casas rurales a una hora de Barcelona.
+**Meta description:** Retiros de meditación sin salir de la ciudad y escapadas cerca de Barcelona: opciones reales, precios y cómo elegir la tuya. Guía 2026.
 
 **Slug:** `/blog/retiro-meditacion-barcelona/`
 
@@ -44,7 +44,7 @@ Precio: €50-100/día completo.
 
 No todo el mundo tiene un fin de semana libre. A veces lo que necesitas es una hora que se sienta como un retiro.
 
-Las sesiones de sound healing y breathwork en [SABDA](https://sabdastudio.com/classes/sound-healing/) funcionan exactamente así. 60 minutos dentro de una sala de 360° con Dolby Atmos: proyecciones lentas, audio espacial envolvente, guía de voz que llega desde todas las direcciones. Sales con la sensación de haber estado fuera de la ciudad durante medio día.
+Las sesiones de [sound healing](/es/clases/sound-healing/) y breathwork en [SABDA](https://sabdastudio.com/classes/sound-healing/) funcionan exactamente así. 60 minutos dentro de una sala de 360° con Dolby Atmos: proyecciones lentas, audio espacial envolvente, guía de voz que llega desde todas las direcciones. Sales con la sensación de haber estado fuera de la ciudad durante medio día.
 
 Es el equivalente urbano de un retiro, sin el desplazamiento, sin el fin de semana bloqueado, sin la maleta. Desde €18/sesión. [3 clases por €50](https://momence.com/m/443935).
 

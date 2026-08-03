@@ -82,7 +82,7 @@ Un velero para 2-6 personas, dos horas navegando frente a la costa de Barcelona 
 
 ### 12. Tarjeta regalo SABDA para regalar la experiencia
 
-Si tu pareja nunca ha hecho sound healing, breathwork, o yoga inmersivo, la [tarjeta regalo de SABDA](https://sabdastudio.com/pricing/) (desde €20, digital, entrega inmediata) es un regalo que no espera. El [pack de 3 clases por €50](https://momence.com/m/443935) permite elegir entre distintas clases. Así probáis varias cosas juntos. El tipo de regalo que alguien recuerda mucho más que una cena.
+Si tu pareja nunca ha hecho sound healing, breathwork, o yoga inmersivo, la [tarjeta regalo de SABDA](https://sabdastudio.com/pricing/) (desde €20, digital, entrega inmediata) es un [regalo](/tarjetas-regalo/) que no espera. El [pack de 3 clases por €50](https://momence.com/m/443935) permite elegir entre distintas clases. Así probáis varias cosas juntos. El tipo de regalo que alguien recuerda mucho más que una cena.
 
 ---
 

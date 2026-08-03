@@ -987,4 +987,94 @@
     <xhtml:link rel="alternate" hreflang="ca" href="https://sabdastudio.com/ca/tallers/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sabdastudio.com/workshops/"/>
   </url>
+  <url>
+    <loc>https://sabdastudio.com/birthday-parties-barcelona/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sabdastudio.com/birthday-parties-barcelona/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sabdastudio.com/cumpleanos-barcelona/"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://sabdastudio.com/aniversaris-barcelona/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sabdastudio.com/birthday-parties-barcelona/"/>
+  </url>
+  <url>
+    <loc>https://sabdastudio.com/cumpleanos-barcelona/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sabdastudio.com/birthday-parties-barcelona/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sabdastudio.com/cumpleanos-barcelona/"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://sabdastudio.com/aniversaris-barcelona/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sabdastudio.com/birthday-parties-barcelona/"/>
+  </url>
+  <url>
+    <loc>https://sabdastudio.com/aniversaris-barcelona/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sabdastudio.com/birthday-parties-barcelona/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sabdastudio.com/cumpleanos-barcelona/"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://sabdastudio.com/aniversaris-barcelona/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sabdastudio.com/birthday-parties-barcelona/"/>
+  </url>
+  <url>
+    <loc>https://sabdastudio.com/hen-party-barcelona/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sabdastudio.com/hen-party-barcelona/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sabdastudio.com/despedidas-barcelona/"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://sabdastudio.com/comiats-barcelona/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sabdastudio.com/hen-party-barcelona/"/>
+  </url>
+  <url>
+    <loc>https://sabdastudio.com/despedidas-barcelona/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sabdastudio.com/hen-party-barcelona/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sabdastudio.com/despedidas-barcelona/"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://sabdastudio.com/comiats-barcelona/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sabdastudio.com/hen-party-barcelona/"/>
+  </url>
+  <url>
+    <loc>https://sabdastudio.com/comiats-barcelona/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sabdastudio.com/hen-party-barcelona/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sabdastudio.com/despedidas-barcelona/"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://sabdastudio.com/comiats-barcelona/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sabdastudio.com/hen-party-barcelona/"/>
+  </url>
+  <url>
+    <loc>https://sabdastudio.com/gift-cards/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sabdastudio.com/gift-cards/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sabdastudio.com/tarjetas-regalo/"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://sabdastudio.com/targetes-regal/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sabdastudio.com/gift-cards/"/>
+  </url>
+  <url>
+    <loc>https://sabdastudio.com/tarjetas-regalo/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sabdastudio.com/gift-cards/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sabdastudio.com/tarjetas-regalo/"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://sabdastudio.com/targetes-regal/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sabdastudio.com/gift-cards/"/>
+  </url>
+  <url>
+    <loc>https://sabdastudio.com/targetes-regal/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sabdastudio.com/gift-cards/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sabdastudio.com/tarjetas-regalo/"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://sabdastudio.com/targetes-regal/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sabdastudio.com/gift-cards/"/>
+  </url>
 </urlset>

@@ -12,7 +12,7 @@
 
 ---
 
-Barcelona has more yoga studios than you can visit in a month. Some are excellent. Some are fine. Some charge €20 for a class that's identical to a YouTube video. This guide cuts through the noise: 10 studios, honest descriptions, real prices, and a clear sense of which one fits what you're looking for.
+Barcelona has more [yoga](/classes/yoga/) studios than you can visit in a month. Some are excellent. Some are fine. Some charge €20 for a class that's identical to a YouTube video. This guide cuts through the noise: 10 studios, honest descriptions, real prices, and a clear sense of which one fits what you're looking for.
 
 ---
 

@@ -12,7 +12,7 @@
 
 ---
 
-Barcelona tiene tantos estudios de yoga que elegir uno puede ser más estresante que la razón por la que buscas yoga. Esta guía te ahorra el trabajo: estilos explicados sin jerga, los estudios que merecen la pena, precios reales, y qué esperar si nunca has pisado una clase.
+Barcelona tiene tantos estudios de [yoga](/es/clases/yoga/) que elegir uno puede ser más estresante que la razón por la que buscas yoga. Esta guía te ahorra el trabajo: estilos explicados sin jerga, los estudios que merecen la pena, precios reales, y qué esperar si nunca has pisado una clase.
 
 ---
 

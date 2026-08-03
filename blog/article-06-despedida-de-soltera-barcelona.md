@@ -91,7 +91,7 @@ Un consejo práctico: reserva lo que necesite reserva (SABDA, velero, restaurant
 
 Lo que no falla: planes que solo se pueden hacer en Barcelona. Y eso descarta el limobús.
 
-**Consulta para reservar SABDA para grupos:** [connect@sabdastudio.com](mailto:connect@sabdastudio.com) | [Página de alquiler →](https://sabdastudio.com/hire/)
+**Consulta para reservar SABDA para grupos:** [connect@sabdastudio.com](mailto:connect@sabdastudio.com) | [Despedidas en SABDA →](/despedidas-barcelona/)
 
 **Relacionado:** [Planes en pareja en Barcelona](/blog/planes-en-pareja-barcelona/) | [Regalos experiencia en Barcelona](/blog/regalo-experiencia-barcelona/) | [Hen Party in Barcelona (EN)](/blog/hen-party-barcelona/)
 

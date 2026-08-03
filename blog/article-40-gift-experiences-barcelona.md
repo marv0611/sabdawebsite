@@ -24,7 +24,7 @@ According to [Barcelona Tourism](https://www.barcelonaturisme.com/), the city we
 ## The best gift experiences in Barcelona
 
 ### 1. Immersive sound healing at SABDA
-[SABDA gift cards](https://sabdastudio.com/pricing/) start at €20 (digital delivery, instant). The €50 option (3 classes) is the sweet spot. Lets the recipient try sound healing, breathwork, yoga, or any combination inside a 360° projection room with Dolby Atmos. It's the kind of gift that makes someone say "I never would have done this myself, and I'm so glad I did." [Buy gift card →](https://sabdastudio.com/pricing/)
+[SABDA gift cards](https://sabdastudio.com/pricing/) start at €20 (digital delivery, instant). The €50 option (3 classes) is the sweet spot. Lets the recipient try sound healing, breathwork, yoga, or any combination inside a 360° projection room with Dolby Atmos. It's the kind of gift that makes someone say "I never would have done this myself, and I'm so glad I did." [Buy gift card →](/gift-cards/)
 
 ### 2. Sailing at sunset
 Private sailboat for 2-6 people along the Barcelona coastline. Cava on board, option to swim. From ~€60/person. Best at golden hour.
