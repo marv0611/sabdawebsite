@@ -118,7 +118,7 @@ Para alguien que necesita desconectar: 3 clases inmersivas en SABDA. El pack de 
 
 Los mejores regalos experiencia en Barcelona no son los más caros, son los más inesperados. La persona que recibe un velero al atardecer o una sesión de sound healing en una sala de 360° no lo olvidará porque costó mucho, sino porque no se lo esperaba.
 
-Y si necesitas algo para hoy: [tarjeta regalo digital de SABDA desde €20](/tarjetas-regalo/).
+Y si necesitas algo para hoy: [tarjeta regalo digital de SABDA desde €22](/tarjetas-regalo/).
 
 **Relacionado:** [Planes en pareja en Barcelona](/blog/planes-en-pareja-barcelona/) | [Cosas que hacer en Barcelona](/blog/cosas-que-hacer-en-barcelona/)
 

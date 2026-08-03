@@ -19,7 +19,7 @@ No necesitas irte a Bali para hacer un [retiro de meditación](https://pmc.ncbi.
 ## Retiros de fin de semana (fuera de Barcelona)
 
 ### Montseny (1h de Barcelona)
-El Parc Natural del Montseny tiene varias masías que organizan retiros de yoga y meditación de fin de semana. Bosque, silencio, y desconexión total. Precio: €200-400/fin de semana incluyendo alojamiento, comidas, y sesiones guiadas.
+El Parc Natural del Montseny tiene varias masías que organizan retiros de yoga y [meditación](/es/clases/meditacion/) de fin de semana. Bosque, silencio, y desconexión total. Precio: €200-400/fin de semana incluyendo alojamiento, comidas, y sesiones guiadas.
 
 ### Penedès (1h de Barcelona)
 Masías entre viñedos que combinan retiro de meditación con cata de vinos. El contraste funciona mejor de lo que suena. Precio: €250-450/fin de semana.

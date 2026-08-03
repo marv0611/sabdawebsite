@@ -33,6 +33,8 @@ No other city has this. Not because nobody thought of it, but because almost nob
 
 First session dates will be announced on our [workshops page](/workshops/), where you can leave your email to hear first. In the meantime, the room runs daily [immersive classes](/classes/) from 18 euros if you want to feel the space before you paint in it.
 
+And if painting inside the visuals sounds good, wait until you see what else the room does: our [guide to Barcelona's best immersive experiences](/blog/best-immersive-experiences-barcelona/) covers the full scene.
+
 ## Paint and sip vs the other creative workshops
 
 Barcelona's creative workshop scene goes well beyond painting: jewelry-making with wine (a phenomenon three doors from us, at Jewels & Wine), aromatic candle workshops, and ceramics studios across Gracia. We compared the full landscape, with prices, in our [Spanish guide to creative workshops in Barcelona](/blog/talleres-creativos-barcelona/). If your group cannot decide between painting and jewelry, that guide settles it.

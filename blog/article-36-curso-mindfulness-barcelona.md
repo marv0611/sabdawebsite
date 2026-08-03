@@ -12,7 +12,7 @@
 
 ---
 
-El mindfulness tiene un problema de packaging. La palabra se usa para vender apps, retiros de lujo, y cursos que cuestan lo que un vuelo a Bali. Pero en su esencia, es una habilidad mental que se entrena, como ir al gimnasio, pero para la atención. Y en Barcelona hay formas de practicarlo que van desde €0 hasta €500, dependiendo de cuánta estructura necesites.
+El [mindfulness](/classes/meditation/) tiene un problema de packaging. La palabra se usa para vender apps, retiros de lujo, y cursos que cuestan lo que un vuelo a Bali. Pero en su esencia, es una habilidad mental que se entrena, como ir al gimnasio, pero para la atención. Y en Barcelona hay formas de practicarlo que van desde €0 hasta €500, dependiendo de cuánta estructura necesites.
 
 ---
 
@@ -22,7 +22,7 @@ El formato gold standard. Desarrollado por Jon Kabat-Zinn en los años 80, es un
 
 **En Barcelona:**
 - **Institut Gestalt**. Programas MBSR en español con instructores certificados. ~€300-500 el programa completo.
-- **Centre d'Estudis de Mindfulness**. MBSR y MBCT (Mindfulness-Based Cognitive Therapy, enfocado a depresión recurrente).
+- **Centre d'Estudis de [Mindfulness](/es/clases/meditacion/)**. MBSR y MBCT (Mindfulness-Based Cognitive Therapy, enfocado a depresión recurrente).
 - **Hospital Clínic**. Programas dentro del contexto hospitalario para pacientes con estrés crónico o dolor.
 
 **Para quién:** Gente que quiere un cambio real y sostenido. El compromiso de 8 semanas es lo que lo hace funcionar. No es un taller de un día.

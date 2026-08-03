@@ -1077,4 +1077,34 @@
     <xhtml:link rel="alternate" hreflang="ca" href="https://sabdastudio.com/targetes-regal/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sabdastudio.com/gift-cards/"/>
   </url>
+  <url>
+    <loc>https://sabdastudio.com/classes/meditation/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sabdastudio.com/classes/meditation/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sabdastudio.com/es/clases/meditacion/"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://sabdastudio.com/ca/classes/meditacio/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sabdastudio.com/classes/meditation/"/>
+  </url>
+  <url>
+    <loc>https://sabdastudio.com/es/clases/meditacion/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sabdastudio.com/classes/meditation/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sabdastudio.com/es/clases/meditacion/"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://sabdastudio.com/ca/classes/meditacio/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sabdastudio.com/classes/meditation/"/>
+  </url>
+  <url>
+    <loc>https://sabdastudio.com/ca/classes/meditacio/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sabdastudio.com/classes/meditation/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sabdastudio.com/es/clases/meditacion/"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://sabdastudio.com/ca/classes/meditacio/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sabdastudio.com/classes/meditation/"/>
+  </url>
 </urlset>
