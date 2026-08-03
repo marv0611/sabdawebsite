@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-07-31",
-      "slug": "/blog/wellness-empresas-barcelona/",
-      "order": 55
+      "date": "2026-08-03",
+      "slug": "/blog/lloguer-sala-esdeveniments-barcelona/",
+      "order": 56
     },
     "excluded": {
       "blog/dolby-atmos-wellness/index.html": "Intentionally noindex. Brand story, negligible search demand for the term. Reserve for social, newsletter or a future /technology/ page. Do not queue.",
@@ -738,7 +738,8 @@
       "release_date": "2026-07-01",
       "md_file": "blog/article-65-lloguer-sala-esdeveniments-barcelona.md",
       "html_file": "blog/lloguer-sala-esdeveniments-barcelona/index.html",
-      "status": "queued"
+      "status": "released",
+      "released_at": "2026-08-03"
     },
     {
       "order": 57,
