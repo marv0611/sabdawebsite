@@ -71,7 +71,7 @@ La mejor vista gratuita de Barcelona. Perfecta para la foto de grupo del atardec
 
 ### 8. Taller de chocolate
 
-Barcelona tiene una tradición chocolatera seria. Chök y ChocoMuseum ofrecen talleres donde el grupo hace sus propias tabletas, bombones o trufas. Desde €25 por persona. Sales con chocolate, con fotos graciosas, y con algo que llevar a casa.
+Barcelona tiene una tradición chocolatera seria. Chök y ChocoMuseum ofrecen [talleres](/es/talleres/) donde el grupo hace sus propias tabletas, bombones o trufas. Desde €25 por persona. Sales con chocolate, con fotos graciosas, y con algo que llevar a casa.
 
 ### 9. Flamenco en un tablao íntimo
 

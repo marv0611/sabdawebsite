@@ -96,7 +96,7 @@ La Filmoteca de Catalunya, en el Raval, proyecta cine de autor, clásicos restau
 
 ### 15. Experiencia de chocolate artesanal
 
-Barcelona tiene una tradición chocolatera seria. Lugares como Chök y ChocoMuseum ofrecen talleres donde haces tus propias tabletas, bombones, o trufas. Desde €25 por persona. Sales con chocolate y con algo que contar.
+Barcelona tiene una tradición chocolatera seria. Lugares como Chök y ChocoMuseum ofrecen [talleres](/es/talleres/) donde haces tus propias tabletas, bombones, o trufas. Desde €25 por persona. Sales con chocolate y con algo que contar.
 
 ---
 

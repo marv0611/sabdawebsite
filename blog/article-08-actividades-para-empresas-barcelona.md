@@ -53,7 +53,7 @@ A una hora en tren de Barcelona, la región del Penedès produce cava. Varias bo
 
 ### 8. Taller de cerámica
 
-Práctico, enfocado, y sorprendentemente meditativo. Varios estudios en el Gótico y Poblenou ofrecen talleres corporativos de 2 horas donde cada persona hace un bol o taza en el torno. No hace falta experiencia. Las piezas se cuecen y se envían después. ~€40-60 por persona. Para grupos más pequeños (8-15) que necesitan desacelerar.
+Práctico, enfocado, y sorprendentemente meditativo. Varios estudios en el Gótico y Poblenou ofrecen [talleres](/es/talleres/) corporativos de 2 horas donde cada persona hace un bol o taza en el torno. No hace falta experiencia. Las piezas se cuecen y se envían después. ~€40-60 por persona. Para grupos más pequeños (8-15) que necesitan desacelerar.
 
 ### 9. Torneo de beach volleyball en Barceloneta
 

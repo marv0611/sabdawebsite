@@ -61,7 +61,7 @@ Skip the tourist route. Steel Donkey and other operators run corporate bike tour
 
 ### 10. Pottery or ceramics workshop
 
-Hands-on, focused, and surprisingly meditative. Several studios in the Gothic Quarter and Poblenou offer 2-hour corporate workshops where each person throws a bowl or mug on the wheel. No skill required. The pieces get fired and can be shipped to participants afterward. ~€40-60 per person. Good for smaller groups (8-15) where you want people to slow down rather than speed up.
+Hands-on, focused, and surprisingly meditative. Several studios in the Gothic Quarter and Poblenou offer 2-hour corporate [workshops](/workshops/) where each person throws a bowl or mug on the wheel. No skill required. The pieces get fired and can be shipped to participants afterward. ~€40-60 per person. Good for smaller groups (8-15) where you want people to slow down rather than speed up.
 
 ### 11. Flamenco workshop + show
 

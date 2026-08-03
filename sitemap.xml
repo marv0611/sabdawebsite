@@ -957,4 +957,34 @@
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://sabdastudio.com/workshops/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sabdastudio.com/workshops/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sabdastudio.com/es/talleres/"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://sabdastudio.com/ca/tallers/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sabdastudio.com/workshops/"/>
+  </url>
+  <url>
+    <loc>https://sabdastudio.com/es/talleres/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sabdastudio.com/workshops/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sabdastudio.com/es/talleres/"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://sabdastudio.com/ca/tallers/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sabdastudio.com/workshops/"/>
+  </url>
+  <url>
+    <loc>https://sabdastudio.com/ca/tallers/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sabdastudio.com/workshops/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://sabdastudio.com/es/talleres/"/>
+    <xhtml:link rel="alternate" hreflang="ca" href="https://sabdastudio.com/ca/tallers/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sabdastudio.com/workshops/"/>
+  </url>
 </urlset>
