@@ -65,4 +65,4 @@ Casa Batlló es otra categoría: un edificio de Gaudí, Patrimonio de la Humanid
 
 ## Y una opción diferente
 
-Transparencia: SABDA es nuestra sala. Es un estudio de bienestar inmersivo en el Eixample, proyecciones 360 y sonido Dolby Atmos, donde en lugar de mirar el arte participas dentro de el: yoga, sound healing o breathwork dentro de los visuales, desde 18 euros. Y a partir de septiembre de 2026 estrenamos programa de exposiciones de arte inmersivo en la misma sala. Si quieres saber más: [exposiciones en SABDA](/es/exposiciones/).
+Transparencia: SABDA es nuestra sala. Es un estudio de bienestar inmersivo en el Eixample, proyecciones 360 y sonido Dolby Atmos, donde en lugar de mirar el arte participas dentro de el: yoga, sound healing o breathwork dentro de los visuales, desde 18 euros. Y a partir de octubre de 2026 estrenamos programa de exposiciones de arte inmersivo en la misma sala. Si quieres saber más: [exposiciones en SABDA](/es/exposiciones/).

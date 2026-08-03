@@ -92,7 +92,7 @@ More than 100 reproductions of the world's most elusive street artist, presented
 
 Full disclosure: this is our studio, so read accordingly. SABDA is a different animal from everything above. It is an immersive wellness studio: a 360-degree projection room with Dolby Atmos spatial audio where you take part in the experience instead of watching it. Yoga, pilates, sound healing, breathwork and ecstatic dance classes run inside custom-designed visuals, every day of the week.
 
-The reason it belongs on this list: from September 2026, SABDA opens a new immersive art exhibition program, bringing digital art shows into the same room. The space has hosted exhibitions and immersive showcases since 2023. If IDEAL is where you watch immersive art, SABDA is where you are inside it, and soon, both.
+The reason it belongs on this list: from October 2026, SABDA opens a new immersive art exhibition program, bringing digital art shows into the same room. The space has hosted exhibitions and immersive showcases since 2023. If IDEAL is where you watch immersive art, SABDA is where you are inside it, and soon, both.
 
 **Price:** classes from 18 euros drop-in, 3 classes for 50 euros. Exhibition pricing announced with the September program.
 **Duration:** classes 60 minutes.

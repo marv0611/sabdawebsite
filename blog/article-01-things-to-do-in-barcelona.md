@@ -153,7 +153,7 @@ If you're in Barcelona for 3 days, the best advice is: don't try to do everythin
 
 ## Step inside an immersive exhibition
 
-Barcelona's immersive art scene is one of the strongest in Europe: IDEAL's giant projection halls in Poblenou, Casa Batlló's 10D experience, Moco's digital rooms in El Born. And from September 2026, [SABDA opens its own immersive art exhibition program](/exhibitions/) inside the 360-degree Dolby Atmos room in Eixample where the city currently does yoga inside the visuals. We compared every option with real prices in our [guide to the best immersive experiences in Barcelona](/blog/best-immersive-experiences-barcelona/).
+Barcelona's immersive art scene is one of the strongest in Europe: IDEAL's giant projection halls in Poblenou, Casa Batlló's 10D experience, Moco's digital rooms in El Born. And from October 2026, [SABDA opens its own immersive art exhibition program](/exhibitions/) inside the 360-degree Dolby Atmos room in Eixample where the city currently does yoga inside the visuals. We compared every option with real prices in our [guide to the best immersive experiences in Barcelona](/blog/best-immersive-experiences-barcelona/).
 
 ## Before You Go
 

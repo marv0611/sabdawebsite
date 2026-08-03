@@ -23,7 +23,7 @@ Rain outside, projections inside: this is the day the immersive venues were made
 
 **Moco Museum (El Born).** Warhol, Banksy and digital art rooms in a Gothic palace, next door to the Picasso Museum. Compact enough for an afternoon, photogenic enough that the grey light outside stops mattering. From about 16 euros.
 
-**SABDA (Eixample).** Full disclosure: this is our studio, a 360-degree projection room with Dolby Atmos spatial audio. From September 2026 it also hosts immersive art exhibitions; dates and tickets land first on our [exhibitions page](/exhibitions/). We compared the whole immersive scene, with prices and honest verdicts, in our [guide to the best immersive experiences in Barcelona](/blog/best-immersive-experiences-barcelona/).
+**SABDA (Eixample).** Full disclosure: this is our studio, a 360-degree projection room with Dolby Atmos spatial audio. From October 2026 it also hosts immersive art exhibitions; dates and tickets land first on our [exhibitions page](/exhibitions/). We compared the whole immersive scene, with prices and honest verdicts, in our [guide to the best immersive experiences in Barcelona](/blog/best-immersive-experiences-barcelona/).
 
 ## If you want to make something
 

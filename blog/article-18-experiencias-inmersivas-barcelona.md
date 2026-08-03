@@ -93,7 +93,7 @@ Más de 100 reproducciones del artista más esquivo del street art, presentadas 
 
 Transparencia total: esta es nuestra sala, asi que leelo sabiendolo. SABDA es un animal distinto a todo lo anterior. Es un estudio de bienestar inmersivo: una sala de proyecciones 360 con sonido espacial Dolby Atmos donde participas en la experiencia en lugar de mirarla. Clases de yoga, pilates, sound healing, breathwork y ecstatic dance dentro de visuales disenados a medida, todos los días de la semana.
 
-Y la razon de que este en esta lista: a partir de septiembre de 2026, SABDA estrena un nuevo programa de exposiciones de arte inmersivo, trayendo el arte digital a la misma sala. El espacio acoge exposiciones y showcases inmersivos desde 2023. Si IDEAL es donde miras el arte inmersivo, SABDA es donde estas dentro. Y pronto, las dos cosas.
+Y la razon de que este en esta lista: a partir de octubre de 2026, SABDA estrena un nuevo programa de exposiciones de arte inmersivo, trayendo el arte digital a la misma sala. El espacio acoge exposiciones y showcases inmersivos desde 2023. Si IDEAL es donde miras el arte inmersivo, SABDA es donde estas dentro. Y pronto, las dos cosas.
 
 **Precio:** clases desde 18 euros, 3 clases por 50 euros. El precio de las exposiciones se anunciara con el programa de septiembre.
 **Duración:** clases de 60 minutos.

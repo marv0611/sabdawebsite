@@ -35,7 +35,7 @@ If what you want is the scale, a vast hall where projections cover every surface
 
 ### 3. SABDA: the participation
 
-Full disclosure: this is our studio. What no other Barcelona venue offers is the third teamLab ingredient, being part of the work instead of watching it. SABDA is a 360-degree projection room with Dolby Atmos spatial audio in Eixample where you take yoga, sound healing and breathwork classes inside custom-designed visuals. You are not looking at the room, you are in it, moving through it, for a full hour. Classes from 18 euros. And from September 2026, the same room opens a new immersive art exhibition program. Details first at [our exhibitions page](/exhibitions/).
+Full disclosure: this is our studio. What no other Barcelona venue offers is the third teamLab ingredient, being part of the work instead of watching it. SABDA is a 360-degree projection room with Dolby Atmos spatial audio in Eixample where you take yoga, sound healing and breathwork classes inside custom-designed visuals. You are not looking at the room, you are in it, moving through it, for a full hour. Classes from 18 euros. And from October 2026, the same room opens a new immersive art exhibition program. Details first at [our exhibitions page](/exhibitions/).
 
 ### 4. Eonarium: the atmosphere
 
