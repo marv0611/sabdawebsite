@@ -1,7 +1,7 @@
 {
   "meta": {
     "created": "2026-04-13",
-    "total_queued": 65,
+    "total_queued": 67,
     "schedule": "Mon-Fri 09:00 CET",
     "release_workflow": ".github/workflows/blog-daily-release.yml",
     "notes": "Reordered on 2026-04-20 from pure-volume-DESC to interleaved business intent: wellness/tourism/wellness/corporate/wellness/tourism/brand cycle (7-period). Positions 1-16 locked (released or imminent). Positions 17-51 reordered across existing 35 weekday dates. Within each category, highest-volume articles scheduled first. Original volume-DESC queue backed up to blog-release-queue.json.bak-pre-interleave. Appended articles 61-68 (corporate/events + bottom-of-funnel brand content) starting 2026-06-25.",
@@ -839,6 +839,28 @@
       "html_file": "blog/expositions-immersives-barcelone/index.html",
       "status": "queued",
       "order": 65
+    },
+    {
+      "slug": "/blog/talleres-creativos-barcelona/",
+      "keyword": "talleres creativos barcelona",
+      "art_num": 73,
+      "lang": "es",
+      "release_date": "2026-08-10",
+      "md_file": "blog/article-73-talleres-creativos-barcelona.md",
+      "html_file": "blog/talleres-creativos-barcelona/index.html",
+      "status": "queued",
+      "order": 66
+    },
+    {
+      "slug": "/blog/paint-and-sip-barcelona/",
+      "keyword": "paint and sip barcelona",
+      "art_num": 74,
+      "lang": "en",
+      "release_date": "2026-08-11",
+      "md_file": "blog/article-74-paint-and-sip-barcelona.md",
+      "html_file": "blog/paint-and-sip-barcelona/index.html",
+      "status": "queued",
+      "order": 67
     }
   ]
 }

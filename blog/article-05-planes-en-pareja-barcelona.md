@@ -72,6 +72,8 @@ Alquila kayak o paddle surf por la mañana (~€15-20/hora por persona), haced u
 
 ---
 
+Y si buscáis un plan con las manos ocupadas, los talleres creativos, de pintura y vino a velas aromáticas, se han convertido en una de las citas favoritas de la ciudad: pronto también en versión inmersiva en [nuestros talleres](/es/talleres/).
+
 ## Para ocasiones especiales
 
 ### 11. Velero privado al atardecer
