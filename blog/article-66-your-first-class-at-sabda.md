@@ -7,6 +7,7 @@
 **Slug:** `/blog/your-first-class-at-sabda/`
 
 **Primary keyword:** sabda studio barcelona
+**publish: true**
 **Secondary keywords:** sabda barcelona, first time sabda, what to expect sabda
 
 ---

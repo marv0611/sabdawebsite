@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-08-03",
-      "slug": "/blog/lloguer-sala-esdeveniments-barcelona/",
-      "order": 56
+      "date": "2026-08-04",
+      "slug": "/blog/your-first-class-at-sabda/",
+      "order": 57
     },
     "excluded": {
       "blog/dolby-atmos-wellness/index.html": "Intentionally noindex. Brand story, negligible search demand for the term. Reserve for social, newsletter or a future /technology/ page. Do not queue.",
@@ -750,7 +750,8 @@
       "release_date": "2026-07-02",
       "md_file": "blog/article-66-your-first-class-at-sabda.md",
       "html_file": "blog/your-first-class-at-sabda/index.html",
-      "status": "queued"
+      "status": "released",
+      "released_at": "2026-08-04"
     },
     {
       "order": 58,

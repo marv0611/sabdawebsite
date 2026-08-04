@@ -1107,4 +1107,10 @@
     <xhtml:link rel="alternate" hreflang="ca" href="https://sabdastudio.com/ca/classes/meditacio/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://sabdastudio.com/classes/meditation/"/>
   </url>
+  <url>
+    <loc>https://sabdastudio.com/blog/your-first-class-at-sabda/</loc>
+    <lastmod>2026-08-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>
