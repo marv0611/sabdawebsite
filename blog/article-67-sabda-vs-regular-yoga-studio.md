@@ -7,6 +7,7 @@
 **Slug:** `/blog/sabda-vs-regular-yoga-studio/`
 
 **Primary keyword:** sabda yoga
+**publish: true**
 **Secondary keywords:** sabda studio, sabda barcelona review, immersive yoga barcelona
 
 ---
