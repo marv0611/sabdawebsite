@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-08-05",
-      "slug": "/blog/sabda-vs-regular-yoga-studio/",
-      "order": 58
+      "date": "2026-08-06",
+      "slug": "/blog/sabda-miembros-experiencia/",
+      "order": 59
     },
     "excluded": {
       "blog/dolby-atmos-wellness/index.html": "Intentionally noindex. Brand story, negligible search demand for the term. Reserve for social, newsletter or a future /technology/ page. Do not queue.",
@@ -774,7 +774,8 @@
       "release_date": "2026-07-06",
       "md_file": "blog/article-68-sabda-miembros-experiencia.md",
       "html_file": "blog/sabda-miembros-experiencia/index.html",
-      "status": "queued"
+      "status": "released",
+      "released_at": "2026-08-06"
     },
     {
       "order": 60,

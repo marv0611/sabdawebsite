@@ -7,6 +7,7 @@
 **Slug:** `/blog/sabda-miembros-experiencia/`
 
 **Primary keyword:** sabda barcelona opiniones
+**publish: true**
 **Secondary keywords:** sabda barcelona review, experiencia sabda, opiniones sabda studio
 
 ---
