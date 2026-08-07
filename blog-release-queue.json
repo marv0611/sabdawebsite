@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-08-06",
-      "slug": "/blog/sabda-miembros-experiencia/",
-      "order": 59
+      "date": "2026-08-07",
+      "slug": "/blog/gift-experiences-barcelona/",
+      "order": 60
     },
     "excluded": {
       "blog/dolby-atmos-wellness/index.html": "Intentionally noindex. Brand story, negligible search demand for the term. Reserve for social, newsletter or a future /technology/ page. Do not queue.",
@@ -786,7 +786,8 @@
       "release_date": "2026-07-07",
       "md_file": "blog/article-40-gift-experiences-barcelona.md",
       "html_file": "blog/gift-experiences-barcelona/index.html",
-      "status": "queued"
+      "status": "released",
+      "released_at": "2026-08-07"
     },
     {
       "order": 61,

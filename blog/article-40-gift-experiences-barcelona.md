@@ -9,6 +9,7 @@
 **Slug:** `/blog/gift-experiences-barcelona/`
 
 **Primary keyword:** gift experience barcelona
+**publish: true**
 **Secondary keywords:** birthday gift barcelona, unique gift barcelona, experience gift card
 
 ---
