@@ -7,6 +7,7 @@
 **Slug:** `/blog/best-immersive-experiences-barcelona/`
 
 **Primary keyword:** immersive experiences barcelona
+**publish: true**
 **Secondary keywords:** best immersive experiences barcelona, immersive art barcelona, ideal barcelona, moco museum barcelona, casa batllo 10d
 
 **Meta title:** 9 Best Immersive Experiences in Barcelona (2026)

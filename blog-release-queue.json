@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-08-07",
-      "slug": "/blog/gift-experiences-barcelona/",
-      "order": 60
+      "date": "2026-08-10",
+      "slug": "/blog/best-immersive-experiences-barcelona/",
+      "order": 62
     },
     "excluded": {
       "blog/dolby-atmos-wellness/index.html": "Intentionally noindex. Brand story, negligible search demand for the term. Reserve for social, newsletter or a future /technology/ page. Do not queue.",
@@ -809,7 +809,8 @@
       "release_date": "2026-08-04",
       "md_file": "blog/article-69-best-immersive-experiences-barcelona.md",
       "html_file": "blog/best-immersive-experiences-barcelona/index.html",
-      "status": "queued"
+      "status": "released",
+      "released_at": "2026-08-10"
     },
     {
       "order": 63,
