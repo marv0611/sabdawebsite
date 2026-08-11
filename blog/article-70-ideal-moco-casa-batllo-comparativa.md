@@ -7,6 +7,7 @@
 **Slug:** `/blog/ideal-moco-casa-batllo-comparativa/`
 
 **Primary keyword:** ideal barcelona opiniones
+**publish: true**
 **Secondary keywords:** moco museum vale la pena, ideal o moco, casa batllo o moco, comparativa museos barcelona
 
 **Meta title:** IDEAL vs Moco vs Casa Batlló: Cuál Elegir (2026)
