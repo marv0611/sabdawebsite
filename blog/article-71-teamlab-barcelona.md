@@ -7,6 +7,7 @@
 **Slug:** `/blog/teamlab-barcelona/`
 
 **Primary keyword:** teamlab barcelona
+**publish: true**
 **Secondary keywords:** van gogh immersive barcelona, van gogh exhibition barcelona, teamlab spain, immersive art barcelona
 
 **Meta title:** teamLab Barcelona: Is There One? Alternatives (2026)

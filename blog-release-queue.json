@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-08-11",
-      "slug": "/blog/ideal-moco-casa-batllo-comparativa/",
-      "order": 63
+      "date": "2026-08-12",
+      "slug": "/blog/teamlab-barcelona/",
+      "order": 64
     },
     "excluded": {
       "blog/dolby-atmos-wellness/index.html": "Intentionally noindex. Brand story, negligible search demand for the term. Reserve for social, newsletter or a future /technology/ page. Do not queue.",
@@ -832,8 +832,9 @@
       "release_date": "2026-08-06",
       "md_file": "blog/article-71-teamlab-barcelona.md",
       "html_file": "blog/teamlab-barcelona/index.html",
-      "status": "queued",
-      "order": 64
+      "status": "released",
+      "order": 64,
+      "released_at": "2026-08-12"
     },
     {
       "slug": "/blog/expositions-immersives-barcelone/",
