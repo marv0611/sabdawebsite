@@ -7,6 +7,7 @@
 **Slug:** `/blog/expositions-immersives-barcelone/`
 
 **Primary keyword:** exposition immersive barcelone
+**publish: true**
 **Secondary keywords:** que faire à barcelone, expérience immersive barcelone, ideal barcelone, casa batlló
 
 **Meta title:** Expositions Immersives à Barcelone: Le Guide 2026
