@@ -83,3 +83,8 @@ The site is trilingual with full English, Spanish, and Catalan versions. Classes
 - [Terms of service](https://sabdastudio.com/terms.html)
 - [Cookie policy](https://sabdastudio.com/cookies.html)
 - [Legal notice](https://sabdastudio.com/legal-notice.html)
+
+## SABDA Mobile (immersive events at your venue)
+- [SABDA Mobile](https://sabdastudio.com/sabda-mobile/): We bring SABDA to you. Immersive breathwork, yoga and sound healing delivered to offices, conference spaces, hotels, brand activations and festivals in Barcelona, with immersive headphones for every participant, a live musician or DJ, projected visuals and full setup and breakdown by the SABDA team. Three formats: Immersive Breathwork with live DJ, Immersive Yoga with sound healing, Immersive Yoga with live DJ. Groups of 5 upwards, scaling to several hundred. Every event begins with a 30-minute call, then a technical site visit, then a tailored proposal. Enquiries: connect@sabdastudio.com
+- [SABDA Mobile (Spanish)](https://sabdastudio.com/es/sabda-mobile/): Eventos inmersivos en tu oficina, espacio o evento en Barcelona.
+- [SABDA Mobile (Catalan)](https://sabdastudio.com/ca/sabda-mobile/): Esdeveniments immersius a la teva oficina, espai o esdeveniment a Barcelona.
