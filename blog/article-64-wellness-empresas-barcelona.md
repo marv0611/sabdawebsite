@@ -167,7 +167,7 @@ No vas a encontrar aquí cifras inventadas sobre "el mindfulness aumenta la prod
 
 Si nunca has organizado wellness corporativo para tu equipo, empieza con lo que tiene menor barrera de entrada y mayor probabilidad de impacto positivo: una sesión de sound healing para el equipo completo (voluntaria, en un espacio bueno), seguida de una comida juntos. Es bajo riesgo, bajo coste, y alto impacto.
 
-Si ya has hecho wellness corporativo antes y quieres algo más ambicioso, la combinación breathwork + ice bath en un entorno inmersivo es la experiencia que más transforma la dinámica de un equipo. No porque sea extrema, sino porque es genuina. La gente se muestra como es cuando está en una bañera de hielo. Y eso genera una calidad de relación que no se consigue en una sala de reuniones.
+Si ya has hecho wellness corporativo antes y quieres algo más ambicioso, la combinación breathwork + ice bath en un entorno inmersivo es la experiencia que más transforma la dinámica de un equipo. No porque sea extrema, sino porque es genuina. La gente se muestra como es cuando está en una bañera de hielo. Y eso genera una calidad de relación que no se consigue en una sala de reuniones. Si lo preferís en vuestro propio espacio, [SABDA Mobile](/es/sabda-mobile/) lleva el formato inmersivo a vuestra oficina o sede.
 
 Para cualquier formato, [SABDA](https://sabdastudio.com/hire/) ofrece paquetes de wellness corporativo desde €25/persona. Sesiones de sound healing, breathwork, yoga, y ice bath en la sala inmersiva de 360° con Dolby Atmos. [Contacta a Katrina](mailto:connect@sabdastudio.com) con el tamaño de tu equipo, fecha, y lo que buscas. Te proponemos un formato adaptado.
 

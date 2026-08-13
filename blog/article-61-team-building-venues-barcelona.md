@@ -133,7 +133,7 @@ Barcelona's design museum in the Glòries district offers contemporary event spa
 
 ## 10. Palau de la Música Catalana (Ciutat Vella). The cultural one.
 
-Yes, you can hire rooms at the Palau. Not the main concert hall (unless your budget is extraordinary), but the Sala Lluís Millet and other spaces within this UNESCO World Heritage modernist building. The stained glass, the mosaics, the ornate columns, every surface is a conversation starter. It positions Barcelona's cultural identity as the backdrop for your event.
+Yes, you can hire rooms at the Palau. Not the main concert hall (unless your budget is extraordinary), but the Sala Lluís Millet and other spaces within this UNESCO World Heritage modernist building. The stained glass, the mosaics, the ornate columns, every surface is a conversation starter. It positions Barcelona's cultural identity as the backdrop for your event. If you would rather host it in your own space, [SABDA Mobile](/sabda-mobile/) brings the immersive format to your office or venue.
 
 **Best for:** Client entertainment, partner dinners, cultural team experiences for groups of 20-80. International teams visiting Barcelona for the first time.
 **Capacity:** Sala Lluís Millet holds approximately 50 seated. Other spaces available.

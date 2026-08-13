@@ -75,7 +75,7 @@ Los mejores eventos corporativos barcelona son los que nadie espera. Para algo q
 
 **Elegir el espacio antes que el formato.** El espacio debería servir al objetivo, no al revés. Si el objetivo es conexión de equipo, una sala de conferencias en un hotel de 5 estrellas no lo consigue. Si el objetivo es una presentación formal, un loft industrial sin AV es un dolor de cabeza.
 
-**No comunicar la logística a tiempo.** Dirección, hora de llegada, código de vestimenta, y qué esperar. Envíalo 5 días antes, no la noche anterior. Si el evento incluye una experiencia inusual (breathwork, ice bath), avisa con antelación para que nadie se presente en traje.
+**No comunicar la logística a tiempo.** Dirección, hora de llegada, código de vestimenta, y qué esperar. Envíalo 5 días antes, no la noche anterior. Si el evento incluye una experiencia inusual (breathwork, ice bath), avisa con antelación para que nadie se presente en traje. Si prefieres que la experiencia vaya a vuestro espacio, [SABDA Mobile](/es/sabda-mobile/) monta el formato inmersivo en vuestra oficina o sede.
 
 **Olvidar el catering.** Un equipo hambriento no conecta. Planifica coffee breaks, almuerzo, o cena según la duración del evento. SABDA no incluye catering, pero hay decenas de opciones de catering y restaurantes en Eixample a 5 minutos a pie.
 

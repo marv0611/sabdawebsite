@@ -213,7 +213,7 @@ Ese presupuesto da un evento que la gente recuerda. No porque sea caro, sino por
 
 ## ¿Necesitas un DMC?
 
-Un DMC (Destination Management Company) es una empresa local que organiza todos los aspectos de tu evento: venue, catering, transporte, actividades, alojamiento. Varias operan en Barcelona con experiencia en eventos corporativos internacionales.
+Un DMC (Destination Management Company) es una empresa local que organiza todos los aspectos de tu evento: venue, catering, transporte, actividades, alojamiento. Varias operan en Barcelona con experiencia en eventos corporativos internacionales. Si lo preferís en vuestro propio espacio, [SABDA Mobile](/es/sabda-mobile/) lleva el formato inmersivo a vuestra oficina o sede.
 
 **Cuándo sí:** Más de 80 personas, equipo volando desde varios países, evento de 2+ días, primer evento en Barcelona sin contactos locales, o simplemente no tienes tiempo para coordinar 5 proveedores distintos.
 

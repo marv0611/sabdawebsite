@@ -91,7 +91,7 @@ For a team visiting Barcelona for the first time: architecture tour (especially 
 
 The best team building activities in Barcelona are the ones that don't feel like team building. Nobody bonds over icebreaker questions. People bond over doing something real together. Whether that's navigating a sailboat, breathing through cold water, or arguing about how much saffron goes in a paella.
 
-A practical note: for groups larger than 20, book at least 3-4 weeks in advance, especially if you're coming during MWC (February), Primavera Sound (June), or any of the major conference weeks. Barcelona hosts thousands of corporate events, and the best venues and operators fill up fast.
+A practical note: for groups larger than 20, book at least 3-4 weeks in advance, especially if you're coming during MWC (February), Primavera Sound (June), or any of the major conference weeks. Barcelona hosts thousands of corporate events, and the best venues and operators fill up fast. If your team cannot travel to the venue, [SABDA Mobile](/sabda-mobile/) brings the immersive format to your own office or event space.
 
 For corporate team experiences at SABDA (10-200 people, customisable, Eixample location): [connect@sabdastudio.com](mailto:connect@sabdastudio.com) | [Hire the space →](https://sabdastudio.com/hire/)
 
