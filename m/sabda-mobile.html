@@ -94,11 +94,11 @@ src="https://www.facebook.com/tr?id=567636669734630&ev=PageView&noscript=1"
 <meta name="theme-color" content="#0e1235">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,700;1,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
-<title>Rent | SABDA</title>
-<link rel="canonical" href="https://sabdastudio.com/hire.html">
-<link rel="alternate" hreflang="en" href="https://sabdastudio.com/hire/">
-<link rel="alternate" hreflang="es" href="https://sabdastudio.com/es/alquiler/">
-<link rel="alternate" hreflang="x-default" href="https://sabdastudio.com/hire/">
+<title>SABDA Mobile | Immersive Events at Your Venue in Barcelona</title>
+<link rel="canonical" href="https://sabdastudio.com/sabda-mobile/">
+<link rel="alternate" hreflang="en" href="https://sabdastudio.com/events/">
+<link rel="alternate" hreflang="es" href="https://sabdastudio.com/es/eventos/">
+<link rel="alternate" hreflang="x-default" href="https://sabdastudio.com/events/">
 <style>
 :root{--navy:#0e1235;--navy95:rgba(14,18,53,.95);--salmon:#F8A6A3;--cyan:#02F3C5;--white:#f0efe9;--w80:rgba(240,239,233,.8);--w60:rgba(240,239,233,.75);--w38:rgba(240,239,233,.6);--w20:rgba(240,239,233,.2);--w10:rgba(240,239,233,.1);--w06:rgba(240,239,233,.06);--w03:rgba(240,239,233,.03);--r:16px;--safe-b:env(safe-area-inset-bottom,0px);--safe-t:env(safe-area-inset-top,0px)}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -172,18 +172,6 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
 .pc-row .pc-sep{color:var(--w20);font-size:.5rem;padding:0 2px}
 @keyframes pc-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* SPACE GALLERY */
-.sg{padding:20px 0 16px}
-.sg-scroll{display:flex;gap:14px;padding:0 24px 8px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;overscroll-behavior-x:contain;overscroll-behavior-y:auto;touch-action:pan-x pan-y}
-.sg-scroll::-webkit-scrollbar{display:none}
-.sg-card{flex:0 0 82%;scroll-snap-align:start;border-radius:16px;overflow:hidden;background:var(--w03);border:1px solid var(--w06);position:relative;aspect-ratio:4/5}
-.sg-card img{width:100%;height:100%;object-fit:cover;display:block}
-.sg-card-ov{position:absolute;left:0;right:0;bottom:0;padding:16px 18px 18px;background:linear-gradient(to top,rgba(14,18,53,.95),rgba(14,18,53,.7) 40%,transparent);z-index:2}
-.sg-card-num{font-size:.52rem;letter-spacing:.22em;text-transform:uppercase;color:var(--cyan);font-weight:700;margin-bottom:4px}
-.sg-card-t{font-family:'PT Serif',serif;font-size:1.15rem;font-weight:700;color:var(--white);margin-bottom:6px;line-height:1.2}
-.sg-card-t em{font-style:italic;color:var(--salmon)}
-.sg-card-d{font-size:.7rem;color:var(--w80);line-height:1.5}
-
 /* INQUIRY FORM */
 .iq-wrap{padding:32px 24px 24px;border-top:1px solid var(--w06);margin-top:8px;scroll-margin-top:calc(52px + env(safe-area-inset-top,0px) + 8px)}
 .iq-h{font-family:'PT Serif',serif;font-size:1.4rem;font-weight:700;letter-spacing:-.01em;line-height:1.15;margin-bottom:8px;margin-top:8px}
@@ -237,6 +225,21 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
 
 .kit-digital-mob{display:flex;align-items:center;justify-content:center;padding:14px 16px;margin:0}
 .kit-digital-mob img{height:26px;width:auto;max-width:90vw;object-fit:contain}
+.faq-sec{padding:40px 24px 28px;border-top:1px solid var(--w06);margin-top:12px}
+.faq-h{font-family:'PT Serif',serif;font-size:1.4rem;font-weight:700;line-height:1.15;margin-bottom:20px;margin-top:10px}
+.faq-h em{font-style:italic;color:var(--salmon)}
+.faq-it{border-bottom:1px solid var(--w06)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;width:100%;padding:18px 0;text-align:left;font-size:.86rem;font-weight:600;color:var(--white);line-height:1.4;gap:14px}
+.faq-q svg{width:18px;height:18px;stroke:var(--cyan);fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0;transition:transform .25s}
+.faq-it.open .faq-q svg{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.16,1,.3,1)}
+.faq-it.open .faq-a{max-height:800px}
+.faq-a p{padding:0 0 18px;font-size:.8rem;color:var(--w60);line-height:1.68}
+.faq-a a{color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3)}
+.faq-h em{font-style:italic;color:var(--salmon)}
+.faq-q svg{width:18px;height:18px;stroke:var(--cyan);fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0;transition:transform .25s}
+.faq-it.open .faq-q svg{transform:rotate(45deg)}
+.faq-it.open .faq-a{max-height:600px}
 </style>
 <!-- Google tag (gtag.js) -->
 <script>/* SABDA consent gate: Google Consent Mode v2 defaults, read from stored consent */
@@ -244,7 +247,7 @@ window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);
 (function(){var a='denied',m='denied';try{var c=JSON.parse(localStorage.getItem('sabda_cookie_consent')||'null');if(c){a=c.analytics?'granted':'denied';m=c.marketing?'granted':'denied';}}catch(e){}
 gtag('consent','default',{ad_storage:m,ad_user_data:m,ad_personalization:m,analytics_storage:a,functionality_storage:'granted',security_storage:'granted',wait_for_update:500});})();</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1E1WXTZWQD"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-1E1WXTZWQD",{"anonymize_ip":true,"page_path":"/hire.html","page_location":"https://sabdastudio.com/hire.html"});</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-1E1WXTZWQD",{"anonymize_ip":true,"page_path":"/events.html","page_location":"https://sabdastudio.com/events.html"});</script>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
 /* SABDA consent gate: Microsoft Clarity loads only with analytics consent */
@@ -262,140 +265,93 @@ window.SABDAloadClarity=function(){
 <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How far in advance should we book?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Four to six weeks is comfortable for a standard session. We have turned events around in under two weeks when the space is straightforward, so ask even if your date is close."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many people can take part?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "From around 15 up to several hundred. Headcount drives the headphone count and the audio setup, so it is the first thing we confirm on the call."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What kind of space do you need?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A room where people can sit or lie on a mat, with power and lift or stair access for the kit. Projected visuals need a wall or screen and controllable light; without that we run the session on sound alone, which works well."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Where do you travel?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Barcelona and the surrounding area as standard. We go further for larger events, with travel and logistics quoted separately."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is it priced?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Per event, based on headcount, format, travel and how much production the space needs. You get a fixed proposal after the site visit, with no per-head surprises."
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
-<h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">Rent the Space | SABDA</h1>
+<h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">Events | SABDA</h1>
 <div class="grain"></div>
 <header class="hdr">
   <a href="/m/index.html" class="hdr-logo-link"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA" width="400" height="127" style="height:18px;width:auto;opacity:.9;display:block"></a>
   <a href="#iq-wrap" class="hdr-pill touch">Rent the Space</a>
 </header>
-
 <div class="pg fi">
-  <div class="pg-t">Rent the <em>Space</em></div>
-  <div class="pg-s">360° projections. Dolby Atmos. Up to 200 standing. The most unique venue in Barcelona.</div>
+  <div class="pg-t">We bring SABDA <em>to you.</em></div>
+  <div class="pg-s">Immersive sound, visuals and movement, delivered to your office, your venue or your event.</div>
 </div>
-
-<!-- VIDEO GALLERY -->
-<div class="vid-gallery fi">
-  <div class="vid-scroll">
-    <div class="vid-card">
-      <video src="https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/fcb_sergi_roberto.mp4" muted loop playsinline autoplay preload="metadata" poster=""></video>
-      <div class="vid-card-ov">
-        <div class="vid-card-t">FC Barcelona</div>
-        <div class="vid-card-s">Brand activation</div>
-      </div>
-    </div>
-    <div class="vid-card">
-      <video src="https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/alpro_hq.mp4" muted loop playsinline autoplay preload="metadata"></video>
-      <div class="vid-card-ov">
-        <div class="vid-card-t">Alpro &middot; Danone</div>
-        <div class="vid-card-s">Product launch</div>
-      </div>
-    </div>
-    <div class="vid-card">
-      <video src="https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/perdon_activation.mp4" muted loop playsinline autoplay preload="metadata"></video>
-      <div class="vid-card-ov">
-        <div class="vid-card-t">PERD&Oacute;N</div>
-        <div class="vid-card-s">Immersive launch</div>
-      </div>
-    </div>
-    <div class="vid-card">
-      <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/astral_workshop.jpg" alt="The Astral Method workshop at SABDA" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;background:#000">
-      <div class="vid-card-ov">
-        <div class="vid-card-t">The Astral Method</div>
-        <div class="vid-card-s">Workshop &middot; 100+ attendees</div>
-      </div>
-    </div>
-  </div>
+<div style="padding:0 24px">
+  <img src="/img/opt/sabdamobile-hero-900.jpg" alt="SABDA Mobile rooftop yoga session at sunset over the Barcelona skyline, participants in immersive headphones" fetchpriority="high" style="display:block;width:100%;height:240px;object-fit:cover;border-radius:14px;margin:22px 0 12px">
+  <a href="#iq-wrap" style="display:block;text-align:center;background:var(--cyan);color:var(--navy);font-weight:700;border-radius:999px;padding:14px 20px;font-size:1rem;text-decoration:none;margin:14px 0 6px">Plan your event</a>
 </div>
-
-<!-- PAST CLIENTS ROTATING -->
-<div class="pc-wrap fi">
-  <span class="sl pc-lab" style="color:var(--white)">Past Clients</span>
-  <div class="pc-row">
-    <span style="color:#02F3C5">FC Barcelona</span><span class="pc-sep">&#9670;</span>
-    <span style="color:#F8A6A3">Danone</span><span class="pc-sep">&#9670;</span>
-    <span style="color:#02F3C5">Alpro</span><span class="pc-sep">&#9670;</span>
-    <span style="color:#F8A6A3">Liga Endesa</span><span class="pc-sep">&#9670;</span>
-    <span style="color:#02F3C5">Elisava</span><span class="pc-sep">&#9670;</span>
-    <span style="color:#F8A6A3">Honest Greens</span><span class="pc-sep">&#9670;</span>
-    <span style="color:#02F3C5">Aire</span><span class="pc-sep">&#9670;</span>
-    <span style="color:#F8A6A3">Time Out</span><span class="pc-sep">&#9670;</span>
-    <span style="color:#02F3C5">Ametller</span><span class="pc-sep">&#9670;</span>
-    <span style="color:#F8A6A3">PERD&Oacute;N</span><span class="pc-sep">&#9670;</span>
-    <!-- duplicate for seamless loop -->
-    <span style="color:#02F3C5">FC Barcelona</span><span class="pc-sep">&#9670;</span>
-    <span style="color:#F8A6A3">Danone</span><span class="pc-sep">&#9670;</span>
-    <span style="color:#02F3C5">Alpro</span><span class="pc-sep">&#9670;</span>
-    <span style="color:#F8A6A3">Liga Endesa</span><span class="pc-sep">&#9670;</span>
-    <span style="color:#02F3C5">Elisava</span><span class="pc-sep">&#9670;</span>
-    <span style="color:#F8A6A3">Honest Greens</span><span class="pc-sep">&#9670;</span>
-    <span style="color:#02F3C5">Aire</span><span class="pc-sep">&#9670;</span>
-    <span style="color:#F8A6A3">Time Out</span><span class="pc-sep">&#9670;</span>
-    <span style="color:#02F3C5">Ametller</span><span class="pc-sep">&#9670;</span>
-    <span style="color:#F8A6A3">PERD&Oacute;N</span><span class="pc-sep">&#9670;</span>
-  </div>
-</div>
-
-<!-- WHAT WE HOST -->
-<div class="sec fi" style="text-align:center">
-  <span class="sl">What we host</span>
-  <div class="sh">Your next <em>unforgettable</em> moment.</div>
-</div>
-<div class="ct fi"><div class="ct-num">1</div><div class="ct-body"><div class="ct-name">Corporate Wellness</div><div class="ct-desc">Team yoga, breathwork, or sound healing in an unforgettable setting. Offsites with substance.</div></div></div>
-<div class="ct fi"><div class="ct-num">2</div><div class="ct-body"><div class="ct-name">Brand Activations</div><div class="ct-desc">Product launches, immersive showcases, experiential marketing with custom 360&deg; visual environments.</div></div></div>
-<div class="ct fi"><div class="ct-num">3</div><div class="ct-body"><div class="ct-name">Production &amp; Content</div><div class="ct-desc">Music videos, photo shoots, podcast recording, film sets inside a cinema-grade 360&deg; projection room.</div></div></div>
-<div class="ct fi"><div class="ct-num">4</div><div class="ct-body"><div class="ct-name">Private Celebrations</div><div class="ct-desc">Birthdays, proposals, private group experiences, immersive dinners.</div></div></div>
-
-<!-- SPACE GALLERY -->
-<div class="sec fi" style="padding-bottom:4px;text-align:center">
-  <span class="sl">The Space</span>
-  <div class="sh">Four rooms. <em>One venue.</em></div>
-</div>
-<div class="sg fi">
-  <div class="sg-scroll">
-    <div class="sg-card">
-      <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/immersive_underwater.jpg" alt="SABDA immersive room with 360 degree projections" loading="lazy">
-      <div class="sg-card-ov">
-        <div class="sg-card-num">01 / 04</div>
-        <div class="sg-card-t">The <em>Immersive</em> Room</div>
-        <div class="sg-card-d">86 m&sup2; &middot; 360&deg; projection-mapped walls &middot; 8 laser projectors &middot; Dolby Atmos &middot; 20 to 120 capacity</div>
-      </div>
-    </div>
-    <div class="sg-card">
-      <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/cafe_bar.jpg" alt="SABDA cafe and lounge area" loading="lazy">
-      <div class="sg-card-ov">
-        <div class="sg-card-num">02 / 04</div>
-        <div class="sg-card-t">Caf&eacute; &amp; <em>Lounge</em></div>
-        <div class="sg-card-d">65 m&sup2; modular space &middot; SONOS system &middot; equipped bar &middot; ideal for workshops and reception</div>
-      </div>
-    </div>
-    <div class="sg-card">
-      <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/DSC06911__1_.jpg" alt="SABDA outdoor patio with ice bath" loading="lazy">
-      <div class="sg-card-ov">
-        <div class="sg-card-num">03 / 04</div>
-        <div class="sg-card-t">The <em>Patio</em></div>
-        <div class="sg-card-d">20 m&sup2; outdoor terrace &middot; ice bath &middot; outdoor shower &middot; natural light</div>
-      </div>
-    </div>
-    <div class="sg-card">
-      <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/entrance_door.jpg" alt="SABDA street entrance on Muntaner" loading="lazy">
-      <div class="sg-card-ov">
-        <div class="sg-card-num">04 / 04</div>
-        <div class="sg-card-t">The <em>Entrance</em></div>
-        <div class="sg-card-d">Welcome desk with smart art screen &middot; street-level access on C/Muntaner &middot; heart of Eixample</div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- INQUIRY FORM -->
+<div class="sec fi" style="padding:30px 24px 8px"><span class="sl">SABDA Mobile</span><h2 style="font-family:'PT Serif',serif;font-size:1.44rem;font-weight:700;color:#f0efe9;margin:8px 0 16px;line-height:1.3">The immersive room, <em>without the room.</em></h2><div style="color:rgba(240,239,233,.84);font-size:.98rem;line-height:1.7">SABDA Mobile takes our format out of the studio. High-fidelity immersive headphones, live musicians and projected visuals turn any space into a fully enveloping environment: an office floor, a conference hall, a hotel terrace, a brand launch.<br><br>Nothing permanent is installed. We arrive, we build, we run the session, we take it all away.</div></div>
+<div class="vid-gallery fi"><div class="vid-scroll"><div class="vid-card">
+      <img src="/img/opt/sabdamobile-hero-900.jpg" alt="Rooftop SABDA Mobile yoga session at sunset over the Barcelona skyline" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block">
+      <div class="vid-card-ov"><div class="vid-card-t">Rooftop session</div><div class="vid-card-s">Yoga + live DJ</div></div>
+    </div><div class="vid-card">
+      <img src="/img/opt/sabdamobile-f1-900.jpg" alt="Projected blue waves at a SABDA Mobile breathwork session with a live DJ" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block">
+      <div class="vid-card-ov"><div class="vid-card-t">Breathwork</div><div class="vid-card-s">Breathwork + live DJ</div></div>
+    </div><div class="vid-card">
+      <img src="/img/opt/sabdamobile-f2-900.jpg" alt="Sound healing practitioner with crystal bowls at a SABDA Mobile session" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block">
+      <div class="vid-card-ov"><div class="vid-card-t">Sound healing</div><div class="vid-card-s">Yoga + sound bath</div></div>
+    </div></div></div>
+<div class="sec fi" style="padding:30px 24px 8px"><span class="sl">Where We Go</span><h2 style="font-family:'PT Serif',serif;font-size:1.44rem;font-weight:700;color:#f0efe9;margin:8px 0 16px;line-height:1.3">Any space, <em>made immersive.</em></h2><div class="ct fi"><div class="ct-num" style="background:rgba(2,243,197,.08);border-color:rgba(2,243,197,.15);color:var(--cyan)">1</div><div class="ct-body"><div class="ct-name">Offices and workspaces</div><div class="ct-desc">A floor, a canteen, an empty meeting room. We work around the furniture.</div></div></div><div class="ct fi"><div class="ct-num" style="background:rgba(2,243,197,.08);border-color:rgba(2,243,197,.15);color:var(--cyan)">2</div><div class="ct-body"><div class="ct-name">Conference and event spaces</div><div class="ct-desc">Built to the size of the room, for a full audience at once.</div></div></div><div class="ct fi"><div class="ct-num" style="background:rgba(2,243,197,.08);border-color:rgba(2,243,197,.15);color:var(--cyan)">3</div><div class="ct-body"><div class="ct-name">Hotels and private venues</div><div class="ct-desc">Terraces, ballrooms, rooftops. Indoors or out.</div></div></div><div class="ct fi"><div class="ct-num" style="background:rgba(2,243,197,.08);border-color:rgba(2,243,197,.15);color:var(--cyan)">4</div><div class="ct-body"><div class="ct-name">Brand activations and launches</div><div class="ct-desc">The format shaped around the story you are telling.</div></div></div><div class="ct fi"><div class="ct-num" style="background:rgba(2,243,197,.08);border-color:rgba(2,243,197,.15);color:var(--cyan)">5</div><div class="ct-body"><div class="ct-name">Festivals and off-site programmes</div><div class="ct-desc">A calm room inside a loud weekend.</div></div></div></div>
+<div class="sec fi" style="padding:30px 24px 8px"><span class="sl">The Formats</span><h2 style="font-family:'PT Serif',serif;font-size:1.44rem;font-weight:700;color:#f0efe9;margin:8px 0 16px;line-height:1.3">Three ways <em>to run it.</em></h2><div class="ct fi"><div class="ct-num" style="background:rgba(248,166,163,.08);border-color:rgba(248,166,163,.15);color:var(--salmon)">01</div><div class="ct-body"><div class="ct-name">Immersive Breathwork + Live DJ</div><div class="ct-desc">A breathwork and movement facilitator guides the practice alongside a live musician shaping the soundscape in real time. Immersive headphones pair high-fidelity sound with light for a fully enveloping experience.<br><br><span style="color:var(--cyan);font-size:.86rem">Live DJ &amp; musician &middot; Immersive headphones &middot; Projected visuals &middot; Breathwork</span></div></div></div><div class="ct fi"><div class="ct-num" style="background:rgba(248,166,163,.08);border-color:rgba(248,166,163,.15);color:var(--salmon)">02</div><div class="ct-body"><div class="ct-name">Immersive Yoga + Sound Healing</div><div class="ct-desc">A sound healing and movement facilitator leads the practice, closing with a restorative sound bath. Immersive headphones deliver studio-grade sound, so the experience travels to any space.<br><br><span style="color:var(--cyan);font-size:.86rem">Immersive headphones &middot; Restorative yoga &middot; Live sound bath</span></div></div></div><div class="ct fi"><div class="ct-num" style="background:rgba(248,166,163,.08);border-color:rgba(248,166,163,.15);color:var(--salmon)">03</div><div class="ct-body"><div class="ct-name">Immersive Yoga + Live DJ</div><div class="ct-desc">Movement guided by a facilitator, scored live. A DJ builds the soundscape through the session and closes it with a restorative wind-down.<br><br><span style="color:var(--cyan);font-size:.86rem">Immersive headphones &middot; Live DJ &middot; Restorative yoga</span></div></div></div></div>
+<div class="sec fi" style="padding:30px 24px 8px"><span class="sl">Large-Scale Events</span><h2 style="font-family:'PT Serif',serif;font-size:1.44rem;font-weight:700;color:#f0efe9;margin:8px 0 16px;line-height:1.3">Built to the size <em>of the room.</em></h2><div style="color:rgba(240,239,233,.84);font-size:.96rem;line-height:1.7">For conferences, festivals and large brand activations, the format scales. Immersive sound and visuals for a full audience at once, every person in their own high-fidelity field, moving together.<br><br>We assess each space in advance and build the technical setup around it: audio, projection, lighting and headcount.</div><a href="#iq-wrap" style="display:block;text-align:center;border:1px solid var(--cyan);color:var(--cyan);border-radius:999px;padding:12px 20px;font-size:.95rem;text-decoration:none;margin:18px 0 4px">Talk to us about scale</a></div>
+<div class="sec fi" style="padding:30px 24px 8px"><span class="sl">What&rsquo;s Included</span><h2 style="font-family:'PT Serif',serif;font-size:1.44rem;font-weight:700;color:#f0efe9;margin:8px 0 16px;line-height:1.3">Everything arrives <em>with us.</em></h2><div style="padding:12px 0 12px 24px;border-top:1px solid rgba(240,239,233,.08);position:relative;color:rgba(240,239,233,.84);font-size:.95rem;line-height:1.6"><span style="position:absolute;left:0;top:12px;color:var(--cyan)">&#8250;</span>Facilitator (breathwork, yoga or sound healing)</div><div style="padding:12px 0 12px 24px;border-top:1px solid rgba(240,239,233,.08);position:relative;color:rgba(240,239,233,.84);font-size:.95rem;line-height:1.6"><span style="position:absolute;left:0;top:12px;color:var(--cyan)">&#8250;</span>Live musician or DJ</div><div style="padding:12px 0 12px 24px;border-top:1px solid rgba(240,239,233,.08);position:relative;color:rgba(240,239,233,.84);font-size:.95rem;line-height:1.6"><span style="position:absolute;left:0;top:12px;color:var(--cyan)">&#8250;</span>Immersive headphones for every participant</div><div style="padding:12px 0 12px 24px;border-top:1px solid rgba(240,239,233,.08);position:relative;color:rgba(240,239,233,.84);font-size:.95rem;line-height:1.6"><span style="position:absolute;left:0;top:12px;color:var(--cyan)">&#8250;</span>Projected visuals, where the space allows</div><div style="padding:12px 0 12px 24px;border-top:1px solid rgba(240,239,233,.08);position:relative;color:rgba(240,239,233,.84);font-size:.95rem;line-height:1.6"><span style="position:absolute;left:0;top:12px;color:var(--cyan)">&#8250;</span>Full setup and breakdown by the SABDA team</div><div style="padding:12px 0 12px 24px;border-top:1px solid rgba(240,239,233,.08);position:relative;color:rgba(240,239,233,.84);font-size:.95rem;line-height:1.6"><span style="position:absolute;left:0;top:12px;color:var(--cyan)">&#8250;</span>Technical site visit ahead of the event</div></div>
+<div class="sec fi" style="padding:30px 24px 8px"><span class="sl">Proof</span><h2 style="font-family:'PT Serif',serif;font-size:1.44rem;font-weight:700;color:#f0efe9;margin:8px 0 16px;line-height:1.3">Trusted by <em>leading brands.</em></h2><div style="display:flex;flex-wrap:wrap;gap:0 18px;margin-bottom:10px"><div style="flex:1 1 44%;padding:14px 0"><div style="font-family:'PT Serif',serif;font-size:1.5rem;color:var(--cyan);font-weight:700">62K</div><div style="color:var(--white60);font-size:.8rem;letter-spacing:.04em">Annual visitors</div></div><div style="flex:1 1 44%;padding:14px 0"><div style="font-family:'PT Serif',serif;font-size:1.5rem;color:var(--cyan);font-weight:700">50+</div><div style="color:var(--white60);font-size:.8rem;letter-spacing:.04em">Brand partners</div></div><div style="flex:1 1 44%;padding:14px 0"><div style="font-family:'PT Serif',serif;font-size:1.5rem;color:var(--cyan);font-weight:700">4.8&#9733;</div><div style="color:var(--white60);font-size:.8rem;letter-spacing:.04em">ClassPass &amp; Google</div></div><div style="flex:1 1 44%;padding:14px 0"><div style="font-family:'PT Serif',serif;font-size:1.5rem;color:var(--cyan);font-weight:700">20K+</div><div style="color:var(--white60);font-size:.8rem;letter-spacing:.04em">Newsletter subs</div></div></div><div style="border-top:1px solid rgba(240,239,233,.08);padding:16px 0"><div style="font-family:'PT Serif',serif;font-size:1.1rem;color:#f0efe9;font-weight:700;margin-bottom:4px">FC Barcelona</div><div style="color:var(--white60);font-size:.9rem;line-height:1.6">Sergi Roberto&rsquo;s farewell video, filmed at SABDA. 22M+ views worldwide.</div></div><div style="border-top:1px solid rgba(240,239,233,.08);padding:16px 0"><div style="font-family:'PT Serif',serif;font-size:1.1rem;color:#f0efe9;font-weight:700;margin-bottom:4px">Alpro</div><div style="color:var(--white60);font-size:.9rem;line-height:1.6">Product launch hosted in the immersive room.</div></div><div style="border-top:1px solid rgba(240,239,233,.08);padding:16px 0"><div style="font-family:'PT Serif',serif;font-size:1.1rem;color:#f0efe9;font-weight:700;margin-bottom:4px">Honest Greens</div><div style="color:var(--white60);font-size:.9rem;line-height:1.6">Class and event for their community.</div></div></div>
+<div class="sec fi" style="padding:30px 24px 8px"><span class="sl">How It Works</span><h2 style="font-family:'PT Serif',serif;font-size:1.44rem;font-weight:700;color:#f0efe9;margin:8px 0 16px;line-height:1.3">Three steps <em>to your event.</em></h2><div class="ct fi"><div class="ct-num" style="background:rgba(2,243,197,.08);border-color:rgba(2,243,197,.15);color:var(--cyan)">01</div><div class="ct-body"><div class="ct-name">Initial conversation</div><div class="ct-desc">A 30-minute call to understand your goals, your space and your audience.</div></div></div><div class="ct fi"><div class="ct-num" style="background:rgba(2,243,197,.08);border-color:rgba(2,243,197,.15);color:var(--cyan)">02</div><div class="ct-body"><div class="ct-name">Site visit</div><div class="ct-desc">We assess the venue and confirm what is possible technically.</div></div></div><div class="ct fi"><div class="ct-num" style="background:rgba(2,243,197,.08);border-color:rgba(2,243,197,.15);color:var(--cyan)">03</div><div class="ct-body"><div class="ct-name">Tailored proposal</div><div class="ct-desc">A format and setup built around your event.</div></div></div></div>
+<section class="faq-sec"><h2 class="faq-h">Common <em>questions.</em></h2><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">How far in advance should we book?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Four to six weeks is comfortable for a standard session. We have turned events around in under two weeks when the space is straightforward, so ask even if your date is close.</p></div></div><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">How many people can take part?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>From around 15 up to several hundred. Headcount drives the headphone count and the audio setup, so it is the first thing we confirm on the call.</p></div></div><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">What kind of space do you need?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>A room where people can sit or lie on a mat, with power and lift or stair access for the kit. Projected visuals need a wall or screen and controllable light; without that we run the session on sound alone, which works well.</p></div></div><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">Where do you travel?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Barcelona and the surrounding area as standard. We go further for larger events, with travel and logistics quoted separately.</p></div></div><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">How is it priced?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Per event, based on headcount, format, travel and how much production the space needs. You get a fixed proposal after the site visit, with no per-head surprises.</p></div></div></section>
 <div class="iq-wrap fi" id="iq-wrap">
   <span class="sl">Let's Talk</span>
   <div class="iq-h">Tell us about <em>your event</em></div>
   <div class="iq-sub">Every event at SABDA is custom. Share the basics and Katrina from our events team will get back to you as soon as possible.</div>
-  <form id="iqForm" onsubmit="return handleHireInquiry(event)">
+  <form id="iqForm" onsubmit="return handleEventInquiry(event)">
     <label class="iq-lab" for="iq-name">Your name</label>
     <input class="iq-inp" type="text" id="iq-name" name="name" placeholder="Full name" required autocomplete="name">
     <label class="iq-lab" for="iq-company">Company (optional)</label>
@@ -437,10 +393,16 @@ window.SABDAloadClarity=function(){
   </div>
 </div>
 
-<div class="cta-strip fi">
-  <div style="text-align:center;font-size:.78rem;color:var(--w60)">Or email <a href="mailto:connect@sabdastudio.com" style="color:var(--cyan);font-weight:600">connect@sabdastudio.com</a></div>
-</div>
-<nav class="tabs">
+
+<!-- NEWSLETTER -->
+<section id="newsletter" class="fi" style="padding:44px 24px 32px;border-top:1px solid var(--w06)">
+  <h2 style="font-family:'PT Serif',serif;font-size:1.9rem;font-weight:700;line-height:1.1;letter-spacing:-.02em;margin-bottom:10px;text-align:center">Stay <em style="font-style:italic;color:var(--salmon)">in the loop</em></h2>
+  <p style="font-size:.88rem;color:var(--w60);line-height:1.55;margin-bottom:24px;text-align:center">New classes, events, and the occasional surprise. Sign up and we'll keep you posted.</p>
+  <form action="mailto:connect@sabdastudio.com" method="post" enctype="text/plain" style="display:flex;flex-direction:column;gap:10px;max-width:380px;margin:0 auto">
+    <input type="email" name="email" placeholder="your@email.com" required aria-label="Email address" style="padding:14px 16px;background:rgba(19,24,66,.65);border:1px solid rgba(240,239,233,.1);border-radius:4px;color:var(--white);font-family:inherit;font-size:16px;outline:none;transition:border-color .2s">
+    <button type="submit" style="padding:14px 24px;background:var(--cyan);color:var(--navy);border:none;border-radius:4px;font-family:inherit;font-size:.88rem;font-weight:600;letter-spacing:.04em;cursor:pointer;-webkit-tap-highlight-color:transparent">Sign up</button>
+  </form>
+</section><nav class="tabs">
   <a href="/m/classes.html" class="tab "><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Classes</span></a>
   <a href="/m/schedule.html" class="tab "><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span>Schedule</span></a>
   <a href="/m/schedule.html" class="tab tab-bk"><div class="tab-bk-o"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><span>Book</span></a>
@@ -464,7 +426,7 @@ window.SABDAloadClarity=function(){
     <a href="/m/pricing.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div class="more-row-txt">Pricing</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
     <a href="/m/hire.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div><div class="more-row-txt">Rent the Space</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
     <a href="/m/events.html" class="more-row"><div class="more-row-icon" style="background:rgba(248,166,163,.08);color:var(--salmon)"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="more-row-txt">Events</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a><a href="/m/exhibitions.html" class="more-row"><div class="more-row-icon" style="background:rgba(248,166,163,.08);color:var(--salmon)"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="more-row-txt">Exhibitions</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a><a href="/m/workshops.html" class="more-row"><div class="more-row-icon" style="background:rgba(248,166,163,.08);color:var(--salmon)"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="more-row-txt">Workshops</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
-    <a href="/m/celebrations.html" class="more-row"><div class="more-row-icon" style="background:rgba(248,166,163,.08);color:var(--salmon)"><svg viewBox="0 0 24 24"><path d="M12 2v6M9 5l3-3 3 3"/><path d="M5 21h14a2 2 0 0 0 2-2V11a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2z"/></svg></div><div class="more-row-txt">Celebrations</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a><a href="/m/gift-cards.html" class="more-row"><div class="more-row-icon" style="background:rgba(248,166,163,.08);color:var(--salmon)"><svg viewBox="0 0 24 24"><path d="M12 2v6M9 5l3-3 3 3"/><path d="M5 21h14a2 2 0 0 0 2-2V11a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2z"/></svg></div><div class="more-row-txt">Gift Cards</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a><a href="/m/sabda-mobile.html" class="more-row"><div class="more-row-icon" style="background:rgba(248,166,163,.08);color:var(--salmon)"><svg viewBox="0 0 24 24"><path d="M12 2v6M9 5l3-3 3 3"/><path d="M5 21h14a2 2 0 0 0 2-2V11a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2z"/></svg></div><div class="more-row-txt">SABDA Mobile</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="/m/celebrations.html" class="more-row"><div class="more-row-icon" style="background:rgba(248,166,163,.08);color:var(--salmon)"><svg viewBox="0 0 24 24"><path d="M12 2v6M9 5l3-3 3 3"/><path d="M5 21h14a2 2 0 0 0 2-2V11a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2z"/></svg></div><div class="more-row-txt">Celebrations</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a><a href="/m/gift-cards.html" class="more-row"><div class="more-row-icon" style="background:rgba(248,166,163,.08);color:var(--salmon)"><svg viewBox="0 0 24 24"><path d="M12 2v6M9 5l3-3 3 3"/><path d="M5 21h14a2 2 0 0 0 2-2V11a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2z"/></svg></div><div class="more-row-txt">Gift Cards</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
     <a href="/m/cafe.html" class="more-row"><div class="more-row-icon" style="background:rgba(248,166,163,.08);color:var(--salmon)"><svg viewBox="0 0 24 24"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg></div><div class="more-row-txt">Café</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
     <a href="/blog/" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><div class="more-row-txt">Blog</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
     <a href="/m/about.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div><div class="more-row-txt">About</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
@@ -485,7 +447,7 @@ window.SABDAloadClarity=function(){
 
 
 <script>
-function handleHireInquiry(e){
+function handleEventInquiry(e){
   e.preventDefault();
   var f=document.getElementById('iqForm');
   var btn=document.getElementById('iq-btn');
@@ -524,9 +486,10 @@ setTimeout(function(){fis.forEach(function(el){el.classList.add('vis')})},800);
 function toggleMore(){var el=document.getElementById('more');if(el)el.classList.toggle('on')}
 var mb2=document.getElementById('moreBtn2');if(mb2)mb2.addEventListener('click',function(){document.getElementById('more').classList.add('on')});
 var mx=document.getElementById('moreX');if(mx)mx.addEventListener('click',function(){document.getElementById('more').classList.remove('on')});
-function setLang(c){try{localStorage.setItem('sabda_lang',c)}catch(e){}document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===c)});if(c==='en'){window.location.href='/m/hire.html';return;}if(c==='es'){window.location.href='/es/m/hire.html';return;}if(c==='ca'){window.location.href='/ca/m/hire.html';return;}}
+function setLang(c){try{localStorage.setItem('sabda_lang',c)}catch(e){}document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===c)});if(c==='en'){window.location.href='/m/events.html';return;}if(c==='es'){window.location.href='/es/m/events.html';return;}if(c==='ca'){window.location.href='/ca/m/events.html';return;}}
 try{var sl=localStorage.getItem('sabda_lang')||'en';document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===sl)})}catch(e){}
 </script>
 <script src="/cookie-consent.js"></script>
+<script>function toggleFaq(btn){var it=btn.parentElement;it.classList.toggle('open');btn.setAttribute('aria-expanded',it.classList.contains('open'))}</script>
 </body>
 </html>
