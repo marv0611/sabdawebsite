@@ -215,8 +215,12 @@ export default {
       catch(e) { await alertOnError(env, ctx, e, request, {handler:'pay'}); return new Response(JSON.stringify({error: e.message || 'Internal error'}), {status: 500, headers: corsHeaders(reqOrigin)}); }
     }
 
+    if (url.pathname === '/sabda-api/newsletter') {
+      try { return await handleNewsletter(request, reqOrigin, env); }
+      catch(e) { return new Response(JSON.stringify({error: e.message || 'Internal error'}), {status: 500, headers: corsHeaders(reqOrigin)}); }
+    }
+
     if (url.pathname === '/sabda-api/contact') {
-    if (pathname === '/sabda-api/newsletter') return handleNewsletter(request, origin, env);
       try { return await handleContact(request, reqOrigin, env); }
       catch(e) { await alertOnError(env, ctx, e, request, {handler:'contact'}); return new Response(JSON.stringify({error: e.message || 'Internal error'}), {status: 500, headers: corsHeaders(reqOrigin)}); }
     }
