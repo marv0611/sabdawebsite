@@ -479,5 +479,40 @@ function setLang(c){try{localStorage.setItem('sabda_lang',c)}catch(e){}document.
 try{var sl=localStorage.getItem('sabda_lang')||'es';document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===sl)})}catch(e){}
 </script>
 <script src="/cookie-consent.js"></script>
+<script>
+(function(){
+  var forms=document.querySelectorAll('form[action^="mailto:"]');
+  Array.prototype.forEach.call(forms,function(f){
+    if(!f.querySelector('input[type=email],input[name=email]'))return;
+    f.removeAttribute('action');f.removeAttribute('method');f.removeAttribute('enctype');
+    f.addEventListener('submit',function(e){
+      e.preventDefault();
+      var inp=f.querySelector('input[type=email],input[name=email]');
+      var btn=f.querySelector('button,input[type=submit]');
+      var email=(inp&&inp.value||'').trim();
+      if(!email)return;
+      var_orig=btn?btn.textContent:'';
+      if(btn){btn.disabled=true;btn.textContent='...';}
+      var lang=(document.documentElement.lang||'en').toUpperCase().slice(0,2);
+      fetch('https://sabda-checkout-proxy.sabda.workers.dev/sabda-api/newsletter',{
+        method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({email:email,lang:lang,page:location.pathname,
+          device:location.pathname.indexOf('/m/')>-1?'Mobile':'Desktop'})
+      }).then(function(r){return r.json()}).then(function(r){
+        if(btn){btn.disabled=false;btn.textContent=_orig;}
+        if(r&&r.ok){inp.value='';f.setAttribute('data-done','1');
+          var msg=f.querySelector('.nl-ok')||document.createElement('div');
+          msg.className='nl-ok';msg.style.cssText='margin-top:10px;color:var(--cyan);font-size:.9rem';
+          msg.textContent=({ES:'Gracias. Ya estás en la lista.',CA:'Gràcies. Ja ets a la llista.'}[lang]||'Thank you. You are on the list.');
+          if(!msg.parentElement)f.parentElement.appendChild(msg);
+        } else { alert(({ES:'No se ha podido completar. Inténtalo de nuevo.',CA:'No s\u2019ha pogut completar. Torna-ho a provar.'}[lang]||'Could not complete. Please try again.')); }
+      }).catch(function(){
+        if(btn){btn.disabled=false;btn.textContent=_orig;}
+        alert(({ES:'Error de conexión.',CA:'Error de connexió.'}[lang]||'Connection error.'));
+      });
+    });
+  });
+})();
+</script>
 </body>
 </html>

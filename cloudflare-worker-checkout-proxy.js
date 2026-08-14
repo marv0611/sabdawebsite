@@ -216,6 +216,7 @@ export default {
     }
 
     if (url.pathname === '/sabda-api/contact') {
+    if (pathname === '/sabda-api/newsletter') return handleNewsletter(request, origin, env);
       try { return await handleContact(request, reqOrigin, env); }
       catch(e) { await alertOnError(env, ctx, e, request, {handler:'contact'}); return new Response(JSON.stringify({error: e.message || 'Internal error'}), {status: 500, headers: corsHeaders(reqOrigin)}); }
     }
@@ -2696,4 +2697,61 @@ async function logToNotion(token, databaseId, data) {
   const result = await res.json();
   if (!result.id) throw new Error(JSON.stringify(result).substring(0, 300));
   return true;
+}
+
+/* ═══════════════════════════════════════════════════════
+   NEWSLETTER — "Stay in the loop" signups -> Notion
+   Interim store before the Mailchimp migration.
+═══════════════════════════════════════════════════════ */
+const NEWSLETTER_DB_ID = '7bcf924f57a242e395761a593a1178b4';
+
+async function handleNewsletter(request, origin, env) {
+  try {
+    const body = await request.json();
+    const email = (body.email || '').trim();
+    const lang = (body.lang || 'EN').toUpperCase();
+    const page = (body.page || '').substring(0, 200);
+    const device = body.device === 'Mobile' ? 'Mobile' : 'Desktop';
+
+    if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      return new Response(JSON.stringify({ error: 'A valid email is required' }), {
+        status: 400, headers: corsHeaders(origin),
+      });
+    }
+    env = env || {};
+    let logged = false, logError = null;
+    try {
+      if (env.Notion) {
+        const res = await fetch('https://api.notion.com/v1/pages', {
+          method: 'POST',
+          headers: {
+            'Authorization': 'Bearer ' + env.Notion,
+            'Notion-Version': '2022-06-28',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            parent: { database_id: NEWSLETTER_DB_ID },
+            properties: {
+              'Email': { title: [{ text: { content: email } }] },
+              'Signed Up': { date: { start: new Date().toISOString() } },
+              'Language': { select: { name: ['EN','ES','CA'].includes(lang) ? lang : 'EN' } },
+              'Source Page': { rich_text: [{ text: { content: page || 'unknown' } }] },
+              'Device': { select: { name: device } },
+              'Status': { select: { name: 'New' } },
+            },
+          }),
+        });
+        logged = res.ok;
+        if (!res.ok) logError = 'notion_' + res.status + ':' + (await res.text()).substring(0, 160);
+      } else { logError = 'no_notion_key'; }
+    } catch (e) { logError = e.message; }
+
+    return new Response(JSON.stringify({ ok: logged, logged, logError }), {
+      status: logged ? 200 : 502, headers: corsHeaders(origin),
+    });
+  } catch (e) {
+    return new Response(JSON.stringify({ error: e.message }), {
+      status: 500, headers: corsHeaders(origin),
+    });
+  }
 }
