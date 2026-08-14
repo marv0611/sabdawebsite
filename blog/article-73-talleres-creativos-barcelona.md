@@ -7,6 +7,7 @@
 **Slug:** `/blog/talleres-creativos-barcelona/`
 
 **Primary keyword:** talleres creativos barcelona
+**publish: true**
 **Secondary keywords:** taller de pintura y vino barcelona, taller de velas barcelona, taller de joyeria y vino barcelona, paint and sip barcelona
 
 **Meta title:** Los Mejores Talleres Creativos de Barcelona (2026)
