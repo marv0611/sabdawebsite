@@ -818,39 +818,61 @@ function handleSubmit(e){
 }
 </script>
 <script>
+/* SABDA newsletter signup — posts to the Worker, shows an inline confirmation */
 (function(){
-  var forms=document.querySelectorAll('form[action^="mailto:"]');
-  Array.prototype.forEach.call(forms,function(f){
+  var EP='https://sabda-checkout-proxy.sabda.workers.dev/sabda-api/newsletter';
+  var COPY={
+    EN:{ok:"Thank you. You're on the list.",dup:"You're already on the list.",bad:"Please enter a valid email address.",err:"Something went wrong. Please try again.",sending:"Sending"},
+    ES:{ok:"Gracias. Ya estás en la lista.",dup:"Ya estabas en la lista.",bad:"Introduce un email válido.",err:"Algo ha fallado. Inténtalo de nuevo.",sending:"Enviando"},
+    CA:{ok:"Gràcies. Ja ets a la llista.",dup:"Ja eres a la llista.",bad:"Introdueix un email vàlid.",err:"Alguna cosa ha fallat. Torna-ho a provar.",sending:"Enviant"}
+  };
+  function lang(){var l=(document.documentElement.lang||'en').slice(0,2).toUpperCase();return COPY[l]?l:'EN';}
+  function valid(v){return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v);}
+  function note(form,text,good){
+    var host=form.parentElement||form;
+    var m=host.querySelector('.nl-msg');
+    if(!m){m=document.createElement('div');m.className='nl-msg';host.appendChild(m);}
+    m.setAttribute('role','status');
+    m.style.cssText='margin:12px auto 0;max-width:520px;font-size:.92rem;line-height:1.5;text-align:center;'+
+      'padding:10px 14px;border-radius:10px;'+
+      (good?'color:#0d1130;background:var(--cyan,#02F3C5);':'color:var(--salmon,#F8A6A3);background:rgba(248,166,163,.10);border:1px solid rgba(248,166,163,.35);');
+    m.textContent=text;
+    return m;
+  }
+  function wire(f){
+    if(f.getAttribute('data-nl')==='1')return;
     if(!f.querySelector('input[type=email],input[name=email]'))return;
+    f.setAttribute('data-nl','1');
     f.removeAttribute('action');f.removeAttribute('method');f.removeAttribute('enctype');
     f.addEventListener('submit',function(e){
       e.preventDefault();
+      var C=COPY[lang()];
       var inp=f.querySelector('input[type=email],input[name=email]');
       var btn=f.querySelector('button,input[type=submit]');
-      var email=(inp&&inp.value||'').trim();
-      if(!email)return;
-      var_orig=btn?btn.textContent:'';
-      if(btn){btn.disabled=true;btn.textContent='...';}
-      var lang=(document.documentElement.lang||'en').toUpperCase().slice(0,2);
-      fetch('https://sabda-checkout-proxy.sabda.workers.dev/sabda-api/newsletter',{
-        method:'POST',headers:{'Content-Type':'application/json'},
-        body:JSON.stringify({email:email,lang:lang,page:location.pathname,
-          device:location.pathname.indexOf('/m/')>-1?'Mobile':'Desktop'})
-      }).then(function(r){return r.json()}).then(function(r){
-        if(btn){btn.disabled=false;btn.textContent=_orig;}
-        if(r&&r.ok){inp.value='';f.setAttribute('data-done','1');
-          var msg=f.querySelector('.nl-ok')||document.createElement('div');
-          msg.className='nl-ok';msg.style.cssText='margin-top:10px;color:var(--cyan);font-size:.9rem';
-          msg.textContent=({ES:'Gracias. Ya estás en la lista.',CA:'Gràcies. Ja ets a la llista.'}[lang]||'Thank you. You are on the list.');
-          if(!msg.parentElement)f.parentElement.appendChild(msg);
-        } else { alert(({ES:'No se ha podido completar. Inténtalo de nuevo.',CA:'No s\u2019ha pogut completar. Torna-ho a provar.'}[lang]||'Could not complete. Please try again.')); }
-      }).catch(function(){
-        if(btn){btn.disabled=false;btn.textContent=_orig;}
-        alert(({ES:'Error de conexión.',CA:'Error de connexió.'}[lang]||'Connection error.'));
-      });
+      var email=((inp&&inp.value)||'').trim();
+      if(!valid(email)){note(f,C.bad,false);if(inp)inp.focus();return;}
+      var original=btn?(btn.tagName==='INPUT'?btn.value:btn.innerHTML):'';
+      if(btn){btn.disabled=true;if(btn.tagName==='INPUT'){btn.value=C.sending;}else{btn.textContent=C.sending;}}
+      function restore(){if(!btn)return;btn.disabled=false;if(btn.tagName==='INPUT'){btn.value=original;}else{btn.innerHTML=original;}}
+      fetch(EP,{method:'POST',headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({email:email,lang:lang(),page:location.pathname,
+          device:(location.pathname.indexOf('/m/')>-1||window.innerWidth<=900)?'Mobile':'Desktop'})})
+      .then(function(r){return r.json().catch(function(){return{ok:false}})})
+      .then(function(r){
+        restore();
+        if(r&&r.ok){if(inp)inp.value='';note(f,C.ok,true);}
+        else{note(f,C.err,false);}
+      })
+      .catch(function(){restore();note(f,C.err,false);});
     });
-  });
+  }
+  function init(){
+    var sel='form[action^="mailto:"], #newsletter form, .newsletter form, form.nl-form';
+    Array.prototype.forEach.call(document.querySelectorAll(sel),wire);
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',init);}else{init();}
 })();
 </script>
+
 </body>
 </html>
