@@ -8,9 +8,9 @@
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
     "regenerated": "2026-04-20",
     "last_release": {
-      "date": "2026-08-14",
-      "slug": "/blog/talleres-creativos-barcelona/",
-      "order": 66
+      "date": "2026-08-17",
+      "slug": "/blog/paint-and-sip-barcelona/",
+      "order": 67
     },
     "excluded": {
       "blog/dolby-atmos-wellness/index.html": "Intentionally noindex. Brand story, negligible search demand for the term. Reserve for social, newsletter or a future /technology/ page. Do not queue.",
@@ -868,8 +868,9 @@
       "release_date": "2026-08-11",
       "md_file": "blog/article-74-paint-and-sip-barcelona.md",
       "html_file": "blog/paint-and-sip-barcelona/index.html",
-      "status": "queued",
-      "order": 67
+      "status": "released",
+      "order": 67,
+      "released_at": "2026-08-17"
     },
     {
       "slug": "/blog/rainy-day-barcelona/",

@@ -7,6 +7,7 @@
 **Slug:** `/blog/paint-and-sip-barcelona/`
 
 **Primary keyword:** paint and sip barcelona
+**publish: true**
 **Secondary keywords:** van gogh paint and sip barcelona, sip and paint barcelona, wine and paint barcelona
 
 **Meta title:** Paint and Sip Barcelona: The Honest 2026 Guide
