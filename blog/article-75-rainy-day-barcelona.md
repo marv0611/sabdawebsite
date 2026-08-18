@@ -7,6 +7,7 @@
 **Slug:** `/blog/rainy-day-barcelona/`
 
 **Primary keyword:** rainy day barcelona
+**publish: true**
 **Secondary keywords:** indoor activities barcelona, what to do in barcelona when it rains, barcelona rain, things to do inside barcelona
 
 **Meta title:** Rainy Day in Barcelona: The Honest Indoor Guide (2026)
