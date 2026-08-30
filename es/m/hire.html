@@ -280,21 +280,21 @@ window.SABDAloadClarity=function(){
 <div class="vid-gallery fi">
   <div class="vid-scroll">
     <div class="vid-card">
-      <video src="https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/fcb_sergi_roberto.mp4" muted loop playsinline autoplay preload="metadata" poster=""></video>
+      <video preload="none" poster="/video/fcb-sergi-roberto-poster.jpg" data-src="/video/fcb-sergi-roberto.mp4" muted loop playsinline autoplay></video>
       <div class="vid-card-ov">
         <div class="vid-card-t">FC Barcelona</div>
         <div class="vid-card-s">Activación de marca</div>
       </div>
     </div>
     <div class="vid-card">
-      <video src="https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/alpro_hq.mp4" muted loop playsinline autoplay preload="metadata"></video>
+      <video preload="none" poster="/video/alpro-poster.jpg" data-src="/video/alpro.mp4" muted loop playsinline autoplay></video>
       <div class="vid-card-ov">
         <div class="vid-card-t">Alpro &middot; Danone</div>
         <div class="vid-card-s">Lanzamiento de producto</div>
       </div>
     </div>
     <div class="vid-card">
-      <video src="https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/perdon_activation.mp4" muted loop playsinline autoplay preload="metadata"></video>
+      <video preload="none" poster="/video/perdon-activation-poster.jpg" data-src="/video/perdon-activation.mp4" muted loop playsinline autoplay></video>
       <div class="vid-card-ov">
         <div class="vid-card-t">PERD&Oacute;N</div>
         <div class="vid-card-s">Lanzamiento inmersivo</div>
@@ -528,5 +528,16 @@ function setLang(c){try{localStorage.setItem('sabda_lang',c)}catch(e){}document.
 try{var sl=localStorage.getItem('sabda_lang')||'es';document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===sl)})}catch(e){}
 </script>
 <script src="/cookie-consent.js"></script>
+<script>
+/* videos load when they approach the viewport, not on page load */
+(function(){
+  function load(v){ if(v.dataset.src){ v.src=v.dataset.src; delete v.dataset.src; v.load(); var p=v.play(); if(p&&p.catch)p.catch(function(){}); } }
+  var vids=[].slice.call(document.querySelectorAll('video[data-src]'));
+  if(!vids.length)return;
+  if(!('IntersectionObserver' in window)){vids.forEach(load);return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){load(e.target);io.unobserve(e.target);}})},{rootMargin:'300px 0px'});
+  vids.forEach(function(v){io.observe(v);});
+})();
+</script>
 </body>
 </html>

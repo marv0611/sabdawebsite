@@ -638,8 +638,8 @@ window.SABDAloadClarity=function(){
 <section class="case-study">
   <div class="cs-inner rv">
     <div class="cs-media">
-      <video autoplay muted loop aria-hidden="true" playsinline preload="auto" data-unmute style="transform:scale(1.1)">
-        <source src="https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/Pantarhei.mp4" type="video/mp4">
+      <video preload="none" poster="/video/pantarhei-poster.jpg" data-src="/video/pantarhei.mp4" autoplay muted loop aria-hidden="true" playsinline data-unmute style="transform:scale(1.1)">
+        
       </video>
       <button class="cs-unmute" aria-label="Toggle sound"><svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="var(--cyan)" stroke="none"/><line x1="18" y1="9" x2="24" y2="15" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round"/><line x1="24" y1="9" x2="18" y2="15" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round"/></svg></button>
       <div class="cs-media-glow" style="background:linear-gradient(135deg,rgba(2,243,197,.12),transparent 40%,rgba(248,166,163,.08))"></div>
@@ -663,8 +663,8 @@ window.SABDAloadClarity=function(){
 <section class="case-study">
   <div class="cs-inner flip rv">
     <div class="cs-media">
-      <video autoplay muted loop aria-hidden="true" playsinline preload="auto" data-unmute style="filter:saturate(1.2) contrast(1.05)">
-        <source src="https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/0316.mp4" type="video/mp4">
+      <video preload="none" poster="/video/0316-poster.jpg" data-src="/video/0316.mp4" autoplay muted loop aria-hidden="true" playsinline data-unmute style="filter:saturate(1.2) contrast(1.05)">
+        
       </video>
       <button class="cs-unmute" aria-label="Toggle sound"><svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="var(--cyan)" stroke="none"/><line x1="18" y1="9" x2="24" y2="15" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round"/><line x1="24" y1="9" x2="18" y2="15" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round"/></svg></button>
       <div class="cs-media-glow" style="background:linear-gradient(135deg,rgba(248,166,163,.14),transparent 40%,rgba(2,243,197,.1))"></div>
@@ -692,8 +692,8 @@ window.SABDAloadClarity=function(){
 <section class="case-study">
   <div class="cs-inner rv">
     <div class="cs-media">
-      <video autoplay muted loop aria-hidden="true" playsinline preload="auto" data-unmute>
-        <source src="https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/ad%202%204.5.mp4" type="video/mp4">
+      <video preload="none" poster="/video/immersive-ad-poster.jpg" data-src="/video/immersive-ad.mp4" autoplay muted loop aria-hidden="true" playsinline data-unmute>
+        
       </video>
       <button class="cs-unmute" aria-label="Toggle sound"><svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="var(--cyan)" stroke="none"/><line x1="18" y1="9" x2="24" y2="15" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round"/><line x1="24" y1="9" x2="18" y2="15" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round"/></svg></button>
       <div class="cs-media-glow" style="background:linear-gradient(135deg,rgba(2,243,197,.1),transparent 40%,rgba(248,166,163,.08))"></div>
@@ -717,8 +717,8 @@ window.SABDAloadClarity=function(){
 <section class="case-study">
   <div class="cs-inner flip rv">
     <div class="cs-media">
-      <video autoplay muted loop aria-hidden="true" playsinline preload="auto" data-unmute>
-        <source src="https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/OFFLINEATSABDA.mp4" type="video/mp4">
+      <video preload="none" poster="/video/offline-at-sabda-poster.jpg" data-src="/video/offline-at-sabda.mp4" autoplay muted loop aria-hidden="true" playsinline data-unmute>
+        
       </video>
       <button class="cs-unmute" aria-label="Toggle sound"><svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="var(--cyan)" stroke="none"/><line x1="18" y1="9" x2="24" y2="15" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round"/><line x1="24" y1="9" x2="18" y2="15" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round"/></svg></button>
       <div class="cs-media-glow" style="background:linear-gradient(135deg,rgba(248,166,163,.12),transparent 40%,rgba(2,243,197,.1))"></div>
@@ -1169,5 +1169,16 @@ function handleSubmit(e){
 })();
 </script>
 
+<script>
+/* videos load when they approach the viewport, not on page load */
+(function(){
+  function load(v){ if(v.dataset.src){ v.src=v.dataset.src; delete v.dataset.src; v.load(); var p=v.play(); if(p&&p.catch)p.catch(function(){}); } }
+  var vids=[].slice.call(document.querySelectorAll('video[data-src]'));
+  if(!vids.length)return;
+  if(!('IntersectionObserver' in window)){vids.forEach(load);return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){load(e.target);io.unobserve(e.target);}})},{rootMargin:'300px 0px'});
+  vids.forEach(function(v){io.observe(v);});
+})();
+</script>
 </body>
 </html>

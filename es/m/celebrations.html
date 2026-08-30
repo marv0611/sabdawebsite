@@ -316,7 +316,7 @@ window.SABDAloadClarity=function(){
 <div class="vid-gallery fi" style="padding-top:24px">
   <div class="vid-scroll" style="overflow-x:visible">
     <div class="vid-card" style="min-width:100%;width:100%">
-      <video src="https://media.githubusercontent.com/media/marv0611/sabdawebsite/main/alpro_hq.mp4" muted loop playsinline autoplay preload="metadata"></video>
+      <video preload="none" poster="/video/alpro-poster.jpg" data-src="/video/alpro.mp4" muted loop playsinline autoplay></video>
       <div class="vid-card-ov">
         <div class="vid-card-t">Dentro de la sala</div>
         <div class="vid-card-s">Visuales, audio, personalizado para tu noche</div>
@@ -510,5 +510,16 @@ function setLang(c){try{localStorage.setItem('sabda_lang',c)}catch(e){}document.
 try{var sl=localStorage.getItem('sabda_lang')||'en';document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===sl)})}catch(e){}
 </script>
 <script src="/cookie-consent.js"></script>
+<script>
+/* videos load when they approach the viewport, not on page load */
+(function(){
+  function load(v){ if(v.dataset.src){ v.src=v.dataset.src; delete v.dataset.src; v.load(); var p=v.play(); if(p&&p.catch)p.catch(function(){}); } }
+  var vids=[].slice.call(document.querySelectorAll('video[data-src]'));
+  if(!vids.length)return;
+  if(!('IntersectionObserver' in window)){vids.forEach(load);return;}
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){load(e.target);io.unobserve(e.target);}})},{rootMargin:'300px 0px'});
+  vids.forEach(function(v){io.observe(v);});
+})();
+</script>
 </body>
 </html>
