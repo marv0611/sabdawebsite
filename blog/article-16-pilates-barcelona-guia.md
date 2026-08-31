@@ -1,8 +1,8 @@
-# Pilates en Barcelona: 6 Centros y Precios Reales 2026
+# Pilates Mat en Barcelona: 6 Centros sin Reformer 2026
 
 **Última actualización: marzo 2026**
 
-**Meta description:** Comparamos 6 centros de pilates en Barcelona con precios reales, desde 12€ la clase suelta. Sin reformer, sin cuotas ocultas, sin marketing.
+**Meta description:** Pilates mat en Barcelona, sin reformer: 6 centros comparados con precios reales desde 12€. Suelo, props y grupos reducidos, no máquinas.
 
 **Slug:** `/blog/pilates-barcelona-guia/`
 
