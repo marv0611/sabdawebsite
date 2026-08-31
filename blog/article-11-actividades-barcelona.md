@@ -1,8 +1,8 @@
-# Las 25 Mejores Actividades en Barcelona (2026)
+# 20 Actividades en Barcelona para 2026 (con precios)
 
 **Última actualización: abril 2026**
 
-**Meta description:** Las mejores actividades en Barcelona: hoy, este fin de semana, gratis o de pago. 25 planes para adultos, parejas y grupos. Guía permanente.
+**Meta description:** 20 actividades en Barcelona con precios reales, desde 3€ hasta 50€. Planes de interior, de exterior, en pareja y en grupo.
 
 **Slug:** `/blog/actividades-barcelona/`
 

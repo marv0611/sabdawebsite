@@ -1,8 +1,8 @@
-# Retiros de Meditación en Barcelona y Cerca: Guía 2026
+# 5 Retiros de Meditación en Barcelona y Cerca (2026)
 
 **Última actualización: marzo 2026**
 
-**Meta description:** Retiros de meditación sin salir de la ciudad y escapadas cerca de Barcelona: opciones reales, precios y cómo elegir la tuya. Guía 2026.
+**Meta description:** 5 retiros de meditación en Barcelona y alrededores con precios reales y duración. Desde una tarde hasta un fin de semana, sin salir de Cataluña.
 
 **Slug:** `/blog/retiro-meditacion-barcelona/`
 

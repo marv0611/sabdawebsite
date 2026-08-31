@@ -1,8 +1,8 @@
-# The 10 Best Yoga Studios in Barcelona for Every Style and Budget (2026)
+# 10 Best Yoga Studios in Barcelona, Compared (2026)
 
 **Last updated: March 2026**
 
-**Meta description:** Honest guide to Barcelona's best yoga studios: hot yoga, vinyasa, yin, immersive and more. Prices, vibes, and which is right for you. (137 chars)
+**Meta description:** 10 Barcelona yoga studios compared on price, style and neighbourhood. Drop-ins from 12€ to 25€. Written by people who practise in the city.
 
 **Slug:** `/blog/best-yoga-studios-barcelona/`
 

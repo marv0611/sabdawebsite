@@ -1,8 +1,8 @@
-# 12 Team Building Activities in Barcelona (2026)
+# 12 Team Building Activities in Barcelona (2026 Prices)
 
 **Last updated: March 2026**
 
-**Meta description:** Skip the paella class. Immersive sound baths, 360° workshops, sailing regattas and 9 more team activities for groups of 10 to 200 in Barcelona.
+**Meta description:** Real prices for 12 team building activities in Barcelona, from 20€ per person. Skip the paella class. Group sizes, durations and what actually works.
 
 **Slug:** `/blog/team-building-activities-barcelona/`
 

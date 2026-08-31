@@ -1,8 +1,8 @@
-# Pilates Barcelona: 6 Centros con Precios Reales (2026)
+# Pilates en Barcelona: 6 Centros y Precios Reales 2026
 
 **Última actualización: marzo 2026**
 
-**Meta description:** Mat o reformer, desde €18 hasta €65/clase. Comparamos SABDA, Dona10, Pilat3s y 3 centros más del Eixample y Gràcia con precios y niveles.
+**Meta description:** Comparamos 6 centros de pilates en Barcelona con precios reales, desde 12€ la clase suelta. Sin reformer, sin cuotas ocultas, sin marketing.
 
 **Slug:** `/blog/pilates-barcelona-guia/`
 

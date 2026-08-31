@@ -1,8 +1,8 @@
-# 6 Best Pilates Studios in Barcelona Compared (2026)
+# 6 Best Pilates Studios in Barcelona (Real Prices 2026)
 
 **Last updated: March 2026**
 
-**Meta description:** Mat and reformer studios compared with real prices, class sizes and honest reviews. From €18/class immersive mat to €65 private reformer.
+**Meta description:** 6 Barcelona pilates studios compared: reformer vs mat, real prices from 18€, and which neighbourhood each one is in. No sponsored placements.
 
 **Slug:** `/blog/best-pilates-studios-barcelona/`
 

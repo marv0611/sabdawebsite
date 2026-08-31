@@ -1,8 +1,8 @@
-# Alquiler de Salas Para Eventos en Barcelona: Guía de Espacios y Precios (2026)
+# Alquiler de Salas en Barcelona: Precios Reales 2026
 
 **Última actualización: marzo 2026**
 
-**Meta description:** Los mejores espacios en alquiler para eventos en Barcelona. Salas inmersivas, lofts, terrazas, hoteles y espacios únicos. Desde €350. (137 chars)
+**Meta description:** Precios reales de alquiler de salas para eventos en Barcelona, desde 350€ la sesión. Aforos, ubicaciones y qué incluye cada espacio.
 
 **Slug:** `/blog/alquiler-sala-eventos-barcelona/`
 
