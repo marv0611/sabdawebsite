@@ -127,3 +127,9 @@ Direct, terse, execute immediately without confirmation unless genuinely ambiguo
 ---
 
 **Start by asking what I need help with. Don't start any work until instructed. Current priority: waiting for Monday launch execution. Friday night pre-launch work is complete.**
+
+---
+
+## Quarterly refresh
+
+See `QUARTERLY_REFRESH_CHECKLIST.md` in the repo root. It carries the standing rule that `dateModified` is bumped only when content actually changed, never on structural or chrome-only passes.
