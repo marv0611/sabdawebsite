@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="facebook-domain-verification" content="6vs8q2dkkemv5umuqn9irqnpippo3u">
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+(function(){var m=false;try{var c=JSON.parse(localStorage.getItem('sabda_cookie_consent')||'null');m=!!(c&&c.marketing);}catch(e){}if(!m&&typeof fbq==='function'){fbq('consent','revoke');}})();
+fbq('init', '567636669734630', {});
+fbq('track', 'PageView');
+/* SABDA-MOMENCE-PASSTHROUGH-v2 */
+;(function(){
+  if (window._sabdaPassthroughInstalled) return;
+  window._sabdaPassthroughInstalled = true;
+  var PRODUCTS = {
+    '443934':{name:'Trial Drop-in',value:18,ct:'trial'},
+    '443935':{name:'Intro 3-Pack',value:50,ct:'pack'},
+    '445630':{name:'Drop-in',value:22,ct:'dropin'},
+    '443937':{name:'5-Pack',value:85,ct:'pack'},
+    '443939':{name:'10-Pack',value:149,ct:'pack'},
+    '443641':{name:'BCN 1-Week Unlimited',value:50,ct:'trial'},
+    '706876':{name:'Flex',value:99,ct:'membership'},
+    '709976':{name:'Ritual',value:109,ct:'membership'},
+    '431216':{name:'Immerse',value:130,ct:'membership'},
+    '445600':{name:'Immerse 3-Month',value:330,ct:'membership'},
+    '507726':{name:'Ice Bath Drop-in',value:12,ct:'ice'},
+    '507728':{name:'Ice Bath 3-Pack',value:30,ct:'ice'},
+    '507729':{name:'Ice Bath 5-Pack',value:40,ct:'ice'}
+  };
+  var TK = ['fbclid','gclid','ttclid','msclkid','li_fat_id','utm_source','utm_medium','utm_campaign','utm_content','utm_term'];
+  function collect(){
+    var out={};
+    try {
+      var sp=new URLSearchParams(window.location.search);
+      TK.forEach(function(k){var v=sp.get(k);if(v)out[k]=v;});
+      if (typeof window._sabdaGetAttribution==='function') {
+        var st=window._sabdaGetAttribution()||{};
+        TK.forEach(function(k){if(!out[k]&&st[k])out[k]=st[k];});
+      }
+    } catch(e){}
+    return out;
+  }
+  function append(href, params){
+    try {
+      var u=new URL(href, window.location.origin);
+      Object.keys(params).forEach(function(k){
+        if (!u.searchParams.has(k)) u.searchParams.set(k, params[k]);
+      });
+      return u.toString();
+    } catch(e){ return href; }
+  }
+  function packId(href){ try{ var m=href.match(/momence\.com\/m\/(\d+)/i); return m?m[1]:null; }catch(e){return null;} }
+  document.addEventListener('click', function(ev){
+    try {
+      var a = ev.target && ev.target.closest ? ev.target.closest('a[href*="momence.com"]') : null;
+      if (!a) return;
+      var href = a.getAttribute('href');
+      if (!href) return;
+      a.setAttribute('target', '_self');  /* TEST-A v2: same-tab nav */
+      var params = collect();
+      if (Object.keys(params).length > 0) {
+        a.setAttribute('href', append(href, params));
+      }
+      var pid = packId(href);
+      if (pid && PRODUCTS[pid] && typeof window.fbq === 'function') {
+        var p = PRODUCTS[pid];
+        try {
+          window.fbq('track','InitiateCheckout',{
+            content_ids:[pid], content_name:p.name, content_type:p.ct,
+            value:p.value, currency:'EUR'
+          });
+        } catch(e){}
+      }
+    } catch(e){}
+  }, true);
+})();
+
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=567636669734630&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+<meta name="generator" content="Custom HTML/CSS/JS v1.0.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0e1235">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,700;1,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<title>Marvyn Halfon, cofundador de SABDA Studio Barcelona</title>
+<link rel="canonical" href="https://sabdastudio.com/ca/autors/marvyn-halfon/">
+<link rel="alternate" hreflang="en" href="https://sabdastudio.com/faq/">
+<link rel="alternate" hreflang="es" href="https://sabdastudio.com/es/faq/">
+<link rel="alternate" hreflang="ca" href="https://sabdastudio.com/ca/faq/">
+<link rel="alternate" hreflang="x-default" href="https://sabdastudio.com/faq/">
+<style>
+:root{--navy:#0e1235;--navy95:rgba(14,18,53,.95);--salmon:#F8A6A3;--cyan:#02F3C5;--white:#f0efe9;--w80:rgba(240,239,233,.8);--w60:rgba(240,239,233,.75);--w38:rgba(240,239,233,.6);--w20:rgba(240,239,233,.2);--w10:rgba(240,239,233,.1);--w06:rgba(240,239,233,.06);--w03:rgba(240,239,233,.03);--r:16px;--safe-b:env(safe-area-inset-bottom,0px);--safe-t:env(safe-area-inset-top,0px)}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{overflow-x:hidden;-webkit-text-size-adjust:100%}
+body{background:var(--navy);color:var(--white);font-family:'DM Sans',system-ui,sans-serif;-webkit-font-smoothing:antialiased;padding-top:calc(52px + var(--safe-t));padding-bottom:calc(84px + var(--safe-b));overflow-x:hidden;line-height:1.55}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{font-family:inherit;border:none;background:none;cursor:pointer;color:inherit}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:9000;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:150px}
+.touch{transition:transform .15s cubic-bezier(.2,.8,.4,1),opacity .15s}.touch:active{transform:scale(.97);opacity:.85}
+.hdr{position:fixed;top:0;left:0;right:0;z-index:100;height:calc(52px + var(--safe-t));padding-top:var(--safe-t);display:flex;align-items:center;justify-content:space-between;padding-left:20px;padding-right:16px;background:var(--navy95);backdrop-filter:saturate(1.4) blur(24px);-webkit-backdrop-filter:saturate(1.4) blur(24px);border-bottom:1px solid var(--w06)}
+.hdr img{height:18px;width:auto;opacity:.9}
+.hdr-pill{padding:7px 16px;background:var(--cyan);color:var(--navy);border-radius:100px;font-size:.68rem;font-weight:700;letter-spacing:.02em;line-height:1;box-shadow:0 2px 12px rgba(2,243,197,.2)}
+.hdr-back{display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--w60);font-weight:500}
+.hdr-back svg{width:16px;height:16px;stroke:var(--w60);fill:none;stroke-width:2}
+.pg{padding:24px 24px 16px}
+.pg-t{font-family:'PT Serif',serif;font-size:1.5rem;font-weight:700;letter-spacing:-.02em}
+.pg-t em{font-style:italic;color:var(--salmon)}
+.pg-s{font-size:.78rem;color:var(--w60);margin-top:4px;line-height:1.55}
+.sec{padding:24px 24px}
+.sl{font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:var(--cyan);font-weight:700;margin-bottom:8px;display:block}
+.sh{font-family:'PT Serif',serif;font-size:1.3rem;font-weight:700;line-height:1.15;letter-spacing:-.01em;margin-bottom:12px}
+.sh em{font-style:italic;color:var(--salmon)}
+.sp{font-size:.82rem;color:var(--w60);line-height:1.65;margin-bottom:12px}
+.divider{height:1px;background:var(--w06);margin:0 24px}
+.hero-img{width:100%;height:200px;object-fit:cover}
+.cta-strip{padding:20px 24px;border-top:1px solid var(--w06)}
+.cta-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:15px;background:var(--cyan);color:var(--navy);border-radius:100px;font-size:.84rem;font-weight:700;box-shadow:0 4px 20px rgba(2,243,197,.2)}
+.cta-btn svg{width:14px;height:14px;stroke:var(--navy);stroke-width:2.5;fill:none}
+
+.ct{padding:16px 24px;border-bottom:1px solid var(--w06);display:flex;gap:14px;align-items:flex-start}
+.ct-num{width:28px;height:28px;border-radius:50%;background:rgba(2,243,197,.06);border:1px solid rgba(2,243,197,.12);display:flex;align-items:center;justify-content:center;font-size:.56rem;font-weight:700;color:var(--cyan);flex-shrink:0;margin-top:2px}
+.ct-body{flex:1}
+.ct-name{font-family:'PT Serif',serif;font-size:.92rem;font-weight:700;margin-bottom:3px}
+.ct-desc{font-size:.75rem;color:var(--w60);line-height:1.55}
+.ct-tag{display:inline-block;margin-top:6px;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--w38);background:var(--w03);padding:3px 8px;border-radius:100px;border:1px solid var(--w06)}
+
+.ct-name{font-family:'PT Serif',serif;font-size:1rem;font-weight:700;margin-bottom:4px}
+.ct-desc{font-size:.78rem;color:var(--w60);line-height:1.6}
+.ct-tag{display:inline-block;margin-top:8px;font-size:.52rem;letter-spacing:.1em;text-transform:uppercase;color:var(--w38)}
+
+.tabs{position:fixed;bottom:0;left:0;right:0;z-index:100;display:flex;align-items:flex-end;justify-content:space-around;height:calc(72px + var(--safe-b));padding-bottom:var(--safe-b);background:var(--navy95);backdrop-filter:saturate(1.4) blur(24px);-webkit-backdrop-filter:saturate(1.4) blur(24px);border-top:1px solid var(--w06)}
+.tab{display:flex;flex-direction:column;align-items:center;gap:3px;padding:10px 0 6px;flex:1;color:rgba(240,239,233,.65);transition:color .2s}
+.tab.on{color:var(--cyan)}
+.tab svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.tab span{font-size:.5rem;letter-spacing:.04em;font-weight:600}
+.tab-bk{position:relative}
+.tab-bk-o{width:56px;height:56px;border-radius:50%;background:var(--cyan);display:flex;align-items:center;justify-content:center;position:relative;top:-10px;box-shadow:0 4px 24px rgba(2,243,197,.28)}
+.tab-bk-o svg{stroke:var(--navy);width:22px;height:22px;stroke-width:2.5}
+.tab-bk span{position:relative;top:-6px}
+
+.faq-cat{padding:20px 24px 8px}
+.faq-cat-name{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--salmon);font-weight:700}
+.faq-q{padding:16px 24px;border-bottom:1px solid var(--w06);cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.faq-q span{font-size:.84rem;font-weight:500;flex:1}
+.faq-q svg{width:16px;height:16px;stroke:var(--w38);stroke-width:2;fill:none;flex-shrink:0;transition:transform .3s}
+.faq-q.open svg{transform:rotate(45deg);stroke:var(--cyan)}
+.faq-a{padding:0 24px;max-height:0;overflow:hidden;transition:max-height .3s,padding .3s}
+.faq-a.open{max-height:1200px;padding:0 24px 16px}
+.faq-a p{font-size:.78rem;color:var(--w60);line-height:1.6}
+
+.fi{opacity:0;transform:translateY(16px);transition:opacity .5s cubic-bezier(.16,1,.3,1),transform .5s cubic-bezier(.16,1,.3,1)}
+.fi.vis{opacity:1;transform:none}
+
+/* MORE MENU — iOS Settings style */
+.more{position:fixed;inset:0;z-index:200;background:var(--navy);display:flex;flex-direction:column;opacity:0;pointer-events:none;transition:opacity .25s}
+.more.on{opacity:1;pointer-events:auto}
+.more-hdr{height:calc(52px + var(--safe-t));padding-top:var(--safe-t);display:flex;align-items:center;padding-left:12px;padding-right:16px;border-bottom:1px solid var(--w06)}
+.more-done{font-size:.82rem;color:var(--cyan);font-weight:600;padding:8px 12px;display:flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;font-family:inherit;text-decoration:none}
+.more-done svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.more-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none}
+.more-body::-webkit-scrollbar{display:none;width:0;height:0}
+.more-group{padding:18px 24px 6px;text-align:center}
+.more-group:first-child{padding-top:14px}
+.more-group-t{font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:var(--w38);font-weight:600;margin-bottom:6px}
+.lang-row{display:flex;gap:8px;padding:2px 24px 8px;justify-content:center}
+.lang-btn{flex:0 0 auto;min-width:88px;padding:11px 16px;background:var(--w03);border:1px solid var(--w10);border-radius:100px;color:var(--w80);font-size:.74rem;font-weight:600;letter-spacing:.02em;font-family:inherit;cursor:pointer;transition:all .2s;-webkit-tap-highlight-color:transparent}
+.lang-btn.on{background:var(--cyan);color:var(--navy);border-color:var(--cyan);box-shadow:0 2px 12px rgba(2,243,197,.18)}
+.lang-btn:active{transform:scale(.97)}
+.more-row{display:flex;align-items:center;gap:14px;padding:14px 24px;border-bottom:1px solid var(--w06);text-decoration:none;-webkit-tap-highlight-color:transparent}
+.more-row:active{background:var(--w03)}
+.more-row-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.more-row-icon svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.more-row-txt{flex:1;font-size:.84rem;font-weight:500;color:var(--white)}
+.more-row-chev{width:12px;height:12px;stroke:var(--w20);fill:none;stroke-width:2}
+
+/* Kit Digital accessibility — WCAG AA contrast fix */
+.ft-legal a{color:rgba(240,239,233,.65) !important}
+.ft-legal{color:rgba(240,239,233,.65) !important}
+.rn-ct{color:rgba(240,239,233,.70) !important}
+.nav-links a{color:rgba(240,239,233,.75)}
+.ft-bot{color:rgba(240,239,233,.65)}
+
+.kit-digital-mob{display:flex;align-items:center;justify-content:center;padding:14px 16px;margin:0}
+.kit-digital-mob img{height:26px;width:auto;max-width:90vw;object-fit:contain}
+</style>
+<!-- Google tag (gtag.js) -->
+<script>/* SABDA consent gate: Google Consent Mode v2 defaults, read from stored consent */
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+(function(){var a='denied',m='denied';try{var c=JSON.parse(localStorage.getItem('sabda_cookie_consent')||'null');if(c){a=c.analytics?'granted':'denied';m=c.marketing?'granted':'denied';}}catch(e){}
+gtag('consent','default',{ad_storage:m,ad_user_data:m,ad_personalization:m,analytics_storage:a,functionality_storage:'granted',security_storage:'granted',wait_for_update:500});})();</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-1E1WXTZWQD"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-1E1WXTZWQD",{"anonymize_ip":true});</script>
+<!-- Microsoft Clarity -->
+<script type="text/javascript">
+/* SABDA consent gate: Microsoft Clarity loads only with analytics consent */
+window.SABDAloadClarity=function(){
+  if(window.__sabdaClarityLoaded)return;window.__sabdaClarityLoaded=true;
+  (function(c,l,a,r,i,t,y){
+    c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+    t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+    y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+  })(window, document, "clarity", "script", "waoyd1cczc");
+};
+(function(){try{var c=JSON.parse(localStorage.getItem('sabda_cookie_consent')||'null');if(c&&c.analytics)window.SABDAloadClarity();}catch(e){}})();
+</script>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://sabdastudio.com/authors/marvyn-halfon/#person",
+  "name": "Marvyn Halfon",
+  "jobTitle": "Cofundador, SABDA Studio",
+  "description": "Marvyn va cofundar SABDA el 2023 amb Juliet Levine, construint el primer estudi de benestar immersiu d’Europa a l’Eixample de Barcelona: una sala de projecció de 360 graus amb àudio espacial Dolby Atmos on el ioga, el pilates i el sound healing passen dins de les imatges en lloc de davant d’una pantalla. Dirigeix la programació de l’estudi, les seves exposicions d’art immersiu i els seus formats de tallers creatius. SABDA imparteix més de 40 classes a la setmana en anglès i castellà i té una valoració de 4,8 sobre 617 ressenyes.",
+  "url": "https://sabdastudio.com/ca/autors/marvyn-halfon/",
+  "sameAs": [
+    "https://www.linkedin.com/in/marvynhalfon/"
+  ],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "SABDA Studio",
+    "url": "https://sabdastudio.com/",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "C/ Muntaner 83B, Local 2",
+      "addressLocality": "Barcelona",
+      "postalCode": "08011",
+      "addressCountry": "ES"
+    }
+  },
+  "knowsAbout": [
+    "Immersive wellness",
+    "Yoga",
+    "Pilates",
+    "Sound healing",
+    "Immersive art exhibitions",
+    "Barcelona"
+  ]
+}
+</script>
+</head>
+<body>
+<h1 style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">Preguntes Freqüents | SABDA</h1>
+<div class="grain"></div>
+<header class="hdr">
+  <a href="index.html" class="hdr-logo-link"><img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA" width="400" height="127" style="height:18px;width:auto;opacity:.9;display:block"></a>
+  <a href="schedule.html" class="hdr-pill touch">Reservar Classe</a>
+</header>
+<div class="pg fi"><div class="pg-t">Marvyn <em>Halfon.</em></div><div class="pg-s">Cofundador, SABDA Studio</div></div>
+<div class="sec fi" style="padding:22px 24px 8px">
+  <div style="color:rgba(240,239,233,.86);font-size:.97rem;line-height:1.75">Marvyn va cofundar SABDA el 2023 amb Juliet Levine, construint el primer estudi de benestar immersiu d’Europa a l’Eixample de Barcelona: una sala de projecció de 360 graus amb àudio espacial Dolby Atmos on el ioga, el pilates i el sound healing passen dins de les imatges en lloc de davant d’una pantalla. Dirigeix la programació de l’estudi, les seves exposicions d’art immersiu i els seus formats de tallers creatius. SABDA imparteix més de 40 classes a la setmana en anglès i castellà i té una valoració de 4,8 sobre 617 ressenyes.</div>
+  <p style="margin-top:16px"><a href="https://www.linkedin.com/in/marvynhalfon/" target="_blank" rel="noopener noreferrer" style="color:var(--cyan);text-decoration:underline;text-underline-offset:3px">LinkedIn</a></p>
+  <p style="margin-top:10px"><a href="/blog/" style="color:var(--cyan);text-decoration:underline;text-underline-offset:3px">Veure tots els articles</a></p>
+</div>
+<nav class="tabs">
+  <a href="/ca/m/classes.html" class="tab "><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span>Classes</span></a>
+  <a href="schedule.html" class="tab "><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span>Horaris</span></a>
+  <a href="schedule.html" class="tab tab-bk"><div class="tab-bk-o"><svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div><span>Reserva ara</span></a>
+  <a href="/ca/m/pricing.html" class="tab "><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg><span>Preus</span></a>
+  <button class="tab" id="moreBtn2" type="button" aria-label="Menú adicional"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.5" fill="currentColor" stroke="none"/><circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/><circle cx="12" cy="19" r="1.5" fill="currentColor" stroke="none"/></svg><span>Més</span></button>
+</nav>
+<!-- MORE MENU — iOS Settings style -->
+<div class="more" id="more">
+  <div class="more-hdr"><a class="more-done" id="moreX" href="index.html" aria-label="Volver al inici"><svg viewBox="0 0 24 24"><path d="M9 18l-6-6 6-6"/></svg>Inici</a></div>
+  <div class="more-body">
+    <div class="more-group"><div class="more-group-t">Idioma</div></div>
+    <div class="lang-row">
+      <button class="lang-btn" data-lang="en" onclick="setLang('en')" type="button">English</button>
+      <button class="lang-btn on" data-lang="es" onclick="setLang('es')" type="button">Espa&ntilde;ol</button>
+      <button class="lang-btn" data-lang="ca" onclick="setLang('ca')" type="button">Catal&agrave;</button>
+    </div>
+    <div class="more-group"><div class="more-group-t">Explora</div></div>
+    <a href="index.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div class="more-row-txt">Inici</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="/ca/m/classes.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></div><div class="more-row-txt">Classes</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a> <a href="ice-bath.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><line x1="12" y1="2" x2="12" y2="22"/><line x1="4.9" y1="6.5" x2="19.1" y2="17.5"/><line x1="4.9" y1="17.5" x2="19.1" y2="6.5"/></svg></div><div class="more-row-txt">Ice Bath</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="schedule.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div class="more-row-txt">Horaris</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="/ca/m/pricing.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div><div class="more-row-txt">Preus</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="/ca/m/hire.html" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div><div class="more-row-txt">Lloga l'Espai</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="/ca/m/events.html" class="more-row"><div class="more-row-icon" style="background:rgba(248,166,163,.08);color:var(--salmon)"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="more-row-txt">Esdeveniments</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a><a href="/ca/m/exposicions.html" class="more-row"><div class="more-row-icon" style="background:rgba(248,166,163,.08);color:var(--salmon)"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="more-row-txt">Exposicions</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a><a href="/ca/m/tallers.html" class="more-row"><div class="more-row-icon" style="background:rgba(248,166,163,.08);color:var(--salmon)"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="more-row-txt">Tallers</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="celebrations.html" class="more-row"><div class="more-row-icon" style="background:rgba(248,166,163,.08);color:var(--salmon)"><svg viewBox="0 0 24 24"><path d="M12 2v6M9 5l3-3 3 3"/><path d="M5 21h14a2 2 0 0 0 2-2V11a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2z"/></svg></div><div class="more-row-txt">Celebracions</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a><a href="/m/targetes-regal.html" class="more-row"><div class="more-row-icon" style="background:rgba(248,166,163,.08);color:var(--salmon)"><svg viewBox="0 0 24 24"><path d="M12 2v6M9 5l3-3 3 3"/><path d="M5 21h14a2 2 0 0 0 2-2V11a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2z"/></svg></div><div class="more-row-txt">Targetes Regal</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a><a href="/ca/m/sabda-mobile.html" class="more-row"><div class="more-row-icon" style="background:rgba(248,166,163,.08);color:var(--salmon)"><svg viewBox="0 0 24 24"><path d="M12 2v6M9 5l3-3 3 3"/><path d="M5 21h14a2 2 0 0 0 2-2V11a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2z"/></svg></div><div class="more-row-txt">SABDA Mobile</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="/ca/m/cafe.html" class="more-row"><div class="more-row-icon" style="background:rgba(248,166,163,.08);color:var(--salmon)"><svg viewBox="0 0 24 24"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg></div><div class="more-row-txt">Café</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="/blog/" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><div class="more-row-txt">Blog</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="/ca/sobre/" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div><div class="more-row-txt">Sobre nosaltres</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <div class="more-group"><div class="more-group-t">Ajuda</div></div>
+    <a href="faq.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div><div class="more-row-txt">FAQ</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="contact.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="more-row-txt">Contacte</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <div class="more-group"><div class="more-group-t">Connecta</div></div>
+    <a href="https://instagram.com/sabda_studio" target="_blank" rel="noopener" class="more-row"><div class="more-row-icon" style="background:rgba(248,166,163,.08);color:var(--salmon)"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg></div><div class="more-row-txt">Instagram</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="https://www.tiktok.com/@sabda_studio" target="_blank" rel="noopener" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg></div><div class="more-row-txt">TikTok</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="https://www.linkedin.com/company/sabdastudio" target="_blank" rel="noopener" class="more-row"><div class="more-row-icon" style="background:rgba(2,243,197,.08);color:var(--cyan)"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div><div class="more-row-txt">LinkedIn</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <div class="more-group"><div class="more-group-t">Legal</div></div>
+    <a href="/ca/legal/avis-legal.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><div class="more-row-txt">Avís Legal</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="/ca/legal/politica-privacitat.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="more-row-txt">Política de Privacitat</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="/ca/legal/termes.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><div class="more-row-txt">Termes i Condicions</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+    <a href="/ca/legal/cookies.html" class="more-row"><div class="more-row-icon" style="background:rgba(240,239,233,.05);color:var(--w60)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8.5 8.5v.01"/><path d="M16 15.5v.01"/><path d="M12 12v.01"/><path d="M11 17v.01"/><path d="M7 14v.01"/></svg></div><div class="more-row-txt">Política de Cookies</div><svg class="more-row-chev" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></a>
+  </div>
+</div>
+
+
+<script>
+var fis=document.querySelectorAll('.fi');
+var io=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('vis');io.unobserve(e.target)}})},{threshold:.01});
+fis.forEach(function(el){io.observe(el)});
+setTimeout(function(){fis.forEach(function(el){el.classList.add('vis')})},800);
+
+function toggleMore(){var el=document.getElementById('more');if(el)el.classList.toggle('on')}
+var mb2=document.getElementById('moreBtn2');if(mb2)mb2.addEventListener('click',function(){document.getElementById('more').classList.add('on')});
+var mx=document.getElementById('moreX');if(mx)mx.addEventListener('click',function(){document.getElementById('more').classList.remove('on')});
+function setLang(c){try{localStorage.setItem('sabda_lang',c)}catch(e){}document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===c)});if(c==='en'){window.location.href='/m/faq.html';return;}if(c==='es'){window.location.href='/es/m/faq.html';return;}if(c==='ca'){window.location.href='/ca/m/faq.html';return;}}
+try{var sl=localStorage.getItem('sabda_lang')||'ca';document.querySelectorAll('.lang-btn').forEach(function(b){b.classList.toggle('on',b.getAttribute('data-lang')===sl)})}catch(e){}
+</script>
+<script src="/cookie-consent.js"></script>
+</body>
+</html>
