@@ -63,3 +63,17 @@ A structural or chrome-only pass — footer reorder, hreflang fix, nav unificati
 - The mobile shells are separate documents, not a responsive view. Every content change needs doing twice
 - Scoped fixes leak: a rule applied to one component while a sibling keeps the old behaviour has caused several repeat reports. Check every sibling before calling something done
 - Verify at paint level, not in the markup. Content can exist in the HTML and still be invisible
+
+---
+
+## AUDITING RULE: greps must account for relative hrefs
+
+Twice in one cycle an audit reported broken or missing links that were working fine, because the search looked only for absolute paths. The blog index was reported as having zero links to its 75 articles; it has 67 working anchors written as `href="pilates-barcelona-guia/"`, relative to `/blog/`. An absolute-path search returns zero and the "fix" would have been to rewrite 67 functioning links.
+
+**Before reporting a link as missing or broken:**
+- Search for both forms: `href="/blog/slug/"` **and** `href="slug/"`
+- Resolve every candidate against the filesystem from the containing page's directory, not from the site root
+- Open the page and count rendered anchors before concluding anything from a grep
+- A page that renders links in the browser but shows none to your regex means the regex is wrong, not the page
+
+Both this and the price-verification rule are the same underlying discipline: **verify the claim against the artefact, never against the pattern you expected to find.** Three of the consultant's prices and two of the audit's link findings failed that test and would have introduced errors had they been actioned.
