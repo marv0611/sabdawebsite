@@ -249,8 +249,15 @@ window.SABDAloadClarity=function(){
   ]
 }
 </script>
+<style id="a11y-skip-style">
+.a11y-skip{position:absolute;left:-9999px;top:0;background:#02F3C5;color:#0e1235;padding:12px 20px;font-weight:700;z-index:99999;text-decoration:none;border-radius:0 0 4px 0}
+.a11y-skip:focus{left:0;top:0}
+</style>
+<style>#globalParticles{position:fixed;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}</style>
 </head>
 <body>
+<a href="#main-content" class="a11y-skip">Saltar al contenido principal</a>
+<div class="grain" id="main-content"></div><canvas id="globalParticles"></canvas>
 <div class="grain"></div>
 <nav id="nav">
   <a href="/" class="nav-logo" aria-label="SABDA — Home">
@@ -271,7 +278,7 @@ window.SABDAloadClarity=function(){
   <h1 class="sh2 rv" style="transition-delay:.07s;font-size:clamp(2rem,4.5vw,3.4rem)">Marvyn <em>Halfon.</em></h1>
   <div class="rv" style="transition-delay:.14s;max-width:760px;margin:26px auto 0;text-align:left">
     <p style="color:rgba(240,239,233,.86);font-size:1.06rem;line-height:1.8">Marvyn cofundó SABDA en 2023 junto a Juliet Levine, construyendo el primer estudio de bienestar inmersivo de Europa en el Eixample de Barcelona: una sala de proyección de 360 grados con audio espacial Dolby Atmos donde el yoga, el pilates y el sound healing suceden dentro de las imágenes en lugar de delante de una pantalla. Dirige la programación del estudio, sus exposiciones de arte inmersivo y sus formatos de talleres creativos. SABDA imparte 48 clases a la semana en inglés y español y tiene una valoración de 4,8 sobre 617 reseñas.</p>
-    <p style="margin-top:20px"><a href="https://www.linkedin.com/in/marvynhalfon/" target="_blank" rel="noopener noreferrer" style="color:var(--cyan);text-decoration:underline;text-underline-offset:3px">LinkedIn</a></p>
+    <div style="text-align:center;margin-top:24px"><a href="https://www.linkedin.com/in/marvynhalfon/" target="_blank" rel="me noopener noreferrer" class="btn-p" style="display:inline-block">Ver perfil de LinkedIn</a></div>
   </div>
 </section>
 <section class="use-cases" style="padding:20px 80px 96px;text-align:center">
@@ -314,5 +321,323 @@ const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{n
 document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));if(!wasOpen)item.classList.add('open');btn.setAttribute('aria-expanded',!wasOpen)});});
 </script>
 <script src="/cookie-consent.js"></script>
+<script>
+/* ═══════════════════════════════════════════════════════
+   CUSTOM CURSOR
+═══════════════════════════════════════════════════════ */
+const CUR=document.getElementById('C'),RING=document.getElementById('CR');
+let cx=0,cy=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{
+  cx=e.clientX;cy=e.clientY;
+  CUR.style.transform=`translate(${cx}px,${cy}px) translate(-50%,-50%)`;
+});
+(function rl(){rx+=(cx-rx)*.1;ry+=(cy-ry)*.1;RING.style.transform=`translate(${rx}px,${ry}px) translate(-50%,-50%)`;requestAnimationFrame(rl)})();
+document.querySelectorAll('a,button,.uc-card,.addon,.sg-arr').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{CUR.classList.add('hov');RING.classList.add('hov')});
+  el.addEventListener('mouseleave',()=>{CUR.classList.remove('hov');RING.classList.remove('hov')});
+});
+
+/* ═══════════════════════════════════════════════════════
+   NAV — transparent-to-solid on scroll
+═══════════════════════════════════════════════════════ */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('on',scrollY>60),{passive:true});
+
+/* ═══════════════════════════════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════════════════════════════ */
+const rvObs=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('vis');rvObs.unobserve(e.target)}
+}),{threshold:.07});
+// Mark above-fold rv elements visible immediately to prevent flash
+document.querySelectorAll('.rv').forEach(el=>{
+  var r=el.getBoundingClientRect();
+  if(r.top<window.innerHeight){el.classList.add('vis');}
+  else{rvObs.observe(el);}
+});
+
+/* ═══════════════════════════════════════════════════════
+   HORIZONTAL RULE ANIMATIONS — draw on scroll
+═══════════════════════════════════════════════════════ */
+const hrObs=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){e.target.classList.add('vis');hrObs.unobserve(e.target)}
+}),{threshold:.3});
+document.querySelectorAll('.hr-anim').forEach(el=>hrObs.observe(el));
+
+/* ═══════════════════════════════════════════════════════
+   CASE STUDY MEDIA GLOW — activate on scroll
+═══════════════════════════════════════════════════════ */
+const glowObs=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){
+    const glow=e.target.querySelector('.cs-media-glow');
+    if(glow)setTimeout(()=>glow.classList.add('on'),400);
+    glowObs.unobserve(e.target);
+  }
+}),{threshold:.2});
+document.querySelectorAll('.cs-media').forEach(el=>glowObs.observe(el));
+
+/* ═══════════════════════════════════════════════════════
+   CASE STUDY VIDEOS — unmute + pause when out of view
+═══════════════════════════════════════════════════════ */
+const mutedSVG='<svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="var(--cyan)" stroke="none"/><line x1="18" y1="9" x2="24" y2="15" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round"/><line x1="24" y1="9" x2="18" y2="15" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round"/></svg>';
+const unmutedSVG='<svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4V5z" fill="var(--cyan)" stroke="none"/><path d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" fill="none" stroke="var(--cyan)" stroke-width="1.5" stroke-linecap="round"/></svg>';
+
+/* Standard unmute */
+document.querySelectorAll('.cs-unmute:not(#alproUnmute)').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const vid=btn.closest('.cs-media').querySelector('video');
+    if(!vid)return;
+    vid.muted=!vid.muted;
+    btn.innerHTML=vid.muted?mutedSVG:unmutedSVG;
+    btn.style.background=vid.muted?'rgba(2,243,197,.15)':'rgba(2,243,197,.25)';
+  });
+});
+
+/* Alpro — separate audio sync */
+(function(){
+  const vid=document.getElementById('alproVid');
+  const aud=document.getElementById('alproAudio');
+  const btn=document.getElementById('alproUnmute');
+  if(!vid||!aud||!btn)return;
+  let audioOn=false;
+  btn.addEventListener('click',()=>{
+    audioOn=!audioOn;
+    if(audioOn){aud.currentTime=vid.currentTime;aud.play().catch(()=>{})}
+    else{aud.pause()}
+    btn.innerHTML=audioOn?unmutedSVG:mutedSVG;
+    btn.style.background=audioOn?'rgba(2,243,197,.25)':'rgba(2,243,197,.15)';
+  });
+  vid.addEventListener('seeked',()=>{if(audioOn)aud.currentTime=vid.currentTime});
+  vid.addEventListener('play',()=>{if(audioOn){aud.currentTime=vid.currentTime;aud.play().catch(()=>{})}});
+  vid.addEventListener('pause',()=>aud.pause());
+})();
+
+const vidObs=new IntersectionObserver(es=>es.forEach(e=>{
+  const vid=e.target;
+  if(e.isIntersecting){vid.play().catch(()=>{})}else{
+    vid.pause();vid.muted=true;
+    const btn=vid.closest('.cs-media')?.querySelector('.cs-unmute:not(#alproUnmute)');
+    if(btn){btn.innerHTML=mutedSVG;btn.style.background='rgba(2,243,197,.15)'}
+    if(vid.id==='alproVid'){
+      const aud=document.getElementById('alproAudio');if(aud)aud.pause();
+      const aBtn=document.getElementById('alproUnmute');
+      if(aBtn){aBtn.innerHTML=mutedSVG;aBtn.style.background='rgba(2,243,197,.15)'}
+    }
+  }
+}),{threshold:.1});
+document.querySelectorAll('.cs-media video').forEach(v=>vidObs.observe(v));
+
+/* ═══════════════════════════════════════════════════════
+   SPACE GALLERY — 4-SECTION SLIDER WITH MID-SWAP, STARTS ON SCROLL
+═══════════════════════════════════════════════════════ */
+(function(){
+  const BASE='https://raw.githubusercontent.com/marv0611/sabdawebsite/main/';
+  const slides=[
+    {imgA:BASE+'immersive_underwater.jpg',imgB:BASE+'immersive_aurora_mats.jpg',num:'01 / 04',name:'The <em>Immersive</em> Room',desc:'86m² of 360° projection-mapped walls.<br>8 LED laser projectors. Dolby Atmos surround sound. Custom visual library.<br>20 to 120 capacity. Soundproofed. Climate controlled.',dur:9000},
+    {imgA:BASE+'cafe_bar.jpg',imgB:BASE+'cafe_lounge.jpg',num:'02 / 04',name:'Café & <em>Lounge</em>',desc:'65m² modular space with SONOS sound system.<br>Equipped bar. Pro coffee machine. Comfortable seating.<br>Ideal for workshops, networking, and post-event reception.',dur:9000},
+    {imgA:BASE+'DSC06911__1_.jpg',imgB:null,num:'03 / 04',name:'The <em>Patio</em>',desc:'20m² outdoor terrace.<br>Ice bath. Outdoor shower. Natural light. Comfortable seating.<br>A fresh-air extension for any event format.',dur:5000},
+    {imgA:BASE+'entrance_door.jpg',imgB:BASE+'entrance_reception.jpg',num:'04 / 04',name:'The <em>Entrance</em>',desc:'Welcome desk with customizable smart art screen.<br>Street-level access on C/Muntaner.<br>In the heart of Barcelona\'s Eixample district.',dur:9000},
+  ];
+
+  const container=document.getElementById('sgSlides');
+  if(!container)return;
+  slides.forEach((s,i)=>{
+    const div=document.createElement('div');
+    div.className='sg-slide'+(i===0?' on':'');
+    const bLayer=s.imgB?`<div class="sg-img sg-img-b" style="background-image:url('${s.imgB}')"></div>`:'';
+    div.innerHTML=`<div class="sg-img" style="background-image:url('${s.imgA}')"></div>${bLayer}<div class="sg-ov"></div>`;
+    container.appendChild(div);
+  });
+
+  let idx=0;
+  let swapTimer=null;
+  let autoT=null;
+  let started=false;
+  const sgName=document.getElementById('sgName');
+  const sgDesc=document.getElementById('sgDesc');
+  const sgNum=document.getElementById('sgNum');
+  const sgProg=document.getElementById('sgProg');
+  const sgCounter=document.getElementById('sgCounter');
+  const sgInfo=document.getElementById('sgInfo');
+  const allSlides=container.querySelectorAll('.sg-slide');
+
+  function startProg(dur){
+    sgProg.style.transition='none';
+    sgProg.style.width='0%';
+    requestAnimationFrame(()=>{requestAnimationFrame(()=>{
+      sgProg.style.transition=`width ${dur}ms linear`;
+      sgProg.style.width='100%';
+    })});
+  }
+
+  function goSlide(n){
+    if(swapTimer)clearTimeout(swapTimer);
+    const prevB=allSlides[idx].querySelector('.sg-img-b');
+    if(prevB)prevB.classList.remove('swap');
+    allSlides[idx].classList.remove('on');
+
+    idx=(n+slides.length)%slides.length;
+    allSlides[idx].classList.add('on');
+    const curB=allSlides[idx].querySelector('.sg-img-b');
+    if(curB)curB.classList.remove('swap');
+
+    sgInfo.style.opacity='0';sgInfo.style.transform='translateY(18px)';
+    setTimeout(()=>{
+      sgName.innerHTML=slides[idx].name;
+      sgDesc.innerHTML=slides[idx].desc;
+      sgNum.textContent=slides[idx].num+' | THE VENUE';
+      sgCounter.textContent=slides[idx].num;
+      sgInfo.style.opacity='1';sgInfo.style.transform='none';
+    },300);
+
+    const dur=slides[idx].dur;
+    if(curB){
+      swapTimer=setTimeout(()=>curB.classList.add('swap'),dur/2);
+    }
+    startProg(dur);
+
+    clearInterval(autoT);
+    autoT=setTimeout(()=>{
+      goSlide(idx+1);
+    },dur);
+  }
+
+  function startSlider(){
+    if(started)return;
+    started=true;
+    const dur=slides[0].dur;
+    startProg(dur);
+    const firstB=allSlides[0].querySelector('.sg-img-b');
+    if(firstB)swapTimer=setTimeout(()=>firstB.classList.add('swap'),dur/2);
+    autoT=setTimeout(()=>goSlide(1),dur);
+  }
+
+  document.getElementById('sgNext').addEventListener('click',()=>{goSlide(idx+1)});
+  document.getElementById('sgPrev').addEventListener('click',()=>{goSlide(idx-1)});
+
+  /* Only start when scrolled into view */
+  const sgObs=new IntersectionObserver(es=>{
+    if(es[0].isIntersecting){startSlider();sgObs.unobserve(es[0].target)}
+  },{threshold:.15});
+  sgObs.observe(document.getElementById('space'));
+})();
+
+/* ═══════════════════════════════════════════════════════
+   CLIENT MARQUEE
+═══════════════════════════════════════════════════════ */
+const mqData=['FC Barcelona','Danone','Liga Endesa','Elisava','Honest Greens','Aire','Time Out','Ametller'];
+const mq=document.getElementById('mq');
+const mqColors=['#02F3C5','#F8A6A3'];
+[...mqData,...mqData,...mqData].forEach((name,i)=>{
+  const sep=document.createElement('span');sep.className='mq-sep';sep.textContent='·';mq.appendChild(sep);
+  const s=document.createElement('span');
+  s.className='mq-item';s.textContent=name;s.style.color=mqColors[i%2];
+  mq.appendChild(s);
+});
+
+/* ═══════════════════════════════════════════════════════
+   INQUIRY FORM — mailto fallback (no backend)
+═══════════════════════════════════════════════════════ */
+function handleSubmit(e){
+  e.preventDefault();
+  var f=document.getElementById('inquiryForm');
+  var btn=f.querySelector('.inq-submit');
+  btn.textContent='Sending...';btn.disabled=true;
+  var data=new FormData(f);
+  var payload={name:data.get('name'),email:data.get('email'),phone:'',topic:'events',message:'Company: '+(data.get('company')||'N/A')+'\nEvent Type: '+data.get('event_type')+'\nGuests: '+(data.get('guests')||'TBD')+'\nDate: '+(data.get('date')||'Flexible')+'\n\n'+(data.get('message')||'')};
+  fetch('https://sabda-checkout-proxy.sabda.workers.dev/sabda-api/contact',{
+    method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)
+  }).then(function(r){return r.json()}).then(function(r){
+    if(r.ok){var sib=f.parentElement.children;for(var i=0;i<sib.length;i++){if(sib[i].id!=='inqSuccess')sib[i].style.display='none';}document.getElementById('inqSuccess').classList.add('show')}
+    else{btn.textContent='Send Inquiry';btn.disabled=false;alert('Something went wrong. Please email connect@sabdastudio.com directly.')}
+  }).catch(function(){
+    btn.textContent='Send Inquiry';btn.disabled=false;
+    alert('Connection error. Please email connect@sabdastudio.com directly.');
+  });
+  return false;
+}
+
+/* ═══════════════════════════════════════════════════════
+   GLOBAL PARTICLE FIELD
+═══════════════════════════════════════════════════════ */
+(function(){
+  const canvas=document.getElementById('globalParticles');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  let W,H;
+  let mouseX=-9999,mouseY=-9999;
+
+  function resize(){
+    W=window.innerWidth;H=window.innerHeight;
+    canvas.width=W*devicePixelRatio;
+    canvas.height=H*devicePixelRatio;
+    ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
+  }
+  resize();
+  window.addEventListener('resize',resize);
+  document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY});
+
+  const COUNT=672;
+  const particles=Array.from({length:COUNT},()=>({
+    x:Math.random()*3000,
+    y:Math.random(),
+    vx:0.008+Math.random()*0.06,
+    vy:(Math.random()-0.5)*0.003,
+    fx:0,fy:0,
+    size:0.3+Math.random()*1.5,
+    glow:4+Math.random()*16,
+    color:(()=>{const c=Math.random();return c<0.38?[2,243,197]:c<0.72?[248,166,163]:[32,57,153]})(),
+    opacity:0.025+Math.random()*0.12,
+    phase:Math.random()*Math.PI*2,
+    waveAmp:0.01+Math.random()*0.04,
+    waveFreq:0.0001+Math.random()*0.0005,
+  }));
+
+  let t=0;
+  function draw(){
+    t++;
+    ctx.clearRect(0,0,W,H);
+    particles.forEach(p=>{
+      p.x+=p.vx;
+      p.y+=p.vy;
+      const waveY=p.waveAmp*Math.sin(p.phase+t*p.waveFreq);
+      let drawX=p.x+p.fx;
+      let drawY=(p.y+waveY)*H+p.fy;
+      const dx=drawX-mouseX;const dy=drawY-mouseY;
+      const dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<120&&dist>0){const force=(1-dist/120)*2.5;p.fx+=(dx/dist)*force;p.fy+=(dy/dist)*force}
+      p.fx*=0.94;p.fy*=0.94;
+      drawX=p.x+p.fx;drawY=(p.y+waveY)*H+p.fy;
+      if(p.x>W+60){p.x=-50;p.y=Math.random();p.fx=0;p.fy=0}
+      if(p.y<-0.05)p.y=1.05;if(p.y>1.05)p.y=-0.05;
+      const pulse=0.4+0.6*Math.sin(p.phase+t*0.001);const op=p.opacity*pulse;
+      if(op<0.002)return;
+      const g=ctx.createRadialGradient(drawX,drawY,0,drawX,drawY,p.glow);
+      g.addColorStop(0,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.7})`);
+      g.addColorStop(0.3,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.28})`);
+      g.addColorStop(0.7,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${op*0.04})`);
+      g.addColorStop(1,`rgba(${p.color[0]},${p.color[1]},${p.color[2]},0)`);
+      ctx.fillStyle=g;ctx.beginPath();ctx.arc(drawX,drawY,p.glow,0,Math.PI*2);ctx.fill();
+      ctx.beginPath();ctx.arc(drawX,drawY,p.size*0.5,0,Math.PI*2);
+      ctx.fillStyle=`rgba(${p.color[0]},${p.color[1]},${p.color[2]},${Math.min(0.6,op*2)})`;ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  requestAnimationFrame(draw);
+})();
+
+/* ═══════════════════════════════════════════════════════
+   MOBILE STICKY
+═══════════════════════════════════════════════════════ */
+const sbk=document.getElementById('sbk');
+const heroEl=document.getElementById('hero');
+const footerEl=document.querySelector('footer');
+window.addEventListener('scroll',()=>{
+  const pastHero=scrollY>heroEl.offsetHeight*.65;
+  const nearFooter=footerEl.getBoundingClientRect().top<window.innerHeight+80;
+  sbk.classList.toggle('vis',pastHero&&!nearFooter);
+},{passive:true});
+document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const wasOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));if(!wasOpen)item.classList.add('open');btn.setAttribute('aria-expanded',!wasOpen)})});
+</script>
 </body>
 </html>
