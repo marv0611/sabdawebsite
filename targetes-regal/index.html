@@ -914,6 +914,7 @@ const sbk=document.getElementById('sbk');
 const heroEl=document.getElementById('hero');
 const footerEl=document.querySelector('footer');
 window.addEventListener('scroll',()=>{
+  if(!sbk||!heroEl||!footerEl)return;
   const pastHero=scrollY>heroEl.offsetHeight*.65;
   const nearFooter=footerEl.getBoundingClientRect().top<window.innerHeight+80;
   sbk.classList.toggle('vis',pastHero&&!nearFooter);

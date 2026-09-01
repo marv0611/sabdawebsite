@@ -1328,6 +1328,7 @@ document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',(
 const sbk=document.getElementById('sbk');
 const heroEl=document.getElementById('hero');
 window.addEventListener('scroll',()=>{
+  if(!sbk||!heroEl)return;
   sbk.classList.toggle('vis',scrollY>heroEl.offsetHeight*.65);
 },{passive:true});
 
