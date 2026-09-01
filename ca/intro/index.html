@@ -742,8 +742,5 @@ setTimeout(function(){
 <script>
 document.querySelectorAll('.faq-q').forEach(function(b){b.addEventListener('click',function(){var it=b.parentElement;var op=it.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(function(o){o.classList.remove('open');o.querySelector('.faq-q').setAttribute('aria-expanded','false');});if(!op){it.classList.add('open');b.setAttribute('aria-expanded','true');}});});
 </script>
-
-
-<script src="/modal-trial.js" defer></script>
 </body>
 </html>
