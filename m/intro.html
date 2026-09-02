@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");oaiq("init",{pixelId:"Ku2BdAZXXP5AJSuPSKSmdN",debug:true});</script>
 <script>/* SABDA attribution: capture UTMs+clickIDs at landing (30d TTL); _sabdaGetAttribution() reads */
 (function(){try{var K='_sabda_attr',T=2592000000,n=Date.now(),qs=window.location.search||'',params={};if(qs){var sp=new URLSearchParams(qs);['utm_source','utm_medium','utm_campaign','utm_content','utm_term','fbclid','gclid','ttclid','msclkid','li_fat_id'].forEach(function(k){var v=sp.get(k);if(v)params[k]=v.slice(0,200);});}if(Object.keys(params).length>0){var attr={ts:n,landing_url:window.location.href.slice(0,500),landing_path:window.location.pathname,referrer:(document.referrer||'').slice(0,300)};Object.keys(params).forEach(function(k){attr[k]=params[k];});try{localStorage.setItem(K,JSON.stringify(attr));try{navigator.sendBeacon('https://sabda-checkout-proxy.sabda.workers.dev/sabda-api/attr-trace',new Blob([JSON.stringify({marker:'CAPTURE-FIRED',has_fbclid:attr.fbclid?'yes':'no',has_utm:attr.utm_source?'yes':'no',path:attr.landing_path})],{type:'application/json'}));}catch(e){}}catch(e){}}window._sabdaGetAttribution=function(){try{var r=localStorage.getItem(K);var _rm='none',_res=null;if(r){var p;try{p=JSON.parse(r);}catch(e){_rm='corrupt';}if(p){if(!p.ts){_rm='corrupt';}else if((Date.now()-p.ts)>=T){_rm='expired';try{localStorage.removeItem(K);}catch(e){}}else{_rm='found';_res=p;}}}if(!window._sabdaReadBeaconFired){window._sabdaReadBeaconFired=true;try{navigator.sendBeacon('https://sabda-checkout-proxy.sabda.workers.dev/sabda-api/attr-trace',new Blob([JSON.stringify({marker:'READ-ATTEMPT',result:_rm,path:window.location.pathname})],{type:'application/json'}));}catch(e){}}return _res;}catch(e){return null;}};}catch(e){try{window._sabdaGetAttribution=function(){return null;};}catch(e2){}}})();
 </script>
@@ -661,6 +662,31 @@ document.querySelectorAll('a[href*="buy=443935"],a[href*="buy=443934"],a[href*="
 
 <script>
 document.querySelectorAll('.faq-m-q').forEach(function(b){b.addEventListener('click',function(){var it=b.parentElement;var op=it.classList.contains('open');document.querySelectorAll('.faq-m-i.open').forEach(function(o){o.classList.remove('open');o.querySelector('.faq-m-q').setAttribute('aria-expanded','false');});if(!op){it.classList.add('open');b.setAttribute('aria-expanded','true');}});});
+</script>
+<script>
+(function(){
+  var SELECTOR='a[href*="momence"]';
+  // /intro/ carries two products; report the one actually clicked
+  var PRODUCTS={
+    "443934":{amount:1800,id:"trial-class",name:"Clase de prueba"},
+    "443935":{amount:5000,id:"intro-3-pack",name:"Bono 3 clases"}
+  };
+  document.addEventListener('click',function(e){
+    var el=e.target.closest?e.target.closest(SELECTOR):null;
+    if(!el||!window.oaiq)return;
+    var m=el.href.match(/momence\.com\/m\/(\d+)/);
+    var p=(m&&PRODUCTS[m[1]])||PRODUCTS["443934"];
+    oaiq("measure","checkout_started",{type:"contents",amount:p.amount,currency:"EUR",
+      contents:[{id:p.id,name:p.name,content_type:"product",quantity:1}]});
+  },true);
+  var q=new URLSearchParams(location.search).get('oppref');
+  var c=document.cookie.match(/(?:^|; )__oppref=([^;]+)/);
+  var pref=q||(c&&decodeURIComponent(c[1]));
+  if(!pref)return;
+  document.querySelectorAll('a[href*="momence"]').forEach(function(a){
+    try{var u=new URL(a.href);u.searchParams.set('oppref',pref);a.href=u.toString();}catch(x){}
+  });
+})();
 </script>
 </body>
 </html>
