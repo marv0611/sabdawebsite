@@ -14,7 +14,7 @@
 <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=PT+Serif:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
 <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-(function(){var m=false;try{var c=JSON.parse(localStorage.getItem('sabda_cookie_consent')||'null');m=!!(c&&c.marketing);}catch(e){}if(!m&&typeof fbq==='function'){fbq('consent','revoke');}})();fbq('init','567636669734630',{});fbq('track','PageView');</script>
+(function(){var m=(window.SABDA_CONSENT_DEFAULT!=='denied');try{var c=JSON.parse(localStorage.getItem('sabda_cookie_consent')||'null');if(c&&c.ts){m=!!c.marketing;}}catch(e){}if(!m&&typeof fbq==='function'){fbq('consent','revoke');}})();fbq('init','567636669734630',{});fbq('track','PageView');</script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"CafeOrCoffeeShop","name":"SABDA Café","image":"https://sabdastudio.com/cafe/cafe-bar.jpg","address":{"@type":"PostalAddress","streetAddress":"C/Muntaner 83B, Local 2","addressLocality":"Barcelona","postalCode":"08011","addressCountry":"ES"},"url":"https://sabdastudio.com/cafe/","telephone":"+34625449878"}
 </script>
@@ -56,10 +56,10 @@ body{background:var(--navy);color:var(--white);font-family:'DM Sans',sans-serif;
 </style>
 <script>/* SABDA consent gate: Google Consent Mode v2 defaults, read from stored consent */
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-(function(){var CONSENT_DEFAULT='granted';/* flip to 'denied' for opt-in */var a=CONSENT_DEFAULT,m=CONSENT_DEFAULT;try{var c=JSON.parse(localStorage.getItem('sabda_cookie_consent')||'null');if(c&&c.ts&&(Date.now()-c.ts)<31536000000){a=c.analytics?'granted':'denied';m=c.marketing?'granted':'denied';}}catch(e){}
+(function(){var CONSENT_DEFAULT='granted';window.SABDA_CONSENT_DEFAULT=CONSENT_DEFAULT;/* flip to 'denied' for opt-in */var a=CONSENT_DEFAULT,m=CONSENT_DEFAULT;try{var c=JSON.parse(localStorage.getItem('sabda_cookie_consent')||'null');if(c&&c.ts&&(Date.now()-c.ts)<31536000000){a=c.analytics?'granted':'denied';m=c.marketing?'granted':'denied';}}catch(e){}
 gtag('consent','default',{ad_storage:m,ad_user_data:m,ad_personalization:m,analytics_storage:a,functionality_storage:'granted',security_storage:'granted',wait_for_update:500});})();</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1E1WXTZWQD"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-1E1WXTZWQD",{"anonymize_ip":true,"page_location":"https://sabdastudio.com/es/cafeteria/"});</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-1E1WXTZWQD",{"anonymize_ip":true});</script>
 </head>
 <body>
 <div class="grain"></div>

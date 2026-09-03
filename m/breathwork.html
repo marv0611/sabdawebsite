@@ -14,7 +14,7 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-(function(){var m=false;try{var c=JSON.parse(localStorage.getItem('sabda_cookie_consent')||'null');m=!!(c&&c.marketing);}catch(e){}if(!m&&typeof fbq==='function'){fbq('consent','revoke');}})();
+(function(){var m=(window.SABDA_CONSENT_DEFAULT!=='denied');try{var c=JSON.parse(localStorage.getItem('sabda_cookie_consent')||'null');if(c&&c.ts){m=!!c.marketing;}}catch(e){}if(!m&&typeof fbq==='function'){fbq('consent','revoke');}})();
 fbq('init', '567636669734630', {});
 fbq('track', 'PageView');
 /* SABDA-MOMENCE-PASSTHROUGH-v2 */
@@ -221,10 +221,10 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
 <!-- Google tag (gtag.js) -->
 <script>/* SABDA consent gate: Google Consent Mode v2 defaults, read from stored consent */
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-(function(){var CONSENT_DEFAULT='granted';/* flip to 'denied' for opt-in */var a=CONSENT_DEFAULT,m=CONSENT_DEFAULT;try{var c=JSON.parse(localStorage.getItem('sabda_cookie_consent')||'null');if(c&&c.ts&&(Date.now()-c.ts)<31536000000){a=c.analytics?'granted':'denied';m=c.marketing?'granted':'denied';}}catch(e){}
+(function(){var CONSENT_DEFAULT='granted';window.SABDA_CONSENT_DEFAULT=CONSENT_DEFAULT;/* flip to 'denied' for opt-in */var a=CONSENT_DEFAULT,m=CONSENT_DEFAULT;try{var c=JSON.parse(localStorage.getItem('sabda_cookie_consent')||'null');if(c&&c.ts&&(Date.now()-c.ts)<31536000000){a=c.analytics?'granted':'denied';m=c.marketing?'granted':'denied';}}catch(e){}
 gtag('consent','default',{ad_storage:m,ad_user_data:m,ad_personalization:m,analytics_storage:a,functionality_storage:'granted',security_storage:'granted',wait_for_update:500});})();</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1E1WXTZWQD"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-1E1WXTZWQD",{"anonymize_ip":true,"page_path":"/classes/breathwork/","page_location":"https://sabdastudio.com/classes/breathwork/"});</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-1E1WXTZWQD",{"anonymize_ip":true});</script>
 <!-- Microsoft Clarity -->
 <script type="text/javascript">
 /* SABDA consent gate: Microsoft Clarity loads only with analytics consent */
@@ -236,7 +236,7 @@ window.SABDAloadClarity=function(){
     y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
   })(window, document, "clarity", "script", "waoyd1cczc");
 };
-(function(){try{var c=JSON.parse(localStorage.getItem('sabda_cookie_consent')||'null');if(c&&c.analytics)window.SABDAloadClarity();}catch(e){}})();
+(function(){var a=(window.SABDA_CONSENT_DEFAULT!=='denied');try{var c=JSON.parse(localStorage.getItem('sabda_cookie_consent')||'null');if(c&&c.ts){a=!!c.analytics;}}catch(e){}if(a&&typeof window.SABDAloadClarity==='function')window.SABDAloadClarity();})();
 </script>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16.png">

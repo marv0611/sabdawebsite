@@ -315,7 +315,7 @@ window.SABDAloadClarity=function(){
     y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
   })(window, document, "clarity", "script", "waoyd1cczc");
 };
-(function(){try{var c=JSON.parse(localStorage.getItem('sabda_cookie_consent')||'null');if(c&&c.analytics)window.SABDAloadClarity();}catch(e){}})();
+(function(){var a=(window.SABDA_CONSENT_DEFAULT!=='denied');try{var c=JSON.parse(localStorage.getItem('sabda_cookie_consent')||'null');if(c&&c.ts){a=!!c.analytics;}}catch(e){}if(a&&typeof window.SABDAloadClarity==='function')window.SABDAloadClarity();})();
 </script>
 <style id="nav-fit">@media(min-width:861px) and (max-width:1120px){.nav-links{gap:20px}}</style>
 </head>
