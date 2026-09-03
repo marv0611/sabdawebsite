@@ -230,7 +230,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
 <!-- Google tag (gtag.js) -->
 <script>/* SABDA consent gate: Google Consent Mode v2 defaults, read from stored consent */
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-(function(){var a='granted',m='granted';try{var c=JSON.parse(localStorage.getItem('sabda_cookie_consent')||'null');if(c&&c.ts){a=c.analytics?'granted':'denied';m=c.marketing?'granted':'denied';}}catch(e){}
+(function(){var CONSENT_DEFAULT='granted';/* flip to 'denied' for opt-in */var a=CONSENT_DEFAULT,m=CONSENT_DEFAULT;try{var c=JSON.parse(localStorage.getItem('sabda_cookie_consent')||'null');if(c&&c.ts&&(Date.now()-c.ts)<31536000000){a=c.analytics?'granted':'denied';m=c.marketing?'granted':'denied';}}catch(e){}
 gtag('consent','default',{ad_storage:m,ad_user_data:m,ad_personalization:m,analytics_storage:a,functionality_storage:'granted',security_storage:'granted',wait_for_update:500});})();</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1E1WXTZWQD"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-1E1WXTZWQD",{"anonymize_ip":true,"page_path":"/events.html","page_location":"https://sabdastudio.com/events.html"});</script>
@@ -549,34 +549,31 @@ try{var sl=localStorage.getItem('sabda_lang')||'en';document.querySelectorAll('.
 })();
 </script>
 <script>
-/* SABDA consent bar v1 — minimal, non-blocking, AEPD-compliant equal choice */
+/* SABDA consent bar v2 — opt-out. Gate default lives in CONSENT_DEFAULT above. */
 (function(){
-  /* SABDA_CONSENT_BAR: set to true to re-enable the bar. Gate above defaults to granted while false. */
-  if(window.SABDA_CONSENT_BAR!==true)return;
   if(window.__sabdaConsentBar)return; window.__sabdaConsentBar=1;
   var KEY='sabda_cookie_consent', MAXAGE=365*24*60*60*1000;
   var lang=(document.documentElement.lang||'en').slice(0,2).toLowerCase();
   var T={
-    en:{t:'Cookies to improve your experience.',y:'OK',n:'No thanks',p:'Cookie policy',u:'/cookies.html'},
-    es:{t:'Cookies para mejorar tu experiencia.',y:'Vale',n:'No, gracias',p:'Política de cookies',u:'/es/legal/cookies.html'},
-    ca:{t:'Galetes per millorar la teva experiència.',y:"D'acord",n:'No, gràcies',p:'Política de galetes',u:'/ca/legal/cookies.html'}
-  }[lang]||{t:'Cookies to improve your experience.',y:'OK',n:'No thanks',p:'Cookie policy',u:'/cookies.html'};
-  // already answered and still valid? stay silent
+    en:{t:'We use cookies to give you the best experience.',y:'Accept',n:'Reject',p:'Cookie policy',u:'/cookies.html'},
+    es:{t:'Usamos cookies para darte la mejor experiencia.',y:'Aceptar',n:'Rechazar',p:'Política de cookies',u:'/es/legal/cookies.html'},
+    ca:{t:'Fem servir galetes per donar-te la millor experiència.',y:'Acceptar',n:'Rebutjar',p:'Política de galetes',u:'/ca/legal/cookies.html'}
+  }[lang]||{t:'We use cookies to give you the best experience.',y:'Accept',n:'Reject',p:'Cookie policy',u:'/cookies.html'};
   try{var c=JSON.parse(localStorage.getItem(KEY)||'null');
     if(c&&c.ts&&(Date.now()-c.ts)<MAXAGE)return;
     if(c&&!c.ts)localStorage.removeItem(KEY);
   }catch(e){}
-  function decide(ok){
+  function store(ok){
     try{localStorage.setItem(KEY,JSON.stringify({analytics:ok,ads:ok,marketing:ok,ts:Date.now()}));}catch(e){}
-    if(typeof gtag==='function'){
-      gtag('consent','update',ok?{analytics_storage:'granted',ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted'}
-                               :{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});
-    }
-    if(ok){
-      try{if(typeof fbq==='function')fbq('consent','grant');}catch(e){}
-      try{if(typeof window.SABDAloadClarity==='function')window.SABDAloadClarity();}catch(e){}
-    }
-    var b=document.getElementById('sabda-cbar'); if(b)b.parentNode.removeChild(b);
+  }
+  function close(){var b=document.getElementById('sabda-cbar'); if(b&&b.parentNode)b.parentNode.removeChild(b);}
+  function accept(){ store(true); close(); }          /* already granted; nothing to update */
+  function reject(){
+    store(false);
+    if(typeof gtag==='function'){gtag('consent','update',{analytics_storage:'denied',ad_storage:'denied',
+      ad_user_data:'denied',ad_personalization:'denied'});}
+    try{if(typeof fbq==='function')fbq('consent','revoke');}catch(e){}
+    close();
   }
   function build(){
     if(document.getElementById('sabda-cbar'))return;
@@ -585,20 +582,21 @@ try{var sl=localStorage.getItem('sabda_lang')||'en';document.querySelectorAll('.
     w.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:2147483000;background:#0e1235;'+
       'border-top:1px solid rgba(240,239,233,.14);padding:10px 16px;display:flex;align-items:center;'+
       'justify-content:center;gap:14px;flex-wrap:wrap;font-size:.82rem;line-height:1.4;'+
-      "font-family:inherit;color:rgba(240,239,233,.9)";
+      'font-family:inherit;color:rgba(240,239,233,.9)';
     var span=document.createElement('span'); span.textContent=T.t; w.appendChild(span);
     var yes=document.createElement('button'); yes.type='button'; yes.textContent=T.y;
     yes.style.cssText='background:#02F3C5;color:#0e1235;border:0;border-radius:999px;padding:8px 20px;'+
       'font-size:.82rem;font-weight:700;cursor:pointer;font-family:inherit;min-height:36px';
     var no=document.createElement('button'); no.type='button'; no.textContent=T.n;
-    no.style.cssText='background:none;color:rgba(240,239,233,.9);border:0;padding:8px 12px;'+
-      'font-size:.82rem;cursor:pointer;text-decoration:underline;text-underline-offset:3px;font-family:inherit;min-height:36px';
+    no.style.cssText='background:none;color:rgba(240,239,233,.55);border:0;padding:8px 12px;'+
+      'font-size:.78rem;cursor:pointer;text-decoration:underline;text-underline-offset:3px;'+
+      'font-family:inherit;min-height:36px';
     var a=document.createElement('a'); a.href=T.u; a.textContent=T.p;
-    a.style.cssText='color:rgba(240,239,233,.6);font-size:.74rem;text-decoration:underline;text-underline-offset:3px';
-    yes.addEventListener('click',function(){decide(true)});
-    no.addEventListener('click',function(){decide(false)});
+    a.style.cssText='color:rgba(240,239,233,.5);font-size:.72rem;text-decoration:underline;text-underline-offset:3px';
+    yes.addEventListener('click',accept); no.addEventListener('click',reject);
     w.appendChild(yes); w.appendChild(no); w.appendChild(a);
     document.body.appendChild(w);
+    /* deliberate: scrolling and navigation neither dismiss the bar nor write the key */
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',build); else build();
 })();
