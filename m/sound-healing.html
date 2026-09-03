@@ -221,7 +221,7 @@ a{color:inherit;text-decoration:none}img{display:block;max-width:100%}button{fon
 <!-- Google tag (gtag.js) -->
 <script>/* SABDA consent gate: Google Consent Mode v2 defaults, read from stored consent */
 window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-(function(){var a='denied',m='denied';try{var c=JSON.parse(localStorage.getItem('sabda_cookie_consent')||'null');if(c){a=c.analytics?'granted':'denied';m=c.marketing?'granted':'denied';}}catch(e){}
+(function(){var a='granted',m='granted';try{var c=JSON.parse(localStorage.getItem('sabda_cookie_consent')||'null');if(c&&c.ts){a=c.analytics?'granted':'denied';m=c.marketing?'granted':'denied';}}catch(e){}
 gtag('consent','default',{ad_storage:m,ad_user_data:m,ad_personalization:m,analytics_storage:a,functionality_storage:'granted',security_storage:'granted',wait_for_update:500});})();</script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-1E1WXTZWQD"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-1E1WXTZWQD",{"anonymize_ip":true,"page_path":"/classes/sound-healing/","page_location":"https://sabdastudio.com/classes/sound-healing/"});</script>
@@ -355,6 +355,8 @@ try{var sl=localStorage.getItem('sabda_lang')||'en';document.querySelectorAll('.
 <script>
 /* SABDA consent bar v1 — minimal, non-blocking, AEPD-compliant equal choice */
 (function(){
+  /* SABDA_CONSENT_BAR: set to true to re-enable the bar. Gate above defaults to granted while false. */
+  if(window.SABDA_CONSENT_BAR!==true)return;
   if(window.__sabdaConsentBar)return; window.__sabdaConsentBar=1;
   var KEY='sabda_cookie_consent', MAXAGE=365*24*60*60*1000;
   var lang=(document.documentElement.lang||'en').slice(0,2).toLowerCase();

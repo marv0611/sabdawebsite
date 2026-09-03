@@ -33,6 +33,8 @@
 <script>
 /* SABDA consent bar v1 — minimal, non-blocking, AEPD-compliant equal choice */
 (function(){
+  /* SABDA_CONSENT_BAR: set to true to re-enable the bar. Gate above defaults to granted while false. */
+  if(window.SABDA_CONSENT_BAR!==true)return;
   if(window.__sabdaConsentBar)return; window.__sabdaConsentBar=1;
   var KEY='sabda_cookie_consent', MAXAGE=365*24*60*60*1000;
   var lang=(document.documentElement.lang||'en').slice(0,2).toLowerCase();
