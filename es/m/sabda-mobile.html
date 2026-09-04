@@ -422,7 +422,7 @@ window.SABDAloadClarity=function(){
 <section class="faq-sec"><h2 class="faq-h">Preguntas <em>frecuentes.</em></h2><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">¿Con cuánta antelación hay que reservar?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>De cuatro a seis semanas es cómodo para una sesión estándar. Hemos organizado eventos en menos de dos semanas cuando el espacio es sencillo, así que pregúntanos aunque tu fecha esté cerca.</p></div></div><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">¿Cuántas personas pueden participar?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Recomendamos grupos a partir de 5 personas, y escalamos hasta varios cientos. El aforo determina el número de auriculares y el montaje de audio, así que es lo primero que confirmamos en la llamada. Por encima de unas 100 personas estudiamos cómo se mueve el grupo durante la sesión y construimos el montaje técnico en torno a eso.</p></div></div><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">¿Qué incluye el precio?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Un facilitador, un músico o DJ en directo, auriculares inmersivos para cada participante, visuales proyectados cuando el espacio lo permite, esterillas cuando la práctica las necesita, montaje y desmontaje completos por nuestro equipo, transporte de equipo y personal, y una visita técnica previa al evento. El montaje inmersivo nunca se cotiza aparte: es la experiencia, no un extra.</p></div></div><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">¿Qué se cotiza aparte?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>El catering, ya sea una comida o una pausa de café. Fotografía y vídeo. Cualquier facilitador adicional si quieres más de una disciplina en marcha. Desplazamientos fuera del área de Barcelona.</p></div></div><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">¿Qué tipo de espacio necesitáis?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Una zona abierta lo bastante grande para que todo el grupo pueda sentarse o tumbarse, con corriente y acceso por ascensor o escaleras para el equipo. Necesitamos una franja antes y después de la sesión para montar y desmontar. Los visuales proyectados necesitan una pared o pantalla y luz controlable; sin eso trabajamos solo con sonido, y funciona muy bien.</p></div></div><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">¿Hasta dónde os desplazáis?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Barcelona y alrededores de forma habitual. Vamos más lejos para eventos grandes, con los desplazamientos y la logística presupuestados aparte.</p></div></div><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">¿Cómo se calcula el precio?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Por evento, no por persona. El precio se construye a partir del aforo, el formato, el desplazamiento y la producción que necesite el espacio, y se aplica un mínimo. Recibes una propuesta cerrada tras la visita técnica, sin sorpresas por persona. Como el equipo, el transporte, la coordinación y la visita técnica son costes fijos, el coste por persona baja a medida que crece el grupo.</p></div></div><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">¿Podemos hacerlo en SABDA?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Sí. Nuestra sala inmersiva del Eixample admite un máximo de 30 personas para una actividad guiada. Para grupos mayores, SABDA Mobile va a vuestro espacio.</p></div></div></section><div class="iq-wrap fi" id="iq-wrap" style="padding-top:34px">
   <span class="sl">Hablemos</span>
   <div class="iq-h">Cuéntanos sobre tu evento</em></div>
-  <div class="iq-sub">Cada evento en SABDA es a medida. Cuéntanos lo básico y Katrina, de nuestro equipo de eventos, te responderá lo antes posible.</div>
+  <div class="iq-field"><label class="iq-lab" for="heard_about">¿Cómo nos has conocido?</label><select class="iq-inp" id="heard_about" name="heard_about"><option value="">Selecciona una opción</option><option value="Google">Google</option><option value="ChatGPT">ChatGPT</option><option value="Instagram">Instagram</option><option value="Recomendación">Recomendación</option><option value="Ya soy cliente">Ya soy cliente</option><option value="Otro">Otro</option></select></div><div class="iq-sub">Cada evento en SABDA es a medida. Cuéntanos lo básico y Katrina, de nuestro equipo de eventos, te responderá lo antes posible.</div>
   <form id="iqForm" onsubmit="return handleEventInquiry(event)">
     <label class="iq-lab" for="iq-name">Tu nombre</label>
     <input class="iq-inp" type="text" id="iq-name" name="name" placeholder="Nombre completo" required autocomplete="name">
@@ -529,7 +529,7 @@ function handleEventInquiry(e){
   btn.innerHTML='Enviando...';
   var data=new FormData(f);
   var msg='Company: '+(data.get('company')||'N/A')+'\nEvent Type: '+data.get('event_type')+'\nGuests: '+(data.get('guests')||'TBD')+'\nDate: '+(data.get('date')||'Flexible')+'\n\n'+(data.get('message')||'');
-  var payload={name:data.get('name'),email:data.get('email'),phone:'',topic:'events',message:msg};
+  var payload={name:data.get('name'),email:data.get('email'),phone:'',topic:'events',message:msg+sabdaOriginBlock(data.get('heard_about')||''),attr:sabdaAttr(),heard_about:(data.get('heard_about')||'')};
   fetch('https://sabda-checkout-proxy.sabda.workers.dev/sabda-api/contact',{
     method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)
   }).then(function(r){return r.json()}).then(function(r){
@@ -620,5 +620,70 @@ try{var sl=localStorage.getItem('sabda_lang')||'es';document.querySelectorAll('.
 })();
 </script>
 
+<script>
+/* SABDA attribution capture — first & last touch, survives navigation. Local only. */
+(function(){
+  var K='sabda_attribution';
+  function read(){ try{ return JSON.parse(localStorage.getItem(K)||'null'); }catch(e){ return null; } }
+  function write(o){ try{ localStorage.setItem(K,JSON.stringify(o)); }catch(e){} }
+  var q;
+  try{ q=new URLSearchParams(location.search); }catch(e){ return; }
+  var keys=['utm_source','utm_medium','utm_campaign','utm_content','utm_term','oppref','gclid','fbclid'];
+  var cur={}, any=false;
+  keys.forEach(function(k){ var v=q.get(k); if(v){ cur[k]=v; any=true; } });
+  var store=read()||{};
+  if(!store.referrer){
+    var r=document.referrer||'';
+    if(r && r.indexOf(location.hostname)===-1) store.referrer=r.slice(0,300);
+    else if(!r) store.referrer='direct';
+  }
+  if(any){
+    cur.landing=location.pathname;
+    cur.ts=Date.now();
+    if(!store.first) store.first=cur;      /* first touch never overwritten */
+    store.last=cur;                        /* last touch refreshed */
+  }
+  write(store);
+})();
+</script>
+<script>
+/* SABDA attribution -> enquiry payload */
+function sabdaAttr(){
+  var d={source:'direct',medium:'direct',campaign:'direct',content:'direct',term:'direct',
+         oppref:'direct',landing:location.pathname,referrer:'direct',
+         first_source:'direct',first_medium:'direct',first_ts:'',ts:new Date().toISOString()};
+  var s=null; try{ s=JSON.parse(localStorage.getItem('sabda_attribution')||'null'); }catch(e){}
+  if(s){
+    if(s.referrer) d.referrer=s.referrer;
+    var L=s.last||{}, F=s.first||{};
+    if(L.utm_source) d.source=L.utm_source;
+    if(L.utm_medium) d.medium=L.utm_medium;
+    if(L.utm_campaign) d.campaign=L.utm_campaign;
+    if(L.utm_content) d.content=L.utm_content;
+    if(L.utm_term) d.term=L.utm_term;
+    if(L.oppref) d.oppref=L.oppref;
+    if(L.gclid) d.oppref=d.oppref==='direct'?('gclid:'+L.gclid):d.oppref;
+    if(L.fbclid) d.oppref=d.oppref==='direct'?('fbclid:'+L.fbclid):d.oppref;
+    if(L.landing) d.landing=L.landing;
+    if(F.utm_source) d.first_source=F.utm_source;
+    if(F.utm_medium) d.first_medium=F.utm_medium;
+    if(F.ts){ try{ d.first_ts=new Date(F.ts).toLocaleDateString('es-ES',{day:'numeric',month:'short'}); }catch(e){} }
+  }
+  return d;
+}
+function sabdaOriginBlock(heard){
+  var a=sabdaAttr();
+  var L=[]; L.push('','\u2014 origen \u2014');
+  L.push('fuente:    '+a.source+' / '+a.medium);
+  L.push('campa\u00f1a:   '+a.campaign);
+  L.push('anuncio:   '+a.content);
+  L.push('p\u00e1gina:    '+a.landing);
+  L.push('primer contacto: '+a.first_source+' / '+a.first_medium+(a.first_ts?(' ('+a.first_ts+')'):''));
+  if(a.oppref!=='direct') L.push('click id:  '+a.oppref);
+  if(a.referrer!=='direct') L.push('referrer:  '+a.referrer);
+  if(heard) L.push('nos ha conocido por: '+heard);
+  return L.join('\n');
+}
+</script>
 </body>
 </html>

@@ -425,7 +425,7 @@ window.SABDAloadClarity=function(){
 <section class="faq-sec"><h2 class="faq-h">Common <em>questions.</em></h2><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">How far in advance should we book?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Four to six weeks is comfortable for a standard session. We have turned events around in under two weeks when the space is straightforward, so ask even if your date is close.</p></div></div><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">How many people can take part?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>We recommend groups of 5 and up, and we scale to several hundred. Headcount drives the headphone count and the audio setup, so it is the first thing we confirm on the call. Above roughly 100 people we look at how the group moves through the session, and we build the technical setup around that.</p></div></div><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">What is included in the price?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>A facilitator, a live musician or DJ, immersive headphones for every participant, projected visuals where the space allows, mats where the practice needs them, full setup and breakdown by our team, transport of crew and equipment, and a technical site visit before the event. The immersive setup is never quoted separately: it is the experience, not an extra.</p></div></div><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">What is quoted separately?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Catering, whether that is lunch or a coffee break. Photography and video. Any additional facilitator if you want more than one discipline running. Travel beyond the Barcelona area.</p></div></div><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">What kind of space do you need?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>An open area large enough for the whole group to sit or lie down, with power, and lift or stair access for the kit. We need a window before and after the session for setup and breakdown. Projected visuals need a wall or screen and controllable light; without that we run on sound alone, which works well.</p></div></div><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">Where do you travel?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Barcelona and the surrounding area as standard. We go further for larger events, with travel and logistics quoted separately.</p></div></div><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">How is it priced?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Per event, not per head. The price is built from headcount, format, travel and how much production the space needs, and a minimum applies. You get a fixed proposal after the technical site visit, with no per-head surprises. Because crew, transport, coordination and the site visit are fixed costs, the cost per person drops as the group grows.</p></div></div><div class="faq-it"><button class="faq-q touch" onclick="toggleFaq(this)">Can we do it at SABDA instead?<svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></button><div class="faq-a"><p>Yes. Our immersive room in Eixample holds a maximum of 30 people for a guided activity. For anything larger, SABDA Mobile comes to you.</p></div></div></section><div class="iq-wrap fi" id="iq-wrap" style="padding-top:34px">
   <span class="sl">Let's Talk</span>
   <div class="iq-h">Tell us about your event</em></div>
-  <div class="iq-sub">Every event at SABDA is custom. Share the basics and Katrina from our events team will get back to you as soon as possible.</div>
+  <div class="iq-field"><label class="iq-lab" for="heard_about">How did you hear about us?</label><select class="iq-inp" id="heard_about" name="heard_about"><option value="">Select an option</option><option value="Google">Google</option><option value="ChatGPT">ChatGPT</option><option value="Instagram">Instagram</option><option value="Recommendation">Recommendation</option><option value="Already a customer">Already a customer</option><option value="Other">Other</option></select></div><div class="iq-sub">Every event at SABDA is custom. Share the basics and Katrina from our events team will get back to you as soon as possible.</div>
   <form id="iqForm" onsubmit="return handleEventInquiry(event)">
     <label class="iq-lab" for="iq-name">Your name</label>
     <input class="iq-inp" type="text" id="iq-name" name="name" placeholder="Full name" required autocomplete="name">
@@ -532,7 +532,7 @@ function handleEventInquiry(e){
   btn.innerHTML='Sending...';
   var data=new FormData(f);
   var msg='Company: '+(data.get('company')||'N/A')+'\nEvent Type: '+data.get('event_type')+'\nGuests: '+(data.get('guests')||'TBD')+'\nDate: '+(data.get('date')||'Flexible')+'\n\n'+(data.get('message')||'');
-  var payload={name:data.get('name'),email:data.get('email'),phone:'',topic:'events',message:msg};
+  var payload={name:data.get('name'),email:data.get('email'),phone:'',topic:'events',message:msg+sabdaOriginBlock(data.get('heard_about')||''),attr:sabdaAttr(),heard_about:(data.get('heard_about')||'')};
   fetch('https://sabda-checkout-proxy.sabda.workers.dev/sabda-api/contact',{
     method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)
   }).then(function(r){return r.json()}).then(function(r){
@@ -623,5 +623,70 @@ try{var sl=localStorage.getItem('sabda_lang')||'en';document.querySelectorAll('.
 })();
 </script>
 
+<script>
+/* SABDA attribution capture — first & last touch, survives navigation. Local only. */
+(function(){
+  var K='sabda_attribution';
+  function read(){ try{ return JSON.parse(localStorage.getItem(K)||'null'); }catch(e){ return null; } }
+  function write(o){ try{ localStorage.setItem(K,JSON.stringify(o)); }catch(e){} }
+  var q;
+  try{ q=new URLSearchParams(location.search); }catch(e){ return; }
+  var keys=['utm_source','utm_medium','utm_campaign','utm_content','utm_term','oppref','gclid','fbclid'];
+  var cur={}, any=false;
+  keys.forEach(function(k){ var v=q.get(k); if(v){ cur[k]=v; any=true; } });
+  var store=read()||{};
+  if(!store.referrer){
+    var r=document.referrer||'';
+    if(r && r.indexOf(location.hostname)===-1) store.referrer=r.slice(0,300);
+    else if(!r) store.referrer='direct';
+  }
+  if(any){
+    cur.landing=location.pathname;
+    cur.ts=Date.now();
+    if(!store.first) store.first=cur;      /* first touch never overwritten */
+    store.last=cur;                        /* last touch refreshed */
+  }
+  write(store);
+})();
+</script>
+<script>
+/* SABDA attribution -> enquiry payload */
+function sabdaAttr(){
+  var d={source:'direct',medium:'direct',campaign:'direct',content:'direct',term:'direct',
+         oppref:'direct',landing:location.pathname,referrer:'direct',
+         first_source:'direct',first_medium:'direct',first_ts:'',ts:new Date().toISOString()};
+  var s=null; try{ s=JSON.parse(localStorage.getItem('sabda_attribution')||'null'); }catch(e){}
+  if(s){
+    if(s.referrer) d.referrer=s.referrer;
+    var L=s.last||{}, F=s.first||{};
+    if(L.utm_source) d.source=L.utm_source;
+    if(L.utm_medium) d.medium=L.utm_medium;
+    if(L.utm_campaign) d.campaign=L.utm_campaign;
+    if(L.utm_content) d.content=L.utm_content;
+    if(L.utm_term) d.term=L.utm_term;
+    if(L.oppref) d.oppref=L.oppref;
+    if(L.gclid) d.oppref=d.oppref==='direct'?('gclid:'+L.gclid):d.oppref;
+    if(L.fbclid) d.oppref=d.oppref==='direct'?('fbclid:'+L.fbclid):d.oppref;
+    if(L.landing) d.landing=L.landing;
+    if(F.utm_source) d.first_source=F.utm_source;
+    if(F.utm_medium) d.first_medium=F.utm_medium;
+    if(F.ts){ try{ d.first_ts=new Date(F.ts).toLocaleDateString('es-ES',{day:'numeric',month:'short'}); }catch(e){} }
+  }
+  return d;
+}
+function sabdaOriginBlock(heard){
+  var a=sabdaAttr();
+  var L=[]; L.push('','\u2014 origen \u2014');
+  L.push('fuente:    '+a.source+' / '+a.medium);
+  L.push('campa\u00f1a:   '+a.campaign);
+  L.push('anuncio:   '+a.content);
+  L.push('p\u00e1gina:    '+a.landing);
+  L.push('primer contacto: '+a.first_source+' / '+a.first_medium+(a.first_ts?(' ('+a.first_ts+')'):''));
+  if(a.oppref!=='direct') L.push('click id:  '+a.oppref);
+  if(a.referrer!=='direct') L.push('referrer:  '+a.referrer);
+  if(heard) L.push('nos ha conocido por: '+heard);
+  return L.join('\n');
+}
+</script>
 </body>
 </html>

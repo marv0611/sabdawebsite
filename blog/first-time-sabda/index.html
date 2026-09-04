@@ -535,5 +535,31 @@ const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{n
   requestAnimationFrame(draw);
 })();</script>
 <script src="/cookie-consent.js" defer></script>
+<script>
+/* SABDA attribution capture — first & last touch, survives navigation. Local only. */
+(function(){
+  var K='sabda_attribution';
+  function read(){ try{ return JSON.parse(localStorage.getItem(K)||'null'); }catch(e){ return null; } }
+  function write(o){ try{ localStorage.setItem(K,JSON.stringify(o)); }catch(e){} }
+  var q;
+  try{ q=new URLSearchParams(location.search); }catch(e){ return; }
+  var keys=['utm_source','utm_medium','utm_campaign','utm_content','utm_term','oppref','gclid','fbclid'];
+  var cur={}, any=false;
+  keys.forEach(function(k){ var v=q.get(k); if(v){ cur[k]=v; any=true; } });
+  var store=read()||{};
+  if(!store.referrer){
+    var r=document.referrer||'';
+    if(r && r.indexOf(location.hostname)===-1) store.referrer=r.slice(0,300);
+    else if(!r) store.referrer='direct';
+  }
+  if(any){
+    cur.landing=location.pathname;
+    cur.ts=Date.now();
+    if(!store.first) store.first=cur;      /* first touch never overwritten */
+    store.last=cur;                        /* last touch refreshed */
+  }
+  write(store);
+})();
+</script>
 </body>
 </html>

@@ -399,7 +399,7 @@ window.SABDAloadClarity=function(){
 <div class="iq-wrap fi" id="iq-wrap">
   <span class="sl">Let's Talk</span>
   <div class="iq-h">Explica'ns la teva <em>celebració</em></div>
-  <div class="iq-sub">Aniversaris, comiats, festes infantils, esdeveniments privats. Omple el que puguis — Katrina et respondrà en 48 hores amb opcions i preus.</div>
+  <div class="iq-field"><label class="iq-lab" for="heard_about">Com ens has conegut?</label><select class="iq-inp" id="heard_about" name="heard_about"><option value="">Selecciona una opció</option><option value="Google">Google</option><option value="ChatGPT">ChatGPT</option><option value="Instagram">Instagram</option><option value="Recomanació">Recomanació</option><option value="Ja sóc client">Ja sóc client</option><option value="Altres">Altres</option></select></div><div class="iq-sub">Aniversaris, comiats, festes infantils, esdeveniments privats. Omple el que puguis — Katrina et respondrà en 48 hores amb opcions i preus.</div>
   <form id="iqForm" onsubmit="return handleEventInquiry(event)">
     <label class="iq-lab" for="iq-name">El teu nom</label>
     <input class="iq-inp" type="text" id="iq-name" name="name" placeholder="Nom complet" required autocomplete="name">
@@ -498,7 +498,7 @@ function handleEventInquiry(e){
   btn.innerHTML='Sending...';
   var data=new FormData(f);
   var msg='Company: '+(data.get('company')||'N/A')+'\nEvent Type: '+data.get('event_type')+'\nGuests: '+(data.get('guests')||'TBD')+'\nDate: '+(data.get('date')||'Flexible')+'\n\n'+(data.get('message')||'');
-  var payload={name:data.get('name'),email:data.get('email'),phone:'',topic:'events',message:msg};
+  var payload={name:data.get('name'),email:data.get('email'),phone:'',topic:'events',message:msg+sabdaOriginBlock(data.get('heard_about')||''),attr:sabdaAttr(),heard_about:(data.get('heard_about')||'')};
   fetch('https://sabda-checkout-proxy.sabda.workers.dev/sabda-api/contact',{
     method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)
   }).then(function(r){return r.json()}).then(function(r){
@@ -541,6 +541,71 @@ try{var sl=localStorage.getItem('sabda_lang')||'en';document.querySelectorAll('.
   var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){load(e.target);io.unobserve(e.target);}})},{rootMargin:'300px 0px'});
   vids.forEach(function(v){io.observe(v);});
 })();
+</script>
+<script>
+/* SABDA attribution capture — first & last touch, survives navigation. Local only. */
+(function(){
+  var K='sabda_attribution';
+  function read(){ try{ return JSON.parse(localStorage.getItem(K)||'null'); }catch(e){ return null; } }
+  function write(o){ try{ localStorage.setItem(K,JSON.stringify(o)); }catch(e){} }
+  var q;
+  try{ q=new URLSearchParams(location.search); }catch(e){ return; }
+  var keys=['utm_source','utm_medium','utm_campaign','utm_content','utm_term','oppref','gclid','fbclid'];
+  var cur={}, any=false;
+  keys.forEach(function(k){ var v=q.get(k); if(v){ cur[k]=v; any=true; } });
+  var store=read()||{};
+  if(!store.referrer){
+    var r=document.referrer||'';
+    if(r && r.indexOf(location.hostname)===-1) store.referrer=r.slice(0,300);
+    else if(!r) store.referrer='direct';
+  }
+  if(any){
+    cur.landing=location.pathname;
+    cur.ts=Date.now();
+    if(!store.first) store.first=cur;      /* first touch never overwritten */
+    store.last=cur;                        /* last touch refreshed */
+  }
+  write(store);
+})();
+</script>
+<script>
+/* SABDA attribution -> enquiry payload */
+function sabdaAttr(){
+  var d={source:'direct',medium:'direct',campaign:'direct',content:'direct',term:'direct',
+         oppref:'direct',landing:location.pathname,referrer:'direct',
+         first_source:'direct',first_medium:'direct',first_ts:'',ts:new Date().toISOString()};
+  var s=null; try{ s=JSON.parse(localStorage.getItem('sabda_attribution')||'null'); }catch(e){}
+  if(s){
+    if(s.referrer) d.referrer=s.referrer;
+    var L=s.last||{}, F=s.first||{};
+    if(L.utm_source) d.source=L.utm_source;
+    if(L.utm_medium) d.medium=L.utm_medium;
+    if(L.utm_campaign) d.campaign=L.utm_campaign;
+    if(L.utm_content) d.content=L.utm_content;
+    if(L.utm_term) d.term=L.utm_term;
+    if(L.oppref) d.oppref=L.oppref;
+    if(L.gclid) d.oppref=d.oppref==='direct'?('gclid:'+L.gclid):d.oppref;
+    if(L.fbclid) d.oppref=d.oppref==='direct'?('fbclid:'+L.fbclid):d.oppref;
+    if(L.landing) d.landing=L.landing;
+    if(F.utm_source) d.first_source=F.utm_source;
+    if(F.utm_medium) d.first_medium=F.utm_medium;
+    if(F.ts){ try{ d.first_ts=new Date(F.ts).toLocaleDateString('es-ES',{day:'numeric',month:'short'}); }catch(e){} }
+  }
+  return d;
+}
+function sabdaOriginBlock(heard){
+  var a=sabdaAttr();
+  var L=[]; L.push('','\u2014 origen \u2014');
+  L.push('fuente:    '+a.source+' / '+a.medium);
+  L.push('campa\u00f1a:   '+a.campaign);
+  L.push('anuncio:   '+a.content);
+  L.push('p\u00e1gina:    '+a.landing);
+  L.push('primer contacto: '+a.first_source+' / '+a.first_medium+(a.first_ts?(' ('+a.first_ts+')'):''));
+  if(a.oppref!=='direct') L.push('click id:  '+a.oppref);
+  if(a.referrer!=='direct') L.push('referrer:  '+a.referrer);
+  if(heard) L.push('nos ha conocido por: '+heard);
+  return L.join('\n');
+}
 </script>
 </body>
 </html>
