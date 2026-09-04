@@ -522,7 +522,7 @@ function handleHireInquiry(e){
   }).then(function(r){return r.json()}).then(function(r){
     if(r && r.ok){
       f.style.display='none';
-      document.getElementById('iq-ok').classList.add('show');
+      document.getElementById('iq-ok').classList.add('show');if(window.oaiq)oaiq("measure","lead_created",{type:"customer_action"});
       document.getElementById('iq-ok').scrollIntoView({behavior:'smooth',block:'center'});
     } else {
       btn.disabled=false;
