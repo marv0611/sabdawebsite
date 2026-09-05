@@ -2676,15 +2676,6 @@ async function logToNotion(token, databaseId, data) {
                     ' | Send brochure: ' + (classification.send_brochure ? 'YES' : 'No') +
                     ' | Confidence: ' + (classification.confidence || 'n/a');
 
-  const res = await fetch('https://api.notion.com/v1/pages', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + token,
-      'Notion-Version': '2022-06-28',
-    },
-    body: JSON.stringify({
-      parent: { database_id: databaseId },
   // Attribution -> Notion selects. Only set when the value matches an existing
   // option, otherwise Notion rejects the whole page create.
   const HEARD = ['Google','ChatGPT','Instagram','Recommendation','Already a customer','Other'];
@@ -2702,6 +2693,16 @@ async function logToNotion(token, databaseId, data) {
       : (SOURCES.includes(a.source) ? a.source : 'other');
   } else if (a.source === 'direct') { trafficSource = 'direct'; }
   const campaignText = [a.campaign, a.content].filter(x => x && x !== 'direct').join(' · ').substring(0, 200);
+
+  const res = await fetch('https://api.notion.com/v1/pages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + token,
+      'Notion-Version': '2022-06-28',
+    },
+    body: JSON.stringify({
+      parent: { database_id: databaseId },
       properties: {
         'Reference': { title: [{ text: { content: name + ' — Website Lead' } }] },
         'Contact Name': { rich_text: [{ text: { content: name } }] },
