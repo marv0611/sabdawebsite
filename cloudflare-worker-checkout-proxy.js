@@ -2439,6 +2439,8 @@ async function handleContact(request, origin, env) {
   try {
     const body = await request.json();
     const { name, email, phone, topic, message } = body;
+    const heard_about = body.heard_about || '';
+    const attr = body.attr || {};
 
     if (!name || !email || !message) {
       return new Response(JSON.stringify({ error: 'Name, email, and message are required' }), {
@@ -2484,7 +2486,7 @@ async function handleContact(request, origin, env) {
       const NOTION_TOPICS = ['events','corporate','partnership','rental'];
       const shouldLogToNotion = NOTION_TOPICS.includes(topic);
       if (env.Notion && env.NOTION_DATABASE_ID && shouldLogToNotion) {
-        notionLogged = await logToNotion(env.Notion, env.NOTION_DATABASE_ID, { name, email, phone, topic, message, classification });
+        notionLogged = await logToNotion(env.Notion, env.NOTION_DATABASE_ID, { name, email, phone, topic, message, classification, heard_about, attr });
       } else if (!shouldLogToNotion) { notionError = 'skipped:topic_not_sales_relevant'; } else { notionError = 'missing_key:Notion=' + !!env.Notion + ',DB=' + !!env.NOTION_DATABASE_ID; }
     } catch (e) {
       notionError = e.message;
@@ -2683,6 +2685,23 @@ async function logToNotion(token, databaseId, data) {
     },
     body: JSON.stringify({
       parent: { database_id: databaseId },
+  // Attribution -> Notion selects. Only set when the value matches an existing
+  // option, otherwise Notion rejects the whole page create.
+  const HEARD = ['Google','ChatGPT','Instagram','Recommendation','Already a customer','Other'];
+  const heardRaw = (data.heard_about || '').trim();
+  const heardMap = { 'Recomendación':'Recommendation', 'Recomanació':'Recommendation',
+                     'Ya soy cliente':'Already a customer', 'Ja sóc client':'Already a customer',
+                     'Otro':'Other', 'Altres':'Other' };
+  const heardAbout = HEARD.includes(heardRaw) ? heardRaw : (heardMap[heardRaw] || (heardRaw ? 'Other' : ''));
+  const a = data.attr || {};
+  const SOURCES = ['chatgpt / paid','google / organic','google / cpc','instagram','direct','referral','other'];
+  let trafficSource = '';
+  if (a.source && a.source !== 'direct') {
+    const pair = (a.source + ' / ' + (a.medium || '')).trim();
+    trafficSource = SOURCES.includes(pair) ? pair
+      : (SOURCES.includes(a.source) ? a.source : 'other');
+  } else if (a.source === 'direct') { trafficSource = 'direct'; }
+  const campaignText = [a.campaign, a.content].filter(x => x && x !== 'direct').join(' · ').substring(0, 200);
       properties: {
         'Reference': { title: [{ text: { content: name + ' — Website Lead' } }] },
         'Contact Name': { rich_text: [{ text: { content: name } }] },
@@ -2694,6 +2713,10 @@ async function logToNotion(token, databaseId, data) {
         'Message': { rich_text: [{ text: { content: msgText.substring(0, 2000) }, annotations: { italic: true } }] },
         'Notes & Last contact': { rich_text: [{ text: { content: notesText } }] },
         'Date Contacted': { date: { start: today } },
+        'Status': { select: { name: 'New' } },
+        ...(heardAbout ? { 'Heard About': { select: { name: heardAbout } } } : {}),
+        ...(trafficSource ? { 'Traffic Source': { select: { name: trafficSource } } } : {}),
+        ...(campaignText ? { 'Campaign': { rich_text: [{ text: { content: campaignText } }] } } : {}),
       },
     }),
   });
