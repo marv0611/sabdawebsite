@@ -418,7 +418,7 @@ window.SABDAloadClarity=function(){
         </div>
         <div class="inq-field"><label for="c-phone">Teléfono (opcional)</label><input type="tel" id="c-phone" name="phone" placeholder="+34 ..."></div>
       </div>
-      <div class="inq-row full"><div class="inq-field"><label for="c-message">Mensaje</label><textarea id="c-message" name="message" placeholder="Cuéntanos en qué podemos ayudarte..." required></textarea></div></div>
+      <div class="inq-row full"><div class="inq-field"><label for="c-message">Mensaje</label><textarea id="c-message" name="message" placeholder="Cuéntanos en qué podemos ayudarte..." required></textarea></div><div class="inq-field"><label for="heard_about">¿Cómo nos has conocido?</label><select id="heard_about" name="heard_about"><option value="">Selecciona una opción</option><option value="Google">Google</option><option value="ChatGPT">ChatGPT</option><option value="Instagram">Instagram</option><option value="Recomendación">Recomendación</option><option value="Ya soy cliente">Ya soy cliente</option><option value="Otro">Otro</option></select></div></div>
       <button type="submit" class="inq-submit">Enviar mensaje <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
     </form>
     <div class="inq-success" id="contactSuccess">
@@ -504,7 +504,7 @@ function handleContact(e){
   var btn=f.querySelector('.inq-submit');
   btn.textContent='Enviando...';btn.disabled=true;
   var data=new FormData(f);
-  var payload={name:data.get('name'),email:data.get('email'),phone:data.get('phone')||'',topic:data.get('topic'),message:data.get('message')};
+  var payload={name:data.get('name'),email:data.get('email'),phone:data.get('phone')||'',topic:data.get('topic'),message:(data.get('message')||'')+sabdaOriginBlock(data.get('heard_about')||''),attr:sabdaAttr(),heard_about:(data.get('heard_about')||'')};
   fetch('https://sabda-checkout-proxy.sabda.workers.dev/sabda-api/contact',{
     method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)
   }).then(function(r){return r.json()}).then(function(r){
@@ -544,6 +544,45 @@ function handleContact(e){
   }
   write(store);
 })();
+</script>
+<script>
+/* SABDA attribution -> enquiry payload */
+function sabdaAttr(){
+  var d={source:'direct',medium:'direct',campaign:'direct',content:'direct',term:'direct',
+         oppref:'direct',landing:location.pathname,referrer:'direct',
+         first_source:'direct',first_medium:'direct',first_ts:'',ts:new Date().toISOString()};
+  var s=null; try{ s=JSON.parse(localStorage.getItem('sabda_attribution')||'null'); }catch(e){}
+  if(s){
+    if(s.referrer) d.referrer=s.referrer;
+    var L=s.last||{}, F=s.first||{};
+    if(L.utm_source) d.source=L.utm_source;
+    if(L.utm_medium) d.medium=L.utm_medium;
+    if(L.utm_campaign) d.campaign=L.utm_campaign;
+    if(L.utm_content) d.content=L.utm_content;
+    if(L.utm_term) d.term=L.utm_term;
+    if(L.oppref) d.oppref=L.oppref;
+    if(L.gclid) d.oppref=d.oppref==='direct'?('gclid:'+L.gclid):d.oppref;
+    if(L.fbclid) d.oppref=d.oppref==='direct'?('fbclid:'+L.fbclid):d.oppref;
+    if(L.landing) d.landing=L.landing;
+    if(F.utm_source) d.first_source=F.utm_source;
+    if(F.utm_medium) d.first_medium=F.utm_medium;
+    if(F.ts){ try{ d.first_ts=new Date(F.ts).toLocaleDateString('es-ES',{day:'numeric',month:'short'}); }catch(e){} }
+  }
+  return d;
+}
+function sabdaOriginBlock(heard){
+  var a=sabdaAttr();
+  var L=[]; L.push('','\u2014 origen \u2014');
+  L.push('fuente:    '+a.source+' / '+a.medium);
+  L.push('campa\u00f1a:   '+a.campaign);
+  L.push('anuncio:   '+a.content);
+  L.push('p\u00e1gina:    '+a.landing);
+  L.push('primer contacto: '+a.first_source+' / '+a.first_medium+(a.first_ts?(' ('+a.first_ts+')'):''));
+  if(a.oppref!=='direct') L.push('click id:  '+a.oppref);
+  if(a.referrer!=='direct') L.push('referrer:  '+a.referrer);
+  if(heard) L.push('nos ha conocido por: '+heard);
+  return L.join('\n');
+}
 </script>
 </body>
 </html>

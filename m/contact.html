@@ -270,7 +270,7 @@ window.SABDAloadClarity=function(){
     <label class="form-lab" for="mc-phone">Phone (optional)</label>
     <input class="form-inp" type="tel" id="mc-phone" name="phone" placeholder="+34 ..." autocomplete="tel">
     <label class="form-lab" for="mc-message">Message</label>
-    <textarea class="form-txt" id="mc-message" name="message" placeholder="Tell us how we can help..." required></textarea>
+    <textarea class="form-txt" id="mc-message" name="message" placeholder="Tell us how we can help..." required></textarea><label class="form-lab" for="mc-heard">How did you hear about us?</label><select class="form-inp" id="mc-heard" name="heard_about"><option value="">Select an option</option><option value="Google">Google</option><option value="ChatGPT">ChatGPT</option><option value="Instagram">Instagram</option><option value="Recommendation">Recommendation</option><option value="Already a customer">Already a customer</option><option value="Other">Other</option></select>
     <button type="submit" class="form-submit touch" id="mc-btn">Send Message <svg viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
     <div class="form-err" id="mc-err"></div>
   </form>
@@ -366,8 +366,7 @@ function handleMobileContact(e){
     email:data.get('email'),
     phone:data.get('phone')||'',
     topic:data.get('topic'),
-    message:data.get('message')
-  };
+    message:(data.get('message')||'')+sabdaOriginBlock(data.get('heard_about')||''),attr:sabdaAttr(),heard_about:(data.get('heard_about')||'')};
   fetch('https://sabda-checkout-proxy.sabda.workers.dev/sabda-api/contact',{
     method:'POST',
     headers:{'Content-Type':'application/json'},
@@ -427,6 +426,45 @@ try{var sl=localStorage.getItem('sabda_lang')||'en';document.querySelectorAll('.
   }
   write(store);
 })();
+</script>
+<script>
+/* SABDA attribution -> enquiry payload */
+function sabdaAttr(){
+  var d={source:'direct',medium:'direct',campaign:'direct',content:'direct',term:'direct',
+         oppref:'direct',landing:location.pathname,referrer:'direct',
+         first_source:'direct',first_medium:'direct',first_ts:'',ts:new Date().toISOString()};
+  var s=null; try{ s=JSON.parse(localStorage.getItem('sabda_attribution')||'null'); }catch(e){}
+  if(s){
+    if(s.referrer) d.referrer=s.referrer;
+    var L=s.last||{}, F=s.first||{};
+    if(L.utm_source) d.source=L.utm_source;
+    if(L.utm_medium) d.medium=L.utm_medium;
+    if(L.utm_campaign) d.campaign=L.utm_campaign;
+    if(L.utm_content) d.content=L.utm_content;
+    if(L.utm_term) d.term=L.utm_term;
+    if(L.oppref) d.oppref=L.oppref;
+    if(L.gclid) d.oppref=d.oppref==='direct'?('gclid:'+L.gclid):d.oppref;
+    if(L.fbclid) d.oppref=d.oppref==='direct'?('fbclid:'+L.fbclid):d.oppref;
+    if(L.landing) d.landing=L.landing;
+    if(F.utm_source) d.first_source=F.utm_source;
+    if(F.utm_medium) d.first_medium=F.utm_medium;
+    if(F.ts){ try{ d.first_ts=new Date(F.ts).toLocaleDateString('es-ES',{day:'numeric',month:'short'}); }catch(e){} }
+  }
+  return d;
+}
+function sabdaOriginBlock(heard){
+  var a=sabdaAttr();
+  var L=[]; L.push('','\u2014 origen \u2014');
+  L.push('fuente:    '+a.source+' / '+a.medium);
+  L.push('campa\u00f1a:   '+a.campaign);
+  L.push('anuncio:   '+a.content);
+  L.push('p\u00e1gina:    '+a.landing);
+  L.push('primer contacto: '+a.first_source+' / '+a.first_medium+(a.first_ts?(' ('+a.first_ts+')'):''));
+  if(a.oppref!=='direct') L.push('click id:  '+a.oppref);
+  if(a.referrer!=='direct') L.push('referrer:  '+a.referrer);
+  if(heard) L.push('nos ha conocido por: '+heard);
+  return L.join('\n');
+}
 </script>
 </body>
 </html>
