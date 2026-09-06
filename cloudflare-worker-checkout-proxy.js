@@ -2715,6 +2715,8 @@ async function logToNotion(token, databaseId, data) {
         'Notes & Last contact': { rich_text: [{ text: { content: notesText } }] },
         'Date Contacted': { date: { start: today } },
         'Status': { select: { name: 'New' } },
+        // Every lead through this endpoint arrives from the website form.
+        'Contact channel': { select: { name: 'Website form' } },
         ...(heardAbout ? { 'Heard About': { select: { name: heardAbout } } } : {}),
         ...(trafficSource ? { 'Traffic Source': { select: { name: trafficSource } } } : {}),
         ...(campaignText ? { 'Campaign': { rich_text: [{ text: { content: campaignText } }] } } : {}),
