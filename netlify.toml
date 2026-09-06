@@ -1,15 +1,46 @@
 # SABDA — Netlify configuration
-# Publish the repo root as-is. No build step: the site is static HTML.
+# Static site: no build step, publish the repo root.
 [build]
   publish = "."
   command = ""
 
-# Keep URLs exactly as they are on the live site. Netlify's "pretty URLs"
-# otherwise strips the trailing slash and resolves /classes to the legacy
-# classes.html alias instead of classes/index.html, which would break every
-# canonical, hreflang and sitemap entry.
 [build.processing]
   skip_processing = true
 
 [build.processing.html]
   pretty_urls = false
+
+# Five legacy flat aliases (classes.html, hire.html, events.html,
+# pricing.html, about.html) share a name with a real directory. Netlify was
+# resolving /classes/ to classes.html, a 2.4KB stub whose only job is to
+# redirect to /classes/ — so the page redirected to itself forever and never
+# rendered. These rules pin each directory URL to its real index.html.
+[[redirects]]
+  from = "/classes/"
+  to = "/classes/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/hire/"
+  to = "/hire/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/events/"
+  to = "/events/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/pricing/"
+  to = "/pricing/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/about/"
+  to = "/about/index.html"
+  status = 200
+  force = true
