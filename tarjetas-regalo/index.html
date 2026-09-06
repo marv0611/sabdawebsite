@@ -693,7 +693,7 @@ window.SABDAloadClarity=function(){
    Google-hosted endpoint if that request fails (e.g. Cloudflare IPs blocked
    by Spanish ISPs during matchday blocking). Set SABDA_FALLBACK_URL below. */
 window.SABDA_WORKER_URL   = 'https://sabda-checkout-proxy.sabda.workers.dev/sabda-api/contact';
-window.SABDA_FALLBACK_URL = '';   /* paste the Apps Script /exec URL here */
+window.SABDA_FALLBACK_URL = 'https://script.google.com/macros/s/AKfycbzsTU5RhpjeqDCYu5EBcMDziiyNR-cwnh45lpLvmS6bmrAemcUPWuHerdSldS9LL5U/exec';
 window.sabdaPost = function(url, opts){
   var isContact = /sabda-api\/contact/.test(url);
   var timeout = function(ms){ return new Promise(function(_,rej){ setTimeout(function(){rej(new Error('timeout'))}, ms); }); };
