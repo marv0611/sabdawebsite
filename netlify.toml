@@ -1,0 +1,15 @@
+# SABDA — Netlify configuration
+# Publish the repo root as-is. No build step: the site is static HTML.
+[build]
+  publish = "."
+  command = ""
+
+# Keep URLs exactly as they are on the live site. Netlify's "pretty URLs"
+# otherwise strips the trailing slash and resolves /classes to the legacy
+# classes.html alias instead of classes/index.html, which would break every
+# canonical, hreflang and sitemap entry.
+[build.processing]
+  skip_processing = true
+
+[build.processing.html]
+  pretty_urls = false
