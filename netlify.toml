@@ -44,3 +44,25 @@
   to = "/about/index.html"
   status = 200
   force = true
+
+# Deprecated blog URLs. These were 301s in Cloudflare's redirect rules, which no
+# longer run now the site is served by Netlify. The pages still meta-refresh, so
+# visitors reach the right place, but search engines were seeing a 200 instead of
+# a permanent redirect. Restored as real 301s.
+[[redirects]]
+  from = "/blog/planes-barcelona-gratis/*"
+  to = "/blog/cosas-que-hacer-en-barcelona/#planes-gratis"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/que-hacer-barcelona-lluvia/*"
+  to = "/blog/cosas-que-hacer-en-barcelona/#planes-lluvia"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/blog/pilates-dolor-espalda/*"
+  to = "/blog/pilates-barcelona-guia/#pilates-espalda"
+  status = 301
+  force = true
