@@ -689,6 +689,30 @@ window.SABDAloadClarity=function(){
 <style id="nav-fit">@media(min-width:861px) and (max-width:1120px){.nav-links{gap:20px}}</style>
 </head>
 <body>
+<script>
+/* SABDA resilient form post — tries the Cloudflare Worker, falls back to a
+   Google-hosted endpoint if that request fails (e.g. Cloudflare IPs blocked
+   by Spanish ISPs during matchday blocking). Set SABDA_FALLBACK_URL below. */
+window.SABDA_WORKER_URL   = 'https://sabda-checkout-proxy.sabda.workers.dev/sabda-api/contact';
+window.SABDA_FALLBACK_URL = '';   /* paste the Apps Script /exec URL here */
+window.sabdaPost = function(url, opts){
+  var isContact = /sabda-api\/contact/.test(url);
+  var timeout = function(ms){ return new Promise(function(_,rej){ setTimeout(function(){rej(new Error('timeout'))}, ms); }); };
+  var attempt = Promise.race([ fetch(url, opts), timeout(12000) ]);
+  if (!isContact || !window.SABDA_FALLBACK_URL) return attempt;
+  return attempt.then(function(r){
+    if (r && r.ok) return r;
+    throw new Error('bad_status');
+  }).catch(function(){
+    /* Worker unreachable or errored: send the same payload to Google */
+    return fetch(window.SABDA_FALLBACK_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' }, /* avoids CORS preflight */
+      body: (opts && opts.body) || '{}'
+    });
+  });
+};
+</script>
 <a href="#main-content" class="a11y-skip">Skip to main content</a>
 
 <div class="grain" id="main-content"></div>
@@ -953,7 +977,7 @@ function handleSubmit(e){
   btn.textContent='Sending...';btn.disabled=true;
   var data=new FormData(f);
   var payload={name:data.get('name'),email:data.get('email'),phone:'',topic:'events',message:'Company: '+(data.get('company')||'N/A')+'\nEvent Type: '+data.get('event_type')+'\nGuests: '+(data.get('guests')||'TBD')+'\nDate: '+(data.get('date')||'Flexible')+'\n\n'+(data.get('message')||'')};
-  fetch('https://sabda-checkout-proxy.sabda.workers.dev/sabda-api/contact',{
+  sabdaPost('https://sabda-checkout-proxy.sabda.workers.dev/sabda-api/contact',{
     method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)
   }).then(function(r){return r.json()}).then(function(r){
     if(r.ok){var sib=f.parentElement.children;for(var i=0;i<sib.length;i++){if(sib[i].id!=='inqSuccess')sib[i].style.display='none';}document.getElementById('inqSuccess').classList.add('show')}
