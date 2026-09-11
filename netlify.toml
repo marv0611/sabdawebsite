@@ -66,3 +66,69 @@
   to = "/blog/pilates-barcelona-guia/#pilates-espalda"
   status = 301
   force = true
+
+# ── Caching ──────────────────────────────────────────────────────────────────
+# Netlify's default is public,max-age=0,must-revalidate, which makes the browser
+# revalidate every asset on every page view. Cloudflare previously sent
+# max-age=600, so the move made repeat visits and page-to-page navigation
+# noticeably slower. HTML stays revalidated so content changes appear at once;
+# static assets get long cache lifetimes.
+
+# Images
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+[[headers]]
+  for = "/*.jpeg"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+[[headers]]
+  for = "/*.webp"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+[[headers]]
+  for = "/*.ico"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+# Video
+[[headers]]
+  for = "/video/*"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+# Scripts and styles. Shorter than images because cookie-consent.js and the
+# worker-facing scripts are edited occasionally and must not go stale for a month.
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+
+# Fonts
+[[headers]]
+  for = "/*.woff2"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+[[headers]]
+  for = "/*.woff"
+  [headers.values]
+    Cache-Control = "public, max-age=2592000"
+
+# HTML: always revalidate, so edits appear immediately.
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
