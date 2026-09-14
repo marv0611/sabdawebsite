@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-<link rel="preload" as="image" href="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/immersive_aurora.jpg" fetchpriority="high">
+<link rel="preload" as="image" href="/immersive_aurora.jpg" fetchpriority="high">
 
 <style>
 :root{
@@ -65,7 +65,7 @@ nav.on{background:rgba(14,18,53,.88);backdrop-filter:blur(22px);border-bottom-co
 
 /* ── HERO (immersive image as background, like homepage) ── */
 .hero{position:relative;width:100%;min-height:72vh;overflow:hidden;margin-top:72px;background:var(--navy)}
-.hero-bg-img{position:absolute;inset:0;background:url('https://raw.githubusercontent.com/marv0611/sabdawebsite/main/immersive_aurora.jpg') center center/cover no-repeat;filter:brightness(.72) contrast(1.05) saturate(1.08);background-color:#0e1235}
+.hero-bg-img{position:absolute;inset:0;background:url('/immersive_aurora.jpg') center center/cover no-repeat;filter:brightness(.72) contrast(1.05) saturate(1.08);background-color:#0e1235}
 .hero-grad{position:absolute;inset:0;background:radial-gradient(ellipse at center 70%,rgba(14,18,53,0) 0%,rgba(14,18,53,.35) 55%,rgba(14,18,53,.95) 92%,var(--navy) 100%);z-index:2}
 .hero-content{position:relative;z-index:4;padding:0 56px;height:100%;min-height:calc(72vh - 0px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
 .num{font-family:'PT Serif','Georgia',serif;font-size:clamp(6rem,16vw,12rem);font-weight:700;line-height:.85;letter-spacing:-.04em;background:linear-gradient(180deg,var(--white) 0%,rgba(240,239,233,.55) 100%);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:24px}
@@ -148,7 +148,7 @@ window.SABDAloadClarity=function(){
 
 <nav id="nav">
   <a href="/" class="nav-logo" aria-label="SABDA — Home">
-    <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA" width="400" height="127">
+    <img src="/SABDA%20white%20logo.png" alt="SABDA" width="400" height="127">
   </a>
   <ul class="nav-links"><li><a href="/classes/">Classes</a></li><li><a href="/classes/ice-bath/">Ice Bath</a></li><li><a href="/pricing/">Pricing</a></li><li><a href="/hire/">Rent</a></li><li><a href="/events/">Events</a></li><li><a href="/contact/">Contact</a></li></ul>
   <div class="nav-right">
@@ -175,9 +175,9 @@ window.SABDAloadClarity=function(){
 <footer>
   <div class="ft-in">
     <div class="ft-brand">
-      <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA" width="400" height="127">
+      <img src="/SABDA%20white%20logo.png" alt="SABDA" width="400" height="127">
       <div class="ft-pillars"><span class="fp-art">Art</span><span>·</span><span class="fp-tech">Tech</span><span>·</span><span class="fp-well">Wellness</span></div>
-      <img class="ft-symbol" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20symbol%20multi-colored%20(1).png" alt="SABDA symbol">
+      <img class="ft-symbol" src="/SABDA%20symbol%20multi-colored%20(1).png" alt="SABDA symbol">
     </div>
     <div class="ft-col"><h3 style="color:var(--cyan)">Explore</h3><ul><li><a href="/classes/">Classes</a></li><li><a href="/classes/ice-bath/">Ice Bath</a></li><li><a href="/hire.html">Rent</a></li><li><a href="/pricing.html">Pricing</a></li><li><a href="/events.html">Events</a></li><li><a href="/exhibitions/">Exhibitions</a></li><li><a href="/workshops/">Workshops</a></li><li><a href="/celebrations/">Celebrations</a></li><li><a href="/cafe/">Café</a></li><li><a href="/sabda-mobile/">SABDA Mobile</a></li><li><a href="/gift-cards/">Gift Cards</a></li><li><a href="/about.html">About</a></li><li><a href="/faq/">FAQ</a></li><li><a href="/blog/">Blog</a></li></ul></div>
     <div class="ft-col"><h3 style="color:var(--salmon)">Connect</h3><ul>

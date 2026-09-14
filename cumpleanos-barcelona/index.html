@@ -256,7 +256,7 @@ img{display:block;max-width:100%}
 
 /* ── CURSOR ── */
 .cursor{position:fixed;width:28px;height:28px;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:opacity .2s,width .25s var(--ease-expo),height .25s var(--ease-expo);will-change:transform;
-  background:url('https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20symbol%20pink.png') center/contain no-repeat;
+  background:url('/SABDA%20symbol%20pink.png') center/contain no-repeat;
   opacity:.7;filter:drop-shadow(0 0 6px rgba(248,166,163,.4))}
 .cursor-ring{position:fixed;width:48px;height:48px;border-radius:50%;border:1px solid rgba(248,166,163,.25);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:opacity .2s,width .4s var(--ease-expo),height .4s var(--ease-expo),border-color .3s;will-change:transform}
 .cursor.hov{width:18px;height:18px;opacity:1}.cursor-ring.hov{width:60px;height:60px;border-color:rgba(2,243,197,.35)}
@@ -689,7 +689,7 @@ window.sabdaPost = function(url, opts){
 <!-- NAV -->
 <nav id="nav">
   <a href="/" class="nav-logo" aria-label="SABDA · Home">
-    <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA" width="400" height="127" loading="lazy">
+    <img src="/SABDA%20white%20logo.png" alt="SABDA" width="400" height="127" loading="lazy">
   </a>
     <ul class="nav-links"><li><a href="/es/clases/">Clases</a></li><li><a href="/es/clases/ice-bath/">Ice Bath</a></li><li><a href="/es/precios/">Precios</a></li><li><a href="/es/alquiler/">Alquilar</a></li><li><a href="/es/eventos/">Eventos</a></li><li><a href="/es/contacto/">Contacto</a></li></ul>
   <div class="nav-right">
@@ -781,9 +781,9 @@ window.sabdaPost = function(url, opts){
 <footer style="border-top:1px solid rgba(240,239,233,.07)">
   <div class="ft-in">
     <div class="ft-brand">
-      <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA" width="400" height="127" loading="lazy">
+      <img src="/SABDA%20white%20logo.png" alt="SABDA" width="400" height="127" loading="lazy">
       <div class="ft-pillars"><span class="fp-art">Arte</span><span>·</span><span class="fp-tech">Tech</span><span>·</span><span class="fp-well">Bienestar</span></div>
-      <img class="ft-symbol" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20symbol%20multi-colored%20(1).png" alt="SABDA symbol" loading="lazy">
+      <img class="ft-symbol" src="/SABDA%20symbol%20multi-colored%20(1).png" alt="SABDA symbol" loading="lazy">
     </div>
     <div class="ft-col"><h3 style="color:var(--cyan)">Explorar</h3><ul>
       <li><a href="/es/clases/">Clases</a></li><li><a href="/es/clases/ice-bath/">Ice Bath</a></li><li><a href="/es/alquiler/">Alquilar</a></li><li><a href="/es/precios/">Precios</a></li><li><a href="/es/eventos/">Eventos</a></li><li><a href="/es/exposiciones/">Exposiciones</a></li><li><a href="/es/talleres/">Talleres</a></li><li><a href="/es/celebraciones/">Celebraciones</a></li><li><a href="/gift-cards/">Gift Cards</a></li><li><a href="/es/sabda-mobile/">SABDA Mobile</a></li><li><a href="/es/sobre/">Sobre</a></li><li><a href="/es/cafeteria/">Café</a></li><li><a href="/es/faq/">FAQ</a></li><li><a href="/blog/">Blog</a></li>
@@ -1022,7 +1022,7 @@ function handleSubmit(e){
 
 <script>
 (function(){
-  const BASE='https://raw.githubusercontent.com/marv0611/sabdawebsite/main/';
+  const BASE='/';
   const slides=[
     {imgA:BASE+'immersive_underwater.jpg',imgB:BASE+'immersive_aurora_mats.jpg',num:'01 / 04',name:'La sala <em>inmersiva</em>',desc:'86m&sup2; de paredes con proyección 360&deg;.<br>8 proyectores láser LED. Sonido envolvente Dolby Atmos. Biblioteca de visuales personalizados.<br>Capacidad de 20 a 120 personas. Insonorizada. Climatizada.',dur:9000},
     {imgA:BASE+'cafe_bar.jpg',imgB:BASE+'cafe_lounge.jpg',num:'02 / 04',name:'Caf&eacute; y <em>Lounge</em>',desc:'65m&sup2; modulares con sistema de sonido SONOS.<br>Bar equipado. Cafetera profesional. Asientos cómodos.<br>Ideal para recepciones, encuentros y cenas íntimas.',dur:9000},
