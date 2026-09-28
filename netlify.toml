@@ -67,6 +67,43 @@
   status = 301
   force = true
 
+# The fourth deprecated blog URL, missed when the other three were restored.
+# /blog/hen-party-barcelona/ is a 147-word meta-refresh stub pointing at the
+# Spanish despedida article. Scoped to /blog/ on purpose: the commercial spoke
+# at /hen-party-barcelona/ is a real page and must keep returning 200.
+[[redirects]]
+  from = "/blog/hen-party-barcelona/*"
+  to = "/blog/despedida-de-soltera-barcelona/"
+  status = 301
+  force = true
+
+# Orphaned pricing page. Nothing links to it and it duplicates /pricing/.
+[[redirects]]
+  from = "/classes/pricing.html"
+  to = "/pricing/"
+  status = 301
+  force = true
+
+# ── Security headers ─────────────────────────────────────────────────────────
+# These four were sent by Cloudflare and disappeared when the site moved to
+# Netlify; only strict-transport-security survived because Netlify sends it.
+# Deliberately conservative so nothing breaks:
+#   X-Frame-Options SAMEORIGIN, not DENY, because test-responsive.html frames
+#     our own pages. We only ever embed third parties (Google Maps), never the
+#     reverse, so no partner loses an embed.
+#   Referrer-Policy strict-origin-when-cross-origin is already Chrome's default,
+#     so behaviour is unchanged and Momence still sees our origin as referrer.
+#   Permissions-Policy names only camera, microphone and geolocation, all three
+#     verified unused sitewide. payment, autoplay and fullscreen are left at
+#     their defaults so hero video and Momence checkout are untouched.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "SAMEORIGIN"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+
 # ── Caching ──────────────────────────────────────────────────────────────────
 # Netlify's default is public,max-age=0,must-revalidate, which makes the browser
 # revalidate every asset on every page view. Cloudflare previously sent

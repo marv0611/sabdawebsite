@@ -14,10 +14,38 @@ What changed vs v1:
        new articles are rendered
 
 Output: sitemap.xml at repo root.
+
+╔══════════════════════════════════════════════════════════════════════════╗
+║ STALE AS OF 2026-09-28 — DO NOT RUN WITHOUT UPDATING THE PAGE LISTS      ║
+║                                                                          ║
+║ Its non-blog page list has not been updated since April and no longer    ║
+║ knows about pages added since. Running it as-is rewrites sitemap.xml     ║
+║ from 159 URLs down to 128, silently dropping 35 live indexable pages:    ║
+║   /immersive-wellness-report/ and its ES/CA twins                        ║
+║   /sound-bath-barcelona/ (EN + ES)                                       ║
+║   all nine occasions spokes (birthday, hen party, gift cards ×3 langs)   ║
+║   /workshops/ /exhibitions/ /celebrations/ /cafe/ + ES/CA equivalents    ║
+║   /es/blog/ /ca/blog/ /classes/meditation/ + ES/CA                       ║
+║ and it ADDS /intro/ (noindex,nofollow) and /schedule.html (a redirect    ║
+║ stub), both of which must stay out of the sitemap.                       ║
+║                                                                          ║
+║ Nothing calls this script automatically. blog-release.py appends new     ║
+║ article URLs to sitemap.xml incrementally, which is why the live sitemap ║
+║ has outgrown this generator's hardcoded lists.                           ║
+║                                                                          ║
+║ To run it anyway, pass --i-know-this-is-stale.                           ║
+╚══════════════════════════════════════════════════════════════════════════╝
 """
 
-import os, re, glob, subprocess
+import os, re, glob, subprocess, sys
 from datetime import datetime, timezone
+
+if '--i-know-this-is-stale' not in sys.argv:
+    sys.exit(
+        "refusing to run: this generator is stale and would drop 35 live pages "
+        "from sitemap.xml. See the banner at the top of this file. "
+        "Pass --i-know-this-is-stale to override."
+    )
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(REPO)
