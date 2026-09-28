@@ -21,13 +21,13 @@ Every date and price below was checked on each venue's official website on 28 Se
 
 ## New in October
 
-### SABDA's new immersive show (Eixample), from 16 October
+### SABDA's new immersive show (Eixample), from 17 October
 
 Full disclosure: SABDA is our venue. SABDA's new immersive show is a 25 minute journey through four worlds of life on Earth, made in Unreal Engine and projected across the four walls of a 360° room with Dolby Atmos sound, for 25 people per session at C/ Muntaner 83B in the Eixample.
 
-The show opens on 16 October 2026 and runs on Fridays, Saturdays and Sundays. Tickets cost €20 for adults and €12 for children, and include a welcome glass of cava or juice in SABDA Café. You travel at animal eye level and, for 25 minutes, become one of them. There is no headset. The nearest metro is Universitat. Details and tickets are on [SABDA's exhibitions page](/exhibitions/).
+The show opens on 17 October 2026 and runs on Fridays, Saturdays and Sundays. Tickets cost €20 for adults and €12 for children, and include a welcome glass of cava or juice in SABDA Café. You travel at animal eye level and, for 25 minutes, become one of them. There is no headset. The nearest metro is Universitat. Details and tickets are on [SABDA's exhibitions page](/exhibitions/).
 
-**How long to allow:** the show itself is 25 minutes; add time for the welcome drink in SABDA Café. **How to book:** online in advance, since each session holds 25 people. **Why go:** it is the only show in the city rendered in real time on a game engine, and the short format fits into an afternoon without eating the whole day.
+**How long to allow:** the show itself is 25 minutes; add time for the welcome drink in SABDA Café. **How to book:** online in advance, since each session holds 25 people. **Why go:** it is made in Unreal Engine, a game engine, and the short format fits into an afternoon without eating the whole day.
 
 ### Anselm Kiefer at La Pedrera, from 2 October
 
@@ -57,7 +57,7 @@ The immersive experience about Andrés Iniesta opened on 28 September in the for
 
 ## Immersive and digital exhibitions
 
-**Casa Batlló, Passeig de Gràcia 43.** The general visit includes the Gaudí Dome and Refik Anadol's Gaudí Cube, the two digital pieces inside the house. On the second floor, Casa Batlló Contemporary shows "Gaudí-Miró-Gomis: Deconstructed" until 10 January 2027. General visit from €29, children 0 to 12 free. **Allow:** 1 hour 15 minutes, or 1 hour 45 with the exhibition. **Book:** timed tickets online. [casabatllo.es](https://www.casabatllo.es/en/)
+**Casa Batlló, Passeig de Gràcia 43.** The general visit includes the Gaudí Cube, with Refik Anadol's "Gaudí Dreams". On the second floor, Casa Batlló Contemporary shows "Gaudí-Miró-Gomis: Deconstructed" until 10 January 2027. General visit from €29, children 0 to 12 free. **Allow:** 1 hour 15 minutes, or 1 hour 45 with the exhibition. **Book:** timed tickets online. [casabatllo.es](https://www.casabatllo.es/en/)
 
 **Moco Museum, Carrer de Montcada 25, El Born.** Banksy, modern masters and dedicated digital and immersive art rooms. From €14.95, under-6s free. **Allow:** about an hour. **Pair it with:** the Picasso Museum next door. [mocomuseum.com](https://mocomuseum.com/)
 
@@ -76,7 +76,7 @@ The immersive experience about Andrés Iniesta opened on 28 September in the for
 ### Is it still on? The exhibitions people search for
 
 - **Pompeii (IDEAL Montjuïc):** finished. "The Last Days of Pompeii" closed on 21 September 2026 and IDEAL has not announced what comes next.
-- **IDEAL Poblenou:** still closed for renovation, with no reopening date published on the official site.
+- **IDEAL Poblenou:** the official site no longer lists the Poblenou venue and publishes no reopening date.
 - **Titanic:** not on sale, and its former space now hosts Balloon Story.
 - **Van Gogh:** no Van Gogh exhibition is running or announced in Barcelona for 2026.
 - **Egypt / Tutankhamun:** the Tutankhamun show at IDEAL ended in June 2024. Nothing on Egypt is open.
@@ -145,16 +145,16 @@ For a wider plan, see our [things to do in Barcelona](/blog/things-to-do-in-barc
 ## FAQ
 
 **What exhibitions are on in Barcelona in October 2026?**
-The main ones are Anselm Kiefer at La Pedrera (from 2 October), Dana Lixenberg at KBr (from 1 October), "The Cult of Beauty" at the CCCB, the MACBA collection, and SABDA's new immersive show, which opens on 16 October in the Eixample.
+The main ones are Anselm Kiefer at La Pedrera (from 2 October), Dana Lixenberg at KBr (from 1 October), "The Cult of Beauty" at the CCCB, the MACBA collection, and SABDA's new immersive show, which opens on 17 October in the Eixample.
 
 **What immersive exhibitions are open in Barcelona now?**
-In October: Casa Batlló, Moco Museum, Dalí Boulevard Cibernètic, IKONO, White Rabbit, the Museum of Banksy, Codi Gaudí, Iniesta Experience and, from 16 October, SABDA's new immersive show. Balloon Story closes on 4 October.
+In October: Casa Batlló, Moco Museum, Dalí Boulevard Cibernètic, IKONO, White Rabbit, the Museum of Banksy, Codi Gaudí, Iniesta Experience and, from 17 October, SABDA's new immersive show. Balloon Story closes on 4 October.
 
 **Is the Pompeii exhibition still on in Barcelona?**
 No. "The Last Days of Pompeii" closed at IDEAL Montjuïc on 21 September 2026, and no replacement has been announced.
 
 **How long does SABDA's new immersive show last, and what does it cost?**
-The show lasts 25 minutes and costs €20 for adults and €12 for children, including a welcome glass of cava or juice in SABDA Café. It runs on Fridays, Saturdays and Sundays from 16 October 2026.
+The show lasts 25 minutes and costs €20 for adults and €12 for children, including a welcome glass of cava or juice in SABDA Café. It runs on Fridays, Saturdays and Sundays from 17 October 2026.
 
 **Which Barcelona exhibitions are free?**
 La Virreina, Palau Robert and La Fabra are always free. On Sunday 4 October, the first Sunday of the month, the MNAC, MACBA, Picasso Museum and several city museums are free, some with advance booking.

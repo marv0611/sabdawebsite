@@ -23,13 +23,13 @@ Cada fecha y cada precio se ha comprobado en la web oficial de cada centro el 28
 
 Estas son las exposiciones y experiencias que abren sus puertas en octubre o justo antes, y que no estaban en la ciudad el mes pasado.
 
-### El nuevo espectáculo inmersivo de SABDA (Eixample), desde el 16 de octubre
+### El nuevo espectáculo inmersivo de SABDA (Eixample), desde el 17 de octubre
 
 Transparencia: SABDA es nuestra sala. El nuevo espectáculo inmersivo de SABDA es un viaje de 25 minutos por cuatro mundos de la vida en la Tierra, creado con Unreal Engine y proyectado en las cuatro paredes de una sala 360° con sonido Dolby Atmos, para 25 personas por sesión en C/ Muntaner 83B, en el Eixample.
 
-El espectáculo abre el 16 de octubre de 2026 y se programa los viernes, sábados y domingos. La entrada cuesta 20 € para adultos y 12 € para niños, e incluye una copa de cava o un zumo de bienvenida en SABDA Café. El recorrido se hace a la altura de los ojos de los animales: durante 25 minutos, el visitante se convierte en uno de ellos. No hace falta ponerse gafas ni casco de realidad virtual. La estación de metro más cercana es Universitat. Toda la información está en la [página de exposiciones de SABDA](/es/exposiciones/).
+El espectáculo abre el 17 de octubre de 2026 y se programa los viernes, sábados y domingos. La entrada cuesta 20 € para adultos y 12 € para niños, e incluye una copa de cava o un zumo de bienvenida en SABDA Café. El recorrido se hace a la altura de los ojos de los animales: durante 25 minutos, el visitante se convierte en uno de ellos. No hace falta ponerse gafas ni casco de realidad virtual. La estación de metro más cercana es Universitat. Toda la información está en la [página de exposiciones de SABDA](/es/exposiciones/).
 
-**Por qué ir:** es la única propuesta de la ciudad construida en tiempo real con un motor de videojuego, y el formato corto y con aforo reducido la hace fácil de encajar en una tarde, también con niños.
+**Por qué ir:** está creada con Unreal Engine, un motor de videojuego, y el formato corto y con aforo reducido la hace fácil de encajar en una tarde, también con niños.
 
 ### Anselm Kiefer en La Pedrera, desde el 2 de octubre
 
@@ -59,7 +59,7 @@ Espai Imagina (Av. Diagonal 177) acoge «Codi Gaudí, l'Experiència Inèdita» 
 
 Barcelona tiene en octubre una oferta inmersiva amplia, aunque cambiante: varias de las muestras más buscadas del verano ya han cerrado.
 
-**Casa Batlló (Passeig de Gràcia 43).** La visita general incluye la Gaudí Dome y el Gaudí Cube de Refik Anadol, las dos piezas digitales del edificio. En la segunda planta, Casa Batlló Contemporary muestra «Gaudí-Miró-Gomis: Deconstructed» hasta el 10 de enero de 2027. La visita general cuesta desde 29 € y los niños de 0 a 12 años entran gratis. Calcula 1 hora y 15 minutos, o 1 hora y 45 minutos si sumas la exposición. [Entradas en casabatllo.es](https://www.casabatllo.es/).
+**Casa Batlló (Passeig de Gràcia 43).** La visita general incluye el Gaudí Cube, con la obra «Gaudí Dreams» de Refik Anadol. En la segunda planta, Casa Batlló Contemporary muestra «Gaudí-Miró-Gomis: Deconstructed» hasta el 10 de enero de 2027. La visita general cuesta desde 29 € y los niños de 0 a 12 años entran gratis. Calcula 1 hora y 15 minutos, o 1 hora y 45 minutos si sumas la exposición. [Entradas en casabatllo.es](https://www.casabatllo.es/).
 
 **Moco Museum (Carrer de Montcada 25, El Born).** Colección permanente con Banksy, grandes nombres del arte moderno y salas de arte digital e inmersivo. Desde 14,95 €, gratis para menores de 6 años. Un plan sólido si ya estás en el Born. [mocomuseum.com](https://mocomuseum.com/).
 
@@ -78,7 +78,7 @@ Barcelona tiene en octubre una oferta inmersiva amplia, aunque cambiante: varias
 ### ¿Siguen abiertas? Las exposiciones que más se buscan
 
 - **Pompeya (IDEAL Montjuïc):** terminada. «Los últimos días de Pompeya» cerró el 21 de septiembre de 2026 y IDEAL no ha anunciado todavía la siguiente exposición.
-- **IDEAL Poblenou:** la sede del Poblenou sigue cerrada por obras, y la web oficial no publica fecha de reapertura.
+- **IDEAL Poblenou:** la web oficial ya no incluye la sede del Poblenou entre sus espacios y no publica ninguna fecha de reapertura.
 - **Titanic:** no hay entradas a la venta y el espacio lo ocupa ahora Balloon Story. No está abierta.
 - **Van Gogh:** no hay ninguna exposición de Van Gogh abierta ni anunciada en Barcelona para 2026.
 - **Egipto y Tutankamón:** la muestra de Tutankamón en IDEAL terminó en junio de 2024. No hay ninguna exposición sobre Egipto abierta.
@@ -150,10 +150,10 @@ Para un plan completo de fin de semana, mira también nuestra guía de [cosas qu
 ## Preguntas frecuentes
 
 **¿Qué exposiciones hay en Barcelona en octubre de 2026?**
-Entre las principales están Anselm Kiefer en La Pedrera (desde el 2 de octubre), Dana Lixenberg en KBr (desde el 1 de octubre), «El culto a la belleza» en el CCCB, la colección del MACBA y el nuevo espectáculo inmersivo de SABDA, que abre el 16 de octubre en el Eixample.
+Entre las principales están Anselm Kiefer en La Pedrera (desde el 2 de octubre), Dana Lixenberg en KBr (desde el 1 de octubre), «El culto a la belleza» en el CCCB, la colección del MACBA y el nuevo espectáculo inmersivo de SABDA, que abre el 17 de octubre en el Eixample.
 
 **¿Qué exposiciones inmersivas hay abiertas en Barcelona?**
-En octubre están abiertas Casa Batlló, Moco Museum, Dalí Boulevard Cibernètic, IKONO, White Rabbit, el Museo de Banksy, Codi Gaudí, Iniesta Experience y, desde el 16 de octubre, el nuevo espectáculo inmersivo de SABDA. Balloon Story cierra el 4 de octubre.
+En octubre están abiertas Casa Batlló, Moco Museum, Dalí Boulevard Cibernètic, IKONO, White Rabbit, el Museo de Banksy, Codi Gaudí, Iniesta Experience y, desde el 17 de octubre, el nuevo espectáculo inmersivo de SABDA. Balloon Story cierra el 4 de octubre.
 
 **¿Sigue abierta la exposición de Pompeya en Barcelona?**
 No. «Los últimos días de Pompeya» cerró en IDEAL Montjuïc el 21 de septiembre de 2026, y todavía no se ha anunciado qué la sustituirá.
@@ -162,7 +162,7 @@ No. «Los últimos días de Pompeya» cerró en IDEAL Montjuïc el 21 de septiem
 La Virreina, el Palau Robert y La Fabra son siempre gratuitos. El domingo 4 de octubre, primer domingo de mes, entran gratis el MNAC, el MACBA, el Museu Picasso y otros museos municipales.
 
 **¿Cuánto dura el nuevo espectáculo inmersivo de SABDA y cuánto cuesta?**
-El espectáculo dura 25 minutos y cuesta 20 € para adultos y 12 € para niños, con una copa de cava o un zumo de bienvenida incluido en SABDA Café. Se programa los viernes, sábados y domingos a partir del 16 de octubre de 2026.
+El espectáculo dura 25 minutos y cuesta 20 € para adultos y 12 € para niños, con una copa de cava o un zumo de bienvenida incluido en SABDA Café. Se programa los viernes, sábados y domingos a partir del 17 de octubre de 2026.
 
 **¿Qué exposiciones son buenas para ir con niños?**
 Las más fáciles con niños pequeños son las que tienen una duración corta y entrada infantil: el nuevo espectáculo inmersivo de SABDA (25 minutos, 12 € para niños), Casa Batlló (gratis hasta los 12 años) y Moco Museum (gratis hasta los 6 años).

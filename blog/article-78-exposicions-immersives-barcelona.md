@@ -23,7 +23,7 @@ Hem comprovat cada data i cada preu a la web oficial de cada espai el 28 de sete
 
 ### Casa Batlló (Passeig de Gràcia 43)
 
-La visita general a la Casa Batlló inclou la Gaudí Dome i el Gaudí Cube de Refik Anadol, les dues peces digitals de l'edifici. A la segona planta, Casa Batlló Contemporary presenta «Gaudí-Miró-Gomis: Deconstructed» fins al 10 de gener de 2027. La visita general costa des de 29 € i els infants de 0 a 12 anys hi entren gratis. Calcula 1 hora i 15 minuts, o 1 hora i 45 minuts si hi afegeixes l'exposició. [casabatllo.es](https://www.casabatllo.es/)
+La visita general a la Casa Batlló inclou el Gaudí Cube, amb l'obra «Gaudí Dreams» de Refik Anadol. A la segona planta, Casa Batlló Contemporary presenta «Gaudí-Miró-Gomis: Deconstructed» fins al 10 de gener de 2027. La visita general costa des de 29 € i els infants de 0 a 12 anys hi entren gratis. Calcula 1 hora i 15 minuts, o 1 hora i 45 minuts si hi afegeixes l'exposició. [casabatllo.es](https://www.casabatllo.es/)
 
 **Per a qui:** la millor opció si només tens temps per a una visita cultural i vols Gaudí i art digital alhora.
 
@@ -79,13 +79,13 @@ Sales de globus gegants pensades per a famílies, des de 13,90 €. Tanca el 4 d
 
 ## Arriba aviat
 
-### El nou espectacle immersiu de SABDA (Eixample), des del 16 d'octubre
+### El nou espectacle immersiu de SABDA (Eixample), des del 17 d'octubre
 
 Transparència: SABDA és la nostra sala. El nou espectacle immersiu de SABDA és un viatge de 25 minuts per quatre mons de la vida a la Terra, creat amb Unreal Engine i projectat a les quatre parets d'una sala 360° amb so Dolby Atmos, per a 25 persones per sessió a C/ Muntaner 83B, a l'Eixample.
 
-L'espectacle obre el 16 d'octubre de 2026 i es programa els divendres, dissabtes i diumenges. L'entrada costa 20 € per als adults i 12 € per als infants, i inclou una copa de cava o un suc de benvinguda a SABDA Café. El recorregut es fa a l'alçada dels ulls dels animals: durant 25 minuts, et converteixes en un d'ells. No cal portar ulleres ni casc de realitat virtual. La parada de metro més propera és Universitat. Tota la informació és a la [pàgina d'exposicions de SABDA](/ca/exposicions/).
+L'espectacle obre el 17 d'octubre de 2026 i es programa els divendres, dissabtes i diumenges. L'entrada costa 20 € per als adults i 12 € per als infants, i inclou una copa de cava o un suc de benvinguda a SABDA Café. El recorregut es fa a l'alçada dels ulls dels animals: durant 25 minuts, et converteixes en un d'ells. No cal portar ulleres ni casc de realitat virtual. La parada de metro més propera és Universitat. Tota la informació és a la [pàgina d'exposicions de SABDA](/ca/exposicions/).
 
-**Per a qui:** per a qui vol una experiència curta i intensa, i per a famílies amb nens petits, ja que 25 minuts s'adapten bé a la seva capacitat d'atenció. És l'única proposta de la llista construïda en temps real amb un motor de videojoc.
+**Per a qui:** per a qui vol una experiència curta i intensa, i per a famílies amb nens petits, ja que 25 minuts s'adapten bé a la seva capacitat d'atenció. Està creada amb Unreal Engine, un motor de videojoc.
 
 ### MIRA Festival, 6 i 7 de novembre
 
@@ -97,7 +97,7 @@ El festival d'art digital i música electrònica MIRA torna a Fira Montjuïc el 
 
 **Pompeia (IDEAL Montjuïc): tancada.** «Els últims dies de Pompeia» va tancar a la seu temporal de l'IDEAL al Palau Victòria Eugènia el 21 de setembre de 2026. L'IDEAL encara no ha anunciat quina serà la propera exposició. [idealbarcelona.com](https://idealbarcelona.com/)
 
-**IDEAL Poblenou: tancat per obres.** La seu del Poblenou continua tancada per obres i la web oficial no publica cap data de reobertura.
+**IDEAL Poblenou: sense programació.** La web oficial ja no inclou la seu del Poblenou entre els seus espais i no publica cap data de reobertura.
 
 **Titanic: no està oberta.** No hi ha entrades a la venda i el seu antic espai l'ocupa ara Balloon Story.
 
@@ -129,7 +129,7 @@ El festival d'art digital i música electrònica MIRA torna a Fira Montjuïc el 
 
 No totes les experiències immersives funcionen igual amb nens. Aquests són els criteris que més pesen: la durada, el preu infantil i si cal portar ulleres de realitat virtual.
 
-- **El nou espectacle immersiu de SABDA:** 25 minuts, entrada infantil a 12 € i sense ulleres. Des del 16 d'octubre.
+- **El nou espectacle immersiu de SABDA:** 25 minuts, entrada infantil a 12 € i sense ulleres. Des del 17 d'octubre.
 - **Casa Batlló:** gratis fins als 12 anys. La visita és llarga, d'1 hora i 15 minuts.
 - **Moco Museum:** gratis per a menors de 6 anys, i les sales digitals agraden als nens.
 - **IKONO:** pensat per jugar, fàcil amb nens de totes les edats.
@@ -165,7 +165,7 @@ Si vols comparar les opcions en castellà amb veredictes més detallats, tenim l
 ## Preguntes freqüents
 
 **Quines exposicions immersives hi ha a Barcelona el 2026?**
-Ara mateix estan obertes la Casa Batlló, Codi Gaudí a l'Espai Imagina, Iniesta Experience, el Moco Museum, el Dalí Boulevard Cibernètic, IKONO, White Rabbit, el Museu de Banksy i l'Antarctica Experience. El 16 d'octubre de 2026 s'hi afegeix el nou espectacle immersiu de SABDA, a l'Eixample.
+Ara mateix estan obertes la Casa Batlló, Codi Gaudí a l'Espai Imagina, Iniesta Experience, el Moco Museum, el Dalí Boulevard Cibernètic, IKONO, White Rabbit, el Museu de Banksy i l'Antarctica Experience. El 17 d'octubre de 2026 s'hi afegeix el nou espectacle immersiu de SABDA, a l'Eixample.
 
 **Encara es pot veure l'exposició de Pompeia a Barcelona?**
 No. «Els últims dies de Pompeia» va tancar a l'IDEAL Montjuïc el 21 de setembre de 2026, i encara no s'ha anunciat quina exposició la substituirà.
@@ -174,7 +174,7 @@ No. «Els últims dies de Pompeia» va tancar a l'IDEAL Montjuïc el 21 de setem
 No. El 2026 no hi ha cap exposició de Van Gogh oberta ni anunciada a Barcelona.
 
 **Quant dura el nou espectacle immersiu de SABDA i quant costa?**
-L'espectacle dura 25 minuts i costa 20 € per als adults i 12 € per als infants, amb una copa de cava o un suc de benvinguda inclòs a SABDA Café. Es programa els divendres, dissabtes i diumenges a partir del 16 d'octubre de 2026.
+L'espectacle dura 25 minuts i costa 20 € per als adults i 12 € per als infants, amb una copa de cava o un suc de benvinguda inclòs a SABDA Café. Es programa els divendres, dissabtes i diumenges a partir del 17 d'octubre de 2026.
 
 **Quina exposició immersiva és millor per anar amb nens?**
 Per als nens petits funcionen millor les experiències curtes i sense ulleres de realitat virtual, com el nou espectacle immersiu de SABDA (25 minuts, 12 € l'entrada infantil) o IKONO. La Casa Batlló és gratuïta fins als 12 anys, però la visita és més llarga.

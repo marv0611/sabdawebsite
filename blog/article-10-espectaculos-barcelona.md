@@ -89,15 +89,15 @@ Tres días de los mejores conciertos independientes del mundo en el Fòrum Park 
 
 ## Experiencias inmersivas
 
-### El nuevo espectáculo inmersivo de SABDA (desde el 16 de octubre)
+### El nuevo espectáculo inmersivo de SABDA (desde el 17 de octubre)
 
 Transparencia: SABDA es nuestra sala. El nuevo espectáculo inmersivo de SABDA es un viaje de 25 minutos por cuatro mundos de la vida en la Tierra, creado con Unreal Engine y proyectado en las cuatro paredes de una sala 360° con sonido Dolby Atmos, para 25 personas por sesión en C/ Muntaner 83B, en el Eixample.
 
-Abre el 16 de octubre de 2026, con sesiones los viernes, sábados y domingos. La entrada cuesta 20 € para adultos y 12 € para niños, e incluye una copa de cava o un zumo de bienvenida en SABDA Café. No hace falta casco ni gafas de realidad virtual. [Más información en la página de exposiciones](/es/exposiciones/). La misma sala acoge también clases de yoga, sound healing, breathwork y danza extática dentro de las proyecciones, desde 18 € la clase ([horario](/es/clases/)).
+Abre el 17 de octubre de 2026, con sesiones los viernes, sábados y domingos. La entrada cuesta 20 € para adultos y 12 € para niños, e incluye una copa de cava o un zumo de bienvenida en SABDA Café. No hace falta casco ni gafas de realidad virtual. [Más información en la página de exposiciones](/es/exposiciones/). La misma sala acoge también clases de yoga, sound healing, breathwork y danza extática dentro de las proyecciones, desde 18 € la clase ([horario](/es/clases/)).
 
 ### IDEAL, Centre d'Arts Digitals
 
-El gran centro de arte digital de Barcelona, con proyecciones a gran escala. Ahora mismo no tiene exposición abierta: la sede del Poblenou sigue cerrada por obras y «Los últimos días de Pompeya», en su sede temporal de Montjuïc, cerró el 21 de septiembre de 2026. Consulta su agenda antes de ir. [idealbarcelona.com](https://idealbarcelona.com/es/agenda/)
+El gran centro de arte digital de Barcelona, con proyecciones a gran escala. Ahora mismo no tiene exposición abierta: la web oficial ya no incluye la sede del Poblenou y «Los últimos días de Pompeya», en su sede temporal de Montjuïc, cerró el 21 de septiembre de 2026. Consulta su agenda antes de ir. [idealbarcelona.com](https://idealbarcelona.com/es/agenda/)
 
 ### Moco Museum
 
@@ -148,7 +148,7 @@ Si buscas una experiencia inmersiva que va más allá de sentarte a mirar: [SABD
 
 ## Exposiciones inmersivas: el espectáculo donde tú te mueves
 
-Si los espectáculos con butaca se te quedan cortos, Barcelona tiene una escena inmersiva potente: Casa Batlló con su Gaudí Dome, Moco en El Born, Codi Gaudí en Espai Imagina y, desde el 16 de octubre de 2026, el [nuevo espectáculo inmersivo de SABDA](/es/exposiciones/) en el Eixample, un viaje de 25 minutos por cuatro mundos de la vida en la Tierra a 20 € para adultos y 12 € para niños. Comparamos todas las opciones con precios reales en nuestra [guía de experiencias inmersivas](/blog/experiencias-inmersivas-barcelona/).
+Si los espectáculos con butaca se te quedan cortos, Barcelona tiene una escena inmersiva potente: Casa Batlló con su Gaudí Cube, Moco en El Born, Codi Gaudí en Espai Imagina y, desde el 17 de octubre de 2026, el [nuevo espectáculo inmersivo de SABDA](/es/exposiciones/) en el Eixample, un viaje de 25 minutos por cuatro mundos de la vida en la Tierra a 20 € para adultos y 12 € para niños. Comparamos todas las opciones con precios reales en nuestra [guía de experiencias inmersivas](/blog/experiencias-inmersivas-barcelona/).
 
 ## Antes de ir
 
