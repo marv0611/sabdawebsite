@@ -1,14 +1,16 @@
-# 16 Espectáculos en Barcelona que Merecen la Pena 2026
+# Espectáculos en Barcelona 2026: obras de teatro y más
 
-**Última actualización: marzo 2026**
+**Última actualización: septiembre 2026**
 
-**Meta description:** 16 espectáculos en Barcelona con precios y duración: teatro, inmersivos, flamenco y música en directo. Desde 10€, actualizado en 2026.
+**Meta description:** Espectáculos en Barcelona 2026: obras de teatro recomendadas este otoño, espectáculos inmersivos, flamenco y música en directo, con fechas y precios.
 
 **Slug:** `/blog/espectaculos-barcelona/`
 
 **Primary keyword:** espectaculos barcelona
 **publish: true**
-**Secondary keywords:** mejores espectáculos barcelona, espectáculos barcelona hoy, espectáculos barcelona 2026
+**Secondary keywords:** mejores espectáculos barcelona, espectáculos barcelona hoy, espectáculos barcelona 2026, obras de teatro en barcelona recomendadas 2026
+
+**Meta title:** Espectáculos en Barcelona 2026: obras de teatro y más
 
 ---
 
@@ -33,6 +35,27 @@ El espacio de dramaturgia contemporánea de Barcelona. Sala pequeña, obras arri
 ### La Seca Espai Brossa
 
 Artes escénicas experimentales en el Born. Magia, circo, poesía visual, y cosas que no encajan en ninguna categoría. Si te gusta lo inclasificable, este es tu sitio.
+
+---
+
+## Obras de teatro recomendadas en Barcelona 2026
+
+Esta es la selección de obras de teatro recomendadas en Barcelona para el otoño de 2026. Fechas, idioma y autoría comprobados en la web oficial de cada teatro el 28 de septiembre de 2026. Cuando no indicamos precio es porque el teatro no lo publica en la ficha de la obra y solo aparece al comprar la entrada.
+
+- **«El cadell», TNC (Sala Petita).** Del 30 de septiembre al 1 de noviembre. Drama rural escrito y dirigido por Josep Maria Miró. En catalán. De 14 a 28 €. [tnc.cat](https://www.tnc.cat/ca/el-cadell)
+- **«La última noche con mi hermano», TNC (Sala Gran).** Del 15 de octubre al 1 de noviembre. Drama familiar escrito y dirigido por Alfredo Sanzol. En castellano. De 17 a 24 €.
+- **«Bouvetøya (La necessitat d'una illa)», Teatre Lliure Montjuïc.** Del 1 al 25 de octubre. Distopía dirigida por Julio Manrique. En catalán, con sobretítulos en inglés el 24 de octubre. De 14 a 32 €. [teatrelliure.com](https://teatrelliure.com/ca/bouvetoya)
+- **«Júlia, 15 anys més tard», Teatre Lliure Gràcia.** Del 22 de octubre al 15 de noviembre. La versión de Christiane Jatahy de «La señorita Julia» de Strindberg. En catalán, con sobretítulos en inglés el 25 de octubre. De 14 a 32 €.
+- **«Panorama des del pont», Teatre Goya.** Del 16 de octubre al 15 de noviembre. El drama de Arthur Miller, dirigido por Sílvia Munt, con David Selvas y Laura Conejero. En catalán.
+- **«Poncia», Teatre Goya.** En cartel hasta el 13 de diciembre. Monólogo de Luis Luque a partir de Lorca, interpretado por Lolita Flores. En castellano.
+- **«Todos los ángeles alzaron el vuelo», Teatre Romea.** Del 15 al 25 de octubre. Texto de Eusebio Calonge, dirigido por Paco de La Zaranda. En castellano.
+- **«Palabra de perro», Teatre Romea.** Del 28 de octubre al 8 de noviembre. La adaptación de Cervantes de Juan Mayorga, dirigida por Rakel Camacho. En castellano.
+- **«Morning Sun», La Villarroel.** Del 9 de octubre al 8 de noviembre. Obra de Simon Stephens dirigida por Pau Roca, con Míriam Iscla. En catalán.
+- **«Bons i dolents», Teatre Condal.** Del 6 de octubre al 15 de noviembre. Comedia escrita por Joel Joan y dirigida por Nelson Valente. En catalán.
+- **«Un poyo rojo», La Villarroel.** Del 31 de octubre al 17 de noviembre. Teatro físico y danza para dos intérpretes, sin texto: la opción para quien no habla catalán ni castellano.
+- **«Per fi me'n vaig», Teatre Poliorama.** Del 4 de noviembre al 10 de enero de 2027. Monólogo cómico de Carles Sans, codirigido con José Corbacho. En catalán. Desde 12 €.
+
+**Si no es teatro:** El Mago Pop presenta «Nada es imposible» en el Teatre Victòria del 14 de octubre de 2026 al 31 de enero de 2027, en castellano, desde 42 €. [teatrevictoria.com](https://www.teatrevictoria.com/)
 
 ---
 
@@ -66,21 +89,23 @@ Tres días de los mejores conciertos independientes del mundo en el Fòrum Park 
 
 ## Experiencias inmersivas
 
-### SABDA, Wellness inmersivo
+### El nuevo espectáculo inmersivo de SABDA (desde el 16 de octubre)
 
-No es un espectáculo en el sentido tradicional, pero es una experiencia audiovisual completa. [SABDA](https://sabdastudio.com/classes/) es una sala de 360° con Dolby Atmos en el Eixample donde se hacen clases de yoga, sound healing, breathwork, y danza extática dentro de proyecciones en tiempo real. Las sesiones de [ecstatic dance](https://sabdastudio.com/classes/ecstatic-dance/) y los [eventos especiales](https://sabdastudio.com/events/) como Listening Sessions son particularmente "espectaculares". El sonido y las visuals responden a la energía colectiva del grupo. Desde €18/clase. [Ver programación →](https://sabdastudio.com/classes/)
+Transparencia: SABDA es nuestra sala. El nuevo espectáculo inmersivo de SABDA es un viaje de 25 minutos por cuatro mundos de la vida en la Tierra, creado con Unreal Engine y proyectado en las cuatro paredes de una sala 360° con sonido Dolby Atmos, para 25 personas por sesión en C/ Muntaner 83B, en el Eixample.
+
+Abre el 16 de octubre de 2026, con sesiones los viernes, sábados y domingos. La entrada cuesta 20 € para adultos y 12 € para niños, e incluye una copa de cava o un zumo de bienvenida en SABDA Café. No hace falta casco ni gafas de realidad virtual. [Más información en la página de exposiciones](/es/exposiciones/). La misma sala acoge también clases de yoga, sound healing, breathwork y danza extática dentro de las proyecciones, desde 18 € la clase ([horario](/es/clases/)).
 
 ### IDEAL, Centre d'Arts Digitals
 
-El gran espacio de exposiciones inmersivas de Barcelona. Proyecciones a gran escala sobre paredes y suelos de una antigua nave industrial en Poblenou. Las exposiciones rotan cada 6-12 meses, consulta la programación actual. Es pasivo. Caminas, miras, y te dejas envolver. Bueno para una visita, pero sin la participación activa ni el audio espacial de espacios como SABDA. ~€15-18.
+El gran centro de arte digital de Barcelona, con proyecciones a gran escala. Ahora mismo no tiene exposición abierta: la sede del Poblenou sigue cerrada por obras y «Los últimos días de Pompeya», en su sede temporal de Montjuïc, cerró el 21 de septiembre de 2026. Consulta su agenda antes de ir. [idealbarcelona.com](https://idealbarcelona.com/es/agenda/)
 
 ### Moco Museum
 
-Arte digital y contemporáneo en un palacete del Born. Colección permanente con artistas de primer nivel más exposiciones temporales rotativas. Más galería que experiencia inmersiva, pero con salas interactivas que merecen la foto. ~€16.
+Arte digital y contemporáneo en un palacete del Born. Colección permanente con artistas de primer nivel más exposiciones temporales rotativas. Más galería que experiencia inmersiva, pero con salas interactivas que merecen la foto. Desde 14,95 €, gratis para menores de 6 años.
 
 ### Candlelight Concerts (Fever)
 
-Conciertos de música clásica y bandas sonoras a la luz de las velas en espacios como la Casa Batlló o iglesias del Gótico. Es atmosférico y funciona como plan de noche, aunque musicalmente es más "ambient bonito" que concierto serio. Desde €15.
+Conciertos de música clásica y bandas sonoras a la luz de las velas en espacios como el Petit Palau o el Reial Cercle Artístic. Es atmosférico y funciona como plan de noche, aunque musicalmente es más "ambient bonito" que concierto serio. Desde unos 17 €.
 
 ---
 
@@ -102,7 +127,7 @@ La programación cambia constantemente. Estas son las fuentes fiables:
 
 **Para teatro y danza:** TNC, Teatre Lliure, y Mercat de les Flors publican programación mensual en sus webs.
 **Para música:** Razzmatazz, Jamboree, y L'Auditori tienen agendas actualizadas. Songkick y Dice para conciertos emergentes.
-**Para experiencias inmersivas:** [SABDA](https://sabdastudio.com/classes/) actualiza su horario semanalmente. IDEAL y Moco tienen exposiciones de larga duración.
+**Para experiencias inmersivas:** [SABDA](https://sabdastudio.com/classes/) actualiza su horario semanalmente. Moco y Casa Batlló tienen exposiciones de larga duración; IDEAL no tiene ninguna abierta ahora mismo.
 **Para todo:** Time Out Barcelona y la agenda del Ajuntament de Barcelona ([meet.barcelona](https://www.meet.barcelona/en/main-events)) cubren lo que pasa cada semana.
 
 ---
@@ -123,7 +148,7 @@ Si buscas una experiencia inmersiva que va más allá de sentarte a mirar: [SABD
 
 ## Exposiciones inmersivas: el espectáculo donde tú te mueves
 
-Si los espectáculos con butaca se te quedan cortos, Barcelona tiene una escena inmersiva potente: IDEAL en el Poblenou con su sala de proyecciones gigante, Casa Batlló con su experiencia 10D, Moco en El Born. Y desde octubre de 2026, [SABDA estrena programa de exposiciones de arte inmersivo](/es/exposiciones/) en su sala 360 con Dolby Atmos del Eixample, el mismo espacio donde ahora se hace yoga y sound healing dentro de las proyecciones. Comparamos todas las opciones con precios reales en nuestra [guía de experiencias inmersivas](/blog/experiencias-inmersivas-barcelona/).
+Si los espectáculos con butaca se te quedan cortos, Barcelona tiene una escena inmersiva potente: Casa Batlló con su Gaudí Dome, Moco en El Born, Codi Gaudí en Espai Imagina y, desde el 16 de octubre de 2026, el [nuevo espectáculo inmersivo de SABDA](/es/exposiciones/) en el Eixample, un viaje de 25 minutos por cuatro mundos de la vida en la Tierra a 20 € para adultos y 12 € para niños. Comparamos todas las opciones con precios reales en nuestra [guía de experiencias inmersivas](/blog/experiencias-inmersivas-barcelona/).
 
 ## Antes de ir
 
@@ -133,6 +158,6 @@ Los mejores espectáculos en Barcelona no son siempre los más publicitados. El 
 
 ---
 
-*[Schema: BreadcrumbList → Inicio > Blog > Los Mejores Espectáculos en Barcelona en 2026]*
+*[Schema: BreadcrumbList → Inicio > Blog > Espectáculos en Barcelona 2026: obras de teatro y más]*
 *[Update frequency: MONTHLY]*
 *[Images needed: hero (performance/stage), Palau de la Música interior, Razzmatazz, SABDA event, IDEAL immersive, flamenco tablao]*
