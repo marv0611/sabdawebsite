@@ -1,117 +1,111 @@
-# The Best Immersive Experiences in Barcelona: A Complete Guide (2026)
+# Immersive Experiences in Barcelona: What's Open and What's Closed (2026)
 
-**Última actualización: marzo 2026**
+**Last updated: October 2026**
 
-**Meta description:** Every immersive experience in [Barcelona](https://www.barcelonaturisme.com/) compared: SABDA, IDEAL, Moco Museum, IKONO, Candlelight and more. What to expect, prices, and which to choose.
+**Meta description:** Every immersive experience in Barcelona checked: which are open, which have closed, what is coming, from Gaudí and Dalí to Pompeii, Sorolla, Pixar and IKONO.
 
 **Slug:** `/blog/immersive-experiences-barcelona/`
 
 **Primary keyword:** immersive experience barcelona
 **publish: true**
-**Secondary keywords:** immersive art barcelona, 360 experience barcelona, things to do barcelona
+**Secondary keywords:** immersive art barcelona, 360 experience barcelona, gaudi immersive experience barcelona, dali immersive experience barcelona, immersive dining barcelona
+
+**Meta title:** Immersive Experience Barcelona: What's Open in 2026
 
 ---
 
-Barcelona has become one of Europe's top cities for immersive experiences. 360° projections, spatial audio, interactive installations, and spaces where you don't watch the art, you're inside it. But not all immersive experiences are the same, and the gap between them is bigger than you'd think.
+Looking for an immersive experience in Barcelona and not sure what is still running? This page is the status check. Immersive shows in Barcelona open and close every few months, and old listings stay online long after a show has gone, so below is every immersive experience people search for, marked as open, finished or coming soon, with dates and prices checked on each venue's official website.
 
-This guide compares every major option, explains what to expect from each, and helps you pick based on what you're actually looking for.
-
----
-
-## What "immersive" means
-
-An immersive experience is anything where the environment surrounds you and you're part of it. Instead of observing from outside. In practice, this ranges from large-scale projection exhibitions (passive. You walk, look, absorb) to spaces where you actively move, breathe, or dance inside the art (participatory).
-
-The key difference: passive immersion is impressive. Participatory immersion is transformative.
+If you want our ranked recommendations with verdicts instead, see [the 11 best immersive experiences in Barcelona](/blog/best-immersive-experiences-barcelona/). One venue on this page is ours, and we say so where it appears.
 
 ---
 
-## The major immersive spaces in Barcelona
+## Open now
 
-### SABDA. Participatory immersive wellness
+**SABDA's new immersive show (Eixample): open from 17 October 2026.** Full disclosure: SABDA is our venue. SABDA's new immersive show is a 25 minute journey through four worlds of life on Earth, made in Unreal Engine and projected across the four walls of a 360° room with Dolby Atmos sound, for 25 people per session at C/ Muntaner 83B in the Eixample. It runs on Fridays, Saturdays and Sundays, at €20 for adults and €12 for children, including a welcome glass of cava or juice in SABDA Café. There is no headset. Details on [SABDA's exhibitions page](/exhibitions/).
 
-If you're looking for immersive experience barcelona, this guide covers what actually matters. [SABDA](https://sabdastudio.com/classes/) is the only space in Barcelona where wellness and immersive technology converge. A 360° projection room with Dolby Atmos spatial audio (cinema-grade speakers built into every wall and ceiling, subwoofers underneath) where classes run in yoga, [pilates](/classes/pilates/), sound healing, breathwork, ecstatic dance, and ice bath.
+**Gaudí at Casa Batlló: open.** Every ticket includes the Gaudí Cube, a six-sided LED room with Refik Anadol's "Gaudí Dreams", plus augmented reality during the visit. From €29, children up to 12 free, about 1 hour 15 minutes. [casabatllo.es](https://www.casabatllo.es/en/experience/)
 
-**What makes it different:** You don't watch, you move, breathe, and participate inside the art. Visuals are custom-designed for each class. A vinyasa session has abstract landscapes that flow with the rhythm. A sound healing session has living geometry that pulses with Tibetan singing bowls. Spatial audio wraps around you from every direction.
+**Gaudí at Codi Gaudí (Espai Imagina): open until 8 January 2027.** A mixed and virtual reality experience about the buildings Gaudí never built, at Av. Diagonal 177. Adults from €12.50 on Mondays, closed on Tuesdays, about 70 minutes. [espai-imagina.com](https://espai-imagina.com/exposicions/codi-gaudi-experiencia-inedita/)
 
-**Best for:** People who want to feel something, not just see something pretty. Anyone curious about the intersection of art, technology, and wellness.
+**Dalí Boulevard Cibernètic: open.** An immersive Dalí experience in Casa Amatller, Passeig de Gràcia 41. From €15 on weekdays and €18 at weekends, about 75 minutes.
 
-**Price:** From €18/class. [3 classes for €50](https://momence.com/m/443935).
-**Frequency:** 42+ classes per week + special events.
-**Where:** C/Muntaner 83B, Eixample.
+**IKONO: open.** More than ten playful, photo-friendly immersive rooms on the third floor of the Arenas shopping centre at Plaça d'Espanya, daily from 12:00 to 19:00. IKONO has moved: older listings give an address in Barceloneta, which is out of date. [ikono.global](https://ikono.global/en/barcelona)
 
-### IDEAL, Centre d'Arts Digitals
+**White Rabbit: open.** Ten immersive rooms about Catalan traditions by local artists, at Passeig de Gràcia 55. From €16, 60 to 90 minutes.
 
-Barcelona's large-scale immersive exhibition space. Housed in a former industrial warehouse in Poblenou, IDEAL projects artwork across walls, floor, and ceiling. Exhibitions rotate every 6-12 months, check the current programme. It's passive, you walk, sit, look, and let it surround you.
+**Moco Museum: open.** Contemporary and street art with a digital and immersive collection, at Carrer de Montcada 25 in the Born. From €14.95, children up to 6 free.
 
-**Best for:** Families, tourists, anyone who wants a spectacular visual experience without active participation.
+**Antarctica Experience (GIGA, Arenas): open.** From €12.90, under-3s free, 45 to 75 minutes. No end date published.
 
-**Price:** ~€15-18.
-**Where:** C/Dr. Trueta, 196, Poblenou.
+**Iniesta Experience: open until 10 January 2027.** In the former IMAX on Moll d'Espanya, from €18, about 90 minutes.
 
-### Moco Museum
-
-Digital and contemporary art in an 18th-century palace in the Born. More gallery than immersive experience, but with interactive rooms that offer genuine moments of immersion. The permanent collection features major contemporary artists, and temporary exhibitions rotate.
-
-**Best for:** Contemporary art fans. People who want photos for Instagram (the museum is designed for it).
-
-**Price:** ~€16.
-**Where:** C/Montcada, 25, Born.
-
-### IKONO
-
-A sensory experience space designed primarily for photos. Themed rooms with different textures, colours, and interactive elements. Each room is a production set disguised as an "experience."
-
-**Best for:** Content creators. Friend groups who want a fun, photogenic activity.
-
-**Price:** ~€16-20.
-**Where:** Passeig de Joan de Borbó, 80, Barceloneta.
-
-### Candlelight Concerts (Fever)
-
-Classical music and soundtrack concerts by candlelight in atmospheric venues like churches and historic buildings. The format is "immersive" in the atmospheric sense. The environment contributes to the experience, but there's no projection technology or spatial audio.
-
-**Best for:** Couples, date nights, anyone who wants a lovely evening without complexity.
-
-**Price:** From ~€15.
+**Museum of Banksy: open.** Carrer Trafalgar 34, €14, under-6s free.
 
 ---
 
-## Price comparison
+## Finished or not running
 
-| Space | Price | Type | Duration |
-|-------|-------|------|----------|
-| SABDA | From €18/class | Participatory | 45-90 min |
-| IDEAL | ~€15-18 | Passive (exhibition) | 60-90 min |
-| Moco Museum | ~€16 | Gallery + interactive | 60-90 min |
-| IKONO | ~€16-20 | Photogenic/sensory | 45-60 min |
-| Candlelight | From ~€15 | Atmospheric concert | 60 min |
+**Pompeii (IDEAL Montjuïc): finished.** "The Last Days of Pompeii" closed on 21 September 2026. No replacement has been announced.
 
----
+**IDEAL Poblenou: no programme.** IDEAL's website now lists only its Montjuïc venue, with nothing announced after Pompeii. Check [idealbarcelona.com](https://idealbarcelona.com/en/) before planning around it.
 
-## Which to choose
+**Mundo Pixar: finished in Barcelona.** The official Mundo Pixar website no longer lists Barcelona among its cities.
 
-**If you want to feel something:** [SABDA](https://sabdastudio.com/classes/). Active participation (moving, breathing, lying still) combined with total immersion produces experiences that go beyond visual. You leave different from how you arrived.
+**Eonarium: finished.** Its Barcelona page reads "Exhibition Finished".
 
-**If you want to see something spectacular:** IDEAL. The projections are visually impressive. It's the option for "I want to walk in, look around, and say wow."
+**Sorolla: not confirmed.** No Sorolla immersive exhibition is confirmed in Barcelona.
 
-**If you want photos:** IKONO or Moco Museum. Both optimised for visual content.
+**Van Gogh: not running.** No Van Gogh exhibition or immersive experience is running or announced in Barcelona.
 
-**If you want a lovely evening:** Candlelight Concerts. Simple, atmospheric, no complications.
+**Tutankhamun and Egypt: finished.** The Tutankhamun show at IDEAL closed in June 2024.
 
-**If you want contemporary art with immersive moments:** Moco Museum. Strong permanent collection plus interactive elements.
+**Balloon Story: finished** on 4 October 2026.
 
 ---
 
-## Before you go
+## Coming soon
 
-If you only have time for one immersive experience in Barcelona, choose based on what you want to take away: a photo, a visual memory, or a physical transformation. All three options exist. Only one changes how you feel when you leave.
+**MIRA Digital Arts Festival, 6 and 7 November 2026.** Audiovisual shows and 360° fulldome pieces at Fira Montjuïc. Day pass €60, full pass €110.
 
-[3 immersive classes at SABDA for €50.(https://momence.com/m/443935). Yoga, sound healing, breathwork, or ecstatic dance inside 360° projections with Dolby Atmos spatial audio.
+**LOOP Barcelona, 10 to 21 November 2026.** Video art across museums, galleries and cinemas.
 
-**Related:** [Things to Do in Barcelona](/blog/things-to-do-in-barcelona/) | [Experiencias inmersivas en Barcelona (ES)](/blog/experiencias-inmersivas-barcelona/)
+**Llum BCN, 5 to 7 February 2027.** The city's free light art festival, in Poblenou.
 
 ---
 
-*[Schema: BreadcrumbList → Home > Blog > Best Immersive Experiences in Barcelona]*
-*[hreflang: en → this page | es → /blog/experiencias-inmersivas-barcelona/]*
+## Immersive dining in Barcelona
+
+We could not verify a public immersive dining show currently running in Barcelona. SABDA's 360° room hosts immersive dinners for private groups and events; see [private events](/hire/).
+
+---
+
+## What "immersive" actually means
+
+"Immersive" now covers everything from a room with a projector to a headset. In practice, Barcelona's immersive experiences fall into four formats: headset VR (Codi Gaudí), projection around you in a room (SABDA, Antarctica Experience), LED screens (Casa Batlló's Gaudí Cube), and walk-through rooms built for photos and play (IKONO, White Rabbit, Moco's digital rooms). None is better by default. VR gives you the most freedom of movement, projection rooms let you share the moment with the people next to you, and walk-through rooms are the easiest with children.
+
+---
+
+## FAQ
+
+**What immersive experiences are open in Barcelona right now?**
+Casa Batlló, Codi Gaudí, Dalí Boulevard Cibernètic, IKONO, White Rabbit, Moco Museum, Antarctica Experience, Iniesta Experience and the Museum of Banksy. SABDA's new immersive show opens on 17 October 2026.
+
+**Is there a Gaudí immersive experience in Barcelona?**
+Yes, two. Casa Batlló includes the Gaudí Cube with every ticket, and Codi Gaudí at Espai Imagina is a mixed and virtual reality experience about Gaudí's unbuilt buildings, open until 8 January 2027.
+
+**Is the Pompeii immersive exhibition still on in Barcelona?**
+No. It closed at IDEAL Montjuïc on 21 September 2026.
+
+**Is there a Sorolla or Van Gogh immersive experience in Barcelona?**
+No. Neither is running or confirmed in Barcelona.
+
+**Where is IKONO Barcelona now?**
+On the third floor of the Arenas shopping centre, Gran Via 373, at Plaça d'Espanya. It is open daily from 12:00 to 19:00.
+
+**How much is SABDA's new immersive show?**
+€20 for adults and €12 for children, including a welcome glass of cava or juice in SABDA Café. It lasts 25 minutes and runs on Fridays, Saturdays and Sundays.
+
+---
+
+*[Schema: BreadcrumbList → Home > Blog > Immersive Experiences in Barcelona]*
