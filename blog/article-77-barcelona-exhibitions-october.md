@@ -7,6 +7,7 @@
 **Slug:** `/blog/barcelona-exhibitions-october/`
 
 **Primary keyword:** barcelona exhibitions october 2026
+**publish: true**
 **Secondary keywords:** barcelona exhibitions now, barcelona art exhibitions 2026, what's on in barcelona october
 
 **Meta title:** Barcelona Exhibitions in October 2026: What's On

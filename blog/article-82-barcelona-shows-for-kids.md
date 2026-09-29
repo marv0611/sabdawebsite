@@ -7,6 +7,7 @@
 **Slug:** `/blog/barcelona-shows-for-kids/`
 
 **Primary keyword:** barcelona shows for kids
+**publish: true**
 **Secondary keywords:** things to do in barcelona with kids, barcelona exhibitions for kids, barcelona with kids when it rains
 
 **Meta title:** Barcelona Shows for Kids: Autumn 2026 Family Guide

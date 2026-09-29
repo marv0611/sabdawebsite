@@ -7,6 +7,7 @@
 **Slug:** `/blog/exposiciones-barcelona-noviembre/`
 
 **Primary keyword:** exposiciones barcelona noviembre 2026
+**publish: true**
 **Secondary keywords:** exposiciones barcelona actuales, exposiciones barcelona este fin de semana, agenda barcelona noviembre, que hacer en barcelona en noviembre
 
 **Meta title:** Exposiciones en Barcelona en noviembre 2026: guía

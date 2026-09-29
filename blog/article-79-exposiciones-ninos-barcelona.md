@@ -7,6 +7,7 @@
 **Slug:** `/blog/exposiciones-ninos-barcelona/`
 
 **Primary keyword:** exposiciones para niños barcelona
+**publish: true**
 **Secondary keywords:** experiencia inmersiva barcelona niños, exposiciones barcelona niños, planes con niños barcelona lluvia
 
 **Meta title:** Exposiciones para niños en Barcelona 2026: por edades
@@ -125,7 +126,7 @@ Todas las exposiciones de esta guía son de interior, así que cualquiera sirve 
 
 **Plaza de España.** Antarctica Experience e IKONO están en el mismo edificio, Arenas, lo que resuelve una tarde entera sin paraguas.
 
-**Domingo por la tarde con poco presupuesto.** Desde las 15:00, los museos municipales como el Museu Blau, el Museu de la Música o el Museu Marítim son gratis para todos. Más ideas en nuestra guía de [qué hacer en Barcelona cuando llueve](/blog/que-hacer-barcelona-lluvia/).
+**Domingo por la tarde con poco presupuesto.** Desde las 15:00, los museos municipales como el Museu Blau, el Museu de la Música o el Museu Marítim son gratis para todos. Más ideas en nuestra guía de [qué hacer en Barcelona cuando llueve](/blog/cosas-que-hacer-en-barcelona/#planes-lluvia).
 
 ---
 

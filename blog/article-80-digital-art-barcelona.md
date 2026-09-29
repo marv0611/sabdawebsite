@@ -7,6 +7,7 @@
 **Slug:** `/blog/digital-art-barcelona/`
 
 **Primary keyword:** digital art barcelona
+**publish: true**
 **Secondary keywords:** digital art museum barcelona, digital art exhibition barcelona, immersive digital art barcelona
 
 **Meta title:** Digital Art in Barcelona: Where to See It in 2026

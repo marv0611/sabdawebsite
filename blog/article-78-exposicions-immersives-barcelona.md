@@ -7,6 +7,7 @@
 **Slug:** `/blog/exposicions-immersives-barcelona/`
 
 **Primary keyword:** exposicions immersives barcelona 2026
+**publish: true**
 **Secondary keywords:** exposició immersiva barcelona, experiència immersiva barcelona, exposicions barcelona 2026
 
 **Meta title:** Exposicions immersives a Barcelona 2026: què està obert

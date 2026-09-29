@@ -7,6 +7,7 @@
 **Slug:** `/blog/van-gogh-barcelona/`
 
 **Primary keyword:** van gogh barcelona
+**publish: true**
 **Secondary keywords:** van gogh exhibition barcelona, van gogh barcelona immersive experience, van gogh experience barcelona, van gogh barcelona tickets, exposición van gogh barcelona 2026
 
 **Meta title:** Van Gogh in Barcelona: Is There an Exhibition in 2026?

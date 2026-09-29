@@ -7,6 +7,7 @@
 **Slug:** `/blog/atelier-respiration-barcelone/`
 
 **Primary keyword:** atelier respiration barcelone
+**publish: true**
 **Secondary keywords:** breathwork barcelone, respiration consciente barcelone, méthode wim hof barcelone, atelier breathwork barcelone
 
 **Meta title:** Atelier respiration à Barcelone : le guide 2026

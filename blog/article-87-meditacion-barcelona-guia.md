@@ -7,6 +7,7 @@
 **Slug:** `/blog/meditacion-barcelona-guia/`
 
 **Primary keyword:** meditacion barcelona
+**publish: true**
 **Secondary keywords:** clases de meditacion barcelona, centros de meditacion barcelona, meditacion gratis barcelona, meditacion para principiantes barcelona, mbsr barcelona
 
 **Meta title:** Meditación en Barcelona: guía de centros y precios

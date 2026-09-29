@@ -7,6 +7,7 @@
 **Slug:** `/blog/barcelona-exhibitions-november/`
 
 **Primary keyword:** barcelona exhibitions november 2026
+**publish: true**
 **Secondary keywords:** barcelona exhibitions now, barcelona art exhibitions 2026, what's on in barcelona november
 
 **Meta title:** Barcelona Exhibitions in November 2026: What's On

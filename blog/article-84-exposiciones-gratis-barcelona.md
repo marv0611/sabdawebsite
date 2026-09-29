@@ -7,6 +7,7 @@
 **Slug:** `/blog/exposiciones-gratis-barcelona/`
 
 **Primary keyword:** exposiciones gratis barcelona
+**publish: true**
 **Secondary keywords:** exposiciones gratis barcelona 2026, exposiciones barcelona gratis domingo, museos gratis barcelona, palau robert exposiciones gratis, exposiciones fotografía barcelona gratis
 
 **Meta title:** Exposiciones gratis en Barcelona 2026: días y horarios
@@ -132,7 +133,7 @@ Además de los días fijos, muchos museos abren gratis en fechas señaladas: el 
 
 ## ¿Hay exposiciones inmersivas gratis en Barcelona?
 
-Pocas. Las experiencias inmersivas privadas cobran entrada. Las alternativas gratuitas más cercanas son Load Gallery, dedicada al arte digital, Arts Santa Mònica y Llum BCN, el festival gratuito de arte lumínico, que vuelve del 5 al 7 de febrero de 2027. Si buscas planes gratis más allá de los museos, tenemos una guía de [planes gratis en Barcelona](/blog/planes-barcelona-gratis/), y los más pequeños tienen su propia guía de [exposiciones para niños](/blog/exposiciones-ninos-barcelona/).
+Pocas. Las experiencias inmersivas privadas cobran entrada. Las alternativas gratuitas más cercanas son Load Gallery, dedicada al arte digital, Arts Santa Mònica y Llum BCN, el festival gratuito de arte lumínico, que vuelve del 5 al 7 de febrero de 2027. Si buscas planes gratis más allá de los museos, tenemos una guía de [planes gratis en Barcelona](/blog/cosas-que-hacer-en-barcelona/#planes-gratis), y los más pequeños tienen su propia guía de [exposiciones para niños](/blog/exposiciones-ninos-barcelona/).
 
 ---
 

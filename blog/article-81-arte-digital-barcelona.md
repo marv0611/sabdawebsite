@@ -7,6 +7,7 @@
 **Slug:** `/blog/arte-digital-barcelona/`
 
 **Primary keyword:** arte digital barcelona
+**publish: true**
 **Secondary keywords:** museo arte digital barcelona, arte digital inmersivo barcelona, centro arte digital barcelona, festival arte digital barcelona
 
 **Meta title:** Arte digital en Barcelona: dónde verlo en 2026
