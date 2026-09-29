@@ -1,0 +1,11 @@
+{
+  "_comment": "Dated content refreshes. scripts/apply-refresh.py applies each one on its date, from the blog-daily-release workflow. Dates are Europe/Madrid. Never apply one early: each patch states facts that are only true from that date.",
+  "refreshes": [
+    {"date": "2026-10-17", "patch": "2-ON-17-OCT-opening-day-refresh.patch",
+     "note": "Opening day. Six immersive-exhibition articles switch to the show being open."},
+    {"date": "2026-10-22", "patch": "3-ON-22-OCT-teamlab-refresh.patch",
+     "note": "teamLab article rewrite. Links to van-gogh-barcelona, which releases the same day."},
+    {"date": "2026-11-02", "patch": "4-ON-2-NOV-christmas-gift-refresh.patch",
+     "note": "regalo-experiencia Christmas edition."}
+  ]
+}

@@ -1,0 +1,86 @@
+name: Content Refresh
+
+# Applies a dated content refresh from blog/refreshes/manifest.json on its date.
+#
+# Deliberately separate from Blog Daily Release, and deliberately runs all seven
+# days. The blog release cron is Mon-Fri because articles only go out on
+# weekdays, but the first refresh is dated Saturday 17 October 2026, the day the
+# show opens. Riding on the weekday cron would have meant the opening-day
+# refresh silently never ran, on the one day it matters most.
+#
+# scripts/apply-refresh.py does the date check itself and never exits non-zero,
+# so a refresh that no longer applies produces a warning in the run summary
+# rather than a red build.
+
+on:
+  schedule:
+    # 06:10 UTC = 08:10 CEST in summer, 07:10 CET in winter. Ahead of the 07:00
+    # blog release so a refresh and that day's article land as separate commits
+    # in a predictable order. Minute 10 to stay off the busy top of the hour.
+    - cron: '10 6 * * *'
+  workflow_dispatch:
+    inputs:
+      date:
+        description: 'Pretend it is this date (YYYY-MM-DD). Leave blank for today.'
+        required: false
+        type: string
+
+concurrency:
+  group: content-refresh
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Sync with latest main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git pull --rebase --autostash origin main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Apply any refresh dated today
+        run: |
+          if [ -n "${{ github.event.inputs.date }}" ]; then
+            python3 scripts/apply-refresh.py --date "${{ github.event.inputs.date }}"
+          else
+            python3 scripts/apply-refresh.py
+          fi
+
+      - name: Commit and push
+        run: |
+          if git diff --quiet && git diff --cached --quiet; then
+            echo "No refresh due today"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "content refresh for $(date -u +%Y-%m-%d)" \
+                     -m "Applied automatically from blog/refreshes/manifest.json."
+          for attempt in 1 2; do
+            if git push; then
+              echo "Pushed on attempt $attempt"
+              exit 0
+            fi
+            echo "Push rejected on attempt $attempt, syncing"
+            if ! git pull --rebase origin main; then
+              git rebase --abort || true
+              echo "::warning::Content refresh conflicted with a concurrent change and was not pushed. Apply it by hand."
+              exit 0
+            fi
+          done
+          echo "::warning::Content refresh could not be pushed after a retry. Apply it by hand."
+          exit 0
