@@ -83,10 +83,11 @@ def main():
     if 'noindex' not in current:
         print(f'WARNING: {html_path} already indexable ({current}). Skipping HTML flip.')
     else:
-        # Replace noindex with index, add max-image-preview if missing
-        new = current.replace('noindex', 'index')
-        if 'max-image-preview' not in new:
-            new = new + ',max-image-preview:large'
+        # Released articles are always fully indexable and followable. Queued
+        # articles may be staged as noindex,nofollow; a plain noindex->index
+        # swap would leave nofollow in place on release, so set the value
+        # outright rather than editing the old one.
+        new = 'index,follow,max-image-preview:large'
         new_meta = f'<meta name="robots" content="{new}">'
         s_new = s[:m.start()] + new_meta + s[m.end():]
         open(html_path, 'w').write(s_new)
