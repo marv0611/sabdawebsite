@@ -1,12 +1,12 @@
 {
   "meta": {
     "created": "2026-04-13",
-    "total_queued": 68,
+    "total_queued": 81,
     "schedule": "Mon-Fri 09:00 CET",
     "release_workflow": ".github/workflows/blog-daily-release.yml",
     "notes": "Reordered on 2026-04-20 from pure-volume-DESC to interleaved business intent: wellness/tourism/wellness/corporate/wellness/tourism/brand cycle (7-period). Positions 1-16 locked (released or imminent). Positions 17-51 reordered across existing 35 weekday dates. Within each category, highest-volume articles scheduled first. Original volume-DESC queue backed up to blog-release-queue.json.bak-pre-interleave. Appended articles 61-68 (corporate/events + bottom-of-funnel brand content) starting 2026-06-25.",
     "volume_source": "SABDA_Master_SEO_Keyword_Universe.xlsx (DataForSEO, March 2026)",
-    "regenerated": "2026-04-20",
+    "regenerated": "2026-09-29",
     "last_release": {
       "date": "2026-08-18",
       "slug": "/blog/rainy-day-barcelona/",
@@ -883,6 +883,149 @@
       "status": "released",
       "order": 68,
       "released_at": "2026-08-18"
+    },
+    {
+      "order": 76,
+      "slug": "/blog/exposiciones-barcelona-octubre/",
+      "keyword": "exposiciones barcelona octubre 2026",
+      "art_num": 76,
+      "lang": "es",
+      "release_date": "2026-10-01",
+      "md_file": "blog/article-76-exposiciones-barcelona-octubre.md",
+      "html_file": "blog/exposiciones-barcelona-octubre/index.html",
+      "status": "queued"
+    },
+    {
+      "order": 77,
+      "slug": "/blog/barcelona-exhibitions-october/",
+      "keyword": "barcelona exhibitions october 2026",
+      "art_num": 77,
+      "lang": "en",
+      "release_date": "2026-10-02",
+      "md_file": "blog/article-77-barcelona-exhibitions-october.md",
+      "html_file": "blog/barcelona-exhibitions-october/index.html",
+      "status": "queued"
+    },
+    {
+      "order": 78,
+      "slug": "/blog/exposicions-immersives-barcelona/",
+      "keyword": "exposicions immersives barcelona 2026",
+      "art_num": 78,
+      "lang": "ca",
+      "release_date": "2026-10-05",
+      "md_file": "blog/article-78-exposicions-immersives-barcelona.md",
+      "html_file": "blog/exposicions-immersives-barcelona/index.html",
+      "status": "queued"
+    },
+    {
+      "order": 79,
+      "slug": "/blog/exposiciones-ninos-barcelona/",
+      "keyword": "exposiciones para niños barcelona",
+      "art_num": 79,
+      "lang": "es",
+      "release_date": "2026-10-08",
+      "md_file": "blog/article-79-exposiciones-ninos-barcelona.md",
+      "html_file": "blog/exposiciones-ninos-barcelona/index.html",
+      "status": "queued"
+    },
+    {
+      "order": 80,
+      "slug": "/blog/digital-art-barcelona/",
+      "keyword": "digital art barcelona",
+      "art_num": 80,
+      "lang": "en",
+      "release_date": "2026-10-12",
+      "md_file": "blog/article-80-digital-art-barcelona.md",
+      "html_file": "blog/digital-art-barcelona/index.html",
+      "status": "queued"
+    },
+    {
+      "order": 81,
+      "slug": "/blog/arte-digital-barcelona/",
+      "keyword": "arte digital barcelona",
+      "art_num": 81,
+      "lang": "es",
+      "release_date": "2026-10-15",
+      "md_file": "blog/article-81-arte-digital-barcelona.md",
+      "html_file": "blog/arte-digital-barcelona/index.html",
+      "status": "queued"
+    },
+    {
+      "order": 82,
+      "slug": "/blog/barcelona-shows-for-kids/",
+      "keyword": "barcelona shows for kids",
+      "art_num": 82,
+      "lang": "en",
+      "release_date": "2026-10-19",
+      "md_file": "blog/article-82-barcelona-shows-for-kids.md",
+      "html_file": "blog/barcelona-shows-for-kids/index.html",
+      "status": "queued"
+    },
+    {
+      "order": 83,
+      "slug": "/blog/van-gogh-barcelona/",
+      "keyword": "van gogh barcelona",
+      "art_num": 83,
+      "lang": "en",
+      "release_date": "2026-10-22",
+      "md_file": "blog/article-83-van-gogh-barcelona.md",
+      "html_file": "blog/van-gogh-barcelona/index.html",
+      "status": "queued"
+    },
+    {
+      "order": 84,
+      "slug": "/blog/exposiciones-gratis-barcelona/",
+      "keyword": "exposiciones gratis barcelona",
+      "art_num": 84,
+      "lang": "es",
+      "release_date": "2026-10-26",
+      "md_file": "blog/article-84-exposiciones-gratis-barcelona.md",
+      "html_file": "blog/exposiciones-gratis-barcelona/index.html",
+      "status": "queued"
+    },
+    {
+      "order": 85,
+      "slug": "/blog/exposiciones-barcelona-noviembre/",
+      "keyword": "exposiciones barcelona noviembre 2026",
+      "art_num": 85,
+      "lang": "es",
+      "release_date": "2026-10-29",
+      "md_file": "blog/article-85-exposiciones-barcelona-noviembre.md",
+      "html_file": "blog/exposiciones-barcelona-noviembre/index.html",
+      "status": "queued"
+    },
+    {
+      "order": 86,
+      "slug": "/blog/barcelona-exhibitions-november/",
+      "keyword": "barcelona exhibitions november 2026",
+      "art_num": 86,
+      "lang": "en",
+      "release_date": "2026-10-30",
+      "md_file": "blog/article-86-barcelona-exhibitions-november.md",
+      "html_file": "blog/barcelona-exhibitions-november/index.html",
+      "status": "queued"
+    },
+    {
+      "order": 87,
+      "slug": "/blog/meditacion-barcelona-guia/",
+      "keyword": "meditacion barcelona",
+      "art_num": 87,
+      "lang": "es",
+      "release_date": "2026-11-02",
+      "md_file": "blog/article-87-meditacion-barcelona-guia.md",
+      "html_file": "blog/meditacion-barcelona-guia/index.html",
+      "status": "queued"
+    },
+    {
+      "order": 88,
+      "slug": "/blog/atelier-respiration-barcelone/",
+      "keyword": "atelier respiration barcelone",
+      "art_num": 88,
+      "lang": "fr",
+      "release_date": "2026-11-05",
+      "md_file": "blog/article-88-atelier-respiration-barcelone.md",
+      "html_file": "blog/atelier-respiration-barcelone/index.html",
+      "status": "queued"
     }
   ]
 }

@@ -94,9 +94,15 @@ BLOG_CLUSTERS = [
      'es': '/blog/ecstatic-dance-que-es/'},
     {'en': '/blog/mindfulness-barcelona/',
      'es': '/blog/curso-mindfulness-barcelona/'},
-    {'en': '/blog/immersive-experiences-barcelona/',
-     'es': '/blog/ciencia-bienestar-inmersivo/',
-     'ca': '/blog/benestar-immersiu-barcelona/'},
+    # Not translations of each other, so they must not be an hreflang cluster:
+    # EN is "Immersive Experiences in Barcelona", ES is "The Science of
+    # Immersive Wellness" and CA is "Immersive Wellness in 360". Three separate
+    # topics and keywords. Grouping them invites Google to canonicalise two of
+    # the three away. render-blog.py already lists them separately; this file
+    # had not been updated to match.
+    {'en': '/blog/immersive-experiences-barcelona/'},
+    {'es': '/blog/ciencia-bienestar-inmersivo/'},
+    {'ca': '/blog/benestar-immersiu-barcelona/'},
     {'es': '/blog/planes-originales-barcelona/',
      'ca': '/blog/activitats-originals-barcelona/'},
     {'en': '/blog/couples-activities-barcelona/',

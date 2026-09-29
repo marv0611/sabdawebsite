@@ -100,6 +100,15 @@ HREFLANG_CLUSTERS = [
     # Exhibitions: The Science of Wellness per Neuroscience", CA = "Immersive
     # Wellness: Yoga, Pilates, Sound and Art in 360°". Three different topics
     # entirely. Different KWs each.
+    # ── Exhibition launch batch (articles 76 to 88) ──
+    # Only these three are genuine translation pairs. The rest of the batch
+    # targets a different keyword per language and stays monolingual.
+    {'es': '/blog/exposiciones-barcelona-octubre/',
+     'en': '/blog/barcelona-exhibitions-october/'},
+    {'en': '/blog/digital-art-barcelona/',
+     'es': '/blog/arte-digital-barcelona/'},
+    {'es': '/blog/exposiciones-barcelona-noviembre/',
+     'en': '/blog/barcelona-exhibitions-november/'},
     {'en': '/blog/immersive-experiences-barcelona/'},
     {'es': '/blog/ciencia-bienestar-inmersivo/'},
     {'ca': '/blog/benestar-immersiu-barcelona/'},
@@ -302,295 +311,213 @@ CELEB_LABELS['fr'] = CELEB_LABELS['en']
 CTA_COPY['fr'] = {'h':'Découvrez SABDA','p':'3 cours. Tous types. 30 jours. Sans engagement.','b':'3 cours pour 50€'}
 META_LABELS['fr'] = META_LABELS['en']
 
-def render_html(md_path, dry_run=False):
-    """Render one MD file to HTML. Returns (output_path, html_content)."""
-    md_content = open(md_path).read()
-    fields, body = parse_frontmatter(md_content)
-    
-    # Article number
-    m = re.search(r'article-(\d+)-', md_path)
-    art_num = int(m.group(1)) if m else 0
-    
-    lang = detect_lang(art_num)
-    
-    # Required fields
-    h1 = fields.get('h1', '').strip()
-    if not h1:
-        return None, f'No H1 in {md_path}'
-    slug = fields.get('slug', '').rstrip('/') + '/'
-    if not slug.startswith('/blog/'):
-        return None, f'Bad/missing slug in {md_path}: {slug!r}'
-    meta_desc = fields.get('meta_description', '').strip()
-    primary_kw = fields.get('primary_keyword', '').strip()
-    
-    # Strip [DEPRECATED] prefix from H1 for cleaner display (deprecation stubs)
-    h1_clean = re.sub(r'^\[[A-Z]+\]\s*', '', h1).strip()
-    
-    # Output path
-    out_dir = REPO / slug.strip('/')
-    out_path = out_dir / 'index.html'
-    
-    # Detect noindex flag (from frontmatter or [DEPRECATED] marker)
-    is_noindex = bool(fields.get('noindex')) or '[DEPRECATED]' in h1
-    
-    # ─── Strip editorial annotations that should never render ───
-    # Author breadcrumbs like *[hreflang: ...]*, *[Schema: ...]*, *[Images needed: ...]*,
-    # *[CTA routes to ...]*, *[All images require alt text...]*, *[Deprecated: ...]*.
-    # Pattern: a whole line that's italic-wrapped (asterisk) brackets. All 122 instances
-    # across 60 MDs are editorial — none are content. Hreflang `<link>` tags + JSON-LD
-    # schema are emitted programmatically below.
-    body = re.sub(r'^\s*\*\[[^\]]+\]\*?\s*$\n?', '', body, flags=re.MULTILINE)
-    
-    # ─── Markdown → HTML ───
-    md = markdown.Markdown(extensions=['extra','sane_lists','attr_list'])
-    body_html = md.convert(body)
-    # Post-render enhancements, shared with the design-upgrade pass so rendered and
-    # already-published articles stay identical: rebuild any pipe table Markdown
-    # missed, add data-label to cells for the mobile card layout, and turn the
-    # Type/Price/Location run into chips.
-    body_html = blog_enhance.enhance(body_html)
-    
-    # ─── Get dates ───
-    # Priority:
-    #   1. blog-release-queue.json entry for this slug:
-    #      - status:released → use released_at (actual release date)
-    #      - status:queued   → use release_date (future scheduled date)
-    #   2. Fall back to git first-commit date (for articles not in queue)
-    # This prevents render-blog.py re-renders from clobbering dates that
-    # blog-release.py has correctly stamped on release day.
-    date_pub, date_mod = _queue_dates_for_slug(slug)
-    if not date_pub or not date_mod:
-        g_pub, g_mod = git_dates(md_path)
-        date_pub = date_pub or g_pub
-        date_mod = date_mod or g_mod
-    
-    # ─── Date formatting for article-meta line ───
-    try:
-        dt = datetime.strptime(date_mod, '%Y-%m-%d')
-        month_name = MONTH_NAMES[lang][dt.month]
-        date_display = f'{month_name} {dt.year}'
-    except Exception:
-        date_display = ''
-    
-    # ─── hreflang block ───
+# ─── TEMPLATE-DRIVEN RENDER ───
+# The old renderer rebuilt every page from hardcoded constants. Those constants
+# drifted from the live site, so each re-render silently reverted: the OpenAI
+# pixel, the opt-out consent default (SABDA_CONSENT_DEFAULT), the Momence
+# load-time decorateAll tagging, the Netlify badge-hide style, own-domain image
+# URLs, Person authorship and the visible byline.
+#
+# It now copies a live article of the same language and swaps only the
+# per-article fields, so chrome can never drift again. To adopt a chrome change,
+# ship it to the reference article and re-render.
+REFERENCE = {
+    'es': 'blog/espectaculos-barcelona/index.html',
+    'en': 'blog/best-yoga-studios-barcelona/index.html',
+    'ca': 'blog/benestar-immersiu-barcelona/index.html',
+    'fr': 'blog/expositions-immersives-barcelone/index.html',
+}
+
+# Markers that must survive every render. Checked after each page is built.
+REQUIRED_MARKERS = [
+    ('openai pixel',      'w.oaiq'),
+    ('consent default',   'SABDA_CONSENT_DEFAULT'),
+    ('momence decorate',  'function decorateAll'),
+    ('clarity gate',      'SABDAloadClarity'),
+    ('meta pixel',        'fbq('),
+    ('netlify badge fix', 'nl-badge-hide'),
+    ('author person',     '"@type": "Person"'),
+    ('byline',            'linkedin.com/in/marvynhalfon'),
+]
+
+MONTHS = {
+    'es': ['enero','febrero','marzo','abril','mayo','junio','julio','agosto',
+           'septiembre','octubre','noviembre','diciembre'],
+    'ca': ['gener','febrer','març','abril','maig','juny','juliol','agost',
+           'setembre','octubre','novembre','desembre'],
+    'fr': ['janvier','février','mars','avril','mai','juin','juillet','août',
+           'septembre','octobre','novembre','décembre'],
+    'en': ['January','February','March','April','May','June','July','August',
+           'September','October','November','December'],
+}
+
+def _display_date(iso, lang):
+    y, m, d = (int(x) for x in iso.split('-'))
+    name = MONTHS.get(lang, MONTHS['en'])[m - 1]
+    if lang == 'en':
+        return f'{name} {d}, {y}'
+    return f'{d} {name} {y}'
+
+def _sub1(doc, pattern, repl, label, flags=0):
+    """Replace exactly once. Raising here is deliberate: a silent miss is how
+    the old renderer shipped pages with the wrong title or a stale date."""
+    new, n = re.subn(pattern, lambda _m: repl, doc, count=1, flags=flags)
+    if n != 1:
+        raise RuntimeError(f'render: could not substitute {label} '
+                           f'(matched {n} times, expected 1)')
+    return new
+
+def _hreflang_block(slug, lang):
     cluster = get_hreflang_for_slug(slug)
-    hreflang_html = ''
-    if cluster:
-        for hl, slug_in_cluster in cluster.items():
-            hreflang_html += f'<link rel="alternate" hreflang="{hl}" href="https://sabdastudio.com{slug_in_cluster}">\n'
-        # x-default points to EN if exists, else first
-        xdef = cluster.get('en') or list(cluster.values())[0]
-        hreflang_html += f'<link rel="alternate" hreflang="x-default" href="https://sabdastudio.com{xdef}">\n'
+    D = 'https://sabdastudio.com'
+    if not cluster or len(cluster) <= 1:
+        # Fall back to the article's own language, never a hardcoded 'en':
+        # that mislabelled every monolingual Spanish article as English.
+        pairs = [(next(iter(cluster), None) or lang, slug)]
     else:
-        # Self-reference for monolingual
-        hreflang_html = f'<link rel="alternate" hreflang="{lang}" href="https://sabdastudio.com{slug}">\n<link rel="alternate" hreflang="x-default" href="https://sabdastudio.com{slug}">\n'
-    
-    # ─── Lang switcher: build from cluster (point to translations only if they exist) ───
-    lang_switcher_html = ''
-    for code in ['en','es','ca']:
-        if cluster and code in cluster:
-            href = cluster[code]
-            active = ' class="active"' if code == lang else ''
-            lang_switcher_html += f'<a href="{href}"{active}>{code.upper()}</a>'
-        elif code == lang:
-            # Active monolingual
-            lang_switcher_html += f'<a href="{slug}" class="active">{code.upper()}</a>'
-        else:
-            # Fallback: lang root
-            root = {'en':'/','es':'/es/','ca':'/ca/'}[code]
-            lang_switcher_html += f'<a href="{root}">{code.upper()}</a>'
-    
-    # ─── Schema (BlogPosting) ───
-    schema_blogposting = {
-        '@context': 'https://schema.org',
-        '@type': 'BlogPosting',
-        'headline': h1_clean,
-        'description': meta_desc,
-        'author': {'@type':'Organization','name':'SABDA','url':'https://sabdastudio.com'},
-        'publisher': {'@type':'Organization','name':'SABDA','url':'https://sabdastudio.com',
-                       'logo':{'@type':'ImageObject','url':'https://sabdastudio.com/favicons/icon-512.png'}},
-        'datePublished': date_pub,
-        'dateModified': date_mod,
-        'mainEntityOfPage': {'@type':'WebPage','@id':f'https://sabdastudio.com{slug}'},
-        'inLanguage': lang,
-        'image': 'https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Copy_of_Sabda2-167__1_.jpg',
-    }
-    
-    # Breadcrumb schema
-    schema_breadcrumb = {
-        '@context': 'https://schema.org',
-        '@type': 'BreadcrumbList',
-        'itemListElement': [
-            {'@type':'ListItem','position':1,'name':NAV_LABELS[lang]['home'],'item':'https://sabdastudio.com/'},
-            {'@type':'ListItem','position':2,'name':NAV_LABELS[lang]['blog'],'item':'https://sabdastudio.com/blog/'},
-            {'@type':'ListItem','position':3,'name':h1_clean,'item':f'https://sabdastudio.com{slug}'},
-        ]
-    }
-    
-    # ─── Robots meta ───
-    # SAFE DEFAULT: noindex unless MD explicitly opts in via **publish: true**
-    # This prevents accidentally pushing all articles live at once.
-    is_published = bool(fields.get('publish', False))
-    if is_noindex:
-        robots_meta = '<meta name="robots" content="noindex,follow">'
-    elif is_published:
-        robots_meta = '<meta name="robots" content="index,follow,max-image-preview:large">'
-    else:
-        # Default: not yet released
-        robots_meta = '<meta name="robots" content="noindex,follow">'
-    
-    # ─── Title (with " | SABDA" suffix) ───
-    title_full = f'{h1_clean} | SABDA'
-    
-    # ─── Social image ───
-    social_img = 'https://raw.githubusercontent.com/marv0611/sabdawebsite/main/Copy_of_Sabda2-167__1_.jpg'
-    
-    # ─── Nav + Footer paths for this lang ───
-    np = NAV_PATHS[lang]
-    nl = NAV_LABELS[lang]
-    lp = LEGAL_PATHS[lang]
-    ll = LEGAL_LABELS[lang]
-    cta = CTA_COPY[lang]
-    mob = MOB_NAV_LABELS[lang]
-    mnp = MOB_NAV_PATHS[lang]
-    
-    # ─── Assemble HTML ───
-    out = f'''<!DOCTYPE html>
-<html lang="{lang}">
-<head>
-<meta charset="UTF-8">
-<meta name="facebook-domain-verification" content="6vs8q2dkkemv5umuqn9irqnpippo3u">
-<!-- Meta Pixel Code -->
-{PIXEL_BLOCK}
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=567636669734630&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-<meta name="generator" content="SABDA Renderer v1">
-{robots_meta}
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{esc(title_full)}</title>
-<meta name="description" content="{esc(meta_desc)}">
-<link rel="canonical" href="https://sabdastudio.com{slug}">
-<meta property="og:title" content="{esc(title_full)}">
-<meta property="og:description" content="{esc(meta_desc)}">
-<meta property="og:url" content="https://sabdastudio.com{slug}">
-<meta property="og:type" content="article">
-<meta property="og:site_name" content="SABDA">
-<meta property="og:image" content="{social_img}">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="@sabda_studio">
-<meta name="twitter:title" content="{esc(title_full)}">
-<meta name="twitter:description" content="{esc(meta_desc)}">
-<meta name="twitter:image" content="{social_img}">
-<script type="application/ld+json">
-{json.dumps(schema_blogposting, ensure_ascii=False, indent=2)}
-</script>
-<script type="application/ld+json">
-{json.dumps(schema_breadcrumb, ensure_ascii=False, indent=2)}
-</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-{CSS_BLOCK}
-{GA4_CONSENT}
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-1E1WXTZWQD"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag("js",new Date());gtag("config","G-1E1WXTZWQD",{{"anonymize_ip":true}});</script>
-{CLARITY_GATED}
-{hreflang_html.rstrip()}
-<link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png">
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
-<style id="nav-fit">@media(min-width:861px) and (max-width:1120px){{.nav-links{{gap:20px}}}}</style>
-</head>
-<body>
-<div class="grain"></div>
-<nav id="nav">
- <a href="/" class="nav-logo" aria-label="SABDA - Home">
- <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA" width="400" height="127">
- </a>
- <ul class="nav-links">
- <li><a href="{np['classes']}">{nl['classes']}</a></li><li><a href="{np['ice']}">Ice Bath</a></li>
- <li><a href="{np['pricing']}">{nl['pricing']}</a></li>
- <li><a href="{np['hire']}">{nl['hire']}</a></li>
- <li><a href="{np['events']}">{nl['events']}</a></li>
- </ul>
- <div class="nav-right">
- <div class="lang-sel">
- {lang_switcher_html}
- </div>
- <div class="nav-social">
- <a href="https://instagram.com/sabda_studio" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2zm0 1.5A4 4 0 0 0 3.5 7.5v9a4 4 0 0 0 4 4h9a4 4 0 0 0 4-4v-9a4 4 0 0 0-4-4h-9zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5.25-2.5a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/></svg></a>
- <a href="https://www.tiktok.com/@sabda_studio" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 5.82A4.28 4.28 0 0 1 13.8 3h-3v12.4a2.6 2.6 0 0 1-2.6 2.6 2.6 2.6 0 0 1-2.6-2.6A2.6 2.6 0 0 1 8.2 12.8c.28 0 .56.04.82.12V9.84A5.6 5.6 0 0 0 2.6 15.4a5.6 5.6 0 0 0 5.6 5.6 5.6 5.6 0 0 0 5.6-5.6V9.72a7.3 7.3 0 0 0 4.2 1.32V8.02a4.28 4.28 0 0 1-1.4-2.2z"/></svg></a>
- </div>
- <div class="nav-login">
- <a href="https://momence.com/sign-in" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>{mob['login']}</a>
- </div>
- </div>
-<button class="nav-ham" onclick="document.getElementById('mobMenu').classList.add('open')" aria-label="Menu"><span></span><span></span><span></span></button>
-<a href="{np['book']}" class="nav-book">{nl['book']}</a></nav>
-<div class="mob-menu" id="mobMenu"><button class="mob-close" type="button" aria-label="Close menu" onclick="this.parentElement.classList.remove('open')"><svg viewBox="0 0 24 24" fill="none"><path d="M18 6L6 18M6 6l12 12"/></svg></button><a href="{np['classes']}">{nl['classes']}</a><a href="{np['pricing']}">{nl['pricing']}</a><a href="{np['hire']}">{nl['hire']}</a><a href="{np['events']}">{nl['events']}</a><a href="/blog/">{nl['blog']}</a><a href="{np['about']}">{nl['about']}</a><a href="{mnp['contact']}">{mob['contact']}</a><a href="https://momence.com/sign-in" target="_blank" rel="noopener noreferrer">{mob['login']}</a><div style="width:60px;height:1px;background:rgba(240,239,233,.12);margin:4px 0"></div><a href="{mnp['legal']}" style="font-size:.9rem;font-weight:500;opacity:.6">{mob['legal']}</a><a href="{lp['privacy']}" style="font-size:.9rem;font-weight:500;opacity:.6">{ll['privacy']}</a><a href="{lp['terms']}" style="font-size:.9rem;font-weight:500;opacity:.6">{ll['terms']}</a><a href="{lp['cookies']}" style="font-size:.9rem;font-weight:500;opacity:.6">{ll['cookies']}</a></div>
+        pairs = sorted(cluster.items())
+    lines = [f'<link rel="alternate" hreflang="{l}" href="{D}{s}">' for l, s in pairs]
+    default = dict(pairs).get('en') or pairs[0][1]
+    lines.append(f'<link rel="alternate" hreflang="x-default" href="{D}{default}">')
+    return '\n'.join(lines)
 
-<div class="hero-banner">
-  <img src="{ARTICLE_HERO_IMG}" alt="SABDA immersive wellness studio Barcelona">
-  <div class="hero-overlay">
-    <div class="hero-eyebrow">{nl['blog']}</div>
-    <h1>{esc(h1_clean)}</h1>
-  </div>
-</div>
-<nav aria-label="Breadcrumb" class="breadcrumbs"><a href="/">{nl['home']}</a> / <a href="/blog/">{nl['blog']}</a> / <span>{esc(h1_clean)}</span></nav>
-<article class="article">
- <h1>{esc(h1_clean)}</h1>
- <div class="article-meta">SABDA &middot; {date_display}</div>
-{body_html}
- </article>
-<footer style="border-top:1px solid rgba(240,239,233,.07)">
- <div class="ft-in">
- <div class="ft-brand">
- <img src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20white%20logo.png" alt="SABDA" width="400" height="127">
- <div class="ft-pillars"><span class="fp-art">Art</span><span>·</span><span class="fp-tech">Tech</span><span>·</span><span class="fp-well">Wellness</span></div>
- <img class="ft-symbol" src="https://raw.githubusercontent.com/marv0611/sabdawebsite/main/SABDA%20symbol%20multi-colored%20(1).png" alt="SABDA symbol">
- </div>
- <div class="ft-col"><h3 style="color:var(--cyan)">{nl['classes']}</h3><ul>
- <li><a href="{np['classes']}">{nl['classes']}</a></li><li><a href="{np['hire']}">{nl['hire']}</a></li><li><a href="{np['pricing']}">{nl['pricing']}</a></li><li><a href="{np['events']}">{nl['events']}</a></li><li><a href="{np['celebrations']}">{CELEB_LABELS[lang]}</a></li><li><a href="{np['about']}">{nl['about']}</a></li><li><a href="/blog/">Blog</a></li>
- </ul></div>
- <div class="ft-col"><h3 style="color:var(--salmon)">Connect</h3><ul>
- <li><a href="https://instagram.com/sabda_studio" target="_blank" rel="noopener noreferrer">Instagram</a></li>
- <li><a href="https://www.tiktok.com/@sabda_studio" target="_blank" rel="noopener noreferrer">TikTok</a></li>
- <li><a href="https://www.linkedin.com/company/sabdastudio" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
- </ul></div>
- <div class="ft-col"><h3 style="color:var(--white)">Contact</h3><ul>
- <li><a href="mailto:info@sabdastudio.com">info@sabdastudio.com</a></li>
- <li><a href="tel:+34625449878">+34 625 44 98 78</a></li>
- <li><a href="https://maps.google.com/?q=SABDA+Studio,+Barcelona" target="_blank" rel="noopener noreferrer" style="color:var(--cyan);border-bottom:1px solid rgba(2,243,197,.3);padding-bottom:2px;transition:border-color .25s">Get Directions →</a></li>
- </ul></div>
- </div>
- <div class="ft-bot">
- <span>© 2026 SABDA STUDIO S.L. All rights reserved.</span>
- <div class="ft-legal"><a href="{lp['privacy']}">{ll['privacy']}</a><a href="{lp['terms']}">{ll['terms']}</a><a href="{lp['cookies']}">{ll['cookies']}</a></div>
- </div>
-<div class="kit-digital-bar" aria-label="Financiado por el Programa Kit Digital">
- <img src="/logos-kit-digital.jpg" alt="Financiado por la Unión Europea NextGenerationEU · Gobierno de España · Plan de Recuperación, Transformación y Resiliencia · Kit Digital" loading="lazy" width="800" height="100">
-</div>
-</footer>
-<script>
-const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{{nav.classList.toggle('scrolled',scrollY>40)}},{{passive:true}});
-</script>
-{TABS_BLOCK[lang]['tabs']}
-</body>
-</html>'''
-    
+
+def render_html(md_path, dry_run=False):
+    md_path = str(md_path)
+    raw = Path(md_path).read_text(encoding='utf-8')
+    fields, body_md = parse_frontmatter(raw)
+
+    m = re.search(r'article-(\d+)', md_path)
+    art_num = int(m.group(1)) if m else 0
+    lang = detect_lang(art_num)
+    if lang not in REFERENCE:
+        raise RuntimeError(f'{md_path}: no reference article for language {lang!r}')
+
+    h1 = re.sub(r'^\[[A-Z]+\]\s*', '', fields.get('h1', '').strip()).strip()
+    if not h1:
+        raise RuntimeError(f'{md_path}: no H1')
+    slug = fields.get('slug', '').strip()
+    if not slug.startswith('/blog/'):
+        raise RuntimeError(f'{md_path}: bad or missing slug {slug!r}')
+    # Articles written since the Priority 1 rewrites carry an explicit Meta
+    # title and own their whole <title>. Older ones have none, and the legacy
+    # renderer appended " | SABDA", so keep doing that for them rather than
+    # silently rewriting the title of every old article on re-render.
+    title = (fields.get('meta_title') or f'{h1} | SABDA').strip()
+    desc = (fields.get('meta_description') or '').strip()
+    url = 'https://sabdastudio.com' + slug
+
+    pub, mod = _queue_dates_for_slug(slug)
+    if not pub:
+        pub, mod = git_dates(md_path)
+    # A queued article has not been modified since it was written, so its
+    # dateModified is its publication date, not the day it happened to render.
+    q = _load_queue().get(slug) or {}
+    if q.get('status') != 'released':
+        mod = pub
+    noindex = bool(fields.get('noindex')) or q.get('status') != 'released'
+
     if dry_run:
-        return out_path, out
-    
-    out_dir.mkdir(parents=True, exist_ok=True)
-    # design layer: stylesheet, desktop particle field, breadcrumb separators
-    out = blog_enhance.inject_design(out)
-    out_path.write_text(out)
-    return out_path, None
+        return (f'{slug} [{lang}] noindex={noindex} pub={pub}', None)
 
-# ─── CLI ───
+    doc = Path(REFERENCE[lang]).read_text(encoding='utf-8')
+    ref_slug = re.search(r'<link rel="canonical" href="https://sabdastudio\.com([^"]+)"', doc).group(1)
+
+    # ── head ──
+    doc = _sub1(doc, r'<title>[^<]*</title>', f'<title>{esc(title)}</title>', 'title')
+    doc = _sub1(doc, r'<meta name="description" content="[^"]*">',
+                f'<meta name="description" content="{esc(desc)}">', 'description')
+    doc = _sub1(doc, r'<meta name="robots" content="[^"]*">',
+                '<meta name="robots" content="noindex,nofollow">' if noindex
+                else '<meta name="robots" content="index,follow,max-image-preview:large">', 'robots')
+    doc = _sub1(doc, r'<link rel="canonical" href="[^"]*">',
+                f'<link rel="canonical" href="{url}">', 'canonical')
+    doc = _sub1(doc, r'<meta property="og:title" content="[^"]*">',
+                f'<meta property="og:title" content="{esc(title)}">', 'og:title')
+    doc = _sub1(doc, r'<meta property="og:description" content="[^"]*">',
+                f'<meta property="og:description" content="{esc(desc)}">', 'og:description')
+    doc = _sub1(doc, r'<meta property="og:url" content="[^"]*">',
+                f'<meta property="og:url" content="{url}">', 'og:url')
+    doc = _sub1(doc, r'<meta name="twitter:title" content="[^"]*">',
+                f'<meta name="twitter:title" content="{esc(title)}">', 'twitter:title')
+    doc = _sub1(doc, r'<meta name="twitter:description" content="[^"]*">',
+                f'<meta name="twitter:description" content="{esc(desc)}">', 'twitter:description')
+
+    # hreflang: replace the whole contiguous run of alternates
+    doc = _sub1(doc, r'(?:[ \t]*<link rel="alternate" hreflang="[^"]*" href="[^"]*">\n?)+',
+                _hreflang_block(slug, lang) + '\n', 'hreflang')
+
+    # ── JSON-LD ──
+    doc = _sub1(doc, r'"headline": "(?:[^"\\]|\\.)*"', f'"headline": {json.dumps(h1, ensure_ascii=False)}', 'headline')
+    doc = _sub1(doc, r'"description": "(?:[^"\\]|\\.)*"', f'"description": {json.dumps(desc, ensure_ascii=False)}', 'ld description')
+    doc = _sub1(doc, r'"datePublished": "[^"]*"', f'"datePublished": "{pub}"', 'datePublished')
+    doc = _sub1(doc, r'"dateModified": "[^"]*"', f'"dateModified": "{mod}"', 'dateModified')
+    doc = _sub1(doc, r'"@id": "https://sabdastudio\.com/blog/[^"]*"', f'"@id": "{url}"', 'mainEntityOfPage')
+    # breadcrumb leaf
+    doc = re.sub(r'("position": 3,\s*\n\s*"name": )"(?:[^"\\]|\\.)*"',
+                 lambda mm: mm.group(1) + json.dumps(h1, ensure_ascii=False), doc, count=1)
+    doc = re.sub(r'("position": 3,(?:.|\n)*?"item": )"[^"]*"',
+                 lambda mm: mm.group(1) + f'"{url}"', doc, count=1)
+
+    # ── nav active link ──
+    doc = doc.replace(f'<a href="{ref_slug}" class="active"', f'<a href="{slug}" class="active"')
+
+    # ── hero, breadcrumb, article heading ──
+    doc = re.sub(r'(<div class="hero-eyebrow">[^<]*</div>\s*\n\s*<h1>)[^<]*(</h1>)',
+                 lambda mm: mm.group(1) + esc(h1) + mm.group(2), doc, count=1)
+    doc = re.sub(r'(class="breadcrumbs">.*?<span>)[^<]*(</span></nav>)',
+                 lambda mm: mm.group(1) + esc(h1) + mm.group(2), doc, count=1, flags=re.S)
+    doc = re.sub(r'(<article class="article">\s*\n\s*<h1>)[^<]*(</h1>)',
+                 lambda mm: mm.group(1) + esc(h1) + mm.group(2), doc, count=1)
+
+    # ── byline date ──
+    doc = _sub1(doc, r'<time datetime="[^"]*">[^<]*</time>',
+                f'<time datetime="{mod}">{_display_date(mod, lang)}</time>', 'byline date')
+
+    # ── body ──
+    # Strip the writer's production notes. These are whole lines of the form
+    # *[Schema: ...]*, *[Images needed: ...]*, *[Update frequency: ...]*,
+    # *[hreflang: ...]*. Without this they render as visible italic text at the
+    # foot of the published article.
+    body_md = re.sub(r'^[ \t]*\*?\[[^\]]+\]\*?[ \t]*$\n?', '', body_md, flags=re.MULTILINE)
+    # The notes usually sat under a trailing '---', which would otherwise render
+    # as a stray horizontal rule at the foot of the article.
+    body_md = re.sub(r'\n-{3,}\s*$', '', body_md.rstrip())
+    md = markdown.Markdown(extensions=['extra', 'sane_lists', 'attr_list'])
+    body_html = blog_enhance.enhance(md.convert(body_md))
+    start = doc.find('</div>', doc.find('<div class="article-meta">')) + len('</div>')
+    end = doc.find('</article>')
+    if start <= 0 or end <= start:
+        raise RuntimeError('render: could not locate the article body region')
+    doc = doc[:start] + '\n' + body_html + '\n ' + doc[end:]
+
+    doc = blog_enhance.inject_design(doc)
+
+    missing = [name for name, needle in REQUIRED_MARKERS if needle not in doc]
+    if missing:
+        raise RuntimeError(f'render: output is missing {missing}. '
+                           f'Reference {REFERENCE[lang]} may be stale.')
+
+    out_path = REPO / slug.strip('/') / 'index.html'
+
+    # Body content that lives only in the published HTML, never in the markdown,
+    # would be destroyed by a re-render. The seeded founder pull-quotes are the
+    # known case. Refuse rather than silently drop them.
+    if out_path.exists():
+        prev_body = out_path.read_text(encoding='utf-8')
+        pi = prev_body.find('</div>', prev_body.find('<div class="article-meta">'))
+        prev_body = prev_body[pi:prev_body.find('</article>')] if pi > 0 else ''
+        if '<blockquote' in prev_body and '<blockquote' not in body_html:
+            raise RuntimeError(
+                f'{slug}: the live page has a pull-quote that the markdown does not. '
+                f'Re-rendering would delete it. Port the quote into {md_path} first, '
+                f'or leave this article alone.')
+
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(doc, encoding='utf-8')
+    return (f'{slug} [{lang}] noindex={noindex} pub={pub} mod={mod}', None)
+
+
 if __name__ == '__main__':
     if len(sys.argv) < 2:
         print(__doc__); sys.exit(1)
