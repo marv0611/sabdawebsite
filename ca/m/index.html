@@ -139,7 +139,7 @@ button{font-family:inherit;border:none;background:none;cursor:pointer;color:inhe
 .touch{transition:transform .15s cubic-bezier(.2,.8,.4,1),opacity .15s}.touch:active{transform:scale(.97);opacity:.85}
 
 /* HEADER */
-.hdr{position:fixed;top:0;left:0;right:0;z-index:100;height:calc(52px + var(--safe-t));padding-top:var(--safe-t);display:flex;align-items:center;justify-content:space-between;padding-left:20px;padding-right:16px;transition:background .4s,border-color .4s;border-bottom:1px solid transparent}
+.hdr{position:fixed;top:0;left:0;right:0;z-index:100;height:calc(52px + var(--safe-t));padding-top:var(--safe-t);display:flex;align-items:center;justify-content:space-between;padding-left:20px;padding-right:16px;transition:background .4s,backdrop-filter .4s,border-color .4s;border-bottom:1px solid rgba(240,239,233,.04);background:rgba(14,18,53,.45);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
 .hdr.solid{background:var(--navy95);backdrop-filter:saturate(1.4) blur(24px);-webkit-backdrop-filter:saturate(1.4) blur(24px);border-bottom-color:var(--w06)}
 .hdr-logo{height:18px;width:auto;opacity:.9}
 .hdr-ham{padding:8px;color:var(--w60)}
